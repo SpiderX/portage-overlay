@@ -1,0 +1,46 @@
+--- projects/convertor/convertor.conf.org	2012-12-18 21:56:33.578221904 +0200
++++ projects/convertor/convertor.conf	2012-12-18 21:58:22.355217059 +0200
+@@ -18,27 +18,27 @@
+     # Working server directory, provides data on tariffs, users, administrators.
+     # Parameter: required
+     # Value: directory path
+-    WorkDir = /var/stargazer
++    WorkDir = /var/lib/stargazer
+ 
+     # Owner, group and permissions of the files of user statistics (stat)
+     # Parameter: required
+     # Values: any, supported by OS
+-    ConfOwner = root
+-    ConfGroup = root
++    ConfOwner = stg
++    ConfGroup = stg
+     ConfMode = 600
+ 
+     # Owner, group and permissions on user configuration files (conf)
+     # Parameter: required
+     # Values: any, supported by OS
+-    StatOwner = root
+-    StatGroup = root
++    StatOwner = stg
++    StatGroup = stg
+     StatMode = 640
+ 
+     # Owner, group and permissions for user log files (log)
+     # Parameter: required
+     # Values: any, supported by OS
+-    UserLogOwner = root
+-    UserLogGroup = root
++    UserLogOwner = stg
++    UserLogGroup = stg
+     UserLogMode = 640
+ 
+ </SourceStoreModule>
+@@ -54,7 +54,7 @@
+     # Parameter: required
+     # Value: file path
+     # Default: /var/stg/stargazer.fdb
+-    # database = /var/stg/stargazer.fdb
++    # database = /var/lib/stargazer/stargazer.fdb
+ 
+     # Database username
+     # Parameter: required

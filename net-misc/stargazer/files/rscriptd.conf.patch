@@ -1,0 +1,11 @@
+--- projects/rscriptd/rscriptd.conf.org	2012-12-18 22:02:28.717206079 +0200
++++ projects/rscriptd/rscriptd.conf	2012-12-18 22:06:09.495196235 +0200
+@@ -1,6 +1,6 @@
+-LogFileName=/var/log/rscriptd.log
++LogFileName=/var/log/stargazer/rscriptd.log
+ ExecutersNum=1
+-ConfigDir=/etc/rscriptd
++ConfigDir=/etc/stargazer
+ Password=123456
+ Port=9999
+ UserTimeout=60

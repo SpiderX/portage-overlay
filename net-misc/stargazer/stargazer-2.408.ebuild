@@ -4,7 +4,6 @@
 
 EAPI="4"
 
-#inherit autotools toolchain-funcs eutils
 inherit eutils
 
 DESCRIPTION="Stargtazer billing system for small home and office networks"
@@ -66,8 +65,10 @@ src_prepare() {
 		mv ${S}/projects/${project}/build ${S}/projects/${project}/configure
 	done
 	
-	# test patch !!!!PATCH FOR CONVERTOR FOR ALL POSIBILITIES
-	#epatch "${FILESDIR}"/configure.patch
+	# Correct working directory, user and group
+	epatch "${FILESDIR}"/convertor.conf.patch
+	# Correct path for files and directories
+	epatch "${FILESDIR}"/rscriptd.conf.patch
 	
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
 	use module_auth_internet_access	|| sed -i 's/authorization\/inetaccess//' ${S}/projects/stargazer/configure
@@ -85,10 +86,7 @@ src_prepare() {
 	use module_store_mysql		|| sed -i 's/store\/mysql//' ${S}/projects/stargazer/configure
 	use module_store_postgres	|| sed -i 's/store\/postgresql//' ${S}/projects/stargazer/configure
 	
-	if use stargazer; then
-		sed -i 's/opts/extra_commands/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
-		#remove after test newinitdmv ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer
-	fi
+	use stargazer			&& sed -i 's/opts/extra_commands/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
 }
 
 src_configure() {
@@ -102,118 +100,121 @@ src_configure() {
 		fi
 	done
 }
-#kg_{setup,preinst,postinst}
+
 pkg_setup() {
 	enewgroup stg
 	enewuser stg -1 -1 /var/lib/stargazer stg
 }
 
+#pkg_postinst() {
+#}
+
 src_install() {
 	#emake DESTDIR="${D}" install
-	dodoc ChangeLog 
-	#doinit /projects/stargazer/inst/linux/etc/init.d
-	#if use doc; then
-	#	dodoc doc/puttydoc.txt
-	#	dohtml doc/*.html
-	#fi
 	
-	dodir \
+	dodoc ChangeLog
+	
+	dodir	\
 		/etc/stargazer \
 		/usr/share/stargazer/db \
 		/usr/share/stargazer/db/mysql \
 		/usr/share/stargazer/db/postgresql
-	insinto /usr/share/stargazer/db
-	doins \
+	keepdir	\
+		/etc/stargazer \
+		/var/lib/stargazer \
+		/var/lib/stargazer/admins \
+		/var/lib/stargazer/tariffs \
+		/var/lib/stargazer/users
+	insinto	/usr/share/stargazer/db
+	doins	\
 		${S}/projects/stargazer/inst/var/00-base-00.sql \
 		${S}/projects/stargazer/inst/var/00-alter-01.sql
-	insinto /usr/share/stargazer/db/mysql
-	doins ${S}/projects/stargazer/inst/var/00-mysql-01.sql
-	insinto /usr/share/stargazer/db/postgresql
-	doins \
+	insinto	/usr/share/stargazer/db/mysql
+	doins	${S}/projects/stargazer/inst/var/00-mysql-01.sql
+	insinto	/usr/share/stargazer/db/postgresql
+	doins	\
 		${S}/projects/stargazer/inst/var/00-base-00.postgresql.sql \
 		${S}/projects/stargazer/inst/var/00-alter-01.postgresql.sql
 	
 	if use doc; then
-		insinto /usr/share/stargazer/db
-		doins ${S}/projects/stargazer/inst/var/base.dia
+		insinto	/usr/share/stargazer/db
+		doins	${S}/projects/stargazer/inst/var/base.dia
 	fi
 	
 	if use examples; then
-		dodir \
+		dodir	\
 			/usr/share/stargazer/scripts \
 			/usr/share/stargazer/scripts/shaper \
 			/usr/share/stargazer/scripts/shaper_vpn_radius
-		insinto /usr/share/stargazer/scripts
-		doins \
-			${S}/projects/stargazer/scripts/clean_db \
-			${S}/projects/stargazer/scripts/monitor
-		insinto /usr/share/stargazer/scripts/shaper
-		doins ${S}/projects/stargazer/scripts/shaper/*
-		insinto /usr/share/stargazer/scripts/shaper_vpn_radius
-		doins ${S}/projects/stargazer/scripts/shaper_vpn_radius/*
+		insinto	/usr/share/stargazer/scripts
+		doins	${S}/projects/stargazer/scripts/*
+		insinto	/usr/share/stargazer/scripts/shaper
+		doins	${S}/projects/stargazer/scripts/shaper/*
+		insinto	/usr/share/stargazer/scripts/shaper_vpn_radius
+		doins	${S}/projects/stargazer/scripts/shaper_vpn_radius/*
 	fi
 	
 	if use convertor; then
-		insinto /etc/stargazer
-		doins ${S}/projects/convertor/convertor.conf
-		dobin ${S}/projects/convertor/convertor
-		fowners stg:stg /etc/stargazer/convertor.conf
-		fperms 0640 /etc/stargazer/convertor.conf
+		insinto	/etc/stargazer
+		doins	${S}/projects/convertor/convertor.conf
+		dobin	${S}/projects/convertor/convertor
+		fowners	stg:stg /etc/stargazer/convertor.conf
+		fperms	0640 /etc/stargazer/convertor.conf
 	fi
 	
 	if use radius; then
-		insinto /usr/lib/freeradius
-		doins ${S}/projects/rlm_stg/rlm_stg.so
+		insinto	/usr/lib/freeradius
+		doins	${S}/projects/rlm_stg/rlm_stg.so
 	fi
 	
 	if use rscriptd; then
-		insinto /etc/stargazer
-		doins ${S}/projects/rscriptd/rscriptd.conf
-		dosbin ${S}/projects/rscriptd/rscriptd
+		insinto	/etc/stargazer
+		doins	${S}/projects/rscriptd/rscriptd.conf
+		fowners	stg:stg /etc/stargazer/rscriptd.conf
+		fperms	0640 /etc/stargazer/rscriptd.conf
+		dosbin	${S}/projects/rscriptd/rscriptd
 	fi
 	
-	#css??
 	if use sgauth; then
-		insinto /etc/stargazer
-		doins ${S}/projects/sgauth/sgauth.conf
-		dobin ${S}/projects/sgauth/sgauth
+		insinto	/etc/stargazer
+		doins	${S}/projects/sgauth/sgauth.conf
+		fowners	stg:stg /etc/stargazer/sgauth.conf
+		fperms	0640 /etc/stargazer/sgauth.conf
+		dobin	${S}/projects/sgauth/sgauth
 	fi
 	
 	if use sgconf; then
-		dobin ${S}/projects/sgconf/sgconf
+		dobin	${S}/projects/sgconf/sgconf
 	fi
 	
 	if use xmlrpc; then
-		dobin ${S}/projects/sgconf_xml/sgconf_xml
+		dobin	${S}/projects/sgconf_xml/sgconf_xml
 	fi
 	
 	if use stargazer; then
-		dodoc ${S}/projects/stargazer/BUGS ${S}/projects/stargazer/CHANGES ${S}/projects/stargazer/README ${S}/projects/stargazer/TODO
-		newinitd ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
+		dodoc		${S}/projects/stargazer/BUGS ${S}/projects/stargazer/CHANGES ${S}/projects/stargazer/README ${S}/projects/stargazer/TODO
+		newinitd	${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
 		dodir \
 			/etc/stargazer/conf-available.d \
 			/etc/stargazer/conf-enabled.d \
-			/var/lib/stargazer \
 			/var/lib/stargazer/admins \
 			/var/lib/stargazer/tariffs \
 			/var/lib/stargazer/users \
 			/var/lib/stargazer/users/test \
 			/var/log/stargazer \
 			/var/run/stargazer
-		insinto /var/lib/stargazer/admins
-		doins ${S}/projects/stargazer/inst/var/stargazer/admins/admin.adm
-		fowners stg:stg /var/lib/stargazer/admins/admin.adm
-		fperms 0640 /var/lib/stargazer/admins/admin.adm
-		insinto /var/lib/stargazer/tariffs
-		doins ${S}/projects/stargazer/inst/var/stargazer/tariffs/tariff.tf
-		fowners stg:stg /var/lib/stargazer/tariffs/tariff.tf
-		fperms 0640 /var/lib/stargazer/tariffs/tariff.tf
-		insinto /var/lib/stargazer/users/test
-		doins \
-			${S}/projects/stargazer/inst/var/stargazer/users/test/conf \
-			${S}/projects/stargazer/inst/var/stargazer/users/test/stat
-		insinto /etc/stargazer
-		doins \
+		insinto	/var/lib/stargazer/admins
+		doins	${S}/projects/stargazer/inst/var/stargazer/admins/admin.adm
+		fowners	stg:stg /var/lib/stargazer/admins/admin.adm
+		fperms	0640 /var/lib/stargazer/admins/admin.adm
+		insinto	/var/lib/stargazer/tariffs
+		doins	${S}/projects/stargazer/inst/var/stargazer/tariffs/tariff.tf
+		fowners	stg:stg /var/lib/stargazer/tariffs/tariff.tf
+		fperms	0640 /var/lib/stargazer/tariffs/tariff.tf
+		insinto	/var/lib/stargazer/users/test
+		doins	${S}/projects/stargazer/inst/var/stargazer/users/test/*
+		insinto	/etc/stargazer
+		doins	\
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnChange \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnConnect \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnDisconnect \
@@ -221,22 +222,21 @@ src_install() {
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnUserDel \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/rules \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/stargazer.conf
-		fowners -R stg:stg /var/lib/stargazer
-		fperms -R 0640 /var/lib/stargazer/users/test/
-		fowners -R stg:stg /etc/stargazer
-		fperms 0755 \
+		fowners	-R stg:stg /var/lib/stargazer
+		fperms	-R 0640 /var/lib/stargazer/users/test/
+		fowners	-R stg:stg /etc/stargazer
+		fperms	0755 \
 			/etc/stargazer/OnChange \
 			/etc/stargazer/OnConnect \
 			/etc/stargazer/OnDisconnect \
 			/etc/stargazer/OnUserAdd \
 			/etc/stargazer/OnUserDel
-		fperms 0640 \
+		fperms	0640 \
 			/etc/stargazer/rules \
 			/etc/stargazer/stargazer.conf
 	fi
 	
-	# do fowners and fperms in cycle for all modules, doins rewrite with [] &&
-	insinto /etc/stargazer/conf-available.d
+	insinto	/etc/stargazer/conf-available.d
 	use module_auth_always_online	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ao.conf
 	use module_auth_internet_access	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ia.conf
 	use module_auth_freeradius	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_radius.conf
@@ -251,21 +251,21 @@ src_install() {
 	use module_store_firebird	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf
 	use module_store_mysql		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_mysql.conf
 	use module_store_postgres	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_postgresql.conf
-	fowners -R stg:stg /etc/stargazer/conf-available.d/
-	fperms -R 0640 /etc/stargazer/conf-available.d/
-	#insinto /etc/stargazer/conf-enabled.d
-	use module_auth_always_online	&& dosym /etc/stargazer/conf-available.d/mod_ao.conf /etc/stargazer/conf-enabled.d/mod_ao.conf
-	use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf /etc/stargazer/conf-enabled.d/mod_ia.conf
-	use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf /etc/stargazer/conf-enabled.d/mod_radius.conf
-	use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf /etc/stargazer/conf-enabled.d/mod_cap_ipq.conf
-	use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf /etc/stargazer/conf-enabled.d/mod_cap_nf.conf
-	use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf /etc/stargazer/conf-enabled.d/mod_sg.conf
-	use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf /etc/stargazer/conf-enabled.d/mod_rpc.conf
-	use module_other_ping		&& dosym /etc/stargazer/conf-available.d/mod_ping.conf /etc/stargazer/conf-enabled.d/mod_ping.conf
-	use module_other_smux		&& dosym /etc/stargazer/conf-available.d/mod_smux.conf /etc/stargazer/conf-enabled.d/mod_smux.conf
-	use module_other_remote_script	&& dosym /etc/stargazer/conf-available.d/mod_remote_script.conf /etc/stargazer/conf-enabled.d/mod_remote_script.conf
-	use module_store_files		&& dosym /etc/stargazer/conf-available.d/store_files.conf /etc/stargazer/conf-enabled.d/store_files.conf
-	use module_store_firebird	&& dosym /etc/stargazer/conf-available.d/store_firebird.conf /etc/stargazer/conf-enabled.d/store_firebird.conf
-	use module_store_mysql		&& dosym /etc/stargazer/conf-available.d/store_mysql.conf /etc/stargazer/conf-enabled.d/store_mysql.conf
-	use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf /etc/stargazer/conf-enabled.d/store_postgresql.conf
+	fowners	-R stg:stg /etc/stargazer/conf-available.d/
+	fperms	-R 0640 /etc/stargazer/conf-available.d/
+	
+	use module_auth_always_online	&& dosym /etc/stargazer/conf-available.d/mod_ao.conf		/etc/stargazer/conf-enabled.d/mod_ao.conf
+	use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf		/etc/stargazer/conf-enabled.d/mod_ia.conf
+	use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf	/etc/stargazer/conf-enabled.d/mod_radius.conf
+	use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf	/etc/stargazer/conf-enabled.d/mod_cap_ipq.conf
+	use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf	/etc/stargazer/conf-enabled.d/mod_cap_nf.conf
+	use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf		/etc/stargazer/conf-enabled.d/mod_sg.conf
+	use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf		/etc/stargazer/conf-enabled.d/mod_rpc.conf
+	use module_other_ping		&& dosym /etc/stargazer/conf-available.d/mod_ping.conf		/etc/stargazer/conf-enabled.d/mod_ping.conf
+	use module_other_smux		&& dosym /etc/stargazer/conf-available.d/mod_smux.conf		/etc/stargazer/conf-enabled.d/mod_smux.conf
+	use module_other_remote_script	&& dosym /etc/stargazer/conf-available.d/mod_remote_script.conf	/etc/stargazer/conf-enabled.d/mod_remote_script.conf
+	use module_store_files		&& dosym /etc/stargazer/conf-available.d/store_files.conf	/etc/stargazer/conf-enabled.d/store_files.conf
+	use module_store_firebird	&& dosym /etc/stargazer/conf-available.d/store_firebird.conf	/etc/stargazer/conf-enabled.d/store_firebird.conf
+	use module_store_mysql		&& dosym /etc/stargazer/conf-available.d/store_mysql.conf	/etc/stargazer/conf-enabled.d/store_mysql.conf
+	use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf	/etc/stargazer/conf-enabled.d/store_postgresql.conf
 }
