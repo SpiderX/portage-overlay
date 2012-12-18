@@ -100,12 +100,14 @@ src_configure() {
 		fi
 	done
 }
+#kg_{setup,preinst,postinst}
+pkg_setup() {
+	enewgroup stg
+	enewuser stg -1 -1 /var/lib/stargazer stg
+}
 
 src_install() {
 	#emake DESTDIR="${D}" install
-	enewgroup stg
-	enewuser stg -1 -1 /var/lib/stargazer stg
-	
 	dodoc ChangeLog 
 	#doinit /projects/stargazer/inst/linux/etc/init.d
 	#if use doc; then
@@ -114,7 +116,7 @@ src_install() {
 	#fi
 	
 	dodir \
-		/etc/stargazer
+		/etc/stargazer \
 		/usr/share/stargazer/db \
 		/usr/share/stargazer/db/mysql \
 		/usr/share/stargazer/db/postgresql
@@ -184,7 +186,7 @@ src_install() {
 	fi
 	
 	if use stargazer; then
-		dodoc BUGS CHANGES README TODO
+		dodoc ${S}/projects/stargazer/BUGS ${S}/projects/stargazer/CHANGES ${S}/projects/stargazer/README ${S}/projects/stargazer/TODO
 		newinitd ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
 		dodir \
 			/etc/stargazer/conf-available.d \
@@ -220,12 +222,13 @@ src_install() {
 		fowners -R stg:stg /var/lib/stargazer
 		fperms -R 0640 /var/lib/stargazer/users/test/
 		fowners -R stg:stg /etc/stargazer
-		fperms 0640 \
+		fperms 0755 \
 			/etc/stargazer/OnChange \
 			/etc/stargazer/OnConnect \
 			/etc/stargazer/OnDisconnect \
 			/etc/stargazer/OnUserAdd \
-			/etc/stargazer/OnUserDel \
+			/etc/stargazer/OnUserDel
+		fperms 0640 \
 			/etc/stargazer/rules \
 			/etc/stargazer/stargazer.conf
 	fi
@@ -249,18 +252,18 @@ src_install() {
 	fowners -R stg:stg /etc/stargazer/conf-available.d/
 	fperms -R 0640 /etc/stargazer/conf-available.d/
 	insinto /etc/stargazer/conf-enabled.d
-	use module_auth_always_online	&& dosym /etc/stargazer/conf-available.d/mod_ao.conf
-	use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf
-	use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf
-	use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf
-	use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf
-	use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf
-	use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf
-	use module_other_ping		&& dosym /etc/stargazer/conf-available.d/mod_ping.conf
-	use module_other_smux		&& dosym /etc/stargazer/conf-available.d/mod_smux.conf
-	use module_other_remote_script	&& dosym /etc/stargazer/conf-available.d/mod_remote_script.conf
-	use module_store_files		&& dosym /etc/stargazer/conf-available.d/store_files.conf
-	use module_store_firebird	&& dosym /etc/stargazer/conf-available.d/store_firebird.conf
-	use module_store_mysql		&& dosym /etc/stargazer/conf-available.d/store_mysql.conf
-	use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf
+	use module_auth_always_online	&& dosym /etc/stargazer/conf-available.d/mod_ao.conf /etc/stargazer/conf-enabled.d/mod_ao.conf
+	use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf /etc/stargazer/conf-enabled.d/mod_ia.conf
+	use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf /etc/stargazer/conf-enabled.d/mod_radius.conf
+	use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf /etc/stargazer/conf-enabled.d/mod_cap_ipq.conf
+	use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf /etc/stargazer/conf-enabled.d/mod_cap_nf.conf
+	use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf /etc/stargazer/conf-enabled.d/mod_sg.conf
+	use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf /etc/stargazer/conf-enabled.d/mod_rpc.conf
+	use module_other_ping		&& dosym /etc/stargazer/conf-available.d/mod_ping.conf /etc/stargazer/conf-enabled.d/mod_ping.conf
+	use module_other_smux		&& dosym /etc/stargazer/conf-available.d/mod_smux.conf /etc/stargazer/conf-enabled.d/mod_smux.conf
+	use module_other_remote_script	&& dosym /etc/stargazer/conf-available.d/mod_remote_script.conf /etc/stargazer/conf-enabled.d/mod_remote_script.conf
+	use module_store_files		&& dosym /etc/stargazer/conf-available.d/store_files.conf /etc/stargazer/conf-enabled.d/store_files.conf
+	use module_store_firebird	&& dosym /etc/stargazer/conf-available.d/store_firebird.conf /etc/stargazer/conf-enabled.d/store_firebird.conf
+	use module_store_mysql		&& dosym /etc/stargazer/conf-available.d/store_mysql.conf /etc/stargazer/conf-enabled.d/store_mysql.conf
+	use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf /etc/stargazer/conf-enabled.d/store_postgresql.conf
 }
