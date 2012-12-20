@@ -48,19 +48,21 @@ REQUIRED_USE="convertor? ( module_store_files || ( module_store_firebird module_
 REQUIRED_USE="stargazer? ( || ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
 
 RDEPEND="
-	dev-libs/expat[expat(+)]"
-#	xmlrpc? ( dev-libs/xmlrpc-c )
-#	module_auth_freeradius? ( net-dialup/freeradius )
-#	module_store_firebird? ( dev-db/firebird )
-#	module_store_mysql? ( dev-db/mysql )
-#	module_store_postgres? ( dev-libs/libpqxx
-#				sys-libs/zlib )
+	dev-libs/expat[expat(+)]
+	xmlrpc? ( dev-libs/xmlrpc-c )
+	module_auth_freeradius? ( net-dialup/freeradius )
+	module_store_firebird? ( dev-db/firebird )
+	module_store_mysql? ( dev-db/mysql )
+	module_store_postgres? ( dev-libs/libpqxx
+				sys-libs/zlib )
+"
 
 DEPEND="
 	${RDEPEND}
 "
 
 src_prepare() {
+	# Rename build script to configure for further econf launch in all projects
 	for project in ${PROJECTS}; do
 		mv ${S}/projects/${project}/build ${S}/projects/${project}/configure
 	done
@@ -70,6 +72,25 @@ src_prepare() {
 	# Correct path for files and directories
 	epatch "${FILESDIR}"/rscriptd.conf.patch
 	
+	# Remove target install-data (if more - cycle)
+	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/stargazer/Makefile
+	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/rscriptd/Makefile
+	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/sgauth/Makefile
+	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/sgconf_xml/Makefile
+	# Remove stargazer binary file install
+	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/stargazer/Makefile
+	# Remove rlm_stg.so binary file install
+	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/lib\/$(PROG)//' ${S}/projects/rlm_stg/Makefile
+	# Remove rscriptd binary file install
+	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/rscriptd/Makefile
+	# Remove sgauth binary file install
+	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/sgauth/Makefile
+	# Remove sgconf binary file install
+	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/sgconf/Makefile
+	# Remove sgconf_xml binary file install
+	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/sgconf_xml/Makefile
+	
+	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
 	use module_auth_internet_access	|| sed -i 's/authorization\/inetaccess//' ${S}/projects/stargazer/configure
 	use module_auth_freeradius	|| sed -i 's/other\/radius//' ${S}/projects/stargazer/configure
@@ -85,14 +106,16 @@ src_prepare() {
 	use module_store_firebird	|| sed -i 's/store\/firebird//' ${S}/projects/stargazer/configure
 	use module_store_mysql		|| sed -i 's/store\/mysql//' ${S}/projects/stargazer/configure
 	use module_store_postgres	|| sed -i 's/store\/postgresql//' ${S}/projects/stargazer/configure
-	
+	# Correct Gentoo init script provided by upstream (TODO: Remove in further releases, already fixed in upstream's trunk)
 	use stargazer			&& sed -i 's/opts/extra_commands/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
 }
 
 src_configure() {
+	# Define local variables
 	local USEFLAGS=($IUSE)
 	local PROJECTS=($PROJECTS)
 	
+	# Call configure in selected projects directory
 	for (( i = 0 ; i < ${#PROJECTS[@]} ; i++ )); do
 		if use ${USEFLAGS[$i]} ; then
 			cd ${S}/projects/${PROJECTS[$i]} || die "cd to ${PROJECTS[$i]} failed"
@@ -102,7 +125,9 @@ src_configure() {
 }
 
 pkg_setup() {
+	# Add stg user to system
 	enewgroup stg
+	# Add stg group to system
 	enewuser stg -1 -1 /var/lib/stargazer stg
 }
 
@@ -110,90 +135,131 @@ pkg_setup() {
 #}
 
 src_install() {
-	#emake DESTDIR="${D}" install
-	
+	# Install changelog
 	dodoc ChangeLog
-	
-	dodir	\
+	# Create necessary directories
+	dodir \
 		/etc/stargazer \
 		/usr/share/stargazer/db \
 		/usr/share/stargazer/db/mysql \
 		/usr/share/stargazer/db/postgresql
-	keepdir	\
+	# ?????
+	keepdir \
 		/etc/stargazer \
 		/var/lib/stargazer \
 		/var/lib/stargazer/admins \
 		/var/lib/stargazer/tariffs \
 		/var/lib/stargazer/users
-	insinto	/usr/share/stargazer/db
-	doins	\
+	# Install files into specified directory
+	insinto /usr/share/stargazer/db
+	doins \
 		${S}/projects/stargazer/inst/var/00-base-00.sql \
 		${S}/projects/stargazer/inst/var/00-alter-01.sql
-	insinto	/usr/share/stargazer/db/mysql
-	doins	${S}/projects/stargazer/inst/var/00-mysql-01.sql
-	insinto	/usr/share/stargazer/db/postgresql
-	doins	\
+	# Install file into specified directory
+	insinto /usr/share/stargazer/db/mysql
+	doins ${S}/projects/stargazer/inst/var/00-mysql-01.sql
+	# Install files into specified directory
+	insinto /usr/share/stargazer/db/postgresql
+	doins \
 		${S}/projects/stargazer/inst/var/00-base-00.postgresql.sql \
 		${S}/projects/stargazer/inst/var/00-alter-01.postgresql.sql
 	
 	if use doc; then
-		insinto	/usr/share/stargazer/db
-		doins	${S}/projects/stargazer/inst/var/base.dia
+		# Install file into specified directory
+		insinto /usr/share/stargazer/db
+		doins ${S}/projects/stargazer/inst/var/base.dia
 	fi
 	
 	if use examples; then
-		dodir	\
-			/usr/share/stargazer/scripts \
-			/usr/share/stargazer/scripts/shaper \
-			/usr/share/stargazer/scripts/shaper_vpn_radius
-		insinto	/usr/share/stargazer/scripts
-		doins	${S}/projects/stargazer/scripts/*
-		insinto	/usr/share/stargazer/scripts/shaper
-		doins	${S}/projects/stargazer/scripts/shaper/*
-		insinto	/usr/share/stargazer/scripts/shaper_vpn_radius
-		doins	${S}/projects/stargazer/scripts/shaper_vpn_radius/*
+		# Install files into specified directory
+		insinto /usr/share/stargazer/scripts
+		doins -r ${S}/projects/stargazer/scripts/*
 	fi
 	
 	if use convertor; then
-		insinto	/etc/stargazer
-		doins	${S}/projects/convertor/convertor.conf
-		dobin	${S}/projects/convertor/convertor
-		fowners	stg:stg /etc/stargazer/convertor.conf
-		fperms	0640 /etc/stargazer/convertor.conf
+		# Install convertor binnary file to /usr/bin
+		dobin ${S}/projects/convertor/convertor
+		# Install files into specified directory
+		insinto /etc/stargazer
+		doins ${S}/projects/convertor/convertor.conf
+		# Correct user and group for file
+		fowners stg:stg /etc/stargazer/convertor.conf
+		# Correct permissions for file
+		fperms 0640 /etc/stargazer/convertor.conf
 	fi
 	
 	if use radius; then
-		insinto	/usr/lib/freeradius
-		doins	${S}/projects/rlm_stg/rlm_stg.so
+		# Change current directory
+		cd ${S}/projects/rlm_stg
+		# Call make install
+		emake DESTDIR="${D}" PREFIX="${D}" install
+		# Install file into specified directory
+		insinto /usr/lib/freeradius
+		doins rlm_stg.so
 	fi
 	
 	if use rscriptd; then
-		insinto	/etc/stargazer
-		doins	${S}/projects/rscriptd/rscriptd.conf
-		fowners	stg:stg /etc/stargazer/rscriptd.conf
-		fperms	0640 /etc/stargazer/rscriptd.conf
-		dosbin	${S}/projects/rscriptd/rscriptd
+		# Change current directory
+		cd ${S}/projects/rscriptd
+		# Call make install
+		emake DESTDIR="${D}" PREFIX="${D}" install
+		# Install rscriptd binnary file to /usr/sbin
+		dosbin rscriptd
+		# Install file into specified directory
+		insinto /etc/stargazer
+		doins rscriptd.conf
+		# Correct user and group for file
+		fowners stg:stg /etc/stargazer/rscriptd.conf
+		# Correct permissions for file
+		fperms 0640 /etc/stargazer/rscriptd.conf
 	fi
 	
 	if use sgauth; then
-		insinto	/etc/stargazer
-		doins	${S}/projects/sgauth/sgauth.conf
-		fowners	stg:stg /etc/stargazer/sgauth.conf
-		fperms	0640 /etc/stargazer/sgauth.conf
-		dobin	${S}/projects/sgauth/sgauth
+		# Change current directory
+		cd ${S}/projects/sgauth
+		# Call make install
+		emake DESTDIR="${D}" PREFIX="${D}" install
+		# Install sgauth binnary file to /usr/sbin
+		dosbin sgauth
+		# Install file into specified directory
+		insinto /etc/stargazer
+		doins sgauth.conf
+		# Correct user and group for file
+		fowners stg:stg /etc/stargazer/sgauth.conf
+		# Correct permissions for file
+		fperms 0640 /etc/stargazer/sgauth.conf
 	fi
 	
 	if use sgconf; then
-		dobin	${S}/projects/sgconf/sgconf
+		# Change current directory
+		cd ${S}/projects/sgconf
+		# Call make install
+		emake DESTDIR="${D}" PREFIX="${D}" install
+		# Install sgconf binnary file to /usr/sbin
+		dobin sgconf
 	fi
 	
 	if use xmlrpc; then
-		dobin	${S}/projects/sgconf_xml/sgconf_xml
+		# Change current directory
+		cd ${S}/projects/sgconf_xml
+		# Call make install
+		emake DESTDIR="${D}" PREFIX="${D}" install
+		# Install sgconf_xml binnary file to /usr/bin
+		dobin sgconf_xml
 	fi
 	
 	if use stargazer; then
-		dodoc		${S}/projects/stargazer/BUGS ${S}/projects/stargazer/CHANGES ${S}/projects/stargazer/README ${S}/projects/stargazer/TODO
-		newinitd	${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
+		# Change current directory
+		cd ${S}/projects/stargazer
+		# Call make install
+		emake DESTDIR="${D}" PREFIX="${D}" install
+		# Install docs
+		dodoc BUGS CHANGES README TODO
+		# Install and rename Gentoo init script
+		newinitd ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
+		# Install stargazer binnary file to /usr/sbin
+		dosbin stargazer
+		# Create necessary directories
 		dodir \
 			/etc/stargazer/conf-available.d \
 			/etc/stargazer/conf-enabled.d \
@@ -203,18 +269,29 @@ src_install() {
 			/var/lib/stargazer/users/test \
 			/var/log/stargazer \
 			/var/run/stargazer
-		insinto	/var/lib/stargazer/admins
-		doins	${S}/projects/stargazer/inst/var/stargazer/admins/admin.adm
-		fowners	stg:stg /var/lib/stargazer/admins/admin.adm
-		fperms	0640 /var/lib/stargazer/admins/admin.adm
-		insinto	/var/lib/stargazer/tariffs
-		doins	${S}/projects/stargazer/inst/var/stargazer/tariffs/tariff.tf
-		fowners	stg:stg /var/lib/stargazer/tariffs/tariff.tf
-		fperms	0640 /var/lib/stargazer/tariffs/tariff.tf
-		insinto	/var/lib/stargazer/users/test
-		doins	${S}/projects/stargazer/inst/var/stargazer/users/test/*
-		insinto	/etc/stargazer
-		doins	\
+		# Install files needed for module_store_files
+		if use module_store_files; then
+			# Install files into specified directory
+			insinto /var/lib/stargazer/admins
+			doins ${S}/projects/stargazer/inst/var/stargazer/admins/admin.adm
+			# Correct user and group for file
+			fowners stg:stg /var/lib/stargazer/admins/admin.adm
+			# Correct permissions for file
+			fperms 0640 /var/lib/stargazer/admins/admin.adm
+			# Install files into specified directory
+			insinto /var/lib/stargazer/tariffs
+			doins ${S}/projects/stargazer/inst/var/stargazer/tariffs/tariff.tf
+			# Correct user and group for file
+			fowners stg:stg /var/lib/stargazer/tariffs/tariff.tf
+			# Correct permissions for file
+			fperms 0640 /var/lib/stargazer/tariffs/tariff.tf
+			# Install files into specified directory
+			insinto /var/lib/stargazer/users/test
+			doins ${S}/projects/stargazer/inst/var/stargazer/users/test/*
+		fi
+		# Install files into specified directory
+		insinto /etc/stargazer
+		doins \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnChange \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnConnect \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnDisconnect \
@@ -222,21 +299,26 @@ src_install() {
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnUserDel \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/rules \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/stargazer.conf
-		fowners	-R stg:stg /var/lib/stargazer
-		fperms	-R 0640 /var/lib/stargazer/users/test/
-		fowners	-R stg:stg /etc/stargazer
-		fperms	0755 \
+		# Correct user and group for files
+		fowners -R stg:stg /var/lib/stargazer
+		# Correct permissions for files
+		fperms -R 0640 /var/lib/stargazer/users/test/
+		# Correct user and group for files
+		fowners -R stg:stg /etc/stargazer
+		# Correct permissions for files
+		fperms 0755 \
 			/etc/stargazer/OnChange \
 			/etc/stargazer/OnConnect \
 			/etc/stargazer/OnDisconnect \
 			/etc/stargazer/OnUserAdd \
 			/etc/stargazer/OnUserDel
-		fperms	0640 \
+		# Correct permissions for files
+		fperms 0640 \
 			/etc/stargazer/rules \
 			/etc/stargazer/stargazer.conf
 	fi
 	
-	insinto	/etc/stargazer/conf-available.d
+	insinto /etc/stargazer/conf-available.d
 	use module_auth_always_online	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ao.conf
 	use module_auth_internet_access	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ia.conf
 	use module_auth_freeradius	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_radius.conf
