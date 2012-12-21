@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit eutils
+inherit eutils linux-info
 
 DESCRIPTION="Stargtazer billing system for small home and office networks"
 HOMEPAGE="http://stg.dp.ua/"
@@ -19,7 +19,7 @@ MERGE_TYPE="source"
 
 PROJECTS="convertor rlm_stg rscriptd sgauth sgconf sgconf_xml stargazer"
 MODULES_AUTH="always_online internet_access freeradius"
-MODULES_CAP="ipq ether netflow"
+MODULES_CAPTURE="ipq ether netflow"
 MODULES_CONFIG="sgconfig rpcconfig"
 MODULES_OTHER="ping smux remote_script"
 MODULES_STORE="files firebird mysql postgres"
@@ -28,7 +28,7 @@ for module in ${MODULES_AUTH}; do
         IUSE="${IUSE} module_auth_${module}"
 done
 
-for module in ${MODULES_CAP}; do
+for module in ${MODULES_CAPTURE}; do
         IUSE="${IUSE} module_capture_${module}"
 done
 
@@ -47,48 +47,44 @@ done
 REQUIRED_USE="convertor? ( module_store_files || ( module_store_firebird module_store_mysql module_store_postgres ) )"
 REQUIRED_USE="stargazer? ( || ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
 
-RDEPEND="
-	dev-libs/expat[expat(+)]
-	xmlrpc? ( dev-libs/xmlrpc-c )
-	module_auth_freeradius? ( net-dialup/freeradius )
-	module_store_firebird? ( dev-db/firebird )
-	module_store_mysql? ( dev-db/mysql )
-	module_store_postgres? ( dev-libs/libpqxx
-				sys-libs/zlib )
-"
+RDEPEND=""
+#	module_other_smux? (net-analyzer/net-snmp[smux] )
+#	module_auth_freradius? ( net-dialup/freeradius )
+#"
 
 DEPEND="
 	${RDEPEND}
+	sgconf? ( dev-libs/expat )
+	xmlrpc? ( dev-libs/expat )
+	module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss]
+				sys-libs/zlib )
+	module_config_sgconfig? ( dev-libs/expat )
+	module_store_firebird? ( dev-db/firebird )
+	module_store_mysql? ( dev-db/mysql )
+	module_store_postgres? ( dev-db/postgresql-base
+				sys-libs/zlib
+				dev-libs/openssl )
 "
 
 src_prepare() {
-	# Rename build script to configure for further econf launch in all projects
 	for project in ${PROJECTS}; do
+		# Rename build script to configure for further econf launch in every projects
 		mv ${S}/projects/${project}/build ${S}/projects/${project}/configure
+		if (( ( ${project} == "stargazer" ) || ( ${project} == "rscriptd" ) || ( ${project} == "sgauth" ) || ( ${project} == "sgconf_xml" ) )); then
+			# Remove target install-data
+			sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/${project}/Makefile
+			# Remove binary file install target
+			sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/${project}/Makefile
+		fi
+		# Remove binary file install target
+		[ ${project} == "rlm_stg" ] && sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/lib\/$(PROG)//' ${S}/projects/${project}/Makefile
+		[ ${project} == "sgconf" ] && sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/${project}/Makefile
 	done
 	
 	# Correct working directory, user and group
 	epatch "${FILESDIR}"/convertor.conf.patch
 	# Correct path for files and directories
 	epatch "${FILESDIR}"/rscriptd.conf.patch
-	
-	# Remove target install-data (if more - cycle)
-	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/stargazer/Makefile
-	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/rscriptd/Makefile
-	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/sgauth/Makefile
-	sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/sgconf_xml/Makefile
-	# Remove stargazer binary file install
-	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/stargazer/Makefile
-	# Remove rlm_stg.so binary file install
-	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/lib\/$(PROG)//' ${S}/projects/rlm_stg/Makefile
-	# Remove rscriptd binary file install
-	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/rscriptd/Makefile
-	# Remove sgauth binary file install
-	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/sgauth/Makefile
-	# Remove sgconf binary file install
-	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/sgconf/Makefile
-	# Remove sgconf_xml binary file install
-	sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/sgconf_xml/Makefile
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -108,6 +104,14 @@ src_prepare() {
 	use module_store_postgres	|| sed -i 's/store\/postgresql//' ${S}/projects/stargazer/configure
 	# Correct Gentoo init script provided by upstream (TODO: Remove in further releases, already fixed in upstream's trunk)
 	use stargazer			&& sed -i 's/opts/extra_commands/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
+	# Check for ip_queue.h availability
+	if use module_capture_ipq; then
+		if kernel_is ge 3 5; then
+			if [ ! -r /usr/include/linux/netfilter_ipv4/ip_queue.h ]; then
+				die "ip_queue.h is gone since Linux kernel 3.5. It is provided now by netfilter/iptables package. You should get it by yourself."
+			fi
+		fi
+	fi
 }
 
 src_configure() {
@@ -139,17 +143,13 @@ src_install() {
 	dodoc ChangeLog
 	# Create necessary directories
 	dodir \
-		/etc/stargazer \
 		/usr/share/stargazer/db \
 		/usr/share/stargazer/db/mysql \
 		/usr/share/stargazer/db/postgresql
-	# ?????
+	# Keeping home directory for stg user
 	keepdir \
-		/etc/stargazer \
-		/var/lib/stargazer \
-		/var/lib/stargazer/admins \
-		/var/lib/stargazer/tariffs \
-		/var/lib/stargazer/users
+		/var/lib/stargazer
+		/var/log/stargazer
 	# Install files into specified directory
 	insinto /usr/share/stargazer/db
 	doins \
@@ -172,8 +172,8 @@ src_install() {
 	
 	if use examples; then
 		# Install files into specified directory
-		insinto /usr/share/stargazer/scripts
-		doins -r ${S}/projects/stargazer/scripts/*
+		insinto /usr/share/stargazer
+		doins -r ${S}/projects/stargazer/scripts
 	fi
 	
 	if use convertor; then
@@ -196,6 +196,8 @@ src_install() {
 		# Install file into specified directory
 		insinto /usr/lib/freeradius
 		doins rlm_stg.so
+		# Correct permissions for file
+		fperms 0755 /usr/lib/freeradius/rlm_stg.so
 	fi
 	
 	if use rscriptd; then
@@ -260,34 +262,20 @@ src_install() {
 		# Install stargazer binnary file to /usr/sbin
 		dosbin stargazer
 		# Create necessary directories
-		dodir \
-			/etc/stargazer/conf-available.d \
-			/etc/stargazer/conf-enabled.d \
-			/var/lib/stargazer/admins \
-			/var/lib/stargazer/tariffs \
-			/var/lib/stargazer/users \
-			/var/lib/stargazer/users/test \
-			/var/log/stargazer \
-			/var/run/stargazer
+		diropts -m 755 -o stg -g stg
+		dodir /var/log/stargazer
 		# Install files needed for module_store_files
 		if use module_store_files; then
 			# Install files into specified directory
-			insinto /var/lib/stargazer/admins
-			doins ${S}/projects/stargazer/inst/var/stargazer/admins/admin.adm
-			# Correct user and group for file
-			fowners stg:stg /var/lib/stargazer/admins/admin.adm
-			# Correct permissions for file
-			fperms 0640 /var/lib/stargazer/admins/admin.adm
+			insinto /var/lib
+			doins -r ${S}/projects/stargazer/inst/var/stargazer
+			# Correct user and group for files and directories
+			fowners -R stg:stg /var/lib/stargazer
+		fi
+		if use module_other_smux; then
 			# Install files into specified directory
-			insinto /var/lib/stargazer/tariffs
-			doins ${S}/projects/stargazer/inst/var/stargazer/tariffs/tariff.tf
-			# Correct user and group for file
-			fowners stg:stg /var/lib/stargazer/tariffs/tariff.tf
-			# Correct permissions for file
-			fperms 0640 /var/lib/stargazer/tariffs/tariff.tf
-			# Install files into specified directory
-			insinto /var/lib/stargazer/users/test
-			doins ${S}/projects/stargazer/inst/var/stargazer/users/test/*
+			insinto /usr/share/snmp/mibs
+			doins ${S}/projects/stargazer/plugins/other/smux/STG-MIB.mib
 		fi
 		# Install files into specified directory
 		insinto /etc/stargazer
@@ -299,12 +287,6 @@ src_install() {
 			${S}/projects/stargazer/inst/linux/etc/stargazer/OnUserDel \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/rules \
 			${S}/projects/stargazer/inst/linux/etc/stargazer/stargazer.conf
-		# Correct user and group for files
-		fowners -R stg:stg /var/lib/stargazer
-		# Correct permissions for files
-		fperms -R 0640 /var/lib/stargazer/users/test/
-		# Correct user and group for files
-		fowners -R stg:stg /etc/stargazer
 		# Correct permissions for files
 		fperms 0755 \
 			/etc/stargazer/OnChange \
@@ -316,38 +298,39 @@ src_install() {
 		fperms 0640 \
 			/etc/stargazer/rules \
 			/etc/stargazer/stargazer.conf
+		# Install files into specified directory for selected modules
+		insinto /etc/stargazer/conf-available.d
+		insopts -m 0640
+		use module_auth_always_online	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ao.conf
+		use module_auth_internet_access	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ia.conf
+		use module_auth_freeradius	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_radius.conf
+		use module_capture_ipq		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_ipq.conf
+		use module_capture_netflow	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_nf.conf
+		use module_config_sgconfig	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_sg.conf
+		use module_config_rpcconfig	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_rpc.conf
+		use module_other_ping		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ping.conf
+		use module_other_smux		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_smux.conf
+		use module_other_remote_script	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf
+		use module_store_files		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf
+		use module_store_firebird	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf
+		use module_store_mysql		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_mysql.conf
+		use module_store_postgres	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_postgresql.conf
+		# Create symlinks of configs for selected modules
+		use module_auth_always_online	&& dosym /etc/stargazer/conf-available.d/mod_ao.conf		/etc/stargazer/conf-enabled.d/mod_ao.conf
+		use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf		/etc/stargazer/conf-enabled.d/mod_ia.conf
+		use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf	/etc/stargazer/conf-enabled.d/mod_radius.conf
+		use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf	/etc/stargazer/conf-enabled.d/mod_cap_ipq.conf
+		use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf	/etc/stargazer/conf-enabled.d/mod_cap_nf.conf
+		use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf		/etc/stargazer/conf-enabled.d/mod_sg.conf
+		use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf		/etc/stargazer/conf-enabled.d/mod_rpc.conf
+		use module_other_ping		&& dosym /etc/stargazer/conf-available.d/mod_ping.conf		/etc/stargazer/conf-enabled.d/mod_ping.conf
+		use module_other_smux		&& dosym /etc/stargazer/conf-available.d/mod_smux.conf		/etc/stargazer/conf-enabled.d/mod_smux.conf
+		use module_other_remote_script	&& dosym /etc/stargazer/conf-available.d/mod_remote_script.conf	/etc/stargazer/conf-enabled.d/mod_remote_script.conf
+		use module_store_files		&& dosym /etc/stargazer/conf-available.d/store_files.conf	/etc/stargazer/conf-enabled.d/store_files.conf
+		use module_store_firebird	&& dosym /etc/stargazer/conf-available.d/store_firebird.conf	/etc/stargazer/conf-enabled.d/store_firebird.conf
+		use module_store_mysql		&& dosym /etc/stargazer/conf-available.d/store_mysql.conf	/etc/stargazer/conf-enabled.d/store_mysql.conf
+		use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf	/etc/stargazer/conf-enabled.d/store_postgresql.conf
 	fi
-	
-	insinto /etc/stargazer/conf-available.d
-	use module_auth_always_online	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ao.conf
-	use module_auth_internet_access	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ia.conf
-	use module_auth_freeradius	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_radius.conf
-	use module_capture_ipq		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_ipq.conf
-	use module_capture_netflow	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_nf.conf
-	use module_config_sgconfig	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_sg.conf
-	use module_config_rpcconfig	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_rpc.conf
-	use module_other_ping		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ping.conf
-	use module_other_smux		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_smux.conf
-	use module_other_remote_script	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf
-	use module_store_files		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf
-	use module_store_firebird	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf
-	use module_store_mysql		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_mysql.conf
-	use module_store_postgres	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_postgresql.conf
-	fowners	-R stg:stg /etc/stargazer/conf-available.d/
-	fperms	-R 0640 /etc/stargazer/conf-available.d/
-	
-	use module_auth_always_online	&& dosym /etc/stargazer/conf-available.d/mod_ao.conf		/etc/stargazer/conf-enabled.d/mod_ao.conf
-	use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf		/etc/stargazer/conf-enabled.d/mod_ia.conf
-	use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf	/etc/stargazer/conf-enabled.d/mod_radius.conf
-	use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf	/etc/stargazer/conf-enabled.d/mod_cap_ipq.conf
-	use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf	/etc/stargazer/conf-enabled.d/mod_cap_nf.conf
-	use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf		/etc/stargazer/conf-enabled.d/mod_sg.conf
-	use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf		/etc/stargazer/conf-enabled.d/mod_rpc.conf
-	use module_other_ping		&& dosym /etc/stargazer/conf-available.d/mod_ping.conf		/etc/stargazer/conf-enabled.d/mod_ping.conf
-	use module_other_smux		&& dosym /etc/stargazer/conf-available.d/mod_smux.conf		/etc/stargazer/conf-enabled.d/mod_smux.conf
-	use module_other_remote_script	&& dosym /etc/stargazer/conf-available.d/mod_remote_script.conf	/etc/stargazer/conf-enabled.d/mod_remote_script.conf
-	use module_store_files		&& dosym /etc/stargazer/conf-available.d/store_files.conf	/etc/stargazer/conf-enabled.d/store_files.conf
-	use module_store_firebird	&& dosym /etc/stargazer/conf-available.d/store_firebird.conf	/etc/stargazer/conf-enabled.d/store_firebird.conf
-	use module_store_mysql		&& dosym /etc/stargazer/conf-available.d/store_mysql.conf	/etc/stargazer/conf-enabled.d/store_mysql.conf
-	use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf	/etc/stargazer/conf-enabled.d/store_postgresql.conf
+	# Correct user and group for files and directories
+	( use convertor || use rscriptd || use sgauth || use stargazer ) && fowners -R stg:stg /etc/stargazer
 }
