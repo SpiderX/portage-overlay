@@ -1,6 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/putty/putty-0.61.ebuild,v 1.4 2011/09/04 13:51:35 maekke Exp $
+# $Header: $
 
 EAPI="4"
 
@@ -13,7 +13,7 @@ SRC_URI="http://stg.dp.ua/download/server/${PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 x86 sparc"
 IUSE="convertor radius rscriptd sgauth sgconf xmlrpc stargazer debug doc examples"
 MERGE_TYPE="source"
 
@@ -44,16 +44,12 @@ for module in ${MODULES_STORE}; do
         IUSE="${IUSE} module_store_${module}"
 done
 
-REQUIRED_USE="convertor? ( module_store_files || ( module_store_firebird module_store_mysql module_store_postgres ) )"
+IUSE=${IUSE/stargazer/+stargazer}
+IUSE=${IUSE/module_store_files/+module_store_files}
+
 REQUIRED_USE="stargazer? ( || ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
 
-RDEPEND=""
-#	module_other_smux? (net-analyzer/net-snmp[smux] )
-#	module_auth_freradius? ( net-dialup/freeradius )
-#"
-
 DEPEND="
-	${RDEPEND}
 	sgconf? ( dev-libs/expat )
 	xmlrpc? ( dev-libs/expat )
 	module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss]
@@ -115,8 +111,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# Define local variables
-	local USEFLAGS=($IUSE)
+	# Define local variables, strip '+' symbol for used by default USE flags
+	local USEFLAGS=(${IUSE//+})
 	local PROJECTS=($PROJECTS)
 	
 	# Call configure in selected projects directory
@@ -129,14 +125,24 @@ src_configure() {
 }
 
 pkg_setup() {
-	# Add stg user to system
-	enewgroup stg
 	# Add stg group to system
+	enewgroup stg
+	# Add stg user to system
 	enewuser stg -1 -1 /var/lib/stargazer stg
 }
 
-#pkg_postinst() {
-#}
+pkg_postinst() {
+	if use convertor; then
+		elog ""
+	fi
+	if use 	module_other_smux; then
+		elog "For use smux install net-analyzer/net-snmp[smux] "
+	fi
+	if use module_auth_freeradius; then
+		elog "For use rlm_stg.so install net-dialup/freeradius "
+	fi
+	elog " Default user - admin, default pass - 123456."
+}
 
 src_install() {
 	# Install changelog
