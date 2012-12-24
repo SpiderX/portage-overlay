@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 sparc"
-IUSE="convertor radius rscriptd sgauth sgconf xmlrpc stargazer debug doc examples"
+IUSE="convertor radius rscriptd sgauth sgconf xmlrpc stargazer debug doc examples static-libs"
 MERGE_TYPE="source"
 
 PROJECTS="convertor rlm_stg rscriptd sgauth sgconf sgconf_xml stargazer"
@@ -154,7 +154,7 @@ src_install() {
 		/usr/share/stargazer/db/postgresql
 	# Keeping home directory for stg user
 	keepdir \
-		/var/lib/stargazer
+		/var/lib/stargazer \
 		/var/log/stargazer
 	# Install files into specified directory
 	insinto /usr/share/stargazer/db
@@ -261,6 +261,8 @@ src_install() {
 		cd ${S}/projects/stargazer
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
+		# Remove static libs if USE flag is not selected
+		use static-libs || find "${D}" -name '*.a' -exec rm -f {} +
 		# Install docs
 		dodoc BUGS CHANGES README TODO
 		# Install and rename Gentoo init script
