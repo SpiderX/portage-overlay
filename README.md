@@ -6,4 +6,4 @@
 5. Remove unnecessary checks in Makefile?
 6. Fill pkg_postinstall
 7. Initscript for sgauth
-8. Create metadata.xml
+8. Create metadata.xml......................................(done)
