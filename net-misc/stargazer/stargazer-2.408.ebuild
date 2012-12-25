@@ -78,15 +78,15 @@ src_prepare() {
 	done
 	
 	# Correct working directory, user and group
-	epatch "${FILESDIR}"/convertor.conf.patch
+	epatch ${FILESDIR}/patches/convertor.conf.patch
 	# Correct path for files and directories
-	epatch "${FILESDIR}"/rscriptd.conf.patch
+	epatch ${FILESDIR}/patches/rscriptd.conf.patch
 	# Correct working directory, user and group
-	epatch "${FILESDIR}"/store_files.conf.patch
+	epatch ${FILESDIR}/patches/store_files.conf.patch
 	# Correct path for file
-	epatch "${FILESDIR}"/store_firebird.conf.patch
+	epatch ${FILESDIR}/patches/store_firebird.conf.patch
 	# Correct path for file
-	epatch "${FILESDIR}"/mod_remote_script.conf.patch
+	epatch ${FILESDIR}/patches/mod_remote_script.conf.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -217,6 +217,8 @@ src_install() {
 		emake DESTDIR="${D}" PREFIX="${D}" install
 		# Install rscriptd binnary file to /usr/sbin
 		dosbin rscriptd
+		# Install Gentoo init script
+		doinitd ${FILESDIR}/rscriptd
 		# Install file into specified directory
 		insinto /etc/stargazer
 		doins rscriptd.conf
