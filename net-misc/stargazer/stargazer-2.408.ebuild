@@ -81,6 +81,12 @@ src_prepare() {
 	epatch "${FILESDIR}"/convertor.conf.patch
 	# Correct path for files and directories
 	epatch "${FILESDIR}"/rscriptd.conf.patch
+	# Correct working directory, user and group
+	epatch "${FILESDIR}"/store_files.conf.patch
+	# Correct path for file
+	epatch "${FILESDIR}"/store_firebird.conf.patch
+	# Correct path for file
+	epatch "${FILESDIR}"/mod_remote_script.conf.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -188,8 +194,6 @@ src_install() {
 		# Install files into specified directory
 		insinto /etc/stargazer
 		doins ${S}/projects/convertor/convertor.conf
-		# Correct user and group for file
-		fowners stg:stg /etc/stargazer/convertor.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/convertor.conf
 	fi
@@ -216,8 +220,6 @@ src_install() {
 		# Install file into specified directory
 		insinto /etc/stargazer
 		doins rscriptd.conf
-		# Correct user and group for file
-		fowners stg:stg /etc/stargazer/rscriptd.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/rscriptd.conf
 	fi
@@ -232,8 +234,6 @@ src_install() {
 		# Install file into specified directory
 		insinto /etc/stargazer
 		doins sgauth.conf
-		# Correct user and group for file
-		fowners stg:stg /etc/stargazer/sgauth.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/sgauth.conf
 	fi
@@ -284,6 +284,12 @@ src_install() {
 			# Install files into specified directory
 			insinto /usr/share/snmp/mibs
 			doins ${S}/projects/stargazer/plugins/other/smux/STG-MIB.mib
+		fi
+		if use module_other_remote_script; then
+			# Create subnets file based on example from mod_remote_script.conf
+			grep 192 ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf | sed 's/# //' > ${D}/etc/stargazer/subnets
+			# Correct permissions for file
+			fperms 0640 /etc/stargazer/subnets
 		fi
 		# Install files into specified directory
 		insinto /etc/stargazer
