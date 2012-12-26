@@ -87,6 +87,8 @@ src_prepare() {
 	epatch ${FILESDIR}/patches/store_firebird.conf.patch
 	# Correct path for file
 	epatch ${FILESDIR}/patches/mod_remote_script.conf.patch
+	# Correct path and user for file
+	epatch ${FILESDIR}/patches/00-base-00.sql.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -139,15 +141,120 @@ pkg_setup() {
 
 pkg_postinst() {
 	if use convertor; then
-		elog ""
+		einfo "Convertor:"
+		einfo "----------"
+		einfo "    For further use of convertor please edit /etc/stargazer/convertor.conf depending on your needs."
 	fi
-	if use 	module_other_smux; then
-		elog "For use smux install net-analyzer/net-snmp[smux] "
+	
+	if use radius; then
+		einfo "Radius:"
+		einfo "-------"
+			einfo "    For further use of radius, install net-dialup/freeradius:"
+			einfo "    emerge -atv net-dialup/freeradius"
+		use module_auth_freeradius || einfo "    For use RADIUS data processing you should also build mod_radius.so through enable USE-flag module_auth_freeradius."
 	fi
-	if use module_auth_freeradius; then
-		elog "For use rlm_stg.so install net-dialup/freeradius "
+	
+	if use rscriptd; then
+		einfo "Remote Script Executer:"
+		einfo "-----------------------"
+		einfo "    For further use of rscriptd please edit /etc/stargazer/rscriptd.conf depending on your needs."
+		einfo "    You have to change 'Password' field at least."
 	fi
-	elog " Default user - admin, default pass - 123456."
+	
+	if use sgauth; then
+		einfo "Sgauth:"
+		einfo "-------"
+		einfo "    For further use of sgauth please edit /etc/stargazer/sgauth.conf depending on your needs."
+		einfo "    You have to change 'ServerName', 'Login', 'Password' fields at least."
+	fi
+	
+	if use sgconf; then
+		einfo "Sgconf:"
+		einfo "-------"
+		use module_config_sgconfig || einfo "    For further use of sgconf utility you should also build mod_conf_sg.so through enable USE-flag module_config_sgconfig."
+	fi
+	
+	if use xmlrpc; then
+		einfo "Sgconf_xml:"
+		einfo "-----------"
+		use module_config_rpcconfig || einfo "    For further use of sgconf_xml utility you should also build mod_conf_rpc.so through enable USE-flag module_config_rpcconfig."
+	fi
+	
+	if use stargazer; then
+		einfo "Stargazer:"
+		einfo "----------"
+		einfo "  Modules availability:"
+		if use module_auth_always_online; then
+			einfo "    * module_auth_always_online available."
+		fi
+		if use module_auth_internet_access; then
+			einfo "    * module_auth_internet_access available."
+		fi
+		if use module_auth_freeradius; then
+			einfo "    * module_auth_freeradius available."
+			einfo "      For further use of module, install net-dialup/freeradius:"
+			einfo "      emerge -atv net-dialup/freeradius"
+			use radius || elog "      For use RADIUS data processing you should also build rlm_stg.so through enable use USE-flag radius."
+		fi
+		if use module_capture_ipq; then
+			einfo "    * module_capture_ipq available."
+		fi
+		if use module_capture_ether; then
+			einfo "    * module_capture_ether available."
+		fi
+		if use module_capture_netflow; then
+			einfo "    * module_capture_netflow available."
+			einfo "      For further use of module, install net-firewall/ipt_netflow or net-analyzer/softflowd:"
+			einfo "      emerge -atv net-firewall/ipt_netflow or emerge -atv net-analyzer/softflowd"
+		fi
+		if use module_config_sgconfig; then
+			einfo "    * module_config_sgconfig available."
+			fi
+		if use module_config_rpcconfig; then
+			einfo "    * module_config_rpcconfig available."
+			einfo "      _Known BUG_ Sometimes you can't configure Stargazer through xml-based configurator,"
+			einfo "      because module is not responding."
+			einfo "      This bug is introduced by xmlrpc-c library. This bug proceeds very rare, but it still exists."
+		fi
+		if use module_other_ping; then
+			einfo "    * module_other_ping available."
+		fi
+		if use module_other_smux; then
+			einfo "    * module_other_smux available."
+			einfo "      For further use of module install net-analyzer/net-snmp:"
+			einfo "      emerge -atv net-analyzer/net-snmp"
+		fi
+		if use module_other_remote_script; then
+			einfo "    * module_other_remote_script available."
+			einfo "      Don't forget to edit /etc/stargazer/subnets file depending on your needs."
+		fi
+		if use module_store_files; then
+			einfo "    * module_store_files available."
+		fi
+		if use module_store_firebird; then
+			einfo "    * module_store_firebird available."
+			einfo "      Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
+			einfo "      For new setup you should execute 00-base-00.sql:"
+			#einfo "      gsec -user sysdba -password masterkey"
+			#einfo "      GSEC> add admin -pw 123456"
+			einfo "      fbsql -i /usr/share/stargazer/db/firebird/00-base-00.sql"
+		fi
+		if use module_store_mysql; then
+			einfo "    * module_store_mysql available."
+		fi
+		if use module_store_postgres; then
+			einfo "    * module_store_postgres available."
+			einfo "      Stargazer DB schema for PostgresSQL is here: /usr/share/stargazer/db/postgresql"
+			einfo "      For new setup you should execute 00-base-00.postgresql.sql:"
+			einfo "      postgres \$: psql -h <localhost> -p <port> -U <username> -W -f /usr/share/stargazer/db/postgresql/00-base-00.postgresql.sql"
+		fi
+		einfo "  For all storage backends:"
+		einfo "    Default admin login - admin, default admin password - 123456."
+		einfo "    Default subscriber login - test, default subscriber password - 123456."
+		if use debug; then
+			ewarn "  This is debug build. You should avoid to use it in production."
+		fi
+	fi
 }
 
 src_install() {
@@ -156,6 +263,7 @@ src_install() {
 	# Create necessary directories
 	dodir \
 		/usr/share/stargazer/db \
+		/usr/share/stargazer/db/firebird \
 		/usr/share/stargazer/db/mysql \
 		/usr/share/stargazer/db/postgresql
 	# Keeping home directory for stg user
@@ -163,7 +271,7 @@ src_install() {
 		/var/lib/stargazer \
 		/var/log/stargazer
 	# Install files into specified directory
-	insinto /usr/share/stargazer/db
+	insinto /usr/share/stargazer/db/firebird
 	doins \
 		${S}/projects/stargazer/inst/var/00-base-00.sql \
 		${S}/projects/stargazer/inst/var/00-alter-01.sql

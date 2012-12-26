@@ -31,7 +31,7 @@
 		<flag name='module_capture_ether'>Enable build of "Ethernet" traffic capture module for Stargazer. This module uses RAW sockets to capture traffic.</flag>
 		<flag name='module_capture_ipq'>Enable build of "IPQ" traffic capture module for Stargazer. This module uses IPQ subsystem to capture traffic.</flag>
 		<flag name='module_capture_netflow'>Enable build of "NetFlow" traffic capture module for Stargazer. This module capable of receiving traffic data by NetFlow protocol.</flag>
-		<flag name='module_config_rpcconfig'>"Enable build of XMLRPC" configuration module for Stargazer. This module uses XML-RPC protocol for configuring Stargazer.</flag>
+		<flag name='module_config_rpcconfig'>Enable build of "XMLRPC" configuration module for Stargazer. This module uses XML-RPC protocol for configuring Stargazer.</flag>
 		<flag name='module_config_sgconfig'>Enable build of "SGConf" configuration module for Stargazer. This module uses Stargazer specific protocol for configuring Stargazer.</flag>
 		<flag name='module_other_ping'>Enable build of "Ping" module for Stargazer. This module pings connected users from time to time to ensure they are alive.</flag>
 		<flag name='module_other_remote_script'>Enable build of "Remote Script" module for Stargazer. This module control rscriptd daemon over the net and makes it execute scripts in reaction to different Stargazer events.</flag>
