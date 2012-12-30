@@ -50,6 +50,7 @@ IUSE=${IUSE/module_store_files/+module_store_files}
 REQUIRED_USE="stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
 
 DEPEND="
+	doc? ( dev-libs/libxslt )
 	sgconf? ( dev-libs/expat )
 	xmlrpc? ( dev-libs/expat )
 	module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss]
@@ -293,15 +294,24 @@ src_install() {
 		${S}/projects/stargazer/inst/var/00-alter-01.postgresql.sql
 	
 	if use doc; then
-		# Install file into specified directory
-		insinto /usr/share/stargazer/db
-		doins ${S}/projects/stargazer/inst/var/base.dia
+		# Install files into docs directory
+		dodoc ${S}/projects/stargazer/inst/var/base.dia
+		dodoc ${S}/doc/proto_client.gif
+		dodoc ${S}/doc/proto_server.gif
+		# Change current directory
+		cd ${S}/doc/xmlrpc
+		# Compile html documentation
+		emake
+		# Install html documentation
+		docinto html/xmlrpc
+		dohtml -r ${S}/doc/xmlrpc/book/
 	fi
 	
 	if use examples; then
 		# Install files into specified directory
 		insinto /usr/share/stargazer
 		doins -r ${S}/projects/stargazer/scripts
+		doins ${S}/doc/xmlrpc.php
 	fi
 	
 	if use convertor; then

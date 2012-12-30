@@ -6,5 +6,5 @@
 5. Fill pkg_postinstall.....................................(done)
 6. Initscript for sgauth....................................(done)
 7. Create metadata.xml......................................(done)
-8. Deal with the /doc directory
+8. Deal with the /doc directory.............................(done)
 9. Don't forget about "alter.sql"...........................(done)
