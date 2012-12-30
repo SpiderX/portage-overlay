@@ -47,7 +47,7 @@ done
 IUSE=${IUSE/stargazer/+stargazer}
 IUSE=${IUSE/module_store_files/+module_store_files}
 
-REQUIRED_USE="stargazer? ( || ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
+REQUIRED_USE="stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
 
 DEPEND="
 	sgconf? ( dev-libs/expat )
@@ -89,6 +89,8 @@ src_prepare() {
 	epatch ${FILESDIR}/patches/mod_remote_script.conf.patch
 	# Correct path and user for file
 	epatch ${FILESDIR}/patches/00-base-00.sql.patch
+	# Correct paths
+	epatch ${FILESDIR}/patches/stargazer.conf.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -147,41 +149,41 @@ pkg_postinst() {
 	fi
 	
 	if use radius; then
-		einfo "Radius:"
+		einfo "\nRadius:"
 		einfo "-------"
-			einfo "    For further use of radius, install net-dialup/freeradius:"
-			einfo "    emerge -atv net-dialup/freeradius"
-		use module_auth_freeradius || einfo "    For use RADIUS data processing you should also build mod_radius.so through enable USE-flag module_auth_freeradius."
+			einfo "    For further use of radius, install net-dialup/freeradius:\n"
+			einfo "      # emerge -atv net-dialup/freeradius"
+		use module_auth_freeradius || einfo "    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
 	fi
 	
 	if use rscriptd; then
-		einfo "Remote Script Executer:"
+		einfo "\nRemote Script Executer:"
 		einfo "-----------------------"
 		einfo "    For further use of rscriptd please edit /etc/stargazer/rscriptd.conf depending on your needs."
 		einfo "    You have to change 'Password' field at least."
 	fi
 	
 	if use sgauth; then
-		einfo "Sgauth:"
+		einfo "\nSgauth:"
 		einfo "-------"
 		einfo "    For further use of sgauth please edit /etc/stargazer/sgauth.conf depending on your needs."
 		einfo "    You have to change 'ServerName', 'Login', 'Password' fields at least."
 	fi
 	
 	if use sgconf; then
-		einfo "Sgconf:"
+		einfo "\nSgconf:"
 		einfo "-------"
-		use module_config_sgconfig || einfo "    For further use of sgconf utility you should also build mod_conf_sg.so through enable USE-flag module_config_sgconfig."
+		use module_config_sgconfig || einfo "    For further use of sgconf utility you should also enable USE-flag module_config_sgconfig."
 	fi
 	
 	if use xmlrpc; then
-		einfo "Sgconf_xml:"
+		einfo "\nSgconf_xml:"
 		einfo "-----------"
-		use module_config_rpcconfig || einfo "    For further use of sgconf_xml utility you should also build mod_conf_rpc.so through enable USE-flag module_config_rpcconfig."
+		use module_config_rpcconfig || einfo "    For further use of sgconf_xml utility you should also enable USE-flag module_config_rpcconfig."
 	fi
 	
 	if use stargazer; then
-		einfo "Stargazer:"
+		einfo "\nStargazer:"
 		einfo "----------"
 		einfo "  Modules availability:"
 		if use module_auth_always_online; then
@@ -192,9 +194,9 @@ pkg_postinst() {
 		fi
 		if use module_auth_freeradius; then
 			einfo "    * module_auth_freeradius available."
-			einfo "      For further use of module, install net-dialup/freeradius:"
-			einfo "      emerge -atv net-dialup/freeradius"
-			use radius || elog "      For use RADIUS data processing you should also build rlm_stg.so through enable use USE-flag radius."
+			einfo "           For further use of module, install net-dialup/freeradius:\n"
+			einfo "             # emerge -atv net-dialup/freeradius\n"
+			use radius || elog "           For use RADIUS data processing you should also enable use USE-flag radius."
 		fi
 		if use module_capture_ipq; then
 			einfo "    * module_capture_ipq available."
@@ -204,49 +206,55 @@ pkg_postinst() {
 		fi
 		if use module_capture_netflow; then
 			einfo "    * module_capture_netflow available."
-			einfo "      For further use of module, install net-firewall/ipt_netflow or net-analyzer/softflowd:"
-			einfo "      emerge -atv net-firewall/ipt_netflow or emerge -atv net-analyzer/softflowd"
+			einfo "           For further use of module, install net-firewall/ipt_netflow or net-analyzer/softflowd:\n"
+			einfo "             # emerge -atv net-firewall/ipt_netflow or emerge -atv net-analyzer/softflowd\n"
 		fi
 		if use module_config_sgconfig; then
 			einfo "    * module_config_sgconfig available."
 			fi
 		if use module_config_rpcconfig; then
 			einfo "    * module_config_rpcconfig available."
-			einfo "      _Known BUG_ Sometimes you can't configure Stargazer through xml-based configurator,"
-			einfo "      because module is not responding."
-			einfo "      This bug is introduced by xmlrpc-c library. This bug proceeds very rare, but it still exists."
+			einfo "           KNOWN BUG: Sometimes you can't configure Stargazer through xml-based configurator,"
+			einfo "                      because module is not responding."
+			einfo "                      This bug is introduced by xmlrpc-c library. This bug proceeds very rare, but it still exists."
 		fi
 		if use module_other_ping; then
 			einfo "    * module_other_ping available."
 		fi
 		if use module_other_smux; then
 			einfo "    * module_other_smux available."
-			einfo "      For further use of module install net-analyzer/net-snmp:"
-			einfo "      emerge -atv net-analyzer/net-snmp"
+			einfo "           For further use of module install net-analyzer/net-snmp:\n"
+			einfo "             # emerge -atv net-analyzer/net-snmp\n"
 		fi
 		if use module_other_remote_script; then
 			einfo "    * module_other_remote_script available."
-			einfo "      Don't forget to edit /etc/stargazer/subnets file depending on your needs."
+			einfo "           Don't forget to edit /etc/stargazer/subnets file depending on your needs."
 		fi
 		if use module_store_files; then
 			einfo "    * module_store_files available."
 		fi
 		if use module_store_firebird; then
 			einfo "    * module_store_firebird available."
-			einfo "      Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
-			einfo "      For new setup you should execute 00-base-00.sql:"
+			einfo "           Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
+			einfo "           For new setup you should execute 00-base-00.sql:\n"
 			#einfo "      gsec -user sysdba -password masterkey"
 			#einfo "      GSEC> add admin -pw 123456"
-			einfo "      fbsql -i /usr/share/stargazer/db/firebird/00-base-00.sql"
+			einfo "             # fbsql -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
+			einfo "           For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
+			einfo "             # fbsql -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-alter-01.sql\n"
 		fi
 		if use module_store_mysql; then
 			einfo "    * module_store_mysql available."
+			einfo "           For upgrade from version 2.406 you should execute 00-mysql-01.sql:\n"
+			einfo "             # mysql -h <hostname> -P <port> -u <username> -p <password> <database> < /usr/share/stargazer/db/mysql/00-mysql-01.sql\n"
 		fi
 		if use module_store_postgres; then
 			einfo "    * module_store_postgres available."
-			einfo "      Stargazer DB schema for PostgresSQL is here: /usr/share/stargazer/db/postgresql"
-			einfo "      For new setup you should execute 00-base-00.postgresql.sql:"
-			einfo "      postgres \$: psql -h <localhost> -p <port> -U <username> -W -f /usr/share/stargazer/db/postgresql/00-base-00.postgresql.sql"
+			einfo "           Stargazer DB schema for PostgresSQL is here: /usr/share/stargazer/db/postgresql"
+			einfo "           For new setup you should execute 00-base-00.postgresql.sql:\n"
+			einfo "             # psql -h <hostname> -p <port> -U <username> -d <database> -W -f /usr/share/stargazer/db/postgresql/00-base-00.postgresql.sql\n"
+			einfo "           For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
+			einfo "             # psql -h <hostname> -p <port> -U <username> -d <database> -W -f /usr/share/stargazer/db/postgresql/00-alter-01.sql\n"
 		fi
 		einfo "  For all storage backends:"
 		einfo "    Default admin login - admin, default admin password - 123456."
@@ -254,6 +262,10 @@ pkg_postinst() {
 		if use debug; then
 			ewarn "  This is debug build. You should avoid to use it in production."
 		fi
+		einfo ""
+		#einfo -e "Don't upgrade to newer version without reading ChangeLog: \n"
+		einfo "Don't upgrade to newer version without reading ChangeLog: \n"
+		einfo "  # bzcat /usr/share/doc/stargazer-${PV}/ChangeLog.bz2"
 	fi
 }
 
@@ -429,6 +441,7 @@ src_install() {
 		use module_auth_internet_access	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ia.conf
 		use module_auth_freeradius	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_radius.conf
 		use module_capture_ipq		&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_ipq.conf
+		use module_capture_ether	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_ether.conf
 		use module_capture_netflow	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_nf.conf
 		use module_config_sgconfig	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_sg.conf
 		use module_config_rpcconfig	&& doins ${S}/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_rpc.conf
@@ -444,6 +457,7 @@ src_install() {
 		use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf		/etc/stargazer/conf-enabled.d/mod_ia.conf
 		use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf	/etc/stargazer/conf-enabled.d/mod_radius.conf
 		use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf	/etc/stargazer/conf-enabled.d/mod_cap_ipq.conf
+		use module_capture_ether	&& dosym /etc/stargazer/conf-available.d/mod_cap_ether.conf	/etc/stargazer/conf-enabled.d/mod_cap_ether.conf
 		use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf	/etc/stargazer/conf-enabled.d/mod_cap_nf.conf
 		use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf		/etc/stargazer/conf-enabled.d/mod_sg.conf
 		use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf		/etc/stargazer/conf-enabled.d/mod_rpc.conf

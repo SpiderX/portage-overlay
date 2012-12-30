@@ -1,11 +1,10 @@
 # ToDo:
 1. Initscript for rscriptd..................................(done)
-2. Test keeping files in /var/lib/stargazer, /etc/stargazer
+2. Test keeping files in /var/lib/stargazer, /etc/stargazer.(done)
 3. Test ebuild on clean system..............................(done)
-4. Something else...dont remember
-5. Remove unnecessary checks in Makefile?
-6. Fill pkg_postinstall
-7. Initscript for sgauth....................................(done)
-8. Create metadata.xml......................................(done)
-9. Deal with the /doc directory
-10. Don't forget about "alter.sql"
+4. Remove unnecessary checks in Makefile?
+5. Fill pkg_postinstall.....................................(done)
+6. Initscript for sgauth....................................(done)
+7. Create metadata.xml......................................(done)
+8. Deal with the /doc directory
+9. Don't forget about "alter.sql"...........................(done)
