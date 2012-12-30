@@ -66,6 +66,8 @@ src_prepare() {
 	for project in ${PROJECTS}; do
 		# Rename build script to configure for further econf launch in every projects
 		mv ${S}/projects/${project}/build ${S}/projects/${project}/configure
+		# Change check for debug build
+		sed -i 's/if \[ "$1" = "debug" \]/if \[ "${10}" = "--enable-debug" \]/' ${S}/projects/${project}/configure
 		if (( ( ${project} == "stargazer" ) || ( ${project} == "rscriptd" ) || ( ${project} == "sgauth" ) || ( ${project} == "sgconf_xml" ) )); then
 			# Remove target install-data
 			sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/${project}/Makefile
@@ -110,14 +112,8 @@ src_prepare() {
 	use module_store_postgres	|| sed -i 's/store\/postgresql//' ${S}/projects/stargazer/configure
 	# Correct Gentoo init script provided by upstream (TODO: Remove in further releases, already fixed in upstream's trunk)
 	use stargazer			&& sed -i 's/opts/extra_commands/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
-	# Check for ip_queue.h availability
-	if use module_capture_ipq; then
-		if kernel_is ge 3 5; then
-			if [ ! -r /usr/include/linux/netfilter_ipv4/ip_queue.h ]; then
-				die "ip_queue.h is gone since Linux kernel 3.5. It is provided now by netfilter/iptables package. You should get it by yourself."
-			fi
-		fi
-	fi
+	# Check for IPQ subsystem availability
+	( use module_capture_ipq && kernel_is ge 5 4 ) && die "IPQ subsystem is gone since Linux kernel 3.5. You can't compile module_capture_ipq with your current kernel."
 }
 
 src_configure() {
@@ -129,7 +125,7 @@ src_configure() {
 	for (( i = 0 ; i < ${#PROJECTS[@]} ; i++ )); do
 		if use ${USEFLAGS[$i]} ; then
 			cd ${S}/projects/${PROJECTS[$i]} || die "cd to ${PROJECTS[$i]} failed"
-			econf
+			econf $(use_enable debug)
 		fi
 	done
 }
@@ -153,7 +149,7 @@ pkg_postinst() {
 		einfo "-------"
 			einfo "    For further use of radius, install net-dialup/freeradius:\n"
 			einfo "      # emerge -atv net-dialup/freeradius"
-		use module_auth_freeradius || einfo "    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
+		use module_auth_freeradius || einfo "\n    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
 	fi
 	
 	if use rscriptd; then
@@ -196,7 +192,7 @@ pkg_postinst() {
 			einfo "    * module_auth_freeradius available."
 			einfo "           For further use of module, install net-dialup/freeradius:\n"
 			einfo "             # emerge -atv net-dialup/freeradius\n"
-			use radius || einfo "           For use RADIUS data processing you should also enable use USE-flag radius."
+			use radius || einfo "\n           For use RADIUS data processing you should also enable use USE-flag radius."
 		fi
 		if use module_capture_ipq; then
 			einfo "    * module_capture_ipq available."
@@ -383,8 +379,6 @@ src_install() {
 		cd ${S}/projects/stargazer
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Remove static libs if USE flag is not selected
-		use static-libs || find "${D}" -name '*.a' -exec rm -f {} +
 		# Install docs
 		dodoc BUGS CHANGES README TODO
 		# Install and rename Gentoo init script
@@ -471,4 +465,6 @@ src_install() {
 	fi
 	# Correct user and group for files and directories
 	( use convertor || use rscriptd || use sgauth || use stargazer ) && fowners -R stg:stg /etc/stargazer
+	# Remove static libs if USE flag is not selected
+	use static-libs || find "${D}" -name '*.a' -exec rm -f {} +
 }
