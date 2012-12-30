@@ -196,7 +196,7 @@ pkg_postinst() {
 			einfo "    * module_auth_freeradius available."
 			einfo "           For further use of module, install net-dialup/freeradius:\n"
 			einfo "             # emerge -atv net-dialup/freeradius\n"
-			use radius || elog "           For use RADIUS data processing you should also enable use USE-flag radius."
+			use radius || einfo "           For use RADIUS data processing you should also enable use USE-flag radius."
 		fi
 		if use module_capture_ipq; then
 			einfo "    * module_capture_ipq available."
