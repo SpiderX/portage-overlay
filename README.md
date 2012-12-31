@@ -1,1 +1,1 @@
-This is a Gentoo Portage (http://www.gentoo.org/) ebuild for Stargazer Billing System (http://stg.dp.ua/)
+This is a [Gentoo Portage](http://www.gentoo.org/) ebuild for [Stargazer Billing System](http://stg.dp.ua/)
