@@ -1,0 +1,11 @@
+--- projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp.org	2012-12-31 11:08:26.000000000 +0200
++++ projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp	2012-12-31 11:08:41.000000000 +0200
+@@ -169,7 +169,7 @@
+ rpcServer = new xmlrpc_c::serverAbyss(
+         xmlrpc_c::serverAbyss::constrOpt()
+         .registryP(&rpcRegistry)
+-        .logFileName("/var/log/stargazer_rpc.log")
++        .logFileName("/var/log/stargazer/xmlrpc.log")
+         .socketFd(fd)
+         );
+ 

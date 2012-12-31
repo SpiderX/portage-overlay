@@ -1,0 +1,42 @@
+.TH convertor 1 "December 31, 2012" "" "convertor"
+
+.SH NAME
+convertor \- an utility to convert Stargazer data between storage backends
+
+.SH SYNOPSIS
+.B convertor
+.RI [ config-file ]
+
+.SH DESCRIPTION
+.B convertor
+allows system administrators to copy and merge
+.B Stargazer
+data from one storage backend to another.
+
+.SH OPTIONS
+.TP
+.I config-file
+A path to config file containing convertion parameters. Default is
+.B convertor.conf 
+in current directory.
+
+.SH FILES
+.B
+/usr/bin/convertor
+.br
+.B
+/etc/stargazer/convertor.conf
+
+.SH SEE ALSO
+.BR sgauth (8),
+.BR sgconf (1),
+.BR sgconf_xml (1),
+.BR stargazer (8),
+.BR rscriptd (8).
+
+.SH AUTHOR
+sgconf was initially written by Maxim Mamontov <faust@stargazer.dp.ua>.
+.PP
+This manual page was written by Alexey Osipov <simba@lerlan.ru>,
+for the Debian project (and may be used by others), and was modified by
+Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> for Gentoo Linux

@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 sparc"
-IUSE="convertor radius rscriptd sgauth sgconf xmlrpc stargazer debug doc examples static-libs"
+IUSE="convertor radius rscriptd sgauth sgconf sgconf_xml stargazer debug doc examples static-libs"
 MERGE_TYPE="source"
 
 PROJECTS="convertor rlm_stg rscriptd sgauth sgconf sgconf_xml stargazer"
@@ -52,7 +52,7 @@ REQUIRED_USE="stargazer? ( ^^ ( module_store_files module_store_firebird module_
 DEPEND="
 	doc? ( dev-libs/libxslt )
 	sgconf? ( dev-libs/expat )
-	xmlrpc? ( dev-libs/expat )
+	sgconf_xml? ( dev-libs/expat )
 	module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss]
 				sys-libs/zlib )
 	module_config_sgconfig? ( dev-libs/expat )
@@ -94,6 +94,8 @@ src_prepare() {
 	epatch ${FILESDIR}/patches/00-base-00.sql.patch
 	# Correct paths
 	epatch ${FILESDIR}/patches/stargazer.conf.patch
+	# Correct paths
+	epatch ${FILESDIR}/patches/rpcconfig.cpp.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -173,7 +175,7 @@ pkg_postinst() {
 		use module_config_sgconfig || einfo "    For further use of sgconf utility you should also enable USE-flag module_config_sgconfig."
 	fi
 	
-	if use xmlrpc; then
+	if use sgconf_xml; then
 		einfo "\nSgconf_xml:"
 		einfo "-----------"
 		use module_config_rpcconfig || einfo "    For further use of sgconf_xml utility you should also enable USE-flag module_config_rpcconfig."
@@ -262,7 +264,7 @@ pkg_postinst() {
 		einfo ""
 		#einfo -e "Don't upgrade to newer version without reading ChangeLog: \n"
 		einfo "Don't upgrade to newer version without reading ChangeLog: \n"
-		einfo "  # bzcat /usr/share/doc/stargazer-${PV}/ChangeLog.bz2"
+		einfo "  # bzcat /usr/share/doc/stargazer-${PV}/ChangeLog.bz2\n"
 	fi
 }
 
@@ -322,6 +324,8 @@ src_install() {
 		doins ${S}/projects/convertor/convertor.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/convertor.conf
+		# Install manual page
+		doman ${FILESDIR}/mans/convertor.1
 	fi
 	
 	if use radius; then
@@ -350,6 +354,8 @@ src_install() {
 		doins rscriptd.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/rscriptd.conf
+		# Install manual page
+		doman ${FILESDIR}/mans/rscriptd.8
 	fi
 	
 	if use sgauth; then
@@ -364,6 +370,8 @@ src_install() {
 		doins sgauth.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/sgauth.conf
+		# Install manual page
+		doman ${FILESDIR}/mans/sgauth.8
 	fi
 	
 	if use sgconf; then
@@ -373,15 +381,19 @@ src_install() {
 		emake DESTDIR="${D}" PREFIX="${D}" install
 		# Install sgconf binnary file to /usr/sbin
 		dobin sgconf
+		# Install manual page
+		doman ${FILESDIR}/mans/sgconf.1
 	fi
 	
-	if use xmlrpc; then
+	if use sgconf_xml; then
 		# Change current directory
 		cd ${S}/projects/sgconf_xml
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
 		# Install sgconf_xml binnary file to /usr/bin
 		dobin sgconf_xml
+		# Install manual page
+		doman ${FILESDIR}/mans/sgconf_xml.1
 	fi
 	
 	if use stargazer; then
@@ -395,6 +407,8 @@ src_install() {
 		newinitd ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
 		# Install stargazer binnary file to /usr/sbin
 		dosbin stargazer
+		# Install manual page
+		doman ${FILESDIR}/mans/stargazer.8
 		# Create necessary directories
 		diropts -m 755 -o stg -g stg
 		dodir /var/log/stargazer
