@@ -138,11 +138,16 @@ src_configure() {
 pkg_setup() {
 	# Add stg group to system
 	enewgroup stg
-	# Add stg user to system
-	enewuser stg -1 -1 /var/lib/stargazer stg
+	# Add stg user to system (no home directory specified, because otherwise it will be result in stg:root ownership on it)
+	enewuser stg -1 -1 -1 stg
 }
 
 pkg_postinst() {
+	# Set home directory for stg user
+	esethome stg /var/lib/stargazer
+	# Restore default directory permissions (in case of module_store_firebird was in usage)
+	#use module_store_firebird || fperms 0755 /var/lib/stargazer
+	
 	if use convertor; then
 		einfo "Convertor:"
 		einfo "----------"
@@ -286,16 +291,9 @@ pkg_postinst() {
 src_install() {
 	# Install changelog
 	dodoc ChangeLog
-	# Create necessary directories
-	dodir \
-		/usr/share/stargazer/db \
-		/usr/share/stargazer/db/firebird \
-		/usr/share/stargazer/db/mysql \
-		/usr/share/stargazer/db/postgresql
 	# Keeping home directory for stg user
-	keepdir \
-		/var/lib/stargazer \
-		/var/log/stargazer
+	diropts -m 755 -o stg -g stg
+	keepdir /var/lib/stargazer
 	# Install files into specified directory
 	insinto /usr/share/stargazer/db/firebird
 	doins \
@@ -314,6 +312,8 @@ src_install() {
 		# Install config file for logrotate
 		insinto /etc/logrotate.d
 		newins ${FILESDIR}/logrotate stargazer
+		# Keeping logs directory
+		keepdir /var/log/stargazer
 	fi
 	
 	if use doc; then
@@ -430,9 +430,6 @@ src_install() {
 		dosbin stargazer
 		# Install manual page
 		doman ${FILESDIR}/mans/stargazer.8
-		# Create necessary directories
-		diropts -m 755 -o stg -g stg
-		dodir /var/log/stargazer
 		# Install files needed for module_store_files
 		if use module_store_files; then
 			# Install files into specified directory
@@ -440,6 +437,10 @@ src_install() {
 			doins -r ${S}/projects/stargazer/inst/var/stargazer
 			# Correct user and group for files and directories
 			fowners -R stg:stg /var/lib/stargazer
+		fi
+		if use module_store_firebird; then
+			# Correct group access permissions for directory
+			fperms 0775 /var/lib/stargazer
 		fi
 		if use module_other_smux; then
 			# Install files into specified directory
