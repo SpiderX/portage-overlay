@@ -47,7 +47,9 @@ done
 IUSE=${IUSE/stargazer/+stargazer}
 IUSE=${IUSE/module_store_files/+module_store_files}
 
-REQUIRED_USE="stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
+REQUIRED_USE="
+	stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )
+"
 
 DEPEND="
 	doc? ( dev-libs/libxslt )
@@ -254,7 +256,6 @@ pkg_postinst() {
 			einfo "           Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
 			einfo "           For new setup you should execute 00-base-00.sql:\n"
 			einfo "             # fbsql -q -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
-			einfo "             # fbsql -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
 			einfo "           For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
 			einfo "             # fbsql -q -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-alter-01.sql\n"
 		fi
