@@ -150,9 +150,23 @@ pkg_postinst() {
 	if use radius; then
 		einfo "\nRadius:"
 		einfo "-------"
-			einfo "    For further use of radius, install net-dialup/freeradius:\n"
-			einfo "      # emerge -atv net-dialup/freeradius"
-		use module_auth_freeradius || einfo "\n    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
+		einfo "    For further use of radius, install net-dialup/freeradius:\n"
+		einfo "      # emerge -atv net-dialup/freeradius\n"
+		einfo "    Example config:\n"
+		einfo "        stg {"
+		einfo "               local_port = 6667"
+		einfo "               server = localhost"
+		einfo "               port = 6666"
+		einfo "               password = 123456"
+		einfo "        }\n"
+		einfo "    You should place 'stg' into section Instantiate, Authorize."
+		einfo "    In section Authentificate 'stg' should go in sub-section Auth-Type before other authentifications modules:\n"
+		einfo "        Auth-Type PAP {"
+		einfo "                         stg"
+		einfo "                         pap"
+		einfo "        }\n"
+		einfo "    It also may be used in section Accounting and Post-Auth."
+		use module_auth_freeradius || einfo "    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
 	fi
 	
 	if use rscriptd; then
@@ -234,13 +248,15 @@ pkg_postinst() {
 		fi
 		if use module_store_firebird; then
 			einfo "    * module_store_firebird available."
+			einfo "           Warning! Directory '/var/lib/stargazer' is writable by 'stg' group (0775)."
+			einfo "           You should add 'firebird' and (optionally) 'root' user to stg group:\n"
+			einfo "             # usermod -a -G stg firebird and usermod -a -G stg root\n"
 			einfo "           Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
 			einfo "           For new setup you should execute 00-base-00.sql:\n"
-			#einfo "      gsec -user sysdba -password masterkey"
-			#einfo "      GSEC> add admin -pw 123456"
+			einfo "             # fbsql -q -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
 			einfo "             # fbsql -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
 			einfo "           For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
-			einfo "             # fbsql -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-alter-01.sql\n"
+			einfo "             # fbsql -q -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-alter-01.sql\n"
 		fi
 		if use module_store_mysql; then
 			einfo "    * module_store_mysql available."
@@ -257,12 +273,10 @@ pkg_postinst() {
 		fi
 		einfo "  For all storage backends:"
 		einfo "    Default admin login - admin, default admin password - 123456."
-		einfo "    Default subscriber login - test, default subscriber password - 123456."
+		einfo "    Default subscriber login - test, default subscriber password - 123456.\n"
 		if use debug; then
-			ewarn "  This is debug build. You should avoid to use it in production."
+			ewarn "  This is debug build. You should avoid to use it in production.\n"
 		fi
-		einfo ""
-		#einfo -e "Don't upgrade to newer version without reading ChangeLog: \n"
 		einfo "Don't upgrade to newer version without reading ChangeLog: \n"
 		einfo "  # bzcat /usr/share/doc/stargazer-${PV}/ChangeLog.bz2\n"
 	fi
@@ -295,6 +309,12 @@ src_install() {
 		${S}/projects/stargazer/inst/var/00-base-00.postgresql.sql \
 		${S}/projects/stargazer/inst/var/00-alter-01.postgresql.sql
 	
+	if use rscriptd || use stargazer ; then
+		# Install config file for logrotate
+		insinto /etc/logrotate.d
+		newins ${FILESDIR}/logrotate stargazer
+	fi
+	
 	if use doc; then
 		# Install files into docs directory
 		dodoc ${S}/projects/stargazer/inst/var/base.dia
@@ -317,7 +337,7 @@ src_install() {
 	fi
 	
 	if use convertor; then
-		# Install convertor binnary file to /usr/bin
+		# Install convertor binary file to /usr/bin
 		dobin ${S}/projects/convertor/convertor
 		# Install files into specified directory
 		insinto /etc/stargazer
@@ -345,7 +365,7 @@ src_install() {
 		cd ${S}/projects/rscriptd
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install rscriptd binnary file to /usr/sbin
+		# Install rscriptd binary file to /usr/sbin
 		dosbin rscriptd
 		# Install Gentoo init script
 		doinitd ${FILESDIR}/rscriptd
@@ -363,7 +383,7 @@ src_install() {
 		cd ${S}/projects/sgauth
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install sgauth binnary file to /usr/sbin
+		# Install sgauth binary file to /usr/sbin
 		dosbin sgauth
 		# Install file into specified directory
 		insinto /etc/stargazer
@@ -379,7 +399,7 @@ src_install() {
 		cd ${S}/projects/sgconf
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install sgconf binnary file to /usr/sbin
+		# Install sgconf binary file to /usr/sbin
 		dobin sgconf
 		# Install manual page
 		doman ${FILESDIR}/mans/sgconf.1
@@ -390,7 +410,7 @@ src_install() {
 		cd ${S}/projects/sgconf_xml
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install sgconf_xml binnary file to /usr/bin
+		# Install sgconf_xml binary file to /usr/bin
 		dobin sgconf_xml
 		# Install manual page
 		doman ${FILESDIR}/mans/sgconf_xml.1
@@ -405,7 +425,7 @@ src_install() {
 		dodoc BUGS CHANGES README TODO
 		# Install and rename Gentoo init script
 		newinitd ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
-		# Install stargazer binnary file to /usr/sbin
+		# Install stargazer binary file to /usr/sbin
 		dosbin stargazer
 		# Install manual page
 		doman ${FILESDIR}/mans/stargazer.8
