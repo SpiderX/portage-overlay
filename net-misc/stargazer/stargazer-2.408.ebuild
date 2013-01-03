@@ -83,21 +83,21 @@ src_prepare() {
 	done
 	
 	# Correct working directory, user and group
-	epatch ${FILESDIR}/patches/convertor.conf.patch
+	epatch ${FILESDIR}/patches/stg-2.408-convertor.conf.patch
 	# Correct path for files and directories
-	epatch ${FILESDIR}/patches/rscriptd.conf.patch
+	epatch ${FILESDIR}/patches/stg-2.408-rscriptd.conf.patch
 	# Correct working directory, user and group
-	epatch ${FILESDIR}/patches/store_files.conf.patch
+	epatch ${FILESDIR}/patches/stg-2.408-store_files.conf.patch
 	# Correct path for file
-	epatch ${FILESDIR}/patches/store_firebird.conf.patch
+	epatch ${FILESDIR}/patches/stg-2.408-store_firebird.conf.patch
 	# Correct path for file
-	epatch ${FILESDIR}/patches/mod_remote_script.conf.patch
+	epatch ${FILESDIR}/patches/stg-2.408-mod_remote_script.conf.patch
 	# Correct path and user for file
-	epatch ${FILESDIR}/patches/00-base-00.sql.patch
+	epatch ${FILESDIR}/patches/stg-2.408-00-base-00.sql.patch
 	# Correct paths
-	epatch ${FILESDIR}/patches/stargazer.conf.patch
+	epatch ${FILESDIR}/patches/stg-2.408-stargazer.conf.patch
 	# Correct paths
-	epatch ${FILESDIR}/patches/rpcconfig.cpp.patch
+	epatch ${FILESDIR}/patches/stg-2.408-rpcconfig.cpp.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
