@@ -251,7 +251,7 @@ pkg_postinst() {
 		if use module_store_files; then
 			einfo "      * module_store_files available."
 			einfo "           Necessary and sufficient rights to the directory /var/lib/stargazer for this backend is 0755."
-			einfo "           Check that it was so, and fix it if needed."
+			einfo "           You may fix it if needed."
 		fi
 		if use module_store_firebird; then
 			einfo "      * module_store_firebird available."
@@ -300,7 +300,10 @@ src_install() {
 		# Keeping logs directory
 		diropts -m 755 -o stg -g stg
 		keepdir /var/log/stargazer
-		use stargazer && keepdir /var/lib/stargazer
+		if use stargazer; then
+			diropts -m 775 -o stg -g stg
+			keepdir /var/lib/stargazer
+		fi
 	fi
 	
 	if use doc; then
@@ -426,8 +429,6 @@ src_install() {
 			fowners -R stg:stg /var/lib/stargazer
 		fi
 		if use module_store_firebird; then
-			# Correct group access permissions for directory
-			fperms 0775 /var/lib/stargazer
 			# Install files into specified directory
 			insinto /usr/share/stargazer/db/firebird
 			doins \
