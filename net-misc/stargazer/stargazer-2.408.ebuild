@@ -18,29 +18,29 @@ IUSE="convertor radius rscriptd sgauth sgconf sgconf_xml stargazer debug doc exa
 MERGE_TYPE="source"
 
 PROJECTS="convertor rlm_stg rscriptd sgauth sgconf sgconf_xml stargazer"
-MODULES_AUTH="always_online internet_access freeradius"
-MODULES_CAPTURE="ipq ether netflow"
-MODULES_CONFIG="sgconfig rpcconfig"
-MODULES_OTHER="ping smux remote_script"
-MODULES_STORE="files firebird mysql postgres"
+STG_MODULES_AUTH="always_online internet_access freeradius"
+STG_MODULES_CAPTURE="ipq ether netflow"
+STG_MODULES_CONFIG="sgconfig rpcconfig"
+STG_MODULES_OTHER="ping smux remote_script"
+STG_MODULES_STORE="files firebird mysql postgres"
 
-for module in ${MODULES_AUTH}; do
+for module in ${STG_MODULES_AUTH}; do
         IUSE="${IUSE} module_auth_${module}"
 done
 
-for module in ${MODULES_CAPTURE}; do
+for module in ${STG_MODULES_CAPTURE}; do
         IUSE="${IUSE} module_capture_${module}"
 done
 
-for module in ${MODULES_CONFIG}; do
+for module in ${STG_MODULES_CONFIG}; do
         IUSE="${IUSE} module_config_${module}"
 done
 
-for module in ${MODULES_OTHER}; do
+for module in ${STG_MODULES_OTHER}; do
         IUSE="${IUSE} module_other_${module}"
 done
 
-for module in ${MODULES_STORE}; do
+for module in ${STG_MODULES_STORE}; do
         IUSE="${IUSE} module_store_${module}"
 done
 
