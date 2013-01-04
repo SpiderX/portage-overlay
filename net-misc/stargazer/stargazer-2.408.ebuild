@@ -333,10 +333,17 @@ src_install() {
 		# Install files into specified directory
 		insinto /etc/stargazer
 		doins ${S}/projects/convertor/convertor.conf
-		# Correct permissions for file
-		fperms 0640 /etc/stargazer/convertor.conf
 		# Install manual page
 		doman ${FILESDIR}/mans/convertor.1
+		# Install files into specified directory
+		insinto /usr/lib/stg
+		doins \
+			${S}/projects/stargazer/plugins/store/files/mod_store_files.so \
+			${S}/projects/stargazer/plugins/store/firebird/mod_store_firebird.so \
+			${S}/projects/stargazer/plugins/store/mysql/mod_store_mysql.so \
+			${S}/projects/stargazer/plugins/store/postgresql/mod_store_postgresql.so
+		# Correct permissions for files
+		fperms -R 0755 /usr/lib/stg/
 	fi
 	
 	if use radius; then
