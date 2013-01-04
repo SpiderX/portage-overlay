@@ -98,6 +98,8 @@ src_prepare() {
 	epatch ${FILESDIR}/patches/stg-2.408-stargazer.conf.patch
 	# Correct paths
 	epatch ${FILESDIR}/patches/stg-2.408-rpcconfig.cpp.patch
+	# Fix dependency on fbclient for module_store_firebird
+	epatch ${FILESDIR}/patches/stg-2.408-makefile.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -117,6 +119,11 @@ src_prepare() {
 	use module_store_postgres	|| sed -i 's/store\/postgresql//' ${S}/projects/stargazer/configure
 	# Correct Gentoo init script provided by upstream (TODO: Remove in further releases, already fixed in upstream's trunk)
 	use stargazer			&& sed -i 's/opts/extra_commands/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
+	# Correct Gentoo init script dependencies
+	use module_store_files		&& sed -i '11d' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
+	use module_store_firebird	&& sed -i '11d;s/need net/need net firebird/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
+	use module_store_mysql		&& sed -i '11d;s/need net/need net mysql/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
+	use module_store_postgres	&& sed -i '11d;s/need net/need net postgresql/' ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
 	# Check for IPQ subsystem availability
 	( use module_capture_ipq && kernel_is ge 5 4 ) && die "IPQ subsystem is gone since Linux kernel 3.5. You can't compile module_capture_ipq with your current kernel."
 }
@@ -257,8 +264,10 @@ pkg_postinst() {
 			einfo "      * module_store_firebird available."
 			einfo "           Necessary and sufficient rights to the directory /var/lib/stargazer for this backend is 0775."
 			einfo "           Check that it was so, and fix it if needed."
-			einfo "           You should add 'firebird' and (optionally) 'root' user to stg group:\n"
-			einfo "             # usermod -a -G stg firebird and usermod -a -G stg root\n"
+			einfo "           You should add 'firebird' user to stg group:\n"
+			einfo "             # usermod -a -G stg firebird\n"
+			einfo "           and restart firebird:\n"
+			einfo "             # /etc/init.d/firebird restart\n"
 			einfo "           Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
 			einfo "           For new setup you should execute 00-base-00.sql:\n"
 			einfo "             # fbsql -q -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
