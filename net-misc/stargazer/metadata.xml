@@ -19,7 +19,7 @@
 		<flag name='rscriptd'>Enable build of remote script execute daemon for Stargazer, which run scripts when receive special signal from Stargazer.</flag>
 		<flag name='sgauth'>Enable build of command-line utility for authorization in Stargazer.</flag>
 		<flag name='sgconf'>Enable build of command-line utility for configuring Stargazer.</flag>
-		<flag name='xmlrpc'>Enable build of command-line xml-based utility for configuring Stargazer.</flag>
+		<flag name='sgconf_xml'>Enable build of command-line xml-based utility for configuring Stargazer.</flag>
 		<flag name='stargazer'>Enable build of Stargazer billing system.</flag>
 		<flag name='debug'>Enable extra debug codepaths, like asserts and extra output.</flag>
 		<flag name='doc'>Adds extra documentation (API, doc, etc).</flag>
