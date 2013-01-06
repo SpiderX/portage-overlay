@@ -58,7 +58,7 @@ DEPEND="
 	module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss]
 				sys-libs/zlib )
 	module_config_sgconfig? ( dev-libs/expat )
-	module_store_firebird? ( dev-db/firebird )
+	module_store_firebird? ( =dev-db/firebird-2.1.3.18185.0 )
 	module_store_mysql? ( dev-db/mysql )
 	module_store_postgres? ( dev-db/postgresql-base
 				sys-libs/zlib
@@ -99,12 +99,12 @@ src_prepare() {
 	epatch ${FILESDIR}/patches/stg-2.408-rpcconfig.cpp.patch
 	# Correct target install-data for stargazer
 	epatch ${FILESDIR}/patches/stg-2.408-makefile-stargazer.patch
-	# Correct paths for radius
-	epatch ${FILESDIR}/patches/stg-2.408-makefile-radius.patch
 	# Correct paths for rscriptd
 	epatch ${FILESDIR}/patches/stg-2.408-makefile-rscriptd.patch
 	# Correct paths for sgauth
 	epatch ${FILESDIR}/patches/stg-2.408-makefile-sgauth.patch
+	# Remove make from script (for keeping symbol table if needed)
+	epatch ${FILESDIR}/patches/stg-2.408-build.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -138,11 +138,15 @@ src_configure() {
 	local USEFLAGS=(${IUSE//+})
 	local PROJECTS=($PROJECTS)
 	
-	# Call configure in selected projects directory
 	for (( i = 0 ; i < ${#PROJECTS[@]} ; i++ )); do
 		if use ${USEFLAGS[$i]} ; then
 			cd ${S}/projects/${PROJECTS[$i]} || die "cd to ${PROJECTS[$i]} failed"
+			# Call configure
 			econf $(use_enable debug)
+			# Set jobs to 1 for debug build
+			use debug && MAKEOPTS="-j1"
+			# Call make
+			emake
 		fi
 	done
 }
@@ -369,6 +373,11 @@ src_install() {
 		doinitd ${FILESDIR}/rscriptd
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/rscriptd.conf
+		# Install files into specified directory
+		insinto /etc/stargazer
+		doins \
+			${S}/projects/stargazer/inst/linux/etc/stargazer/OnConnect \
+			${S}/projects/stargazer/inst/linux/etc/stargazer/OnDisconnect
 		# Install manual page
 		doman ${FILESDIR}/mans/rscriptd.8
 	fi

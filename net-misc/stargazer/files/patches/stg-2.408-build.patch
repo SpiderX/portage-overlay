@@ -1,0 +1,61 @@
+--- projects/convertor/configure.org	2013-01-06 11:59:07.000000000 +0200
++++ projects/convertor/configure	2013-01-06 11:59:28.000000000 +0200
+@@ -283,6 +283,3 @@
+ echo "VAR_DIR=$VAR_DIR" >> $CONFFILE
+ 
+ mkdir -p ../stargazer/modules
+-
+-$MAKE $MAKEOPTS
+-
+--- projects/rlm_stg/configure.org	2013-01-06 12:00:44.000000000 +0200
++++ projects/rlm_stg/configure	2013-01-06 12:00:53.000000000 +0200
+@@ -165,5 +165,3 @@
+ echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
+ echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
+ echo "OWNER=$OWNER" >> $CONFFILE
+-$MAKE $MAKEOPTS
+-
+--- projects/rscriptd/configure.org	2013-01-06 12:01:30.000000000 +0200
++++ projects/rscriptd/configure	2013-01-06 12:01:41.000000000 +0200
+@@ -171,6 +171,3 @@
+ echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
+ echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
+ echo "OWNER=$OWNER" >> $CONFFILE
+-
+-$MAKE $MAKEOPTS
+-
+--- projects/sgauth/configure.org	2013-01-06 12:02:09.000000000 +0200
++++ projects/sgauth/configure	2013-01-06 12:02:55.000000000 +0200
+@@ -169,5 +169,3 @@
+ echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
+ echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
+ echo "OWNER=$OWNER" >> $CONFFILE
+-$MAKE $MAKEOPTS
+-
+--- projects/sgconf/configure.org	2013-01-06 12:29:20.000000000 +0200
++++ projects/sgconf/configure	2013-01-06 12:29:36.000000000 +0200
+@@ -188,6 +188,3 @@
+ echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
+ echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
+ echo "OWNER=$OWNER" >> $CONFFILE
+-
+-$MAKE $MAKEOPTS
+-
+--- projects/sgconf_xml/configure.org	2013-01-06 12:30:05.000000000 +0200
++++ projects/sgconf_xml/configure	2013-01-06 12:30:15.000000000 +0200
+@@ -188,6 +188,3 @@
+ echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
+ echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
+ echo "OWNER=$OWNER" >> $CONFFILE
+-
+-$MAKE $MAKEOPTS
+-
+--- projects/stargazer/configure.org	2013-01-06 12:30:57.000000000 +0200
++++ projects/stargazer/configure	2013-01-06 12:31:11.000000000 +0200
+@@ -409,5 +409,3 @@
+ echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
+ 
+ mkdir -p modules
+-
+-$MAKE $MAKEOPTS
+\ No newline at end of file

@@ -21,9 +21,9 @@
  install-bin:
 -	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/$(PROG)
 +ifeq ($(findstring $(DEFS), -DDEBUG),)
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/$(PROG)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
 +else
-+	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/$(PROG)
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
 +endif
  	$(MAKE) -C $(DIR_LIBSRC) install
  
