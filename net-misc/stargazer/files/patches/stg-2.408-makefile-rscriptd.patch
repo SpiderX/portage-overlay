@@ -1,0 +1,13 @@
+--- projects/rscriptd/Makefile.org	2013-01-05 23:43:36.000000000 +0200
++++ projects/rscriptd/Makefile	2013-01-05 23:44:53.000000000 +0200
+@@ -66,8 +66,8 @@
+ 
+ install-data:
+ 	# Install etc
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+-	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
++	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/stargazer
++	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/stargazer/rscriptd.conf
+ 
+ uninstall: uninstall-bin uninstall-data
+ 

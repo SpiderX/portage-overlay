@@ -1,20 +1,13 @@
---- projects/stargazer/inst/var/00-base-00.sql.org	2012-12-29 20:06:11.000000000 +0200
-+++ projects/stargazer/inst/var/00-base-00.sql	2012-12-29 20:06:26.000000000 +0200
-@@ -47,12 +47,12 @@
-  *****************************************************************************
-  */
- 
--/*
-- * CONNECT 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456';
-- * DROP DATABASE;
+--- projects/stargazer/inst/var/00-base-00.sql.org	2013-01-02 16:22:28.000000000 +0200
++++ projects/stargazer/inst/var/00-base-00.sql	2013-01-02 16:22:52.000000000 +0200
+@@ -50,9 +50,9 @@
+ /*
+  * CONNECT 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456';
+  * DROP DATABASE;
 - *
 - * CREATE DATABASE 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456' DEFAULT CHARACTER SET UTF8;
-- */
-+
-+  CONNECT 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456';
-+  DROP DATABASE;
-+ 
-+  CREATE DATABASE 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456' DEFAULT CHARACTER SET UTF8;
+  */
++  CREATE DATABASE 'localhost:/var/lib/stargazer/stargazer.fdb' USER 'stg' PASSWORD '123456' DEFAULT CHARACTER SET UTF8;
 + 
  
   

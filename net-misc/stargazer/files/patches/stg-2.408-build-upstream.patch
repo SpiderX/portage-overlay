@@ -1,0 +1,24 @@
+--- projects/stargazer/build.org	2013-01-05 19:56:52.000000000 +0200
++++ projects/stargazer/build	2013-01-05 19:57:25.000000000 +0200
+@@ -410,9 +410,4 @@
+ 
+ mkdir -p modules
+ 
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    echo -e "\n\n\nDebug build. Type $MAKE explicitly"
+-fi
++$MAKE $MAKEOPTS
+\ No newline at end of file
+--- projects/convertor/build.org	2013-01-05 20:05:59.000000000 +0200
++++ projects/convertor/build	2013-01-05 20:06:10.000000000 +0200
+@@ -16,7 +16,6 @@
+ DIR_MODE=0755
+ OWNER=root
+ VAR_DIR="./inst/var/stargazer"
+-DEFS="-DDEBUG"
+ MAKEOPTS="-j1"
+ CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -I/usr/local/include"
+ LDFLAGS="$LDFLAGS -L/usr/local/lib"

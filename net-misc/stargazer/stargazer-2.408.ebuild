@@ -66,20 +66,19 @@ DEPEND="
 "
 
 src_prepare() {
+	# Patches already in upstream's trunk
+	# Fix dependency on fbclient for module_store_firebird
+	epatch ${FILESDIR}/patches/stg-2.408-makefile-firebird-upstream.patch
+	# Option to keep symbol table on debug and create full path on install for all projects. Install/uninstall targer for convertor
+	epatch ${FILESDIR}/patches/stg-2.408-makefile-upstream.patch
+	# Run make automatically on debug for stargazer. Don't compile convertor always with debug
+	epatch ${FILESDIR}/patches/stg-2.408-build-upstream.patch
+	
 	for project in ${PROJECTS}; do
 		# Rename build script to configure for further econf launch in every projects
 		mv ${S}/projects/${project}/build ${S}/projects/${project}/configure
 		# Change check for debug build
 		sed -i 's/if \[ "$1" = "debug" \]/if \[ "${10}" = "--enable-debug" \]/' ${S}/projects/${project}/configure
-		if (( ( ${project} == "stargazer" ) || ( ${project} == "rscriptd" ) || ( ${project} == "sgauth" ) || ( ${project} == "sgconf_xml" ) )); then
-			# Remove target install-data
-			sed -i 's/install: install-bin install-data/install: install-bin/' ${S}/projects/${project}/Makefile
-			# Remove binary file install target
-			sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/${project}/Makefile
-		fi
-		# Remove binary file install target
-		[ ${project} == "rlm_stg" ] && sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/lib\/$(PROG)//' ${S}/projects/${project}/Makefile
-		[ ${project} == "sgconf" ] && sed -i 's/install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)\/usr\/sbin\/$(PROG)//' ${S}/projects/${project}/Makefile
 	done
 	
 	# Correct working directory, user and group
@@ -98,8 +97,14 @@ src_prepare() {
 	epatch ${FILESDIR}/patches/stg-2.408-stargazer.conf.patch
 	# Correct paths
 	epatch ${FILESDIR}/patches/stg-2.408-rpcconfig.cpp.patch
-	# Fix dependency on fbclient for module_store_firebird
-	epatch ${FILESDIR}/patches/stg-2.408-makefile.patch
+	# Correct target install-data for stargazer
+	epatch ${FILESDIR}/patches/stg-2.408-makefile-stargazer.patch
+	# Correct paths for radius
+	epatch ${FILESDIR}/patches/stg-2.408-makefile-radius.patch
+	# Correct paths for rscriptd
+	epatch ${FILESDIR}/patches/stg-2.408-makefile-rscriptd.patch
+	# Correct paths for sgauth
+	epatch ${FILESDIR}/patches/stg-2.408-makefile-sgauth.patch
 	
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' ${S}/projects/stargazer/configure
@@ -290,11 +295,11 @@ pkg_postinst() {
 		einfo "    For all storage backends:"
 		einfo "      Default admin login - admin, default admin password - 123456."
 		einfo "      Default subscriber login - test, default subscriber password - 123456.\n"
-		if use debug; then
-			ewarn "  This is debug build. You should avoid to use it in production.\n"
-		fi
 		einfo "Don't upgrade to newer version without reading ChangeLog: \n"
 		einfo "  # bzcat /usr/share/doc/stargazer-${PV}/ChangeLog.bz2\n"
+	fi
+	if use debug; then
+		ewarn "  This is debug build. You should avoid to use it in production.\n"
 	fi
 }
 
@@ -337,22 +342,15 @@ src_install() {
 	fi
 	
 	if use convertor; then
-		# Install convertor binary file to /usr/bin
-		dobin ${S}/projects/convertor/convertor
+		# Change current directory
+		cd ${S}/projects/convertor
+		# Call make install
+		emake DESTDIR="${D}" PREFIX="${D}" install
 		# Install files into specified directory
 		insinto /etc/stargazer
 		doins ${S}/projects/convertor/convertor.conf
 		# Install manual page
 		doman ${FILESDIR}/mans/convertor.1
-		# Install files into specified directory
-		insinto /usr/lib/stg
-		doins \
-			${S}/projects/stargazer/plugins/store/files/mod_store_files.so \
-			${S}/projects/stargazer/plugins/store/firebird/mod_store_firebird.so \
-			${S}/projects/stargazer/plugins/store/mysql/mod_store_mysql.so \
-			${S}/projects/stargazer/plugins/store/postgresql/mod_store_postgresql.so
-		# Correct permissions for files
-		fperms -R 0755 /usr/lib/stg/
 	fi
 	
 	if use radius; then
@@ -360,11 +358,6 @@ src_install() {
 		cd ${S}/projects/rlm_stg
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install file into specified directory
-		insinto /usr/lib/freeradius
-		doins rlm_stg.so
-		# Correct permissions for file
-		fperms 0755 /usr/lib/freeradius/rlm_stg.so
 	fi
 	
 	if use rscriptd; then
@@ -372,13 +365,8 @@ src_install() {
 		cd ${S}/projects/rscriptd
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install rscriptd binary file to /usr/sbin
-		dosbin rscriptd
 		# Install Gentoo init script
 		doinitd ${FILESDIR}/rscriptd
-		# Install file into specified directory
-		insinto /etc/stargazer
-		doins rscriptd.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/rscriptd.conf
 		# Install manual page
@@ -390,11 +378,6 @@ src_install() {
 		cd ${S}/projects/sgauth
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install sgauth binary file to /usr/sbin
-		dosbin sgauth
-		# Install file into specified directory
-		insinto /etc/stargazer
-		doins sgauth.conf
 		# Correct permissions for file
 		fperms 0640 /etc/stargazer/sgauth.conf
 		# Install manual page
@@ -406,8 +389,6 @@ src_install() {
 		cd ${S}/projects/sgconf
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install sgconf binary file to /usr/sbin
-		dobin sgconf
 		# Install manual page
 		doman ${FILESDIR}/mans/sgconf.1
 	fi
@@ -417,8 +398,6 @@ src_install() {
 		cd ${S}/projects/sgconf_xml
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
-		# Install sgconf_xml binary file to /usr/bin
-		dobin sgconf_xml
 		# Install manual page
 		doman ${FILESDIR}/mans/sgconf_xml.1
 	fi
@@ -432,8 +411,6 @@ src_install() {
 		dodoc BUGS CHANGES README TODO
 		# Install and rename Gentoo init script
 		newinitd ${S}/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
-		# Install stargazer binary file to /usr/sbin
-		dosbin stargazer
 		# Install manual page
 		doman ${FILESDIR}/mans/stargazer.8
 		# Install files needed for module_store_files
@@ -474,23 +451,6 @@ src_install() {
 			# Correct permissions for file
 			fperms 0640 /etc/stargazer/subnets
 		fi
-		# Install files into specified directory
-		insinto /etc/stargazer
-		doins \
-			${S}/projects/stargazer/inst/linux/etc/stargazer/OnChange \
-			${S}/projects/stargazer/inst/linux/etc/stargazer/OnConnect \
-			${S}/projects/stargazer/inst/linux/etc/stargazer/OnDisconnect \
-			${S}/projects/stargazer/inst/linux/etc/stargazer/OnUserAdd \
-			${S}/projects/stargazer/inst/linux/etc/stargazer/OnUserDel \
-			${S}/projects/stargazer/inst/linux/etc/stargazer/rules \
-			${S}/projects/stargazer/inst/linux/etc/stargazer/stargazer.conf
-		# Correct permissions for files
-		fperms 0755 \
-			/etc/stargazer/OnChange \
-			/etc/stargazer/OnConnect \
-			/etc/stargazer/OnDisconnect \
-			/etc/stargazer/OnUserAdd \
-			/etc/stargazer/OnUserDel
 		# Correct permissions for files
 		fperms 0640 \
 			/etc/stargazer/rules \
