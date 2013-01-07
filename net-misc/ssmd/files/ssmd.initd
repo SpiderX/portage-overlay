@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+PID="/run/ssmd.pid"
+EXEC="/usr/sbin/ssmd"
+
+depend() {
+        need net
+        provide ssmd
+}
+
+start() {
+        ebegin "Starting ssmd"
+        start-stop-daemon --start --quiet --pidfile ${PID} --exec ${EXEC} -- ${OPTS} ${CONFIG}
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping ssmd"
+        start-stop-daemon --stop --quiet --pidfile ${PID}
+        rm -f ${PID}
+        eend $?
+}
