@@ -14,7 +14,7 @@
 		This ebuild allows you to compile it yourself depending of your needs.
 	</longdescription>
 	<use>
-		<flag name='convertor'>Enable build of utility to convert Stargazer data between storage backends.</flag>
+		<flag name='sgconvertor'>Enable build of utility to convert Stargazer data between storage backends.</flag>
 		<flag name='radius'>Enable build of FreeRADIUS module for data access via Stargazer.</flag>
 		<flag name='rscriptd'>Enable build of remote script execute daemon for Stargazer, which run scripts when receive special signal from Stargazer.</flag>
 		<flag name='sgauth'>Enable build of command-line utility for authorization in Stargazer.</flag>

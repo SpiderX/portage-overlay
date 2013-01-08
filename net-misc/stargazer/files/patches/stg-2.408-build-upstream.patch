@@ -1,6 +1,169 @@
---- projects/stargazer/build.org	2013-01-05 19:56:52.000000000 +0200
-+++ projects/stargazer/build	2013-01-05 19:57:25.000000000 +0200
-@@ -410,9 +410,4 @@
+--- projects/rlm_stg/build.org	2013-01-08 20:09:37.000000000 +0200
++++ projects/rlm_stg/build	2013-01-08 20:09:51.000000000 +0200
+@@ -16,18 +16,11 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
++    DEFS="-DDEBUG"
+     MAKEOPTS="-j1"
+-else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-    else
+-        MAKEOPTS="-j1"
+-    fi
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/rscriptd/build.org	2013-01-08 20:11:05.000000000 +0200
++++ projects/rscriptd/build	2013-01-08 20:11:16.000000000 +0200
+@@ -16,18 +16,11 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
++    DEFS="-DDEBUG"
+     MAKEOPTS="-j1"
+-else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-    else
+-        MAKEOPTS="-j1"
+-    fi
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgauth/build.org	2013-01-08 20:12:02.000000000 +0200
++++ projects/sgauth/build	2013-01-08 20:12:14.000000000 +0200
+@@ -16,18 +16,11 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
++    DEFS="-DDEBUG"
+     MAKEOPTS="-j1"
+-else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-    else
+-        MAKEOPTS="-j1"
+-    fi
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgconf/build.org	2013-01-08 20:12:43.000000000 +0200
++++ projects/sgconf/build	2013-01-08 20:12:54.000000000 +0200
+@@ -16,18 +16,11 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
++    DEFS="-DDEBUG"
+     MAKEOPTS="-j1"
+-else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-    else
+-        MAKEOPTS="-j1"
+-    fi
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgconf_xml/build.org	2013-01-08 20:13:24.000000000 +0200
++++ projects/sgconf_xml/build	2013-01-08 20:13:34.000000000 +0200
+@@ -16,18 +16,11 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
++    DEFS="-DDEBUG"
+     MAKEOPTS="-j1"
+-else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-    else
+-        MAKEOPTS="-j1"
+-    fi
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgconvertor/build.org	2013-01-08 20:14:04.000000000 +0200
++++ projects/sgconvertor/build	2013-01-08 20:14:29.000000000 +0200
+@@ -16,8 +16,14 @@
+ DIR_MODE=0755
+ OWNER=root
+ VAR_DIR="./inst/var/stargazer"
+-DEFS="-DDEBUG"
+-MAKEOPTS="-j1"
++
++if [ "$1" = "debug" ]
++then
++    DEFS="-DDEBUG"
++    MAKEOPTS="-j1"
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++fi
++
+ CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -I/usr/local/include"
+ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+ 
+--- projects/stargazer/build.org	2013-01-08 20:14:56.000000000 +0200
++++ projects/stargazer/build	2013-01-08 20:15:22.000000000 +0200
+@@ -35,20 +35,11 @@
+ XMLRPC_FEATURES="c++2 abyss-server"
+ 
+ 
+-if [ -z "$1" ]
++if [ "$1" = "debug" ]
+ then
+-    DEFS="$DEFS -DNDEBUG"
++    DEFS="$DEFS -DDEBUG"
+     MAKEOPTS="-j1"
+-else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="$DEFS -DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-    else
+-        DEFS="$DEFS -DNDEBUG"
+-        MAKEOPTS="-j1"
+-    fi
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+@@ -410,9 +401,4 @@
  
  mkdir -p modules
  
@@ -11,14 +174,3 @@
 -    echo -e "\n\n\nDebug build. Type $MAKE explicitly"
 -fi
 +$MAKE $MAKEOPTS
-\ No newline at end of file
---- projects/convertor/build.org	2013-01-05 20:05:59.000000000 +0200
-+++ projects/convertor/build	2013-01-05 20:06:10.000000000 +0200
-@@ -16,7 +16,6 @@
- DIR_MODE=0755
- OWNER=root
- VAR_DIR="./inst/var/stargazer"
--DEFS="-DDEBUG"
- MAKEOPTS="-j1"
- CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -I/usr/local/include"
- LDFLAGS="$LDFLAGS -L/usr/local/lib"

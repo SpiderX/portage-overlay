@@ -1,5 +1,5 @@
---- projects/convertor/configure.org	2013-01-06 11:59:07.000000000 +0200
-+++ projects/convertor/configure	2013-01-06 11:59:28.000000000 +0200
+--- projects/sgconvertor/configure.org	2013-01-06 11:59:07.000000000 +0200
++++ projects/sgconvertor/configure	2013-01-06 11:59:28.000000000 +0200
 @@ -283,6 +283,3 @@
  echo "VAR_DIR=$VAR_DIR" >> $CONFFILE
  
@@ -50,12 +50,3 @@
 -
 -$MAKE $MAKEOPTS
 -
---- projects/stargazer/configure.org	2013-01-06 12:30:57.000000000 +0200
-+++ projects/stargazer/configure	2013-01-06 12:31:11.000000000 +0200
-@@ -409,5 +409,3 @@
- echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
- 
- mkdir -p modules
--
--$MAKE $MAKEOPTS
-\ No newline at end of file

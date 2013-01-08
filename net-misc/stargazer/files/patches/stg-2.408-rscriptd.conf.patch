@@ -1,11 +1,36 @@
---- projects/rscriptd/rscriptd.conf.org	2012-12-18 22:02:28.717206079 +0200
-+++ projects/rscriptd/rscriptd.conf	2012-12-18 22:06:09.495196235 +0200
-@@ -1,6 +1,6 @@
--LogFileName=/var/log/rscriptd.log
-+LogFileName=/var/log/stargazer/rscriptd.log
- ExecutersNum=1
--ConfigDir=/etc/rscriptd
-+ConfigDir=/etc/stargazer
- Password=123456
- Port=9999
- UserTimeout=60
+--- projects/rscriptd/rscriptd.conf.org	2013-01-08 18:19:34.000000000 +0200
++++ projects/rscriptd/rscriptd.conf	2013-01-08 18:20:52.000000000 +0200
+@@ -6,7 +6,7 @@
+ # Parameter: required
+ # Value: file path
+ # Default: /var/log/rscriptd.log
+-LogFileName = /var/log/rscriptd.log
++LogFileName = /var/log/stargazer/rscriptd.log
+ 
+ # Amount of rscriptd-exec processes.
+ # These processes are responsible for the execution of scripts 
+@@ -22,7 +22,7 @@
+ # Parameter: required
+ # Value: directory path
+ # Default: /etc/rscriptd
+-ConfigDir = /etc/rscriptd
++ConfigDir = /etc/stargazer
+ 
+ # Defines password for the encryption exchange between
+ # Stargazer server and rscriptd.
+@@ -49,12 +49,12 @@
+ # Parameter: required
+ # Value: file path
+ # Default: /etc/rscriptd/OnConnect
+-ScriptOnConnect = /etc/rscriptd/OnConnect
++ScriptOnConnect = /etc/stargazer/OnConnect
+ 
+ # Defines file which runs when user loses access
+ # Parameter: required
+ # Value: file path
+ # Default: /etc/rscriptd/OnDisconnect
+-ScriptOnDisconnect = /etc/rscriptd/OnDisconnect
++ScriptOnDisconnect = /etc/stargazer/OnDisconnect
+ 
+ ################################################################################
+\ No newline at end of file

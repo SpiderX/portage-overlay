@@ -1,21 +1,6 @@
---- projects/rscriptd/Makefile.org	2012-02-09 12:26:59.000000000 +0200
-+++ projects/rscriptd/Makefile	2013-01-05 19:33:18.000000000 +0200
-@@ -57,7 +57,11 @@
- install: install-bin install-data
- 
- install-bin:
--	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+ifeq ($(findstring $(DEFS), -DDEBUG),)
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+else
-+	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+endif
- 	$(MAKE) -C $(DIR_LIBSRC) install
- 
- install-data:
---- projects/rlm_stg/Makefile.org	2012-02-09 12:26:58.000000000 +0200
-+++ projects/rlm_stg/Makefile	2013-01-05 19:39:10.000000000 +0200
-@@ -56,7 +56,11 @@
+--- projects/rlm_stg/Makefile.org	2013-01-08 17:29:07.000000000 +0200
++++ projects/rlm_stg/Makefile	2013-01-08 17:30:29.000000000 +0200
+@@ -56,13 +56,17 @@
  install: install-bin
  
  install-bin:
@@ -28,8 +13,51 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  uninstall: uninstall-bin
---- projects/sgauth/Makefile.org	2013-01-05 19:48:03.000000000 +0200
-+++ projects/sgauth/Makefile	2013-01-05 19:49:54.000000000 +0200
+ 
+ uninstall-bin:
+-	rm -f $(PREFIX)/usr/lib/$(PROG)
++	rm -f $(PREFIX)/usr/lib/freeradius/$(PROG)
+ 
+ ifneq ($(MAKECMDGOALS),distclean)
+ ifneq ($(MAKECMDGOALS),clean)
+--- projects/rscriptd/Makefile.org	2013-01-08 17:35:01.000000000 +0200
++++ projects/rscriptd/Makefile	2013-01-08 17:38:15.000000000 +0200
+@@ -57,13 +57,17 @@
+ install: install-bin install-data
+ 
+ install-bin:
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(findstring $(DEFS), -DDEBUG),)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ install-data:
+-	# Install etc
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+-	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
++	install -D -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
++	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnConnect $(PREFIX)/etc/rscriptd/
++	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnDisconnect $(PREFIX)/etc/rscriptd/
+ 
+ uninstall: uninstall-bin uninstall-data
+ 
+@@ -71,9 +75,8 @@
+ 	rm -f $(PREFIX)/usr/sbin/$(PROG)
+ 
+ uninstall-data:
+-	# Uninstall etc
+-	rm -f $(PREFIX)/etc/rscriptd/rscriptd.conf
+-
++	rm -f $(PREFIX)/etc/rscriptd/OnConnect
++	rm -f $(PREFIX)/etc/rscriptd/OnDisconnect
+ 
+ ifneq ($(MAKECMDGOALS),distclean)
+ ifneq ($(MAKECMDGOALS),clean)
+--- projects/sgauth/Makefile.org	2013-01-08 17:39:30.000000000 +0200
++++ projects/sgauth/Makefile	2013-01-08 17:41:06.000000000 +0200
 @@ -58,7 +58,11 @@
  install: install-bin install-data
  
@@ -43,9 +71,9 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  install-data:
---- projects/sgconf/Makefile.org	2013-01-05 19:50:33.000000000 +0200
-+++ projects/sgconf/Makefile	2013-01-05 19:51:15.000000000 +0200
-@@ -66,7 +66,11 @@
+--- projects/sgconf/Makefile.org	2013-01-08 17:41:41.000000000 +0200
++++ projects/sgconf/Makefile	2013-01-08 17:42:41.000000000 +0200
+@@ -66,13 +66,17 @@
  install: install-bin
  
  install-bin:
@@ -58,9 +86,16 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  uninstall: uninstall-bin
---- projects/sgconf_xml/Makefile.org	2013-01-05 19:52:02.000000000 +0200
-+++ projects/sgconf_xml/Makefile	2013-01-05 19:52:38.000000000 +0200
-@@ -66,7 +66,11 @@
+ 
+ uninstall-bin:
+-	rm -f $(PREFIX)/usr/sbin/$(PROG)
++	rm -f $(PREFIX)/usr/bin/$(PROG)
+ 
+ 
+ ifneq ($(MAKECMDGOALS),distclean)
+--- projects/sgconf_xml/Makefile.org	2013-01-08 17:43:11.000000000 +0200
++++ projects/sgconf_xml/Makefile	2013-01-08 17:43:59.000000000 +0200
+@@ -66,13 +66,17 @@
  install: install-bin install-data
  
  install-bin:
@@ -73,24 +108,16 @@
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  uninstall: uninstall-bin uninstall-data
---- projects/stargazer/Makefile.org	2013-01-05 19:53:23.000000000 +0200
-+++ projects/stargazer/Makefile	2013-01-05 19:54:28.000000000 +0200
-@@ -77,7 +77,11 @@
- install: install-bin install-data
  
- install-bin: $(PROG)
--	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+ifeq ($(findstring $(DEFS), -DDEBUG),)
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+else
-+	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+endif
- 	$(MAKE) -C $(DIR_INCLUDE) install
- 	$(MAKE) -C $(DIR_LIBSRC) install
- 	$(MAKE) -C $(DIR_PLUGINS) install
---- projects/convertor/Makefile.org	2013-01-05 20:00:32.000000000 +0200
-+++ projects/convertor/Makefile	2013-01-05 20:02:51.000000000 +0200
-@@ -58,6 +58,21 @@
+ uninstall-bin:
+-	rm -f $(PREFIX)/usr/sbin/$(PROG)
++	rm -f $(PREFIX)/usr/bin/$(PROG)
+ 
+ 
+ ifneq ($(MAKECMDGOALS),distclean)
+--- projects/sgconvertor/Makefile.org	2013-01-08 17:44:29.000000000 +0200
++++ projects/sgconvertor/Makefile	2013-01-08 17:45:59.000000000 +0200
+@@ -58,6 +58,22 @@
  distclean: clean
  	rm -f ../../Makefile.conf
  
@@ -109,6 +136,22 @@
 +uninstall-bin:
 +	rm -f $(PREFIX)/usr/bin/$(PROG)
 +
++
  ifneq ($(MAKECMDGOALS),distclean)
  ifneq ($(MAKECMDGOALS),clean)
  ifneq ($(MAKECMDGOALS),uninstall)
+--- projects/stargazer/Makefile.org	2013-01-08 17:46:55.000000000 +0200
++++ projects/stargazer/Makefile	2013-01-08 17:47:19.000000000 +0200
+@@ -77,7 +77,11 @@
+ install: install-bin install-data
+ 
+ install-bin: $(PROG)
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(findstring $(DEFS), -DDEBUG),)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_INCLUDE) install
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 	$(MAKE) -C $(DIR_PLUGINS) install
