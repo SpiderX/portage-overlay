@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI=5
 
 inherit eutils linux-info
 
@@ -83,7 +83,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-sgauth.conf-upstream.patch
 	# Standardization of 'On-scripts'
 	epatch "${FILESDIR}"/patches/stg-2.408-on-upstream.patch
-	
+
 	for project in ${PROJECTS}; do
 		# Rename build script to configure for further econf launch in every projects
 		mv "${S}"/projects/${project}/build "${S}"/projects/${project}/configure
@@ -140,7 +140,7 @@ src_prepare() {
 	use module_store_mysql		&& sed -i '11d;s/need net/need net mysql/' "${S}"/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
 	use module_store_postgres	&& sed -i '11d;s/need net/need net postgresql/' "${S}"/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
 	# Check for IPQ subsystem availability
-	( use module_capture_ipq && kernel_is ge 5 4 ) && die "IPQ subsystem is gone since Linux kernel 3.5. You can't compile module_capture_ipq with your current kernel."
+	( use module_capture_ipq && kernel_is ge 3 5 ) && die "IPQ subsystem is gone since Linux kernel 3.5. You can't compile module_capture_ipq with your current kernel."
 }
 
 src_configure() {
