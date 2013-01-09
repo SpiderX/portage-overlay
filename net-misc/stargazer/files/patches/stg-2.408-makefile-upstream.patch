@@ -20,42 +20,6 @@
  
  ifneq ($(MAKECMDGOALS),distclean)
  ifneq ($(MAKECMDGOALS),clean)
---- projects/rscriptd/Makefile.org	2013-01-08 17:35:01.000000000 +0200
-+++ projects/rscriptd/Makefile	2013-01-08 17:38:15.000000000 +0200
-@@ -57,13 +57,17 @@
- install: install-bin install-data
- 
- install-bin:
--	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+ifeq ($(findstring $(DEFS), -DDEBUG),)
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+else
-+	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
-+endif
- 	$(MAKE) -C $(DIR_LIBSRC) install
- 
- install-data:
--	# Install etc
--	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
--	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
-+	install -D -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnConnect $(PREFIX)/etc/rscriptd/
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnDisconnect $(PREFIX)/etc/rscriptd/
- 
- uninstall: uninstall-bin uninstall-data
- 
-@@ -71,9 +75,8 @@
- 	rm -f $(PREFIX)/usr/sbin/$(PROG)
- 
- uninstall-data:
--	# Uninstall etc
--	rm -f $(PREFIX)/etc/rscriptd/rscriptd.conf
--
-+	rm -f $(PREFIX)/etc/rscriptd/OnConnect
-+	rm -f $(PREFIX)/etc/rscriptd/OnDisconnect
- 
- ifneq ($(MAKECMDGOALS),distclean)
- ifneq ($(MAKECMDGOALS),clean)
 --- projects/sgauth/Makefile.org	2013-01-08 17:39:30.000000000 +0200
 +++ projects/sgauth/Makefile	2013-01-08 17:41:06.000000000 +0200
 @@ -58,7 +58,11 @@
@@ -155,3 +119,39 @@
  	$(MAKE) -C $(DIR_INCLUDE) install
  	$(MAKE) -C $(DIR_LIBSRC) install
  	$(MAKE) -C $(DIR_PLUGINS) install
+--- projects/rscriptd/Makefile.org	2013-01-09 11:57:50.000000000 +0200
++++ projects/rscriptd/Makefile	2013-01-09 12:00:41.000000000 +0200
+@@ -57,13 +57,17 @@
+ install: install-bin install-data
+ 
+ install-bin:
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(findstring $(DEFS), -DDEBUG),)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ install-data:
+-	# Install etc
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+-	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
++	install -D -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
++	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnConnect $(PREFIX)/etc/rscriptd/
++	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnDisconnect $(PREFIX)/etc/rscriptd/
+ 
+ uninstall: uninstall-bin uninstall-data
+ 
+@@ -71,9 +75,9 @@
+ 	rm -f $(PREFIX)/usr/sbin/$(PROG)
+ 
+ uninstall-data:
+-	# Uninstall etc
+ 	rm -f $(PREFIX)/etc/rscriptd/rscriptd.conf
+-
++	rm -f $(PREFIX)/etc/rscriptd/OnConnect
++	rm -f $(PREFIX)/etc/rscriptd/OnDisconnect
+ 
+ ifneq ($(MAKECMDGOALS),distclean)
+ ifneq ($(MAKECMDGOALS),clean)

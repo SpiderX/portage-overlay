@@ -8,8 +8,8 @@
 -	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnConnect $(PREFIX)/etc/rscriptd/
 -	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnDisconnect $(PREFIX)/etc/rscriptd/
 +	install -D -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/stargazer/rscriptd.conf
-+	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnConnect $(PREFIX)/etc/stargazer/
-+	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnDisconnect $(PREFIX)/etc/stargazer/
++	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnConnect $(PREFIX)/etc/stargazer/
++	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnDisconnect $(PREFIX)/etc/stargazer/
  
  uninstall: uninstall-bin uninstall-data
  
