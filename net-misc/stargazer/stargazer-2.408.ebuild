@@ -77,9 +77,13 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-upstream.patch
 	# Run make automatically on debug for stargazer. Don't compile sgconvertor always with debug. Remove MAKEOPTS=-j1.
 	epatch "${FILESDIR}"/patches/stg-2.408-build-upstream.patch
-	# Correct config for rscriptd
+	# Rewrite config for rscriptd
 	epatch "${FILESDIR}"/patches/stg-2.408-rscriptd.conf-upstream.patch
-
+	# Rewrite config for sgauth
+	epatch "${FILESDIR}"/patches/stg-2.408-sgauth.conf-upstream.patch
+	# Standardization of 'On-scripts'
+	epatch "${FILESDIR}"/patches/stg-2.408-on-upstream.patch
+	
 	for project in ${PROJECTS}; do
 		# Rename build script to configure for further econf launch in every projects
 		mv "${S}"/projects/${project}/build "${S}"/projects/${project}/configure
@@ -109,7 +113,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-rscriptd.patch
 	# Correct paths for sgauth
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-sgauth.patch
-	# Remove make from script (for keeping symbol table if needed)
+	# Remove make from script (for keeping symbol table if needed), always add variables to Makefile.conf
 	epatch "${FILESDIR}"/patches/stg-2.408-build.patch
 
 	# Define which module to compile
