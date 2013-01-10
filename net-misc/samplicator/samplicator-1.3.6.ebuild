@@ -11,7 +11,7 @@ HOMEPAGE="http://samplicator.googlecode.com/"
 SRC_URI="http://samplicator.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 MERGE_TYPE="source"
 
 pkg_setup() {
