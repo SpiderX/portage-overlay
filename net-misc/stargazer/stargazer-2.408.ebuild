@@ -309,8 +309,8 @@ pkg_postinst() {
 		einfo "    For all storage backends:"
 		einfo "      Default admin login - admin, default admin password - 123456."
 		einfo "      Default subscriber login - test, default subscriber password - 123456.\n"
-		einfo "Don't upgrade to newer version without reading ChangeLog: \n"
-		einfo "  # bzcat /usr/share/doc/stargazer-${PV}/ChangeLog.bz2\n"
+		einfo "Don't upgrade to newer version without reading ChangeLog,"
+		einfo "it can be found in /usr/share/doc/${PF}\n"
 	fi
 	if use debug; then
 		ewarn "  This is debug build. You should avoid to use it in production.\n"

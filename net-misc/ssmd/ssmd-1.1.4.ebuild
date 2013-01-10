@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI=5
 
 inherit eutils
 
 DESCRIPTION="SNMP Switch Management Daemon"
 HOMEPAGE="https://gitorious.org/ssmd"
 SRC_URI="https://gitorious.org/${PN}/${PN}/archive-tarball/${PV} -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${PN}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug"
+S="${WORKDIR}/${PN}-${PN}"
 MERGE_TYPE="source"
 
 DEPEND="

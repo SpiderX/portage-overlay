@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI=5
 
 inherit eutils
 
@@ -10,10 +10,10 @@ DESCRIPTION="Receives UDP datagrams and redistributes them to a set of receivers
 HOMEPAGE="http://samplicator.googlecode.com/"
 MY_P=${P/_/-}
 SRC_URI="http://samplicator.googlecode.com/files/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/${MY_P}"
 MERGE_TYPE="source"
 
 pkg_setup() {
@@ -33,9 +33,9 @@ src_install() {
 	# Install changelog
 	dodoc AUTHORS ChangeLog INSTALL NEWS README
 	# Install Gentoo init script
-	newinitd ${FILESDIR}/samplicator.initd samplicator
+	newinitd "${FILESDIR}"/samplicator.initd samplicator
 	# Install Gentoo init script config
-	newconfd ${FILESDIR}/samplicator.conf samplicator
+	newconfd "${FILESDIR}"/samplicator.conf samplicator
 }
 
 pkg_postinst() {

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI=5
 
 inherit eutils
 
@@ -31,9 +31,9 @@ src_install() {
 	# Install changelog
 	dodoc AUTHORS ChangeLog INSTALL NEWS README
 	# Install Gentoo init script
-	newinitd ${FILESDIR}/samplicator.initd samplicator
+	newinitd "${FILESDIR}"/samplicator.initd samplicator
 	# Install Gentoo init script config
-	newconfd ${FILESDIR}/samplicator.conf samplicator
+	newconfd "${FILESDIR}"/samplicator.conf samplicator
 }
 
 pkg_postinst() {
