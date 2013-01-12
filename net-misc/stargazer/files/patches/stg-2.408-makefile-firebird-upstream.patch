@@ -11,21 +11,3 @@
 +LDFLAGS += $(FB_LDFLAGS)
 +
  include ../../Makefile.in
- 
---- projects/stargazer/plugins/Makefile.in.org	2013-01-04 23:07:57.000000000 +0200
-+++ projects/stargazer/plugins/Makefile.in	2013-01-04 23:08:59.000000000 +0200
-@@ -15,12 +15,12 @@
- 
- CXXFLAGS += -fPIC $(STGLIBS_INCS)
- CFLAGS += -fPIC $(STGLIBS_INCS)
--LDFLAGS += -shared -Wl,-rpath,$(PREFIX)/usr/lib/stg $(STGLIBS_LIBS)
-+LDFLAGS += -shared -Wl,-rpath,$(PREFIX)/usr/lib/stg
- 
- all: $(PROG)
- 
- $(PROG): $(OBJS)
--	$(CXX) $^ $(LDFLAGS) $(LIBS) -o $(PROG)
-+	$(CXX) $^ $(STGLIBS_LIBS) $(LIBS) $(LDFLAGS) -o $(PROG)
- 	$(LN) -fs "`pwd`/$(PROG)" $(DIR_MOD)/$(PROG)
- 
- clean:

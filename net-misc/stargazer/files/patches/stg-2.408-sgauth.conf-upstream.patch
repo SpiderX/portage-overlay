@@ -14,7 +14,7 @@
 +ServerName = 192.168.1.2
 +
 +# Port on which Stargazer interacts with sgauth
-+# Parameter: required
++# Parameter: optional
 +# Value: 1 ... 65535
 +# Default: 5555
 +ServerPort = 5555
@@ -26,7 +26,7 @@
 +Login = test
 +
 +# Port on which sgauth interacts with Stargazer
-+# Parameter: required
++# Parameter: optional
 +# Value: 1 ... 65535
 +# Default: 0
 +LocalPort = 12345

@@ -14,10 +14,10 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~sparc"
-IUSE="sgconvertor radius rscriptd sgauth sgconf sgconf_xml stargazer debug doc examples static-libs"
+IUSE="sgconv radius rscriptd sgauth sgconf sgconf_xml stargazer debug doc examples static-libs"
 MERGE_TYPE="source"
 
-PROJECTS="sgconvertor rlm_stg rscriptd sgauth sgconf sgconf_xml stargazer"
+PROJECTS="sgconv rlm_stg rscriptd sgauth sgconf sgconf_xml stargazer"
 STG_MODULES_AUTH="always_online internet_access freeradius"
 STG_MODULES_CAPTURE="ipq ether netflow"
 STG_MODULES_CONFIG="sgconfig rpcconfig"
@@ -67,15 +67,15 @@ DEPEND="
 
 src_prepare() {
 	# Patches already in upstream's trunk
-	# Rename convertor to sgconvertor to avoid possible file name collisions
-	mv "${S}"/projects/convertor/ "${S}"/projects/sgconvertor/
-	mv "${S}"/projects/sgconvertor/convertor.conf "${S}"/projects/sgconvertor/sgconvertor.conf
-	epatch "${FILESDIR}"/patches/stg-2.408-sgconvertor-upstream.patch
+	# Rename convertor to sgconv to avoid possible file name collisions
+	mv "${S}"/projects/convertor/ "${S}"/projects/sgconv/
+	mv "${S}"/projects/sgconv/convertor.conf "${S}"/projects/sgconv/sgconv.conf
+	epatch "${FILESDIR}"/patches/stg-2.408-sgconv-upstream.patch
 	# Fix dependency on fbclient for module_store_firebird
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-firebird-upstream.patch
-	# Option to keep symbol table on debug and create full path on install for all projects. Install/uninstall targer for sgconvertor
-	epatch "${FILESDIR}"/patches/stg-2.408-makefile-upstream.patch
-	# Run make automatically on debug for stargazer. Don't compile sgconvertor always with debug. Remove MAKEOPTS=-j1.
+	# Debug support. Install radius lib to /usr/lib/freeradius
+	epatch "${FILESDIR}"/patches/stg-2.408-makefile-build-upstream.patch
+	# Don't compile sgconv always with debug. Remove MAKEOPTS=-j1
 	epatch "${FILESDIR}"/patches/stg-2.408-build-upstream.patch
 	# Rewrite config for rscriptd
 	epatch "${FILESDIR}"/patches/stg-2.408-rscriptd.conf-upstream.patch
@@ -92,7 +92,7 @@ src_prepare() {
 	done
 
 	# Correct working directory, user and group
-	epatch "${FILESDIR}"/patches/stg-2.408-sgconvertor.conf.patch
+	epatch "${FILESDIR}"/patches/stg-2.408-sgconv.conf.patch
 	# Correct path for files and directories
 	epatch "${FILESDIR}"/patches/stg-2.408-rscriptd.conf.patch
 	# Correct working directory, user and group
@@ -113,7 +113,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-rscriptd.patch
 	# Correct paths for sgauth
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-sgauth.patch
-	# Remove make from script (for keeping symbol table if needed), always add variables to Makefile.conf
+	# Remove make from script (for keeping symbol), always add variables to Makefile.conf for all projects. 
 	epatch "${FILESDIR}"/patches/stg-2.408-build.patch
 
 	# Define which module to compile
@@ -163,7 +163,7 @@ src_configure() {
 
 pkg_setup() {
 	# Add user and group to system only when necessary
-	if use sgconvertor || use rscriptd || use sgauth || use stargazer ; then
+	if use sgconv || use rscriptd || use sgauth || use stargazer ; then
 		# Add stg group to system
 		enewgroup stg
 		# Add stg user to system (no home directory specified, because otherwise it will be result in stg:root ownership on it)
@@ -172,10 +172,10 @@ pkg_setup() {
 }
 
 pkg_postinst() {
-	if use sgconvertor; then
-		einfo "Sgconvertor:"
+	if use sgconv; then
+		einfo "Sgconv:"
 		einfo "----------"
-		einfo "    For further use of sgconvertor please edit /etc/stargazer/sgconvertor.conf depending on your needs."
+		einfo "    For further use of sgconv please edit /etc/stargazer/sgconv.conf depending on your needs."
 	fi
 
 	if use radius; then
@@ -355,16 +355,16 @@ src_install() {
 		doins "${S}"/doc/xmlrpc.php
 	fi
 
-	if use sgconvertor; then
+	if use sgconv; then
 		# Change current directory
-		cd "${S}"/projects/sgconvertor
+		cd "${S}"/projects/sgconv
 		# Call make install
 		emake DESTDIR="${D}" PREFIX="${D}" install
 		# Install files into specified directory
 		insinto /etc/stargazer
-		doins "${S}"/projects/sgconvertor/sgconvertor.conf
+		doins "${S}"/projects/sgconv/sgconv.conf
 		# Install manual page
-		doman "${FILESDIR}"/mans/sgconvertor.1
+		doman "${FILESDIR}"/mans/sgconv.1
 	fi
 
 	if use radius; then
@@ -505,7 +505,7 @@ src_install() {
 		use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf	/etc/stargazer/conf-enabled.d/store_postgresql.conf
 	fi
 	# Correct user and group for files and directories
-	( use sgconvertor || use rscriptd || use sgauth || use stargazer ) && fowners -R stg:stg /etc/stargazer
+	( use sgconv || use rscriptd || use sgauth || use stargazer ) && fowners -R stg:stg /etc/stargazer
 	# Remove static libs if USE flag is not selected
 	use static-libs || find "${D}" -name '*.a' -exec rm -f {} +
 }

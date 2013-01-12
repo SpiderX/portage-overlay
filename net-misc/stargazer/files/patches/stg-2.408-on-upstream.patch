@@ -37,7 +37,7 @@
 -#успешно прошел авторизацию на сервере. Задача скрипта - перестроить 
 -#файрвол так, что бы пользователь получил доступ в интернет
 +# About: This script is called when the user successfully authenticated on the server.
-+# Common Task: Rebuild firewall that the user get access to the Internet.
++# Common Task: Rebuild firewall to allow user to access the Internet.
 +# Priority: required
  
 -# Login
@@ -77,7 +77,7 @@
 -# Задача скрипта подобна задаче скрипта OnConnect - перестроить 
 -# файрвол так, что бы пользователю закрыть доступ в интернет
 +# About: This script is called when the user wants to disconnect or authorization timeout has passed.
-+# Common task: Rebuild firewall that the user don't get access to the Internet.
++# Common task: Rebuild firewall to disallow user to access to the Internet.
 +# Priority: required
  
 -# Login
@@ -119,9 +119,9 @@
 -
 -#echo "added user $login" >> /var/stargazer/add_del.log
 -
-+# About: This script is called when the user is added to Stargazer.
-+# Common task: Automate typical actions at addition of user to network,
-+#              such as create mail, IM account.
++# About: This script is called when the user is added to the Stargazer.
++# Common task: Automate typical actions on adding user to the network,
++#              such as creating email or IM account.
 +# Priority: optional
  
 +# User login
@@ -137,9 +137,9 @@
  
 -# Login
 -login=$1
-+# About: This script is called when the user is removed from Stargazer.
-+# Common task: Automate typical actions for deletion of user in network,
-+#              such as remove mail, IM account.
++# About: This script is called when the user is removed from the Stargazer.
++# Common task: Automate typical actions on removing user from the network,
++#              such as removing email or IM account.
 +# Priority: optional
  
 -#echo "deleted user $login" >> /var/stargazer/add_del.log
