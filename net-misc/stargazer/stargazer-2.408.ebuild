@@ -83,6 +83,10 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-sgauth.conf-upstream.patch
 	# Standardization of 'On-scripts'
 	epatch "${FILESDIR}"/patches/stg-2.408-on-upstream.patch
+	# FreeBSD install directory
+	epatch "${FILESDIR}"/patches/stg-2.408-radius-upstream.patch
+	# Install demo scripts for rscriptd
+	epatch "${FILESDIR}"/patches/stg-2.408-rscriptd-upstream.patch
 
 	for project in ${PROJECTS}; do
 		# Rename build script to configure for further econf launch in every projects
@@ -113,7 +117,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-rscriptd.patch
 	# Correct paths for sgauth
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile-sgauth.patch
-	# Remove make from script (for keeping symbol), always add variables to Makefile.conf for all projects. 
+	# Remove make from script (for keeping symbol), always add variable to Makefile.conf for all projects.
 	epatch "${FILESDIR}"/patches/stg-2.408-build.patch
 
 	# Define which module to compile

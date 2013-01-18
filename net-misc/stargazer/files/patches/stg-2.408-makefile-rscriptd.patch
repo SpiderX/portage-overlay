@@ -1,22 +1,11 @@
---- projects/rscriptd/Makefile.org	2013-01-12 15:49:59.000000000 +0200
-+++ projects/rscriptd/Makefile	2013-01-12 15:51:10.000000000 +0200
-@@ -65,14 +65,16 @@
- 	$(MAKE) -C $(DIR_LIBSRC) install
- 
+--- projects/rscriptd/Makefile.org	2013-01-18 18:30:04.000000000 +0200
++++ projects/rscriptd/Makefile	2013-01-18 18:31:40.000000000 +0200
+@@ -67,7 +67,7 @@
  install-data:
--	# Install etc
--	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+ 	# Install etc
+ 	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
 -	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
-+	install -D -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/stargazer/rscriptd.conf
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnConnect $(PREFIX)/etc/stargazer/
-+	install -D -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR_R)/OnDisconnect $(PREFIX)/etc/stargazer/
- 
- uninstall: uninstall-bin uninstall-data
- 
- uninstall-bin:
- 	rm -f $(PREFIX)/usr/sbin/$(PROG)
-+	rm -f $(PREFIX)/etc/stargazer/OnConnect
-+	rm -f $(PREFIX)/etc/stargazer/OnDisconnect
- 
- uninstall-data:
- 	# Uninstall etc
++	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/stargazer/rscriptd.conf
+ ifeq ($(OS), linux)
+ 	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnConnect $(PREFIX)/etc/rscriptd/
+ 	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnDisconnect $(PREFIX)/etc/rscriptd/

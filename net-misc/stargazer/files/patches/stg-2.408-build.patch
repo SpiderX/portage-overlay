@@ -1,176 +1,158 @@
---- projects/rlm_stg/configure.org	2013-01-12 16:33:11.000000000 +0200
-+++ projects/rlm_stg/configure	2013-01-12 16:33:49.000000000 +0200
-@@ -33,6 +33,8 @@
+--- projects/rlm_stg/configure.org	2013-01-18 18:06:17.000000000 +0200
++++ projects/rlm_stg/configure	2013-01-18 18:07:18.000000000 +0200
+@@ -34,6 +34,7 @@
  then
      OS=linux
      release=""
-+    ETC_DIR_R="../stargazer/inst/linux/etc/stargazer"
 +    ETC_DIR="./inst/linux/etc/stargazer"
      MAKE="make"
  fi
  
-@@ -47,6 +49,8 @@
+@@ -48,6 +49,7 @@
          9) OS=bsd7;;
          *) OS=unknown;;
      esac
-+    ETC_DIR_R="../stargazer/inst/freebsd/etc/stargazer"
 +    ETC_DIR="./inst/freebsd/etc/stargazer"
      MAKE="gmake"
  fi
  
-@@ -162,5 +166,5 @@
+@@ -163,5 +165,4 @@
  echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
  echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
  echo "OWNER=$OWNER" >> $CONFFILE
 -$MAKE $MAKEOPTS
 -
-+echo "ETC_DIR_R=$ETC_DIR_R" >> $CONFFILE
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/rscriptd/configure.org	2013-01-12 16:33:58.000000000 +0200
-+++ projects/rscriptd/configure	2013-01-12 16:34:27.000000000 +0200
-@@ -33,6 +33,8 @@
+--- projects/rscriptd/configure.org	2013-01-18 18:07:28.000000000 +0200
++++ projects/rscriptd/configure	2013-01-18 18:08:02.000000000 +0200
+@@ -34,6 +34,7 @@
  then
      OS=linux
      release=""
-+    ETC_DIR_R="../stargazer/inst/linux/etc/stargazer"
 +    ETC_DIR="./inst/linux/etc/stargazer"
      MAKE="make"
  fi
  
-@@ -47,6 +49,8 @@
+@@ -48,6 +49,7 @@
          9) OS=bsd7;;
          *) OS=unknown;;
      esac
-+    ETC_DIR_R="../stargazer/inst/freebsd/etc/stargazer"
 +    ETC_DIR="./inst/freebsd/etc/stargazer"
      MAKE="gmake"
  fi
  
-@@ -168,6 +172,5 @@
+@@ -169,6 +171,4 @@
  echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
  echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
  echo "OWNER=$OWNER" >> $CONFFILE
 -
 -$MAKE $MAKEOPTS
 -
-+echo "ETC_DIR_R=$ETC_DIR_R" >> $CONFFILE
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgauth/configure.org	2013-01-12 16:35:31.000000000 +0200
-+++ projects/sgauth/configure	2013-01-12 16:35:59.000000000 +0200
-@@ -33,6 +33,8 @@
+--- projects/sgauth/configure.org	2013-01-18 18:08:10.000000000 +0200
++++ projects/sgauth/configure	2013-01-18 18:08:38.000000000 +0200
+@@ -34,6 +34,7 @@
  then
      OS=linux
      release=""
-+    ETC_DIR_R="../stargazer/inst/linux/etc/stargazer"
 +    ETC_DIR="./inst/linux/etc/stargazer"
      MAKE="make"
  fi
  
-@@ -47,6 +49,8 @@
+@@ -48,6 +49,7 @@
          9) OS=bsd7;;
          *) OS=unknown;;
      esac
-+    ETC_DIR_R="../stargazer/inst/freebsd/etc/stargazer"
 +    ETC_DIR="./inst/freebsd/etc/stargazer"
      MAKE="gmake"
  fi
  
-@@ -166,5 +170,5 @@
+@@ -167,5 +169,4 @@
  echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
  echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
  echo "OWNER=$OWNER" >> $CONFFILE
 -$MAKE $MAKEOPTS
 -
-+echo "ETC_DIR_R=$ETC_DIR_R" >> $CONFFILE
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgconf/configure.org	2013-01-12 16:36:06.000000000 +0200
-+++ projects/sgconf/configure	2013-01-12 16:36:26.000000000 +0200
-@@ -33,6 +33,8 @@
+--- projects/sgconf/configure.org	2013-01-18 18:08:46.000000000 +0200
++++ projects/sgconf/configure	2013-01-18 18:09:44.000000000 +0200
+@@ -34,6 +34,7 @@
  then
      OS=linux
      release=""
-+    ETC_DIR_R="../stargazer/inst/linux/etc/stargazer"
 +    ETC_DIR="./inst/linux/etc/stargazer"
      MAKE="make"
  fi
  
-@@ -47,6 +49,8 @@
+@@ -48,6 +49,7 @@
          9) OS=bsd7;;
          *) OS=unknown;;
      esac
-+    ETC_DIR_R="../stargazer/inst/freebsd/etc/stargazer"
 +    ETC_DIR="./inst/freebsd/etc/stargazer"
      MAKE="gmake"
  fi
  
-@@ -185,6 +189,5 @@
+@@ -186,6 +188,4 @@
  echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
  echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
  echo "OWNER=$OWNER" >> $CONFFILE
 -
 -$MAKE $MAKEOPTS
 -
-+echo "ETC_DIR_R=$ETC_DIR_R" >> $CONFFILE
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgconf_xml/configure.org	2013-01-12 16:36:41.000000000 +0200
-+++ projects/sgconf_xml/configure	2013-01-12 16:37:12.000000000 +0200
-@@ -33,6 +33,8 @@
+--- projects/sgconf_xml/configure.org	2013-01-18 18:09:54.000000000 +0200
++++ projects/sgconf_xml/configure	2013-01-18 18:10:23.000000000 +0200
+@@ -34,6 +34,7 @@
  then
      OS=linux
      release=""
-+    ETC_DIR_R="../stargazer/inst/linux/etc/stargazer"
 +    ETC_DIR="./inst/linux/etc/stargazer"
      MAKE="make"
  fi
  
-@@ -47,6 +49,8 @@
+@@ -48,6 +49,7 @@
          9) OS=bsd7;;
          *) OS=unknown;;
      esac
-+    ETC_DIR_R="../stargazer/inst/freebsd/etc/stargazer"
 +    ETC_DIR="./inst/freebsd/etc/stargazer"
      MAKE="gmake"
  fi
  
-@@ -185,6 +189,5 @@
+@@ -186,6 +188,4 @@
  echo "DATA_MODE=$DATA_MODE" >> $CONFFILE
  echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
  echo "OWNER=$OWNER" >> $CONFFILE
 -
 -$MAKE $MAKEOPTS
 -
-+echo "ETC_DIR_R=$ETC_DIR_R" >> $CONFFILE
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgconv/configure.org	2013-01-12 16:37:23.000000000 +0200
-+++ projects/sgconv/configure	2013-01-12 16:37:53.000000000 +0200
-@@ -34,6 +34,8 @@
+--- projects/sgconv/configure.org	2013-01-18 18:10:30.000000000 +0200
++++ projects/sgconv/configure	2013-01-18 18:11:09.000000000 +0200
+@@ -35,6 +35,7 @@
  then
      OS=linux
      release=""
-+    ETC_DIR_R="../stargazer/inst/linux/etc/stargazer"
 +    ETC_DIR="./inst/linux/etc/stargazer"
      MAKE="make"
  fi
  
-@@ -48,6 +50,8 @@
+@@ -49,6 +50,7 @@
          9) OS=bsd7;;
          *) OS=unknown;;
      esac
-+    ETC_DIR_R="../stargazer/inst/freebsd/etc/stargazer"
 +    ETC_DIR="./inst/freebsd/etc/stargazer"
      MAKE="gmake"
  fi
  
-@@ -292,8 +296,7 @@
+@@ -293,8 +295,6 @@
  echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
  echo "OWNER=$OWNER" >> $CONFFILE
  echo "VAR_DIR=$VAR_DIR" >> $CONFFILE
-+echo "ETC_DIR_R=$ETC_DIR_R" >> $CONFFILE
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
  
 -mkdir -p ../stargazer/modules
@@ -179,29 +161,10 @@
 -
 +mkdir -p ../stargazer/modules
 \ No newline at end of file
---- projects/stargazer/configure.org	2013-01-12 16:38:03.000000000 +0200
-+++ projects/stargazer/configure	2013-01-12 16:38:45.000000000 +0200
-@@ -53,6 +53,7 @@
- then
-     OS=linux
-     release=""
-+    ETC_DIR_R="../stargazer/inst/linux/etc/stargazer"
-     ETC_DIR="./inst/linux/etc/stargazer"
-     MAKE="make"
- fi
-@@ -68,6 +69,7 @@
-         9) OS=bsd7;;
-         *) OS=unknown;;
-     esac
-+    ETC_DIR_R="../stargazer/inst/freebsd/etc/stargazer"
-     ETC_DIR="./inst/freebsd/etc/stargazer"
-     MAKE="gmake"
- fi
-@@ -402,13 +404,7 @@
- echo "DIR_MODE=$DIR_MODE" >> $CONFFILE
- echo "OWNER=$OWNER" >> $CONFFILE
+--- projects/stargazer/configure.org	2013-01-18 18:11:15.000000000 +0200
++++ projects/stargazer/configure	2013-01-18 18:11:40.000000000 +0200
+@@ -404,11 +404,4 @@
  echo "VAR_DIR=$VAR_DIR" >> $CONFFILE
-+echo "ETC_DIR_R=$ETC_DIR_R" >> $CONFFILE
  echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
  
 -mkdir -p modules
