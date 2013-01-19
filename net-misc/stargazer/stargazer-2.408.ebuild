@@ -102,6 +102,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile.patch
 	# Remove make from script (for keeping symbols), always add variable to Makefile.conf for all projects.
 	epatch "${FILESDIR}"/patches/stg-2.408-build.patch
+	# Remove static-libs if not needed
+	use static-libs || epatch "${FILESDIR}"/patches/stg-2.408-static-libs.patch
 
 	# Define which module to compile
 	use module_auth_always_online	|| sed -i 's/authorization\/ao//' "${S}"/projects/stargazer/configure
@@ -493,6 +495,4 @@ src_install() {
 	fi
 	# Correct user and group for files and directories
 	( use sgconv || use rscriptd || use sgauth || use stargazer ) && fowners -R stg:stg /etc/stargazer
-	# Remove static libs if USE flag is not selected
-	use static-libs || find "${D}" -name '*.a' -exec rm -f {} +
 }
