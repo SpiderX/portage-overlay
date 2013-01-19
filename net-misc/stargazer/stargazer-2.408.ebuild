@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils linux-info
 
-DESCRIPTION="Stargtazer billing system for small home and office networks"
+DESCRIPTION="Stargazer billing system for small home and office networks"
 HOMEPAGE="http://stg.dp.ua/"
 MY_P="stg-${PV}"
 SRC_URI="http://stg.dp.ua/download/server/${PV}/${MY_P}.tar.gz"
@@ -95,29 +95,12 @@ src_prepare() {
 		sed -i 's/if \[ "$1" = "debug" \]/if \[ "${10}" = "--enable-debug" \]/' "${S}"/projects/${project}/configure
 	done
 
-	# Correct working directory, user and group
-	epatch "${FILESDIR}"/patches/stg-2.408-sgconv.conf.patch
-	# Correct path for files and directories
-	epatch "${FILESDIR}"/patches/stg-2.408-rscriptd.conf.patch
-	# Correct working directory, user and group
-	epatch "${FILESDIR}"/patches/stg-2.408-store_files.conf.patch
-	# Correct path for file
-	epatch "${FILESDIR}"/patches/stg-2.408-store_firebird.conf.patch
-	# Correct path for file
-	epatch "${FILESDIR}"/patches/stg-2.408-mod_remote_script.conf.patch
-	# Correct path and user for file
-	epatch "${FILESDIR}"/patches/stg-2.408-00-base-00.sql.patch
-	# Correct paths
-	epatch "${FILESDIR}"/patches/stg-2.408-stargazer.conf.patch
-	# Correct paths
-	epatch "${FILESDIR}"/patches/stg-2.408-rpcconfig.cpp.patch
-	# Correct target install-data for stargazer
-	epatch "${FILESDIR}"/patches/stg-2.408-makefile-stargazer.patch
-	# Correct paths for rscriptd
-	epatch "${FILESDIR}"/patches/stg-2.408-makefile-rscriptd.patch
-	# Correct paths for sgauth
-	epatch "${FILESDIR}"/patches/stg-2.408-makefile-sgauth.patch
-	# Remove make from script (for keeping symbol), always add variable to Makefile.conf for all projects.
+	# Correct working directory, user and group for sgconv.conf, store_files.conf
+	# Correct paths for rscriptd.conf, store_firebird.conf, mod_remote_scriptd.conf, stargazer.conf, rpcconfig.cpp, 00-base-00.sql
+	epatch "${FILESDIR}"/patches/stg-2.408-correct-paths.patch
+	# Correct target install-data for stargazer, rscriptd, sgauth
+	epatch "${FILESDIR}"/patches/stg-2.408-makefile.patch
+	# Remove make from script (for keeping symbols), always add variable to Makefile.conf for all projects.
 	epatch "${FILESDIR}"/patches/stg-2.408-build.patch
 
 	# Define which module to compile

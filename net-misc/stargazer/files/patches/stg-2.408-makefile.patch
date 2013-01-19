@@ -1,3 +1,16 @@
+--- projects/sgauth/Makefile.org	2013-01-05 23:47:38.000000000 +0200
++++ projects/sgauth/Makefile	2013-01-05 23:48:34.000000000 +0200
+@@ -67,8 +67,8 @@
+ 
+ install-data:
+ 	# Install etc
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc
+-	install -m $(DATA_MODE) -o $(OWNER) ./sgauth.conf $(PREFIX)/etc/sgauth.conf
++	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/stargazer
++	install -m $(DATA_MODE) -o $(OWNER) ./sgauth.conf $(PREFIX)/etc/stargazer/sgauth.conf
+ 
+ uninstall: uninstall-bin uninstall-data
+ 
 --- projects/stargazer/Makefile.org	2013-01-05 22:53:26.000000000 +0200
 +++ projects/stargazer/Makefile	2013-01-05 22:54:52.000000000 +0200
 @@ -92,30 +92,8 @@
@@ -31,3 +44,26 @@
  
  uninstall: uninstall-bin uninstall-data
  
+--- projects/rscriptd/Makefile.org	2013-01-19 17:03:42.000000000 +0200
++++ projects/rscriptd/Makefile	2013-01-19 17:04:25.000000000 +0200
+@@ -65,15 +65,13 @@
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ install-data:
+-	# Install etc
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+-	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
++	install -D -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/stargazer/rscriptd.conf
+ ifeq ($(OS), linux)
+-	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnConnect $(PREFIX)/etc/rscriptd/
+-	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnDisconnect $(PREFIX)/etc/rscriptd/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnConnect $(PREFIX)/etc/stargazer/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnDisconnect $(PREFIX)/etc/stargazer/
+ else
+-	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnConnect $(PREFIX)/etc/rscriptd/
+-	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnDisconnect $(PREFIX)/etc/rscriptd/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnConnect $(PREFIX)/etc/stargazer/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnDisconnect $(PREFIX)/etc/stargazer/
+ endif
+ 
+ uninstall: uninstall-bin uninstall-data
