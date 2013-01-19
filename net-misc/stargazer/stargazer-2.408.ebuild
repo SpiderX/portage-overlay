@@ -24,6 +24,24 @@ STG_MODULES_CONFIG="sgconfig rpcconfig"
 STG_MODULES_OTHER="ping smux remote_script"
 STG_MODULES_STORE="files firebird mysql postgres"
 
+declare -A MODULES
+MODULES=( [module_auth_always_online]="authorization\/ao:mod_ao"
+	[module_auth_internet_access]="authorization\/inetaccess:mod_ia"
+	[module_auth_freeradius]="other\/radius:mod_radius"
+	[module_capture_ipq]="capture\/ipq_linux:mod_cap_ipq"
+	[module_capture_ether]="capture\/ether_linux:mod_cap_ether"
+	[module_capture_netflow]="capture\/cap_nf:mod_cap_nf"
+	[module_config_sgconfig]="configuration\/sgconfig:mod_sg"
+	[module_config_rpcconfig]="configuration\/rpcconfig:mod_rpc"
+	[module_other_ping]="other\/ping:mod_ping"
+	[module_other_smux]="other\/smux:mod_smux"
+	[module_other_remote_script]="other\/rscript:mod_remote_script"
+	[module_store_files]="store\/files:store_files"
+	[module_store_firebird]="store\/firebird:store_firebird"
+	[module_store_mysql]="store\/mysql:store_mysql"
+	[module_store_postgres]="store\/postgresql:store_postgresql"
+)
+
 for module in ${STG_MODULES_AUTH}; do
 	IUSE="${IUSE} module_auth_${module}"
 done
@@ -106,21 +124,9 @@ src_prepare() {
 	use static-libs || epatch "${FILESDIR}"/patches/stg-2.408-static-libs.patch
 
 	# Define which module to compile
-	use module_auth_always_online	|| sed -i 's/authorization\/ao//' "${S}"/projects/stargazer/configure
-	use module_auth_internet_access	|| sed -i 's/authorization\/inetaccess//' "${S}"/projects/stargazer/configure
-	use module_auth_freeradius	|| sed -i 's/other\/radius//' "${S}"/projects/stargazer/configure
-	use module_capture_ipq		|| sed -i 's/capture\/ipq_linux//' "${S}"/projects/stargazer/configure
-	use module_capture_ether	|| sed -i 's/capture\/ether_linux//' "${S}"/projects/stargazer/configure
-	use module_capture_netflow	|| sed -i 's/capture\/cap_nf//' "${S}"/projects/stargazer/configure
-	use module_config_sgconfig	|| sed -i 's/configuration\/sgconfig//' "${S}"/projects/stargazer/configure
-	use module_config_rpcconfig	|| sed -i 's/configuration\/rpcconfig//' "${S}"/projects/stargazer/configure
-	use module_other_ping		|| sed -i 's/other\/ping//' "${S}"/projects/stargazer/configure
-	use module_other_smux		|| sed -i 's/other\/smux//' "${S}"/projects/stargazer/configure
-	use module_other_remote_script	|| sed -i 's/other\/rscript//' "${S}"/projects/stargazer/configure
-	use module_store_files		|| sed -i 's/store\/files//' "${S}"/projects/stargazer/configure
-	use module_store_firebird	|| sed -i 's/store\/firebird//' "${S}"/projects/stargazer/configure
-	use module_store_mysql		|| sed -i 's/store\/mysql//' "${S}"/projects/stargazer/configure
-	use module_store_postgres	|| sed -i 's/store\/postgresql//' "${S}"/projects/stargazer/configure
+	for i in ${!MODULES[@]}; do
+		use $i || sed -i 's/${MODULES[$i]%:*}//' "${S}"/projects/stargazer/configure
+	done
 	# Correct Gentoo init script provided by upstream (TODO: Remove in further releases, already fixed in upstream's trunk)
 	use stargazer			&& sed -i 's/opts/extra_commands/' "${S}"/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
 	# Correct Gentoo init script dependencies
@@ -132,7 +138,7 @@ src_prepare() {
 	( use module_capture_ipq && kernel_is ge 3 5 ) && die "IPQ subsystem is gone since Linux kernel 3.5. You can't compile module_capture_ipq with your current kernel."
 }
 
-src_configure() {
+src_compile() {
 	# Define local variables, strip '+' symbol for used by default USE flags
 	local USEFLAGS=(${IUSE//+})
 	local PROJECTS=($PROJECTS)
@@ -461,37 +467,13 @@ src_install() {
 		# Install files into specified directory for selected modules
 		insinto /etc/stargazer/conf-available.d
 		insopts -m 0640
-		use module_auth_always_online	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ao.conf
-		use module_auth_internet_access	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ia.conf
-		use module_auth_freeradius	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_radius.conf
-		use module_capture_ipq		&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_ipq.conf
-		use module_capture_ether	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_ether.conf
-		use module_capture_netflow	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_cap_nf.conf
-		use module_config_sgconfig	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_sg.conf
-		use module_config_rpcconfig	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_rpc.conf
-		use module_other_ping		&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_ping.conf
-		use module_other_smux		&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_smux.conf
-		use module_other_remote_script	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf
-		use module_store_files		&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf
-		use module_store_firebird	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf
-		use module_store_mysql		&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_mysql.conf
-		use module_store_postgres	&& doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_postgresql.conf
+		for i in ${!MODULES[@]}; do
+			use $i && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf
+		done
 		# Create symlinks of configs for selected modules
-		use module_auth_always_online	&& dosym /etc/stargazer/conf-available.d/mod_ao.conf		/etc/stargazer/conf-enabled.d/mod_ao.conf
-		use module_auth_internet_access	&& dosym /etc/stargazer/conf-available.d/mod_ia.conf		/etc/stargazer/conf-enabled.d/mod_ia.conf
-		use module_auth_freeradius	&& dosym /etc/stargazer/conf-available.d/mod_radius.conf	/etc/stargazer/conf-enabled.d/mod_radius.conf
-		use module_capture_ipq		&& dosym /etc/stargazer/conf-available.d/mod_cap_ipq.conf	/etc/stargazer/conf-enabled.d/mod_cap_ipq.conf
-		use module_capture_ether	&& dosym /etc/stargazer/conf-available.d/mod_cap_ether.conf	/etc/stargazer/conf-enabled.d/mod_cap_ether.conf
-		use module_capture_netflow	&& dosym /etc/stargazer/conf-available.d/mod_cap_nf.conf	/etc/stargazer/conf-enabled.d/mod_cap_nf.conf
-		use module_config_sgconfig	&& dosym /etc/stargazer/conf-available.d/mod_sg.conf		/etc/stargazer/conf-enabled.d/mod_sg.conf
-		use module_config_rpcconfig	&& dosym /etc/stargazer/conf-available.d/mod_rpc.conf		/etc/stargazer/conf-enabled.d/mod_rpc.conf
-		use module_other_ping		&& dosym /etc/stargazer/conf-available.d/mod_ping.conf		/etc/stargazer/conf-enabled.d/mod_ping.conf
-		use module_other_smux		&& dosym /etc/stargazer/conf-available.d/mod_smux.conf		/etc/stargazer/conf-enabled.d/mod_smux.conf
-		use module_other_remote_script	&& dosym /etc/stargazer/conf-available.d/mod_remote_script.conf	/etc/stargazer/conf-enabled.d/mod_remote_script.conf
-		use module_store_files		&& dosym /etc/stargazer/conf-available.d/store_files.conf	/etc/stargazer/conf-enabled.d/store_files.conf
-		use module_store_firebird	&& dosym /etc/stargazer/conf-available.d/store_firebird.conf	/etc/stargazer/conf-enabled.d/store_firebird.conf
-		use module_store_mysql		&& dosym /etc/stargazer/conf-available.d/store_mysql.conf	/etc/stargazer/conf-enabled.d/store_mysql.conf
-		use module_store_postgres	&& dosym /etc/stargazer/conf-available.d/store_postgresql.conf	/etc/stargazer/conf-enabled.d/store_postgresql.conf
+		for i in ${!MODULES[@]}; do
+			use $i && dosym /etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf /etc/stargazer/conf-enabled.d/${MODULES[$i]#*:}.conf
+		done
 	fi
 	# Correct user and group for files and directories
 	( use sgconv || use rscriptd || use sgauth || use stargazer ) && fowners -R stg:stg /etc/stargazer
