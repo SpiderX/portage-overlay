@@ -250,9 +250,9 @@ index b7ebca0..32384e6 100644
 -	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
 +ifeq ($(DEBUG), yes)
 +	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/bin/$(PROG)
-+endif
-+	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/bin/$(PROG)
 +else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/bin/$(PROG)
++endif
  	$(MAKE) -C $(DIR_LIBSRC) install
  
  uninstall: uninstall-bin uninstall-data

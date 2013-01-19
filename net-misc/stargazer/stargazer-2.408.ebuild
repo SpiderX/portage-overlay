@@ -13,7 +13,7 @@ SRC_URI="http://stg.dp.ua/download/server/${PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~sparc"
+KEYWORDS="~amd64 ~x86"
 IUSE="sgconv radius rscriptd sgauth sgconf sgconf_xml stargazer debug doc examples static-libs"
 MERGE_TYPE="source"
 
