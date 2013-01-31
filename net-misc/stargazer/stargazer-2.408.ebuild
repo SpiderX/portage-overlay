@@ -124,8 +124,8 @@ src_prepare() {
 	use static-libs || epatch "${FILESDIR}"/patches/stg-2.408-static-libs.patch
 
 	# Define which module to compile
-	for i in ${!MODULES[@]}; do
-		use $i || sed -i 's/${MODULES[$i]%:*}//' "${S}"/projects/stargazer/configure
+	for module in ${!MODULES[@]}; do
+		use $module || sed -i "s/${MODULES[$module]%:*}//" "${S}"/projects/stargazer/configure
 	done
 	# Correct Gentoo init script provided by upstream (TODO: Remove in further releases, already fixed in upstream's trunk)
 	use stargazer			&& sed -i 's/opts/extra_commands/' "${S}"/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo
@@ -138,7 +138,7 @@ src_prepare() {
 	( use module_capture_ipq && kernel_is ge 3 5 ) && die "IPQ subsystem is gone since Linux kernel 3.5. You can't compile module_capture_ipq with your current kernel."
 }
 
-src_compile() {
+src_configure() {
 	# Define local variables, strip '+' symbol for used by default USE flags
 	local USEFLAGS=(${IUSE//+})
 	local PROJECTS=($PROJECTS)
@@ -467,12 +467,12 @@ src_install() {
 		# Install files into specified directory for selected modules
 		insinto /etc/stargazer/conf-available.d
 		insopts -m 0640
-		for i in ${!MODULES[@]}; do
-			use $i && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf
+		for module in ${!MODULES[@]}; do
+			use $module && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/${MODULES[$module]#*:}.conf
 		done
 		# Create symlinks of configs for selected modules
-		for i in ${!MODULES[@]}; do
-			use $i && dosym /etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf /etc/stargazer/conf-enabled.d/${MODULES[$i]#*:}.conf
+		for module in ${!MODULES[@]}; do
+			use $module && dosym /etc/stargazer/conf-available.d/${MODULES[$module]#*:}.conf /etc/stargazer/conf-enabled.d/${MODULES[$module]#*:}.conf
 		done
 	fi
 	# Correct user and group for files and directories
