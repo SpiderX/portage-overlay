@@ -116,7 +116,7 @@ src_prepare() {
 	# Correct working directory, user and group for sgconv.conf, store_files.conf
 	# Correct paths for rscriptd.conf, store_firebird.conf, mod_remote_scriptd.conf, stargazer.conf, rpcconfig.cpp, 00-base-00.sql
 	epatch "${FILESDIR}"/patches/stg-2.408-correct-paths.patch
-	# Correct target install-data for stargazer, rscriptd, sgauth
+	# Correct target install-data for stargazer, rscriptd, sgauth, remove debug symbols stripping
 	epatch "${FILESDIR}"/patches/stg-2.408-makefile.patch
 	# Remove make from script (for keeping symbols), always add variable to Makefile.conf for all projects.
 	epatch "${FILESDIR}"/patches/stg-2.408-build.patch
@@ -142,7 +142,7 @@ src_configure() {
 	# Define local variables, strip '+' symbol for used by default USE flags
 	local USEFLAGS=(${IUSE//+})
 	local PROJECTS=($PROJECTS)
-
+	
 	for (( i = 0 ; i < ${#PROJECTS[@]} ; i++ )); do
 		if use ${USEFLAGS[$i]} ; then
 			cd "${S}"/projects/${PROJECTS[$i]} || die "cd to ${PROJECTS[$i]} failed"
@@ -467,12 +467,12 @@ src_install() {
 		# Install files into specified directory for selected modules
 		insinto /etc/stargazer/conf-available.d
 		insopts -m 0640
-		for module in ${!MODULES[@]}; do
-			use $module && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/${MODULES[$module]#*:}.conf
+		for i in ${!MODULES[@]}; do
+			use $i && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf
 		done
 		# Create symlinks of configs for selected modules
-		for module in ${!MODULES[@]}; do
-			use $module && dosym /etc/stargazer/conf-available.d/${MODULES[$module]#*:}.conf /etc/stargazer/conf-enabled.d/${MODULES[$module]#*:}.conf
+		for i in ${!MODULES[@]}; do
+			use $i && dosym /etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf /etc/stargazer/conf-enabled.d/${MODULES[$i]#*:}.conf
 		done
 	fi
 	# Correct user and group for files and directories
