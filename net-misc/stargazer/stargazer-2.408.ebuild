@@ -142,7 +142,7 @@ src_configure() {
 	# Define local variables, strip '+' symbol for used by default USE flags
 	local USEFLAGS=(${IUSE//+})
 	local PROJECTS=($PROJECTS)
-	
+
 	for (( i = 0 ; i < ${#PROJECTS[@]} ; i++ )); do
 		if use ${USEFLAGS[$i]} ; then
 			cd "${S}"/projects/${PROJECTS[$i]} || die "cd to ${PROJECTS[$i]} failed"
@@ -467,12 +467,12 @@ src_install() {
 		# Install files into specified directory for selected modules
 		insinto /etc/stargazer/conf-available.d
 		insopts -m 0640
-		for i in ${!MODULES[@]}; do
-			use $i && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf
+		for module in ${!MODULES[@]}; do
+			use $module && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/${MODULES[$module]#*:}.conf
 		done
 		# Create symlinks of configs for selected modules
-		for i in ${!MODULES[@]}; do
-			use $i && dosym /etc/stargazer/conf-available.d/${MODULES[$i]#*:}.conf /etc/stargazer/conf-enabled.d/${MODULES[$i]#*:}.conf
+		for module in ${!MODULES[@]}; do
+			use $module && dosym /etc/stargazer/conf-available.d/${MODULES[$module]#*:}.conf /etc/stargazer/conf-enabled.d/${MODULES[$module]#*:}.conf
 		done
 	fi
 	# Correct user and group for files and directories
