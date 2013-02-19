@@ -105,6 +105,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/patches/stg-2.408-radius-upstream.patch
 	# Install demo scripts for rscriptd
 	epatch "${FILESDIR}"/patches/stg-2.408-rscriptd-upstream.patch
+	# Fix crush on stop
+	epatch "${FILESDIR}"/patches/stg-2.408-fix-crash-on-stop.patch
 
 	for project in ${PROJECTS}; do
 		# Rename build script to configure for further econf launch in every projects
