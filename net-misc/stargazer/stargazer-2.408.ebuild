@@ -177,7 +177,7 @@ src_compile() {
 	use debug && MAKEOPTS="-j1"
 
 	# Build necessary libraries first
-	touch "${S}"/Makefile.conf
+	touch "${S}"/Makefile.conf || die "touch Makefile.conf failed"
 	cd "${S}"/stglibs || die "cd to stglibs failed"
 	emake STG_LIBS="ia.lib srvconf.lib"
 
