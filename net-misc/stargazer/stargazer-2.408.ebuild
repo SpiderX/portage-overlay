@@ -58,11 +58,11 @@ MODULES=( [module_auth_always_online]="authorization\/ao:mod_ao"
 
 IUSE="sgconv radius rscriptd sgauth sgconf sgconf_xml stargazer debug doc examples static-libs"
 
-for module in ${STG_MODULES_AUTH} ; do IUSE="${IUSE} module_auth_${module}" ; done
+for module in ${STG_MODULES_AUTH}    ; do IUSE="${IUSE} module_auth_${module}"    ; done
 for module in ${STG_MODULES_CAPTURE} ; do IUSE="${IUSE} module_capture_${module}" ; done
-for module in ${STG_MODULES_CONFIG} ; do IUSE="${IUSE} module_config_${module}" ; done
-for module in ${STG_MODULES_OTHER} ; do IUSE="${IUSE} module_other_${module}" ; done
-for module in ${STG_MODULES_STORE} ; do IUSE="${IUSE} module_store_${module}" ; done
+for module in ${STG_MODULES_CONFIG}  ; do IUSE="${IUSE} module_config_${module}"  ; done
+for module in ${STG_MODULES_OTHER}   ; do IUSE="${IUSE} module_other_${module}"   ; done
+for module in ${STG_MODULES_STORE}   ; do IUSE="${IUSE} module_store_${module}"   ; done
 
 IUSE=${IUSE/stargazer/+stargazer}
 IUSE=${IUSE/module_store_files/+module_store_files}
@@ -70,8 +70,8 @@ IUSE=${IUSE/module_store_files/+module_store_files}
 src_prepare() {
 	# Patches already in upstream's trunk
 	# Rename convertor to sgconv to avoid possible file name collisions
-	mv "${S}"/projects/convertor/ "${S}"/projects/sgconv/
-	mv "${S}"/projects/sgconv/convertor.conf "${S}"/projects/sgconv/sgconv.conf
+	mv "${S}"/projects/convertor/ "${S}"/projects/sgconv/ || die "rename convertor to sgconv failed"
+	mv "${S}"/projects/sgconv/convertor.conf "${S}"/projects/sgconv/sgconv.conf || die "rename convertor.conf to sgconv.conf failed"
 	epatch "${FILESDIR}"/patches/stg-2.408-sgconv-upstream.patch
 
 	# Fix dependency on fbclient for module_store_firebird
@@ -103,7 +103,7 @@ src_prepare() {
 
 	for project in ${PROJECTS} ; do
 		# Rename build script to configure for further econf launch in every projects
-		mv "${S}"/projects/${project}/build "${S}"/projects/${project}/configure
+		mv "${S}"/projects/${project}/build "${S}"/projects/${project}/configure || die "rename build script to configure failed"
 
 		# Change check for debug build
 		sed -i 's/if \[ "$1" = "debug" \]/if \[ "${10}" = "--enable-debug" \]/' "${S}"/projects/${project}/configure
@@ -162,8 +162,8 @@ src_compile() {
 	use debug && MAKEOPTS="-j1"
 
 	# Build necessary libraries first
-	touch "${S}"/Makefile.conf
-	cd "${S}"/stglibs
+	touch "${S}"/Makefile.conf || die "touch '${S}'/Makefile.conf failed"
+	cd "${S}"/stglibs          || die "cd to '${S}'/stglibs failed"
 	emake STG_LIBS="ia.lib srvconf.lib"
 
 	for (( i = 0 ; i < ${#PROJECTS[@]} ; i++ )) ; do
@@ -174,7 +174,7 @@ src_compile() {
 	done
 
 	if use doc ; then
-		cd "${S}"/doc/xmlrpc
+		cd "${S}"/doc/xmlrpc || die "cd to '${S}'/doc/xmlrpc failed"
 
 		emake
 	fi
@@ -216,7 +216,7 @@ src_install() {
 	fi
 
 	if use sgconv ; then
-		cd "${S}"/projects/sgconv
+		cd "${S}"/projects/sgconv || die "cd to '${S}'/projects/sgconv failed"
 
 		emake DESTDIR="${D}" PREFIX="${D}" install
 
@@ -229,13 +229,13 @@ src_install() {
 	fi
 
 	if use radius ; then
-		cd "${S}"/projects/rlm_stg
+		cd "${S}"/projects/rlm_stg || die "cd to '${S}'/projects/rlm_stg failed"
 
 		emake DESTDIR="${D}" PREFIX="${D}" install
 	fi
 
 	if use rscriptd ; then
-		cd "${S}"/projects/rscriptd
+		cd "${S}"/projects/rscriptd || die "cd to '${S}'/projects/rscriptd failed"
 
 		emake DESTDIR="${D}" PREFIX="${D}" install
 
@@ -250,7 +250,7 @@ src_install() {
 	fi
 
 	if use sgauth ; then
-		cd "${S}"/projects/sgauth
+		cd "${S}"/projects/sgauth || die "cd to '${S}'/projects/sgauth failed"
 
 		emake DESTDIR="${D}" PREFIX="${D}" install
 
@@ -262,7 +262,7 @@ src_install() {
 	fi
 
 	if use sgconf ; then
-		cd "${S}"/projects/sgconf
+		cd "${S}"/projects/sgconf || die "cd to '${S}'/projects/sgconf failed"
 
 		emake DESTDIR="${D}" PREFIX="${D}" install
 
@@ -271,7 +271,7 @@ src_install() {
 	fi
 
 	if use sgconf_xml ; then
-		cd "${S}"/projects/sgconf_xml
+		cd "${S}"/projects/sgconf_xml || die "cd to '${S}'/projects/sgconf_xml failed"
 
 		emake DESTDIR="${D}" PREFIX="${D}" install
 
@@ -280,7 +280,7 @@ src_install() {
 	fi
 
 	if use stargazer ; then
-		cd "${S}"/projects/stargazer
+		cd "${S}"/projects/stargazer || die "cd to '${S}'/projects/stargazer failed"
 
 		emake DESTDIR="${D}" PREFIX="${D}" install
 
@@ -362,7 +362,7 @@ src_install() {
 	( use sgconv || use rscriptd || use sgauth || use stargazer ) && fowners -R stg:stg /etc/stargazer
 
 	# Put the files in the right folder to support multilib
-	mv "${ED}"/usr/lib "${ED}"/usr/$(get_libdir)
+	mv "${ED}"/usr/lib "${ED}"/usr/$(get_libdir) || die "put the files in the right folder failed"
 }
 
 pkg_setup() {
@@ -406,7 +406,7 @@ pkg_postinst() {
 
 		einfo "    It also may be used in section Accounting and Post-Auth."
 
-		use !module_auth_freeradius || einfo "\n    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
+		use module_auth_freeradius || einfo "\n    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
 	fi
 
 	if use rscriptd ; then
@@ -426,13 +426,13 @@ pkg_postinst() {
 	if use sgconf ; then
 		einfo "\nSgconf:"
 		einfo "-------"
-		use !module_config_sgconfig || einfo "    For further use of sgconf utility you should also enable USE-flag module_config_sgconfig."
+		use module_config_sgconfig || einfo "    For further use of sgconf utility you should also enable USE-flag module_config_sgconfig."
 	fi
 
 	if use sgconf_xml ; then
 		einfo "\nSgconf_xml:"
 		einfo "-----------"
-		use !module_config_rpcconfig || einfo "    For further use of sgconf_xml utility you should also enable USE-flag module_config_rpcconfig."
+		use module_config_rpcconfig || einfo "    For further use of sgconf_xml utility you should also enable USE-flag module_config_rpcconfig."
 	fi
 
 	if use stargazer ; then
