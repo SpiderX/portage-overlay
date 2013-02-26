@@ -2,19 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI="5"
 
 inherit eutils
 
-DESCRIPTION="Receives UDP datagrams and redistributes them to a set of receivers"
+DESCRIPTION="UDP packets forwarder and duplicator"
 HOMEPAGE="http://samplicator.googlecode.com/"
+LICENSE="GPL-2"
+
 MY_P=${P/_/-}
 SRC_URI="http://samplicator.googlecode.com/files/${MY_P}.tar.gz"
-LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
 S="${WORKDIR}/${MY_P}"
-MERGE_TYPE="source"
 
 pkg_setup() {
 	# Add samplicator group to system
@@ -36,6 +37,8 @@ src_install() {
 	newinitd "${FILESDIR}"/samplicator.initd samplicator
 	# Install Gentoo init script config
 	newconfd "${FILESDIR}"/samplicator.conf samplicator
+	# Install manual page
+	doman "${FILESDIR}"/samplicator.8
 }
 
 pkg_postinst() {
