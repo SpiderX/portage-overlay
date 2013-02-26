@@ -29,7 +29,6 @@ src_compile() {
 }
 
 src_install() {
-	# Call make install
 	emake DESTDIR="${D}" install
 	# Install changelog
 	dodoc AUTHORS ChangeLog INSTALL NEWS README

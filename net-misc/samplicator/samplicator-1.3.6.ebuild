@@ -26,9 +26,8 @@ src_compile() {
 }
 
 src_install() {
-	# Call make install
 	emake DESTDIR="${D}" install
-	# Install changelog
+	# Install docs
 	dodoc AUTHORS ChangeLog INSTALL NEWS README
 	# Install Gentoo init script
 	newinitd "${FILESDIR}"/samplicator.initd samplicator
