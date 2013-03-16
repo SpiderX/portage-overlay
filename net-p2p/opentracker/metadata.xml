@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+	<email>spiderx@spiderx.dp.ua</email>
+	<name>Vladimir Pavljuchenkov</name>
+	<description>Primary maintainer.</description>
+    </maintainer>
+    <herd>proxy-maintainers</herd>
+    <longdescription>
+	Opentracker is a open and free bittorrent tracker project.
+	It aims for minimal resource usage and is intended to run at your wlan router.
+    </longdescription>
+    <use>
+	<flag name="blacklist">Make use of a torrents black-list</flag>
+	<flag name="gzip_always">Enforce gzip compressed full scrapes even if client did not request it</flag>
+	<flag name="ip_from_query">Accept source IP only from query (debugging purposes only)</flag>
+	<flag name="ip_from_proxy">Accept source IP from proxy</flag>
+	<flag name="fullscrapes">Allow query a tracker for all tracked torrents</flag>
+	<flag name="fullscrapes_modest">Enable limiting fullscrapes to only every 5 minutes per IP</flag>
+	<flag name="live_sync">Allow synchronisation between several instances</flag>
+	<flag name="log_networks_full">Add some subnet debugging features</flag>
+	<flag name="log_numwant">Log amount of numwants</flag>
+	<flag name="spot_woodpeckers">Enable tracking of abusing peers</flag>
+	<flag name="random">Make use of pseudo-device random</flag>
+	<flag name="restrict_stats">Restrict statistics to the tracker owner</flag>
+	<flag name="whitelist">Make use of a torrents white-list</flag>
+    </use>
+    <upstream>
+	<doc>http://erdgeist.org/arts/software/opentracker/</doc>
+	<bugs-to>mailto:erdgeist@erdgeist.org</bugs-to>
+    </upstream>
+</pkgmetadata>
