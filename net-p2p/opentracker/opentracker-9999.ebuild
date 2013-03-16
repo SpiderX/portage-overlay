@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit cvs
+inherit cvs eutils
 
 ECVS_USER="anoncvs"
 ECVS_SERVER="cvs.erdgeist.org:/home/cvsroot"
@@ -15,7 +15,7 @@ HOMEPAGE="http://erdgeist.org/arts/software/opentracker/"
 LICENSE="BEER-WARE"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="blacklist debug examples +gzip gzip_always ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync log_networks_full log_numwant restrict_stats spot_woodpeckers syslog random whitelist"
+IUSE="blacklist debug examples +gzip gzip_always ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog random whitelist"
 
 RDEPEND=">=dev-libs/libowfat-0.27
 	gzip? ( sys-libs/zlib )"
@@ -25,6 +25,8 @@ S=${WORKDIR}/${ECVS_MODULE}
 REQUIRED_USE="blacklist? ( !whitelist )
 	gzip_always? ( gzip )
 	gzip? ( fullscrapes )
+	live_sync_unicast? ( live_sync )
+	persistence? ( !ipv6 )
 "
 
 pkg_setup() {
@@ -35,6 +37,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# flygoast's patch for sync through unicast and persistence support
+	if use live_sync_unicast || use persistence ; then
+		epatch "${FILESDIR}"/${PN}-01-flygoast.patch
+	fi
+
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES
 	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, create dirs on install
 	sed -i \
@@ -76,16 +83,20 @@ src_prepare() {
 		sed -i '/DWANT_V6/s/^#*//' Makefile || die "sed for ipv6 failed"
 	fi
 
-	if use fullscrapes ; then
-		sed -i '/DWANT_FULLSCRAPE/s/^#*//' Makefile || die "sed for fullscrapes failed"
+	if ! use fullscrapes ; then
+		sed -i '/DWANT_FULLSCRAPE/s/^/#/' Makefile || die "sed for fullscrapes failed"
 	fi
 
 	if use fullscrapes_modest ; then
-	sed -i '/DWANT_MODEST_FULLSCRAPES/s/^#*//' Makefile || die "sed for fullscrapes_modest failed"
+		sed -i '/DWANT_MODEST_FULLSCRAPES/s/^#*//' Makefile || die "sed for fullscrapes_modest failed"
 	fi
 
 	if use live_sync ; then
-	sed -i '/DWANT_SYNC_LIVE/s/^#*//' Makefile || die "sed for live_sync failed"
+		sed -i '/DWANT_SYNC_LIVE/s/^#*//' Makefile || die "sed for live_sync failed"
+	fi
+
+	if use live_sync_unicast ; then
+		sed -i '/DSYNC_LIVE_UNICAST/s/^#*//' Makefile || die "sed for live_sync_unicast failed"
 	fi
 
 	if use log_networks_full ; then
@@ -94,6 +105,10 @@ src_prepare() {
 
 	if use log_numwant ; then
 		sed -i '/DWANT_LOG_NUMWANT/s/^#*//' Makefile || die "sed for log_numwant failed"
+	fi
+
+	if use persistence ; then
+		sed -i '/DWANT_PERSISTENCE/s/^#*//' Makefile || die "sed for persistence failed"
 	fi
 
 	if use spot_woodpeckers ; then
@@ -124,11 +139,24 @@ src_prepare() {
 			-e 's|$@ $(OBJECTS_debug)|opentracker $(OBJECTS_debug)|g' \
 		Makefile || die "sed for debug object failed"
 	fi
+
+	# Correct config paths
+	sed -i \
+		-e "/access.whitelist/s|/path/to/whitelist|/var/lib/${PN}/access.whitelist|g" \
+		-e "/access.blacklist/s|./blacklist|/var/lib/${PN}/access.blacklist|g" \
+		-e "/tracker.rootdir/s|/usr/local/etc/opentracker|/var/lib/${PN}|g" \
+		-e "/tracker.user/s|nobody|${PN}|g" \
+		-e "/persist.file/s|/path/to/persist.odb|/var/lib/${PN}/${PN}.odb|g" \
+	"${S}"/opentracker.conf.sample || die "sed for config failed"
 }
 
 src_install() {
 	# Install and copy documentation
 	default
+
+	# Keeping chroot directory
+	diropts -m 755 -o ${PN} -g ${PN}
+	keepdir /var/lib/${PN}
 
 	# Install Gentoo init script and its config
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
@@ -146,9 +174,11 @@ src_install() {
 		insinto /usr/share/${PN}
 		doins -r "${S}"/tests/*.sh
 		doins "${S}"/sync_daemon.pl
+
+		use persistence && doins "${S}"/ODB_FORMAT.md
 	fi
 
-	# Correct user,group and permissions for files and directories
+	# Correct user, group and permissions for files and directories
 	fowners -R ${PN}:${PN} /etc/${PN}
 	fperms 0640 /etc/${PN}/${PN}.conf
 }
