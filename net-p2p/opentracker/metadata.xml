@@ -31,5 +31,6 @@
     <upstream>
 	<doc>http://erdgeist.org/arts/software/opentracker/</doc>
 	<bugs-to>mailto:erdgeist@erdgeist.org</bugs-to>
+	<bugs-to>mailto:flygoast@126.com</bugs-to>
     </upstream>
 </pkgmetadata>

@@ -4,11 +4,9 @@
 
 EAPI="5"
 
-inherit cvs eutils
+inherit eutils git-2
 
-ECVS_USER="anoncvs"
-ECVS_SERVER="cvs.erdgeist.org:/home/cvsroot"
-ECVS_MODULE="${PN}"
+EGIT_REPO_URI="https://github.com/flygoast/opentracker.git"
 
 DESCRIPTION="High-performance bittorrent tracker"
 HOMEPAGE="http://erdgeist.org/arts/software/opentracker/"
@@ -19,8 +17,6 @@ IUSE="blacklist debug examples +gzip gzip_always ip_from_query ip_from_proxy ipv
 
 RDEPEND=">=dev-libs/libowfat-0.27
 	gzip? ( sys-libs/zlib )"
-
-S=${WORKDIR}/${ECVS_MODULE}
 
 REQUIRED_USE="blacklist? ( !whitelist )
 	gzip_always? ( gzip )
@@ -37,21 +33,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# flygoast's patch for sync through unicast and persistence support
-	if use live_sync_unicast || use persistence ; then
-		epatch "${FILESDIR}"/${PN}-01-flygoast.patch
-	fi
-
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES
-	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, create dirs on install
+	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, remove owfat target, create dirs on install
 	sed -i \
 		-e "s|FEATURES|FEATURES_INTERNAL|g" \
 		-e "s|PREFIX?=..|PREFIX?=/usr|g" \
-		-e "s|LIBOWFAT_HEADERS=\$(PREFIX)/libowfat|LIBOWFAT_HEADERS=\$(PREFIX)/include/libowfat|g" \
+		-e "s|LIBOWFAT_HEADERS=libowfat|LIBOWFAT_HEADERS=\$(PREFIX)/include/libowfat|g" \
 		-e "s|-lpthread||g" \
 		-e "s|-O3||g" \
 		-e "s|-lz||g" \
 		-e "s|BINDIR?=\$(PREFIX)/bin|BINDIR?=\$(DESTDIR)\$(PREFIX)/bin/|g" \
+		-e "s|all: owfat|all:|g" \
 		-e "s|install -m 755 ${PN} \$(BINDIR)|install -D -m 755 ${PN} \$(BINDIR)/${PN}|g" \
 		Makefile || die "sed for src_prepare failed"
 
@@ -75,8 +67,8 @@ src_prepare() {
 		sed -i '/DWANT_IP_FROM_QUERY_STRING/s/^#*//' Makefile || die "sed for ip_from_query failed"
 	fi
 
-	if use ip_from_proxy ; then
-		sed -i '/DWANT_IP_FROM_PROXY/s/^#*//' Makefile || die "sed for ip_from_proxy failed"
+	if ! use ip_from_proxy ; then
+		sed -i '/DWANT_IP_FROM_PROXY/s/^/#/' Makefile || die "sed for ip_from_proxy failed"
 	fi
 
 	if use ipv6 ; then
@@ -91,12 +83,12 @@ src_prepare() {
 		sed -i '/DWANT_MODEST_FULLSCRAPES/s/^#*//' Makefile || die "sed for fullscrapes_modest failed"
 	fi
 
-	if use live_sync ; then
-		sed -i '/DWANT_SYNC_LIVE/s/^#*//' Makefile || die "sed for live_sync failed"
+	if ! use live_sync ; then
+		sed -i '/DWANT_SYNC_LIVE/s/^/#/' Makefile || die "sed for live_sync failed"
 	fi
 
-	if use live_sync_unicast ; then
-		sed -i '/DSYNC_LIVE_UNICAST/s/^#*//' Makefile || die "sed for live_sync_unicast failed"
+	if ! use live_sync_unicast ; then
+		sed -i '/DSYNC_LIVE_UNICAST/s/^/#/' Makefile || die "sed for live_sync_unicast failed"
 	fi
 
 	if use log_networks_full ; then
@@ -107,8 +99,8 @@ src_prepare() {
 		sed -i '/DWANT_LOG_NUMWANT/s/^#*//' Makefile || die "sed for log_numwant failed"
 	fi
 
-	if use persistence ; then
-		sed -i '/DWANT_PERSISTENCE/s/^#*//' Makefile || die "sed for persistence failed"
+	if ! use persistence ; then
+		sed -i '/DWANT_PERSISTENCE/s/^/#/' Makefile || die "sed for persistence failed"
 	fi
 
 	if use spot_woodpeckers ; then

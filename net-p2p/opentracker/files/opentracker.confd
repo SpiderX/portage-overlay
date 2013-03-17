@@ -5,4 +5,4 @@
 OPTS="-u opentracker"
 
 # Opentracker config file
-#CONFIG="-f /etc/opentracker.conf"
+CONFIG="-f /etc/opentracker.conf"
