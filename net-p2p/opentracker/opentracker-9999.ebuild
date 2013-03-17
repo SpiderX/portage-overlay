@@ -34,7 +34,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES
-	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, remove owfat target, create dirs on install
+	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, owfat target, create dirs on install
 	sed -i \
 		-e "s|FEATURES|FEATURES_INTERNAL|g" \
 		-e "s|PREFIX?=..|PREFIX?=/usr|g" \
@@ -155,7 +155,7 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	# Install manual page
-	#doman "${FILESDIR}"/${PN}.8
+	doman "${FILESDIR}"/${PN}.8
 
 	# Install config
 	insinto /etc/${PN}

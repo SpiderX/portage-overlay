@@ -8,8 +8,8 @@
     </maintainer>
     <herd>proxy-maintainers</herd>
     <longdescription>
-	Opentracker is a open and free bittorrent tracker project.
-	It aims for minimal resource usage and is intended to run at your wlan router.
+	Opentracker is a open and free bittorrent tracker.
+	It aims for minimal resource usage and is capable to serve multiple thousands of requests.
     </longdescription>
     <use>
 	<flag name="blacklist">Make use of a torrents black-list</flag>

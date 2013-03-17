@@ -1,0 +1,189 @@
+.TH opentracker 8 "March 22, 2013" "" "opentracker"
+.SH NAME
+.B opentracker
+\- high-performance bittorrent tracker
+.SH SYNOPSIS
+.B opentracker
+.RB [ \-i
+.IR ip ]
+.RB [ \-p
+.IR tcpport ]
+.RB [ \-P
+.IR udpport ]
+.RB [ \-r
+.IR redirecturl ]
+.RB [ \-d
+.IR directory ]
+.RB [ \-u
+.IR user ]
+.RB [ \-A
+.IR ip ]
+.RB [ \-f
+.IR config ]
+.RB [ \-s
+.IR livesyncport ]
+.RB [ \-b
+.IR file ]
+.RB [ \-w
+.IR file ]
+.SH DESCRIPTION
+.B opentracker
+is a open and free bittorrent tracker. It aims for minimal resource usage
+and is intended to run at WLAN router.
+.B opentracker
+basically is an http-server that collects all clients ip addresses
+into pools sorted by one of the request strings parameters
+and answers all other clients that specified this exact same parameter
+a list of all other recent clients.
+Utilizing the highly scalable server framework from libowfat,
+opentracker can easily serve multiple thousands of requests
+on a standard plastic WLAN-router, limited only by hardware.
+
+.SH OPTIONS
+The following command-line options are accepted by the server:
+.IP "\-i \fIip\fP"
+ip address to bind to. Default \- *, you may specify more than one.
+.IP "\-p \fItcpport\fP"
+tcp port to bind to. Default \- 6969, you may specify more than one.
+.IP "\-P \fIudpport\fP"
+udp port to bind to. Default \- 6969, you may specify more than one.
+.IP "\-r \fIredirecturl\fP"
+url where / should be redirected to. Default \- none.
+.IP "\-d \fIdirectory\fP"
+directory to try to chroot to. Default \- ".".
+.IP "\-u \fIuser\fP"
+user under whose priviliges opentracker should run. Default \- "nobody".
+.IP "\-f \fIconfig\fP"
+config file
+.IP "\-A \fIip\fP"
+ip address to sync from
+.IP "\-w \fIfile\fP"
+path to whitelist
+.IP "\-b \fIfile\fP"
+path to blacklist
+.IP "\-s \fIlivesyncport\fP"
+udp port to listen for incoming live sync packets. Default \- 9696.
+.SH CONFIG
+.IP listen.udp.workers
+this statement determines if udp sockets are handled in the event
+loop, when variable sets to 0 ( by default ), or are handled in blocking reads in
+dedicated worker threads. You have to set this value before the listen.tcp_udp or
+listen.udp, listen.tcp statements before it takes effect, but you can re-set it for each listen statement.
+Normally you should keep it at the top of the config file.
+Examples: 0, 1, 4
+.IP listen.tcp_udp
+this statement specifies ip address
+.B opentracker
+will listen on, using both, tcp and udp, ports.
+Examples: 0.0.0.0, 192.168.0.1:80, 10.0.0.5:6969
+.IP listen.tcp
+this statement specifies ip address to listen on, using tcp ports only.
+Examples: 0.0.0.0, 192.168.0.1:80, 10.0.0.5:6969
+.IP listen.udp
+this statement specifies ip address to listen on, using udp ports only.
+Examples: 0.0.0.0, 192.168.0.1:80, 10.0.0.5:6969
+.IP access.whitelist
+this statement specifies path to file containing all torrent hashes that
+.B opentracker
+will serve.
+File format is straight forward: "<hex info hash>\\n<hex info hash>\\n...".
+.B opentracker
+should be compiled with whitelist support ( option
+.I DWANT_ACCESSLIST_BLACK
+) to make this statement work.
+.IP access.blacklist
+this statement specifies path to file containing torrent hashes that
+.B opentracker
+will not serve.
+File format is straight forward: "<hex info hash>\\n<hex info hash>\\n..."
+.B opentracker
+should be compiled with blacklist support ( option
+.I DWANT_ACCESSLIST_BLACK
+) to make this statement work.
+.IP access.stats
+this statement specifies ip address allowed to fetch stats.
+.B opentracker
+should be compiled with restrict stats support ( option
+.I WANT_RESTRICT_STATS
+) to make this statement work.
+.IP access.stats_path stats
+this statement allows obfuscate the path to stats.
+It is located at /stats by default, but you can configure it to appear anywhere on your tracker.
+.IP access.proxy
+this statement specifies proxy ip address.
+.B opentracker
+should be compiled with ip from proxy support ( option
+.I DWANT_IP_FROM_PROXY
+) to make this statement work.
+Examples: 192.168.0.1, 10.0.0.5
+.IP livesync.cluster.listen
+this statement specifies ip address and port for live sync.
+The port is used to listen for incoming live sync packets.
+The ip address specifies interface, on which
+.B opentracker
+will join the multicast group 244.0.42.23.
+Note that two udp sockets will be opened. One on ip address 0.0.0.0
+port 9696, that will join the multicast group 224.0.42.23 for incoming
+udp packets, and one on specified ip address port 9696 for outgoing udp packets.
+Also note, that one and only one ip address must be given.
+.B opentracker
+should be compiled with live sync support ( option
+.I WANT_SYNC_LIVE
+) to make this statement work.
+Examples: 192.168.0.1, 10.0.0.5
+.IP livesync.cluster.node_ip
+sync between trackers running in a cluster is restricted to packets coming from trusted ip addresses, specified in this statement.
+Examples: 192.168.0.1, 10.0.0.5
+.IP batchsync.cluster.admin_ip
+this statement specifies admin ip address for old style (HTTP based) asynchronus tracker syncing.
+Examples: 192.168.0.1, 10.0.0.5
+.IP tracker.rootdir
+this statement specifies directory
+.B opentracker
+will chroot/chdir to. All black/white list files must be put in that directory.
+.IP tracker.user
+this statement specifies which user to setuid to.
+.IP tracker.redirect_url
+.B opentracker
+can be told to answer to a "GET / HTTP"-request with a redirect to another location. This statement specifies such location in a form of url.
+Examples: https://your.tracker.local/, http://10.0.0.5/
+.IP persist.mode
+this statement turns on persistence of memory data. On persistence mode "dump"
+.B opentracker
+will save torrents and peers information on disk. Persistence mode "null" turns persistence off.
+.B opentracker
+should be compiled with persistence support ( option
+.I DWANT_PERSISTENCE
+) to make this statement work.
+.IP persist.file
+this statement specifies which persist file to use.
+.B opentracker
+will load data from this file on startup.
+Examples: /var/lib/storage.odb, /etc/opentracker/db.odb, ./file.odb
+.IP persist.save
+this statement controls frequency sync of persistent storage.
+.B opentracker
+will save the memory data if both the given number of seconds and the given number of change operations occurred. Format: <seconds> <changes>.
+Examples: 900 1, 300 10, 60 10000
+
+.SH NOTES
+.B opentracker
+currently supports only IPv4 with persistent storage.
+.PP
+If no listen option ( listen.tcp_udp, listen.tcp, listen.udp ) is given in
+.IR config
+or on the command line, opentracker listens on 0.0.0.0:6969 tcp and udp.
+.PP
+.B opentracker
+doesn't provide blacklist and whitelist support simultaneously.
+
+.SH FILES
+.B
+/usr/bin/opentracker
+
+.SH AUTHOR
+.B opentracker
+was originally written by Dirk Engling <erdgeist@erdgeist.org>. Some features added by FengGu <flygoast@126.com>.
+.PP
+This manual page was written by Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua>
+for Gentoo Linux (and may be used by others)
