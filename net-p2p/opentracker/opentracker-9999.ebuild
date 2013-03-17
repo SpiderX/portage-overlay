@@ -29,12 +29,12 @@ pkg_setup() {
 	# Add opentracker group and user to system
 	# (no home directory specified, because otherwise it will be result in opentracker:root ownership on it)
 	enewgroup ${PN}
-	enewuser ${PN} -1 -1 ${PN}
+	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
 src_prepare() {
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES
-	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, owfat target, create dirs on install
+	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, owfat target, stripping, create dirs on install
 	sed -i \
 		-e "s|FEATURES|FEATURES_INTERNAL|g" \
 		-e "s|PREFIX?=..|PREFIX?=/usr|g" \
@@ -42,6 +42,7 @@ src_prepare() {
 		-e "s|-lpthread||g" \
 		-e "s|-O3||g" \
 		-e "s|-lz||g" \
+		-e "s|strip \$@||g" \
 		-e "s|BINDIR?=\$(PREFIX)/bin|BINDIR?=\$(DESTDIR)\$(PREFIX)/bin/|g" \
 		-e "s|all: owfat|all:|g" \
 		-e "s|install -m 755 ${PN} \$(BINDIR)|install -D -m 755 ${PN} \$(BINDIR)/${PN}|g" \
