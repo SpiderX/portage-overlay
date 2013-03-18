@@ -24,7 +24,6 @@
 	<flag name="log_numwant">Log amount of numwants</flag>
 	<flag name="persistence">Allow saving torrents and peers information on disk</flag>
 	<flag name="spot_woodpeckers">Enable tracking of abusing peers</flag>
-	<flag name="random">Make use of pseudo-device random</flag>
 	<flag name="restrict_stats">Restrict statistics to the tracker owner</flag>
 	<flag name="whitelist">Make use of a torrents white-list</flag>
     </use>

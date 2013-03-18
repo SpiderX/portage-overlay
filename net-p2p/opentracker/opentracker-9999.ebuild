@@ -13,7 +13,7 @@ HOMEPAGE="http://erdgeist.org/arts/software/opentracker/"
 LICENSE="BEER-WARE"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="blacklist debug examples +gzip gzip_always ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog random whitelist"
+IUSE="blacklist debug examples +gzip gzip_always ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog whitelist"
 
 RDEPEND=">=dev-libs/libowfat-0.27
 	gzip? ( sys-libs/zlib )"
@@ -34,7 +34,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES
-	# Define PREFIX, BINDIR and path to libowfat, remove lpthread, lz and O3 flag, owfat target, stripping, create dirs on install
+	# Define PREFIX, BINDIR and path to libowfat; remove lpthread, lz and O3 flag, owfat target, stripping; create dirs on install
 	sed -i \
 		-e "s|FEATURES|FEATURES_INTERNAL|g" \
 		-e "s|PREFIX?=..|PREFIX?=/usr|g" \
@@ -102,6 +102,10 @@ src_prepare() {
 
 	if ! use persistence ; then
 		sed -i '/DWANT_PERSISTENCE/s/^/#/' Makefile || die "sed for persistence failed"
+		sed -i \
+			-e "/ot_persist.h/s|$|\n\n\#ifdef WANT_PERSISTENCE|g" \
+			-e "/g_version_persist/s|^|\n\#endif\n\n|g" \
+		ot_persist.c || die "sed for ot_persist.c failed"
 	fi
 
 	if use spot_woodpeckers ; then
@@ -110,10 +114,6 @@ src_prepare() {
 
 	if use syslog ; then
 		sed -i '/DWANT_SYSLOG/s/^#*//' Makefile || die "sed for syslog failed"
-	fi
-
-	if use random ; then
-		sed -i '/DWANT_DEV_RANDOM/s/^#*//' Makefile || die "sed for random failed"
 	fi
 
 	if use restrict_stats ; then
