@@ -9,10 +9,31 @@ inherit eutils git-2
 EGIT_REPO_URI="https://github.com/flygoast/opentracker.git"
 
 DESCRIPTION="High-performance bittorrent tracker"
-HOMEPAGE="http://erdgeist.org/arts/software/opentracker/"
+HOMEPAGE="https://github.com/flygoast/opentracker http://erdgeist.org/arts/software/opentracker/"
 LICENSE="BEER-WARE"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+declare -A FLAGS
+FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
+	[gzip]="DWANT_COMPRESSION_GZIP$"
+	[gzip_always]="DWANT_COMPRESSION_GZIP_ALWAYS"
+	[ip_from_query]="DWANT_IP_FROM_QUERY_STRING"
+	[ip_from_proxy]="DWANT_IP_FROM_PROXY"
+	[ipv6]="DWANT_V6"
+	[fullscrapes]="DWANT_FULLSCRAPE"
+	[fullscrapes_modest]="DWANT_MODEST_FULLSCRAPES"
+	[live_sync]="DWANT_SYNC_LIVE"
+	[live_sync_unicast]="DSYNC_LIVE_UNICAST"
+	[log_networks_full]="DWANT_FULLLOG_NETWORKS"
+	[log_numwant]="DWANT_LOG_NUMWANT"
+	[persistence]="DWANT_PERSISTENCE"
+	[spot_woodpeckers]="DWANT_SPOT_WOODPECKER"
+	[syslog]="DWANT_SYSLOG"
+	[restrict_stats]="DWANT_RESTRICT_STATS"
+	[whitelist]="DWANT_ACCESSLIST_WHITE"
+)
+
 IUSE="blacklist debug examples +gzip gzip_always ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog whitelist"
 
 RDEPEND=">=dev-libs/libowfat-0.27
@@ -33,10 +54,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES
+	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES, and comment all of them
 	# Define PREFIX, BINDIR and path to libowfat; remove lpthread, lz and O3 flag, owfat target, stripping; create dirs on install
 	sed -i \
 		-e "s|FEATURES|FEATURES_INTERNAL|g" \
+		-e "s|^FEATURES_INTERNAL|#FEATURES_INTERNAL|g" \
 		-e "s|PREFIX?=..|PREFIX?=/usr|g" \
 		-e "s|LIBOWFAT_HEADERS=libowfat|LIBOWFAT_HEADERS=\$(PREFIX)/include/libowfat|g" \
 		-e "s|-lpthread||g" \
@@ -48,80 +70,20 @@ src_prepare() {
 		-e "s|install -m 755 ${PN} \$(BINDIR)|install -D -m 755 ${PN} \$(BINDIR)/${PN}|g" \
 		Makefile || die "sed for src_prepare failed"
 
-	if use blacklist ; then
-		sed -i '/DWANT_ACCESSLIST_BLACK/s/^#*//' Makefile || die "sed for blacklist failed"
-	fi
+	# Define which features to use
+	for flag in ${!FLAGS[@]} ; do
+		sed -i "$(usex $flag /${FLAGS[$flag]}/s/^#*// '')" Makefile || die "sed for $flag failed"
+	done
 
-	if use gzip ; then
-		# Bring back lz flag to build with gzip support
-		sed -i \
-			-e '/DWANT_COMPRESSION_GZIP$/s|^#*||g' \
-			-e '/LDFLAGS+/s|$|-lz|g' \
-			Makefile || die "sed for gzip failed"
-	fi
+	# Return back -lz flag for gzip
+	sed -i "$(usex gzip /LDFLAGS+/s/$/-lz/ '')" Makefile || die "sed for lz in LDFLAGS failed"
 
-	if use gzip_always ; then
-		sed -i '/DWANT_COMPRESSION_GZIP_ALWAYS/s/^#*//' Makefile || die "sed for gzip_always failed"
-	fi
-
-	if use ip_from_query ; then
-		sed -i '/DWANT_IP_FROM_QUERY_STRING/s/^#*//' Makefile || die "sed for ip_from_query failed"
-	fi
-
-	if ! use ip_from_proxy ; then
-		sed -i '/DWANT_IP_FROM_PROXY/s/^/#/' Makefile || die "sed for ip_from_proxy failed"
-	fi
-
-	if use ipv6 ; then
-		sed -i '/DWANT_V6/s/^#*//' Makefile || die "sed for ipv6 failed"
-	fi
-
-	if ! use fullscrapes ; then
-		sed -i '/DWANT_FULLSCRAPE/s/^/#/' Makefile || die "sed for fullscrapes failed"
-	fi
-
-	if use fullscrapes_modest ; then
-		sed -i '/DWANT_MODEST_FULLSCRAPES/s/^#*//' Makefile || die "sed for fullscrapes_modest failed"
-	fi
-
-	if ! use live_sync ; then
-		sed -i '/DWANT_SYNC_LIVE/s/^/#/' Makefile || die "sed for live_sync failed"
-	fi
-
-	if ! use live_sync_unicast ; then
-		sed -i '/DSYNC_LIVE_UNICAST/s/^/#/' Makefile || die "sed for live_sync_unicast failed"
-	fi
-
-	if use log_networks_full ; then
-		sed -i '/DWANT_FULLLOG_NETWORKS/s/^#*//' Makefile || die "sed for log_networks_full failed"
-	fi
-
-	if use log_numwant ; then
-		sed -i '/DWANT_LOG_NUMWANT/s/^#*//' Makefile || die "sed for log_numwant failed"
-	fi
-
+	# Fix compilation issue whithout use of persistence flag
 	if ! use persistence ; then
-		sed -i '/DWANT_PERSISTENCE/s/^/#/' Makefile || die "sed for persistence failed"
 		sed -i \
 			-e "/ot_persist.h/s|$|\n\n\#ifdef WANT_PERSISTENCE|g" \
 			-e "/g_version_persist/s|^|\n\#endif\n\n|g" \
 		ot_persist.c || die "sed for ot_persist.c failed"
-	fi
-
-	if use spot_woodpeckers ; then
-		sed -i '/DWANT_SPOT_WOODPECKER/s/^#*//' Makefile || die "sed for spot_woodpeckers failed"
-	fi
-
-	if use syslog ; then
-		sed -i '/DWANT_SYSLOG/s/^#*//' Makefile || die "sed for syslog failed"
-	fi
-
-	if use restrict_stats ; then
-		sed -i '/DWANT_RESTRICT_STATS/s/^#*//' Makefile || die "sed for restrict_stats failed"
-	fi
-
-	if use whitelist ; then
-		sed -i '/DWANT_ACCESSLIST_WHITE/s/^#*//' Makefile || die "sed for whitelist failed"
 	fi
 
 	# Debug build: build opentracker.debug but target as opentracker, and don't build opentracker
