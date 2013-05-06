@@ -78,14 +78,6 @@ src_prepare() {
 	# Return back -lz flag for gzip
 	sed -i "$(usex gzip /LDFLAGS+/s/$/-lz/ '')" Makefile || die "sed for lz in LDFLAGS failed"
 
-	# Fix compilation issue whithout use of persistence flag
-	if ! use persistence ; then
-		sed -i \
-			-e "/ot_persist.h/s|$|\n\n\#ifdef WANT_PERSISTENCE|g" \
-			-e "/g_version_persist/s|^|\n\#endif\n\n|g" \
-		ot_persist.c || die "sed for ot_persist.c failed"
-	fi
-
 	# Debug build: build opentracker.debug but target as opentracker, and don't build opentracker
 	if use debug; then
 		sed -i \
