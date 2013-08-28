@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>spiderx@spiderx.dp.ua</email>
+    <name>Vladimir Pavljuchenkov</name>
+    <description>Primary maintainer.</description>
+  </maintainer>
+  <maintainer>
+    <email>TomWij@gentoo.org</email>
+    <name>Tom Wijsman</name>
+    <description>Committer, please CC him.</description>
+  </maintainer>
+  <herd>proxy-maintainers</herd>
+  <longdescription>
+    C++ library of designs, containing flexible implementations of common design patterns and idioms.
+  </longdescription>
+  <upstream>
+    <doc>http://loki-lib.sourceforge.net/html/modules.html</doc>
+  </upstream>
+</pkgmetadata>
