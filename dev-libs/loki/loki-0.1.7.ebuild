@@ -11,7 +11,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="doc debug static-libs"
-DEPEND="doc? ( app-doc/doxygen )"
+DEPEND="doc? ( app-doc/doxygen[dot] )"
 
 src_prepare() {
 	# Remove hardcoded flags and make use of system ones
@@ -36,6 +36,16 @@ src_prepare() {
 	fi
 }
 
+src_compile() {
+	default
+
+	if use doc ; then
+		# Compile docs
+		cd doc  || die "cd failed"
+		doxygen || die "doxygen failed to compile docs"
+	fi
+}
+
 src_install() {
 	# Install and copy documentation
 	default
@@ -51,15 +61,5 @@ src_install() {
 		# Install html documentation
 		docinto html
 		dohtml -r "${S}"/doc/html/
-		# Install doxyfile
-		docinto /
-		dodoc "${S}"/doc/Doxyfile
-	fi
-}
-
-pkg_postinst() {
-	if use doc ; then
-		einfo "To compile docs in current directory, run:"
-		einfo "		bzcat /usr/share/doc/"${P}"/Doxyfile.bz2 | doxygen -"
 	fi
 }
