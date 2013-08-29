@@ -15,15 +15,25 @@ DEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	# Remove hardcoded flags and make use of system ones
-	sed -i 's/CXXFLAGS := $(CXXWARNFLAGS) -g -O2/CXXFLAGS += $(CXXWARNFLAGS)/' "${S}"/Makefile.common || die "sed for Makefile.common failed"
-	sed -i '6d' "${S}"/test/SafeFormat/Makefile || die "sed for Makefile failed"
+	sed -i 's/:= $(CXXWARNFLAGS) -g -O2/+= $(CXXWARNFLAGS)/' "${S}"/Makefile.common || die "sed for Makefile.common failed"
+	sed -i '9d' "${S}"/test/Longevity/Makefile  || die "sed for Longevity failed"
+	sed -i '6d' "${S}"/test/SafeFormat/Makefile || die "sed for SafeFormat failed"
+	sed -i '9d' "${S}"/test/SmallObj/Makefile   || die "sed for SmallObj failed"
 
 	# Make should consider $DESTDIR
 	sed -i 's/$(prefix)/$(DESTDIR)$(prefix)/' "${S}"/include/Makefile || die "sed for include failed"
 	sed -i 's/$(prefix)/$(DESTDIR)$(prefix)/' "${S}"/src/Makefile || die "sed for src failed"
 
-	# Remove static-libs if not needed
-	use static-libs || sed -i 's/install install-static/install /;24d' "${S}"/Makefile || die "sed for static-libs failed"
+	if ! use static-libs ; then
+		# Remove static-libs if not needed
+		sed -i 's/install install-static/install /;24d' "${S}"/Makefile || die "sed for static-libs failed"
+	fi
+
+	if use debug ; then
+		# Add debug flag
+		sed -i 's/DNDEBUG/DDEBUG -g3/' "${S}"/src/Makefile || die "sed for debug in Makefile failed"
+		sed -i 's/DNDEBUG/DDEBUG -g3/' "${S}"/test/Makefile.common || die "sed for debug in Makefile.common failed"
+	fi
 }
 
 src_install() {
@@ -42,7 +52,15 @@ src_install() {
 		docinto html
 		dohtml -r "${S}"/doc/html/
 		# Install doxyfile
-		insinto /usr/share/doc/${P}
-		doins "${S}"/doc/Doxyfile
+		docinto /
+		dodoc "${S}"/doc/Doxyfile
 	fi
+}
+
+pkg_postinst() {
+	einfo "To compile docs:"
+	einfo "		mkdir -p ~/loki/"
+	einfo "		cp -r /usr/share/doc/"${P}"/html/ ~/loki/"
+	einfo "		bzcat /usr/share/doc/"${P}"/Doxyfile.bz2 > ~/loki/Doxyfile"
+	einfo "		doxygen ~/loki/Doxyfile"
 }
