@@ -59,10 +59,7 @@ src_install() {
 
 pkg_postinst() {
 	if use doc ; then
-		einfo "To compile docs:"
-		einfo "		mkdir -p ~/loki/"
-		einfo "		cp -r /usr/share/doc/"${P}"/html/ ~/loki/"
-		einfo "		bzcat /usr/share/doc/"${P}"/Doxyfile.bz2 > ~/loki/Doxyfile"
-		einfo "		doxygen ~/loki/Doxyfile"
+		einfo "To compile docs in current directory, run:"
+		einfo "		bzcat /usr/share/doc/"${P}"/Doxyfile.bz2 | doxygen -"
 	fi
 }
