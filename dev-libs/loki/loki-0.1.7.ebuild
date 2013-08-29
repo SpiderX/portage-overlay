@@ -4,8 +4,8 @@
 
 EAPI="5"
 
-DESCRIPTION="C++ library of common design patterns and idioms."
-HOMEPAGE="http://http://loki-lib.sourceforge.net//"
+DESCRIPTION="C++ library of common design patterns and idioms"
+HOMEPAGE="http://loki-lib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-lib/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
@@ -14,7 +14,7 @@ IUSE="doc debug static-libs"
 DEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
-	# Remove flags and make use of system ones
+	# Remove hardcoded flags and make use of system ones
 	sed -i 's/CXXFLAGS := $(CXXWARNFLAGS) -g -O2/CXXFLAGS += $(CXXWARNFLAGS)/' "${S}"/Makefile.common || die "sed for Makefile.common failed"
 	sed -i '6d' "${S}"/test/SafeFormat/Makefile || die "sed for Makefile failed"
 
