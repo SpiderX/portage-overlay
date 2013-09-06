@@ -4,6 +4,8 @@
 
 EAPI="5"
 
+inherit eutils
+
 DESCRIPTION="C++ library of common design patterns and idioms"
 HOMEPAGE="http://loki-lib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-lib/${P}.tar.bz2"
@@ -14,33 +16,21 @@ IUSE="doc debug static-libs"
 DEPEND="doc? ( app-doc/doxygen[dot] )"
 
 src_prepare() {
-	# Remove hardcoded flags and make use of system ones
-	sed -i 's/:= $(CXXWARNFLAGS) -g -O2/+= $(CXXWARNFLAGS)/' "${S}"/Makefile.common || die "sed for Makefile.common failed"
-	sed -i '9d' "${S}"/test/Longevity/Makefile  || die "sed for Longevity failed"
-	sed -i '6d' "${S}"/test/SafeFormat/Makefile || die "sed for SafeFormat failed"
-	sed -i '9d' "${S}"/test/SmallObj/Makefile   || die "sed for SmallObj failed"
+	# Remove hardcoded flags and make use of system ones, consider $DESTDIR
+	epatch "${FILESDIR}"/loki-0.1.7-makefiles.patch
 
-	# Make should consider $DESTDIR
-	sed -i 's/$(prefix)/$(DESTDIR)$(prefix)/' "${S}"/include/Makefile || die "sed for include failed"
-	sed -i 's/$(prefix)/$(DESTDIR)$(prefix)/' "${S}"/src/Makefile || die "sed for src failed"
+	# Remove static-libs if not needed
+	use static-libs || epatch "${FILESDIR}"/loki-0.1.7-static-libs.patch
 
-	if ! use static-libs ; then
-		# Remove static-libs if not needed
-		sed -i 's/install install-static/install /;24d' "${S}"/Makefile || die "sed for static-libs failed"
-	fi
-
-	if use debug ; then
-		# Add debug flag
-		sed -i 's/DNDEBUG/DDEBUG -g3/' "${S}"/src/Makefile || die "sed for debug in Makefile failed"
-		sed -i 's/DNDEBUG/DDEBUG -g3/' "${S}"/test/Makefile.common || die "sed for debug in Makefile.common failed"
-	fi
+	# Add debug flag
+	use debug && epatch "${FILESDIR}"/loki-0.1.7-debug.patch
 }
 
 src_compile() {
 	default
 
 	if use doc ; then
-		# Compile docs
+		# Compile documentation
 		cd doc  || die "cd failed"
 		doxygen || die "doxygen failed to compile docs"
 	fi
@@ -51,7 +41,7 @@ src_install() {
 	default
 
 	if use doc ; then
-		# Install files into docs directory
+		# Install files into doc directory
 		docinto flex
 		dohtml "${S}"/doc/flex/flex_string.html
 		docinto yasli
