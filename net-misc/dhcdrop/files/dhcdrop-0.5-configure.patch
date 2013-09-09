@@ -1,0 +1,12 @@
+diff -r c2aedec8c52a configure
+--- a/configure	Mon Sep 09 11:13:45 2013 +0300
++++ b/configure	Mon Sep 09 11:15:25 2013 +0300
+@@ -2664,7 +2664,7 @@
+ 
+ 
+ # Check whether --enable-static-build was given.
+-if test "${enable_static_build+set}" = set; then
++if test "${enable_static_build}" = yes; then
+   enableval=$enable_static_build; ENABLE_STATIC_BUILD=yes
+ fi
+ 
