@@ -1,0 +1,18 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+command="/usr/bin/nuttcp"
+command_background="yes"
+pidfile="/run/${SVCNAME}.pid"
+command_args="-S ${NUTTCP_OPTS}"
+
+depend() {
+	need net
+	provide nuttcp
+}
+
+start_post() {
+	pgrep -n ${SVCNAME%%.*} > ${pidfile}
+}
