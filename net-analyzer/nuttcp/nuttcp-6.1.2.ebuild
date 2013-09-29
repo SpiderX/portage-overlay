@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils readme.gentoo
 
 DESCRIPTION="Network performance measurement tool"
 HOMEPAGE="http://www.nuttcp.net/"
@@ -17,6 +17,13 @@ KEYWORDS="~x86 ~amd64"
 IUSE="examples ipv6 xinetd"
 
 RDEPEND="xinetd? ( sys-apps/xinetd )"
+
+DOC_CONTENTS="You may need to add these lines to /etc/services:\n
+nuttcp\t\t5000/tcp\n
+nuttcp-data\t\t5001/tcp\n
+nuttcp6\t\t5000/tcp\n
+nuttcp6-data\t\t5001/tcp\n\n
+To run ${PN} in server mode, run:\n/etc/init.d/${PN} start"
 
 src_prepare() {
 	# Remove hardcoded flags and make use of system ones
@@ -32,9 +39,9 @@ src_compile() {
 src_install() {
 	# Install nuttcp binary
 	if use ipv6 ; then
-		newbin "${S}"/${P} ${PN}
+		newbin ${P} ${PN}
 	else
-		newbin "${S}"/${P}-noipv6 ${PN}
+		newbin ${P}-noipv6 ${PN}
 	fi
 
 	# Install Gentoo init script and its config
@@ -42,28 +49,18 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	# Install manual page and documentation
-	doman "${S}"/${PN}.8
-	dodoc "${S}"/README
+	doman ${PN}.8
+	dodoc README
 
 	if use examples ; then
 		insinto /usr/share/${P}
-		doins "${S}"/examples.txt
+		doins examples.txt
 	fi
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
 		doins "${S}"/xinetd.d/${PN}
 	fi
-}
 
-pkg_postinst() {
-	elog "You may need to add these lines to /etc/services:"
-	elog
-	elog "nuttcp          5000/tcp"
-	elog "nuttcp-data     5001/tcp"
-	elog "nuttcp6         5000/tcp"
-	elog "nuttcp6-data    5001/tcp"
-	elog
-	einfo "To run nuttcp in server mode, run:"
-	einfo "  /etc/init.d/nuttcp start"
+	readme.gentoo_create_doc
 }

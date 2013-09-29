@@ -15,12 +15,11 @@
 	a destination system, either transferring data for a specified time
 	interval, or alternatively transferring a specified number of bytes.
 	
-	nuttcp is based on nttcp, but have several useful  features such
+	nuttcp is based on nttcp, but have several useful features such
 	as a server mode, rate limiting, multiple parallel streams, and
 	timer based usage.
     </longdescription>
     <upstream>
-	<doc>http://www.netpatch.ru/en/dhcdrop.html</doc>
 	<bugs-to>mailto:nuttcp-bugs@lcp.nrl.navy.mil</bugs-to>
     </upstream>
 </pkgmetadata>

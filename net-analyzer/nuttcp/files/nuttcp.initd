@@ -6,7 +6,7 @@
 command="/usr/bin/nuttcp"
 command_background="yes"
 pidfile="/run/${SVCNAME}.pid"
-command_args="-S ${NUTTCP_OPTS}"
+command_args="${NUTTCP_OPTS}"
 
 depend() {
 	need net
@@ -14,5 +14,5 @@ depend() {
 }
 
 start_post() {
-	pgrep -n ${SVCNAME%%.*} > ${pidfile}
+	pgrep -n $(echo ${SVCNAME} | sed 's/\..*//g') > ${pidfile}
 }
