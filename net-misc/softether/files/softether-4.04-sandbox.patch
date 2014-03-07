@@ -1,0 +1,25 @@
+--- src/Mayaqua/Unix.c.org	2014-03-05 07:24:37.000000000 +0200
++++ src/Mayaqua/Unix.c	2014-03-05 07:24:48.000000000 +0200
+@@ -2150,14 +2150,14 @@
+ #endif	// RLIMIT_NPROC
+ 
+ 	// Write a value to the threads-max of the proc file system
+-	o = UnixFileCreate("/proc/sys/kernel/threads-max");
+-	if (o != NULL)
+-	{
+-		char tmp[128];
+-		sprintf(tmp, "%u\n", UNIX_LINUX_MAX_THREADS);
+-		UnixFileWrite(o, tmp, strlen(tmp));
+-		UnixFileClose(o, false);
+-	}
++	//o = UnixFileCreate("/proc/sys/kernel/threads-max");
++	//if (o != NULL)
++	//{
++	//	char tmp[128];
++	//	sprintf(tmp, "%u\n", UNIX_LINUX_MAX_THREADS);
++	//	UnixFileWrite(o, tmp, strlen(tmp));
++	//	UnixFileClose(o, false);
++	//}
+ 
+ 	// Set the signals that is to be ignored
+ 	signal(SIGPIPE, SIG_IGN);

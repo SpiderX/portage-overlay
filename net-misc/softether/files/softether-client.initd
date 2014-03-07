@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+NAME=${SVCNAME##*.}
+if [ -n "${NAME}" -a "${SVCNAME}" != "softether-client" ]; then
+    PID="/run/softether-client.${NAME}.pid"
+    PNAME=$(echo ${RC_SVCNAME} | sed 's/.*\-/vpn/;s/\..*//g')
+    CONF_DEFAULT="/etc/conf.d/softether-client.${NAME}"
+else
+    PID="/run/softether-client.pid"
+    PNAME=$(echo ${RC_SVCNAME} | sed 's/.*\-/vpn/')
+    CONF_DEFAULT="/etc/conf.d/softether-client"
+fi
+CONF=${CONF:-${CONF_DEFAULT}}
+EXEC=${EXEC:-/opt/softether/bin/vpnclient/vpnclient}
+
+depend() {
+	need net
+	provide softether-client
+}
+
+start() {
+	ebegin "Starting softether-client"
+	start-stop-daemon --start --quiet --make-pidfile --pidfile ${PID} --exec ${EXEC} -- ${OPTS_START}
+	eend $?
+}
+
+start_post() {
+	pgrep -n $(echo ${PNAME}) > ${PID}
+}
+
+stop() {
+	ebegin "Stopping softether-client"
+	start-stop-daemon --stop --quiet --pidfile ${PID} -- ${OPTS_STOP}
+	rm -f ${PID}
+	eend $?
+}

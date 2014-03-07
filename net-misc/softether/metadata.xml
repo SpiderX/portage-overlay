@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+	<email>spiderx@spiderx.dp.ua</email>
+	<name>Vladimir Pavljuchenkov</name>
+	<description>Primary maintainer.</description>
+    </maintainer>
+    <herd>proxy-maintainers</herd>
+    <longdescription>
+	An Open-Source Free Cross-platform Multi-protocol VPN Program,
+	as an academic project from University of Tsukuba.
+	SoftEther VPN runs on Windows, Linux, Mac, FreeBSD and Solaris.
+	SoftEther VPN supports most of widely-used VPN protocols
+	including SSL-VPN, OpenVPN, IPsec, L2TP, MS-SSTP, L2TPv3 and EtherIP.
+    </longdescription>
+    <use>
+	<flag name="bridge">Enable build of SoftEther VPN bridge</flag>
+	<flag name="client">Enable build of SoftEther VPN client</flag>
+	<flag name="cmd">Enable build of SoftEther VPN cmd</flag>
+	<flag name="server">Enable build of SoftEther VPN server</flag>
+    </use>
+    <upstream>
+	<changelog>http://www.softether.org/5-download/history</changelog>
+	<doc>http://www.softether.org/4-docs</doc>
+	<bugs-to>mailto:softether-vpn-security@softether.org</bugs-to>
+    </upstream>
+</pkgmetadata>
