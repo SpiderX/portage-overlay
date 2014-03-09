@@ -8,4 +8,5 @@ This are an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 * [dhcdrop](http://www.netpatch.ru/dhcdrop.html) ([281994](https://bugs.gentoo.org/show_bug.cgi?id=281994))
 * [nuttcp](nuttcp.net/) ([486788](https://bugs.gentoo.org/show_bug.cgi?id=486788))
 * [ipt_netflow](http://sourceforge.net/projects/ipt-netflow/)
+* [softether](http://www.softether.org/) ([498844](https://bugs.gentoo.org/show_bug.cgi?id=498844))
  
