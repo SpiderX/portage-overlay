@@ -15,10 +15,10 @@
 	including SSL-VPN, OpenVPN, IPsec, L2TP, MS-SSTP, L2TPv3 and EtherIP.
     </longdescription>
     <use>
-	<flag name="bridge">Enable build of SoftEther VPN bridge</flag>
-	<flag name="client">Enable build of SoftEther VPN client</flag>
-	<flag name="cmd">Enable build of SoftEther VPN cmd</flag>
-	<flag name="server">Enable build of SoftEther VPN server</flag>
+	<flag name="bridge">Enable install of SoftEther VPN bridge</flag>
+	<flag name="client">Enable install of SoftEther VPN client</flag>
+	<flag name="cmd">Enable install of SoftEther VPN cmd</flag>
+	<flag name="server">Enable install of SoftEther VPN server</flag>
     </use>
     <upstream>
 	<changelog>http://www.softether.org/5-download/history</changelog>
