@@ -27,6 +27,8 @@ RDEPEND="dev-libs/openssl
 
 DOCS=( AUTHORS.TXT ChangeLog README )
 
+REQUIRED_USE="|| ( bridge client cmd server )"
+
 src_prepare() {
 	# Prohibit to modify number of threads
 	epatch "${FILESDIR}"/softether-4.04-sandbox.patch
@@ -59,8 +61,8 @@ src_install() {
 			doins bin/vpn${module}/vpn${module}
 			fperms 0755 /opt/softether/bin/vpn${module}/vpn${module}
 			if [ "$module" != "cmd" ] ; then
-				newinitd ${FILESDIR}/${PN}-${module}.initd ${PN}-${module}
-				newconfd ${FILESDIR}/${PN}-${module}.confd ${PN}-${module}
+				newinitd "${FILESDIR}"/${PN}-${module}.initd ${PN}-${module}
+				newconfd "${FILESDIR}"/${PN}-${module}.confd ${PN}-${module}
 			fi
 		fi
 	done
