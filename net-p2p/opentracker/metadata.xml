@@ -16,6 +16,7 @@
 	<flag name="gzip_always">Enforce gzip compressed full scrapes even if client did not request it</flag>
 	<flag name="ip_from_query">Accept source IP only from query (debugging purposes only)</flag>
 	<flag name="ip_from_proxy">Accept source IP from proxy</flag>
+	<flag name="httpdebug">Enable human-readable http debug interface</flag>
 	<flag name="fullscrapes">Allow query a tracker for all tracked torrents</flag>
 	<flag name="fullscrapes_modest">Enable limiting fullscrapes to only every 5 minutes per IP</flag>
 	<flag name="live_sync">Allow synchronisation between several instances through multicast</flag>
