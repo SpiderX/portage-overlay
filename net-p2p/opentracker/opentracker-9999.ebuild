@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils git-2
+inherit eutils user git-2
 
 EGIT_REPO_URI="https://github.com/flygoast/opentracker.git"
 
@@ -32,9 +32,10 @@ FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
 	[syslog]="DWANT_SYSLOG"
 	[restrict_stats]="DWANT_RESTRICT_STATS"
 	[whitelist]="DWANT_ACCESSLIST_WHITE"
+	[httpdebug]="DWANT_HTTPHUMAN"
 )
 
-IUSE="blacklist debug examples +gzip gzip_always ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog whitelist"
+IUSE="blacklist debug examples +gzip gzip_always httpdebug ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog whitelist"
 
 RDEPEND=">=dev-libs/libowfat-0.27
 	gzip? ( sys-libs/zlib )"
@@ -95,6 +96,8 @@ src_prepare() {
 		-e "/tracker.user/s|nobody|${PN}|g" \
 		-e "/persist.file/s|/path/to/persist.odb|/var/lib/${PN}/${PN}.odb|g" \
 	"${S}"/opentracker.conf.sample || die "sed for config failed"
+
+	epatch_user
 }
 
 src_install() {
