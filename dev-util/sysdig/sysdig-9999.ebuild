@@ -28,9 +28,12 @@ MODULES_OPTIONAL_USE="modules"
 MODULE_NAMES="sysdig-probe(sysdig:${S}/driver)"
 
 src_prepare() {
-	# Fix 'jobserver unavailable '
+	# Fix 'jobserver unavailable'
 	sed -i 's/make/\$\(MAKE\)/' "${S}"/driver/Makefile.in || die "sed on driver/Makefile failed"
 	sed -i 's/make/\$(MAKE)/' "${S}"/driver/CMakeLists.txt || die "sed on driver/CMakeList.txt failed"
+
+	# Fix 'warning: dereferencing type-punned pointer will break strict-aliasing rules'
+	sed -i 's/(uint64_t\*)//g' "${S}"/userspace/libsinsp/parsers.cpp || die "sed on parsers.cpp failed"
 
 	if ! use debug ; then
 		sed -i 's/-ggdb//' "${S}"/CMakeLists.txt || die "sed on CMakeList.txt failed"
