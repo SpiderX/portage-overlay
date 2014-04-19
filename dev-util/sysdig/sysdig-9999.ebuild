@@ -13,7 +13,7 @@ HOMEPAGE="http://www.sysdig.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 
 IUSE="debug modules"
 
