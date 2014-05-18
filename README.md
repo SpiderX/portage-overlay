@@ -10,3 +10,4 @@ This are an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 * [ipt_netflow](http://sourceforge.net/projects/ipt-netflow/)
 * [softether](http://www.softether.org/) ([498844](https://bugs.gentoo.org/show_bug.cgi?id=498844))
 * [sysdig](http://www.sysdig.org/)
+* [netgauge](http://www.ookla.com/netgauge)
