@@ -4,16 +4,15 @@
 
 EAPI="5"
 
-inherit git-2 eutils cmake-utils linux-mod
-
-EGIT_REPO_URI="https://github.com/draios/${PN}.git"
+inherit eutils cmake-utils linux-mod
 
 DESCRIPTION="System-level exploration and troubleshooting tool"
 HOMEPAGE="http://www.sysdig.org/"
+SRC_URI="https://github.com/draios/${PN}/archive/${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 
 IUSE="debug examples modules"
 
