@@ -4,37 +4,38 @@
 
 EAPI="5"
 
-inherit git-2 eutils cmake-utils linux-mod
-
-EGIT_REPO_URI="https://github.com/draios/${PN}.git"
+inherit git-r3 cmake-utils linux-mod
 
 DESCRIPTION="System-level exploration and troubleshooting tool"
 HOMEPAGE="http://www.sysdig.org/"
-
+EGIT_REPO_URI="https://github.com/draios/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
 IUSE="debug examples modules"
 
-RDEPEND="dev-lang/luajit
+RDEPEND="dev-lang/luajit:2
 	dev-libs/jsoncpp
 	sys-libs/zlib
 "
-DEPEND="virtual/linux-sources
+DEPEND="virtual/os-headers
 	${RDEPEND}"
 
-CONFIG_CHECK="~TRACEPOINTS ~HAVE_SYSCALL_TRACEPOINTS"
+REQUIRED_USE="!kernel_linux? ( !modules )"
+
+MODULE_NAMES="sysdig-probe(misc:${S}_build/driver)"
 MODULES_OPTIONAL_USE="modules"
-MODULE_NAMES="sysdig-probe(sysdig:${S}/driver)"
+
+pkg_setup() {
+	use modules && linux-mod_pkg_setup
+}
 
 src_prepare() {
 	if ! use debug ; then
 		sed -i 's/-ggdb//' "${S}"/CMakeLists.txt || die "sed on CMakeList.txt failed"
 	fi
-
 	cmake-utils_src_prepare
-
 	epatch_user
 }
 
@@ -47,6 +48,8 @@ src_configure() {
 		$(cmake-utils_use_build examples LIBSCAP_EXAMPLES)
 	)
 	cmake-utils_src_configure
+	sed 's/driver \&\& $(MAKE)/driver \&\& (unset ARCH;$(MAKE))/' \
+		-i "${BUILD_DIR}/driver/CMakeFiles/driver.dir/build.make" || die
 }
 
 src_compile() {
@@ -55,5 +58,23 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-	linux-mod_src_install
+	use modules && linux-mod_src_install
+}
+
+pkg_preinst() {
+	einfo "Removing source files from installation image..."
+	rm -rf "${D}/usr/src"
+	use modules && linux-mod_pkg_preinst
+}
+
+pkg_postinst() {
+	if use modules ; then
+		linux-mod_pkg_postinst
+		ewarn "This package installs kernel module ${PN}-probe.ko."
+		ewarn "Don't forget to load the module before running sysdig."
+	fi
+}
+
+pkg_postrm() {
+	use modules && linux-mod_pkg_postrm
 }
