@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE="debug examples modules"
 
 RDEPEND="dev-lang/luajit:2
-	dev-libs/jsoncpp
+	>dev-libs/jsoncpp-0.5.0-r1
 	sys-libs/zlib
 "
 DEPEND="virtual/os-headers
@@ -33,13 +33,15 @@ pkg_setup() {
 
 src_prepare() {
 	if ! use debug ; then
-		sed -i 's/-ggdb//' "${S}"/CMakeLists.txt || die "sed on CMakeList.txt failed"
+		sed -r '/\tset\(CMAKE_C(XX)?_FLAGS\ "\$\{CMAKE_C(XX)?_FLAGS\}\ -Wall/s/ -ggdb//' \
+			-i "${S}"/CMakeLists.txt || die "sed on CMakeList.txt failed"
 	fi
 	cmake-utils_src_prepare
 	epatch_user
 }
 
 src_configure() {
+	unset ARCH
 	local mycmakeargs=(
 		$(echo -DUSE_BUNDLED_LUAJIT=OFF)
 		$(echo -DUSE_BUNDLED_JSONCPP=OFF)
@@ -48,8 +50,6 @@ src_configure() {
 		$(cmake-utils_use_build examples LIBSCAP_EXAMPLES)
 	)
 	cmake-utils_src_configure
-	sed 's/driver \&\& $(MAKE)/driver \&\& (unset ARCH;$(MAKE))/' \
-		-i "${BUILD_DIR}/driver/CMakeFiles/driver.dir/build.make" || die
 }
 
 src_compile() {

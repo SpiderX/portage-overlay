@@ -16,7 +16,7 @@ KEYWORDS="~x86 ~amd64 ~arm"
 IUSE="debug examples modules"
 
 RDEPEND="dev-lang/luajit:2
-	dev-libs/jsoncpp
+	>dev-libs/jsoncpp-0.5.0-r1
 	sys-libs/zlib
 "
 DEPEND="virtual/os-headers
