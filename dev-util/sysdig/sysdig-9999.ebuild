@@ -36,6 +36,9 @@ src_prepare() {
 		sed -r '/\tset\(CMAKE_C(XX)?_FLAGS\ "\$\{CMAKE_C(XX)?_FLAGS\}\ -Wall/s/ -ggdb//' \
 			-i "${S}"/CMakeLists.txt || die "sed on CMakeList.txt failed"
 	fi
+	# Do not install shell completion
+	sed '/add_subdirectory(scripts)/d' \
+			-i "${S}"/CMakeLists.txt || die "sed for scripts subdirectory on CMakeList.txt failed"
 	cmake-utils_src_prepare
 	epatch_user
 }
