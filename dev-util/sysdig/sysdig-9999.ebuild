@@ -11,7 +11,7 @@ HOMEPAGE="http://www.sysdig.org/"
 EGIT_REPO_URI="https://github.com/draios/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~arm"
+KEYWORDS=""
 
 IUSE="bash-completion bundled-libs debug examples modules zsh-completion"
 
