@@ -8,16 +8,18 @@ inherit cmake-utils linux-mod
 
 DESCRIPTION="System-level exploration and troubleshooting tool"
 HOMEPAGE="http://www.sysdig.org/"
-SRC_URI="https://github.com/draios/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/draios/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm"
 
-IUSE="debug examples modules"
+IUSE="bundled-libs debug examples modules"
 
-RDEPEND="dev-lang/luajit:2
+RDEPEND="!bundled-libs? (
+	dev-lang/luajit:2
 	dev-libs/jsoncpp
 	sys-libs/zlib
+	)
 "
 DEPEND="virtual/os-headers
 	${RDEPEND}"
@@ -43,9 +45,9 @@ src_prepare() {
 src_configure() {
 	unset ARCH
 	local mycmakeargs=(
-		$(echo -DUSE_BUNDLED_LUAJIT=OFF)
-		$(echo -DUSE_BUNDLED_JSONCPP=OFF)
-		$(echo -DUSE_BUNDLED_ZLIB=OFF)
+		$(usex bundled-libs -DUSE_BUNDLED_LUAJIT=ON -DUSE_BUNDLED_LUAJIT=OFF)
+		$(usex bundled-libs -DUSE_BUNDLED_JSONCPP=ON -DUSE_BUNDLED_JSONCPP=OFF)
+		$(usex bundled-libs -DUSE_BUNDLED_ZLIB=ON -DUSE_BUNDLED_ZLIB=OFF)
 		$(cmake-utils_use_build modules DRIVER)
 		$(cmake-utils_use_build examples LIBSCAP_EXAMPLES)
 	)

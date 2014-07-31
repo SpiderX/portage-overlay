@@ -4,20 +4,24 @@
 
 EAPI="5"
 
-inherit git-r3 cmake-utils linux-mod
+inherit git-r3 cmake-utils linux-mod bash-completion-r1
 
 DESCRIPTION="System-level exploration and troubleshooting tool"
 HOMEPAGE="http://www.sysdig.org/"
 EGIT_REPO_URI="https://github.com/draios/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64 ~arm"
 
-IUSE="debug examples modules"
+IUSE="bash-completion bundled-libs debug examples modules zsh-completion"
 
-RDEPEND="dev-lang/luajit:2
-	>dev-libs/jsoncpp-0.5.0-r1
-	sys-libs/zlib
+RDEPEND="!bundled-libs? (
+		dev-lang/luajit:2
+		>dev-libs/jsoncpp-0.5.0-r1
+		sys-libs/zlib
+	)
+	bash-completion? ( app-shells/gentoo-bashcomp )
+	zsh-completion? ( app-shells/zsh-completion )
 "
 DEPEND="virtual/os-headers
 	${RDEPEND}"
@@ -34,9 +38,9 @@ pkg_setup() {
 src_prepare() {
 	if ! use debug ; then
 		sed -r '/\tset\(CMAKE_C(XX)?_FLAGS\ "\$\{CMAKE_C(XX)?_FLAGS\}\ -Wall/s/ -ggdb//' \
-			-i "${S}"/CMakeLists.txt || die "sed on CMakeList.txt failed"
+			-i "${S}"/CMakeLists.txt || die "sed for debug on CMakeList.txt failed"
 	fi
-	# Do not install shell completion
+	# Do not install shell completions
 	sed '/add_subdirectory(scripts)/d' \
 			-i "${S}"/CMakeLists.txt || die "sed for scripts subdirectory on CMakeList.txt failed"
 	cmake-utils_src_prepare
@@ -46,9 +50,9 @@ src_prepare() {
 src_configure() {
 	unset ARCH
 	local mycmakeargs=(
-		$(echo -DUSE_BUNDLED_LUAJIT=OFF)
-		$(echo -DUSE_BUNDLED_JSONCPP=OFF)
-		$(echo -DUSE_BUNDLED_ZLIB=OFF)
+		$(usex bundled-libs -DUSE_BUNDLED_LUAJIT=ON -DUSE_BUNDLED_LUAJIT=OFF)
+		$(usex bundled-libs -DUSE_BUNDLED_JSONCPP=ON -DUSE_BUNDLED_JSONCPP=OFF)
+		$(usex bundled-libs -DUSE_BUNDLED_ZLIB=ON -DUSE_BUNDLED_ZLIB=OFF)
 		$(cmake-utils_use_build modules DRIVER)
 		$(cmake-utils_use_build examples LIBSCAP_EXAMPLES)
 	)
@@ -60,6 +64,13 @@ src_compile() {
 }
 
 src_install() {
+	use bash-completion && dobashcomp "${S}"/scripts/completions/bash/sysdig
+
+	if use zsh-completion ; then
+		insinto /usr/share/zsh/site-functions
+		doins "${S}"/scripts/completions/zsh/_sysdig
+	fi
+
 	cmake-utils_src_install
 	use modules && linux-mod_src_install
 }
