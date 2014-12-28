@@ -8,7 +8,7 @@ inherit eutils readme.gentoo
 
 DESCRIPTION="Network performance measurement tool"
 HOMEPAGE="http://www.nuttcp.net/"
-SRC_URI="http://lcp.nrl.navy.mil/${PN}/${P}.tar.bz2"
+SRC_URI="http://nuttcp.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
