@@ -27,10 +27,6 @@ start() {
 	eend $?
 }
 
-#start_post() {
-#        pgrep -n $(echo ${PNAME} | sed 's/or/e/') > ${PID}
-#}
-
 stop() {
 	ebegin "Stopping fiche"
 	start-stop-daemon --stop --quiet --pidfile ${PID}

@@ -11,3 +11,4 @@ This are an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 * [softether](http://www.softether.org/) ([498844](https://bugs.gentoo.org/show_bug.cgi?id=498844))
 * [sysdig](http://www.sysdig.org/) ([510718](https://bugs.gentoo.org/show_bug.cgi?id=510718))
 * [netgauge](http://www.ookla.com/netgauge)
+* [fiche](https://github.com/solusipse/fiche) ([536148](https://bugs.gentoo.org/show_bug.cgi?id=536148))
