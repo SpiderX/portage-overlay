@@ -12,3 +12,4 @@ This are an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 * [sysdig](http://www.sysdig.org/) ([510718](https://bugs.gentoo.org/show_bug.cgi?id=510718))
 * [netgauge](http://www.ookla.com/netgauge)
 * [fiche](https://github.com/solusipse/fiche) ([536148](https://bugs.gentoo.org/show_bug.cgi?id=536148))
+* [peervpn](http://www.peervpn.net/) ([531468](https://bugs.gentoo.org/show_bug.cgi?id=531468))
