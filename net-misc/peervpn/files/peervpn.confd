@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/peervpn
+
+# Various options.
+# run `peervpn -h` for valid cmdline options
+OPTS="/etc/peervpn/peervpn.conf"
