@@ -1,0 +1,11 @@
+--- a/comcast.go
++++ b/comcast.go
+@@ -2,7 +2,7 @@ package main
+ 
+ import (
+ 	"flag"
+-	"github.com/tylertreat/Comcast/throttler"
++	"./throttler"
+ 	"log"
+ 	"net"
+ 	"strconv"
