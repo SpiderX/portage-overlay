@@ -14,35 +14,40 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 
-IUSE="btree debug geoip bzip2 memhash unicode zlib"
+IUSE="btree debug geoip tokyocabinet unicode"
 
-REQUIRED_USE="btree? ( !memhash )"
+REQUIRED_USE="btree? ( tokyocabinet )"
 
 RDEPEND="
-	dev-libs/glib:2
 	sys-libs/ncurses[unicode?]
 	geoip? ( dev-libs/geoip )
-	btree? ( dev-db/tokyocabinet )
-	memhash? ( dev-db/tokyocabinet )
-	zlib? ( sys-libs/zlib )
-	bzip2? ( app-arch/bzip2 )"
+	!tokyocabinet? ( dev-libs/glib:2 )
+	tokyocabinet? (
+		dev-db/tokyocabinet
+		btree? (
+			app-arch/bzip2
+			sys-libs/zlib
+		)
+	)
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	# Fix path to GeoIP bases in config
 	sed -e s':/usr/local:/usr:' -i config/goaccess.conf || die
+
+	epatch_user
 }
 
 src_configure() {
 	econf \
 		$(use_enable debug) \
 		$(use_enable geoip) \
-		$(use_enable bzip2 bzip) \
 		$(use_enable unicode utf8) \
-		$(use_enable zlib) \
-		$(use memhash && echo "--enable-tcb=memhash") \
-		$(use btree && echo "--enable-tcb=btree")
-
-	epatch_user
+		$(use_enable tokyocabinet tcb) \
+		$(use_enable btree bzip) \
+		$(use_enable btree zlib) \
+		$(usex tokyocabinet "--enable-tcb=$(usex btree btree memhash)" '')
 }

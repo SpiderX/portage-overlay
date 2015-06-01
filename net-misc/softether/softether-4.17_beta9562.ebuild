@@ -10,7 +10,7 @@ DESCRIPTION="Multi-protocol VPN software"
 HOMEPAGE="http://www.softether.org/"
 LICENSE="GPL-2"
 
-DATE="2015.02.02"
+DATE="2015.05.30"
 MY_P="v${PV/_beta/-}"
 SRC_URI="http://www.softether-download.com/files/${PN}/${MY_P}-beta-${DATE}-tree/Source_Code/${PN}-src-${MY_P}-beta.tar.gz"
 SLOT="0"

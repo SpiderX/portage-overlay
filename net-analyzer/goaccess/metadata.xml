@@ -13,7 +13,7 @@ HTTP statistics for system administrators that require a visual server report on
 	</longdescription>
 	<use>
 		<flag name="btree">Enable Tokyo Cabinet's on-disk B+ Tree database backend</flag>
-		<flag name="memhash">Enable Tokyo Cabinet's on-memory hash database backend</flag></use>
+		<flag name="tokyocabinet">Enable Tokyo Cabinet's on-memory hash database backend</flag></use>
 	<upstream>
 		<changelog>https://github.com/allinurl/goaccess/blob/master/ChangeLog</changelog>
 		<doc>http://goaccess.io/faq</doc>
