@@ -15,3 +15,4 @@ This are an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 * [peervpn](http://www.peervpn.net/) ([531468](https://bugs.gentoo.org/show_bug.cgi?id=531468))
 * [goaccess](http://goaccess.io/) ([530112](https://bugs.gentoo.org/show_bug.cgi?id=530112))
 * [comcast](https://github.com/tylertreat/Comcast)
+* [gitlab-git-http-server](https://gitlab.com/gitlab-org/gitlab-git-http-server)
