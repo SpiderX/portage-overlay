@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+    <email>spiderx@spiderx.dp.ua</email>
+    <name>Vladimir Pavljuchenkov</name>
+    <description>Primary maintainer</description>
+    </maintainer>
+    <herd>proxy-maintainers</herd>
+    <longdescription>
+    Chrome extension for signing with your eID on the web
+    </longdescription>
+    <use>
+	<flag name="chromium">Install token singning for chromium</flag>
+	<flag name="chrome">Install token singning for chrome</flag>
+	<flag name="extension">Build and install extention for chrome/chromium</flag>
+    </use>
+    <upstream>
+    <bugs-to>https://github.com/open-eid/chrome-token-signing/issues</bugs-to>
+    <changelog>https://github.com/open-eid/chrome-token-signing/releases</changelog>
+    </upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+    <email>spiderx@spiderx.dp.ua</email>
+    <name>Vladimir Pavljuchenkov</name>
+    <description>Primary maintainer.</description>
+    </maintainer>
+    <herd>proxy-maintainers</herd>
+    <longdescription>
+    ID-card utility allows you check the ID-card operation and
+    the validity of the certificates, change as well as unblock
+    locked PIN codes and change the PUK code.
+    </longdescription>
+    <upstream>
+    <bugs-to>https://github.com/open-eid/qesteidutil/issues</bugs-to>
+    <changelog>https://github.com/open-eid/qesteidutil/releases</changelog>
+    </upstream>
+</pkgmetadata>
