@@ -4,12 +4,12 @@
 
 EAPI="5"
 
-inherit eutils user git-2
+inherit eutils user git-r3
 
 DESCRIPTION="Command line pastebin server"
 HOMEPAGE="https://github.com/solusipse/fiche"
 EGIT_REPO_URI="https://github.com/solusipse/${PN}.git"
-EGIT_BRANCH="master"
+EGIT_BRANCH="secure"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,6 +21,13 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 /etc/${PN} ${PN}
 }
 
+src_prepare() {
+	# Remove CFLAGS defined by upstream
+	sed -i 's/ -O2//' Makefile.in || die "sed for Makefile.in failed"
+
+	epatch_user
+}
+
 src_install() {
 	# Install binary
 	dobin ${PN}
@@ -30,6 +37,6 @@ src_install() {
 	keepdir /var/lib/${PN}
 
 	# Install Gentoo init script and its config
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+	newinitd "${FILESDIR}"/${PN}-0.9.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}-0.9.confd ${PN}
 }
