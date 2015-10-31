@@ -1,4 +1,27 @@
-This are an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
+# How to use this overlay
+
+[Local overlays](https://wiki.gentoo.org/wiki/Overlay/Local_overlay) should be managed via `/etc/portage/repos.conf/`.
+To enable this overlay make sure you are using a recent Portage version (at least `2.2.14`), and crate an `/etc/portage/repos.conf/nest.conf` file containing precisely:
+
+```
+[nest]
+location = /usr/local/portage/nest
+sync-type = git
+sync-uri = https://github.com/spiderx/portage-overlay.git
+priority=9999
+```
+
+Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all our ebuilds available.
+
+# With layman
+
+Add `https://raw.github.com/spiderx/portage-overlay/master/overlay.xml` to overlays section in `/etc/layman/layman.cfg`.
+
+Or read the instructions on the [Gentoo Wiki](http://wiki.gentoo.org/wiki/Layman#Adding_custom_overlays), then invoke the following:
+
+    layman -f -a nest
+
+This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 
 * [stargazer](http://stg.dp.ua/) ([452916](https://bugs.gentoo.org/show_bug.cgi?id=452916))
 * [samplicator](http://samplicator.googlecode.com/) ([459310](https://bugs.gentoo.org/show_bug.cgi?id=459310))
