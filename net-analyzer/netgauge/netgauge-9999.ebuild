@@ -43,5 +43,5 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Add an entry to /etc/portage/make.conf to prevent Ookla Server's config overwriting within next ebuild re-emerge:"
-	einfo "		CONFIG_PROTECT='${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
+	einfo "		CONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
 }
