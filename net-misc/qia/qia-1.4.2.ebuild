@@ -9,7 +9,7 @@ inherit cmake-utils
 DESCRIPTION="Authorization tool for Stargazer Billing System written in Qt"
 HOMEPAGE="http://stg.codes/"
 MY_P="${P}-Source"
-SRC_URI="http://stg.codes/attachments/download/5/${MY_P}.tar.bz2"
+SRC_URI="http://stg.codes/attachments/download/6/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
