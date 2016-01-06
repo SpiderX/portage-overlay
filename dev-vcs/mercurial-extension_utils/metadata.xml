@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+	<email>spiderx@spiderx.dp.ua</email>
+	<name>Vladimir Pavljuchenkov</name>
+	<description>Primary maintainer</description>
+    </maintainer>
+    <herd>proxy-maintainers</herd>
+    <longdescription>
+	This module contains group of reusable functions,
+	which is useful while writing Mercurial extensions.
+    </longdescription>
+    <upstream>
+	<doc>https://bitbucket.org/Mekk/mercurial-extension_utils</doc>
+    </upstream>
+</pkgmetadata>
