@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ EAPI=5
 PLOCALES="de_DE es_ES gl_ES he_IL hu_HU nl_NL pl_PL ru_RU sv_SE zh_CN"
 
 inherit qmake-utils l10n git-r3
-DESCRIPTION="QtPass is a multi-platform GUI for pass, the standard unix password manager."
+DESCRIPTION="multi-platform GUI for pass, the standard unix password manager."
 HOMEPAGE="https://qtpass.org/"
 EGIT_REPO_URI="https://github.com/IJHack/${PN}.git"
 LICENSE="GPL-3"
@@ -34,7 +34,9 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# Modify install path
-	sed -i "s/target.path = \$\$PREFIX/target.path = \$\$PREFIX\/bin/" ${PN}.pro || die "sed failed to modify install path for ${PN}.pro"
+	sed -i "s/target.path = \$\$PREFIX/target.path = \$\$PREFIX\/bin/" \
+		${PN}.pro \
+		|| die "sed failed to modify install path for ${PN}.pro"
 
 	locale() {
 		sed -i \
@@ -47,15 +49,20 @@ src_prepare() {
 	# Disabled due lack of support ar_MA locale in portage
 	#l10n_find_plocales_changes "localization" "localization_" ".ts"
 	# Remove all localizations by default
-	sed -i "/localization\/localization_[a-z]\{2\}_[A-Z]\{2\}.ts/d" ${PN}.pro || die "sed failed to remove localization for ${PN}.pro"
-	sed -i "/<file>localization\/localization_[a-z]\{2\}_[A-Z]\{2\}.qm<\/file>/d" resources.qrc || die "sed failed to remove localization for resources.qrc"
+	sed -i "/localization\/localization_[a-z]\{2\}_[A-Z]\{2\}.ts/d" \
+		${PN}.pro \
+		|| die "sed failed to remove localization for ${PN}.pro"
+	sed -i "/<file>localization\/localization_[a-z]\{2\}_[A-Z]\{2\}.qm<\/file>/d" \
+		resources.qrc \
+		|| die "sed failed to remove localization for resources.qrc"
 
 	# For enabled locales add translations install target and path
 	if [[ -n "$(l10n_get_locales)" ]]; then
 		sed -i \
 		-e "/INSTALLS += target/a INSTALLS += translations" ${PN}.pro \
 		-e "/target.path = \$\$PREFIX\/bin/a translations.path = \$\$PREFIX/share/\$\${TARGET}/translations" \
-		${PN}.pro || die "sed failed to append translation target and path for ${PN}.pro"
+		${PN}.pro \
+		|| die "sed failed to append translation target and path for ${PN}.pro"
 		l10n_for_each_locale_do locale
 	fi
 
