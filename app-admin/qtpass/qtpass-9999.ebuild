@@ -27,10 +27,14 @@ RDEPEND="qt5? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 	)
-	app-admin/pass"
-
+	app-admin/pass
+	net-misc/x11-ssh-askpass"
 DEPEND="${RDEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )"
+	qt5? (
+		dev-qt/linguist-tools:5
+		dev-qt/qtsvg:5
+	)
+	!qt5? ( dev-qt/qtsvg:4 )"
 
 src_prepare() {
 	# Modify install path

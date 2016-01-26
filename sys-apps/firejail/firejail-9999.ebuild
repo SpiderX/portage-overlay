@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils multilib bash-completion-r1 git-r3
 
 DESCRIPTION="Sandbox program that reduces the risk of security breaches"
-HOMEPAGE="http://github.com/netblue30/firejail https://l3net.wordpress.com/projects/firejail/"
+HOMEPAGE="https://firejail.wordpress.com/"
 EGIT_REPO_URI="https://github.com/netblue30/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
