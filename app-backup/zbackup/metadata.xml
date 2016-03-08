@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<longdescription>
+zbackup is a globally-deduplicating backup tool.
+The program has the following features:
+Parallel LZMA or LZO compression of the stored data
+Built-in AES encryption of the stored data
+Possibility to delete old backup data
+Use of a 64-bit rolling hash, keeping the amount of soft collisions to zero
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/zbackup/zbackup/releases</changelog>
+		<bugs-to>https://github.com/zbackup/zbackup/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
