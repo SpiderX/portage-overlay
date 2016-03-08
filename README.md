@@ -39,3 +39,4 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [goaccess](http://goaccess.io/) ([530112](https://bugs.gentoo.org/show_bug.cgi?id=530112))
 * [comcast](https://github.com/tylertreat/Comcast)
 * [gitlab-git-http-server](https://gitlab.com/gitlab-org/gitlab-git-http-server)
+* [zbackup](http://zbackup.org/) ([576796](https://bugs.gentoo.org/show_bug.cgi?id=576796))
