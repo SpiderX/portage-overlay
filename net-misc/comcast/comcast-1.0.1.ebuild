@@ -4,15 +4,15 @@
 
 EAPI="5"
 
-inherit git-r3 eutils
+inherit eutils
 
 DESCRIPTION="Network problems simulator"
 HOMEPAGE="https://github.com/tylertreat/Comcast"
-EGIT_REPO_URI="https://github.com/tylertreat/Comcast.git"
+SRC_URI="https://github.com/tylertreat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-lang/go:0="
 DEPEND="${RDEPEND}"
