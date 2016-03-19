@@ -3,7 +3,7 @@
 <repositories version="1.0">
   <repo quality="experimental" status="unofficial">
     <name><![CDATA[nest]]></name>
-    <description lang="en"><![CDATA[Nest]]></description>
+    <description lang="en"><![CDATA[nest]]></description>
 	<homepage>https://github.com/SpiderX/portage-overlay</homepage>
 	<owner type="person">
 		<name>![CDATA[Vladimir Pavljuchenkov]]</name>
