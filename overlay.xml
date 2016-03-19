@@ -2,7 +2,7 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories version="1.0">
   <repo quality="experimental" status="unofficial">
-    <name><![CDATA[Nest]]></name>
+    <name><![CDATA[nest]]></name>
     <description lang="en"><![CDATA[Nest]]></description>
 	<homepage>https://github.com/SpiderX/portage-overlay</homepage>
 	<owner type="person">
