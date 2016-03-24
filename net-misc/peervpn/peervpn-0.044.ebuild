@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils user linux-info
 
@@ -17,7 +17,7 @@ KEYWORDS="~x86 ~amd64"
 
 S=${WORKDIR}/${MY_P}
 
-DEPEND="dev-libs/openssl"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="sys-apps/iproute2
 	${DEPEND}"
 
@@ -40,7 +40,7 @@ src_prepare() {
 	# Respect CFLAGS
 	sed -i -e '/^CFLAGS+=-O2/s///' Makefile || die 'sed on Makefile failed'
 
-	epatch_user
+	default
 }
 
 src_install() {
