@@ -6,7 +6,13 @@ EAPI=6
 
 inherit unpacker gnome2-utils
 
-QA_PREBUILT="opt/slack/slack"
+QA_PREBUILT="
+	opt/slack/slack
+	opt/slack/resources/app.asar.unpacked/node_modules/*
+	opt/slack/libnode.so
+	opt/slack/libgcrypt.so.11
+	opt/slack/libffmpeg.so
+"
 
 DESCRIPTION="is team collaboration tool"
 HOMEPAGE="http://www.slack.com/"
