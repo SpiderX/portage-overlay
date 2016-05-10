@@ -1,0 +1,18 @@
+--- a/src/Makefile.org	2016-05-10 12:57:52.631139897 +0300
++++ b/src/Makefile	2016-05-10 12:59:16.826143644 +0300
+@@ -1,5 +1,5 @@
+ CC=gcc
+-CFLAGS= -g -O2 -Wall
++CFLAGS += -Wall
+ 
+ LIBS=
+ 
+@@ -58,7 +58,7 @@
+ 	@echo "int auto_init_start(void);" >> tare_auto.h.new
+ 	@echo "int auto_init_start(void) {" >> tare_auto.c.new
+ 	@echo "    int rc=0;" >> tare_auto.c.new
+-	@grep -h ^"int init_start_" *.c | sort | while read Intx Funx Othx; do \
++	@grep -a -h ^"int init_start_" *.c | sort | while read Intx Funx Othx; do \
+ 	  echo $$Intx $$Funx\; >> tare_auto.h.new; \
+ 	  SNAMR=`echo $$Funx | cut -d\( -f1` ; \
+ 	  echo "    if((rc=$$SNAMR()))	return(rc);"  >> tare_auto.c.new  ; \

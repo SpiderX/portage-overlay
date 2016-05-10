@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<longdescription>
+Customer accounting system, services and statistics collection management.
+The system is designed for small and medium-sized service providers
+with the number of subscribers to 5000.
+The licensed system without limiting the number of customers can support more users.
+In the overall assessment of performance of the system is able
+to maintain more than 20000 customers and at certain hardware requirements.
+	</longdescription>
+	<use>
+		<flag name="base">Use the upstream provided base package</flag>
+		<flag name="unlicensed-bin">Use the upstream provided unlicensed binary package</flag>
+		<flag name="licensed-bin">Use the upstream provided licensed binary package</flag>
+		<flag name="taremote">TopolA remote agent</flag>
+	</use>
+	<upstream>
+		<changelog>http://topola.unity.net/</changelog>
+		<doc lang="ru">http://topola.unity.net/faq.html</doc>
+		<bugs-to>mailto:vop@unity.net</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,31 @@
+--- a/tpafunc	2016-04-22 19:36:46.193011927 +0300
++++ b/tpafunc	2016-04-22 19:37:28.566013812 +0300
+@@ -145,9 +145,6 @@
+   export TPA_HOME=${T_HOME}
+ fi
+ 
+-  if [ -f ${TPA_HOME}/bin/topola.conf ]; then
+-    D_DIR=`grep ^"data_dir " ${TPA_HOME}/bin/topola.conf | cut -d" " -f2`
+-  fi
+   [ -z "$D_DIR" ] && D_DIR=${TPA_HOME}/data
+ 
+ export DATA_DIR=${D_DIR}
+@@ -175,9 +175,6 @@
+   fi
+   . ${HOME}/.topola
+ 
+-  if [ -f ${TPA_HOME}/bin/topola.conf ]; then
+-    D_DIR=`grep ^"data_dir " ${TPA_HOME}/bin/topola.conf | cut -d" " -f2`
+-  fi
+   [ -z "$D_DIR" ] && D_DIR=${TPA_HOME}/data
+ 
+   if [ ! -f $D_DIR/main/system.conf ]; then
+@@ -218,7 +218,7 @@
+ 
+   [ ! -f "${TPA_HOME}/$1" ] && return 0
+ 
+-  sed -e s\#@@TPAHOME@@#${TPA_HOME}#g -e s\#@@TPAOWNER@@#${TPA_OWNER}#g ${TPA_HOME}/$1 > ${TPA_HOME}/$1.aaa
++  sed -e s\#@@TPAHOME@@#${TPAHOME}#g -e s\#@@TPAOWNER@@#${TPA_OWNER}#g ${TPA_HOME}/$1 > ${TPA_HOME}/$1.aaa
+   mv ${TPA_HOME}/$1.aaa ${TPA_HOME}/$1
+ 
+   [ "$SGN_TPA" = "yes" ] && make_sign_tpa ${TPA_HOME}/$1

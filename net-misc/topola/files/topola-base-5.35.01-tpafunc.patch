@@ -1,0 +1,56 @@
+--- a/tpafunc	2016-04-18 20:44:34.050025948 +0300
++++ b/tpafunc	2016-04-18 20:45:14.928456600 +0300
+@@ -147,7 +147,7 @@
+ 
+ export TPA_INSTALLER=$USER
+ 
+-echo export TPA_HOME=${TPA_HOME} > ${HOME}/.topola
++echo export TPA_HOME=${TPAHOME} > ${HOME}/.topola
+ echo export TPA_OWNER=${TPA_OWNER} >> ${HOME}/.topola
+ echo export TPA_INSTALLER=${TPA_INSTALLER} >> ${HOME}/.topola
+ 
+@@ -217,7 +217,7 @@
+ 
+   [ ! -f "${TPA_HOME}/$1" ] && return 0
+ 
+-  sed -e s\#@@TPAHOME@@#${TPA_HOME}#g -e s\#@@TPAOWNER@@#${TPA_OWNER}#g ${TPA_HOME}/$1 > ${TPA_HOME}/$1.aaa
++  sed -e s\#@@TPAHOME@@#${TPAHOME}#g -e s\#@@TPAOWNER@@#${TPA_OWNER}#g ${TPA_HOME}/$1 > ${TPA_HOME}/$1.aaa
+   mv ${TPA_HOME}/$1.aaa ${TPA_HOME}/$1
+ 
+   [ "$SGN_TPA" = "yes" ] && make_sign_tpa ${TPA_HOME}/$1
+@@ -278,7 +278,7 @@
+     fi
+   fi
+   
+-  [ ${TPA_OWNER} = ${TPA_INSTALLER} ] && return 0
++  [ "${TPA_OWNER}" = "${TPA_INSTALLER}" ] && return 0
+   
+   chown -R "${TPA_OWNER}" ${MMKD} > /dev/null 2>&1
+   if [ $? -ne 0 ]; then 
+@@ -305,7 +305,7 @@
+      prn_warn_mark "Unable to move at $MMVD" ; return 1
+   fi
+ 
+-  if [ ${TPA_OWNER} != ${TPA_INSTALLER} ]; then
++  if [ "${TPA_OWNER}" != "${TPA_INSTALLER}" ]; then
+     chown -R "${TPA_OWNER}" ${MMVD}
+     if [ $? -ne 0 ]; then 
+        prn_warn_mark "Unable to chmod $MMVD" ; return 1
+@@ -360,7 +360,7 @@
+   if [ $? -ne 0 ]; then
+     prn_err_mark "Unable move $1 to binary dir" ; return 1
+   fi
+-  if [ ${TPA_OWNER} != ${TPA_INSTALLER} ]; then
++  if [ "${TPA_OWNER}" != "${TPA_INSTALLER}" ]; then
+     chown -R "${TPA_OWNER}" ${TPA_HOME}/bin/$1
+     if [ $? -ne 0 ]; then 
+       prn_warn_mark "Unable to chown" ; return 1
+@@ -396,7 +396,7 @@
+   if [ $? -ne 0 ]; then
+     prn_err_mark "Unable move $1 to dso dir" ; return 1
+   fi
+-  if [ ${TPA_OWNER} != ${TPA_INSTALLER} ]; then
++  if [ "${TPA_OWNER}" != "${TPA_INSTALLER}" ]; then
+     chown -R "${TPA_OWNER}" ${TPA_HOME}/bin/dso/$1
+     if [ $? -ne 0 ]; then 
+       prn_warn_mark "Unable to chown" ; return 1
