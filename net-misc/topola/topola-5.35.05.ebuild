@@ -33,7 +33,7 @@ SRC_URI="base? ( ${TOPOLA_BASE_URI} )
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="elibc_glibc base unlicensed-bin licensed-bin taremote +xinetd"
-RESTRICT="fetch"
+RESTRICT="primaryuri"
 REQUIRED_USE="	|| ( taremote base )
 		elibc_glibc
 		unlicensed-bin? ( base elibc_glibc !licensed-bin )
