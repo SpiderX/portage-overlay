@@ -38,10 +38,14 @@ REQUIRED_USE="	|| ( taremote base )
 		elibc_glibc
 		unlicensed-bin? ( base elibc_glibc !licensed-bin )
 		licensed-bin? ( base elibc_glibc !unlicensed-bin )"
+QA_PREBUILT="
+	opt/topola/bin/admin.cgi
+	opt/topola/bin/ofubase
+"
 S=${WORKDIR}
 
-RDEPEND="elibc_glibc? ( sys-libs/glibc:2.2 )"
-DEPEND="$RDEPEND
+RDEPEND="elibc_glibc? ( sys-libs/glibc:2.2 )
+	virtual/cron
 	xinetd? ( sys-apps/xinetd )"
 
 pkg_nofetch() {
