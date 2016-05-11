@@ -41,7 +41,7 @@ RDEPEND="x11-libs/gtk+:2
 	dev-libs/nss
 	dev-libs/glib:2
 	dev-libs/atk
-	gnome-base/gnome-keyring
+	gnome-base/libgnome-keyring
 	gnome-base/gconf:2
 	sys-apps/dbus
 	net-print/cups[ssl]
