@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 inherit linux-mod toolchain-funcs git-r3
 
 DESCRIPTION="Ratelimit iptables module"
-HOMEPAGE="https://github.com/aabc/${MY_PN}"
+HOMEPAGE="https://github.com/aabc/ipt-ratelimit"
 EGIT_REPO_URI="https://github.com/aabc/${MY_PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
