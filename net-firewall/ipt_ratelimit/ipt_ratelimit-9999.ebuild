@@ -23,7 +23,6 @@ DEPEND="${RDEPEND}
 	virtual/linux-sources
 	virtual/pkgconfig
 "
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	MODULE_NAMES="xt_ratelimit(ipt_ratelimit)"
