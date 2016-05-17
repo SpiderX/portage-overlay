@@ -13,7 +13,7 @@ amd64? ( http://install.speedtest.net/ooklaserver/stable/OoklaServer-linux64.tgz
 
 LICENSE="no-source-code"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 IUSE=""
 

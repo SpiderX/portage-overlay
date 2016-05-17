@@ -12,7 +12,7 @@ DESCRIPTION="High-performance bittorrent tracker"
 HOMEPAGE="https://github.com/flygoast/opentracker http://erdgeist.org/arts/software/opentracker/"
 LICENSE="BEER-WARE"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 declare -A FLAGS
 FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
