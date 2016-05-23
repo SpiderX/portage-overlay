@@ -37,7 +37,7 @@ RDEPEND="x11-libs/gtk+:2
 	x11-libs/cairo[xcb]
 	media-libs/alsa-lib
 	media-libs/harfbuzz[graphite]
-	media-libs/libcanberra[gtk]
+	media-libs/libcanberra[gtk3]
 	dev-libs/nss
 	dev-libs/glib:2
 	dev-libs/atk
