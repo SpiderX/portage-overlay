@@ -106,7 +106,7 @@ src_prepare() {
 	fi
 	if use taremote; then
 		cd "${S}"/"${TOPOLA_AGENT_P}" || die "cd to ${TOPOLA_AGENT_P} failed"
-		# make grep process a files in KOI8-R as text, respect CFLAGS
+		# make grep process a files in KOI8-R as text, respect CFLAGS, fix binary install path
 		eapply "${FILESDIR}"/${PN}-taremote-5.35.05-Makefile.patch
 		# screen variables, rename TPA_HOME to TPAHOME for hold real "home path" value
 		eapply "${FILESDIR}"/${PN}-taremote-5.35.05-tpafunc.patch
@@ -193,6 +193,8 @@ src_install() {
 		# remove unneeded files
 		rm -r ${MY_D}/docs/ || die "remove ${MY_D}/docs/ failed"
 		rm -r ${MY_D}/src/  || die "remove ${MY_D}/src/ failed"
+
+		fowners -R ${PN}:${PN} $(egethome topola)
 	fi
 	unset MY_D
 }

@@ -1,5 +1,5 @@
---- a/src/Makefile.org	2016-05-10 12:57:52.631139897 +0300
-+++ b/src/Makefile	2016-05-10 12:59:16.826143644 +0300
+--- a/src/Makefile	2016-05-29 17:26:02.580635324 +0300
++++ b/src/Makefile	2016-05-29 17:33:31.448314535 +0300
 @@ -1,5 +1,5 @@
  CC=gcc
 -CFLAGS= -g -O2 -Wall
@@ -7,6 +7,15 @@
  
  LIBS=
  
+@@ -27,7 +27,7 @@
+ all: $(PROGNAME)
+ 
+ install: all
+-	@cp -f $(PROGNAME) $(TAREM_DIR)/bin/
++	@cp -f $(PROGNAME) ${TPA_HOME}/bin/
+ 
+ $(PROGNAME):  $(OBJ) Makefile Makefile.dep
+ 	$(CC) $(CFLAGS) $(DEFS) $(LIBS) -o $(PROGNAME) $(OBJ)
 @@ -58,7 +58,7 @@
  	@echo "int auto_init_start(void);" >> tare_auto.h.new
  	@echo "int auto_init_start(void) {" >> tare_auto.c.new

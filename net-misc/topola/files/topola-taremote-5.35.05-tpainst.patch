@@ -5,7 +5,7 @@
  
  # 2. Install binaries
 -sed s.TAREM_DIR=/usr/local/accnt.TAREM_DIR=${TPA_HOME}. src/Makefile > src/aaa
-+sed 's.TAREM_DIR=/usr/local/accnt.TAREM_DIR=${TPA_HOME}.' src/Makefile > src/aaa
++sed 's.TAREM_DIR=/usr/local/accnt.TAREM_DIR=${TPAHOME}.' src/Makefile > src/aaa
  mv src/aaa src/Makefile
  
  if which gmake >/dev/null 2>&1 ; then
