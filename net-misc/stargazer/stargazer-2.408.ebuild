@@ -23,7 +23,7 @@ RDEPEND="module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss] sys-libs/zlib )
 	module_config_sgconfig? ( dev-libs/expat )
 	module_store_firebird? ( >=dev-db/firebird-2.0.3.12981.0-r6 )
 	module_store_mysql? ( virtual/mysql )
-	module_store_postgres? ( dev-db/postgresql dev-libs/openssl sys-libs/zlib )
+	module_store_postgres? ( dev-db/postgresql:= dev-libs/openssl:0= sys-libs/zlib )
 	sgconf? ( dev-libs/expat )
 	sgconf_xml? ( dev-libs/expat )"
 
@@ -397,158 +397,157 @@ pkg_postinst() {
 	if use sgconv ; then
 		einfo "\nSgconv:"
 		einfo "----------"
-		einfo "    For further use of sgconv please edit /etc/stargazer/sgconv.conf depending on your needs."
+		einfo "For further use of sgconv, edit /etc/stargazer/sgconv.conf."
 	fi
 
 	if use radius ; then
 		einfo "\nRadius:"
 		einfo "-------"
-		einfo "    For further use of radius, emerge net-dialup/freeradius.\n"
+		einfo "For further use of radius, emerge net-dialup/freeradius.\n"
 
-		einfo "    Example config:\n"
+		einfo "Example config:\n"
 
-		einfo "        stg {"
-		einfo "               local_port = 6667"
-		einfo "               server = localhost"
-		einfo "               port = 6666"
-		einfo "               password = 123456"
-		einfo "        }\n"
+		einfo "stg {"
+		einfo "      local_port = 6667"
+		einfo "      server = localhost"
+		einfo "      port = 6666"
+		einfo "      password = 123456"
+		einfo "    }\n"
 
-		einfo "    You should place 'stg' into section Instantiate, Authorize."
-		einfo "    In section Authentificate 'stg' should go in sub-section Auth-Type before other authentifications modules:\n"
+		einfo "You should place 'stg' into section Instantiate, Authorize."
+		einfo "In section Authentificate 'stg' should go in sub-section"
+		einfo "Auth-Type before other authentifications modules:\n"
 
-		einfo "        Auth-Type PAP {"
-		einfo "                         stg"
-		einfo "                         pap"
-		einfo "        }\n"
+		einfo "Auth-Type PAP {"
+		einfo "                stg"
+		einfo "                pap"
+		einfo "}\n"
 
-		einfo "    It also may be used in section Accounting and Post-Auth."
+		einfo "It also may be used in section Accounting and Post-Auth."
 
-		use module_auth_freeradius || einfo "\n    For use RADIUS data processing you should also enable USE-flag module_auth_freeradius."
+		use module_auth_freeradius || einfo "\nFor use RADIUS enable USE-flag module_auth_freeradius."
 	fi
 
 	if use rscriptd ; then
 		einfo "\nRemote Script Executer:"
 		einfo "-----------------------"
-		einfo "    For further use of rscriptd please edit /etc/stargazer/rscriptd.conf depending on your needs."
-		einfo "    You have to change 'Password' field at least."
+		einfo "For further use of rscriptd edit /etc/stargazer/rscriptd.conf."
+		einfo "You have to change 'Password' field at least."
 	fi
 
 	if use sgauth ; then
 		einfo "\nSgauth:"
 		einfo "-------"
-		einfo "    For further use of sgauth please edit /etc/stargazer/sgauth.conf depending on your needs."
-		einfo "    You have to change 'ServerName', 'Login', 'Password' fields at least."
+		einfo "For further use of sgauth edit /etc/stargazer/sgauth.conf."
+		einfo "You have to change 'ServerName', 'Login', 'Password' fields at least."
 	fi
 
 	if use sgconf ; then
 		einfo "\nSgconf:"
 		einfo "-------"
-		use module_config_sgconfig || einfo "    For further use of sgconf utility you should also enable USE-flag module_config_sgconfig."
+		use module_config_sgconfig || einfo "For further use of sgconf enable USE-flag module_config_sgconfig."
 	fi
 
 	if use sgconf_xml ; then
 		einfo "\nSgconf_xml:"
 		einfo "-----------"
-		use module_config_rpcconfig || einfo "    For further use of sgconf_xml utility you should also enable USE-flag module_config_rpcconfig."
+		use module_config_rpcconfig || einfo "For further use of sgconf_xml enable USE-flag module_config_rpcconfig."
 	fi
 
 	if use stargazer ; then
 		einfo "\nStargazer:"
 		einfo "----------"
-		einfo "    Modules availability:\n"
+		einfo "Modules availability:\n"
 
 		if use module_auth_always_online ; then
-			einfo "      * module_auth_always_online available."
+			einfo "* module_auth_always_online available."
 		fi
 
 		if use module_auth_internet_access ; then
-			einfo "      * module_auth_internet_access available."
+			einfo "* module_auth_internet_access available."
 		fi
 
 		if use module_auth_freeradius ; then
-			einfo "      * module_auth_freeradius available.\n"
-			einfo "           For further use of module, emerge net-dialup/freeradius.\n"
-			use radius || einfo "\n           For use RADIUS data processing you should also enable use USE-flag radius."
+			einfo "* module_auth_freeradius available.\n"
+			einfo "For further use of module, emerge net-dialup/freeradius.\n"
+			use radius || einfo "\n           For use RADIUS enable use USE-flag radius."
 		fi
 
 		if use module_capture_ipq ; then
-			einfo "      * module_capture_ipq available."
+			einfo "* module_capture_ipq available."
 		fi
 
 		if use module_capture_ether ; then
-			einfo "      * module_capture_ether available."
+			einfo "* module_capture_ether available."
 		fi
 
 		if use module_capture_netflow ; then
-			einfo "      * module_capture_netflow available.\n"
-			einfo "           For further use of module, emerge net-firewall/ipt_netflow or net-analyzer/softflowd.\n"
+			einfo "* module_capture_netflow available.\n"
+			einfo "For further use of module, emerge any netflow sensor:\n"
+			einfo "net-firewall/ipt_netflow or net-analyzer/softflowd.\n"
 		fi
 
 		if use module_config_sgconfig ; then
-			einfo "      * module_config_sgconfig available."
+			einfo "* module_config_sgconfig available."
 		fi
 
 		if use module_config_rpcconfig ; then
-			einfo "      * module_config_rpcconfig available.\n"
-			einfo "           KNOWN BUG: Sometimes you can't configure Stargazer through xml-based configurator,"
-			einfo "                      because module is not responding."
-			einfo "                      This bug is introduced by xmlrpc-c library. This bug proceeds very rare, but it still exists.\n"
+			einfo "* module_config_rpcconfig available.\n"
+			einfo "KNOWN BUG: Sometimes you can't configure Stargazer"
+			einfo "through xml-based configurator, because module is not responding."
+			einfo "This bug is introduced by xmlrpc-c library."
+			einfo "This bug proceeds very rare, but it still exists.\n"
 		fi
 
 		if use module_other_ping ; then
-			einfo "      * module_other_ping available."
+			einfo "* module_other_ping available."
 		fi
 
 		if use module_other_smux ; then
-			einfo "      * module_other_smux available.\n"
-			einfo "           For further use of module emerge net-analyzer/net-snmp.\n"
+			einfo "* module_other_smux available.\n"
+			einfo "For further use of module emerge net-analyzer/net-snmp.\n"
 		fi
 
 		if use module_other_remote_script ; then
-			einfo "      * module_other_remote_script available.\n"
-			einfo "           Don't forget to edit /etc/stargazer/subnets file depending on your needs."
+			einfo "* module_other_remote_script available.\n"
+			einfo "Don't forget to edit /etc/stargazer/subnets file depending on your needs.\n"
 		fi
 
 		if use module_store_files ; then
-			einfo "      * module_store_files available.\n"
-			einfo "           Necessary and sufficient rights to the directory /var/lib/stargazer for this backend is 0755."
-			einfo "           You may fix it if needed.\n"
+			einfo "* module_store_files available."
 		fi
 
 		if use module_store_firebird ; then
-			einfo "      * module_store_firebird available.\n"
-			einfo "           Necessary and sufficient rights to the directory /var/lib/stargazer for this backend is 0775."
-			einfo "           Check that it was so, and fix it if needed."
-			einfo "           You should add 'firebird' user to stg group:\n"
-			einfo "             # usermod -a -G stg firebird\n"
-			einfo "           and restart firebird:\n"
-			einfo "             # /etc/init.d/firebird restart\n"
-			einfo "           Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
-			einfo "           For new setup you should execute 00-base-00.sql:\n"
-			einfo "             # fbsql -q -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
-			einfo "           For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
-			einfo "             # fbsql -q -u <username> -p <password> -d <database> -i /usr/share/stargazer/db/firebird/00-alter-01.sql\n"
+			einfo "* module_store_firebird available.\n"
+			einfo "You should add 'firebird' user to stg group:\n"
+			einfo "# usermod -a -G stg firebird\n"
+			einfo "and restart firebird:\n"
+			einfo "# /etc/init.d/firebird restart\n"
+			einfo "Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
+			einfo "For new setup you should execute 00-base-00.sql:\n"
+			einfo "# fbsql -q -i /usr/share/stargazer/db/firebird/00-base-00.sql\n"
+			einfo "For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
+			einfo "# fbsql -i /usr/share/stargazer/db/firebird/00-alter-01.sql\n"
 		fi
 
 		if use module_store_mysql ; then
-			einfo "      * module_store_mysql available.\n"
-			einfo "           For upgrade from version 2.406 you should execute 00-mysql-01.sql:\n"
-			einfo "             # mysql -h <hostname> -P <port> -u <username> -p <password> <database> < /usr/share/stargazer/db/mysql/00-mysql-01.sql\n"
+			einfo "* module_store_mysql available.\n"
+			einfo "For upgrade from version 2.406 you should execute 00-mysql-01.sql:\n"
+			einfo "# mysql < /usr/share/stargazer/db/mysql/00-mysql-01.sql\n"
 		fi
 
 		if use module_store_postgres ; then
-			einfo "      * module_store_postgres available.\n"
-			einfo "           Stargazer DB schema for PostgresSQL is here: /usr/share/stargazer/db/postgresql"
-			einfo "           For new setup you should execute 00-base-00.postgresql.sql:\n"
-			einfo "             # psql -h <hostname> -p <port> -U <username> -d <database> -W -f /usr/share/stargazer/db/postgresql/00-base-00.postgresql.sql\n"
-			einfo "           For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
-			einfo "             # psql -h <hostname> -p <port> -U <username> -d <database> -W -f /usr/share/stargazer/db/postgresql/00-alter-01.sql\n"
+			einfo "* module_store_postgres available.\n"
+			einfo "DB schema for PostgresSQL is here: /usr/share/stargazer/db/postgresql"
+			einfo "For new setup you should execute 00-base-00.postgresql.sql:\n"
+			einfo "# psql -f /usr/share/stargazer/db/postgresql/00-base-00.postgresql.sql\n"
+			einfo "For upgrade from version 2.406 you should execute 00-alter-01.sql:\n"
+			einfo "# psql -f /usr/share/stargazer/db/postgresql/00-alter-01.sql\n"
 		fi
 
 		einfo "\n    For all storage backends:\n"
-		einfo "      * Default admin login - admin, default admin password - 123456."
-		einfo "      * Default subscriber login - test, default subscriber password - 123456.\n"
+		einfo "* Default admin login - admin, default admin password - 123456."
+		einfo "* Default subscriber login - test, default subscriber password - 123456.\n"
 		einfo "Don't run newer versions without reading their ChangeLog first,"
 		einfo "it can be found in /usr/share/doc/${PF}"
 	fi
