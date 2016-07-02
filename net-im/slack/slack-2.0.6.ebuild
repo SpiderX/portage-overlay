@@ -58,14 +58,6 @@ pkg_preinst() {
 	gnome2_icon_savelist
 }
 
-src_prepare() {
-	# Update slack binary path
-	sed -i 's|usr\/share|opt|' \
-		usr/share/applications/${PN}.desktop || die "sed failed"
-
-	default
-}
-
 src_install() {
 	insinto /usr/share/pixmaps
 	doins usr/share/pixmaps/${PN}.png
