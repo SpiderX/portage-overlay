@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>spiderx@spiderx.dp.ia</email>
+    <name>Vladimir Pavljuchenkov(SpiderX)</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">xflr6/graphviz</remote-id>
+    <remote-id type="pypi">graphviz</remote-id>
+  </upstream>
+</pkgmetadata>

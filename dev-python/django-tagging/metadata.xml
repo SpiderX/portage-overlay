@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>python</herd>
+    <maintainer>
+	<email>linux.gnu@yandex.ru</email>
+	<name>Vyacheslav Grigorev</name>
+	<description>Maintainer. Assign bugs to him</description>
+    </maintainer>
+    <maintainer>
+	<email>maksbotan@gentoo.org</email>
+	<name>Maksim Kolcov</name>
+	<description>Proxy maintainer. CC him on bugs</description>
+    </maintainer>
+    <upstream>
+	<maintainer>
+	    <email>jonathan.buchanan@gmail.com</email>
+	    <name>Jonathan Buchanan</name>
+	</maintainer>
+	<changelog>http://django-tagging.googlecode.com/svn/trunk/CHANGELOG.txt</changelog>
+	<doc>http://api.rst2a.com/1.0/rst2/html?uri=http://django-tagging.googlecode.com/svn/trunk/docs/overview.txt</doc>
+	<bugs-to>http://code.google.com/p/django-tagging/issues/list</bugs-to>
+	<remote-id type="pypi">django-tagging</remote-id>
+    </upstream>
+    <longdescription lang="en">A generic tagging application for Django
+	projects, which allows association of a number of tags with any Model
+	instance and makes retrieval of tags simple.
+    </longdescription>
+</pkgmetadata>
