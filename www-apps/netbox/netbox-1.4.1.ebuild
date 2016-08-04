@@ -47,7 +47,6 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}"
 	doins -r ${PN}/
 
-	webapp_configfile "${MY_HTDOCSDIR}"/netbox/configuration.example.py
 	webapp_src_install
 }
 
