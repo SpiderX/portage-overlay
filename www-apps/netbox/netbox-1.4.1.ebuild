@@ -43,14 +43,22 @@ pkg_setup() {
 
 src_install() {
 	webapp_src_preinst
-	cp -R ${PN}/* "${D}/${MY_HTDOCSDIR}"
+
+	insinto "${MY_HTDOCSDIR}"
+	doins -r .
+
 	webapp_configfile "${MY_HTDOCSDIR}"/netbox/configuration.example.py
 	webapp_src_install
 }
 
 pkg_config() {
-	if [ -f "${ROOT}"/var/www/netbox/www/netbox/netbox/configuration.py ] ; then
-		einfo "Applies any database migrations?"
+	einfo "Enter you vhost_root/vhost_htdocs. Default: localhost/htdocs"
+	read answer
+	PATH="${ROOT}"/var/www/"${answer}"/${PN}
+	unset answer
+
+	if [ -f "${PATH}/${PN}/configuration.py" ] ; then
+		einfo "Applies database migrations from ${PATH} ?"
 		einfo
 		while [ "$correct" != "true" ] ; do
 			einfo "Are you ready to continue? (y/n)"
@@ -63,7 +71,7 @@ pkg_config() {
 				echo "Answer not recognized"
 			fi
 		done
-		# Apply database migrations
-		"${ROOT}"/var/www/netbox/www/netbox/manage.py migrate
+	# Apply database migrations
+	"${PATH}"/manage.py migrate
 	fi
 }
