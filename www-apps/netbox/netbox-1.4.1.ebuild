@@ -5,15 +5,15 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-WEBAPP_NO_AUTO_INSTALL="yes"
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit python-r1 webapp
+inherit python-r1 webapp user
 
 DESCRIPTION="IP address management (IPAM) and data center infrastructure management (DCIM)"
 HOMEPAGE="https://github.com/digitalocean/netbox"
 SRC_URI="https://github.com/digitalocean/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
+IUSE="vhosts"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 DOCS=( README.md CONTRIBUTING.md )
@@ -39,25 +39,40 @@ RDEPEND=">=dev-python/django-1.9[${PYTHON_USEDEP}]
 pkg_setup() {
 	python_setup
 	webapp_pkg_setup
+
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 /dev/null/${PN} ${PN}
 }
 
 src_install() {
 	webapp_src_preinst
 
 	insinto "${MY_HTDOCSDIR}"
-	doins -r ${PN}/
+	doins -r ${PN}/*
+
+	exeinto "${MY_HTDOCSDIR}"
+	doexe ${PN}/generate_secret_key.py
+	doexe ${PN}/manage.py
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	elog "You may need to add your web-server user to ${PN} group"
+	elog "---"
+
+	webapp_pkg_postinst
 }
 
 pkg_config() {
 	einfo "Enter you vhost_root/vhost_htdocs. Default: localhost/htdocs"
 	read answer
-	PATH="${ROOT}"/var/www/"${answer}"/${PN}
+	[ -z "${answer}" ] && answer="localhost/htdocs"
+	path="${ROOT}var/www/${answer}/${PN}"
 	unset answer
 
-	if [ -f "${PATH}/${PN}/configuration.py" ] ; then
-		einfo "Applies database migrations from ${PATH} ?"
+	if [ -f "${path}/${PN}/configuration.py" ] ; then
+		einfo "Applies database migrations from ${path} ?"
 		einfo
 		while [ "$correct" != "true" ] ; do
 			einfo "Are you ready to continue? (y/n)"
@@ -70,7 +85,14 @@ pkg_config() {
 				echo "Answer not recognized"
 			fi
 		done
-	# Apply database migrations
-	"${PATH}"/manage.py migrate
+		# Apply database migrations
+		"${path}"/manage.py migrate
+	fi
+
+	if [ ! -d "${path}/static" ] ; then
+		# Collect static files
+		"${path}"/manage.py collectstatic
+
+		chown -R ${PN}:${PN} "${path}"/static
 	fi
 }
