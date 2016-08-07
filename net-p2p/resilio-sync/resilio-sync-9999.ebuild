@@ -39,7 +39,6 @@ src_install() {
 
 	insinto /etc/tmpfiles.d/
 	doins "${FILESDIR}"/${NAME}.conf
-	dodir /run/${NAME}
 
 	use systemd || newinitd "${FILESDIR}"/${NAME}.initd ${NAME}
 	use systemd || newconfd "${FILESDIR}"/${NAME}.confd ${NAME}
@@ -64,4 +63,7 @@ pkg_postinst() {
 	elog "You may need to review /etc/${NAME}/btsync.conf"
 	elog "Defalt metadata path is /var/lib/${NAME}"
 	elog "Default web-gui URL is http://localhost:8888/"
+
+	# Create this once, before system restarts with btsync.conf
+	mkdir /run/${NAME}
 }
