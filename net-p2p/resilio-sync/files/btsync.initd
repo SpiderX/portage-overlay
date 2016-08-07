@@ -21,6 +21,12 @@ depend() {
 	provide btsync
 }
 
+start_pre() {
+	if [ ! -d /run/btsync ]; then
+		mkdir /run/btsync
+		chown ${USER}:${GROUP} /run/btsync
+	fi
+}
 
 start() {
 	ebegin "Starting btsync"
