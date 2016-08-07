@@ -54,9 +54,9 @@ pkg_preinst() {
 	sed -i  \
 		-e "/storage_path/s|//| |g" \
 		-e "/pid_file/s|//| |g" \
-		-e "/storage_path/s|/home/user/.sync|/var/lib/${NAME}|g" \
+		-e "/storage_path/s|/home/user/.sync|/var/lib/${NAME}/.sync|g" \
 		-e "/pid_file/s|/var||g" \
-		/etc/${NAME}/${NAME}.conf || die "sed for pkg_preinst failed"
+		"${D}"/etc/${NAME}/${NAME}.conf || die "sed for pkg_preinst failed"
 }
 
 pkg_postinst() {
