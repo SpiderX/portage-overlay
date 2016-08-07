@@ -39,6 +39,7 @@ src_install() {
 
 	insinto /etc/tmpfiles.d/
 	doins "${FILESDIR}"/${NAME}.conf
+	dodir /run/${NAME}
 
 	use systemd || newinitd "${FILESDIR}"/${NAME}.initd ${NAME}
 	use systemd || newconfd "${FILESDIR}"/${NAME}.confd ${NAME}
