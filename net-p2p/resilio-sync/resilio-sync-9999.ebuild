@@ -37,9 +37,6 @@ src_install() {
 	fperms -R 0700 /etc/${NAME} /var/lib/${NAME}
 	fowners -R ${NAME}:${NAME} /etc/${NAME} /var/lib/${NAME}
 
-	insinto /etc/tmpfiles.d/
-	doins "${FILESDIR}"/${NAME}.conf
-
 	use systemd || newinitd "${FILESDIR}"/${NAME}.initd ${NAME}
 	use systemd || newconfd "${FILESDIR}"/${NAME}.confd ${NAME}
 	use systemd && systemd_dounit "${FILESDIR}"/${NAME}.service
@@ -57,11 +54,6 @@ pkg_preinst() {
 		-e "/storage_path/s|/home/user/.sync|/var/lib/${NAME}/.sync|g" \
 		-e "/pid_file/s|/var||g" \
 		"${D}"/etc/${NAME}/${NAME}.conf || die "sed for pkg_preinst failed"
-
-	# Create this once, before system restarts with btsync.conf
-	# Do not do it in src_install because of QA Notice
-	mkdir /run/${NAME} || die "mkdir in pkg_postinst failed"
-	chown ${NAME}:${NAME} /run/${NAME} || die "chown in pkg_postinst failed"
 }
 
 pkg_postinst() {
