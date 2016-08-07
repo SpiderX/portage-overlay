@@ -18,7 +18,7 @@ SRC_URI="amd64? ( https://download-cdn.getsync.com/stable/linux-x64/BitTorrent-S
 LICENSE="BitTorrent no-source-code"
 SLOT="0"
 KEYWORDS="-* ~x86 ~amd64 ~arm"
-IUSE="systemd"
+IUSE="systemd pax_kernel"
 
 RESTRICT="mirror"
 DOCS=( README LICENSE.TXT )
