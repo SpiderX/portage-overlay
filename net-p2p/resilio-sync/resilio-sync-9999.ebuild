@@ -34,7 +34,7 @@ src_install() {
 	pax-mark m "${D}"/usr/bin/${NAME}
 
 	keepdir /etc/${NAME} /var/lib/${NAME}/ /var/lib/${NAME}/.sync
-	fperms -R 0700 /etc/${NAME} /var/lib/${NAME}
+	fperms 0700 /etc/${NAME} /var/lib/${NAME} /var/lib/${NAME}/.sync
 	fowners -R ${NAME}:${NAME} /etc/${NAME} /var/lib/${NAME}
 
 	use systemd || newinitd "${FILESDIR}"/${NAME}.initd ${NAME}
