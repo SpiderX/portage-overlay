@@ -31,7 +31,7 @@ pkg_setup() {
 
 src_install() {
 	dobin ${NAME}
-	pax-mark m "${D}"/usr/bin/${NAME}
+	use pax_kernel && pax-mark m "${D}"/usr/bin/${NAME}
 
 	keepdir /etc/${NAME} /var/lib/${NAME}/ /var/lib/${NAME}/.sync
 	fperms 0700 /etc/${NAME} /var/lib/${NAME} /var/lib/${NAME}/.sync
