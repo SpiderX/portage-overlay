@@ -33,9 +33,9 @@ src_install() {
 	dobin ${NAME}
 	pax-mark m "${D}"/usr/bin/${NAME}
 
-	keepdir /etc/${NAME} /var/lib/${NAME}
-	fperms 0700 /etc/${NAME} /var/lib/${NAME}
-	fowners ${NAME}:${NAME} /etc/${NAME} /var/lib/${NAME}
+	keepdir /etc/${NAME} /var/lib/${NAME}/ /var/lib/${NAME}/.sync
+	fperms -R 0700 /etc/${NAME} /var/lib/${NAME}
+	fowners -R ${NAME}:${NAME} /etc/${NAME} /var/lib/${NAME}
 
 	insinto /etc/tmpfiles.d/
 	doins "${FILESDIR}"/${NAME}.conf
@@ -57,13 +57,15 @@ pkg_preinst() {
 		-e "/storage_path/s|/home/user/.sync|/var/lib/${NAME}/.sync|g" \
 		-e "/pid_file/s|/var||g" \
 		"${D}"/etc/${NAME}/${NAME}.conf || die "sed for pkg_preinst failed"
+
+	# Create this once, before system restarts with btsync.conf
+	# Do not do it in src_install because of QA Notice
+	mkdir /run/${NAME} || die "mkdir in pkg_postinst failed"
+	chown ${NAME}:${NAME} /run/${NAME} || die "chown in pkg_postinst failed"
 }
 
 pkg_postinst() {
 	elog "You may need to review /etc/${NAME}/btsync.conf"
 	elog "Defalt metadata path is /var/lib/${NAME}"
 	elog "Default web-gui URL is http://localhost:8888/"
-
-	# Create this once, before system restarts with btsync.conf
-	mkdir /run/${NAME}
 }
