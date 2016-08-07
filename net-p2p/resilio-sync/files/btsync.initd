@@ -31,19 +31,19 @@ start_pre() {
 }
 
 start() {
-	ebegin "Starting btsync"
+	ebegin "Starting Resilio Sync"
 	start-stop-daemon --start --quiet --pidfile ${PID} --user ${USER}:${GROUP} --exec ${EXEC} -- ${OPTS} ${CONFIG}
 	eend $?
 }
 
 stop() {
-	ebegin "Stopping btsync"
-	start-stop-daemon --stop --exec "${EXEC}" --pidfile "${PID}"
+	ebegin "Stopping Resilio Sync"
+	start-stop-daemon --stop --exec "${EXEC}" --pidfile "${PID}" --retry 10
 	eend $?
 }
 
 reload() {
-	ebegin "Reloading btsync"
+	ebegin "Reloading Resilio Sync"
 	start-stop-daemon --signal HUP --exec "${EXEC}" --pidfile "${PID}"
 	eend $?
 }

@@ -47,7 +47,7 @@ pkg_preinst() {
 	"${D}"/usr/bin/${NAME} --dump-sample-config > \
 		"${D}"/etc/${NAME}/${NAME}.conf
 	fowners ${NAME}:${NAME} /etc/${NAME}/${NAME}.conf
-	# Uncomment config directives and change its values
+	# Uncomment config directives and change their values
 	sed -i  \
 		-e "/storage_path/s|//| |g" \
 		-e "/pid_file/s|//| |g" \
@@ -58,6 +58,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	elog "You may need to review /etc/${NAME}/btsync.conf"
-	elog "Defalt metadata path is /var/lib/${NAME}"
+	elog "Defalt metadata path is /var/lib/${NAME}/.sync"
 	elog "Default web-gui URL is http://localhost:8888/"
 }
