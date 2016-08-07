@@ -1,0 +1,41 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+NAME=${SVCNAME##*.}
+if [ -n "${NAME}" -a "${SVCNAME}" != "btsync" ]; then
+    PID="/run/btsync/btsync.${NAME}.pid"
+    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
+    CONF_DEFAULT="/etc/conf.d/btsync.${NAME}"
+else
+    PID="/run/btsync/btsync.pid"
+    PNAME=${RC_SVCNAME}
+    CONF_DEFAULT="/etc/conf.d/btsync"
+fi
+CONF=${CONF:-${CONF_DEFAULT}}
+EXEC=${EXEC:-/usr/bin/btsync}
+
+depend() {
+	need net
+	provide btsync
+}
+
+
+start() {
+	ebegin "Starting btsync"
+	start-stop-daemon --start --quiet --pidfile ${PID} --user ${USER}:${GROUP} --exec ${EXEC} -- ${OPTS} ${CONFIG}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping btsync"
+	start-stop-daemon --stop --exec "${EXEC}" --pidfile "${PID}"
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading btsync"
+	start-stop-daemon --signal HUP --exec "${EXEC}" --pidfile "${PID}"
+	eend $?
+}

@@ -1,0 +1,17 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+[Unit]
+Description=Resilio Sync
+After=network.target
+
+[Service]
+Type=forking
+User=btsync
+Group=btsync
+ExecStart=/usr/bin/btsync --config /etc/btsync/btsync.conf
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
