@@ -4,13 +4,15 @@
 
 EAPI=6
 
-inherit qmake-utils git-r3
-DESCRIPTION="multi-platform GUI for pass, the standard unix password manager."
+inherit qmake-utils
+
+DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org/"
-EGIT_REPO_URI="https://github.com/IJHack/${PN}.git"
+SRC_URI="https://github.com/IJHack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~x86 ~amd64"
 IUSE="+qt5"
 DOCS=( FAQ.md README.md CONTRIBUTING.md )
 
@@ -29,6 +31,15 @@ RDEPEND="qt5? (
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
+
+src_prepare() {
+	# Modify install path
+	sed -i "s/target.path = \$\$PREFIX/target.path = \$\$PREFIX\/bin/" \
+		${PN}.pro \
+		|| die "sed failed to modify install path for ${PN}.pro"
+
+	default
+}
 
 src_configure() {
 	if use qt5 ; then
