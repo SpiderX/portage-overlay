@@ -1,0 +1,12 @@
+# Config file for /etc/init.d/inadyn-mt.confd
+
+# Various options.
+# run `inadyn-mt --help` for valid cmdline options
+OPTS="--background"
+
+# User and group daemon runs as
+USER="inadyn-mt"
+GROUP="inadyn-mt"
+
+# Resilio Sync config file
+CONFIG="--input_file /etc/inadyn-mt/inadyn-mt.conf"
