@@ -94,5 +94,7 @@ pkg_config() {
 		"${path}"/manage.py collectstatic
 
 		chown -R ${PN}:${PN} "${path}"/static
+	else
+		einfo "Not managing static files since ${path}/static exists"
 	fi
 }
