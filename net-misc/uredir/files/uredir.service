@@ -1,0 +1,17 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+[Unit]
+Description=UDP port redirector
+After=network.target
+
+[Service]
+Type=forking
+User=uredir
+Group=uredir
+ExecStart=/usr/bin/uredir 127.0.0.1:1777
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
