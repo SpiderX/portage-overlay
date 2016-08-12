@@ -1,4 +1,4 @@
-# Config file for /etc/init.d/inadyn-mt.confd
+# Config file for /etc/init.d/inadyn-mt
 
 # Various options.
 # run `inadyn-mt --help` for valid cmdline options
