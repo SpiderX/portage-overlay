@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+		<description>Proxy maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+Redir listens for TCP connections on a given port, and,
+when it recieves a connection, then connects to a given destination
+address:port, and pass data between them. It finds most of its applications
+in traversing firewalls, but, of course, there are other uses.
+	</longdescription>
+	<use>
+		<flag name="xinetd">Add support for the xinetd super-server</flag>
+		<flag name="shaper">Support for traffic shaping</flag>
+		<flag name="ftp">Support for FTP (File Transfer Protocol) redirection</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">troglobit/redir</remote-id>
+	</upstream>
+</pkgmetadata>
