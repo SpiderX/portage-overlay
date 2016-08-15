@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Primary maintainer</description>
+		<description>Proxy maintainer</description>
 	</maintainer>
-	<longdescription>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
 Slack offers persistent chat rooms organized by topic,
 as well as private groups and direct messaging.
 All content inside Slack is searchable, including files, conversations,
