@@ -10,7 +10,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 IP address management (IPAM) and data center infrastructure management (DCIM) tool
 	</longdescription>
 	<upstream>
