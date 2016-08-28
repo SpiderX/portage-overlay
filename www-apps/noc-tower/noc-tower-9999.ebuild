@@ -22,7 +22,7 @@ DOCS=( FAQ_rus.md Readme.md contrib/nginx/tower.conf )
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	dev-vcs/mercurial
-	app-admin/ansible[${PYTHON_USEDEP}]
+	>=app-admin/ansible-2.0[${PYTHON_USEDEP}]
 	dev-python/peewee[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
@@ -44,10 +44,33 @@ src_prepare() {
 		-e s':"tower", d):"noc-tower", d):' \
 		-e '/scripts=/'d \
 		setup.py || die "sed for setup.py failed"
+	sed -i \
+		-e s":var/tower:${MY_HOME}:" \
+		tower/api/repo.py || die "sed for repo.py failed"
+	sed -i \
+		-e s":var/tower:${MY_HOME}:" \
+		tower/cli/backup.py || die "sed for backup.py failed"
+	sed -i \
+		-e s":var/tower:${MY_HOME}:" \
+		tower/models/crashinfo.py || die "sed for crashinfo.py failed"
+	sed -i \
+		-e s':./bin/hg:/usr/bin/hg:' \
+		tower/api/pull.py || die "sed for pull.py failed"
+	sed -i \
+		-e s':"var":"/var/lib/":' \
+		-e s':"tower":"noc-tower":' \
+		tower/models/environment.py || die "sed for environment.py failed"
+	sed -i \
+		-e s':"bin":"/usr/bin":' \
+		tower/api/deploy.py || die "sed for deploy.py failed"
+	sed -i \
+		-e s':"var":"/var/lib/":' \
+		-e s':"tower":"noc-tower":' \
+		tower/models/joblog.py || die "sed for joblog.py failed"
 
 	# Change requirements to match portage stable versions
 	sed -i \
-		-e s':ansible==2.1.0.0:ansible>=1.9:' \
+		-e s':ansible==2.1.0.0:ansible>=2.0:' \
 		-e s':peewee==2.8.0:peewee>=2.7:' \
 		-e s':tornado==4.3:tornado>=4.2:' \
 		-e s':bcrypt==2.0.0:bcrypt>=1.1.1:' \
