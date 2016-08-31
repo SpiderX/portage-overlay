@@ -18,14 +18,15 @@ QA_PREBUILT="
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="http://www.slack.com/"
 
-BASE_URI="https://downloads.slack-edge.com/linux_releases/${PN}-desktop-${PV}-_arch_.deb"
+MY_PN="${PN/-bin/}"
+BASE_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-_arch_.deb"
 
 SRC_URI="
 	x86? ( ${BASE_URI/_arch_/i386} )
 	amd64? ( ${BASE_URI/_arch_/amd64} )
 "
 
-LICENSE="MIT Apache-2.0 BSD ISC LGPL-2 AFL-2.1 public-domain WTFPL-2 no-source-code"
+LICENSE="MIT Apache-2.0 BSD ISC LGPL-2 AFL-2.1 public-domain WTFPL-2 Artistic-2 no-source-code"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -38,7 +39,7 @@ RDEPEND="x11-libs/gtk+:2
 	x11-libs/cairo[xcb]
 	media-libs/alsa-lib
 	media-libs/harfbuzz[graphite]
-	media-libs/libcanberra[gtk3]
+	media-libs/libcanberra[gtk]
 	dev-libs/nss
 	dev-libs/glib:2
 	dev-libs/atk
@@ -61,15 +62,15 @@ pkg_preinst() {
 
 src_install() {
 	insinto /usr/share/pixmaps
-	doins usr/share/pixmaps/${PN}.png
+	doins usr/share/pixmaps/${MY_PN}.png
 
-	newicon -s 512 usr/share/pixmaps/${PN}.png ${PN}.png
-	domenu usr/share/applications/${PN}.desktop
+	newicon -s 512 usr/share/pixmaps/${MY_PN}.png ${MY_PN}.png
+	domenu usr/share/applications/${MY_PN}.desktop
 
-	insinto /opt/${PN}
-	doins -r usr/lib/${PN}/*
-	fperms +x /opt/${PN}/${PN}
-	dosym /opt/${PN}/${PN} /usr/bin/${PN}
+	insinto /opt/${MY_PN}
+	doins -r usr/lib/${MY_PN}/*
+	fperms +x /opt/${MY_PN}/${MY_PN}
+	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
