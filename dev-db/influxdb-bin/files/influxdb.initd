@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 NAME=${SVCNAME##*.}
 if [ -n "${NAME}" -a "${SVCNAME}" != "influxdb" ]; then

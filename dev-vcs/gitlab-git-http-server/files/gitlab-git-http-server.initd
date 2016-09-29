@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # GitLab 6.2 init script for Gentoo Linux
 # see https://github.com/gitlabhq/gitlabhq/blob/master/doc/installation.md
 
