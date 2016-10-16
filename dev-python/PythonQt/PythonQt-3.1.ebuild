@@ -64,7 +64,8 @@ src_prepare() {
 	fi
 
 	# Set python version to use
-	sed -i "s/unix:PYTHON_VERSION=2.7/unix:PYTHON_VERSION=${EPYTHON/#python/}/" build/python.prf
+	sed -i "s/unix:PYTHON_VERSION=2.7/unix:PYTHON_VERSION=${EPYTHON/#python/}/" \
+		build/python.prf || die "sed for python version"
 
 	default
 }

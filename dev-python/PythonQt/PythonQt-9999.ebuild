@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc examples +extensions tests webkit"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="webkit? ( extensions ) ${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
@@ -35,6 +35,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtdeclarative:5[widgets]
 		dev-qt/designer:5
 	)
+	webkit? ( dev-qt/qtwebkit:5 )
 	"
 DEPEND="${RDEPEND}
 	!extensions? ( dev-qt/qtxml:5 )
@@ -61,7 +62,8 @@ src_prepare() {
 	fi
 
 	# Set python version to use
-	sed -i "s/unix:PYTHON_VERSION=2.7/unix:PYTHON_VERSION=${EPYTHON/#python/}/" build/python.prf
+	sed -i "s/unix:PYTHON_VERSION=2.7/unix:PYTHON_VERSION=${EPYTHON/#python/}/" \
+		build/python.prf || die "sed for python version"
 
 	default
 }
