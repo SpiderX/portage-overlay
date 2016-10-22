@@ -4,9 +4,13 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Primary maintainer</description>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<longdescription>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
 Automatic is a RSS daemon that downloads torrent files
 matching regular expression patterns at certain intervals.
 It is capable of adding downloaded torrents directly to Transmission.
@@ -14,5 +18,6 @@ It is capable of adding downloaded torrents directly to Transmission.
 	<upstream>
 		<changelog>https://github.com/1100101/Automatic/blob/master/ChangeLog</changelog>
 		<bugs-to>https://github.com/1100101/Automatic/issues</bugs-to>
+		<remote-id type="github">1100101/Automatic</remote-id>
 	</upstream>
 </pkgmetadata>

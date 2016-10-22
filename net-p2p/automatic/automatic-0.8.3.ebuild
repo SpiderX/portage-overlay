@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-inherit user eutils autotools autotools-utils
+inherit user eutils autotools
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
@@ -15,10 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/Automatic-${PV}"
 
-DEPEND="dev-libs/libxml2
-	dev-libs/libpcre
+RDEPEND="dev-libs/libxml2:2
+	dev-libs/libpcre:3
 	net-misc/curl"
-RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	# Add automatic group and user to system
@@ -31,18 +30,19 @@ src_prepare() {
 	mv configure.in configure.ac || die "rename failed"
 
 	# Remove CFLAGS and CXXFLAGS defined by upstream
-	sed -i 's/CFLAGS="-Wdeclaration-after-statement -O3 -funroll-loops"/CFLAGS+=""/' \
-	configure.ac || die "sed for CFLAGS failed"
-	sed -i 's/CXXFLAGS="-O3 -funroll-loops"/CXXFLAGS+=""/' \
-	configure.ac || die "sed for CXXFLAGS failed"
+	sed -i \
+		-e 's/CFLAGS="-Wdeclaration-after-statement -O3 -funroll-loops"/CFLAGS+=""/' \
+		-e 's/CXXFLAGS="-O3 -funroll-loops"/CXXFLAGS+=""/' \
+		configure.ac || die "sed for CXXFLAGS and CFLAGS failed"
 
+	eaclocal
 	eautoreconf
-	epatch_user
+	eapply_user
 }
 
 src_install() {
 	# Install and copy documentation
-	autotools-utils_src_install
+	default
 
 	# Install Gentoo init script and its config
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
