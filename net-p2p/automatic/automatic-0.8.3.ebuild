@@ -18,16 +18,14 @@ S="${WORKDIR}/Automatic-${PV}"
 RDEPEND="dev-libs/libxml2:2
 	dev-libs/libpcre:3
 	net-misc/curl"
-
-pkg_setup() {
-	# Add automatic group and user to system
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-}
+DEPEND="${RDEPEND}
+	app-admin/logrotate"
 
 src_prepare() {
+	default
+
 	# https://bugs.gentoo.org/426262
-	mv configure.in configure.ac || die "rename failed"
+	mv configure.{in,ac} || die "rename failed"
 
 	# Remove CFLAGS and CXXFLAGS defined by upstream
 	sed -i \
@@ -35,9 +33,7 @@ src_prepare() {
 		-e 's/CXXFLAGS="-O3 -funroll-loops"/CXXFLAGS+=""/' \
 		configure.ac || die "sed for CXXFLAGS and CFLAGS failed"
 
-	eaclocal
 	eautoreconf
-	eapply_user
 }
 
 src_install() {
@@ -58,6 +54,10 @@ src_install() {
 }
 
 pkg_postinst() {
+	# Add automatic group and user to system
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+
 	elog ""
 	elog "To run automatic you should move /etc/automatic.conf-sample to /etc/automatic.conf and config it."
 	elog "If things go wrong, increase verbose level in /etc/conf.d/automatic and check log file in /var/log/automatic/"
