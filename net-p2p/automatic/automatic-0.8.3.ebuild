@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit user eutils autotools
+inherit autotools user
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
