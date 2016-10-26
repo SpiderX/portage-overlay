@@ -13,7 +13,7 @@ SRC_URI="https://github.com/1100101/Automatic/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-S="${WORKDIR}/Automatic-${PV}"
+S="${WORKDIR}/${P^}"
 
 RDEPEND="dev-libs/libxml2:2
 	dev-libs/libpcre:3
