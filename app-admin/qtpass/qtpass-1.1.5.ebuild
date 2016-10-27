@@ -4,6 +4,8 @@
 
 EAPI=6
 
+MY_P="QtPass-${PV}"
+
 inherit qmake-utils
 
 DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
@@ -13,47 +15,31 @@ SRC_URI="https://github.com/IJHack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="+qt5"
+IUSE=""
 DOCS=( FAQ.md README.md CONTRIBUTING.md )
+S="${WORKDIR}/${MY_P}"
 
-RDEPEND="qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5[xcb]
-		dev-qt/qtwidgets:5
-		dev-qt/qtnetwork:5
-	)
-	!qt5? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
+RDEPEND="dev-qt/qtcore:5
+	dev-qt/qtgui:5[xcb]
+	dev-qt/qtwidgets:5
+	dev-qt/qtnetwork:5
 	app-admin/pass
 	net-misc/x11-ssh-askpass"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
-src_prepare() {
-	# Modify install path
-	sed -i "s/target.path = \$\$PREFIX/target.path = \$\$PREFIX\/bin/" \
-		${PN}.pro \
-		|| die "sed failed to modify install path for ${PN}.pro"
-
-	default
-}
-
 src_configure() {
-	if use qt5 ; then
-		eqmake5 PREFIX="${D}"/usr
-	else
-		eqmake4 PREFIX="${D}"/usr
-	fi
+	eqmake5 PREFIX="${D}"/usr
 }
 
 src_install() {
 	default
 
+	doman ${PN}.1
+
 	insinto /usr/share/applications
 	doins "${PN}.desktop"
-	doman ${PN}.1
+
 	newicon artwork/icon.svg "${PN}-icon.svg"
 }
