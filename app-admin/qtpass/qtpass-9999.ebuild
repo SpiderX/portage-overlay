@@ -28,7 +28,7 @@ RDEPEND="qt5? (
 	app-admin/pass
 	net-misc/x11-ssh-askpass"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
+	qt5? ( dev-qt/linguist-tools:5 )
 "
 
 src_configure() {
