@@ -12,31 +12,21 @@ EGIT_REPO_URI="https://github.com/IJHack/${PN}.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+qt5"
+IUSE=""
 DOCS=( FAQ.md README.md CONTRIBUTING.md )
 
-RDEPEND="qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5[xcb]
-		dev-qt/qtwidgets:5
-		dev-qt/qtnetwork:5
-	)
-	!qt5? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
+RDEPEND="dev-qt/qtcore:5
+	dev-qt/qtgui:5[xcb]
+	dev-qt/qtwidgets:5
+	dev-qt/qtnetwork:5
 	app-admin/pass
 	net-misc/x11-ssh-askpass"
 DEPEND="${RDEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )
+	dev-qt/linguist-tools:5
 "
 
 src_configure() {
-	if use qt5 ; then
-		eqmake5 PREFIX="${D}"/usr
-	else
-		eqmake4 PREFIX="${D}"/usr
-	fi
+	eqmake5 PREFIX="${D}"/usr
 }
 
 src_install() {
