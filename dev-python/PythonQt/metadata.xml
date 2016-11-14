@@ -18,7 +18,6 @@ not on writing the whole application completely in Python.
 	</longdescription>
 	<use>
 		<flag name="extensions">Install extensions</flag>
-		<flag name="tests">Install test files</flag>
 	</use>
 	<upstream>
 		<changelog>https://sourceforge.net/p/pythonqt/news/</changelog>

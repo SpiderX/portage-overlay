@@ -4,57 +4,55 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+
+MY_P=${PN}${PV}
 
 inherit qmake-utils python-single-r1
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="http://pythonqt.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${PN}-${PV}/${PN}${PV}.zip"
+SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE="doc examples +extensions tests webkit"
-REQUIRED_USE="webkit? ( extensions ) ${PYTHON_REQUIRED_USE}"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc +extensions webkit"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	extensions? (
-		dev-qt/qtsvg:5
-		dev-qt/qtsql:5
+		dev-qt/designer:5
+		dev-qt/qtdeclarative:5[widgets]
+		dev-qt/qtmultimedia:5[widgets]
 		dev-qt/qtnetwork:5
-		dev-qt/qtxml:5
-		dev-qt/qtxmlpatterns:5
 		dev-qt/qtopengl:5
 		dev-qt/qtprintsupport:5
-		dev-qt/qtmultimedia:5[widgets]
-		dev-qt/qtdeclarative:5[widgets]
-		dev-qt/designer:5
-	)
-	webkit? ( dev-qt/qtwebkit:5 )
-	"
+		dev-qt/qtsql:5
+		dev-qt/qtsvg:5
+		dev-qt/qtxml:5
+		dev-qt/qtxmlpatterns:5
+		webkit? ( dev-qt/qtwebkit:5 )
+	)"
 DEPEND="${RDEPEND}
-	!extensions? ( dev-qt/qtxml:5 )
-	doc? ( app-doc/doxygen )
-	virtual/pkgconfig"
+	dev-qt/qtxml:5
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )"
 
-S="${WORKDIR}/${PN}${PV}"
+S="${WORKDIR}/${MY_P}"
+
+REQUIRED_USE="webkit? ( extensions ) ${PYTHON_REQUIRED_USE}"
 
 # Bring uitools back, backport other fixes from trunk
 PATCHES=( "${FILESDIR}/${P}-commit-433-441.patch" )
 
 src_prepare() {
+	default
+
 	if ! use extensions ; then
-		sed -i 's/extensions//' ${PN}.pro || die "sed for extensions"
-	fi
-	if ! use tests ; then
-		sed -i 's/tests//' ${PN}.pro || die "sed for tests"
-	fi
-	if ! use examples ; then
-		sed -i 's/examples//' ${PN}.pro || die "sed for examples"
+		sed -i '/SUBDIRS/s/extensions//' PythonQt.pro || die "sed for extensions"
 	fi
 	if ! use webkit ; then
 		# Remove webkit support if not used
@@ -63,47 +61,29 @@ src_prepare() {
 			|| die "sed for webkit"
 	fi
 
-	# Set python version to use
-	sed -i "s/unix:PYTHON_VERSION=2.7/unix:PYTHON_VERSION=${EPYTHON/#python/}/" \
-		build/python.prf || die "sed for python version"
-
-	default
+	# Unset python version to use python-config
+	sed -i "/unix:PYTHON_VERSION=/s/2.7//" build/python.prf \
+		|| die "sed for python version"
 }
 
 src_configure() {
-	eqmake5 PREFIX="${D}"/usr
+	eqmake5 PREFIX="${ED%/}"/usr
 }
 
 src_install() {
-	default
+	einstalldocs
 
 	# Includes
-	insinto /usr/include/${PN}
+	insinto /usr/include/PythonQt
 	doins -r src/*.h
-	insinto /usr/include/${PN}/gui
+	insinto /usr/include/PythonQt/gui
 	doins -r src/gui/*.h
 
-	exeinto /usr/lib/${PN}
-
-	if tests ; then
-		insinto /usr/include/${PN}/tests
-		doins tests/PythonQtTests.h
-		doexe lib/PythonQtTest
-	fi
-
 	if use extensions ; then
-		insinto /usr/include/${PN}/extensions/${PN}_QtAll
-		doins -r extensions/${PN}_QtAll/*.h
+		insinto /usr/include/PythonQt/extensions/PythonQt_QtAll
+		doins -r extensions/PythonQt_QtAll/*.h
 	fi
 
-	if use examples ; then
-		doexe lib/*Example
-		doexe lib/PyGettingStarted
-		doexe lib/PyGuiExample
-		doexe lib/PyLauncher
-		doexe lib/PyScriptingConsole
-	fi
-
-	# Library
-	dolib.so lib/lib${PN}*
+	# Libraries
+	dolib.so lib/libPythonQt*
 }
