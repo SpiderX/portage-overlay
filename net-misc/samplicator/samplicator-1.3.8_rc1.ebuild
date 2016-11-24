@@ -1,15 +1,17 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/samplicator/samplicator-1.3.7_beta6.ebuild,v 1.2 2014/01/08 06:36:06 vapier Exp $
+# $Id$
 
-EAPI="5"
+EAPI=6
 
-inherit eutils user
+MY_PV=${PV/_/}
+MY_P=${PN}-${MY_PV}
+
+inherit user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
-HOMEPAGE="http://${PN}.googlecode.com/"
-MY_P=${P/_/-}
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/sleinen/${PN}"
+SRC_URI="https://github.com/sleinen/${PN}/releases/download/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
@@ -29,7 +31,7 @@ src_install() {
 
 	# Install Gentoo init script and its config
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	# Install manual page
 	doman "${FILESDIR}"/${PN}.8
