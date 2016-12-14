@@ -23,9 +23,6 @@ RDEPEND="${PYTHON_DEPS}
 	x11-misc/wmctrl
 	dev-libs/libinput"
 
-# Fix keyword-only placement
-PATCHES=( "${FILESDIR}/${PN}-2.13-keyword.patch" )
-
 pkg_postinst() {
 	elog "You must be in the input group to read the touchpad device."
 }
