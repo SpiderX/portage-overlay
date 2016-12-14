@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit qmake-utils git-r3
+inherit git-r3 qmake-utils
 
 DESCRIPTION="Radio tray for linux on QT"
 EGIT_REPO_URI="https://github.com/loast/${PN}.git"
@@ -17,16 +17,18 @@ KEYWORDS=""
 IUSE=""
 DOCS=( README.md )
 
-RDEPEND="dev-qt/qtcore:5
+DEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtmultimedia:5[gstreamer]
 	dev-qt/qtsql:5
-	dev-qt/qtnetwork:5
-"
-DEPEND="${RDEPEND}"
+	dev-qt/qtnetwork:5"
+RDEPEND="${DEPEND}
+	media-plugins/gst-plugins-meta:1.0[aac,http,mp3,mpeg,ogg,vorbis]"
 
 src_prepare() {
+	default
+
 	# Specify qmake version by using full path and create paths for symlinks
 	sed -i \
 		-e 's:qmake:/usr/lib/qt5/bin/qmake:' \
@@ -41,8 +43,6 @@ src_prepare() {
 		-e '/Terminal/s/.$//' \
 		-e '/Name/s/.$//' \
 		src/data/${PN}.desktop || die "sed for krudio.desktop"
-
-	default
 }
 
 src_install() {
