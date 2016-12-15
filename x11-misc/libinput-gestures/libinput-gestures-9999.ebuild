@@ -16,12 +16,24 @@ SRC_URI=""
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="kde gtk"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-libs/libinput
 	x11-misc/xdotool
-	x11-misc/wmctrl
-	dev-libs/libinput"
+	x11-misc/wmctrl"
+DEPEND="gtk? ( x11-libs/gtk+:3 )
+	kde? ( kde-plasma/kde-cli-tools:5 )
+	dev-libs/libinput
+	dev-util/desktop-file-utils"
+
+src_prepare() {
+	default
+
+	# Fix kioclient binary name
+	sed -i 's/kioclient/kioclient5/' libinput-gestures-setup \
+		|| die "sed for kioclient"
+}
 
 pkg_postinst() {
 	elog "You must be in the input group to read the touchpad device."

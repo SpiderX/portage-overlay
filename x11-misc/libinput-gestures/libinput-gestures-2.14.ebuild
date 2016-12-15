@@ -15,15 +15,24 @@ SRC_URI="https://github.com/bulletmark/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="kde gtk"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-libs/libinput
 	x11-misc/xdotool
-	x11-misc/wmctrl
-	dev-libs/libinput"
+	x11-misc/wmctrl"
+DEPEND="gtk? ( x11-libs/gtk+:3 )
+	kde? ( kde-plasma/kde-cli-tools:5 )
+	dev-libs/libinput
+	dev-util/desktop-file-utils"
 
-# Fix keyword-only placement
-PATCHES=( "${FILESDIR}/${P}-keyword.patch" )
+src_prepare() {
+	default
+
+	# Fix kioclient binary name
+	sed -i 's/kioclient/kioclient5/' libinput-gestures-setup \
+		|| die "sed for kioclient"
+}
 
 pkg_postinst() {
 	elog "You must be in the input group to read the touchpad device."
