@@ -27,14 +27,6 @@ DEPEND="gtk? ( x11-libs/gtk+:3 )
 	dev-libs/libinput
 	dev-util/desktop-file-utils"
 
-src_prepare() {
-	default
-
-	# Fix kioclient binary name
-	sed -i 's/kioclient/kioclient5/' libinput-gestures-setup \
-		|| die "sed for kioclient"
-}
-
 pkg_postinst() {
 	elog "You must be in the input group to read the touchpad device."
 }
