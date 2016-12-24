@@ -21,10 +21,10 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libinput
 	x11-misc/xdotool
 	x11-misc/wmctrl"
-DEPEND="gtk? ( x11-libs/gtk+:3 )
-	kde? ( kde-plasma/kde-cli-tools:5 )
-	dev-libs/libinput
-	dev-util/desktop-file-utils"
+DEPEND="dev-libs/libinput
+	dev-util/desktop-file-utils
+	gtk? ( x11-libs/gtk+:3 )
+	kde? ( kde-plasma/kde-cli-tools:5 )"
 
 pkg_postinst() {
 	elog "You must be in the input group to read the touchpad device."
