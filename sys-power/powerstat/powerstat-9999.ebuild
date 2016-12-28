@@ -7,16 +7,17 @@ EAPI=6
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Laptop power measuring tool"
-EGIT_REPO_URI="git://kernel.ubuntu.com/cking/${PN}.git"
-HOMEPAGE="https://launchpad.net/ubuntu/+source/${PN}"
+EGIT_REPO_URI=(
+	"git://kernel.ubuntu.com/cking/${PN}.git"
+	"https://github.com/ColinIanKing/${PN}.git"
+	)
+HOMEPAGE="https://launchpad.net/ubuntu/+source/${PN} https://github.com/ColinIanKing/${PN}"
 SRC_URI=""
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-
-DEPEND="app-arch/gzip"
 
 src_compile() {
 	emake CC=$(tc-getCC)
