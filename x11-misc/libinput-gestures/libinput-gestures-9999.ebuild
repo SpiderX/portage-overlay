@@ -27,6 +27,8 @@ DEPEND="dev-libs/libinput
 	gtk? ( x11-libs/gtk+:3 )
 	kde? ( kde-plasma/kde-cli-tools:5 )"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 pkg_postinst() {
 	elog "You must be in the input group to read the touchpad device."
 }
