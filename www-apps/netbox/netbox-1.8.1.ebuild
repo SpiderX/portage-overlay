@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 DOCS=( README.md CONTRIBUTING.md )
 RDEPEND=">=dev-python/django-1.9[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.3[${PYTHON_USEDEP}]
-	>=dev-python/django-debug-toolbar-1.4[${PYTHON_USEDEP}]
+	>=dev-python/django-debug-toolbar-1.6[${PYTHON_USEDEP}]
 	>=dev-python/django-filter-0.13[${PYTHON_USEDEP}]
 	>=dev-python/django-tables2-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/django-rest-swagger-0.3.8[${PYTHON_USEDEP}]
