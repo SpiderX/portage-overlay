@@ -11,38 +11,38 @@ SRC_URI="http://tar.goaccess.io/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
-IUSE="btree debug geoip getline tokyocabinet ssl unicode"
+IUSE="btree bzip2 debug geoip getline libressl tokyocabinet ssl unicode zlib"
 
-RDEPEND="sys-libs/ncurses:=[unicode?]
+RDEPEND="sys-libs/ncurses:0=[unicode?]
 	geoip? ( dev-libs/geoip )
+	libressl? ( dev-libs/libressl )
 	!tokyocabinet? ( dev-libs/glib:2 )
 	tokyocabinet? (
-		dev-db/tokyocabinet
+		dev-db/tokyocabinet[bzip2?,zlib?]
 		btree? (
-			app-arch/bzip2
-			sys-libs/zlib
+			bzip2? ( app-arch/bzip2 )
+			zlib? ( sys-libs/zlib )
 		)
 	)
-	ssl? ( dev-libs/openssl:0 )"
+	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE="btree? ( tokyocabinet )"
+REQUIRED_USE="btree? ( tokyocabinet ) bzip2? ( btree ) ssl? ( !libressl ) zlib? ( btree )"
 
 src_configure() {
 	econf \
+		$(use_enable bzip2 bzip) \
+		$(use_enable zlib) \
 		$(use_enable debug) \
 		$(use_enable geoip) \
+		$(use_enable tokyocabinet tcb $(usex btree btree memhash)) \
 		$(use_enable unicode utf8) \
-		$(use_enable tokyocabinet tcb) \
-		$(use_enable btree bzip) \
-		$(use_enable btree zlib) \
 		$(use_with getline) \
-		$(use_with ssl openssl) \
-		$(usex tokyocabinet "--enable-tcb=$(usex btree btree memhash)" '')
+		$(use_with $(usex ssl ssl libressl) openssl)
 }
 
 pkg_preinst() {
 	# Change path to GeoIP bases in config
-	sed -e s':/usr/local:/usr:' -i "${D}"/etc/goaccess.conf || die "sed failed for goaccess.conf"
+	sed -e s':/usr/local:/usr:' -i "${ED%/}"/etc/goaccess.conf || die "sed failed for goaccess.conf"
 }
