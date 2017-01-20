@@ -1,24 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit user
 
 DESCRIPTION="Server software for testing internet bandwidth using speedtest.net"
 HOMEPAGE="http://www.ookla.com/"
 SRC_URI="x86? ( http://install.speedtest.net/ooklaserver/stable/OoklaServer-linux32.tgz )
-amd64? ( http://install.speedtest.net/ooklaserver/stable/OoklaServer-linux64.tgz )"
+	amd64? ( http://install.speedtest.net/ooklaserver/stable/OoklaServer-linux64.tgz )"
 
 LICENSE="no-source-code"
 SLOT="0"
 KEYWORDS=""
-
 IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 QA_PREBUILT="opt/netgauge/OoklaServer"
 QA_PRESTRIPPED="opt/netgauge/OoklaServer"
