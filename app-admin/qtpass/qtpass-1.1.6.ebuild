@@ -19,11 +19,11 @@ IUSE=""
 DOCS=( FAQ.md README.md CONTRIBUTING.md )
 S="${WORKDIR}/${MY_P}"
 
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="app-admin/pass
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5[xcb]
-	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
-	app-admin/pass
+	dev-qt/qtwidgets:5
 	net-misc/x11-ssh-askpass"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
