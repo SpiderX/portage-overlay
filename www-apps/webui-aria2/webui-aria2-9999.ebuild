@@ -29,7 +29,7 @@ src_install() {
 	css/download.css css/modals.css css/style.css \
 	js/init.js js/ctrls/main.js js/translate/it_IT.js
 
-	cp -R css flags fonts img js index.html configuration.js favicon.ico \
+	cp -R css flags fonts js index.html configuration.js favicon.ico \
 	"${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
 
 	webapp_configfile "${MY_HTDOCSDIR}"/configuration.js
