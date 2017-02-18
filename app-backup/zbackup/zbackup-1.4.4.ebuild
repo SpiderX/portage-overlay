@@ -13,12 +13,14 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
+IUSE="libressl"
 
 DEPEND="app-arch/lzma
 	dev-libs/lzo:2
-	dev-libs/openssl:0=
 	<dev-libs/protobuf-3:0=
-	sys-libs/zlib"
+	sys-libs/zlib
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
 src_configure() {

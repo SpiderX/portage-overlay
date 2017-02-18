@@ -14,13 +14,15 @@ EGIT_REPO_URI="git://github.com/${PN}/${PN}.git"
 LICENSE="GPL-2+-with-openssl-exception"
 KEYWORDS=""
 SLOT="0"
+IUSE="libressl"
 
 DEPEND="app-arch/lzma
 	dev-libs/lzo:2
-	dev-libs/openssl:0=
 	<dev-libs/protobuf-3:0=
 	sys-libs/libunwind:7
-	sys-libs/zlib"
+	sys-libs/zlib
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
