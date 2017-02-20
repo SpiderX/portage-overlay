@@ -17,6 +17,9 @@
 	Possibility to delete old backup data
 	Use of a 64-bit rolling hash, keeping the amount of soft collisions to zero
 	</longdescription>
+	<use>
+		<flag name="tartool">Install tartool utility</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">zbackup/zbackup</remote-id>
 	</upstream>

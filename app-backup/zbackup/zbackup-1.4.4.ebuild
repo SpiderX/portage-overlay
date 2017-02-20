@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="libressl"
+IUSE="libressl tartool"
 
 DEPEND="app-arch/lzma
 	dev-libs/lzo:2
@@ -23,27 +23,13 @@ DEPEND="app-arch/lzma
 	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
+# Add tartool build
+PATCHES=( "${FILESDIR}/${P}-tartool.patch" )
+
 src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TARTOOL="$(usex tartool)"
+	)
+
 	cmake-utils_src_configure
-
-	# Configure tartool
-	mkdir ${BUILD_DIR%%_*}_tartool || die "mkdir for tartool failed"
-	cd ${BUILD_DIR%%_*}_tartool || die "cd for tartool failed"
-	cmake ${BUILD_DIR%%_*}/tartool || die "cmake failed"
-}
-
-src_compile() {
-	cmake-utils_src_compile
-
-	# Compile tartool
-	cd ${BUILD_DIR%%_*}_tartool || die "change dir for tartool failed"
-	emake
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	# Install tartool
-	cd ${BUILD_DIR%%_*}_tartool || die "change directory for tartool failed"
-	emake DESTDIR="${D}" install
 }
