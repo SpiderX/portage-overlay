@@ -14,8 +14,16 @@ SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="~amd64"
+IUSE="ansible docker paramiko salt ssh"
+
+RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	ansible? ( app-admin/ansible )
+	docker? ( app-emulation/docker )
+	paramiko? ( dev-python/paramiko[${PYTHON_USEDEP}] )
+	salt? ( app-admin/salt )
+	ssh? ( virtual/ssh )"
 
 DEPEND="dev-python/pbr[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
