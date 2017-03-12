@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit git-r3 distutils-r1
 
@@ -14,14 +14,14 @@ SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="ansible docker paramiko salt ssh"
+KEYWORDS=""
+IUSE="ansible docker salt ssh"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/paramiko[${PYTHON_USEDEP}]
 	ansible? ( app-admin/ansible )
 	docker? ( app-emulation/docker )
-	paramiko? ( dev-python/paramiko[${PYTHON_USEDEP}] )
 	salt? ( app-admin/salt )
 	ssh? ( virtual/ssh )"
 

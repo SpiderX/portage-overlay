@@ -17,7 +17,6 @@
 	<use>
 		<flag name="ansible">Use ansible backend</flag>
 		<flag name="docker">Use docker backend</flag>
-		<flag name="paramiko">Use paramiko backend</flag>
 		<flag name="salt">Use salt backend</flag>
 		<flag name="ssh">Use ssh backend</flag>
 	</use>
