@@ -7,14 +7,14 @@ MY_PN="${PN/-bin/}"
 
 inherit eutils gnome2-utils unpacker
 
-DESCRIPTION="Where developers come to talk"
-HOMEPAGE="http://www.gitter.com/"
+DESCRIPTION="Chat and network platform"
+HOMEPAGE="http://www.gitter.im/"
 SRC_URI="
 	amd64? ( https://update.gitter.im/linux64/${MY_PN}_${PV}_amd64.deb )
 	x86? ( https://update.gitter.im/linux32/${MY_PN}_${PV}_i386.deb )"
 LICENSE="no-source-code"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 -*"
 IUSE=""
 RESTRICT="mirror"
 
