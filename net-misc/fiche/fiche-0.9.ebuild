@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 pkg_setup() {
 	# Add fiche group and user to system
 	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /etc/${PN} ${PN}
+	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 }
 
 src_prepare() {
