@@ -23,7 +23,7 @@ src_prepare() {
 	default
 
 	# Remove CFLAGS defined by upstream
-	sed -i 's/ -O2//' Makefile.in || die "sed for Makefile.in failed"
+	sed -i 's/ -O2//' Makefile || die "sed for Makefile.in failed"
 }
 
 src_install() {
