@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils user git-r3
+inherit git-r3 user
 
 DESCRIPTION="Command line pastebin server"
 HOMEPAGE="https://github.com/solusipse/fiche"
 EGIT_REPO_URI="https://github.com/solusipse/${PN}.git"
-EGIT_BRANCH="secure"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,10 +20,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# Remove CFLAGS defined by upstream
 	sed -i 's/ -O2//' Makefile.in || die "sed for Makefile.in failed"
-
-	epatch_user
 }
 
 src_install() {

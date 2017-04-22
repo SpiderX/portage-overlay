@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="Command line pastebin server"
 HOMEPAGE="https://github.com/solusipse/fiche"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/solusipse/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
 pkg_setup() {
 	# Add fiche group and user to system
@@ -20,7 +20,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch_user
+	default
+
+	# Remove CFLAGS defined by upstream
+	sed -i 's/ -O2//' Makefile.in || die "sed for Makefile.in failed"
 }
 
 src_install() {
