@@ -16,7 +16,7 @@ LICENSE="MIT no-source-code"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 -*"
 IUSE=""
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/expat:0
 	dev-libs/glib:2
