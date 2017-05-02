@@ -4,16 +4,18 @@
 EAPI=6
 
 MY_PN="${PN/-bin/}"
+BASE_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-_arch_.deb"
 
 inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="http://www.slack.com/"
-SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
+SRC_URI="x86? ( ${BASE_URI/_arch_/i386} )
+	amd64? ( ${BASE_URI/_arch_/amd64} )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist mirror"
 
