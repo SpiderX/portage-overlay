@@ -7,8 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Laptop power measuring tool"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/${PN} https://github.com/ColinIanKing/${PN}"
-SRC_URI="http://kernel.ubuntu.com/~cking/tarballs/${PN}/${P}.tar.gz
-	https://github.com/ColinIanKing/${PN}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ColinIanKing/${PN}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
