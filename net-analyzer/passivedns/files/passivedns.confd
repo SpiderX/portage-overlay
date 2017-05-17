@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/passivedns
+
+# Various options.
+# run `passivedns -h` for valid cmdline options
+OPTS="-D -f csCQTAtn -X 4CDNPRSxs"

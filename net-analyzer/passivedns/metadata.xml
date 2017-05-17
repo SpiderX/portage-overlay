@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A tool to collect DNS records passively to aid Incident handling,
+	Network Security Monitoring (NSM) and general digital forensics.
+	PassiveDNS sniffs traffic from an interface or reads a pcap-file
+	and outputs the DNS-server answers to a log file.
+	PassiveDNS can cache/aggregate duplicate DNS answers in-memory,
+	limiting the amount of data in the logfile without losing
+	the essense in the DNS answer.
+	</longdescription>
+	<use>
+		<flag name="json">Enable JSON support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">gamelinux/passivedns</remote-id>
+	</upstream>
+</pkgmetadata>

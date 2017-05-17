@@ -1,0 +1,16 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+[Unit]
+Description=DNS sniffer
+After=network.target
+
+[Service]
+Type=forking
+User=passivedns
+Group=passivedns
+ExecStart=/usr/bin/passivedns -D -f csCQTAtn -X 4CDNPRSxs
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
