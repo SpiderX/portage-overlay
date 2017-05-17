@@ -24,11 +24,6 @@ RDEPEND="net-libs/ldns[ssl?]
 	)"
 DEPEND="${RDEPEND}"
 
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /dev/null ${PN}
-}
-
 src_prepare() {
 	default
 
@@ -50,4 +45,9 @@ src_install() {
 	use systemd || newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	use systemd || newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	use systemd && systemd_dounit "${FILESDIR}"/${PN}.service
+}
+
+pkg_postinst() {
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 /dev/null ${PN}
 }
