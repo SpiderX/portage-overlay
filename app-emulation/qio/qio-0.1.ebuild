@@ -11,8 +11,9 @@ LICENSE="MIT"
 SLOT=0
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="app-emulation/qemu
-	|| ( net-misc/socat )"
+RDEPEND="!app-emulation/qemu-init-scripts
+	app-emulation/qemu
+	net-misc/socat"
 
 src_install() {
 	newinitd qemu.initd qemu

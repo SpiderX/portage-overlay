@@ -14,8 +14,9 @@ LICENSE="MIT"
 SLOT=0
 KEYWORDS=""
 
-RDEPEND="app-emulation/qemu
-	|| ( net-misc/socat )"
+RDEPEND="!app-emulation/qemu-init-scripts
+	app-emulation/qemu
+	net-misc/socat"
 
 src_install() {
 	newinitd qemu.initd qemu
