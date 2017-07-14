@@ -66,15 +66,15 @@ src_install() {
 	insinto /opt/${MY_PN}
 	doins -r usr/lib/${MY_PN}/.
 	fperms +x /opt/${MY_PN}/${MY_PN}
-	dosym opt/${MY_PN}/${MY_PN} usr/bin/${MY_PN}
+	dosym "${ED}"opt/${MY_PN}/${MY_PN} usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
-	fdo-xdg_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-xdg_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
