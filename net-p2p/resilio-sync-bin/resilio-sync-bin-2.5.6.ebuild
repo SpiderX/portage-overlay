@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="${PN/-bin/}"
 BASE_URI="http://linux-packages.resilio.com/${MY_PN}/deb/pool/non-free/r/${MY_PN}/${MY_PN}_${PV}-1_-arch-.deb"
 
-inherit pax-utils systemd unpacker user
+inherit pax-utils systemd tmpfiles unpacker user
 
 NAME="rslsync"
 QA_PREBUILT="usr/bin/${NAME}"
@@ -42,6 +42,8 @@ src_install() {
 	fowners -R ${NAME}:${NAME} /etc/${MY_PN} /var/lib/${MY_PN} \
 		/var/log/${MY_PN}
 
+	newtmpfiles "${FILESDIR}"/${MY_PN}.tmpfile ${MY_PN}.conf
+
 	use systemd || newinitd "${FILESDIR}"/${MY_PN}.initd ${MY_PN}
 	use systemd || newconfd "${FILESDIR}"/${MY_PN}.confd ${MY_PN}
 	use systemd && systemd_dounit "${S}"/lib/systemd/system/${MY_PN}.service
@@ -57,12 +59,14 @@ pkg_preinst() {
 	sed -i \
 		-e "/storage_path/s|//| |g" \
 		-e "/pid_file/s|//| |g" \
-		-e "/storage_path/s|/home/user/.sync|/var/lib/${MY_PN}/.sync|g" \
-		-e "/pid_file/s|btsync/btsync|${MY_PN}/${MY_PN}|g" \
+		-e "/storage_path/s|/home/user|/var/lib/resilio-sync|g" \
+		-e "/pid_file/s|resilio/resilio-sync|g" \
 		"${ED%/}"/etc/${MY_PN}/config.json || die "sed for pkg_preinst failed"
 }
 
 pkg_postinst() {
+	tmpfiles_process ${MY_PN}.conf
+
 	elog "You may need to review /etc/${MY_PN}/config.json"
 	elog "Defalt metadata path is /var/lib/${MY_PN}/.sync"
 	elog "Default web-gui URL is http://localhost:8888/"
