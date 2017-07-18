@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,12 +16,11 @@ HOMEPAGE="https://getsync.com/"
 SRC_URI="amd64? ( ${BASE_URI//-arch-/x64} )
 	arm? ( ${BASE_URI//-arch-/armhf} )
 	x86? ( ${BASE_URI//-arch-/i386} )"
-LICENSE="BitTorrent no-source-code"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS=""
 IUSE="pax_kernel systemd"
-
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 S="${WORKDIR}"
 
 pkg_setup() {
@@ -31,7 +30,7 @@ pkg_setup() {
 
 src_install() {
 	dobin ${NAME}
-	use pax_kernel && pax-mark m "${D}"/usr/bin/${NAME}
+	use pax_kernel && pax-mark m "${ED%/}"/usr/bin/${NAME}
 
 	dodir /var/log/${MY_PN}
 
