@@ -60,7 +60,7 @@ pkg_preinst() {
 		-e "/storage_path/s|//| |g" \
 		-e "/pid_file/s|//| |g" \
 		-e "/storage_path/s|/home/user|/var/lib/resilio-sync|g" \
-		-e "/pid_file/s|resilio/resilio-sync|g" \
+		-e "/pid_file/s|resilio|resilio-sync|g" \
 		"${ED%/}"/etc/${MY_PN}/config.json || die "sed for pkg_preinst failed"
 }
 
