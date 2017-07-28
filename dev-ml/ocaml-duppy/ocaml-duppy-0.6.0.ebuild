@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+camlp4 debug +ocamlopt profiling ssl"
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/pcre-ocaml:=
-	camlp4? ( dev-ml/camlp4 )
+	camlp4? ( dev-ml/camlp4:= )
 	ssl? ( dev-ml/ocaml-ssl:= )"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
