@@ -1,0 +1,41 @@
+--- a/configure.ac	2017-07-28 16:57:41.000000000 +0300
++++ b/configure.ac	2017-07-28 17:08:24.000000000 +0300
+@@ -10,18 +10,35 @@
+ AC_CHECK_OCAML_BINDING([bytes],[],[],[1])
+ INC="$INC `$OCAMLFIND query bytes`"
+ 
+-AC_CHECK_OCAML_BINDING([ssl],[0.5.0])
+-AC_CHECK_OCAML_BINDING([osx-secure-transport])
++ AC_ARG_ENABLE([ssl],
++   AS_HELP_STRING([--disable-ssl],[don't use ssl]))
++if test "x$enable_ssl" = "xno" ; then
++   W_SSL=""
++   w_SSL="no"
++else
++    AC_CHECK_OCAML_BINDING([ssl],[0.5.0])
++fi
++
++ AC_ARG_ENABLE([osx-secure-transport],
++   AS_HELP_STRING([--disable-osx-secure-transport],[don't use osx-secure-transport]))
++if test "enable_osx-secure-transport" = "xno" ; then
++   W_OSX_SECURE_TRANSPORT==""
++   w_OSX_SECURE_TRANSPORT=="no"
++else
++    AC_CHECK_OCAML_BINDING([osx-secure-transport])
++fi
+ 
+-if test "$W_SSL" != ""; then
++if ! test -z "$W_SSL" ; then
+   SSL_BEGIN=""
+   SSL_END=""
+ 	requires="$requires ssl"
+ 	INC="$INC `$OCAMLFIND query ssl`"
++	CRY_SSL="cry_ssl"
+ else
+   SSL_BEGIN="(*"
+   SSL_END="*)"
+ fi
++AC_SUBST(CRY_SSL)
+ 
+ if test "$W_OSX_SECURE_TRANSPORT" != ""; then
+   SECURE_TRANSPORT_BEGIN=""
