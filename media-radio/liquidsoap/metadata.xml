@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A powerful and flexible language for describing your streams.
+	It offers a rich collection of operators that you can combine at will,
+	giving you more power than you need for creating or transforming streams.
+	But liquidsoap is still very light and easy to use, in the Unix tradition
+	of simple strong components working together.
+	</longdescription>
+	<use>
+		<flag name="camlimages">Support for image manipulation library</flag>
+		<flag name="camlp4">Enable camlp4 syntax extension</flag>
+		<flag name="dssi">Support for DSSI sound synthesis</flag>
+		<flag name="faad"><pkg>media-libs/faad2</pkg> decoding</flag>
+		<flag name="fdk"><pkg>media-libs/fdk-aac</pkg> decoding</flag>
+		<flag name="festival">Enable text to speech synthesizer via <pkg>app-accessibility/festival</pkg></flag>
+		<flag name="frei0r">Support for <pkg>media-plugins/frei0r-plugins</pkg></flag>
+		<flag name="gavl"><pkg>media-libs/gavl</pkg> video conversion</flag>
+		<flag name="graphics">Support for graphics in streams</flag>
+		<flag name="gui">Enable gui support</flag>
+		<flag name="json">Data import and export through json.</flag>
+		<flag name="ladspa">Support for Audio Developer's Simple Plugin API</flag>
+		<flag name="lastfm">Support for lastfm audioscrobbling and the like</flag>
+		<flag name="osc">Support for Lightweight OSC implementation</flag>
+		<flag name="magic">Enable filetype auto-detection</flag>
+		<flag name="opus">Support for Opus audio codec</flag>
+		<flag name="profiling">Build support for profiling</flag>
+		<flag name="shine">Support for fixed-point mp3 encoding</flag>
+		<flag name="shout">Stream to Shoutcast and Icecast</flag>
+		<flag name="soundtouch"><pkg>media-libs/libsoundtouch</pkg> effects.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">savonet/liquidsoap</remote-id>
+	</upstream>
+</pkgmetadata>
