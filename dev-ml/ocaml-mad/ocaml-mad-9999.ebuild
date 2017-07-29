@@ -13,8 +13,9 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="+camlp4 debug +ocamlopt profiling"
-RDEPEND="dev-lang/ocaml:=
-	media-libs/libmad"
+RDEPEND="dev-lang/ocaml:=[ocamlopt?]
+	media-libs/libmad
+	camlp4? ( dev-ml/camlp4:= )"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	virtual/pkgconfig"
