@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	OCaml interface for Linux's filesystem monitoring interface
+	</longdescription>
+	<use>
+		<flag name="lwt">Enable <pkg>dev-ml/lwt</pkg> bindings for asynchronous API</flag>
+		<flag name="profiling">Enable ocaml profile flag support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">savonet/ocaml-inotify</remote-id>
+	</upstream>
+</pkgmetadata>
