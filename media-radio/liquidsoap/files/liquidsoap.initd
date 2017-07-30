@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+NAME=${SVCNAME##*.}
+command="/usr/bin/liquidsoap"
+command_args="--daemon /etc/liquidsoap/${NAME}.liq"
+command_user=${USER:-liquidsoap}
+description="Start liquidsoap"
+description_check="Check and evaluate stream config"
+extra_started_commands="check"
+name="${command##*/} for stream ${NAME}"
+pidfile="/run/liquidsoap/${NAME}.pid"
+start_stop_daemon_args="-q"
+
+depend() {
+	need localmount
+	use net
+}
+
+check() {
+	ebegin "Status of stream ${NAME}:"
+	$command --check-lib /etc/liquidsoap/${NAME}.liq
+	eend $?
+}

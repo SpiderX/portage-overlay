@@ -1,0 +1,26 @@
+--- a/Makefile.defs.in	2017-07-26 23:09:26.000000000 +0300
++++ b/Makefile.defs.in	2017-07-26 23:32:06.000000000 +0300
+@@ -9,15 +9,15 @@
+ INSTALL_DAEMON=@INSTALL_DAEMON@
+ 
+ prefix= @prefix@
+-exec_prefix= @exec_prefix@
++exec_prefix= ${DESTDIR}@exec_prefix@
+ bindir= @bindir@
+-libdir= @libdir@
+-libs_dir_version= @libs_dir_version@
+-mandir= @mandir@
+-sysconfdir = @sysconfdir@
+-localstatedir = @localstatedir@
+-datarootdir = @datarootdir@
+-datadir = @datadir@
++libdir= ${DESTDIR}@libdir@
++#libs_dir_version= @libs_dir_version@
++mandir= ${DESTDIR}@mandir@
++sysconfdir = ${DESTDIR}@sysconfdir@
++localstatedir = ${DESTDIR}@localstatedir@
++datarootdir = ${DESTDIR}@datarootdir@
++datadir = ${DESTDIR}@datadir@
+ INSTALL = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_DIRECTORY = @INSTALL@ -d

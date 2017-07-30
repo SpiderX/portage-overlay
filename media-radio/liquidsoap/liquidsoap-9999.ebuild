@@ -5,14 +5,16 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools findlib python-single-r1 systemd tmpfiles user
+inherit autotools findlib git-r3 python-single-r1 systemd tmpfiles user
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios and webtvs"
 HOMEPAGE="http://liquidsoap.fm/"
-SRC_URI="https://github.com/savonet/liquidsoap/releases/download/${PV}/${P}.tar.bz2"
+EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+SRC_URI=""
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="alsa ao camlimages +camlp4 debug dssi faad fdk festival ffmpeg flac frei0r gavl \
 	gd graphics gstreamer gui inotify jack json ladspa lame lastfm libsamplerate \
 	mad magic +ocamlopt ogg osc opus oss portaudio profiling pulseaudio sdl shine \
