@@ -38,7 +38,7 @@ src_install() {
 
 	dodir /var/log/${MY_PN}
 
-	keepdir /etc/${MY_PN} /var/lib/${MY_PN}/ /var/lib/${MY_PN}/.sync
+	keepdir /etc/${MY_PN} /var/lib/${MY_PN} /var/lib/${MY_PN}/.sync
 	fperms 0700 /etc/${MY_PN} /var/lib/${MY_PN} /var/lib/${MY_PN}/.sync \
 		/var/log/${MY_PN}
 	fowners -R ${NAME}:${NAME} /etc/${MY_PN} /var/lib/${MY_PN} \
@@ -54,8 +54,8 @@ src_install() {
 
 pkg_preinst() {
 	# Generate sample config
-	"${EROOT%/}"/usr/bin/${NAME} --dump-sample-config > \
-		"${EROOT%/}"/etc/${MY_PN}/config.json || die "config dump failed"
+	"${ED%/}"/usr/bin/${NAME} --dump-sample-config > \
+		"${ED%/}"/etc/${MY_PN}/config.json || die "config dump failed"
 	fowners ${NAME}:${NAME} /etc/${MY_PN}/config.json
 	# Uncomment config directives and change their values
 	sed -i \
@@ -63,7 +63,7 @@ pkg_preinst() {
 		-e "/pid_file/s|//| |g" \
 		-e "/storage_path/s|/home/user|/var/lib/resilio-sync|g" \
 		-e "/pid_file/s|resilio|resilio-sync|g" \
-		"${EROOT%/}"/etc/${MY_PN}/config.json || die "sed for pkg_preinst failed"
+		"${ED%/}"/etc/${MY_PN}/config.json || die "sed for pkg_preinst failed"
 }
 
 pkg_postinst() {
