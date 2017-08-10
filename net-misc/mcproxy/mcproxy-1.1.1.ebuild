@@ -36,7 +36,12 @@ src_compile() {
 
 src_install() {
 	einstalldocs
+	insinto /etc
+	doins ${PN}/mcproxy.conf
 
 	cd ${PN} || die "failed to change directory to ${PN}"
 	emake DESTDIR="${D}" install
+
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
