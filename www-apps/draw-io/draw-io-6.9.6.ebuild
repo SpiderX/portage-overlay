@@ -3,17 +3,16 @@
 
 EAPI=6
 
-MY_PN="${PN/-/}"
-
 inherit webapp
 
 WEBAPP_MANUAL_SLOT="yes"
+MY_PN="${PN/-/}"
 
 DESCRIPTION="Online diagramming web application"
 HOMEPAGE="https://github.com/jgraph/${MY_PN}"
 SRC_URI="https://github.com/jgraph/${MY_PN}/archive/v${PV}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="Apache-2.0"
 SLOT=0
 KEYWORDS="~amd64 ~x86"
 IUSE="vhosts"
