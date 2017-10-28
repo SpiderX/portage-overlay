@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils readme.gentoo
+inherit eutils readme.gentoo-r1 systemd
 
 DESCRIPTION="Network performance measurement tool"
 HOMEPAGE="http://www.nuttcp.net/"
@@ -11,11 +11,14 @@ SRC_URI="http://nuttcp.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-
-IUSE="examples ipv6 xinetd"
+KEYWORDS="~amd64 ~x86"
+IUSE="ipv6 xinetd"
 
 RDEPEND="xinetd? ( sys-apps/xinetd )"
+
+DOCS=( examples.txt README )
+# Remove hardcoded flags
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 DOC_CONTENTS="You may need to add these lines to /etc/services:\n
 nuttcp\t\t5000/tcp\n
@@ -25,10 +28,10 @@ nuttcp6-data\t\t5001/tcp\n\n
 To run ${PN} in server mode, run:\n/etc/init.d/${PN} start"
 
 src_prepare() {
-	# Remove hardcoded flags and make use of system ones
-	epatch "${FILESDIR}"/nuttcp-6.1.2-makefile.patch
+	default
 
-	epatch_user
+	# Fix path to binary
+	sed -i '/server/s|/local||' xinetd.d/nuttcp || die "sed failed"
 }
 
 src_compile() {
@@ -36,30 +39,23 @@ src_compile() {
 }
 
 src_install() {
-	# Install nuttcp binary
-	if use ipv6 ; then
-		newbin ${P} ${PN}
-	else
-		newbin ${P}-noipv6 ${PN}
-	fi
+	einstalldocs
+	doman ${PN}.8
+	newbin ${P}$(usex ipv6 '' -noipv6) ${PN}
 
-	# Install Gentoo init script and its config
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-
-	# Install manual page and documentation
-	doman ${PN}.8
-	dodoc README
-
-	if use examples ; then
-		insinto /usr/share/${P}
-		doins examples.txt
-	fi
+	systemd_dounit systemd/${PN}@.service
+	systemd_dounit systemd/${PN}.socket
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
-		doins "${S}"/xinetd.d/${PN}
+		doins xinetd.d/${PN}
 	fi
 
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
