@@ -10,10 +10,13 @@ SRC_URI="http://tar.goaccess.io/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
-IUSE="btree bzip2 debug geoip getline libressl tokyocabinet ssl unicode zlib"
+IUSE="btree bzip2 debug geoip geoipv2 getline libressl tokyocabinet ssl unicode zlib"
 
 RDEPEND="sys-libs/ncurses:0=[unicode?]
-	geoip? ( dev-libs/geoip )
+	geoip? (
+		!geoipv2? ( dev-libs/geoip )
+		geoipv2? ( dev-libs/libmaxminddb:0= )
+	)
 	!tokyocabinet? ( dev-libs/glib:2 )
 	tokyocabinet? (
 		dev-db/tokyocabinet[bzip2?,zlib?]
@@ -29,14 +32,14 @@ RDEPEND="sys-libs/ncurses:0=[unicode?]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE="btree? ( tokyocabinet ) bzip2? ( btree ) zlib? ( btree )"
+REQUIRED_USE="btree? ( tokyocabinet ) bzip2? ( btree ) geoipv2? ( geoip ) libressl? ( ssl ) zlib? ( btree )"
 
 src_configure() {
 	econf \
 		$(use_enable bzip2 bzip) \
 		$(use_enable zlib) \
 		$(use_enable debug) \
-		$(use_enable geoip) \
+		$(use_enable geoip geoip $(usex geoipv2 mmdb legacy)) \
 		$(use_enable tokyocabinet tcb $(usex btree btree memhash)) \
 		$(use_enable unicode utf8) \
 		$(use_with getline) \
