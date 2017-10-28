@@ -7,7 +7,7 @@ inherit savedconfig
 
 DESCRIPTION="A simple command line pastebin designed to be used together with ssh"
 HOMEPAGE="https://github.com/vehk/keening"
-SRC_URI="https://github.com/vehk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SpiderX/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
