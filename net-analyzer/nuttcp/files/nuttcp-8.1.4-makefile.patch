@@ -1,13 +1,35 @@
-diff -r 7a32184b8e06 Makefile
---- a/Makefile	Thu Sep 19 18:24:30 2013 +0300
-+++ b/Makefile	Thu Sep 19 18:26:01 2013 +0300
-@@ -2,8 +2,7 @@
+--- a/Makefile	2017-10-29 08:39:34.209474792 +0200
++++ b/Makefile	2017-10-29 08:49:24.964638395 +0200
+@@ -1,9 +1,8 @@
+ APP = nuttcp-8.1.4
  #EXTRAVERSION=-pre1
- CC = gcc -Wall
+-CC = gcc -Wall
++CC += gcc -Wall
  #OPT = -g -O0
 -OPT = -O3
 -CFLAGS = $(OPT) $(NOIPV6)
-+CFLAGS+= $(OPT) $(NOIPV6)
++CFLAGS += $(OPT) $(NOIPV6)
  LIBS = 
  ifneq ($(NOIPV6),)
  APPEXTV6=-noipv6
+@@ -53,15 +52,15 @@
+ #	$(MAKE) CC=icc OPT="-w -O3 -parallel -unroll -align -xM -vec_report -par_report2"
+ 
+ $(APP)$(EXTRAVERSION)$(APPEXT): $(APP)$(EXTRAVERSION).c $(LIBS)
+-	$(CC) $(CFLAGS) -o $@ $< $(LIBS)
++	$(CC) $(CFLAGS) -o $@ $< $(LIBS) $(LDFLAGS)
+ inet_ntop.o: missing/inet_ntop.c missing/config.h
+-	$(CC) $(CFLAGS.MISSING) -o $@ -c $<
++	$(CC) $(CFLAGS.MISSING) -o $@ -c $< $(LDFLAGS)
+ inet_pton.o: missing/inet_pton.c missing/config.h
+-	$(CC) $(CFLAGS.MISSING) -o $@ -c $<
++	$(CC) $(CFLAGS.MISSING) -o $@ -c $< $(LDFLAGS)
+ inet_aton.o: missing/inet_aton.c missing/config.h
+-	$(CC) $(CFLAGS.MISSING) -o $@ -c $<
++	$(CC) $(CFLAGS.MISSING) -o $@ -c $< $(LDFLAGS)
+ getaddrinfo.o: missing/getaddrinfo.c missing/config.h
+-	$(CC) $(CFLAGS.MISSING) -o $@ -c $<
++	$(CC) $(CFLAGS.MISSING) -o $@ -c $< $(LDFLAGS)
+ 
+ clean:
+ 	rm  -f $(APP)$(EXTRAVERSION)$(APPEXT) $(APP)$(EXTRAVERSION).o $(OBJS.GETADD) $(OBJS.INETFUN)

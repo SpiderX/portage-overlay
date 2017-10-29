@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils readme.gentoo-r1 systemd
+inherit eutils readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="Network performance measurement tool"
 HOMEPAGE="http://www.nuttcp.net/"
@@ -17,7 +17,7 @@ IUSE="ipv6 xinetd"
 RDEPEND="xinetd? ( sys-apps/xinetd )"
 
 DOCS=( examples.txt README )
-# Remove hardcoded flags
+# Honor CC, LDFLAGS, CFLAGS
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 DOC_CONTENTS="You may need to add these lines to /etc/services:\n
@@ -35,7 +35,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake $(usex ipv6 '' NOIPV6=-DNO_IPV6)
+	emake $(usex ipv6 '' NOIPV6=-DNO_IPV6) CC=$(tc-getCC)
 }
 
 src_install() {
