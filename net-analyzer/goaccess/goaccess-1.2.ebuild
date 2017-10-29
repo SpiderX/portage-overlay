@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="A real-time web log analyzer and interactive viewer that runs in a terminal"
-HOMEPAGE="http://goaccess.io"
-SRC_URI="http://tar.goaccess.io/${P}.tar.gz"
+HOMEPAGE="https://goaccess.io"
+SRC_URI="https://tar.goaccess.io/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,7 +32,7 @@ RDEPEND="sys-libs/ncurses:0=[unicode?]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE="btree? ( tokyocabinet ) bzip2? ( btree ) geoipv2? ( geoip ) libressl? ( ssl ) zlib? ( btree )"
+REQUIRED_USE="btree? ( tokyocabinet ) bzip2? ( btree ) geoipv2? ( geoip ) zlib? ( btree )"
 
 src_configure() {
 	econf \
