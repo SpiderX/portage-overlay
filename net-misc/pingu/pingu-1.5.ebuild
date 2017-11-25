@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit tmpfiles toolchain-funcs
 
 DESCRIPTION="Policy routing daemon with failover and load-balancing"
 HOMEPAGE="https://github.com/ncopa/pingu"
@@ -16,11 +16,16 @@ IUSE="debug doc"
 
 RDEPEND="dev-libs/libev"
 DEPEND="${RDEPEND}
+	sys-kernel/linux-headers
 	virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
+# Add missed parameters to configure
+# Fix compilation issue
+# Change path to /run and fix QA
 PATCHES=( "${FILESDIR}"/${P}-configure.patch
-	"${FILESDIR}"/${P}-icmp.patch )
+	"${FILESDIR}"/${P}-icmp.patch
+	"${FILESDIR}"/${P}-makefile.patch )
 
 src_configure() {
 	econf $(use_enable debug) $(use_enable doc)
@@ -33,9 +38,14 @@ src_compile() {
 src_install() {
 	default
 
+	newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	keepdir /etc/pingu
 	insinto /etc/pingu
 	newins pingu.conf pingu.conf.example
+}
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
 }
