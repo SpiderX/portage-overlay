@@ -41,7 +41,7 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	keepdir /etc/pingu
+	keepdir /etc/pingu /var/lib/pingu
 	insinto /etc/pingu
 	newins pingu.conf pingu.conf.example
 }
