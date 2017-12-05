@@ -1,7 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 NAME=${SVCNAME##*.}
 if [ -n "${NAME}" -a "${SVCNAME}" != "netgauge" ]; then
@@ -29,7 +28,7 @@ start() {
 
 stop() {
 	ebegin "Stopping Ookla NetGauge"
-	start-stop-daemon --stop --quiet --pidfile ${PID}
+	start-stop-daemon --stop --quiet --pidfile ${PID} --retry 20
 	rm -f ${PID}
 	eend $?
 }
