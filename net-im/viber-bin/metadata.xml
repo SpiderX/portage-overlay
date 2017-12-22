@@ -17,6 +17,9 @@
 	always use the app that's right for you, whether at home, in school,
 	at the office, or on the go.
 	</longdescription>
+	<use>
+		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
+	</use>
 	<upstream>
 		<doc>https://support.viber.com</doc>
 	</upstream>
