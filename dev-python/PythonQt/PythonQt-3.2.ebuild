@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,16 +7,15 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_P=${PN}${PV}
 
-inherit qmake-utils python-single-r1 subversion
+inherit qmake-utils python-single-r1
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="http://pythonqt.sourceforge.net/"
-SRC_URI=""
-ESVN_REPO_URI="https://pythonqt.svn.sourceforge.net/svnroot/pythonqt/trunk"
+SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc +extensions webkit"
 
 RDEPEND="${PYTHON_DEPS}
