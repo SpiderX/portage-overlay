@@ -17,7 +17,7 @@ SRC_URI="https://github.com/gnif/${MY_PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+host debug libressl ssl"
+IUSE="+host debug libressl +ssl"
 
 RDEPEND="app-emulation/spice-protocol
 	media-libs/fontconfig
