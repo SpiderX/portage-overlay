@@ -19,14 +19,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+host debug libressl +ssl"
 
-RDEPEND="app-emulation/spice-protocol
-	media-libs/fontconfig
+RDEPEND="media-libs/fontconfig
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
 	virtual/glu
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
+	app-emulation/spice-protocol
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}/client"
