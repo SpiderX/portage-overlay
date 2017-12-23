@@ -19,24 +19,24 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc +extensions webkit"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-qt/qtcore:5/5.7
-	dev-qt/qtgui:5/5.7
-	dev-qt/qtwidgets:5/5.7
+	<dev-qt/qtcore-5.9:5
+	<dev-qt/qtgui-5.9:5
+	<dev-qt/qtwidgets-5.9:5
 	extensions? (
-		dev-qt/designer:5/5.7
-		dev-qt/qtdeclarative:5/5.7[widgets]
-		dev-qt/qtmultimedia:5/5.7[widgets]
-		dev-qt/qtnetwork:5/5.7
-		dev-qt/qtopengl:5/5.7
-		dev-qt/qtprintsupport:5/5.7
-		dev-qt/qtsql:5/5.7
-		dev-qt/qtsvg:5/5.7
-		dev-qt/qtxml:5/5.7
-		dev-qt/qtxmlpatterns:5/5.7
-		webkit? ( dev-qt/qtwebkit:5/5.7 )
+		<dev-qt/designer-5.9:5
+		<dev-qt/qtdeclarative-5.9:5[widgets]
+		<dev-qt/qtmultimedia-5.9:5[widgets]
+		<dev-qt/qtnetwork-5.9:5
+		<dev-qt/qtopengl-5.9:5
+		<dev-qt/qtprintsupport-5.9:5
+		<dev-qt/qtsql-5.9:5
+		<dev-qt/qtsvg-5.9:5
+		<dev-qt/qtxml-5.9:5
+		<dev-qt/qtxmlpatterns-5.9:5
+		webkit? ( <dev-qt/qtwebkit-5.9:5 )
 	)"
 DEPEND="${RDEPEND}
-	dev-qt/qtxml:5/5.7
+	<dev-qt/qtxml-5.9:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
