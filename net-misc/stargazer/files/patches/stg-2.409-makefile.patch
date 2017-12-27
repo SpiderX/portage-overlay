@@ -1,0 +1,222 @@
+--- a/projects/rlm_stg/Makefile
++++ b/projects/rlm_stg/Makefile
+@@ -62,24 +62,10 @@ distclean: clean
+ install: install-bin
+ 
+ install-bin:
+-ifeq ($(DEBUG), yes)
+ ifeq ($(OS), linux)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/freeradius
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
+ else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/$(PROG)
+-endif
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/freeradius
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
+-ifeq ($(OS), linux)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/freeradius
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/$(PROG)
+ endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+--- a/projects/rscriptd/Makefile
++++ b/projects/rscriptd/Makefile
+@@ -57,27 +57,17 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin:
+-ifeq ($(DEBUG), yes)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ install-data:
+-	# Install etc
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+-	install -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/rscriptd/rscriptd.conf
++	install -D -m $(DATA_MODE) -o $(OWNER) ./rscriptd.conf $(PREFIX)/etc/stargazer/rscriptd.conf
+ ifeq ($(OS), linux)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+-	install -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnConnect $(PREFIX)/etc/rscriptd/
+-	install -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnDisconnect $(PREFIX)/etc/rscriptd/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnConnect $(PREFIX)/etc/stargazer/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/linux/etc/stargazer/OnDisconnect $(PREFIX)/etc/stargazer/
+ else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/rscriptd
+-	install -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnConnect $(PREFIX)/etc/rscriptd/
+-	install -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnDisconnect $(PREFIX)/etc/rscriptd/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnConnect $(PREFIX)/etc/stargazer/
++	install -D -m $(BIN_MODE) -o $(OWNER) ../stargazer/inst/freebsd/etc/stargazer/OnDisconnect $(PREFIX)/etc/stargazer/
+ endif
+ 
+ uninstall: uninstall-bin uninstall-data
+--- a/projects/sgauth/Makefile
++++ b/projects/sgauth/Makefile
+@@ -58,19 +58,13 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin:
+-ifeq ($(DEBUG), yes)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ install-data:
+ 	# Install etc
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc
+-	install -m $(DATA_MODE) -o $(OWNER) ./sgauth.conf $(PREFIX)/etc/sgauth.conf
++	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/stargazer
++	install -m $(DATA_MODE) -o $(OWNER) ./sgauth.conf $(PREFIX)/etc/stargazer/sgauth.conf
+ 
+ uninstall: uninstall-bin uninstall-data
+ 
+--- a/projects/sgconf/Makefile
++++ b/projects/sgconf/Makefile
+@@ -69,13 +69,7 @@ distclean: clean
+ install: install-bin
+ 
+ install-bin:
+-ifeq ($(DEBUG), yes)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ uninstall: uninstall-bin
+--- a/projects/sgconf_xml/Makefile
++++ b/projects/sgconf_xml/Makefile
+@@ -65,13 +65,7 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin:
+-ifeq ($(DEBUG), yes)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ uninstall: uninstall-bin uninstall-data
+--- a/projects/sgconv/Makefile
++++ b/projects/sgconv/Makefile
+@@ -66,13 +66,7 @@ distclean: clean
+ install: install-bin
+ 
+ install-bin:
+-ifeq ($(DEBUG), yes)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/bin
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/bin/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/bin
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/bin/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/bin/$(PROG)
+ 	$(MAKE) -C $(DIR_PLUGINS) install
+ 
+ uninstall: uninstall-bin
+--- a/projects/stargazer/Makefile
++++ b/projects/stargazer/Makefile
+@@ -82,13 +82,7 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin: $(PROG)
+-ifeq ($(DEBUG), yes)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/sbin
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
+ 	$(MAKE) -C $(DIR_INCLUDE) install
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 	$(MAKE) -C $(DIR_PLUGINS) install
+@@ -99,30 +93,9 @@ install-data:
+ 	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/stargazer/conf-available.d
+ 	mkdir -m $(DIR_MODE) -p $(PREFIX)/etc/stargazer/conf-enabled.d
+ 	install -m $(DATA_MODE) -o $(OWNER) $(ETC_DIR)/stargazer.conf $(PREFIX)/etc/stargazer/stargazer.conf
+-	install -m $(DATA_MODE) -o $(OWNER) $(ETC_DIR)/conf-available.d/*.conf $(PREFIX)/etc/stargazer/conf-available.d
+-	ln -sf ../conf-available.d/mod_ao.conf $(PREFIX)/etc/stargazer/conf-enabled.d/mod_ao.conf
+-	ln -sf ../conf-available.d/mod_ia.conf $(PREFIX)/etc/stargazer/conf-enabled.d/mod_ia.conf
+-	ln -sf ../conf-available.d/mod_ping.conf $(PREFIX)/etc/stargazer/conf-enabled.d/mod_ping.conf
+-	ln -sf ../conf-available.d/mod_sg.conf $(PREFIX)/etc/stargazer/conf-enabled.d/mod_sg.conf
+-	ln -sf ../conf-available.d/store_files.conf $(PREFIX)/etc/stargazer/conf-enabled.d/store_files.conf
+-
+-ifeq ($(OS),linux)
+-	ln -sf ../conf-available.d/mod_cap_ether.conf $(PREFIX)/etc/stargazer/conf-enabled.d/mod_cap_ether.conf
+-else
+-	ln -sf ../conf-available.d/mod_cap_bpf.conf $(PREFIX)/etc/stargazer/conf-enabled.d/mod_cap_bpf.conf
+-endif
+ 
+ 	install -m $(DATA_MODE) -o $(OWNER) $(ETC_DIR)/rules $(PREFIX)/etc/stargazer/rules
+ 	install -m $(BIN_MODE) -o $(OWNER) $(ETC_DIR)/On* $(PREFIX)/etc/stargazer/
+-	
+-	# Install file db
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/var/stargazer/admins
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/var/stargazer/tariffs
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/var/stargazer/users/test
+-	install -m $(DATA_MODE) -o $(OWNER) $(VAR_DIR)/admins/admin.adm $(PREFIX)/var/stargazer/admins/admin.adm
+-	install -m $(DATA_MODE) -o $(OWNER) $(VAR_DIR)/tariffs/tariff.tf $(PREFIX)/var/stargazer/tariffs/tariff.tf
+-	install -m $(DATA_MODE) -o $(OWNER) $(VAR_DIR)/users/test/conf $(PREFIX)/var/stargazer/users/test/conf
+-	install -m $(DATA_MODE) -o $(OWNER) $(VAR_DIR)/users/test/stat $(PREFIX)/var/stargazer/users/test/stat
+ 
+ uninstall: uninstall-bin uninstall-data
+ 
+--- a/projects/stargazer/plugins/Makefile.in
++++ b/projects/stargazer/plugins/Makefile.in
+@@ -32,12 +32,7 @@ clean:
+ 	rm -f deps $(PROG) *.o tags *.*~
+ 
+ install: $(PROG)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/stg
+-ifeq ($(DEBUG), yes)
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
+-else
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
+ 
+ uninstall:
+ 	rm -f $(PREFIX)/usr/lib/stg/$(PROG)
+--- a/stglibs/Makefile.in
++++ b/stglibs/Makefile.in
+@@ -35,13 +35,7 @@ clean:
+ 	rm -f deps $(PROG) *.o *.a *.so tags *.*~ 
+ 
+ install: $(PROG)
+-ifeq ($(DEBUG), yes)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/stg
+-	install -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
+-else
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/stg
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
+-endif
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
+ 	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/include/stg
+ 	install -m $(DATA_MODE) -o $(OWNER) $(addprefix include/stg/,$(INCS)) $(PREFIX)/usr/include/stg/
+ 

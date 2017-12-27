@@ -1,0 +1,197 @@
+--- a/projects/rlm_stg/configure
++++ b/projects/rlm_stg/configure
+@@ -35,6 +35,7 @@ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+ if [ "$sys" = "Linux" ]
+ then
+     OS=linux
++    ETC_DIR="./inst/linux/etc/stargazer"
+     release=""
+     MAKE="make"
+ fi
+@@ -48,6 +49,7 @@ then
+         7) OS=bsd7;;
+         *) OS=bsd7;;
+     esac
++    ETC_DIR="./inst/freebsd/etc/stargazer"
+     MAKE="gmake"
+ fi
+ 
+@@ -241,10 +243,4 @@ printf "BIN_MODE=$BIN_MODE\n" >> $CONFFILE
+ printf "DATA_MODE=$DATA_MODE\n" >> $CONFFILE
+ printf "DIR_MODE=$DIR_MODE\n" >> $CONFFILE
+ printf "OWNER=$OWNER\n" >> $CONFFILE
+-
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    printf "\n\n\nDebug build. Type $MAKE explicitly\n"
+-fi
++echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
+\ No newline at end of file
+--- a/projects/rscriptd/configure
++++ b/projects/rscriptd/configure
+@@ -36,6 +36,7 @@ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+ if [ "$sys" = "Linux" ]
+ then
+     OS=linux
++    ETC_DIR="./inst/linux/etc/stargazer"
+     MAKE="make"
+ fi
+ 
+@@ -48,6 +49,7 @@ then
+         7) OS=bsd7;;
+         *) OS=bsd7;;
+     esac
++    ETC_DIR="./inst/freebsd/etc/stargazer"
+     MAKE="gmake"
+ fi
+ 
+@@ -198,10 +200,4 @@ printf "BIN_MODE=$BIN_MODE\n" >> $CONFFILE
+ printf "DATA_MODE=$DATA_MODE\n" >> $CONFFILE
+ printf "DIR_MODE=$DIR_MODE\n" >> $CONFFILE
+ printf "OWNER=$OWNER\n" >> $CONFFILE
+-
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    printf "\n\n\nDebug build. Type $MAKE explicitly\n"
+-fi
++echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
+\ No newline at end of file
+--- a/projects/sgauth/configure
++++ b/projects/sgauth/configure
+@@ -36,6 +36,7 @@ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+ if [ "$sys" = "Linux" ]
+ then
+     OS=linux
++    ETC_DIR="./inst/linux/etc/stargazer"
+     MAKE="make"
+ fi
+ 
+@@ -48,6 +49,7 @@ then
+         7) OS=bsd7;;
+         *) OS=bsd7;;
+     esac
++    ETC_DIR="./inst/freebsd/etc/stargazer"
+     MAKE="gmake"
+ fi
+ 
+@@ -200,10 +202,4 @@ printf "BIN_MODE=$BIN_MODE\n" >> $CONFFILE
+ printf "DATA_MODE=$DATA_MODE\n" >> $CONFFILE
+ printf "DIR_MODE=$DIR_MODE\n" >> $CONFFILE
+ printf "OWNER=$OWNER\n" >> $CONFFILE
+-
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    printf "\n\n\nDebug build. Type $MAKE explicitly\n"
+-fi
++echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
+--- a/projects/sgconf/configure
++++ b/projects/sgconf/configure
+@@ -36,6 +36,7 @@ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+ if [ "$sys" = "Linux" ]
+ then
+     OS=linux
++    ETC_DIR="./inst/linux/etc/stargazer"
+     MAKE="make"
+ fi
+ 
+@@ -48,6 +49,7 @@ then
+         7) OS=bsd7;;
+         *) OS=bsd7;;
+     esac
++    ETC_DIR="./inst/freebsd/etc/stargazer"
+     MAKE="gmake"
+ fi
+ 
+@@ -217,10 +219,4 @@ printf "BIN_MODE=$BIN_MODE\n" >> $CONFFILE
+ printf "DATA_MODE=$DATA_MODE\n" >> $CONFFILE
+ printf "DIR_MODE=$DIR_MODE\n" >> $CONFFILE
+ printf "OWNER=$OWNER\n" >> $CONFFILE
+-
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    printf "\n\n\nDebug build. Type $MAKE explicitly\n"
+-fi
++echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
+--- a/projects/sgconf_xml/configure
++++ b/projects/sgconf_xml/configure
+@@ -36,6 +36,7 @@ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+ if [ "$sys" = "Linux" ]
+ then
+     OS=linux
++    ETC_DIR="./inst/linux/etc/stargazer"
+     MAKE="make"
+ fi
+ 
+@@ -48,6 +49,7 @@ then
+         7) OS=bsd7;;
+         *) OS=bsd7;;
+     esac
++    ETC_DIR="./inst/freebsd/etc/stargazer"
+     MAKE="gmake"
+ fi
+ 
+@@ -209,10 +211,4 @@ printf "BIN_MODE=$BIN_MODE\n" >> $CONFFILE
+ printf "DATA_MODE=$DATA_MODE\n" >> $CONFFILE
+ printf "DIR_MODE=$DIR_MODE\n" >> $CONFFILE
+ printf "OWNER=$OWNER\n" >> $CONFFILE
+-
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    printf "\n\n\nDebug build. Type $MAKE explicitly\n"
+-fi
++echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
+--- a/projects/sgconv/configure
++++ b/projects/sgconv/configure
+@@ -37,6 +37,7 @@ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+ if [ "$sys" = "Linux" ]
+ then
+     OS=linux
++    ETC_DIR="./inst/linux/etc/stargazer"
+     MAKE="make"
+ fi
+ 
+@@ -49,6 +50,7 @@ then
+         7) OS=bsd7;;
+         *) OS=bsd7;;
+     esac
++    ETC_DIR="./inst/freebsd/etc/stargazer"
+     MAKE="gmake"
+ fi
+ 
+@@ -372,12 +374,5 @@ printf "DATA_MODE=$DATA_MODE\n" >> $CONFFILE
+ printf "DIR_MODE=$DIR_MODE\n" >> $CONFFILE
+ printf "OWNER=$OWNER\n" >> $CONFFILE
+ printf "VAR_DIR=$VAR_DIR\n" >> $CONFFILE
+-
++echo "ETC_DIR=$ETC_DIR" >> $CONFFIL
+ mkdir -p ../stargazer/modules
+-
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    printf "\n\n\nDebug build. Type $MAKE explicitly\n"
+-fi
+--- a/projects/stargazer/configure
++++ b/projects/stargazer/configure
+@@ -611,10 +611,3 @@ printf "VAR_DIR=$VAR_DIR\n" >> $CONFFILE
+ printf "ETC_DIR=$ETC_DIR\n" >> $CONFFILE
+ 
+ mkdir -p modules
+-
+-if [ "$1" != "debug" ]
+-then
+-    $MAKE $MAKEOPTS
+-else
+-    printf "\n\n\nDebug build. Type $MAKE explicitly\n"
+-fi
