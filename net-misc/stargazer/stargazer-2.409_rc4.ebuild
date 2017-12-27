@@ -37,7 +37,7 @@ INIT=(	[module_store_files]="11d"
 
 MY_P="stg-${PV/_/-}"
 
-inherit eutils linux-info user
+inherit eutils user
 
 DESCRIPTION="Billing system for small home and office networks"
 HOMEPAGE="http://stg.net.ua/"
