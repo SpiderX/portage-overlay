@@ -4,20 +4,18 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Primary maintainer.</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>TomWij@gentoo.org</email>
-		<name>Tom Wijsman</name>
-		<description>Committer, please CC him.</description>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-Stargazer is a powerful (inter)net billing system, capable of gathering
-traffic statistics from many sources (such as NetFlow protocol,
-ethernet packets capture, or IPQ subsystem), managing and billing user
-accounts according to specified fees and rules (including time-based rules,
-traffic source/destination rules and a payoff system).
-This ebuild allows you to compile it yourself depending of your needs.
+	Stargazer is a powerful (inter)net billing system, capable of gathering
+	traffic statistics from many sources (such as NetFlow protocol,
+	ethernet packets capture, or IPQ subsystem), managing and billing user
+	accounts according to specified fees and rules (including time-based rules,
+	traffic source/destination rules and a payoff system).
+	This ebuild allows you to compile it yourself depending of your needs.
 	</longdescription>
 	<use>
 		<flag name="sgconv">Enable build of utility to convert Stargazer data between storage backends.</flag>
@@ -47,8 +45,8 @@ This ebuild allows you to compile it yourself depending of your needs.
 		<flag name="module_store_postgres">Enable build of storage plugin for Stargazer, which uses PostgreSQL for storage.</flag>
 	</use>
 	<upstream>
-		<changelog>http://stg.dp.ua/server_dl.php</changelog>
-		<doc>http://stg.dp.ua/doc.php</doc>
+		<doc>http://stg.net.ua/doc/index.html</doc>
 		<bugs-to>mailto:faust@stg.dp.ua</bugs-to>
+		<remote-id type="github">madf/stg</remote-id>
 	</upstream>
 </pkgmetadata>
