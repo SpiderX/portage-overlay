@@ -32,8 +32,12 @@ RDEPEND="${DEPEND}
 
 DOCS=( README.md )
 
-PATCHES=( # Support for PythonQt-3.2
-	"${FILESDIR}"/${P}-cmake-pythonqt.patch )
+PATCHES=(
+	# Support for PythonQt-3.2
+	"${FILESDIR}"/${P}-cmake-pythonqt.patch
+	# Follow standards for desktop file
+	"${FILESDIR}"/${P}-desktop.patch
+	)
 
 src_prepare() {
 	cmake-utils_src_prepare
