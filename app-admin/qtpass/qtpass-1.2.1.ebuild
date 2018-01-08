@@ -3,16 +3,17 @@
 
 EAPI=6
 
-inherit desktop git-r3 qmake-utils
+MY_P="QtPass-${PV}"
+
+inherit desktop qmake-utils
 
 DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/IJHack/${PN}.git"
+SRC_URI="https://github.com/IJHack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="app-admin/pass
@@ -25,6 +26,8 @@ DEPEND="${RDEPEND}
 	dev-qt/qtsvg:5
 	dev-qt/linguist-tools:5
 	test? ( dev-qt/qttest:5 )"
+
+S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md FAQ.md README.md  )
 
