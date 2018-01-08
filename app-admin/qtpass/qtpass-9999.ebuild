@@ -22,8 +22,8 @@ RDEPEND="app-admin/pass
 	dev-qt/qtwidgets:5
 	net-misc/x11-ssh-askpass"
 DEPEND="${RDEPEND}
-	dev-qt/qtsvg:5
 	dev-qt/linguist-tools:5
+	dev-qt/qtsvg:5
 	test? ( dev-qt/qttest:5 )"
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md FAQ.md README.md  )
@@ -34,18 +34,15 @@ src_prepare() {
 	sed -i '/target.path = /s/$$\[QT_INSTALL_TESTS\]/$$PREFIX\$$[QT_INSTALL_TESTS\]/' \
 		"${S}"/tests/tests.pri || die "sed for tests.pri failed"
 	if ! use test ; then
-		sed -i 's/SUBDIRS += src tests main/SUBDIRS += src main/;/main\.depends = tests/d' \
-			"${S}"/qtpass.pro || die "sed for qtpass.pro failed"
+		sed -i \
+			-e '/SUBDIRS += src /s/tests //' \
+			-e '/main.depends = /s/tests/src/' \
+				"${S}"/qtpass.pro || die "sed for qtpass.pro failed"
 	fi
 }
 
 src_configure() {
 	eqmake5 PREFIX="${D}"/usr
-}
-
-src_compile() {
-	# Upstream parallel compilation bug
-	emake -j1
 }
 
 src_install() {
