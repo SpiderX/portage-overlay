@@ -31,11 +31,11 @@ DOCS=( CHANGELOG.md CONTRIBUTING.md FAQ.md README.md  )
 src_prepare() {
 	default
 
+	sed -i '/target.path = /s/$$\[QT_INSTALL_TESTS\]/$$PREFIX\$$[QT_INSTALL_TESTS\]/' \
+		"${S}"/tests/tests.pri || die "sed for tests.pri failed"
 	if ! use test ; then
-		sed -i 's/SUBDIRS += src tests main/SUBDIRS += src main/' \
-			"${S}"/qtpass.pro || die "sed for SUBDIRS failed"
-		sed -i '/main\.depends = tests/d' \
-			"${S}"/qtpass.pro || die "sed fot depends failed"
+		sed -i 's/SUBDIRS += src tests main/SUBDIRS += src main/;/main\.depends = tests/d' \
+			"${S}"/qtpass.pro || die "sed for qtpass.pro failed"
 	fi
 }
 
