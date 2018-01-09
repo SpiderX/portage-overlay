@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,8 +35,7 @@ KEYWORDS="~amd64"
 IUSE="zsh-completion"
 
 # dev-go/toml doesn't provide sources
-DEPEND="dev-go/glide
-	dev-go/go-crypto
+DEPEND="dev-go/go-crypto
 	dev-go/go-net
 	dev-go/go-oauth2
 	dev-go/go-protobuf
