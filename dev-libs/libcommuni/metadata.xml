@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Communi provides a set of tools for enabling IRC connectivity
+	in Qt-based C++ and QML applications.
+	</longdescription>
+	<use>
+		<flag name='qml'>Build QML/QtQuick bindings and imports</flag>
+		<flag name="uchardet">Enable charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">communi/libcommuni</remote-id>
+	</upstream>
+</pkgmetadata>
