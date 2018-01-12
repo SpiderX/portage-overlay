@@ -28,10 +28,6 @@ DOCS=( AUTHORS CHANGELOG README.md )
 src_prepare() {
 	default
 
-	# Add support for DESTDIR
-	sed -i '/ = $$\[QT_/s/$$\[QT_/$$DESTDIR$$[QT_/' libcommuni.pro \
-		|| die "sed failed for libcommuni.pro"
-
 	# Disable usage of bandled lib
 	sed -i \
 		-e '/include(..\/3rdparty\/uchardet-0.0.1\/uchardet.pri)/aCONFIG *= link_pkgconfig\nPKGCONFIG += uchardet' \
@@ -49,11 +45,16 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 DESTDIR="${D}" \
+	eqmake5 \
 		-config no_rpath \
 		-config no_benchmarks \
 		-config $(usex debug debug release) \
 		-config $(usex icu icu no_icu) \
 		-config $(usex test tests no_tests) \
 		-config $(usex uchardet uchardet no_uchardet)
+}
+
+src_install() {
+	einstalldocs
+	emake install INSTALL_ROOT="${D}"
 }
