@@ -3,15 +3,16 @@
 
 EAPI=6
 
-inherit qmake-utils
+inherit git-r3 qmake-utils
 
 DESCRIPTION="A cross-platform IRC framework written with Qt"
 HOMEPAGE="http://communi.github.io/"
-SRC_URI="https://github.com/communi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/communi/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="debug icu qml test uchardet"
 
 RDEPEND="dev-qt/qtcore:5
