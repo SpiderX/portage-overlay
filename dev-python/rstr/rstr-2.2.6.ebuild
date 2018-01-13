@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Generate random strings in Python"
-HOMEPAGE="http://bitbucket.org/leapfrogdevelopment/rstr/overview"
+HOMEPAGE="http://bitbucket.org/leapfrogdevelopment/rstr
+	https://pypi.python.org/pypi/rstr/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${PV}.tar.gz"
 
 LICENSE="BSD"
