@@ -18,7 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-CDEPEND=">=dev-python/gevent-1.2.1[${PYTHON_USEDEP}]
+CDEPEND="dev-python/crossplane[${PYTHON_USEDEP}]
+	>=dev-python/gevent-1.2.1[${PYTHON_USEDEP}]
 	dev-python/lockfile[${PYTHON_USEDEP}]
 	dev-python/netaddr[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
