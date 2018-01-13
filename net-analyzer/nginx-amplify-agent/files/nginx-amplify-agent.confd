@@ -1,0 +1,7 @@
+# Config file for /etc/init.d/nginx-amplify-agent
+
+# Nginx Amplify user
+#USER="nginx"
+
+# Nginx Amplify config file
+#CONFIG="/etc/amplify-agent/agent.conf"
