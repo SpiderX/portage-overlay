@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils distutils-r1 systemd tmpfiles versionator
+inherit eutils distutils-r1 readme.gentoo-r1 systemd tmpfiles versionator
 
 MY_PV=$(replace_version_separator 3 '-')
 
@@ -45,17 +45,8 @@ DEPEND="${CDEPEND}
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-src_unpack() {
-	default
-
-	# Temporate
-	wget https://raw.githubusercontent.com/nginxinc/nginx-amplify-agent/master/amplify/agent/collectors/plus/util/slab.py \
-	-O "${S}"/amplify/agent/collectors/plus/util/slab.py
-	wget https://raw.githubusercontent.com/nginxinc/nginx-amplify-agent/master/amplify/agent/collectors/plus/util/stream.py \
-	-O "${S}"/amplify/agent/collectors/plus/util/stream.py
-	wget https://raw.githubusercontent.com/nginxinc/nginx-amplify-agent/master/amplify/agent/collectors/plus/util/stream_upstream.py \
-	-O "${S}"/amplify/agent/collectors/plus/util/stream_upstream.py
-}
+DOC_CONTENTS="You should put you API_KEY from https://amplify.nginx.com/
+into api_key parameter in /etc/amplify-agent/agent.conf"
 
 python_install_all() {
 	distutils-r1_python_install_all
@@ -68,9 +59,11 @@ python_install_all() {
 	keepdir /var/log/amplify-agent/
 	fowners -R nginx:nginx /var/log/amplify-agent \
 		/etc/amplify-agent/
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	tmpfiles_process amplify-agent.conf
-	einfo "You should put you API_KEY into api_key parameter in agent.conf"
+	readme.gentoo_print_elog
 }
