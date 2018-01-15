@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils readme.gentoo-r1 systemd toolchain-funcs
+inherit readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="Network performance measurement tool"
 HOMEPAGE="http://www.nuttcp.net/"
@@ -17,7 +17,7 @@ IUSE="ipv6 xinetd"
 RDEPEND="xinetd? ( sys-apps/xinetd )"
 
 DOCS=( examples.txt README )
-# Honor CC, LDFLAGS, CFLAGS
+# Honor CC, LDFLAGS, CFLAGS, CPPFLAGS
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 DOC_CONTENTS="You may need to add these lines to /etc/services:\n
