@@ -10,9 +10,9 @@ Group=rslsync
 UMask=0002
 Restart=on-failure
 PermissionsStartOnly=true
-PIDFile=/run/resilio-sync/resilio-sync.pid
-ExecStartPre=/bin/mkdir -p /run/resilio-sync
-ExecStartPre=/bin/chown -R rslsync:rslsync /run/resilio-sync
+PIDFile=/var/run/resilio-sync/resilio-sync.pid
+ExecStartPre=/bin/mkdir -p /var/run/resilio-sync
+ExecStartPre=/bin/chown -R rslsync:rslsync /var/run/resilio-sync
 ExecStart=/usr/bin/rslsync --config /etc/resilio-sync/config.json
 
 [Install]
