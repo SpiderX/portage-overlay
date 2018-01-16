@@ -1,7 +1,7 @@
 [Unit]
 Description=Resilio Sync service
 Documentation=http://help.getsync.com/
-After=network.target
+After=network.target network-online.target
 
 [Service]
 Type=forking
@@ -11,8 +11,6 @@ UMask=0002
 Restart=on-failure
 PermissionsStartOnly=true
 PIDFile=/var/run/resilio-sync/resilio-sync.pid
-ExecStartPre=/bin/mkdir -p /var/run/resilio-sync
-ExecStartPre=/bin/chown -R rslsync:rslsync /var/run/resilio-sync
 ExecStart=/usr/bin/rslsync --config /etc/resilio-sync/config.json
 
 [Install]

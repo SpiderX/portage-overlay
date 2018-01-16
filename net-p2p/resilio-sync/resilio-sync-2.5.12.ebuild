@@ -52,8 +52,10 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit lib/systemd/system/${PN}.service
-	systemd_douserunit usr/lib/systemd/user/${PN}.service
+	newinitd "${FILESDIR}"/${PN}-user.initd ${PN}-user
+	newconfd "${FILESDIR}"/${PN}-user.confd ${PN}-user
+	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_douserunit "${FILESDIR}"/${PN}-user.service
 	newtmpfiles "${FILESDIR}"/resilio-sync.tmpfile resilio-sync.conf
 
 	readme.gentoo_create_doc

@@ -44,6 +44,8 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newinitd "${FILESDIR}"/${PN}-user.initd ${PN}-user
+	newconfd "${FILESDIR}"/${PN}-user.confd ${PN}-user
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_newuserunit "${FILESDIR}"/${PN}-user.service ${PN}.service
 	newtmpfiles "${FILESDIR}"/resilio-sync.tmpfile resilio-sync.conf
