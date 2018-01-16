@@ -34,7 +34,6 @@ pkg_setup() {
 }
 
 src_unpack() {
-	#default
 	unpacker_src_unpack
 
 	unpack usr/share/man/man1/${PN}.1.gz
