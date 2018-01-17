@@ -6,6 +6,7 @@
 
 # User and group daemon runs as
 #USER="rslsync"
+#GROUP="rslsync"
 
 # Resilio Sync config file
 #CONFIG="/etc/resilio-sync/config.json"
