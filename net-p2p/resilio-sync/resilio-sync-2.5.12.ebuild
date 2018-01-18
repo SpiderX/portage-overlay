@@ -24,9 +24,8 @@ RESTRICT="mirror"
 S="${WORKDIR}"
 
 DOC_CONTENTS="You may need to review /etc/${PN}/config.json\n
-Defalt metadata path is /var/lib/${PN}/.sync\n
-Default web-gui URL is http://localhost:8888/\n\n
-You must be in the ${NAME} group to use Resilio Sync."
+Default metadata path is /var/lib/${PN}/.sync\n
+Default web-gui URL is http://localhost:8888/\n\n"
 
 pkg_setup() {
 	enewgroup ${NAME}

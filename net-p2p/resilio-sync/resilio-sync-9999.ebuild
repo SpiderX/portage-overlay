@@ -24,9 +24,8 @@ RESTRICT="mirror"
 S="${WORKDIR}"
 
 DOC_CONTENTS="You may need to review /etc/${PN}/config.json\n
-Defalt metadata path is /var/lib/${PN}/.sync\n
-Default web-gui URL is http://localhost:8888/\n\n
-You must be in the ${NAME} group to use Resilio Sync."
+Default metadata path is /var/lib/${PN}/.sync\n
+Default web-gui URL is http://localhost:8888/\n\n"
 
 pkg_setup() {
 	enewgroup ${NAME}
@@ -47,7 +46,7 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-user.initd ${PN}-user
 	newconfd "${FILESDIR}"/${PN}-user.confd ${PN}-user
 	systemd_dounit "${FILESDIR}"/${PN}.service
-	systemd_newuserunit "${FILESDIR}"/${PN}-user.service ${PN}.service
+	systemd_douserunit "${FILESDIR}"/${PN}-user.service
 	newtmpfiles "${FILESDIR}"/resilio-sync.tmpfile resilio-sync.conf
 
 	readme.gentoo_create_doc
