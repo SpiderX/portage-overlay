@@ -3,15 +3,16 @@
 
 EAPI=6
 
-inherit systemd tmpfiles toolchain-funcs
+inherit git-r3 systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="Policy routing daemon with failover and load-balancing"
 HOMEPAGE="https://github.com/ncopa/pingu"
-SRC_URI="https://github.com/ncopa/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/ncopa/${PN}.git"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="debug doc"
 
 RDEPEND="dev-libs/libev"
@@ -22,11 +23,11 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	# Add missed parameters to configure
-	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${PN}-1.5-configure.patch
 	# Fix compilation issue
-	"${FILESDIR}"/${P}-icmp.patch
+	"${FILESDIR}"/${PN}-1.5-icmp.patch
 	# Change path to /run and fix QA
-	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${PN}-1.5-makefile.patch
 )
 
 src_configure() {
