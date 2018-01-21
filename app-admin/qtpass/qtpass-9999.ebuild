@@ -31,13 +31,11 @@ DOCS=( CHANGELOG.md CONTRIBUTING.md FAQ.md README.md  )
 src_prepare() {
 	default
 
-	sed -i '/target.path = /s/$$\[QT_INSTALL_TESTS\]/$$PREFIX\$$[QT_INSTALL_TESTS\]/' \
-		"${S}"/tests/tests.pri || die "sed for tests.pri failed"
 	if ! use test ; then
 		sed -i \
 			-e '/SUBDIRS += src /s/tests //' \
 			-e '/main.depends = /s/tests/src/' \
-				"${S}"/qtpass.pro || die "sed for qtpass.pro failed"
+				qtpass.pro || die "sed for qtpass.pro failed"
 	fi
 }
 
@@ -49,12 +47,9 @@ src_install() {
 	default
 
 	doman ${PN}.1
-
 	insinto /usr/share/applications
 	doins "${PN}.desktop"
-
 	newicon artwork/icon.png "${PN}-icon.png"
-
 	insinto /usr/share/appdata
 	doins qtpass.appdata.xml
 }
