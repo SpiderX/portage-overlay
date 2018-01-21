@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GUI for XFreeRDP
+Comment=GUI for XFreeRDP
+Exec=qfreerdp
+Icon=qfreerdp
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Utility;Qt;Network;RemoteAccess;
