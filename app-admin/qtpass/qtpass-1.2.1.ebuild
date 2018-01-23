@@ -4,8 +4,10 @@
 EAPI=6
 
 MY_P="QtPass-${PV}"
+PLOCALES="ar_MA ca cs_CZ de_DE de_LU el_GR en_GB en_US es_ES fr_BE fr_FR fr_LU
+gl_ES he_IL hu_HU it_IT lb_LU nl_BE nl_NL pl_PL pt_PT ru_RU sv_SE zh_CN"
 
-inherit desktop qmake-utils
+inherit desktop l10n qmake-utils
 
 DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org/"
@@ -42,6 +44,13 @@ src_prepare() {
 			-e '/main.depends = /s/tests/src/' \
 				qtpass.pro || die "sed for qtpass.pro failed"
 	fi
+
+	local lr=$(qt5_get_bindir)/lrelease
+	l10n_prepare() {
+		$lr localization/localization_${1}.ts || die "lrelease ${1} failed"
+	}
+	l10n_find_plocales_changes localization localization_ .ts
+	l10n_for_each_locale_do l10n_prepare
 }
 
 src_configure() {
@@ -50,6 +59,9 @@ src_configure() {
 
 src_install() {
 	default
+
+	insinto /usr/share/qt5/translations
+	doins localization/*.qm
 
 	doman ${PN}.1
 	insinto /usr/share/applications
