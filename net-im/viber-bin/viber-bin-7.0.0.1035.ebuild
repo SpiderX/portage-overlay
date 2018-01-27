@@ -15,7 +15,7 @@ SRC_URI="http://download.cdn.viber.com/cdn/desktop/Linux/${MY_PN}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 -*"
-IUSE="pax_kernel"
+IUSE="apulse pax_kernel"
 RESTRICT="bindist mirror strip"
 
 DEPEND="sys-apps/fix-gnustack"
@@ -51,7 +51,8 @@ RDEPEND="dev-libs/expat:0[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-image:0[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-keysyms:0[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-renderutil:0[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-wm:0[${MULTILIB_USEDEP}]"
+	x11-libs/xcb-util-wm:0[${MULTILIB_USEDEP}]
+	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="/opt/viber/QtWebEngineProcess
 	/opt/viber/plugins/*/*.so
@@ -60,6 +61,14 @@ QA_PREBUILT="/opt/viber/QtWebEngineProcess
 
 S="${WORKDIR}"
 
+src_prepare() {
+	default
+
+	if use apulse ; then
+		sed -i '/Exec=/s|/opt|apulse /opt|' \
+			usr/share/applications/${MY_PN}.desktop || die "sed failed"
+	fi
+}
 src_install() {
 	# Remove execstack flags
 	fix-gnustack -f opt/${MY_PN}/lib/libQt5WebEngineCore.so.5 > /dev/null \
