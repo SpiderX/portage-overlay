@@ -1,3 +1,7 @@
+# nest overlay
+
+[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
+
 # How to use this overlay
 
 [Local overlays](https://wiki.gentoo.org/wiki/Overlay/Local_overlay) should be managed via `/etc/portage/repos.conf/`.
