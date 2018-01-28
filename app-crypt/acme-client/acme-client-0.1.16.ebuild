@@ -1,6 +1,5 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -52,5 +51,4 @@ src_install() {
 	#use systemd || newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	#use systemd || newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	use systemd && systemd_dounit "${FILESDIR}"/${PN}.{service,timer}
-	#use systemd && 
 }
