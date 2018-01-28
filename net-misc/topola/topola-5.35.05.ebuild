@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ TOPOLA_AGENT_URI="http://topola.unity.net/files/taremote/${TOPOLA_AGENT_P}.bin"
 inherit unpacker user
 
 DESCRIPTION="Customer accounting system, services and statistics collection management"
-HOMEPAGE="topola.unity.net/"
+HOMEPAGE="https://topola.unity.net"
 LICENSE="no-source-code"
 
 SRC_URI="base? ( ${TOPOLA_BASE_URI} )
