@@ -4,21 +4,19 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-Perl program for managing a userdb database with user names and crypted passwords,
-as used e. g. by PAM's pam_userdb module.
-You will need such a database for example if you want to create virtual users for vsftpd.
-With userdbadm, such a list can be easily maintained.
+	<longdescription lang="en">
+	Perl program for managing a userdb database with user names and crypted passwords,
+	as used e. g. by PAM's pam_userdb module.
+	You will need such a database for example if you want to create virtual users for vsftpd.
+	With userdbadm, such a list can be easily maintained.
 	</longdescription>
 	<upstream>
-		<changelog>http://nasauber.de/opensource/userdbadm/</changelog>
 		<doc>http://nasauber.de/opensource/userdbadm/</doc>
-		<bugs-to>tobias.leupold@web.de</bugs-to>
+		<bugs-to>mailto:tobias.leupold@web.de</bugs-to>
 	</upstream>
 </pkgmetadata>
