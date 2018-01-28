@@ -1,18 +1,20 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Primary maintainer.</description>
 	</maintainer>
-	<longdescription>
-Comcast is a tool designed to simulate common network problems
-like latency, bandwidth restrictions, and dropped/reordered/corrupted packets.
-It works by wrapping up some system tools in a portable(ish) way.
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Comcast is a tool designed to simulate common network problems
+	like latency, bandwidth restrictions, and dropped/reordered/corrupted packets.
+	It works by wrapping up some system tools in a portable(ish) way.
 	</longdescription>
 	<upstream>
-		<doc>https://github.com/tylertreat/Comcast</doc>
-		<bugs-to>mailto:ttreat31@gmail.com</bugs-to>
+		<remote-id type="github">tylertreat/comcast</remote-id>
 	</upstream>
 </pkgmetadata>

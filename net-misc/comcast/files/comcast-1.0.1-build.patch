@@ -1,11 +1,10 @@
-diff --git a/comcast.go b/comcast.go
-index a300611..b3a3e1e 100644
---- a/comcast.go
-+++ b/comcast.go
-@@ -8,7 +8,7 @@ import (
+--- a/comcast.go	2018-01-28 13:13:01.973147970 +0200
++++ b/comcast.go	2018-01-28 13:13:11.397182752 +0200
+@@ -7,8 +7,7 @@
+ 	"os"
  	"strconv"
  	"strings"
- 
+-
 -	"github.com/tylertreat/comcast/throttler"
 +	"./throttler"
  )
