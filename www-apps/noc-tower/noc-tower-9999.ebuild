@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ inherit distutils-r1 user systemd mercurial
 
 DESCRIPTION="NOCProject supervisor"
 HOMEPAGE="https://bitbucket.org/nocproject/noc-tower"
-LICENSE=""
+LICENSE="BSD"
 IUSE="systemd"
 SLOT="0"
 KEYWORDS=""
@@ -92,7 +92,7 @@ src_install() {
 	keepdir ${MY_HOME} /var/log/noc/
 	fowners -R noc:noc ${MY_HOME} /var/log/noc/
 
-	use systemd || newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	use systemd || newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	use systemd && systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
 }
