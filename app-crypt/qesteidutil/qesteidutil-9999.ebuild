@@ -15,7 +15,8 @@ EGIT_REPO_URI="https://github.com/open-eid/${PN}.git"
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="libressl"
+IUSE="crash-reporter libressl +webcheck"
+REQUIRED_USE="webcheck" # build fails without it
 
 # ToDo: dev-util/google-breakpad
 RDEPEND="dev-qt/qtcore:5
@@ -30,7 +31,7 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README.md RELEASE-NOTES.md )
+DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
 
 src_prepare() {
 	default
@@ -51,6 +52,14 @@ src_prepare() {
 	l10n_for_each_locale_do l10n_prepare
 
 	cmake-utils_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBREAKPAD=$(usex crash-reporter 'https://cr.eesti.ee/' '')
+		-DCONFIG_URL=$(usex webcheck 'https://id.eesti.ee/config.json' '')
+	)
+	cmake-utils_src_configure
 }
 
 src_install() {
