@@ -5,7 +5,7 @@ EAPI=6
 
 PLOCALES="en et ru"
 
-inherit cmake-utils l10n qmake-utils
+inherit cmake-utils l10n qmake-utils readme.gentoo-r1
 
 DESCRIPTION="Estonian ID card management desktop utility"
 HOMEPAGE="https://github.com/open-eid/qesteidutil http://id.ee/"
@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
+
+DOC_CONTENTS="You should install app-crypt/ccid to be able to use your reader"
 
 src_prepare() {
 	default
@@ -67,5 +69,11 @@ src_install() {
 	insinto /usr/share/qt5/translations
 	doins src/translations/*.qm
 
+	readme.gentoo_create_doc
+
 	cmake-utils_src_install
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
