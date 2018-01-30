@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer>
-    <email>spiderx@spiderx.dp.ua</email>
-    <name>Vladimir Pavljuchenkov</name>
-    <description>Primary maintainer</description>
-    </maintainer>
-    <herd>proxy-maintainers</herd>
-    <longdescription>
-    Chrome extension for signing with your eID on the web
-    </longdescription>
-    <use>
-	<flag name="chromium">Install token singning for chromium</flag>
-	<flag name="chrome">Install token singning for chrome</flag>
-	<flag name="extension">Build and install extention for chrome/chromium</flag>
-    </use>
-    <upstream>
-    <bugs-to>https://github.com/open-eid/chrome-token-signing/issues</bugs-to>
-    <changelog>https://github.com/open-eid/chrome-token-signing/releases</changelog>
-    </upstream>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Chrome and Firefox extension allows you to sign documents
+	on the web with your eID smart card. Firefox supports
+	since version 50 Chrome extensions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">open-eid/chrome-token-signing</remote-id>
+	</upstream>
 </pkgmetadata>
