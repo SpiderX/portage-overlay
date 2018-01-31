@@ -24,11 +24,10 @@ RDEPEND="dev-libs/libbsd
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+S="${WORKDIR}/${MY_P}"
+
 PATCHES=( "${FILESDIR}"/${P}-FLAGS.patch
 	"${FILESDIR}"/${P}-agreement-url.patch )
-
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
