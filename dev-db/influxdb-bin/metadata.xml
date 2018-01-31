@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		InfluxDB is an open-source distributed time series database with no
-		external dependencies. It's useful for recording metrics, events, and
-		performing analytics.
+	InfluxDB is an open-source distributed time series database with no
+	external dependencies. It's useful for recording metrics, events, and
+	performing analytics.
 	</longdescription>
 	<use>
 		<flag name="logrotate">Install logrotate.d file</flag>
 	</use>
 	<upstream>
-		<doc>https://docs.influxdata.com/influxdb/v0.13/</doc>
-		<bugs-to>https://github.com/influxdata/influxdb/issues</bugs-to>
+		<remote-id type="github">influxdata/influxdb</remote-id>
 	</upstream>
 </pkgmetadata>
