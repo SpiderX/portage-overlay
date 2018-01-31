@@ -1,17 +1,19 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 inherit eutils multilib
 
 DESCRIPTION="C++ library of common design patterns and idioms"
 HOMEPAGE="http://loki-lib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-lib/${P}.tar.bz2"
+
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc debug static-libs"
+
 DEPEND="doc? ( app-doc/doxygen[dot] )"
 
 src_prepare() {
