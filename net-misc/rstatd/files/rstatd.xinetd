@@ -1,0 +1,16 @@
+service rstat
+{
+	id = rstat
+	disable = no
+	type = RPC
+	protocol = udp
+	server = /usr/sbin/rpc.rstatd
+	wait = yes
+	flags = IPv4
+	port = 60222
+	user = root
+	group = root
+	rpc_version = 5
+	log_on_success  += USERID
+	log_on_failure  += USERID
+}

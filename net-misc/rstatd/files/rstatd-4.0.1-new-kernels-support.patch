@@ -1,0 +1,13 @@
+--- a/getdata.c	2018-02-08 02:01:53.780781070 +0200
++++ b/getdata.c	2018-02-08 02:02:58.458539658 +0200
+@@ -283,7 +283,9 @@
+ 	if (0 == strncmp(u.release, "2.4", 3)) {
+ 		getdata.disk = get_disk24;
+ 	}
+-	if (0 == strncmp(u.release, "2.6", 3)) {
++	if (0 == strncmp(u.release, "2.6", 3) ||
++	0 == strncmp(u.release, "3.", 2) ||
++	0 == strncmp(u.release, "4.", 2)) {
+ 		getdata.disk = get_disk26;
+ 		getdata.vm = get_vm26;
+ 	}

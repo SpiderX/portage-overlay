@@ -1,0 +1,12 @@
+--- a/getdata.c	2018-02-08 02:10:54.302747565 +0200
++++ b/getdata.c	2018-02-08 02:11:26.234619617 +0200
+@@ -211,7 +211,9 @@
+ 		if (*bufp == '\0')
+ 			continue;  /* skip empty line */
+ 		iface = bufp;
++#ifdef DEBUG
+ 		syslog(LOG_DEBUG, "interface: %s", iface);
++#endif
+ 
+ 		/* search for the end of the interface name (':' or \0) */
+ 		while (*bufp != ':' && *bufp != '\0') bufp++;

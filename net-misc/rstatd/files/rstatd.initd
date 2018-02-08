@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/rpc.rstatd"
+command_args="$INTERFACE"
+command_background="true"
+description="Remote Machine Performance Metrics Gatherer"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need portmap
+	provide rstatd
+}
+
+start_post() {
+	pgrep -n ${RC_SVCNAME} > $pidfile
+}
