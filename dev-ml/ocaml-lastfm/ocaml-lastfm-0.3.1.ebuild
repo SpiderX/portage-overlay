@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/savonet/ocaml-lastfm"
 SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+camlp4 debug +ocamlopt profiling"
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/ocamlnet:=
