@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/savonet/ocaml-xmlplaylist"
 SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+camlp4 debug +ocamlopt profiling"
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/xmlm:=
