@@ -20,7 +20,8 @@ DOCS=( examples.txt README )
 # Honor CC, LDFLAGS, CFLAGS, CPPFLAGS
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-DOC_CONTENTS="You may need to add these lines to /etc/services:\n
+DOC_CONTENTS="Usage of nuttpc by its service name in xinetd service,
+iptables rules, etc. will require adding these lines to /etc/services:\n
 nuttcp\t\t5000/tcp\n
 nuttcp-data\t\t5001/tcp\n
 nuttcp6\t\t5000/tcp\n

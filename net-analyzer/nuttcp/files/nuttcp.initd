@@ -4,14 +4,13 @@
 
 command="/usr/bin/nuttcp"
 command_background="yes"
-pidfile="/run/${SVCNAME}.pid"
 command_args="${NUTTCP_OPTS}"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
 	need net
-	provide nuttcp
 }
 
 start_post() {
-	pgrep -n $(echo ${SVCNAME} | sed 's/\..*//g') > ${pidfile}
+	pgrep -n $(echo ${RC_SVCNAME} | sed 's/\..*//g') > ${pidfile}
 }
