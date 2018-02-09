@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit user
+inherit readme.gentoo-r1 user
 
 DESCRIPTION="Server software for testing internet bandwidth using speedtest.net"
 HOMEPAGE="http://www.ookla.com/"
@@ -15,10 +15,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+S="${WORKDIR}"
+
 QA_PREBUILT="opt/netgauge/OoklaServer"
 QA_PRESTRIPPED="opt/netgauge/OoklaServer"
 
-S="${WORKDIR}"
+DOC_CONTENTS="Add an entry to /etc/portage/make.conf to prevent Ookla Server's
+config overwriting within next ebuild re-emerge:\n
+\tCONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -31,12 +35,13 @@ src_install() {
 	newins OoklaServer.properties.default OoklaServer.properties
 	exeinto /opt/${PN}
 	doexe OoklaServer
+	fowners -R ${PN}:${PN} /opt/${PN}
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	fowners -R ${PN}:${PN} /opt/${PN}
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	einfo "Add an entry to /etc/portage/make.conf to prevent Ookla Server's config overwriting within next ebuild re-emerge:"
-	einfo "		CONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
+	readme.gentoo_print_elog
 }

@@ -1,34 +1,13 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "netgauge" ]; then
-    PID="/run/netgauge.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/netgauge.${NAME}"
-else
-    PID="/run/netgauge.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/netgauge"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/opt/netgauge/OoklaServer}
+command="/opt/netgauge/OoklaServer"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_args="${OPTS} --pidfile=$pidfile"
+name="Ookla NetGauge"
+retry=20
 
 depend() {
 	need net
-	provide netgauge
-}
-
-start() {
-	ebegin "Starting Ookla NetGauge"
-	start-stop-daemon --start --quiet --pidfile ${PID} --exec ${EXEC} -- ${OPTS} --pidfile=${PID}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping Ookla NetGauge"
-	start-stop-daemon --stop --quiet --pidfile ${PID} --retry 20
-	rm -f ${PID}
-	eend $?
 }
