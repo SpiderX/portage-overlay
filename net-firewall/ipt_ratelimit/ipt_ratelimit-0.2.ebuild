@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,13 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND="
-	net-firewall/iptables
-"
+RDEPEND="net-firewall/iptables:0="
 DEPEND="${RDEPEND}
 	virtual/linux-sources
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
+
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
@@ -32,6 +30,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's:make -C:$(MAKE) -C:g' \
 		-e 's:gcc -O2:$(CC) $(CFLAGS) $(LDFLAGS):' \
@@ -42,8 +42,6 @@ src_prepare() {
 		sed 's/CFLAGS_xt_ratelimit.o := -DDEBUG//' \
 			-i Makefile || die "sed for debug failed"
 	fi
-
-	default
 }
 
 src_compile() {

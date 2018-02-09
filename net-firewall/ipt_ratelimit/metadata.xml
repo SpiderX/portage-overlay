@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Primary maintainer</description>
 	</maintainer>
-	<longdescription>
-An implementation of committed access rate, or simply rate limiting,
-or policing for Linux iptables, implemented with high performance in mind.
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	An implementation of committed access rate, or simply rate limiting,
+	or policing for Linux iptables, implemented with high performance in mind.
 	</longdescription>
 	<upstream>
-		<maintainer>
-			<email>abc@telekom.ru</email>
-			<name>ABC</name>
-		</maintainer>
 		<remote-id type="github">aabc/ipt-ratelimit</remote-id>
-		<bugs-to>https://github.com/aabc/ipt-ratelimit/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
