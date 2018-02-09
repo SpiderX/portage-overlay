@@ -1,38 +1,16 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "passivedns" ]; then
-    PID="/run/passivedns.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/passivedns.${NAME}"
-else
-    PID="/run/passivedns.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/passivedns"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/usr/bin/passivedns}
+command="/usr/bin/passivedns"
+command_background="yes"
+command_args="${OPTS}"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
 	need net
-	provide passivedns
-}
-
-start() {
-	ebegin "Starting passivedns"
-	start-stop-daemon --start --quiet --make-pidfile --pidfile ${PID} --exec ${EXEC} -- ${OPTS}
-	eend $?
 }
 
 start_post() {
-	pgrep -n $(echo ${PNAME}) > ${PID}
-}
-
-stop() {
-	ebegin "Stopping passivedns"
-	start-stop-daemon --stop --quiet --pidfile ${PID}
-	rm -f ${PID}
-	eend $?
+	pgrep -n ${RC_SVCNAME} > ${pidfile}
 }

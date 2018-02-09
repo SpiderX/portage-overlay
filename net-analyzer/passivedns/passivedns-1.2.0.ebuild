@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,10 +12,10 @@ SRC_URI="https://github.com/gamelinux/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug json libressl ssl systemd" #pfring
+IUSE="debug json libressl ssl" #pfring
 DOCS=( doc/AUTHORS doc/ChangeLog doc/How-it-works.txt doc/ISSUES )
 
-RDEPEND="net-libs/ldns[ssl?]
+RDEPEND="net-libs/ldns[libressl?]
 	net-libs/libpcap
 	json? ( dev-libs/jansson )
 	ssl? (
@@ -42,9 +42,9 @@ src_configure() {
 src_install() {
 	default
 
-	use systemd || newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	use systemd || newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	use systemd && systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
 }
 
 pkg_postinst() {
