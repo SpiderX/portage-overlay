@@ -3,23 +3,22 @@
 
 EAPI=6
 
-inherit autotools readme.gentoo-r1 user
+inherit autotools git-r3 readme.gentoo-r1 user
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
-SRC_URI="https://github.com/1100101/Automatic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/1100101/${PN^}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 RDEPEND="dev-libs/libxml2:2
 	dev-libs/libpcre:3
 	net-misc/curl"
 DEPEND="${RDEPEND}
 	app-admin/logrotate"
-
-S="${WORKDIR}/${P^}"
 
 DOC_CONTENTS="To run automatic you should move /etc/automatic.conf-sample
 to /etc/automatic.conf and config it.\n
@@ -28,9 +27,6 @@ and check log file in /var/log/automatic/\n"
 
 src_prepare() {
 	default
-
-	# https://bugs.gentoo.org/426262
-	mv configure.{in,ac} || die "rename failed"
 
 	# Remove CFLAGS and CXXFLAGS defined by upstream
 	sed -i \
