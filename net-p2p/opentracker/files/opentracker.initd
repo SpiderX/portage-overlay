@@ -1,34 +1,13 @@
 #!/sbin/openrc-run
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "opentracker" ]; then
-    PID="/run/opentracker.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/opentracker.${NAME}"
-else
-    PID="/run/opentracker.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/opentracker"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/usr/bin/opentracker}
+command="/usr/bin/opentracker"
+command_background="yes"
+command_args="${OPENTRACKER_OPTS}"
+pidfile="/run/${RC_SVCNAME}.pid"
+user="${USER:-opentracker}"
 
 depend() {
 	need net
-	provide opentracker
-}
-
-start() {
-	ebegin "Starting opentracker"
-	start-stop-daemon --background --start --make-pidfile --pidfile ${PID} --exec ${EXEC} -- ${OPTS} ${CONFIG}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping opentracker"
-	start-stop-daemon --stop --pidfile ${PID} --exec ${EXEC}
-	eend $?
 }

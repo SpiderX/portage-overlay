@@ -1,17 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils user git-2
-
-EGIT_REPO_URI="https://github.com/flygoast/opentracker.git"
-
-DESCRIPTION="High-performance bittorrent tracker"
-HOMEPAGE="https://github.com/flygoast/opentracker http://erdgeist.org/arts/software/opentracker/"
-LICENSE="BEER-WARE"
-SLOT="0"
-KEYWORDS=""
+EAPI=6
 
 declare -A FLAGS
 FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
@@ -34,26 +24,34 @@ FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
 	[httpdebug]="DWANT_HTTPHUMAN"
 )
 
-IUSE="blacklist debug examples +gzip gzip_always httpdebug ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog whitelist"
+inherit eutils git-r3 systemd user
 
-RDEPEND=">=dev-libs/libowfat-0.27
-	gzip? ( sys-libs/zlib )"
+DESCRIPTION="High-performance bittorrent tracker"
+HOMEPAGE="https://github.com/flygoast/opentracker http://erdgeist.org/arts/software/opentracker/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/flygoast/${PN}.git"
 
+LICENSE="BEER-WARE"
+SLOT="0"
+KEYWORDS=""
+IUSE="blacklist debug +gzip gzip_always httpdebug ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog whitelist"
 REQUIRED_USE="blacklist? ( !whitelist )
 	gzip_always? ( gzip )
 	gzip? ( fullscrapes )
 	live_sync_unicast? ( live_sync )
-	persistence? ( !ipv6 )
-"
+	persistence? ( !ipv6 )"
+
+RDEPEND="dev-libs/libowfat
+	gzip? ( sys-libs/zlib )"
 
 pkg_setup() {
-	# Add opentracker group and user to system
-	# (no home directory specified, because otherwise it will be result in opentracker:root ownership on it)
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
 src_prepare() {
+	default
+
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES, and comment all of them
 	# Define PREFIX, BINDIR and path to libowfat; remove lpthread, lz and O3 flag, owfat target, stripping; create dirs on install
 	sed -i \
@@ -94,40 +92,22 @@ src_prepare() {
 		-e "/tracker.rootdir/s|/usr/local/etc/opentracker|/var/lib/${PN}|g" \
 		-e "/tracker.user/s|nobody|${PN}|g" \
 		-e "/persist.file/s|/path/to/persist.odb|/var/lib/${PN}/${PN}.odb|g" \
-	"${S}"/opentracker.conf.sample || die "sed for config failed"
-
-	epatch_user
+	opentracker.conf.sample || die "sed for config failed"
 }
 
 src_install() {
-	# Install and copy documentation
 	default
 
 	# Keeping chroot directory
 	diropts -m 755 -o ${PN} -g ${PN}
 	keepdir /var/lib/${PN}
-
-	# Install Gentoo init script and its config
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-
-	# Install manual page
-	doman "${FILESDIR}"/${PN}.8
-
-	# Install config
 	insinto /etc/${PN}
 	newins "${S}"/${PN}.conf.sample ${PN}.conf
-
-	if use examples ; then
-		# Install files into specified directory
-		insinto /usr/share/${PN}
-		doins -r "${S}"/tests/*.sh
-		doins "${S}"/sync_daemon.pl
-
-		use persistence && doins "${S}"/ODB_FORMAT.md
-	fi
-
-	# Correct user, group and permissions for files and directories
 	fowners -R ${PN}:${PN} /etc/${PN}
 	fperms 0640 /etc/${PN}/${PN}.conf
+	doman "${FILESDIR}"/${PN}.8
+
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
 }

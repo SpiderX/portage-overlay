@@ -2,7 +2,4 @@
 
 # Various options.
 # run `opentracker -h` for valid cmdline options
-OPTS="-u opentracker"
-
-# Opentracker config file
-CONFIG="-f /etc/opentracker/opentracker.conf"
+OPENTRACKER_OPTS="-f /etc/opentracker/opentracker.conf"
