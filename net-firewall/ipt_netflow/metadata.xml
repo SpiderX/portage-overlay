@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>netmon</herd>
-	<maintainer>
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
 	</maintainer>
-	<longdescription>
-	    ipt-netflow is very fast and effective Netflow exporting module for Linux kernel.
-	    Designed for Linux router with heavy network load.
-	    This is netfilter/iptables module adding support for NETFLOW target.
-	    It's not using conntrack for performance reasons.
-	    Supporting NetFlow protocols versions 5, 9, and IPFIX.
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	ipt-netflow is very fast and effective Netflow exporting module for Linux kernel.
+	Designed for Linux router with heavy network load.
+	This is netfilter/iptables module adding support for NETFLOW target.
+	It's not using conntrack for performance reasons.
+	Supporting NetFlow protocols versions 5, 9, and IPFIX.
 	</longdescription>
 	<use>
 		<flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">aabc/ipt-netflow</remote-id>
+	</upstream>
 </pkgmetadata>

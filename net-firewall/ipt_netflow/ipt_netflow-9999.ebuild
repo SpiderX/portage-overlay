@@ -1,15 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit git-2 eutils linux-info linux-mod multilib toolchain-funcs
+inherit git-r3 eutils linux-info linux-mod multilib toolchain-funcs
 
 EGIT_COMMIT="f706c84195a021d1b09e4a61a4d4050ebc56955f"
 EGIT_REPO_URI="https://github.com/aabc/ipt-netflow.git"
 
 DESCRIPTION="Netflow iptables module"
-HOMEPAGE="http://sourceforge.net/projects/ipt-netflow"
+HOMEPAGE="https://sourceforge.net/projects/ipt-netflow"
 
 LICENSE="GPL-2"
 SLOT="0"
