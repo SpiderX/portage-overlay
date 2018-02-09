@@ -1,9 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Effectively suppresses illegal DHCP servers on the LAN"
 HOMEPAGE="http://www.netpatch.ru/dhcdrop.html"
@@ -12,19 +10,14 @@ SRC_URI="http://www.netpatch.ru/projects/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-
 IUSE="static"
 
 RDEPEND="!static? ( net-libs/libpcap )"
-DEPEND="static? ( net-libs/libpcap[static-libs] )
-	${RDEPEND}"
+DEPEND="${RDEPEND}
+	static? ( net-libs/libpcap[static-libs] )"
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README )
 
-src_prepare() {
-	epatch_user
-}
-
 src_configure() {
-	econf $(use static && echo "--enable-static-build")
+	econf $(use_enable static static-build)
 }

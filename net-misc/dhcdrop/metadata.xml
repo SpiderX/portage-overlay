@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer>
-	<email>spiderx@spiderx.dp.ua</email>
-	<name>Vladimir Pavljuchenkov</name>
-	<description>Primary maintainer.</description>
-    </maintainer>
-    <herd>proxy-maintainers</herd>
-    <longdescription>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<longdescription lang="en">
 	Utility for tracing and neutralizing(blocking) fake DHCP
 	servers in Ethernet. Supports various modes. Theres possibility
 	to set outgoing MAC addresses and optional settings in generated
 	DHCP requests. Supports legal DHCP servers list. One can run it
 	in interactive mode under users control or fully automatic mode for
 	start up from script.
-    </longdescription>
-    <upstream>
-	<doc>http://www.netpatch.ru/en/dhcdrop.html</doc>
-	<bugs-to>mailto:roma@ultranety.ru</bugs-to>
-    </upstream>
+	</longdescription>
+	<upstream>
+		<doc>http://www.netpatch.ru/en/dhcdrop.html</doc>
+		<bugs-to>mailto:roma@ultranety.ru</bugs-to>
+	</upstream>
 </pkgmetadata>
