@@ -15,7 +15,7 @@ SRC_URI="https://github.com/nginxinc/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 
 CDEPEND="dev-python/crossplane[${PYTHON_USEDEP}]

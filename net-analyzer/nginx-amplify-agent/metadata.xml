@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	The NGINX Amplify Agent is a application that provides system
 	and NGINX metric collection. It is part of NGINX Amplify —
 	a free configuration monitoring tool for NGINX.
