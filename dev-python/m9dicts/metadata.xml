@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	A python library provides some dict-like classes (m9dicts)
 	support recursive merge operations according to each merge strategy,
 	and some related utility functions (APIs).
