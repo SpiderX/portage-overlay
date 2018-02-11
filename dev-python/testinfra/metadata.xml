@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	With Testinfra you can write unit tests in Python to test
 	actual state of your servers configured by managements tools like
 	Salt, Ansible, Puppet, Chef and other configuration managment tools.
