@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Primary maintainer</description>
 	</maintainer>
-	<longdescription>
-Customer accounting system, services and statistics collection management.
-The system is designed for small and medium-sized service providers
-with the number of subscribers to 5000.
-The licensed system without limiting the number of customers can support more users.
-In the overall assessment of performance of the system is able
-to maintain more than 20000 customers and at certain hardware requirements.
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Customer accounting system, services and statistics collection management,
+	designed for small and medium-sized service providers.
 	</longdescription>
 	<use>
 		<flag name="base">Use the upstream provided base package</flag>
