@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer>
-	<email>spiderx@spiderx.dp.ua</email>
-	<name>Vladimir Pavljuchenkov</name>
-	<description>Primary maintainer</description>
-    </maintainer>
-    <herd>proxy-maintainers</herd>
-    <longdescription>
-	Mercurial Keyring is a Mercurial extension used to securely save HTTP and
-	SMTP authentication passwords in password databases
-	(Gnome Keyring, KDE KWallet, OSXKeyChain, Windows Vault etc).
-	With mercurial_keyring active, Mercurial remembers your passwords and
-	reuses them without prompting (as if you stored them in .hgrc),
-	but password storage is reasonably secure.
-	Actual password storage is implemented by the keyring library,
-	this extension glues it to Mercurial.
-    </longdescription>
-    <upstream>
-	<doc>https://bitbucket.org/Mekk/mercurial_keyring/overview</doc>
-	<bugs-to>https://bitbucket.org/Mekk/mercurial_keyring/issues</bugs-to>
-    </upstream>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A mercurial extension used to securely save HTTP and SMTP authentication
+	passwords in password databases. With this extension Mercurial remembers
+	passwords and reuses them without prompting (as if you stored them in .hgrc),
+	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">Mekk/mercurial_keyring</remote-id>
+	</upstream>
 </pkgmetadata>

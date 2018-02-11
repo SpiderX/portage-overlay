@@ -1,23 +1,29 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
-inherit distutils-r1
-
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+
+inherit distutils-r1
 
 DESCRIPTION="Mercurial Keyring Extension"
 HOMEPAGE="http://bitbucket.org/Mekk/mercurial_keyring"
-SRC_URI="http://pypi.python.org/packages/source/m/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/m/${MY_PN}/${MY_P}.tar.gz"
+
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-DOCS=( README.txt HISTORY.txt )
-DEPEND="dev-python/setuptools"
-RDEPEND="dev-python/keyring
-	dev-vcs/mercurial-extension_utils"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="dev-python/keyring[${PYTHON_USEDEP}]
+	dev-vcs/mercurial-extension_utils[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
+
 S="${WORKDIR}/${MY_P}"
+
+DOCS=( README.txt HISTORY.txt )
