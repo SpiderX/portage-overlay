@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_PN="${PN/ansible-/}"
 MY_P="${MY_PN}-${PV}"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/metacloud/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="bash-completion"
 DOCS=( AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst )
 RDEPEND="dev-python/anyconfig[${PYTHON_USEDEP}]

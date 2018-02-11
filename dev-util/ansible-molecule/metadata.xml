@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	Molecule is designed to aid in the development and testing of
 	Ansible roles including support for multiple instances,
 	operating system distributions, virtualization providers
