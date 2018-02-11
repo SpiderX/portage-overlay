@@ -13,7 +13,7 @@ SRC_URI="https://github.com/philpep/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz mi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="ansible docker salt ssh"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
