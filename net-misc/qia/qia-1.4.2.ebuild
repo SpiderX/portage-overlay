@@ -1,38 +1,34 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
+
+MY_P="${P}-Source"
 
 inherit cmake-utils
 
 DESCRIPTION="Authorization tool for Stargazer Billing System written in Qt"
 HOMEPAGE="http://stg.codes/"
-MY_P="${P}-Source"
 SRC_URI="http://stg.codes/attachments/download/6/${MY_P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE="debug"
-S="${WORKDIR}/${MY_P}"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug libressl"
 
-DEPEND="
-	dev-db/sqlite:3
-	dev-libs/openssl:0
-	dev-libs/boost[static-libs]
-	dev-qt/qtcore:4[ssl]
-	dev-qt/qtgui:4
-	dev-qt/qtwebkit:4
-"
-RDEPEND="
-	${DEPEND}
+DEPEND="dev-db/sqlite:3
+	dev-libs/boost:0=[static-libs]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwebkit:5
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
+RDEPEND="${DEPEND}
 	app-arch/bzip2
 	sys-libs/zlib
-	dev-libs/expat
-"
+	dev-libs/expat"
 
-src_prepare() {
-	epatch_user
-}
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	if use debug; then
