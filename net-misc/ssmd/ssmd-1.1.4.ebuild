@@ -1,30 +1,28 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
 DESCRIPTION="SNMP Switch Management Daemon"
 HOMEPAGE="https://gitorious.org/ssmd"
 SRC_URI="https://gitorious.org/${PN}/${PN}/archive-tarball/${PV} -> ${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
-S="${WORKDIR}/${PN}-${PN}"
-MERGE_TYPE="source"
 
-DEPEND="
-	dev-libs/openssl
-	dev-libs/boost
-	net-misc/curl
-"
+DEPEND="dev-libs/openssl:0=
+	dev-libs/boost:0=
+	net-misc/curl"
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${PN}-${PN}"
 
 pkg_setup() {
-	# Add ssmd group to system
 	enewgroup ssmd
-	# Add ssmd user to system
 	enewuser ssmd -1 -1 /etc/ssmd ssmd
 }
 
@@ -39,15 +37,10 @@ src_compile() {
 }
 
 src_install() {
-	# Call make install
 	emake DESTDIR="${D}" PREFIX="${D}" install
-	# Install Gentoo init script
 	newinitd "${FILESDIR}"/ssmd.initd ssmd
-	# Install Gentoo init script config
 	newconfd "${FILESDIR}"/ssmd.conf ssmd
-	# Correct user and group
 	fowners -R ssmd:ssmd /etc/ssmd/
-	# Correct permissions
 	fperms 0640 /etc/ssmd/ssmd.conf
 }
 
