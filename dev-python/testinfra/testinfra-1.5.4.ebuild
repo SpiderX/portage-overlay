@@ -23,6 +23,5 @@ RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 	docker? ( app-emulation/docker )
 	salt? ( app-admin/salt )
 	ssh? ( virtual/ssh )"
-
 DEPEND="dev-python/pbr[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
