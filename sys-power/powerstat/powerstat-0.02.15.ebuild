@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Laptop power measuring tool"
-HOMEPAGE="https://launchpad.net/ubuntu/+source/${PN} https://github.com/ColinIanKing/${PN}"
+HOMEPAGE="https://launchpad.net/ubuntu/+source/powerstat https://github.com/ColinIanKing/powerstat"
 SRC_URI="https://github.com/ColinIanKing/${PN}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -15,5 +15,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
