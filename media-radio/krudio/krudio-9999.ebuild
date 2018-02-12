@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,16 +14,17 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-DOCS=( README.md )
 
 DEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtmultimedia:5[gstreamer]
 	dev-qt/qtsql:5
-	dev-qt/qtnetwork:5"
+	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-meta:1.0[aac,http,mp3,mpeg,ogg,vorbis]"
+
+DOCS=( README.md )
 
 src_prepare() {
 	default
@@ -45,6 +46,6 @@ src_prepare() {
 }
 
 src_install() {
-	emake prefix="${D}"/usr DESTDIR="${D}" install
 	einstalldocs
+	emake prefix="${D}"/usr DESTDIR="${D}" install
 }
