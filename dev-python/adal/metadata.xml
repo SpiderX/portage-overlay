@@ -4,16 +4,15 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-The ADAL for Python library makes it easy for python application
-to authenticate to Azure Active Directory (AAD) in order
-to access AAD protected web resources.
+	<longdescription lang="en">
+	The ADAL for Python library makes it easy for python application
+	to authenticate to Azure Active Directory (AAD) in order
+	to access AAD protected web resources.
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">adal</remote-id>
