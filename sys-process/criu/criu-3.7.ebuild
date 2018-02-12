@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://download.openvz.org/criu/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
-IUSE="doc python setproctitle"
+IUSE="doc python selinux setproctitle static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/protobuf-c
@@ -22,13 +22,17 @@ RDEPEND="dev-libs/protobuf-c
 	net-libs/libnet:1.1
 	sys-libs/libcap
 	python? ( ${PYTHON_DEPS} )
+	selinux? ( sys-libs/libselinux )
 	setproctitle? ( dev-libs/libbsd )"
 DEPEND="${RDEPEND}
 	app-text/xmlto
 	doc? ( app-text/asciidoc )"
 RDEPEND="${RDEPEND}
 	python? (
-		dev-libs/protobuf[python,${PYTHON_USEDEP}]
+		|| (
+			dev-python/protobuf-python[${PYTHON_USEDEP}]
+			dev-libs/protobuf[python,${PYTHON_USEDEP}]
+		)
 		dev-python/ipaddr[${PYTHON_USEDEP}]
 	)"
 
@@ -59,6 +63,12 @@ src_prepare() {
 	if ! use doc ; then
 		sed -i "/install:/s/install-man //" Makefile.install \
 			die "sed for install-man failed"
+	fi
+
+	if ! use selinux; then
+		sed \
+			-e 's:libselinux:no_libselinux:g' \
+			-i Makefile.config || die
 	fi
 }
 
@@ -100,5 +110,9 @@ src_install() {
 	if use python ; then
 		cd lib
 		python_foreach_impl install_crit
+	fi
+
+	if ! use static-libs; then
+		find "${D}" -name "*.a" -delete || die
 	fi
 }
