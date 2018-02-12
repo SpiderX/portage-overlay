@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,8 @@ HOMEPAGE="http://www.gitter.im/"
 SRC_URI="
 	amd64? ( https://update.gitter.im/linux64/${MY_PN}_${PV}_amd64.deb )
 	x86? ( https://update.gitter.im/linux32/${MY_PN}_${PV}_i386.deb )"
-LICENSE="MIT no-source-code"
+
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 -*"
 IUSE=""
@@ -48,31 +49,33 @@ QA_PREBUILT="/opt/${MY_PN}/${MY_PN^}"
 S="${WORKDIR}"
 
 src_prepare() {
-	local arch=$(usex amd64 "64" "32")
+	local arch
+	arch="$(usex amd64 "64" "32")"
 
 	default
 	# Modify desktop file to use common paths
 	sed -i \
 		-e '/Exec/s/=.*/=\/usr\/bin\/gitter/' \
 		-e '/Icon/s/=.*/=\/usr\/share\/pixmaps\/gitter.png/' \
-		opt/${MY_PN^}/linux${arch}/${MY_PN}.desktop || die "sed failed"
+		opt/"${MY_PN^}"/linux"${arch}"/"${MY_PN}".desktop || die "sed failed"
 }
 
 src_install() {
-	local arch=$(usex amd64 "64" "32")
+	local arch
+	arch="$(usex amd64 "64" "32")"
 
 	insinto /usr/share/pixmaps
-	newins opt/${MY_PN^}/linux${arch}/logo.png ${MY_PN}.png
+	newins opt/"${MY_PN^}"/linux"${arch}"/logo.png "${MY_PN}".png
 
-	newicon -s 256 opt/${MY_PN^}/linux${arch}/logo.png ${MY_PN}.png
-	domenu opt/${MY_PN^}/linux${arch}/${MY_PN}.desktop
+	newicon -s 256 opt/"${MY_PN^}"/linux"${arch}"/logo.png "${MY_PN}".png
+	domenu opt/"${MY_PN^}"/linux"${arch}"/"${MY_PN}".desktop
 
-	insinto /opt/${MY_PN}
-	doins opt/${MY_PN^}/linux${arch}/{Gitter,icudtl.dat,libffmpegsumo.so,nw.pak}
-	insinto /opt/${MY_PN}/locales
-	doins -r opt/${MY_PN^}/linux${arch}/locales/.
-	fperms +x /opt/${MY_PN}/${MY_PN^}
-	dosym /opt/${MY_PN}/${MY_PN^} /usr/bin/${MY_PN}
+	insinto /opt/"${MY_PN}"
+	doins opt/"${MY_PN^}"/linux"${arch}"/{Gitter,icudtl.dat,libffmpegsumo.so,nw.pak}
+	insinto /opt/"${MY_PN}"/locales
+	doins -r opt/"${MY_PN^}"/linux"${arch}"/locales/.
+	fperms +x /opt/"${MY_PN}"/"${MY_PN^}"
+	dosym /opt/"${MY_PN}"/"${MY_PN^}" /usr/bin/"${MY_PN}"
 }
 
 pkg_preinst() {
