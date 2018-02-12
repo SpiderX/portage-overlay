@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	Runtime library for AutoRest generated Python clients
 	</longdescription>
 	<upstream>
