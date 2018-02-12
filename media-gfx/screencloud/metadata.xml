@@ -20,7 +20,6 @@
 	ScreenCloud also offers FTP and SFTP uploading if you want to use your own server.
 	</longdescription>
 	<upstream>
-		<bugs-to>mailto:olav.s.th@gmail.com</bugs-to>
 		<remote-id type="github">olav-st/screencloud</remote-id>
 	</upstream>
 </pkgmetadata>

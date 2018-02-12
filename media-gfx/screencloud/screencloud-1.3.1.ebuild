@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/olav-st/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl ssl"
+IUSE="libressl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="dev-libs/quazip
@@ -34,9 +34,9 @@ DOCS=( README.md )
 
 PATCHES=(
 	# Support for PythonQt-3.2
-	"${FILESDIR}"/${P}-cmake-pythonqt.patch
+	"${FILESDIR}"/"${P}"-cmake-pythonqt.patch
 	# Follow standards for desktop file
-	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/"${P}"-desktop.patch
 	)
 
 src_prepare() {
