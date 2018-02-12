@@ -4,18 +4,17 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxy maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-Multiple services fork of original multi-platform inadyn, and inadyn-advanced projects.
-Supports many update services, easily extendable for others including additional servers config file,
-custom response codes, custom parameter names, and custom update server type.
-Highly flexible with many per alias option parameters.
-Supports IPv4, and IPv6. Console, or installed as a service. Unicode. And other features.
+	<longdescription lang="en">
+	Multiple services fork of original multi-platform inadyn, and inadyn-advanced projects.
+	Supports many update services, easily extendable for others including additional servers config file,
+	custom response codes, custom parameter names, and custom update server type.
+	Highly flexible with many per alias option parameters.
+	Supports IPv4, and IPv6. Console, or installed as a service. Unicode. And other features.
 	</longdescription>
 	<use>
 		<flag name="sound">Enable sound support using </flag>
