@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ inherit git-r3
 
 DESCRIPTION="QEMU Init OpenRC"
 HOMEPAGE="https://github.com/SpiderX/qio"
-EGIT_REPO_URI="https://github.com/gamelinux/${PN}.git"
 SRC_URI=""
+EGIT_REPO_URI="https://github.com/gamelinux/${PN}.git"
 
 LICENSE="MIT"
 SLOT=0
