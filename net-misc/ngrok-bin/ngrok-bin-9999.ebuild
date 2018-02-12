@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,12 +11,11 @@ HOMEPAGE="https://ngrok.com/"
 
 SRC_URI="
 	amd64? ( ${BASE_URI/_arch_/amd64} )
-	arm? ( ${BASE_URI/_arch_/arm} )
-"
+	arm? ( ${BASE_URI/_arch_/arm} )"
 
-LICENSE="no-source-code"
+LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="mirror"
 
