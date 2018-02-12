@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="
 	x86? ( ${BASE_URI/_arch_/32} -> ${MY_PN}-${PV}-x32.zip )
 	amd64? ( ${BASE_URI/_arch_/64} -> ${MY_PN}-${PV}-x64.zip )"
 
-LICENSE="no-source-code"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
