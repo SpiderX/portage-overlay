@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	A python library provides common APIs to access to configuration
 	files in various formats with some useful features such as
 	contents merge, templates, query, schema validation and generation support.

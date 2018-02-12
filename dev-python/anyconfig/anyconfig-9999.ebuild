@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit git-r3 distutils-r1
 
 DESCRIPTION="Generic access to configuration files in any formats"
 HOMEPAGE="https://github.com/ssato/python-${PN} https://pypi.python.org/pypi/${PN}"
-EGIT_REPO_URI="https://github.com/ssato/python-${PN}.git"
 SRC_URI=""
+EGIT_REPO_URI="https://github.com/ssato/python-${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,5 +28,4 @@ RDEPEND="dev-python/cbor[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]"
-
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
