@@ -4,18 +4,17 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-Application Insights is a service that allows developers to keep their
-application available, performing and succeeding.
-This Python module will allow you to send telemetry of various kinds
-(event, trace, exception, etc.) to the Application Insights service
-where they can be visualized in the Azure Portal.
+	Application Insights is a service that allows developers to keep their
+	application available, performing and succeeding.
+	This Python module will allow you to send telemetry of various kinds
+	(event, trace, exception, etc.) to the Application Insights service
+	where they can be visualized in the Azure Portal.
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">applicationinsights</remote-id>
