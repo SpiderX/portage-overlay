@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,6 @@ CLIENT_URI="https://virtualhere.com/sites/default/files/usbclient/vh_arch_"
 SERVER_URI="https://virtualhere.com/sites/default/files/usbserver/vh_arch_"
 
 inherit linux-info user
-
-QA_PREBUILT="
-	/opt/vhusb/vhclient*
-	/opt/vhusb/vhuit*
-	/opt/vhusb/vhusbd*"
 
 DESCRIPTION="Share USB devices over the network"
 HOMEPAGE="https://virtualhere.com/"
@@ -37,12 +32,16 @@ LICENSE="openssl no-source-code"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="client gui server"
-
-S="${WORKDIR}"
+REQUIRED_USE="|| ( client gui server )"
 
 DEPEND="virtual/linux-sources"
 
-REQUIRED_USE="|| ( client gui server )"
+S="${WORKDIR}"
+
+QA_PREBUILT="
+	/opt/vhusb/vhclient*
+	/opt/vhusb/vhuit*
+	/opt/vhusb/vhusbd*"
 
 pkg_setup() {
 	enewgroup vhusb
