@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,29 +22,30 @@ src_prepare() {
 	default
 
 	# Modify install path
-	sed -i "/target.path/s|/usr/local|${ED%/}/usr|" ${PN}/${PN}.pro \
-		|| die "sed failed to modify install path for ${PN}.pro"
+	sed -i "/target.path/s|/usr/local|${ED%/}/usr|" "${PN}"/"${PN}".pro \
+		|| die "sed failed to modify install path for mcproxy.pro"
 }
 
 src_configure() {
-	cd ${PN} || die "failed to change directory to ${PN}"
-	eqmake5 CONFIG+=$(usev debug) ${PN}.pro
+	cd "${PN}" || die "failed to change directory to mcproxy"
+	eqmake5 CONFIG+="$(usev debug)" "${PN}".pro
 }
 
 src_compile() {
-	cd ${PN} || die "failed to change directory to ${PN}"
+	cd "${PN}" || die "failed to change directory to mcproxy"
 	emake
 }
 
 src_install() {
 	einstalldocs
-	insinto /etc
-	doins ${PN}/mcproxy.conf
 
-	cd ${PN} || die "failed to change directory to ${PN}"
+	insinto /etc
+	doins "${PN}"/mcproxy.conf
+
+	cd "${PN}" || die "failed to change directory to mcproxy"
 	emake DESTDIR="${D}" install
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	systemd_dounit "${FILESDIR}"/"${PN}".service
 }
