@@ -4,20 +4,18 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-This small program receives UDP datagrams on a given port, and resends
-those datagrams to a specified set of receivers. In addition, a
-sampling divisor N may be specified individually for each receiver,
-which will then only receive one in N of the received packets.
+	<longdescription lang="en">
+	This small program receives UDP datagrams on a given port, and resends
+	those datagrams to a specified set of receivers. In addition, a
+	sampling divisor N may be specified individually for each receiver,
+	which will then only receive one in N of the received packets.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sleinen/samplicator</remote-id>
-		<bugs-to>mailto:simon.leinen@gmail.com</bugs-to>
 	</upstream>
 </pkgmetadata>

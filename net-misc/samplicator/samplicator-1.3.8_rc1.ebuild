@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,21 +19,18 @@ KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	# Add samplicator group and user to system
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /etc/${PN} ${PN}
+	enewgroup "${PN}"
+	enewuser "${PN}" -1 -1 /etc/"${PN}" "${PN}"
 }
 
 src_install() {
-	# Install and copy documentation
 	default
 
-	# Install Gentoo init script and its config
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	doman "${FILESDIR}"/"${PN}".8
 
-	# Install manual page
-	doman "${FILESDIR}"/${PN}.8
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+
 }
 
 pkg_postinst() {
