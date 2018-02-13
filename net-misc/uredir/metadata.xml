@@ -4,25 +4,21 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxy maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-A small tool to redirect UDP connections.
-It can be used to forward connections on select external interfaces to loopback.
-In normal mode it forwards packets to a given destination and remembers
-the sender's address. Packets received from the given destination are forwarded
-to the sender.
-In echo mode uredir mirrors packets back to the sender.
-In inetd mode uredir lingers for three (3) seconds after forwarding a reply.
-This to prevent inetd from spawning new instances for multiple connections.
+	A small tool to redirect UDP connections.
+	It can be used to forward connections on select external interfaces to loopback.
+	In normal mode it forwards packets to a given destination and remembers
+	the sender's address. Packets received from the given destination are forwarded
+	to the sender.
+	In echo mode uredir mirrors packets back to the sender.
+	In inetd mode uredir lingers for three (3) seconds after forwarding a reply.
+	This to prevent inetd from spawning new instances for multiple connections.
 	</longdescription>
-	<use>
-		<flag name="xinetd">Add support for the xinetd super-server</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">troglobit/uredir</remote-id>
 	</upstream>
