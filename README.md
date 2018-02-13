@@ -27,6 +27,8 @@ Or read the instructions on the [Gentoo Wiki](http://wiki.gentoo.org/wiki/Layman
 
     layman -f -a nest
 
+## List of Ebuilds
+
 This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 
 * [stargazer](http://stg.dp.ua/) ([452916](https://bugs.gentoo.org/show_bug.cgi?id=452916))
