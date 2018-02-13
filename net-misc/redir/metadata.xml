@@ -4,17 +4,16 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxy maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-Redir listens for TCP connections on a given port, and,
-when it recieves a connection, then connects to a given destination
-address:port, and pass data between them. It finds most of its applications
-in traversing firewalls, but, of course, there are other uses.
+	Redir listens for TCP connections on a given port, and,
+	when it recieves a connection, then connects to a given destination
+	address:port, and pass data between them. It finds most of its applications
+	in traversing firewalls, but, of course, there are other uses.
 	</longdescription>
 	<use>
 		<flag name="xinetd">Add support for the xinetd super-server</flag>
