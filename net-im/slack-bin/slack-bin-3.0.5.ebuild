@@ -70,17 +70,17 @@ src_prepare() {
 
 src_install() {
 	insinto /usr/share/pixmaps
-	doins usr/share/pixmaps/${MY_PN}.png
+	doins usr/share/pixmaps/"${MY_PN}".png
 
-	newicon -s 512 usr/share/pixmaps/${MY_PN}.png ${MY_PN}.png
-	domenu usr/share/applications/${MY_PN}.desktop
+	newicon -s 512 usr/share/pixmaps/"${MY_PN}".png "${MY_PN}".png
+	domenu usr/share/applications/"${MY_PN}".desktop
 
-	insinto /opt/${MY_PN}
-	doins -r usr/lib/${MY_PN}/.
-	fperms +x /opt/${MY_PN}/${MY_PN}
-	dosym ../../opt/${MY_PN}/${MY_PN} usr/bin/${MY_PN}
+	insinto /opt/"${MY_PN}"
+	doins -r usr/lib/"${MY_PN}"/.
+	fperms +x /opt/"${MY_PN}"/"${MY_PN}"
+	dosym ../../opt/"${MY_PN}"/"${MY_PN}" usr/bin/"${MY_PN}"
 
-	use pax_kernel && pax-mark -m ${ED%/}/opt/${MY_PN}/${MY_PN}
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/"${MY_PN}"/"${MY_PN}"
 }
 
 pkg_postinst() {

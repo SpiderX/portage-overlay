@@ -25,19 +25,19 @@ config overwriting within next ebuild re-emerge:\n
 \tCONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
 
 pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /dev/null ${PN}
+	enewgroup "${PN}"
+	enewuser "${PN}" -1 -1 /dev/null "${PN}"
 }
 
 src_install() {
-	keepdir /opt/${PN}
-	insinto /opt/${PN}
+	keepdir /opt/"${PN}"
+	insinto /opt/"${PN}"
 	newins OoklaServer.properties.default OoklaServer.properties
-	exeinto /opt/${PN}
+	exeinto /opt/"${PN}"
 	doexe OoklaServer
-	fowners -R ${PN}:${PN} /opt/${PN}
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	fowners -R "${PN}":"${PN}" /opt/"${PN}"
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
 
 	readme.gentoo_create_doc
 }

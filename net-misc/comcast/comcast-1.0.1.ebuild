@@ -17,16 +17,16 @@ RDEPEND="dev-lang/go:0="
 DEPEND="${RDEPEND}"
 
 # Use local path instead of url
-PATCHES=( "${FILESDIR}"/${P}-build.patch )
+PATCHES=( "${FILESDIR}"/"${P}"-build.patch )
 
 src_compile() {
 	GOPATH="${S}:$(get_golibdir_gopath)" go build -v -ldflags \
-		"-X main.version=${PV}" -x -work ${PN}.go || die "build failed"
+		"-X main.version=${PV}" -x -work "${PN}".go || die "build failed"
 }
 
 src_install() {
 	default
 
 	GOBIN="${D}/usr/bin/" go install -v -ldflags \
-		"-X main.version=${PV}" -x -work ${PN}.go || die "install failed"
+		"-X main.version=${PV}" -x -work "${PN}".go || die "install failed"
 }

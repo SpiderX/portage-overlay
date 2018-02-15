@@ -31,5 +31,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-qmake=$(qt5_get_bindir)/qmake
+	econf --with-qmake="$(qt5_get_bindir)"/qmake
 }

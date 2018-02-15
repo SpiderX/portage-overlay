@@ -45,8 +45,8 @@ RDEPEND="dev-libs/libowfat
 	gzip? ( sys-libs/zlib )"
 
 pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
+	enewgroup "${PN}"
+	enewuser "${PN}" -1 -1 -1 "${PN}"
 }
 
 src_prepare() {
@@ -69,7 +69,7 @@ src_prepare() {
 		Makefile || die "sed for src_prepare failed"
 
 	# Define which features to use
-	for flag in ${!FLAGS[@]} ; do
+	for flag in "${!FLAGS[@]}" ; do
 		sed -i "$(usex $flag /${FLAGS[$flag]}/s/^#*// '')" Makefile || die "sed for $flag failed"
 	done
 
@@ -99,15 +99,15 @@ src_install() {
 	default
 
 	# Keeping chroot directory
-	diropts -m 755 -o ${PN} -g ${PN}
-	keepdir /var/lib/${PN}
-	insinto /etc/${PN}
-	newins "${S}"/${PN}.conf.sample ${PN}.conf
-	fowners -R ${PN}:${PN} /etc/${PN}
-	fperms 0640 /etc/${PN}/${PN}.conf
-	doman "${FILESDIR}"/${PN}.8
+	diropts -m 755 -o "${PN}" -g "${PN}"
+	keepdir /var/lib/"${PN}"
+	insinto /etc/"${PN}"
+	newins "${S}"/"${PN}".conf.sample "${PN}".conf
+	fowners -R "${PN}":"${PN}" /etc/"${PN}"
+	fperms 0640 /etc/"${PN}"/"${PN}".conf
+	doman "${FILESDIR}"/"${PN}".8
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	systemd_dounit "${FILESDIR}"/"${PN}".service
 }

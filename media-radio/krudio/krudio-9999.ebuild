@@ -42,7 +42,7 @@ src_prepare() {
 	sed -i \
 		-e '/Terminal/s/.$//' \
 		-e '/Name/s/.$//' \
-		src/data/${PN}.desktop || die "sed for krudio.desktop"
+		src/data/"${PN}".desktop || die "sed for krudio.desktop"
 }
 
 src_install() {

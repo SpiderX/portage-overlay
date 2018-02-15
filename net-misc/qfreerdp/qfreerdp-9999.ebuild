@@ -21,8 +21,8 @@ RDEPEND="dev-qt/qtcore:5
 DEPEND="${RDEPEND}"
 
 src_install() {
-	domenu "${FILESDIR}"/${PN}.desktop
-	doicon -s 64 "${FILESDIR}"/${PN}.png
+	domenu "${FILESDIR}"/"${PN}".desktop
+	doicon -s 64 "${FILESDIR}"/"${PN}".png
 
 	cmake-utils_src_install
 }

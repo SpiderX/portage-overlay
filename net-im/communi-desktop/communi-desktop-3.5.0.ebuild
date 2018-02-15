@@ -33,7 +33,7 @@ src_prepare() {
 	default
 
 	rmdir src/libs/base/shared || die "rmdir shared failed"
-	mv ../${PN/desktop/shared}-${PV} src/libs/base/shared \
+	mv ../"${PN/desktop/shared}"-"${PV}" src/libs/base/shared \
 		|| die "move communi-shared failed"
 
 	if ! use gnome ; then
@@ -45,7 +45,7 @@ src_prepare() {
 src_configure() {
 	eqmake5 COMMUNI_INSTALL_LIBS="/usr/$(get_libdir)" \
 		-config no_rpath \
-		-config $(usex debug debug release)
+		-config "$(usex debug debug release)"
 }
 
 src_install() {

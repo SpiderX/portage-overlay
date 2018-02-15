@@ -18,7 +18,7 @@ RDEPEND="xinetd? ( sys-apps/xinetd )"
 
 DOCS=( examples.txt README )
 # Honor CC, LDFLAGS, CFLAGS, CPPFLAGS
-PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch )
 
 DOC_CONTENTS="Usage of nuttpc by its service name in xinetd service,
 iptables rules, etc. will require adding these lines to /etc/services:\n
@@ -36,22 +36,22 @@ src_prepare() {
 }
 
 src_compile() {
-	emake $(usex ipv6 '' NOIPV6=-DNO_IPV6) CC=$(tc-getCC)
+	emake "$(usex ipv6 '' NOIPV6=-DNO_IPV6)" CC="$(tc-getCC)"
 }
 
 src_install() {
 	einstalldocs
-	doman ${PN}.8
-	newbin ${P}$(usex ipv6 '' -noipv6) ${PN}
+	doman "${PN}".8
+	newbin "${P}$(usex ipv6 '' -noipv6)" "${PN}"
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit systemd/${PN}@.service
-	systemd_dounit systemd/${PN}.socket
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	systemd_dounit systemd/"${PN}"@.service
+	systemd_dounit systemd/"${PN}".socket
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
-		doins xinetd.d/${PN}
+		doins xinetd.d/"${PN}"
 	fi
 
 	readme.gentoo_create_doc

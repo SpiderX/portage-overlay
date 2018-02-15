@@ -22,24 +22,24 @@ RDEPEND="net-nds/rpcbind
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=( # Add support for new kernels
-	"${FILESDIR}"/${P}-new-kernels-support.patch
+	"${FILESDIR}"/"${P}"-new-kernels-support.patch
 	# Use debug logging only with debug build
-	"${FILESDIR}"/${P}-debug.patch )
+	"${FILESDIR}"/"${P}"-debug.patch )
 
 src_configure() {
-	econf $(use_enable debug)
+	econf "$(use_enable debug)"
 }
 
 src_install() {
 	default
 
 	emake DESTDIR="${D}" install-man
-	systemd_dounit "${FILESDIR}"/${PN}.service
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	systemd_dounit "${FILESDIR}"/"${PN}".service
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
-		newins "${FILESDIR}"/${PN}.xinetd ${PN}
+		newins "${FILESDIR}"/"${PN}".xinetd "${PN}"
 	fi
 }

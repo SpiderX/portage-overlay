@@ -19,5 +19,5 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README )
 
 src_configure() {
-	econf $(use_enable static static-build)
+	econf "$(use_enable static static-build)"
 }

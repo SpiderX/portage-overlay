@@ -54,14 +54,14 @@ src_install() {
 
 	# Install binary in accordance to used USE flags
 	for module in ${MODULES}; do
-		if use $module ; then
-			dosym /opt/softether/hamcore.se2 /opt/softether/bin/vpn${module}/hamcore.se2
-			insinto /opt/softether/bin/vpn${module}
-			doins bin/vpn${module}/vpn${module}
-			fperms 0755 /opt/softether/bin/vpn${module}/vpn${module}
+		if use "$module" ; then
+			dosym /opt/softether/hamcore.se2 /opt/softether/bin/vpn"${module}"/hamcore.se2
+			insinto /opt/softether/bin/vpn"${module}"
+			doins bin/vpn"${module}"/vpn"${module}"
+			fperms 0755 /opt/softether/bin/vpn"${module}"/vpn"${module}"
 			if [ "$module" != "cmd" ] ; then
-				newinitd "${FILESDIR}"/${PN}-${module}.initd ${PN}-${module}
-				newconfd "${FILESDIR}"/${PN}-${module}.confd ${PN}-${module}
+				newinitd "${FILESDIR}"/"${PN}"-"${module}".initd "${PN}"-"${module}"
+				newconfd "${FILESDIR}"/"${PN}"-"${module}".confd "${PN}"-"${module}"
 			fi
 		fi
 	done

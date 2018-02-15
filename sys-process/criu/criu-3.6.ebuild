@@ -42,18 +42,18 @@ CONFIG_CHECK="~CHECKPOINT_RESTORE ~NAMESPACES ~PID_NS ~FHANDLE ~EVENTFD ~EPOLL ~
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/2.2/${PN}-2.2-flags.patch
-	"${FILESDIR}"/2.3/${PN}-2.3-no-git.patch
-	"${FILESDIR}"/${PN}-2.8-automagic-libbsd.patch
-	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
+	"${FILESDIR}"/2.2/"${PN}"-2.2-flags.patch
+	"${FILESDIR}"/2.3/"${PN}"-2.3-no-git.patch
+	"${FILESDIR}"/"${PN}"-2.8-automagic-libbsd.patch
+	"${FILESDIR}"/2.0/"${PN}"-2.0-sysroot.patch
 )
 
 criu_arch() {
 	# criu infers the arch from $(uname -m).  We never want this to happen.
 	case ${ARCH} in
-	amd64) echo "x86";;
-	arm64) echo "aarch64";;
-	*)     echo "${ARCH}";;
+		amd64) echo "x86";;
+		arm64) echo "aarch64";;
+		*)     echo "${ARCH}";;
 	esac
 }
 
@@ -80,9 +80,9 @@ src_compile() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		ARCH="$(criu_arch)" \
 		V=1 WERROR=0 DEBUG=0 \
-		SETPROCTITLE=$(usex setproctitle) \
-		PYCRIU=$(usex python) \
-		all $(usex doc docs "")
+		SETPROCTITLE="$(usex setproctitle)" \
+		PYCRIU="$(usex python)" \
+		all "$(usex doc docs "")"
 }
 
 src_test() {
@@ -108,7 +108,7 @@ src_install() {
 	dodoc CREDITS README.md
 
 	if use python ; then
-		cd lib
+		cd lib || die "cd to lib failed"
 		python_foreach_impl install_crit
 	fi
 

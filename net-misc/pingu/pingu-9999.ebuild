@@ -23,15 +23,15 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	# Add missed parameters to configure
-	"${FILESDIR}"/${PN}-1.5-configure.patch
+	"${FILESDIR}"/"${PN}"-1.5-configure.patch
 	# Fix compilation issue
-	"${FILESDIR}"/${PN}-1.5-icmp.patch
+	"${FILESDIR}"/"${PN}"-1.5-icmp.patch
 	# Change path to /run and fix QA
-	"${FILESDIR}"/${PN}-1.5-makefile.patch
+	"${FILESDIR}"/"${PN}"-1.5-makefile.patch
 )
 
 src_configure() {
-	econf $(use_enable debug) $(use_enable doc)
+	econf "$(use_enable debug)" "$(use_enable doc)"
 }
 
 src_compile() {
@@ -41,15 +41,15 @@ src_compile() {
 src_install() {
 	default
 
-	newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newtmpfiles "${FILESDIR}"/"${PN}".tmpfile "${PN}".conf
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	systemd_dounit "${FILESDIR}"/"${PN}".service
 	keepdir /etc/pingu /var/lib/pingu
 	insinto /etc/pingu
 	newins pingu.conf pingu.conf.example
 }
 
 pkg_postinst() {
-	tmpfiles_process ${PN}.conf
+	tmpfiles_process "${PN}".conf
 }

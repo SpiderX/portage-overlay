@@ -5,18 +5,19 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=Yes
-EHG_REPO_URI="https://bitbucket.org/nocproject/noc-tower"
 MY_HOME="/var/lib/${PN}"
 
 inherit distutils-r1 user systemd mercurial
 
 DESCRIPTION="NOCProject supervisor"
 HOMEPAGE="https://bitbucket.org/nocproject/noc-tower"
+SRC_URI=""
+EHG_REPO_URI="https://bitbucket.org/nocproject/noc-tower"
+
 LICENSE="BSD"
 IUSE="systemd"
 SLOT="0"
 KEYWORDS=""
-DOCS=( FAQ_rus.md Readme.md contrib/nginx/tower.conf )
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
@@ -29,11 +30,13 @@ RDEPEND="${DEPEND}
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/jsmin[${PYTHON_USEDEP}]"
 
+DOCS=( FAQ_rus.md Readme.md contrib/nginx/tower.conf )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 
 	enewgroup noc
-	enewuser noc -1 -1 ${MY_HOME} noc
+	enewuser noc -1 -1 "${MY_HOME}" noc
 }
 
 src_prepare() {
@@ -89,10 +92,10 @@ src_prepare() {
 src_install() {
 	distutils-r1_src_install
 
-	keepdir ${MY_HOME} /var/log/noc/
-	fowners -R noc:noc ${MY_HOME} /var/log/noc/
+	keepdir "${MY_HOME}" /var/log/noc/
+	fowners -R noc:noc "${MY_HOME}" /var/log/noc/
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	systemd_dounit "${FILESDIR}"/"${PN}".service
 }

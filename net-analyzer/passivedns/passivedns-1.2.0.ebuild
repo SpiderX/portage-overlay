@@ -34,20 +34,20 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable debug) \
-		$(use_enable json)
+		"$(use_enable debug)" \
+		"$(use_enable json)"
 		#$(use_enable pfring )
 }
 
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	systemd_dounit "${FILESDIR}"/"${PN}".service
 }
 
 pkg_postinst() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /dev/null ${PN}
+	enewgroup "${PN}"
+	enewuser "${PN}" -1 -1 /dev/null "${PN}"
 }

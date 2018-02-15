@@ -33,11 +33,11 @@ src_prepare() {
 		-e 's:gcc:$(CC) $(CFLAGS) $(LDFLAGS):' Makefile.in || die 'sed on Makefile.in failed'
 
 	# bug #455984
-	epatch "${FILESDIR}"/${PN}-9999-configure.patch
+	epatch "${FILESDIR}"/"${PN}"-9999-configure.patch
 
 	# bug #466430
 	if use pax_kernel; then
-		epatch "${FILESDIR}"/${PN}-1.8-pax-const.patch
+		epatch "${FILESDIR}"/"${PN}"-1.8-pax-const.patch
 	fi
 
 	epatch_user
@@ -57,7 +57,8 @@ src_configure() {
 }
 
 src_compile() {
-	local ARCH="$(tc-arch-kernel)"
+	local ARCH
+	ARCH="$(tc-arch-kernel)"
 	emake CC="$(tc-getCC)" all
 }
 

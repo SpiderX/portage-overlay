@@ -44,20 +44,20 @@ src_prepare() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	keepdir /var/lib/${PN}/
-	keepdir /var/log/${PN}/
+	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
+	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	keepdir /var/lib/"${PN}"/
+	keepdir /var/log/"${PN}"/
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${PN}.logrotate ${PN}
+	newins "${FILESDIR}"/"${PN}".logrotate "${PN}"
 
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+	enewgroup "${PN}"
+	enewuser "${PN}" -1 -1 /var/lib/"${PN}" "${PN}"
 
 	readme.gentoo_print_elog
 }
