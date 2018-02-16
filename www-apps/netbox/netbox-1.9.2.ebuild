@@ -72,7 +72,7 @@ pkg_config() {
 	einfo "Enter you vhost_root/vhost_htdocs. Default: localhost/htdocs"
 	read answer
 	[ -z "${answer}" ] && answer="localhost/htdocs"
-	path="${ROOT}var/www/${answer}/${PN}"
+	path="${ROOT}"var/www/"${answer}"/"${PN}"
 	unset answer
 
 	if [ -f "${path}/${PN}/configuration.py" ] ; then

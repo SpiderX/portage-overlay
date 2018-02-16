@@ -4,14 +4,13 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-IP address management (IPAM) and data center infrastructure management (DCIM) tool
+	IP address management (IPAM) and data center infrastructure management (DCIM) tool
 	</longdescription>
 	<upstream>
 		<remote-id type="github">digitalocean/netbox</remote-id>

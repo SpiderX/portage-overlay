@@ -12,5 +12,5 @@ depend() {
 }
 
 start_post() {
-	pgrep -n $(echo ${RC_SVCNAME} | sed 's/\..*//g') > ${pidfile}
+	pgrep -n ${RC_SVCNAME%%.*} > ${pidfile}
 }
