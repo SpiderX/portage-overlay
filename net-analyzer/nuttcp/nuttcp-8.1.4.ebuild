@@ -21,12 +21,12 @@ DOCS=( examples.txt README )
 PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch )
 
 DOC_CONTENTS="Usage of nuttpc by its service name in xinetd service,
-iptables rules, etc. will require adding these lines to /etc/services:\n
-nuttcp\t\t5000/tcp\n
-nuttcp-data\t\t5001/tcp\n
-nuttcp6\t\t5000/tcp\n
-nuttcp6-data\t\t5001/tcp\n\n
-To run ${PN} in server mode, run:\n/etc/init.d/${PN} start"
+iptables rules, etc. will require adding these lines to /etc/services:\\n
+nuttcp\\t\\t5000/tcp\\n
+nuttcp-data\\t\\t5001/tcp\\n
+nuttcp6\\t\\t5000/tcp\\n
+nuttcp6-data\\t\\t5001/tcp\\n\\n
+To run ${PN} in server mode, run:\\n/etc/init.d/${PN} start"
 
 src_prepare() {
 	default
