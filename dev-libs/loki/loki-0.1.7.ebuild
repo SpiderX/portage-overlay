@@ -43,7 +43,7 @@ src_install() {
 
 	# Put the files in the right folder to support multilib
 	for file in "${ED}"/usr/lib/* ; do
-		mv -uT "$file" "${ED}"/usr/$(get_libdir)/ || die "Failed to move library directory for multilib support"
+		mv -uT "$file" "${ED}"/usr/"$(get_libdir)"/ || die "Failed to move library directory for multilib support"
 	done
 
 	if use doc ; then

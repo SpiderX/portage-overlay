@@ -48,7 +48,7 @@ src_install() {
 
 	if use zsh-completion ; then
 		insinto /usr/share/zsh/site-functions
-		doins src/github.com/knqyf263/pet/misc/completions/zsh/_${PN}
+		doins src/github.com/knqyf263/pet/misc/completions/zsh/_"${PN}"
 	fi
 }
 

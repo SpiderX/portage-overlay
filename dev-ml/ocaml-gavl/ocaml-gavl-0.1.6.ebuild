@@ -8,16 +8,19 @@ inherit autotools findlib
 DESCRIPTION="OCaml bindings to Gavl video manipulation library"
 HOMEPAGE="https://github.com/savonet/ocaml-gavl"
 SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+camlp4 debug +ocamlopt profiling"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	media-libs/gavl
 	camlp4? ( dev-ml/camlp4:= )"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	virtual/pkgconfig"
+
 DOCS=( CHANGES README )
 
 src_prepare() {
@@ -29,13 +32,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable profiling)
+	econf "$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable profiling)"
 }
 
 src_install() {
-	findlib_src_install
 	einstalldocs
+	findlib_src_install
 }

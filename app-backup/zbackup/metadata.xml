@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	zbackup is a globally-deduplicating backup tool.
 	The program has the following features:
 	Parallel LZMA or LZO compression of the stored data

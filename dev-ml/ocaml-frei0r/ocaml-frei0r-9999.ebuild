@@ -9,16 +9,19 @@ DESCRIPTION="OCaml bindings to frei0r plugins"
 HOMEPAGE="https://github.com/savonet/ocaml-frei0r"
 EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 SRC_URI=""
+
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="+camlp4 debug +ocamlopt profiling"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	media-plugins/frei0r-plugins
 	camlp4? ( dev-ml/camlp4:= )"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	virtual/pkgconfig"
+
 DOCS=( CHANGES README )
 
 src_prepare() {
@@ -30,13 +33,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable profiling)
+	econf "$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable profiling)"
 }
 
 src_install() {
-	findlib_src_install
 	einstalldocs
+	findlib_src_install
 }

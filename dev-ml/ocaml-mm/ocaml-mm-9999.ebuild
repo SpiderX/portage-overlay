@@ -9,10 +9,12 @@ DESCRIPTION="OCaml bindings to mm"
 HOMEPAGE="https://github.com/savonet/ocaml-mm"
 EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 SRC_URI=""
+
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="alsa ao +camlp4 debug ffmpeg gstreamer mad +ocamlopt ogg oss profiling pulseaudio sdl theora v4l"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	alsa? ( dev-ml/ocaml-alsa:= )
 	ao? ( dev-ml/ocaml-ao:= )
@@ -27,9 +29,11 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	virtual/pkgconfig"
+
 DOCS=( CHANGES README )
-PATCHES=( "${FILESDIR}"/${P}-configure.patch
-	"${FILESDIR}"/${P}-makefile.patch )
+
+PATCHES=( "${FILESDIR}"/"${P}"-configure.patch
+	"${FILESDIR}"/"${P}"-makefile.patch )
 
 src_prepare() {
 	default
@@ -40,24 +44,24 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable alsa) \
-		$(use_enable ao) \
-		$(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable ffmpeg) \
-		$(use_enable gstreamer) \
-		$(use_enable mad) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable ogg) \
-		$(use_enable oss) \
-		$(use_enable profiling) \
-		$(use_enable pulseaudio) \
-		$(use_enable sdl) \
-		$(use_enable theora) \
-		$(use_enable v4l)
+	econf "$(use_enable alsa)" \
+		"$(use_enable ao)" \
+		"$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable ffmpeg)" \
+		"$(use_enable gstreamer)" \
+		"$(use_enable mad)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable ogg)" \
+		"$(use_enable oss)" \
+		"$(use_enable profiling)" \
+		"$(use_enable pulseaudio)" \
+		"$(use_enable sdl)" \
+		"$(use_enable theora)" \
+		"$(use_enable v4l)"
 }
 
 src_install() {
-	findlib_src_install
 	einstalldocs
+	findlib_src_install
 }

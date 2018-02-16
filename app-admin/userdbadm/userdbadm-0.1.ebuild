@@ -19,5 +19,5 @@ RDEPEND="${DEPEND}"
 src_install() {
 	default
 
-	dobin ${PN}
+	dobin "${PN}"
 }

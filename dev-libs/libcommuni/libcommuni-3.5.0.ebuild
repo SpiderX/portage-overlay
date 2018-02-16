@@ -48,10 +48,10 @@ src_configure() {
 	eqmake5 \
 		-config no_rpath \
 		-config no_benchmarks \
-		-config $(usex debug debug release) \
-		-config $(usex icu icu no_icu) \
-		-config $(usex test tests no_tests) \
-		-config $(usex uchardet uchardet no_uchardet)
+		-config "$(usex debug debug release)" \
+		-config "$(usex icu icu no_icu)" \
+		-config "$(usex test tests no_tests)" \
+		-config "$(usex uchardet uchardet no_uchardet)"
 }
 
 src_install() {

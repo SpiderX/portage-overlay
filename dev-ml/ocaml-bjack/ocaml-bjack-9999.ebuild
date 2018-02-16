@@ -9,10 +9,12 @@ DESCRIPTION="OCaml blocking JACK API"
 HOMEPAGE="https://github.com/savonet/ocaml-bjack"
 EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 SRC_URI=""
+
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="+camlp4 debug +ocamlopt profiling"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	media-libs/libsamplerate
 	media-sound/jack-audio-connection-kit
@@ -20,6 +22,7 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	virtual/pkgconfig"
+
 DOCS=( CHANGES README TIPS )
 
 src_prepare() {
@@ -31,13 +34,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable profiling)
+	econf "$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable profiling)"
 }
 
 src_install() {
-	findlib_src_install
 	einstalldocs
+	findlib_src_install
 }

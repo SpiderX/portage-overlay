@@ -8,10 +8,12 @@ inherit autotools findlib
 DESCRIPTION="OCaml bindings to flac"
 HOMEPAGE="https://github.com/savonet/ocaml-flac"
 SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+camlp4 debug +ocamlopt ogg profiling"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	media-libs/flac
 	camlp4? ( dev-ml/camlp4:= )
@@ -19,8 +21,10 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	virtual/pkgconfig"
+
 DOCS=( CHANGES README )
-PATCHES=( "${FILESDIR}"/${P}-configure.patch )
+
+PATCHES=( "${FILESDIR}"/"${P}"-configure.patch )
 
 src_prepare() {
 	default
@@ -31,14 +35,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable profiling) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable ogg)
+	econf "$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable profiling)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable ogg)"
 }
 
 src_install() {
-	findlib_src_install
 	einstalldocs
+	findlib_src_install
 }

@@ -26,7 +26,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-DOCS=( src/${EGO_PN}/Changes src/${EGO_PN}/README.md )
+DOCS=( src/"${EGO_PN}"/Changes src/"${EGO_PN}"/README.md )
 
 DEPEND="dev-go/glide
 	dev-go/go-spew"
@@ -36,14 +36,14 @@ src_prepare() {
 
 	# Don't install dependencies
 	sed -i '/peco\$(SUFFIX):/s/ installdeps//' \
-		src/${EGO_PN}/Makefile || die "sed failed"
+		src/"${EGO_PN}"/Makefile || die "sed failed"
 }
 
 src_compile() {
-	GOPATH="${S}:$(get_golibdir_gopath)" emake -C src/${EGO_PN} build
+	GOPATH="${S}:$(get_golibdir_gopath)" emake -C src/"${EGO_PN}" build
 }
 
 src_install() {
-	dobin src/${EGO_PN}/releases/peco_linux_amd64/peco
 	einstalldocs
+	dobin src/"${EGO_PN}"/releases/peco_linux_amd64/peco
 }

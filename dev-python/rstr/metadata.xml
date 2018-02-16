@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	rstr is a helper module for easily generating random strings
 	of various types. It could be useful for fuzz testing,
 	generating dummy data, or other applications.

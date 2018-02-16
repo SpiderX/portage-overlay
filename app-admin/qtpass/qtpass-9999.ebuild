@@ -40,9 +40,10 @@ src_prepare() {
 				qtpass.pro || die "sed for qtpass.pro failed"
 	fi
 
-	local lr=$(qt5_get_bindir)/lrelease
+	local lr
+	lr="$(qt5_get_bindir)"/lrelease
 	l10n_prepare() {
-		$lr localization/localization_${1}.ts || die "lrelease ${1} failed"
+		$lr localization/localization_"${1}".ts || die "lrelease ${1} failed"
 	}
 	l10n_find_plocales_changes localization localization_ .ts
 	l10n_for_each_locale_do l10n_prepare
@@ -58,7 +59,7 @@ src_install() {
 	insinto /usr/share/qt5/translations
 	doins localization/*.qm
 
-	doman ${PN}.1
+	doman "${PN}".1
 	insinto /usr/share/applications
 	doins "${PN}.desktop"
 	newicon artwork/icon.png "${PN}-icon.png"

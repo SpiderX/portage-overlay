@@ -16,7 +16,7 @@ SRC_URI="https://github.com/kristapsdz/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.
 LICENSE="ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="seccomp systemd"
+IUSE="seccomp"
 
 RDEPEND="dev-libs/libbsd
 	dev-libs/libressl
@@ -26,17 +26,17 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${P}-FLAGS.patch
-	"${FILESDIR}"/${P}-agreement-url.patch )
+PATCHES=( "${FILESDIR}"/"${P}"-FLAGS.patch
+	"${FILESDIR}"/"${P}"-agreement-url.patch )
 
 src_prepare() {
 	default
 
-	use seccomp || eapply "${FILESDIR}"/${P}-seccomp.patch
+	use seccomp || eapply "${FILESDIR}"/"${P}"-seccomp.patch
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
@@ -49,5 +49,5 @@ src_install() {
 
 	#use systemd || newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	#use systemd || newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	use systemd && systemd_dounit "${FILESDIR}"/${PN}.{service,timer}
+	systemd_dounit "${FILESDIR}"/"${PN}".{service,timer}
 }

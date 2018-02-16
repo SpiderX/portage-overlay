@@ -13,7 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug json libressl ssl" #pfring
-DOCS=( doc/AUTHORS doc/ChangeLog doc/How-it-works.txt doc/ISSUES )
 
 RDEPEND="net-libs/ldns[libressl?]
 	net-libs/libpcap
@@ -23,6 +22,8 @@ RDEPEND="net-libs/ldns[libressl?]
 		!libressl? ( dev-libs/openssl:0= )
 	)"
 DEPEND="${RDEPEND}"
+
+DOCS=( doc/AUTHORS doc/ChangeLog doc/How-it-works.txt doc/ISSUES )
 
 src_prepare() {
 	default

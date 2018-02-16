@@ -30,8 +30,8 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
-		-DINSTALL_DOC=$(usex doc)
-		-DBUILD_TOOLS=$(usex utils)
+		-DINSTALL_DOC="$(usex doc)"
+		-DBUILD_TOOLS="$(usex utils)"
 	)
 	cmake-utils_src_configure
 }

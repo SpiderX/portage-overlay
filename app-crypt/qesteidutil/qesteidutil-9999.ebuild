@@ -46,9 +46,10 @@ src_prepare() {
 	sed -i '/#include "/s|qtsingleapplication/src|QtSolutions|' \
 		common/Common.h || die "sed failed for Common.h"
 
-	local lr=$(qt5_get_bindir)/lrelease
+	local lr
+	lr="$(qt5_get_bindir)"/lrelease
 	l10n_prepare() {
-		$lr src/translations/${1}.ts || die "lrelease ${1} failed"
+		$lr src/translations/"${1}".ts || die "lrelease ${1} failed"
 	}
 	l10n_find_plocales_changes src/translations "" .ts
 	l10n_for_each_locale_do l10n_prepare
@@ -58,8 +59,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBREAKPAD=$(usex crash-reporter 'https://cr.eesti.ee/' '')
-		-DCONFIG_URL=$(usex webcheck 'https://id.eesti.ee/config.json' '')
+		-DBREAKPAD="$(usex crash-reporter 'https://cr.eesti.ee/' '')"
+		-DCONFIG_URL="$(usex webcheck 'https://id.eesti.ee/config.json' '')"
 	)
 	cmake-utils_src_configure
 }

@@ -9,17 +9,21 @@ DESCRIPTION="OCaml native module for icecast/shoutcast source protocols"
 HOMEPAGE="https://github.com/savonet/ocaml-cry"
 EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 SRC_URI=""
+
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="+camlp4 debug +ocamlopt profiling ssl"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	camlp4? ( dev-ml/camlp4:= )
 	ssl? ( dev-ml/ocaml-ssl:= )"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
+
 DOCS=( CHANGES README )
-PATCHES=( "${FILESDIR}"/${P}-configure.patch )
+
+PATCHES=( "${FILESDIR}"/"${P}"-configure.patch )
 
 src_prepare() {
 	default
@@ -30,15 +34,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable profiling) \
-		$(use_enable ssl) \
+	econf "$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable profiling)" \
+		"$(use_enable ssl)" \
 		--disable-osx-secure-transport
 }
 
 src_install() {
-	findlib_src_install
 	einstalldocs
+	findlib_src_install
 }

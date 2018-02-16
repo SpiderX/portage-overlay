@@ -8,15 +8,18 @@ inherit autotools findlib
 DESCRIPTION="OCaml bindings to LADSPA plugins"
 HOMEPAGE="https://github.com/savonet/ocaml-ladspa"
 SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
+
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+camlp4 debug +ocamlopt profiling"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	media-libs/ladspa-sdk
 	camlp4? ( dev-ml/camlp4:= )"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
+
 DOCS=( CHANGES README )
 
 src_prepare() {
@@ -28,13 +31,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable profiling)
+	econf "$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable profiling)"
 }
 
 src_install() {
-	findlib_src_install
 	einstalldocs
+	findlib_src_install
 }

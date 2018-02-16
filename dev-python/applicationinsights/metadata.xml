@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	Application Insights is a service that allows developers to keep their
 	application available, performing and succeeding.
 	This Python module will allow you to send telemetry of various kinds
