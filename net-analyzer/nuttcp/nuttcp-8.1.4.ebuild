@@ -36,7 +36,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake "$(usex ipv6 '' NOIPV6=-DNO_IPV6)" CC="$(tc-getCC)"
+	emake "$(usex ipv6 APPEXT='' NOIPV6=-DNO_IPV6)" CC="$(tc-getCC)"
 }
 
 src_install() {
