@@ -22,7 +22,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/syslog-${PV}"
 
 src_compile() {
-	export USE_CAMLP4="$(usex camlp4 yes '')"
+	local USE_CAMLP4
+	USE_CAMLP4="$(usex camlp4 yes '')"
+	export USE_CAMLP4
 	emake "$(usex ocamlopt reallyall all)"
 }
 
