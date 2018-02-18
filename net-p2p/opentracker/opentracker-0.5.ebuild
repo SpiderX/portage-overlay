@@ -73,7 +73,7 @@ src_prepare() {
 
 	# Define which features to use
 	for flag in "${!FLAGS[@]}" ; do
-		sed -i "$(usex $flag /${FLAGS[$flag]}/s/^#*// '')" Makefile || die "sed for $flag failed"
+		sed -i "$(usex "$flag" /"${FLAGS[$flag]}"/s/^#*// '')" Makefile || die "sed for $flag failed"
 	done
 
 	# Return back -lz flag for gzip
