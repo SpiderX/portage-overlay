@@ -36,8 +36,8 @@ src_prepare() {
 }
 
 src_configure() {
-	use amd64 && echo -e "1\n2\n" | ./configure
-	use x86   && echo -e "1\n1\n" | ./configure
+	use amd64 && echo -e "1\\n2\\n" | ./configure
+	use x86   && echo -e "1\\n1\\n" | ./configure
 }
 
 src_compile() {
