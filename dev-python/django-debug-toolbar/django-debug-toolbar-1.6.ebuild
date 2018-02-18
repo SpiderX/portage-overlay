@@ -32,7 +32,7 @@ python_prepare_all() {
 	sed -e 's:intersphinx_mapping:_&:' -i docs/conf.py || die
 
 	# This prevents distutils from installing 'tests' package, rm magic no more needed
-	sed -e "/find_packages/s:'tests':'tests.\*', 'tests':" -i setup.py || die
+	sed -e "/find_packages/s:'tests':'tests.\\*', 'tests':" -i setup.py || die
 
 	distutils-r1_python_prepare_all
 }
