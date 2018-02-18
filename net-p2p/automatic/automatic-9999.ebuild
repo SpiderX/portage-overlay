@@ -21,9 +21,9 @@ DEPEND="${RDEPEND}
 	app-admin/logrotate"
 
 DOC_CONTENTS="To run automatic you should move /etc/automatic.conf-sample
-to /etc/automatic.conf and config it.\n
+to /etc/automatic.conf and config it.\\n
 If things go wrong, increase verbose level in /etc/conf.d/automatic
-and check log file in /var/log/automatic/\n"
+and check log file in /var/log/automatic/\\n"
 
 src_prepare() {
 	default

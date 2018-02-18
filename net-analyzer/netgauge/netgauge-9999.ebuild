@@ -21,8 +21,8 @@ QA_PREBUILT="opt/netgauge/OoklaServer"
 QA_PRESTRIPPED="opt/netgauge/OoklaServer"
 
 DOC_CONTENTS="Add an entry to /etc/portage/make.conf to prevent Ookla Server's
-config overwriting within next ebuild re-emerge:\n
-\tCONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
+config overwriting within next ebuild re-emerge:\\n
+\\tCONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
 
 pkg_setup() {
 	enewgroup "${PN}"

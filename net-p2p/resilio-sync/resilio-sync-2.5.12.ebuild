@@ -23,9 +23,9 @@ RESTRICT="mirror"
 
 S="${WORKDIR}"
 
-DOC_CONTENTS="You may need to review /etc/${PN}/config.json\n
-Default metadata path is /var/lib/${PN}/.sync\n
-Default web-gui URL is http://localhost:8888/\n\n"
+DOC_CONTENTS="You may need to review /etc/${PN}/config.json\\n
+Default metadata path is /var/lib/${PN}/.sync\\n
+Default web-gui URL is http://localhost:8888/\\n\\n"
 
 pkg_setup() {
 	enewgroup "${NAME}"
