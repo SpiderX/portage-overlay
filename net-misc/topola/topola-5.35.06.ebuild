@@ -60,8 +60,8 @@ pkg_nofetch() {
 }
 
 pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 /bin/bash /opt/${PN} ${PN}
+	enewgroup "${PN}"
+	enewuser "${PN}" -1 /bin/bash /opt/"${PN}" "${PN}"
 }
 
 my_unpack() {
@@ -70,18 +70,18 @@ my_unpack() {
 	# so we explicitly change directory
 	mkdir "${S}"/"${name}" || die "mkdir to ${name} failed"
 	cd "${S}"/"${name}"    || die "cd to ${name} failed"
-	unpack_makeself ${MY_A[0]} $2 tail
+	unpack_makeself "${MY_A[0]}" "$2" tail
 	MY_A=("${MY_A[@]:1}")
 	unset name
 }
 
 src_unpack() {
 	# Put $A into array for further access to its elements
-	local MY_A=(${A})
-	use base           && my_unpack ${TOPOLA_BASE_P} 88
-	use unlicensed-bin && my_unpack ${TOPOLA_UNLICENSED_BIN_P} 90
-	use licensed-bin   && my_unpack ${TOPOLA_LICENSED_BIN_P} 90
-	use taremote       && my_unpack ${TOPOLA_AGENT_P} 88
+	IFS=" " read -r -a MY_A <<<${A}
+	use base           && my_unpack "${TOPOLA_BASE_P}" 88
+	use unlicensed-bin && my_unpack "${TOPOLA_UNLICENSED_BIN_P}" 90
+	use licensed-bin   && my_unpack "${TOPOLA_LICENSED_BIN_P}" 90
+	use taremote       && my_unpack "${TOPOLA_AGENT_P}" 88
 	unset MY_A
 }
 
@@ -89,36 +89,37 @@ src_prepare() {
 	if use base; then
 		cd "${S}"/"${TOPOLA_BASE_P}" || die "cd to ${TOPOLA_BASE_P} failed"
 		# fix paths in configuration files
-		eapply "${FILESDIR}"/${PN}-base-5.35.01-conf.patch
+		eapply "${FILESDIR}"/"${PN}"-base-5.35.01-conf.patch
 		# screen variables, rename TPA_HOME to TPAHOME for hold real "home path" value
-		eapply "${FILESDIR}"/${PN}-base-5.35.01-tpafunc.patch
+		eapply "${FILESDIR}"/"${PN}"-base-5.35.01-tpafunc.patch
 	fi
 	if use unlicensed-bin; then
 		cd "${S}"/"${TOPOLA_UNLICENSED_BIN_P}" || die "cd to ${TOPOLA_UNLICENSED_BIN_P} failed"
 		# rename TPA_HOME to TPAHOME for hold real "home path" value
-		eapply "${FILESDIR}"/${PN}-bin_unl-5.35.05-tpafunc.patch
+		eapply "${FILESDIR}"/"${PN}"-bin_unl-5.35.05-tpafunc.patch
 	fi
 	if use licensed-bin; then
 		cd "${S}"/"${TOPOLA_LICENSED_BIN_P}" || die "cd to ${TOPOLA_LICENSED_BIN_P} failed"
 		# rename TPA_HOME to TPAHOME for hold real "home path" value
-		eapply "${FILESDIR}"/${PN}-bin_unl-5.35.05-tpafunc.patch
+		eapply "${FILESDIR}"/"${PN}"-bin_unl-5.35.05-tpafunc.patch
 	fi
 	if use taremote; then
 		cd "${S}"/"${TOPOLA_AGENT_P}" || die "cd to ${TOPOLA_AGENT_P} failed"
 		# make grep process a files in KOI8-R as text, respect CFLAGS, fix binary install path
-		eapply "${FILESDIR}"/${PN}-taremote-5.35.05-Makefile.patch
+		eapply "${FILESDIR}"/"${PN}"-taremote-5.35.05-Makefile.patch
 		# screen variables, rename TPA_HOME to TPAHOME for hold real "home path" value
-		eapply "${FILESDIR}"/${PN}-taremote-5.35.05-tpafunc.patch
+		eapply "${FILESDIR}"/"${PN}"-taremote-5.35.05-tpafunc.patch
 		# screen sed
-		eapply "${FILESDIR}"/${PN}-taremote-5.35.05-tpainst.patch
+		eapply "${FILESDIR}"/"${PN}"-taremote-5.35.05-tpainst.patch
 	fi
 
 	default
 }
 
 src_install() {
-	local MY_D="${D}"$(egethome topola)
-	dodir $(egethome topola)
+	local MY_D
+	MY_D="${D}$(egethome topola)"
+	dodir "$(egethome topola)"
 	if use base; then
 		cd "${S}"/"${TOPOLA_BASE_P}" \
 			|| die "cd to ${TOPOLA_BASE_P} failed"
@@ -126,74 +127,74 @@ src_install() {
 		# Note: USER is needed to fill TPA_INSTALLER in .topola
 		#       HOME is needed to create .topola
 		#       TPAHOME holds real user home
-		TPA_OWNER=${PN} USER=${PN} TPA_HOME=${MY_D} \
-		HOME=${MY_D} TPAHOME=$(egethome topola) \
+		TPA_OWNER="${PN}" USER="${PN}" TPA_HOME="${MY_D}" \
+		HOME="${MY_D}" TPAHOME="$(egethome topola)" \
 			./tpainst.sh || die "${TOPOLA_BASE_P}/tpainst.sh failed"
 
 		if use xinetd ; then
 			insinto /etc/xinetd.d
-			doins ${MY_D}/docs/etc/xinetd.d/ofubase
+			doins "${MY_D}"/docs/etc/xinetd.d/ofubase
 		fi
 	fi
 	if use unlicensed-bin; then
 		# change TPA_HOME path for further tpainst.sh execution
-		sed "s#$(egethome topola)#${MY_D}#" -i ${MY_D}/.topola \
+		sed "s#$(egethome topola)#${MY_D}#" -i "${MY_D}"/.topola \
 			|| die "first sed execution for .topola failed"
 
 		cd "${S}"/"${TOPOLA_UNLICENSED_BIN_P}" \
 			|| die "cd to ${TOPOLA_UNLICENSED_BIN_P} failed"
-		TPA_OWNER=${PN} USER=${PN} TPA_HOME=${MY_D} \
-		HOME=${MY_D} TPAHOME=$(egethome topola) \
+		TPA_OWNER="${PN}" USER="${PN}" TPA_HOME="${MY_D}" \
+		HOME="${MY_D}" TPAHOME="$(egethome topola)" \
 			./tpainst.sh || die "${TOPOLA_UNLICENSED_BIN_P}/tpainst.sh failed"
 
 		# revert TPA_HOME path back
-		sed "s#${D}##" -i ${MY_D}/.topola \
+		sed "s#${D}##" -i "${MY_D}"/.topola \
 			|| die "sed second execution for .topola failed"
 	fi
 	if use licensed-bin; then
 		# change TPA_HOME path for further tpainst.sh execution
-		sed "s#$(egethome topola)#${MY_D}#" -i ${MY_D}/.topola \
+		sed "s#$(egethome topola)#${MY_D}#" -i "${MY_D}"/.topola \
 			|| die "first sed execution for .topola failed"
 
 		cd "${S}"/"${TOPOLA_LICENSED_BIN_P}" \
 			|| die "cd to ${TOPOLA_LICENSED_BIN_P} failed"
-		TPA_OWNER=${PN} USER=${PN} TPA_HOME=${MY_D} \
-		HOME=${MY_D} TPAHOME=$(egethome topola) \
+		TPA_OWNER="${PN}" USER="${PN}" TPA_HOME="${MY_D}" \
+		HOME="${MY_D}" TPAHOME="$(egethome topola)" \
 			./tpainst.sh || die "${TOPOLA_LICENSED_BIN_P}/tpainst.sh failed"
 
 		# revert TPA_HOME path back
-		sed "s#${D}##" -i ${MY_D}/.topola \
+		sed "s#${D}##" -i "${MY_D}"/.topola \
 			|| die "sed second execution for .topola failed"
 	fi
 	if use taremote; then
 		# change TPA_HOME path for further tpainst.sh execution
 		if use base ; then
-			sed "s#$(egethome topola)#${MY_D}#" -i ${MY_D}/.topola \
+			sed "s#$(egethome topola)#${MY_D}#" -i "${MY_D}"/.topola \
 			|| die "first sed execution for .topola failed"
 		fi
 
 		cd "${S}"/"${TOPOLA_AGENT_P}" \
 			|| die "cd to ${TOPOLA_AGENT_P} failed"
-		TPA_OWNER=${PN} USER=${PN} TPA_HOME=${MY_D} \
-		HOME=${MY_D} TPAHOME=$(egethome topola) \
+		TPA_OWNER="${PN}" USER="${PN}" TPA_HOME="${MY_D}" \
+		HOME="${MY_D}" TPAHOME="$(egethome topola)" \
 			./tpainst.sh || die "${TOPOLA_AGENT_P}/tpainst.sh failed"
 
 		# revert TPA_HOME path back
 		if use base ; then
-			sed "s#${D}##" -i ${MY_D}/.topola \
+			sed "s#${D}##" -i "${MY_D}"/.topola \
 				|| die "sed second execution for .topola failed"
 		fi
 
 		if use xinetd ; then
 			insinto /etc/xinetd.d
-			doins ${MY_D}/docs/etc/xinetd.d/taremote
+			doins "${MY_D}"/docs/etc/xinetd.d/taremote
 		fi
 
 		# remove unneeded files
-		rm -r ${MY_D}/docs/ || die "remove ${MY_D}/docs/ failed"
-		rm -r ${MY_D}/src/  || die "remove ${MY_D}/src/ failed"
+		rm -r "${MY_D}"/docs/ || die "remove ${MY_D}/docs/ failed"
+		rm -r "${MY_D}"/src/  || die "remove ${MY_D}/src/ failed"
 
-		fowners -R ${PN}:${PN} $(egethome topola)
+		fowners -R "${PN}":"${PN}" "$(egethome topola)"
 	fi
 	unset MY_D
 }
