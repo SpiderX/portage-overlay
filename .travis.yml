@@ -32,4 +32,4 @@ before_script:
     - cd travis-overlay
 script:
     - ./../spinner.sh "python ../portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -d"
-    - shellcheck -s bash -e "SC2034,SC2016,SC2191" $(find . -maxdepth 3 -type f -name "*.ebuild" -o -name "*.initd")
+    - shellcheck -s bash -e "SC2034,SC2016,SC2191,SC2037" $(find . -maxdepth 3 -type f -name "*.ebuild" -o -name "*.initd")
