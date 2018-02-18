@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -26,8 +26,6 @@
 		<flag name="sgconf_xml">Enable build of command-line xml-based utility for configuring Stargazer.</flag>
 		<flag name="stargazer">Enable build of Stargazer billing system.</flag>
 		<flag name="debug">Enable extra debug codepaths, like asserts and extra output.</flag>
-		<flag name="doc">Adds extra documentation (API, doc, etc).</flag>
-		<flag name="examples">Install examples, usually source code.</flag>
 		<flag name="module_auth_always_online">Enable build of "Always Online" authentication module for Stargazer.</flag>
 		<flag name="module_auth_internet_access">Enable build of "InetAccess" authentication module for Stargazer. InetAccess is a Stargazer specific authentication protocol.</flag>
 		<flag name="module_auth_freeradius">Enable build of "Radius" authentication module for Stargazer. This module capable of using RADIUS procotol for user authentication.</flag>
