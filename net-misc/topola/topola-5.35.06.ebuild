@@ -77,7 +77,7 @@ my_unpack() {
 
 src_unpack() {
 	# Put $A into array for further access to its elements
-	IFS=" " read -r -a MY_A <<<${A}
+	IFS=" " read -r -a MY_A <<<"${A}"
 	use base           && my_unpack "${TOPOLA_BASE_P}" 88
 	use unlicensed-bin && my_unpack "${TOPOLA_UNLICENSED_BIN_P}" 90
 	use licensed-bin   && my_unpack "${TOPOLA_LICENSED_BIN_P}" 90
