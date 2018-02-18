@@ -70,7 +70,7 @@ pkg_postinst() {
 
 pkg_config() {
 	einfo "Enter you vhost_root/vhost_htdocs. Default: localhost/htdocs"
-	read answer
+	read -r answer
 	[ -z "${answer}" ] && answer="localhost/htdocs"
 	path="${ROOT}"var/www/"${answer}"/"${PN}"
 	unset answer
@@ -80,7 +80,7 @@ pkg_config() {
 		einfo
 		while [ "$correct" != "true" ] ; do
 			einfo "Are you ready to continue? (y/n)"
-			read answer
+			read -r answer
 			if [[ "$answer" =~ ^[Yy]([Ee][Ss])?$ ]] ; then
 				correct="true"
 			elif [[ "$answer" =~ ^[Nn]([Oo])?$ ]] ; then
