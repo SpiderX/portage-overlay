@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=Yes
 MY_HOME="/var/lib/${PN}"
 
-inherit distutils-r1 user systemd mercurial
+inherit distutils-r1 git-r3 user systemd
 
 DESCRIPTION="NOCProject supervisor"
 HOMEPAGE="https://bitbucket.org/nocproject/noc-tower"
 SRC_URI=""
-EHG_REPO_URI="https://bitbucket.org/nocproject/noc-tower"
+EGIT_REPO_URI="https://code.getnoc.com/noc/tower.git"
 
 LICENSE="BSD"
 IUSE="systemd"
@@ -44,7 +44,7 @@ src_prepare() {
 	sed -i \
 		-e s":var:${D}/var/lib:" \
 		-e s':"tower", d):"noc-tower", d):' \
-		-e '/scripts=/'d \
+		-e '/scripts=/d' \
 		setup.py || die "sed for setup.py failed"
 	sed -i \
 		-e s":var/tower:${MY_HOME}:" \
