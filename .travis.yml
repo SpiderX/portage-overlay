@@ -6,6 +6,7 @@ language: python
 python:
     - pypy
 env:
+  global:
     - PORTAGE_VER="2.3.24"
     - PATH="/tmp/shellcheck-latest:$PATH"
 before_install:
