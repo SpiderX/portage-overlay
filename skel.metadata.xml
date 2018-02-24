@@ -22,7 +22,7 @@
 		<bugs-to></bugs-to>
 		<doc></doc>
 		<changelog></changelog>
-		<remote-id></remote-id>
+		<remote-id type=""></remote-id>
 	</upstream>
 	<slots>
 		<slot name="0">
