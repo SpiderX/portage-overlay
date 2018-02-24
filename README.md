@@ -6,8 +6,20 @@
 
 # How to use this overlay
 
-[Local overlays](https://wiki.gentoo.org/wiki/Overlay/Local_overlay) should be managed via `/etc/portage/repos.conf/`.
-To enable this overlay make sure you are using a recent Portage version (at least `2.2.14`), and crate an `/etc/portage/repos.conf/nest.conf` file containing precisely:
+For automatic install, you must have [`app-eselect/eselect-repository`](https://packages.gentoo.org/packages/app-eselect/eselect-repository)
+or [`app-portage/layman`](https://packages.gentoo.org/packages/app-portage/layman) installed on your system for this to work.
+
+#### `eselect-repository`:
+```console
+eselect repository enable nest
+```
+
+#### `layman`:
+```console
+layman -fa nest
+```
+
+For manual install, through [local overlays](https://wiki.gentoo.org/wiki/Overlay/Local_overlay), you should add this in `/etc/portage/repos.conf/nest.conf`:
 
 ```
 [nest]
@@ -18,14 +30,6 @@ priority=9999
 ```
 
 Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all our ebuilds available.
-
-# With layman
-
-Add `https://raw.github.com/spiderx/portage-overlay/master/overlay.xml` to overlays section in `/etc/layman/layman.cfg`.
-
-Or read the instructions on the [Gentoo Wiki](http://wiki.gentoo.org/wiki/Layman#Adding_custom_overlays), then invoke the following:
-
-    layman -f -a nest
 
 ## List of Ebuilds
 
