@@ -4,6 +4,14 @@
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
+### References
+
++ [Overlay with metadata](https://github.com/gentoo-mirror/nest)
++ [QA Report](https://qa-reports.gentoo.org/output/repos/nest.html)
++ [Gentoo Repo QA Check](http://gentoo.github.io/repo-qa-check-results/nest.html)
++ [Ebuild Upstream Scanner](http://euscan.gentooexperimental.org/maintainers/spiderx@spiderx.dp.ua/)
++ [Levelnine checks](https://gentoo.levelnine.at/full-sort-by-maintainer/spiderx_at_spiderx.dp.ua.txt)
+
 # How to use this overlay
 
 For automatic install, you must have [`app-eselect/eselect-repository`](https://packages.gentoo.org/packages/app-eselect/eselect-repository)
@@ -35,7 +43,7 @@ Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all o
 
 This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 
-* net-misc/[stargazer](http://stg.codes/) ([452916](https://bugs.gentoo.org/show_bug.cgi?id=452916)) | Billing system for small home and office networks
+* net-misc/[stargazer](http://stg.codes/)[![Gentoo](https://repology.org/badge/version-only-for-repo/gentoo/stargazer.svg](https://repology.org/metapackage/stargazer) ([452916](https://bugs.gentoo.org/show_bug.cgi?id=452916)) | Billing system for small home and office networks
 * net-misc/[samplicator](https://github.com/sleinen/samplicator) ([459310](https://bugs.gentoo.org/show_bug.cgi?id=459310)) | UDP packets forwarder and duplicator
 * [ssmd](https://gitorious.org/ssmd/)
 * [opentracker](http://erdgeist.org/arts/software/opentracker/) with [flygoast](https://github.com/flygoast/opentracker)'s patches ([214969](https://bugs.gentoo.org/show_bug.cgi?id=214969))
