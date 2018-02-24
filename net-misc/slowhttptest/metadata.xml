@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A highly configurable tool that simulates some Application Layer
+	Denial of Service attacks by prolonging HTTP connections in different ways.
+	Use it to test your web server for DoS vulnerabilites, or just to figure out
+	how many concurrent connections it can handle.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">shekyan/slowhttptest</remote-id>
+	</upstream>
+</pkgmetadata>
