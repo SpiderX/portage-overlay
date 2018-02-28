@@ -3,15 +3,15 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+EGIT_REPO_URI="https://github.com/andreif/${PN}.git"
+EGIT_BRANCH="allthethings"
+PYTHON_COMPAT=( python2_7 )
 
 inherit git-r3 python-r1
 
 DESCRIPTION="A high-performance PostgreSQL tuning script"
 HOMEPAGE="https://github.com/andreif/pgtune https://github.com/gregs1104/pgtune"
 SRC_URI=""
-EGIT_REPO_URI="git://github.com/andreif/${PN}.git"
-EGIT_BRANCH="allthethings"
 
 LICENSE="BSD-2"
 KEYWORDS=""
