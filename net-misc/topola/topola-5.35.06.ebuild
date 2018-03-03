@@ -50,7 +50,7 @@ RDEPEND="elibc_glibc? ( sys-libs/glibc:2.2 )
 pkg_nofetch() {
 	if use licensed-bin; then
 		eerror "Please go to"
-		eerror "  https://${HOMEPAGE}"
+		eerror "  https://topola.unity.net"
 		eerror "  and download"
 		eerror "TopolA: Main binaries i686+x86_64 (Licensed):"
 		eerror "    ${TOPOLA_LICENSED_BIN_P}.bin"
