@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Automated testing for Ansible roles"
-HOMEPAGE="https://github.com/metacloud/${MY_PN} https://pypi.python.org/pypi/${MY_PN} https://${MY_PN}.readthedocs.io/"
+HOMEPAGE="https://github.com/metacloud/ansible-molecule https://pypi.python.org/pypi/ansible-molecule"
 SRC_URI="https://github.com/metacloud/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
