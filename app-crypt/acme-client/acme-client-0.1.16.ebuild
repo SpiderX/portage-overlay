@@ -10,7 +10,7 @@ MY_PV="VERSION_${PV//./_}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Secure Let's Encrypt client"
-HOMEPAGE="https://kristaps.bsd.lv/${PN}/"
+HOMEPAGE="https://github.com/kristapsdz/acme-client-portable https://kristaps.bsd.lv/acme-client/"
 SRC_URI="https://github.com/kristapsdz/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC MIT"

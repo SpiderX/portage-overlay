@@ -1,6 +1,6 @@
 # nest overlay
 
-[![ebuilds 124](https://img.shields.io/badge/ebuild-124-orange.svg)](https://img.shields.io/badge/ebuild-124-orange.svg)
+[![Number of ebuilds: 129](https://img.shields.io/badge/ebuild-129-orange.svg)](https://img.shields.io/badge/ebuild-129-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
