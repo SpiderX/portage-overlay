@@ -26,7 +26,7 @@ DOCS=( README.md )
 
 src_install() {
 	webapp_src_preinst
-	cp -R war/* "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
+	cp -R src/main/webapp/* "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
 	webapp_src_install
 
 	einstalldocs
