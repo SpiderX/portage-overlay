@@ -8,7 +8,7 @@ MY_P="release-v${PV}"
 inherit autotools toolchain-funcs
 
 DESCRIPTION="LibYAML binding for Lua"
-HOMEPAGE="https://github.com/gvvaughan/${PN}"
+HOMEPAGE="https://github.com/gvvaughan/lyaml"
 SRC_URI="https://github.com/gvvaughan/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
