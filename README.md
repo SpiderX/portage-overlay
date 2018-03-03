@@ -146,7 +146,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[ngrok-bin](https://ngrok.com/) | Secure introspected tunnels to localhost
 * net-misc/[pingu](https://github.com/ncopa/pingu) | Policy routing daemon with failover and load-balancing
 * net-misc/[qfreerdp](https://github.com/zrax/qfreerdp) | Qt launcher GUI for XFreeRDP
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-452916-red.svg)](https://bugs.gentoo.org/452916) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/stargazer.svg)](https://repology.org/metapackage/stargazer) net-misc/[qia](http://stg.codes/) | Authorization tool for Stargazer Billing System written in Qt
+* net-misc/[qia](http://stg.codes/) | Authorization tool for Stargazer Billing System written in Qt
 * net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
 * net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-459310-red.svg)](https://bugs.gentoo.org/459310) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/samplicator.svg)](https://repology.org/metapackage/samplicator) net-misc/[samplicator](https://github.com/sleinen/samplicator) | UDP packets forwarder and duplicator
