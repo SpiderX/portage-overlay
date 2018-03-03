@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit git-r3 distutils-r1
 
 DESCRIPTION="An unit tests in Python to test actual state of servers"
-HOMEPAGE="https://github.com/philpep/${PN} http://${PN}.readthedocs.io/en/latest/"
+HOMEPAGE="https://github.com/philpep/testinfra http://testinfra.readthedocs.io/en/latest/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/philpep/${PN}.git"
 
