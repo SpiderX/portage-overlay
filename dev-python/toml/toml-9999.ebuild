@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit git-r3 distutils-r1
 
 DESCRIPTION="Python Library for Tom's Obvious, Minimal Language"
-HOMEPAGE="https://github.com/uiri/${PN} https://pypi.python.org/pypi/${PN}"
+HOMEPAGE="https://github.com/uiri/toml https://pypi.python.org/pypi/toml"
 EGIT_REPO_URI="https://github.com/uiri/${PN}.git"
 SRC_URI=""
 
