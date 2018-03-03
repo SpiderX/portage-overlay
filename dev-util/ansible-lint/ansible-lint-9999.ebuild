@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_5} )
 inherit git-r3 distutils-r1
 
 DESCRIPTION="Best practices checker for Ansible"
-HOMEPAGE="https://github.com/willthames/${PN} https://pypi.python.org/pypi/${PN}"
+HOMEPAGE="https://github.com/willthames/ansible-lint https://pypi.python.org/pypi/ansible-lint"
 EGIT_REPO_URI="https://github.com/willthames/${PN}.git"
 SRC_URI=""
 
