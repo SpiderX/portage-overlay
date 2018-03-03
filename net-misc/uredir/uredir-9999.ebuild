@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit user systemd git-r3
+inherit git-r3 systemd user
 
 DESCRIPTION="UDP port redirector"
-HOMEPAGE="https://github.com/troglobit/${PN}"
+HOMEPAGE="https://github.com/troglobit/uredir"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
 
