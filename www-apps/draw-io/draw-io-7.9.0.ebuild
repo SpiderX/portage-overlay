@@ -9,7 +9,7 @@ WEBAPP_MANUAL_SLOT="yes"
 MY_PN="${PN/-/}"
 
 DESCRIPTION="Online diagramming web application"
-HOMEPAGE="https://github.com/jgraph/${MY_PN}"
+HOMEPAGE="https://github.com/jgraph/drawio"
 SRC_URI="https://github.com/jgraph/${MY_PN}/archive/v${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
