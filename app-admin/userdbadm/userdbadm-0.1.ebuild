@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Tool to manage (PAM) userdb files with crypted passwords"
-HOMEPAGE="http://nasauber.de/opensource/${PN}/"
+HOMEPAGE="http://nasauber.de/opensource/userdbadm"
 SRC_URI="http://nasauber.de/opensource/${PN}/${PN}-0.1.tar.gz"
 
 LICENSE="GPL-2"
