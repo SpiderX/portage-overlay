@@ -8,9 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_4 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A configurable set of panels that display debug information"
-HOMEPAGE="
-	https://pypi.python.org/pypi/django-debug-toolbar/
-	https://github.com/django-debug-toolbar/django-debug-toolbar/"
+HOMEPAGE="https://github.com/django-debug-toolbar/django-debug-toolbar"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
@@ -21,11 +19,9 @@ IUSE="doc examples"
 RDEPEND="
 	>=dev-python/django-1.8[${PYTHON_USEDEP}]
 	>=dev-python/python-sqlparse-0.2.0[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# Prevent non essential d'loading by intersphinx
