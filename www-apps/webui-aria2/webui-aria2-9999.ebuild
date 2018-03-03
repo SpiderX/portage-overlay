@@ -8,7 +8,7 @@ inherit git-r3 webapp
 WEBAPP_MANUAL_SLOT="yes"
 
 DESCRIPTION="The worlds best and hottest interface to interact with aria2"
-HOMEPAGE="https://github.com/ziahamza/${PN}"
+HOMEPAGE="https://github.com/ziahamza/webui-aria2"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/ziahamza/${PN}.git"
 
