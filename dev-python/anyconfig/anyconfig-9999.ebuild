@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit git-r3 distutils-r1
 
 DESCRIPTION="Generic access to configuration files in any formats"
-HOMEPAGE="https://github.com/ssato/python-${PN} https://pypi.python.org/pypi/${PN}"
+HOMEPAGE="https://github.com/ssato/python-anyconfig https://pypi.python.org/pypi/anyconfig"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/ssato/python-${PN}.git"
 
