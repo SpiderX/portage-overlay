@@ -3,12 +3,12 @@
 
 EAPI=6
 
-inherit user systemd
+inherit systemd user
 
 MY_P="${PN}.v.${PV}"
 
 DESCRIPTION="A simple dynamic DNS client"
-HOMEPAGE="http://${PN}.sourceforge.net/"
+HOMEPAGE="http://inadyn-mt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
