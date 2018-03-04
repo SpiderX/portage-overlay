@@ -62,7 +62,7 @@ src_prepare() {
 
 	if ! use doc ; then
 		sed -i "/install:/s/install-man //" Makefile.install \
-			die "sed for install-man failed"
+			|| die "sed for install-man failed"
 	fi
 
 	if ! use selinux; then
@@ -82,7 +82,7 @@ src_compile() {
 		V=1 WERROR=0 DEBUG=0 \
 		SETPROCTITLE="$(usex setproctitle)" \
 		PYCRIU="$(usex python)" \
-		all "$(usex doc docs "")"
+		"$(usex doc 'all docs' 'all')"
 }
 
 src_test() {
