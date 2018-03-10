@@ -46,8 +46,8 @@ KEYWORDS="~amd64"
 # dev-go/toml doesn't provide sources
 # dev-go/go-protobuf is too old, use bundled version
 # dev-go/go-net is too old, use bundled version
-DEPEND="dev-lang/go:0=
-	dev-go/go-spew:0="
+DEPEND="dev-lang/go:=
+	dev-go/go-spew:="
 RDEPEND="${DEPEND}
 	app-admin/logrotate"
 
