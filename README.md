@@ -171,5 +171,5 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * www-apps/[webui-aria2](https://github.com/ziahamza/webui-aria2) | The worlds best and hottest interface to interact with aria2
 * www-plugins/[chrome-token-signing](https://github.com/open-eid/chrome-token-signing) | Native client and extension for signing with your eID on the web
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/libinput-gestures.svg)](https://repology.org/metapackage/libinput-gestures) x11-misc/[libinput-gestures](https://github.com/bulletmark/libinput-gestures) | Actions gestures on your touchpad using libinput
-* x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * www-servers/[gitlab-workhorse](https://gitlab.com/gitlab-org/gitlab-workhorse) | GitLab reverse proxy
+* x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
