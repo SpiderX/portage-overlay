@@ -20,13 +20,11 @@ EGO_VENDOR=( "github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f
 
 EGO_PN="github.com/knqyf263/${PN}"
 
-inherit golang-build golang-vcs-snapshot
-
-ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+inherit golang-build golang-vcs-snapshot readme.gentoo-r1
 
 DESCRIPTION="Simple command-line snippet manager"
 HOMEPAGE="https://github.com/knqyf263/pet"
-SRC_URI="${ARCHIVE_URI}
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
 LICENSE="MIT"
@@ -35,13 +33,17 @@ KEYWORDS="~amd64"
 IUSE="zsh-completion"
 
 # dev-go/toml doesn't provide sources
-DEPEND="dev-go/go-crypto
-	dev-go/go-net
-	dev-go/go-oauth2
-	dev-go/go-protobuf
-	dev-go/go-sys"
+DEPEND="dev-lang/go:=
+	dev-go/go-crypto:=
+	dev-go/go-net:=
+	dev-go/go-oauth2:=
+	dev-go/go-protobuf:=
+	dev-go/go-sys:="
 RDEPEND="${DEPEND}
 	zsh-completion? ( app-shells/zsh-completions )"
+
+DOC_CONTENTS="${CATEGORY}/${PN}: You should consider to
+install app-shells/peco to be able to use selector command"
 
 src_install() {
 	dobin pet
@@ -50,8 +52,10 @@ src_install() {
 		insinto /usr/share/zsh/site-functions
 		doins src/github.com/knqyf263/pet/misc/completions/zsh/_"${PN}"
 	fi
+
+	readme.gentoo_create_doc
 }
 
-pkg_postinstall() {
-	einfo "You should consider to install app-shells/peco to be able to use selector command"
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
