@@ -1,0 +1,10 @@
+# Config file for /etc/init.d/gitlab-workhorse
+
+# extra options (run gitlab-workhorse -h for a list of supported options)
+WORKHORSE_OPTS="-listenUmask 022 -listenNetwork unix \
+-listenAddr /run/gitlab-workhorse/gitlab-workhorse.socket \
+-authBackend http://127.0.0.1:8080 \
+-authSocket /var/lib/git/gitlab/tmp/sockets/gitlab.socket \
+-secretPath /var/lib/git/gitlab/.gitlab_workhorse_secret
+-logFile /var/log/gitlab-workhorse/gitlab-workhorse.log \
+-documentRoot /var/lib/git/gitlab/public"
