@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/gitlab-workhorse
+
+# extra options (run gitaly -h for a list of supported options)
+GITALY_OPTS="/etc/gitlab-gitaly/config.toml"

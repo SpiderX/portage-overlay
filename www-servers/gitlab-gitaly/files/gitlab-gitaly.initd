@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/gitaly"
+command_args="${GITALY_OPTS}"
+command_background="yes"
+command_user="${USER:-gitaly}:${GROUP:-gitlab}"
+description="GitLab Gitaly"
+name="Gitlab Gitaly"
+pidfile="/run/gitlab-gitaly/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}
