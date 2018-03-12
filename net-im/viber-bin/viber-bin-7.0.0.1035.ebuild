@@ -15,44 +15,46 @@ SRC_URI="http://download.cdn.viber.com/cdn/desktop/Linux/${MY_PN}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 -*"
-IUSE="apulse pax_kernel"
+IUSE="apulse pax_kernel pulseaudio"
+REQUIRED_USE="apulse? ( !pulseaudio )"
+
 RESTRICT="bindist mirror strip"
 
 DEPEND="sys-apps/fix-gnustack"
-RDEPEND="dev-libs/expat:0[${MULTILIB_USEDEP}]
+RDEPEND="dev-libs/expat[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
-	dev-libs/nspr:0[${MULTILIB_USEDEP}]
-	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	dev-libs/wayland:0[${MULTILIB_USEDEP}]
-	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
+	dev-libs/nspr[${MULTILIB_USEDEP}]
+	dev-libs/nss[${MULTILIB_USEDEP}]
+	dev-libs/wayland[${MULTILIB_USEDEP}]
+	media-libs/alsa-lib[${MULTILIB_USEDEP}]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
 	media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}]
 	media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
-	media-sound/pulseaudio:0[${MULTILIB_USEDEP}]
-	net-print/cups:0[${MULTILIB_USEDEP}]
-	sys-apps/dbus:0[${MULTILIB_USEDEP}]
+	net-print/cups[${MULTILIB_USEDEP}]
+	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/zlib:0/1[${MULTILIB_USEDEP}]
-	x11-libs/libdrm:0[${MULTILIB_USEDEP}]
-	x11-libs/libICE:0[${MULTILIB_USEDEP}]
-	x11-libs/libSM:0[${MULTILIB_USEDEP}]
-	x11-libs/libX11:0[${MULTILIB_USEDEP}]
+	x11-libs/libdrm[${MULTILIB_USEDEP}]
+	x11-libs/libICE[${MULTILIB_USEDEP}]
+	x11-libs/libSM[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libxcb:0/1.12[${MULTILIB_USEDEP}]
-	x11-libs/libXcomposite:0[${MULTILIB_USEDEP}]
-	x11-libs/libXcursor:0[${MULTILIB_USEDEP}]
-	x11-libs/libXdamage:0[${MULTILIB_USEDEP}]
-	x11-libs/libXext:0[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes:0[${MULTILIB_USEDEP}]
-	x11-libs/libXi:0[${MULTILIB_USEDEP}]
-	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
-	x11-libs/libXrender:0[${MULTILIB_USEDEP}]
-	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
-	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-image:0[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-keysyms:0[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-renderutil:0[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-wm:0[${MULTILIB_USEDEP}]
-	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )"
+	x11-libs/libXcomposite[${MULTILIB_USEDEP}]
+	x11-libs/libXcursor[${MULTILIB_USEDEP}]
+	x11-libs/libXdamage[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	x11-libs/libXi[${MULTILIB_USEDEP}]
+	x11-libs/libXrandr[${MULTILIB_USEDEP}]
+	x11-libs/libXrender[${MULTILIB_USEDEP}]
+	x11-libs/libXScrnSaver[${MULTILIB_USEDEP}]
+	x11-libs/libXtst[${MULTILIB_USEDEP}]
+	x11-libs/xcb-util-image[${MULTILIB_USEDEP}]
+	x11-libs/xcb-util-keysyms[${MULTILIB_USEDEP}]
+	x11-libs/xcb-util-renderutil[${MULTILIB_USEDEP}]
+	x11-libs/xcb-util-wm[${MULTILIB_USEDEP}]
+	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="/opt/viber/QtWebEngineProcess
 	/opt/viber/plugins/*/*.so
