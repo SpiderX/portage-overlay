@@ -15,8 +15,8 @@ SRC_URI="http://download.cdn.viber.com/cdn/desktop/Linux/${MY_PN}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 -*"
-IUSE="apulse pax_kernel pulseaudio"
-REQUIRED_USE="apulse? ( !pulseaudio )"
+IUSE="apulse pax_kernel +pulseaudio"
+REQUIRED_USE="^^ ( apulse pulseaudio )"
 
 RESTRICT="bindist mirror strip"
 
