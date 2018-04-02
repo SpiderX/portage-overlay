@@ -78,7 +78,7 @@ src_install() {
 	fperms +x /opt/slack/slack
 	dosym ../../opt/slack/slack usr/bin/slack
 
-	use pax_kernel && pax-mark -m ${ED%/}/opt/slack/slack
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/slack/slack
 }
 
 pkg_postinst() {
