@@ -45,7 +45,7 @@ src_install() {
 	doman "${PN}".1
 
 	dodir /var/log/"${PN}"
-	keepdir /etc/"${PN}" /var/lib/"${PN}"/ /var/lib/"${PN}"/.sync
+	keepdir /etc/"${PN}" /var/lib/"${PN}"/ /var/lib/"${PN}"/.sync /var/log/"${PN}"
 	fperms 0700 /etc/"${PN}" /var/lib/"${PN}" /var/lib/"${PN}"/.sync /var/log/"${PN}"
 	fowners -R "${NAME}":"${NAME}" /etc/"${PN}" /var/lib/"${PN}" /var/log/"${PN}"
 
