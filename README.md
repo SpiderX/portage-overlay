@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 131](https://img.shields.io/badge/ebuild-131-orange.svg)](https://img.shields.io/badge/ebuild-131-orange.svg)
+[![Number of ebuilds: 132](https://img.shields.io/badge/ebuild-132-orange.svg)](https://img.shields.io/badge/ebuild-132-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -53,6 +53,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-emulation/[looking-glass](https://looking-glass.hostfission.com) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 * app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
 * app-misc/[android-file-transfer-linux](https://whoozle.github.io/android-file-transfer-linux/) | Reliable MTP client with minimalistic UI
+* app-misc/[cointop](https://github.com/miguelmota/cointop) | Interactive cryptocurrency monitor
 * app-misc/[jshon](http://kmkeen.com/jshon) | JSON parser designed for maximum convenience within the shell
 * app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
 * app-misc/[rmlint](http://rmlint.rtfd.org) | Removes duplicates and other lint from your filesystem
