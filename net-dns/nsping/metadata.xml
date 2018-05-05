@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Utility uses DNS queries to monitor reachability and operation of name-
+	servers, as well as the latency of DNS queries. It does this by sending
+	random recursive DNS queries to the nameserver (avoiding the effects of
+	DNS caching) and measuring the amount of time between the sending of the
+	query and the receipt of the response packet.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vovcat/nsping</remote-id>
+	</upstream>
+</pkgmetadata>
