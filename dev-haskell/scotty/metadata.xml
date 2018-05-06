@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Scotty is a way to write RESTful, declarative web applications.
+	A page is as simple as defining the verb, url pattern, and Text content.
+	It is template-language agnostic. Anything that returns a Text value will do.
+	Conforms to WAI Application interface.
+	Uses very fast Warp webserver by default.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">scotty-web/scotty</remote-id>
+	</upstream>
+</pkgmetadata>
