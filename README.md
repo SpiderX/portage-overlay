@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 133](https://img.shields.io/badge/ebuild-133-orange.svg)](https://img.shields.io/badge/ebuild-133-orange.svg)
+[![Number of ebuilds: 139](https://img.shields.io/badge/ebuild-139-orange.svg)](https://img.shields.io/badge/ebuild-139-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -65,6 +65,12 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-482946-red.svg)](https://bugs.gentoo.org/482946) dev-libs/[loki](http://loki-lib.sourceforge.net/) | C++ library of common design patterns and idioms
 * dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
+* dev-haskell/[daemons](https://github.com/scvalex/daemons) | Daemons in Haskell made fun and easy
+* dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
+* dev-haskell/[scotty](https://github.com/scotty-web/scotty) | A Haskell web framework, using WAI and Warp
+* dev-haskell/[tz](https://github.com/nilcons/haskell-tz) | Library for time zone conversions
+* dev-haskell/[tzdata](https://github.com/nilcons/haskell-tzdata) | Distribution of the standard time zone database
+* dev-haskell/[wai-cors](https://github.com/larskuhtz/wai-cors) | Cross-Origin resource sharing (CORS) for Wai
 * dev-ml/[ocaml-alsa](https://github.com/savonet/ocaml-alsa) | OCaml bindings to alsa-lib
 * dev-ml/[ocaml-ao](https://github.com/savonet/ocaml-ao) | OCaml bindings to libao
 * dev-ml/[ocaml-bjack](https://github.com/savonet/ocaml-bjack) | OCaml blocking JACK API
