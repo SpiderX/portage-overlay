@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="OCaml syslog client functions"
 HOMEPAGE="http://opam.ocaml.org/packages/syslog https://github.com/ocaml/opam-repository/"
-SRC_URI="http://deb.debian.org/debian/pool/main/s/syslog-ocaml/syslog-ocaml_${PV}.orig.tar.gz"
+SRC_URI="mirror://debian/pool/main/s/syslog-ocaml/syslog-ocaml_${PV}.orig.tar.gz"
 
 LICENSE="CC0-1.0"
 SLOT="0/${PV}"
