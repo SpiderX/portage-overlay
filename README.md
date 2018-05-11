@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 139](https://img.shields.io/badge/ebuild-139-orange.svg)](https://img.shields.io/badge/ebuild-139-orange.svg)
+[![Number of ebuilds: 140](https://img.shields.io/badge/ebuild-140-orange.svg)](https://img.shields.io/badge/ebuild-140-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -165,6 +165,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
 * net-misc/[virtualhere-usb-bin](https://virtualhere.com/) | Share USB devices over the network
 * net-p2p/[automatic](https://github.com/1100101/Automatic) | RSS downloader for Tranmission
+* net-p2p/[tremotesf](https://github.com/equeim/tremotesf2) | A remote GUI for transmission
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-214969-red.svg)](https://bugs.gentoo.org/214969) net-p2p/[opentracker](https://github.com/flygoast/opentracker) | High-performance bittorrent tracker
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-486406-red.svg)](https://bugs.gentoo.org/486406) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/resilio-sync.svg)](https://repology.org/metapackage/resilio-sync) net-p2p/[resilio-sync](https://getsync.com/) | Resilient, fast and scalable file synchronization tool
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/498844) net-vpn/[softether](http://www.softether.org/) | Multi-protocol VPN software
