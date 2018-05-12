@@ -3,10 +3,9 @@
 
 EAPI=6
 
-PLOCALES="en es nl_BE nl ru"
 MY_PN="tremotesf2"
 
-inherit gnome2-utils l10n qmake-utils xdg-utils
+inherit gnome2-utils qmake-utils xdg-utils
 
 DESCRIPTION="A remote GUI for transmission"
 HOMEPAGE="https://github.com/equeim/tremotesf2"
@@ -31,28 +30,8 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 DOCS=( CHANGELOG.md README.md )
 
-src_prepare() {
-	default
-
-	local lr
-	lr="$(qt5_get_bindir)"/lrelease
-	rm translations/source.ts || die "rm source.ts failed"
-	l10n_prepare() {
-		$lr translations/"${1}".ts || die "lrelease ${1} failed"
-	}
-	l10n_find_plocales_changes translations "" .ts
-	l10n_for_each_locale_do l10n_prepare
-}
-
 src_configure() {
 	eqmake5 PREFIX="${ED%/}"/usr
-}
-
-src_install() {
-	default
-
-	insinto /usr/share/qt5/translations
-	doins translations/*.qm
 }
 
 pkg_postinst() {
