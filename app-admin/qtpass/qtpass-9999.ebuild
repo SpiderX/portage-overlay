@@ -35,34 +35,38 @@ src_prepare() {
 	default
 
 	if ! use test ; then
-		sed -i \
-			-e '/SUBDIRS += src /s/tests //' \
-				qtpass.pro || die "sed for qtpass.pro failed"
+		sed -i '/SUBDIRS += src /s/tests //' \
+			qtpass.pro || die "sed for qtpass.pro failed"
 	fi
 
-	local lr
-	lr="$(qt5_get_bindir)"/lrelease
-	l10n_prepare() {
-		$lr localization/localization_"${1}".ts || die "lrelease ${1} failed"
-	}
 	l10n_find_plocales_changes localization localization_ .ts
-	l10n_for_each_locale_do l10n_prepare
 }
 
 src_configure() {
 	eqmake5 PREFIX="${D}"/usr
 }
 
+src_compile() {
+	default
+
+	local lr
+	lr="$(qt5_get_bindir)"/lrelease
+	l10n_build() {
+		$lr localization/localization_"${1}".ts || die "lrelease ${1} failed"
+	}
+	l10n_for_each_locale_do l10n_build
+}
+
 src_install() {
 	default
 
-	insinto /usr/share/qt5/translations
+	insinto /usr/share/"${PN}"/translations
 	doins localization/*.qm
 
 	doman "${PN}".1
 	insinto /usr/share/applications
-	doins "${PN}.desktop"
-	newicon artwork/icon.png "${PN}-icon.png"
+	doins "${PN}".desktop
+	newicon artwork/icon.png "${PN}"-icon.png
 	insinto /usr/share/appdata
 	doins qtpass.appdata.xml
 }
