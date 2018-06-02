@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/odyssey
+
+# Various options.
+CONFIG="/etc/odyssey/odyssey.conf"

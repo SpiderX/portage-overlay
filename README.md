@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 140](https://img.shields.io/badge/ebuild-140-orange.svg)](https://img.shields.io/badge/ebuild-140-orange.svg)
+[![Number of ebuilds: 141](https://img.shields.io/badge/ebuild-141-orange.svg)](https://img.shields.io/badge/ebuild-141-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -60,6 +60,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 * app-text/[keening](https://github.com/vehk/keening) | A simple command line pastebin designed to be used together with ssh
 * dev-db/[influxdb-bin](http://influxdata.com) | Scalable datastore for metrics, events, and real-time analytics
+* dev-db/[odyssey](https://github.com/yandex/odyssey) | Scalable PostgreSQL connection pooler
 * dev-db/[pgtune](https://github.com/andreif/pgtune) | A high-performance PostgreSQL tuning script
 * dev-libs/[libcommuni](http://communi.github.io/) | A cross-platform IRC framework written with Qt
 * dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library

@@ -1,0 +1,8 @@
+/var/log/odyssey/odyssey.log {
+	daily
+	rotate 30
+	copytruncate
+	delaycompress
+	missingok
+	create 640 odyssey odyssey
+}
