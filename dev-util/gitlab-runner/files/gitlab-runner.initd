@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/gitlab-runner"
+command_args="run ${RUNNER_OPTS}"
+command_background="yes"
+command_user="${USER:-runner}:${GROUP:-gitlab}"
+description="GitLab Runner"
+name="Gitlab Runner"
+pidfile="/run/gitlab-runner/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

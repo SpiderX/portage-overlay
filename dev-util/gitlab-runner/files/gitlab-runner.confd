@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/gitlab-runner
+
+# extra options (run gitlab-runner -h for a list of supported options)
+RUNNER_OPTS="--config /etc/gitlab-runner/config.toml --working-directory /var/lib/gitlab-runner --service gitlab-runner"

@@ -1,0 +1,47 @@
+--- a/Makefile	2018-06-03 13:27:37.676181125 +0300
++++ b/Makefile	2018-06-03 13:31:56.071643646 +0300
+@@ -59,7 +59,7 @@
+ GOX = $(GOPATH_BIN)/gox
+ GOBINDATA = $(GOPATH_BIN)/go-bindata
+ MOCKERY = $(GOPATH_BIN)/mockery
+-DEVELOPMENT_TOOLS = $(GOX) $(GOBINDATA) $(MOCKERY)
++DEVELOPMENT_TOOLS = $(MOCKERY)
+ 
+ MOCKERY_FLAGS = -note="This comment works around https://github.com/vektra/mockery/issues/155"
+ 
+@@ -101,7 +101,7 @@
+ codequality:
+ 	./scripts/codequality analyze --dev
+ 
+-out/docker/prebuilt-x86_64.tar.xz: $(GO_FILES) $(GOX)
++out/docker/prebuilt-x86_64.tar.xz: $(GO_FILES)
+ 	# Create directory
+ 	mkdir -p out/docker
+ 
+@@ -129,7 +129,7 @@
+ 		https://gitlab-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-x86_64.tar.xz
+ endif
+ 
+-out/docker/prebuilt-arm.tar.xz: $(GO_FILES) $(GOX)
++out/docker/prebuilt-arm.tar.xz: $(GO_FILES)
+ 	# Create directory
+ 	mkdir -p out/docker
+ 
+@@ -157,7 +157,7 @@
+ 		https://gitlab-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-arm.tar.xz
+ endif
+ 
+-executors/docker/bindata.go: out/docker/prebuilt-x86_64.tar.xz out/docker/prebuilt-arm.tar.xz $(GOBINDATA)
++executors/docker/bindata.go: out/docker/prebuilt-x86_64.tar.xz out/docker/prebuilt-arm.tar.xz
+ 	# Generating embedded data
+ 	go-bindata \
+ 		-pkg docker \
+@@ -172,7 +172,7 @@
+ 
+ docker: executors/docker/bindata.go
+ 
+-build: executors/docker/bindata.go $(GOX)
++build: executors/docker/bindata.go
+ 	# Building $(NAME) in version $(VERSION) for $(BUILD_PLATFORMS)
+ 	gox $(BUILD_PLATFORMS) \
+ 		-ldflags "$(GO_LDFLAGS)" \
