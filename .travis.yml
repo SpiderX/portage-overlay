@@ -7,7 +7,7 @@ python:
     - pypy
 env:
   global:
-    - PORTAGE_VER="2.3.28"
+    - PORTAGE_VER="2.3.40"
     - PATH="/tmp/shellcheck-latest:$PATH"
 before_install:
     - sudo apt-get -qq update
