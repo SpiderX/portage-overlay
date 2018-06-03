@@ -8,20 +8,19 @@ BASE_URI="https://bin.equinox.io/c/4VmDzA7iaHb/${MY_PN}-stable-linux-_arch_.zip"
 
 DESCRIPTION="Secure introspected tunnels to localhost"
 HOMEPAGE="https://ngrok.com/"
-
-SRC_URI="
-	amd64? ( ${BASE_URI/_arch_/amd64} )
+SRC_URI="amd64? ( ${BASE_URI/_arch_/amd64} )
 	arm? ( ${BASE_URI/_arch_/arm} )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
+
 RESTRICT="mirror"
 
-QA_PREBUILT="ngrok"
-
 S="${WORKDIR}"
+
+QA_PREBUILT="ngrok"
 
 src_install() {
 	dobin ngrok
