@@ -63,7 +63,7 @@ DOCS=( CHANGELOG.md README.md )
 
 pkg_setup() {
 	enewgroup gitlab
-	enewuser gitaly -1 -1 -1 gitlab
+	enewuser gitaly -1 -1 /var/lib/"${PN}" gitlab
 }
 
 src_prepare() {
