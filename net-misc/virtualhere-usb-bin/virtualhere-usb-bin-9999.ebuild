@@ -10,8 +10,7 @@ inherit linux-info user
 
 DESCRIPTION="Share USB devices over the network"
 HOMEPAGE="https://virtualhere.com/"
-SRC_URI="
-	client? (
+SRC_URI="client? (
 		amd64? ( ${CLIENT_URI/_arch_/clientx86_64} )
 		arm?   ( ${CLIENT_URI/_arch_/clientarmhf} )
 		x86?   ( ${CLIENT_URI/_arch_/clienti386} )
@@ -38,8 +37,7 @@ DEPEND="virtual/linux-sources"
 
 S="${WORKDIR}"
 
-QA_PREBUILT="
-	/opt/vhusb/vhclient*
+QA_PREBUILT="/opt/vhusb/vhclient*
 	/opt/vhusb/vhuit*
 	/opt/vhusb/vhusbd*"
 

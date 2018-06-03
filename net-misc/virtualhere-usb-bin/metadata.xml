@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 	The VirtualHere USB Server shares USB devices over the network.
 	The server runs entirely in userspace and is entirely statically complied,
 	no linux run-time libraries are required at all on the server.
