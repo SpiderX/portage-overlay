@@ -22,7 +22,7 @@ EGO_VENDOR=( "github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f
 
 EGO_PN="github.com/knqyf263/${PN}"
 
-inherit golang-build golang-vcs-snapshot readme.gentoo-r1
+inherit golang-build golang-vcs-snapshot
 
 DESCRIPTION="Simple command-line snippet manager"
 HOMEPAGE="https://github.com/knqyf263/pet"
@@ -44,10 +44,6 @@ DEPEND="dev-lang/go:=
 RDEPEND="${DEPEND}
 	zsh-completion? ( app-shells/zsh-completions )"
 
-DOC_CONTENTS="${CATEGORY}/${PN}: You should consider to
-install app-shells/peco or app-shells/fzf to be able to
-use selector command"
-
 src_install() {
 	dobin pet
 
@@ -55,10 +51,11 @@ src_install() {
 		insinto /usr/share/zsh/site-functions
 		doins src/github.com/knqyf263/pet/misc/completions/zsh/_"${PN}"
 	fi
-
-	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	readme.gentoo_print_elog
+	if ! has_version app-shells/peco ; then
+		einfo "You should consider to install app-shells/peco"
+		einfo "to be able to use selector command"
+	fi
 }
