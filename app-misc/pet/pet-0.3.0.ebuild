@@ -35,8 +35,7 @@ KEYWORDS="~amd64"
 IUSE="zsh-completion"
 
 # dev-go/toml doesn't provide sources
-DEPEND="dev-lang/go:=
-	dev-go/go-crypto:=
+DEPEND="dev-go/go-crypto:=
 	dev-go/go-net:=
 	dev-go/go-oauth2:=
 	dev-go/go-protobuf:=
@@ -49,7 +48,7 @@ src_install() {
 
 	if use zsh-completion ; then
 		insinto /usr/share/zsh/site-functions
-		doins src/github.com/knqyf263/pet/misc/completions/zsh/_"${PN}"
+		doins src/github.com/knqyf263/pet/misc/completions/zsh/_pet
 	fi
 }
 
