@@ -6,11 +6,12 @@ EAPI=6
 MY_PN="${PN/_/-}"
 MY_P="${MY_PN}-${PV}"
 
-inherit linux-mod toolchain-funcs
+inherit linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Ratelimit iptables module"
 HOMEPAGE="https://github.com/aabc/ipt-ratelimit"
 SRC_URI="https://github.com/aabc/ipt-ratelimit/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -23,6 +24,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+DOCS=( NEWS README )
+
 pkg_setup() {
 	MODULE_NAMES="xt_ratelimit(ipt_ratelimit)"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
@@ -32,7 +35,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Fix Makefile (remove last $), replace make and gcc, add flags
 	sed -i \
+		-e '/gcc -O2 -Wall -Wunused/s/.$//' \
 		-e 's:make -C:$(MAKE) -C:g' \
 		-e 's:gcc -O2:$(CC) $(CFLAGS) $(LDFLAGS):' \
 		-e 's:gcc:$(CC) $(CFLAGS) $(LDFLAGS):' \
@@ -45,10 +50,11 @@ src_prepare() {
 }
 
 src_compile() {
-	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" all
+	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" KVER="${KV_FULL}" all
 }
 
 src_install() {
+	einstalldocs
 	linux-mod_src_install
 	exeinto "${IPT_LIB}"
 	doexe libxt_ratelimit.so
