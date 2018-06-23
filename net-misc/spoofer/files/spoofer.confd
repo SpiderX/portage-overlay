@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/spoofer
+
+# extra options (run spoofer --h for a list of supported options)
+SPOOFER_OPTS="-D -l --settings /etc/xdg/CAIDA/Spoofer.conf"

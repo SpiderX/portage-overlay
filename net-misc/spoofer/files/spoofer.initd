@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/spoofer-scheduler"
+command_args="${SPOOFER_OPTS}"
+command_user="${USER:-spoofer}:${GROUP:-spoofer}"
+description="Spoofer scheduler"
+name="Spoofer scheduler"
+pidfile="/run/spoofer/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

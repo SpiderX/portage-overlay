@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/spoofer-prober"
+command_args="${SPOOFER_OPTS}"
+command_background="yes"
+command_user="${USER:-spoofer}:${GROUP:-spoofer}"
+description="Spoofer prober"
+name="Spoofer prober"
+pidfile="/run/spoofer/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

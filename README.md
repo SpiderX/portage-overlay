@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 145](https://img.shields.io/badge/ebuild-145-orange.svg)](https://img.shields.io/badge/ebuild-145-orange.svg)
+[![Number of ebuilds: 146](https://img.shields.io/badge/ebuild-146-orange.svg)](https://img.shields.io/badge/ebuild-146-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -164,6 +164,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-459310-red.svg)](https://bugs.gentoo.org/459310) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/samplicator.svg)](https://repology.org/metapackage/samplicator) net-misc/[samplicator](https://github.com/sleinen/samplicator) | UDP packets forwarder and duplicator
 * net-misc/[slowhttptest](https://github.com/shekyan/slowhttptest) | Application Layer DoS attack simulator
+* net-misc/[spoofer](https://spoofer.caida.org) | A tool to assess of deployment of source address validation
 * net-misc/[ssmd](https://gitorious.org/ssmd) | SNMP Switch Management Daemon
 * net-misc/[stargazer](http://stg.net.ua/) | Billing system for small home and office networks
 * net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management

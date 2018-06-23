@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/spoofer-prober
+
+# extra options (run spoofer-prober -h for a list of supported options)
+SPOOFER_OPTS="-s 1 -r 0"

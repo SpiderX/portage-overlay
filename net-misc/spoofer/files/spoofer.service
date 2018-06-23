@@ -1,0 +1,11 @@
+[Unit]
+Description=BGP38 compliance tester service
+
+[Service]
+User=spoofer
+Group=spoofer
+ExecStart=/usr/bin/spoofer-scheduler --settings /etc/xdg/CAIDA/Spoofer.conf
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
