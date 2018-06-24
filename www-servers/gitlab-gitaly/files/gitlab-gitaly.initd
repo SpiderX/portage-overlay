@@ -9,6 +9,9 @@ command_user="${USER:-gitaly}:${GROUP:-gitlab}"
 description="GitLab Gitaly"
 name="Gitlab Gitaly"
 pidfile="/run/gitlab-gitaly/${RC_SVCNAME}.pid"
+start_stop_daemon_args=" \
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
 
 depend() {
 	need net
