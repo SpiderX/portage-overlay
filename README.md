@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 146](https://img.shields.io/badge/ebuild-146-orange.svg)](https://img.shields.io/badge/ebuild-146-orange.svg)
+[![Number of ebuilds: 145](https://img.shields.io/badge/ebuild-145-orange.svg)](https://img.shields.io/badge/ebuild-145-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -179,7 +179,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * sys-apps/[firetools](https://firejail.wordpress.com/) | Graphical user interface of Firajail security sandbox
 * sys-fs/[adhocify](https://github.com/quitesimpleorg/adhocify) | Tool which monitors for inotify events and executes script
 * sys-power/[powerstat](https://launchpad.net/ubuntu/+source/powerstat) | Laptop power measuring tool
-* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/criu.svg)](https://repology.org/metapackage/criu) sys-process/[criu](http://criu.org/) | utility to checkpoint/restore a process tree
 * www-apps/[draw-io](https://github.com/jgraph/drawio) | Online diagramming web application
 * www-apps/[netbox](https://github.com/digitalocean/netbox) | IP address management (IPAM) and data center infrastructure management (DCIM)
 * www-apps/[noc-tower](https://bitbucket.org/nocproject/noc-tower) | NOCProject supervisor
