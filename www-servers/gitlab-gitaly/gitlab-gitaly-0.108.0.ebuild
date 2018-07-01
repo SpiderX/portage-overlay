@@ -98,13 +98,13 @@ src_install() {
 	doins -r ruby
 	exeinto /var/lib/"${PN}"/ruby/bin
 	doexe ruby/bin/{gitaly-ruby,ruby-cd}
-	exeinto /var/lib/"${PN}"/ruby/vendor/bundle/ruby/2.3.0/bin
-	doexe ruby/vendor/bundle/ruby/2.3.0/bin/{github-markup,git-linguist,htmldiff,ldiff,linguist,nokogiri,posix-spawn-benchmark,rake,rdoc,ri,rougify,rspec,rubocop,ruby-parse,ruby-rewrite}
+	exeinto /var/lib/"${PN}"/ruby/vendor/bundle/ruby/2.*.0/bin
+	doexe ruby/vendor/bundle/ruby/2.*.0/bin/{github-markup,git-linguist,htmldiff,ldiff,linguist,nokogiri,posix-spawn-benchmark,rake,rdoc,ri,rougify,rspec,rubocop,ruby-parse,ruby-rewrite}
 # do we need this ?
-	exeinto /var/lib/"${PN}"/ruby/vendor/bundle/ruby/2.3.0/gems/charlock_holmes-0.7.6/ext/charlock_holmes
-	doexe ruby/vendor/bundle/ruby/2.3.0/gems/charlock_holmes-0.7.6/ext/charlock_holmes/charlock_holmes.so
-	exeinto /var/lib/"${PN}"/ruby/vendor/bundle/ruby/2.3.0/gems/charlock_holmes-0.7.6/lib/charlock_holmes
-	doexe ruby/vendor/bundle/ruby/2.3.0/gems/charlock_holmes-0.7.6/lib/charlock_holmes/charlock_holmes.so
+	exeinto /var/lib/"${PN}"/ruby/vendor/bundle/ruby/2.*.0/gems/charlock_holmes-0.7.6/ext/charlock_holmes
+	doexe ruby/vendor/bundle/ruby/2.*.0/gems/charlock_holmes-0.7.6/ext/charlock_holmes/charlock_holmes.so
+	exeinto /var/lib/"${PN}"/ruby/vendor/bundle/ruby/2.*.0/gems/charlock_holmes-0.7.6/lib/charlock_holmes
+	doexe ruby/vendor/bundle/ruby/2.*.0/gems/charlock_holmes-0.7.6/lib/charlock_holmes/charlock_holmes.so
 	fowners -R gitaly:gitlab /var/lib/"${PN}"
 
 	insinto /etc/"${PN}"
