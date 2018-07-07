@@ -40,7 +40,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
-
 RESTRICT="mirror test"
 
 # dev-go/go-protobuf is too old, use bundled version
@@ -53,7 +52,8 @@ DEPEND="${CDEPEND}
 	dev-util/cmake
 	test? ( dev-go/go-spew:= )"
 RDEPEND="${CDEPEND}
-	dev-vcs/git"
+	dev-vcs/git
+	app-admin/logrotate"
 #dev-libs/icu?
 # TODO: ruby depends
 
@@ -111,6 +111,9 @@ src_install() {
 	insinto /etc/"${PN}"
 	doins config.toml.example
 	fowners -R gitaly:gitlab /etc/"${PN}"
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/"${PN}".logrotate "${PN}"
 
 	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
 	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"

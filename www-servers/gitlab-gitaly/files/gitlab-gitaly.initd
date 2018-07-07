@@ -16,3 +16,9 @@ start_stop_daemon_args=" \
 depend() {
 	need net
 }
+
+start_post() {
+	# Until gitaly will do it itself
+	ewaitfile 5 /run/gitlab-gitaly/gitlab-gitaly.socket
+	chmod g+w /run/gitlab-gitaly/gitlab-gitaly.socket
+}
