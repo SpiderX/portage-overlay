@@ -45,7 +45,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
-
 RESTRICT="mirror"
 
 # dev-go/toml doesn't provide sources
