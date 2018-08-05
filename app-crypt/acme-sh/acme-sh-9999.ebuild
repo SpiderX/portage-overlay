@@ -36,6 +36,9 @@ src_install() {
 	newdoc deploy/README.md README-deploy.md
 
 	keepdir /etc/acme-sh
+	doenvd "${FILESDIR}"/99acme-sh
+	insinto /etc/bash/bashrc.d
+	doins "${FILESDIR}"/acme.sh
 
 	insinto /usr/share/acme.sh
 	doins acme.sh
