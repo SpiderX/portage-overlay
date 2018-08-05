@@ -13,7 +13,19 @@ SRC_URI="https://github.com/Neilpang/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.ta
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="apache2 +cron nginx libressl standalone"
+
+RDEPEND="net-misc/curl
+	|| ( net-analyzer/netcat6 net-analyzer/openbsd-netcat )
+	sys-apps/iproute2
+	sys-apps/net-tools
+	sys-apps/util-linux
+	apache2? ( www-servers/apache:2 )
+	cron? ( virtual/cron )
+	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	nginx? ( www-servers/nginx:0 )
+	standalone? ( net-misc/socat )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -21,6 +33,8 @@ src_install() {
 	einstalldocs
 	newdoc dnsapi/README.md README-dnsapi.md
 	newdoc deploy/README.md README-deploy.md
+
+	keepdir /etc/acme-sh
 
 	insinto /usr/share/acme.sh
 	doins acme.sh
