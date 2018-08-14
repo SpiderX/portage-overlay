@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 148](https://img.shields.io/badge/ebuild-148-orange.svg)](https://img.shields.io/badge/ebuild-148-orange.svg)
+[![Number of ebuilds: 149](https://img.shields.io/badge/ebuild-149-orange.svg)](https://img.shields.io/badge/ebuild-149-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -43,6 +43,7 @@ Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all o
 
 This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 
+* app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
 * app-admin/[qtpass](https://qtpass.org/) | multi-platform GUI for pass, the standard unix password manager
 * app-admin/[reprepro](https://mirrorer.alioth.debian.org/) | A tool to handle local repositories of Debian packages
 * app-admin/[userdbadm](http://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
