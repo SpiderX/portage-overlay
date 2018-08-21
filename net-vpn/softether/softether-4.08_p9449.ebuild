@@ -56,7 +56,6 @@ src_install() {
 			fperms 0755 /opt/softether/bin/vpn"$module"/vpn"$module"
 			if [ "$module" != "cmd" ] ; then
 				newinitd "${FILESDIR}"/"${PN}"-"$module".initd "${PN}"-"$module"
-				newconfd "${FILESDIR}"/"${PN}"-"$module".confd "${PN}"-"$module"
 			fi
 		fi
 	done

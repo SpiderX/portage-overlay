@@ -3,18 +3,18 @@
 
 EAPI=7
 
-EGIT_REPO_URI="git://github.com/SoftEtherVPN/SoftEtherVPN.git"
-EGIT_BRANCH="master"
+DATE="2018.01.15"
+MY_P="v${PV/_p/-}"
 
-inherit git-r3 systemd toolchain-funcs
+inherit systemd toolchain-funcs
 
 DESCRIPTION="Multi-protocol VPN software"
 HOMEPAGE="http://www.softether.org/"
-SRC_URI=""
+SRC_URI="http://www.softether-download.com/files/${PN}/${MY_P}-rtm-${DATE}-tree/Source_Code/${PN}-src-${MY_P}-rtm.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="bridge client cmd debug libressl server"
 REQUIRED_USE="|| ( bridge client cmd server )"
 
@@ -25,7 +25,7 @@ RDEPEND="sys-libs/ncurses:0=
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/src
+S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS.TXT ChangeLog README )
 # Prohibit to modify number of threads, respect FLAGS

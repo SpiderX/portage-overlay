@@ -1,39 +1,24 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "softether-client" ]; then
-    PID="/run/softether-client.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/.*\-/vpn/;s/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/softether-client.${NAME}"
-else
-    PID="/run/softether-client.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/.*\-/vpn/')
-    CONF_DEFAULT="/etc/conf.d/softether-client"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/opt/softether/bin/vpnclient/vpnclient}
+command="/opt/softether/bin/vpnclient/vpnclient"
+command_args="start"
+description="SoftEther VPN Client"
+name="SoftEther VPN Client"
+start_stop_daemon_args="-q"
+pidfile="/run/softether/${RC_SVCNAME}.pid"
 
 depend() {
 	need net
-	provide softether-client
-}
-
-start() {
-	ebegin "Starting softether-client"
-	start-stop-daemon --start --quiet --make-pidfile --pidfile ${PID} --exec ${EXEC} -- ${OPTS_START}
-	eend $?
 }
 
 start_post() {
-	pgrep -n $(echo ${PNAME}) > ${PID}
+	pgrep -n "$procname" > "$pidfile"
 }
 
 stop() {
-	ebegin "Stopping softether-client"
-	start-stop-daemon --stop --quiet --pidfile ${PID} -- ${OPTS_STOP}
-	rm -f ${PID}
+	ebegin "Stopping $name"
+	start-stop-daemon --stop --quiet --pidfile "$pidfile" -- stop
 	eend $?
 }

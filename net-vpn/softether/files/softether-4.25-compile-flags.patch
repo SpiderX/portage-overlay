@@ -1,0 +1,130 @@
+diff -Nru v4.25-9656.orig/src/makefiles/linux_32bit.mak v4.25-9656/src/makefiles/linux_32bit.mak
+--- v4.25-9656.orig/src/makefiles/linux_32bit.mak	2018-01-15 05:00:42.000000000 +0300
++++ v4.25-9656/src/makefiles/linux_32bit.mak	2018-06-04 00:06:00.475000000 +0300
+@@ -24,14 +24,15 @@
+ # Variables
+ 
+ #CC=gcc
++RANLIB?=ranlib
+ 
+ OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char
+ 
+ OPTIONS_LINK_DEBUG=-g -fsigned-char -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+ 
+-OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char
++OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ ${CFLAGS} -fsigned-char
+ 
+-OPTIONS_LINK_RELEASE=-O2 -fsigned-char -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
++OPTIONS_LINK_RELEASE=${CFLAGS} ${LDFLAGS} -fsigned-char -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+ 
+ INSTALL_BINDIR=/usr/bin/
+ INSTALL_VPNSERVER_DIR=/usr/vpnserver/
+@@ -324,8 +325,8 @@
+ 
+ tmp/as/vpnserver.a: tmp/objs/vpnserver.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpnserver.a
+-	ar r tmp/as/vpnserver.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnserver.o
+-	ranlib tmp/as/vpnserver.a
++	$(AR) r tmp/as/vpnserver.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnserver.o
++	$(RANLIB) tmp/as/vpnserver.a
+ 
+ bin/vpnserver/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpnserver/hamcore.se2
+@@ -339,8 +340,8 @@
+ 
+ tmp/as/vpnclient.a: tmp/objs/vpnclient.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpnclient.a
+-	ar r tmp/as/vpnclient.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnclient.o
+-	ranlib tmp/as/vpnclient.a
++	$(AR) r tmp/as/vpnclient.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnclient.o
++	$(RANLIB) tmp/as/vpnclient.a
+ 
+ bin/vpnclient/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpnclient/hamcore.se2
+@@ -354,8 +355,8 @@
+ 
+ tmp/as/vpnbridge.a: tmp/objs/vpnbridge.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpnbridge.a
+-	ar r tmp/as/vpnbridge.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnbridge.o
+-	ranlib tmp/as/vpnbridge.a
++	$(AR) r tmp/as/vpnbridge.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnbridge.o
++	$(RANLIB) tmp/as/vpnbridge.a
+ 
+ bin/vpnbridge/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpnbridge/hamcore.se2
+@@ -369,8 +370,8 @@
+ 
+ tmp/as/vpncmd.a: tmp/objs/vpncmd.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpncmd.a
+-	ar r tmp/as/vpncmd.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpncmd.o
+-	ranlib tmp/as/vpncmd.a
++	$(AR) r tmp/as/vpncmd.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpncmd.o
++	$(RANLIB) tmp/as/vpncmd.a
+ 
+ bin/vpncmd/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpncmd/hamcore.se2
+diff -Nru v4.25-9656.orig/src/makefiles/linux_64bit.mak v4.25-9656/src/makefiles/linux_64bit.mak
+--- v4.25-9656.orig/src/makefiles/linux_64bit.mak	2018-01-15 05:00:42.000000000 +0300
++++ v4.25-9656/src/makefiles/linux_64bit.mak	2018-06-04 00:06:10.592000000 +0300
+@@ -24,14 +24,15 @@
+ # Variables
+ 
+ #CC=gcc
++RANLIB?=ranlib
+ 
+ OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -g -fsigned-char -m64
+ 
+ OPTIONS_LINK_DEBUG=-g -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+ 
+-OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char -m64
++OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ ${CFLAGS} -fsigned-char
+ 
+-OPTIONS_LINK_RELEASE=-O2 -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
++OPTIONS_LINK_RELEASE=${CFLAGS} ${LDFLAGS} -fsigned-char -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+ 
+ INSTALL_BINDIR=/usr/bin/
+ INSTALL_VPNSERVER_DIR=/usr/vpnserver/
+@@ -324,8 +325,8 @@
+ 
+ tmp/as/vpnserver.a: tmp/objs/vpnserver.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpnserver.a
+-	ar r tmp/as/vpnserver.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnserver.o
+-	ranlib tmp/as/vpnserver.a
++	$(AR) r tmp/as/vpnserver.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnserver.o
++	$(RANLIB) tmp/as/vpnserver.a
+ 
+ bin/vpnserver/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpnserver/hamcore.se2
+@@ -339,8 +340,8 @@
+ 
+ tmp/as/vpnclient.a: tmp/objs/vpnclient.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpnclient.a
+-	ar r tmp/as/vpnclient.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnclient.o
+-	ranlib tmp/as/vpnclient.a
++	$(AR) r tmp/as/vpnclient.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnclient.o
++	$(RANLIB) tmp/as/vpnclient.a
+ 
+ bin/vpnclient/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpnclient/hamcore.se2
+@@ -354,8 +355,8 @@
+ 
+ tmp/as/vpnbridge.a: tmp/objs/vpnbridge.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpnbridge.a
+-	ar r tmp/as/vpnbridge.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnbridge.o
+-	ranlib tmp/as/vpnbridge.a
++	$(AR) r tmp/as/vpnbridge.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpnbridge.o
++	$(RANLIB) tmp/as/vpnbridge.a
+ 
+ bin/vpnbridge/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpnbridge/hamcore.se2
+@@ -369,8 +370,8 @@
+ 
+ tmp/as/vpncmd.a: tmp/objs/vpncmd.o $(HEADERS_MAYAQUA) $(HEADERS_CEDAR) $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR)
+ 	rm -f tmp/as/vpncmd.a
+-	ar r tmp/as/vpncmd.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpncmd.o
+-	ranlib tmp/as/vpncmd.a
++	$(AR) r tmp/as/vpncmd.a $(OBJECTS_MAYAQUA) $(OBJECTS_CEDAR) tmp/objs/vpncmd.o
++	$(RANLIB) tmp/as/vpncmd.a
+ 
+ bin/vpncmd/hamcore.se2: src/bin/BuiltHamcoreFiles/unix/hamcore.se2
+ 	cp src/bin/BuiltHamcoreFiles/unix/hamcore.se2 bin/vpncmd/hamcore.se2

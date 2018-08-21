@@ -23,8 +23,6 @@
 		<flag name="server">Enable install of SoftEther VPN server</flag>
 	</use>
 	<upstream>
-		<changelog>http://www.softether.org/5-download/history</changelog>
-		<doc>http://www.softether.org/4-docs</doc>
-		<bugs-to>mailto:softether-vpn-security@softether.org</bugs-to>
+		<remote-id type="github">SoftEtherVPN/SoftEtherVPN</remote-id>
 	</upstream>
 </pkgmetadata>
