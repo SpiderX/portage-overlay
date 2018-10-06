@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 152](https://img.shields.io/badge/ebuild-152-orange.svg)](https://img.shields.io/badge/ebuild-152-orange.svg)
+[![Number of ebuilds: 153](https://img.shields.io/badge/ebuild-153-orange.svg)](https://img.shields.io/badge/ebuild-153-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -183,6 +183,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-486406-red.svg)](https://bugs.gentoo.org/486406) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/resilio-sync.svg)](https://repology.org/metapackage/resilio-sync) net-p2p/[resilio-sync](https://getsync.com/) | Resilient, fast and scalable file synchronization tool
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/498844) net-vpn/[softether](http://www.softether.org/) | Multi-protocol VPN software
 * net-wireless/[unifi](http://www.ubnt.com/unifi) | Management Controller for Ubiquiti Networks UniFi APs
+* sys-apps/[ethq](https://github.com/isc-projects/ethq) | Ethernet NIC Queue stats viewer
 * sys-apps/[firetools](https://firejail.wordpress.com/) | Graphical user interface of Firajail security sandbox
 * sys-fs/[adhocify](https://github.com/quitesimpleorg/adhocify) | Tool which monitors for inotify events and executes script
 * sys-power/[powerstat](https://launchpad.net/ubuntu/+source/powerstat) | Laptop power measuring tool
