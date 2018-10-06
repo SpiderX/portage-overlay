@@ -14,7 +14,7 @@ SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 -*"
+KEYWORDS="-* ~amd64"
 IUSE="ayatana gnome-keyring pax_kernel"
 RESTRICT="bindist mirror"
 
