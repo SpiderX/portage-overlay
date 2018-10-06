@@ -19,17 +19,15 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="test"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/libinput-1.8.0
 	x11-misc/xdotool
 	x11-misc/wmctrl"
 DEPEND=">=dev-libs/libinput-1.8.0
-	dev-util/desktop-file-utils
-	test? ( dev-python/flake8[${PYTHON_USEDEP}] )"
+	dev-util/desktop-file-utils"
 
 src_prepare() {
 	default
