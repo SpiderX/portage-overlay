@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 153](https://img.shields.io/badge/ebuild-153-orange.svg)](https://img.shields.io/badge/ebuild-153-orange.svg)
+[![Number of ebuilds: 154](https://img.shields.io/badge/ebuild-154-orange.svg)](https://img.shields.io/badge/ebuild-154-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -140,6 +140,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | The official GitLab CI runner
 * dev-vcs/[mercurial-extension_utils](https://bitbucket.org/Mekk/mercurial-extension_utils) | Mercurial Extension Utils
 * dev-vcs/[mercurial-keyring](http://bitbucket.org/Mekk/mercurial_keyring) | Mercurial Keyring Extension
+* media-gfx/[butteraugli](https://github.com/google/butteraugli) | A tool for measuring perceived differences between images
 * media-gfx/[screencloud](https://screencloud.net/) | Screenshot capturing and sharing tool over various services
 * media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
 * media-radio/[krudio](https://github.com/loast/krudio) | Radio tray for linux on QT
