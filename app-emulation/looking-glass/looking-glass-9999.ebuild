@@ -4,44 +4,53 @@
 EAPI=6
 
 MY_PN="LookingGlass"
-MY_PV="a10"
-MY_P="${MY_PN}-${MY_PV}"
+MY_PV="a11"
+EGIT_SUBMODULES=()
+EGIT_REPO_URI="https://github.com/gnif/${MY_PN}.git"
 
-inherit eutils git-r3 toolchain-funcs
+inherit cmake-utils git-r3
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
 HOMEPAGE="https://looking-glass.hostfission.com https://github.com/gnif/LookingGlass/"
 SRC_URI="host? ( https://github.com/gnif/${MY_PN}/releases/download/${MY_PV}/looking-glass-host-${MY_PV}.zip )"
-EGIT_REPO_URI="https://github.com/gnif/${MY_PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+host libressl"
+IUSE="debug +host"
 
 RDEPEND="dev-libs/libconfig:0=
+	dev-libs/nettle:=[gmp]
+	media-libs/freetype:2
 	media-libs/fontconfig:1.0
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
-	x11-libs/libva:0=[opengl]
-	virtual/glu
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	virtual/glu"
 DEPEND="${RDEPEND}
 	app-emulation/spice-protocol
 	virtual/pkgconfig"
 
-# https://looking-glass.hostfission.com/node/6
-S="${WORKDIR}/${P}/client"
+CMAKE_USE_DIR="${S}"/client
 
-src_compile() {
-	emake CC="$(tc-getCC)"
+src_prepare() {
+	default
+
+	# Respect FLAGS
+	sed -i '/CMAKE_C_FLAGS/s/-O3 -march=native //' \
+		client/CMakeLists.txt || die "sed failed for FLAGS"
+
+	if ! use debug ; then
+		sed -i '/CMAKE_C_FLAGS/s/-g //' \
+		client/CMakeLists.txt || die "sed failed for debug"
+	fi
+
+	cmake-utils_src_prepare
 }
 
 src_install() {
 	einstalldocs
 
-	dobin bin/looking-glass-client
+	dobin "${BUILD_DIR}"/looking-glass-client
 
 	if use host ; then
 		insinto /usr/share/"${PN}"
