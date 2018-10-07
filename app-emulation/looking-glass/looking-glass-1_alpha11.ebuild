@@ -19,15 +19,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +host"
 
-RDEPEND="dev-libs/libconfig:=
+BDEPEND="app-emulation/spice-protocol
+	virtual/pkgconfig"
+DEPEND="dev-libs/libconfig:=
 	dev-libs/nettle:=[gmp]
 	media-libs/fontconfig:1.0
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
 	virtual/glu"
-DEPEND="${RDEPEND}
-	app-emulation/spice-protocol
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}/client"
 
@@ -53,6 +53,7 @@ src_prepare() {
 src_compile() {
 	emake CC="$(tc-getCC)"
 }
+
 src_install() {
 	dobin bin/looking-glass-client
 
