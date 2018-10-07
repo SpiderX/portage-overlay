@@ -14,5 +14,4 @@ retry="10"
 
 depend() {
 	need net
-	provide resilio-sync
 }
