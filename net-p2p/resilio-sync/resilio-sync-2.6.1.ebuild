@@ -11,7 +11,7 @@ NAME="rslsync"
 QA_PREBUILT="usr/bin/${NAME}"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
-HOMEPAGE="https://getsync.com/"
+HOMEPAGE="https://resilio.com/"
 SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
 	x86? ( ${BASE_URI/@arch@/i386} )"
 
