@@ -3,12 +3,11 @@
 
 EAPI=6
 
-BASE_URI="http://linux-packages.resilio.com/${PN}/deb/pool/non-free/r/${PN}/${PN}_${PV}-1_@arch@.deb"
-
 inherit pax-utils readme.gentoo-r1 systemd tmpfiles unpacker user
 
-NAME="rslsync"
 QA_PREBUILT="usr/bin/${NAME}"
+BASE_URI="http://linux-packages.resilio.com/${PN}/deb/pool/non-free/r/${PN}/${PN}_${PV}-1_@arch@.deb"
+NAME="rslsync"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://resilio.com/"
@@ -44,10 +43,8 @@ src_install() {
 
 	doman "${PN}".1
 
-	dodir /var/log/"${PN}"
+	diropts -o"${NAME}" -g"${NAME}" -m0700
 	keepdir /etc/"${PN}" /var/lib/"${PN}"/ /var/lib/"${PN}"/.sync /var/log/"${PN}"
-	fperms 0700 /etc/"${PN}" /var/lib/"${PN}" /var/lib/"${PN}"/.sync /var/log/"${PN}"
-	fowners -R "${NAME}":"${NAME}" /etc/"${PN}" /var/lib/"${PN}" /var/log/"${PN}"
 
 	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
 	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
@@ -59,17 +56,15 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	# Generate sample config
-	"${ED%/}"/usr/bin/"${NAME}" --dump-sample-config > \
-		"${ED%/}"/etc/"${PN}"/config.json || die "generate config failed"
-	fowners "${NAME}":"${NAME}" /etc/"${PN}"/config.json
-	# Uncomment config directives and change their values
-	sed -i \
-		-e "/storage_path/s|//| |g" \
-		-e "/pid_file/s|//| |g" \
-		-e "/storage_path/s|/home/user/.sync|/var/lib/${PN}/.sync|g" \
-		-e "/pid_file/s|resilio/resilio|${PN}/${PN}|g" \
-		"${ED%/}"/etc/"${PN}"/config.json || die "sed failed for config.json"
+	# Generate sample config, uncomment config directives and change values
+	insopts -o"${NAME}" -g"${NAME}" -m0644
+	insinto /etc/"${PN}"
+	newins - config.json < <("${ED%/}"/usr/bin/"${NAME}" --dump-sample-config | \
+		sed \
+			-e "/storage_path/s|//| |g" \
+			-e "/pid_file/s|//| |g" \
+			-e "/storage_path/s|/home/user/.sync|/var/lib/${PN}/.sync|g" \
+			-e "/pid_file/s|resilio/resilio|${PN}/${PN}|g" )
 }
 
 pkg_postinst() {
