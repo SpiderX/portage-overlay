@@ -5,7 +5,6 @@ EAPI=6
 
 inherit pax-utils readme.gentoo-r1 systemd tmpfiles unpacker user
 
-QA_PREBUILT="usr/bin/${NAME}"
 BASE_URI="http://linux-packages.resilio.com/${PN}/deb/pool/non-free/r/${PN}/${PN}_${PV}-1_@arch@.deb"
 NAME="rslsync"
 
@@ -18,7 +17,9 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pax_kernel"
-RESTRICT="mirror"
+RESTRICT="mirror strip"
+
+DEPEND="sys-apps/fix-gnustack"
 
 S="${WORKDIR}"
 
@@ -38,6 +39,10 @@ src_unpack() {
 }
 
 src_install() {
+	# Remove execstack flags
+	fix-gnustack -f usr/bin/"${NAME}" > /dev/null \
+		|| die "removing execstack flag failed"
+
 	dobin usr/bin/"${NAME}"
 	use pax_kernel && pax-mark m "${ED%/}"/usr/bin/"${NAME}"
 
