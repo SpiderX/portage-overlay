@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/do-agent"
+command_args="${DOAGENT_OPTS}"
+command_background="yes"
+command_user="${DOAGENT_USER:-nobody}:${DOAGENT_GROUP:-nogroup}"
+description="DigitalOcean Agent"
+name="DigitalOcean Agent"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}
