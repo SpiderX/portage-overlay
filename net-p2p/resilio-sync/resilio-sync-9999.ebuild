@@ -3,12 +3,10 @@
 
 EAPI=6
 
-BASE_URI="https://download-cdn.resilio.com/stable/linux-@arch@/${PN}_@arch@.tar.gz"
-
 inherit pax-utils readme.gentoo-r1 systemd tmpfiles user
 
-NAME="rslsync"
-QA_PREBUILT="usr/bin/${NAME}"
+QA_PREBUILT="usr/bin/rslsync"
+BASE_URI="https://download-cdn.resilio.com/stable/linux-@arch@/${PN}_@arch@.tar.gz"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://resilio.com/"
@@ -19,49 +17,47 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS=""
 IUSE="pax_kernel"
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
 
-DOC_CONTENTS="You may need to review /etc/${PN}/config.json\\n
-Default metadata path is /var/lib/${PN}/.sync\\n
+DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
+Default metadata path is /var/lib/resilio-sync/.sync\\n
 Default web-gui URL is http://localhost:8888/\\n\\n"
 
 pkg_setup() {
-	enewgroup "${NAME}"
-	enewuser "${NAME}" -1 -1 /var/lib/"${PN}" "${NAME}"
+	enewgroup rslsync
+	enewuser rslsync -1 -1 /var/lib/resilio-sync rslsync
 }
 
 src_install() {
-	dobin "${NAME}"
-	use pax_kernel && pax-mark m "${ED%/}"/usr/bin/"${NAME}"
+	dobin rslsync
+	use pax_kernel && pax-mark m "${ED%/}"/usr/bin/rslsync
 
-	dodir /var/log/"${PN}"
-	keepdir /etc/"${PN}" /var/lib/"${PN}"/ /var/lib/"${PN}"/.sync /var/log/"${PN}"
-	fperms 0700 /etc/"${PN}" /var/lib/"${PN}" /var/lib/"${PN}"/.sync /var/log/"${PN}"
-	fowners -R "${NAME}":"${NAME}" /etc/"${PN}" /var/lib/"${PN}" /var/log/"${PN}"
-
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-	newinitd "${FILESDIR}"/"${PN}"-user.initd "${PN}"-user
-	newconfd "${FILESDIR}"/"${PN}"-user.confd "${PN}"-user
-	systemd_dounit "${FILESDIR}"/"${PN}".service
-	systemd_douserunit "${FILESDIR}"/"${PN}"-user.service
+	newinitd "${FILESDIR}"/resilio-sync.initd resilio-sync
+	newconfd "${FILESDIR}"/resilio-sync.confd resilio-sync
+	newinitd "${FILESDIR}"/resilio-sync-user.initd resilio-sync-user
+	newconfd "${FILESDIR}"/resilio-sync-user.confd resilio-sync-user
+	systemd_dounit "${FILESDIR}"/resilio-sync.service
+	systemd_douserunit "${FILESDIR}"/resilio-sync-user.service
 	newtmpfiles "${FILESDIR}"/resilio-sync.tmpfile resilio-sync.conf
 
 	readme.gentoo_create_doc
 
-	# Generate sample config
-	"${ED%/}"/usr/bin/"${NAME}" --dump-sample-config > \
-		"${ED%/}"/etc/"${PN}"/config.json || die "generate config failed"
-	fowners "${NAME}":"${NAME}" /etc/"${PN}"/config.json
-	# Uncomment config directives and change their values
-	sed -i \
-		-e "/storage_path/s|//| |g" \
-		-e "/pid_file/s|//| |g" \
-		-e "/storage_path/s|/home/user/.sync|/var/lib/${PN}/.sync|g" \
-		-e "/pid_file/s|resilio/resilio|${PN}/${PN}|g" \
-		"${ED%/}"/etc/"${PN}"/config.json || die "sed failed for config.json"
+	# Generate sample config, uncomment config directives and change values
+	insopts -orslsync -grslsync -m0644
+	insinto /etc/resilio-sync
+	newins - config.json < <("${ED%/}"/usr/bin/rslsync --dump-sample-config | \
+		sed \
+			-e "/storage_path/s|//| |g" \
+			-e "/pid_file/s|//| |g" \
+			-e "/storage_path/s|/home/user/.sync|/var/lib/resilio-sync/.sync|g" \
+			-e "/pid_file/s|resilio/resilio|resilio-sync/resilio-sync|g" \
+			|| die "sed failed for config.json" )
+
+	diropts -orslsync -grslsync -m0700
+	keepdir /etc/resilio-sync /var/lib/resilio-sync/ \
+		/var/lib/resilio-sync/.sync /var/log/resilio-sync
 }
 
 pkg_postinst() {
