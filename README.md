@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 155](https://img.shields.io/badge/ebuild-155-orange.svg)](https://img.shields.io/badge/ebuild-155-orange.svg)
+[![Number of ebuilds: 156](https://img.shields.io/badge/ebuild-156-orange.svg)](https://img.shields.io/badge/ebuild-156-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
 
@@ -190,6 +190,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * sys-fs/[adhocify](https://github.com/quitesimpleorg/adhocify) | Tool which monitors for inotify events and executes script
 * sys-power/[powerstat](https://launchpad.net/ubuntu/+source/powerstat) | Laptop power measuring tool
 * www-apps/[draw-io](https://github.com/jgraph/drawio) | Online diagramming web application
+* www-apps/[LookingGlass](https://github.com/ramnode/LookingGlass) | A Python-backed Looking Glass
 * www-apps/[netbox](https://github.com/digitalocean/netbox) | IP address management (IPAM) and data center infrastructure management (DCIM)
 * www-apps/[noc-tower](https://bitbucket.org/nocproject/noc-tower) | NOCProject supervisor
 * www-apps/[webui-aria2](https://github.com/ziahamza/webui-aria2) | The worlds best and hottest interface to interact with aria2
