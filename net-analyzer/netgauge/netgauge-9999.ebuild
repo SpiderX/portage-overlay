@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit readme.gentoo-r1 user
+inherit readme.gentoo-r1 systemd user
+
+QA_PREBUILT="opt/netgauge/OoklaServer"
 
 DESCRIPTION="Server software for testing internet bandwidth using speedtest.net"
 HOMEPAGE="http://www.ookla.com/"
@@ -17,27 +19,26 @@ IUSE=""
 
 S="${WORKDIR}"
 
-QA_PREBUILT="opt/netgauge/OoklaServer"
-QA_PRESTRIPPED="opt/netgauge/OoklaServer"
-
 DOC_CONTENTS="Add an entry to /etc/portage/make.conf to prevent Ookla Server's
-config overwriting within next ebuild re-emerge:\\n
-\\tCONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
+config overwriting within next ebuild re-emerge:\n
+\tCONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
 
 pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /dev/null "${PN}"
+	enewgroup netgauge
+	enewuser netgauge -1 -1 /dev/null netgauge
 }
 
 src_install() {
-	keepdir /opt/"${PN}"
-	insinto /opt/"${PN}"
+	diropts -onetgauge -gnetgauge
+	keepdir /opt/netgauge
+	insopts -onetgauge -gnetgauge -m0644
+	insinto /opt/netgauge
 	newins OoklaServer.properties.default OoklaServer.properties
-	exeinto /opt/"${PN}"
+	exeinto /opt/netgauge
 	doexe OoklaServer
-	fowners -R "${PN}":"${PN}" /opt/"${PN}"
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	newinitd "${FILESDIR}"/netgauge.initd netgauge
+	newconfd "${FILESDIR}"/netgauge.confd netgauge
+	systemd_dounit "${FILESDIR}"/netgauge.service
 
 	readme.gentoo_create_doc
 }
