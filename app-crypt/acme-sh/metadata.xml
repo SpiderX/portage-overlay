@@ -13,11 +13,6 @@
 	A shell script to automatically issue and renew the free certificates
 	from Let's Encrypt
 	</longdescription>
-	<use>
-		<flag name="cron">Enable support for cron via <pkg>virtual/cron</pkg></flag>
-		<flag name="nginx">Enable support for <pkg>www-servers/nginx</pkg></flag>
-		<flag name="standalone">Enable standalonemode via <pkg>net-misc/socat</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">Neilpang/acme.sh</remote-id>
 	</upstream>

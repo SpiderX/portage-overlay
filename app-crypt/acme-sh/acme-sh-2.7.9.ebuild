@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,19 +13,13 @@ SRC_URI="https://github.com/Neilpang/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.ta
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="apache2 +cron nginx libressl standalone"
+IUSE=""
 
 RDEPEND="net-misc/curl
+	|| ( dev-libs/libressl dev-libs/openssl:0 )
 	|| ( net-analyzer/netcat6 net-analyzer/openbsd-netcat )
-	sys-apps/iproute2
-	sys-apps/net-tools
-	sys-apps/util-linux
-	apache2? ( www-servers/apache:2 )
-	cron? ( virtual/cron )
-	libressl? ( dev-libs/libressl )
-	!libressl? ( dev-libs/openssl:0= )
-	nginx? ( www-servers/nginx:0 )
-	standalone? ( net-misc/socat )"
+	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx:0 )
+	virtual/cron"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -39,13 +33,12 @@ src_install() {
 	insinto /etc/bash/bashrc.d
 	doins "${FILESDIR}"/acme.sh
 
-	insinto /usr/share/acme.sh
-	doins acme.sh
+	exeinto /usr/share/acme.sh
+	doexe acme.sh
 	insinto /usr/share/acme.sh/dnsapi
 	doins -r dnsapi/*.sh
 	insinto /usr/share/acme.sh/deploy
 	doins -r deploy/*.sh
 
 	dosym ../share/acme.sh/acme.sh usr/bin/acme.sh
-	fperms +x /usr/bin/acme.sh
 }

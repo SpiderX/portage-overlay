@@ -1,2 +1,2 @@
-export LE_WORKING_DIR="/etc/acme-sh/"
-export LE_CONFIG_HOME="/etc/acme-sh/"
+LE_WORKING_DIR="/etc/acme-sh/"
+LE_CONFIG_HOME="/etc/acme-sh/"
