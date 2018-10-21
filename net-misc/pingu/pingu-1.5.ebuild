@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="Policy routing daemon with failover and load-balancing"
 HOMEPAGE="https://github.com/ncopa/pingu"
 SRC_URI="https://github.com/ncopa/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-1"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc"
@@ -20,17 +20,23 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
-PATCHES=(
-	# Add missed parameters to configure
-	"${FILESDIR}"/"${P}"-configure.patch
+src_prepare() {
+	default
+
 	# Fix compilation issue
-	"${FILESDIR}"/"${P}"-icmp.patch
-	# Change path to /run and fix QA
-	"${FILESDIR}"/"${P}"-makefile.patch
-)
+	sed -i '/icp->un.frag.__unused = 0;/d' src/icmp.c \
+		|| die "sed failed for src/icmp.c"
+
+	# Fix QA with install into path /run/pingu must be created at runtime
+	sed  -i -e '/pingustatedir = /s|$(rundir)/pingu|/run/pingu|' \
+		-e '/$(DESTDIR)\/$(bindir) $(DESTDIR)\/$(sbindir)/s|.$||' \
+		-e '/$(DESTDIR)\/$(pingustatedir)/d' \
+		src/Makefile || die "sed failed for Makefile"
+}
 
 src_configure() {
-	econf "$(use_enable debug)" "$(use_enable doc)"
+	./configure "$(use_enable debug)" "$(use_enable doc)" \
+		--prefix=/usr || die "configure failed"
 }
 
 src_compile() {
@@ -40,15 +46,15 @@ src_compile() {
 src_install() {
 	default
 
-	newtmpfiles "${FILESDIR}"/"${PN}".tmpfile "${PN}".conf
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-	systemd_dounit "${FILESDIR}"/"${PN}".service
-	keepdir /etc/pingu /var/lib/pingu
+	newtmpfiles "${FILESDIR}"/pingu.tmpfile pingu.conf
+	newinitd "${FILESDIR}"/pingu.initd pingu
+	newconfd "${FILESDIR}"/pingu.confd pingu
+	systemd_dounit "${FILESDIR}"/pingu.service
+	keepdir /var/lib/pingu
 	insinto /etc/pingu
 	newins pingu.conf pingu.conf.example
 }
 
 pkg_postinst() {
-	tmpfiles_process "${PN}".conf
+	tmpfiles_process pingu.conf
 }

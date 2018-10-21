@@ -1,9 +1,12 @@
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 #!/sbin/openrc-run
 
-description="Policy routing daemon"
 command=/usr/sbin/pingu
 command_args="-d ${OPTS}"
-pidfile=/var/run/pingu/pingu.pid
+description="Policy routing daemon"
+name="Policy routing daemon"
+pidfile=/run/pingu/pingu.pid
 
 depend() {
 	need net
