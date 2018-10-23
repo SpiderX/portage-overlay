@@ -45,14 +45,14 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 
 * app-admin/[awslog](https://github.com/jaksi/awslog) | History and changes of configuration versions of AWS resources
 * app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
-* app-admin/[qtpass](https://qtpass.org/) | multi-platform GUI for pass, the standard unix password manager
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/qtpass.svg)](https://repology.org/metapackage/qtpass) app-admin/[qtpass](https://qtpass.org/) | multi-platform GUI for pass, the standard unix password manager
 * app-admin/[reprepro](https://mirrorer.alioth.debian.org/) | A tool to handle local repositories of Debian packages
 * app-admin/[userdbadm](http://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
 * app-admin/[uwsgitop](https://github.com/unbit/uwsgitop/) | uWSGI stats viewer
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-576796-red.svg)](https://bugs.gentoo.org/576796) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/zbackup.svg)](https://repology.org/metapackage/zbackup) app-backup/[zbackup](http://zbackup.org/) | A versatile deduplicating backup tool
 * app-crypt/[acmebot](https://github.com/plinss/acmebot) | ACME protocol automatic certitificate manager
 * app-crypt/[acme-client](https://github.com/kristapsdz/acme-client-portable) | Secure Let's Encrypt client
-* app-crypt/[acme-sh](https://github.com/Neilpang/acme.sh) | An ACME Shell script
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/acme-sh.svg)](https://repology.org/metapackage/acme-sh) app-crypt/[acme-sh](https://github.com/Neilpang/acme.sh) | An ACME Shell script
 * app-crypt/[qesteidutil](https://github.com/open-eid/qesteidutil) | Estonian ID card management desktop utility
 * app-emulation/[looking-glass](https://looking-glass.hostfission.com) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 * app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
@@ -61,9 +61,9 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-misc/[android-file-transfer-linux](https://whoozle.github.io/android-file-transfer-linux/) | Reliable MTP client with minimalistic UI
 * app-misc/[cointop](https://github.com/miguelmota/cointop) | Interactive cryptocurrency monitor
 * app-misc/[jshon](http://kmkeen.com/jshon) | JSON parser designed for maximum convenience within the shell
-* app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pet.svg)](https://repology.org/metapackage/pet) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
 * app-misc/[rmlint](http://rmlint.rtfd.org) | Removes duplicates and other lint from your filesystem
-* app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/peco.svg)](https://repology.org/metapackage/peco) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 * app-text/[keening](https://github.com/vehk/keening) | A simple command line pastebin designed to be used together with ssh
 * dev-db/[influxdb-bin](http://influxdata.com) | Scalable datastore for metrics, events, and real-time analytics
 * dev-db/[odyssey](https://github.com/yandex/odyssey) | Scalable PostgreSQL connection pooler
@@ -175,20 +175,20 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[slowhttptest](https://github.com/shekyan/slowhttptest) | Application Layer DoS attack simulator
 * net-misc/[spoofer](https://spoofer.caida.org) | A tool to assess of deployment of source address validation
 * net-misc/[ssmd](https://gitorious.org/ssmd) | SNMP Switch Management Daemon
-* net-misc/[stargazer](http://stg.net.ua/) | Billing system for small home and office networks
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/stargazer.svg)](https://repology.org/metapackage/stargazer) net-misc/[stargazer](http://stg.net.ua/) | Billing system for small home and office networks
 * net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management
 * net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
 * net-misc/[virtualhere-usb-bin](https://virtualhere.com/) | Share USB devices over the network
-* net-p2p/[automatic](https://github.com/1100101/Automatic) | RSS downloader for Tranmission
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/automatic.svg)](https://repology.org/metapackage/automatic) net-p2p/[automatic](https://github.com/1100101/Automatic) | RSS downloader for Tranmission
 * net-p2p/[tremotesf](https://github.com/equeim/tremotesf2) | A remote GUI for transmission
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-214969-red.svg)](https://bugs.gentoo.org/214969) net-p2p/[opentracker](https://github.com/flygoast/opentracker) | High-performance bittorrent tracker
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-486406-red.svg)](https://bugs.gentoo.org/486406) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/resilio-sync.svg)](https://repology.org/metapackage/resilio-sync) net-p2p/[resilio-sync](https://resilio.com/) | Resilient, fast and scalable file synchronization tool
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/498844) net-vpn/[softether](http://www.softether.org/) | Multi-protocol VPN software
 * net-wireless/[unifi](http://www.ubnt.com/unifi) | Management Controller for Ubiquiti Networks UniFi APs
-* sys-apps/[ethq](https://github.com/isc-projects/ethq) | Ethernet NIC Queue stats viewer
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/ethq.svg)](https://repology.org/metapackage/ethq) sys-apps/[ethq](https://github.com/isc-projects/ethq) | Ethernet NIC Queue stats viewer
 * sys-apps/[firetools](https://firejail.wordpress.com/) | Graphical user interface of Firajail security sandbox
 * sys-fs/[adhocify](https://github.com/quitesimpleorg/adhocify) | Tool which monitors for inotify events and executes script
-* sys-power/[powerstat](https://launchpad.net/ubuntu/+source/powerstat) | Laptop power measuring tool
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/powerstat.svg)](https://repology.org/metapackage/powerstat) sys-power/[powerstat](https://launchpad.net/ubuntu/+source/powerstat) | Laptop power measuring tool
 * www-apps/[draw-io](https://github.com/jgraph/drawio) | Online diagramming web application
 * www-apps/[LookingGlass](https://github.com/ramnode/LookingGlass) | A Python-backed Looking Glass
 * www-apps/[netbox](https://github.com/digitalocean/netbox) | IP address management (IPAM) and data center infrastructure management (DCIM)
