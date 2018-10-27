@@ -8,9 +8,9 @@
 
 + [Overlay with metadata](https://github.com/gentoo-mirror/nest)
 + [QA Report](https://qa-reports.gentoo.org/output/repos/nest.html)
-+ [Gentoo Repo QA Check](http://gentoo.github.io/repo-qa-check-results/nest.html)
++ [Gentoo Repo QA Check](https://gitweb.gentoo.org/report/repos.git/tree/nest.html)
 + [Ebuild Upstream Scanner](http://euscan.gentooexperimental.org/maintainers/spiderx@spiderx.dp.ua/)
-+ [Levelnine checks](https://gentoo.levelnine.at/full-sort-by-maintainer/spiderx_at_spiderx.dp.ua.txt)
++ [Levelnine checks](https://gentooqa.levelnine.at/results/gentoo/listings/sort-by-maintainer/spiderx_at_spiderx.dp.ua.txt)
 
 # How to use this overlay
 
