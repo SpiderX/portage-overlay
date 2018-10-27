@@ -15,25 +15,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE="debug doc"
 
-RDEPEND="dev-libs/libev"
+RDEPEND="dev-libs/libev:="
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers
 	virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
-src_prepare() {
-	default
-
-	# Fix compilation issue
-	sed -i '/icp->un.frag.__unused = 0;/d' src/icmp.c \
-		|| die "sed failed for src/icmp.c"
-
-	# Fix QA with install into path /run/pingu must be created at runtime
-	sed  -i -e '/pingustatedir = /s|$(rundir)/pingu|/run/pingu|' \
-		-e '/$(DESTDIR)\/$(bindir) $(DESTDIR)\/$(sbindir)/s|.$||' \
-		-e '/$(DESTDIR)\/$(pingustatedir)/d' \
-		src/Makefile || die "sed failed for Makefile"
-}
+# Fix QA with install into path /run/pingu must be created at runtime
+PATCHES=( "${FILESDIR}"/"${PN}"-1.5-makefile.patch )
 
 src_configure() {
 	./configure "$(use_enable debug)" "$(use_enable doc)" \
