@@ -3,17 +3,15 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
-
-inherit git-r3 systemd tmpfiles user
+inherit systemd tmpfiles user
 
 DESCRIPTION="UDP port redirector"
 HOMEPAGE="https://github.com/troglobit/${PN}"
-SRC_URI=""
+SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/libuev"

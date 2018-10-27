@@ -2,8 +2,8 @@
 
 # Various options.
 # run `uredir -h` for valid cmdline options
-OPTS="127.0.0.1:1777"
+OPTS="127.0.0.1:1776 127.0.0.1:1777"
 
 # User and group daemon runs as
-USER="uredir"
-GROUP="uredir"
+UREDIR_USER="uredir"
+UREDIR_GROUP="uredir"
