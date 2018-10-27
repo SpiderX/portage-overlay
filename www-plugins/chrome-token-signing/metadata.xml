@@ -14,6 +14,9 @@
 	on the web with your eID smart card. Firefox supports
 	since version 50 Chrome extensions.
 	</longdescription>
+	<use>
+		<flag name="firefox">Install plugin for firefox</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">open-eid/chrome-token-signing</remote-id>
 	</upstream>

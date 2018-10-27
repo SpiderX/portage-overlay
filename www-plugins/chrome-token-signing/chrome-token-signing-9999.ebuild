@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit git-r3 qmake-utils
 
@@ -13,19 +13,16 @@ EGIT_REPO_URI="https://github.com/open-eid/${PN}.git"
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="libressl mozilla"
+IUSE="firefox libressl"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
 	sys-apps/pcsc-lite
+	firefox? ( || ( www-client/firefox www-client/firefox-bin ) )
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
-	mozilla? ( || (
-			www-client/firefox
-			www-client/firefox-bin )
-	)"
+	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -45,7 +42,7 @@ src_prepare() {
 
 src_configure() {
 	cd host-linux || die "sed failed for cd"
-	if use mozilla ; then
+	if use firefox ; then
 		echo "INSTALLS += ffconf ffextension" >> \
 			host-linux/chrome-token-signing.pro || die "echo failed"
 	fi
