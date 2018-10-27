@@ -8,7 +8,7 @@ python:
 env:
   global:
     - PORTAGE_VER="2.3.49"
-    - SHELLCHECK_OPTS="-s bash -e SC2034,SC2016,SC2191"
+    - SHELLCHECK_OPTS="-s bash -e SC2034,SC2016,SC2191,SC2037"
 before_install:
     - sudo apt-get -qq update
     - pip install lxml pyyaml
