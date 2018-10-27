@@ -15,7 +15,9 @@
 	since version 50 Chrome extensions.
 	</longdescription>
 	<use>
-		<flag name="firefox">Install plugin for firefox</flag>
+		<flag name="chromium">Install plugin for <pkg>www-client/chromium</pkg></flag>
+		<flag name="firefox">Install plugin for <pkg>www-client/firefox</pkg></flag>
+		<flag name="vivaldi">Install plugin for <pkg>www-client/vivaldi</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">open-eid/chrome-token-signing</remote-id>
