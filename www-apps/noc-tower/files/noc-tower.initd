@@ -1,41 +1,16 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "noc-tower" ]; then
-    PID="/run/noc/tower-web.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/noc-tower.${NAME}"
-else
-    PID="/run/noc/tower-web.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/noc-tower"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/usr/bin/tower-web}
+command="/usr/bin/tower-web"
+command_args="${OPTS}"
+command_background="yes"
+description="NOC Tower"
+group="${NOC_GROUP:-noc}"
+name="NOC Tower"
+pidfile="/run/noc/${RC_SVCNAME}.pid"
+user="${NOC_USER:-noc}"
 
 depend() {
 	need net
-	provide ${PNAME}
-}
-
-start_pre() {
-	if [ ! -d /run/noc ]; then
-	mkdir /run/noc
-	chown ${USER}:${GROUP} /run/noc
-	fi
-}
-
-start() {
-	ebegin "Starting ${PNAME}"
-	start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PID} \
-		--exec ${EXEC} --user ${USER}:${GROUP} -- ${OPTS}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping ${PNAME}"
-	start-stop-daemon --stop --exec ${EXEC} --pidfile ${PID}
-	eend $?
 }

@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
-		<description>Proxy maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -14,6 +13,6 @@
 	NOCProject service registry
 	</longdescription>
 	<upstream>
-		<remote-id type="bitbucket">nocproject/noc-tower</remote-id>
+		<doc>https://code.getnoc.com/noc/tower</doc>
 	</upstream>
 </pkgmetadata>
