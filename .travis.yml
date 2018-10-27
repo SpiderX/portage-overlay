@@ -7,8 +7,8 @@ python:
     - pypy
 env:
   global:
-    - PORTAGE_VER="2.3.40"
-    - PATH="/tmp/shellcheck-latest:$PATH"
+    - PORTAGE_VER="2.3.49"
+    - SHELLCHECK_OPTS="-s bash -e SC2034,SC2016,SC2191"
 before_install:
     - sudo apt-get -qq update
     - pip install lxml pyyaml
@@ -17,7 +17,6 @@ before_script:
     - mkdir -p travis-overlay /etc/portage /usr/portage/distfiles
     - mv !(travis-overlay) travis-overlay/
     - mv .git travis-overlay/
-    - wget -c https://goo.gl/ZzKHFv -O - | tar -xvJ -C /tmp/
     - wget "https://raw.githubusercontent.com/mrueg/repoman-travis/master/.travis.yml" -O .travis.yml.upstream
     - wget "https://raw.githubusercontent.com/mrueg/repoman-travis/master/spinner.sh"
     - wget -qO - "https://github.com/gentoo/portage/archive/portage-${PORTAGE_VER}.tar.gz" | tar xz
@@ -31,4 +30,4 @@ before_script:
     - cd travis-overlay
 script:
     - ./../spinner.sh "python ../portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dx"
-    - shellcheck -s bash -e "SC2034,SC2016,SC2191,SC2037" $(find . -maxdepth 3 -type f -name "*.ebuild" -o -name "*.initd")
+    - shellcheck */*/*.ebuild
