@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="rpc.${PN}-${PV}"
 
@@ -34,12 +34,12 @@ src_install() {
 	default
 
 	emake DESTDIR="${D}" install-man
-	systemd_dounit "${FILESDIR}"/"${PN}".service
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
+	systemd_dounit "${FILESDIR}"/rstatd.service
+	newinitd "${FILESDIR}"/rstatd.initd rstatd
+	newconfd "${FILESDIR}"/rstatd.confd rstatd
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
-		newins "${FILESDIR}"/"${PN}".xinetd "${PN}"
+		newins "${FILESDIR}"/rstatd.xinetd rstatd
 	fi
 }
