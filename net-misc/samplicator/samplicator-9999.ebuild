@@ -3,20 +3,29 @@
 
 EAPI=7
 
-inherit systemd user
+EGIT_REPO_URI="https://github.com/sleinen/${PN}.git"
+MY_PV=${PV/_/}
+MY_P=${PN}-${MY_PV}
+
+inherit autotools git-r3 systemd user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
 HOMEPAGE="https://github.com/sleinen/samplicator"
-SRC_URI="https://github.com/sleinen/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 pkg_setup() {
 	enewgroup samplicator
 	enewuser samplicator -1 -1 /etc/samplicator samplicator
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_install() {

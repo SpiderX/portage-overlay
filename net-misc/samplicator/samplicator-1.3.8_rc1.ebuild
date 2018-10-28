@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
-inherit user
+inherit systemd user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
 HOMEPAGE="https://github.com/sleinen/samplicator"
@@ -15,22 +15,23 @@ SRC_URI="https://github.com/sleinen/${PN}/releases/download/${MY_PV}/${MY_P}.tar
 LICENSE="Artistic GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /etc/"${PN}" "${PN}"
+	enewgroup samplicator
+	enewuser samplicator -1 -1 /etc/samplicator samplicator
 }
 
 src_install() {
 	default
 
-	doman "${FILESDIR}"/"${PN}".8
+	doman "${FILESDIR}"/samplicator.8
 
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-
+	newinitd "${FILESDIR}"/samplicator.initd samplicator
+	newconfd "${FILESDIR}"/samplicator.confd samplicator
+	systemd_dounit "${FILESDIR}"/samplicator.service
 }
 
 pkg_postinst() {
@@ -39,17 +40,17 @@ pkg_postinst() {
 	ewarn "Instead of this, specify it in a config file; defined in such way it will only get packets with a matching source."
 	ewarn ""
 
-	einfo "For every receiver type create a file in directory /etc/${PN} (see example below)"
+	einfo "For every receiver type create a file in directory /etc/samplicator (see example below)"
 	einfo "and specify the path to it in variable CONFIG of the corresponding initscript config file in /etc/conf.d/"
 	einfo ""
 	einfo "Receiver config examples: "
 	einfo ""
-	einfo "    /etc/${PN}/netflow:"
+	einfo "    /etc/samplicator/netflow:"
 	einfo "    10.0.0.0/255.0.0.0:1.1.1.1/9996 2.2.2.2/9996 3.3.3.3/9996"
 	einfo ""
-	einfo "    /etc/${PN}/syslog:"
+	einfo "    /etc/samplicator/syslog:"
 	einfo "    10.0.0.0/255.255.0.0:2.2.2.2/514 3.3.3.3/514"
 	einfo ""
-	einfo "    /etc/${PN}/snmp:"
+	einfo "    /etc/samplicator/snmp:"
 	einfo "    10.0.0.0/255.255.255.255:3.3.3.3/162"
 }

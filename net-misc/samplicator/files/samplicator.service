@@ -1,0 +1,11 @@
+[Unit]
+Description=UDP packets forwarder
+Documentation=https://github.com/sleinen/samplicator
+After=network.target network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/samplicate -f -S -p 2000
+
+[Install]
+WantedBy=multi-user.target
