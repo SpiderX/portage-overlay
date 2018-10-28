@@ -1,0 +1,15 @@
+[Unit]
+Description=SNMP Switch Management Daemon
+Documentation=http://stg.codes/projects/ssmd/
+After=network.target network-online.target
+
+[Service]
+Type=forking
+Restart=on-failure
+PermissionsStartOnly=true
+
+PIDFile=/run/ssmd.pid
+ExecStart=/usr/sbin/ssmd -c /etc/ssmd/ssmd.conf
+
+[Install]
+WantedBy=multi-user.target

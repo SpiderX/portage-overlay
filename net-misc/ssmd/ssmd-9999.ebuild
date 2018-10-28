@@ -1,47 +1,45 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils
+EGIT_REPO_URI="http://git.stg.codes/${PN}.git"
+
+inherit git-r3 systemd toolchain-funcs user
 
 DESCRIPTION="SNMP Switch Management Daemon"
-HOMEPAGE="https://gitorious.org/ssmd"
-SRC_URI="https://gitorious.org/${PN}/${PN}/archive-tarball/${PV} -> ${P}.tar.gz"
+HOMEPAGE="http://stg.codes/projects/ssmd"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+KEYWORDS=""
+IUSE="debug libressl"
 
-DEPEND="dev-libs/openssl:0=
-	dev-libs/boost:0=
-	net-misc/curl"
+DEPEND="dev-libs/boost:0=
+	net-misc/curl
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-${PN}"
-
 pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /etc/"${PN}" "${PN}"
+	enewgroup ssmd
+	enewuser ssmd -1 -1 /etc/ssmd ssmd
 }
 
 src_compile() {
-	if use debug; then
-		# Pointless, but makes repoman happy:)
-		use debug && MAKEOPTS="-j1"
-		emake BUILD=Debug
-	else
-		emake
-	fi
+	emake CXX="$(tc-getCXX)" "$(usex debug BUILD=Debug BUILD=Release)"
 }
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${D}" install
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".conf "${PN}"
-	fowners -R "${PN}":"${PN}" /etc/"${PN}"/
-	fperms 0640 /etc/"${PN}"/"${PN}".conf
+
+	newinitd "${FILESDIR}"/ssmd.initd ssmd
+	newconfd "${FILESDIR}"/ssmd.conf ssmd
+	systemd_dounit "${FILESDIR}"/ssmd.service
+
+	fowners -R ssmd:ssmd /etc/ssmd/
+	fperms 0640 /etc/ssmd/ssmd.conf
 }
 
 pkg_postinst() {

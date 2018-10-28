@@ -1,25 +1,15 @@
 #!/sbin/openrc-run
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-PID="/run/ssmd.pid"
-EXEC="/usr/sbin/ssmd"
+command="/usr/sbin/ssmd"
+command_args="${OPTS} ${CONFIG}"
+description="SNMP Switch Management Daemon"
+name="SNMP Switch Management Daemon"
+user="${SSMD_USER:-ssmd}"
+group="${SSMD_GROUP:-ssmd}"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
-        need net
-        provide ssmd
-}
-
-start() {
-        ebegin "Starting ssmd"
-        start-stop-daemon --start --quiet --pidfile ${PID} --exec ${EXEC} -- ${OPTS} ${CONFIG}
-        eend $?
-}
-
-stop() {
-        ebegin "Stopping ssmd"
-        start-stop-daemon --stop --quiet --pidfile ${PID}
-        rm -f ${PID}
-        eend $?
+	need net
 }
