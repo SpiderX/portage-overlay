@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -80,8 +80,8 @@ PATCHES=( "${FILESDIR}"/"${P}"-configure.patch
 	"${FILESDIR}"/"${P}"-makefile-defs.patch )
 
 pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /dev/null "${PN}"
+	enewgroup liquidsoap
+	enewuser liquidsoap -1 -1 /dev/null liquidsoap
 }
 
 src_prepare() {
@@ -146,13 +146,13 @@ src_configure() {
 src_install() {
 	findlib_src_install
 
-	newtmpfiles "${FILESDIR}"/"${PN}".tmpfile "${PN}".conf
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	systemd_dounit "${FILESDIR}"/"${PN}".service
+	newtmpfiles "${FILESDIR}"/liquidsoap.tmpfile liquidsoap.conf
+	newinitd "${FILESDIR}"/liquidsoap.initd liquidsoap
+	systemd_dounit "${FILESDIR}"/liquidsoap.service
 }
 
 pkg_postinst() {
-	tmpfiles_process "${PN}".conf
+	tmpfiles_process liquidsoap.conf
 
 	elog "You have to create an init script for each stream:"
 	elog "ln -s liquidsoap /etc/init.d/liquidsoap.<stream>"
