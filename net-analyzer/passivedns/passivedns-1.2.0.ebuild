@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools systemd user
 
@@ -43,12 +43,12 @@ src_configure() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-	systemd_dounit "${FILESDIR}"/"${PN}".service
+	newinitd "${FILESDIR}"/passivedns.initd passivedns
+	newconfd "${FILESDIR}"/passivedns.confd passivedns
+	systemd_dounit "${FILESDIR}"/passivedns.service
 }
 
 pkg_postinst() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /dev/null "${PN}"
+	enewgroup passivedns
+	enewuser passivedns -1 -1 /dev/null passivedns
 }
