@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit systemd user
 
 DESCRIPTION="TCP port redirector"
-HOMEPAGE="https://github.com/troglobit/redir"
+HOMEPAGE="https://github.com/troglobit/${PN}"
 SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -20,8 +20,8 @@ DEPEND="tcpd? ( sys-apps/tcp-wrappers )"
 DOCS=( README.md AUTHORS TODO )
 
 pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /dev/null "${PN}"
+	enewgroup redir
+	enewuser redir -1 -1 /dev/null redir
 }
 
 src_configure() {
@@ -32,7 +32,7 @@ src_configure() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-	systemd_dounit "${FILESDIR}"/"${NAME}".service
+	newinitd "${FILESDIR}"/redir.initd redir
+	newconfd "${FILESDIR}"/redir.confd redir
+	systemd_dounit "${FILESDIR}"/redir.service
 }

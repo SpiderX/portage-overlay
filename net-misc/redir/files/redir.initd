@@ -1,46 +1,19 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "redir" ]; then
-    PID="/run/redir/redir.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/redir.${NAME}"
-else
-    PID="/run/redir/redir.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/redir"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/usr/bin/redir}
+command="/usr/bin/redir"
+command_args="${OPTS}"
+description="TCP port redirector"
+name="TCP port redirector"
+user="${REDIR_USER:-redir}"
+group="${REDIR_GROUP:-redir}"
+pidfile="/run/redir/${RC_SVCNAME}.pid"
 
 depend() {
 	need net
-	provide ${PNAME}
-}
-
-start_pre() {
-	if [ ! -d /run/${PNAME} ]; then
-	mkdir /run/${PNAME}
-	chown ${USER}:${GROUP} /run/${PNAME}
-	fi
-}
-
-start() {
-	ebegin "Starting ${PNAME}"
-	start-stop-daemon --start --quiet --make-pidfile --pidfile ${PID} \
-		--exec ${EXEC} --user ${USER}:${GROUP} -- ${OPTS}
-	eend $?
 }
 
 start_post() {
-	pgrep -n ${PNAME} > ${PID}
-}
-
-stop() {
-	ebegin "Stopping ${PNAME}"
-	start-stop-daemon --stop --exec ${EXEC} --pidfile ${PID}
-	eend $?
+	pgrep -n "${RC_SVCNAME%%.*}" > "${pidfile}"
 }

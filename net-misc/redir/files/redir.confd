@@ -5,5 +5,5 @@
 OPTS="127.0.0.1:1777"
 
 # User and group daemon runs as
-USER="redir"
-GROUP="redir"
+REDIR_USER="redir"
+REDIR_GROUP="redir"
