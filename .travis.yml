@@ -29,5 +29,5 @@ before_script:
     - cd travis-overlay
 script:
     - ./../spinner.sh "python ../portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dx"
-    - shellcheck -s bash -e "SC2034,SC2016,SC2191,SC2037" */*/*.ebuild
+    - shellcheck -s bash -e "SC2034,SC2016,SC2191" */*/*.ebuild
     - shellcheck -s sh -e "SC1008,SC2034,SC2154,SC2016,SC2191" */*/*/*.initd*
