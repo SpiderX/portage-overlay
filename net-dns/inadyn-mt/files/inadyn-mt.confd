@@ -5,8 +5,8 @@
 OPTS="--background"
 
 # User and group daemon runs as
-USER="inadyn-mt"
-GROUP="inadyn-mt"
+INADYN_USER="inadyn"
+INADYN_GROUP="inadyn"
 
-# Resilio Sync config file
+# Config file
 CONFIG="--input_file /etc/inadyn-mt/inadyn-mt.conf"

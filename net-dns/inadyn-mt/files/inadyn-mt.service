@@ -1,15 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 [Unit]
 Description=Dynamic DNS client
-After=network.target
+After=network.target network-online.target
 
 [Service]
 Type=forking
-User=inadyn-mt
-Group=inadyn-mt
+User=inadyn
+Group=inadyn
 ExecStart=/usr/bin/inadyn-mt --background --input_file /etc/inadyn-mt/inadyn-mt.conf
 Restart=on-abort
 

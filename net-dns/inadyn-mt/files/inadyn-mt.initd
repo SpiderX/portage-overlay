@@ -1,43 +1,15 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "inadyn-mt" ]; then
-    PID="/run/inadyn-mt/inadyn-mt.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/inadyn-mt.${NAME}"
-else
-    PID="/run/inadyn-mt/inadyn-mt.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/inadyn-mt"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/usr/bin/inadyn-mt}
+command="/usr/bin/inadyn-mt"
+command_args="${OPTS} ${CONFIG}"
+description="Dynamic DNS client"
+name="Dynamic DNS client"
+user="${INADYN_USER:-inadyn}"
+group="${INADYN_GROUP:-inadyn}"
+pidfile="/run/inadyn-mt/${RC_SVCNAME}.pid"
 
 depend() {
 	need net
-	provide ${PNAME}
-}
-
-start_pre() {
-	if [ ! -d /run/${PNAME} ]; then
-	mkdir /run/${PNAME}
-	chown ${USER}:${GROUP} /run/${PNAME}
-	fi
-}
-
-start() {
-	ebegin "Starting ${PNAME}"
-	start-stop-daemon --start --quiet --exec ${EXEC} \
-		--user ${USER}:${GROUP} \
-		-- ${OPTS} ${CONFIG} --pid_file ${PID}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping ${PNAME}"
-	start-stop-daemon --stop --exec ${EXEC} --pidfile ${PID}
-	eend $?
 }
