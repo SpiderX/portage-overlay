@@ -6,7 +6,7 @@ EAPI=6
 inherit systemd tmpfiles user
 
 DESCRIPTION="UDP port redirector"
-HOMEPAGE="https://github.com/troglobit/${PN}"
+HOMEPAGE="https://github.com/troglobit/uredir"
 SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="ISC"

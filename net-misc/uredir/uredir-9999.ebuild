@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
 inherit git-r3 systemd tmpfiles user
 
 DESCRIPTION="UDP port redirector"
-HOMEPAGE="https://github.com/troglobit/${PN}"
+HOMEPAGE="https://github.com/troglobit/uredir"
 SRC_URI=""
 
 LICENSE="ISC"
