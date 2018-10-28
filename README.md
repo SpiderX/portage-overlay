@@ -173,7 +173,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-459310-red.svg)](https://bugs.gentoo.org/459310) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/samplicator.svg)](https://repology.org/metapackage/samplicator) net-misc/[samplicator](https://github.com/sleinen/samplicator) | UDP packets forwarder and duplicator
 * net-misc/[slowhttptest](https://github.com/shekyan/slowhttptest) | Application Layer DoS attack simulator
 * net-misc/[spoofer](https://spoofer.caida.org) | A tool to assess of deployment of source address validation
-* net-misc/[ssmd](https://gitorious.org/ssmd) | SNMP Switch Management Daemon
+* net-misc/[ssmd](http://stg.codes/projects/ssmd) | SNMP Switch Management Daemon
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/stargazer.svg)](https://repology.org/metapackage/stargazer) net-misc/[stargazer](http://stg.net.ua/) | Billing system for small home and office networks
 * net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management
 * net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
@@ -198,4 +198,3 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * www-servers/[gitlab-workhorse](https://gitlab.com/gitlab-org/gitlab-workhorse) | GitLab reverse proxy
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/libinput-gestures.svg)](https://repology.org/metapackage/libinput-gestures) x11-misc/[libinput-gestures](https://github.com/bulletmark/libinput-gestures) | Actions gestures on your touchpad using libinput
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
-* net-misc/[uredir](https://github.com/troglobit/${PN}) | UDP port redirector
