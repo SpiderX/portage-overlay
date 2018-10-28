@@ -1,22 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+EGIT_REPO_URI="https://github.com/solusipse/${PN}.git"
 
 inherit git-r3 user
 
 DESCRIPTION="Command line pastebin server"
 HOMEPAGE="https://github.com/solusipse/fiche"
-EGIT_REPO_URI="https://github.com/solusipse/${PN}.git"
+SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
+IUSE=""
 
 pkg_setup() {
-	# Add fiche group and user to system
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /var/lib/"${PN}" "${PN}"
+	enewgroup fiche
+	enewuser fiche -1 -1 /var/lib/fiche fiche
 }
 
 src_prepare() {
@@ -27,14 +29,11 @@ src_prepare() {
 }
 
 src_install() {
-	# Install binary
-	dobin "${PN}"
+	dobin fiche
 
-	# Create data directory
-	diropts -m 755 -o "${PN}" -g "${PN}"
-	keepdir /var/lib/"${PN}"
+	diropts -o fiche -g fiche -m 0755
+	keepdir /var/lib/fiche
 
-	# Install Gentoo init script and its config
-	newinitd "${FILESDIR}"/"${PN}"-0.9.initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}"-0.9.confd "${PN}"
+	newinitd "${FILESDIR}"/fiche.initd fiche
+	newconfd "${FILESDIR}"/fiche.confd fiche
 }
