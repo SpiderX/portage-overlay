@@ -1,14 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools git-r3 readme.gentoo-r1 user
+EGIT_REPO_URI="https://github.com/1100101/${PN^}.git"
+
+inherit autotools git-r3 readme.gentoo-r1 systemd user
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/1100101/${PN^}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,6 +26,11 @@ to /etc/automatic.conf and config it.\\n
 If things go wrong, increase verbose level in /etc/conf.d/automatic
 and check log file in /var/log/automatic/\\n"
 
+pkg_setup() {
+	enewgroup automatic
+	enewuser automatic -1 -1 /var/lib/automatic automatic
+}
+
 src_prepare() {
 	default
 
@@ -40,20 +46,20 @@ src_prepare() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-	keepdir /var/lib/"${PN}"/
-	keepdir /var/log/"${PN}"/
+	newinitd "${FILESDIR}"/automatic.initd automatic
+	newconfd "${FILESDIR}"/automatic.confd automatic
+	systemd_dounit "${FILESDIR}"/automatic.service
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/"${PN}".logrotate "${PN}"
+	newins "${FILESDIR}"/automatic.logrotate automatic
 
 	readme.gentoo_create_doc
+
+	diropts -oautomatic -gautomatic -m0700
+	keepdir /var/lib/automatic/
+	keepdir /var/log/automatic/
 }
 
 pkg_postinst() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /var/lib/"${PN}" "${PN}"
-
 	readme.gentoo_print_elog
 }
