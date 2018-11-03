@@ -159,7 +159,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-firewall/[ipt_ratelimit](https://github.com/aabc/ipt-ratelimit) | Ratelimit iptables module
 * net-im/[communi-desktop](https://github.com/communi/communi-desktop) | A cross-platform IRC framework written with Qt
 * net-im/[gitter-bin](http://www.gitter.im/) | Chat and network platform
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-575786-red.svg)](https://bugs.gentoo.org/575786) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack-bin.svg)](https://repology.org/metapackage/slack-bin) net-im/[slack-bin](http://www.slack.com/) | Team collaboration tool
+* [![Gentoo Bug](https://img.shields.io/badge/Bug-575786-red.svg)](https://bugs.gentoo.org/575786) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack.svg)](https://repology.org/metapackage/slack) net-im/[slack-bin](http://www.slack.com/) | Team collaboration tool
 * net-im/[viber-bin](http://www.viber.com/) | Free text and calls
 * net-im/[vkmessenger-bin](https://vk.com/desktop_app) | Simple and Easy App for Messaging on VK
 * net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
@@ -167,7 +167,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-536148-red.svg)](https://bugs.gentoo.org/536148) net-misc/[fiche](https://github.com/solusipse/fiche) | Command line pastebin server
 * net-misc/[mcproxy](https://mcproxy.realmv6.org/) | IGMP/MLD Proxy daemon
 * net-misc/[ngrok-bin](https://ngrok.com/) | Secure introspected tunnels to localhost
-* net-misc/[pingu](https://github.com/ncopa/pingu) | Policy routing daemon with failover and load-balancing
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pingu.svg)](https://repology.org/metapackage/pingu) net-misc/[pingu](https://github.com/ncopa/pingu) | Policy routing daemon with failover and load-balancing
 * net-misc/[qfreerdp](https://github.com/zrax/qfreerdp) | Qt launcher GUI for XFreeRDP
 * net-misc/[qia](http://stg.codes/) | Authorization tool for Stargazer Billing System written in Qt
 * net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
