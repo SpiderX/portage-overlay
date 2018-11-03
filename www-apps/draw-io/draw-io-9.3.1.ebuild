@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit webapp
 
@@ -22,11 +22,9 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-DOCS=( README.md )
-
 src_install() {
 	webapp_src_preinst
-	cp -R war/* "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
+	cp -R src/main/webapp/* "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
 	webapp_src_install
 
 	einstalldocs
