@@ -63,8 +63,9 @@ DEPEND="dev-go/go-crypto:=
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	LDFLAGS="-extldflags -static -X github.com/fossas/fossa-cli/cmd/fossa/version.version=${PV}"
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" go build -v -ldflags="${LDFLAGS}" \
+	# EGO_BUILD_FLAGS='-ldflags "...."' doesn't work
+	LDFLAGS="-extldflags '-static' -X github.com/fossas/fossa-cli/cmd/fossa/version.version=${PV}"
+	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" go build -v -work -x -ldflags="${LDFLAGS}" \
 		-o fossa "${EGO_PN}"/cmd/fossa || die
 }
 
