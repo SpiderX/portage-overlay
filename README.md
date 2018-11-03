@@ -50,7 +50,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[reprepro](https://mirrorer.alioth.debian.org/) | A tool to handle local repositories of Debian packages
 * app-admin/[userdbadm](http://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
 * app-admin/[uwsgitop](https://github.com/unbit/uwsgitop/) | uWSGI stats viewer
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-576796-red.svg)](https://bugs.gentoo.org/576796) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/zbackup.svg)](https://repology.org/metapackage/zbackup) app-backup/[zbackup](http://zbackup.org/) | A versatile deduplicating backup tool
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/zbackup.svg)](https://repology.org/metapackage/zbackup) app-backup/[zbackup](http://zbackup.org/) | A versatile deduplicating backup tool
 * app-crypt/[acmebot](https://github.com/plinss/acmebot) | ACME protocol automatic certitificate manager
 * app-crypt/[acme-client](https://github.com/kristapsdz/acme-client-portable) | Secure Let's Encrypt client
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/acme-sh.svg)](https://repology.org/metapackage/acme-sh) app-crypt/[acme-sh](https://github.com/Neilpang/acme.sh) | An ACME Shell script
@@ -147,11 +147,11 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
 * media-radio/[krudio](https://github.com/loast/krudio) | Radio tray for linux on QT
 * media-radio/[liquidsoap](http://liquidsoap.fm/) | A swiss-army knife for multimedia streaming, used for netradios and webtvs
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-530112-red.svg)](https://bugs.gentoo.org/530112) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/goaccess.svg)](https://repology.org/metapackage/goaccess) net-analyzer/[goaccess](https://goaccess.io) | A real-time web log analyzer and interactive viewer that runs in a terminal
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/goaccess.svg)](https://repology.org/metapackage/goaccess) net-analyzer/[goaccess](https://goaccess.io) | A real-time web log analyzer and interactive viewer that runs in a terminal
 * net-analyzer/[logswan](https://github.com/fcambus/logswan) | Web log analyzer using probabilistic data structures
 * net-analyzer/[netgauge](http://www.ookla.com/) | Server software for testing internet bandwidth using speedtest.net
 * net-analyzer/[nginx-amplify-agent](https://amplify.nginx.com) | System and NGINX metric collection
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-486788-red.svg)](https://bugs.gentoo.org/486788) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/nuttcp.svg)](https://repology.org/metapackage/nuttcp) net-analyzer/[nuttcp](http://www.nuttcp.net/) | Network performance measurement tool
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/nuttcp.svg)](https://repology.org/metapackage/nuttcp) net-analyzer/[nuttcp](http://www.nuttcp.net/) | Network performance measurement tool
 * net-analyzer/[passivedns](https://github.com/gamelinux/passivedns) | Network sniffer that logs all DNS server replies
 * net-dns/[flares](https://github.com/lfaoro/flares) | CloudFlare DNS backup tool
 * net-dns/[inadyn-mt](http://inadyn-mt.sourceforge.net/) | A simple dynamic DNS client
@@ -160,11 +160,11 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-firewall/[ipt_ratelimit](https://github.com/aabc/ipt-ratelimit) | Ratelimit iptables module
 * net-im/[communi-desktop](https://github.com/communi/communi-desktop) | A cross-platform IRC framework written with Qt
 * net-im/[gitter-bin](http://www.gitter.im/) | Chat and network platform
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-575786-red.svg)](https://bugs.gentoo.org/575786) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack.svg)](https://repology.org/metapackage/slack) net-im/[slack-bin](http://www.slack.com/) | Team collaboration tool
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack.svg)](https://repology.org/metapackage/slack) net-im/[slack-bin](http://www.slack.com/) | Team collaboration tool
 * net-im/[viber-bin](http://www.viber.com/) | Free text and calls
 * net-im/[vkmessenger-bin](https://vk.com/desktop_app) | Simple and Easy App for Messaging on VK
 * net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-281994-red.svg)](https://bugs.gentoo.org/281994) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/dhcdrop.html) | Effectively suppresses illegal DHCP servers on the LAN
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/dhcdrop.html) | Effectively suppresses illegal DHCP servers on the LAN
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-536148-red.svg)](https://bugs.gentoo.org/536148) net-misc/[fiche](https://github.com/solusipse/fiche) | Command line pastebin server
 * net-misc/[mcproxy](https://mcproxy.realmv6.org/) | IGMP/MLD Proxy daemon
 * net-misc/[ngrok-bin](https://ngrok.com/) | Secure introspected tunnels to localhost
@@ -173,7 +173,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[qia](http://stg.codes/) | Authorization tool for Stargazer Billing System written in Qt
 * net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
 * net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-459310-red.svg)](https://bugs.gentoo.org/459310) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/samplicator.svg)](https://repology.org/metapackage/samplicator) net-misc/[samplicator](https://github.com/sleinen/samplicator) | UDP packets forwarder and duplicator
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/samplicator.svg)](https://repology.org/metapackage/samplicator) net-misc/[samplicator](https://github.com/sleinen/samplicator) | UDP packets forwarder and duplicator
 * net-misc/[slowhttptest](https://github.com/shekyan/slowhttptest) | Application Layer DoS attack simulator
 * net-misc/[spoofer](https://spoofer.caida.org) | A tool to assess of deployment of source address validation
 * net-misc/[ssmd](http://stg.codes/projects/ssmd) | SNMP Switch Management Daemon
@@ -184,7 +184,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/automatic.svg)](https://repology.org/metapackage/automatic) net-p2p/[automatic](https://github.com/1100101/Automatic) | RSS downloader for Tranmission
 * net-p2p/[tremotesf](https://github.com/equeim/tremotesf2) | A remote GUI for transmission
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-214969-red.svg)](https://bugs.gentoo.org/214969) net-p2p/[opentracker](https://github.com/flygoast/opentracker) | High-performance bittorrent tracker
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-486406-red.svg)](https://bugs.gentoo.org/486406) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/resilio-sync.svg)](https://repology.org/metapackage/resilio-sync) net-p2p/[resilio-sync](https://resilio.com/) | Resilient, fast and scalable file synchronization tool
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/resilio-sync.svg)](https://repology.org/metapackage/resilio-sync) net-p2p/[resilio-sync](https://resilio.com/) | Resilient, fast and scalable file synchronization tool
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/498844) net-vpn/[softether](http://www.softether.org/) | Multi-protocol VPN software
 * net-wireless/[unifi](http://www.ubnt.com/unifi) | Management Controller for Ubiquiti Networks UniFi APs
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/ethq.svg)](https://repology.org/metapackage/ethq) sys-apps/[ethq](https://github.com/isc-projects/ethq) | Ethernet NIC Queue stats viewer
