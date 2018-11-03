@@ -30,7 +30,7 @@ layman -fa nest
 
 For manual install, through [local overlays](https://wiki.gentoo.org/wiki/Overlay/Local_overlay), you should add this in `/etc/portage/repos.conf/nest.conf`:
 
-```
+```console
 [nest]
 location = /usr/local/portage/nest
 sync-type = git
