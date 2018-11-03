@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 156](https://img.shields.io/badge/ebuild-156-orange.svg)](https://img.shields.io/badge/ebuild-156-orange.svg)
+[![Number of ebuilds: 157](https://img.shields.io/badge/ebuild-157-orange.svg)](https://img.shields.io/badge/ebuild-157-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
@@ -153,6 +153,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-analyzer/[nginx-amplify-agent](https://amplify.nginx.com) | System and NGINX metric collection
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-486788-red.svg)](https://bugs.gentoo.org/486788) [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/nuttcp.svg)](https://repology.org/metapackage/nuttcp) net-analyzer/[nuttcp](http://www.nuttcp.net/) | Network performance measurement tool
 * net-analyzer/[passivedns](https://github.com/gamelinux/passivedns) | Network sniffer that logs all DNS server replies
+* net-dns/[flares](https://github.com/lfaoro/flares) | CloudFlare DNS backup tool
 * net-dns/[inadyn-mt](http://inadyn-mt.sourceforge.net/) | A simple dynamic DNS client
 * net-dns/[nsping](https://github.com/vovcat/nsping) | Measure reachability and latency of DNS nameservers
 * net-firewall/[ipt_netflow](https://sourceforge.net/projects/ipt-netflow) | Netflow iptables module
