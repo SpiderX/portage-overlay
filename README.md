@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 158](https://img.shields.io/badge/ebuild-158-orange.svg)](https://img.shields.io/badge/ebuild-158-orange.svg)
+[![Number of ebuilds: 159](https://img.shields.io/badge/ebuild-159-orange.svg)](https://img.shields.io/badge/ebuild-159-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/SpiderX/portage-overlay.svg?branch=master)](https://travis-ci.org/SpiderX/portage-overlay)
@@ -128,6 +128,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger) | Swagger Documentation Generator for Django REST Framework
 * dev-python/[django-tables2](https://pypi.python.org/pypi/django-tables2/) | Table/data-grid framework for Django
 * dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz
+* dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
 * dev-python/[m9dicts](https://github.com/ssato/python-m9dicts) | A dict-like object supports recursive merge operation
 * dev-python/[msrest](https://pypi.python.org/pypi/msrest/) | AutoRest swagger generator Python client runtime
 * dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
