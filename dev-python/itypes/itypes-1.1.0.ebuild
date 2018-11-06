@@ -15,10 +15,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND=""
 DEPEND="test? ( dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}] )"
 
