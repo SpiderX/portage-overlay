@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="bitbucket">Mekk/mercurial_keyring</remote-id>
+		<remote-id type="pypi">mercurial_keyring</remote-id>
 	</upstream>
 </pkgmetadata>

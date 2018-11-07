@@ -145,7 +145,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
 * dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | The official GitLab CI runner
 * dev-vcs/[mercurial-extension_utils](https://bitbucket.org/Mekk/mercurial-extension_utils) | Mercurial Extension Utils
-* dev-vcs/[mercurial-keyring](http://bitbucket.org/Mekk/mercurial_keyring) | Mercurial Keyring Extension
+* dev-vcs/[mercurial-keyring](https://bitbucket.org/Mekk/mercurial_keyring) | Mercurial Keyring Extension
 * media-gfx/[butteraugli](https://github.com/google/butteraugli) | A tool for measuring perceived differences between images
 * media-gfx/[screencloud](https://screencloud.net/) | Screenshot capturing and sharing tool over various services
 * media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
