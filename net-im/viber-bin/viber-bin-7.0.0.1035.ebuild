@@ -1,12 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
+MY_PN="${PN/-bin/}"
 
-inherit eutils gnome2-utils multilib-build pax-utils unpacker xdg-utils
+inherit desktop gnome2-utils multilib-build pax-utils unpacker xdg-utils
+
+QA_PREBUILT="/opt/viber/QtWebEngineProcess
+	/opt/viber/plugins/*/*.so
+	/opt/viber/lib/*
+	/opt/viber/qml/*"
 
 DESCRIPTION="Free text and calls"
 HOMEPAGE="http://www.viber.com/"
@@ -14,11 +19,11 @@ SRC_URI="http://download.cdn.viber.com/cdn/desktop/Linux/${MY_PN}.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 -*"
+KEYWORDS="-* ~amd64"
 IUSE="apulse pax_kernel +pulseaudio"
 REQUIRED_USE="^^ ( apulse pulseaudio )"
 
-RESTRICT="bindist mirror strip"
+RESTRICT="bindist mirror"
 
 DEPEND="sys-apps/fix-gnustack"
 RDEPEND="dev-libs/expat[${MULTILIB_USEDEP}]
@@ -56,11 +61,6 @@ RDEPEND="dev-libs/expat[${MULTILIB_USEDEP}]
 	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="/opt/viber/QtWebEngineProcess
-	/opt/viber/plugins/*/*.so
-	/opt/viber/lib/*
-	/opt/viber/qml/*"
-
 S="${WORKDIR}"
 
 src_prepare() {
@@ -68,36 +68,35 @@ src_prepare() {
 
 	if use apulse ; then
 		sed -i '/Exec=/s|/opt|apulse /opt|' \
-			usr/share/applications/"${MY_PN}".desktop || die "sed failed"
+			usr/share/applications/viber.desktop || die "sed failed"
 	fi
 }
 src_install() {
-	# Remove execstack flags
-	fix-gnustack -f opt/"${MY_PN}"/lib/libQt5WebEngineCore.so.5 > /dev/null \
+	fix-gnustack -f opt/viber/lib/libQt5WebEngineCore.so.5 > /dev/null \
 		|| die "removing execstack flag failed"
 
-	newicon -s scalable usr/share/icons/hicolor/scalable/apps/"${MY_PN^}".svg \
-		"${MY_PN}".svg
+	newicon -s scalable usr/share/icons/hicolor/scalable/apps/Viber.svg \
+		viber.svg
 	for size in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
-		newicon -s "${size%%x*}" usr/share/"${MY_PN}"/"${size}".png "${MY_PN}".png
+		newicon -s "${size%%x*}" usr/share/viber/"${size}".png viber.png
 	done
-	dosym ../icons/hicolor/96x96/apps/"${MY_PN}".png \
-		/usr/share/pixmaps/"${MY_PN}".png
+	dosym ../icons/hicolor/96x96/apps/viber.png \
+		/usr/share/pixmaps/viber.png
 
-	domenu usr/share/applications/"${MY_PN}".desktop
+	domenu usr/share/applications/viber.desktop
 
-	insinto /opt/"${MY_PN}"
-	doins -r opt/"${MY_PN}"/.
+	insinto /opt/viber
+	doins -r opt/viber/.
 
 	if use pax_kernel; then
-		pax-mark -m "${ED%/}"/opt/"${MY_PN}"/"${MY_PN^}" \
-			"${ED%/}"/opt/"${MY_PN}"/QtWebEngineProcess
+		pax-mark -m "${ED%/}"/opt/viber/Viber \
+			"${ED%/}"/opt/viber/QtWebEngineProcess
 	fi
 
-	fperms +x /opt/"${MY_PN}"/"${MY_PN^}" \
-		/opt/"${MY_PN}"/QtWebEngineProcess
+	fperms +x /opt/viber/Viber \
+		/opt/viber/QtWebEngineProcess
 
-	dosym ../../opt/"${MY_PN}"/"${MY_PN^}" /usr/bin/"${MY_PN}"
+	dosym ../../opt/viber/Viber /usr/bin/Viber
 }
 
 pkg_postinst() {
