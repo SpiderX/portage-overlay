@@ -4,17 +4,18 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{4..7}} )
+EHG_REPO_URI="https://bitbucket.org/leapfrogdevelopment/rstr"
 
-inherit distutils-r1
+inherit distutils-r1 mercurial
 
 DESCRIPTION="Generate random strings in Python"
 HOMEPAGE="http://bitbucket.org/leapfrogdevelopment/rstr
 	https://pypi.python.org/pypi/rstr/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${PV}.tar.gz"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT=0
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="test"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -28,12 +29,11 @@ src_prepare() {
 	_remove_test() {
 		# Test failed on python3.6
 		if [ "${EPYTHON}" != "python2.7" ]; then
-			echo "${EPYTHON}"
 			sed -i "/unambiguous(include='@'/s/include='@'//" rstr/tests/test_rstr.py \
 				|| die "sed failed for test_rstr.py"
 		fi
 	}
-	#python_foreach_impl _remove_test
+	python_foreach_impl _remove_test
 }
 
 python_test() {

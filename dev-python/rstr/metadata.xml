@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="bitbucket">leapfrogdevelopment/rstr</remote-id>
+		<remote-id type="pypi">rstr</remote-id>
 	</upstream>
 </pkgmetadata>
