@@ -10,9 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Fast and reliable NGINX configuration parser
+	Quick and reliable way to convert NGINX configurations
+	into JSON and back
 	</longdescription>
 	<upstream>
 		<remote-id type="github">nginxinc/crossplane</remote-id>
+		<remote-id type="pypi">crossplane</remote-id>
 	</upstream>
 </pkgmetadata>
