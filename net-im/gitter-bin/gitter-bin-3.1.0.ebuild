@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 -*"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist mirror"
 
@@ -75,7 +75,7 @@ src_install() {
 	insinto /opt/"${MY_PN}"/locales
 	doins -r opt/"${MY_PN^}"/linux"${arch}"/locales/.
 	fperms +x /opt/"${MY_PN}"/"${MY_PN^}"
-	dosym /opt/"${MY_PN}"/"${MY_PN^}" /usr/bin/"${MY_PN}"
+	dosym ../../opt/"${MY_PN}"/"${MY_PN^}" /usr/bin/"${MY_PN}"
 }
 
 pkg_preinst() {

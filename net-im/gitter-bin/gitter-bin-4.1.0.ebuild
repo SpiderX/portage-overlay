@@ -1,12 +1,27 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_{32,64} )
+MY_PN="${PN/-bin/}"
 
 inherit eutils gnome2-utils multilib-build pax-utils unpacker
+
+QA_PRESTRIPPED="opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
+	opt/gitter/pnacl/pnacl_public_x86_64_ld_nexe
+	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_sz_nexe
+	opt/gitter/payload
+	opt/gitter/swiftshader/libEGL.so
+	opt/gitter/swiftshader/libGLESv2.so
+	opt/gitter/chromedriver
+	opt/gitter/lib/libnw.so
+	opt/gitter/lib/libnode.so
+	opt/gitter/lib/libffmpeg.so
+	opt/gitter/nacl_helper
+	opt/gitter/nwjc
+	opt/gitter/nacl_irt_x86_64.nexe
+	opt/gitter/Gitter"
 
 DESCRIPTION="Chat and network platform"
 HOMEPAGE="http://www.gitter.im/"
@@ -16,7 +31,7 @@ SRC_URI="
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 -*"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="pax_kernel"
 RESTRICT="bindist mirror"
 
@@ -44,21 +59,6 @@ RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 DEPEND="sys-apps/fix-gnustack"
 
-QA_PRESTRIPPED="opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
-	opt/gitter/pnacl/pnacl_public_x86_64_ld_nexe
-	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_sz_nexe
-	opt/gitter/payload
-	opt/gitter/swiftshader/libEGL.so
-	opt/gitter/swiftshader/libGLESv2.so
-	opt/gitter/chromedriver
-	opt/gitter/lib/libnw.so
-	opt/gitter/lib/libnode.so
-	opt/gitter/lib/libffmpeg.so
-	opt/gitter/nacl_helper
-	opt/gitter/nwjc
-	opt/gitter/nacl_irt_x86_64.nexe
-	opt/gitter/Gitter"
-
 S="${WORKDIR}"
 
 src_prepare() {
@@ -70,28 +70,28 @@ src_prepare() {
 	sed -i \
 		-e '/Exec/s/=.*/=\/usr\/bin\/gitter/' \
 		-e '/Icon/s/=.*/=\/usr\/share\/pixmaps\/gitter.png/' \
-		opt/"${MY_PN^}"/linux"${arch}"/"${MY_PN}".desktop || die "sed failed"
+		opt/Gitter/linux"${arch}"/gitter.desktop || die "sed failed"
 }
 
 src_install() {
 	local arch
 	arch="$(usex amd64 "64" "32")"
 
-	fix-gnustack -f opt/"${MY_PN^}"/linux"${arch}"/nacl_irt_x86_64.nexe > /dev/null \
-		|| die "removing execstack flag failed"
+#	fix-gnustack -f opt/Gitter/linux"${arch}"/nacl_irt_x86_64.nexe > /dev/null \
+#		|| die "removing execstack flag failed"
 
 	insinto /usr/share/pixmaps
-	newins opt/"${MY_PN^}"/linux"${arch}"/logo.png gitter.png
+	newins opt/Gitter/linux"${arch}"/logo.png gitter.png
 
-	newicon -s 256 opt/"${MY_PN^}"/linux"${arch}"/logo.png gitter.png
-	domenu opt/"${MY_PN^}"/linux"${arch}"/gitter.desktop
+	newicon -s 256 opt/Gitter/linux"${arch}"/logo.png gitter.png
+	domenu opt/Gitter/linux"${arch}"/gitter.desktop
 
 	insinto /opt/gitter
-	doins -r opt/"${MY_PN^}"/linux"${arch}"/.
-	fperms +x /opt/gitter/"${MY_PN^}"
-	dosym ../../opt/gitter/"${MY_PN^}" /usr/bin/gitter
+	doins -r opt/Gitter/linux"${arch}"/.
+	fperms +x /opt/gitter/Gitter
+	dosym ../../opt/gitter/Gitter /usr/bin/gitter
 
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/gitter/"${MY_PN^}"
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/gitter/Gitter
 }
 
 pkg_preinst() {
