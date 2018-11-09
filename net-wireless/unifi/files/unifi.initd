@@ -5,7 +5,7 @@
 command="${JAVA_HOME:-/usr/bin/java}"
 command_args="-jar /usr/lib/unifi/lib/ace.jar start"
 command_background="true"
-command_user="${USER:-unifi}:${GROUP:-unifi}"
+command_user="${UNIFI_USER:-unifi}:${UNIFI_GROUP:-unifi}"
 description="UniFi Controller"
 name="UniFi Controller"
 pidfile="/run/${RC_SVCNAME}.pid"
