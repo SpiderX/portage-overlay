@@ -4,4 +4,4 @@
 #USER="nginx"
 
 # Nginx Amplify config file
-#CONFIG="/etc/amplify-agent/agent.conf"
+#CONFIG="/etc/nginx-amplify-agent/agent.conf"

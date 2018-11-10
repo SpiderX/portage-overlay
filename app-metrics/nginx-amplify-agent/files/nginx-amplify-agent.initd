@@ -5,12 +5,12 @@
 command="/usr/bin/nginx-amplify-agent.py"
 name="NGINX Amplify Agent"
 description="NGINX Amplify Agent"
-user="${USER:-nginx}"
-pidfile="/run/amplify-agent/amplify-agent.pid"
-config=${CONFIG:-/etc/amplify-agent/agent.conf}
+user="${NGINX_USER:-nginx}"
+pidfile="/run/nginx-amplify-agent/nginx-amplify-agent.pid"
+config=${CONFIG:-/etc/nginx-amplify-agent/agent.conf}
 start_stop_daemon_args="start -q -- --config $config --pid $pidfile"
 extra_commands="configtest"
-description_configtest="Checks amplify-agent configuration"
+description_configtest="Checks nginx-amplify-agent configuration"
 
 depend() {
 	need net

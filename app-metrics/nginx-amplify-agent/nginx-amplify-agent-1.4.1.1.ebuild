@@ -5,9 +5,9 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils distutils-r1 readme.gentoo-r1 systemd tmpfiles versionator
+inherit eapi7-ver distutils-r1 readme.gentoo-r1 systemd tmpfiles
 
-MY_PV=$(replace_version_separator 3 '-')
+MY_PV=$(ver_rs 3 '-')
 
 DESCRIPTION="System and NGINX metric collection"
 HOMEPAGE="https://amplify.nginx.com"
@@ -17,6 +17,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="test"
 
 CDEPEND="dev-python/crossplane[${PYTHON_USEDEP}]
 	>=dev-python/gevent-1.2.1[${PYTHON_USEDEP}]
@@ -47,7 +48,17 @@ DEPEND="${CDEPEND}
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 DOC_CONTENTS="You should put you API_KEY from https://amplify.nginx.com/
-into api_key parameter in /etc/amplify-agent/agent.conf"
+into api_key parameter in /etc/nginx-amplify-agent/agent.conf"
+
+src_prepare() {
+	default
+
+	# Make paths more logical
+	sed -i '/\/amplify-agent/s|amplify-agent|nginx-amplify-agent|' \
+		setup.py || die "sed failed for setup.py"
+	mv etc/logrotate.d/{amplify-agent,nginx-amplify-agent} \
+		|| die "logrotate renaming failed"
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
@@ -55,16 +66,16 @@ python_install_all() {
 	newinitd "${FILESDIR}"/nginx-amplify-agent.initd nginx-amplify-agent
 	newconfd "${FILESDIR}"/nginx-amplify-agent.initd nginx-amplify-agent
 	systemd_dounit "${FILESDIR}"/nginx-amplify-agent.service
-	newtmpfiles "${FILESDIR}"/nginx-amplify-agent.tmpfile amplify-agent.conf
+	newtmpfiles "${FILESDIR}"/nginx-amplify-agent.tmpfile nginx-amplify-agent.conf
 
-	keepdir /var/log/amplify-agent/
-	fowners -R nginx:nginx /var/log/amplify-agent \
-		/etc/amplify-agent/
+	keepdir /var/log/nginx-amplify-agent/
+	fowners -R nginx:nginx /var/log/nginx-amplify-agent \
+		/etc/nginx-amplify-agent/
 
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	tmpfiles_process amplify-agent.conf
+	tmpfiles_process nginx-amplify-agent.conf
 	readme.gentoo_print_elog
 }
