@@ -12,6 +12,9 @@
 	<longdescription lang="en">
 	Simple and Easy App for Messaging on VK
 	</longdescription>
+	<use>
+		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://vk.com/bugtracker</bugs-to>
 	</upstream>

@@ -167,7 +167,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-im/[gitter-bin](http://www.gitter.im/) | Chat and network platform
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack.svg)](https://repology.org/metapackage/slack) net-im/[slack-bin](http://www.slack.com/) | Team collaboration tool
 * net-im/[viber-bin](http://www.viber.com/) | Free text and calls
-* net-im/[vkmessenger-bin](https://vk.com/desktop_app) | Simple and Easy App for Messaging on VK
+* net-im/[vk-messenger-bin](https://vk.com/messenger) | Simple and Easy App for Messaging on VK
 * net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/dhcdrop.html) | Effectively suppresses illegal DHCP servers on the LAN
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-536148-red.svg)](https://bugs.gentoo.org/536148) net-misc/[fiche](https://github.com/solusipse/fiche) | Command line pastebin server
