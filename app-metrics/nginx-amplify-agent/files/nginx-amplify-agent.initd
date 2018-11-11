@@ -11,6 +11,7 @@ config=${CONFIG:-/etc/nginx-amplify-agent/agent.conf}
 start_stop_daemon_args="start -q -- --config $config --pid $pidfile"
 extra_commands="configtest"
 description_configtest="Checks nginx-amplify-agent configuration"
+retry="10"
 
 depend() {
 	need net
