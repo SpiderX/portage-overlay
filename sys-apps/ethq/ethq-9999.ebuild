@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,23 +23,24 @@ src_prepare() {
 	default
 
 	# Respect FLAGS
-	sed -i -e '/CXXFLAGS\t/s/= -O3/+=/' \
-		-e '/LDFLAGS\t/s/=/+=/' Makefile || die "sed failed for Makefile"
+	sed -i -e '/CXXFLAGS/s/= -O3/+=/' \
+		-e '/LDFLAGS/s/=/+=/' Makefile || die "sed failed for Makefile"
 
 	if ! use test ; then
-		sed -i '/TARGETS\t\t=/s/ethq_test//' Makefile \
-			|| die "sed faield for USE flag test"
+		sed -i '/TARGETS/s/ethq_test//' Makefile \
+			|| die "sed failed for USE flag test"
 	fi
 }
 
 src_compile() {
-	emake CXX="$(tc-getCXX)"
+	# override for ncurses[tinfo]
+	emake CXX="$(tc-getCXX)" LIBS_CURSES="$($(tc-getPKG_CONFIG) --libs ncurses)"
 }
 
 src_test() {
 	local driver
-	for driver in "${S}"/tests/* ; do
-		"${S}"/ethq_test "$(basename "$driver")" "${driver}" \
+	for driver in tests/* ; do
+		"${S}"/ethq_test "${driver##*/}" "${driver}" \
 			|| die "test failed on ${driver}"
 	done
 }
