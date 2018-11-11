@@ -29,7 +29,7 @@ for the following:
    history easier. Commit your message with `repoman commit`, which should look
    like:
 
-   ```
+   ```console
    category/package-name: short description
 
    Long description
