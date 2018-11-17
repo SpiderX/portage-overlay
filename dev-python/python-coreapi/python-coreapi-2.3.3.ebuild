@@ -31,5 +31,5 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 python_test() {
-	./runtests || die "test failed"
+	./runtests || die "tests failed with ${EPYTHON}"
 }
