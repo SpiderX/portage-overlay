@@ -24,5 +24,5 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-cov[${PYTHON_USEDEP}] )"
 
 python_test() {
-	./runtests || die "test failed"
+	./runtests || die "tests failed with ${EPYTHON}"
 }
