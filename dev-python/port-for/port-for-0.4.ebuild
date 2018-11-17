@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 python_test() {
-	"${EPYTHON}" setup.py test || die "tests failed"
+	"${PYTHON}" setup.py test || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
