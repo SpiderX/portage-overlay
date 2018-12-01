@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 175](https://img.shields.io/badge/ebuild-175-orange.svg)](https://img.shields.io/badge/ebuild-175-orange.svg)
+[![Number of ebuilds: 176](https://img.shields.io/badge/ebuild-176-orange.svg)](https://img.shields.io/badge/ebuild-176-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -146,6 +146,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[port-for](https://github.com/kmike/port-for) | An utility and python library for TCP ports management
 * dev-python/[python-coreapi](https://github.com/core-api/python-client) | Python client library for Core API
 * dev-python/[python-coreschema](https://github.com/core-api/python-coreschema) | Python CoreSchema
+* dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
 * dev-python/[PythonQt](http://pythonqt.sourceforge.net/) | A dynamic Python binding for the Qt framework
 * dev-python/[rstr](http://bitbucket.org/leapfrogdevelopment/rstr) | Generate random strings in Python
 * dev-python/[ruamel-std-pathlib](https://pypi.org/project/ruamel.std.pathlib/) | Ruamel enhancements to pathlib and pathlib2
@@ -220,3 +221,4 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * www-servers/[gitlab-workhorse](https://gitlab.com/gitlab-org/gitlab-workhorse) | GitLab reverse proxy
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/libinput-gestures.svg)](https://repology.org/metapackage/libinput-gestures) x11-misc/[libinput-gestures](https://github.com/bulletmark/libinput-gestures) | Actions gestures on your touchpad using libinput
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
+
