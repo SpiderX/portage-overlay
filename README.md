@@ -131,7 +131,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms) | DRY Django forms
 * dev-python/[django-debug-toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar) | A configurable set of panels that display debug information
 * dev-python/[django-environ](https://github.com/joke2k/django-environ) | An environment variables to configure Django
-* dev-python/[django-filter](https://github.com/alex/django-filter) | A generic system for filtering Django QuerySets based on user selections
+* dev-python/[django-filter](https://github.com/carltongibson/django-filter) | Django application for filtering querysets
 * dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | An implementation of per object permissions for Django
 * dev-python/[django-rest-framework](https://django-rest-framework.org/) | Django REST framework
 * dev-python/[django-rest-framework-camel-case](https://github.com/vbabiy/djangorestframework-camel-case) | Camel case JSON support for Django REST framework
@@ -221,4 +221,3 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * www-servers/[gitlab-workhorse](https://gitlab.com/gitlab-org/gitlab-workhorse) | GitLab reverse proxy
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/libinput-gestures.svg)](https://repology.org/metapackage/libinput-gestures) x11-misc/[libinput-gestures](https://github.com/bulletmark/libinput-gestures) | Actions gestures on your touchpad using libinput
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
-
