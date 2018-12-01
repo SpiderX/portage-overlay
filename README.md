@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 178](https://img.shields.io/badge/ebuild-178-orange.svg)](https://img.shields.io/badge/ebuild-178-orange.svg)
+[![Number of ebuilds: 179](https://img.shields.io/badge/ebuild-179-orange.svg)](https://img.shields.io/badge/ebuild-179-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -138,6 +138,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-rest-framework-recursive](https://github.com/heywbj/django-rest-framework-recursive) | Recursive Serialization for Django REST framework
 * dev-python/[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger) | Swagger Documentation Generator for Django REST Framework
 * dev-python/[django-tables2](https://pypi.python.org/pypi/django-tables2/) | Table/data-grid framework for Django
+* dev-python/[django-taggit](https://github.com/alex/django-taggit) | Django application for simple tagging
 * dev-python/[django-timezone-field](https://github.com/mfogel/django-timezone-field) | Django application for database and form fields for pytz objects
 * dev-python/[drf-yasg](https://github.com/axnsan12/drf-yasg) | Yet another Swagger generator
 * dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz
