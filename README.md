@@ -130,7 +130,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-debug-toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar) | A configurable set of panels that display debug information
 * dev-python/[django-environ](https://github.com/joke2k/django-environ) | An environment variables to configure Django
 * dev-python/[django-filter](https://github.com/alex/django-filter) | A generic system for filtering Django QuerySets based on user selections
-* dev-python/[django-guardian](https://github.com/lukaszb/django-guardian) | Implementation of per object permissions for Django 1.2+
+* dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | An implementation of per object permissions for Django
 * dev-python/[django-rest-framework](https://django-rest-framework.org/) | Django REST framework
 * dev-python/[django-rest-swagger](https://github.com/marcgibbons/django-rest-swagger) | Swagger Documentation Generator for Django REST Framework
 * dev-python/[django-tables2](https://pypi.python.org/pypi/django-tables2/) | Table/data-grid framework for Django
