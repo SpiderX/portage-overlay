@@ -39,7 +39,7 @@ src_prepare() {
 		-e '/CFLAGS  = /s|CFLAGS  =|CFLAGS +=|' \
 		-e '/CFLAGS += -g/s/-O3 -std=gnu99 -march=native/-std=gnu99/' \
 		-e '/LDFLAGS =/s/LDFLAGS =/LDFLAGS +=/' \
-		-e '/DBUILD_VERSION/d' \
+		-e "/BUILD_VERSION/s/\".*$/\"${MY_PV}\"'/" \
 		Makefile || die "sed failed for FLAGS"
 
 	if ! use debug ; then
