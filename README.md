@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 167](https://img.shields.io/badge/ebuild-167-orange.svg)](https://img.shields.io/badge/ebuild-167-orange.svg)
+[![Number of ebuilds: 168](https://img.shields.io/badge/ebuild-168-orange.svg)](https://img.shields.io/badge/ebuild-168-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -128,6 +128,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[dateparser](https://github.com/scrapinghub/dateparser) | Date parsing library designed to parse dates from HTML pages
 * dev-python/[django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms) | DRY Django forms
 * dev-python/[django-debug-toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar) | A configurable set of panels that display debug information
+* dev-python/[django-environ](https://github.com/joke2k/django-environ) | An environment variables to configure Django
 * dev-python/[django-filter](https://github.com/alex/django-filter) | A generic system for filtering Django QuerySets based on user selections
 * dev-python/[django-guardian](https://github.com/lukaszb/django-guardian) | Implementation of per object permissions for Django 1.2+
 * dev-python/[django-rest-framework](https://django-rest-framework.org/) | Django REST framework
