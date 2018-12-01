@@ -1,34 +1,37 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_4 pypy )
+PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="A configurable set of panels that display debug information"
 HOMEPAGE="https://github.com/django-debug-toolbar/django-debug-toolbar"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
 
-SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
-IUSE="doc examples"
+SLOT="0"
+KEYWORDS=""
+IUSE="doc examples test"
 
-RDEPEND="
-	>=dev-python/django-1.8[${PYTHON_USEDEP}]
-	>=dev-python/python-sqlparse-0.2.0[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]
+	dev-python/python-sqlparse[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	test? ( dev-python/html5lib[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Prevent non essential d'loading by intersphinx
-	sed -e 's:intersphinx_mapping:_&:' -i docs/conf.py || die
+	sed -i 's:intersphinx_mapping:_&:' docs/conf.py \
+		|| die "sed failed for docs/conf.py"
 
-	# This prevents distutils from installing 'tests' package, rm magic no more needed
-	sed -e "/find_packages/s:'tests':'tests.\\*', 'tests':" -i setup.py || die
+	# Don't install tests
+	sed -i "/find_packages/s:'tests':'tests.\\*', 'tests':" setup.py \
+		|| die "sed failed for setup.py"
 
 	distutils-r1_python_prepare_all
 }
