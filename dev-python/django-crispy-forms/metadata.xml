@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">django-crispy-forms/django-crispy-forms</remote-id>
+		<remote-id type="pypi">django-crispy-forms</remote-id>
 	</upstream>
 </pkgmetadata>
