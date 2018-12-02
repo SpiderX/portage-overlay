@@ -1,0 +1,50 @@
+--- ../testing/settings.py	2018-12-03 00:02:38.763618003 +0200
++++ ../testing/settings.py	2018-12-03 00:03:18.056656289 +0200
+@@ -59,9 +59,7 @@
+     "django.contrib.sessions",
+     "django.contrib.staticfiles",
+     "django.contrib.messages",
+-    "pipeline",
+     "django_jinja",
+-    "django_jinja.contrib._pipeline",
+     "testapp",
+ )
+ 
+--- ../testing/testapp/tests.py	2018-12-03 00:04:28.290788902 +0200
++++ ../testing/testapp/tests.py	2018-12-03 00:04:37.849804898 +0200
+@@ -301,35 +301,6 @@
+         self.assertEqual(response.context["name"], "Jinja2")
+         self.assertTemplateUsed(response, 'hello_world.jinja')
+ 
+-class DjangoPipelineTestTest(TestCase):
+-    def setUp(self):
+-        self.env = engines["jinja2"]
+-
+-    def test_pipeline_js_safe(self):
+-        template = self.env.from_string("{{ compressed_js('test') }}")
+-        result = template.render({})
+-
+-        self.assertTrue(result.startswith("<script"))
+-        self.assertIn("text/javascript", result)
+-        self.assertIn("/static/script.2.js", result)
+-
+-    def test_pipeline_css_safe_01(self):
+-        template = self.env.from_string("{{ compressed_css('test') }}")
+-        result = template.render({})
+-        self.assertIn("media=\"all\"", result)
+-        self.assertIn("stylesheet", result)
+-        self.assertIn("<link", result)
+-        self.assertIn("/static/style.2.css", result)
+-
+-    def test_pipeline_css_safe_02(self):
+-        template = self.env.from_string("{{ compressed_css('test2') }}")
+-        result = template.render({})
+-        self.assertNotIn("media", result)
+-        self.assertIn("stylesheet", result)
+-        self.assertIn("<link", result)
+-        self.assertIn("/static/style.2.css", result)
+-
+-
+ class BaseTests(TestCase):
+     def setUp(self):
+         self.env = engines["jinja2"]
