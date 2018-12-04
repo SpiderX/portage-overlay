@@ -20,3 +20,11 @@ RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]
 	<dev-python/prompt_toolkit-2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+python_prepare_all() {
+	# Remove unneeded requirement
+	sed -i '/regex/d' requirements.txt \
+		|| die "sed failed for requirements.txt"
+
+	distutils-r1_python_prepare_all
+}

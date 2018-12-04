@@ -26,3 +26,11 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (	dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/ptyprocess[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}] )"
+
+python_prepare_all() {
+	# Remove unneeded requirement
+	sed -i '/regex/d' requirements.txt \
+		|| die "sed failed for requirements.txt"
+
+	distutils-r1_python_prepare_all
+}
