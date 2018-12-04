@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This is an interactive tool to commit based on some rules,
+	like conventional commits. It comes with some defaults commit styles,
+	like jira, conventional commits, etc, and it’s easily extendable.
+	It’s useful for teams, because it is possible to standardize
+	the commiting style.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Woile/commitizen</remote-id>
+		<remote-id type="pypi">commitizen</remote-id>
+	</upstream>
+</pkgmetadata>

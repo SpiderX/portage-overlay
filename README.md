@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 186](https://img.shields.io/badge/ebuild-186-orange.svg)](https://img.shields.io/badge/ebuild-186-orange.svg)
+[![Number of ebuilds: 187](https://img.shields.io/badge/ebuild-187-orange.svg)](https://img.shields.io/badge/ebuild-187-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -169,6 +169,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[cfn-python-lint](https://github.com/awslabs/cfn-python-lint) | AWS CloudFormation Linter
 * dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
 * dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | The official GitLab CI runner
+* dev-vcs/[commitizen](https://github.com/Woile/commitizen) | Python commitizen client tool
 * dev-vcs/[gitlint](https://github.com/jorisroovers/gitlint) | Git commit message linter
 * dev-vcs/[mercurial-extension_utils](https://bitbucket.org/Mekk/mercurial-extension_utils) | Mercurial Extension Utils
 * dev-vcs/[mercurial-keyring](https://bitbucket.org/Mekk/mercurial_keyring) | Mercurial Keyring Extension
