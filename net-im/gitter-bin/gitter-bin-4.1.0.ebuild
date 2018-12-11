@@ -6,9 +6,10 @@ EAPI=6
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 MY_PN="${PN/-bin/}"
 
-inherit eutils gnome2-utils multilib-build pax-utils unpacker
+inherit desktop gnome2-utils multilib-build pax-utils unpacker
 
-QA_PRESTRIPPED="opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
+QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_libcrt_platform_a
+	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
 	opt/gitter/pnacl/pnacl_public_x86_64_ld_nexe
 	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_sz_nexe
 	opt/gitter/payload
@@ -62,10 +63,11 @@ DEPEND="sys-apps/fix-gnustack"
 S="${WORKDIR}"
 
 src_prepare() {
+	default
+
 	local arch
 	arch="$(usex amd64 "64" "32")"
 
-	default
 	# Modify desktop file to use common paths
 	sed -i \
 		-e '/Exec/s/=.*/=\/usr\/bin\/gitter/' \
@@ -77,12 +79,10 @@ src_install() {
 	local arch
 	arch="$(usex amd64 "64" "32")"
 
-#	fix-gnustack -f opt/Gitter/linux"${arch}"/nacl_irt_x86_64.nexe > /dev/null \
-#		|| die "removing execstack flag failed"
+	fix-gnustack -f opt/Gitter/linux"${arch}"/nacl_irt_x86_64.nexe > /dev/null \
+		|| die "removing execstack flag failed"
 
-	insinto /usr/share/pixmaps
-	newins opt/Gitter/linux"${arch}"/logo.png gitter.png
-
+	newicon opt/Gitter/linux"${arch}"/logo.png gitter.png
 	newicon -s 256 opt/Gitter/linux"${arch}"/logo.png gitter.png
 	domenu opt/Gitter/linux"${arch}"/gitter.desktop
 
