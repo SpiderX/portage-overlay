@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 189](https://img.shields.io/badge/ebuild-189-orange.svg)](https://img.shields.io/badge/ebuild-189-orange.svg)
+[![Number of ebuilds: 190](https://img.shields.io/badge/ebuild-190-orange.svg)](https://img.shields.io/badge/ebuild-190-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -48,6 +48,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[awslog](https://github.com/jaksi/awslog) | History and changes of configuration versions of AWS resources
 * app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/qtpass.svg)](https://repology.org/metapackage/qtpass) app-admin/[qtpass](https://qtpass.org/) | multi-platform GUI for pass, the standard unix password manager
+* app-admin/[jl](https://github.com/koenbollen/jl) | A tool for working with structured JSON logging
 * app-admin/[reprepro](https://mirrorer.alioth.debian.org/) | A tool to handle local repositories of Debian packages
 * app-admin/[tztail](https://github.com/thecasualcoder/tztail) | A log view in various timezones
 * app-admin/[userdbadm](http://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
