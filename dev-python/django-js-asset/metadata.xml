@@ -13,7 +13,7 @@
 	A script tag with additional attributes for django.forms.Media
 	</longdescription>
 	<upstream>
-		<remote-id type="github">matthiask/django-js-asset/</remote-id>
+		<remote-id type="github">matthiask/django-js-asset</remote-id>
 		<remote-id type="pypi">django-js-asset</remote-id>
 	</upstream>
 </pkgmetadata>
