@@ -19,11 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}] ) "
 
 S="${WORKDIR}/${MY_P}"
 
