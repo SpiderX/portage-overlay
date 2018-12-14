@@ -17,22 +17,20 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="dev-python/six[${PYTHON_USEDEP}]"
+RDEPEND="${DEPEND}
+	dev-python/django[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	test? ( dev-python/django-environ[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}]
+	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}]
+		dev-python/django-environ[${PYTHON_USEDEP}]
 		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
 python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
+	"${PYTHON}" manage.py test guardian -v2 || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
-	find "${ED}" -type d -name "tests" -exec rm -rv {} + || die "tests removing failed"
+	find "${ED}" -type d -name "testapp" -exec rm -rv {} + || die "tests removing failed"
 }
