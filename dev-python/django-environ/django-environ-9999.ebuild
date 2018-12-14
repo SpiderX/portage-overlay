@@ -17,9 +17,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="virtual/python-futures[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 python_test() {
 	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
@@ -27,5 +26,5 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-	find "${ED}" -name 'test.*' -delete || die "tests removing failed"
+	find "${ED}" -name 'test*' -delete || die "tests removing failed"
 }
