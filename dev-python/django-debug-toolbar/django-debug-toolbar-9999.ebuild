@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_REQ_USE="threads(+)"
 EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -17,12 +18,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc examples test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	dev-python/python-sqlparse[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}
-	test? ( dev-python/html5lib[${PYTHON_USEDEP}] )"
+	dev-python/python-sqlparse[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}]
+		dev-python/django-jinja[${PYTHON_USEDEP}]
+		dev-python/html5lib[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Prevent non essential d'loading by intersphinx
@@ -33,6 +36,10 @@ python_prepare_all() {
 	sed -i "/find_packages/s:'tests':'tests.\\*', 'tests':" setup.py \
 		|| die "sed failed for setup.py"
 
+	# Make tests verbose
+	sed -i '/python -m django test/s/$/ --verbosity 2/' Makefile \
+		|| die "sed failed for Makefile"
+
 	distutils-r1_python_prepare_all
 }
 
@@ -42,6 +49,7 @@ python_compile_all() {
 
 python_test() {
 	emake test
+	#todo: emake test_selenium
 }
 
 python_install_all() {
