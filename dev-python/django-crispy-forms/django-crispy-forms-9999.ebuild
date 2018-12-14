@@ -15,12 +15,28 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}]
+		dev-python/pytest-django[${PYTHON_USEDEP}] )"
+
+# Add manage.py to run tests
+PATCHES=( "${FILESDIR}/${PN}"-1.7.2-manage.py.patch )
 
 python_prepare_all() {
-	rm -rf "${S}/crispy_forms/tests" || die "test removing failed"
+	# fix config to remove warning
+	sed -i '/pytest/s/\[/\[tool:/' setup.cfg || die "sed failed for setup.cfg"
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings py.test -v \
+		|| die "tests failed with ${EPYTHON}"
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+	find "${ED}" -type d -name "tests" -exec rm -rv {} + || die "tests removing failed"
 }

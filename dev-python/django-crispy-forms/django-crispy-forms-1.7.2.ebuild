@@ -14,12 +14,23 @@ SRC_URI="https://github.com/django-crispy-forms/${PN}/archive/${PV}.tar.gz -> ${
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}]
+		dev-python/pytest-django[${PYTHON_USEDEP}] )"
 
-python_prepare_all() {
-	rm -rf "${S}/crispy_forms/tests" || die "test removing failed"
-	distutils-r1_python_prepare_all
+# Add manage.py to run tests, backport config to remove warning
+PATCHES=( "${FILESDIR}/${P}"-manage.py.patch
+	"${FILESDIR}/${P}"-setup.cfg.patch )
+
+python_test() {
+	DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings py.test -v \
+		|| die "tests failed with ${EPYTHON}"
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+	find "${ED}" -type d -name "tests" -exec rm -rv {} + || die "tests removing failed"
 }
