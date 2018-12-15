@@ -17,14 +17,17 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
 		dev-python/pytest-django[${PYTHON_USEDEP}] )"
 
+python_prepare_all() {
+	# Remove coverage from tests
+	sed -i '/cov/d' setup.cfg || die "sed failed for setup.cfg"
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
-	./runtests.py || die "tests failed with ${EPYTHON}"
+	./runtests.py -v || die "tests failed with ${EPYTHON}"
 }
