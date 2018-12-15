@@ -21,7 +21,7 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/django-js-asset[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
 		dev-python/mock-django[${PYTHON_USEDEP}] )"
 
 python_test() {
