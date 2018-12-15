@@ -16,10 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="test? ( dev-python/flake8[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
-	./runtests || die "test failed"
+	py.test -v tests.py || die "tests failed with ${EPYTHON}"
 }
