@@ -22,7 +22,7 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-jinja[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}] )"
 
