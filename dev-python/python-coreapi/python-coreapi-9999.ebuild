@@ -17,16 +17,16 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/python-coreschema[${PYTHON_USEDEP}]
-	dev-python/itypes[${PYTHON_USEDEP}]
+RDEPEND="dev-python/itypes[${PYTHON_USEDEP}]
+	dev-python/python-coreschema[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/uritemplate[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/flake8[${PYTHON_USEDEP}] )
-		dev-python/pytest[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+S="${WORKDIR}/${MY_P}"
 
 python_test() {
-	./runtests || die "tests failed with ${EPYTHON}"
+	py.test -v || die "tests failed with ${EPYTHON}"
 }
