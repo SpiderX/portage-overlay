@@ -21,11 +21,11 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/jinja[${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
+		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/jsmin[${PYTHON_USEDEP}]
 		dev-python/slimit[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}]
-		$(python_gen_impl_dep sqlite) )"
+		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
 python_test() {
 	# Upstream allows tests to fail
