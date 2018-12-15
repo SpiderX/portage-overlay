@@ -16,17 +16,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/django-crispy-forms[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
+		dev-python/django-crispy-forms[${PYTHON_USEDEP}]
 		dev-python/django-rest-framework[${PYTHON_USEDEP}]
 		dev-python/python-coreapi[${PYTHON_USEDEP}]
-		dev-python/pytz[${PYTHON_USEDEP}]
 		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
 python_test() {
-	./runtests.py || die "tests failed with ${EPYTHON}"
+	./runtests.py --verbosity 2 || die "tests failed with ${EPYTHON}"
 }
 
 pkg_postinst() {
