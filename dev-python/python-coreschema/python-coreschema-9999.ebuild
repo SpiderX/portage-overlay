@@ -17,12 +17,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
-	./runtests || die "tests failed with ${EPYTHON}"
+	py.test -v || die "tests failed with ${EPYTHON}"
 }
