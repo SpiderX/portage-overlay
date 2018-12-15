@@ -14,18 +14,20 @@ SRC_URI=""
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="test"
-RESTRICT="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
+		dev-python/django-guardian[${PYTHON_USEDEP}]
+		dev-python/psycopg:2[${PYTHON_USEDEP}]
+		dev-python/pytest-django[${PYTHON_USEDEP}]
+		dev-python/python-coreapi[${PYTHON_USEDEP}]
+		virtual/python-typing[${PYTHON_USEDEP}] )"
 
 python_test() {
-	./runtests.py || die "tests failed with ${EPYTHON}"
+	./runtests.py -v --nolint || die "tests failed with ${EPYTHON}"
 }
 
 pkg_postinst() {
