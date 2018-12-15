@@ -23,9 +23,9 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/django-pipeline[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}]
-		$(python_gen_impl_dep sqlite) )"
+	test? ( $(python_gen_impl_dep sqlite)
+		dev-python/django-pipeline[${PYTHON_USEDEP}]
+		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
 python_test() {
 	"${PYTHON}" testing/runtests.py || die "tests failed with ${EPYTHON}"
