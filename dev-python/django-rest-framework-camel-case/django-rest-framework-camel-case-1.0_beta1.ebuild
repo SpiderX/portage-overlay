@@ -20,10 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+RDEPEND="dev-python/django-rest-framework[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	dev-python/django-rest-framework[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 

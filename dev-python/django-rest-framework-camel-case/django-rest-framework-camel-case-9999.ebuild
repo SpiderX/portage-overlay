@@ -17,10 +17,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+RDEPEND="dev-python/django-rest-framework[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	dev-python/django-rest-framework[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 python_test() {
 	emake test
