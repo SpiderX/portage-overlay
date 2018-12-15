@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}
 	dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-environ[${PYTHON_USEDEP}]
 		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
