@@ -21,7 +21,7 @@ IUSE="test"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/django[sqlite,${PYTHON_USEDEP}] ) "
+	test? ( $(python_gen_impl_dep sqlite) ) "
 
 S="${WORKDIR}/${MY_P}"
 
