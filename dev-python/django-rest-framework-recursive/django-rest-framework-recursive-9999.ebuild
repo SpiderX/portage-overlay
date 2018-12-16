@@ -12,20 +12,20 @@ DESCRIPTION="Recursive Serialization for Django REST framework"
 HOMEPAGE="https://github.com/heywbj/django-rest-framework-recursive"
 SRC_URI=""
 
-LICENSE="BSD"
+LICENSE="ISC"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-# some tests fail
-RESTRICT="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	dev-python/django-rest-framework[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}] )"
+# remove incorrectly defined test
+PATCHES=( "${FILESDIR}/${PN}"-0.1.2-test.patch )
+
+RDEPEND="dev-python/django-rest-framework[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
+		dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
-	./runtests -v || die "tests failed with ${EPYTHON}"
+	./runtests.py -v || die "tests failed with ${EPYTHON}"
 }
