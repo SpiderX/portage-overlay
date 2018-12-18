@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 192](https://img.shields.io/badge/ebuild-192-orange.svg)](https://img.shields.io/badge/ebuild-192-orange.svg)
+[![Number of ebuilds: 193](https://img.shields.io/badge/ebuild-193-orange.svg)](https://img.shields.io/badge/ebuild-193-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -159,6 +159,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[port-for](https://github.com/kmike/port-for) | An utility and python library for TCP ports management
 * dev-python/[python-coreapi](https://github.com/core-api/python-client) | Python client library for Core API
 * dev-python/[python-coreschema](https://github.com/core-api/python-coreschema) | Python CoreSchema
+* dev-python/[python-openapi-codec](https://github.com/core-api/python-openapi-codec) | An OpenAPI codec for Core API
 * dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
 * dev-python/[PythonQt](http://pythonqt.sourceforge.net/) | A dynamic Python binding for the Qt framework
 * dev-python/[rstr](http://bitbucket.org/leapfrogdevelopment/rstr) | Generate random strings in Python
