@@ -16,12 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}] )"
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite)
+		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Remove unneeded requirement
@@ -30,5 +29,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	emake test
+	PYTHONPATH=. django-admin.py test --settings=tests.settings \
+		tests --verbosity 2 || die "tests failed with ${EPYTHON}"
 }
