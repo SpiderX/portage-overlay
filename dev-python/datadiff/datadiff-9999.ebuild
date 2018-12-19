@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A library for diffs of python data structures"
-HOMEPAGE="https://datadiff.sourceforge.net/"
+HOMEPAGE="https://datadiff.sourceforge.net"
 SRC_URI=""
 
 LICENSE="Apache-2.0"
@@ -17,10 +17,12 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}] )"
 
 python_test() {
+	# Two tests fail under python 3
+	python_is_python3 && eapply "${FILESDIR}/${P}"-py3-test.patch
 	nosetests -v || die "tests failed with ${EPYTHON}"
 }
