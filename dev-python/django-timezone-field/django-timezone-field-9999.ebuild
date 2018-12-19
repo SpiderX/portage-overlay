@@ -15,11 +15,14 @@ SRC_URI=""
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
-# tests require running postgres
-RESTRICT="test"
+IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	dev-python/pytz[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_impl_dep sqlite) )"
+
+python_test() {
+	PYTHONPATH=. django-admin.py test --settings=tests.settings \
+		tests --verbosity 2 || die "tests failed with ${EPYTHON}"
+}
