@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 201](https://img.shields.io/badge/ebuild-201-orange.svg)](https://img.shields.io/badge/ebuild-201-orange.svg)
+[![Number of ebuilds: 202](https://img.shields.io/badge/ebuild-202-orange.svg)](https://img.shields.io/badge/ebuild-202-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -154,6 +154,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[email-validator](https://github.com/JoshData/python-email-validator) | An email syntax and deliverability validation library
 * dev-python/[factory_boy](https://github.com/FactoryBoy/factory_boy) | A fixtures replacement tool
 * dev-python/[faker](https://github.com/joke2k/faker) | Python package that generates fake data
+* dev-python/[flex](https://github.com/pipermerriam/flex) | Validation tooling for Swagger 2.0 specifications
 * dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz
 * dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
 * dev-python/[m9dicts](https://github.com/ssato/python-m9dicts) | A dict-like object supports recursive merge operation
