@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 203](https://img.shields.io/badge/ebuild-203-orange.svg)](https://img.shields.io/badge/ebuild-203-orange.svg)
+[![Number of ebuilds: 204](https://img.shields.io/badge/ebuild-204-orange.svg)](https://img.shields.io/badge/ebuild-204-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -129,7 +129,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[aws-sam-translator](https://github.com/awslabs/serverless-application-model) | A library to transform SAM templates into AWS CloudFormation templates
 * dev-python/[crayons](https://github.com/kennethreitz/crayons) | Text UI colors
 * dev-python/[crossplane](https://github.com/nginxinc/crossplane) | Fast and reliable NGINX configuration parser
-* dev-python/[datadiff](https://datadiff.sourceforge.net/) | A library for diffs of python data structures
+* dev-python/[datadiff](https://datadiff.sourceforge.net) | A library for diffs of python data structures
 * dev-python/[delegator-py](https://github.com/kennethreitz/delegator.py) | Simple library for dealing with subprocesses
 * dev-python/[dateparser](https://github.com/scrapinghub/dateparser) | Date parsing library designed to parse dates from HTML pages
 * dev-python/[django-cors-headers](https://github.com/ottoyiu/django-cors-headers) | Django application for Cross-Origin Resource Sharing (CORS)
@@ -163,6 +163,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
 * dev-python/[polemarch-ansible](https://gitlab.com/vstconsulting/polemarch-ansible) | Wrapper for Ansible CLI
 * dev-python/[port-for](https://github.com/kmike/port-for) | An utility and python library for TCP ports management
+* dev-python/[pytimeparse](https://github.com/wroberts/pytimeparse) | A library to parse time from human readable string
 * dev-python/[python-coreapi](https://github.com/core-api/python-client) | Python client library for Core API
 * dev-python/[python-coreschema](https://github.com/core-api/python-coreschema) | Python CoreSchema
 * dev-python/[python-openapi-codec](https://github.com/core-api/python-openapi-codec) | An OpenAPI codec for Core API
@@ -248,4 +249,3 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * www-servers/[gitlab-workhorse](https://gitlab.com/gitlab-org/gitlab-workhorse) | GitLab reverse proxy
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/libinput-gestures.svg)](https://repology.org/metapackage/libinput-gestures) x11-misc/[libinput-gestures](https://github.com/bulletmark/libinput-gestures) | Actions gestures on your touchpad using libinput
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
-* dev-python/[datadiff](https://datadiff.sourceforge.net) | A library for diffs of python data structures
