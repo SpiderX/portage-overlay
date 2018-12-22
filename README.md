@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 202](https://img.shields.io/badge/ebuild-202-orange.svg)](https://img.shields.io/badge/ebuild-202-orange.svg)
+[![Number of ebuilds: 203](https://img.shields.io/badge/ebuild-203-orange.svg)](https://img.shields.io/badge/ebuild-203-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -161,6 +161,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[mock-django](https://github.com/dcramer/mock-django) | A simple library for mocking certain Django behavior
 * dev-python/[msrest](https://pypi.python.org/pypi/msrest/) | AutoRest swagger generator Python client runtime
 * dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
+* dev-python/[polemarch-ansible](https://gitlab.com/vstconsulting/polemarch-ansible) | Wrapper for Ansible CLI
 * dev-python/[port-for](https://github.com/kmike/port-for) | An utility and python library for TCP ports management
 * dev-python/[python-coreapi](https://github.com/core-api/python-client) | Python client library for Core API
 * dev-python/[python-coreschema](https://github.com/core-api/python-coreschema) | Python CoreSchema
