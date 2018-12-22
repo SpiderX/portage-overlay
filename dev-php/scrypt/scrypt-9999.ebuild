@@ -4,7 +4,7 @@
 EAPI=6
 
 PHP_EXT_ECONF_ARGS="--enable-scrypt"
-USE_PHP="php5-6 php7-0 php7-1 php7-2"
+USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
 EGIT_REPO_URI="https://github.com/DomBlack/php-scrypt.git"
 
 inherit git-r3 php-ext-pecl-r3
