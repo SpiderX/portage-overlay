@@ -9,6 +9,9 @@
 		<email>andrey_utkin@gentoo.org</email>
 		<name>Andrey Utkin</name>
 	</maintainer>
+	<longdescription lang="en">
+	A drop-in replacement to extend the Python standard pathlib` module.
+	</longdescription>
 	<upstream>
 		<remote-id type="bitbucket">ruamel/std.pathlib</remote-id>
 		<remote-id type="pypi">ruamel.std.pathlib</remote-id>

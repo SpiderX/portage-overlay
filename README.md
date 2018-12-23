@@ -173,7 +173,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[requests-credssp](https://github.com/jborean93/requests-credssp) | CredSSP authentication handler for Python Requests
 * dev-python/[rstr](http://bitbucket.org/leapfrogdevelopment/rstr) | Generate random strings in Python
 * dev-python/[ruamel-ordereddict](https://bitbucket.org/ruamel/ordereddict) | An ordered dictionary with KIO/KVIO
-* dev-python/[ruamel-std-pathlib](https://pypi.org/project/ruamel.std.pathlib/) | Ruamel enhancements to pathlib and pathlib2
+* dev-python/[ruamel-std-pathlib](https://bitbucket.org/ruamel/std.pathlib) | Ruamel enhancements to pathlib and pathlib2
 * dev-python/[ruamel-yaml](https://pypi.org/project/ruamel.yaml/) | YAML parser/emitter that supports roundtrip comment preservation
 * dev-python/[selectors2](https://github.com/SethMichaelLarson/selectors2) | Portable replacement to the standard library selectors module
 * dev-python/[tablib](http://python-tablib.org/) | A format-agnostic tabular dataset library written in Python
