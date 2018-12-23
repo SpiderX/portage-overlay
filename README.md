@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 205](https://img.shields.io/badge/ebuild-205-orange.svg)](https://img.shields.io/badge/ebuild-205-orange.svg)
+[![Number of ebuilds: 206](https://img.shields.io/badge/ebuild-206-orange.svg)](https://img.shields.io/badge/ebuild-206-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -170,6 +170,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
 * dev-python/[pywinrm](https://github.com/diyan/pywinrm) | Python library for Windows Remote Management
 * dev-python/[PythonQt](http://pythonqt.sourceforge.net/) | A dynamic Python binding for the Qt framework
+* dev-python/[requests-credssp](https://github.com/jborean93/requests-credssp) | CredSSP authentication handler for Python Requests
 * dev-python/[rstr](http://bitbucket.org/leapfrogdevelopment/rstr) | Generate random strings in Python
 * dev-python/[ruamel-std-pathlib](https://pypi.org/project/ruamel.std.pathlib/) | Ruamel enhancements to pathlib and pathlib2
 * dev-python/[ruamel-yaml](https://pypi.org/project/ruamel.yaml/) | YAML parser/emitter that supports roundtrip comment preservation
