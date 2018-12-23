@@ -36,5 +36,5 @@ python_install_all() {
 
 pkg_postinst() {
 	optfeature "integration with Kerberos" dev-python/requests-kerberos
-#	optfeature "integration with CredSSP" dev-python/requests-credssp
+	optfeature "integration with CredSSP" dev-python/requests-credssp
 }
