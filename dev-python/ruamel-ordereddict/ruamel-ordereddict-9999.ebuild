@@ -6,8 +6,6 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 EHG_REPO_URI="https://bitbucket.org/ruamel/ordereddict"
 
-MY_P="ruamel.ordereddict-${PV}"
-
 inherit distutils-r1 mercurial
 
 DESCRIPTION="An ordered dictionary with KIO/KVIO"
