@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 214](https://img.shields.io/badge/ebuild-214-orange.svg)](https://img.shields.io/badge/ebuild-214-orange.svg)
+[![Number of ebuilds: 215](https://img.shields.io/badge/ebuild-215-orange.svg)](https://img.shields.io/badge/ebuild-215-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -128,6 +128,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[applicationinsights](https://pypi.python.org/pypi/applicationinsights/) | Application Insights API surface
 * dev-python/[aws-sam-translator](https://github.com/awslabs/serverless-application-model) | A library to transform SAM templates into AWS CloudFormation templates
 * dev-python/[crayons](https://github.com/kennethreitz/crayons) | Text UI colors
+* dev-python/[cron-descriptor](https://github.com/Salamek/cron-descriptor) | Converts cron expressions into human readable strings
 * dev-python/[crossplane](https://github.com/nginxinc/crossplane) | Fast and reliable NGINX configuration parser
 * dev-python/[datadiff](https://datadiff.sourceforge.net) | A library for diffs of python data structures
 * dev-python/[delegator-py](https://github.com/kennethreitz/delegator.py) | Simple library for dealing with subprocesses

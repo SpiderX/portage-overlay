@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A Python library that converts cron expressions into
+	human readable strings.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Salamek/cron-descriptor/releases</remote-id>
+		<remote-id type="pypi">cron_descriptor</remote-id>
+	</upstream>
+</pkgmetadata>
