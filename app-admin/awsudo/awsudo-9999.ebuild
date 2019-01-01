@@ -16,16 +16,15 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
-	dev-python/awscli[${PYTHON_USEDEP}]
+RDEPEND="dev-python/awscli[${PYTHON_USEDEP}]
 	dev-python/boto[${PYTHON_USEDEP}]
 	dev-python/retrying[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
-	esetup.py test || die "Tests failed under ${EPYTHON}"
+	py.test -v || die "tests failed with ${EPYTHON}"
 }
