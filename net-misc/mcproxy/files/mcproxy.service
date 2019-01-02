@@ -1,9 +1,0 @@
-[Unit]
-Description=mcproxy
-After=network.target
-
-[Service]
-ExecStart=/usr/sbin/mcproxy /etc/mcproxy.conf
-
-[Install]
-WantedBy=multi-user.target

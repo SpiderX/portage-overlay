@@ -1,5 +1,0 @@
-# Config file for /etc/init.d/resilio-sync
-
-# Various options.
-# run `mcproxy -h` for valid cmdline options
-#OPTS=""
