@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 		dev-python/django-rest-framework-camel-case[${PYTHON_USEDEP}]
 		dev-python/django-rest-framework-recursive[${PYTHON_USEDEP}]
 		dev-python/dj-database-url[${PYTHON_USEDEP}]
+		dev-python/flex[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -39,8 +40,17 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-pythonpath[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/python-user-agents[${PYTHON_USEDEP}]
+		dev-python/swagger_spec_validator[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '<dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]' python2_7)
 		$(python_gen_cond_dep '>=dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]' python3_4 python3_5 python3_6) )"
+
+python_prepare_all() {
+	# setuptools is unable to detect version
+	sed -i "/use_scm_version/s/True/False/" \
+		setup.py || die "sed failed for setup.py"
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	pytest -v || die "tests failed with ${EPYTHON}"
