@@ -10,7 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	IP address management (IPAM) and data center infrastructure management (DCIM) tool
+	NetBox is an IP address management (IPAM) and data center
+	infrastructure management (DCIM) tool. Initially conceived by
+	the network engineering team at DigitalOcean, NetBox was developed
+	specifically to address the needs of network and infrastructure engineers.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">digitalocean/netbox</remote-id>

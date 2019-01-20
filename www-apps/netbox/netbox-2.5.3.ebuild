@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 PYTHON_COMPAT=( python3_{4..6} )
 WEBAPP_MANUAL_SLOT="yes"
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="vhosts"
 
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/django-2[${PYTHON_USEDEP}]
 	dev-python/django-cors-headers[${PYTHON_USEDEP}]
 	dev-python/django-debug-toolbar[${PYTHON_USEDEP}]
 	dev-python/django-filter[${PYTHON_USEDEP}]
