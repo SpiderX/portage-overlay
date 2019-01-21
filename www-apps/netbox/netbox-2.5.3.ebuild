@@ -19,11 +19,11 @@ IUSE="vhosts"
 
 RDEPEND=">=dev-python/django-2[${PYTHON_USEDEP}]
 	dev-python/django-cors-headers[${PYTHON_USEDEP}]
-	dev-python/django-debug-toolbar[${PYTHON_USEDEP}]
+	>=dev-python/django-debug-toolbar-1.10[${PYTHON_USEDEP}]
 	dev-python/django-filter[${PYTHON_USEDEP}]
 	dev-python/django-mptt[${PYTHON_USEDEP}]
 	dev-python/django-rest-framework[${PYTHON_USEDEP}]
-	dev-python/django-tables2[${PYTHON_USEDEP}]
+	>=dev-python/django-tables2-2[${PYTHON_USEDEP}]
 	dev-python/django-taggit[${PYTHON_USEDEP}]
 	dev-python/django-taggit-serializer[${PYTHON_USEDEP}]
 	dev-python/django-timezone-field[${PYTHON_USEDEP}]
