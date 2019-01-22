@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	It shows all running containers, stopped containers in a beautiful,
+	colored, long output. Narrow request with a search against containers
+	with a name matching a search phrase; such as docker-pretty-ps webserver.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">politeauthority/docker-pretty-ps</remote-id>
+		<remote-id type="pypi">docker-pretty-ps</remote-id>
+	</upstream>
+</pkgmetadata>
