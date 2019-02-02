@@ -28,6 +28,6 @@ before_script:
     - ln -s /usr/portage/profiles/default/linux/amd64/17.0 /etc/portage/make.profile
     - cd travis-overlay
 script:
-    - ./../spinner.sh "python ../portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dx"
+    - ./../spinner.sh "python ../portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dxv"
     - shellcheck -s bash -e "SC2034,SC2016,SC2191,SC2037" */*/*.ebuild
     - shellcheck -s sh -e "SC1008,SC2034,SC2154,SC2016,SC2191" */*/*/*.initd*
