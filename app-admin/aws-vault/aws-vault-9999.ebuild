@@ -34,6 +34,11 @@ src_prepare() {
 		|| die "failed to remove crypto or sys"
 }
 
+src_test() {
+	GOPATH="${S}:/usr/lib/go-gentoo" go test -v -work -x ./... \
+		|| die "tests failed"
+}
+
 src_install() {
 	einstalldocs
 	dobin aws-vault
