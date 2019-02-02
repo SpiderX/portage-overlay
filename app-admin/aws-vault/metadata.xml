@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Securely store and access credentials for AWS. AWS Vault stores IAM
+	credentials in your operating system's secure keystore and then
+	generates temporary credentials from those to expose to your shell
+	and applications. It's designed to be complementary to the aws cli
+	tools, and is aware of your profiles and configuration in ~/.aws/config.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">99designs/aws-vault</remote-id>
+	</upstream>
+</pkgmetadata>
