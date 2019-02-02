@@ -15,7 +15,7 @@
 	to access AAD protected web resources.
 	</longdescription>
 	<upstream>
-		<remote-id type="pypi">adal</remote-id>
 		<remote-id type="github">AzureAD/azure-activedirectory-library-for-python</remote-id>
+		<remote-id type="pypi">adal</remote-id>
 	</upstream>
 </pkgmetadata>
