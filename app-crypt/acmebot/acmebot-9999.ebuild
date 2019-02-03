@@ -4,16 +4,17 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{4..6} )
+EGIT_REPO_URI="https://github.com/plinss/${PN}.git"
 
-inherit python-r1
+inherit git-r3 python-r1
 
 DESCRIPTION="ACME protocol automatic certitificate manager"
 HOMEPAGE="https://github.com/plinss/acmebot"
-SRC_URI="https://github.com/plinss/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
