@@ -1,7 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+CMAKE_MAKEFILE_GENERATOR=ninja
 
 inherit cmake-utils
 
@@ -14,14 +16,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/geoip
-	dev-libs/jansson"
+RDEPEND="dev-libs/jansson
+	dev-libs/libmaxminddb:="
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	dev-libs/geoip"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
-		-DGEOIPDIR="$(pkg-config --variable=databasedir geoip)"
+		-DGEOIP2DIR="$(pkg-config --variable=databasedir geoip)"
 	)
 	cmake-utils_src_configure
 }
