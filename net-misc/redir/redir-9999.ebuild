@@ -3,15 +3,17 @@
 
 EAPI=6
 
-inherit systemd tmpfiles user
+EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
+
+inherit autotools git-r3 systemd tmpfiles user
 
 DESCRIPTION="TCP port redirector"
 HOMEPAGE="https://github.com/troglobit/redir"
-SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.xz"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="+ftp +shaper tcpd xinetd"
 
 RDEPEND="xinetd? ( sys-apps/xinetd )"
@@ -22,6 +24,11 @@ DOCS=( README.md AUTHORS TODO )
 pkg_setup() {
 	enewgroup redir
 	enewuser redir -1 -1 /dev/null redir
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
