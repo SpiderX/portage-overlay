@@ -6,7 +6,7 @@ EAPI=6
 inherit pax-utils readme.gentoo-r1 systemd tmpfiles unpacker user
 
 QA_PREBUILT="usr/bin/rslsync"
-BASE_URI="http://linux-packages.resilio.com/${PN}/deb/pool/non-free/r/${PN}/${PN}_${PV}-1_@arch@.deb"
+BASE_URI="http://download-cdn.resilio.com/${PV}/Debian/${PN}_${PV}-1_@arch@.deb"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://resilio.com/"
