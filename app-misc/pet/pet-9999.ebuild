@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authros
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGO_VENDOR=( "github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f0"
+EGO_VENDOR=( "github.com/SpiderX/portage-empty 3f4db1eb10e4dc42584b6b3df23f037904e6ea07"
+	"github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f0"
 	"github.com/briandowns/spinner 48dbb65d7bd5c74ab50d53d04c949f20e3d14944"
 	"github.com/chzyer/readline 2972be24d48e78746da79ba8e24e8b488c9880de"
 	"github.com/fatih/color 5b77d2a35fb0ede96d138fc9a99f5c9b6aef11b4"
@@ -22,17 +23,18 @@ EGO_VENDOR=( "github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f
 	"google.golang.org/appengine 150dc57a1b433e64154302bdc40b6bb8aefa313a github.com/golang/appengine" )
 
 EGO_PN="github.com/knqyf263/${PN}"
+EGIT_REPO_URI="https://github.com/knqyf263/${PN}.git"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
 
-inherit golang-build golang-vcs-snapshot
+inherit git-r3 golang-build golang-vcs-snapshot
 
 DESCRIPTION="Simple command-line snippet manager"
 HOMEPAGE="https://github.com/knqyf263/pet"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_VENDOR_URI}"
+SRC_URI="${EGO_VENDOR_URI}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="zsh-completion"
 
 # dev-go/toml doesn't provide sources
@@ -43,6 +45,11 @@ DEPEND="dev-go/go-crypto:=
 	dev-go/go-sys:="
 RDEPEND="${DEPEND}
 	zsh-completion? ( app-shells/zsh-completions )"
+
+src_unpack() {
+	git-r3_src_unpack
+	golang-vcs-snapshot_src_unpack
+}
 
 src_install() {
 	dobin pet
