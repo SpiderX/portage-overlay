@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://anonscm.debian.org/git/mirrorer/${PN}.git"
+EGIT_REPO_URI="https://salsa.debian.org/brlink/${PN}.git"
 
 inherit git-r3
 
 DESCRIPTION="A tool to handle local repositories of Debian packages"
-HOMEPAGE="https://mirrorer.alioth.debian.org/"
+HOMEPAGE="https://salsa.debian.org/brlink/reprepro"
 SRC_URI=""
 
 LICENSE="GPL-2"
