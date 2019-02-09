@@ -3,13 +3,17 @@
 
 EAPI=7
 
+EGIT_REPO_URI="git://git.l3u.de/${PN}.git"
+
+inherit git-r3
+
 DESCRIPTION="Tool to manage (PAM) userdb files with crypted passwords"
 HOMEPAGE="http://nasauber.de/opensource/userdbadm"
-SRC_URI="http://nasauber.de/opensource/${PN}/${PN}-0.1.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-lang/perl:0=[berkdb]
