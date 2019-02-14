@@ -226,7 +226,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-firewall/[ipt_netflow](https://sourceforge.net/projects/ipt-netflow) | Netflow iptables module
 * net-firewall/[ipt_ratelimit](https://github.com/aabc/ipt-ratelimit) | Ratelimit iptables module
 * net-im/[communi-desktop](https://github.com/communi/communi-desktop) | A cross-platform IRC framework written with Qt
-* net-im/[gitter-bin](http://www.gitter.im/) | Chat and network platform
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/gitter.svg)](https://repology.org/metapackage/gitter)net-im/[gitter-bin](http://www.gitter.im/) | Chat and network platform
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack.svg)](https://repology.org/metapackage/slack) net-im/[slack-bin](http://www.slack.com/) | Team collaboration tool
 * net-im/[viber-bin](http://www.viber.com/) | Free text and calls
 * net-im/[vk-messenger-bin](https://vk.com/messenger) | Simple and Easy App for Messaging on VK
