@@ -15,6 +15,9 @@
 	Amazon API Gateway APIs, AWS Lambda functions, and Amazon
 	DynamoDB tables needed by your serverless application.
 	</longdescription>
+	<use>
+		<flag name="cli">Enables the CLI interface</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">awslabs/serverless-application-model</remote-id>
 		<remote-id type="pypi">aws-sam-translator</remote-id>
