@@ -25,6 +25,6 @@ RDEPEND="${DEPEND}"
 src_install() {
 	webapp_src_preinst
 	rm CNAME || die "rm failed"
-	cp -R * "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
+	cp -R . "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
 	webapp_src_install
 }
