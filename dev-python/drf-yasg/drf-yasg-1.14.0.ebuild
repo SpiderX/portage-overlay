@@ -4,25 +4,24 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5..6}} )
-EGIT_REPO_URI="https://github.com/axnsan12/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Yet another Swagger generator"
 HOMEPAGE="https://github.com/axnsan12/drf-yasg"
-SRC_URI=""
+SRC_URI="https://github.com/axnsan12/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	>=dev-python/django-rest-framework-3.7.7[${PYTHON_USEDEP}]
-	>=dev-python/inflection-0.3.1[${PYTHON_USEDEP}]
-	>=dev-python/python-coreapi-2.3.3[${PYTHON_USEDEP}]
-	>=dev-python/python-coreschema-0.0.4[${PYTHON_USEDEP}]
-	>=dev-python/ruamel-yaml-0.15.34[${PYTHON_USEDEP}]
+	dev-python/django-rest-framework[${PYTHON_USEDEP}]
+	dev-python/inflection[${PYTHON_USEDEP}]
+	dev-python/python-coreapi[${PYTHON_USEDEP}]
+	dev-python/python-coreschema[${PYTHON_USEDEP}]
+	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/uritemplate-3.0.0[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]"
