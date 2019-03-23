@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5..6} )
-EGIT_REPO_URI="https://github.com/carltongibson/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Django application for filtering querysets"
 HOMEPAGE="https://github.com/carltongibson/django-filter"
-SRC_URI=""
+SRC_URI="https://github.com/carltongibson/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
