@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 225](https://img.shields.io/badge/ebuild-225-orange.svg)](https://img.shields.io/badge/ebuild-225-orange.svg)
+[![Number of ebuilds: 226](https://img.shields.io/badge/ebuild-226-orange.svg)](https://img.shields.io/badge/ebuild-226-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -49,6 +49,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
 * app-admin/[aws-vault](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
 * app-admin/[docker-pretty-ps](https://github.com/politeauthority/docker-pretty-ps) | docker ps in colored and long output
+* app-admin/[doctl](https://github.com/digitalocean/doctl) | A command line tool for DigitalOcean services
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/qtpass.svg)](https://repology.org/metapackage/qtpass) app-admin/[qtpass](https://qtpass.org/) | multi-platform GUI for pass, the standard unix password manager
 * app-admin/[jl](https://github.com/koenbollen/jl) | A tool for working with structured JSON logging
 * app-admin/[kconfig-hardened-check](https://github.com/a13xp0p0v/kconfig-hardened-check) | A script to check the hardening options in the Linux kernel config
