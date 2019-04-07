@@ -207,7 +207,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[ansible-molecule](https://github.com/metacloud/ansible-molecule) | Automated testing for Ansible roles
 * dev-util/[cfn-python-lint](https://github.com/awslabs/cfn-python-lint) | AWS CloudFormation Linter
 * dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
-* dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | The official GitLab CI runner
+* dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | GitLab Runner
 * dev-vcs/[commitizen](https://github.com/Woile/commitizen) | Python commitizen client tool
 * dev-vcs/[gitlint](https://github.com/jorisroovers/gitlint) | Git commit message linter
 * dev-vcs/[mercurial-extension_utils](https://bitbucket.org/Mekk/mercurial-extension_utils) | Mercurial Extension Utils

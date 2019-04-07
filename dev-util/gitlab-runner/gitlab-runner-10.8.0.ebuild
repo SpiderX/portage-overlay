@@ -43,7 +43,6 @@ EGO_VENDOR=( "github.com/BurntSushi/toml a368813c5e648fee92e5f6c30e3944ff9d5e889
 	"github.com/imdario/mergo 50d4dbd4eb0e84778abe37cefef140271d96fade"
 	"github.com/jonboulle/clockwork e3653ace2d63753697e0e5b07b9393971c0bba9d"
 	"github.com/juju/ratelimit 77ed1c8a01217656d2080ad51981f6e99adaa177"
-	"github.com/minio/go-homedir 4d76aabb80b22bad8695d3904e943f1fb5e6199f"
 	"github.com/opencontainers/runtime-spec 313f40bdfcc04c6b0f7b8a8c3e91a7b7a3a0ef4e"
 	"github.com/pborman/uuid c55201b036063326c5b1b89ccfe45a184973d073"
 	"github.com/prometheus/procfs abf152e5f3e97f2fafac028d2cc06c1feb87ffa5"

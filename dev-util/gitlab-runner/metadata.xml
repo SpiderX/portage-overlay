@@ -14,6 +14,7 @@
 	</longdescription>
 	<use>
 		<flag name="docker-build">Use docker to build the images</flag>
+		<flag name="docker">Add support for docker executors</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">gitlab-org/gitlab-runner</remote-id>
