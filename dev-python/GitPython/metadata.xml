@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A python library used to interact with git repositories,
+	high-level like git-porcelain, or low-level like git-plumbing.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">gitpython-developers/GitPython</remote-id>
+		<remote-id type="pypi">GitPython</remote-id>
+	</upstream>
+</pkgmetadata>
