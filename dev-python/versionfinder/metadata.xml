@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A library intended to identify the version/source details of
+	a specified Python distribution (usually the one calling it),
+	whether it was installed via pip, setuptools or git.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jantman/versionfinder</remote-id>
+		<remote-id type="pypi">versionfinder</remote-id>
+	</upstream>
+</pkgmetadata>
