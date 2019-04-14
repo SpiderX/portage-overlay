@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-DEPEND="dev-python/pyldap[${PYTHON_USEDEP}]"
+DEPEND="dev-python/python-ldap[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
