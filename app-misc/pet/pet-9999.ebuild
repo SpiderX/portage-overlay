@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_VENDOR=( "github.com/SpiderX/portage-empty 3f4db1eb10e4dc42584b6b3df23f037904e6ea07"
 	"github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f0"
