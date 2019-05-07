@@ -81,7 +81,7 @@ pkg_config() {
 	einfo "Enter you vhost_root/vhost_htdocs. Default: localhost/htdocs"
 	read -r answer
 	[ -z "${answer}" ] && answer="localhost/htdocs"
-	path="${ROOT}"var/www/"${answer}"/netbox
+	path="/var/www/${answer}/netbox"
 	unset answer
 
 	if [ -f "${path}/netbox/configuration.py" ] ; then
