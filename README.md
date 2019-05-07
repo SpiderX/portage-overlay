@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 237](https://img.shields.io/badge/ebuild-237-orange.svg)](https://img.shields.io/badge/ebuild-237-orange.svg)
+[![Number of ebuilds: 238](https://img.shields.io/badge/ebuild-238-orange.svg)](https://img.shields.io/badge/ebuild-238-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -160,6 +160,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-rest-framework-camel-case](https://github.com/vbabiy/djangorestframework-camel-case) | Camel case JSON support for Django REST framework
 * dev-python/[django-rest-framework-recursive](https://github.com/heywbj/django-rest-framework-recursive) | Recursive Serialization for Django REST framework
 * dev-python/[django-rest-swagger](https://marcgibbons.com/django-rest-swagger/) | Swagger UI for Django REST Framework
+* dev-python/[django-rq](https://github.com/rq/django-rq) | An app that provides django integration for RQ (Redis Queue)
 * dev-python/[django-tables2](https://github.com/jieter/django-tables2) | Django application for creating HTML tables
 * dev-python/[django-taggit](https://github.com/alex/django-taggit) | Django application for simple tagging
 * dev-python/[django-taggit-serializer](https://github.com/glemmaPaul/django-taggit-serializer) | Django Taggit Serializer Created for the Django REST Framework
