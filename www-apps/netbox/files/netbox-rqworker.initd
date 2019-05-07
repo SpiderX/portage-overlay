@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="NetBox RQ worker daemon"
+description="NetBox RQ worker daemon"
+command=/usr/bin/python3
+command_args="${NETBOX_DIR} rqworker"
+command_user="${NETBOX_USER}:${NETBOX_GROUP}"
+directory="${NETBOX_DIR}"
+error_log="${NETBOX_LOG}/netbox-rqworker.log"
+output_log="${NETBOX_LOG}/${RC_SVCNAME}.log"
+supervisor=supervise-daemon

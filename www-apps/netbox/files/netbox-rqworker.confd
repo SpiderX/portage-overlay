@@ -1,0 +1,7 @@
+# Config file for /etc/init.d/netbox-rqworker
+
+# Various options.
+NETBOX_USER="netbox"
+NETBOX_GROUP="netbox"
+NETBOX_DIR="/var/www/localhost/htdocs/netbox"
+NETBOX_LOG="/var/log/netbox"
