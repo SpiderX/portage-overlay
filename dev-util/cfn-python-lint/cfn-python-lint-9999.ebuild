@@ -26,8 +26,7 @@ RDEPEND="dev-python/aws-sam-translator[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' '-2')"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/unittest2[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+	test? ( virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Remove failing test
@@ -38,5 +37,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	unit2 discover -v -s test/ || die "tests failed with ${EPYTHON}"
+	"${PYTHON}" -m unittest discover -v test || die "tests failed with ${EPYTHON}"
 }
