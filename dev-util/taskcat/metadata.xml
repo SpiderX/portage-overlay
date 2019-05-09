@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A tool to test AWS CloudFormation templates. It deploys your
+	AWS CloudFormation template in multiple AWS Regions and generates
+	a report with a pass/fail grade for each region. You can specify
+	the regions and number of Availability Zones you want to include
+	in the test, and pass in parameter values from your AWS CloudFormation
+	template.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aws-quickstart/taskcat</remote-id>
+		<remote-id type="pypi">taskcat</remote-id>
+	</upstream>
+</pkgmetadata>
