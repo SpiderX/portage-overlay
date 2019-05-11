@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5..6} )
 
-inherit linux-mod python-r1 readme.gentoo-r1 tmpfiles virtualx user
+inherit linux-mod python-r1 readme.gentoo-r1 virtualx
 
 DESCRIPTION="Linux drivers for the Razer devices"
 HOMEPAGE="https://openrazer.github.io"
@@ -38,10 +38,6 @@ DOC_CONTENTS="To run as non-root, add yourself to the plugdev group:\\n
 \\tusermod -a -G plugdev <user>"
 
 pkg_setup() {
-	enewgroup openrazer
-	enewuser openrazer -1 -1 /dev/null openrazer
-	usermod -a -G plugdev openrazer || die "usermod failed"
-
 	BUILD_TARGETS="clean modules"
 	BUILD_PARAMS="O=${KV_OUT_DIR} KERNELDIR=${KERNEL_DIR} -C ${KERNEL_DIR} SUBDIRS=${S}/driver"
 	MODULE_NAMES="razerkbd(hid:${S}/driver) \
@@ -99,23 +95,10 @@ src_install() {
 	}
 
 	emake DESTDIR="${D}" ubuntu_udev_install
-	if use daemon ; then
-		python_foreach_impl python_install
-
-		newinitd "${FILESDIR}"/openrazer.initd openrazer
-		newconfd "${FILESDIR}"/openrazer.confd openrazer
-		newtmpfiles "${FILESDIR}"/openrazer.tmpfile openrazer.conf
-
-		diropts -o openrazer -g openrazer -m 0700
-		keepdir /var/log/openrazer /etc/openrazer
-		insopts -o openrazer -g openrazer -m 0644
-		insinto /etc/openrazer
-		doins daemon/resources/razer.conf
-	fi
+	use daemon && python_foreach_impl python_install
 }
 
 pkg_postinst() {
 	linux-mod_pkg_postinst
-	tmpfiles_process openrazer.conf
 	readme.gentoo_print_elog
 }
