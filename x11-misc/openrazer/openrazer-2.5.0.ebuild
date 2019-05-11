@@ -37,12 +37,12 @@ BDEPEND="test? ( client? ( x11-libs/gtk+:3[introspection] ) )"
 pkg_setup() {
 	BUILD_TARGETS="clean modules"
 	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR} -C ${KERNEL_DIR} SUBDIRS=${S}/driver"
-	MODULE_NAMES="razerkbd(hid:"${S}"/driver)
-			razermouse(hid:"${S}"/driver)
-			razermousemat(hid:"${S}"/driver)
-			razerkraken(hid:"${S}"/driver)
-			razermug(hid:"${S}"/driver)
-			razercore(hid:"${S}"/driver)"
+	MODULE_NAMES="razerkbd(hid:${S}/driver) \
+			razermouse(hid:${S}/driver) \
+			razermousemat(hid:${S}/driver) \
+			razerkraken(hid:${S}/driver) \
+			razermug(hid:${S}/driver) \
+			razercore(hid:${S}/driver)"
 	linux-mod_pkg_setup
 }
 
