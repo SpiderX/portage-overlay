@@ -1,0 +1,9 @@
+# Config file for /etc/init.d/openrazer
+
+# Various options.
+# run `openrazer-daemon -h` for valid cmdline options
+OPTS="--config /etc/openrazer/razer.conf --run-dir /run/openrazer --log-dir /var/log/openrazer"
+
+# User and group daemon runs as
+OPENRAZER_USER="openrazer"
+OPENRAZER_GROUP="openrazer"

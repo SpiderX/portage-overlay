@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/openrazer-daemon
+command_args="${OPTS}"
+command_user="${OPENRAZER_USER:-openrazer}:${OPENRAZER_GROUP:-openrazer}"
+description="OpenRazer daemon"
+name="OpenRazer daemon"
+pidfile=/run/openrazer/openrazer.pid
+
+depend() {
+	need dbus
+}
