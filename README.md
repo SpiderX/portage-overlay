@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 245](https://img.shields.io/badge/ebuild-245-orange.svg)](https://img.shields.io/badge/ebuild-245-orange.svg)
+[![Number of ebuilds: 246](https://img.shields.io/badge/ebuild-246-orange.svg)](https://img.shields.io/badge/ebuild-246-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -229,6 +229,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-vcs/[mercurial-keyring](https://bitbucket.org/Mekk/mercurial_keyring) | Mercurial Keyring Extension
 * media-gfx/[butteraugli](https://github.com/google/butteraugli) | A tool for measuring perceived differences between images
 * media-gfx/[lsix](https://github.com/hackerb9/lsix) | Image viewer for terminal that use sixel graphics
+* media-gfx/[qView](https://interversehq.com/qview) | Practical and minimal image viewer
 * media-gfx/[screencloud](https://screencloud.net/) | Screenshot capturing and sharing tool over various services
 * media-gfx/[xgrabcolor](http://hugo.pereira.free.fr/software/index.php) | Qt-based basic color picker
 * media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
