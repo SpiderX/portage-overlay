@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{5..6}} )
 
 inherit cmake-utils python-single-r1 xdg-utils
 
@@ -18,7 +18,7 @@ IUSE="libressl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="dev-libs/quazip
-	>=dev-python/PythonQt-3.2[extensions]
+	>=dev-python/PythonQt-3.2[${PYTHON_USEDEP},extensions]
 	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtnetwork:5
@@ -27,17 +27,15 @@ DEPEND="dev-libs/quazip
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5"
 RDEPEND="${DEPEND}
+	${PYTHON_DEPS}
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 
 DOCS=( README.md )
 
-PATCHES=(
-	# Support for PythonQt-3.2
-	"${FILESDIR}"/"${P}"-cmake-pythonqt.patch
-	# Follow standards for desktop file
-	"${FILESDIR}"/"${P}"-desktop.patch
-	)
+pkg_setup() {
+	python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -59,9 +57,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
