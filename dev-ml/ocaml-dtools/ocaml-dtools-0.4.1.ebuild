@@ -1,22 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools findlib
 
 DESCRIPTION="OCaml daemon tools library"
 HOMEPAGE="https://github.com/savonet/ocaml-dtools"
 SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+camlp4 debug +ocamlopt profiling syslog"
+
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	camlp4? ( dev-ml/camlp4:= )
 	syslog? ( dev-ml/ocaml-syslog:= )"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
+
 DOCS=( CHANGES README )
 
 src_prepare() {

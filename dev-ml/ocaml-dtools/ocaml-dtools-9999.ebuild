@@ -1,13 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 
 inherit autotools findlib git-r3
 
 DESCRIPTION="OCaml daemon tools library"
 HOMEPAGE="https://github.com/savonet/ocaml-dtools"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 SRC_URI=""
 
 LICENSE="GPL-2"
@@ -32,14 +33,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf "$(use_enable camlp4)" \
-		"$(use_enable debug debugging)" \
-		"$(use_enable ocamlopt nativecode)" \
-		"$(use_enable profiling)" \
-		"$(use_enable syslog)"
+	econf $(use_enable camlp4) \
+		$(use_enable debug debugging) \
+		$(use_enable ocamlopt nativecode) \
+		$(use_enable profiling) \
+		$(use_enable syslog)
 }
 
 src_install() {
-	einstalldocs
 	findlib_src_install
+	einstalldocs
 }
