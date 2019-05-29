@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A simple cron-based job scheduler for PostgreSQL
+	that runs inside the database as an extension.
+	It uses the same syntax as regular cron, but it allows you
+	to schedule PostgreSQL commands directly from the database
+	</longdescription>
+	<upstream>
+		<remote-id type="github">citusdata/pg_cron</remote-id>
+	</upstream>
+</pkgmetadata>
