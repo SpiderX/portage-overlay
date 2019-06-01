@@ -18,7 +18,8 @@ KEYWORDS="-* ~amd64"
 IUSE="ayatana gnome-keyring pax_kernel"
 RESTRICT="bindist mirror"
 
-RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
+RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
+	dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
