@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{5..7}} )
 EGIT_REPO_URI="https://github.com/sdispater/${PN}.git"
 
-inherit python-r1 git-r3
+inherit git-r3 python-r1
 
 DESCRIPTION="Style-preserving TOML library for Python"
 HOMEPAGE="https://github.com/sdispater/decli"
