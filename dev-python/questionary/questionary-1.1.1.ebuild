@@ -31,8 +31,3 @@ python_prepare_all() {
 python_test() {
 	py.test -v || die "tests failed with ${EPYTHON}"
 }
-
-#python_install_all() {
-#	distutils-r1_python_install_all
-#	find "${ED}" -type d -name "tests" -exec rm -rv {} + || die "tests removing failed"
-#}
