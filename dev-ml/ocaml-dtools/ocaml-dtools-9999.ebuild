@@ -33,11 +33,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable camlp4) \
-		$(use_enable debug debugging) \
-		$(use_enable ocamlopt nativecode) \
-		$(use_enable profiling) \
-		$(use_enable syslog)
+	econf "$(use_enable camlp4)" \
+		"$(use_enable debug debugging)" \
+		"$(use_enable ocamlopt nativecode)" \
+		"$(use_enable profiling)" \
+		"$(use_enable syslog)"
 }
 
 src_install() {
