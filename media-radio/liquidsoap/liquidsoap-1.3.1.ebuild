@@ -14,7 +14,7 @@ SRC_URI="https://github.com/savonet/liquidsoap/releases/download/${PV}/${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="alsa ao camlimages +camlp4 debug dssi faad fdk festival ffmpeg flac frei0r gavl \
+IUSE="alsa ao camlimages +camlp4 debug dssi faad fdk ffmpeg flac frei0r gavl \
 	gd graphics gstreamer gui inotify jack json ladspa lame lastfm libsamplerate \
 	mad magic +ocamlopt ogg osc opus oss portaudio profiling pulseaudio sdl shine \
 	shout soundtouch speex ssl systemd taglib theora +unicode vorbis xml"
@@ -34,7 +34,6 @@ RDEPEND="app-admin/logrotate
 	dssi? ( dev-ml/ocaml-dssi:=[ocamlopt?] )
 	faad? ( dev-ml/ocaml-faad:=[ocamlopt?] )
 	fdk? ( dev-ml/ocaml-fdkaac:=[ocamlopt?] )
-	festival? ( app-accessibility/festival:= )
 	ffmpeg? ( dev-ml/ocaml-ffmpeg:=[ocamlopt?] )
 	flac? ( dev-ml/ocaml-flac:=[ocamlopt?,ogg?] )
 	frei0r? ( dev-ml/ocaml-frei0r:=[ocamlopt?] )
