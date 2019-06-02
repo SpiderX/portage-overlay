@@ -22,7 +22,6 @@
 		<flag name="dssi">Support for DSSI sound synthesis</flag>
 		<flag name="faad"><pkg>media-libs/faad2</pkg> decoding</flag>
 		<flag name="fdk"><pkg>media-libs/fdk-aac</pkg> decoding</flag>
-		<flag name="festival">Enable text to speech synthesizer via <pkg>app-accessibility/festival</pkg></flag>
 		<flag name="frei0r">Support for <pkg>media-plugins/frei0r-plugins</pkg></flag>
 		<flag name="gavl"><pkg>media-libs/gavl</pkg> video conversion</flag>
 		<flag name="graphics">Support for graphics in streams</flag>
