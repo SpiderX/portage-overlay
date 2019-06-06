@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5..6}} )
-EGIT_REPO_URI="https://github.com/jaksi/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="History and changes of configuration versions of AWS resources"
 HOMEPAGE="https://github.com/jaksi/awslog"
-SRC_URI=""
+SRC_URI="https://github.com/jaksi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-python/boto3-1.9[${PYTHON_USEDEP}]
