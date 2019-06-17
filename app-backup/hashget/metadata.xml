@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Hashget is network deduplication tool working together with
+	usual compression utilities (such as tar/gz/xz).
+	While usual compression tools uses mathematical algorithms for
+	compressing data, hashget finds which files could be downloaded from
+	public (e.g. WordPress or Debian servers) or private
+	(e.g. your company internal website) resources and excludes it from
+	archive (leaving only very short meta-information about it).
+	Upon decompressing, hashget downloads these files, verifies hashsum
+	and places it on target system with same permissions, ownership,
+	atime and mtime. Hashget compression is lossless, based on 
+	cryptographically strong SHA256 hashsum.
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">yaroslaff/hashget</remote-id>
+		<remote-id type="pypi">hashget</remote-id>
+	</upstream>
+</pkgmetadata>

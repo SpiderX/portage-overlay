@@ -1,0 +1,11 @@
+# Config file for /etc/init.d/hashget-admin
+
+# Various options.
+# run `hashget --help` for valid cmdline options
+#HASHGET_OPTS=""
+
+# Submitted packages
+HASHGET_PKG="/var/run/takeup/uploads/new"
+
+# Web root
+HASHGET_WEB="/var/www/hashget/hashdb"

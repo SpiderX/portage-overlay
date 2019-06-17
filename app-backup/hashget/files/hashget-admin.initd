@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/hashget-admin"
+name="Hashget Admin"
+description="Hashget Admin"
+command_args="--submitted ${HASHGET_PKG} --webroot ${HASHGET_WEB} ${HASHGET_OPTS}"
+pidfile="/run/hashget-admin.pid"
+
+depend() {
+	need net
+}
