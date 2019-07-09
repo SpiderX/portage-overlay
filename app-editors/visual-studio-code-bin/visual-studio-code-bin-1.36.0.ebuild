@@ -49,8 +49,11 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 
 QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 	opt/visual-studio-code/code
-	opt/visual-studio-code/libnode.so
-	opt/visual-studio-code/libffmpeg.so"
+	opt/visual-studio-code/libffmpeg.so
+	opt/visual-studio-code/libGLESv2.so
+	opt/visual-studio-code/libEGL.so
+	opt/visual-studio-code/swiftshader/libGLESv2.so
+	opt/visual-studio-code/swiftshader/libEGL.so"
 
 pkg_setup() {
 	S="${WORKDIR}/VSCode-linux-$(usex amd64 x64 ia32)"
