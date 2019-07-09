@@ -63,9 +63,9 @@ src_install() {
 
 	insinto /opt/visual-studio-code
 	doins -r .
-	fperms +x /opt/visual-studio-code/{code,bin/code,libnode.so} \
+	fperms +x /opt/visual-studio-code/{code,bin/code} \
 		/opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg \
-		/opt/visual-studio-code/resources/app/extensions/git/dist/askpass.sh
+		/opt/visual-studio-code/resources/app/extensions/git/dist/{askpass.sh,askpass-empty.sh}
 	dodir /opt/bin
 	dosym ../visual-studio-code/bin/code opt/bin/code
 
