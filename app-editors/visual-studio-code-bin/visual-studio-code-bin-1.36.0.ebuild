@@ -4,18 +4,16 @@
 EAPI=7
 
 MY_PN="${PN/-bin/}"
-BASE_URI="https://update.code.visualstudio.com/${PV}/linux-_arch_/stable"
 
 inherit desktop multilib-build pax-utils xdg-utils
 
 DESCRIPTION="Editor for building and debugging modern web and cloud applications"
 HOMEPAGE="http://code.visualstudio.com"
-SRC_URI="x86? ( ${BASE_URI/_arch_/ia32} -> ${P}-x86.tar.gz )
-	amd64? ( ${BASE_URI/_arch_/x64} -> ${P}-amd64.tar.gz )"
+SRC_URI="https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="gnome-keyring qt5 pax_kernel"
 RESTRICT="bindist mirror"
 
