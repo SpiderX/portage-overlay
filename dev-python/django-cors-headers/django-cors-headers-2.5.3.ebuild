@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python{2_7,3_{5..7}} )
 
 inherit distutils-r1
 
@@ -23,7 +23,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	# Remove coverage from tests
-	sed -i '/cov/d' setup.cfg || die "sed failed for setup.cfg"
+	sed -i '/cov/d' pytest.ini || die "sed failed for pytest.ini"
 	distutils-r1_python_prepare_all
 }
 
