@@ -1,24 +1,25 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
-EGIT_REPO_URI="https://github.com/core-api/python-client.git"
+PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+MY_PN="python-${PN//coreapi/client}"
+MY_P="${MY_PN}-${PV}"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python client library for Core API"
 HOMEPAGE="https://github.com/core-api/python-client"
-SRC_URI=""
+SRC_URI="https://github.com/core-api/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-python/itypes[${PYTHON_USEDEP}]
-	dev-python/python-coreschema[${PYTHON_USEDEP}]
+RDEPEND="dev-python/coreschema[${PYTHON_USEDEP}]
+	dev-python/itypes[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/uritemplate[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

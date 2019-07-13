@@ -142,6 +142,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[anyconfig](https://github.com/ssato/python-anyconfig) | Generic access to configuration files in any formats
 * dev-python/[applicationinsights](https://pypi.python.org/pypi/applicationinsights/) | Application Insights API surface
 * dev-python/[aws-sam-translator](https://github.com/awslabs/serverless-application-model) | A library to transform SAM templates into AWS CloudFormation templates
+* dev-python/[coreapi](https://github.com/core-api/python-client) | Python client library for Core API
 * dev-python/[coreschema](https://github.com/core-api/python-coreschema) | Python CoreSchema
 * dev-python/[crayons](https://github.com/kennethreitz/crayons) | Text UI colors
 * dev-python/[cron-descriptor](https://github.com/Salamek/cron-descriptor) | Converts cron expressions into human readable strings
@@ -192,7 +193,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[polemarch-ansible](https://gitlab.com/vstconsulting/polemarch-ansible) | Wrapper for Ansible CLI
 * dev-python/[port-for](https://github.com/kmike/port-for) | An utility and python library for TCP ports management
 * dev-python/[pytimeparse](https://github.com/wroberts/pytimeparse) | A library to parse time from human readable string
-* dev-python/[python-coreapi](https://github.com/core-api/python-client) | Python client library for Core API
 * dev-python/[python-crontab](https://github.com/doctormo/python-coreschema) | Crontab module for reading and writing crontab files
 * dev-python/[python-openapi-codec](https://github.com/core-api/python-openapi-codec) | An OpenAPI codec for Core API
 * dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
