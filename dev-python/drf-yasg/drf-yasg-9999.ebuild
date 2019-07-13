@@ -17,11 +17,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/coreapi-2.3.3[${PYTHON_USEDEP}]
+	>=dev-python/coreschema-0.0.4[${PYTHON_USEDEP}]
+	dev-python/django[${PYTHON_USEDEP}]
 	>=dev-python/django-rest-framework-3.7.7[${PYTHON_USEDEP}]
 	>=dev-python/inflection-0.3.1[${PYTHON_USEDEP}]
-	>=dev-python/python-coreapi-2.3.3[${PYTHON_USEDEP}]
-	>=dev-python/python-coreschema-0.0.4[${PYTHON_USEDEP}]
 	>=dev-python/ruamel-yaml-0.15.34[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/uritemplate-3.0.0[${PYTHON_USEDEP}]

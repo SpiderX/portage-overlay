@@ -16,11 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
+RDEPEND="dev-python/coreapi[${PYTHON_USEDEP}]
+	dev-python/coreschema[${PYTHON_USEDEP}]
+	dev-python/django[${PYTHON_USEDEP}]
 	dev-python/django-rest-framework[${PYTHON_USEDEP}]
 	dev-python/inflection[${PYTHON_USEDEP}]
-	dev-python/python-coreapi[${PYTHON_USEDEP}]
-	dev-python/python-coreschema[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/uritemplate-3.0.0[${PYTHON_USEDEP}]
@@ -45,14 +45,6 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '>=dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]' '-3')
 		$(python_gen_cond_dep '<dev-python/django-oauth-toolkit-1.2.0[${PYTHON_USEDEP}]' '-2')
 		$(python_gen_cond_dep '>=dev-python/django-oauth-toolkit-1.2.0[${PYTHON_USEDEP}]' '-3') )"
-
-python_prepare_all() {
-	# setuptools is unable to detect version
-	sed -i "/use_scm_version/s/True/False/" \
-		setup.py || die "sed failed for setup.py"
-
-	distutils-r1_python_prepare_all
-}
 
 python_test() {
 	pytest -v || die "tests failed with ${EPYTHON}"
