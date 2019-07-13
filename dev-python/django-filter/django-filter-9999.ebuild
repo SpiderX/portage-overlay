@@ -20,9 +20,9 @@ IUSE="test"
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( $(python_gen_impl_dep sqlite)
+		dev-python/coreapi[${PYTHON_USEDEP}]
 		dev-python/django-crispy-forms[${PYTHON_USEDEP}]
 		dev-python/django-rest-framework[${PYTHON_USEDEP}]
-		dev-python/python-coreapi[${PYTHON_USEDEP}]
 		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
@@ -40,6 +40,6 @@ python_test() {
 pkg_postinst() {
 	optfeature "enhancing the presentation of the filter forms in HTML views" dev-python/django-crispy-forms
 	optfeature "custom FilterSet and filter backend for Django REST Framework" dev-python/django-rest-framework
-	optfeature "integration with Core API" dev-python/python-coreapi
-	optfeature "integration with Django REST Framework schema generation" dev-python/python-coreschema
+	optfeature "integration with Core API" dev-python/coreapi
+	optfeature "integration with Django REST Framework schema generation" dev-python/coreschema
 }
