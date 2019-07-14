@@ -4,18 +4,16 @@
 EAPI=7
 
 MY_PN="${PN/-bin/}"
-BASE_URI="https://update.code.visualstudio.com/${PV}/linux-_arch_/stable"
 
 inherit desktop multilib-build pax-utils xdg-utils
 
 DESCRIPTION="Editor for building and debugging modern web and cloud applications"
 HOMEPAGE="http://code.visualstudio.com"
-SRC_URI="x86? ( ${BASE_URI/_arch_/ia32} -> ${P}-x86.tar.gz )
-	amd64? ( ${BASE_URI/_arch_/x64} -> ${P}-amd64.tar.gz )"
+SRC_URI="https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="gnome-keyring qt5 pax_kernel"
 RESTRICT="bindist mirror"
 
@@ -51,8 +49,11 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 
 QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 	opt/visual-studio-code/code
-	opt/visual-studio-code/libnode.so
-	opt/visual-studio-code/libffmpeg.so"
+	opt/visual-studio-code/libffmpeg.so
+	opt/visual-studio-code/libGLESv2.so
+	opt/visual-studio-code/libEGL.so
+	opt/visual-studio-code/swiftshader/libGLESv2.so
+	opt/visual-studio-code/swiftshader/libEGL.so"
 
 pkg_setup() {
 	S="${WORKDIR}/VSCode-linux-$(usex amd64 x64 ia32)"
@@ -65,9 +66,9 @@ src_install() {
 
 	insinto /opt/visual-studio-code
 	doins -r .
-	fperms +x /opt/visual-studio-code/{code,bin/code,libnode.so} \
+	fperms +x /opt/visual-studio-code/{code,bin/code} \
 		/opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg \
-		/opt/visual-studio-code/resources/app/extensions/git/dist/askpass.sh
+		/opt/visual-studio-code/resources/app/extensions/git/dist/{askpass.sh,askpass-empty.sh}
 	dodir /opt/bin
 	dosym ../visual-studio-code/bin/code opt/bin/code
 
