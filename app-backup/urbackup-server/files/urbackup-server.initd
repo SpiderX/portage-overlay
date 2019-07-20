@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile=/run/urbackup-server.pid
+command=/usr/bin/urbackupsrv
+command_args="run --config ${URBACKUP_CONFIG} --pidfile ${pidfile} --daemon ${URBACKUP_OPTS}"
+description="UrBackup server"
+name="UrBackup server"
+
+depend() {
+	need net
+}
