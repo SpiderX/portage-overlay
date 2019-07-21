@@ -1,0 +1,10 @@
+[Unit]
+Description=UrBackup Client backend
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/sbin/urbackupclientbackend --config /etc/urbackup/urbackup-client --no-consoletime
+User=urbackup
+
+[Install]
+WantedBy=multi-user.target

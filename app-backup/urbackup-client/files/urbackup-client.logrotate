@@ -1,0 +1,10 @@
+"/var/log/urbackup-client.log" {
+	weekly
+	rotate 12
+	missingok
+	create 644 urbackup urbackup
+	compress
+	postrotate
+		test -e /run/urbackup-client.pid && kill -HUP `cat /run/urbackup-client.pid` || /bin/systemctl kill -s HUP urbackup-client.service
+	endscript
+}

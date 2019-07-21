@@ -1,0 +1,6 @@
+# Config file for /etc/init.d/urbackup-client
+
+# Various options.
+# run `urbackupclientbackend -h` for valid cmdline options
+URBACKUP_CONFIG="/etc/urbackup/urbackup-client"
+URBACKUP_OPTS="--no-consoletime"
