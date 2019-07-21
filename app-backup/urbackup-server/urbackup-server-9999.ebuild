@@ -14,7 +14,7 @@ SRC_URI=""
 LICENSE="AGPL-3+"
 KEYWORDS=""
 SLOT="0"
-IUSE="cryptopp curl hardened fuse zlib"
+IUSE="cryptopp curl debug hardened fuse zlib"
 
 DEPEND="dev-db/lmdb:0=
 	dev-db/sqlite:3
@@ -50,9 +50,11 @@ src_prepare() {
 		-e '/autoupdate_clients/s/true/false/' \
 		urbackupserver/server_settings.cpp \
 		|| die "sed failed for server_settings.cpp"
-	# Remove key for client autoupdate
+	# Remove key for client autoupdate and license
 	sed -i  -e '/\/urbackup\/urbackup_ecdsa409k1.pub/d' \
 		-e 's|urbackupserver/urbackup_ecdsa409k1.pub ||' \
+		-e '/\/server-license.txt/d' \
+		-e 's|server-license.txt ||' \
 		Makefile.am || die "sed failed for Makefile.am"
 
 	eautoreconf
@@ -61,6 +63,7 @@ src_prepare() {
 src_configure() {
 	econf "$(use_with cryptopp crypto)" \
 		"$(use_with curl mail)" \
+		"$(use_enable debug assertions)" \
 		"$(use_with fuse mountvhd)" \
 		"$(use_with zlib)" \
 		"$(usex hardened --enable-fortify "")" \
