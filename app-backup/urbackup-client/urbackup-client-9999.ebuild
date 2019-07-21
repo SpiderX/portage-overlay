@@ -45,6 +45,8 @@ src_prepare() {
 		-e 's|client/data/urbackup_ecdsa409k1.pub ||' \
 		-e '/\/client\/version.txt/d' \
 		-e 's|client/version.txt ||' \
+		-e '/\/client\/info.txt/d' \
+		-e 's|client/info.txt ||' \
 		Makefile.am || die "sed failed for Makefile.am"
 
 	remove_locale() {

@@ -33,11 +33,13 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Remove key, version file for client autoupdate
+	# Remove key, version for client autoupdate and info.txt
 	sed -i  -e '/\/client\/data\/urbackup_ecdsa409k1.pub/d' \
 		-e 's|client/data/urbackup_ecdsa409k1.pub ||' \
 		-e '/\/client\/version.txt/d' \
 		-e 's|client/version.txt ||' \
+		-e '/\/client\/info.txt/d' \
+		-e 's|client/info.txt ||' \
 		Makefile.am || die "sed failed for Makefile.am"
 
 	remove_locale() {
