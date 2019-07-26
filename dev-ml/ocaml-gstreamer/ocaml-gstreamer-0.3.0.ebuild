@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( CHANGES README )
+PATCHES=( "${FILESDIR}/${P}-loop.patch" )
 
 src_prepare() {
 	default

@@ -1,0 +1,35 @@
+diff -ur a/src/gstreamer_stubs.c b/src/gstreamer_stubs.c
+--- a/src/gstreamer_stubs.c	2018-09-10 00:43:43.000000000 +0900
++++ b/src/gstreamer_stubs.c	2019-07-26 09:30:52.714156364 +0900
+@@ -586,18 +586,30 @@
+ 
+   caml_release_runtime_system();
+   g_main_loop_run(loop);
++  g_main_loop_unref(loop);
+   caml_acquire_runtime_system();
+ 
+   CAMLreturn(Val_unit);
+ }
+ 
++gboolean gstreamer_loop_quit_helper(gpointer user_data)
++{
++  GMainLoop* loop = user_data;
++  g_main_loop_quit(loop);
++  return FALSE;
++}
++
+ CAMLprim value ocaml_gstreamer_loop_quit(value l)
+ {
+   CAMLparam1(l);
+   GMainLoop* loop = Loop_val(l);
++  GSource* idle_source;
+   
+   caml_release_runtime_system();
+-  g_main_loop_quit(loop);
++  idle_source=g_idle_source_new();
++  g_source_set_callback(idle_source, gstreamer_loop_quit_helper, loop, NULL);
++  g_source_attach(idle_source, NULL);
++  g_source_unref(idle_source);
+   caml_acquire_runtime_system();
+ 
+   CAMLreturn(Val_unit);
