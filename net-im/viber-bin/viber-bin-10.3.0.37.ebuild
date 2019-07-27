@@ -1,20 +1,21 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_64 )
 MY_PN="${PN/-bin/}"
 
-inherit desktop gnome2-utils multilib-build pax-utils unpacker xdg-utils
+inherit desktop multilib-build pax-utils unpacker xdg-utils
 
-QA_PREBUILT="/opt/viber/QtWebEngineProcess
+QA_PREBUILT="/opt/viber/Viber
+	/opt/viber/libexec/QtWebEngineProcess
 	/opt/viber/plugins/*/*.so
 	/opt/viber/lib/*
 	/opt/viber/qml/*"
 
 DESCRIPTION="Free text and calls"
-HOMEPAGE="http://www.viber.com/"
+HOMEPAGE="http://www.viber.com"
 SRC_URI="http://download.cdn.viber.com/cdn/desktop/Linux/${MY_PN}.deb"
 
 LICENSE="all-rights-reserved"
@@ -94,7 +95,7 @@ src_install() {
 	fi
 
 	fperms +x /opt/viber/Viber \
-		/opt/viber/QtWebEngineProcess
+		/opt/viber/libexec/QtWebEngineProcess
 
 	dosym ../../opt/viber/Viber /usr/bin/Viber
 }
@@ -102,11 +103,9 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
