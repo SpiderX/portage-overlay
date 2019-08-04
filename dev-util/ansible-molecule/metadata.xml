@@ -16,7 +16,7 @@
 	and test frameworks.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">metacloud/molecule</remote-id>
+		<remote-id type="github">ansible/molecule</remote-id>
 		<remote-id type="pypi">molecule</remote-id>
 	</upstream>
 </pkgmetadata>
