@@ -19,7 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="bash-completion"
 DOCS=( AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst )
-RDEPEND="dev-python/anyconfig[${PYTHON_USEDEP}]
+RDEPEND="app-admin/ansible-lint[${PYTHON_USEDEP}]
+	dev-python/anyconfig[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	>=dev-python/flake8-3.0.4[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -30,8 +31,7 @@ RDEPEND="dev-python/anyconfig[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/testinfra[${PYTHON_USEDEP}]
-	dev-util/cookiecutter[${PYTHON_USEDEP}]
-	dev-util/ansible-lint[${PYTHON_USEDEP}]"
+	dev-util/cookiecutter[${PYTHON_USEDEP}]"
 DEPEND="dev-python/pbr[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
