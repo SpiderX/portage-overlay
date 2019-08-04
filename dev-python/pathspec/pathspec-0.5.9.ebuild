@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
 python_test() {
 	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
 }
