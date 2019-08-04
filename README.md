@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 262](https://img.shields.io/badge/ebuild-262-orange.svg)](https://img.shields.io/badge/ebuild-262-orange.svg)
+[![Number of ebuilds: 263](https://img.shields.io/badge/ebuild-263-orange.svg)](https://img.shields.io/badge/ebuild-263-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -183,6 +183,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[faker](https://github.com/joke2k/faker) | Python package that generates fake data
 * dev-python/[filetype](https://github.com/h2non/filetype.py) | Infer file type and MIME type of any file/buffer
 * dev-python/[flex](https://github.com/pipermerriam/flex) | Validation tooling for Swagger 2.0 specifications
+* dev-python/[git-url-parse](https://github.com/coala/git-url-parse) | A simple GIT URL parser
 * dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz
 * dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
 * dev-python/[livereload](https://github.com/lepture/python-livereload) | Python LiveReload is an awesome tool for web developers
