@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_6} )
-EGIT_REPO_URI="https://github.com/philpep/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Testinfra test your infrastructures"
 HOMEPAGE="https://github.com/philpep/testinfra"
-SRC_URI=""
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]

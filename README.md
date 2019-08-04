@@ -217,7 +217,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[sphinxcontrib-openapi](https://github.com/ikalnytskyi/sphinxcontrib-openapi) | Sphinx extension to generate APIs docs from OpenAPI
 * dev-python/[swagger_spec_validator](https://github.com/Yelp/swagger_spec_validator) | Python library that validates Swagger Specs
 * dev-python/[tablib](http://python-tablib.org/) | A format-agnostic tabular dataset library written in Python
-* dev-python/[testinfra](https://github.com/philpep/testinfra) | An unit tests in Python to test actual state of servers
+* dev-python/[testinfra](https://github.com/philpep/testinfra) | Testinfra test your infrastructures
 * dev-python/[text-unidecode](https://github.com/kmike/text-unidecode) | The most basic Text::Unidecode port
 * dev-python/[timecop](https://github.com/bluekelp/pytimecop) | A port of TimeCop Ruby Gem for Python
 * dev-python/[toml](https://github.com/uiri/toml) | Python Library for Tom's Obvious, Minimal Language
