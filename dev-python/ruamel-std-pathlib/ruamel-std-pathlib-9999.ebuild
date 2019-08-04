@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python{2_7,3_{5..7}} )
 EHG_REPO_URI="https://bitbucket.org/ruamel/std.pathlib"
 
 inherit distutils-r1 mercurial
