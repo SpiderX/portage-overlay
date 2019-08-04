@@ -4,17 +4,18 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5..7}} )
-EGIT_REPO_URI="https://github.com/ssato/python-anyconfig.git"
+MY_PN="python-${PN}-RELEASE"
+MY_P="${MY_PN}_${PV}"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Generic access to configuration files in any formats"
 HOMEPAGE="https://github.com/ssato/python-anyconfig"
-SRC_URI=""
+SRC_URI="https://github.com/ssato/python-${PN}/archive/RELEASE_${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
@@ -27,6 +28,8 @@ RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+
+S="${WORKDIR}/${MY_P}"
 
 python_test() {
 	# tests fail with python2_7
