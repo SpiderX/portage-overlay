@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python{2_7,3_{5..7}} )
 
 inherit distutils-r1
 
@@ -23,10 +23,13 @@ RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	test? ( dev-python/email-validator[${PYTHON_USEDEP}]
+	test? ( dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/random2[${PYTHON_USEDEP}]
 		dev-python/ukpostcodeparser[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+		dev-python/validators[${PYTHON_USEDEP}]
+		virtual/python-unittest-mock[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/more-itertools[${PYTHON_USEDEP}]' '-2') )"
 
 python_test() {
-	pytest -v || die "tests failed with ${EPYTHON}"
+	py.test -v || die "tests failed with ${EPYTHON}"
 }

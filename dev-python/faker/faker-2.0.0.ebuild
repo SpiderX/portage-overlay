@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5..7}} )
-EGIT_REPO_URI="https://github.com/joke2k/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python package that generates fake data"
 HOMEPAGE="https://github.com/joke2k/faker"
-SRC_URI=""
+SRC_URI="https://github.com/joke2k/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
