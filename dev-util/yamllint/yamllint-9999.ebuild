@@ -19,6 +19,7 @@ IUSE=""
 
 RDEPEND="dev-python/pathspec[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# Disable test
