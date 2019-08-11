@@ -11,12 +11,11 @@ DESCRIPTION="Camomile is a comprehensive Unicode library for ocaml"
 HOMEPAGE="https://github.com/yoriyuki/Camomile"
 SRC_URI=""
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="+ocamlopt"
 
-RDEPEND="dev-lang/ocaml:=[ocamlopt?]
-	dev-ml/camlp4:="
+RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-ml/dune-1.11.1:="
