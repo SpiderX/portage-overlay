@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+camlp4 debug +ocamlopt ogg profiling"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
-	media-libs/flac
+	media-libs/flac[ogg?]
 	camlp4? ( dev-ml/camlp4:= )
 	ogg? ( dev-ml/ocaml-ogg:= )"
 DEPEND="${RDEPEND}
