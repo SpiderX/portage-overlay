@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools findlib
 
@@ -35,6 +35,11 @@ src_configure() {
 		"$(use_enable debug debugging)" \
 		"$(use_enable ocamlopt nativecode)" \
 		"$(use_enable profiling)"
+}
+
+src_compile() {
+	# doesn't support parallel jobs
+	emake -j1
 }
 
 src_install() {
