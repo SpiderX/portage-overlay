@@ -3,19 +3,15 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
-EGIT_SUBMODULES=()
-EGIT_COMMIT="2493762c1aefba52e6c4c0ca196ddb04b07d09a0"
-
-inherit autotools findlib git-r3
+inherit autotools findlib
 
 DESCRIPTION="OCaml bindings to mm"
 HOMEPAGE="https://github.com/savonet/ocaml-mm"
-SRC_URI=""
+SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa ao +camlp4 debug ffmpeg gstreamer mad +ocamlopt ogg oss profiling pulseaudio sdl theora v4l"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
@@ -42,7 +38,6 @@ PATCHES=( "${FILESDIR}"/"${PN}"-0.3.0-configure.patch
 src_prepare() {
 	default
 
-	m4/bootstrap || die "bootstrap failed"
 	sed -i 's/AC_CHECK_TOOL_STRICT/AC_CHECK_TOOL/g' m4/ocaml.m4 \
 		|| die "Failed editing m4/ocaml.m4!"
 	AT_M4DIR="m4" eautoreconf
