@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 	dev-ml/findlib[ocamlopt?]
 	virtual/pkgconfig"
 
-DOCS=( CHANGES README )
+DOCS=( CHANGES README.md )
 
 src_prepare() {
 	default
