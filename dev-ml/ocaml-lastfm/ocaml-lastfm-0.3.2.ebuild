@@ -15,17 +15,15 @@ KEYWORDS="~amd64"
 IUSE="+camlp4 debug +ocamlopt profiling"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
-	dev-ml/ocamlnet:=
-	dev-ml/ocaml-xmlplaylist:=
-	dev-ml/pcre-ocaml:=
-	camlp4? ( dev-ml/camlp4:= )"
+	>=dev-ml/ocamlnet-4.1.6:=[ocamlopt?]
+	dev-ml/ocaml-xmlplaylist:=[ocamlopt?]
+	dev-ml/pcre-ocaml:=[ocamlopt?]
+	camlp4? ( dev-ml/camlp4:=[ocamlopt?] )"
 DEPEND="${RDEPEND}
-	dev-ml/findlib
+	dev-ml/findlib[ocamlopt?]
 	virtual/pkgconfig"
 
 DOCS=( CHANGES README )
-
-PATCHES=( "${FILESDIR}"/"${P}"-ocamlnet.patch )
 
 src_prepare() {
 	default
