@@ -4,13 +4,14 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+MY_PV="${PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 
-inherit autotools bash-completion-r1 findlib git-r3 python-single-r1 systemd tmpfiles user
+inherit autotools bash-completion-r1 findlib python-single-r1 systemd tmpfiles user
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios and webtvs"
 HOMEPAGE="http://liquidsoap.info"
-SRC_URI=""
+SRC_URI="https://github.com/savonet/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -73,6 +74,8 @@ RDEPEND="app-admin/logrotate
 DEPEND="${RDEPEND}
 	dev-ml/findlib[ocamlopt?]"
 BDEPEND="virtual/pkgconfig"
+
+S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGES.md README.md )
 

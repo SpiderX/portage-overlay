@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools findlib python-single-r1 systemd tmpfiles user
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios and webtvs"
-HOMEPAGE="http://liquidsoap.fm/"
+HOMEPAGE="http://liquidsoap.info"
 SRC_URI="https://github.com/savonet/liquidsoap/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
