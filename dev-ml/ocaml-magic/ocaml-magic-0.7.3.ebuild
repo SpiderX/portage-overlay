@@ -1,22 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools findlib
 
 DESCRIPTION="OCaml bindings to libmagic"
-HOMEPAGE="https://github.com/savonet/ocaml-magic https://sourceforge.net/projects/ocaml-magic/"
+HOMEPAGE="https://sourceforge.net/projects/ocaml-magic"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+ocamlopt"
 
-RDEPEND="dev-lang/ocaml:="
+RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 DEPEND="${RDEPEND}
-	dev-ml/findlib"
+	dev-ml/findlib[ocamlopt?]"
 
 DOCS=( ChangeLog )
 

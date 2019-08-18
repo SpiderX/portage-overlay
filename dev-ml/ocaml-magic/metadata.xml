@@ -13,7 +13,6 @@
 	OCaml interface for libmagic
 	</longdescription>
 	<upstream>
-		<remote-id type="github">savonet/ocaml-magic</remote-id>
 		<remote-id type="sourceforge">ocaml-magic</remote-id>
 	</upstream>
 </pkgmetadata>
