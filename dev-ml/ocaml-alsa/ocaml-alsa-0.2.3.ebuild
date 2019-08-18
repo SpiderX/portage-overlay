@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools findlib
 
@@ -16,9 +16,9 @@ IUSE="+camlp4 debug +ocamlopt profiling"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	media-libs/alsa-lib
-	camlp4? ( dev-ml/camlp4:= )"
+	camlp4? ( dev-ml/camlp4:=[ocamlopt?] )"
 DEPEND="${RDEPEND}
-	dev-ml/findlib
+	dev-ml/findlib[ocamlopt?]
 	virtual/pkgconfig"
 
 DOCS=( CHANGES README )
