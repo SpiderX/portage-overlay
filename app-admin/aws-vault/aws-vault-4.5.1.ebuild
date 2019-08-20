@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_PN="github.com/99designs/${PN}"
 
-inherit golang-build golang-vcs-snapshot
+inherit bash-completion-r1 golang-build golang-vcs-snapshot
 
 DESCRIPTION="A vault for securely storing and accessing AWS credentials"
 HOMEPAGE="https://github.com/99designs/aws-vault"
