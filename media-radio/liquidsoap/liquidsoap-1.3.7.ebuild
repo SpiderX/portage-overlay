@@ -63,7 +63,7 @@ RDEPEND="app-admin/logrotate
 	soundtouch? ( dev-ml/ocaml-soundtouch:=[ocamlopt?] )
 	speex? ( dev-ml/ocaml-speex:=[ocamlopt?] )
 	ssl? ( dev-ml/ocaml-ssl:= )
-	taglib? ( dev-ml/ocaml-taglib:=[ocamlopt?] )
+	taglib? ( <dev-ml/ocaml-taglib-0.3.6:=[ocamlopt?] )
 	theora? ( dev-ml/ocaml-theora:=[ocamlopt?] )
 	unicode? ( >=dev-ml/camomile-1.0.2:=[ocamlopt?] )
 	vorbis? ( dev-ml/ocaml-vorbis:=[ocamlopt?] )
