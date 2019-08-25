@@ -25,7 +25,7 @@ REQUIRED_USE="flac? ( ogg ) lastfm? ( xml ) opus? ( ogg ) speex? ( ogg ) theora?
 RDEPEND="app-admin/logrotate
 	dev-lang/ocaml:=[ocamlopt?]
 	>=dev-ml/ocaml-dtools-0.4.1:=[ocamlopt?]
-	dev-ml/ocaml-duppy:=[camlp4?,ocamlopt?]
+	dev-ml/ocaml-duppy:=[ocamlopt?]
 	>=dev-ml/ocaml-mm-0.4.0:=[ocamlopt?]
 	dev-ml/pcre-ocaml:=[ocamlopt?]
 	net-misc/curl
