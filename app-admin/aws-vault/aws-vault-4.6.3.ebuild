@@ -15,15 +15,16 @@ EGO_VENDOR=( "github.com/alecthomas/template a0175ee3bccc567396460bf5acd36800cb1
 	"gopkg.in/ini.v1 8659100d2d9ecf3760a41838b1886db49426d001 github.com/go-ini/ini" )
 EGO_PN="github.com/99designs/${PN}"
 
-inherit bash-completion-r1 golang-build golang-vcs golang-vcs-snapshot
+inherit bash-completion-r1 golang-build golang-vcs-snapshot
 
 DESCRIPTION="A vault for securely storing and accessing AWS credentials"
 HOMEPAGE="https://github.com/99designs/aws-vault"
-SRC_URI="${EGO_VENDOR_URI}"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${EGO_VENDOR_URI}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="bash-completion zsh-completion"
 
 DEPEND="dev-go/go-crypto:=
@@ -35,7 +36,7 @@ RDEPEND="${DEPEND}
 	bash-completion? ( app-shells/bash-completion )
 	zsh-completion? ( app-shells/zsh-completions )"
 
-DOCS=( src/"${EGO_PN}"/README.md )
+DOCS=( src/"${EGO_PN}"/README.md src/"${EGO_PN}"/USAGE.md )
 
 src_install() {
 	einstalldocs
