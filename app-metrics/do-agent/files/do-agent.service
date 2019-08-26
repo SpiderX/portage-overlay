@@ -1,12 +1,20 @@
 [Unit]
-Description=DigitalOcean agent
+Description=The DigitalOcean Monitoring Agent
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 User=nobody
 Group=nobody
-ExecStart=/usr/bin/do-agent
+ExecStart=/usr/bin/do-agent --syslog
+Restart=always
+
+OOMScoreAdjust=-900
+SyslogIdentifier=DigitalOceanAgent
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+NoNewPrivileges=yes
 
 [Install]
 WantedBy=multi-user.target
