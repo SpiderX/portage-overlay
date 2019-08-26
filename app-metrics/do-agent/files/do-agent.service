@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 User=nobody
-Group=nobody
+Group=nogroup
 ExecStart=/usr/bin/do-agent --syslog
 Restart=always
 
