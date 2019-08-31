@@ -1,21 +1,7 @@
---- a/Makefile	2018-06-10 23:10:52.272789684 +0300
-+++ b/Makefile	2018-06-10 23:11:51.673821892 +0300
-@@ -36,9 +36,6 @@
- powerstat: powerstat.o
- 	$(CC) $(CFLAGS) $< -lm -o $@ $(LDFLAGS)
- 
--powerstat.8.gz: powerstat.8
--	gzip -c $< > $@
--
- dist:
- 	rm -rf powerstat-$(VERSION)
- 	mkdir powerstat-$(VERSION)
-@@ -48,11 +45,11 @@
- 	rm -rf powerstat-$(VERSION)
- 
- clean:
--	rm -f powerstat powerstat.o powerstat.8.gz
-+	rm -f powerstat powerstat.o
+--- a/Makefile	2018-06-11 07:57:10.308456253 +0300
++++ b/Makefile	2018-06-11 07:57:51.277432564 +0300
+@@ -51,8 +51,8 @@
+ 	rm -f powerstat powerstat.o powerstat.8.gz
  	rm -f powerstat-$(VERSION).tar.gz
  
 -install: powerstat powerstat.8.gz
