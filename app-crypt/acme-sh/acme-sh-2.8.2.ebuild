@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="net-misc/curl
 	|| ( dev-libs/libressl dev-libs/openssl:0 )
 	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
-	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx:0 )
+	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx )
 	virtual/cron"
 
 S="${WORKDIR}/${MY_P}"
