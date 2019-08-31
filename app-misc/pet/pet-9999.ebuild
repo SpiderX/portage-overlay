@@ -23,7 +23,7 @@ EGO_VENDOR=( "github.com/SpiderX/portage-empty 3f4db1eb10e4dc42584b6b3df23f03790
 	"google.golang.org/appengine 150dc57a1b433e64154302bdc40b6bb8aefa313a github.com/golang/appengine" )
 
 EGO_PN="github.com/knqyf263/${PN}"
-EGIT_REPO_URI="https://github.com/knqyf263/${PN}.git"
+EGIT_REPO_URI="https://${EGO_PN}.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
 
 inherit git-r3 golang-build golang-vcs-snapshot
