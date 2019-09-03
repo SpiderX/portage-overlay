@@ -17,9 +17,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-RDEPEND="dev-python/aws-sam-translator[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/aws-sam-translator-1.13.0[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
-	dev-python/jsonschema[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-3.0.1[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' '-2')"
