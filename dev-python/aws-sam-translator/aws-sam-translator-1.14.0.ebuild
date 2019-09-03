@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python{2_7,3_{6..7}} )
 
 MY_PN="serverless-application-model"
 MY_P="${MY_PN}-${PV}"
