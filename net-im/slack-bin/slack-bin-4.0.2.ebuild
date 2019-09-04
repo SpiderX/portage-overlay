@@ -9,7 +9,7 @@ MULTILIB_COMPAT=( abi_x86_64 )
 inherit desktop multilib-build pax-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
-HOMEPAGE="http://www.slack.com/"
+HOMEPAGE="https://www.slack.com/"
 SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
@@ -24,13 +24,11 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	gnome-base/gconf:2[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
-	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
-	media-libs/freetype:2[${MULTILIB_USEDEP}]
-	net-misc/curl:0[${MULTILIB_USEDEP}]
+	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
+	sys-apps/util-linux:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
