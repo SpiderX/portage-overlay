@@ -65,6 +65,11 @@ S="${WORKDIR}"
 src_prepare() {
 	default
 
+	# remove hardcoded path (wrt 694058)
+	sed -i '/Icon/s|/usr/share/pixmaps/slack.png|slack|' \
+		usr/share/applications/slack.desktop \
+		|| die "sed failed in Icon for slack.desktop"
+
 	if use ayatana ; then
 		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
 			usr/share/applications/slack.desktop \
