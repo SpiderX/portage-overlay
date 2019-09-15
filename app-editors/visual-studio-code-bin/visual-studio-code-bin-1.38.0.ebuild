@@ -48,6 +48,15 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	qt5? ( dev-libs/libdbusmenu-qt )"
 
 QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vsda/build/Release/vsda.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-sqlite3/build/Release/sqlite.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/oniguruma/build/Release/onig_scanner.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/nsfw/build/Release/nsfw.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/spdlog/build/Release/spdlog.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/native-keymap/build/Release/keymapping.node
+	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/native-watchdog/build/Release/watchdog.node
 	opt/visual-studio-code/code
 	opt/visual-studio-code/libffmpeg.so
 	opt/visual-studio-code/libGLESv2.so
