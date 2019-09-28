@@ -42,7 +42,6 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="mirror test"
 
-# dev-go/go-protobuf is too old, use bundled version
 # dev-go/go-text is too old, use bundled version
 # dev-go/go-net is too old, use bundled version
 CDEPEND="dev-go/go-crypto:=
