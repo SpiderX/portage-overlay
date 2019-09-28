@@ -48,7 +48,6 @@ IUSE="test"
 RESTRICT="mirror"
 
 # dev-go/toml doesn't provide sources
-# dev-go/go-protobuf is too old, use bundled version
 # dev-go/go-net is too old, use bundled version
 CDEPEND="dev-go/go-crypto:=
 	dev-go/go-sys:="
@@ -82,8 +81,6 @@ src_prepare() {
 	# Remove bundled libs to use provided by portage
 	rm -rf vendor/github.com/davecgh || die "failed to remove dirs"
 	rm -rf vendor/golang.org/x/{crypto,sys} || die "failed to remove golang.org"
-	# Remove it when recent version of dev-go/go-protobuf will be in portage
-	#rm -rf vendor/github.com/golang || die "failed to remove dirs"
 	# Remove it when recent version of dev-go/go-net will be in portage
 	#rm -rf vendor/golang.org || die "failed to remove golang.org"
 }
