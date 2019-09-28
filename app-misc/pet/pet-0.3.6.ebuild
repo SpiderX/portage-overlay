@@ -46,7 +46,7 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 src_compile() {
 	export -n GOCACHE XDG_CACHE_HOME
 	GOPATH="${WORKDIR}/${P}" GO111MODULE=on \
-		go build -mod=vendor -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+		go build -mod=vendor -v -work -x "${EGO_BUILD_FLAGS}" "${EGO_PN}" || die
 }
 
 src_install() {
