@@ -13,7 +13,6 @@
 	A Gitlab CI runner that executes jobs and send the results back to GitLab
 	</longdescription>
 	<use>
-		<flag name="docker-build">Use docker to build the images</flag>
 		<flag name="docker">Add support for docker executors</flag>
 	</use>
 	<upstream>
