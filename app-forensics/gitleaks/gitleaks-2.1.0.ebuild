@@ -3,8 +3,7 @@
 
 EAPI=7
 
-EGO_VENDOR=( "github.com/SpiderX/portage-empty 3f4db1eb10e4dc42584b6b3df23f037904e6ea07"
-	"github.com/BurntSushi/toml v0.3.1"
+EGO_VENDOR=( "github.com/BurntSushi/toml v0.3.1"
 	"github.com/emirpasic/gods v1.12.0"
 	"github.com/franela/goblin ead4ad1d27278780bab074b8dee47fba0e67afda"
 	"github.com/google/go-github e48060a28fac52d0f1cb758bc8b87c07bac4a87d"
@@ -31,18 +30,17 @@ EGO_VENDOR=( "github.com/SpiderX/portage-empty 3f4db1eb10e4dc42584b6b3df23f03790
 	"gopkg.in/warnings.v0 v0.1.2 github.com/go-warnings/warnings" )
 
 EGO_PN="github.com/zricethezav/${PN}"
-EGIT_REPO_URI="https://github.com/zricethezav/${PN}.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
 
-inherit git-r3 golang-build golang-vcs-snapshot
+inherit golang-build golang-vcs-snapshot
 
 DESCRIPTION="Auditing git repository for secrets and keys"
 HOMEPAGE="https://github.com/zricethezav/gitleaks"
-SRC_URI="${EGO_VENDOR_URI}"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${EGO_VENDOR_URI}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-go/go-crypto:=
@@ -52,11 +50,6 @@ DEPEND="dev-go/go-crypto:=
 RDEPEND="${DEPEND}"
 
 DOCS=( src/"${EGO_PN}"/README.md )
-
-src_unpack() {
-	git-r3_src_unpack
-	golang-vcs-snapshot_src_unpack
-}
 
 src_install() {
 	einstalldocs
