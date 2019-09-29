@@ -36,7 +36,7 @@ DESCRIPTION="Simple command-line snippet manager"
 HOMEPAGE="https://github.com/knqyf263/pet"
 SRC_URI="${EGO_VENDOR_URI}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="zsh-completion"
