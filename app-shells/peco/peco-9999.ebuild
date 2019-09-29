@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_VENDOR=( "github.com/SpiderX/portage-empty 3f4db1eb10e4dc42584b6b3df23f037904e6ea07"
 	"github.com/google/btree 0c3044bc8bada22db67b93f5760fe3f05d6a5c25"
@@ -22,7 +22,7 @@ DESCRIPTION="Simplistic interactive filtering tool"
 HOMEPAGE="https://github.com/peco/peco"
 SRC_URI="${EGO_VENDOR_URI}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
@@ -40,8 +40,9 @@ src_prepare() {
 	default
 
 	# Don't install dependencies, make build verbose
-	sed -i -e '/peco\$(SUFFIX):/s/ installdeps//' \
-		-e '/test:/s/ installdeps//' \
+	sed -i -e '/peco\$(SUFFIX):/s/ deps//' \
+		-e '/test:/s/ deps//' \
+		-e '/GO111MODULE/s/on/off/' \
 		-e '/go build/s/-o/-v -x -o/' \
 		-e '/go test -v/s#$(INTERNAL_BIN_DIR)/$(THIS_GOOS)/$(THIS_GOARCH)/##' \
 		src/"${EGO_PN}"/Makefile || die "sed failed"
