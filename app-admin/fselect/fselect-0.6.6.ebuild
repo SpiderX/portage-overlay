@@ -1,6 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# shellcheck disable=SC2086
+
 EAPI=7
 
 CRATES="
@@ -115,18 +117,9 @@ RESTRICT="mirror"
 
 DOCS=( docs/usage.md )
 
-cargo_src_install() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	cargo install --path . -j $(makeopts_jobs) --root="${D}/usr" $(usex debug --debug "") "$@" \
-		|| die "cargo install failed"
-	rm -f "${D}/usr/.crates.toml"
-
-	[ -d "${S}/man" ] && doman "${S}/man" || return 0
-}
-
 src_install() {
 	einstalldocs
+	dobin target/release/fselect
 	doman docs/fselect.1
-	cargo_src_install
+	#cargo_src_install
 }
