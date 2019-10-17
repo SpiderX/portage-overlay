@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,8 +21,6 @@ DEPEND="${WEBAPP_DEPEND}"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-
-DOCS=( README.md )
 
 src_install() {
 	webapp_src_preinst
