@@ -11,10 +11,10 @@ DESCRIPTION="Editor for building and debugging modern web and cloud applications
 HOMEPAGE="http://code.visualstudio.com"
 SRC_URI="https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz"
 
-LICENSE="MIT"
+LICENSE="MIT Microsoft-VSCode"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="gnome-keyring qt5 pax_kernel"
+IUSE="gnome-keyring qt5"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -84,7 +84,7 @@ src_install() {
 	insinto /usr/share/appdata
 	doins "${FILESDIR}"/code.appdata.xml
 
-	use pax_kernel && pax-mark -m "${ED}"/opt/visual-studio-code/code
+	pax-mark -m "${ED}"/opt/visual-studio-code/code
 }
 
 pkg_postinst() {
