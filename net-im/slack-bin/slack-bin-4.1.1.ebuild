@@ -49,12 +49,10 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )
 	gnome-keyring? ( app-crypt/libsecret:0[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="opt/slack/slack
+QA_PREBUILT="/opt/slack/chrome-sandbox
+	opt/slack/slack
 	opt/slack/resources/app.asar.unpacked/node_modules/*
-	opt/slack/libnode.so
 	opt/slack/libffmpeg.so
-	opt/slack/libCallsCore.so
-	opt/slack/libVkICD_mock_icd.so
 	opt/slack/libEGL.so
 	opt/slack/libGLESv2.so
 	opt/slack/swiftshader/libEGL.so
