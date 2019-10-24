@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="en et ru"
 
@@ -17,14 +17,13 @@ SLOT="0"
 IUSE="crash-reporter libressl +webcheck"
 REQUIRED_USE="webcheck" # build fails without it
 
-# ToDo: dev-util/google-breakpad
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsingleapplication
 	sys-apps/pcsc-lite
-	!libressl? ( dev-libs/openssl:0= )
+	!libressl? ( <dev-libs/openssl-1.1:0= )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
