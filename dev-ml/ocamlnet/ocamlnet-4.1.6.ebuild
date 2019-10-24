@@ -11,7 +11,7 @@ SRC_URI="http://download.camlcity.org/download/${P}.tar.gz"
 
 LICENSE="ZLIB GPL-2+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gtk kerberos tk httpd +ocamlopt +pcre ssl zip"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
