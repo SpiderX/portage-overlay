@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 278](https://img.shields.io/badge/ebuild-278-orange.svg)](https://img.shields.io/badge/ebuild-278-orange.svg)
+[![Number of ebuilds: 279](https://img.shields.io/badge/ebuild-279-orange.svg)](https://img.shields.io/badge/ebuild-279-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -88,6 +88,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-office/[drawio-desktop-bin](https://github.com/jgraph/drawio-desktop) | Diagram drawing application built on web technology
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/peco.svg)](https://repology.org/metapackage/peco) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 * app-text/[keening](https://github.com/vehk/keening) | A simple command line pastebin designed to be used together with ssh
+* dev-cpp/[libxsd-frontend](https://www.codesynthesis.com/projects/libxsd-frontend) | A compiler frontend for the W3C XML Schema definition language
 * dev-cpp/[libcutl](https://www.codesynthesis.com/projects/libcutl) | A collection of C++ libraries (successor of libcult)
 * dev-db/[pg_cron](https://github.com/citusdata/pg_cron) | Run periodic jobs in PostgreSQL
 * dev-db/[odyssey](https://github.com/yandex/odyssey) | Scalable PostgreSQL connection pooler
