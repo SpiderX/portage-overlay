@@ -27,10 +27,10 @@ DOCS=( {CHANGELOG,NOTICE}.txt )
 src_configure() {
 	econf \
 		--with-openssl \
-		$(use_enable static-libs static) \
-		$(use_enable debug) \
-		$(use_with xalan) \
-		$(use_with nss)
+		"$(use_enable static-libs static)" \
+		"$(use_enable debug)" \
+		"$(use_with xalan)" \
+		"$(use_with nss)"
 }
 
 src_install() {
