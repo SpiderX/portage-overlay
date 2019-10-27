@@ -29,10 +29,9 @@ RDEPEND="dev-libs/libdigidoc
 DEPEND="${RDEPEND}
 	java? ( dev-lang/swig )
 	virtual/libiconv"
-# dev-util/xxdi can't be used — https://github.com/gregkh/xxdi/pull/1
-BDEPEND="app-editors/vim-core
-	dev-cpp/xsd
+BDEPEND="dev-cpp/xsd
 	virtual/pkgconfig
+	|| ( app-editors/vim-core dev-util/xxdi )
 	doc? ( app-doc/doxygen )
 	test? ( dev-libs/boost:= )"
 
@@ -48,6 +47,11 @@ src_unpack() {
 src_prepare() {
 	default
 
+	if ! has_version app-editors/vim-core ; then
+		sed -i -e '/COMMAND xxd/s:xxd -i \(${BASE}.crt\):xxdi.pl \1 >:' \
+			src/CMakeLists.txt || die "sed for src/CMakeLists.txt failed"
+	fi
+
 	# remove bundled lib
 	rm -rf src/minizip || die "rm failed"
 
@@ -57,6 +61,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
+		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/html"
 		-DBUILD_TOOLS="$(usex utils)"
 		"$(cmake-utils_use_find_package doc Doxygen)"
 		"$(cmake-utils_use_find_package pdf PoDoFo)"
