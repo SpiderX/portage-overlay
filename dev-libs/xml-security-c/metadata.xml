@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	DigiDoc is an XML file format for documents with digital signatures
+	in use by the Estonian ID card infrastructure. This library allows
+	for creation and reading of DigiDoc files.
+	</longdescription>
+	<use>
+		<flag name="xalan">Enable support for XSLT and XPath parsing by <pkg>dev-libs/xalan-c</pkg></flag>
+		<flag name="nss">Use <pkg>dev-libs/nss</pkg> for certain crypto operations (configureable at runtime)</flag>
+	</use>
+	<upstream>
+		<doc>https://santuario.apache.org</doc>
+		<bugs-to>https://issues.apache.org/jira/projects/SANTUARIO</bugs-to>
+	</upstream>
+</pkgmetadata>
