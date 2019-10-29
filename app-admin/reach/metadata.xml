@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Reach uses your AWS configuration to analyze the potential for network
+	connectivity between two EC2 instances in your AWS account. This means
+	you don't need to install Reach on any servers — you just need access
+	to the AWS API.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">luhring/reach</remote-id>
+	</upstream>
+</pkgmetadata>
