@@ -16,6 +16,9 @@
 	and applications. It's designed to be complementary to the aws cli
 	tools, and is aware of your profiles and configuration in ~/.aws/config.
 	</longdescription>
+	<use>
+		<flag name="fish-completion">Enable fish completion support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">99designs/aws-vault</remote-id>
 	</upstream>
