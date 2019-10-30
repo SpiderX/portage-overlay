@@ -25,7 +25,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="${DEPEND}"
 BDEPEND="test? ( app-admin/pass
 		app-crypt/libsecret
 		sys-apps/dbus )"
