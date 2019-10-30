@@ -13,17 +13,19 @@ EGO_VENDOR=( "github.com/danieljoos/wincred v1.0.2"
 	"golang.org/x/sys fae7ac547cb7 github.com/golang/sys" )
 EGO_PN="github.com/99designs/${PN}"
 
-inherit golang-build golang-vcs golang-vcs-snapshot
+inherit golang-build golang-vcs-snapshot
 
 DESCRIPTION="Library with uniform interface across a range of secure credential stores"
 HOMEPAGE="https://github.com/99designs/keyring"
-SRC_URI="${EGO_VENDOR_URI}"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${EGO_VENDOR_URI}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+RDEPEND="${DEPEND}"
 BDEPEND="test? ( app-admin/pass
 		app-crypt/libsecret
 		sys-apps/dbus )"
