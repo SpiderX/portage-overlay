@@ -25,9 +25,9 @@ RDEPEND="app-admin/pass
 	dev-qt/qtwidgets:5
 	net-misc/x11-ssh-askpass"
 DEPEND="${RDEPEND}
-	dev-qt/qtsvg:5"
-BDEPEND="dev-qt/linguist-tools:5
+	dev-qt/qtsvg:5
 	test? ( dev-qt/qttest:5 )"
+BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md FAQ.md README.md  )
 
