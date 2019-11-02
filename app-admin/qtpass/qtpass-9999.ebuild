@@ -7,10 +7,10 @@ EGIT_REPO_URI="https://github.com/IJHack/${PN}.git"
 PLOCALES="ar_MA ca cs_CZ de_DE de_LU el_GR en_GB en_US es_ES fr_BE fr_FR fr_LU
 gl_ES he_IL hu_HU it_IT lb_LU nl_BE nl_NL pl_PL pt_PT ru_RU sv_SE zh_CN"
 
-inherit desktop git-r3 l10n qmake-utils
+inherit desktop git-r3 l10n qmake-utils virtualx
 
 DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
-HOMEPAGE="https://qtpass.org/"
+HOMEPAGE="https://qtpass.org"
 SRC_URI=""
 
 LICENSE="GPL-3"
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 BDEPEND="dev-qt/linguist-tools:5"
 
-DOCS=( CHANGELOG.md CONTRIBUTING.md FAQ.md README.md  )
+DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
 
 src_prepare() {
 	default
@@ -46,26 +46,23 @@ src_configure() {
 	eqmake5 PREFIX="${D}"/usr
 }
 
-src_compile() {
-	default
-
-	local lr
-	lr="$(qt5_get_bindir)"/lrelease
-	l10n_build() {
-		$lr localization/localization_"${1}".ts || die "lrelease ${1} failed"
-	}
-	l10n_for_each_locale_do l10n_build
+src_test() {
+	virtx default
 }
 
 src_install() {
 	default
 
-	insinto /usr/share/"${PN}"/translations
-	doins localization/*.qm
+	l10n_install() {
+		doins localization/localization_"${1}".qm
+	}
 
-	doman "${PN}".1
-	domenu "${PN}".desktop
-	newicon artwork/icon.png "${PN}"-icon.png
+	insinto /usr/share/qtpass/translations
+	l10n_for_each_locale_do l10n_install
+
+	doman qtpass.1
+	domenu qtpass.desktop
+	newicon artwork/icon.png qtpass-icon.png
 	insinto /usr/share/appdata
 	doins qtpass.appdata.xml
 }
