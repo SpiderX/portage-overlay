@@ -3,10 +3,7 @@
 
 EAPI=7
 
-PLOCALES="ar_MA ca cs_CZ de_DE de_LU el_GR en_GB en_US es_ES fr_BE fr_FR fr_LU
-gl_ES he_IL hu_HU it_IT lb_LU nl_BE nl_NL pl_PL pt_PT ru_RU sv_SE zh_CN"
-
-inherit desktop l10n qmake-utils virtualx
+inherit desktop qmake-utils virtualx
 
 DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org"
@@ -28,6 +25,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 BDEPEND="dev-qt/linguist-tools:5"
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/QtPass-${PV}"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
@@ -39,8 +38,6 @@ src_prepare() {
 		sed -i '/SUBDIRS += src /s/tests //' \
 			qtpass.pro || die "sed for qtpass.pro failed"
 	fi
-
-	l10n_find_plocales_changes localization localization_ .ts
 }
 
 src_configure() {
@@ -54,12 +51,8 @@ src_test() {
 src_install() {
 	default
 
-	l10n_install() {
-		doins localization/localization_"${1}".qm
-	}
-
 	insinto /usr/share/qtpass/translations
-	l10n_for_each_locale_do l10n_install
+	doins localization/*.qm
 
 	doman qtpass.1
 	domenu qtpass.desktop

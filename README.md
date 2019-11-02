@@ -52,7 +52,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[docker-pretty-ps](https://github.com/politeauthority/docker-pretty-ps) | docker ps in colored and long output
 * app-admin/[doctl](https://github.com/digitalocean/doctl) | A command line tool for DigitalOcean services
 * app-admin/[fselect](https://github.com/jhspetersson/fselect) | Find files with SQL-like queries
-* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/qtpass.svg)](https://repology.org/metapackage/qtpass) app-admin/[qtpass](https://qtpass.org/) | multi-platform GUI for pass, the standard unix password manager
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/qtpass.svg)](https://repology.org/metapackage/qtpass) app-admin/[qtpass](https://qtpass.org) | multi-platform GUI for pass, the standard unix password manager
 * app-admin/[jl](https://github.com/koenbollen/jl) | A tool for working with structured JSON logging
 * app-admin/[kconfig-hardened-check](https://github.com/a13xp0p0v/kconfig-hardened-check) | A script to check the hardening options in the Linux kernel config
 * app-admin/[reach](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
