@@ -19,7 +19,6 @@
 	</longdescription>
 	<use>
 		<flag name="apulse">Use PulseAudio emulation for ALSA</flag>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
 	</use>
 	<upstream>
 		<doc>https://support.viber.com</doc>

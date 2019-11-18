@@ -21,16 +21,16 @@ SRC_URI="http://download.cdn.viber.com/cdn/desktop/Linux/${MY_PN}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="apulse pax_kernel +pulseaudio"
+IUSE="apulse +pulseaudio"
 REQUIRED_USE="^^ ( apulse pulseaudio )"
 
 RESTRICT="bindist mirror"
 
-DEPEND="sys-apps/fix-gnustack"
 RDEPEND="dev-libs/expat[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr[${MULTILIB_USEDEP}]
 	dev-libs/nss[${MULTILIB_USEDEP}]
+	dev-libs/openssl-compat[${MULTILIB_USEDEP}]
 	dev-libs/wayland[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib[${MULTILIB_USEDEP}]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
@@ -61,6 +61,7 @@ RDEPEND="dev-libs/expat[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-wm[${MULTILIB_USEDEP}]
 	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
+BDEPEND="sys-apps/fix-gnustack"
 
 S="${WORKDIR}"
 
@@ -89,10 +90,8 @@ src_install() {
 	insinto /opt/viber
 	doins -r opt/viber/.
 
-	if use pax_kernel; then
-		pax-mark -m "${ED%/}"/opt/viber/Viber \
-			"${ED%/}"/opt/viber/QtWebEngineProcess
-	fi
+	pax-mark -m "${ED}"/opt/viber/Viber \
+			"${ED}"/opt/viber/QtWebEngineProcess
 
 	fperms +x /opt/viber/Viber \
 		/opt/viber/libexec/QtWebEngineProcess
