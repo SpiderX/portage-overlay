@@ -12,6 +12,9 @@
 	<longdescription lang="en">
 	CTypes-based interface for some OpenSSL libcrypto features
 	</longdescription>
+	<use>
+		<flag name="gost">Enable gost algorithm</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">vbwagner/ctypescrypto</remote-id>
 		<remote-id type="pypi">ctypescrypto</remote-id>

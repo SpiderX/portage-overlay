@@ -13,11 +13,13 @@ SRC_URI="https://github.com/vbwagner/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="test"
+KEYWORDS="~amd64"
+IUSE="gost test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( gost )"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-libs/gost-engine )"
+RDEPEND="gost? ( dev-libs/gost-engine:= )"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# Remove failed tests
