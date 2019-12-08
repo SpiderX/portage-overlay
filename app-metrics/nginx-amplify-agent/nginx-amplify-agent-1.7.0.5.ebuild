@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eapi7-ver distutils-r1 readme.gentoo-r1 systemd tmpfiles
+inherit distutils-r1 readme.gentoo-r1 systemd tmpfiles
 
 MY_PV=$(ver_rs 3 '-')
 
@@ -37,13 +37,11 @@ CDEPEND="dev-python/crossplane[${PYTHON_USEDEP}]
 RDEPEND="${CDEPEND}
 	app-admin/logrotate
 	www-servers/nginx[nginx_modules_http_stub_status]"
-DEPEND="${CDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pyhamcrest[${PYTHON_USEDEP}]
+DEPEND="${CDEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pyhamcrest[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/requests-mock[${PYTHON_USEDEP}]
-	)"
+		dev-python/requests-mock[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -58,6 +56,10 @@ src_prepare() {
 		setup.py || die "sed failed for setup.py"
 	mv etc/logrotate.d/{amplify-agent,nginx-amplify-agent} \
 		|| die "logrotate renaming failed"
+	# Remove tests that require nginx+
+	rm test/unit/agent/collectors/plus/{slab,cache,meta,status_zone,stream,stream_upstream,upstream}.py \
+		test/unit/agent/managers/plus.py \
+		|| die "tests removing failed"
 }
 
 python_install_all() {
