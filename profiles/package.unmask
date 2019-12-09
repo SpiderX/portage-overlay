@@ -1,2 +1,3 @@
 # required by dev-python/django-mptt
 dev-python/django-mptt
+dev-python/pytest-pythonpath
