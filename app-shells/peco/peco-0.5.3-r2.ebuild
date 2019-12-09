@@ -5,7 +5,7 @@ EAPI=7
 
 EGO_VENDOR=( "github.com/google/btree 0c3044bc8bada22db67b93f5760fe3f05d6a5c25"
 	"github.com/jessevdk/go-flags 8bc97d602c3bfeb5fc6fc9b5a9c898f245495637"
-	"github.com/lestrrat/go-pdebug 2e6eaaa5717f81bda41d27070d3c966f40a1e75f"
+	"github.com/lestrrat-go/pdebug 2e6eaaa5717f81bda41d27070d3c966f40a1e75f"
 	"github.com/mattn/go-runewidth 737072b4e32b7a5018b4a7125da8d12de90e8045"
 	"github.com/nsf/termbox-go e2050e41c8847748ec5288741c0b19a8cb26d084"
 	"github.com/pkg/errors 248dadf4e9068a0b3e79f02ed0a610d935de5302"

@@ -25,9 +25,8 @@ SRC_URI="${EGO_VENDOR_URI}"
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-
-DEPEND="test? ( dev-go/glide )"
+IUSE=""
+RESTRICT="test"
 
 DOCS=( src/"${EGO_PN}"/{Changes,README.md} )
 
@@ -50,10 +49,6 @@ src_prepare() {
 
 src_compile() {
 	GOPATH="${S}:$(get_golibdir_gopath)" emake -C src/"${EGO_PN}" build
-}
-
-src_test() {
-	GOPATH="${S}:$(get_golibdir_gopath)" emake -C src/"${EGO_PN}" test
 }
 
 src_install() {
