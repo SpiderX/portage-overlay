@@ -1,3 +1,6 @@
 # required by dev-python/django-mptt
 dev-python/django-mptt
 dev-python/pytest-pythonpath
+
+# required by media-radio/liquidsoap
+dev-ml/xmlm
