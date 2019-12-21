@@ -58,7 +58,6 @@ src_prepare() {
 		|| die "logrotate renaming failed"
 	# Remove tests that require nginx+
 	rm test/unit/agent/collectors/plus/{slab,cache,meta,status_zone,stream,stream_upstream,upstream}.py \
-		test/unit/agent/managers/plus.py \
 		|| die "tests removing failed"
 }
 
