@@ -51,6 +51,12 @@ into api_key parameter in /etc/nginx-amplify-agent/agent.conf"
 src_prepare() {
 	default
 
+	# Fix GreenletExit import
+	sed  -i -e '/gevent.greenlet/s/GreenletExit/Greenlet/' \
+		-e '/gevent.greenlet/afrom greenlet import GreenletExit' \
+		amplify/agent/managers/abstract.py \
+		|| die "sed failed for abstract.py"
+
 	# Make paths more logical
 	sed -i '/\/amplify-agent/s|amplify-agent|nginx-amplify-agent|' \
 		setup.py || die "sed failed for setup.py"
