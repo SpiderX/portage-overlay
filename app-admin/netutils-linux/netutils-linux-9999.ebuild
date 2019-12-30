@@ -27,18 +27,21 @@ RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
+src_prepare() {
+	default
+
+	# Rename due collision with net-analyzer/net-snmp
+	mv utils/snmptop utils/snmp-top || die "snmptop rename failed"
+	sed -i '/snmptop/s/snmptop/snmp-top/' tests/utils_runnable \
+		|| die "sed for utils_runnable failed"
+	sed -i '/snmptop/s/snmptop/snmp-top/' README.rst \
+		|| die "sed for README.rst failed"
+}
+
 python_test() {
 	# Run only tests not affected by #659348
 	"${EPYTHON}" -m unittest discover -v netutils_linux_monitoring/ \
 		|| die "tests failed with ${EPYTHON}"
 	"${EPYTHON}" -m unittest discover -v netutils_linux_tuning/ \
 		|| die "tests failed with ${EPYTHON}"
-}
-
-src_test() {
-	distutils-r1_src_test
-	# Run only tests not affected by #659348
-	./tests/utils_runnable || die "utils tests failed"
-	./tests/rss-ladder-test || die "rss tests failed"
-	./tests/link_rate_units.sh || die "link rate tests failed"
 }
