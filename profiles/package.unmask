@@ -4,3 +4,4 @@ dev-python/pytest-pythonpath
 
 # required by media-radio/liquidsoap
 dev-ml/xmlm
+dev-ml/camlimages
