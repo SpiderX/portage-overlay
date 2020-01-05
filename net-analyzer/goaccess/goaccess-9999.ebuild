@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://github.com/allinurl/${PN}.git"
 
 inherit autotools git-r3
 
-DESCRIPTION="A real-time web log analyzer and interactive viewer that runs in a terminal"
+DESCRIPTION="A real-time web log analyzer and interactive viewer in a terminal"
 HOMEPAGE="https://goaccess.io"
 SRC_URI=""
 
@@ -41,7 +41,8 @@ src_prepare() {
 	default
 
 	# Change path to GeoIP bases in config
-	sed -i -e s':/usr/local:/usr:' config/goaccess.conf || die "sed failed for goaccess.conf"
+	sed -i -e s':/usr/local:/usr:' config/goaccess.conf \
+		|| die "sed failed for goaccess.conf"
 
 	eautoreconf
 }

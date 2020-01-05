@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="A real-time web log analyzer and interactive viewer that runs in a terminal"
+DESCRIPTION="A real-time web log analyzer and interactive viewer in a terminal"
 HOMEPAGE="https://goaccess.io"
 SRC_URI="https://tar.goaccess.io/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="btree bzip2 debug geoip geoipv2 getline libressl tokyocabinet ssl unicode zlib"
 REQUIRED_USE="btree? ( tokyocabinet ) bzip2? ( btree ) geoipv2? ( geoip ) zlib? ( btree )"
 
@@ -47,7 +47,8 @@ src_configure() {
 
 pkg_preinst() {
 	# Change path to GeoIP bases in config
-	sed -e s':/usr/local:/usr:' -i "${ED%/}"/etc/goaccess/goaccess.conf || die "sed failed for goaccess.conf"
+	sed -e s':/usr/local:/usr:' -i "${ED}"/etc/goaccess/goaccess.conf \
+		|| die "sed failed for goaccess.conf"
 }
 
 pkg_postinst() {
