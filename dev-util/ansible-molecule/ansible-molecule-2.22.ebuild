@@ -4,20 +4,19 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-EGIT_REPO_URI="https://github.com/ansible/molecule.git"
 
 MY_PN="${PN/ansible-/}"
 MY_P="${MY_PN}-${PV}"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Automated testing for Ansible roles"
 HOMEPAGE="https://github.com/ansible/molecule"
-SRC_URI=""
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="app-admin/ansible-lint[${PYTHON_USEDEP}]
@@ -40,3 +39,5 @@ RDEPEND="app-admin/ansible-lint[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/pbr[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
+
+S="${WORKDIR}/${MY_P}"
