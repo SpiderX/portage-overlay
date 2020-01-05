@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5..7} )
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit python-single-r1 xdg-utils
 
@@ -33,7 +33,7 @@ src_prepare() {
 	default
 
 	# Fix docdir installation path
-	sed '/^DOCDIR/s@$NAME@${PF}@' -i libinput-gestures-setup || die
+	sed '/^DOCDIR/s@$NAME@'"${PF}"'@' -i libinput-gestures-setup || die
 }
 
 src_test() { :; }
