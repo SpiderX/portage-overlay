@@ -6,7 +6,7 @@ EAPI=7
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 MY_PN="${PN/-bin/}"
 
-inherit desktop gnome2-utils multilib-build pax-utils unpacker
+inherit desktop multilib-build pax-utils unpacker xdg-utils
 
 QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_libcrt_platform_a
 	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
@@ -25,7 +25,7 @@ QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_libcrt_platform_a
 	opt/gitter/Gitter"
 
 DESCRIPTION="Chat and network platform"
-HOMEPAGE="http://www.gitter.im/"
+HOMEPAGE="https://www.gitter.im"
 SRC_URI="
 	amd64? ( https://update.gitter.im/linux64/${MY_PN}_${PV}_amd64.deb )
 	x86? ( https://update.gitter.im/linux32/${MY_PN}_${PV}_i386.deb )"
@@ -95,13 +95,13 @@ src_install() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_icon_cache_update
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
