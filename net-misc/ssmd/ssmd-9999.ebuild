@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="http://git.stg.codes/${PN}.git"
+EGIT_REPO_URI="https://git.stg.codes/${PN}.git"
 
 inherit git-r3 systemd toolchain-funcs user
 
