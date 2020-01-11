@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 300](https://img.shields.io/badge/ebuild-300-orange.svg)](https://img.shields.io/badge/ebuild-300-orange.svg)
+[![Number of ebuilds: 301](https://img.shields.io/badge/ebuild-301-orange.svg)](https://img.shields.io/badge/ebuild-301-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -278,6 +278,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * media-gfx/[butteraugli](https://github.com/google/butteraugli) | A tool for measuring perceived differences between images
 * media-gfx/[colorpick](https://github.com/agateau/colorpick) | Color picker and contrast checker
 * media-gfx/[dssim](https://github.com/kornelski/dssim) | Image similarity comparison simulating human perception
+* media-gfx/[guetzli](https://github.com/google/guetzli) | Perceptual JPEG encoder
 * media-gfx/[lsix](https://github.com/hackerb9/lsix) | Image viewer for terminal that use sixel graphics
 * media-gfx/[qView](https://interversehq.com/qview) | Practical and minimal image viewer
 * media-gfx/[pingo-bin](https://css-ig.net/pingo) | Fast web image optimizer
@@ -299,7 +300,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-firewall/[ipt_netflow](https://sourceforge.net/projects/ipt-netflow) | Netflow iptables module
 * net-firewall/[ipt_ratelimit](https://github.com/aabc/ipt-ratelimit) | Ratelimit iptables module
 * net-im/[communi-desktop](https://github.com/communi/communi-desktop) | A cross-platform IRC framework written with Qt
-* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/gitter.svg)](https://repology.org/metapackage/gitter) net-im/[gitter-bin](http://www.gitter.im) | Chat and network platform
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/gitter.svg)](https://repology.org/metapackage/gitter) net-im/[gitter-bin](https://www.gitter.im) | Chat and network platform
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack.svg)](https://repology.org/metapackage/slack) net-im/[slack-bin](https://www.slack.com/) | Team collaboration tool
 * net-im/[viber-bin](http://www.viber.com) | Free text and calls
 * net-im/[vk-messenger-bin](https://vk.com/messenger) | Simple and Easy App for Messaging on VK
@@ -346,4 +347,3 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
-* net-im/[gitter-bin](https://www.gitter.im) | Chat and network platform
