@@ -16,6 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/awscli[${PYTHON_USEDEP}]
 	dev-python/boto[${PYTHON_USEDEP}]
