@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="${PN/-bin/}"
 
@@ -23,7 +23,7 @@ SRC_URI="
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="pax_kernel"
+IUSE=""
 
 RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
@@ -53,6 +53,7 @@ RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 DEPEND="sys-apps/fix-gnustack"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
@@ -72,7 +73,7 @@ src_install() {
 	fperms +x /opt/vk-messenger/vk
 	dosym ../../opt/vk-messenger/vk /usr/bin/vk-messenger
 
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/vk-messenger/vk
+	pax-mark -m "${ED}"/opt/vk-messenger/vk
 }
 
 pkg_postinst() {
