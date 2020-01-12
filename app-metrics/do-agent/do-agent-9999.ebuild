@@ -18,6 +18,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 src_compile() {
 	LDFLAGS="-X main.version=${PV} -X main.revision=${PV}
