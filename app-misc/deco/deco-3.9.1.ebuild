@@ -8,8 +8,8 @@ MY_P="${P}-x86_64"
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Demos Commander, a free Norton Commander clone"
-HOMEPAGE="http://deco.sourceforge.net"
-SRC_URI="http://topola.unity.net/files/${MY_P}.tgz"
+HOMEPAGE="https://deco.sourceforge.net"
+SRC_URI="https://topola.unity.net/files/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -83,7 +83,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-misc/[android-file-transfer-linux](https://whoozle.github.io/android-file-transfer-linux/) | Reliable MTP client with minimalistic UI
 * app-misc/[cheat](https://github.com/cheat/cheat) | Interactive cheatsheets on the command-line
 * app-misc/[cointop](https://github.com/miguelmota/cointop) | Interactive cryptocurrency monitor
-* app-misc/[deco](http://deco.sourceforge.net) | Demos Commander, a free Norton Commander clone
+* app-misc/[deco](https://deco.sourceforge.net) | Demos Commander, a free Norton Commander clone
 * app-misc/[jshon](http://kmkeen.com/jshon) | JSON parser designed for maximum convenience within the shell
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pet.svg)](https://repology.org/metapackage/pet) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
 * app-misc/[rmlint](http://rmlint.rtfd.org) | Removes duplicates and other lint from your filesystem
