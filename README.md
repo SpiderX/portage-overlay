@@ -74,7 +74,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-crypt/[qesteidutil](https://github.com/open-eid/qesteidutil) | Estonian ID card management desktop utility
 * app-editors/[qedit](http://hugo.pereira.free.fr/software/index.php) | Qt-based multi-purpose text editor
 * app-editors/[FeatherPad](https://github.com/tsujan/FeatherPad) | Lightweight Qt5 plain-text editor
-* app-editors/[visual-studio-code-bin](http://code.visualstudio.com) | Editor for building and debugging modern web and cloud applications
+* app-editors/[visual-studio-code-bin](https://code.visualstudio.com) | Editor for building and debugging modern web and cloud applications
 * app-emulation/[looking-glass](https://looking-glass.hostfission.com) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 * app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
 * app-forensics/[gitleaks](https://github.com/zricethezav/gitleaks) | Auditing git repository for secrets and keys
