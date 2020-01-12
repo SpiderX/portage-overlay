@@ -86,7 +86,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-misc/[deco](https://deco.sourceforge.net) | Demos Commander, a free Norton Commander clone
 * app-misc/[jshon](http://kmkeen.com/jshon) | JSON parser designed for maximum convenience within the shell
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pet.svg)](https://repology.org/metapackage/pet) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
-* app-misc/[rmlint](http://rmlint.rtfd.org) | Removes duplicates and other lint from your filesystem
+* app-misc/[rmlint](https://rmlint.rtfd.org) | Removes duplicates and other lint from your filesystem
 * app-misc/[xsv](https://github.com/BurntSushi/xsv) | A fast CSV command line toolkit
 * app-office/[drawio-desktop-bin](https://github.com/jgraph/drawio-desktop) | Diagram drawing application built on web technology
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/peco.svg)](https://repology.org/metapackage/peco) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool

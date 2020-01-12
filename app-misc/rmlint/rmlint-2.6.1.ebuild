@@ -9,13 +9,14 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils distutils-r1 gnome2-utils l10n python-r1 scons-utils
 
 DESCRIPTION="Removes duplicates and other lint from your filesystem"
-HOMEPAGE="http://rmlint.rtfd.org https://github.com/sahib/rmlint"
+HOMEPAGE="https://rmlint.rtfd.org https://github.com/sahib/rmlint"
 SRC_URI="https://github.com/sahib/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse doc nls test X"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-libs/glib:2
