@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5..6} )
+PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
-inherit git-r3 linux-mod python-r1 readme.gentoo-r1 virtualx
+inherit desktop git-r3 linux-mod python-r1 readme.gentoo-r1 virtualx
 
 DESCRIPTION="Linux drivers for the Razer devices"
 HOMEPAGE="https://openrazer.github.io"
@@ -41,12 +41,12 @@ DOC_CONTENTS="To run as non-root, add yourself to the plugdev group:\\n
 pkg_setup() {
 	BUILD_TARGETS="clean modules"
 	BUILD_PARAMS="O=${KV_OUT_DIR} KERNELDIR=${KERNEL_DIR} -C ${KERNEL_DIR} SUBDIRS=${S}/driver"
-	MODULE_NAMES="razerkbd(hid:${S}/driver) \
-			razermouse(hid:${S}/driver) \
-			razermousemat(hid:${S}/driver) \
+	MODULE_NAMES="razeraccessory(hid:${S}/driver) \
+			razercore(hid:${S}/driver) \
+			razerkbd(hid:${S}/driver) \
 			razerkraken(hid:${S}/driver) \
-			razermug(hid:${S}/driver) \
-			razercore(hid:${S}/driver)"
+			razermouse(hid:${S}/driver) \
+			razermousemat(hid:${S}/driver)"
 	linux-mod_pkg_setup
 }
 
@@ -59,6 +59,9 @@ src_prepare() {
 		Makefile || die "sed failed for Makefile"
 	# Do not to install compressed files
 	sed -i '/gzip/d' daemon/Makefile || die "sed failed for daemon/Makefile"
+	# Change path to icon
+	sed -i '/Icon=/d;/Exec=/aIcon=openrazer-daemon' \
+		install_files/desktop/openrazer-daemon.desktop || die "sed faield for desktop"
 	# Disable failing tests
 	sed -i  -e '/test_device_keyboard_effect_framebuffer/i\    @unittest.skip("disable")' \
 		-e '/test_device_keyboard_game_mode/i\    @unittest.skip("disable")' \
@@ -88,6 +91,9 @@ src_install() {
 	linux-mod_src_install
 	readme.gentoo_create_doc
 
+	newicon logo/openrazer-chroma.svg openrazer-daemon.svg
+	domenu install_files/desktop/openrazer-daemon.desktop
+
 	python_install() {
 		# Pass dummy target for false, since empty string disallowed
 		emake DESTDIR="${D}" "$(usex daemon daemon_install manual_install_msg)" \
@@ -95,7 +101,7 @@ src_install() {
 		python_optimize
 	}
 
-	emake DESTDIR="${D}" ubuntu_udev_install
+	emake DESTDIR="${D}" ubuntu_udev_install appstream_install
 	use daemon && python_foreach_impl python_install
 }
 
