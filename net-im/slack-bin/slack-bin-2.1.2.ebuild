@@ -16,7 +16,7 @@ SRC_URI="x86? ( ${BASE_URI/_arch_/i386} )
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ayatana pax_kernel"
+IUSE="ayatana"
 RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
@@ -76,7 +76,7 @@ src_install() {
 	fperms +x /opt/slack/slack
 	dosym ../../opt/slack/slack usr/bin/slack
 
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/slack/slack
+	pax-mark -m "${ED%/}"/opt/slack/slack
 }
 
 pkg_postinst() {
