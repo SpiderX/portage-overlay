@@ -8,7 +8,7 @@ PLOCALES="en et ru"
 inherit cmake-utils l10n qmake-utils readme.gentoo-r1
 
 DESCRIPTION="Estonian ID card management desktop utility"
-HOMEPAGE="https://github.com/open-eid/qesteidutil http://id.ee/"
+HOMEPAGE="https://github.com/open-eid/qesteidutil https://id.ee/"
 SRC_URI="https://github.com/open-eid/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

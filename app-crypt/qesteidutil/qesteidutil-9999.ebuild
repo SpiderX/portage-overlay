@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/open-eid/${PN}.git"
 inherit cmake-utils git-r3 l10n qmake-utils readme.gentoo-r1
 
 DESCRIPTION="Estonian ID card management desktop utility"
-HOMEPAGE="https://github.com/open-eid/qesteidutil http://id.ee/"
+HOMEPAGE="https://github.com/open-eid/qesteidutil https://id.ee/"
 SRC_URI=""
 
 LICENSE="LGPL-2.1"
