@@ -8,7 +8,7 @@ EGIT_REPO_URI="git://git.l3u.de/${PN}.git"
 inherit git-r3
 
 DESCRIPTION="Tool to manage (PAM) userdb files with crypted passwords"
-HOMEPAGE="http://nasauber.de/opensource/userdbadm"
+HOMEPAGE="https://nasauber.de/opensource/userdbadm"
 SRC_URI=""
 
 LICENSE="GPL-2"
