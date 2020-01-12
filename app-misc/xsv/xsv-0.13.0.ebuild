@@ -61,7 +61,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 LICENSE="MIT Unlicense"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="test"
+IUSE=""
 RESTRICT="mirror"
 
 src_test() {

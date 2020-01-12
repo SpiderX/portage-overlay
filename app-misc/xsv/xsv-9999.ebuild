@@ -16,7 +16,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 LICENSE="MIT Unlicense"
 KEYWORDS=""
 SLOT="0"
-IUSE="test"
+IUSE=""
 RESTRICT="mirror"
 
 src_unpack() {
