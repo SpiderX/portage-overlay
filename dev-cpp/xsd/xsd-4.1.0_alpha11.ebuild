@@ -131,14 +131,14 @@ src_test() {
 }
 
 src_install() {
-	emake install_prefix="${ED%/}/usr" install
+	emake install_prefix="${ED}/usr" install
 
 	# Renaming binary/manpage to avoid collision with mono-2.0's xsd/xsd2
-	mv "${ED%/}"/usr/bin/xsd{,cxx} || die "mv for xsd failed"
-	mv "${ED%/}"/usr/share/man/man1/xsd{,cxx}.1 || die "mv for man failed"
+	mv "${ED}"/usr/bin/xsd{,cxx} || die "mv for xsd failed"
+	mv "${ED}"/usr/share/man/man1/xsd{,cxx}.1 || die "mv for man failed"
 
 	# remove incorrectly installed documentation
-	rm -rf "${ED%/}/usr/share/doc" || die "rm failed"
+	rm -rf "${ED}/usr/share/doc" || die "rm failed"
 	# clean out all non-html related files
 	find doc/ \( -iname '*.1' -o -iname 'makefile*' -o -iname '*doxygen' \
 		-o -iname '*doxytag' -o -iname '*html2ps' \) -delete || die "find failed"
