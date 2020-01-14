@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 303](https://img.shields.io/badge/ebuild-303-orange.svg)](https://img.shields.io/badge/ebuild-303-orange.svg)
+[![Number of ebuilds: 304](https://img.shields.io/badge/ebuild-304-orange.svg)](https://img.shields.io/badge/ebuild-304-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -286,6 +286,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * media-gfx/[screencloud](https://screencloud.net/) | Screenshot capturing and sharing tool over various services
 * media-gfx/[xgrabcolor](http://hugo.pereira.free.fr/software/index.php) | Qt-based basic color picker
 * media-libs/[libqpsd](https://github.com/roniemartinez/libqpsd) | PSD & PSB Plugin for Qt/C++
+* media-libs/[qt-heif](https://github.com/jakar/qt-heif-image-plugin) | Qt plugin for HEIF images
 * media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
 * media-radio/[krudio](https://github.com/loast/krudio) | Radio tray for linux on QT
 * media-radio/[liquidsoap](http://liquidsoap.info) | A swiss-army knife for multimedia streaming, used for netradios and webtvs
