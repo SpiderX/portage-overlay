@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,9 @@ src_prepare() {
 		-e 's/CFLAGS="-Wdeclaration-after-statement -O3 -funroll-loops"/CFLAGS+=""/' \
 		-e 's/CXXFLAGS="-O3 -funroll-loops"/CXXFLAGS+=""/' \
 		configure.ac || die "sed for CXXFLAGS and CFLAGS failed"
+
+	# tests fail with network-sandbox
+	rm src/tests/http_test.c || die "rm failed"
 
 	eautoreconf
 }
