@@ -13,6 +13,9 @@
 	A library that can read time zone info files (aka. Olson files),
 	and does time zone conversions in a pure and efficient way
 	</longdescription>
+	<use>
+		<flag name="template-haskell">Enable and use template haskell support.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">nilcons/haskell-tz</remote-id>
 	</upstream>
