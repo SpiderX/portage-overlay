@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 309](https://img.shields.io/badge/ebuild-309-orange.svg)](https://img.shields.io/badge/ebuild-309-orange.svg)
+[![Number of ebuilds: 310](https://img.shields.io/badge/ebuild-310-orange.svg)](https://img.shields.io/badge/ebuild-310-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -109,6 +109,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 * dev-go/[keyring](https://github.com/99designs/keyring) | Library with uniform interface across a range of secure credential stores
 * dev-haskell/[async](https://github.com/simonmar/async) | Run IO operations asynchronously and wait for their results
+* dev-haskell/[call-stack](https://github.com/sol/call-stack#readme) | Use GHC call-stacks in a backward compatible way
 * dev-haskell/[clock](https://github.com/corsis/clock) | High-resolution clock functions
 * dev-haskell/[daemons](https://github.com/scvalex/daemons) | Daemons in Haskell made fun and easy
 * dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
