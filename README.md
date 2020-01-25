@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 317](https://img.shields.io/badge/ebuild-317-orange.svg)](https://img.shields.io/badge/ebuild-317-orange.svg)
+[![Number of ebuilds: 318](https://img.shields.io/badge/ebuild-318-orange.svg)](https://img.shields.io/badge/ebuild-318-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -117,6 +117,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[hunit](https://github.com/hspec/HUnit) | A unit testing framework for Haskell
 * dev-haskell/[hspec-expectations](https://github.com/hspec/hspec-expectations) | Catchy combinators for HUnit
 * dev-haskell/[hspec-meta](http://hspec.github.io) | A version of Hspec which is used to test Hspec itself
+* dev-haskell/[nats](https://github.com/ekmett/nats) | Natural numbers
 * dev-haskell/[quickcheck-io](https://github.com/hspec/quickcheck-io) | Use HUnit assertions as QuickCheck properties
 * dev-haskell/[scotty](https://github.com/scotty-web/scotty) | A Haskell web framework, using WAI and Warp
 * dev-haskell/[semigroups](https://github.com/ekmett/semigroups) | Anything that associates
