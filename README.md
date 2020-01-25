@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 332](https://img.shields.io/badge/ebuild-332-orange.svg)](https://img.shields.io/badge/ebuild-332-orange.svg)
+[![Number of ebuilds: 333](https://img.shields.io/badge/ebuild-333-orange.svg)](https://img.shields.io/badge/ebuild-333-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -131,6 +131,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[semigroups](https://github.com/ekmett/semigroups) | Anything that associates
 * dev-haskell/[splitmix](https://github.com/phadej/splitmix) | Fast Splittable PRNG
 * dev-haskell/[streaming-commons](https://github.com/fpco/streaming-commons) | Common lower-level functions needed by various streaming data libraries
+* dev-haskell/[text](https://github.com/haskell/text) | An efficient packed Unicode text type
 * dev-haskell/[th-abstraction](https://github.com/glguy/th-abstraction) | Uniform interface to reified data type information
 * dev-haskell/[type-equality](https://github.com/hesselink/type-equality) | Type equality, coercion/cast and other operations
 * dev-haskell/[tz](https://github.com/nilcons/haskell-tz) | Library for time zone conversions
