@@ -109,7 +109,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 * dev-go/[keyring](https://github.com/99designs/keyring) | Library with uniform interface across a range of secure credential stores
 * dev-haskell/[async](https://github.com/simonmar/async) | Run IO operations asynchronously and wait for their results
-* dev-haskell/[call-stack](https://github.com/sol/call-stack#readme) | Use GHC call-stacks in a backward compatible way
+* dev-haskell/[call-stack](https://github.com/sol/call-stack) | Use GHC call-stacks in a backward compatible way
 * dev-haskell/[clock](https://github.com/corsis/clock) | High-resolution clock functions
 * dev-haskell/[daemons](https://github.com/scvalex/daemons) | Daemons in Haskell made fun and easy
 * dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
