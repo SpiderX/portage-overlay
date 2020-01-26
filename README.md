@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 352](https://img.shields.io/badge/ebuild-352-orange.svg)](https://img.shields.io/badge/ebuild-352-orange.svg)
+[![Number of ebuilds: 353](https://img.shields.io/badge/ebuild-353-orange.svg)](https://img.shields.io/badge/ebuild-353-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -132,6 +132,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[http2](https://github.com/kazu-yamamoto/http2) | HTTP/2.0 library including frames and HPACK
 * dev-haskell/[http-types](https://github.com/aristidb/http-types) | Generic HTTP types for Haskell (for both client and server code)
 * dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
+* dev-haskell/[integer-simple](http://hackage.haskell.org/package/integer-simple) | Simple Integer library
 * dev-haskell/[nats](https://github.com/ekmett/nats) | Natural numbers
 * dev-haskell/[network-byte-order](https://github.com/kazu-yamamoto/network-byte-order) | Network byte order utilities
 * dev-haskell/[quickcheck](https://github.com/nick8325/quickcheck) | Automatic testing of Haskell programs
