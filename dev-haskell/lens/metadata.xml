@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides families of lenses, isomorphisms,
+	folds, traversals, getters and setters.
+	</longdescription>
+	<use>
+		<flag name="benchmark-uniplate">Enable benchmarking against uniplate</flag>
+		<flag name="inlining">Generate inline pragmas using template-haskell</flag>
+		<flag name="old-inline-pragmas">Enable inlining</flag>
+		<flag name="safe">Disallow unsafeCoerce</flag>
+		<flag name="dump-splices">Build and run the doctests test-suite</flag>
+		<flag name="j">Attempt a parallel build with GHC</flag>
+		<flag name="test-doctests">Build and run the doctests test-suite</flag>
+		<flag name="test-templates">Build the test templates if we're building tests</flag>
+		<flag name="trustworthy">Assert that we are trustworthy when we can</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/lens</remote-id>
+	</upstream>
+</pkgmetadata>
