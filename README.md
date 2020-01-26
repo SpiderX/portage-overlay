@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 341](https://img.shields.io/badge/ebuild-341-orange.svg)](https://img.shields.io/badge/ebuild-341-orange.svg)
+[![Number of ebuilds: 342](https://img.shields.io/badge/ebuild-342-orange.svg)](https://img.shields.io/badge/ebuild-342-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -110,6 +110,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-go/[keyring](https://github.com/99designs/keyring) | Library with uniform interface across a range of secure credential stores
 * dev-haskell/[async](https://github.com/simonmar/async) | Run IO operations asynchronously and wait for their results
 * dev-haskell/[base-compat-batteries](https://github.com/haskell-compat/base-compat) | Base-compat with extra batteries
+* dev-haskell/[base-orphans](https://github.com/haskell-compat/base-orphans) | Backwards-compatible orphan instances for base
 * dev-haskell/[bifunctors](https://github.com/ekmett/bifunctors) | Haskell 98 bifunctors, bifoldables and bitraversables
 * dev-haskell/[call-stack](https://github.com/sol/call-stack) | Use GHC call-stacks in a backward compatible way
 * dev-haskell/[clock](https://github.com/corsis/clock) | High-resolution clock functions
