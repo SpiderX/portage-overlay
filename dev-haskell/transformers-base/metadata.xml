@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Haskell library for lifting actions from the bottom of
+	a monad transformer stack
+	</longdescription>
+	<use>
+		<flag name="orphaninstances">Build instances for orphan datatypes</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mvv/transformers-base</remote-id>
+	</upstream>
+</pkgmetadata>
