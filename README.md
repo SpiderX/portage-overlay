@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 344](https://img.shields.io/badge/ebuild-344-orange.svg)](https://img.shields.io/badge/ebuild-344-orange.svg)
+[![Number of ebuilds: 345](https://img.shields.io/badge/ebuild-345-orange.svg)](https://img.shields.io/badge/ebuild-345-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -108,6 +108,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-482946-red.svg)](https://bugs.gentoo.org/482946) dev-libs/[loki](http://loki-lib.sourceforge.net/) | C++ library of common design patterns and idioms
 * dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 * dev-go/[keyring](https://github.com/99designs/keyring) | Library with uniform interface across a range of secure credential stores
+* dev-haskell/[ansi-wl-pprint](https://github.com/ekmett/ansi-wl-pprint) | The Wadler/Leijen Pretty Printer for colored ANSI terminal output
 * dev-haskell/[async](https://github.com/simonmar/async) | Run IO operations asynchronously and wait for their results
 * dev-haskell/[base-compat](https://github.com/haskell-compat/base-compat) | A compatibility layer for base
 * dev-haskell/[base-compat-batteries](https://github.com/haskell-compat/base-compat) | Base-compat with extra batteries
