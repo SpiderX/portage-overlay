@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Provides a wide array of semigroupoids and operations
+	for working with semigroupds.
+	</longdescription>
+	<use>
+		<flag name="comonad">Build support for <pkg>dev-haskell/comonad</pkg></flag>
+		<flag name="containers">Build support for containers</flag>
+		<flag name="contravariant">Build support for <pkg>dev-haskell/contravariant</pkg></flag>
+		<flag name="distributive">Build support for <pkg>dev-haskell/distributive</pkg></flag>
+		<flag name="tagged">Build support for <pkg>dev-haskell/tagged</pkg></flag>
+		<flag name="unordered-containers">Build support for <pkg>dev-haskell/unordered-containers</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">larskuhtz/wai-cors</remote-id>
+	</upstream>
+</pkgmetadata>
