@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides instances for the classes in
+	the QuickCheck Haskell library.
+	QuickCheck itself doesn't ship with instances for types
+	outsde of the base package, however there are a lot more
+	types which are commonly used within Haskell libraries and programs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">phadej/qc-instances</remote-id>
+	</upstream>
+</pkgmetadata>
