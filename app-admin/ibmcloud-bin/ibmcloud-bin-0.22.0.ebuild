@@ -23,6 +23,13 @@ QA_PREBUILT="usr/bin/cf usr/bin/ibmcloud usr/bin/ibmcloud-analytics"
 
 S="${WORKDIR}/Bluemix_CLI"
 
+src_prepare() {
+	default
+
+	# Remove non-existed references
+	sed -i '/PROGS/s/"bluemix" "bx" //' autocomplete/bash_autocomplete
+}
+
 src_install() {
 	use bash-completion && newbashcomp autocomplete/bash_autocomplete ibmcloud
 	if use zsh-completion ; then
