@@ -12,9 +12,6 @@
 	<longdescription lang="en">
 	HTTP and GraphQL client for developers
 	</longdescription>
-	<use>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">getinsomnia/insomnia</remote-id>
 	</upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/getinsomnia/${MY_PN}/releases/download/v${PV}/insomn
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="ayatana pax_kernel"
+IUSE="ayatana"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -76,7 +76,7 @@ src_install() {
 	fperms +x /opt/Insomnia/insomnia
 	dosym ../Insomnia/insomnia opt/bin/insomnia
 
-	use pax_kernel && pax-mark -m "${ED}"/opt/Insomnia/insomnia
+	pax-mark -m "${ED}"/opt/Insomnia/insomnia
 }
 
 pkg_postinst() {
