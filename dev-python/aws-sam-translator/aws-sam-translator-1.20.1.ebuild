@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+PYTHON_COMPAT=( python{2_7,3_{6..7}} )
 
 MY_PN="serverless-application-model"
 MY_P="${MY_PN}-${PV}"
@@ -26,15 +26,15 @@ RDEPEND=">=dev-python/boto3-1.5[${PYTHON_USEDEP}]
 	cli? ( dev-python/docopt[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+	test? ( dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	# Do not install tests
-	sed -i "/packages=find_packages/s/s'/s','tests.*'/" setup.py \
+	sed -i '/packages=find_packages/s/s"/s", "tests.*"/' setup.py \
 		|| die "sed for setup.py failed"
 	# Disable pytest plugins
 	sed -i '/addopts/s/^/#/' pytest.ini \

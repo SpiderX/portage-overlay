@@ -30,7 +30,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	# Do not install tests
-	sed -i "/packages=find_packages/s/s'/s','tests.*'/" setup.py \
+	sed -i '/packages=find_packages/s/s"/s", "tests.*"/' setup.py \
 		|| die "sed for setup.py failed"
 	# Disable pytest plugins
 	sed -i '/addopts/s/^/#/' pytest.ini \
