@@ -15,10 +15,10 @@ LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test"
+#RESTRICT="test"
 
-RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
-	dev-python/botocore[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/boto3-1.9.175[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.12.175[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
@@ -26,9 +26,22 @@ RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/onetimepass[${PYTHON_USEDEP}]
 		dev-python/testfixtures[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+		dev-python/pytest[${PYTHON_USEDEP}] )"
+
+python_prepare_all() {
+	# Do not reconfigure pytest
+	sed -i '/pytest_configure/,+5d' awslimitchecker/tests/conftest.py \
+		|| die "sed failed for conftest.py"
+
+	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	AWS_DEFAULT_REGION=us-east-1 py.test -v || die "tests failed with ${EPYTHON}"
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
