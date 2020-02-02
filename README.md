@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 390](https://img.shields.io/badge/ebuild-390-orange.svg)](https://img.shields.io/badge/ebuild-390-orange.svg)
+[![Number of ebuilds: 391](https://img.shields.io/badge/ebuild-391-orange.svg)](https://img.shields.io/badge/ebuild-391-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -402,6 +402,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[opendrop](https://github.com/seemoo-lab/opendrop) | an Open Source AirDrop Implementation
 * net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
 * net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics
+* net-misc/[s5cmd](https://github.com/peak/s5cmd) | Parallel S3 and local filesystem execution tool
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/samplicator.svg)](https://repology.org/metapackage/samplicator) net-misc/[samplicator](https://github.com/sleinen/samplicator) | UDP packets forwarder and duplicator
 * net-misc/[slowhttptest](https://github.com/shekyan/slowhttptest) | Application Layer DoS attack simulator
 * net-misc/[spoofer](https://spoofer.caida.org) | A tool to assess of deployment of source address validation
