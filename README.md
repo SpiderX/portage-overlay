@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 391](https://img.shields.io/badge/ebuild-391-orange.svg)](https://img.shields.io/badge/ebuild-391-orange.svg)
+[![Number of ebuilds: 392](https://img.shields.io/badge/ebuild-392-orange.svg)](https://img.shields.io/badge/ebuild-392-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -45,6 +45,7 @@ Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all o
 
 This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 
+* app-admin/[ansible-lint](https://github.com/ansible/ansible-lint) | Best practices checker for Ansible
 * app-admin/[awslimitchecker](https://github.com/jantman/awslimitchecker) | Utility to check AWS resource limits and usage
 * app-admin/[awslog](https://github.com/jaksi/awslog) | History and changes of configuration versions of AWS resources
 * app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
