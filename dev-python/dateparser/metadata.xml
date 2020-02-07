@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">scrapinghub/dateparser</remote-id>
+		<remote-id type="pypi">dateparser</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-EGIT_REPO_URI="https://github.com/scrapinghub/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Date parsing library designed to parse dates from HTML pages"
 HOMEPAGE="https://github.com/scrapinghub/dateparser"
-SRC_URI=""
+SRC_URI="https://github.com/scrapinghub/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
