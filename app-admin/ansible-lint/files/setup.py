@@ -32,4 +32,5 @@ setup_params = {
 }
 
 
-__name__ == '__main__' and setuptools.setup(**setup_params)
+if __name__ == '__main__' and setuptools.setup(**setup_params):
+    dist = setuptools.setup(**setup_params)
