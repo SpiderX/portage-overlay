@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">kennethreitz/crayons</remote-id>
+		<remote-id type="pypi">crayons</remote-id>
 	</upstream>
 </pkgmetadata>
