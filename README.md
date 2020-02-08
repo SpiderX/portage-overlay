@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 398](https://img.shields.io/badge/ebuild-398-orange.svg)](https://img.shields.io/badge/ebuild-398-orange.svg)
+[![Number of ebuilds: 400](https://img.shields.io/badge/ebuild-400-orange.svg)](https://img.shields.io/badge/ebuild-400-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -342,6 +342,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[tomlkit](https://github.com/sdispater/decli) | Style-preserving TOML library for Python
 * dev-python/[tree-format](https://github.com/jml/tree-format) | Python library for printing trees on the console
 * dev-python/[ua-parser](https://datadiff.sourceforge.net/) | A library for diffs of python data structures
+* dev-python/[ujson](https://github.com/esnme/ultrajson) | Ultra fast JSON encoder and decoder for Python
 * dev-python/[whaaaaat](https://github.com/finklabs/whaaaaat) | A collection of common interactive command line user interfaces
 * dev-python/[ukpostcodeparser](https://github.com/hamstah/ukpostcodeparser) | UK postcode parser library
 * dev-python/[validate_email](https://github.com/syrusakbary/validate_email) | Python email validation library
