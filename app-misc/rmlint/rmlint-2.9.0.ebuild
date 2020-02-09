@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="de es fr"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit eutils distutils-r1 gnome2-utils l10n python-r1 scons-utils
 
@@ -23,21 +23,17 @@ RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib
 	sys-apps/util-linux
 	virtual/libelf
-	X? (
-		x11-libs/gtksourceview:3.0
+	X? ( x11-libs/gtksourceview:3.0
 		dev-python/colorlog[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
-	)"
+		dev-python/pygobject:3[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	sys-kernel/linux-headers
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}] )
 	nls? ( sys-devel/gettext )
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/nose-parameterized[${PYTHON_USEDEP}]
-	)"
+	test? ( dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/nose-parameterized[${PYTHON_USEDEP}] )"
 
 DOCS=( CHANGELOG.md README.rst gui/TODO )
 #TODO: install shredder, calling directly distutils?
