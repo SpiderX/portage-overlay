@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..7}} )
+PYTHON_COMPAT=( python3_{6..7} )
 EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 
 inherit distutils-r1 git-r3
@@ -17,12 +17,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}/${P}"-py3-test.patch )
+
 python_test() {
-	# Two tests fail under python 3
-	python_is_python3 && eapply "${FILESDIR}/${P}"-py3-test.patch
 	nosetests -v || die "tests failed with ${EPYTHON}"
 }
