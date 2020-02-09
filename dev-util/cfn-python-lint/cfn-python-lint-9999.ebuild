@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -21,8 +22,7 @@ RDEPEND=">=dev-python/aws-sam-translator-1.13.0[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-3.0.1[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' '-2')"
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/importlib_resources[${PYTHON_USEDEP}]

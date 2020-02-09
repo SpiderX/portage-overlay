@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
@@ -16,12 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND=">=dev-python/aws-sam-translator-1.13.0[${PYTHON_USEDEP}]
+RDEPEND="dev-python/aws-sam-translator[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-3.0.1[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' '-2')"
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/importlib_resources[${PYTHON_USEDEP}]
@@ -29,8 +29,8 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	# Remove failing test
-	rm test/integration/test_good_templates.py \
-		|| die "remove failed for test_good_templates.py"
+#	rm test/integration/test_good_templates.py \
+#		|| die "remove failed for test_good_templates.py"
 
 	distutils-r1_python_prepare_all
 }
