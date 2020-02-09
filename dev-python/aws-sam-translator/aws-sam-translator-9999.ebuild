@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6..7}} )
+PYTHON_COMPAT=( python3_{6..7} )
 EGIT_REPO_URI="https://github.com/awslabs/serverless-application-model.git"
 
 inherit distutils-r1 git-r3
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="cli test"
 
-RDEPEND=">=dev-python/boto3-1.5[${PYTHON_USEDEP}]
+RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]

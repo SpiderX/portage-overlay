@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6..7}} )
+PYTHON_COMPAT=( python3_{6..7} )
 
 MY_PN="serverless-application-model"
 MY_P="${MY_PN}-${PV}"
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cli test"
 
-RDEPEND=">=dev-python/boto3-1.5[${PYTHON_USEDEP}]
+RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
