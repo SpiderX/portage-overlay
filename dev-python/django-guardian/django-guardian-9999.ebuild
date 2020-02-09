@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python3_{6..7} )
 EGIT_REPO_URI="https://github.com/django-guardian/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,15 +16,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/six[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}
-	dev-python/django[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	test? ( $(python_gen_impl_dep sqlite)
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-environ[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest-django[${PYTHON_USEDEP}] )"
 
 python_test() {
 	"${PYTHON}" manage.py test guardian -v2 || die "tests failed with ${EPYTHON}"
