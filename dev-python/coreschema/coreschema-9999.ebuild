@@ -16,10 +16,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
 	py.test -v || die "tests failed with ${EPYTHON}"
