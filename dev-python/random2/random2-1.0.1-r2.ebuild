@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/strichter/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python-2.7 random module ported to python-3"
 HOMEPAGE="https://github.com/strichter/random2"
-SRC_URI=""
+SRC_URI="https://github.com/strichter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 python_prepare_all() {
