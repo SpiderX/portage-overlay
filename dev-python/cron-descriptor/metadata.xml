@@ -14,7 +14,7 @@
 	human readable strings.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Salamek/cron-descriptor/releases</remote-id>
+		<remote-id type="github">Salamek/cron-descriptor</remote-id>
 		<remote-id type="pypi">cron_descriptor</remote-id>
 	</upstream>
 </pkgmetadata>
