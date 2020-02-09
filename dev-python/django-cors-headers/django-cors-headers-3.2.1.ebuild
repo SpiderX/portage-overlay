@@ -15,10 +15,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_impl_dep sqlite)
+BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/pytest-django[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
