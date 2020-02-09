@@ -312,7 +312,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[pymysql](https://github.com/PyMySQL/PyMySQL) | Pure-Python MySQL Driver
 * dev-python/[pytest-pythonpath](https://pypi.org/project/pytest-pythonpath) | plugin for adding to the PYTHONPATH from command line or configs
 * dev-python/[pytimeparse](https://github.com/wroberts/pytimeparse) | A library to parse time from human readable string
-* dev-python/[python-crontab](https://github.com/doctormo/python-coreschema) | Crontab module for reading and writing crontab files
+* dev-python/[python-crontab](https://gitlab.com/doctormo/python-crontab/) | Crontab module for reading and writing crontab files
 * dev-python/[python-gilt](https://github.com/metacloud/gilt) | A GIT layering tool
 * dev-python/[python-openapi-codec](https://github.com/core-api/python-openapi-codec) | An OpenAPI codec for Core API
 * dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
