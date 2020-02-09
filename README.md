@@ -274,7 +274,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-mptt](https://github.com/django-mptt/django-mptt) | Utilities for implementing Modified Preorder Tree Traversal
 * dev-python/[django-oauth-toolkit](https://github.com/jazzband/django-oauth-toolkit) | OAuth2 Provider for Django
 * dev-python/[django-pipeline](https://github.com/jazzband/django-pipeline) | An asset packaging library for Django
-* dev-python/[django-rest-framework](https://django-rest-framework.org/) | Django REST framework
+* dev-python/[django-rest-framework](https://django-rest-framework.org) | Django REST framework
 * dev-python/[django-rest-framework-camel-case](https://github.com/vbabiy/djangorestframework-camel-case) | Camel case JSON support for Django REST framework
 * dev-python/[django-rest-framework-recursive](https://github.com/heywbj/django-rest-framework-recursive) | Recursive Serialization for Django REST framework
 * dev-python/[django-rest-swagger](https://marcgibbons.com/django-rest-swagger/) | Swagger UI for Django REST Framework
