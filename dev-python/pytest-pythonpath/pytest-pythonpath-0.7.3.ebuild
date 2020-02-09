@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( pypy3 python3_{6..7} )
 
 inherit distutils-r1
@@ -18,4 +19,3 @@ IUSE=""
 RESTRICT="test"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
