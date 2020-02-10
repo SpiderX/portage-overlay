@@ -13,9 +13,6 @@
 	Lightweight source code editor and powerful development environment
 	for building and debugging modern web and cloud applications.
 	</longdescription>
-	<use>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">Microsoft/vscode</remote-id>
 	</upstream>

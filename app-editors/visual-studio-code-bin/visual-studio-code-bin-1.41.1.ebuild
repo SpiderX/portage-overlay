@@ -8,7 +8,7 @@ MY_PN="${PN/-bin/}"
 inherit desktop multilib-build pax-utils xdg-utils
 
 DESCRIPTION="Editor for building and debugging modern web and cloud applications"
-HOMEPAGE="https://code.visualstudio.com"
+HOMEPAGE="http://code.visualstudio.com"
 SRC_URI="https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz"
 
 LICENSE="MIT Microsoft-VSCode"
