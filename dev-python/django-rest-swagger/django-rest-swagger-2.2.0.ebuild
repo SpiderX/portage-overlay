@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..6}} )
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit distutils-r1
 
 DESCRIPTION="Swagger UI for Django REST Framework"
-HOMEPAGE="https://marcgibbons.com/django-rest-swagger/"
+HOMEPAGE="https://marcgibbons.com/django-rest-swagger"
 SRC_URI="https://github.com/marcgibbons/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
@@ -21,9 +21,7 @@ RDEPEND="dev-python/coreapi[${PYTHON_USEDEP}]
 	dev-python/python-openapi-codec[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_impl_dep sqlite)
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
 
 python_test() {
 	# no verbose in tests

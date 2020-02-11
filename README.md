@@ -277,7 +277,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-rest-framework](https://django-rest-framework.org) | Django REST framework
 * dev-python/[django-rest-framework-camel-case](https://github.com/vbabiy/djangorestframework-camel-case) | Camel case JSON support for Django REST framework
 * dev-python/[django-rest-framework-recursive](https://github.com/heywbj/django-rest-framework-recursive) | Recursive Serialization for Django REST framework
-* dev-python/[django-rest-swagger](https://marcgibbons.com/django-rest-swagger/) | Swagger UI for Django REST Framework
+* dev-python/[django-rest-swagger](https://marcgibbons.com/django-rest-swagger) | Swagger UI for Django REST Framework
 * dev-python/[django-rq](https://github.com/rq/django-rq) | An app that provides django integration for RQ (Redis Queue)
 * dev-python/[django-tables2](https://github.com/jieter/django-tables2) | Django application for creating HTML tables
 * dev-python/[django-taggit](https://github.com/alex/django-taggit) | Django application for simple tagging
