@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5..6} )
+PYTHON_COMPAT=( python3_{6..7} )
 EGIT_REPO_URI="https://github.com/carltongibson/${PN}.git"
 
 inherit distutils-r1 eutils git-r3
@@ -16,22 +16,15 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_impl_dep sqlite)
+BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/coreapi[${PYTHON_USEDEP}]
 		dev-python/django-crispy-forms[${PYTHON_USEDEP}]
 		dev-python/django-rest-framework[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
-
-python_prepare_all() {
-	# Disable test — https://github.com/carltongibson/django-filter/issues/1050
-	sed -i '/class IsoDateTimeFromToRangeFilterTests/i@unittest.skip("disable")' \
-		tests/test_filtering.py || die "sed failed for tests/test_filtering.py"
-
-	distutils-r1_python_prepare_all
-}
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}] )"
 
 python_test() {
 	./runtests.py --verbosity 2 || die "tests failed with ${EPYTHON}"
