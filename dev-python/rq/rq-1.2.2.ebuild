@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
@@ -19,11 +20,10 @@ IUSE="test"
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/redis-py-3.0.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-db/redis
+BDEPEND="test? ( dev-db/redis
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/sentry-sdk[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/sentry-sdk[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Do not install tests
