@@ -302,7 +302,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[m9dicts](https://github.com/ssato/python-m9dicts) | A dict-like object supports recursive merge operation
 * dev-python/[markdown2](https://github.com/trentm/python-markdown2) | A fast and complete Python implementation of Markdown
 * dev-python/[mock-django](https://github.com/dcramer/mock-django) | A simple library for mocking certain Django behavior
-* dev-python/[msrest](https://pypi.python.org/pypi/msrest/) | AutoRest swagger generator Python client runtime
+* dev-python/[msrest](https://github.com/Azure/msrest-for-python) | AutoRest swagger generator Python client runtime
 * dev-python/[netaddr](https://github.com/drkjam/netaddr) | Network address representation and manipulation library
 * dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
 * dev-python/[onetimepass](https://github.com/tadeck/onetimepass) | One-time password library for HOTP and TOTP passwords
