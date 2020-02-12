@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5..7} )
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit python-r1
 
@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/colorama[${PYTHON_USEDEP}]
@@ -32,10 +33,15 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 src_prepare() {
 	default
 
-	rm tests/test_bump_command.py || die "remove failing test"
+	# Remove failing test requires repository
+	rm tests/commands/test_bump_command.py || die "remove test_bump_command.py failed"
+	rm tests/test_cz_customize.py || die "remove test_cz_customize.py failed"
 }
 
 src_test() {
+	git init || die "git init failed"
+	git config user.email "you@example.com" || die "git mail config failed"
+	git config user.name "Your Name" || die "git user config failed"
 	py.test -v || die "tests failed with ${EPYTHON}"
 }
 
