@@ -20,13 +20,6 @@ RDEPEND=">=dev-python/prompt_toolkit-2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-python_prepare_all() {
-	# Do not install tests
-	sed -i '/packages=find_packages/s/s"/s", "tests.*"/' setup.py \
-		|| die "sed for setup.py failed"
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	py.test -v || die "tests failed with ${EPYTHON}"
 }
