@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit distutils-r1
 
@@ -25,9 +26,8 @@ RDEPEND="dev-python/argh[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Relax requirement
