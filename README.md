@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 413](https://img.shields.io/badge/ebuild-413-orange.svg)](https://img.shields.io/badge/ebuild-413-orange.svg)
+[![Number of ebuilds: 414](https://img.shields.io/badge/ebuild-414-orange.svg)](https://img.shields.io/badge/ebuild-414-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -299,6 +299,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[ifaddr](https://github.com/floyernick/fleep-py) | Python Library to enumerate all network interfaces
 * dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
 * dev-python/[jsmin](https://github.com/tikitu/jsmin) | JavaScript minifier
+* dev-python/[k5test](https://github.com/pythongssapi/k5test) | A library for setting up self-contained Kerberos 5 environments
 * dev-python/[livereload](https://github.com/lepture/python-livereload) | Python LiveReload is an awesome tool for web developers
 * dev-python/[m9dicts](https://github.com/ssato/python-m9dicts) | A dict-like object supports recursive merge operation
 * dev-python/[markdown2](https://github.com/trentm/python-markdown2) | A fast and complete Python implementation of Markdown
