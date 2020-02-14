@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/kmike/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -17,19 +17,18 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="test? ( dev-python/urllib3[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}] )"
+RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
-src_prepare() {
-	default
-
+python_prepare_all() {
 	sed -i '/import urllib2/s/urllib2/urllib/' port_for/_download_ranges.py \
 		|| die "sed failed for _download_ranges.py"
+
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	"${PYTHON}" setup.py test || die "tests failed with ${EPYTHON}"
+	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
