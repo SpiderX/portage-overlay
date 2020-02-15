@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/philpep/${PN}.git"
 
 inherit distutils-r1 eutils git-r3
@@ -21,8 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? ( app-admin/ansible[${PYTHON_USEDEP}]
 		app-admin/salt[${PYTHON_USEDEP}]
 		dev-python/paramiko[${PYTHON_USEDEP}]

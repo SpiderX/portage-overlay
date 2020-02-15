@@ -20,8 +20,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? ( app-admin/ansible[${PYTHON_USEDEP}]
 		app-admin/salt[${PYTHON_USEDEP}]
 		dev-python/paramiko[${PYTHON_USEDEP}]
