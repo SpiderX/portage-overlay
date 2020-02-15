@@ -3,25 +3,28 @@
 
 EAPI=7
 
-EGO_PN="github.com/koenbollen/${PN}"
-EGIT_REPO_URI="https://${EGO_PN}.git"
+EGO_VENDOR=( "github.com/docopt/docopt-go 784ddc588536"
+	"github.com/fatih/color v1.6.0"
+	"github.com/mattn/go-colorable v0.1.2"
+	"github.com/mattn/go-isatty v0.0.8"
+	"github.com/tidwall/gjson v1.0.1"
+	"github.com/tidwall/match v1.0.0"
+	"golang.org/x/sys 0c1ff786ef13 github.com/golang/sys"
+)
 
-inherit git-r3 go-module
+EGO_PN="github.com/koenbollen/${PN}"
+
+inherit go-module
 
 DESCRIPTION="A tool for working with structured JSON logging"
 HOMEPAGE="https://github.com/koenbollen/jl"
-SRC_URI=""
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	$(go-module_vendor_uris)"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-src_unpack() {
-	git-r3_src_unpack
-	mkdir "${S}"/vendor || die "mkdir failed"
-	go-module_live_vendor
-}
 
 src_compile() {
 	export -n GOCACHE XDG_CACHE_HOME
