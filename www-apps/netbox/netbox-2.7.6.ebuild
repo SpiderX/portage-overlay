@@ -9,8 +9,8 @@ WEBAPP_MANUAL_SLOT="yes"
 inherit python-r1 webapp user
 
 DESCRIPTION="IP address and data center infrastructure management tool"
-HOMEPAGE="https://github.com/digitalocean/netbox"
-SRC_URI="https://github.com/digitalocean/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/netbox-community/netbox"
+SRC_URI="https://github.com/netbox-community/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
