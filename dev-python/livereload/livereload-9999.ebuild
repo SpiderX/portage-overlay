@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..7} )
 EGIT_REPO_URI="https://github.com/lepture/python-livereload.git"
 
 inherit distutils-r1 git-r3
