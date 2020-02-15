@@ -19,8 +19,7 @@ IUSE="test"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_impl_dep sqlite) )"
+BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
 
 python_test() {
 	PYTHONPATH=. django-admin.py test --settings=tests.settings \
