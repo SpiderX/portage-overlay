@@ -1,44 +1,35 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-EGO_VENDOR=( "github.com/SpiderX/portage-empty 3f4db1eb10e4dc42584b6b3df23f037904e6ea07"
-	"github.com/inconshreveable/mousetrap 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
-	"github.com/jehiah/go-strftime 1d33003b386959af197ba96475f198c114627b5e"
-	"github.com/jmoiron/sqlx d161d7a76b5661016ad0b085869f77fd410f3e6a"
-	"github.com/jroimartin/gocui c055c87ae801372cd74a0839b972db4f7697ae5f"
-	"github.com/lib/pq 4ded0e9383f75c197b3a2aaa6d590ac52df6fd79"
-	"github.com/mattn/go-runewidth ce7b0b5c7b45a81508558cd1dba6bb1e4ddb51bb"
-	"github.com/nsf/termbox-go b66b20ab708e289ff1eb3e218478302e6aec28ce"
-	"github.com/pkg/errors 645ef00459ed84a119197bfb8d8205042c6df63d"
-	"github.com/spf13/cobra ef82de70bb3f60c65fb8eebacbb2d122ef517385"
-	"github.com/spf13/pflag 9a97c102cda95a86cec2345a6f09f55a939babf5" )
+EAPI=7
 
 EGO_PN="github.com/lesovsky/${PN}"
-EGIT_REPO_URI="https://github.com/lesovsky/${PN}.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
+EGIT_REPO_URI="https://${EGO_PN}.git"
 
-inherit git-r3 golang-build golang-vcs-snapshot
+inherit git-r3 go-module
 
 DESCRIPTION="Command-line admin tool for observing and troubleshooting Postgres"
 HOMEPAGE="https://github.com/lesovsky/pgcenter"
-SRC_URI="${EGO_VENDOR_URI}"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-go/go-crypto:=
-	dev-go/go-sys:="
-RDEPEND="${DEPEND}"
-
-DOCS=( src/"${EGO_PN}"/README.md )
-
 src_unpack() {
 	git-r3_src_unpack
-	golang-vcs-snapshot_src_unpack
+	mkdir "${S}"/vendor || die "mkdir failed"
+	go-module_live_vendor
+}
+
+src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME
+	go build || die "build failed"
+}
+
+src_test() {
+	go test -work ./... || die "test failed"
 }
 
 src_install() {
