@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/pipermerriam/${PN}.git"
 
 inherit distutils-r1 eutils git-r3
@@ -16,6 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/jsonpointer[${PYTHON_USEDEP}]
@@ -23,12 +25,10 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/rfc3987[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/strict-rfc3339[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/validate_email[${PYTHON_USEDEP}]' '-2')"
+	dev-python/strict-rfc3339[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	$(python_gen_cond_dep 'dev-python/validate_email[${PYTHON_USEDEP}]' '-3')"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/django[${PYTHON_USEDEP}]
+	dev-python/validate_email[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}]
 		dev-python/factory_boy[${PYTHON_USEDEP}]
 		dev-python/falcon[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
