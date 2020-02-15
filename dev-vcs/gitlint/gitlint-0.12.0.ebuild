@@ -5,17 +5,16 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_6 )
-EGIT_REPO_URI="https://github.com/jorisroovers/${PN}.git"
 
 inherit distutils-r1
 
 DESCRIPTION="Git commit message linter"
 HOMEPAGE="https://github.com/jorisroovers/gitlint"
-SRC_URI=""
+SRC_URI="https://github.com/jorisroovers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test" #failures
 
