@@ -4,22 +4,17 @@
 EAPI=7
 
 EGO_PN="github.com/miguelmota/${PN}"
-EGIT_REPO_URI="https://${EGO_PN}.git"
 
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="Interactive cryptocurrency monitor"
 HOMEPAGE="https://github.com/miguelmota/cointop"
-SRC_URI=""
+SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-src_unpack() {
-	git-r3_src_unpack
-}
 
 src_compile() {
 	export -n GOCACHE XDG_CACHE_HOME
