@@ -4,17 +4,19 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-EHG_REPO_URI="https://bitbucket.org/Mekk/mercurial-extension_utils"
 
-inherit distutils-r1 mercurial
+inherit distutils-r1
+
+MY_PN="${PN/-/_}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Mercurial Extension Utils"
 HOMEPAGE="https://bitbucket.org/Mekk/mercurial-extension_utils"
-SRC_URI=""
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
