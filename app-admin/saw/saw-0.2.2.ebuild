@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,8 @@ EGO_VENDOR=( "github.com/TylerBrock/colorjson 95ec53f28296f47af86a81eb73f0d7fe2b
 	"github.com/mattn/go-colorable 167de6bfdfba052fa6b2d3664c8f5272e23c9072"
 	"github.com/mattn/go-isatty 0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
 	"github.com/spf13/cobra ef82de70bb3f60c65fb8eebacbb2d122ef517385"
-	"github.com/spf13/pflag 583c0c0531f06d5278b7d917446061adc344b5cd" )
+	"github.com/spf13/pflag 583c0c0531f06d5278b7d917446061adc344b5cd"
+	"golang.org/x/sys c11f84a56e43e20a78cee75a7c034031ecf57d1f github.com/golang/sys" )
 
 EGO_PN="github.com/TylerBrock/${PN}"
 
@@ -27,9 +28,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-DEPEND="dev-go/go-sys:="
-RDEPEND="${DEPEND}"
 
 DOCS=( src/"${EGO_PN}"/{CHANGELOG,README}.md )
 
