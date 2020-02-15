@@ -15,10 +15,10 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_impl_dep sqlite)
+BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-filter[${PYTHON_USEDEP}]
 		dev-python/fudge[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
