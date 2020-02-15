@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..6}} )
+PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/axnsan12/${PN}.git"
 
 inherit distutils-r1 eutils git-r3
@@ -16,6 +16,7 @@ LICENSE="BSD-4"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/coreapi-2.3.3[${PYTHON_USEDEP}]
 	>=dev-python/coreschema-0.0.4[${PYTHON_USEDEP}]
@@ -30,6 +31,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/datadiff[${PYTHON_USEDEP}]
 		dev-python/django-cors-headers[${PYTHON_USEDEP}]
+		>=dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/django-oauth-toolkit-1.2.0[${PYTHON_USEDEP}]
 		dev-python/django-rest-framework-camel-case[${PYTHON_USEDEP}]
 		dev-python/django-rest-framework-recursive[${PYTHON_USEDEP}]
 		dev-python/dj-database-url[${PYTHON_USEDEP}]
@@ -41,11 +44,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pytest-pythonpath[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/python-user-agents[${PYTHON_USEDEP}]
-		dev-python/swagger_spec_validator[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '<dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]' '-2')
-		$(python_gen_cond_dep '>=dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]' '-3')
-		$(python_gen_cond_dep '<dev-python/django-oauth-toolkit-1.2.0[${PYTHON_USEDEP}]' '-2')
-		$(python_gen_cond_dep '>=dev-python/django-oauth-toolkit-1.2.0[${PYTHON_USEDEP}]' '-3') )"
+		dev-python/swagger_spec_validator[${PYTHON_USEDEP}] )"
 
 python_test() {
 	pytest -v || die "tests failed with ${EPYTHON}"
