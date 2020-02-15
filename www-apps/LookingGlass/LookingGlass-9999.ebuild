@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..8} )
 WEBAPP_MANUAL_SLOT="yes"
 EGIT_REPO_URI="https://github.com/ramnode/${PN}.git"
 
