@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGO_PN="github.com/digitalocean/${PN}"
 
-inherit golang-vcs-snapshot systemd
+inherit go-module systemd
 
 DESCRIPTION="DigitalOcean Agent for Enhanced Droplet Graphs"
 HOMEPAGE="https://github.com/digitalocean/do-agent"
@@ -15,25 +15,21 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
 
 src_compile() {
 	LDFLAGS="-X main.version=${PV} -X main.revision=${PV}
 		-X main.buildDate=${PV} -w -extldflags -static"
 
-	pushd src/"${EGO_PN}" || die "pushd failed"
-	GOPATH="${S}:$(get_golibdir_gopath)" go build -v -ldflags "${LDFLAGS}" \
-		-o do-agent ./cmd/do-agent || die "go build failed"
-	popd || die "popd failed"
+	export -n GOCACHE XDG_CACHE_HOME
+	go build -ldflags "${LDFLAGS}" ./cmd/do-agent/... || die "build failed"
 }
 
 src_test() {
-	GOPATH="${S}:$(get_golibdir_gopath)" go test -v ./... \
-		|| die "tests failed"
+	go test -work ./... || die "test failed"
 }
 
 src_install() {
-	dobin src/"${EGO_PN}"/do-agent
+	dobin do-agent
 
 	newinitd "${FILESDIR}"/do-agent.initd do-agent
 	newconfd "${FILESDIR}"/do-agent.confd do-agent
