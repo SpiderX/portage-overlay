@@ -41,7 +41,7 @@ RDEPEND="app-admin/logrotate
 	gd? ( dev-ml/gd4o:=[ocamlopt?]
 		media-fonts/dejavu )
 	gstreamer? ( dev-ml/ocaml-gstreamer:=[ocamlopt?] )
-	gui? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
+	gui? ( dev-python/pygtk:2[${PYTHON_SINGLE_USEDEP}] )
 	inotify? ( dev-ml/ocaml-inotify:=[ocamlopt?] )
 	jack? ( dev-ml/ocaml-bjack:=[ocamlopt?] )
 	json? ( dev-ml/yojson:= )
