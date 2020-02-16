@@ -1,9 +1,0 @@
-# Config file for /etc/init.d/noc-tower
-
-# Various options.
-# run `tower-web -h` for valid cmdline options
-OPTS="--listen=127.0.0.1:8888 --log-file-prefix=/var/log/noc/noc-tower.log"
-
-# User and group daemon runs as
-NOC_USER="noc"
-NOC_GROUP="noc"
