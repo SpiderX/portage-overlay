@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 415](https://img.shields.io/badge/ebuild-415-orange.svg)](https://img.shields.io/badge/ebuild-415-orange.svg)
+[![Number of ebuilds: 416](https://img.shields.io/badge/ebuild-416-orange.svg)](https://img.shields.io/badge/ebuild-416-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -326,7 +326,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
 * dev-python/[pywinrm](https://github.com/diyan/pywinrm) | Python library for Windows Remote Management
 * dev-python/[PyMeeus](https://github.com/architest/pymeeus) | Library of astronomical algorithms in Python
-* dev-python/[PythonQt](http://pythonqt.sourceforge.net/) | A dynamic Python binding for the Qt framework
+* dev-python/[PythonQt](https://mevislab.github.io/pythonqt) | A dynamic Python binding for the Qt framework
 * dev-python/[questionary](https://github.com/tmbo/questionary) | Python library to build pretty command line user prompts
 * dev-python/[random2](https://github.com/strichter/random2) | Python-2.7 random module ported to python-3
 * dev-python/[requests-credssp](https://github.com/jborean93/requests-credssp) | CredSSP authentication handler for Python Requests
@@ -386,7 +386,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * media-gfx/[nomacs](https://nomacs.org) | Qt-based image viewer
 * media-gfx/[qView](https://interversehq.com/qview) | Practical and minimal image viewer
 * media-gfx/[pingo-bin](https://css-ig.net/pingo) | Fast web image optimizer
-* media-gfx/[screencloud](https://screencloud.net/) | Screenshot capturing and sharing tool over various services
+* media-gfx/[screencloud](https://screencloud.net) | Screenshot capturing and sharing tool over various services
 * media-gfx/[xgrabcolor](http://hugo.pereira.free.fr/software/index.php) | Qt-based basic color picker
 * media-libs/[libqpsd](https://github.com/roniemartinez/libqpsd) | PSD & PSB Plugin for Qt/C++
 * media-libs/[qt-heif](https://github.com/jakar/qt-heif-image-plugin) | Qt plugin for HEIF images
