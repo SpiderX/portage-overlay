@@ -4,17 +4,18 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
-EGIT_REPO_URI="https://github.com/MeVisLab/pythonqt.git"
 
-inherit git-r3 qmake-utils python-single-r1 virtualx
+MY_P=${PN}${PV}
+
+inherit qmake-utils python-single-r1 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="https://mevislab.github.io/pythonqt"
-SRC_URI=""
+SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples +extensions test webkit"
 REQUIRED_USE="webkit? ( extensions ) ${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -41,6 +42,8 @@ DEPEND="${RDEPEND}
 BDEPEND="app-arch/unzip
 	virtual/pkgconfig
 	test? ( dev-qt/qttest:5 )"
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default

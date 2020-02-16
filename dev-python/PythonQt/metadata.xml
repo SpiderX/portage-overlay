@@ -11,14 +11,16 @@
 	</maintainer>
 	<longdescription lang="en">
 	PythonQt is a dynamic Python binding for the Qt framework.
-	It offers an easy way to embed the Python scripting language into your C++ Qt applications.
-	The focus of PythonQt is on embedding Python into an existing C++ application,
-	not on writing the whole application completely in Python.
+	It offers an easy way to embed the Python scripting language into
+	your C++ Qt applications. The focus of PythonQt is on embedding Python
+	into an existing C++ application, not on writing the whole application
+	completely in Python.
 	</longdescription>
 	<use>
 		<flag name="extensions">Install extensions</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">MeVisLab/pythonqt</remote-id>
 		<remote-id type="sourceforge">pythonqt</remote-id>
 	</upstream>
 </pkgmetadata>
