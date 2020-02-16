@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,7 +43,7 @@ RDEPEND="app-admin/logrotate
 	gd? ( dev-ml/gd4o:=[ocamlopt?]
 		media-fonts/dejavu )
 	gstreamer? ( >=dev-ml/ocaml-gstreamer-0.3.0:=[ocamlopt?] )
-	gui? ( dev-python/pygtk:2[${PYTHON_SINGLE_USEDEP}] )
+	gui? ( $(python_gen_cond_dep 'dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]') )
 	inotify? ( dev-ml/ocaml-inotify:=[ocamlopt?] )
 	jack? ( dev-ml/ocaml-bjack:=[ocamlopt?] )
 	json? ( dev-ml/yojson:= )
