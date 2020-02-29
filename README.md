@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 416](https://img.shields.io/badge/ebuild-416-orange.svg)](https://img.shields.io/badge/ebuild-416-orange.svg)
+[![Number of ebuilds: 417](https://img.shields.io/badge/ebuild-417-orange.svg)](https://img.shields.io/badge/ebuild-417-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -410,6 +410,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/slack.svg)](https://repology.org/metapackage/slack) net-im/[slack-bin](https://www.slack.com/) | Team collaboration tool
 * net-im/[viber-bin](http://www.viber.com) | Free text and calls
 * net-im/[vk-messenger-bin](https://vk.com/messenger) | Simple and Easy App for Messaging on VK
+* net-im/[zoom-bin](https://zoom.us) | Video conferencing and web conferencing service
 * net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/dhcdrop.html) | Effectively suppresses illegal DHCP servers on the LAN
 * net-misc/[dnsflood](https://github.com/hawell/dns-flood) | Use raw sockets to generate DNS flood attack
