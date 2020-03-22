@@ -21,16 +21,16 @@ BDEPEND=">=dev-lang/go-1.13"
 
 src_unpack() {
 	git-r3_src_unpack
-	go-module_live_vendor
 }
 
 src_compile() {
-	export -n GOCACHE XDG_CACHE_HOME
-	go build ./cmd/... || die "build failed"
+	GOFLAGS="-v -x -mod=vendor" \
+		go build ./cmd/... || die "build failed"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	GOFLAGS="-v -x -mod=vendor" \
+		go test -work ./... || die "test failed"
 }
 
 src_install() {
