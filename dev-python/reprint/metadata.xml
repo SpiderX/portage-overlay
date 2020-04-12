@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A Python library for binding variables and refreshing multi-line output
+	in terminal.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Yinzo/reprint</remote-id>
+		<remote-id type="pypi">reprint</remote-id>
+	</upstream>
+</pkgmetadata>
