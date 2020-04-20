@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	The schemas that represent all public interfacing into vCloud Director,
+	including the XSD-based REST API at /api, the new OpenAPI endpoints at
+	/cloudapi, and the object extensibility schemas for communication with
+	specific phases of vCloud Director operations.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vmware/vcd-api-schemas</remote-id>
+		<remote-id type="pypi">vcd-api-schemas-type</remote-id>
+	</upstream>
+</pkgmetadata>
