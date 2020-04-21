@@ -3,16 +3,12 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-
-inherit git-r3
-
 DESCRIPTION="Reliable PostgreSQL Backup & Restore"
 HOMEPAGE="https://pgbackrest.org https://github.com/pgbackrest/pgbackrest"
-SRC_URI=""
+SRC_URI="https://github.com/${PN}/${PN}/archive/release/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="libressl"
 
@@ -25,3 +21,5 @@ DEPEND="app-arch/lz4:=
 	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+S="${WORKDIR}/${PN}-release-${PV}/src"
