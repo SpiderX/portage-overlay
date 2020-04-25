@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop multilib-build pax-utils unpacker xdg-utils
 
 MY_PN="${PN/-bin/}"
-BASE_URI="https://zoom.us/client/latest/zoom_-arch-.deb"
+BASE_URI="https://d11yldzmag5yn.cloudfront.net/prod/${PV}/zoom_-arch-.deb"
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us"
@@ -19,18 +19,21 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="pulseaudio"
 RESTRICT="bindist mirror"
 
-RDEPEND="dev-libs/expat:0[${MULTILIB_USEDEP}]
+# no bundled libs for EGLFS
+RDEPEND="!games-engines/zoom
+	!net-im/zoom
+	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
+	dev-libs/libpcre:3[${MULTILIB_USEDEP}]
 	dev-libs/nspr[${MULTILIB_USEDEP}]
 	dev-libs/nss[${MULTILIB_USEDEP}]
-	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
+	dev-qt/qtgui:5[eglfs]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
-	media-libs/mesa[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
-	x11-libs/libdrm[${MULTILIB_USEDEP}]
+	virtual/opengl[${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libxcb[${MULTILIB_USEDEP}]
 	x11-libs/libXcomposite[${MULTILIB_USEDEP}]
@@ -39,15 +42,15 @@ RDEPEND="dev-libs/expat:0[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
 	x11-libs/libXi[${MULTILIB_USEDEP}]
-	x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
-	x11-libs/libxshmfence[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr[${MULTILIB_USEDEP}]
 	x11-libs/libXrender[${MULTILIB_USEDEP}]
 	x11-libs/libXtst[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-image[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-keysyms[${MULTILIB_USEDEP}]
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
-BDEPEND="app-admin/chrpath"
+	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	!pulseaudio? ( media-libs/alsa-lib:0[${MULTILIB_USEDEP}] )"
+BDEPEND="app-admin/chrpath
+	!pulseaudio? ( dev-util/bbe )"
 
 QA_PREBUILT="opt/zoom/QtWebEngineProcess
 	opt/zoom/libQt5*
@@ -79,6 +82,13 @@ src_prepare() {
 		|| die "chrpath failed"
 	scanelf -Xr opt/zoom/platforminputcontexts/libfcitxplatforminputcontextplugin.so \
 		|| die "scanelf failed"
+
+	# Zoom cannot use any ALSA sound devices if it finds libpulse.
+	# This causes breakage if media-sound/apulse[sdk] is installed.
+	if ! use pulseaudio; then
+		bbe -e 's/libpulse.so/IgNoRePuLsE/' zoom >zoom.tmp || die "bbe failed"
+		mv zoom.tmp zoom || die "mv failed"
+	fi
 }
 
 src_install() {

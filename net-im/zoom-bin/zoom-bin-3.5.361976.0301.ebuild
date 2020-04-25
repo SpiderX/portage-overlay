@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop multilib-build pax-utils unpacker xdg-utils
 
 MY_PN="${PN/-bin/}"
-BASE_URI="https://zoom.us/client/latest/zoom_-arch-.deb"
+BASE_URI="https://d11yldzmag5yn.cloudfront.net/prod/${PV}/zoom_-arch-.deb"
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us"
