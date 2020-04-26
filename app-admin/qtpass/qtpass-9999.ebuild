@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="app-admin/pass
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[xcb]
+	|| (
+		dev-qt/qtgui:5[X(-)]
+		dev-qt/qtgui:5[xcb(-)]
+	)
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	net-misc/x11-ssh-askpass"
