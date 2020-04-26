@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python{2_7,3_{6..8}} pypy3 )
 EGIT_REPO_URI="https://github.com/rspivak/slimit.git"
 
