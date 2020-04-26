@@ -16,14 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-# tests require <dev-python/django-pipeline-1.6, which requires old Django
+# https://github.com/niwinz/django-jinja/issues/181
 PATCHES=( "${FILESDIR}"/"${P}"-test.patch )
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_impl_dep sqlite)
+BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-pipeline[${PYTHON_USEDEP}] )"
 
 python_test() {
