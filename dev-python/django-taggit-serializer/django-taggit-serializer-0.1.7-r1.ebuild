@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -15,12 +15,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="mirror !test? ( test )"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/django-rest-framework[${PYTHON_USEDEP}]
-	dev-python/django-taggit[${PYTHON_USEDEP}]
+DEPEND="dev-python/django-taggit[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+RDEPEND="${RDEPEND}
+	dev-python/django-rest-framework[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-nose[${PYTHON_USEDEP}] )"
 

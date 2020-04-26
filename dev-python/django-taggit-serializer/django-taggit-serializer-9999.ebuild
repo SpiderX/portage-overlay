@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 EGIT_REPO_URI="https://github.com/glemmaPaul/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -18,10 +18,10 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/django-rest-framework[${PYTHON_USEDEP}]
-	dev-python/django-taggit[${PYTHON_USEDEP}]
+DEPEND="dev-python/django-taggit[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+RDEPEND="${RDEPEND}
+	dev-python/django-rest-framework[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-nose[${PYTHON_USEDEP}] )"
 
