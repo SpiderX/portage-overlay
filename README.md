@@ -69,7 +69,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[yaml-vault](https://github.com/Jimdo/yaml-vault) | Utility to import/export data from HashiCorp Vault
 * app-backup/[hashget](https://gitlab.com/yaroslaff/hashget) | Deduplication tool for archiving data with extremely high ratio
 * app-backup/[pgbackrest](https://pgbackrest.org) | Reliable PostgreSQL Backup & Restore
-* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/zbackup.svg)](https://repology.org/metapackage/zbackup) app-backup/[zbackup](http://zbackup.org/) | A versatile deduplicating backup tool
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/zbackup.svg)](https://repology.org/metapackage/zbackup) app-backup/[zbackup](https://github.com/zbackup/zbackup) | A versatile deduplicating backup tool
 * app-backup/[urbackup-client](https://urbackup.org) | Client Server backup system
 * app-backup/[urbackup-server](https://urbackup.org) | Client Server backup system
 * app-backup/[wal-g](https://github.com/wal-g/wal-g) | Archival restoration tool for databases
