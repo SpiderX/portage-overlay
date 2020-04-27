@@ -47,7 +47,7 @@ pkg_nofetch() {
 	einfo "Please download ${MY_P/_arch_/x86_64} or"
 	einfo "${MY_P/_arch_/i386} from"
 	einfo "${HOMEPAGE}"
-	einfo "and place it in ${DISTDIR}"
+	einfo "and place it into your DISTDIR directory"
 }
 
 src_unpack() {
