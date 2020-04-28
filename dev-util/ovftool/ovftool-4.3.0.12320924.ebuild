@@ -75,7 +75,8 @@ src_install() {
 	doexe src/vmware-ovftool/lib* src/vmware-ovftool/ovftool \
 		src/vmware-ovftool/ovftool.bin
 
-	dosym ../../opt/vmware-ovftool/ovftool usr/bin/ovftool
+	echo "PATH=\"/opt/vmware-ovftool/\"" > "${T}"/99ovftool
+	doenvd "${T}"/99ovftool
 
 	pax-mark -m "${ED}"/vmware-ovftool/ovftool.bin
 }
