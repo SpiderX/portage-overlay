@@ -59,7 +59,6 @@ RDEPEND="app-arch/bzip2:=
 	sys-fs/fuse:3
 	x11-libs/libdrm
 	x11-libs/libxshmfence
-	sys-libs/ncurses:=
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-themes/hicolor-icon-theme
@@ -73,6 +72,7 @@ DEPEND="${PYTHON_DEPS}"
 BDEPEND="${CDEPEND}
 	app-arch/unzip
 	sys-apps/fix-gnustack
+	sys-libs/ncurses-compat:5
 	ovftool? ( app-admin/chrpath )"
 
 S="${WORKDIR}"/extracted
