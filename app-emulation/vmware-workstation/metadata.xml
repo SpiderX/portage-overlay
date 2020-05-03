@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	VMWare Workstation is a virtual machine which can be used to install
+	other operating systems in a virtual environment to run on top of Gentoo.
+	</longdescription>
+	<use>
+		<flag name="macos-guests">Support macOS guests</flag>
+		<flag name="modules">Install <pkg>app-emulation/vmware-modules</pkg> in order to run VMs locally</flag>
+		<flag name="ovftool">Install Open Virtualization Format tool</flag>
+		<flag name="vix">Install VIX API to automate virtual machine operations</flag>
+		<flag name="vmware-tools-darwin">Install VMware Tools for OS X guests</flag>
+		<flag name="vmware-tools-linux">Install VMware Tools for Linux guests</flag>
+		<flag name="vmware-tools-linuxPreGlibc25">Install VMware Tools for Linux (glibc older than 2.5) guests</flag>
+		<flag name="vmware-tools-netware">Install VMware Tools for Netware guests</flag>
+		<flag name="vmware-tools-solaris">Install VMware Tools for Solaris guests</flag>
+		<flag name="vmware-tools-windows">Install VMware Tools for Windows (Vista and later) guests</flag>
+		<flag name="vmware-tools-winPre2k">Install VMware Tools for Windows (before 2000) guests</flag>
+		<flag name="vmware-tools-winPreVista">Install VMware Tools for Windows (after 2000, before Vista) guests</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/opt/vmware/bin/vmware-networks"
+name="VMware Network"
+description="VMware Network"
+command_args="--start"
+start_stop_daemon_args="-q"
+
+depend() {
+	need localmount
+	use net
+}
+
+stop() {
+	ebegin "Stopping ${description}"
+	"${command}" --stop
+	eend $?
+}
