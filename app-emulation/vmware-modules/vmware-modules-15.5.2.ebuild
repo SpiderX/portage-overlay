@@ -51,4 +51,10 @@ src_install() {
 		# Support for vmware vsock in kernel module
 		alias vsock	vmw_vsock_vmci_transport
 	EOF
+
+	dodir /usr/lib/modules-load.d/
+	cat > "${ED}"/usr/lib/modules-load.d/vmware.conf <<-EOF
+		vmmon
+		vmnet
+	EOF
 }
