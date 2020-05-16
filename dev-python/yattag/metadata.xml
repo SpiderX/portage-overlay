@@ -11,6 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	A Python library for generating HTML or XML in a pythonic way.
+	Pure python alternative to web template engines.
+	Can fill HTML forms with default values and error messages.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">leforestier/yattag</remote-id>

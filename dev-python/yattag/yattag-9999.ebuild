@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/leforestier/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,8 +17,6 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
 	"${PYTHON}" -m unittest discover -v test || die "tests failed with ${EPYTHON}"
