@@ -11,6 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	A library to generate JSON Schema from python 3.7 dataclasses.
+	Aims to be a more lightweight alternative to similar projects
+	such as marshmallow and pydantic.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">s-knibbs/dataclasses-jsonschema</remote-id>
