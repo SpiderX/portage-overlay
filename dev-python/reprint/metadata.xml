@@ -10,8 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A Python library for binding variables and refreshing multi-line output
-	in terminal.
+	A simple module to print and refresh multi line output contents
+	in terminal with simple variable bindings and automatic command
+	line refresh upon variable change and simultaneous multi-line
+	refresh with each line binded to different variables
 	</longdescription>
 	<upstream>
 		<remote-id type="github">Yinzo/reprint</remote-id>
