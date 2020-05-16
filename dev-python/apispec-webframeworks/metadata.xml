@@ -11,6 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	apispec plugins for integrating with various web frameworks.
+	Included plugins: apispec_webframeworks.bottle,
+	apispec_webframeworks.flask, apispec_webframeworks.tornado.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">marshmallow-code/apispec-webframeworks</remote-id>

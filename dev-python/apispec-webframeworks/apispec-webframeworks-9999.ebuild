@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/marshmallow-code/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -15,8 +15,6 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/apispec[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]"
@@ -26,9 +24,7 @@ BDEPEND="test? ( dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		www-servers/tornado[${PYTHON_USEDEP}] )"
 
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
 
 python_install_all() {
 	distutils-r1_python_install_all
