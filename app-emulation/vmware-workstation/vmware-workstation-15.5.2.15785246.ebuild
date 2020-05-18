@@ -35,7 +35,8 @@ REQUIRED_USE="vmware-tools-darwin? ( macos-guests )"
 RESTRICT="mirror preserve-libs strip"
 
 CDEPEND="dev-db/sqlite:3"
-RDEPEND="app-arch/bzip2:=
+RDEPEND="!gnome-base/dconf
+	app-arch/bzip2:=
 	app-shells/bash:0
 	dev-cpp/gtkmm:3.0
 	dev-libs/dbus-glib
@@ -43,7 +44,6 @@ RDEPEND="app-arch/bzip2:=
 	dev-libs/icu:=
 	dev-libs/json-c:=
 	dev-libs/nettle:0
-	gnome-base/dconf
 	media-gfx/graphite2
 	media-libs/alsa-lib
 	media-libs/libart_lgpl
