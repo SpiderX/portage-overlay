@@ -136,9 +136,7 @@ To be able to run ${PN} your user must be in the vmware group.\\n"
 }
 
 src_install() {
-	local major_minor
 	local vmware_installer_version
-	major_minor=$(ver_cut 1-2 "${PV}")
 	vmware_installer_version=$(grep -oPm1 "(?<=<version>)[^<]+" vmware-installer/manifest.xml)
 
 	# Install revdep-rebuild entry
