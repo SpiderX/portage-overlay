@@ -30,10 +30,10 @@ RDEPEND="!games-engines/zoom
 	dev-qt/qtgui:5[eglfs]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
+	media-libs/mesa[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
-	virtual/opengl[${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libxcb[${MULTILIB_USEDEP}]
 	x11-libs/libXcomposite[${MULTILIB_USEDEP}]
@@ -52,21 +52,21 @@ RDEPEND="!games-engines/zoom
 BDEPEND="app-admin/chrpath
 	!pulseaudio? ( dev-util/bbe )"
 
-QA_PREBUILT="opt/zoom/QtWebEngineProcess
+QA_PREBUILT="opt/zoom/audio/libqt*.so
+	opt/zoom/egldeviceintegrations/libqeglfs-*-integration.so
+	opt/zoom/generic/libq*.plugin.so
+	opt/zoom/iconengines/libqsvgicon.so
+	opt/zoom/imageformats/libq*.so
 	opt/zoom/libQt5*
-	opt/zoom/qtdiag
-	opt/zoom/zoom
-	opt/zoom/Qt/labs/*
+	opt/zoom/platforminputcontexts/lib*platforminputcontextplugin.so
+	opt/zoom/platforms/libq*.so
+	opt/zoom/platformthemes/libqgtk3.so
 	opt/zoom/Qt*
-	opt/zoom/audio/*
-	opt/zoom/egldeviceintegrations/*
-	opt/zoom/generic/*
-	opt/zoom/iconengines/*
-	opt/zoom/imageformats/*
-	opt/zoom/platforminputcontexts/*
-	opt/zoom/platforms/*
-	opt/zoom/platformthemes/*
-	opt/zoom/xcbglintegrations/*"
+	opt/zoom/qtdiag
+	opt/zoom/xcbglintegrations/libqxcb-*.so
+	opt/zoom/zoom
+	opt/zoom/ZoomLauncher
+	opt/zoom/zopen"
 
 S="${WORKDIR}"
 
