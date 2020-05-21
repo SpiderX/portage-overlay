@@ -47,10 +47,12 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 
-QA_PREBUILT="opt/draw.io/drawio
+QA_PREBUILT="opt/draw.io/crashpad_handler
+	opt/draw.io/drawio
 	opt/draw.io/libffmpeg.so
 	opt/draw.io/libEGL.so
 	opt/draw.io/libGLESv2.so
+	opt/draw.io/libvk_swiftshader.so
 	opt/draw.io/swiftshader/libEGL.so
 	opt/draw.io/swiftshader/libGLESv2.so"
 
@@ -71,7 +73,10 @@ src_install() {
 	doins -r opt/draw.io/.
 	fperms +x /opt/draw.io/drawio /opt/draw.io/chrome-sandbox
 
-	pax-mark -m "${ED%/}"/opt/draw.io/drawio
+	echo "PATH=\"/opt/draw.io/\"" > "${T}"/99drawio
+	doenvd "${T}"/99drawio
+
+	pax-mark -m "${ED}"/opt/draw.io/drawio
 }
 
 pkg_postinst() {
