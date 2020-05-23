@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 434](https://img.shields.io/badge/ebuild-434-orange.svg)](https://img.shields.io/badge/ebuild-434-orange.svg)
+[![Number of ebuilds: 436](https://img.shields.io/badge/ebuild-436-orange.svg)](https://img.shields.io/badge/ebuild-436-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -456,6 +456,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management
 * net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
 * net-misc/[virtualhere-usb-bin](https://virtualhere.com/) | Share USB devices over the network
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/x11-ssh-askpass.svg)](https://repology.org/metapackage/x11-ssh-askpass) net-misc/[x11-ssh-askpass](https://github.com/sigmavirus24/x11-ssh-askpass) | X11-based passphrase dialog for use with OpenSSH
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/automatic.svg)](https://repology.org/metapackage/automatic) net-p2p/[automatic](https://github.com/1100101/Automatic) | RSS downloader for Tranmission
 * net-p2p/[gram-wallet-bin](https://https://wallet.ton.org) | TON Testnet Wallet
 * net-p2p/[tremotesf](https://github.com/equeim/tremotesf2) | A remote GUI for transmission
@@ -483,3 +484,4 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
+
