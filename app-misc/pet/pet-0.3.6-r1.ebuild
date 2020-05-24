@@ -61,9 +61,7 @@ SRC_URI="https://github.com/knqyf263/pet/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="zsh-completion"
-
-RDEPEND="zsh-completion? ( app-shells/zsh-completions )"
+IUSE=""
 
 src_compile() {
 	go build || die "build failed"
@@ -75,11 +73,8 @@ src_test() {
 
 src_install() {
 	dobin pet
-
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		doins misc/completions/zsh/_pet
-	fi
+	insinto /usr/share/zsh/site-functions
+	doins misc/completions/zsh/_pet
 }
 
 pkg_postinst() {
