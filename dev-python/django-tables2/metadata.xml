@@ -16,7 +16,7 @@
 	for HTML forms. e.g.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">jieter/django-tables2/</remote-id>
+		<remote-id type="github">jieter/django-tables2</remote-id>
 		<remote-id type="pypi">django-tables2</remote-id>
 	</upstream>
 </pkgmetadata>
