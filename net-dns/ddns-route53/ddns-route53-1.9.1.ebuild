@@ -92,5 +92,5 @@ src_install() {
 	insopts -o ddnsr53 -g ddnsr53 -m 0644
 	insinto /etc/ddns-route53
 	newins - ddns-route53.yml < <(grep -m1 -A13 yml doc/configuration.md | tail -n +2 \
-		|| die "sed failed for config.json" )
+		|| die "grep failed for ddns-route53.yml" )
 }
