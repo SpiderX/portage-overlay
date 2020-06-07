@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/ddns-route53
+
+# Various options.
+# run `ddns-route53 --help` for valid cmdline options
+OPTS="--config /etc/ddns-route53/ddns-route53.yml --schedule '*/30 * * * *' --log-level info"

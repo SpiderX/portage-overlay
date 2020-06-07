@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/ddns-route53
+command_args="${OPTS}"
+description="Dynamic DNS for Amazon Route 53"
+name="Dynamic DNS for Amazon Route 53"
+pidfile=/run/ddns-route53.pid
+start_stop_daemon_args="-q"
+
+depend() {
+	need net
+}
