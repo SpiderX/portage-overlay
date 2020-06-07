@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	mpssh is a parallel ssh tool, able to connect to a number of hosts
+	specified in the hosts file and execute the same command on all of them,
+	showing a nicely formatted output with each line prepended with the hostname
+	that produced the line.
+	It is also possible to specify a script on the local filesystem
+	that will be first scp copied to the remote host and then executed.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ndenev/mpssh</remote-id>
+	</upstream>
+</pkgmetadata>
