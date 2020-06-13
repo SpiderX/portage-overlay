@@ -3,8 +3,7 @@
 
 EAPI=7
 
-EGO_PN="github.com/zricethezav/${PN}"
-EGIT_REPO_URI="https://${EGO_PN}.git"
+EGIT_REPO_URI="https://github.com/zricethezav/${PN}.git"
 
 inherit git-r3 go-module
 
@@ -19,13 +18,12 @@ IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
-	mkdir "${S}"/vendor || die "mkdir failed"
 	go-module_live_vendor
 }
 
 src_compile() {
-	export -n GOCACHE XDG_CACHE_HOME
-	go build || die "build failed"
+	go build -ldflags "-X=github.com/zricethezav/gitleaks/v4/version.Version=${PV}" \
+		|| die "build failed"
 }
 
 src_test() {
@@ -35,4 +33,5 @@ src_test() {
 src_install() {
 	einstalldocs
 	dobin gitleaks
+	dodoc -r examples/
 }
