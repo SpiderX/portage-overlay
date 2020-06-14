@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Python CoreSchema
+	Python utilities to describe an abstract data schema to coreapi
 	</longdescription>
 	<upstream>
 		<remote-id type="github">core-api/python-coreschema</remote-id>

@@ -15,11 +15,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # no tests
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
