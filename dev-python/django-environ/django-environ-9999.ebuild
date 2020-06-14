@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/joke2k/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -19,9 +19,7 @@ IUSE=""
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests unittest
 
 python_install_all() {
 	distutils-r1_python_install_all
