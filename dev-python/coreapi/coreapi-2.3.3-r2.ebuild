@@ -4,11 +4,12 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..7} )
-MY_PN="python-${PN//coreapi/client}"
-MY_P="${MY_PN}-${PV}"
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
+
+MY_PN="python-${PN//coreapi/client}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python client library for Core API"
 HOMEPAGE="https://github.com/core-api/python-client"
@@ -25,10 +26,7 @@ RDEPEND="dev-python/coreschema[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/uritemplate[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
