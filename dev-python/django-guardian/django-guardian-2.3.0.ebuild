@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/django-guardian/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="An implementation of per object permissions for Django"
 HOMEPAGE="https://github.com/django-guardian/django-guardian"
-SRC_URI=""
+SRC_URI="https://github.com/django-guardian/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
