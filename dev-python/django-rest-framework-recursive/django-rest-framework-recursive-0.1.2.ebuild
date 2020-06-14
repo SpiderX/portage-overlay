@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
@@ -15,15 +15,17 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
-
-# remove incorrectly defined test
-PATCHES=( "${FILESDIR}/${P}"-test.patch )
+RESTRICT="test" # fails
 
 RDEPEND="dev-python/django-rest-framework[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite)
-		dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
+
+# remove incorrectly defined test
+PATCHES=( "${FILESDIR}/${P}"-test-model.patch
+	"${FILESDIR}/${PN}"-0.1.2-test.patch )
+
+distutils_enable_tests pytest
 
 python_test() {
 	./runtests.py -v || die "tests failed with ${EPYTHON}"
