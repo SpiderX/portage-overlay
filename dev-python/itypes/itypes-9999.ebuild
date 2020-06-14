@@ -18,7 +18,7 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+distutils_enable_tests pytest
 
 python_test() {
 	py.test -v tests.py || die "tests failed with ${EPYTHON}"
