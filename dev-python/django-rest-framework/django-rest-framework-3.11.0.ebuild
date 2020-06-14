@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1 eutils
 
@@ -24,7 +24,7 @@ BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-guardian[${PYTHON_USEDEP}]
 		dev-python/markdown[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-django-3.5.1[${PYTHON_USEDEP}] )"
+		dev-python/pytest-django[${PYTHON_USEDEP}] )"
 
 python_test() {
 	./runtests.py -v --nolint || die "tests failed with ${EPYTHON}"

@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Powerful and flexible toolkit that makes it easy to build Web APIs using Django
+	Powerful and flexible toolkit that makes it easy to build Web APIs
+	using Django
 	</longdescription>
 	<upstream>
 		<remote-id type="github">encode/django-rest-framework</remote-id>
