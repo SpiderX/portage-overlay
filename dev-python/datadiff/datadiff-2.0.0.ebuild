@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
 DESCRIPTION="A library for diffs of python data structures"
-HOMEPAGE="https://datadiff.sourceforge.net"
+HOMEPAGE="https://sourceforge.net/projects/datadiff"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -17,9 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test" # no tests in tarball
 
-BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/six[${PYTHON_USEDEP}] )"
 
-python_test() {
-	nosetests -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests nose
