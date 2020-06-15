@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,8 @@ IUSE="debug xinetd"
 
 RDEPEND="net-nds/rpcbind
 	xinetd? ( sys-apps/xinetd )"
+DEPEND="${RDEPEND}
+	net-libs/rpcsvc-proto"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -27,7 +29,11 @@ PATCHES=( # Add support for new kernels
 	"${FILESDIR}"/"${P}"-debug.patch )
 
 src_configure() {
-	econf "$(use_enable debug)"
+	econf "$(use_enable debug)" CPPFLAGS="-I/usr/include/tirpc"
+}
+
+src_compile() {
+	emake LDFLAGS="-ltirpc"
 }
 
 src_install() {
