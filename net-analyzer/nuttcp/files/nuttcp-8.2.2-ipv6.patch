@@ -1,0 +1,14 @@
+--- ../nuttcp-8.2.2.c	2020-06-21 21:34:01.442975141 +0300
++++ ../nuttcp-8.2.2.c	2020-06-21 21:34:49.433271581 +0300
+@@ -4078,9 +4078,11 @@
+ 						if (af == AF_INET)
+ 							fprintf(ctlconn,
+ 								", af3 = 4");
++#ifdef AF_INET6
+ 						if (af == AF_INET6)
+ 							fprintf(ctlconn,
+ 								", af3 = 6");
++#endif
+ 					}
+ 					else {
+ 						fprintf(ctlconn, ", af3 = 0");

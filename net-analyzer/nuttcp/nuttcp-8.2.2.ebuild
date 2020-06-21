@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit readme.gentoo-r1 systemd toolchain-funcs
 
@@ -17,8 +17,9 @@ IUSE="ipv6 xinetd"
 RDEPEND="xinetd? ( sys-apps/xinetd )"
 
 DOCS=( examples.txt README )
-# Honor CC, LDFLAGS, CFLAGS, CPPFLAGS
-PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch )
+# Honor CC, LDFLAGS, CFLAGS, CPPFLAGS and fix build without IPv6
+PATCHES=( "${FILESDIR}"/"${PN}"-8.1.4-makefile.patch
+	"${FILESDIR}"/"${P}"-ipv6.patch )
 
 DOC_CONTENTS="Usage of nuttpc by its service name in xinetd service,
 iptables rules, etc. will require adding these lines to /etc/services:\\n
