@@ -1,34 +1,31 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit pax-utils readme.gentoo-r1 systemd tmpfiles unpacker user
+inherit pax-utils readme.gentoo-r1 systemd tmpfiles unpacker
 
 QA_PREBUILT="usr/bin/rslsync"
-BASE_URI="http://linux-packages.resilio.com/${PN}/deb/pool/non-free/r/${PN}/${PN}_${PV}-1_@arch@.deb"
+BASE_URI="http://download-cdn.resilio.com/${PV}/Debian/${PN}_${PV}-1_@arch@.deb"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
-HOMEPAGE="https://resilio.com/"
+HOMEPAGE="https://resilio.com"
 SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
 	x86? ( ${BASE_URI/@arch@/i386} )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pax_kernel"
+IUSE=""
 RESTRICT="bindist mirror"
+
+RDEPEND="acct-user/rslsync"
 
 S="${WORKDIR}"
 
 DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
 Default metadata path is /var/lib/resilio-sync/.sync\\n
 Default web-gui URL is http://localhost:8888/\\n\\n"
-
-pkg_setup() {
-	enewgroup rslsync
-	enewuser rslsync -1 -1 /var/lib/resilio-sync rslsync
-}
 
 src_unpack() {
 	unpacker_src_unpack
@@ -38,7 +35,7 @@ src_unpack() {
 
 src_install() {
 	dobin usr/bin/rslsync
-	use pax_kernel && pax-mark m "${ED%/}"/usr/bin/rslsync
+	pax-mark m "${ED}"/usr/bin/rslsync
 
 	doman resilio-sync.1
 
@@ -53,9 +50,9 @@ src_install() {
 	readme.gentoo_create_doc
 
 	# Generate sample config, uncomment config directives and change values
-	insopts -orslsync -grslsync -m0644
+	insopts -o rslsync -g rslsync -m 0644
 	insinto /etc/resilio-sync
-	newins - config.json < <("${ED%/}"/usr/bin/rslsync --dump-sample-config | \
+	newins - config.json < <("${ED}"/usr/bin/rslsync --dump-sample-config | \
 		sed \
 			-e "/storage_path/s|//| |g" \
 			-e "/pid_file/s|//| |g" \
@@ -63,7 +60,7 @@ src_install() {
 			-e "/pid_file/s|resilio/resilio|resilio-sync/resilio-sync|g" \
 			|| die "sed failed for config.json" )
 
-	diropts -orslsync -grslsync -m0700
+	diropts -o rslsync -g rslsync -m 0700
 	keepdir /etc/resilio-sync /var/lib/resilio-sync/ \
 		/var/lib/resilio-sync/.sync /var/log/resilio-sync
 }
