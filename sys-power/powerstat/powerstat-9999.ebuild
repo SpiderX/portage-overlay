@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+RDEPEND="app-shells/bash-completion"
+
 src_prepare() {
 	default
 

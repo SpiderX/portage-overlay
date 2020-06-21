@@ -14,8 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-# Don't compress manpages
-PATCHES=( "${FILESDIR}"/"${PN}"-0.02.17-makefile.patch )
+RDEPEND="app-shells/bash-completion"
+
+src_prepare() {
+	default
+
+	# Don't compress manpages
+	sed -i  -e '/install:/s/ powerstat.8.gz//' \
+		-e '/cp powerstat.8/s/.gz//' \
+		Makefile || die "sed failed"
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)"
