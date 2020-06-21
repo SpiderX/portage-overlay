@@ -70,6 +70,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	go-module_pkg_postinst
 	if has_version app-shells/bash-completion ; then
 		einfo "You may source files in /usr/share/fzf from your .bashrc"
 		einfo "to get completion for fzf"
