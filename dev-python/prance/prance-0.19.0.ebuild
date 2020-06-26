@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/OAI/OpenAPI-Specification.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/tests/OpenAPI-Specification"
 
@@ -26,8 +26,8 @@ RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/semver[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/pytest-runner[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
 
 src_unpack() {
 	default
@@ -37,6 +37,8 @@ src_unpack() {
 python_prepare_all() {
 	# Disable pytest options
 	sed -i '/addopts/d' setup.cfg || die "sed failed for setup.cfg"
+	# Remove pytest-runner
+	sed -i '/setup_requires/d' setup.py || die "sed failed for setup.py"
 
 	distutils-r1_python_prepare_all
 }
