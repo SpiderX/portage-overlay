@@ -20,7 +20,6 @@ RDEPEND="dev-python/apispec[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		www-servers/tornado[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
