@@ -15,9 +15,6 @@ LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest

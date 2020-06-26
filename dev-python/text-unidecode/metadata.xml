@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	The most basic Text::Unidecode port
+	The most basic Text::Unidecode port of Perl library
 	</longdescription>
 	<upstream>
 		<remote-id type="github">kmike/text-unidecode</remote-id>
