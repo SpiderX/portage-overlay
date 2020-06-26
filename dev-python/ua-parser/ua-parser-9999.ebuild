@@ -20,9 +20,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
 
-python_test() {
-	"${EPYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests unittest
 
 python_install_all() {
 	distutils-r1_python_install_all

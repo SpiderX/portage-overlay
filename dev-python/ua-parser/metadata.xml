@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A python implementation of the UA Parser
+	A python implementation of the UA Parser.
+	This is Python port of Browserscope's user agent parser
 	</longdescription>
 	<upstream>
 		<remote-id type="github">ua-parser/uap-python</remote-id>
