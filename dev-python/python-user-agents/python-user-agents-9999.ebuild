@@ -19,6 +19,4 @@ IUSE=""
 
 RDEPEND="dev-python/ua-parser[${PYTHON_USEDEP}]"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests unittest
