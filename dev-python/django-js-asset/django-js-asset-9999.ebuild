@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/matthiask/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,6 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
