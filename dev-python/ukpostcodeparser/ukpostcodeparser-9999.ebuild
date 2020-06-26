@@ -15,7 +15,8 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # https://github.com/hamstah/ukpostcodeparser/issues/8
 PATCHES=( "${FILESDIR}/${PN}"-1.1.2-test.patch )

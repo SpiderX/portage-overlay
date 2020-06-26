@@ -14,7 +14,8 @@ SRC_URI="https://github.com/hamstah/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # https://github.com/hamstah/ukpostcodeparser/issues/8
 PATCHES=( "${FILESDIR}/${P}"-test.patch )
