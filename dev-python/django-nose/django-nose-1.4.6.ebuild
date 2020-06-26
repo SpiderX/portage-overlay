@@ -20,8 +20,9 @@ RESTRICT="test" #https://github.com/jazzband/django-nose/issues/76
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/dj-database-url[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/nose[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+
+distutils_enable_tests nose
 
 python_test() {
 	./runtests.sh || die "tests failed with ${EPYTHON}"

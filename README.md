@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 442](https://img.shields.io/badge/ebuild-442-orange.svg)](https://img.shields.io/badge/ebuild-442-orange.svg)
+[![Number of ebuilds: 443](https://img.shields.io/badge/ebuild-443-orange.svg)](https://img.shields.io/badge/ebuild-443-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -494,3 +494,4 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
+* dev-python/[django-fake-model](https://github.com/erm0l0v/django-fake-model) | A library for creating fake models in the unit tests
