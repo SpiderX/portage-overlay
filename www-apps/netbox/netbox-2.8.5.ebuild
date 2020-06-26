@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..7} )
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit python-r1 webapp user
+inherit python-r1 webapp
 
 DESCRIPTION="IP address and data center infrastructure management tool"
 HOMEPAGE="https://github.com/netbox-community/netbox"
@@ -16,19 +16,24 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ldap vhosts webhooks"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND=">=dev-python/django-2.2[${PYTHON_USEDEP}]
+RDEPEND="acct-group/netbox
+	acct-user/netbox
+	>=dev-python/django-3[${PYTHON_USEDEP}]
+	dev-python/django-cacheops[${PYTHON_USEDEP}]
 	dev-python/django-cors-headers[${PYTHON_USEDEP}]
 	>=dev-python/django-debug-toolbar-1.10[${PYTHON_USEDEP}]
 	dev-python/django-filter[${PYTHON_USEDEP}]
 	dev-python/django-mptt[${PYTHON_USEDEP}]
+	dev-python/django-pglocks[${PYTHON_USEDEP}]
+	dev-python/django-prometheus[${PYTHON_USEDEP}]
 	dev-python/django-rest-framework[${PYTHON_USEDEP}]
 	>=dev-python/django-tables2-2[${PYTHON_USEDEP}]
 	dev-python/django-taggit[${PYTHON_USEDEP}]
 	dev-python/django-taggit-serializer[${PYTHON_USEDEP}]
 	dev-python/django-timezone-field[${PYTHON_USEDEP}]
 	dev-python/drf-yasg[${PYTHON_USEDEP}]
-	dev-python/graphviz[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/netaddr[${PYTHON_USEDEP}]
@@ -36,18 +41,18 @@ RDEPEND=">=dev-python/django-2.2[${PYTHON_USEDEP}]
 	dev-python/psycopg:2[${PYTHON_USEDEP}]
 	dev-python/py-gfm[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-5.3[${PYTHON_USEDEP}]
+	dev-python/redis-py[${PYTHON_USEDEP}]
+	>=dev-python/svgwrite-1.4[${PYTHON_USEDEP}]
 	ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_USEDEP}] )
 	webhooks? ( dev-python/django-rq[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
-DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )
+DOCS=( {CHANGELOG,CONTRIBUTING,README}.md )
 
 pkg_setup() {
 	python_setup
 	webapp_pkg_setup
-
-	enewgroup netbox
-	enewuser netbox -1 -1 /var/lib/netbox netbox
 }
 
 src_install() {
@@ -66,7 +71,7 @@ src_install() {
 		newinitd "${FILESDIR}"/netbox-rqworker.initd netbox-rqworker
 		newconfd "${FILESDIR}"/netbox-rqworker.confd netbox-rqworker
 	fi
-	diropts -onetbox -gnetbox -m0700
+	diropts -o netbox -g netbox -m 0700
 	keepdir /var/log/netbox
 }
 
@@ -95,18 +100,19 @@ pkg_config() {
 			elif [[ "$answer" =~ ^[Nn]([Oo])?$ ]] ; then
 				die "Aborting migration."
 			else
-				echo "Answer not recognized"
+				echo "Answer not recognized" || die "echo failed"
 			fi
 		done
 		# Apply database migrations
-		"${path}"/manage.py migrate
+		"${path}"/manage.py migrate || die "migrations failed"
 	fi
 
 	if [ ! -d "${path}/static" ] ; then
 		# Collect static files
-		"${path}"/manage.py collectstatic
+		"${path}"/manage.py collectstatic || die "collectstatic failed"
 
-		chown -R netbox:netbox "${path}"/static
+		fowners -R netbox:netbox "${path}"/static
+		#chown -R netbox:netbox "${path}"/static || die "chown failed"
 	else
 		einfo "Not managing static files since ${path}/static exists"
 	fi
