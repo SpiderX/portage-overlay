@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A library allows to create fake models in your test without migrations,
+	test apps and test tables in your base. All tables that you need will
+	created/removed during the test.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">erm0l0v/django-fake-model</remote-id>
+		<remote-id type="pypi">django-fake-model</remote-id>
+	</upstream>
+</pkgmetadata>
