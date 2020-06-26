@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1 eutils
 
@@ -30,15 +30,12 @@ DEPEND="${RDEPEND}
 BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}]
 		dev-python/factory_boy[${PYTHON_USEDEP}]
 		dev-python/falcon[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		dev-python/webob[${PYTHON_USEDEP}]
 		www-servers/tornado[${PYTHON_USEDEP}] )"
 
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
 
 pkg_postinst() {
 	optfeature "integration with django" dev-python/django
