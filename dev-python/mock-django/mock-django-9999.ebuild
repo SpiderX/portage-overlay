@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/dcramer/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -20,7 +20,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests nose
 
 python_test() {
 	"${PYTHON}" runtests.py -v || die "tests failed with ${EPYTHON}"
