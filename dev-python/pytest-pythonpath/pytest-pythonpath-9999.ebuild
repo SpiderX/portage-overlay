@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( pypy3 python3_{6..7} )
+PYTHON_COMPAT=( pypy3 python3_{6..8} )
 EGIT_REPO_URI="https://github.com/bigsassy/pytest-pythonpath.git"
 
 inherit distutils-r1 git-r3
@@ -17,6 +17,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
+
+distutils_enable_tests pytest
