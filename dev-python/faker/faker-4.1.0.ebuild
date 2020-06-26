@@ -20,16 +20,18 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/text-unidecode[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]"
+	dev-python/text-unidecode[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/pytest-runner[${PYTHON_USEDEP}]
-	test? ( dev-python/freezegun[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/random2[${PYTHON_USEDEP}]
 		dev-python/ukpostcodeparser[${PYTHON_USEDEP}]
 		dev-python/validators[${PYTHON_USEDEP}] )"
 
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
+distutils_enable_tests pytest
+
+python_prepare_all() {
+	rm -r tests/sphinx || die "rm tests failed"
+
+	distutils-r1_python_prepare_all
 }
