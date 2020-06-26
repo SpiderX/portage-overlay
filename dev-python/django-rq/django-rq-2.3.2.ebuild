@@ -4,21 +4,20 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/rq/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="An app that provides django integration for RQ (Redis Queue)"
 HOMEPAGE="https://github.com/rq/django-rq"
-SRC_URI=""
+SRC_URI="https://github.com/rq/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test"
 
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/django-2[${PYTHON_USEDEP}]
 	>=dev-python/redis-py-3[${PYTHON_USEDEP}]
 	>=dev-python/rq-1.2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
