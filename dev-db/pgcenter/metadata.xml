@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A command-line admin tool for observing and troubleshooting Postgres.
+	pgCenter's main goal is to help Postgres DBA manage statistics that
+	theу have in their databases and see all the necessary data in convenient
+	format based on builtin stats views and functions.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">lesovsky/pgcenter</remote-id>
