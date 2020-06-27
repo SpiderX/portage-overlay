@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Simple and Easy App for Messaging on VK
+	Simple and Convenient Messaging App to VK social network
+	for convenient VK messaging, communication in communities and
+	sending photos and videos
 	</longdescription>
 	<upstream>
 		<bugs-to>https://vk.com/bugtracker</bugs-to>

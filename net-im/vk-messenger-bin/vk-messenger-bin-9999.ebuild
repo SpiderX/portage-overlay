@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit desktop gnome2-utils multilib-build pax-utils xdg-utils
+inherit desktop multilib-build pax-utils xdg-utils
 
 QA_PREBUILT="opt/vk-messenger/vk
 	opt/vk-messenger/libffmpeg.so
@@ -78,10 +78,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
