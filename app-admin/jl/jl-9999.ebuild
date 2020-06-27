@@ -3,8 +3,7 @@
 
 EAPI=7
 
-EGO_PN="github.com/koenbollen/${PN}"
-EGIT_REPO_URI="https://${EGO_PN}.git"
+EGIT_REPO_URI="https://github.com/koenbollen/${PN}.git"
 
 inherit git-r3 go-module
 
@@ -19,12 +18,10 @@ IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
-	mkdir "${S}"/vendor || die "mkdir failed"
 	go-module_live_vendor
 }
 
 src_compile() {
-	export -n GOCACHE XDG_CACHE_HOME
 	go build || die "build failed"
 }
 

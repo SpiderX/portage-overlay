@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A development tool for working with structured JSON logging
+	Modern applications quite often use structured logging
+	instead of simple log messages. jl will help development
+	by translating structured message into old-fashioned log lines.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">koenbollen/jl</remote-id>
