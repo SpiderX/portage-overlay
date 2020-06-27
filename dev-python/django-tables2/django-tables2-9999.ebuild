@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..7} )
 EGIT_REPO_URI="https://github.com/jieter/${PN}.git"
 
 inherit distutils-r1 eutils git-r3
@@ -23,18 +23,12 @@ BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-filter[${PYTHON_USEDEP}]
 		dev-python/fudge[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/tablib[${PYTHON_USEDEP}]
-		dev-python/psycopg:2[${PYTHON_USEDEP}] )"
-
-python_prepare_all() {
-	# Disable failing test
-	sed -i  -e '/UnicodeExportViewTest/i@skipIf(TableExport is not None,"")' \
-		-e '/test_should_support_custom_dataset_kwargs/i\    @skipIf(TableExport is not None,"")' \
-		tests/test_export.py || die "sed failed for test_export.py"
-
-	distutils-r1_python_prepare_all
-}
+		dev-python/psycopg:2[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/tablib[${PYTHON_USEDEP}] )"
 
 python_test() {
 	PYTHONPATH=. django-admin.py test --settings=tests.app.settings \
