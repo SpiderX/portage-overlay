@@ -3,8 +3,7 @@
 
 EAPI=7
 
-EGO_PN="github.com/augmentable-dev/${PN}"
-EGIT_REPO_URI="https://${EGO_PN}.git"
+EGIT_REPO_URI="https://github.com/augmentable-dev/${PN}.git"
 
 inherit git-r3 go-module
 
@@ -19,17 +18,15 @@ IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
-	mkdir "${S}"/vendor || die "mkdir failed"
 	go-module_live_vendor
 }
 
 src_compile() {
-	export -n GOCACHE XDG_CACHE_HOME
-	go build -o tickgit ./cmd/main.go || die "build failed"
+	go build -o tickgit ./cmd/tickgit/tickgit.go || die "build failed"
 }
 
 src_test() {
-	go test -work || die "test failed"
+	go test -work ./... || die "test failed"
 }
 
 src_install() {
