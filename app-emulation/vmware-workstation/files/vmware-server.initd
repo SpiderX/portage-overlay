@@ -35,7 +35,6 @@ start() {
 
 stop() {
 	ebegin "Shutdown VMs in the AutoStart Sequence"
-	local HOHO_ADMIN
 	HOHO_ADMIN="$(/opt/vmware/bin/vmware-wssc-adminTool "/etc/vmware/hostd/authorization.xml" 2>/dev/null)"
 
 	if [ "x" != "x${HOHO_ADMIN}" ]; then
