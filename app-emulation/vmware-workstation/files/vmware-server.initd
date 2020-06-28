@@ -11,7 +11,7 @@ checkconfig() {
 	checkpath -d /var/run/vmware
 
 	# Check if certificates exist.  If not, we need to generate them, ala sshd.
-	if [ ! -e /etc/vmware/ssl/rui.key -o ! -e /etc/vmware/ssl/rui.crt ]; then
+	if [ ! -e /etc/vmware/ssl/rui.key ] || [ ! -e /etc/vmware/ssl/rui.crt ]; then
 		checkpath -d -m 0600 /etc/vmware/ssl
 		openssl req -x509 -days 365 -newkey rsa:2048 -keyout /etc/vmware/ssl/rui.key -out /etc/vmware/ssl/rui.crt -config /etc/vmware/ssl/hostd.ssl.config
 		checkpath -f -m 0600 /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.crt
@@ -35,7 +35,8 @@ start() {
 
 stop() {
 	ebegin "Shutdown VMs in the AutoStart Sequence"
-	local HOHO_ADMIN="$(/opt/vmware/bin/vmware-wssc-adminTool "/etc/vmware/hostd/authorization.xml" 2>/dev/null)"
+	local HOHO_ADMIN
+	HOHO_ADMIN="$(/opt/vmware/bin/vmware-wssc-adminTool "/etc/vmware/hostd/authorization.xml" 2>/dev/null)"
 
 	if [ "x" != "x${HOHO_ADMIN}" ]; then
 		/opt/vmware/bin/vmware-vim-cmd -U "${HOHO_ADMIN}" hostsvc/autostartmanager/autostop
