@@ -48,7 +48,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" KVER="${KV_FULL}" all
+	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" KVER="${KV_FULL}" \
+		KDIR="${KV_OUT_DIR}" all
 }
 
 src_install() {

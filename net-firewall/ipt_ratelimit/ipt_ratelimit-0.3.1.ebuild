@@ -34,9 +34,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Fix Makefile (remove last $), replace make and gcc, add flags
+	# Replace make and gcc, add flags
 	sed -i \
-		-e '/gcc -O2 -Wall -Wunused/s/.$//' \
 		-e 's:make -C:$(MAKE) -C:g' \
 		-e 's:gcc -O2:$(CC) $(CFLAGS) $(LDFLAGS):' \
 		-e 's:gcc:$(CC) $(CFLAGS) $(LDFLAGS):' \
@@ -49,7 +48,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" KVER="${KV_FULL}" all
+	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" KVER="${KV_FULL}" \
+		KDIR="${KV_OUT_DIR}" all
 }
 
 src_install() {
