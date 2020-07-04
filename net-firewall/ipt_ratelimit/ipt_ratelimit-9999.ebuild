@@ -1,13 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-MY_PN="${PN/_/-}"
-MY_P="${MY_PN}-${PV}"
 EGIT_REPO_URI="https://github.com/aabc/${MY_PN}.git"
 
 inherit git-r3 linux-info linux-mod toolchain-funcs
+
+MY_PN="${PN/_/-}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Ratelimit iptables module"
 HOMEPAGE="https://github.com/aabc/ipt-ratelimit"
@@ -19,8 +20,7 @@ KEYWORDS=""
 IUSE="debug"
 
 RDEPEND="net-firewall/iptables:0="
-DEPEND="${RDEPEND}
-	virtual/linux-sources
+BDEPEND="virtual/linux-sources
 	virtual/pkgconfig"
 
 DOCS=( NEWS README )

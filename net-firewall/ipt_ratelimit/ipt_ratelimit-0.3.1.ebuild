@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="${PN/_/-}"
 MY_P="${MY_PN}-${PV}"
@@ -18,8 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="net-firewall/iptables:0="
-DEPEND="${RDEPEND}
-	virtual/linux-sources
+BDEPEND="virtual/linux-sources
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
