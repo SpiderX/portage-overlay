@@ -3,25 +3,22 @@
 
 EAPI=7
 
-MY_PN="${PN/_/-}"
-MY_P="${MY_PN}-${PV}"
+EGIT_REPO_URI="https://github.com/aabc/${PN}.git"
 
-inherit linux-info linux-mod toolchain-funcs
+inherit git-r3 linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Ratelimit iptables module"
 HOMEPAGE="https://github.com/aabc/ipt-ratelimit"
-SRC_URI="https://github.com/aabc/ipt-ratelimit/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="debug"
 
 RDEPEND="net-firewall/iptables:0="
 BDEPEND="virtual/linux-sources
 	virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( NEWS README )
 
