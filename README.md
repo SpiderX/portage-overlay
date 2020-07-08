@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 443](https://img.shields.io/badge/ebuild-443-orange.svg)](https://img.shields.io/badge/ebuild-443-orange.svg)
+[![Number of ebuilds: 444](https://img.shields.io/badge/ebuild-444-orange.svg)](https://img.shields.io/badge/ebuild-444-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -51,6 +51,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[awsometag](https://github.com/mhausenblas/awsometag) | Simple command-line snippet manager
 * app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
 * app-admin/[aws-vault](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
+* app-admin/[cli53](https://github.com/barnybug/cli53) | Command line tool for Amazon Route 53
 * app-admin/[container-service-extension](https://github.com/vmware/container-service-extension) | Container Service Extension for vCloud Director
 * app-admin/[docker-pretty-ps](https://github.com/politeauthority/docker-pretty-ps) | docker ps in colored and long output
 * app-admin/[doctl](https://github.com/digitalocean/doctl) | A command line tool for DigitalOcean services
