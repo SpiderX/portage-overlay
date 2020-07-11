@@ -5,7 +5,7 @@ EAPI=7
 
 EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="Utilities library used by Belledonne Communications softwares"
 HOMEPAGE="https://github.com/BelledonneCommunications/bctoolbox"
@@ -31,5 +31,5 @@ src_configure() {
 		-DENABLE_TESTS="$(usex test ON OFF)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
