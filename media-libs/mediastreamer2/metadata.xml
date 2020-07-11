@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Powerful and lightweight streaming engine for voice/video telephony
+	applications. This media processing and streaming toolkit is
+	responsible for receiving and sending all multimedia streams in
+	Linphone, including voice/video capture, encoding and decoding,
+	and rendering.
+	</longdescription>
+	<use>
+		<flag name="bv16">Support for BroadVoice 16 kbs codec via <pkg>media-libs/bv16-floatingpoint</pkg></flag>
+		<flag name="g726">Support for SpanDSP codec via <pkg>media-libs/spandsp</pkg></flag>
+		<flag name="g729">Support for ITU G729 Annex A/B speech codec via <pkg>media-libs/bcg729</pkg></flag>
+		<flag name="pcap">Support for network packet capture via <pkg>net-libs/libpcap</pkg></flag>
+		<flag name="qrcode">Support for QR code via <pkg>media-libs/zxing-cpp</pkg></flag>
+		<flag name="srtp">Support for Secure Real-time Transport Protocol (SRTP) via <pkg>net-libs/libsrtp</pkg></flag>
+		<flag name="resample">Enable resampling capability</flag>
+		<flag name="tools">Build tools</flag>
+		<flag name="vpx">Support for VPX codec via <pkg>media-libs/libvpx</pkg></flag>
+		<flag name="zrtp">Support for Media Path Key Agreement for Unicast Secure RTP via <pkg>net-libs/bzrtp</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">BelledonneCommunications/mediastreamer2</remote-id>
+	</upstream>
+</pkgmetadata>
