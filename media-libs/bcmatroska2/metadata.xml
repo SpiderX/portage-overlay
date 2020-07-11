@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This library provides support for Matroska files (.mkv and .mka),
+	a media container format for Belledonne Communications.
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">BC/public/bcmatroska2</remote-id>
+	</upstream>
+</pkgmetadata>
