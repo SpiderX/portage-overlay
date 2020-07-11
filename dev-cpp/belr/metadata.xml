@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Belr is Belledonne Communications' language recognition library,
+	written in C++11. It parses text inputs formatted according to
+	a language defined by an ABNF grammar, such as the protocols
+	standardized at IETF.
+	</longdescription>
+	<use>
+		<flag name="tools">Build tools</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">BelledonneCommunications/belr</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 451](https://img.shields.io/badge/ebuild-451-orange.svg)](https://img.shields.io/badge/ebuild-451-orange.svg)
+[![Number of ebuilds: 452](https://img.shields.io/badge/ebuild-452-orange.svg)](https://img.shields.io/badge/ebuild-452-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -103,6 +103,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-shells/[fzf](https://github.com/junegunn/fzf) | A command-line fuzzy finder
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/peco.svg)](https://repology.org/metapackage/peco) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 * app-text/[keening](https://github.com/vehk/keening) | A simple command line pastebin designed to be used together with ssh
+* dev-cpp/[belr](https://github.com/BelledonneCommunications/belr) | Language recognition library by Belledonne Communications
 * dev-cpp/[libxsd-frontend](https://www.codesynthesis.com/projects/libxsd-frontend) | A compiler frontend for the W3C XML Schema definition language
 * dev-cpp/[libcutl](https://www.codesynthesis.com/projects/libcutl) | A collection of C++ libraries (successor of libcult)
 * dev-cpp/[xsd](https://www.codesynthesis.com/products/xsd) | A cross-platform W3C XML Schema to C++ data binding compiler
