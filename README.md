@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 452](https://img.shields.io/badge/ebuild-452-orange.svg)](https://img.shields.io/badge/ebuild-452-orange.svg)
+[![Number of ebuilds: 453](https://img.shields.io/badge/ebuild-453-orange.svg)](https://img.shields.io/badge/ebuild-453-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -117,12 +117,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-db/[pgtune](https://github.com/andreif/pgtune) | A high-performance PostgreSQL tuning script
 * dev-db/[pipelinedb](https://www.pipelinedb.com/) | High-performance time-series aggregation for PostgreSQL
 * dev-db/[postgresql_anonymizer](https://gitlab.com/dalibo/postgresql_anonymizer) | Anonymization & Data Masking for PostgreSQL
-* dev-libs/[libcommuni](http://communi.github.io/) | A cross-platform IRC framework written with Qt
-* dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
-* dev-libs/[libdigidocpp](https://github.com/open-eid/libdigidocpp) | Library for handling digitally signed documents
-* [![Gentoo Bug](https://img.shields.io/badge/Bug-482946-red.svg)](https://bugs.gentoo.org/482946) dev-libs/[loki](http://loki-lib.sourceforge.net/) | C++ library of common design patterns and idioms
-* dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
-* dev-go/[keyring](https://github.com/99designs/keyring) | Library with uniform interface across a range of secure credential stores
 * dev-haskell/[adjunctions](https://github.com/ekmett/adjunctions) | Adjunctions and representable functors
 * dev-haskell/[aeson](https://github.com/bos/aeson) | Fast JSON parsing and encoding
 * dev-haskell/[ansi-terminal](https://github.com/feuerbach/ansi-terminal) | Simple ANSI terminal support, with Windows compatibility
@@ -211,6 +205,12 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[wl-pprint-annotated](https://github.com/minad/wl-pprint-annotated) | Pretty printer with annotations
 * dev-haskell/[x509](https://github.com/vincenthz/hs-certificate) | X509 reader and writer
 * dev-haskell/[x509-store](https://github.com/vincenthz/hs-certificate) | X.509 collection accessing and storing methods
+* dev-libs/[belcard](https://github.com/BelledonneCommunications/belcard) | VCard standard format manipulation library
+* dev-libs/[libcommuni](http://communi.github.io/) | A cross-platform IRC framework written with Qt
+* dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
+* dev-libs/[libdigidocpp](https://github.com/open-eid/libdigidocpp) | Library for handling digitally signed documents
+* [![Gentoo Bug](https://img.shields.io/badge/Bug-482946-red.svg)](https://bugs.gentoo.org/482946) dev-libs/[loki](http://loki-lib.sourceforge.net/) | C++ library of common design patterns and idioms
+* dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 * dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 * dev-ml/[camlimages](http://gallium.inria.fr/camlimages) | An image manipulation library for ocaml
 * dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | Camomile is a comprehensive Unicode library for ocaml
@@ -285,6 +285,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-crispy-forms](https://github.com/django-crispy-forms/django-crispy-forms) | DRY Django forms
 * dev-python/[django-debug-toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar) | A configurable set of panels that display debug information
 * dev-python/[django-environ](https://github.com/joke2k/django-environ) | An environment variables to configure Django
+* dev-python/[django-fake-model](https://github.com/erm0l0v/django-fake-model) | A library for creating fake models in the unit tests
 * dev-python/[django-filter](https://github.com/carltongibson/django-filter) | Django application for filtering querysets
 * dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | An implementation of per object permissions for Django
 * dev-python/[django-jsonfield](https://github.com/dmkoch/django-jsonfield) | A Django field to store validated JSON in your model
@@ -506,4 +507,3 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
-* dev-python/[django-fake-model](https://github.com/erm0l0v/django-fake-model) | A library for creating fake models in the unit tests
