@@ -206,7 +206,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[wl-pprint-annotated](https://github.com/minad/wl-pprint-annotated) | Pretty printer with annotations
 * dev-haskell/[x509](https://github.com/vincenthz/hs-certificate) | X509 reader and writer
 * dev-haskell/[x509-store](https://github.com/vincenthz/hs-certificate) | X.509 collection accessing and storing methods
-* dev-libs/[belcard](https://github.com/BelledonneCommunications/belcard) | VCard standard format manipulation library
+* dev-libs/[belcard](https://gitlab.linphone.org/BC/public/belcard) | VCard standard format manipulation library
 * dev-libs/[belle-sip](https://github.com/BelledonneCommunications/belle-sip) | SIP (RFC3261) implementation
 * dev-libs/[libcommuni](http://communi.github.io/) | A cross-platform IRC framework written with Qt
 * dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library

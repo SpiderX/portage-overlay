@@ -17,7 +17,6 @@
 		<flag name="tools">Build tools</flag>
 	</use>
 	<upstream>
-		<remote-id type="gitlab">BC/public/belcard</remote-id>
 		<remote-id type="github">BelledonneCommunications/belcard</remote-id>
 	</upstream>
 </pkgmetadata>

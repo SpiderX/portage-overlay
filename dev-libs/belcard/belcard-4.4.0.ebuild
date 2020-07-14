@@ -6,14 +6,14 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="VCard standard format manipulation library"
-HOMEPAGE="https://github.com/BelledonneCommunications/belcard"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/belcard"
 SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="static-libs test tools"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/belr
 	net-libs/bctoolbox[test?]"

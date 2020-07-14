@@ -8,14 +8,14 @@ EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
 inherit cmake git-r3
 
 DESCRIPTION="VCard standard format manipulation library"
-HOMEPAGE="https://github.com/BelledonneCommunications/belcard"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/belcard"
 SRC_URI=""
 
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
 IUSE="static-libs test tools"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/belr
 	net-libs/bctoolbox[test?]"
