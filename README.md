@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 456](https://img.shields.io/badge/ebuild-456-orange.svg)](https://img.shields.io/badge/ebuild-456-orange.svg)
+[![Number of ebuilds: 457](https://img.shields.io/badge/ebuild-457-orange.svg)](https://img.shields.io/badge/ebuild-457-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -211,6 +211,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-libs/[libcommuni](http://communi.github.io/) | A cross-platform IRC framework written with Qt
 * dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
 * dev-libs/[libdigidocpp](https://github.com/open-eid/libdigidocpp) | Library for handling digitally signed documents
+* dev-libs/[lime](https://gitlab.linphone.org/BC/public/lime) | C++ library implementing Open Whisper System Signal protocol
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-482946-red.svg)](https://bugs.gentoo.org/482946) dev-libs/[loki](http://loki-lib.sourceforge.net/) | C++ library of common design patterns and idioms
 * dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 * dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
