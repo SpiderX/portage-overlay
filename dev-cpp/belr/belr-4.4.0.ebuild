@@ -6,17 +6,18 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Language recognition library by Belledonne Communications"
-HOMEPAGE="https://github.com/BelledonneCommunications/belr"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/belr"
 SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="static-libs test tools"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="net-libs/bctoolbox[test?]"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/libudev"
 
 src_configure() {
 	local mycmakeargs=(
