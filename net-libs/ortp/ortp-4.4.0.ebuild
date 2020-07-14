@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
-HOMEPAGE="https://github.com/BelledonneCommunications/ortp"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/ortp"
 SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
