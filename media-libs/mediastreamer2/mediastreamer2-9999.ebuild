@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
 inherit cmake git-r3
 
 DESCRIPTION="Mediastreaming library for telephony application"
-HOMEPAGE="https://github.com/BelledonneCommunications/mediastreamer2"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/mediastreamer2"
 SRC_URI=""
 
 LICENSE="GPL-3"
@@ -21,7 +21,7 @@ REQUIRED_USE="zrtp? ( srtp )
 	|| ( alsa portaudio pulseaudio )
 	|| ( ffmpeg opengl v4l )"
 
-RDEPEND="net-libs/bctoolbox
+RDEPEND="net-libs/bctoolbox[test?]
 	net-libs/ortp
 	alsa? ( media-libs/alsa-lib )
 	bv16? ( media-libs/bv16-floatingpoint )

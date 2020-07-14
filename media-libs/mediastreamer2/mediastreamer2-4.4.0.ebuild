@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Mediastreaming library for telephony application"
-HOMEPAGE="https://github.com/BelledonneCommunications/mediastreamer2"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/mediastreamer2"
 SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -19,7 +19,7 @@ REQUIRED_USE="zrtp? ( srtp )
 	|| ( alsa portaudio pulseaudio )
 	|| ( ffmpeg opengl v4l )"
 
-RDEPEND="net-libs/bctoolbox
+RDEPEND="net-libs/bctoolbox[test?]
 	net-libs/ortp
 	alsa? ( media-libs/alsa-lib )
 	bv16? ( media-libs/bv16-floatingpoint )
