@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
 inherit cmake git-r3
 
 DESCRIPTION="Media Path Key Agreement for Unicast Secure RTP"
-HOMEPAGE="https://github.com/BelledonneCommunications/bzrtp"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/bzrtp"
 SRC_URI=""
 
 LICENSE="GPL-3"

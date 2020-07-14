@@ -457,7 +457,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-im/[vk-messenger-bin](https://vk.com/messenger) | Simple and Easy App for Messaging on VK
 * net-im/[zoom-bin](https://zoom.us) | Video conferencing and web conferencing service
 * net-libs/[bctoolbox](https://gitlab.linphone.org/BC/public/bctoolbox) | Utilities library used by Belledonne Communications softwares
-* net-libs/[bzrtp](https://github.com/BelledonneCommunications/bzrtp) | Media Path Key Agreement for Unicast Secure RTP
+* net-libs/[bzrtp](https://gitlab.linphone.org/BC/public/bzrtp) | Media Path Key Agreement for Unicast Secure RTP
 * net-libs/[ortp](https://github.com/BelledonneCommunications/ortp) | Open Real-time Transport Protocol (RTP, RFC3550) stack
 * net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/dhcdrop.html) | Effectively suppresses illegal DHCP servers on the LAN

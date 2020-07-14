@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Media Path Key Agreement for Unicast Secure RTP"
-HOMEPAGE="https://github.com/BelledonneCommunications/bzrtp"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/bzrtp"
 SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
