@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake xdg
 
 DESCRIPTION="A free VoIP and video softphone based on the SIP protocol"
-HOMEPAGE="https://github.com/BelledonneCommunications/liblinphone-desktop"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/linphone-desktop"
 SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

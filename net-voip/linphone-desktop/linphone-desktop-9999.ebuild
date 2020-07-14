@@ -9,7 +9,7 @@ EGIT_SUBMODULES=()
 inherit cmake git-r3 xdg
 
 DESCRIPTION="A free VoIP and video softphone based on the SIP protocol"
-HOMEPAGE="https://github.com/BelledonneCommunications/liblinphone-desktop"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/linphone-desktop"
 SRC_URI=""
 
 LICENSE="GPL-3"

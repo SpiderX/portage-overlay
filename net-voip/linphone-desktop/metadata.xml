@@ -15,7 +15,6 @@
 	(iOS, Android, GNU/Linux, macOS, Windows).
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">BC/public/linphone-desktop</remote-id>
 		<remote-id type="github">BelledonneCommunications/linphone-deskop</remote-id>
 	</upstream>
 </pkgmetadata>
