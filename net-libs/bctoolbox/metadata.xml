@@ -14,7 +14,6 @@
 	belle-sip, mediastreamer2 and liblinphone.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">BC/public/bctoolbox</remote-id>
 		<remote-id type="github">BelledonneCommunications/bctoolbox</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
 inherit cmake git-r3
 
 DESCRIPTION="Utilities library used by Belledonne Communications softwares"
-HOMEPAGE="https://github.com/BelledonneCommunications/bctoolbox"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/bctoolbox"
 SRC_URI=""
 
 LICENSE="GPL-3"

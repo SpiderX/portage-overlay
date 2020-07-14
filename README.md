@@ -456,7 +456,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-im/[viber-bin](http://www.viber.com) | Free text and calls
 * net-im/[vk-messenger-bin](https://vk.com/messenger) | Simple and Easy App for Messaging on VK
 * net-im/[zoom-bin](https://zoom.us) | Video conferencing and web conferencing service
-* net-libs/[bctoolbox](https://github.com/BelledonneCommunications/bctoolbox) | Utilities library used by Belledonne Communications softwares
+* net-libs/[bctoolbox](https://gitlab.linphone.org/BC/public/bctoolbox) | Utilities library used by Belledonne Communications softwares
 * net-libs/[bzrtp](https://github.com/BelledonneCommunications/bzrtp) | Media Path Key Agreement for Unicast Secure RTP
 * net-libs/[ortp](https://github.com/BelledonneCommunications/ortp) | Open Real-time Transport Protocol (RTP, RFC3550) stack
 * net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
