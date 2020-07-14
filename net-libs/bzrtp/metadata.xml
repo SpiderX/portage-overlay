@@ -15,6 +15,7 @@
 	many platforms including both ARM processor and x86.
 	</longdescription>
 	<upstream>
+		<remote-id type="gitlab">BC/public/bzrtp</remote-id>
 		<remote-id type="github">BelledonneCommunications/bzrtp</remote-id>
 	</upstream>
 </pkgmetadata>

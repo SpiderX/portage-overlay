@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="sqlite static-libs test"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="net-libs/bctoolbox[test?]
 	sqlite? ( dev-db/sqlite:3
