@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		-DSOCI_CXX11=ON
 		-DSOCI_STATIC="$(usex static-libs)"
 		-DSOCI_TESTS="$(usex test)"
 	)
