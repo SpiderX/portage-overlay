@@ -20,13 +20,20 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	test? ( dev-util/bcunit )"
 
+src_prepare() {
+	sed -i 's/CU_automated_enable_partial_junit/CU_automated_enable_junit_xml/' \
+		src/tester.c || die "sed failed for src/tester.c"
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_POLARSSL=OFF
-		-DENABLE_MBEDTLS="$(usex ssl ON OFF)"
-		-DENABLE_STATIC="$(usex static-libs ON OFF)"
-		-DENABLE_TESTS_COMPONENT="$(usex test ON OFF)"
-		-DENABLE_TESTS="$(usex test ON OFF)"
+		-DENABLE_MBEDTLS="$(usex ssl)"
+		-DENABLE_STATIC="$(usex static-libs)"
+		-DENABLE_TESTS_COMPONENT="$(usex test)"
+		-DENABLE_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure
