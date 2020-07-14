@@ -13,7 +13,4 @@
 	This library provides support for Matroska files (.mkv and .mka),
 	a media container format for Belledonne Communications.
 	</longdescription>
-	<upstream>
-		<remote-id type="gitlab">BC/public/bcmatroska2</remote-id>
-	</upstream>
 </pkgmetadata>
