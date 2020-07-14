@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A high-level SIP library integrating all calling and instant messaging
+	features into an unified easy-to-use API. It is the cross-platform VoIP
+	library on which the Linphone application is based on, and that anyone
+	can use to add audio and video calls or instant messaging capabilities
+	to an application.
+	</longdescription>
+	<use>
+		<flag name="tools">Build tools</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">BelledonneCommunications/liblinphone</remote-id>
+	</upstream>
+</pkgmetadata>
