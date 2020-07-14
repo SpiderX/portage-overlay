@@ -15,7 +15,4 @@
 	This is BroadVoice 16 kb/s version called BroadVoice16 (BV16) for
 	narrowband telephone-bandwidth speech.
 	</longdescription>
-	<upstream>
-		<remote-id type="gitlab">BC/public/external/bv16-floatingpoint</remote-id>
-	</upstream>
 </pkgmetadata>
