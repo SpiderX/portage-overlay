@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	An open source SIP phone for voice/video calls and instant messaging,
+	and is available for mobile and desktop environments
+	(iOS, Android, GNU/Linux, macOS, Windows).
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">BC/public/linphone-desktop</remote-id>
+		<remote-id type="github">BelledonneCommunications/linphone-deskop</remote-id>
+	</upstream>
+</pkgmetadata>
