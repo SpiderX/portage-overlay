@@ -17,8 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="ssl? ( net-libs/mbedtls )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	test? ( dev-util/bcunit )"
+BDEPEND="test? ( dev-util/bcunit )"
 
 src_prepare() {
 	sed -i 's/CU_automated_enable_partial_junit/CU_automated_enable_junit_xml/' \
