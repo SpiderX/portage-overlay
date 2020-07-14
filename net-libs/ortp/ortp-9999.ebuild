@@ -17,14 +17,15 @@ SLOT="0"
 IUSE="debug doc ntp-timestamp minimal static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="net-libs/bctoolbox"
+RDEPEND="net-libs/bctoolbox[test?]"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	# Fix path for datadir
-	sed -i "/DESTINATION \"${CMAKE_INSTALL_DATADIR}/s|\${ORTP_DOC_VERSION}|${PV}|" \
+	sed -i  -e "/ORTP_DOC_VERSION/s/MINOR}/MINOR}.\${ORTP_MICRO_VERSION}/" \
+		-e "/ORTP_DOC_VERSION/s/ORTP_VERSION_MAJOR/ORTP_MAJOR_VERSION/" \
+		-e "/ORTP_DOC_VERSION/s/ORTP_VERSION_MINOR/ORTP_MINOR_VERSION/" \
 		CMakeLists.txt || die "sed failed for CMakeLists.txt"
 
 	cmake_src_prepare
@@ -36,8 +37,8 @@ src_configure() {
 		-DENABLE_DOC="$(usex doc)"
 		-DENABLE_NTP_TIMESTAMP="$(usex ntp-timestamp)"
 		-DENABLE_PERF="$(usex minimal)"
-		-DENABLE_STATIC="$(usex static-libs ON OFF)"
-		-DENABLE_TESTS="$(usex test ON OFF)"
+		-DENABLE_STATIC="$(usex static-libs)"
+		-DENABLE_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure

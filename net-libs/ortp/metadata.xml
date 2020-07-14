@@ -17,6 +17,7 @@
 		<flag name="ntp-timestamp">Turn on NTP timestamping on received packet</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">BC/public/ortp</remote-id>
 		<remote-id type="github">BelledonneCommunications/ortp</remote-id>
 	</upstream>
 </pkgmetadata>
