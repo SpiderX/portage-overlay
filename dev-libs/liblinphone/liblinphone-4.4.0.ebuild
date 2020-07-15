@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/belr
-	dev-cpp/xsd
+	~dev-cpp/xsd-4.0.0
 	dev-db/sqlite:3
 	dev-db/soci
 	dev-libs/belcard
