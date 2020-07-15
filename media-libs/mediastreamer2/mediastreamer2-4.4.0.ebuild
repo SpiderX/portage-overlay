@@ -43,7 +43,7 @@ RDEPEND="net-libs/bctoolbox[test?]
 	theora? ( media-libs/libtheora )
 	v4l? ( media-libs/libv4l )
 	vpx? ( media-libs/libvpx:= )
-	zrtp? ( net-libs/bzrtp )"
+	zrtp? ( net-libs/bzrtp[sqlite] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
