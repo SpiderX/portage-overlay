@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A library that adds ZRTP support to the GNU ccRTP stack
+	and serves as library for other RTP stacks (PJSIP, GStreamer).
+	The GNU ZRTP implementation is compliant to RFC 6189 and
+	adds some more algorithms
+	</longdescription>
+	<use>
+		<flag name="axo">Build Axolotl support</flag>
+		<flag name="ccrtp">Build GNU ccRTP client</flag>
+		<flag name="core">Build core client</flag>
+		<flag name="empty">Build empty (no cache) backend</flag>
+		<flag name="sdes">Build with SDES</flag>
+		<flag name="sqlcipher">Build SQLCipher backed for cache</flag>
+		<flag name="tivi">Build tivi client</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">wernerd/ZRTPCPP</remote-id>
+	</upstream>
+</pkgmetadata>

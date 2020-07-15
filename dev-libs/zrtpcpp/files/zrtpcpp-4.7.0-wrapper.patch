@@ -1,0 +1,84 @@
+From 114e210c2b27decfbddd154f8a5bbc91c4a93c49 Mon Sep 17 00:00:00 2001
+From: werner <werner.dittmann@t-online.de>
+Date: Thu, 21 May 2020 19:41:49 +0200
+Subject: [PATCH] Fix a compile issue with C-wrapper - change bool to int32_t
+
+---
+ cryptcommon/ZrtpRandom.cpp | 2 +-
+ cryptcommon/ZrtpRandom.h   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cryptcommon/ZrtpRandom.cpp b/cryptcommon/ZrtpRandom.cpp
+index 64db1d2..9c4d3f7 100644
+--- a/cryptcommon/ZrtpRandom.cpp
++++ b/cryptcommon/ZrtpRandom.cpp
+@@ -161,7 +161,7 @@ size_t ZrtpRandom::getSystemSeed(uint8_t *seed, size_t length)
+     return num;
+ }
+ 
+-int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, bool isLocked) {
++int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked) {
+     return ZrtpRandom::addEntropy(buffer, length, isLocked);
+ }
+ 
+diff --git a/cryptcommon/ZrtpRandom.h b/cryptcommon/ZrtpRandom.h
+index ee8640a..c92e270 100644
+--- a/cryptcommon/ZrtpRandom.h
++++ b/cryptcommon/ZrtpRandom.h
+@@ -42,14 +42,14 @@ class ZrtpRandom {
+      * entropy.
+      *
+      * @param buffer some entropy data to add
+-     *
+      * @param length length of entropy data in bytes
++     * @param isLocked Set to true when randomLock mutex is already set.
+      *
+      * @return on success: number of entropy bytes added, on failure: -1. Number of
+      *         bytes added may be bigger then @c length because of added system
+      *         entropy.
+      */
+-    static int addEntropy(const uint8_t *buffer, uint32_t length, bool isLocked = false);
++    static int addEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked = false);
+ 
+     /**
+      * @brief Get some random data.
+From 6b3cd8e6783642292bad0c21e3e5e5ce45ff3e03 Mon Sep 17 00:00:00 2001
+From: werner <Werner.Dittmann@t-online.de>
+Date: Thu, 28 May 2020 19:39:48 +0200
+Subject: [PATCH] Commit to fix wrong parameter declaration in addEntropy
+ function
+
+---
+ cryptcommon/ZrtpRandom.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/cryptcommon/ZrtpRandom.h b/cryptcommon/ZrtpRandom.h
+index c92e270..0b9b63d 100644
+--- a/cryptcommon/ZrtpRandom.h
++++ b/cryptcommon/ZrtpRandom.h
+@@ -49,15 +49,13 @@ class ZrtpRandom {
+      *         bytes added may be bigger then @c length because of added system
+      *         entropy.
+      */
+-    static int addEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked = false);
++    static int addEntropy(const uint8_t *buffer, uint32_t length, bool isLocked = false);
+ 
+     /**
+      * @brief Get some random data.
+      *
+      * @param buffer that will contain the random data
+-     *
+      * @param length how many bytes of random data to generate
+-     *
+      * @return the number of generated random data bytes
+      */
+     static int getRandomData(uint8_t *buffer, uint32_t length);
+@@ -74,7 +72,7 @@ extern "C"
+ {
+ #endif
+ 
+-int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, bool isLocked);
++int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked);
+ 
+ int zrtp_getRandomData(uint8_t *buffer, uint32_t length);
+ 
