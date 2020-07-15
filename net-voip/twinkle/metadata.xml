@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A software phone for voice over IP communications using the SIP protocol.
+	You can use it for direct IP phone to IP phone communication, or in
+	a network using a SIP proxy to route your calls. Some of the features
+	offered are call waiting, call hold, 3-way conference call, call transfer,
+	and call reject. It supports STUN or a statically configured
+	public IP address for NAT traversal. When using STUN, it will send
+	keep-alive packets to keep NAT bindings alive. It supports ZRTP for
+	secure voice communication.
+	</longdescription>
+	<use>
+		<flag name="g729">Support for ITU G729 Annex A/B speech codec via <pkg>media-libs/bcg729</pkg></flag>
+		<flag name="ilbc">Support for iLBC de/encoding via <pkg>dev-libs/ilbc-rfc3951</pkg></flag>
+		<flag name="zrtp">Support for Media Path Key Agreement for Unicast Secure RTP via <pkg>net-libs/bzrtp</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">LubosD/twinkle</remote-id>
+	</upstream>
+</pkgmetadata>
