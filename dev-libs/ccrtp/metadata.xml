@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A C++ library based on GNU Common C++, which provides a high performance,
+	flexible and extensible standards-compliant RTP stack with
+	full RTCP support. The design and implementation of ccRTP make it suitable
+	for high capacity servers and gateways as well as personal client applications.
+	</longdescription>
+</pkgmetadata>
