@@ -15,6 +15,7 @@ SLOT="0"
 IUSE="alsa g729 gsm ilbc speex zrtp"
 
 RDEPEND="dev-cpp/commoncpp2
+	dev-libs/ccrtp
 	dev-libs/libxml2:2
 	dev-libs/ucommon
 	dev-qt/qtcore:5
