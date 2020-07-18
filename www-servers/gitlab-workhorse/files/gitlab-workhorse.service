@@ -3,7 +3,7 @@ Description=Gitlab Workhorse handles slow HTTP requests for Gitlab.
 
 [Service]
 Type=simple
-User=workhorse
+User=gitlab-workhorse
 Group=gitlab
 WorkingDirectory=/var/lib/git/gitlab-workhorse
 SyslogIdentifier=gitlab-workhorse

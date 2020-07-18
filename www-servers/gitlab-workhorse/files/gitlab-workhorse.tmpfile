@@ -1,1 +1,1 @@
-d	/run/gitlab-workhorse	0755	workhorse	gitlab
+d	/run/gitlab-workhorse	0755	gitlab-workhorse	gitlab
