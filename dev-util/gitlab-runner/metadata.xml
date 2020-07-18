@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A Gitlab CI runner that executes jobs and send the results back to GitLab
+	GitLab Runner is the open source project that is used to run your
+	CI/CD jobs and send the results back to GitLab
 	</longdescription>
 	<use>
 		<flag name="docker">Add support for docker executors</flag>

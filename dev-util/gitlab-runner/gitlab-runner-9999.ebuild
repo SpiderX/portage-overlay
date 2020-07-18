@@ -1,13 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-MY_PV="11.9.1"
-EGO_PN="gitlab.com/gitlab-org/gitlab-runner"
-BASE_URI="https://gitlab-runner-downloads.s3.amazonaws.com/v${MY_PV}/helper-images/prebuilt-_arch_.tar.xz"
+EGIT_REPO_URI="https://gitlab.com/gitlab-org/${PN}.git"
 
-inherit golang-build golang-vcs user readme.gentoo-r1 systemd tmpfiles user
+inherit git-r3 go-module readme.gentoo-r1 systemd tmpfiles
+
+MY_PV="13.1.1"
+NS="gitlab.com/gitlab-org/gitlab-runner/common"
+BASE_URI="https://gitlab-runner-downloads.s3.amazonaws.com/v${MY_PV}/helper-images/prebuilt-_arch_.tar.xz"
 
 DESCRIPTION="GitLab Runner"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-runner"
@@ -17,25 +19,19 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="docker"
+RESTRICT="mirror"
 
-RDEPEND="docker? ( app-emulation/docker )"
-DEPEND="${RDEPEND}"
+RDEPEND="acct-user/gitlab-runner
+	docker? ( app-emulation/docker )"
 
-RESTRICT="mirror strip"
+DOCS=( {CHANGELOG,README}.md )
 
-DOCS=( "${S}"/src/"${EGO_PN}"/{CHANGELOG,README}.md )
-
-DOC_CONTENTS="Register the runner as root using\\n
-\\t# gitlab-runner register\\n
+DOC_CONTENTS="Register the runner using\\n
+\\t gitlab-runner register\\n
 Configure the runner in /etc/gitlab-runner/config.toml"
 
-pkg_setup() {
-	enewgroup gitlab
-	enewuser runner -1 /bin/bash /var/lib/gitlab-runner gitlab
-}
-
 src_unpack() {
-	golang-vcs_src_unpack
+	git-r3_src_unpack
 
 	if use docker ; then
 		mkdir -p "${S}"/out/helper-images || die "mkdir failed"
@@ -45,6 +41,21 @@ src_unpack() {
 				|| die "ln failed"
 		fi
 	fi
+}
+
+src_compile() {
+	LDFLAGS="-X ${NS}.NAME=${PN} -X ${NS}.VERSION=${PV}
+		-X ${NS}.REVISION=$(git rev-parse --short=8 HEAD)
+		-X ${NS}.BUILT=$(date -u +%Y-%m-%dT%H:%M:%S%z)
+		-X ${NS}.BRANCH=master"
+
+	GOFLAGS="-v -x -mod=vendor" \
+		go build -ldflags "${LDFLAGS}" || die "go build failed"
+}
+
+src_test() {
+	GOFLAGS="-v -x -mod=vendor" \
+		go test -work || die "test failed"
 }
 
 src_install() {
@@ -66,15 +77,16 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	insopts -orunner -ggitlab -m0600
+	insopts -o gitlab-runner -g gitlab -m 0600
 	insinto /etc/gitlab-runner
-	doins "${S}"/src/"${EGO_PN}"/config.toml.example
+	doins config.toml.example
 
-	diropts -orunner -ggitlab -m0700
-	keepdir /etc/gitlab-runner /var/lib/gitlab-runner
+	diropts -o gitlab-runner -g gitlab -m 0700
+	keepdir /etc/gitlab-runner /var/log/gitlab-runner
 }
 
 pkg_postinst() {
-	tmpfiles_process gitlab-runner.conf
+	go-module_pkg_postinst
 	readme.gentoo_print_elog
+	tmpfiles_process gitlab-runner.conf
 }
