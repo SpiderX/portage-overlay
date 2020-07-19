@@ -1,6 +1,0 @@
-/var/log/gitlab-gitaly/*.log {
-	monthly
-	missingok
-	rotate 12
-	copytruncate
-}
