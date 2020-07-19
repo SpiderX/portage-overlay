@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+RDEPEND="app-shells/bash-completion"
+
 src_prepare() {
 	default
 
