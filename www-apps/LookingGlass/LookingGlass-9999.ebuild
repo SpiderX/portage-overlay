@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6..8} )
 WEBAPP_MANUAL_SLOT="yes"
 EGIT_REPO_URI="https://github.com/ramnode/${PN}.git"
 
-inherit git-r3 python-r1 webapp user
+inherit git-r3 python-r1 webapp
 
 DESCRIPTION="A Python-backed Looking Glass"
 HOMEPAGE="https://github.com/ramnode/LookingGlass"
@@ -26,6 +26,7 @@ DEPEND="dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
+	${PYTHON_DEPS}
 	>=app-admin/webapp-config-1.54-r2
 	net-analyzer/mtr
 	net-analyzer/traceroute
