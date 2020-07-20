@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Another authorization tool for Stargazer Billing System written in Qt
+	Another authorization tool for Stargazer Billing System written in Qt,
+	direct replacement for inetaccess utility
 	</longdescription>
 	<upstream>
 		<changelog>http://stg.codes/projects/qia/repository</changelog>

@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit cmake
 
 MY_P="${P}-Source"
 
-inherit cmake-utils
-
 DESCRIPTION="Authorization tool for Stargazer Billing System written in Qt"
-HOMEPAGE="http://stg.codes/"
+HOMEPAGE="http://stg.codes"
 SRC_URI="http://stg.codes/attachments/download/6/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -35,13 +35,5 @@ src_configure() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
-}
-
-src_install() {
-	cmake-utils_src_install
+	cmake-src_configure
 }
