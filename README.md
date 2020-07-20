@@ -485,6 +485,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/stargazer.svg)](https://repology.org/metapackage/stargazer) net-misc/[stargazer](http://stg.net.ua/) | Billing system for small home and office networks
 * net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management
 * net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
+* net-misc/[virtualhere-usb](https://virtualhere.com) | Share USB devices over the network
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/x11-ssh-askpass.svg)](https://repology.org/metapackage/x11-ssh-askpass) net-misc/[x11-ssh-askpass](https://github.com/sigmavirus24/x11-ssh-askpass) | X11-based passphrase dialog for use with OpenSSH
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/automatic.svg)](https://repology.org/metapackage/automatic) net-p2p/[automatic](https://github.com/1100101/Automatic) | RSS downloader for Tranmission
 * net-p2p/[gram-wallet-bin](https://https://wallet.ton.org) | TON Testnet Wallet

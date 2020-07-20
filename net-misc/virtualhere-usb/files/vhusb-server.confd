@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/vhusb-server
+
+# Various options.
+# run `vhusbd... -h` for valid cmdline options
+OPTS="-b -c /opt/vhusb/config.ini"

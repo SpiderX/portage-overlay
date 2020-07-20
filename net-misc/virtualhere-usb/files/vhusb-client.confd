@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/vhusb-server
+
+# Various options.
+# run `vhclient... -h` for valid cmdline options
+OPTS="-n"

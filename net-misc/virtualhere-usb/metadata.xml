@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	The VirtualHere USB Server shares USB devices over the network.
+	The server runs entirely in userspace and is entirely statically complied,
+	no linux run-time libraries are required at all on the server.
+	</longdescription>
+	<use>
+		<flag name="client">Install client</flag>
+		<flag name="gui">Install GUI client</flag>
+		<flag name="server">Install server</flag>
+	</use>
+	<upstream>
+		<changelog>https://virtualhere.com/forum/3</changelog>
+		<doc>https://virtualhere.com/home</doc>
+	</upstream>
+</pkgmetadata>
