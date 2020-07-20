@@ -1,11 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit readme.gentoo-r1 systemd user
-
-QA_PREBUILT="opt/netgauge/OoklaServer"
+inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Server software for testing internet bandwidth using speedtest.net"
 HOMEPAGE="http://www.ookla.com/"
@@ -17,21 +15,18 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+RDEPEND="acct-user/netgauge"
+
 S="${WORKDIR}"
+
+QA_PREBUILT="opt/netgauge/OoklaServer"
 
 DOC_CONTENTS="Add an entry to /etc/portage/make.conf to prevent Ookla Server's
 config overwriting within next ebuild re-emerge:\\n
 \\tCONFIG_PROTECT='\${CONFIG_PROTECT} /opt/netgauge/OoklaServer.properties'"
 
-pkg_setup() {
-	enewgroup netgauge
-	enewuser netgauge -1 -1 /dev/null netgauge
-}
-
 src_install() {
-	diropts -onetgauge -gnetgauge
-	keepdir /opt/netgauge
-	insopts -onetgauge -gnetgauge -m0644
+	insopts -o netgauge -g netgauge -m 0644
 	insinto /opt/netgauge
 	newins OoklaServer.properties.default OoklaServer.properties
 	exeinto /opt/netgauge
