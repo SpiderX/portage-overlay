@@ -1,12 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://github.com/equeim/${MY_PN}.git"
-MY_PN="tremotesf2"
+EGIT_REPO_URI="https://github.com/equeim/tremotesf2.git"
 
-inherit cmake-utils git-r3 gnome2-utils xdg-utils
+inherit cmake git-r3 gnome2-utils xdg
 
 DESCRIPTION="A remote GUI for transmission"
 HOMEPAGE="https://github.com/equeim/tremotesf2"
@@ -28,14 +27,8 @@ DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
 	sys-devel/gettext"
 
-DOCS=( CHANGELOG.md README.md )
+DOCS=( {CHANGELOG,README}.md )
 
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
+src_prepare() {
+	cmake_src_prepare
 }

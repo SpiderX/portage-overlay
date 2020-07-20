@@ -11,6 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	A remote GUI for transmission-daemon.
+	Supports desktop OSes (GNU/Linux and Windows) and Sailfish OS.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">equeim/tremotesf2</remote-id>
