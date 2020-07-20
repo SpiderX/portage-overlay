@@ -1,14 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop git-r3
+EGIT_REPO_URI="https://github.com/zrax/${PN}.git"
+
+inherit cmake desktop git-r3
 
 DESCRIPTION="Qt launcher GUI for XFreeRDP"
 HOMEPAGE="https://github.com/zrax/qfreerdp"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/zrax/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,8 +22,8 @@ RDEPEND="dev-qt/qtcore:5
 DEPEND="${RDEPEND}"
 
 src_install() {
-	domenu "${FILESDIR}"/"${PN}".desktop
-	doicon -s 64 "${FILESDIR}"/"${PN}".png
+	domenu "${FILESDIR}"/qfreerdp.desktop
+	doicon -s 64 "${FILESDIR}"/qfreerdp.png
 
-	cmake-utils_src_install
+	cmake_src_install
 }

@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-	Qt launcher GUI for XFreeRDP
+	Qt launcher GUI for XFreeRDP (an X11 Remote Desktop Protocol (RDP)
+	client which is part of the FreeRDP project).
 	</longdescription>
 	<upstream>
 		<remote-id type="github">zrax/qfreerdp</remote-id>
