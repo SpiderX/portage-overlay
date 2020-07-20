@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools systemd user
+inherit autotools systemd
 
 DESCRIPTION="Network sniffer that logs all DNS server replies"
 HOMEPAGE="https://github.com/gamelinux/passivedns"
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug json libressl ssl" #pfring
 
-RDEPEND="net-libs/ldns[libressl?]
+RDEPEND="acct-user/passivedns
+	net-libs/ldns[libressl?]
 	net-libs/libpcap
 	json? ( dev-libs/jansson )
 	ssl? (
@@ -29,7 +30,7 @@ src_prepare() {
 	default
 
 	# Respect CFLAGS
-	sed -i '/$(CC)/s/-O3/$(CFLAGS)/' src/Makefile.am || die "sed failed"
+	sed -i "/\$(CC)/s/-O3/\$(CFLAGS)/" src/Makefile.am || die "sed failed"
 	eautoreconf
 }
 
@@ -46,9 +47,4 @@ src_install() {
 	newinitd "${FILESDIR}"/passivedns.initd passivedns
 	newconfd "${FILESDIR}"/passivedns.confd passivedns
 	systemd_dounit "${FILESDIR}"/passivedns.service
-}
-
-pkg_postinst() {
-	enewgroup passivedns
-	enewuser passivedns -1 -1 /dev/null passivedns
 }

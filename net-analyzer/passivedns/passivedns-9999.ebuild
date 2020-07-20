@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/gamelinux/${PN}.git"
 
-inherit autotools git-r3 systemd user
+inherit autotools git-r3 systemd
 
 DESCRIPTION="Network sniffer that logs all DNS server replies"
 HOMEPAGE="https://github.com/gamelinux/passivedns"
@@ -31,7 +31,7 @@ src_prepare() {
 	default
 
 	# Respect CFLAGS
-	sed -i '/$(CC)/s/-O3/$(CFLAGS)/' src/Makefile.am || die "sed failed"
+	sed -i "/\$(CC)/s/-O3/\$(CFLAGS)/" src/Makefile.am || die "sed failed"
 	eautoreconf
 }
 
@@ -48,9 +48,4 @@ src_install() {
 	newinitd "${FILESDIR}"/passivedns.initd passivedns
 	newconfd "${FILESDIR}"/passivedns.confd passivedns
 	systemd_dounit "${FILESDIR}"/passivedns.service
-}
-
-pkg_postinst() {
-	enewgroup passivedns
-	enewuser passivedns -1 -1 /dev/null passivedns
 }
