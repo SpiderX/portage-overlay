@@ -11,6 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	Command line pastebin for sharing terminal output.
+	It requires a separate web-server to serve the pastebin
+	content.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">solusipse/fiche</remote-id>

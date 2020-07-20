@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/solusipse/${PN}.git"
 
-inherit git-r3 user
+inherit git-r3
 
 DESCRIPTION="Command line pastebin server"
 HOMEPAGE="https://github.com/solusipse/fiche"
@@ -16,10 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-pkg_setup() {
-	enewgroup fiche
-	enewuser fiche -1 -1 /var/lib/fiche fiche
-}
+RDEPEND="acct-user/fiche"
 
 src_prepare() {
 	default
@@ -30,9 +27,6 @@ src_prepare() {
 
 src_install() {
 	dobin fiche
-
-	diropts -o fiche -g fiche -m 0755
-	keepdir /var/lib/fiche
 
 	newinitd "${FILESDIR}"/fiche.initd fiche
 	newconfd "${FILESDIR}"/fiche.confd fiche
