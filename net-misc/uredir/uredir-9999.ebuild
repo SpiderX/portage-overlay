@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
 
-inherit git-r3 systemd tmpfiles user
+inherit git-r3 systemd tmpfiles
 
 DESCRIPTION="UDP port redirector"
 HOMEPAGE="https://github.com/troglobit/uredir"
@@ -16,14 +16,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="dev-libs/libuev"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-pkg_setup() {
-	enewgroup uredir
-	enewuser uredir -1 -1 /dev/null uredir
-}
+RDEPEND="acct-user/uredir
+	dev-libs/libuev"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_install() {
 	default
