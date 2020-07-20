@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit systemd tmpfiles user
+inherit systemd tmpfiles
 
 MY_P="${PN}.v.${PV}"
 
@@ -16,16 +16,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug sound"
 
+RDEPEND="acct-user/inadyn"
 DEPEND="sound? ( media-libs/libao )"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( ChangeLog NEWS README NOTICE AUTHORS )
-
-pkg_setup() {
-	enewgroup inadyn
-	enewuser  inadyn -1 -1 /etc/inadyn-mt inadyn
-}
 
 src_configure() {
 	econf "$(use_enable debug)" "$(use_enable sound)"

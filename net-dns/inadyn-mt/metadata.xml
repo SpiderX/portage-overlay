@@ -20,6 +20,7 @@
 		<flag name="sound">Enable sound support using </flag>
 	</use>
 	<upstream>
+		<remote-id type="gitlab">bhoover/inadyn-mt</remote-id>
 		<remote-id type="sourceforge">inadyn-mt</remote-id>
 	</upstream>
 </pkgmetadata>
