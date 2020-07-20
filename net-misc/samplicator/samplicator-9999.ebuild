@@ -1,13 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/sleinen/${PN}.git"
+
+inherit autotools git-r3 systemd
+
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
-
-inherit autotools git-r3 systemd user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
 HOMEPAGE="https://github.com/sleinen/samplicator"
@@ -18,10 +19,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-pkg_setup() {
-	enewgroup samplicator
-	enewuser samplicator -1 -1 /etc/samplicator samplicator
-}
+RDEPEND="acct-user/samplicator"
 
 src_prepare() {
 	default

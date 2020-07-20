@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd user
+inherit systemd
 
 DESCRIPTION="UDP packets forwarder and duplicator"
 HOMEPAGE="https://github.com/sleinen/samplicator"
@@ -14,10 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-pkg_setup() {
-	enewgroup samplicator
-	enewuser samplicator -1 -1 /etc/samplicator samplicator
-}
+RDEPEND="acct-user/samplicator"
 
 src_install() {
 	default
