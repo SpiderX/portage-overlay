@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools desktop systemd tmpfiles user
+inherit autotools desktop systemd tmpfiles
 
 DESCRIPTION="A tool to assess of deployment of source address validation"
 HOMEPAGE="https://spoofer.caida.org"
@@ -25,14 +25,10 @@ CDEPEND="dev-libs/protobuf-c:=
 		dev-qt/qtwidgets:5
 	)"
 RDEPEND="${CDEPEND}
+	acct-user/spoofer
 	net-analyzer/traceroute"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-
-pkg_setup() {
-	enewgroup spoofer
-	enewuser spoofer -1 -1 /var/lib/spoofer spoofer
-}
+DEPEND="${CDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 # Unable to stop binaries stripping :(
 QA_PRESTRIPPED="usr/bin/spoofer-\\(cli\\|gui\\|scheduler\\)"
@@ -57,12 +53,9 @@ src_install() {
 
 		make_desktop_entry spoofer-gui Spoofer spoofer "Network;Qt"
 
-		insopts -ospoofer -gspoofer -m0644
+		insopts -o spoofer -g spoofer -m 0644
 		insinto /etc/xdg/CAIDA
 		doins "${FILESDIR}"/Spoofer.conf
-
-		diropts -ospoofer -gspoofer -m0700
-		keepdir /var/lib/spoofer
 	fi
 }
 
