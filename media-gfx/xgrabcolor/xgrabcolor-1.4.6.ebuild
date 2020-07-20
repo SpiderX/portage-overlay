@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg
 
 DESCRIPTION="Qt-based basic color picker"
 HOMEPAGE="http://hugo.pereira.free.fr/software/index.php"
@@ -31,22 +31,12 @@ src_configure() {
 	local mycmakeargs=(
 		"-DUSE_QT5=1"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	domenu xgrabcolor.desktop
 	doicon xgrabcolor.png
 	doicon -s 128 xgrabcolor.png
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
