@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This small program manages ACLs on Dlink DES-3200 family switches.
+	This small program that fetches list of ACLs that need to be
+	provisioned on manages ACLs on Dlink DES-3200 family switches.
 	</longdescription>
 	<upstream>
 		<bugs-to>mailto:faust@stg.dp.ua</bugs-to>

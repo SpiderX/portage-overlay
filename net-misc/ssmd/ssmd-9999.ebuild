@@ -5,7 +5,7 @@ EAPI=7
 
 EGIT_REPO_URI="https://git.stg.codes/${PN}.git"
 
-inherit git-r3 systemd toolchain-funcs user
+inherit git-r3 systemd toolchain-funcs
 
 DESCRIPTION="SNMP Switch Management Daemon"
 HOMEPAGE="http://stg.codes/projects/ssmd"
@@ -20,12 +20,8 @@ DEPEND="dev-libs/boost:0=
 	net-misc/curl
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
-RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	enewgroup ssmd
-	enewuser ssmd -1 -1 /etc/ssmd ssmd
-}
+RDEPEND="${DEPEND}
+	acct-user/ssmd"
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" "$(usex debug BUILD=Debug BUILD=Release)"
@@ -38,7 +34,6 @@ src_install() {
 	newconfd "${FILESDIR}"/ssmd.conf ssmd
 	systemd_dounit "${FILESDIR}"/ssmd.service
 
-	fowners -R ssmd:ssmd /etc/ssmd/
 	fperms 0640 /etc/ssmd/ssmd.conf
 }
 
