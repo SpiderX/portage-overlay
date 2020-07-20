@@ -1,32 +1,32 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="unofficial-v${PV}"
 
 declare -A FLAGS
 FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
 	[gzip]="DWANT_COMPRESSION_GZIP$"
-	[gzip_always]="DWANT_COMPRESSION_GZIP_ALWAYS"
-	[ip_from_query]="DWANT_IP_FROM_QUERY_STRING"
-	[ip_from_proxy]="DWANT_IP_FROM_PROXY"
+	[gzip-always]="DWANT_COMPRESSION_GZIP_ALWAYS"
+	[ip-from-query]="DWANT_IP_FROM_QUERY_STRING"
+	[ip-from-proxy]="DWANT_IP_FROM_PROXY"
 	[ipv6]="DWANT_V6"
 	[fullscrapes]="DWANT_FULLSCRAPE"
-	[fullscrapes_modest]="DWANT_MODEST_FULLSCRAPES"
-	[live_sync]="DWANT_SYNC_LIVE"
-	[live_sync_unicast]="DSYNC_LIVE_UNICAST"
-	[log_networks_full]="DWANT_FULLLOG_NETWORKS"
-	[log_numwant]="DWANT_LOG_NUMWANT"
+	[fullscrapes-modest]="DWANT_MODEST_FULLSCRAPES"
+	[live-sync]="DWANT_SYNC_LIVE"
+	[live-sync-unicast]="DSYNC_LIVE_UNICAST"
+	[log-networks-full]="DWANT_FULLLOG_NETWORKS"
+	[log-numwant]="DWANT_LOG_NUMWANT"
 	[persistence]="DWANT_PERSISTENCE"
-	[spot_woodpeckers]="DWANT_SPOT_WOODPECKER"
+	[spot-woodpeckers]="DWANT_SPOT_WOODPECKER"
 	[syslog]="DWANT_SYSLOG"
-	[restrict_stats]="DWANT_RESTRICT_STATS"
+	[restrict-stats]="DWANT_RESTRICT_STATS"
 	[whitelist]="DWANT_ACCESSLIST_WHITE"
 	[httpdebug]="DWANT_HTTPHUMAN"
 )
 
-inherit eutils systemd user
+inherit systemd
 
 DESCRIPTION="High-performance bittorrent tracker"
 HOMEPAGE="https://github.com/flygoast/opentracker http://erdgeist.org/arts/software/opentracker/"
@@ -35,22 +35,18 @@ SRC_URI="https://github.com/flygoast/opentracker/archive/${MY_P}.tar.gz"
 LICENSE="BEER-WARE"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="blacklist debug +gzip gzip_always httpdebug ip_from_query ip_from_proxy ipv6 +fullscrapes fullscrapes_modest live_sync live_sync_unicast log_networks_full log_numwant persistence restrict_stats spot_woodpeckers syslog whitelist"
+IUSE="blacklist debug +gzip gzip-always httpdebug ip-from-query ip-from-proxy ipv6 +fullscrapes fullscrapes-modest live-sync live-sync-unicast log-networks-full log-numwant persistence restrict-stats spot-woodpeckers syslog whitelist"
 REQUIRED_USE="blacklist? ( !whitelist )
-	gzip_always? ( gzip )
+	gzip-always? ( gzip )
 	gzip? ( fullscrapes )
-	live_sync_unicast? ( live_sync )
+	live-sync-unicast? ( live-sync )
 	persistence? ( !ipv6 )"
 
-RDEPEND="dev-libs/libowfat
+RDEPEND="acct-user/opentracker
+	dev-libs/libowfat
 	gzip? ( sys-libs/zlib )"
 
 S="${WORKDIR}/${PN}-${MY_P}"
-
-pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 -1 "${PN}"
-}
 
 src_prepare() {
 	default
@@ -82,9 +78,9 @@ src_prepare() {
 	# Debug build: build opentracker.debug but target as opentracker, and don't build opentracker
 	if use debug; then
 		sed -i \
-			-e '/D_DEBUG_HTTPERROR/s|^#*||g' \
-			-e 's|all: $(BINARY)|all:|g' \
-			-e 's|$@ $(OBJECTS_debug)|opentracker $(OBJECTS_debug)|g' \
+			-e "/D_DEBUG_HTTPERROR/s|^#*||g" \
+			-e "s|all: \$(BINARY)|all:|g" \
+			-e "s|\$@ \$(OBJECTS_debug)|opentracker \$(OBJECTS_debug)|g" \
 		Makefile || die "sed for debug object failed"
 	fi
 
@@ -101,16 +97,13 @@ src_prepare() {
 src_install() {
 	default
 
-	# Keeping chroot directory
-	diropts -m 755 -o "${PN}" -g "${PN}"
-	keepdir /var/lib/"${PN}"
-	insinto /etc/"${PN}"
-	newins "${S}"/"${PN}".conf.sample "${PN}".conf
-	fowners -R "${PN}":"${PN}" /etc/"${PN}"
-	fperms 0640 /etc/"${PN}"/"${PN}".conf
-	doman "${FILESDIR}"/"${PN}".8
+	doman "${FILESDIR}"/opentracker.8
 
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-	systemd_dounit "${FILESDIR}"/"${PN}".service
+	newinitd "${FILESDIR}"/opentracker.initd opentracker
+	newconfd "${FILESDIR}"/opentracker.confd opentracker
+	systemd_dounit "${FILESDIR}"/opentracker.service
+
+	insopts -m 640 -o opentracker -g opentracker
+	insinto /etc/opentracker
+	newins opentracker.conf.sample opentracker.conf
 }
