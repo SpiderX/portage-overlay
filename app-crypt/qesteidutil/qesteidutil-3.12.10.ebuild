@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="en et ru"
 
-inherit cmake-utils l10n qmake-utils readme.gentoo-r1
+inherit cmake l10n qmake-utils readme.gentoo-r1
 
 DESCRIPTION="Estonian ID card management desktop utility"
 HOMEPAGE="https://github.com/open-eid/qesteidutil https://id.ee/"
@@ -25,8 +25,8 @@ RDEPEND="dev-qt/qtcore:5
 	sys-apps/pcsc-lite
 	!libressl? ( <dev-libs/openssl-1.1:0= )
 	libressl? ( dev-libs/libressl:0= )"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
@@ -52,7 +52,7 @@ src_prepare() {
 	l10n_find_plocales_changes src/translations "" .ts
 	l10n_for_each_locale_do l10n_prepare
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -60,7 +60,7 @@ src_configure() {
 		-DBREAKPAD="$(usex crash-reporter 'https://cr.eesti.ee/' '')"
 		-DCONFIG_URL="$(usex webcheck 'https://id.eesti.ee/config.json' '')"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -71,7 +71,7 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 pkg_postinst() {
