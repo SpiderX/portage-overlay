@@ -12,7 +12,7 @@ SRC_URI="x86? ( http://install.speedtest.net/ooklaserver/stable/OoklaServer-linu
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="acct-user/netgauge"
