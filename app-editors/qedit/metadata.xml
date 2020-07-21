@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A modern, standalone and multi-purpose text editor
+	A modern, standalone and multi-purpose text editor.
+	It is capable of customizable syntax highlighting for many types of text,
+	automatic indentation, text modification macros, view splitting, etc.
 	</longdescription>
 	<use>
 		<flag name="aspell">Enable spellchecking using <pkg>app-text/aspell</pkg></flag>

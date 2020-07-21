@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg
 
 DESCRIPTION="Qt-based multi-purpose text editor"
 HOMEPAGE="http://hugo.pereira.free.fr/software/index.php"
@@ -35,31 +35,19 @@ src_prepare() {
 			-e '/find_package(ASPELL/d' \
 			CMakeLists.txt || die "sed failed for CMakeLists.txt"
 	fi
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		"-DUSE_QT5=1"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	domenu qedit.desktop
 	doicon qedit.png
 	doicon -s 128 qedit.png
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
