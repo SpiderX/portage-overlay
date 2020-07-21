@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/uroni/urbackup_backend.git"
 
-inherit autotools git-r3 readme.gentoo-r1 systemd user
+inherit autotools git-r3 readme.gentoo-r1 systemd
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://urbackup.org"
@@ -16,9 +16,10 @@ KEYWORDS=""
 SLOT="0"
 IUSE="cryptopp curl debug hardened fuse zlib"
 
-DEPEND="dev-db/lmdb:0=
+# dev-lang/lua:5.3 masked, using embedded
+DEPEND="acct-user/urbackup
+	dev-db/lmdb:0=
 	dev-db/sqlite:3
-	dev-lang/lua:0
 	cryptopp? ( dev-libs/crypto++:0= )
 	curl? ( net-misc/curl )
 	fuse? ( sys-fs/fuse:0 )
@@ -29,11 +30,6 @@ RDEPEND="${DEPEND}
 DOC_CONTENTS="You may need to open the following ports in firewall:\\n
 55413/tcp, 55414/tcp, 55415/tcp, 35623/udp
 Default web-gui URL is http://localhost:55414/\\n\\n"
-
-pkg_setup() {
-	enewgroup urbackup
-	enewuser urbackup -1 -1 /var/lib/urbackup urbackup
-}
 
 src_prepare() {
 	default
@@ -67,7 +63,9 @@ src_configure() {
 		"$(use_with fuse mountvhd)" \
 		"$(use_with zlib)" \
 		"$(usex hardened --enable-fortify "")" \
-		--enable-packaging
+		--enable-packaging \
+		--without-embedded-lmdb \
+		--without-embedded-sqlite3
 }
 
 src_install() {
