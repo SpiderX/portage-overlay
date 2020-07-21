@@ -5,7 +5,7 @@ EAPI=7
 
 EGIT_REPO_URI="https://github.com/1100101/${PN^}.git"
 
-inherit autotools git-r3 readme.gentoo-r1 systemd user
+inherit autotools git-r3 readme.gentoo-r1 systemd
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
@@ -15,7 +15,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-libs/libxml2:2
+RDEPEND="acct-user/automatic
+	dev-libs/libxml2:2
 	dev-libs/libpcre:3
 	net-misc/curl"
 DEPEND="${RDEPEND}
@@ -25,11 +26,6 @@ DOC_CONTENTS="To run automatic you should move /etc/automatic.conf-sample
 to /etc/automatic.conf and config it.\\n
 If things go wrong, increase verbose level in /etc/conf.d/automatic
 and check log file in /var/log/automatic/\\n"
-
-pkg_setup() {
-	enewgroup automatic
-	enewuser automatic -1 -1 /var/lib/automatic automatic
-}
 
 src_prepare() {
 	default
@@ -58,8 +54,7 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	diropts -oautomatic -gautomatic -m0700
-	keepdir /var/lib/automatic/
+	diropts -o automatic -g automatic -m 0700
 	keepdir /var/log/automatic/
 }
 
