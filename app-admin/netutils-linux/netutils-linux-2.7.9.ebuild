@@ -21,10 +21,8 @@ RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/prettytable[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]"
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	default
