@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+EGIT_REPO_URI="https://github.com/whoozle/${PN}.git"
 PLOCALES="it ru"
 
-inherit cmake-utils git-r3 l10n qmake-utils
+inherit cmake git-r3 l10n qmake-utils
 
 DESCRIPTION="Reliable MTP client with minimalistic UI"
 HOMEPAGE="https://whoozle.github.io/android-file-transfer-linux/"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/whoozle/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,11 +26,11 @@ RDEPEND="sys-apps/file
 		dev-qt/qtwidgets:5
 	)
 	usb? ( virtual/libusb:1 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )"
 
-DOCS=( FAQ.md README.md )
+DOCS=( {FAQ,README}.md )
 
 src_prepare() {
 	default
@@ -43,7 +43,7 @@ src_prepare() {
 	l10n_find_plocales_changes qt/translations "${PN}"_ .ts
 	l10n_for_each_locale_do l10n_prepare
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -54,7 +54,7 @@ src_configure() {
 		-DBUILD_SHARED_LIB="$(usex shared)"
 		-DUSB_BACKEND_LIBUSB="$(usex usb)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -62,9 +62,9 @@ src_install() {
 		insinto /usr/share/qt5/translations
 		doins qt/translations/*.qm
 	fi
-	use shared && dolib "${S}"_build/libmtp-ng.so
+	use shared && dolib.so "${S}"_build/libmtp-ng.so
 
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 pkg_postinst() {
