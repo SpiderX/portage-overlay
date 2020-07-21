@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 EGIT_REPO_URI="https://github.com/open-eid/cmake.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/cmake"
 
-inherit cmake-utils flag-o-matic git-r3
+inherit cmake flag-o-matic git-r3
 
 DESCRIPTION="Library for handling digitally signed documents"
 HOMEPAGE="https://github.com/open-eid/libdigidocpp https://id.ee"
@@ -55,7 +55,7 @@ src_prepare() {
 	# remove bundled lib
 	rm -rf src/minizip || die "rm failed"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -67,5 +67,5 @@ src_configure() {
 		"$(cmake-utils_use_find_package pdf PoDoFo)"
 		"$(cmake-utils_use_find_package java SWIG)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
