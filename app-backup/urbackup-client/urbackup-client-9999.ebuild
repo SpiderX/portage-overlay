@@ -1,12 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/uroni/urbackup_backend.git"
 PLOCALES="cs da de es fa fr it nl pl pt_BR ru sk uk zh_CN zh_TW"
+WX_GTK_VER="3.0"
 
-inherit autotools git-r3 l10n readme.gentoo-r1 systemd user wxwidgets
+inherit autotools git-r3 l10n readme.gentoo-r1 systemd wxwidgets
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://urbackup.org"
@@ -17,19 +18,16 @@ KEYWORDS=""
 SLOT="0"
 IUSE="debug hardened nls X"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="acct-user/urbackup
+	app-arch/zstd:=
+	dev-db/sqlite:3
 	dev-libs/crypto++:0=
 	dev-libs/icu:0=
 	sys-libs/zlib:0=
-	X? ( x11-libs/wxGTK:3.0 )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-	app-admin/logrotate"
-
-pkg_setup() {
-	enewgroup urbackup
-	enewuser urbackup -1 -1 /var/lib/urbackup urbackup
-}
+	X? ( x11-libs/wxGTK:${WX_GTK_VER} )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default

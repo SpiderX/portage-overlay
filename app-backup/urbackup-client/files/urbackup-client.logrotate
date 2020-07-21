@@ -1,4 +1,4 @@
-"/var/log/urbackup-client.log" {
+/var/log/urbackup-client.log {
 	weekly
 	rotate 12
 	missingok

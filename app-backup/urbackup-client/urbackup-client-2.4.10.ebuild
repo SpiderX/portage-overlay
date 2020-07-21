@@ -1,34 +1,34 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="cs da de es fa fr it nl pl pt_BR ru sk uk zh_CN zh_TW"
+WX_GTK_VER="3.0"
 
-inherit autotools l10n readme.gentoo-r1 systemd user wxwidgets
+inherit autotools l10n readme.gentoo-r1 systemd wxwidgets
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://urbackup.org"
-SRC_URI="https://hndl.urbackup.org/Client/${PV::-2}/${P}.tar.gz"
+SRC_URI="https://hndl.urbackup.org/Client/${PV}/${P}.tar.gz"
 
 LICENSE="AGPL-3+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="debug hardened nls X"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="acct-user/urbackup
+	app-arch/zstd:=
+	dev-db/sqlite:3
 	dev-libs/crypto++:0=
 	dev-libs/icu:0=
 	sys-libs/zlib:0=
-	X? ( x11-libs/wxGTK:3.0 )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-	app-admin/logrotate"
+	X? ( x11-libs/wxGTK:${WX_GTK_VER} )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 
-pkg_setup() {
-	enewgroup urbackup
-	enewuser urbackup -1 -1 /var/lib/urbackup urbackup
-}
+S="${WORKDIR}/${P}.0"
 
 src_prepare() {
 	default
