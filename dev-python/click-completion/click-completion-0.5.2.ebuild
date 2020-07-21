@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
@@ -19,7 +19,5 @@ IUSE=""
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/shellingham[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]"
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
