@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="A versatile deduplicating backup tool"
 HOMEPAGE="https://github.com/zbackup/zbackup"
@@ -32,5 +32,5 @@ src_configure() {
 		-DBUILD_TARTOOL="$(usex tartool)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
