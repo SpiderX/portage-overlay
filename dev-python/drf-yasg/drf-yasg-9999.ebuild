@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/axnsan12/${PN}.git"
 
 inherit distutils-r1 eutils git-r3
@@ -25,8 +25,7 @@ RDEPEND=">=dev-python/coreapi-2.3.3[${PYTHON_USEDEP}]
 	>=dev-python/inflection-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/ruamel-yaml-0.15.34[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	>=dev-python/uritemplate-3.0.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]"
+	>=dev-python/uritemplate-3.0.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/datadiff[${PYTHON_USEDEP}]
