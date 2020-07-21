@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2086
@@ -121,5 +121,4 @@ src_install() {
 	einstalldocs
 	dobin target/release/fselect
 	doman docs/fselect.1
-	#cargo_src_install
 }

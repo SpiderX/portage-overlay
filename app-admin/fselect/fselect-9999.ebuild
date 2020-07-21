@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2086
@@ -104,7 +104,7 @@ xdg-2.2.0
 zip-0.5.3
 "
 
-inherit cargo
+inherit cargo git-r3
 
 DESCRIPTION="Find files with SQL-like queries"
 HOMEPAGE="https://github.com/jhspetersson/fselect"
@@ -125,5 +125,4 @@ src_install() {
 	einstalldocs
 	dobin target/release/fselect
 	doman docs/fselect.1
-	#cargo_src_install
 }
