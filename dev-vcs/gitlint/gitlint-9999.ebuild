@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/jorisroovers/${PN}.git"
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Git commit message linter"
 HOMEPAGE="https://github.com/jorisroovers/gitlint"
