@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit cmake-utils python-single-r1 xdg-utils
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Screenshot capturing and sharing tool over various services"
 HOMEPAGE="https://screencloud.net"
@@ -31,10 +31,6 @@ RDEPEND="${DEPEND}
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+src_prepare() {
+	cmake_src_prepare
 }
