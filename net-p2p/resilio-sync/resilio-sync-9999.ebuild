@@ -15,7 +15,7 @@ SRC_URI="amd64? ( ${BASE_URI//@arch@/x64} )
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist mirror"
 
