@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop multilib-build pax-utils xdg-utils
+inherit desktop multilib-build pax-utils xdg
 
 DESCRIPTION="Powerful IDE to work with API"
 HOMEPAGE="https://testmace.com"
@@ -14,8 +14,8 @@ SRC_URI="https://s3.amazonaws.com/testmacedownload/TestMace.AppImage"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS=""
-IUSE="pax_kernel"
+KEYWORDS="~amd64"
+IUSE=""
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -84,15 +84,5 @@ src_install() {
 	fperms +x /opt/TestMace/testmace
 	dosym ../TestMace/testmace opt/bin/testmace
 
-	use pax_kernel && pax-mark -m "${ED}"/opt/TestMace/testmace
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+	pax-mark -m "${ED}"/opt/TestMace/testmace
 }

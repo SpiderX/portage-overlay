@@ -10,11 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A powerful tool for API automation testing
+	A modern powerful crossplatform tool for working with an API
+	and creating automated API tests
+	It is able to create requests and scenarios using variables,
+	authentication, autocomplete feature and syntax highlighting.
 	</longdescription>
-	<use>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">TestMace/TestMace-issues</remote-id>
 	</upstream>
