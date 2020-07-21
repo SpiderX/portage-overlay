@@ -11,6 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	Parameterized testing with any Python test framework
+	(for nose, for nose2, for py.test3, for unittest, for unittest2).
 	</longdescription>
 	<upstream>
 		<remote-id type="github">wolever/parameterized</remote-id>
