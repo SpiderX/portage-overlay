@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="LookingGlass"
 MY_PV="a11"
-EGIT_SUBMODULES=()
 EGIT_REPO_URI="https://github.com/gnif/${MY_PN}.git"
+EGIT_SUBMODULES=()
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
 HOMEPAGE="https://looking-glass.hostfission.com https://github.com/gnif/LookingGlass/"
@@ -27,8 +27,8 @@ RDEPEND="dev-libs/libconfig:0=
 	media-libs/sdl2-ttf
 	virtual/glu"
 DEPEND="${RDEPEND}
-	app-emulation/spice-protocol
-	virtual/pkgconfig"
+	app-emulation/spice-protocol"
+BDEPEND="virtual/pkgconfig"
 
 CMAKE_USE_DIR="${S}"/client
 
@@ -44,7 +44,7 @@ src_prepare() {
 		client/CMakeLists.txt || die "sed failed for debug"
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_PN="LookingGlass"
 MY_PV="${PV//1_alpha/a}"
 MY_P="${MY_PN}-${MY_PV}"
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
 HOMEPAGE="https://looking-glass.hostfission.com https://github.com/gnif/LookingGlass/"
@@ -53,7 +53,7 @@ src_prepare() {
 		client/CMakeLists.txt || die "sed failed for debug"
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_install() {
