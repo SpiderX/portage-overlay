@@ -10,7 +10,7 @@ inherit distutils-r1 eutils git-r3
 
 DESCRIPTION="A temporary credentials for AWS roles via sudo-like utility"
 HOMEPAGE="https://github.com/RIPE-NCC/ripe-atlas-tools"
-SRC_URI="https://github.com/RIPE-NCC/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
