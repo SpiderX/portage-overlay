@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="http://www.netpatch.ru/projects/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~mips ~x86"
 IUSE="static"
 
 RDEPEND="!static? ( net-libs/libpcap )"
@@ -18,6 +18,14 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README )
 
+src_prepare() {
+	default
+
+	# Fix building with clang, bug #731694
+	sed -i '/^PACKAGE_/s/"//g' configure \
+		|| die "sed failed for configured"
+}
+
 src_configure() {
-	econf "$(use_enable static static-build)"
+	econf "$(use static && echo '--enable-static-build')"
 }
