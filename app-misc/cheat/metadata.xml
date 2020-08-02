@@ -15,11 +15,7 @@
 	for commands that they use frequently, but not frequently enough
 	to remember.
 	</longdescription>
-	<use>
-		<flag name="fish-completion">Enable fish completion support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">cheat/cheat</remote-id>
-		<remote-id type="pypi">cheat</remote-id>
 	</upstream>
 </pkgmetadata>

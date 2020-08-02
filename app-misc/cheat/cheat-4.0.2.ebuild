@@ -3,22 +3,16 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/cheat/${PN}.git"
-
-inherit bash-completion-r1 git-r3 go-module
+inherit bash-completion-r1 go-module
 
 DESCRIPTION="Interactive cheatsheets on the command-line"
 HOMEPAGE="https://github.com/cheat/cheat"
-SRC_URI=""
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
-
-src_unpack() {
-	git-r3_src_unpack
-}
 
 src_compile() {
 	GOFLAGS="-v -x -mod=vendor" \
