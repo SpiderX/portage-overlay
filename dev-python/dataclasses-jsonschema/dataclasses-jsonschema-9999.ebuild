@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7,8} )
 EGIT_REPO_URI="https://github.com/s-knibbs/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -19,8 +19,7 @@ KEYWORDS=""
 RDEPEND="dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/mypy_extensions[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/dataclasses[${PYTHON_USEDEP}]' python3_6)"
+	dev-python/typing-extensions[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? ( dev-python/apispec[${PYTHON_USEDEP}]
