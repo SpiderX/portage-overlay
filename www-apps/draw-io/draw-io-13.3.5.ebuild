@@ -10,7 +10,7 @@ MY_PN="${PN/-/}"
 
 DESCRIPTION="Online diagramming web application"
 HOMEPAGE="https://github.com/jgraph/drawio"
-SRC_URI="https://github.com/jgraph/${MY_PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/jgraph/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT=0

@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit webapp
 
@@ -10,7 +10,7 @@ MY_PN="${PN/-/}"
 
 DESCRIPTION="Online diagramming web application"
 HOMEPAGE="https://github.com/jgraph/drawio"
-SRC_URI="https://github.com/jgraph/${MY_PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/jgraph/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT=0
@@ -24,7 +24,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	webapp_src_preinst
-	cp -R src/main/webapp/* "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
+	cp -R src/main/webapp/* "${ED}"/"${MY_HTDOCSDIR}" || die "cp failed"
 	webapp_src_install
 
 	einstalldocs
