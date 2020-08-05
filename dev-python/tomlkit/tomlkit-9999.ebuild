@@ -3,10 +3,12 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/sdispater/${PN}.git"
+EGIT_SUBMODULES=( tests/toml-test )
 
-inherit git-r3 python-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Style-preserving TOML library for Python"
 HOMEPAGE="https://github.com/sdispater/tomlkit"
@@ -16,19 +18,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
 
-RDEPEND="${PYTHON_DEPS}"
-DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+distutils_enable_tests pytest
 
-src_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+python_prepare_all() {
+	# Fix backend specification
+	sed -i '/build-backend/s/poetry.core.masonry.api/poetry.masonry.api/' \
+		pyproject.toml || die "sed failed for pyproject.toml"
 
-src_install() {
-	einstalldocs
-	python_foreach_impl python_domodule tomlkit
+	distutils-r1_python_prepare_all
 }

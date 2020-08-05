@@ -3,9 +3,10 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{6..8} )
 
-inherit python-r1
+inherit distutils-r1
 
 PN_TEST="toml-test"
 PV_TEST="f910e151d1b14d94b1e8a4264db0814fb03520d9"
@@ -20,13 +21,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
 
-RDEPEND="${PYTHON_DEPS}"
-DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+distutils_enable_tests pytest
 
 src_unpack() {
 	default
@@ -37,11 +33,10 @@ src_unpack() {
 	fi
 }
 
-src_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+python_prepare_all() {
+	# Fix backend specification
+	sed -i '/build-backend/s/poetry.core.masonry.api/poetry.masonry.api/' \
+		pyproject.toml || die "sed failed for pyproject.toml"
 
-src_install() {
-	einstalldocs
-	python_foreach_impl python_domodule tomlkit
+	distutils-r1_python_prepare_all
 }
