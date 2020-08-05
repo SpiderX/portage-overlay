@@ -15,7 +15,7 @@ SRC_URI="https://github.com/jgraph/${MY_PN}/releases/download/v${PV}/draw.io-amd
 LICENSE="Apache-2.0"
 SLOT=0
 KEYWORDS="-* ~amd64"
-IUSE=""
+IUSE="+abi_x86_64"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
