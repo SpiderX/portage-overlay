@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/tmbo/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -19,8 +19,5 @@ IUSE="test"
 
 RDEPEND=">=dev-python/prompt_toolkit-2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest

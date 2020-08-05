@@ -11,6 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	A Python library to build pretty command line user prompts
+	This library will help you make the input prompts easy to read
+	and answer for the user.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">tmbo/questionary</remote-id>
