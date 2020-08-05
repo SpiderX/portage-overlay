@@ -3,10 +3,11 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/Woile/${PN}.git"
 
-inherit git-r3 python-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Minimal declarative cli tool"
 HOMEPAGE="https://github.com/Woile/decli"
@@ -16,18 +17,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}"
-DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+distutils_enable_tests pytest
 
-src_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+python_prepare_all() {
+	# Add backend specification
+	sed -i '1 i[build-system]\nrequires = ["poetry>=0.12"]\nbuild-backend = "poetry.masonry.api"' \
+		pyproject.toml || die "sed failed for pyproject.toml"
 
-src_install() {
-	einstalldocs
-	python_foreach_impl python_domodule decli
+	distutils-r1_python_prepare_all
 }

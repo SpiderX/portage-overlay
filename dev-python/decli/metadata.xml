@@ -10,7 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A minimal wrapper around argparse
+	decli is minimal wrapper around argparse.
+	It's useful when writing big applications that have many arguments and
+	subcommands, this way it'll be more clear. It's a minimal library
+	to rapidly create an interface separated from your app.
+	It's possible to use any argument from argparse.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">Woile/decli</remote-id>
