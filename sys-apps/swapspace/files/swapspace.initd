@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/swapspace"
+name="Swapspace"
+description="Swapspace"
+command_args="-d ${SWAPSPACE_OPTS}"
+extra_commands="check cleanup"
+
+depend() {
+	need localmount
+	after swapfiles
+}
+
+check() {
+	ebegin "Verifying configuration"
+	${command} ${SWAPSPACE_OPTS} -i
+	eend $?
+}
+
+cleanup() {
+	ebegin "Cleaning up allocated swap files"
+	${command} ${SWAPSPACE_OPTS} -e
+	eend $?
+}

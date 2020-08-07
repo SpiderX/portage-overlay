@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/swapspace
+
+# Various options.
+# run `swapspace -h` for valid cmdline options
+SWAPSPACE_OPTS="-c /etc/swapspace/swapspace.conf -p /run/swapspace.pid"
