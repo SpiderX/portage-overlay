@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	The nocache tool tries to minimize the effect an application has
+	on the Linux file system cache. This is done by intercepting
+	the open and close system calls and calling posix_fadvise with
+	the POSIX_FADV_DONTNEED parameter. Because the library remembers
+	which pages were already in file system cache when the file was opened,
+	these will not be marked as "don't need", because other applications
+	might need that, although they are not actively used (think: hot standby).
+	Use case: backup processes that should not interfere with the present
+	state of the cache.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Feh/nocache</remote-id>
+	</upstream>
+</pkgmetadata>
