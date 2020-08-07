@@ -15,12 +15,12 @@ depend() {
 
 check() {
 	ebegin "Verifying configuration"
-	${command} ${SWAPSPACE_OPTS} -i
+	"${command}" "${SWAPSPACE_OPTS}" -i
 	eend $?
 }
 
 cleanup() {
 	ebegin "Cleaning up allocated swap files"
-	${command} ${SWAPSPACE_OPTS} -e
+	"${command}" "${SWAPSPACE_OPTS}" -e
 	eend $?
 }
