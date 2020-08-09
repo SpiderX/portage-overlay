@@ -62,7 +62,8 @@ QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vsc
 	opt/visual-studio-code/libGLESv2.so
 	opt/visual-studio-code/libEGL.so
 	opt/visual-studio-code/swiftshader/libGLESv2.so
-	opt/visual-studio-code/swiftshader/libEGL.so"
+	opt/visual-studio-code/swiftshader/libEGL.so
+	opt/visual-studio-code/swiftshader/libvk_swiftshader.so"
 
 pkg_setup() {
 	S="${WORKDIR}/VSCode-linux-$(usex amd64 x64 ia32)"
@@ -81,7 +82,7 @@ src_install() {
 	dodir /opt/bin
 	dosym ../visual-studio-code/bin/code opt/bin/code
 
-	insinto /usr/share/appdata
+	insinto /usr/share/metainfo
 	doins "${FILESDIR}"/code.appdata.xml
 
 	pax-mark -m "${ED}"/opt/visual-studio-code/code
