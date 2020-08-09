@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit desktop multilib-build pax-utils xdg-utils
+inherit desktop multilib-build pax-utils xdg
 
 DESCRIPTION="Editor for building and debugging modern web and cloud applications"
 HOMEPAGE="https://code.visualstudio.com"
@@ -85,16 +85,4 @@ src_install() {
 	doins "${FILESDIR}"/code.appdata.xml
 
 	pax-mark -m "${ED}"/opt/visual-studio-code/code
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
