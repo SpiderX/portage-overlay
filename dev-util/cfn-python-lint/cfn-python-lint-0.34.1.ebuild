@@ -5,17 +5,16 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="AWS CloudFormation Linter"
 HOMEPAGE="https://github.com/awslabs/cfn-python-lint"
-SRC_URI=""
+SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/aws-sam-translator[${PYTHON_USEDEP}]
