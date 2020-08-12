@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 470](https://img.shields.io/badge/ebuild-470-orange.svg)](https://img.shields.io/badge/ebuild-470-orange.svg)
+[![Number of ebuilds: 471](https://img.shields.io/badge/ebuild-471-orange.svg)](https://img.shields.io/badge/ebuild-471-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -169,6 +169,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[quickcheck-io](https://github.com/hspec/quickcheck-io) | Use HUnit assertions as QuickCheck properties
 * dev-haskell/[pipes](https://github.com/Gabriel439/Haskell-Pipes-Library) | Compositional pipelines
 * dev-haskell/[postgresql-libpq](https://github.com/phadej/postgresql-libpq) | low-level binding to libpq
+* dev-haskell/[postgresql-simple](https://github.com/phadej/postgresql-simple) | mid-level PostgreSQL client library
 * dev-haskell/[primitive](https://github.com/haskell/primitive) | Primitive memory-related operations
 * dev-haskell/[profunctors](https://github.com/ekmett/profunctors) | Profunctors
 * dev-haskell/[optparse-applicative](https://github.com/pcapriotti/optparse-applicative) | Utilities and combinators for parsing command line options
