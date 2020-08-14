@@ -12,8 +12,7 @@ SRC_URI="https://github.com/digitalocean/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE=""
 
 src_compile() {
 	LDFLAGS="-X main.version=${PV} -X main.revision=${PV}

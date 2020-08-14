@@ -14,8 +14,7 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
