@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 428](https://img.shields.io/badge/ebuild-428-orange.svg)](https://img.shields.io/badge/ebuild-428-orange.svg)
+[![Number of ebuilds: 427](https://img.shields.io/badge/ebuild-427-orange.svg)](https://img.shields.io/badge/ebuild-427-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -127,7 +127,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
 * dev-haskell/[integer-logarithms](https://github.com/Bodigrim/integer-logarithms) | Integer logarithms
 * dev-haskell/[integer-simple](http://hackage.haskell.org/package/integer-simple) | Simple Integer library
-* dev-haskell/[quickcheck-io](https://github.com/hspec/quickcheck-io) | Use HUnit assertions as QuickCheck properties
 * dev-haskell/[postgresql-libpq](https://github.com/phadej/postgresql-libpq) | low-level binding to libpq
 * dev-haskell/[postgresql-simple](https://github.com/phadej/postgresql-simple) | mid-level PostgreSQL client library
 * dev-haskell/[resourcet](https://github.com/snoyberg/conduit) | Deterministic allocation and freeing of scarce resources
