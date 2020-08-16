@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 443](https://img.shields.io/badge/ebuild-443-orange.svg)](https://img.shields.io/badge/ebuild-443-orange.svg)
+[![Number of ebuilds: 442](https://img.shields.io/badge/ebuild-442-orange.svg)](https://img.shields.io/badge/ebuild-442-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -125,7 +125,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[glob](http://iki.fi/matti.niemenmaa/glob) | Globbing library
 * dev-haskell/[hunit](https://github.com/hspec/HUnit) | A unit testing framework for Haskell
 * dev-haskell/[hspec-wai](https://github.com/hspec/hspec-wai) | Experimental Hspec support for testing WAI applications
-* dev-haskell/[http2](https://github.com/kazu-yamamoto/http2) | HTTP/2.0 library including frames and HPACK
 * dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
 * dev-haskell/[integer-logarithms](https://github.com/Bodigrim/integer-logarithms) | Integer logarithms
 * dev-haskell/[integer-simple](http://hackage.haskell.org/package/integer-simple) | Simple Integer library
