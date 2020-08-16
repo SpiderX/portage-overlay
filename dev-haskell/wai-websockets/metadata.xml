@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	An interface between Haskell web frameworks and web servers.
+	The Web Application Interface provides a common protocol for
+	communication between web applications and web servers.
+	This package provides a bridge between WAI and the haskell websockets library.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">yesodweb/wai</remote-id>
