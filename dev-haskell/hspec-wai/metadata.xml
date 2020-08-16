@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Helpers to test WAI applications with Hspec
+	Helpers with experimental Hspec (testing framework for Haskell)
+	support for testing WAI applications
 	</longdescription>
 	<upstream>
 		<remote-id type="github">hspec/hspec-wai</remote-id>
