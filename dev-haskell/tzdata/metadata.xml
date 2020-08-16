@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Distribution of the standard Time Zone Database in a cabal package
+	This package distributes the standard Time Zone Database in
+	a cabal package, so that it can be used in Haskell programs
+	uniformly on all platforms.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">nilcons/haskell-tzdata</remote-id>
