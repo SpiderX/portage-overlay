@@ -10,7 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Daemons in Haskell made fun and easy
+	Library provides RPC-like wrappers for pipes, serialization and
+	incremental deserialization pipes, functions to setup pipes
+	around sockets, high-level interface to starting daemonized programs
+	that are controlled through sockets and a low-level interface
+	to starting, and controlling detached jobs.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">scvalex/daemons</remote-id>
