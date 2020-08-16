@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A library for globbing: matching patterns against file paths
+	Glob is a Haskell library providing globbing functionality.
+	It is able to match patterns against file paths.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">Deewiant/glob</remote-id>
