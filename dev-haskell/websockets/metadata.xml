@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	Provides a sensible, clean and simple way to write
-	WebSocket-capable servers in Haskell.
+	servers capable to support WebSocket protocol in Haskell.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">jaspervdj/websockets</remote-id>
