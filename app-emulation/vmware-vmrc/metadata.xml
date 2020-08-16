@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="standalone">Don't reuse files from VMware workstation install</flag>
+	</use>
 	<longdescription lang="en">
 	VMware Remote Console provides console access and client device
 	connection to VMs on a remote host. You will need to download
