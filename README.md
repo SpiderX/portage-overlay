@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 414](https://img.shields.io/badge/ebuild-414-orange.svg)](https://img.shields.io/badge/ebuild-414-orange.svg)
+[![Number of ebuilds: 413](https://img.shields.io/badge/ebuild-413-orange.svg)](https://img.shields.io/badge/ebuild-413-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -131,7 +131,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[postgresql-simple](https://github.com/phadej/postgresql-simple) | mid-level PostgreSQL client library
 * dev-haskell/[scotty](https://github.com/scotty-web/scotty) | Haskell web framework
 * dev-haskell/[semigroups](https://github.com/ekmett/semigroups) | Anything that associates
-* dev-haskell/[time-compat](https://github.com/phadej/time-compat) | Compatibility with old-time for the time package
 * dev-haskell/[time-manager](https://github.com/yesodweb/wai) | Scalable timer
 * dev-haskell/[transformers-base](https://github.com/mvv/transformers-base) | Lift computations from the bottom of a transformer stack
 * dev-haskell/[transformers-compat](https://github.com/ekmett/transformers-compat) | A small compatibility shim for dev-haskell/transformers
