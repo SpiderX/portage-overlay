@@ -7,9 +7,11 @@ MULTILIB_COMPAT=( abi_x86_64 )
 
 inherit desktop multilib-build pax-utils xdg
 
+MY_P="${PN^}-${PV}"
+
 DESCRIPTION="Music focused client for Plex"
 HOMEPAGE="https://plexamp.com/"
-SRC_URI="https://plexamp.plex.tv/plexamp.plex.tv/desktop/${PN^}-${PV}.AppImage"
+SRC_URI="https://plexamp.plex.tv/plexamp.plex.tv/desktop/${MY_P}.AppImage"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -73,9 +75,9 @@ QA_PREBUILT="opt/plexamp/libEGL.so
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}"/"${PN^}-${PV}".AppImage . || die "cp failed"
-	chmod +x "${PN^}-${PV}".AppImage || die "chmod failed"
-	./"${PN^}-${PV}".AppImage --appimage-extract || die "AppImage extract failed"
+	cp "${DISTDIR}"/"${MY_P}".AppImage . || die "cp failed"
+	chmod +x "${MY_P}".AppImage || die "chmod failed"
+	./"${MY_P}".AppImage --appimage-extract || die "AppImage extract failed"
 }
 
 src_prepare() {
