@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/jml/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,13 +16,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/testtools[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/testtools[${PYTHON_USEDEP}] )"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests unittest
 
 python_install_all() {
 	distutils-r1_python_install_all

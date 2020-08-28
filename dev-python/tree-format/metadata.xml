@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	Python library to generate nicely formatted trees, like the UNIX `tree`
-	command.
+	command, which list contents of directories in a tree-like format.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">jml/tree-format</remote-id>
