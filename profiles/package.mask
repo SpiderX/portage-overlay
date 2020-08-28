@@ -1,5 +1,5 @@
 # Mask resilio-sync because of untraceable package version
 =net-p2p/resilio-sync-9999
 
-# Mask resilio-sync because of untraceable package version
+# Mask xxd because of untraceable package version
 =dev-util/xxd-9999
