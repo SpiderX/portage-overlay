@@ -4,18 +4,17 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..7} )
-EGIT_REPO_URI="https://github.com/metacloud/gilt.git"
+PYTHON_COMPAT=( python3_{6..8} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="A GIT layering tool"
 HOMEPAGE="https://github.com/metacloud/gilt"
-SRC_URI=""
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test" # needs network
 

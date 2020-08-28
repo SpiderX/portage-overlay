@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A GIT layering tool
+	A GIT layering tool built on top of Git. Helps manage many Git
+	repositories, does the uploads to revision control systems, and
+	automates parts of the development workflow.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">metacloud/gilt</remote-id>
