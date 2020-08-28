@@ -5,17 +5,16 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/adrienverge/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="A linter for YAML files"
 HOMEPAGE="https://github.com/adrienverge/yamllint"
-SRC_URI=""
+SRC_URI="https://github.com/adrienverge/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/pathspec[${PYTHON_USEDEP}]
