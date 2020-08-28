@@ -16,26 +16,17 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/aws-sam-translator-1.21.0[${PYTHON_USEDEP}]
+RDEPEND="dev-python/aws-sam-translator[${PYTHON_USEDEP}]
 	dev-python/importlib_resources[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
-	>=dev-python/jsonschema-3.0.1[${PYTHON_USEDEP}]
+	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/junit-xml[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}]
+	dev-python/pydot[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
-
-python_prepare_all() {
-	# Disable failing test
-	sed -i  -e '1 i\import unittest' \
-		-e '/test_build_graph/i\\    @unittest.skip("disable")' \
-		test/unit/module/test_template.py || die "sed failed for test_template.py"
-
-	distutils-r1_python_prepare_all
-}
