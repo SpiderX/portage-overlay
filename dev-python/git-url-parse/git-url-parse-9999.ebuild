@@ -16,10 +16,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-RESTRICT="!test? ( test )"
 
-BDEPEND="dev-python/pbr[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/pbr[${PYTHON_USEDEP}]"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Disable pytest plugins
@@ -27,8 +27,4 @@ python_prepare_all() {
 		|| die "sed for pytest.ini failed"
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
 }
