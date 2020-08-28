@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Pure-python selinux shim module for use in virtualenvs in oder to
+	avoid failure to load selinux in Ansible modules.
+	You still need to have libselinux python bindings package installed
+	on your system for it to work but you no longer have the problem of
+	not being able to import it from inside isolated (default) virtualenvs.
+	This package was also tested as installed outside virtualenvs and seems
+	not to interfere with the original library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pycontribs/selinux</remote-id>
+		<remote-id type="pypi">selinux</remote-id>
+	</upstream>
+</pkgmetadata>
