@@ -6,16 +6,16 @@ EAPI=7
 MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop multilib-build pax-utils unpacker xdg-utils
+inherit desktop multilib-build pax-utils unpacker xdg
 
 DESCRIPTION="HTTP and GraphQL client for developers"
 HOMEPAGE="https://insomnia.rest"
-SRC_URI="https://github.com/getinsomnia/${MY_PN}/releases/download/v${PV}/insomnia_${PV}_amd64.deb"
+SRC_URI="https://github.com/Kong/${MY_PN}/releases/download/core@${PV}/Insomnia.Core-${PV}.deb"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="ayatana"
+IUSE="+abi_x86_64 appindicator"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -44,7 +44,7 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
-	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
+	appindicator? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="opt/Insomnia/insomnia
 	opt/Insomnia/libnode.so
@@ -55,7 +55,7 @@ S="${WORKDIR}"
 src_prepare() {
 	default
 
-	if use ayatana ; then
+	if use appindicator ; then
 		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
 			usr/share/applications/insomnia.desktop \
 			|| die "sed failed for insomnia.desktop"
@@ -77,14 +77,4 @@ src_install() {
 	dosym ../Insomnia/insomnia opt/bin/insomnia
 
 	pax-mark -m "${ED}"/opt/Insomnia/insomnia
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }

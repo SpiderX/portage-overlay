@@ -10,9 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	HTTP and GraphQL client for developers
+	The Desktop API client for REST and GraphQL. Make requests, inspect responses.
+	Reuse API keys or session IDs. Define environment variables globally or
+	switch between sub-environments for a seamless development/production workflow.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">getinsomnia/insomnia</remote-id>
+		<remote-id type="github">Kong/insomnia</remote-id>
 	</upstream>
 </pkgmetadata>
