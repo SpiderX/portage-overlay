@@ -337,7 +337,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[ansible-molecule](https://github.com/ansible/molecule) | Automated testing for Ansible roles
 * dev-util/[aws-config-rdk](https://github.com/awslabs/aws-config-rdk) | AWS Config Rules Development Kit
 * dev-util/[bcunit](https://github.com/BelledonneCommunications/bcunit) | BC Unit Test Framework
-* dev-util/[build2](https://build2.org) | A cross-platform toolchain for building and packaging C++ code
 * dev-util/[cfn-guard](https://github.com/aws-cloudformation/cloudformation-guard) | AWS CloudFormation Guard
 * dev-util/[cfn-guard-rulegen](https://github.com/aws-cloudformation/cloudformation-guard) | AWS CloudFormation Guard Rule Generator
 * dev-util/[cfn-python-lint](https://github.com/awslabs/cfn-python-lint) | AWS CloudFormation Linter
