@@ -1,0 +1,57 @@
+--- /dev/null	2020-08-29 16:27:15.334805274 +0300
++++ ../go.mod	2020-08-29 17:10:46.082533349 +0300
+@@ -0,0 +1,54 @@
++module github.com/fossas/fossa-cli
++
++go 1.14
++
++require (
++	github.com/BurntSushi/toml v0.3.1
++	github.com/Masterminds/semver v1.5.0
++	github.com/apex/log v1.0.0
++	github.com/blang/semver v3.5.1+incompatible
++	github.com/bmatcuk/doublestar v1.1.1
++	github.com/briandowns/spinner v0.0.0-20180822135157-9f016caa1359
++	github.com/cheekybits/genny v1.0.0
++	github.com/davecgh/go-spew v1.1.1 // indirect
++	github.com/emirpasic/gods v1.12.0 // indirect
++	github.com/fatih/color v1.7.0
++	github.com/gnewton/jargo v0.0.0-20150417131352-41f5f186a805
++	github.com/golang/protobuf v1.2.0 // indirect
++	github.com/google/go-querystring v1.0.0 // indirect
++	github.com/inconshreveable/go-update v0.0.0-20160112193335-8152e7eb6ccf // indirect
++	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
++	github.com/kevinburke/ssh_config v0.0.0-20180830205328-81db2a75821e // indirect
++	github.com/mattn/go-colorable v0.0.9 // indirect
++	github.com/mattn/go-isatty v0.0.4
++	github.com/mattn/go-runewidth v0.0.6 // indirect
++	github.com/mitchellh/go-homedir v1.0.0 // indirect
++	github.com/mitchellh/go-wordwrap v1.0.0
++	github.com/mitchellh/mapstructure v1.0.0
++	github.com/olekukonko/tablewriter v0.0.2
++	github.com/pelletier/go-buffruneio v0.2.0 // indirect
++	github.com/pkg/errors v0.8.0
++	github.com/pmezard/go-difflib v1.0.0 // indirect
++	github.com/remeh/sizedwaitgroup v1.0.0
++	github.com/rhysd/go-github-selfupdate v1.0.0
++	github.com/rveen/ogdl v0.0.0-20180201072941-9c9b3105ea3e
++	github.com/sergi/go-diff v1.0.0 // indirect
++	github.com/src-d/gcfg v1.3.0 // indirect
++	github.com/stretchr/testify v1.2.2
++	github.com/tcnksm/go-gitconfig v0.1.2 // indirect
++	github.com/ulikunitz/xz v0.5.4 // indirect
++	github.com/urfave/cli v1.20.0
++	github.com/xanzy/ssh-agent v0.2.0 // indirect
++	golang.org/x/crypto v0.0.0-20180927165925-5295e8364332 // indirect
++	golang.org/x/net v0.0.0-20180926154720-4dfa2610cdf3 // indirect
++	golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be // indirect
++	golang.org/x/sync v0.0.0-20190423024810-112230192c58
++	golang.org/x/sys v0.0.0-20180928133829-e4b3c5e90611 // indirect
++	golang.org/x/text v0.3.0 // indirect
++	google.golang.org/appengine v1.2.0 // indirect
++	gopkg.in/go-ini/ini.v1 v1.39.1
++	gopkg.in/src-d/go-billy.v4 v4.3.0 // indirect
++	gopkg.in/src-d/go-git.v4 v4.7.1
++	gopkg.in/warnings.v0 v0.1.2 // indirect
++	gopkg.in/yaml.v2 v2.2.1
++)
