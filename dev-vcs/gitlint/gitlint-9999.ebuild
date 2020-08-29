@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/jorisroovers/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,13 +16,14 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="test" #failures
+IUSE=""
 
 RDEPEND=">=dev-python/arrow-0.14.2[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	# Relax requirements
@@ -30,11 +31,14 @@ python_prepare_all() {
 		-e '/Click/s/==/>=/' \
 		-e '/sh/s/==/>=/' setup.py || die "sed failed for setup.py"
 
-	distutils-r1_python_prepare_all
-}
+	# Disable failed tests
+	sed -i  -e '1 i\import unittest' \
+		-e '/test_commit_hook_abort/i\\    @unittest.skip("disable")' \
+		-e '/test_commit_hook_continue/i\\    @unittest.skip("disable")' \
+		-e '/test_commit_hook_edit/i\\    @unittest.skip("disable")' \
+		qa/test_hooks.py || die "sed failed for test_hooks.py"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
+	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
