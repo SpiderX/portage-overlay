@@ -26,7 +26,7 @@ RDEPEND="dev-libs/belcard
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
-	dev-qt/qtquickcontrols2:5
+	dev-qt/qtquickcontrols2:5[widgets]
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	media-libs/mediastreamer2[zrtp,jpeg]
