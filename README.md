@@ -319,7 +319,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[testinfra](https://github.com/philpep/testinfra) | Testinfra test your infrastructures
 * dev-python/[text-unidecode](https://github.com/kmike/text-unidecode) | The most basic Text::Unidecode port
 * dev-python/[timecop](https://github.com/bluekelp/pytimecop) | A port of TimeCop Ruby Gem for Python
-* dev-python/[toml](https://github.com/uiri/toml) | Python Library for Tom's Obvious, Minimal Language
 * dev-python/[tomlkit](https://github.com/sdispater/tomlkit) | Style-preserving TOML library for Python
 * dev-python/[tree-format](https://github.com/jml/tree-format) | Python library for printing trees on the console
 * dev-python/[trio](https://github.com/python-trio/trio) | Python library for async concurrency and I/O
