@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Git hook scripts are useful for identifying simple issues before
+	submission to code review. We run our hooks on every commit to
+	automatically point out issues in code such as missing semicolons,
+	trailing whitespace, and debug statements.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pre-commit/pre-commit</remote-id>
+		<remote-id type="pypi">pre-commit</remote-id>
+	</upstream>
+</pkgmetadata>
