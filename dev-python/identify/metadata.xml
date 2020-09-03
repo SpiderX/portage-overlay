@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	File identification library for Python.
+	Given a file (or some information about a file), return
+	a set of standardized tags identifying what the file is.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">chriskuehl/identify</remote-id>
+		<remote-id type="pypi">identify</remote-id>
+	</upstream>
+</pkgmetadata>
