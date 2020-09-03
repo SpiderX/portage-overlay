@@ -241,6 +241,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-taggit-serializer](https://github.com/glemmaPaul/django-taggit-serializer) | Django Taggit Serializer Created for the Django REST Framework
 * dev-python/[django-timezone-field](https://github.com/mfogel/django-timezone-field) | Django application for database and form fields for pytz objects
 * dev-python/[drf-yasg](https://github.com/axnsan12/drf-yasg) | Yet another Swagger generator
+* dev-python/[editdistance](https://github.com/roy-ht/editdistance) | Fast implementation of the edit distance(Levenshtein distance)
 * dev-python/[email-validator](https://github.com/JoshData/python-email-validator) | An email syntax and deliverability validation library
 * dev-python/[factory_boy](https://github.com/FactoryBoy/factory_boy) | A fixtures replacement tool
 * dev-python/[fakeldap](https://github.com/zulip/fakeldap) | An implementation of a LDAPObject to fake a ldap server
