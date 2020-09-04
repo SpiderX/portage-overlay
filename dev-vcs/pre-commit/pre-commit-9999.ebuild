@@ -24,10 +24,10 @@ RDEPEND="dev-python/cfgv[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/importlib_resources[${PYTHON_USEDEP}]
-	dev-python/importlib_metadata[${PYTHON_USEDEP}]"
+	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	>=dev-python/virtualenv-20.0.31[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/virtualenv[${PYTHON_USEDEP}]
-		dev-vcs/git
+BDEPEND="test? ( dev-vcs/git
 		$(python_gen_impl_dep sqlite) )"
 
 distutils_enable_tests pytest
