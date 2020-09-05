@@ -1,0 +1,9 @@
+--- ../src/Makefile.am	2014-09-19 09:09:22 UTC
++++ ../src/Makefile.am
+@@ -3,5 +3,5 @@
+ intl.h local.c mainloop.c parsecfg.c parsecfg.h proto.h remote.c \
+ scprsync.c shhopt.c shhopt.h strlib.c strlib.h sub.c variable.h weex.c
+ 
+-LDADD=$(INTLLIBS)
++LDADD=$(LIBINTL)
+ CPPFLAGS=-DLOCALEDIR=\""$(localedir)"\"
