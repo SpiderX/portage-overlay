@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
+PATCHES=( "${FILESDIR}"/"${P}"-tests.patch )
 
 distutils_enable_tests unittest
 
