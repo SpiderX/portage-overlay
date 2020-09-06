@@ -3,9 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit autotools findlib python-single-r1 systemd tmpfiles user
+inherit autotools findlib systemd tmpfiles
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios and webtvs"
 HOMEPAGE="http://liquidsoap.info"
@@ -18,14 +16,15 @@ IUSE="alsa ao camlimages +camlp4 debug dssi faad fdk ffmpeg flac frei0r gavl \
 	gd graphics gstreamer gui inotify jack json ladspa lame lastfm libsamplerate \
 	mad magic +ocamlopt ogg osc opus oss portaudio profiling pulseaudio sdl shine \
 	shout soundtouch speex ssl systemd taglib theora +unicode vorbis xml"
-REQUIRED_USE="flac? ( ogg ) lastfm? ( xml ) opus? ( ogg ) speex? ( ogg ) theora? ( ogg ) vorbis? ( ogg ) ${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="flac? ( ogg ) lastfm? ( xml ) opus? ( ogg ) speex? ( ogg ) theora? ( ogg ) vorbis? ( ogg )"
 
-RDEPEND="app-admin/logrotate
+RDEPEND="acct-user/liquidsoap
+	app-admin/logrotate
 	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/ocaml-dtools:=[ocamlopt?]
-	dev-ml/ocaml-duppy:=[camlp4?,ocamlopt?]
+	dev-ml/ocaml-duppy:=[ocamlopt?]
 	dev-ml/ocaml-mm:=[ocamlopt?]
-	dev-ml/pcre-ocaml:=[ocamlopt?]
+	dev-ml/pcre-ocaml:=
 	net-misc/curl
 	alsa? ( dev-ml/ocaml-alsa:=[ocamlopt?] )
 	ao? ( dev-ml/ocaml-ao:=[ocamlopt?] )
@@ -41,7 +40,6 @@ RDEPEND="app-admin/logrotate
 	gd? ( dev-ml/gd4o:=[ocamlopt?]
 		media-fonts/dejavu )
 	gstreamer? ( dev-ml/ocaml-gstreamer:=[ocamlopt?] )
-	gui? ( $(python_gen_cond_dep 'dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]') )
 	inotify? ( dev-ml/ocaml-inotify:=[ocamlopt?] )
 	jack? ( dev-ml/ocaml-bjack:=[ocamlopt?] )
 	json? ( dev-ml/yojson:= )
@@ -78,11 +76,6 @@ PATCHES=( "${FILESDIR}"/"${P}"-configure.patch
 	"${FILESDIR}"/"${P}"-makefile.patch
 	"${FILESDIR}"/"${P}"-makefile-defs.patch )
 
-pkg_setup() {
-	enewgroup liquidsoap
-	enewuser liquidsoap -1 -1 /dev/null liquidsoap
-}
-
 src_prepare() {
 	default
 
@@ -94,6 +87,7 @@ src_prepare() {
 src_configure() {
 	econf --disable-optimize \
 		--with-default-font=/usr/share/fonts/dejavu/DejaVuSans.ttf \
+		--disable-gui \
 		--disable-osx-secure-transport \
 		--disable-winsvc \
 		"$(use_enable alsa)" \
@@ -111,7 +105,6 @@ src_configure() {
 		"$(use_enable gd)" \
 		"$(use_enable graphics)" \
 		"$(use_enable gstreamer)" \
-		"$(use_enable gui)" \
 		"$(use_enable inotify)" \
 		"$(use_enable jack bjack)" \
 		"$(use_enable json yojson)" \

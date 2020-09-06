@@ -3,10 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
 EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 
-inherit autotools bash-completion-r1 findlib git-r3 python-single-r1 systemd tmpfiles user
+inherit autotools bash-completion-r1 findlib git-r3 systemd tmpfiles
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios and webtvs"
 HOMEPAGE="http://liquidsoap.info"
@@ -19,14 +18,15 @@ IUSE="alsa ao bash-completion camlimages +camlp4 debug dssi faad fdk ffmpeg flac
 	gd graphics gstreamer gui inotify jack json ladspa lame lastfm libsamplerate \
 	mad magic +ocamlopt ogg osc opus oss portaudio profiling pulseaudio sdl shine \
 	shout soundtouch speex ssl systemd taglib theora +unicode vorbis xml"
-REQUIRED_USE="flac? ( ogg ) lastfm? ( xml ) opus? ( ogg ) speex? ( ogg ) theora? ( ogg ) vorbis? ( ogg ) ${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="flac? ( ogg ) lastfm? ( xml ) opus? ( ogg ) speex? ( ogg ) theora? ( ogg ) vorbis? ( ogg )"
 
-RDEPEND="app-admin/logrotate
+RDEPEND="acct-user/liquidsoap
+	app-admin/logrotate
 	dev-lang/ocaml:=[ocamlopt?]
 	>=dev-ml/ocaml-dtools-0.4.1:=[ocamlopt?]
 	dev-ml/ocaml-duppy:=[ocamlopt?]
 	>=dev-ml/ocaml-mm-0.4.0:=[ocamlopt?]
-	dev-ml/pcre-ocaml:=[ocamlopt?]
+	dev-ml/pcre-ocaml:=
 	net-misc/curl
 	alsa? ( dev-ml/ocaml-alsa:=[ocamlopt?] )
 	ao? ( dev-ml/ocaml-ao:=[ocamlopt?] )
@@ -43,7 +43,6 @@ RDEPEND="app-admin/logrotate
 	gd? ( dev-ml/gd4o:=[ocamlopt?]
 		media-fonts/dejavu )
 	gstreamer? ( >=dev-ml/ocaml-gstreamer-0.3.0:=[ocamlopt?] )
-	gui? ( $(python_gen_cond_dep 'dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]') )
 	inotify? ( dev-ml/ocaml-inotify:=[ocamlopt?] )
 	jack? ( dev-ml/ocaml-bjack:=[ocamlopt?] )
 	json? ( dev-ml/yojson:= )
@@ -80,11 +79,6 @@ PATCHES=( "${FILESDIR}"/"${PN}"-1.4.0-configure.patch
 	"${FILESDIR}"/"${PN}"-1.4.0-makefile.patch
 	"${FILESDIR}"/"${PN}"-1.4.0-makefile-defs.patch )
 
-pkg_setup() {
-	enewgroup liquidsoap
-	enewuser liquidsoap -1 -1 /dev/null liquidsoap
-}
-
 src_prepare() {
 	default
 
@@ -97,6 +91,7 @@ src_prepare() {
 src_configure() {
 	econf --disable-optimize \
 		--with-default-font=/usr/share/fonts/dejavu/DejaVuSans.ttf \
+		--disable-gui \
 		--disable-osx-secure-transport \
 		--disable-winsvc \
 		"$(use_enable alsa)" \
@@ -114,7 +109,6 @@ src_configure() {
 		"$(use_enable gd)" \
 		"$(use_enable graphics)" \
 		"$(use_enable gstreamer)" \
-		"$(use_enable gui)" \
 		"$(use_enable inotify)" \
 		"$(use_enable jack bjack)" \
 		"$(use_enable json yojson)" \
@@ -148,7 +142,7 @@ src_configure() {
 src_install() {
 	findlib_src_install
 
-	use bash-completion && dobashcomp scripts/bash-completion
+	dobashcomp scripts/bash-completion
 	keepdir /var/log/liquidsoap
 
 	newtmpfiles "${FILESDIR}"/liquidsoap.tmpfile liquidsoap.conf
