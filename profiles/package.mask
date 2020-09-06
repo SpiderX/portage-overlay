@@ -5,4 +5,4 @@
 =dev-util/xxd-9999
 
 # Mask liquidsoap because of beta
-=liquidsoap-1.4.0_beta2
+=media-radio/liquidsoap-1.4.0_beta2
