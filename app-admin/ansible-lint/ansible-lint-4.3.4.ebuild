@@ -3,8 +3,8 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{6,7} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -15,28 +15,23 @@ SRC_URI="https://github.com/ansible/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE=""
 
 RDEPEND="app-admin/ansible[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/ruamel-yaml[${PYTHON_USEDEP}]' python3_6)
-	$(python_gen_cond_dep '>=dev-python/ruamel-yaml-0.15.37[${PYTHON_USEDEP}]' python3_7)"
+	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-git[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
-	# distutils-r1.eclass: Add pyproject.toml support
-	cp "${FILESDIR}"/setup.py "${S}" || die "cp failed"
-	chmod +x setup.py || die "chmod failed"
+	# Remove coverage from tests
+	sed -i '/-cov/d' pytest.ini || die "sed failed for pytest.ini"
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	nosetests -v || die "tests failed with ${EPYTHON}"
 }

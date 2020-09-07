@@ -10,8 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Checks playbooks for practices and behaviour that could
-	potentially be improved.
+	ansible-lint checks playbooks for practices and behaviour that
+	could potentially be improved. As a community backed project
+	ansible-lint supports only the last two major versions of Ansible.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">ansible/ansible-lint</remote-id>
