@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 410](https://img.shields.io/badge/ebuild-410-orange.svg)](https://img.shields.io/badge/ebuild-410-orange.svg)
+[![Number of ebuilds: 411](https://img.shields.io/badge/ebuild-411-orange.svg)](https://img.shields.io/badge/ebuild-411-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -300,6 +300,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[requests-credssp](https://github.com/jborean93/requests-credssp) | CredSSP authentication handler for Python Requests
 * dev-python/[requests-mock](https://github.com/jamielennox/requests-mock) | Mock out responses from the requests package
 * dev-python/[reprint](https://github.com/Yinzo/reprint) | Binding variables and refreshing multi-line output in terminal
+* dev-python/[rich](https://github.com/willmcgugan/rich) | Validate configuration and produce human readable error messages
 * dev-python/[rq](https://github.com/rq/rq) | A library for creating and processing background jobs
 * dev-python/[ripe-atlas-cousteau](https://github.com/RIPE-NCC/ripe-atlas-cousteau) | Official python wrapper around RIPE Atlas API
 * dev-python/[ripe-atlas-sagan](https://github.com/RIPE-NCC/ripe-atlas-cousteau) | Official python wrapper around RIPE Atlas API
