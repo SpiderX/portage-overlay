@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A command line client for IBM Cloud
+	A command line client (CLI) for IBM Cloud capable to support
+	plug-ins and tools that allow working with apps, toolchains, pipelines,
+	Kubernetes clusters, and more in IBM Cloud.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">IBM-Cloud/ibm-cloud-cli-release</remote-id>
