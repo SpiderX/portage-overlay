@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 411](https://img.shields.io/badge/ebuild-411-orange.svg)](https://img.shields.io/badge/ebuild-411-orange.svg)
+[![Number of ebuilds: 412](https://img.shields.io/badge/ebuild-412-orange.svg)](https://img.shields.io/badge/ebuild-412-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -348,6 +348,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
 * dev-util/[gh](https://github.com/cli/cli) | The GitHub CLI
 * dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | GitLab Runner
+* dev-util/[hotspot](https://github.com/KDAB/hotspot) | Linux perf GUI for performance analysis
 * dev-util/[insomnia-bin](https://insomnia.rest) | HTTP and GraphQL client for developers
 * dev-util/[ovftool](https://www.vmware.com/support/developer/ovf) | VMware Open Virtualization Format tool
 * dev-util/[packer](https://www.packer.io) | A tool to create identical machine images for multiple platforms
