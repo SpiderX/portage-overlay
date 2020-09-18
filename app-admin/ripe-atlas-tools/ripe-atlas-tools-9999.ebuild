@@ -4,16 +4,17 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
+EGIT_REPO_URI="https://github.com/RIPE-NCC/${PN}.git"
 
-inherit distutils-r1 eutils
+inherit distutils-r1 eutils git-r3
 
-DESCRIPTION="A temporary credentials for AWS roles via sudo-like utility"
+DESCRIPTION="The official command-line client for RIPE Atlas"
 HOMEPAGE="https://github.com/RIPE-NCC/ripe-atlas-tools"
-SRC_URI="https://github.com/RIPE-NCC/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
