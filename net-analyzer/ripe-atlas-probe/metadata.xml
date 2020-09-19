@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	RIPE Atlas software probe is software package that work as RIPE Atlas
+	probes without the need for any dedicated RIPE Atlas hardware.
+	It is meants to be installed on infrastructure maintained by RIPE Atlas
+	probe hosts themselves.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">RIPE-NCC/ripe-atlas-software-probe</remote-id>
+	</upstream>
+</pkgmetadata>

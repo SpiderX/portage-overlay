@@ -1,0 +1,13 @@
+[Unit]
+Description=Atlas Probe
+After=network-online.target syslog.target
+[Service]
+User=ripe-atlas
+Group=nogroup
+Environment=HOME=/var/lib/ripe-atlas
+WorkingDirectory=/var/lib/ripe-atlas
+ExecStart=/opt/atlas/bin/ATLAS
+Restart=always
+TimeoutStopSec=60
+[Install]
+WantedBy=multi-user.target
