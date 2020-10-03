@@ -3,17 +3,15 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/cdown/${PN}.git"
-
-inherit git-r3 linux-info systemd toolchain-funcs
+inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Minimalistic PSI notifier using libnotify"
 HOMEPAGE="https://github.com/cdown/psi-notify"
-SRC_URI=""
+SRC_URI="https://github.com/cdown/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libnotify"
@@ -27,7 +25,6 @@ src_compile() {
 
 src_install() {
 	einstalldocs
-
 	dobin psi-notify
 
 	newinitd "${FILESDIR}"/psi-notify.initd psi-notify
