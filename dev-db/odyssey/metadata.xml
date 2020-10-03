@@ -10,10 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Advanced multi-threaded PostgreSQL connection pooler and request router.
-	Odyssey can significantly scale processing performance by specifying
-	a number of additional worker threads. Each worker thread is responsible
-	for authentication and proxying client-to-server and server-to-client requests.
+	Advanced multi-threaded PostgreSQL connection pooler and request router,
+	with pooling control, authentication and logging.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">yandex/odyssey</remote-id>

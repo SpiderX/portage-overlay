@@ -4,18 +4,16 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-EGIT_REPO_URI="https://github.com/yandex/${PN}.git"
-EGIT_SUBMODULES=()
 
-inherit cmake git-r3 systemd
+inherit cmake systemd
 
 DESCRIPTION="Scalable PostgreSQL connection pooler"
 HOMEPAGE="https://github.com/yandex/odyssey"
-SRC_URI=""
+SRC_URI="https://github.com/yandex/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug libressl"
 
 RDEPEND="acct-user/odyssey
@@ -30,7 +28,6 @@ src_prepare() {
 
 	# Remove git reference, don't build test (no tests)
 	sed -i  -e "/execute_process/s/git describe --always/echo ${PV}/" \
-		-e "/execute_process/s/git rev-list --count HEAD/echo ${PV}/" \
 		-e "/add_subdirectory(test)/d" \
 		-e "/add_subdirectory(stress)/d" \
 		CMakeLists.txt || die "sed for CMakeLists.txt failed"
