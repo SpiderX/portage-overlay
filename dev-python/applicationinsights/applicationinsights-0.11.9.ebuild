@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6..7}} )
+PYTHON_COMPAT=( python3_{6..8} )
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Application Insights SDK for Python"
 HOMEPAGE="https://github.com/microsoft/ApplicationInsights-Python"
@@ -15,7 +15,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v tests || die "tests failed with ${EPYTHON}"
+BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests unittest
+
+pkg_postinst() {
+	optfeature "integration with Django" dev-python/django
 }

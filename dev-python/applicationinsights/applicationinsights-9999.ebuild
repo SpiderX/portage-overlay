@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6..7}} )
+PYTHON_COMPAT=( python3_{6..8} )
 EGIT_REPO_URI="https://github.com/microsoft/ApplicationInsights-Python.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 eutils git-r3
 
 DESCRIPTION="Application Insights SDK for Python"
 HOMEPAGE="https://github.com/microsoft/ApplicationInsights-Python"
@@ -16,7 +16,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v tests || die "tests failed with ${EPYTHON}"
+BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests unittest
+
+pkg_postinst() {
+	optfeature "integration with Django" dev-python/django
 }
