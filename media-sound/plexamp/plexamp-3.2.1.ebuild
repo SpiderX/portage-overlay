@@ -16,7 +16,7 @@ SRC_URI="https://plexamp.plex.tv/plexamp.plex.tv/desktop/${MY_P}.AppImage"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+abi_x86_64 appindicator"
+IUSE="+abi_x86_64 appindicator +seccomp"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -85,6 +85,11 @@ src_prepare() {
 
 	sed -i '/Exec/s/AppRun/plexamp/' squashfs-root/plexamp.desktop \
 		|| die "sed failed for plexamp.desktop"
+
+	if ! use seccomp ; then
+		sed -i '/Exec/s/plexamp/plexamp --disable-seccomp-filter-sandbox/' \
+		squashfs-root/plexamp.desktop || die "sed failed with seccomp"
+	fi
 }
 
 src_install() {
