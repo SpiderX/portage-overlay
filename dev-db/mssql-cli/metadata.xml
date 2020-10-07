@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	An interactive command line query tool for SQL Server.
+	An interactive command line query tool for SQL Server with features such as
+	auto-completion, syntax highlighting, query history, non-interactive support.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">dbcli/mssql-cli</remote-id>

@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="CLI for SQL Server Database"
 HOMEPAGE="https://github.com/dbcli/mssql-cli"
-SRC_URI=""
+SRC_URI="https://github.com/dbcli/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="test"
 RDEPEND=">=dev-python/applicationinsights-0.11.1[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
@@ -28,6 +27,8 @@ RDEPEND=">=dev-python/applicationinsights-0.11.1[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
+distutils_enable_tests pytest
+
 QA_PREBUILT="usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.Native.so
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.Security.Cryptography.Native.OpenSsl.so
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.Net.Http.Native.so
@@ -39,10 +40,8 @@ QA_PREBUILT="usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/Sys
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/SqlToolsResourceProviderService
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.IO.Compression.Native.so"
 
-distutils_enable_tests pytest
-
 src_unpack() {
-	git-r3_src_unpack
+	default
 
 	mkdir "${S}"/mssqlcli/mssqltoolsservice/bin || die "mkdir failed"
 	pushd "${S}"/mssqlcli/mssqltoolsservice/bin || die "pushd failed"
