@@ -24,7 +24,7 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	dev-util/lttng-ust:0[${MULTILIB_USEDEP}]
+	dev-util/lttng-ust:0
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	net-misc/curl:0[${MULTILIB_USEDEP}]
