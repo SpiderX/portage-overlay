@@ -52,11 +52,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# Remove non linux files
-	rm -r mssqlcli/mssqltoolsservice/bin/refs || die "rm failed for refs"
-	rm mssqlcli/mssqltoolsservice/bin/*.{dll,pdb,a} || die "rm failed for dll"
-	rm mssqlcli/mssqltoolsservice/bin/libcoreclrtraceptprovider.so || die "rm failed for libcoreclrtraceptprovider.so"
-
 	# Relax requirements, do not install tests
 	sed -i  -e "/click/s/,<7.1//" \
 		-e "/prompt_toolkit/s/ , < 2.1.0//" \
