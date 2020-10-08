@@ -32,7 +32,7 @@ src_install() {
 	einstalldocs
 
 	insinto /opt/sqlpackage
-	doins -r *.{a,dll,json,md,pdb,so}
+	doins -r ./*.{a,dll,json,md,pdb,so}
 	exeinto /opt/sqlpackage
 	doexe createdump sqlpackage
 
