@@ -23,6 +23,7 @@ RDEPEND=">=dev-python/applicationinsights-0.11.1[${PYTHON_USEDEP}]
 	dev-python/prompt_toolkit[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]
+	dev-util/lttng-ust:0=
 	virtual/krb5"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
