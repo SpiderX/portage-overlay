@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python{2_7,3_{6..8}} pypy3 )
+PYTHON_COMPAT=( python3_{6..8} pypy3 )
 EGIT_REPO_URI="https://github.com/rspivak/slimit.git"
 
 inherit distutils-r1 git-r3
@@ -17,11 +17,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/ply-3.11:=[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	default

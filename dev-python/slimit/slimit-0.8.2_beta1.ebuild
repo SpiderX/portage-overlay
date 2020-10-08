@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python{2_7,3_{6..8}} pypy3 )
+PYTHON_COMPAT=( python3_{6..8} pypy3 )
 
 inherit distutils-r1
 
@@ -15,12 +15,10 @@ SRC_URI="https://api.github.com/repos/rspivak/${PN}/tarball/40956e7 -> ${P}.tar.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE=""
 
 RDEPEND=">=dev-python/ply-3.11:=[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/rspivak-${PN}-40956e7"
 
