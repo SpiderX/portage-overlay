@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Quick and reliable way to convert NGINX configurations
+	Reliable and fast NGINX configuration file parser and builder
+	that provides possibility to convert NGINX configurations
 	into JSON and back
 	</longdescription>
 	<upstream>
