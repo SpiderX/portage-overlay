@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+PYTHON_COMPAT=( python3_{6..8} )
 
 inherit distutils-r1
 
@@ -14,29 +14,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT=0
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-
-RDEPEND="$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' '-2')"
-DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/unittest2[${PYTHON_USEDEP}] )"
-
-src_prepare() {
-	default
-
-	_remove_test() {
-		# Test failed on python3
-		if [ "${EPYTHON}" != "python2.7" ]; then
-			echo "${EPYTHON}"
-			sed -i "/unambiguous(include='@'/s/include='@'//" rstr/tests/test_rstr.py \
-				|| die "sed failed for test_rstr.py"
-		fi
-	}
-	python_foreach_impl _remove_test
-}
+IUSE=""
 
 python_test() {
-	"${PYTHON}" -m unittest discover rstr/tests || die "tests failed with ${EPYTHON}"
+	"${PYTHON}" -m unittest discover -v rstr/tests || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
