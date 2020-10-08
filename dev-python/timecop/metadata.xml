@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A port of TimeCop Ruby Gem for Python
+	A port of TimeCop Ruby Gem for Python which provides
+	"time travel", "time freezing", and "time acceleration" capabilities,
+	making it simple to test time-dependent code
 	</longdescription>
 	<upstream>
 		<remote-id type="github">bluekelp/pytimecop</remote-id>

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5..7}} )
+PYTHON_COMPAT=( python3_{6..7} )
 EGIT_REPO_URI="https://github.com/bluekelp/pytimecop.git"
 
 MY_PV="${PV/_pre/dev}"
@@ -18,11 +18,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+IUSE=""
 
 S="${WORKDIR}/${MY_P}"
+
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	# Remove failing test
@@ -30,10 +30,6 @@ python_prepare_all() {
 		|| die "sed failed for requirements.txt"
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
