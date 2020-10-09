@@ -9,7 +9,7 @@ inherit git-r3 qmake-utils xdg
 
 DESCRIPTION="Music player for big local collections"
 HOMEPAGE="https://olegantonyan.github.io/mpz"
-SRC_URI="https://github.com/olegantonyan/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
