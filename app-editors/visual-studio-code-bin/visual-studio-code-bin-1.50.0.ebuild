@@ -5,15 +5,17 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit desktop multilib-build pax-utils xdg-utils
+inherit desktop multilib-build pax-utils xdg
 
 DESCRIPTION="Editor for building and debugging modern web and cloud applications"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz"
+SRC_URI="amd64? ( https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz )
+	arm? ( https://update.code.visualstudio.com/${PV}/linux-armhf/stable -> ${P}-arm.tar.gz )
+	arm64? ( https://update.code.visualstudio.com/${PV}/linux-arm64/stable -> ${P}-arm64.tar.gz )"
 
 LICENSE="MIT Microsoft-VSCode"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm ~arm64"
 IUSE="gnome-keyring qt5"
 RESTRICT="bindist mirror"
 
@@ -62,10 +64,13 @@ QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vsc
 	opt/visual-studio-code/libGLESv2.so
 	opt/visual-studio-code/libEGL.so
 	opt/visual-studio-code/swiftshader/libGLESv2.so
-	opt/visual-studio-code/swiftshader/libEGL.so"
+	opt/visual-studio-code/swiftshader/libEGL.so
+	opt/visual-studio-code/swiftshader/libvk_swiftshader.so"
 
 pkg_setup() {
-	S="${WORKDIR}/VSCode-linux-$(usex amd64 x64 ia32)"
+	usex amd64 && S="${WORKDIR}/VSCode-linux-x64"
+	usex arm && S="${WORKDIR}/VSCode-linux-armhf"
+	usex arm64 && S="${WORKDIR}/VSCode-linux-arm64"
 }
 
 src_install() {
@@ -81,20 +86,8 @@ src_install() {
 	dodir /opt/bin
 	dosym ../visual-studio-code/bin/code opt/bin/code
 
-	insinto /usr/share/appdata
+	insinto /usr/share/metainfo
 	doins "${FILESDIR}"/code.appdata.xml
 
 	pax-mark -m "${ED}"/opt/visual-studio-code/code
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
