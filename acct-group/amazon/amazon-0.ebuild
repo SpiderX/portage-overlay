@@ -3,17 +3,6 @@
 
 EAPI=7
 
-inherit acct-user
+inherit acct-group
 
-ACCT_USER_ID=-1
-ACCT_USER_GROUPS=( amazon )
-ACCT_USER_HOME="/opt/aws"
-ACCT_USER_HOME_OWNER="amazon:amazon"
-
-acct-user_add_deps
-
-src_install() {
-	acct-user_src_install
-
-	keepdir /etc/amazon /var/log/amazon
-}
+ACCT_GROUP_ID=-1
