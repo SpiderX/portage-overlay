@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/amazon-cloudwatch-agent
+
+# extra options
+#CWAGENT_OPTS=""
+
+# User and group daemon runs as
+#CWAGENT_USER="nobody"
+#CWAGENT_GROUP="nogroup"

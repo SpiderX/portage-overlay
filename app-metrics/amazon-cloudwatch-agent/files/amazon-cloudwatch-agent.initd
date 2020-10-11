@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/opt/aws/amazon-cloudwatch-agent/bin/start-amazon-cloudwatch-agent"
+command_args="${CWAGENT_OPTS}"
+command_user="${CWAGENT_USER:-cwagent}:${CWAGENT_GROUP:-cwagent}"
+description="Amazon CloudWatch Agent"
+name="Amazon CloudWatch Agent"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

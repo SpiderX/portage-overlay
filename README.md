@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 421](https://img.shields.io/badge/ebuild-421-orange.svg)](https://img.shields.io/badge/ebuild-421-orange.svg)
+[![Number of ebuilds: 422](https://img.shields.io/badge/ebuild-422-orange.svg)](https://img.shields.io/badge/ebuild-422-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -93,8 +93,8 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-emulation/[vmware-vmrc](https://www.vmware.com/go/download-vmrc) | VMware Remote Console
 * app-emulation/[vmware-workstation](http://www.vmware.com/products/workstation) | Emulate a complete PC without the performance overhead
 * app-forensics/[gitleaks](https://github.com/zricethezav/gitleaks) | Auditing git repository for secrets and keys
+* app-metrics/[amazon-cloudwatch-agent](https://github.com/aws/amazon-cloudwatch-agent) | Amazon Cloudwatch Agent
 * app-metrics/[do-agent](https://github.com/digitalocean/do-agent) | DigitalOcean Agent for Enhanced Droplet Graphs
-* app-metrics/[nginx-amplify-agent](https://amplify.nginx.com) | System and NGINX metric collection
 * app-misc/[android-file-transfer-linux](https://whoozle.github.io/android-file-transfer-linux/) | Reliable MTP client with minimalistic UI
 * app-misc/[cheat](https://github.com/cheat/cheat) | Interactive cheatsheets on the command-line
 * app-misc/[cointop](https://github.com/miguelmota/cointop) | Interactive cryptocurrency monitor
@@ -474,3 +474,4 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
+
