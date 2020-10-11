@@ -3,11 +3,6 @@
 
 EAPI=7
 
-inherit acct-user
+inherit acct-group
 
-ACCT_USER_ID=-1
-ACCT_USER_GROUPS=( cwagent )
-ACCT_USER_HOME="/opt/aws/amazon-cloudwatch-agent"
-ACCT_USER_HOME_OWNER="cwagent:cwagent"
-
-acct-user_add_deps
+ACCT_GROUP_ID=-1
