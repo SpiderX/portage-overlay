@@ -1,7 +1,6 @@
 # Config file for /etc/init.d/do-agent
 
 # extra options (run do-agent -h for a list of supported options)
-# Parameter -S indicates that nuttcp acts as a server.
 DOAGENT_OPTS="--syslog"
 
 # User and group daemon runs as

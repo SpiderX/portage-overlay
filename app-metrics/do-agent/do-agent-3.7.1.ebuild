@@ -3,22 +3,17 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
-
-inherit git-r3 go-module systemd
+inherit go-module systemd
 
 DESCRIPTION="DigitalOcean Agent for Enhanced Droplet Graphs"
 HOMEPAGE="https://github.com/digitalocean/do-agent"
-SRC_URI=""
+SRC_URI="https://github.com/digitalocean/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-src_unpack() {
-	git-r3_src_unpack
-}
 
 src_compile() {
 	LDFLAGS="-X main.version=${PV} -X main.revision=${PV}
