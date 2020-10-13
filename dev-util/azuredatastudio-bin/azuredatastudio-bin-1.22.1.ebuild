@@ -51,17 +51,17 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	gnome-keyring? ( app-crypt/libsecret:0[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Security.Cryptography.Native.OpenSsl.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Net.Http.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/MicrosoftSqlToolsServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/MicrosoftKustoServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/libhostfxr.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Net.Security.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/MicrosoftSqlToolsCredentials
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/libhostpolicy.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/SqlToolsResourceProviderService
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.IO.Compression.Native.so
+QA_PREBUILT="opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/System.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/System.Security.Cryptography.Native.OpenSsl.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/System.Net.Http.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/MicrosoftSqlToolsServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/MicrosoftKustoServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/libhostfxr.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/System.Net.Security.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/MicrosoftSqlToolsCredentials
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/libhostpolicy.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/SqlToolsResourceProviderService
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.35/System.IO.Compression.Native.so
 	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 	opt/azuredatastudio/azuredatastudio
 	opt/azuredatastudio/swiftshader/libEGL.so
