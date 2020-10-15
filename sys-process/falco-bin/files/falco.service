@@ -1,0 +1,20 @@
+[Unit]
+Description=Falco
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=nobody
+Group=nogroup
+ExecStart=/usr/bin/falco -d
+Restart=always
+
+OOMScoreAdjust=-900
+SyslogIdentifier=Falco
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target

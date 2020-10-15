@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/falco"
+command_args="${FALCO_OPTS}"
+#command_background="yes"
+command_user="${FALCO_USER:-root}:${FALCO_GROUP:-root}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}
