@@ -4,24 +4,24 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/saulpw/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Terminal spreadsheet multitool for discovering and arranging data"
 HOMEPAGE="https://github.com/saulpw/visidata"
-SRC_URI=""
+SRC_URI="https://github.com/saulpw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	$(python_gen_impl_dep sqlite)"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/h5py[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-vcs/git
+		dev-python/h5py[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}] )"

@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A curses interface for exploring and arranging tabular data
+	A tool that lets you quickly open, explore, summarize, and analyze
+	datasets in your computer’s terminal. VisiData works with CSV files,
+	Excel spreadsheets, SQL databases, and many other data sources.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">saulpw/visidata</remote-id>
