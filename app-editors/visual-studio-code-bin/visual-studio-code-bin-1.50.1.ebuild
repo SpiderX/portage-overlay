@@ -68,9 +68,9 @@ QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vsc
 	opt/visual-studio-code/swiftshader/libvk_swiftshader.so"
 
 pkg_setup() {
-	usex amd64 && S="${WORKDIR}/VSCode-linux-x64"
-	usex arm && S="${WORKDIR}/VSCode-linux-armhf"
-	usex arm64 && S="${WORKDIR}/VSCode-linux-arm64"
+	use amd64 && S="${WORKDIR}/VSCode-linux-x64"
+	use arm && S="${WORKDIR}/VSCode-linux-armhf"
+	use arm64 && S="${WORKDIR}/VSCode-linux-arm64"
 }
 
 src_install() {
