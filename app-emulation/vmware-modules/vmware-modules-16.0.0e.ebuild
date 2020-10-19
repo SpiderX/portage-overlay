@@ -5,21 +5,22 @@ EAPI=7
 
 inherit linux-info linux-mod udev
 
-MY_KV="5.5"
+MY_KV="5.8"
+MY_PV="${PV%*e}"
 
 DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
-SRC_URI="https://github.com/mkubecek/vmware-host-modules/archive/w${PV}-k${MY_KV}.tar.gz -> ${P}-${MY_KV}.tar.gz"
+SRC_URI="https://github.com/mkubecek/vmware-host-modules/archive/w${MY_PV}-k${MY_KV}.tar.gz -> ${PN}-${MY_PV}-${MY_KV}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="5.8"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="acct-group/vmware"
 DEPEND=""
 
-S="${WORKDIR}/vmware-host-modules-w${PV}-k${MY_KV}"
+S="${WORKDIR}/vmware-host-modules-w${MY_PV}-k${MY_KV}"
 
 BUILD_TARGETS="auto-build KERNEL_DIR=${KERNEL_DIR} KBUILD_OUTPUT=${KV_OUT_DIR}"
 CONFIG_CHECK="~HIGH_RES_TIMERS VMWARE_VMCI VMWARE_VMCI_VSOCKETS"
