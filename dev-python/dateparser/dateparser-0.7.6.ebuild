@@ -4,22 +4,20 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/scrapinghub/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Date parsing library designed to parse dates from HTML pages"
 HOMEPAGE="https://github.com/scrapinghub/dateparser"
-SRC_URI=""
+SRC_URI="https://github.com/scrapinghub/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/convertdate[${PYTHON_USEDEP}]
-	dev-python/hijri-converter[${PYTHON_USEDEP}]
 	dev-python/jdatetime[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
