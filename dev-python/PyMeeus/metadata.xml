@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Python implementation of Jean Meeus astronomical routines
+	Python implementation of Jean Meeus astronomical algorithms
+	described in the classical book "Astronomical Algorithms,
+	2nd Edition, Willmann-Bell Inc. (1998)" by Jean Meeus.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">architest/pymeeus</remote-id>

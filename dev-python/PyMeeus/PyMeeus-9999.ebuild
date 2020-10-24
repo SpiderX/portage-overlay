@@ -15,12 +15,6 @@ SRC_URI=""
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE=""
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
