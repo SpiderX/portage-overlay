@@ -22,7 +22,7 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	media-libs/gstreamer:1.0
 	camlp4? ( dev-ml/camlp4:= )"
 DEPEND="${RDEPEND}
-	dev-ml/findlib
+	dev-ml/findlib[ocamlopt?]
 	virtual/pkgconfig"
 
 DOCS=( CHANGES README )
@@ -32,7 +32,8 @@ src_prepare() {
 
 	m4/bootstrap || die "bootstrap failed"
 	sed -i 's/AC_CHECK_TOOL_STRICT/AC_CHECK_TOOL/g' m4/ocaml.m4 \
-		|| die "Failed editing m4/ocaml.m4!"
+		|| die "sed failed for m4/ocaml.m4"
+
 	AT_M4DIR="m4" eautoreconf
 }
 
