@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for Theora Video Compression Codec Library
+	This package contains an OCaml interface (binding) for
+	Theora Video Compression Codec Library, otherwise known as libtheora.
 	</longdescription>
 	<use>
 		<flag name="camlp4">Enable camlp4 syntax extension</flag>

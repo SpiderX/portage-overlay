@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,8 @@ src_prepare() {
 	default
 
 	sed -i 's/AC_CHECK_TOOL_STRICT/AC_CHECK_TOOL/g' m4/ocaml.m4 \
-		|| die "Failed editing m4/ocaml.m4!"
+		|| die "sed failed for m4/ocaml.m4"
+
 	AT_M4DIR="m4" eautoreconf
 }
 
