@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for MAD mp3 decoder
+	This package contains an OCaml interface (bindings) for
+	MAD (Mpeg Audio Decoder) mp3 decoder, otherwise known as libmad.
 	</longdescription>
 	<use>
 		<flag name="camlp4">Enable camlp4 syntax extension</flag>
