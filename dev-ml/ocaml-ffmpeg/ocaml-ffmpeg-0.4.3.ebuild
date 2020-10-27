@@ -7,7 +7,7 @@ inherit autotools findlib
 
 DESCRIPTION="OCaml bindings to ffmpeg"
 HOMEPAGE="https://github.com/savonet/ocaml-ffmpeg"
-SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/savonet/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
@@ -21,8 +21,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( CHANGES README.md )
-
-PATCHES=( "${FILESDIR}"/"${P}"-makeopts.patch )
 
 src_prepare() {
 	default

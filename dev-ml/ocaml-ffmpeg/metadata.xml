@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for the FFmpeg library
+	This package contains an OCaml interface for
+	FFmpeg Multimedia framework, otherwise known as ffmpeg.
 	</longdescription>
 	<use>
 		<flag name="camlp4">Enable camlp4 syntax extension</flag>
