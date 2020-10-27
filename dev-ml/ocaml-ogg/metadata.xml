@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for Ogg Bitstream Library
+	This package contains an OCaml interface (bindings) for
+	Ogg Bitstream Library, otherwise known as libogg.
 	</longdescription>
 	<use>
 		<flag name="camlp4">Enable camlp4 syntax extension</flag>

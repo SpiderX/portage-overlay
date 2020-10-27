@@ -3,17 +3,15 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
-
-inherit autotools findlib git-r3
+inherit autotools findlib
 
 DESCRIPTION="OCaml bindings to libogg"
 HOMEPAGE="https://github.com/savonet/ocaml-ogg"
-SRC_URI=""
+SRC_URI="https://github.com/savonet/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+camlp4 debug +ocamlopt profiling"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
@@ -23,12 +21,11 @@ DEPEND="${RDEPEND}
 	dev-ml/findlib[ocamlopt?]
 	virtual/pkgconfig"
 
-DOCS=( CHANGES README.md )
+DOCS=( CHANGES README )
 
 src_prepare() {
 	default
 
-	m4/bootstrap || die "bootstrap failed"
 	sed -i 's/AC_CHECK_TOOL_STRICT/AC_CHECK_TOOL/g' m4/ocaml.m4 \
 		|| die "sed failed for m4/ocaml.m4"
 
