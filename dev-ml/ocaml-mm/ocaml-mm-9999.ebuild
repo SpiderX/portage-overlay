@@ -1,15 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 EGIT_SUBMODULES=()
-EGIT_COMMIT="2493762c1aefba52e6c4c0ca196ddb04b07d09a0"
 
 inherit autotools findlib git-r3
 
-DESCRIPTION="OCaml bindings to mm"
+DESCRIPTION="OCaml multimedia library"
 HOMEPAGE="https://github.com/savonet/ocaml-mm"
 SRC_URI=""
 
@@ -20,21 +19,21 @@ IUSE="alsa ao +camlp4 debug ffmpeg gstreamer mad +ocamlopt ogg oss profiling pul
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/ocamlsdl:=[ocamlopt?]
-	alsa? ( dev-ml/ocaml-alsa:= )
-	ao? ( dev-ml/ocaml-ao:= )
-	camlp4? ( dev-ml/camlp4:= )
-	ffmpeg? ( dev-ml/ocaml-ffmpeg:= )
-	gstreamer? ( dev-ml/ocaml-gstreamer:= )
-	mad? ( dev-ml/ocaml-mad:= )
-	ogg? ( dev-ml/ocaml-ogg:= )
-	pulseaudio? ( dev-ml/ocaml-pulseaudio:= )
-	sdl? ( dev-ml/ocamlsdl:= )
-	theora? ( dev-ml/ocaml-theora:= )"
+	alsa? ( dev-ml/ocaml-alsa:=[ocamlopt?] )
+	ao? ( dev-ml/ocaml-ao:=[ocamlopt?] )
+	camlp4? ( dev-ml/camlp4:=[ocamlopt?] )
+	ffmpeg? ( dev-ml/ocaml-ffmpeg:=[ocamlopt?] )
+	gstreamer? ( dev-ml/ocaml-gstreamer:=[ocamlopt?] )
+	mad? ( dev-ml/ocaml-mad:=[ocamlopt?] )
+	ogg? ( dev-ml/ocaml-ogg:=[ocamlopt?] )
+	pulseaudio? ( dev-ml/ocaml-pulseaudio:=[ocamlopt?] )
+	sdl? ( dev-ml/ocamlsdl:=[ocamlopt?] )
+	theora? ( dev-ml/ocaml-theora:=[ocamlopt?] )"
 DEPEND="${RDEPEND}
-	dev-ml/findlib
+	dev-ml/findlib[ocamlopt?]
 	virtual/pkgconfig"
 
-DOCS=( CHANGES README )
+DOCS=( {CHANGES,README}.md )
 
 PATCHES=( "${FILESDIR}"/"${PN}"-0.3.0-configure.patch
 	"${FILESDIR}"/"${PN}"-0.3.0-makefile.patch )
@@ -44,7 +43,8 @@ src_prepare() {
 
 	m4/bootstrap || die "bootstrap failed"
 	sed -i 's/AC_CHECK_TOOL_STRICT/AC_CHECK_TOOL/g' m4/ocaml.m4 \
-		|| die "Failed editing m4/ocaml.m4!"
+		|| die "sed failed for m4/ocaml.m4"
+
 	AT_M4DIR="m4" eautoreconf
 }
 

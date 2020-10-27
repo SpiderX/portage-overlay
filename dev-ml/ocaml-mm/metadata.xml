@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml multimedia library
+	ocaml-mm is a library dedicated to performing operations
+	on multimedia contents: audio, video and MIDI.
 	</longdescription>
 	<use>
 		<flag name="camlp4">Enable camlp4 syntax extension</flag>
