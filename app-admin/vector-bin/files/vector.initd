@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/vector"
+command_background="yes"
+name="Vector"
+description="Vector"
+command_user="${VECTOR_USER:-vector}:${VECTOR_GROUP:-vector}"
+pidfile="/run/vector.pid"
+config="${CONFIG:-/etc/vector/vector.toml}"
+command_args="--config $config ${OPTS}"
+
+depend() {
+	need net
+}

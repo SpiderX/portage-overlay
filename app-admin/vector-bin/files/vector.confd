@@ -1,0 +1,12 @@
+# Config file for /etc/init.d/vector
+
+# Various options.
+# run `vector --help` for valid cmdline options
+OPTS="--log-format text"
+
+# User and group daemon runs as
+VECTOR_USER="vector"
+VECTOR_GROUP="vector"
+
+# Vector config file
+#CONFIG="/etc/vector/vector.toml"
