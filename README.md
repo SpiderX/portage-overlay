@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 440](https://img.shields.io/badge/ebuild-440-orange.svg)](https://img.shields.io/badge/ebuild-440-orange.svg)
+[![Number of ebuilds: 441](https://img.shields.io/badge/ebuild-441-orange.svg)](https://img.shields.io/badge/ebuild-441-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -75,6 +75,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[tztail](https://github.com/thecasualcoder/tztail) | A log view in various timezones
 * app-admin/[userdbadm](https://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
 * app-admin/[uwsgitop](https://github.com/unbit/uwsgitop) | uWSGI stats viewer
+* app-admin/[vault-backend-migrator](https://github.com/adamdecaf/vault-backend-migrator) | Tool to migrate data across vault clusters
 * app-admin/[vcd-cli](https://github.com/vmware/vcd-cli) | Utility to check AWS resource limits and usage
 * app-admin/[vector-bin](https://github.com/timberio/vector) | High performance logs, metrics, and events router
 * app-admin/[yaml-vault](https://github.com/Jimdo/yaml-vault) | Utility to import/export data from HashiCorp Vault
