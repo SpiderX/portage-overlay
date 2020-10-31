@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	jsqry is a small command line tool (similar to jq) to query
+	JSON using sane DSL. The purpose of this app is to expose
+	the functionality of jsqry JS library in form of CLI.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jsqry/jsqry-cli2</remote-id>
+	</upstream>
+</pkgmetadata>
