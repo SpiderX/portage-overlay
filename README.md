@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 442](https://img.shields.io/badge/ebuild-442-orange.svg)](https://img.shields.io/badge/ebuild-442-orange.svg)
+[![Number of ebuilds: 443](https://img.shields.io/badge/ebuild-443-orange.svg)](https://img.shields.io/badge/ebuild-443-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -477,6 +477,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * sys-apps/[firetools](https://firejail.wordpress.com) | Graphical user interface of Firajail security sandbox
 * sys-apps/[nocache](https://github.com/Feh/nocache) | Minimize caching effects for applications
 * sys-apps/[psi-notify](https://github.com/cdown/psi-notify) | Minimalistic PSI notifier using libnotify
+* sys-apps/[sampler](https://github.com/sqshq/sampler) | Visualization for any shell command
 * sys-apps/[swapspace](https://github.com/Tookmund/Swapspace) | A dynamic swap space manager
 * sys-cluster/[minishift-bin](https://github.com/minishift/minishift) | Single Node OpenShift Cluster
 * sys-fs/[adhocify](https://github.com/quitesimpleorg/adhocify) | Tool which monitors for inotify events and executes script
