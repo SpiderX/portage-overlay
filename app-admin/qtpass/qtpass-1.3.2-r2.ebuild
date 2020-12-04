@@ -3,19 +3,16 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/IJHack/${PN}.git"
-
-inherit desktop git-r3 qmake-utils virtualx
+inherit desktop qmake-utils virtualx
 
 DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org"
-SRC_URI=""
+SRC_URI="https://github.com/IJHack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="|| ( app-admin/pass app-admin/gopass )
 	dev-qt/qtcore:5
@@ -29,6 +26,8 @@ DEPEND="${RDEPEND}
 BDEPEND="dev-qt/linguist-tools:5"
 
 RESTRICT="!test? ( test )"
+
+S="${WORKDIR}/QtPass-${PV}"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
 
