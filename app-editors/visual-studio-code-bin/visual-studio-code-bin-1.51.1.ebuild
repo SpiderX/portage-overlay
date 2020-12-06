@@ -9,11 +9,13 @@ inherit desktop multilib-build pax-utils xdg
 
 DESCRIPTION="Editor for building and debugging modern web and cloud applications"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz"
+SRC_URI="amd64? ( https://update.code.visualstudio.com/${PV}/linux-x64/stable -> ${P}-amd64.tar.gz )
+	arm? ( https://update.code.visualstudio.com/${PV}/linux-armhf/stable -> ${P}-arm.tar.gz )
+	arm64? ( https://update.code.visualstudio.com/${PV}/linux-arm64/stable -> ${P}-arm64.tar.gz )"
 
 LICENSE="MIT Microsoft-VSCode"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm ~arm64"
 IUSE="gnome-keyring qt5"
 RESTRICT="bindist mirror"
 
@@ -50,8 +52,6 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vsda/build/Release/vsda.node
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vscode-sqlite3/build/Release/sqlite.node
-	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/oniguruma/build/Release/onig_scanner.node
-	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/nsfw/build/Release/nsfw.node
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/spdlog/build/Release/spdlog.node
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node
@@ -61,12 +61,14 @@ QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vsc
 	opt/visual-studio-code/libffmpeg.so
 	opt/visual-studio-code/libGLESv2.so
 	opt/visual-studio-code/libEGL.so
+	opt/visual-studio-code/libvk_swiftshader.so
 	opt/visual-studio-code/swiftshader/libGLESv2.so
-	opt/visual-studio-code/swiftshader/libEGL.so
-	opt/visual-studio-code/swiftshader/libvk_swiftshader.so"
+	opt/visual-studio-code/swiftshader/libEGL.so"
 
 pkg_setup() {
-	S="${WORKDIR}/VSCode-linux-$(usex amd64 x64 ia32)"
+	use amd64 && S="${WORKDIR}/VSCode-linux-x64"
+	use arm && S="${WORKDIR}/VSCode-linux-armhf"
+	use arm64 && S="${WORKDIR}/VSCode-linux-arm64"
 }
 
 src_install() {
