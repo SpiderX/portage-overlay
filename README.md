@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 451](https://img.shields.io/badge/ebuild-451-orange.svg)](https://img.shields.io/badge/ebuild-451-orange.svg)
+[![Number of ebuilds: 452](https://img.shields.io/badge/ebuild-452-orange.svg)](https://img.shields.io/badge/ebuild-452-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -58,6 +58,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[container-service-extension](https://github.com/vmware/container-service-extension) | Container Service Extension for vCloud Director
 * app-admin/[csp-reporter](https://github.com/yandex/csp-reporter) | Content Security Policy logs parser
 * app-admin/[digaws](https://github.com/sampointer/digaws) | Look up region and other information for any AWS IP address
+* app-admin/[digg](https://github.com/sampointer/digg) | Look up region and other information for any Google IP address
 * app-admin/[docker-pretty-ps](https://github.com/politeauthority/docker-pretty-ps) | docker ps in colored and long output
 * app-admin/[doctl](https://github.com/digitalocean/doctl) | A command line tool for DigitalOcean services
 * app-admin/[fselect](https://github.com/jhspetersson/fselect) | Find files with SQL-like queries
@@ -502,4 +503,3 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
-
