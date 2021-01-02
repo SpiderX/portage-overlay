@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 455](https://img.shields.io/badge/ebuild-455-orange.svg)](https://img.shields.io/badge/ebuild-455-orange.svg)
+[![Number of ebuilds: 456](https://img.shields.io/badge/ebuild-456-orange.svg)](https://img.shields.io/badge/ebuild-456-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -73,6 +73,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[saw](https://github.com/TylerBrock/saw) | Fast, multi-purpose tool for AWS CloudWatch Logs
 * app-admin/[sinker](https://github.com/plexsystems/sinker) | Sync images from one container registry to another
 * app-admin/[terraform-provider-vcd](https://www.terraform.io/docs/providers/vcd) | Terraform VMware vCloud Director provider
+* app-admin/[topngx](https://github.com/gsquire/topngx) | A top for NGINX
 * app-admin/[trailscraper](https://github.com/flosell/trailscraper) | Command-line tool to get information out of AWS CloudTrail
 * app-admin/[tztail](https://github.com/thecasualcoder/tztail) | A log view in various timezones
 * app-admin/[userdbadm](https://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
