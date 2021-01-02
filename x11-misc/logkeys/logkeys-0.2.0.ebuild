@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools eutils systemd
+inherit autotools systemd
 
 DESCRIPTION="A Linux keylogger"
 HOMEPAGE="https://github.com/kernc/logkeys"
@@ -37,7 +37,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/"${PN}".service
 
 	if ! use suid; then
-		rm -f "${ED%/}"/etc/logkeys-{kill,start}.sh || die "remove logkeys failed"
-		rm -f "${ED%/}"/usr/bin/llk{,k} || die "remove llk(k) failed"
+		rm -f "${ED}"/etc/logkeys-{kill,start}.sh || die "remove logkeys failed"
+		rm -f "${ED}"/usr/bin/llk{,k} || die "remove llk(k) failed"
 	fi
 }
