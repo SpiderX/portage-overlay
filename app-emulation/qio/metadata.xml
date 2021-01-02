@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	QEMU Init OpenRC
+	QEMU Init OpenRC is a init script that makes easy launching of
+	virtual machines under QEMU/KVM hypervisor
 	</longdescription>
 	<upstream>
 		<remote-id type="github">SpiderX/qio</remote-id>
