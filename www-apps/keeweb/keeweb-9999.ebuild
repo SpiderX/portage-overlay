@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/keeweb/${PN}.git"
 EGIT_BRANCH="gh-pages"
@@ -19,12 +19,9 @@ SLOT=0
 KEYWORDS=""
 IUSE="vhosts"
 
-DEPEND="${WEBAPP_DEPEND}"
-RDEPEND="${DEPEND}"
-
 src_install() {
 	webapp_src_preinst
 	rm CNAME || die "rm failed"
-	cp -R . "${ED%/}"/"${MY_HTDOCSDIR}" || die "cp failed"
+	cp -R . "${ED}"/"${MY_HTDOCSDIR}" || die "cp failed"
 	webapp_src_install
 }
