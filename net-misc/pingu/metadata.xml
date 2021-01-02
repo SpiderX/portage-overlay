@@ -11,7 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	Pingu is a daemon that takes care of policy routing and
-	fail-over in multi ISP setups.
+	fail-over in multi ISP setups as well as pings hosts and executes
+	script on status change
 	</longdescription>
 	<upstream>
 		<remote-id type="github">ncopa/pingu</remote-id>
