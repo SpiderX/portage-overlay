@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A utility for easily assuming AWS IAM roles from the command line.
+	Tool grabs AWS credentials (access keys, session token, etc.) and
+	exports them to environment variables. It makes MFA much easier to use,
+	it’s extensible, and it comes with a few cool built-in utilities
+	such as autoawsume, which automatically refreshes your credentials
+	for you in the background.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">trek10inc/awsume</remote-id>
+		<remote-id type="pypi">awsume</remote-id>
+	</upstream>
+</pkgmetadata>
