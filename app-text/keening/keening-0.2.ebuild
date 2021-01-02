@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit savedconfig
 
@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake PREFIX=/usr DESTDIR="${D}" install
 	einstalldocs
+	emake PREFIX=/usr DESTDIR="${D}" install
 	save_config config.h
 }
