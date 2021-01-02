@@ -3,17 +3,15 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/quitesimpleorg/${PN}.git"
-
-inherit git-r3 linux-info toolchain-funcs
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="Tool which monitors for inotify events and executes script"
 HOMEPAGE="https://github.com/quitesimpleorg/adhocify"
-SRC_URI=""
+SRC_URI="https://github.com/quitesimpleorg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 CONFIG_CHECK="~INOTIFY_USER"
