@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,4 +41,5 @@ src_install() {
 	newins contrib/completions/fish/aws-vault.fish aws-vault
 	insinto /usr/share/zsh/site-functions
 	newins contrib/completions/zsh/aws-vault.zsh _aws-vault
+	dodoc contrib/scripts/aws-iam-create-yubikey-mfa.sh
 }
