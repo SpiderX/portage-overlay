@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
+	A cross-platform IRC framework written with Qt.
 	Communi provides a set of tools for enabling IRC connectivity
 	in Qt-based C++ and QML applications.
 	</longdescription>
