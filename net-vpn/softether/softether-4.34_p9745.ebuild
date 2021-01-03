@@ -3,19 +3,19 @@
 
 EAPI=7
 
-DATE="2018.01.15"
-MY_P="v${PV/_p/-}"
-
 inherit systemd toolchain-funcs
 
+DATE="2020.04.05"
+MY_P="v${PV/_p/-}"
+
 DESCRIPTION="Multi-protocol VPN software"
-HOMEPAGE="http://www.softether.org/"
+HOMEPAGE="http://www.softether.org"
 SRC_URI="http://www.softether-download.com/files/${PN}/${MY_P}-rtm-${DATE}-tree/Source_Code/${PN}-src-${MY_P}-rtm.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bridge client cmd debug libressl server"
+IUSE="bridge +client cmd debug libressl server"
 REQUIRED_USE="|| ( bridge client cmd server )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -56,10 +56,11 @@ src_compile() {
 src_install() {
 	einstalldocs
 
-	# Define local variable, strip 'debug' and 'libressl' USE flags
+	# Define local variable, strip '+', 'debug' and 'libressl' USE flags
 	local MODULES
-	MODULES="${IUSE//debug}"
-	MODULES="${IUSE//libressl}"
+	MODULES="${IUSE//+}"
+	MODULES="${MODULES//debug}"
+	MODULES="${MODULES//libressl}"
 
 	# Define installation location
 	insinto /opt/softether

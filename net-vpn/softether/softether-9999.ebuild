@@ -1,21 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="git://github.com/SoftEtherVPN/SoftEtherVPN.git"
+EGIT_REPO_URI="https://github.com/SoftEtherVPN/SoftEtherVPN.git"
 EGIT_BRANCH="master"
 
 inherit git-r3 systemd toolchain-funcs
 
 DESCRIPTION="Multi-protocol VPN software"
-HOMEPAGE="http://www.softether.org/"
+HOMEPAGE="http://www.softether.org"
 SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bridge client cmd debug libressl server"
+IUSE="bridge +client cmd debug libressl server"
 REQUIRED_USE="|| ( bridge client cmd server )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -56,10 +56,11 @@ src_compile() {
 src_install() {
 	einstalldocs
 
-	# Define local variable, strip 'debug' and 'libressl' USE flags
+	# Define local variable, strip '+', 'debug' and 'libressl' USE flags
 	local MODULES
-	MODULES="${IUSE//debug}"
-	MODULES="${IUSE//libressl}"
+	MODULES="${IUSE//+}"
+	MODULES="${MODULES//debug}"
+	MODULES="${MODULES//libressl}"
 
 	# Define installation location
 	insinto /opt/softether
