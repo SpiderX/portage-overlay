@@ -1,32 +1,23 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+EGIT_REPO_URI="https://github.com/keenerd/${PN}.git"
 
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="JSON parser designed for maximum convenience within the shell"
 HOMEPAGE="http://kmkeen.com/jshon https://github.com/keenerd/jshon"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/keenerd/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="zsh-completion"
+IUSE=""
 
 DEPEND="dev-libs/jansson"
-RDEPEND="${DEPEND}
-	zsh-completion? ( app-shells/zsh-completions )"
-
-src_prepare() {
-	default
-
-	if ! use zsh-completion ; then
-		sed -i '/$(INSTALL) -D $(ZSHSRC) $(ZSHCOMP)/d' \
-			Makefile || die "sed failed for Makefile"
-	fi
-}
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	emake CC="$(tc-getCC)"
