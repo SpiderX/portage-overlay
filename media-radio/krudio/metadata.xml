@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Radio tray for linux on QT
+	A simple small and easy to use radio player written in QT QML
+	that stays in system tray while playing radio stream.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">loast/krudio</remote-id>

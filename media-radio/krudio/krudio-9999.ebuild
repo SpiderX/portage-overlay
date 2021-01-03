@@ -1,12 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+EGIT_REPO_URI="https://github.com/loast/${PN}.git"
 
 inherit git-r3 qmake-utils
 
 DESCRIPTION="Radio tray for linux on QT"
-EGIT_REPO_URI="https://github.com/loast/${PN}.git"
 HOMEPAGE="https://github.com/loast/krudio"
 SRC_URI=""
 
