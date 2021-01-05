@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,13 +14,13 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
+IUSE=""
 
 RDEPEND="acct-user/automatic
 	dev-libs/libxml2:2
 	dev-libs/libpcre:3
 	net-misc/curl"
-DEPEND="${RDEPEND}
-	app-admin/logrotate"
+DEPEND="${RDEPEND}"
 
 DOC_CONTENTS="To run automatic you should move /etc/automatic.conf-sample
 to /etc/automatic.conf and config it.\\n
@@ -31,13 +31,14 @@ src_prepare() {
 	default
 
 	# Remove CFLAGS and CXXFLAGS defined by upstream
-	sed -i \
-		-e 's/CFLAGS="-Wdeclaration-after-statement -O3 -funroll-loops"/CFLAGS+=""/' \
+	sed -i  -e 's/CFLAGS="-Wdeclaration-after-statement -O3 -funroll-loops"/CFLAGS+=""/' \
 		-e 's/CXXFLAGS="-O3 -funroll-loops"/CXXFLAGS+=""/' \
 		configure.ac || die "sed for CXXFLAGS and CFLAGS failed"
 
 	# tests fail with network-sandbox
-	rm src/tests/http_test.c || die "rm failed"
+	sed -i  -e '/check_PROGRAMS /s/http_test //' \
+		-e '/check_PROGRAMS /s/prowl_test //' src/tests/Makefile.am \
+		|| die "sed failed for Makefile.am"
 
 	eautoreconf
 }
