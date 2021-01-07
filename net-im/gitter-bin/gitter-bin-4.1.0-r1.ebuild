@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 MY_PN="${PN/-bin/}"
 
-inherit desktop multilib-build pax-utils unpacker xdg-utils
+inherit desktop multilib-build pax-utils unpacker xdg
 
 QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_libcrt_platform_a
 	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
@@ -23,6 +23,8 @@ QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_libcrt_platform_a
 	opt/gitter/nwjc
 	opt/gitter/nacl_irt_x86_64.nexe
 	opt/gitter/Gitter"
+QA_FLAGS_IGNORED="/opt/gitter/minidump_stackwalk
+	/opt/gitter/nacl_helper_bootstrap"
 
 DESCRIPTION="Chat and network platform"
 HOMEPAGE="https://www.gitter.im"
@@ -42,6 +44,7 @@ RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
+	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
@@ -56,6 +59,7 @@ RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
 	x11-libs/libXi:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrender:0[${MULTILIB_USEDEP}]
+	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 BDEPEND="sys-apps/fix-gnustack"
@@ -92,16 +96,4 @@ src_install() {
 	dosym ../../opt/gitter/Gitter /usr/bin/gitter
 
 	pax-mark -m "${ED}"/opt/gitter/Gitter
-}
-
-pkg_preinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
