@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,7 @@ IUSE=""
 
 DOCS=( {Changes,README.md} )
 
-PATCHES=( "${FILESDIR}/${P}-go.sum.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.5.7-go.sum.patch" )
 
 src_compile() {
 	go build ./cmd/... || die "build failed"
