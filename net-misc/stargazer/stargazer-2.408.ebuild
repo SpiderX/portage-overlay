@@ -1,76 +1,72 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PROJECTS="sgconv rlm_stg rscriptd sgauth sgconf sgconf_xml stargazer"
 
-STG_MODULES_AUTH="always_online internet_access freeradius"
-STG_MODULES_CAPTURE="ipq ether netflow"
+STG_MODULES_AUTH="always-online internet-access freeradius"
+STG_MODULES_CAPTURE="ether netflow"
 STG_MODULES_CONFIG="sgconfig rpcconfig"
-STG_MODULES_OTHER="ping smux remote_script"
+STG_MODULES_OTHER="ping smux remote-script"
 STG_MODULES_STORE="files firebird mysql postgres"
 
 declare -A MODULES
-MODULES=( [module_auth_always_online]="authorization\\/ao:mod_ao"
-	[module_auth_internet_access]="authorization\\/inetaccess:mod_ia"
-	[module_auth_freeradius]="other\\/radius:mod_radius"
-	[module_capture_ipq]="capture\\/ipq_linux:mod_cap_ipq"
-	[module_capture_ether]="capture\\/ether_linux:mod_cap_ether"
-	[module_capture_netflow]="capture\\/cap_nf:mod_cap_nf"
-	[module_config_sgconfig]="configuration\\/sgconfig:mod_sg"
-	[module_config_rpcconfig]="configuration\\/rpcconfig:mod_rpc"
-	[module_other_ping]="other\\/ping:mod_ping"
-	[module_other_smux]="other\\/smux:mod_smux"
-	[module_other_remote_script]="other\\/rscript:mod_remote_script"
-	[module_store_files]="store\\/files:store_files"
-	[module_store_firebird]="store\\/firebird:store_firebird"
-	[module_store_mysql]="store\\/mysql:store_mysql"
-	[module_store_postgres]="store\\/postgresql:store_postgresql"
+MODULES=( [module-auth-always-online]="authorization\\/ao:mod_ao"
+	[module-auth-internet-access]="authorization\\/inetaccess:mod_ia"
+	[module-auth-freeradius]="other\\/radius:mod_radius"
+	[module-capture-ether]="capture\\/ether_linux:mod_cap_ether"
+	[module-capture-netflow]="capture\\/cap_nf:mod_cap_nf"
+	[module-config-sgconfig]="configuration\\/sgconfig:mod_sg"
+	[module-config-rpcconfig]="configuration\\/rpcconfig:mod_rpc"
+	[module-other-ping]="other\\/ping:mod_ping"
+	[module-other-smux]="other\\/smux:mod_smux"
+	[module-other-remote-script]="other\\/rscript:mod_remote_script"
+	[module-store-files]="store\\/files:store_files"
+	[module-store-firebird]="store\\/firebird:store_firebird"
+	[module-store-mysql]="store\\/mysql:store_mysql"
+	[module-store-postgres]="store\\/postgresql:store_postgresql"
 )
 
 declare -A INIT
-INIT=(	[module_store_files]="11d"
-	[module_store_firebird]="11d;s/need net/need net firebird/"
-	[module_store_mysql]="11d;s/need net/need net mysql/"
-	[module_store_postgres]="11d;s/need net/need net postgresql/"
+INIT=(	[module-store-files]="11d"
+	[module-store-firebird]="11d;s/need net/need net firebird/"
+	[module-store-mysql]="11d;s/need net/need net mysql/"
+	[module-store-postgres]="11d;s/need net/need net postgresql/"
 )
 
 MY_P="stg-${PV}"
 
-inherit eutils flag-o-matic linux-info toolchain-funcs user
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Billing system for small home and office networks"
-HOMEPAGE="http://stg.dp.ua/"
+HOMEPAGE="http://stg.net.ua"
 SRC_URI="http://stg.dp.ua/download/server/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="module_config_rpcconfig? (
+RDEPEND="acct-user/stg
+	${DEPEND}"
+DEPEND="module-config-rpcconfig? (
 		dev-libs/expat
 		dev-libs/xmlrpc-c[abyss,cxx]
 	)
-	module_config_sgconfig? ( dev-libs/expat )
-	module_store_firebird? ( dev-db/firebird )
-	module_store_mysql? ( virtual/mysql:0= )
-	module_store_postgres? ( dev-db/postgresql:= )
+	module-config-sgconfig? ( dev-libs/expat )
+	module-store-firebird? ( dev-db/firebird )
+	module-store-mysql? ( dev-db/mysql-connector-c:0= )
+	module-store-postgres? ( dev-db/postgresql:= )
 	sgconf? ( dev-libs/expat )
-	sgconf_xml? ( dev-libs/expat )"
-RDEPEND="${DEPEND}
-	rscriptd? ( app-admin/logrotate )
-	stargazer? ( app-admin/logrotate )"
+	sgconf-xml? ( dev-libs/expat )"
 
 S="${WORKDIR}/${MY_P}"
 
-REQUIRED_USE="stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )"
-
-DOCS=( BUGS ../../ChangeLog CHANGES README TODO )
+REQUIRED_USE="stargazer? ( ^^ ( module-store-files module-store-firebird module-store-mysql module-store-postgres ) )"
 
 # Patches are already in upstream's trunk
 PATCHES=(
-	# Fix dependency on fbclient for module_store_firebird
+	# Fix dependency on fbclient for module-store-firebird
 	"${FILESDIR}"/patches/stg-2.408-makefile-firebird-upstream.patch
 	# Rewrite config for rscriptd
 	"${FILESDIR}"/patches/stg-2.408-rscriptd.conf-upstream.patch
@@ -92,16 +88,15 @@ PATCHES=(
 	"${FILESDIR}"/patches/stg-2.408-radius-upstream.patch
 )
 
-IUSE="sgconv radius rscriptd sgauth sgconf sgconf_xml stargazer debug"
+IUSE="sgconv radius rscriptd sgauth sgconf sgconf-xml +stargazer debug"
 
-for module in ${STG_MODULES_AUTH} ; do IUSE="${IUSE} module_auth_${module}" ; done
-for module in ${STG_MODULES_CAPTURE} ; do IUSE="${IUSE} module_capture_${module}" ; done
-for module in ${STG_MODULES_CONFIG} ; do IUSE="${IUSE} module_config_${module}" ; done
-for module in ${STG_MODULES_OTHER} ; do IUSE="${IUSE} module_other_${module}" ; done
-for module in ${STG_MODULES_STORE} ; do IUSE="${IUSE} module_store_${module}" ; done
+for module in ${STG_MODULES_AUTH} ; do IUSE="${IUSE} module-auth-${module}" ; done
+for module in ${STG_MODULES_CAPTURE} ; do IUSE="${IUSE} module-capture-${module}" ; done
+for module in ${STG_MODULES_CONFIG} ; do IUSE="${IUSE} module-config-${module}" ; done
+for module in ${STG_MODULES_OTHER} ; do IUSE="${IUSE} module-other-${module}" ; done
+for module in ${STG_MODULES_STORE} ; do IUSE="${IUSE} module-store-${module}" ; done
 
-IUSE=${IUSE/stargazer/+stargazer}
-IUSE=${IUSE/module_store_files/+module_store_files}
+IUSE=${IUSE/module-store-files/+module-store-files}
 
 src_prepare() {
 	# Rename convertor to sgconv to avoid possible file name collisions
@@ -135,6 +130,9 @@ src_prepare() {
 	# Remove static-libs
 	eapply "${FILESDIR}"/patches/stg-2.408-static-libs.patch
 
+	# wrt 740792
+	eapply "${FILESDIR}"/patches/stg-2.408-static_cast.patch
+
 	# Populate global arrays, strip '+' symbol for used by default USE flags
 	IFS=" " read -r -a PROJECTS <<<"$PROJECTS"
 	IFS=" " read -r -a USEFLAGS <<<"${IUSE//+}"
@@ -165,10 +163,9 @@ src_prepare() {
 		fi
 	done
 
-	# Check for IPQ subsystem availability
-	if use module_capture_ipq && kernel_is ge 3 5 ; then
-		die "You can't use IPQ subsystem with your kernel."
-	fi
+	# Don't build unsupported capture plugin
+	sed -i 's|capture/ipq_linux||' projects/stargazer/configure \
+		|| die "sed failed for stargazer/configure"
 }
 
 src_configure() {
@@ -225,7 +222,7 @@ src_install() {
 	fi
 
 	if use radius ; then
-		dolib "${S}"/projects/rlm_stg/rlm_stg.so
+		dolib.so "${S}"/projects/rlm_stg/rlm_stg.so
 	fi
 
 	if use rscriptd ; then
@@ -249,7 +246,7 @@ src_install() {
 		doman "${FILESDIR}"/mans/sgconf.1
 	fi
 
-	if use sgconf_xml ; then
+	if use sgconf-xml ; then
 		cd "${S}"/projects/sgconf_xml || die "cd to sgconf_xml failed"
 		emake DESTDIR="${D}" PREFIX="${D}" install
 		doman "${FILESDIR}"/mans/sgconf_xml.1
@@ -259,44 +256,43 @@ src_install() {
 		cd "${S}"/projects/stargazer || die "cd to stargazer failed"
 		emake DESTDIR="${D}" PREFIX="${D}" install
 
-		einstalldocs
 		newinitd "${S}"/projects/stargazer/inst/linux/etc/init.d/stargazer.gentoo stargazer
 		doman "${FILESDIR}"/mans/stargazer.8
 
-		if use module_store_files ; then
+		if use module-store-files ; then
 			insinto /var/lib
 			doins -r "${S}"/projects/stargazer/inst/var/stargazer
 			fowners -R stg:stg /var/lib/stargazer
 		fi
 
-		if use module_store_firebird ; then
+		if use module-store-firebird ; then
 			insinto /usr/share/stargazer/db/firebird
 			doins \
 				"${S}"/projects/stargazer/inst/var/00-base-00.sql \
 				"${S}"/projects/stargazer/inst/var/00-alter-01.sql
 		fi
 
-		if use module_store_mysql ; then
+		if use module-store-mysql ; then
 			insinto /usr/share/stargazer/db/mysql
 			doins "${S}"/projects/stargazer/inst/var/00-mysql-01.sql
 		fi
 
-		if use module_store_postgres ; then
+		if use module-store-postgres ; then
 			insinto /usr/share/stargazer/db/postgresql
 			doins \
 				"${S}"/projects/stargazer/inst/var/00-base-00.postgresql.sql \
 				"${S}"/projects/stargazer/inst/var/00-alter-01.postgresql.sql
 		fi
 
-		if use module_other_smux ; then
+		if use module-other-smux ; then
 			insinto /usr/share/snmp/mibs
 			doins "${S}"/projects/stargazer/plugins/other/smux/STG-MIB.mib
 		fi
 
-		if use module_other_remote_script ; then
+		if use module-other-remote-script ; then
 			# Create subnets file based on example from mod_remote_script.conf
 			grep 192 "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf \
-				| sed 's/# //' > "${ED%/}"/etc/stargazer/subnets || die "sed for subnets failed"
+				| sed 's/# //' > "${ED}"/etc/stargazer/subnets || die "sed for subnets failed"
 			fperms 0640 /etc/stargazer/subnets
 		fi
 
@@ -328,14 +324,6 @@ src_install() {
 	if [ ! -e "${ED}"/usr/"$(get_libdir)" ] ; then
 		mv "${ED}"/usr/lib/ "${ED}"/usr/"$(get_libdir)" \
 			|| die "Failed to move library directory for multilib support"
-	fi
-}
-
-pkg_setup() {
-	# Add user and group to system only when necessary
-	if use sgconv || use rscriptd || use sgauth || use stargazer ; then
-		enewgroup stg
-		enewuser stg -1 -1 -1 stg
 	fi
 }
 
@@ -371,7 +359,7 @@ pkg_postinst() {
 
 		einfo "It also may be used in section Accounting and Post-Auth."
 
-		use module_auth_freeradius || einfo "\\nFor use RADIUS enable USE-flag module_auth_freeradius."
+		use module-auth-freeradius || einfo "\\nFor use RADIUS enable USE-flag module-auth-freeradius."
 	fi
 
 	if use rscriptd ; then
@@ -391,69 +379,66 @@ pkg_postinst() {
 	if use sgconf ; then
 		einfo "\\nSgconf:"
 		einfo "-------"
-		use module_config_sgconfig \
-			|| einfo "For further use enable USE-flag module_config_sgconfig."
+		use module-config-sgconfig \
+			|| einfo "For further use enable USE-flag module-config-sgconfig."
 	fi
 
-	if use sgconf_xml ; then
+	if use sgconf-xml ; then
 		einfo "\\nSgconf_xml:"
 		einfo "-----------"
-		use module_config_rpcconfig \
-			|| einfo "For further use enable USE-flag module_config_rpcconfig."
+		use module-config-rpcconfig \
+			|| einfo "For further use enable USE-flag module-config-rpcconfig."
 	fi
 
 	if use stargazer ; then
 		einfo "\\nStargazer:"
 		einfo "----------"
 		einfo "Modules availability:\\n"
-		if use module_auth_always_online ; then
-			einfo "* module_auth_always_online available."
+		if use module-auth-always-online ; then
+			einfo "* module-auth-always-online available."
 		fi
-		if use module_auth_internet_access ; then
-			einfo "* module_auth_internet_access available."
+		if use module-auth-internet-access ; then
+			einfo "* module-auth-internet-access available."
 		fi
-		if use module_auth_freeradius ; then
-			einfo "* module_auth_freeradius available.\\n"
+		if use module-auth-freeradius ; then
+			einfo "* module-auth-freeradius available.\\n"
 			einfo "For further use emerge net-dialup/freeradius.\\n"
 			use radius || einfo "\\n           For use RADIUS enable use USE-flag radius."
 		fi
-		if use module_capture_ipq ; then
-			einfo "* module_capture_ipq available."
+		if use module-capture-ether ; then
+			einfo "* module-capture-ether available."
 		fi
-		if use module_capture_ether ; then
-			einfo "* module_capture_ether available."
-		fi
-		if use module_capture_netflow ; then
-			einfo "* module_capture_netflow available.\\n"
+		if use module-capture-netflow ; then
+			einfo "* module-capture-netflow available.\\n"
 			einfo "For further use emerge any netflow sensor:\\n"
 			einfo "net-firewall/ipt_netflow or net-analyzer/softflowd.\\n"
 		fi
-		if use module_config_sgconfig ; then
-			einfo "* module_config_sgconfig available."
+		if use module-config-sgconfig ; then
+			einfo "* module-config-sgconfig available."
 		fi
-		if use module_config_rpcconfig ; then
-			einfo "* module_config_rpcconfig available.\\n"
+		if use module-config-rpcconfig ; then
+			einfo "* module-config-rpcconfig available.\\n"
 			einfo "KNOWN BUG: Sometimes you can't configure Stargazer"
 			einfo "through xml-based configurator, because module is not responding."
 			einfo "This bug is introduced by xmlrpc-c library."
 			einfo "This bug proceeds very rare, but it still exists.\\n"
 		fi
-		if use module_other_ping ; then
-			einfo "* module_other_ping available."
+		if use module-other-ping ; then
+			einfo "* module-other-ping available."
 		fi
-		if use module_other_smux ; then
-			einfo "* module_other_smux available.\\n"
+		if use module-other-smux ; then
+			einfo "* module-other-smux available.\\n"
 			einfo "For further use emerge net-analyzer/net-snmp.\\n"
 		fi
-		if use module_other_remote_script ; then
-			einfo "* module_other_remote_script available.\\n"
+		if use module-other-remote-script ; then
+			einfo "* module-other-remote-script available.\\n"
 			einfo "For further use edit /etc/stargazer/subnets.\\n"
 		fi
-		if use module_store_files ; then
-			einfo "* module_store_files available."
+		if use module-store-files ; then
+			einfo "* module-store-files available."
 		fi
-		if use module_store_firebird ; then
-			einfo "* module_store_firebird available.\\n"
+		if use module-store-firebird ; then
+			einfo "* module-store-firebird available.\\n"
 			einfo "You should add 'firebird' user to stg group:\\n"
 			einfo "# usermod -a -G stg firebird\\n"
 			einfo "and restart firebird:\\n"
@@ -464,13 +449,13 @@ pkg_postinst() {
 			einfo "For upgrade from version 2.406 you should execute 00-alter-01.sql:\\n"
 			einfo "# fbsql -i /usr/share/stargazer/db/firebird/00-alter-01.sql\\n"
 		fi
-		if use module_store_mysql ; then
-			einfo "* module_store_mysql available.\\n"
+		if use module-store-mysql ; then
+			einfo "* module-store-mysql available.\\n"
 			einfo "For upgrade from version 2.406 you should execute 00-mysql-01.sql:\\n"
 			einfo "# mysql < /usr/share/stargazer/db/mysql/00-mysql-01.sql\\n"
 		fi
-		if use module_store_postgres ; then
-			einfo "* module_store_postgres available.\\n"
+		if use module-store-postgres ; then
+			einfo "* module-store-postgres available.\\n"
 			einfo "DB schema for PostgresSQL is here: /usr/share/stargazer/db/postgresql"
 			einfo "For new setup you should execute 00-base-00.postgresql.sql:\\n"
 			einfo "# psql -f /usr/share/stargazer/db/postgresql/00-base-00.postgresql.sql\\n"
