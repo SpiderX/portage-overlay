@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/rtsp-simple-server"
+command_args="${CONFIG}"
+command_background="yes"
+description="RTSP server"
+name="RTSP server"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

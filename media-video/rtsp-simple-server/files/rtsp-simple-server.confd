@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/rtsp-simple-server
+
+# rtsp-simple-server config file
+CONFIG="/etc/rtsp-simple-server/rtsp-simple-server.yml"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A zero-dependency RTSP server and RTSP proxy, a software that allows
+	multiple users to publish, read and proxy live video and audio streams
+	over time. RTSP is a standard protocol that describes how to perform
+	these operations with the help of a server, that is contacted by both
+	publishers and readers and relays the publisher's streams to the readers
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aler9/rtsp-simple-server</remote-id>
+	</upstream>
+</pkgmetadata>
