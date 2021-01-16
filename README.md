@@ -283,7 +283,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[gssapi](https://github.com/pythongssapi/python-gssapi) | A Python interface to RFC 2743/2744
 * dev-python/[hijri-converter](https://github.com/dralshehri/hijri-converter) | Hijri-Gregorian date converter
 * dev-python/[identify](https://github.com/chriskuehl/identify) | File identification library for Python
-* dev-python/[ifaddr](https://github.com/floyernick/fleep-py) | Python Library to enumerate all network interfaces
 * dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
 * dev-python/[jdatetime](https://github.com/slashmili/python-jalali) | Jalali implementation of Python's datetime module
 * dev-python/[jsmin](https://github.com/tikitu/jsmin) | JavaScript minifier
