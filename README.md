@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 458](https://img.shields.io/badge/ebuild-458-orange.svg)](https://img.shields.io/badge/ebuild-458-orange.svg)
+[![Number of ebuilds: 459](https://img.shields.io/badge/ebuild-459-orange.svg)](https://img.shields.io/badge/ebuild-459-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -481,6 +481,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/resilio-sync.svg)](https://repology.org/metapackage/resilio-sync) net-p2p/[resilio-sync](https://resilio.com) | Resilient, fast and scalable file synchronization tool
 * net-voip/[linphone-desktop](https://gitlab.linphone.org/BC/public/linphone-desktop) | A free VoIP and video softphone based on the SIP protocol
 * net-voip/[twinkle](https://github.com/LubosD/twinkle) | Softphone for voice over IP and IM communication using SIP
+* net-vpn/[forticlient](https://www.forticlient.com) | Fortinet VPN client
 * [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/498844) net-vpn/[softether](http://www.softether.org) | Multi-protocol VPN software
 * sci-visualization/[visidata](https://github.com/saulpw/visidata) | Terminal spreadsheet multitool for discovering and arranging data
 * sys-apps/[aptly](https://github.com/aptly-dev/aptly) | A swiss army knife for Debian repository management
