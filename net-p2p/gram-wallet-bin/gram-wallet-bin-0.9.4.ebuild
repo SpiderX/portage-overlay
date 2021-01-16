@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="TON Testnet Wallet"
-HOMEPAGE="https://https://wallet.ton.org https://github.com/ton-blockchain/wallet-desktop"
+HOMEPAGE="https://wallet.ton.org https://github.com/ton-blockchain/wallet-desktop"
 SRC_URI="https://wallet.ton.org/linux/wsetup.${PV}.tar.xz"
 
 LICENSE="GPL-3-with-openssl-exception"
