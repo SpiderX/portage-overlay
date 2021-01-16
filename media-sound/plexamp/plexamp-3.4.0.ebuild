@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,13 @@ inherit desktop multilib-build pax-utils xdg
 MY_P="${PN^}-${PV}"
 
 DESCRIPTION="Music focused client for Plex"
-HOMEPAGE="https://plexamp.com/"
+HOMEPAGE="https://plexamp.com"
 SRC_URI="https://plexamp.plex.tv/plexamp.plex.tv/desktop/${MY_P}.AppImage"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+abi_x86_64 appindicator"
+IUSE="+abi_x86_64 appindicator +seccomp"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -71,6 +71,11 @@ QA_PREBUILT="opt/plexamp/libEGL.so
 	opt/plexamp/usr/lib/libgconf-2.so.4
 	opt/plexamp/usr/lib/libindicator.so.7
 	opt/plexamp/usr/lib/libnotify.so.4"
+QA_FLAGS_IGNORED="opt/plexamp/resources/app.asar.unpacked/node_modules/put/test/c/ftoi
+	opt/plexamp/resources/app.asar.unpacked/node_modules/put/test/c/itof
+	opt/plexamp/resources/treble/treble.node
+	opt/plexamp/resources/treble/obj.target/treble.node
+	opt/plexamp/chrome-sandbox"
 
 S="${WORKDIR}"
 
@@ -85,6 +90,11 @@ src_prepare() {
 
 	sed -i '/Exec/s/AppRun/plexamp/' squashfs-root/plexamp.desktop \
 		|| die "sed failed for plexamp.desktop"
+
+	if ! use seccomp ; then
+		sed -i '/Exec/s/plexamp/plexamp --disable-seccomp-filter-sandbox/' \
+		squashfs-root/plexamp.desktop || die "sed failed with seccomp"
+	fi
 }
 
 src_install() {
@@ -100,7 +110,10 @@ src_install() {
 	doins -r squashfs-root/.
 	fperms -R +x /opt/plexamp/plexamp /opt/plexamp/chrome-sandbox \
 		/opt/plexamp/libEGL.so /opt/plexamp/libGLESv2.so /opt/plexamp/libffmpeg.so \
-		/opt/plexamp/swiftshader/
+		/opt/plexamp/swiftshader/ \
+		/opt/plexamp/resources/treble/obj.target/treble.node \
+		/opt/plexamp/resources/treble/treble.node \
+		/opt/plexamp/resources/treble/libbass{,_aac,_ape,_fx,_mpc,alac,dsd,flac,mix,opus}.so
 	dosym ../plexamp/plexamp opt/bin/plexamp
 
 	pax-mark -m "${ED}"/opt/plexamp/plexamp

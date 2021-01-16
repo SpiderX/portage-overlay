@@ -418,7 +418,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * media-libs/[qt-heif](https://github.com/jakar/qt-heif-image-plugin) | Qt plugin for HEIF images
 * media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
 * media-sound/[mpz](https://olegantonyan.github.io/mpz) | Music player for big local collections
-* media-sound/[plexamp](https://plexamp.com/) | Music focused client for Plex
+* media-sound/[plexamp](https://plexamp.com) | Music focused client for Plex
 * media-sound/[sayonara](https://sayonara-player.com) | Small, clear and fast Qt-based audio player
 * media-radio/[krudio](https://github.com/loast/krudio) | Radio tray for linux on QT
 * media-radio/[liquidsoap](http://liquidsoap.info) | A swiss-army knife for multimedia streaming, used for netradios and webtvs
