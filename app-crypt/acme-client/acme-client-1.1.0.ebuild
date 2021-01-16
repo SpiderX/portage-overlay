@@ -1,0 +1,43 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+inherit autotools systemd
+
+MY_PN="${PN}-portable"
+MY_P="${MY_PN}-${PV}"
+
+DESCRIPTION="Secure Let's Encrypt client"
+HOMEPAGE="https://github.com/graywolf/acme-client-portable"
+SRC_URI="https://github.com/graywolf/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="ISC MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="libressl"
+
+RDEPEND="!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
+
+src_install() {
+	default
+
+	keepdir /var/lib/acme-client/{accounts,certs}
+	insinto /etc/acme-client.d
+	doins "${FILESDIR}"/example.org.hook
+	insinto /etc
+	doins "${FILESDIR}"/acme-client.conf
+
+	systemd_dounit "${FILESDIR}"/acme-client.{service,timer}
+}

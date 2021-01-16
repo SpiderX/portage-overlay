@@ -10,10 +10,13 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Yet another ACME client, specifically for Let's Encrypt,
-	but one with a strong focus on security.
+	An Automatic Certificate Management Environment (ACME) client:
+	it looks in its configuration for a domain section corresponding
+	to the handle given as command line argument and uses that configuration
+	to retrieve an X.509 certificate which can be used to provide domain name
+	validation.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">kristapsdz/acme-client-portable</remote-id>
+		<remote-id type="github">graywolf/acme-client-portable</remote-id>
 	</upstream>
 </pkgmetadata>
