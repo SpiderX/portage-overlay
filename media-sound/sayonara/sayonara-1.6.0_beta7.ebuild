@@ -47,8 +47,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	# wrt 709450
-	sed -i  -e '/sayonara.appdata.xml/s|share/appdata|share/metainfo|' \
-		-e '/execute_process(COMMAND gzip/d' \
+	sed -i  -e '/execute_process(COMMAND gzip/d' \
 		-e '/install(FILES/s/sayonara.1.gz/sayonara.1/' \
 		resources/CMakeLists.txt || die "sed failed for resources/CMakeLists.txt"
 

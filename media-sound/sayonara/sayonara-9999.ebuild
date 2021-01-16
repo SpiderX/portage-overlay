@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ RDEPEND="dev-qt/qtcore:5
 	media-libs/gst-plugins-base:1.0
 	media-libs/gst-plugins-good:1.0
 	media-plugins/gst-plugins-soundtouch:1.0
-	media-libs/libmtp
+	media-libs/libmtp:0=
 	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
 	dev-qt/qtsvg:5
@@ -43,8 +43,7 @@ BDEPEND="dev-qt/linguist-tools:5
 
 src_prepare() {
 	# wrt 709450
-	sed -i  -e '/sayonara.appdata.xml/s|share/appdata|share/metainfo|' \
-		-e '/execute_process(COMMAND gzip/d' \
+	sed -i  -e '/execute_process(COMMAND gzip/d' \
 		-e '/install(FILES/s/sayonara.1.gz/sayonara.1/' \
 		resources/CMakeLists.txt || die "sed failed for resources/CMakeLists.txt"
 
