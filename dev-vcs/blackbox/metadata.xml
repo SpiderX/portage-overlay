@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Safely store secrets in a VCS repo (i.e. Git, Mercurial, Subversion
+	or Perforce). These commands make it easy for you to Gnu Privacy Guard
+	(GPG) encrypt specific files in a repo so they are "encrypted at rest"
+	in your repository. However, the scripts make it easy to decrypt them
+	when you need to view or edit them, and decrypt them for use in production.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">StackExchange/blackbox</remote-id>
+	</upstream>
+</pkgmetadata>
