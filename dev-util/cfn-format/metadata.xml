@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A command line tool that reads in an existing AWS CloudFormation
+	template and outputs a cleanly-formatted, easy-to-read copy of
+	the same template adhering to standards as used in AWS documentation.
+	cfn-format can output either YAML or JSON as desired.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">awslabs/aws-cloudformation-template-formatter</remote-id>
+	</upstream>
+</pkgmetadata>
