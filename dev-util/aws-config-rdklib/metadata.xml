@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	RDKlib is a Python library to enable you to run custom AWS Config Rules.
+	The library can be used to:
+	Help you to focus only on the compliance logic
+	Ease maintenance by moving the boilerplate code as a AWS Lambda Layer
+	Ease deployment by using AWS Serverless Application Repository
+	</longdescription>
+	<upstream>
+		<remote-id type="github">awslabs/aws-config-rdklib</remote-id>
+		<remote-id type="pypi">rdklib</remote-id>
+	</upstream>
+</pkgmetadata>
