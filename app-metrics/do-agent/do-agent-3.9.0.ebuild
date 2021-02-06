@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,7 @@ src_test() {
 }
 
 src_install() {
+	einstalldocs
 	dobin do-agent
 
 	newinitd "${FILESDIR}"/do-agent.initd do-agent

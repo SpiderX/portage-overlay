@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,7 @@ inherit go-module systemd
 
 DESCRIPTION="DigitalOcean Agent for Enhanced Droplet Graphs"
 HOMEPAGE="https://github.com/digitalocean/do-agent"
-SRC_URI="https://github.com/digitalocean/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_SUM_SRC_URI}"
+SRC_URI="https://github.com/digitalocean/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
