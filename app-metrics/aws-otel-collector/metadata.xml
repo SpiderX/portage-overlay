@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	AWS Distro for OpenTelemetry Collector(AWS OTel Collector) is
+	a AWS supported version of the upstream OpenTelemetry Collector.
+	It supports the selected components from the OpenTelemetry community.
+	It is fully compatible with AWS computing platforms including EC2,
+	ECS and EKS. It enables users to send telemetry data to AWS CloudWatch
+	Metrics, Traces and Logs backends as well as the other supported backends.
+	</longdescription>
+	<use>
+		<flag name="cwagent">Compatibility with CloudWatch agent</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">aws-observability/aws-otel-collector</remote-id>
+	</upstream>
+</pkgmetadata>

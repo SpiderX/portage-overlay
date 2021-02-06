@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/aws-otel-collector
+
+# extra options
+AOC_OPTS="--config /opt/aws/aws-otel-collector/etc/config.yaml"
