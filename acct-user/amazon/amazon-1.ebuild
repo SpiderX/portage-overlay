@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit acct-user
+inherit acct-user tmpfiles
 
 ACCT_USER_ID=-1
 ACCT_USER_GROUPS=( amazon )
@@ -16,4 +16,9 @@ src_install() {
 	acct-user_src_install
 
 	keepdir /etc/amazon /var/log/amazon
+	newtmpfiles "${FILESDIR}"/amazon.tmpfile amazon.conf
+}
+
+pkg_postinst() {
+	tmpfiles_process amazon.conf
 }
