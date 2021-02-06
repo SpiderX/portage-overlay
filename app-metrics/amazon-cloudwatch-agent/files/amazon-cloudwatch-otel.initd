@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/opt/aws/amazon-cloudwatch-agent/bin/cwagent-otel-collector"
+command_args="${AOC_OPTS}"
+command_background="yes"
+description="Amazon CloudWatch Agent Opentelemetry Collector"
+name="Amazon CloudWatch Agent Opentelemetry Collector"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

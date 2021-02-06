@@ -14,6 +14,9 @@
 	them to the AWS CloudWatch service. It is able to collect metrics from
 	Amazon EC2, on-premises servers, services using the StatsD and collectd.
 	</longdescription>
+	<use>
+		<flag name="otel">Support Amazon Opentelemetry Collector</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">aws/amazon-cloudwatch-agent</remote-id>
 	</upstream>

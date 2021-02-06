@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/amazon-cloudwatch-otel
+
+# extra options
+AOC_OPTS="--config /opt/aws/amazon-cloudwatch-agent/cwagent-otel-collector/etc/cwagent-otel-collector.yaml"
