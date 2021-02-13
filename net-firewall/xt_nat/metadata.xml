@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This Full Cone NAT xtables module was developed as a replace for
+	the conntrack NAT to provide Assymetric NAT features on Linux systems
+	that can be used as a Carrier Grade NAT in small ISP networks.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">andrsharaev/xt_NAT</remote-id>
+	</upstream>
+</pkgmetadata>
