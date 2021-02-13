@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 465](https://img.shields.io/badge/ebuild-465-orange.svg)](https://img.shields.io/badge/ebuild-465-orange.svg)
+[![Number of ebuilds: 466](https://img.shields.io/badge/ebuild-466-orange.svg)](https://img.shields.io/badge/ebuild-466-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -277,6 +277,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[fakeldap](https://github.com/zulip/fakeldap) | An implementation of a LDAPObject to fake a ldap server
 * dev-python/[faker](https://github.com/joke2k/faker) | Python package that generates fake data
 * dev-python/[filetype](https://github.com/h2non/filetype.py) | Infer file type and MIME type of any file/buffer
+* dev-python/[fire](https://github.com/google/python-fire) | Library for automatically generating CLI from object
 * dev-python/[fleep](https://github.com/floyernick/fleep-py) | File format determination library for Python
 * dev-python/[flex](https://github.com/pipermerriam/flex) | Validation tooling for Swagger 2.0 specifications
 * dev-python/[forbiddenfruit](https://github.com/clarete/forbiddenfruit) | Patch python built-in objects
