@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 467](https://img.shields.io/badge/ebuild-467-orange.svg)](https://img.shields.io/badge/ebuild-467-orange.svg)
+[![Number of ebuilds: 468](https://img.shields.io/badge/ebuild-468-orange.svg)](https://img.shields.io/badge/ebuild-468-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -506,6 +506,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * sys-power/[freqtop](https://github.com/stolk/freqtop) | Monitor for the CPU Frequency Scaling under Linux
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/powerstat.svg)](https://repology.org/metapackage/powerstat) sys-power/[powerstat](https://launchpad.net/ubuntu/+source/powerstat) | Laptop power measuring tool
 * sys-process/[falco-bin](https://falco.org) | Cloud-Native runtime security
+* sys-process/[nq](https://github.com/leahneukirchen/nq) | Unix command line queue utility
 * www-apps/[draw-io](https://github.com/jgraph/drawio) | Online diagramming web application
 * www-apps/[keeweb](https://github.com/keeweb/keeweb) | Cross-platform password manager compatible with KeePass
 * www-apps/[LookingGlass](https://github.com/ramnode/LookingGlass) | A Python-backed Looking Glass
