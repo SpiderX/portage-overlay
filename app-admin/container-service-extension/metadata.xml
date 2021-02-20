@@ -12,6 +12,8 @@
 	<longdescription lang="en">
 	A vCloud Director extension that manages the life cycle of
 	Kubernetes clusters for tenants.
+	This extension is designed to be installed on a vCloud Director
+	instance by the service provider (system administrator).
 	</longdescription>
 	<upstream>
 		<remote-id type="github">vmware/container-service-extension</remote-id>

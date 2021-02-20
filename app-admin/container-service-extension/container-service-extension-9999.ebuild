@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -18,7 +19,8 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="test" # fails
 
-RDEPEND="dev-python/cachetools[${PYTHON_USEDEP}]
+RDEPEND=">=app-admin/vcd-cli-24.0.0[${PYTHON_USEDEP}]
+	dev-python/cachetools[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
@@ -32,7 +34,8 @@ RDEPEND="dev-python/cachetools[${PYTHON_USEDEP}]
 	>=dev-python/vcd-api-schemas-type-9.1.2_pre10[${PYTHON_USEDEP}]
 	>=dev-python/vsphere-guest-run-0.0.7[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Don't install license and notice
@@ -44,8 +47,4 @@ python_prepare_all() {
 		|| die "sed failed for requirements.txt"
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
 }

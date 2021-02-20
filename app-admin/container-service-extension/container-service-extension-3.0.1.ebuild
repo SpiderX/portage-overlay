@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
@@ -43,7 +44,7 @@ python_prepare_all() {
 		|| die "sed failed for setup.py"
 
 	# Relax requirement
-	sed -i '/pyvmomi/s/6.7.0 , < //' requirements.txt \
+	sed -i '/pyvmomi/s/ , < 7.0.0//' requirements.txt \
 		|| die "sed failed for requirements.txt"
 
 	distutils-r1_python_prepare_all
