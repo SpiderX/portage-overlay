@@ -85,7 +85,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-admin/[vector-bin](https://github.com/timberio/vector) | High performance logs, metrics, and events router
 * app-admin/[whatfiles](https://github.com/spieglt/whatfiles) | Log what files are accessed by any Linux process
 * app-admin/[yaml-vault](https://github.com/Jimdo/yaml-vault) | Utility to import/export data from HashiCorp Vault
-* app-backup/[hashget](https://gitlab.com/yaroslaff/hashget) | Deduplication tool for archiving data with extremely high ratio
+* app-backup/[hashget](https://github.com/yaroslaff/hashget) | Deduplication tool for archiving data with extremely high ratio
 * app-backup/[pgbackrest](https://pgbackrest.org) | Reliable PostgreSQL Backup & Restore
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/zbackup.svg)](https://repology.org/metapackage/zbackup) app-backup/[zbackup](https://github.com/zbackup/zbackup) | A versatile deduplicating backup tool
 * app-backup/[urbackup-client](https://urbackup.org) | Client Server backup system
@@ -519,3 +519,4 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
+
