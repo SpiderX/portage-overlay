@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	A Python SDK for the VMware vSphere API that allows you
-	to manage ESX, ESXi, and vCenter.
+	to access management components of ESX, ESXi, and vCenter.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">vmware/pyvmomi</remote-id>
