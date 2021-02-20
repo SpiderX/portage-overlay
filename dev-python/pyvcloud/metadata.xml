@@ -11,6 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	Python SDK for VMware vCloud Director
+	Primary used by vcd-cli, the Command Line Interface for
+	VMware vCloud Director.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">vmware/pyvcloud</remote-id>
