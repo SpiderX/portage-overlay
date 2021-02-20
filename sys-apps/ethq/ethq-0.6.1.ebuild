@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,7 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-libs/ncurses:0"
 RDEPEND="${DEPEND}"
@@ -25,8 +26,9 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	# Respect FLAGS
-	sed -i -e '/CXXFLAGS/s/= -O3/+=/' \
+	# Respect FLAGS, remove Werror
+	sed -i  -e '/CXXFLAGS/s/= -O3/+=/' \
+		-e '/CXXFLAGS/s/ -Werror//' \
 		-e '/LDFLAGS/s/=/+=/' Makefile || die "sed failed for Makefile"
 
 	if ! use test ; then
