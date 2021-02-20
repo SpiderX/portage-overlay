@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/scrapinghub/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Date parsing library designed to parse dates from HTML pages"
 HOMEPAGE="https://github.com/scrapinghub/dateparser"
@@ -16,7 +16,6 @@ LICENSE="BSD-4"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/convertdate[${PYTHON_USEDEP}]
 	dev-python/hijri-converter[${PYTHON_USEDEP}]
@@ -28,7 +27,6 @@ RDEPEND="dev-python/convertdate[${PYTHON_USEDEP}]
 	dev-python/umalqurra[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/GitPython[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/ruamel-yaml[${PYTHON_USEDEP}] )"
 
