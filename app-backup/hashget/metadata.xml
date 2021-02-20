@@ -23,7 +23,7 @@
 	cryptographically strong SHA256 hashsum.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">yaroslaff/hashget</remote-id>
+		<remote-id type="github">yaroslaff/hashget</remote-id>
 		<remote-id type="pypi">hashget</remote-id>
 	</upstream>
 </pkgmetadata>

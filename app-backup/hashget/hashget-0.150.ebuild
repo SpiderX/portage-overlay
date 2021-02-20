@@ -3,25 +3,24 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5..6} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..8} )
 
 inherit distutils-r1 systemd
 
 DESCRIPTION="Deduplication tool for archiving data with extremely high ratio"
 HOMEPAGE="https://gitlab.com/yaroslaff/hashget"
-SRC_URI="https://gitlab.com/yaroslaff/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/yaroslaff/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="app-arch/patool[${PYTHON_USEDEP}]
 	dev-python/filelock[${PYTHON_USEDEP}]
 	dev-python/filetype[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	default
