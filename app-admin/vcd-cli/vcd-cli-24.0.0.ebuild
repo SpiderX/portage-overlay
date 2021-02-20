@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -21,7 +22,7 @@ RDEPEND=">=dev-python/click-7.0[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	>=dev-python/pyvcloud-22.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pyvcloud-23.0.0[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	$(python_gen_impl_dep sqlite)"
 DEPEND="${RDEPEND}"
@@ -33,7 +34,8 @@ python_prepare_all() {
 		|| die "echo failed for PKG-INFO"
 
 	# Relax requirements
-	sed -i  -e '/pycryptodome/s/3.4.7,<//' \
+	sed -i  -e '/pycryptodome/s/==/>=/' \
+		-e '/pyvcloud/s/, < 24.0.0//' \
 		-e '/keyring/s/10.6.0, <= //' requirements.txt \
 		|| die "sed failed for requirements.txt"
 

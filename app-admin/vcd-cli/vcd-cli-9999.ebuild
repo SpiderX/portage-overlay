@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -35,7 +36,8 @@ python_prepare_all() {
 
 	# Relax requirements
 	sed -i  -e '/pycryptodome/s/==/>=/' \
-		-e '/keyring/s/10.6.0, <= //' requirements.txt \
+		-e '/keyring/s/10.6.0, <= //' \
+		-e '/pyvcloud/s/==/>=/' requirements.txt \
 		|| die "sed failed for requirements.txt"
 
 	distutils-r1_python_prepare_all
