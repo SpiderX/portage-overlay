@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -81,10 +81,10 @@ src_prepare() {
 }
 
 src_install() {
-	for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 ; do
+	for size in 16x16 32x32 48x48 64x64 128x128 256x256 ; do
 		doicon -s "${size}" squashfs-root/usr/share/icons/hicolor/"${size}"/apps/arctype.png
 	done
-	dosym ../icons/hicolor/512x512/apps/arctype.png \
+	dosym ../icons/hicolor/256x256/apps/arctype.png \
 		/usr/share/pixmaps/arctype.png
 
 	domenu squashfs-root/arctype.desktop
