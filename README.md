@@ -350,7 +350,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[sphinxcontrib-openapi](https://github.com/ikalnytskyi/sphinxcontrib-openapi) | Sphinx extension to generate APIs docs from OpenAPI
 * dev-python/[swagger_spec_validator](https://github.com/Yelp/swagger_spec_validator) | Python library that validates Swagger Specs
 * dev-python/[tablib](https://github.com/jazzband/tablib) | Format-agnostic tabular dataset library
-* dev-python/[testinfra](https://github.com/philpep/testinfra) | Testinfra test your infrastructures
+* dev-python/[testinfra](https://github.com/pytest-dev/pytest-testinfra) | Testinfra test your infrastructures
 * dev-python/[text-unidecode](https://github.com/kmike/text-unidecode) | The most basic Text::Unidecode port
 * dev-python/[timecop](https://github.com/bluekelp/pytimecop) | A port of TimeCop Ruby Gem for Python
 * dev-python/[tomlkit](https://github.com/sdispater/tomlkit) | Style-preserving TOML library for Python
@@ -519,4 +519,3 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 * x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 * x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
-
