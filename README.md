@@ -404,7 +404,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-vcs/[gitaly](https://gitlab.com/gitlab-org/gitaly) | Git RPC service for handling GitLab git calls
 * dev-vcs/[gitlint](https://github.com/jorisroovers/gitlint) | Git commit message linter
 * dev-vcs/[mercurial-extension_utils](https://foss.heptapod.net/mercurial/mercurial-extension_utils) | Mercurial Extension Utils
-* dev-vcs/[mercurial-keyring](https://bitbucket.org/Mekk/mercurial_keyring) | Mercurial Keyring Extension
+* dev-vcs/[mercurial_keyring](https://foss.heptapod.net/mercurial/mercurial_keyring) | Mercurial Keyring Extension
 * dev-vcs/[pre-commit](https://github.com/pre-commit/pre-commit) | A framework for multi-language pre-commit hooks
 * dev-vcs/[transcrypt](https://github.com/elasticdog/transcrypt) | Transparently encrypt files within a git repository
 * gnome-base/[dconf](https://wiki.gnome.org/Projects/dconf) | Simple low-level configuration system

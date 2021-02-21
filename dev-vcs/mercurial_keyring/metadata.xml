@@ -15,7 +15,6 @@
 	passwords and reuses them without prompting (as if you stored them in .hgrc),
 	</longdescription>
 	<upstream>
-		<remote-id type="bitbucket">Mekk/mercurial_keyring</remote-id>
 		<remote-id type="pypi">mercurial_keyring</remote-id>
 	</upstream>
 </pkgmetadata>
