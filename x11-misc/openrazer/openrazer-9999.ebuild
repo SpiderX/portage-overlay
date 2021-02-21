@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 inherit desktop git-r3 linux-mod python-r1 readme.gentoo-r1 virtualx
@@ -39,14 +39,12 @@ DOC_CONTENTS="To run as non-root, add yourself to the plugdev group:\\n
 \\tusermod -a -G plugdev <user>"
 
 pkg_setup() {
-	BUILD_TARGETS="clean modules"
-	BUILD_PARAMS="O=${KV_OUT_DIR} KERNELDIR=${KERNEL_DIR} -C ${KERNEL_DIR} SUBDIRS=${S}/driver"
+	BUILD_TARGETS="clean driver"
+	BUILD_PARAMS="O=${KV_OUT_DIR} KERNELDIR=${KERNEL_DIR} -C ${S} SUBDIRS=${S}/driver"
 	MODULE_NAMES="razeraccessory(hid:${S}/driver) \
-			razercore(hid:${S}/driver) \
 			razerkbd(hid:${S}/driver) \
 			razerkraken(hid:${S}/driver) \
-			razermouse(hid:${S}/driver) \
-			razermousemat(hid:${S}/driver)"
+			razermouse(hid:${S}/driver)"
 	linux-mod_pkg_setup
 }
 
@@ -72,16 +70,16 @@ src_prepare() {
 		|| die "sed failed for tests"
 }
 
-python_test() {
+src_test() {
 	if use daemon ; then
 		pushd daemon || die "pushd daemon failed"
-		"${PYTHON}" -m unittest discover -v tests || die "tests failed with ${EPYTHON}"
+		python -m unittest discover -v tests || die "tests failed with ${EPYTHON}"
 		popd || die "popd daemon failed"
 	fi
+	# gpasswd -a portage plugdev
 	if use client ; then
 		pushd pylib || die "pushd pylib failed"
-		dbus-launch || die "dbus-launch failed"
-		virtx "${PYTHON}" -m unittest discover -v tests/integration_tests \
+		virtx python -m unittest discover -v tests/integration_tests \
 			|| die "tests failed with ${EPYTHON}"
 		popd || die "popd pylib failed"
 	fi
