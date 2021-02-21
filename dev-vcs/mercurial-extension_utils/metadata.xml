@@ -10,11 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A group of reusablefunctions, which is useful
-	while writing Mercurial extensions.
+	Utility functions reusable between various mercurial extensions.
+	Mostly handling compatibility with various Mercurial versions.
 	</longdescription>
 	<upstream>
-		<remote-id type="bitbucket">Mekk/mercurial-extension_utils</remote-id>
 		<remote-id type="pypi">mercurial_extension_utils</remote-id>
 	</upstream>
 </pkgmetadata>

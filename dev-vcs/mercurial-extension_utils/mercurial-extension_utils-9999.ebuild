@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
-EHG_REPO_URI="https://bitbucket.org/Mekk/mercurial-extension_utils"
+PYTHON_COMPAT=( python3_{7,8} )
+EHG_REPO_URI="https://foss.heptapod.net/mercurial/${PN}"
 
 inherit distutils-r1 mercurial
 
 DESCRIPTION="Mercurial Extension Utils"
-HOMEPAGE="https://bitbucket.org/Mekk/mercurial-extension_utils"
+HOMEPAGE="https://foss.heptapod.net/mercurial/mercurial-extension_utils"
 SRC_URI=""
 
 LICENSE="BSD"
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-vcs/mercurial[${PYTHON_USEDEP}] )"
 
-S="${WORKDIR}/${MY_P}"
+DOCS=( {HISTORY,README}.rst )
 
 python_prepare_all() {
 	# Remove tests need access to filesystem
