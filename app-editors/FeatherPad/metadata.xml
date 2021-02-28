@@ -11,7 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	A lightweight Qt5 plain-text editor for Linux.
-	It is independent of any desktop environment
+	It is independent of any desktop environment and contains:
+	drag-and-drop support, X11 virtual desktop awareness, highlighting, etc.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">tsujan/FeatherPad</remote-id>

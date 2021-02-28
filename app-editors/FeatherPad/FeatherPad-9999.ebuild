@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/tsujan/${PN}.git"
 
-inherit git-r3 qmake-utils xdg-utils
+inherit git-r3 qmake-utils xdg
 
 DESCRIPTION="Lightweight Qt5 plain-text editor"
 HOMEPAGE="https://github.com/tsujan/FeatherPad"
@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="X"
 
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="app-text/hunspell:=
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
@@ -33,16 +34,4 @@ src_configure() {
 src_install() {
 	einstalldocs
 	emake INSTALL_ROOT="${ED}" install
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
