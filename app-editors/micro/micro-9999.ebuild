@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/zyedidia/${PN}.git"
 
-inherit desktop git-r3 go-module xdg-utils
+inherit desktop git-r3 go-module xdg
 
 DESCRIPTION="A modern and intuitive terminal-based text editor"
 HOMEPAGE="https://github.com/zyedidia/micro"
 SRC_URI=""
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD MIT MPL-2.0"
 SLOT="0"
 KEYWORDS=""
 IUSE="debug"
@@ -43,9 +43,5 @@ src_install() {
 
 pkg_postinst() {
 	go-module_pkg_postinst
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
 	xdg_desktop_database_update
 }

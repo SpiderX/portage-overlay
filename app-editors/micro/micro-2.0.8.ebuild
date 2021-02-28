@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop go-module xdg-utils
+inherit desktop go-module xdg
 
 EGO_SUM=(
 	"github.com/blang/semver v3.5.1+incompatible"
@@ -43,11 +43,13 @@ EGO_SUM=(
 	"github.com/stretchr/objx v0.1.0/go.mod"
 	"github.com/stretchr/testify v1.4.0"
 	"github.com/stretchr/testify v1.4.0/go.mod"
+	"github.com/xo/terminfo v0.0.0-20200218205459-454e5b68f9e8"
+	"github.com/xo/terminfo v0.0.0-20200218205459-454e5b68f9e8/go.mod"
 	"github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583/go.mod"
 	"github.com/yuin/gopher-lua v0.0.0-20191220021717-ab39c6098bdb"
 	"github.com/yuin/gopher-lua v0.0.0-20191220021717-ab39c6098bdb/go.mod"
-	"github.com/zyedidia/clipboard v0.0.0-20200421031010-7c45b8673834"
-	"github.com/zyedidia/clipboard v0.0.0-20200421031010-7c45b8673834/go.mod"
+	"github.com/zyedidia/clipboard v1.0.3"
+	"github.com/zyedidia/clipboard v1.0.3/go.mod"
 	"github.com/zyedidia/glob v0.0.0-20170209203856-dd4023a66dc3"
 	"github.com/zyedidia/glob v0.0.0-20170209203856-dd4023a66dc3/go.mod"
 	"github.com/zyedidia/go-shellquote v0.0.0-20200613203517-eccd813c0655"
@@ -60,8 +62,8 @@ EGO_SUM=(
 	"github.com/zyedidia/poller v1.0.1/go.mod"
 	"github.com/zyedidia/pty v2.0.0+incompatible"
 	"github.com/zyedidia/pty v2.0.0+incompatible/go.mod"
-	"github.com/zyedidia/tcell v1.4.7"
-	"github.com/zyedidia/tcell v1.4.7/go.mod"
+	"github.com/zyedidia/tcell/v2 v2.0.6"
+	"github.com/zyedidia/tcell/v2 v2.0.6/go.mod"
 	"github.com/zyedidia/terminal v0.0.0-20180726154117-533c623e2415"
 	"github.com/zyedidia/terminal v0.0.0-20180726154117-533c623e2415/go.mod"
 	"golang.org/x/sys v0.0.0-20190204203706-41f3e6584952/go.mod"
@@ -91,7 +93,7 @@ HOMEPAGE="https://github.com/zyedidia/micro"
 SRC_URI="https://github.com/zyedidia/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
@@ -118,9 +120,5 @@ src_install() {
 
 pkg_postinst() {
 	go-module_pkg_postinst
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
 	xdg_desktop_database_update
 }
