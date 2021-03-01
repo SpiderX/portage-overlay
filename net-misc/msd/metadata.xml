@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	msd - Multi stream daemon.
+	Program for organizing IP TV streaming on the network via HTTP,
+	with support of ipv4/ipv6, Zero Copy on Send and etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">rozhuk-im/msd</remote-id>
+	</upstream>
+</pkgmetadata>

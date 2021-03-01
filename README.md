@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 472](https://img.shields.io/badge/ebuild-472-orange.svg)](https://img.shields.io/badge/ebuild-472-orange.svg)
+[![Number of ebuilds: 473](https://img.shields.io/badge/ebuild-473-orange.svg)](https://img.shields.io/badge/ebuild-473-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -471,6 +471,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pingu.svg)](https://repology.org/metapackage/pingu) net-misc/[pingu](https://github.com/ncopa/pingu) | Policy routing daemon with failover and load-balancing
 * net-misc/[qfreerdp](https://github.com/zrax/qfreerdp) | Qt launcher GUI for XFreeRDP
 * net-misc/[qia](http://stg.codes) | Authorization tool for Stargazer Billing System written in Qt
+* net-misc/[msd](https://github.com/rozhuk-im/msd) | Program for IP TV streaming on the network via HTTP
 * net-misc/[opendrop](https://github.com/seemoo-lab/opendrop) | an Open Source AirDrop Implementation
 * net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
 * net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics

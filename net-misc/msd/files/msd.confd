@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/msd
+
+# Various options.
+# run `msd -h` for valid cmdline options
+MSD_OPTS="-d -c /etc/msd/msd.conf"
