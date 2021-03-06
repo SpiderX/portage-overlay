@@ -10,8 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A clone of Norton Commander for Unix. Text-based, full featured
-	file manager intuitive interface.
+	Demos Commander is a text-mode application, an Orthodox File Manager
+	and a clone of Norton Commander.
+	The main interface consists of two panels, which display the file system.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">deco</remote-id>
