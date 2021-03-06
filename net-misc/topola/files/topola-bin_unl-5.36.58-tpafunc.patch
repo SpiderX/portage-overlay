@@ -1,26 +1,34 @@
---- a/tpafunc	2016-04-22 19:36:46.193011927 +0300
-+++ b/tpafunc	2016-04-22 19:37:28.566013812 +0300
-@@ -145,9 +145,6 @@
+--- ../tpafunc	2021-03-06 16:48:33.724799549 +0200
++++ ../tpafunc	2021-03-06 16:49:30.898918076 +0200
+@@ -131,7 +131,6 @@
+ 
+ fi
+ 
+-HOME_DIR=`grep -a ^${TPA_OWNER}: /etc/passwd | cut -d: -f6`
+ 
+ if [ -z "${TPA_HOME}" ]; then
+   while [ -z "${T_HOME}" ]; do
+@@ -152,9 +151,6 @@
    export TPA_HOME=${T_HOME}
  fi
  
 -  if [ -f ${TPA_HOME}/bin/topola.conf ]; then
--    D_DIR=`grep ^"data_dir " ${TPA_HOME}/bin/topola.conf | cut -d" " -f2`
+-    D_DIR=`grep -a ^"data_dir " ${TPA_HOME}/bin/topola.conf | cut -d" " -f2`
 -  fi
    [ -z "$D_DIR" ] && D_DIR=${TPA_HOME}/data
  
  export DATA_DIR=${D_DIR}
-@@ -175,9 +175,6 @@
+@@ -185,9 +181,6 @@
    fi
    . ${HOME}/.topola
  
 -  if [ -f ${TPA_HOME}/bin/topola.conf ]; then
--    D_DIR=`grep ^"data_dir " ${TPA_HOME}/bin/topola.conf | cut -d" " -f2`
+-    D_DIR=`grep -a ^"data_dir " ${TPA_HOME}/bin/topola.conf | cut -d" " -f2`
 -  fi
    [ -z "$D_DIR" ] && D_DIR=${TPA_HOME}/data
  
    if [ ! -f $D_DIR/main/system.conf ]; then
-@@ -218,7 +218,7 @@
+@@ -231,7 +224,7 @@
  
    [ ! -f "${TPA_HOME}/$1" ] && return 0
  

@@ -1,0 +1,18 @@
+--- ../tpainst.sh	2021-03-06 16:26:45.840213985 +0200
++++ ../tpainst.sh	2021-03-06 16:27:27.735428300 +0200
+@@ -14,7 +14,7 @@
+ make_dir bin/socat || exit 1
+ 
+ # 2. Install binaries
+-sed s.TAREM_DIR=/usr/local/accnt.TAREM_DIR=${TPA_HOME}. src/Makefile > src/aaa
++sed 's.TAREM_DIR=/usr/local/accnt.TAREM_DIR=${TPAHOME}.' src/Makefile > src/aaa
+ mv src/aaa src/Makefile
+ 
+ if which gmake >/dev/null 2>&1 ; then
+@@ -53,6 +53,5 @@
+ 
+ [ ! -f ${TPA_HOME}/bin/socat/socat_taremote.sh ] && trans_tpa_home bin/socat/socat_taremote.sh
+ 
+-grep -q ^"taremote" /etc/services || prn_warn_mark "Read ${TPA_HOME}/docs/etc/README"
+ 
+ prn_ok_mark "Finish..."

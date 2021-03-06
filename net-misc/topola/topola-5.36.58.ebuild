@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,11 +15,11 @@ TOPOLA_LICENSED_BIN_PV="${PV}"
 TOPOLA_LICENSED_BIN_P="${PN}-bin-${TOPOLA_LICENSED_BIN_PV}"
 TOPOLA_LICENSED_BIN_URI="http://topola.unity.net/files/base/${TOPOLA_LICENSED_BIN_P}.bin"
 
-TOPOLA_AGENT_PV="5.36.12"
+TOPOLA_AGENT_PV="5.36.63"
 TOPOLA_AGENT_P="${PN}-taremote_src-${TOPOLA_AGENT_PV}"
 TOPOLA_AGENT_URI="http://topola.unity.net/files/taremote/${TOPOLA_AGENT_P}.bin"
 
-inherit unpacker user
+inherit toolchain-funcs unpacker user-info
 
 DESCRIPTION="Customer accounting system, services and statistics collection management"
 HOMEPAGE="https://topola.unity.net"
@@ -31,16 +31,17 @@ SRC_URI="base? ( ${TOPOLA_BASE_URI} )
 	taremote? ( ${TOPOLA_AGENT_URI} )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="elibc_glibc base unlicensed-bin licensed-bin taremote +xinetd"
-RESTRICT="primaryuri"
+IUSE="elibc_glibc base unlicensed-bin licensed-bin +taremote +xinetd"
+RESTRICT="mirror"
 REQUIRED_USE="	|| ( taremote base )
 		elibc_glibc
 		unlicensed-bin? ( base elibc_glibc !licensed-bin )
 		licensed-bin? ( base elibc_glibc !unlicensed-bin )"
 S=${WORKDIR}
 
-RDEPEND="elibc_glibc? ( sys-libs/glibc:2.2 )
+RDEPEND="acct-user/topola
 	virtual/cron
+	elibc_glibc? ( sys-libs/glibc:2.2 )
 	xinetd? ( sys-apps/xinetd )"
 
 QA_PREBUILT="opt/topola/bin/admin.cgi
@@ -56,11 +57,6 @@ pkg_nofetch() {
 		eerror "After downloading, put it in:"
 		eerror "  ${DISTDIR}/"
 	fi
-}
-
-pkg_setup() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 /bin/bash /opt/"${PN}" "${PN}"
 }
 
 my_unpack() {
@@ -95,21 +91,24 @@ src_prepare() {
 	if use unlicensed-bin; then
 		cd "${S}"/"${TOPOLA_UNLICENSED_BIN_P}" || die "cd to ${TOPOLA_UNLICENSED_BIN_P} failed"
 		# rename TPA_HOME to TPAHOME for hold real "home path" value
-		eapply "${FILESDIR}"/"${PN}"-bin_unl-5.35.05-tpafunc.patch
+		eapply "${FILESDIR}"/"${PN}"-bin_unl-5.36.58-tpafunc.patch
 	fi
 	if use licensed-bin; then
 		cd "${S}"/"${TOPOLA_LICENSED_BIN_P}" || die "cd to ${TOPOLA_LICENSED_BIN_P} failed"
 		# rename TPA_HOME to TPAHOME for hold real "home path" value
-		eapply "${FILESDIR}"/"${PN}"-bin_unl-5.35.05-tpafunc.patch
+		eapply "${FILESDIR}"/"${PN}"-bin_unl-5.36.58-tpafunc.patch
 	fi
 	if use taremote; then
 		cd "${S}"/"${TOPOLA_AGENT_P}" || die "cd to ${TOPOLA_AGENT_P} failed"
-		# make grep process a files in KOI8-R as text, respect CFLAGS, fix binary install path
-		eapply "${FILESDIR}"/"${PN}"-taremote-5.35.05-Makefile.patch
+		# Respect FLAGS, fix binary install path
+		eapply "${FILESDIR}"/"${PN}"-taremote-5.36.58-Makefile.patch
 		# screen variables, rename TPA_HOME to TPAHOME for hold real "home path" value
-		eapply "${FILESDIR}"/"${PN}"-taremote-5.35.05-tpafunc.patch
-		# screen sed
-		eapply "${FILESDIR}"/"${PN}"-taremote-5.35.05-tpainst.patch
+		eapply "${FILESDIR}"/"${PN}"-taremote-5.36.58-tpafunc.patch
+		# screen sed, remove warning
+		eapply "${FILESDIR}"/"${PN}"-taremote-5.36.58-tpainst.patch
+
+		sed -i "s/\${MAKE}/\${MAKE} CC=$(tc-getCC)/" tpainst.sh \
+			|| die "sed failed for tpainst.sh"
 	fi
 
 	default
@@ -143,7 +142,7 @@ src_install() {
 		cd "${S}"/"${TOPOLA_UNLICENSED_BIN_P}" \
 			|| die "cd to ${TOPOLA_UNLICENSED_BIN_P} failed"
 		TPA_OWNER="${PN}" USER="${PN}" TPA_HOME="${MY_D}" \
-		HOME="${MY_D}" TPAHOME="$(egethome topola)" \
+		HOME_DIR="${MY_D}" TPAHOME="$(egethome topola)" \
 			./tpainst.sh || die "${TOPOLA_UNLICENSED_BIN_P}/tpainst.sh failed"
 
 		# revert TPA_HOME path back
@@ -158,7 +157,7 @@ src_install() {
 		cd "${S}"/"${TOPOLA_LICENSED_BIN_P}" \
 			|| die "cd to ${TOPOLA_LICENSED_BIN_P} failed"
 		TPA_OWNER="${PN}" USER="${PN}" TPA_HOME="${MY_D}" \
-		HOME="${MY_D}" TPAHOME="$(egethome topola)" \
+		HOME_DIR="${MY_D}" TPAHOME="$(egethome topola)" \
 			./tpainst.sh || die "${TOPOLA_LICENSED_BIN_P}/tpainst.sh failed"
 
 		# revert TPA_HOME path back
@@ -175,7 +174,7 @@ src_install() {
 		cd "${S}"/"${TOPOLA_AGENT_P}" \
 			|| die "cd to ${TOPOLA_AGENT_P} failed"
 		TPA_OWNER="${PN}" USER="${PN}" TPA_HOME="${MY_D}" \
-		HOME="${MY_D}" TPAHOME="$(egethome topola)" \
+		HOME_DIR="${MY_D}" TPAHOME="$(egethome topola)" \
 			./tpainst.sh || die "${TOPOLA_AGENT_P}/tpainst.sh failed"
 
 		# revert TPA_HOME path back

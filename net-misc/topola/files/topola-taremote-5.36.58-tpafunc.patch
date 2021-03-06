@@ -1,13 +1,22 @@
---- a/tpafunc	2016-05-10 11:45:54.572801754 +0300
-+++ b/tpafunc	2016-05-10 11:47:47.401806775 +0300
-@@ -154,7 +154,7 @@
+--- ../tpafunc	2021-03-06 16:12:54.026575813 +0200
++++ ../tpafunc	2021-03-06 16:13:06.385626463 +0200
+@@ -136,7 +136,6 @@
  
- export TPA_INSTALLER=$USER
+ fi
  
--echo export TPA_HOME=${TPA_HOME} > ${HOME}/.topola
-+echo export TPA_HOME=${TPAHOME} > ${HOME}/.topola
- echo export TPA_OWNER=${TPA_OWNER} >> ${HOME}/.topola
- echo export TPA_INSTALLER=${TPA_INSTALLER} >> ${HOME}/.topola
+-HOME_DIR=`grep -a ^${TPA_OWNER}: /etc/passwd | cut -d: -f6`
+ 
+ if [ -z "${TPA_HOME}" ]; then
+   while [ -z "${T_HOME}" ]; do
+@@ -168,7 +167,7 @@
+ 
+ # export TPA_DOMAIN
+ 
+-echo export TPA_HOME=${TPA_HOME}            > ${HOME_DIR}/.topola
++echo export TPA_HOME=${TPAHOME}            > ${HOME_DIR}/.topola
+ echo export TPA_OWNER=${TPA_OWNER}         >> ${HOME_DIR}/.topola
+ echo export TPA_INSTALLER=${TPA_INSTALLER} >> ${HOME_DIR}/.topola
+ echo export TPA_DOMAIN=${TPA_DOMAIN}       >> ${HOME_DIR}/.topola
  
 @@ -224,7 +224,7 @@
  

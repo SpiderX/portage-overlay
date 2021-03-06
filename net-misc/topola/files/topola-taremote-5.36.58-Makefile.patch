@@ -1,0 +1,23 @@
+--- ../src/Makefile	2021-03-06 16:20:50.238932820 +0200
++++ ../src/Makefile	2021-03-06 16:22:45.086170022 +0200
+@@ -1,5 +1,5 @@
+ CC=cc
+-CFLAGS= -g -O2 -Wall
++CFLAGS+= -Wall
+ 
+ LIBS=
+ 
+@@ -28,11 +28,11 @@
+ all: $(PROGNAME)
+ 
+ install: all
+-	@cp -f $(PROGNAME) $(TAREM_DIR)/bin/
++	@cp -f $(PROGNAME) ${TPA_HOME}/bin/
+ 	@test ! -d $(TAREM_DIR)/bin_common || cp -f $(PROGNAME) $(TAREM_DIR)/bin_common/
+ 
+ $(PROGNAME):  $(OBJ) Makefile Makefile.dep
+-	$(CC) $(CFLAGS) $(DEFS) $(LIBS) -o $(PROGNAME) $(OBJ)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFS) $(LIBS) -o $(PROGNAME) $(OBJ)
+ 
+ Makefile.dep:
+ 	echo \# > Makefile.dep
