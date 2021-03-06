@@ -1,0 +1,12 @@
+diff --git a/SConstruct b/SConstruct
+index 81d54a40..83db3ca3 100755
+--- a/SConstruct
++++ b/SConstruct
+@@ -725,7 +725,6 @@ if ARGUMENTS.get('DEBUG') == "1":
+     O_value = ARGUMENTS.get('O', O_DEBUG)
+ else:
+     conf.env.Append(CCFLAGS=['-DG_DISABLE_ASSERT', '-DNDEBUG'])
+-    conf.env.Append(LINKFLAGS=['-s'])
+     O_value = ARGUMENTS.get('O', O_RELEASE)
+ 
+ if O_value == 'debug':

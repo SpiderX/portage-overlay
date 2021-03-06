@@ -1,0 +1,11 @@
+--- rmlint-2.10.1/tests/test_formatters/test_py.py.orig	2021-03-06 03:43:55.473522188 +0300
++++ rmlint-2.10.1/tests/test_formatters/test_py.py	2021-03-06 03:44:36.171230552 +0300
+@@ -16,7 +16,7 @@
+         return False
+ 
+ 
+-@parameterized(["python2", "python3"])
++@parameterized(["python3"])
+ @with_setup(usual_setup_func, usual_teardown_func)
+ def test_paranoia(interpreter):
+     if not _check_interpreter(interpreter):
