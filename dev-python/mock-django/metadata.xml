@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	A simple library for mocking certain Django behavior,
-	such as the ORM
+	such as the ORM, test inclused in can be used as examples
 	</longdescription>
 	<upstream>
 		<remote-id type="github">dcramer/mock-django</remote-id>
