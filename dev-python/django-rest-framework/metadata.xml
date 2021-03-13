@@ -11,7 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	Powerful and flexible toolkit that makes it easy to build Web APIs
-	using Django
+	using Django with authentication policies, serialization that supports
+	both ORM and non-ORM data sources, etc.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">encode/django-rest-framework</remote-id>

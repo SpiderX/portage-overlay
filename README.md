@@ -258,7 +258,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-environ](https://github.com/joke2k/django-environ) | An environment variables to configure Django
 * dev-python/[django-fake-model](https://github.com/erm0l0v/django-fake-model) | A library for creating fake models in the unit tests
 * dev-python/[django-filter](https://github.com/carltongibson/django-filter) | Django application for filtering querysets
-* dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | An implementation of per object permissions for Django
+* dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | Implementation of per object permissions for Django
 * dev-python/[django-jsonfield](https://github.com/dmkoch/django-jsonfield) | A Django field to store validated JSON in your model
 * dev-python/[django-jinja](https://github.com/niwinz/django-jinja) | Jinja2 templating language integrated in Django
 * dev-python/[django-js-asset](https://github.com/matthiask/django-js-asset) | A script tag with additional attributes for django.forms.Media
