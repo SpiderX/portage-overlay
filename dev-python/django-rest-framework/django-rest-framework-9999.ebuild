@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/encode/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Django REST framework"
 HOMEPAGE="https://django-rest-framework.org"
