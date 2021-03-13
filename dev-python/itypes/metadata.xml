@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Simple immutable types for python
+	Basic immutable container types for Python.
+	A simple implementation that's designed for simplicity over performance.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">tomchristie/itypes</remote-id>
