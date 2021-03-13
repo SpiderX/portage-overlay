@@ -11,7 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	An implementation of per object permissions on top of Django’s
-	authorization backend
+	authorization backend with AnonymousUser support, Django’s admin
+	integration and etc.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">django-guardian/django-guardian</remote-id>
