@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A script tag with additional attributes for django.forms.Media
+	A script tag with additional attributes for django.forms.Media,
+	which can be used to insert additional attributes, such as id and
+	data-* for CSP-compatible data injection.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">matthiask/django-js-asset</remote-id>
