@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Django application for filtering querysets"
 HOMEPAGE="https://github.com/carltongibson/django-filter"
@@ -14,8 +14,6 @@ SRC_URI="https://github.com/carltongibson/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
@@ -24,6 +22,8 @@ BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-rest-framework[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests unittest
 
 python_test() {
 	./runtests.py --verbosity 2 || die "tests failed with ${EPYTHON}"
