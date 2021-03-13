@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	An utilization of 12factor inspired environment variables
-	to configure Django application
+	Django-environ allows you to utilize 12factor inspired environment
+	variables to configure your Django application.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">joke2k/django-environ</remote-id>
