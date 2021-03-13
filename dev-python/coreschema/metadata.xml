@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Python utilities to describe an abstract data schema to coreapi
+	Python utilities to describe an abstract data schema to Core Api.
+	Core Schema for Core API, a format-independent Document Object Model for
+	representing Web APIs.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">core-api/python-coreschema</remote-id>
