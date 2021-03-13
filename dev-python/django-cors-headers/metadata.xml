@@ -10,8 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A Django App that adds CORS (Cross-Origin Resource Sharing) headers
-	to responses
+	A Django App that adds Cross-Origin Resource Sharing (CORS) headers
+	to responses. This allows in-browser requests to your Django application
+	from other origins.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">ottoyiu/django-cors-headers</remote-id>
