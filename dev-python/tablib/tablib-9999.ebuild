@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Format-agnostic tabular dataset library"
 HOMEPAGE="https://github.com/jazzband/tablib"
@@ -15,9 +15,11 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE="xls yaml"
 
+RDEPEND="xls? ( dev-python/xlrd[${PYTHON_USEDEP}]
+		dev-python/xlwt[${PYTHON_USEDEP}] )
+	yaml? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? ( dev-python/MarkupPy[${PYTHON_USEDEP}]
 		dev-python/odfpy[${PYTHON_USEDEP}]

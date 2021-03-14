@@ -14,6 +14,10 @@
 	Output formats supported: Excel, JSON, YAML, Pandas, HTML, Jira,
 	TSV, ODS, CSV, DBF.
 	</longdescription>
+	<use>
+		<flag name="xls">Support for xls</flag>
+		<flag name="yaml">Support for yaml</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">jazzband/tablib</remote-id>
 		<remote-id type="pypi">tablib</remote-id>
