@@ -11,8 +11,12 @@
 	</maintainer>
 	<longdescription lang="en">
 	Automated generation of real Swagger/OpenAPI 2.0 schemas from
-	Django REST Framework code
+	Django REST Framework code with full support for nested Serializers
+	and Schemas, response schemas and descriptions, etc.
 	</longdescription>
+	<use>
+		<flag name="validation">Enable swagger spec validation</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">axnsan12/drf-yasg</remote-id>
 		<remote-id type="pypi">drf-yasg</remote-id>
