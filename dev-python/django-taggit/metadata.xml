@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Django application for simple tagging
+	django-taggit is a reusable Django application designed to
+	make adding tagging to your project easy and fun.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">alex/django-taggit</remote-id>
