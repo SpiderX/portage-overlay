@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/lilestream
+
+# Various options.
+# run `litestream --help` for valid cmdline options
+OPTS="replicate"

@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 477](https://img.shields.io/badge/ebuild-477-orange.svg)](https://img.shields.io/badge/ebuild-477-orange.svg)
+[![Number of ebuilds: 478](https://img.shields.io/badge/ebuild-478-orange.svg)](https://img.shields.io/badge/ebuild-478-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -132,6 +132,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-cpp/[xsd](https://www.codesynthesis.com/products/xsd) | A cross-platform W3C XML Schema to C++ data binding compiler
 * dev-db/[datanymizer](https://github.com/datanymizer/datanymizer) | Powerful database anonymizer with flexible rules
 * dev-db/[dbcrossbar](http://www.dbcrossbar.org) | Copy tabular data between databases, CSV files and cloud storage
+* dev-db/[litestream](https://github.com/benbjohnson/litestream) | Streaming S3 replication for SQLite
 * dev-db/[msodbcsql](https://docs.microsoft.com/en-us/sql/connect/odbc) | Microsoft ODBC Driver for SQL Server
 * dev-db/[mssql-cli](https://github.com/dbcli/mssql-cli) | CLI for SQL Server Database
 * dev-db/[mssql-scripter](https://github.com/microsoft/mssql-scripter) | CLI for scripting SQL Server Databases

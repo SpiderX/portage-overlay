@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Litestream is a standalone streaming replication tool for SQLite.
+	It runs as a background process and safely replicates changes
+	incrementally to another file or S3. Litestream only communicates
+	with SQLite through the SQLite API so it will not corrupt your database.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">benbjohnson/litestream</remote-id>
+	</upstream>
+</pkgmetadata>
