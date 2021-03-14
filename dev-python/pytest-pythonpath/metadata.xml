@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	This is a py.test plugin for adding to the PYTHONPATH from
-	the pytests.ini file before tests run.
+	the pytests.ini file before any tests run.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">bigsassy/pytest-pythonpath</remote-id>
