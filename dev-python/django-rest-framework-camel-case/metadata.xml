@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Camel case JSON support for Django REST framework
+	Camel case JSON support for Django REST framework with support of
+	rest_framework.renderers.JSONRenderer and two conventions of snake case.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">vbabiy/djangorestframework-camel-case</remote-id>
