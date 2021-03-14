@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	UK Postcode parser
+	UK Postcode parser is package for postcode parsing
+	with possibility to validate postcodes against a list
 	</longdescription>
 	<upstream>
 		<remote-id type="github">hamstah/ukpostcodeparser</remote-id>
