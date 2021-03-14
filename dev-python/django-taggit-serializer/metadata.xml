@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	The Django Taggit Serializer for the DjangoREST Framework
+	The Django Taggit Serializer for the Django REST Framework and
+	django-taggit package, which add serializer into the last one
 	</longdescription>
 	<upstream>
 		<remote-id type="github">glemmaPaul/django-taggit-serializer</remote-id>
