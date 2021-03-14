@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Provides all the goodness of nose in your Django tests
+	Provides all the goodness of nose in your Django tests with possibility to
+	test your apps by default, run the tests in one or more specific modules.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">jazzband/django-nose</remote-id>
