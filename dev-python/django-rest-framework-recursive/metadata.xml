@@ -10,7 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Recursive Serialization for Django REST framework
+	This package provides a RecursiveField that enables you to serialize
+	a tree, linked list, or even a directed acyclic graph. Also supports
+	validation, deserialization, ModelSerializers, and multi-step
+	recursive structures.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">heywbj/django-rest-framework-recursive</remote-id>
