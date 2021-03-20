@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/Yinzo/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -15,7 +15,6 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
