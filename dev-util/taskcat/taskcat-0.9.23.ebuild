@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -37,6 +37,7 @@ python_prepare_all() {
 	# Remove test needs docker and network
 	rm tests/test_lambda_package.py || die "rm test_lambda_package.py failed"
 	rm tests/test_amiupdater.py || die "rm test_amiupdater.py failed"
+	rm tests/test_cli_module_package.py || die "rm test_cli_module_package.py failed"
 
 	distutils-r1_python_prepare_all
 }
