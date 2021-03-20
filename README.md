@@ -384,6 +384,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[cfn-guard](https://github.com/aws-cloudformation/cloudformation-guard) | AWS CloudFormation Guard
 * dev-util/[cfn-skeleton](https://github.com/awslabs/aws-cloudformation-template-builder) | AWS Cloudformation Template Builder
 * dev-util/[cfn-template-flip](https://github.com/awslabs/aws-cfn-template-flip) | AWS CloudFormation Template Flip
+* dev-util/[cfripper](https://github.com/Skyscanner/cfripper) | Analysing CloudFormation templates for security compliance
 * dev-util/[cli](https://www.codesynthesis.com/projects/cli) | Command Line Interface compiler for C++
 * dev-util/[cloud-utils](https://launchpad.net/cloud-utils) | Utilities for interacting with a cloud
 * dev-util/[cupt](https://github.com/jackyf/cupt) | Package manager for Debian
