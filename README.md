@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 483](https://img.shields.io/badge/ebuild-483-orange.svg)](https://img.shields.io/badge/ebuild-483-orange.svg)
+[![Number of ebuilds: 484](https://img.shields.io/badge/ebuild-484-orange.svg)](https://img.shields.io/badge/ebuild-484-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -322,6 +322,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[pystache](https://github.com/defunkt/pystache) | Mustache templating system for Python
 * dev-python/[pytest-django](https://github.com/pytest-dev/pytest-django) | A Django plugin for py.test
 * dev-python/[pytest-pythonpath](https://github.com/bigsassy/pytest-pythonpath) | plugin for adding to the PYTHONPATH from command line or configs
+* dev-python/[pytest-trio](https://github.com/python-trio/pytest-trio) | Python library for async concurrency and I/O
 * dev-python/[pytimeparse](https://github.com/wroberts/pytimeparse) | A library to parse time from human readable string
 * dev-python/[python-crontab](https://gitlab.com/doctormo/python-crontab/) | Crontab module for reading and writing crontab files
 * dev-python/[python-gilt](https://github.com/metacloud/gilt) | A GIT layering tool
