@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
-EGIT_REPO_URI="https://github.com/python-trio/${MY_PN}.git"
+PYTHON_COMPAT=( python3_{7..9} )
+EGIT_REPO_URI="https://github.com/python-trio/${PN}.git"
 
 inherit distutils-r1 git-r3
 
@@ -15,16 +15,13 @@ SRC_URI=""
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="$(python_gen_cond_dep 'dev-python/contextvars[${PYTHON_USEDEP}]' python3_6)"
-DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/curio[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/curio[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
 
 python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
+	py.test -W error -ra -v --pyargs sniffio || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
