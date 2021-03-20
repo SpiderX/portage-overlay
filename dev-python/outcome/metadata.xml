@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Capture the outcome of Python function calls
+	Outcome provides a function for capturing the outcome of
+	a Python function call, so that it can be passed around.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">python-trio/outcome</remote-id>
