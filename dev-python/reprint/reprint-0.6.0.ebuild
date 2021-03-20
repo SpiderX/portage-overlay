@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-EGIT_REPO_URI="https://github.com/Yinzo/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Binding variables and refreshing multi-line output in terminal"
 HOMEPAGE="https://github.com/Yinzo/reprint"
-SRC_URI=""
+SRC_URI="https://github.com/Yinzo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
