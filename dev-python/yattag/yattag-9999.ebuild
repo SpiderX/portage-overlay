@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/leforestier/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,7 +16,6 @@ SRC_URI=""
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 python_test() {
 	"${PYTHON}" -m unittest discover -v test || die "tests failed with ${EPYTHON}"
