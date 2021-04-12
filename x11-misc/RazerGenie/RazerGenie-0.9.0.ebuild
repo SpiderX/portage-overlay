@@ -3,17 +3,15 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/z3ntu/${PN}.git"
-
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="Razer devices configurator"
 HOMEPAGE="https://github.com/z3ntu/RazerGenie"
-SRC_URI=""
+SRC_URI="https://github.com/z3ntu/RazerGenie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="matrix"
 
 DEPEND="dev-qt/qtdbus:5
