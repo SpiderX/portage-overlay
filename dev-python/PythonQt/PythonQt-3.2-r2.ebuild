@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 MY_P=${PN}${PV}
 
@@ -70,7 +70,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 CONFIG+="$(usex debug debug release '' '')" PREFIX="${ED}"/usr
+	eqmake5 CONFIG+="$(usex debug debug release '' '')" PREFIX="${EPREFIX}"/usr
 }
 
 src_test() {

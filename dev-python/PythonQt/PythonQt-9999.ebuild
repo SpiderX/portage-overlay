@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/MeVisLab/pythonqt.git"
 
 inherit git-r3 qmake-utils python-single-r1 virtualx
@@ -67,7 +67,8 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 CONFIG+="$(usex debug debug release '' '')" PREFIX="${ED}"/usr
+	eqmake5 CONFIG+="$(usex debug debug release '' '')" PREFIX="${EPREFIX}"/usr \
+		PYTHON_DIR=/usr
 }
 
 src_test() {
