@@ -13,6 +13,11 @@
 	Utility finds space waste and other broken things on your filesystem
 	and offers to remove it.
 	</longdescription>
+	<use>
+		<flag name="elf">Enables support for search for non-stripped binaries via <pkg>virtual/libelf</pkg></flag>
+		<flag name="blkid">Enables detecting mountpoints via libblkid (part of <pkg>sys-apps/util-linux</pkg>)</flag>
+		<flag name="json">Enables parsing rmlint’s own json as caching layer, requires <pkg>dev-libs/json-glib</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">sahib/rmlint</remote-id>
 	</upstream>
