@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit bash-completion-r1 desktop multilib-build pax-utils xdg
+inherit bash-completion-r1 desktop multilib-build optfeature pax-utils xdg
 
 DESCRIPTION="Data management tool to work with DW, Azure, SQL Server"
 HOMEPAGE="https://github.com/microsoft/azuredatastudio"
@@ -14,7 +14,7 @@ SRC_URI="https://azuredatastudio-update.azurewebsites.net/${PV}/linux-x64/stable
 LICENSE="MIT Microsoft-ADS"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="kerberos gnome-keyring"
+IUSE="kerberos"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -48,20 +48,20 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
-	gnome-keyring? ( app-crypt/libsecret:0[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Security.Cryptography.Native.OpenSsl.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Net.Http.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/MicrosoftSqlToolsServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/MicrosoftKustoServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/libhostfxr.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.Net.Security.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/MicrosoftSqlToolsCredentials
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/libhostpolicy.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/SqlToolsResourceProviderService
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.29/System.IO.Compression.Native.so
+QA_PREBUILT="opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/System.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/System.Security.Cryptography.Native.OpenSsl.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/System.Net.Http.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/MicrosoftSqlToolsServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/MicrosoftKustoServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/libhostfxr.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/System.Net.Security.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/MicrosoftSqlToolsCredentials
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/libhostpolicy.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/SqlToolsResourceProviderService
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.89/System.IO.Compression.Native.so
+	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node
 	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 	opt/azuredatastudio/azuredatastudio
 	opt/azuredatastudio/swiftshader/libEGL.so
@@ -91,4 +91,10 @@ src_install() {
 	doins "${FILESDIR}"/azuredatastudio.appdata.xml
 
 	pax-mark -m "${ED}"/opt/azuredatastudio/azuredatastudio
+}
+
+pkg_postinst() {
+	optfeature "storing passwords via gnome-keyring" app-crypt/libsecret
+
+	xdg_pkg_postinst
 }
