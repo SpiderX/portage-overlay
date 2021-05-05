@@ -70,7 +70,7 @@ indicatif-0.15.0
 instant-0.1.8
 itoa-0.4.6
 lazy_static-1.4.0
-lexical-core-0.7.4
+lexical-core-0.7.5
 libc-0.2.80
 linked-hash-map-0.3.0
 linked-hash-map-0.5.3
@@ -197,8 +197,6 @@ SRC_URI="https://github.com/datanymizer/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-
-#DOCS=( {CHANGELOG,README}.md )
 
 S="${WORKDIR}/${P}/cli/pg_datanymizer"
 

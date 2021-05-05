@@ -72,7 +72,7 @@ indicatif-0.15.0
 instant-0.1.8
 itoa-0.4.6
 lazy_static-1.4.0
-lexical-core-0.7.4
+lexical-core-0.7.5
 libc-0.2.80
 linked-hash-map-0.3.0
 linked-hash-map-0.5.3
