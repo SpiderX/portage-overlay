@@ -11,7 +11,7 @@ DESCRIPTION="Streaming S3 replication for SQLite"
 HOMEPAGE="https://github.com/benbjohnson/litestream"
 SRC_URI=""
 
-LICENSE="GPL-3"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 

@@ -324,6 +324,8 @@ EGO_SUM=(
 	"golang.org/x/sync v0.0.0-20190227155943-e225da77a7e6/go.mod"
 	"golang.org/x/sync v0.0.0-20190423024810-112230192c58/go.mod"
 	"golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e/go.mod"
+	"golang.org/x/sync v0.0.0-20210220032951-036812b2e83c"
+	"golang.org/x/sync v0.0.0-20210220032951-036812b2e83c/go.mod"
 	"golang.org/x/sys v0.0.0-20180823144017-11551d06cbcc/go.mod"
 	"golang.org/x/sys v0.0.0-20180830151530-49385e6e1522/go.mod"
 	"golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33/go.mod"
@@ -424,10 +426,9 @@ HOMEPAGE="https://github.com/benbjohnson/litestream"
 SRC_URI="https://github.com/benbjohnson/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
-LICENSE="GPL-3"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-#RESTRICT="test" # requires postgresql running
 
 src_compile() {
 	LDFLAGS="-X main.Version=${PV}"
