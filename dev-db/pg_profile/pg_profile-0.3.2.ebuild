@@ -3,16 +3,12 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/zubkov-andrei/${PN}.git"
-
-inherit git-r3
-
 DESCRIPTION="Postgres historic performance reports"
 HOMEPAGE="https://github.com/zubkov-andrei/pg_profile"
-SRC_URI=""
+SRC_URI="https://github.com/zubkov-andrei/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 DEPEND="dev-db/postgresql:*"
