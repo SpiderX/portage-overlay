@@ -5,8 +5,6 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/dbcrossbar/${PN}.git"
-
 CRATES="
 addr2line-0.14.1
 adler-0.2.3
@@ -330,24 +328,25 @@ ws2_32-sys-0.2.1
 yup-oauth2-5.0.1
 "
 
-inherit cargo git-r3
+inherit cargo
+
+MY_BUILD="$(ver_cut 5)"
+MY_PV="${PV//_/-}"
 
 DESCRIPTION="Copy tabular data between databases, CSV files and cloud storage"
 HOMEPAGE="http://www.dbcrossbar.org"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
+SRC_URI="https://github.com/dbcrossbar/dbcrossbar/archive/v${MY_PV%??}.${MY_BUILD}.tar.gz
+	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
+
+S="${WORKDIR}/${PN}-${MY_PV%??}.${MY_BUILD}"
 
 DOCS=( {CHANGELOG,README}.md )
 
 QA_FLAGS_IGNORED="usr/bin/dbcrossbar"
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_src_unpack
-}
 
 src_install() {
 	einstalldocs
