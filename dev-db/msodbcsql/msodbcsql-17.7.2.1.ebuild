@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ S="${WORKDIR}"
 
 DOCS=( usr/share/doc/msodbcsql17/RELEASE_NOTES )
 
-QA_PREBUILT="usr/lib64/libmsodbcsql-17.6.so.1.1"
+QA_PREBUILT="usr/lib64/libmsodbcsql-17.7.so.2.1"
 
 src_prepare() {
 	default
@@ -40,8 +40,8 @@ src_install() {
 	doins opt/microsoft/msodbcsql17/etc/odbcinst.ini
 
 	doheader opt/microsoft/msodbcsql17/include/msodbcsql.h
-	dolib.so opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.6.so.1.1
-	dosym libmsodbcsql-17.6.so.1.1 usr/lib64/libmsodbcsql-17.so
+	dolib.so opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.7.so.2.1
+	dosym libmsodbcsql-17.7.so.2.1 usr/lib64/libmsodbcsql-17.so
 
 	insinto /usr/share/resources/en_US
 	doins opt/microsoft/msodbcsql17/share/resources/en_US/msodbcsqlr17.rll
