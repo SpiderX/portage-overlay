@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/pipelinedb/${PN}.git"
 
 inherit git-r3 python-any-r1
@@ -16,11 +16,9 @@ LICENSE="Apache-2.0"
 KEYWORDS=""
 SLOT="0"
 IUSE="test"
+RESTRICT="test" # some tests fail
 
-# some tests fail
-RESTRICT="test"
-
-DEPEND="dev-db/postgresql:*
+DEPEND="<dev-db/postgresql-12:*
 	net-libs/zeromq:0="
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( $(python_gen_any_dep 'dev-python/psycopg:2[${PYTHON_USEDEP}]

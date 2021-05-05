@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4..6}} )
+PYTHON_COMPAT=( python3_{7..9} )
 MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
 
@@ -17,11 +17,9 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="test"
+RESTRICT="test" # tests fail
 
-# tests fail
-RESTRICT="test"
-
-DEPEND="dev-db/postgresql:*
+DEPEND="<dev-db/postgresql-12:*
 	net-libs/zeromq:0="
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( $(python_gen_any_dep 'dev-python/psycopg:2[${PYTHON_USEDEP}]
@@ -38,7 +36,7 @@ src_prepare() {
 	default
 
 	# Link with correct filename, support for DESTDIR
-	sed -i -e '/SHLIB_LINK/s/a/so/' \
+	sed -i -e "/SHLIB_LINK/s|lib/libzmq.a|$(get_libdir)/libzmq.so|" \
 		-e '/headers_dir /s/= \$/= \${DESTDIR}\$/' \
 		Makefile || die "sed failed for Makefile"
 }
