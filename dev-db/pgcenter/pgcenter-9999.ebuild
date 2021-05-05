@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
@@ -22,9 +21,10 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -ldflags "-X github.com/lesovsky/pgcenter/cmd.gitTag=${PV}
+	LDFLAGS="-X github.com/lesovsky/pgcenter/cmd.gitTag=${PV}
 		-X github.com/lesovsky/pgcenter/cmd.gitCommit=${PV}
-		-X github.com/lesovsky/pgcenter/cmd.gitBranch=${PV}" \
+		-X github.com/lesovsky/pgcenter/cmd.gitBranch=${PV}"
+	go build -ldflags "${LDFLAGS}" -o pgcenter ./cmd \
 		|| die "build failed"
 }
 
