@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Database access library for C++"
 HOMEPAGE="https://github.com/SOCI/soci"
-SRC_URI="https://github.com/SOCI/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SOCI/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-1"
 KEYWORDS="~amd64 ~x86"
