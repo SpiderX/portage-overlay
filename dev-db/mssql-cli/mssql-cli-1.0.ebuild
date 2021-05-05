@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/dbcli/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
+
 RDEPEND=">=dev-python/applicationinsights-0.11.1[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/cli_helpers[${PYTHON_USEDEP}]
@@ -40,6 +40,16 @@ QA_PREBUILT="usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/Sys
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libhostpolicy.so
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/SqlToolsResourceProviderService
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.IO.Compression.Native.so"
+QA_FLAGS_IGNORED="usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libmscordaccore.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libdbgshim.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.Globalization.Native.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libsosplugin.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libsos.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libcoreclr.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libcoreclrtraceptprovider.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libclrjit.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libmscordbi.so
+	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/createdump"
 
 src_unpack() {
 	default
