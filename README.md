@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 492](https://img.shields.io/badge/ebuild-492-orange.svg)](https://img.shields.io/badge/ebuild-492-orange.svg)
+[![Number of ebuilds: 493](https://img.shields.io/badge/ebuild-493-orange.svg)](https://img.shields.io/badge/ebuild-493-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -124,6 +124,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-misc/[jsqry-cli2-bin](https://github.com/jsqry/jsqry-cli2) | CLI tool (similar to jq) to query JSON using sane DSL
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pet.svg)](https://repology.org/metapackage/pet) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
 * app-misc/[rmlint](https://rmlint.rtfd.org) | Removes duplicates and other lint from your filesystem
+* app-misc/[up](https://github.com/akavel/up) | Tool for writing Linux pipes with instant live preview
 * app-misc/[xsv](https://github.com/BurntSushi/xsv) | A fast CSV command line toolkit
 * app-office/[drawio-desktop-bin](https://github.com/jgraph/drawio-desktop) | Diagram drawing application built on web technology
 * app-shells/[fzf](https://github.com/junegunn/fzf) | A command-line fuzzy finder
