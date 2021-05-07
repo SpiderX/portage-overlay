@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	usql is a universal command-line interface for PostgreSQL, MySQL,
+	Oracle Database, SQLite3, Microsoft SQL Server, and many other
+	databases including NoSQL and non-relational databases.
+	</longdescription>
+	<use>
+		<flag name="athena">Enable support for AWS Athena</flag>
+		<flag name="avatica">Enable support for Apache Avatica</flag>
+		<flag name="bigquery">Enable support for Google BigQuery</flag>
+		<flag name="cassandra">Enable support for Cassandra</flag>
+		<flag name="clickhouse">Enable support for ClickHouse</flag>
+		<flag name="cosmos">Enable support for Azure Cosmos</flag>
+		<flag name="couchbase">Enable support for Couchbase</flag>
+		<flag name="csvq">Enable support for CSVQ</flag>
+		<flag name="genji">Enable support for Genji</flag>
+		<flag name="h2">Enable support for Apache H2</flag>
+		<flag name="hdb">Enable support for SAP HANA</flag>
+		<flag name="hive">Enable support for Apache Hive</flag>
+		<flag name="ignite">Enable support for Apache Ignite</flag>
+		<flag name="impala">Enable support for Apache Impala</flag>
+		<flag name="maxcompute">Enable support for Alibaba MaxCompute</flag>
+		<flag name="netezza">Enable support for IBM Netezza</flag>
+		<flag name="presto">Enable support for Presto</flag>
+		<flag name="ql">Enable support for Cznic QL</flag>
+		<flag name="snowflake">Enable support for Snowflake</flag>
+		<flag name="spanner">Enable support for Google Spanner</flag>
+		<flag name="tds">Enable support for SAP ASE</flag>
+		<flag name="trino">Enable support for Trino</flag>
+		<flag name="vertica">Enable support for Vertica</flag>
+		<flag name="voltdb">Enable support for VoltDB</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">xo/usql</remote-id>
+	</upstream>
+</pkgmetadata>
