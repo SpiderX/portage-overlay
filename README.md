@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 497](https://img.shields.io/badge/ebuild-497-orange.svg)](https://img.shields.io/badge/ebuild-497-orange.svg)
+[![Number of ebuilds: 498](https://img.shields.io/badge/ebuild-498-orange.svg)](https://img.shields.io/badge/ebuild-498-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -377,6 +377,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[ukpostcodeparser](https://github.com/hamstah/ukpostcodeparser) | UK postcode parser library
 * dev-python/[umalqurra](https://github.com/tytkal/python-hijiri-ummalqura) | Date Api that support Hijri Umalqurra calendar
 * dev-python/[unittest-xml-reporting](https://github.com/xmlrunner/unittest-xml-reporting) | unittest-based test runner with Ant/JUnit like XML reporting
+* dev-python/[update_checker](https://github.com/bboe/update_checker) | A python module that will check for package updates
 * dev-python/[validate_email](https://github.com/syrusakbary/validate_email) | Python email validation library
 * dev-python/[validators](https://github.com/kvesteri/validators) | Python data validation library
 * dev-python/[vcd-api-schemas-type](https://github.com/vmware/vcd-api-schemas) | VMware vCloud Director Python API Schemas Type
