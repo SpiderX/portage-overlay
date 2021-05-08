@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Policy Sentry is an AWS IAM Least Privilege Policy Generator,
+	auditor, and analysis database. It compiles database tables
+	based on the AWS IAM Documentation on Actions, Resources,
+	and Condition Keys and leverages that data to create
+	least-privilege IAM policies.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">salesforce/policy_sentry</remote-id>
+		<remote-id type="pypi">policy-sentry</remote-id>
+	</upstream>
+</pkgmetadata>
