@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 499](https://img.shields.io/badge/ebuild-499-orange.svg)](https://img.shields.io/badge/ebuild-499-orange.svg)
+[![Number of ebuilds: 500](https://img.shields.io/badge/ebuild-500-orange.svg)](https://img.shields.io/badge/ebuild-500-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -258,6 +258,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[datadiff](https://sourceforge.net/projects/datadiff) | A library for diffs of python data structures
 * dev-python/[dateparser](https://github.com/scrapinghub/dateparser) | Date parsing library designed to parse dates from HTML pages
 * dev-python/[decli](https://github.com/Woile/decli) | Minimal declarative cli tool
+* dev-python/[deep_merge](https://github.com/halfak/deep_merge) | A simple utility for merging python dictionaries
 * dev-python/[delegator-py](https://github.com/kennethreitz/delegator.py) | Simple library for dealing with subprocesses
 * dev-python/[django-celery-beat](https://github.com/celery/django-celery-beat) | Celery Periodic Tasks for Django
 * dev-python/[django-configurations](https://github.com/jazzband/django-configurations) | A helper for organizing Django project settings
