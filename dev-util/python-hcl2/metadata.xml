@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A parser for HCL2 written in Python using Lark.
+	This parser only supports HCL2 and isn't backwards compatible
+	with HCL v1. It can be used to parse any HCL2 config file
+	such as Terraform.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">amplify-education/python-hcl2</remote-id>
+		<remote-id type="pypi">bc-python-hcl2</remote-id>
+	</upstream>
+</pkgmetadata>
