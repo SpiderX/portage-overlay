@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/olav-st/${PN}.git"
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit cmake git-r3 python-single-r1 xdg
 
@@ -15,7 +15,6 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="dev-libs/quazip
@@ -29,8 +28,7 @@ DEPEND="dev-libs/quazip
 	dev-qt/qtxml:5"
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0="
 
 DOCS=( README.md )
 
