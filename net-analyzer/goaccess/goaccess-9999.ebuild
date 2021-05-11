@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="btree bzip2 debug geoip geoipv2 getline libressl tokyocabinet ssl unicode zlib"
+IUSE="btree bzip2 debug geoip geoipv2 getline tokyocabinet ssl unicode zlib"
 REQUIRED_USE="btree? ( tokyocabinet ) bzip2? ( btree ) geoipv2? ( geoip ) zlib? ( btree )"
 
 BDEPEND="virtual/pkgconfig"
@@ -31,10 +31,7 @@ RDEPEND="sys-libs/ncurses:0=[unicode?]
 			zlib? ( sys-libs/zlib )
 		)
 	)
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
