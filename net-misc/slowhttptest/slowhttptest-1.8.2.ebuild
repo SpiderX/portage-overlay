@@ -10,8 +10,6 @@ SRC_URI="https://github.com/shekyan/slowhttptest/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
-DEPEND="libressl? ( dev-libs/libressl )
-	!libressl? ( dev-libs/openssl:0= )"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"

@@ -14,8 +14,6 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl"
 
-DEPEND="libressl? ( dev-libs/libressl )
-	!libressl? ( dev-libs/openssl:0= )"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
