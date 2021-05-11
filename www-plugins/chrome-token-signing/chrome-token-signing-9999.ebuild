@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,16 +14,15 @@ SRC_URI=""
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="chromium firefox libressl vivaldi"
+IUSE="chromium firefox vivaldi"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND="dev-qt/qtcore:5
+DEPEND="dev-libs/openssl:0=
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
-	sys-apps/pcsc-lite
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	sys-apps/pcsc-lite"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/host-linux"
