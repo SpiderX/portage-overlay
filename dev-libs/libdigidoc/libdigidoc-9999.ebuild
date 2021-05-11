@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,13 +13,12 @@ HOMEPAGE="https://github.com/open-eid/libdigidoc http://id.ee"
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="doc libressl +utils"
+IUSE="doc +utils"
 
 RDEPEND="dev-libs/libxml2:2
 	dev-libs/opensc
-	sys-libs/zlib:0=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0=
+	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
 	virtual/libiconv"
 BDEPEND="virtual/pkgconfig
