@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,17 +14,14 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug examples libressl nss static-libs xalan"
+IUSE="debug examples nss static-libs xalan"
 
-RDEPEND="dev-libs/xerces-c
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+RDEPEND="dev-libs/openssl:0=
+	dev-libs/xerces-c
 	nss? ( dev-libs/nss )
 	xalan? ( dev-libs/xalan-c )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}/${PN}-2.0.2-libressl.patch" )
 
 DOCS=( {CHANGELOG,NOTICE}.txt )
 
