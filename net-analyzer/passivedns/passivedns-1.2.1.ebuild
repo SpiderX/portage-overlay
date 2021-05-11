@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,16 +12,13 @@ SRC_URI="https://github.com/gamelinux/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug json libressl ssl" #pfring
+IUSE="debug json ssl" #pfring
 
 RDEPEND="acct-user/passivedns
-	net-libs/ldns[libressl?]
+	net-libs/ldns
 	net-libs/libpcap
 	json? ( dev-libs/jansson )
-	ssl? (
-		libressl? ( dev-libs/libressl )
-		!libressl? ( dev-libs/openssl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}"
 
 DOCS=( doc/AUTHORS doc/ChangeLog doc/How-it-works.txt doc/ISSUES )
