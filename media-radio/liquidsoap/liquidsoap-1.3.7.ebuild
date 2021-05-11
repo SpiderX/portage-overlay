@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="alsa ao camlimages +camlp4 debug dssi faad fdk ffmpeg flac frei0r gavl \
-	gd graphics gstreamer gui inotify jack json ladspa lame lastfm libsamplerate \
+	gd graphics gstreamer gui jack json ladspa lame lastfm libsamplerate \
 	mad magic +ocamlopt ogg osc opus oss portaudio profiling pulseaudio sdl shine \
 	shout soundtouch speex ssl systemd taglib theora +unicode vorbis xml"
 REQUIRED_USE="flac? ( ogg ) lastfm? ( xml ) opus? ( ogg ) speex? ( ogg ) theora? ( ogg ) vorbis? ( ogg )"
@@ -40,7 +40,6 @@ RDEPEND="acct-user/liquidsoap
 	gd? ( dev-ml/gd4o:=[ocamlopt?]
 		media-fonts/dejavu )
 	gstreamer? ( >=dev-ml/ocaml-gstreamer-0.3.0:=[ocamlopt?] )
-	inotify? ( dev-ml/ocaml-inotify:=[ocamlopt?] )
 	jack? ( dev-ml/ocaml-bjack:=[ocamlopt?] )
 	json? ( dev-ml/yojson:= )
 	ladspa? ( dev-ml/ocaml-ladspa:=[ocamlopt?] )
@@ -105,7 +104,6 @@ src_configure() {
 		"$(use_enable gd)" \
 		"$(use_enable graphics)" \
 		"$(use_enable gstreamer)" \
-		"$(use_enable inotify)" \
 		"$(use_enable jack bjack)" \
 		"$(use_enable json yojson)" \
 		"$(use_enable ladspa)" \
