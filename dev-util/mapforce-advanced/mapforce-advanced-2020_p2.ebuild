@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,13 +15,11 @@ SRC_URI="https://cdn.sw.altova.com/v${MY_PV/rel/r}sp1/multi-lingual/${MY_PN}-${M
 LICENSE="Altova"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libressl"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="acct-user/mapforce
-	virtual/krb5
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0=
+	virtual/krb5"
 
 S="${WORKDIR}"
 
