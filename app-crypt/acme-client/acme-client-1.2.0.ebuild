@@ -15,10 +15,8 @@ SRC_URI="https://github.com/graywolf/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
-RDEPEND="!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

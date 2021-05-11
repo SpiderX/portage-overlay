@@ -14,10 +14,8 @@ SRC_URI=""
 LICENSE="ISC MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl"
 
-RDEPEND="!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
