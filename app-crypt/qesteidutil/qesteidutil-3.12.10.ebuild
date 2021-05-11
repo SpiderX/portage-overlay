@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,17 +14,16 @@ SRC_URI="https://github.com/open-eid/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="crash-reporter libressl +webcheck"
+IUSE="crash-reporter +webcheck"
 REQUIRED_USE="webcheck" # build fails without it
 
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="dev-libs/openssl:0=
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsingleapplication
-	sys-apps/pcsc-lite
-	!libressl? ( <dev-libs/openssl-1.1:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	sys-apps/pcsc-lite"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5
 	virtual/pkgconfig"
