@@ -14,6 +14,6 @@
 	processing and loading/saving various image file formats
 	</longdescription>
 	<upstream>
-		<remote-id type="bitbucket">camlspotter/camlimages</remote-id>
+		<remote-id type="gitlab">camlspotter/camlimages</remote-id>
 	</upstream>
 </pkgmetadata>
