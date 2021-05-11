@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="de es fr"
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit eutils distutils-r1 gnome2-utils l10n python-r1 scons-utils
 
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}] )
 	nls? ( sys-devel/gettext )
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/nose-parameterized[${PYTHON_USEDEP}] )"
+		dev-python/parameterized[${PYTHON_USEDEP}] )"
 
 DOCS=( CHANGELOG.md README.rst gui/TODO )
 #TODO: install shredder, calling directly distutils?
@@ -42,7 +42,7 @@ src_prepare() {
 	default
 
 	# DEBUG=1 - don't strip binary
-	scons_opts="DEBUG=1 --libdir=/usr/$(get_libdir) --prefix=${ED%/}/usr --actual-prefix=/usr \
+	scons_opts="DEBUG=1 --libdir=/usr/$(get_libdir) --prefix=${ED}/usr --actual-prefix=/usr \
 		$(usex cpu_flags_x86_sse --with-sse --without-sse) \
 		$(usex nls --with-gettext --without-gettext) \
 		$(usex X --with-gui --without-gui)"
@@ -67,10 +67,10 @@ src_install(){
 
 	escons "${scons_opts}" install
 
-	rm -f "${ED%/}"/usr/share/glib-2.0/schemas/gschemas.compiled
+	rm -f "${ED}"/usr/share/glib-2.0/schemas/gschemas.compiled
 	if ! use X; then
-		rm -rf "${ED%/}"/usr/share/{glib-2.0,icons,applications}
-		rm -rf "${ED%/}"/usr/lib
+		rm -rf "${ED}"/usr/share/{glib-2.0,icons,applications}
+		rm -rf "${ED}"/usr/lib
 	fi
 }
 
