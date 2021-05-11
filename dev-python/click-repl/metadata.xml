@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a subcommand REPL for another
+	python module — <pkg>dev-python/click</pkg> with possibilities
+	of tab-completion, parent context is reused, etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">click-contrib/click-repl</remote-id>
+		<remote-id type="pypi">click-repl</remote-id>
+	</upstream>
+</pkgmetadata>
