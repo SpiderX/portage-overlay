@@ -14,7 +14,7 @@ SRC_URI=""
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="alsa g729 gsm ilbc speex zrtp"
+IUSE="alsa g729 gsm speex zrtp"
 
 RDEPEND="dev-cpp/commoncpp2
 	dev-libs/ccrtp
@@ -29,7 +29,6 @@ RDEPEND="dev-cpp/commoncpp2
 	sys-libs/readline:=
 	g729? ( media-libs/bcg729 )
 	gsm? ( media-sound/gsm )
-	ilbc? ( dev-libs/ilbc-rfc3951 )
 	speex? ( media-libs/speex
 		media-libs/speexdsp )
 	zrtp? ( dev-libs/zrtpcpp )"
@@ -47,7 +46,7 @@ src_configure() {
 		-DWITH_ALSA="$(usex alsa)"
 		-DWITH_G729="$(usex g729)"
 		-DWITH_GSM="$(usex gsm)"
-		-DWITH_ILBC="$(usex ilbc)"
+		-DWITH_ILBC=no
 		-DWITH_SPEEX="$(usex speex)"
 		-DWITH_ZRTP="$(usex zrtp)"
 	)
