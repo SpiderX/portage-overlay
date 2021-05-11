@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,19 +12,18 @@ DESCRIPTION="Library for handling digitally signed documents"
 HOMEPAGE="https://github.com/open-eid/libdigidocpp https://id.ee"
 SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD GPL-2 OASIS-Open W3C ZLIB"
+LICENSE="BSD GPL-2 MIT OASIS-Open W3C ZLIB"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="doc java libressl pdf test +utils"
+IUSE="doc java pdf test +utils"
 
 RDEPEND="dev-libs/libdigidoc
 	dev-libs/opensc
+	dev-libs/openssl:0=
 	dev-libs/xerces-c
 	dev-libs/xml-security-c
 	sys-libs/zlib:0=[minizip]
 	java? ( virtual/jre:= )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
 	pdf? ( virtual/podofo-build )"
 DEPEND="${RDEPEND}
 	java? ( dev-lang/swig )
