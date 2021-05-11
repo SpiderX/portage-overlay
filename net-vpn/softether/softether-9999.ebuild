@@ -15,14 +15,13 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bridge +client cmd debug libressl server"
+IUSE="bridge +client cmd debug server"
 REQUIRED_USE="|| ( bridge client cmd server )"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="dev-libs/openssl:0=
+	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	sys-libs/zlib
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/src
@@ -56,11 +55,10 @@ src_compile() {
 src_install() {
 	einstalldocs
 
-	# Define local variable, strip '+', 'debug' and 'libressl' USE flags
+	# Define local variable, strip '+', 'debug' USE flags
 	local MODULES
 	MODULES="${IUSE//+}"
 	MODULES="${MODULES//debug}"
-	MODULES="${MODULES//libressl}"
 
 	# Define installation location
 	insinto /opt/softether
