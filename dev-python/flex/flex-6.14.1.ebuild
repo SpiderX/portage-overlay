@@ -14,7 +14,7 @@ SRC_URI="https://github.com/pipermerriam/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="test" #no support for modern django
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
