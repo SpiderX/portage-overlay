@@ -168,6 +168,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[integer-simple](http://hackage.haskell.org/package/integer-simple) | Simple Integer library
 * dev-haskell/[postgresql-simple](https://github.com/phadej/postgresql-simple) | mid-level PostgreSQL client library
 * dev-haskell/[scotty](https://github.com/scotty-web/scotty) | Haskell web framework
+* dev-haskell/[scrypt](https://github.com/informatikr/scrypt) | Stronger password hashing via sequential memory-hard functions
 * dev-haskell/[semigroups](https://github.com/ekmett/semigroups) | Anything that associates
 * dev-haskell/[tz](https://github.com/nilcons/haskell-tz) | Library for time zone conversions
 * dev-haskell/[tzdata](https://github.com/nilcons/haskell-tzdata) | Distribution of the standard time zone database
