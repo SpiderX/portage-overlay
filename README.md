@@ -98,7 +98,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-backup/[wal-g](https://github.com/wal-g/wal-g) | Archival restoration tool for databases
 * app-crypt/[acmebot](https://github.com/plinss/acmebot) | ACME protocol automatic certitificate manager
 * app-crypt/[acme-client](https://github.com/graywolf/acme-client-portable) | Secure Let's Encrypt client
-* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/acme.sh.svg)](https://repology.org/metapackage/acme.sh) app-crypt/[acme-sh](https://github.com/Neilpang/acme.sh) | An ACME Shell script
+* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/acme.sh.svg)](https://repology.org/metapackage/acme.sh) app-crypt/[acme-sh](https://github.com/acmesh-official/acme.sh) | An ACME Shell script
 * app-crypt/[age](https://github.com/FiloSottile/age) | Simple, modern and secure encryption tool
 * app-crypt/[qesteidutil](https://github.com/open-eid/qesteidutil) | Estonian ID card management desktop utility
 * app-editors/[qedit](http://hugo.pereira.free.fr/software/index.php) | Qt-based multi-purpose text editor

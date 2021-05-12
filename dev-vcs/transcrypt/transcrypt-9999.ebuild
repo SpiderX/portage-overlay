@@ -17,8 +17,8 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-vcs/git
-	|| ( dev-libs/libressl dev-libs/openssl:0 )"
+RDEPEND="dev-libs/openssl:0
+	dev-vcs/git"
 BDEPEND="test? ( dev-util/bats )"
 
 DOCS=( {CHANGELOG,README}.md )
