@@ -3,6 +3,8 @@
 
 EAPI=7
 
+TMPFILES_OPTIONAL=1
+
 inherit acct-user tmpfiles
 
 ACCT_USER_ID=-1
@@ -11,6 +13,8 @@ ACCT_USER_HOME="/opt/aws"
 ACCT_USER_HOME_OWNER="amazon:amazon"
 
 acct-user_add_deps
+
+#RDEPEND="virtual/tmpfiles"
 
 src_install() {
 	acct-user_src_install
