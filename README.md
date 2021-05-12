@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 510](https://img.shields.io/badge/ebuild-510-orange.svg)](https://img.shields.io/badge/ebuild-510-orange.svg)
+[![Number of ebuilds: 511](https://img.shields.io/badge/ebuild-511-orange.svg)](https://img.shields.io/badge/ebuild-511-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -335,6 +335,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[pydash](https://github.com/dgilland/pydash) | The kitchen sink of Python functional utility libraries
 * dev-python/[pymysql](https://github.com/PyMySQL/PyMySQL) | Pure-Python MySQL Driver
 * dev-python/[pystache](https://github.com/defunkt/pystache) | Mustache templating system for Python
+* dev-python/[pytest-celery](https://github.com/click-contrib/click-repl) | Subcommand REPL for click apps
 * dev-python/[pytest-django](https://github.com/pytest-dev/pytest-django) | A Django plugin for py.test
 * dev-python/[pytest-pythonpath](https://github.com/bigsassy/pytest-pythonpath) | plugin for adding to the PYTHONPATH from command line or configs
 * dev-python/[pytest-trio](https://github.com/python-trio/pytest-trio) | Python library for async concurrency and I/O
