@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Celery is usually used with a message broker to send and
+	receive messages. The RabbitMQ, Redis transports are
+	feature complete, but there’s also experimental support
+	for a myriad of other solutions, including using SQLite
+	for local development.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">celery/celery</remote-id>
+		<remote-id type="pypi">celery</remote-id>
+	</upstream>
+</pkgmetadata>
