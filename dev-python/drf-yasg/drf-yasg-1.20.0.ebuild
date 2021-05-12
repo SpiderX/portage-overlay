@@ -13,7 +13,7 @@ SRC_URI="https://github.com/axnsan12/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+validation"
 
 RDEPEND="dev-python/coreapi[${PYTHON_USEDEP}]
