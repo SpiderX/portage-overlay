@@ -17,7 +17,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/deep_merge[${PYTHON_USEDEP}]
 	dev-python/docker-py[${PYTHON_USEDEP}]
+	dev-python/dockerfile-parse[${PYTHON_USEDEP}]
 	<dev-python/dpath-2[${PYTHON_USEDEP}]
 	dev-python/GitPython[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
@@ -30,6 +32,7 @@ RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
+	dev-python/update_checker[${PYTHON_USEDEP}]
 	dev-util/cloudsplaining[${PYTHON_USEDEP}]
 	dev-util/python-hcl2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
