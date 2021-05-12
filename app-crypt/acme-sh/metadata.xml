@@ -10,10 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A shell script to automatically issue and renew the free certificates
-	from Let's Encrypt
+	An ACME protocol client with full protocol implementation,
+	written purely in Shell (Unix shell) language with support of
+	ACME v1 and ACME v2.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Neilpang/acme.sh</remote-id>
+		<remote-id type="github">acmesh-official/acme.sh</remote-id>
 	</upstream>
 </pkgmetadata>

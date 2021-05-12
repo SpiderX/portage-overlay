@@ -1,25 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/Neilpang/${PN/-/.}.git"
+EGIT_REPO_URI="https://github.com/acmesh-official/${PN/-/.}.git"
 
-inherit git-r3
+inherit git-r3 optfeature
 
 DESCRIPTION="An ACME Shell script"
-HOMEPAGE="https://github.com/Neilpang/acme.sh"
+HOMEPAGE="https://github.com/acmesh-official/acme.sh"
 SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
-RDEPEND="net-misc/curl
-	|| ( dev-libs/libressl dev-libs/openssl:0 )
+RDEPEND="dev-libs/openssl:0
+	net-misc/curl
 	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
-	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx )
+	net-misc/socat
 	virtual/cron"
 
 src_install() {
@@ -42,4 +41,10 @@ src_install() {
 	doins -r notify/*.sh
 
 	dosym ../share/acme.sh/acme.sh usr/bin/acme.sh
+}
+
+pkg_postinst() {
+	optfeature_header "For webserver mode, install a supported web server:"
+	optfeature "using apache2 webserver mode" www-servers/apache
+	optfeature "using nginx webserver mode" www-servers/nginx
 }
