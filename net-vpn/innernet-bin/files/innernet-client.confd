@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/innernet-client
+
+# Various options.
+# run `innernet --help` for valid cmdline options
+INNERNET_OPTS="--daemon --interval 60"

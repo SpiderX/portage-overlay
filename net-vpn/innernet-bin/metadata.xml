@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A private network system that uses WireGuard under the hood.
+	innernet aims to take advantage of existing networking concepts
+	like CIDRs and the security properties of WireGuard to turn
+	your computer's basic IP networking into more powerful ACL primitives.
+	</longdescription>
+	<use>
+		<flag name="client">Install client</flag>
+		<flag name="server">Install server</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tonarino/innernet</remote-id>
+	</upstream>
+</pkgmetadata>

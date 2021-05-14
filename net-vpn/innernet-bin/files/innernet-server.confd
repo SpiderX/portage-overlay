@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/innernet-server
+
+# Various options.
+# run `innernet-server --help` for valid cmdline options
+INNERNET_OPTS=""
