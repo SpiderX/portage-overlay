@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 RDEPEND="dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5

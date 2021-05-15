@@ -12,7 +12,6 @@ SRC_URI="https://github.com/olegantonyan/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
