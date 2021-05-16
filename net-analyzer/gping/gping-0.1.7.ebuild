@@ -71,7 +71,7 @@ winping-0.10.1
 inherit cargo
 
 DESCRIPTION="Ping, but with a graph"
-HOMEPAGE="https://github.com/orf/gping/releases"
+HOMEPAGE="https://github.com/orf/gping"
 SRC_URI="https://github.com/orf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 

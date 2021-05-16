@@ -72,7 +72,7 @@ winping-0.10.1
 inherit cargo git-r3
 
 DESCRIPTION="Ping, but with a graph"
-HOMEPAGE="https://github.com/orf/gping/releases"
+HOMEPAGE="https://github.com/orf/gping"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MIT"
