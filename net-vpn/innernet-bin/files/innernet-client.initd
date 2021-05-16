@@ -6,8 +6,6 @@ command="/usr/bin/innernet"
 name="Innernet client"
 description="Innernet client"
 command_args="up ${INNERNET_OPTS}"
-#start_stop_daemon_args="-q"
-#retry="10"
 
 depend() {
 	need net
