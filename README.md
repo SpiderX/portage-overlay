@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 515](https://img.shields.io/badge/ebuild-515-orange.svg)](https://img.shields.io/badge/ebuild-515-orange.svg)
+[![Number of ebuilds: 516](https://img.shields.io/badge/ebuild-516-orange.svg)](https://img.shields.io/badge/ebuild-516-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -463,6 +463,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * media-sound/[plexamp](https://plexamp.com) | Music focused client for Plex
 * media-sound/[sayonara](https://sayonara-player.com) | Small, clear and fast Qt-based audio player
 * media-sound/[spotifyd](https://github.com/Spotifyd/spotifyd) | A spotify daemon
+* media-sound/[spotify-qt](https://github.com/kraxarn/spotify-qt) | Lightweight Spotify client using Qt
 * media-radio/[krudio](https://github.com/loast/krudio) | Radio tray for linux on QT
 * media-radio/[liquidsoap](http://liquidsoap.info) | A swiss-army knife for multimedia streaming, used for netradios and webtvs
 * media-video/[haruna](https://github.com/g-fb/haruna) | Video player built with Qt/QML on top of libmpv
