@@ -29,6 +29,14 @@ RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	dev-libs/openssl:0="
 
+PATCHES=( "${FILESDIR}/${P}"-python-link.patch
+	"${FILESDIR}/${P}"-install.patch )
+
 src_prepare() {
+	# Corrent finding QuaZip
+	sed -i  -e '/FIND_LIBRARY/s/quazip-qt5/quazip1-qt5/' \
+		-e '/PATH_SUFFIXES/s| include/quazip$| include/QuaZip-Qt5-1.1/quazip|' \
+		cmake/modules/FindQuaZip.cmake || die "sed failed for FindQuaZip.cmake"
+
 	cmake_src_prepare
 }

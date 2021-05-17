@@ -1,0 +1,16 @@
+--- ../CMakeLists.txt      2021-05-17 20:21:52.647250908 +0300
++++ ../CMakeLists.txt      2021-05-17 20:22:36.281250597 +0300
+@@ -351,13 +351,10 @@
+     #Install dekstop file
+     install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/res/net.screencloud.screencloudapp.desktop" DESTINATION "${CMAKE_INSTALL_DATADIR}/applications")
+     #install copyright, changelog and metainfo
+-    INSTALL(FILES "${CMAKE_CURRENT_SOURCE_DIR}/res/doc/copyright" DESTINATION "${CMAKE_INSTALL_DOCDIR}" PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+     INSTALL(FILES "${CMAKE_CURRENT_SOURCE_DIR}/res/doc/changelog" DESTINATION "${CMAKE_INSTALL_DOCDIR}" PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+     INSTALL(FILES "${CMAKE_CURRENT_SOURCE_DIR}/res/metainfo/net.screencloud.screencloudapp.appdata.xml" DESTINATION "${CMAKE_INSTALL_DATADIR}/metainfo" PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+     #Install binaries
+     install(TARGETS screencloud RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+-    install(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/res/screencloud.sh" DESTINATION "${CMAKE_INSTALL_BINDIR}")
+-    install(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/res/screencloud.sh" DESTINATION "${CMAKE_INSTALL_BINDIR}" RENAME "screencloud-${VERSION_STRING}.sh")
+     #install python modules
+     install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/res/modules" DESTINATION "${CMAKE_INSTALL_DATADIR}/screencloud" FILE_PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+ endif(UNIX AND NOT APPLE)
