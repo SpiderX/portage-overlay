@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 514](https://img.shields.io/badge/ebuild-514-orange.svg)](https://img.shields.io/badge/ebuild-514-orange.svg)
+[![Number of ebuilds: 515](https://img.shields.io/badge/ebuild-515-orange.svg)](https://img.shields.io/badge/ebuild-515-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -462,6 +462,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * media-sound/[mpz](https://olegantonyan.github.io/mpz) | Music player for big local collections
 * media-sound/[plexamp](https://plexamp.com) | Music focused client for Plex
 * media-sound/[sayonara](https://sayonara-player.com) | Small, clear and fast Qt-based audio player
+* media-sound/[spotifyd](https://github.com/Spotifyd/spotifyd) | A spotify daemon
 * media-radio/[krudio](https://github.com/loast/krudio) | Radio tray for linux on QT
 * media-radio/[liquidsoap](http://liquidsoap.info) | A swiss-army knife for multimedia streaming, used for netradios and webtvs
 * media-video/[haruna](https://github.com/g-fb/haruna) | Video player built with Qt/QML on top of libmpv
@@ -469,7 +470,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-analyzer/[bandwhich](https://github.com/imsnif/bandwhich) | Network utilization by process, connection and hostname
 * net-analyzer/[dnsdiag](https://github.com/farrokhi/dnsdiag) | DNS Measurement, Troubleshooting and Security Auditing Toolset
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/goaccess.svg)](https://repology.org/metapackage/goaccess) net-analyzer/[goaccess](https://goaccess.io) | A real-time web log analyzer and interactive viewer in a terminal
-* net-analyzer/[gping](https://github.com/orf/gping/releases) | Ping, but with a graph
+* net-analyzer/[gping](https://github.com/orf/gping) | Ping, but with a graph
 * net-analyzer/[logswan](https://github.com/fcambus/logswan) | Web log analyzer using probabilistic data structures
 * net-analyzer/[netgauge](http://www.ookla.com/) | Server software for testing internet bandwidth using speedtest.net
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/nuttcp.svg)](https://repology.org/metapackage/nuttcp) net-analyzer/[nuttcp](http://www.nuttcp.net) | Network performance measurement tool

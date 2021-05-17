@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Spotifyd streams music just like the official client,
+	but is more lightweight and supports more platforms.
+	Spotifyd also supports the Spotify Connect protocol,
+	which makes it show up as a device that can be controlled
+	from the official clients.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Spotifyd/spotifyd</remote-id>
+	</upstream>
+</pkgmetadata>

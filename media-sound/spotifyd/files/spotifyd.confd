@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/spotifyd
+
+# Various options.
+# run `spotifyd --help` for valid cmdline options
+SPOTIFYD_OPTS="--config-path /etc/spotifyd.conf"
