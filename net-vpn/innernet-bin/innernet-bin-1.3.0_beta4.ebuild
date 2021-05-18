@@ -8,11 +8,12 @@ inherit pax-utils systemd unpacker
 MY_PN="${PN/-bin/}"
 MY_PV="${PV/_beta/.beta.}"
 MY_P="${MY_PN}-${MY_PV}"
+MY_PVR=$(ver_rs 3 - "$MY_PV")
 
 DESCRIPTION="WireGuard based private network system"
 HOMEPAGE="https://github.com/tonarino/innernet"
-SRC_URI="client? ( https://github.com/tonarino/${MY_PN}/releases/download/v$(ver_rs 3 - $MY_PV)/${MY_P/-/_}_amd64.deb )
-	server? ( https://github.com/tonarino/${MY_PN}/releases/download/v$(ver_rs 3 - $MY_PV)/${MY_PN}-server_${MY_PV}_amd64.deb )"
+SRC_URI="client? ( https://github.com/tonarino/${MY_PN}/releases/download/v${MY_PVR}/${MY_P/-/_}_amd64.deb )
+	server? ( https://github.com/tonarino/${MY_PN}/releases/download/v${MY_PVR}/${MY_PN}-server_${MY_PV}_amd64.deb )"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
