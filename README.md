@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 517](https://img.shields.io/badge/ebuild-517-orange.svg)](https://img.shields.io/badge/ebuild-517-orange.svg)
+[![Number of ebuilds: 518](https://img.shields.io/badge/ebuild-518-orange.svg)](https://img.shields.io/badge/ebuild-518-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -233,6 +233,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-ml/[xmlm](http://erratique.ch/software/xmlm) | Ocaml XML manipulation module
 * dev-ml/[yojson](https://github.com/ocaml-community/yojson) | Low-level JSON parsing and pretty-printing library for OCaml
 * dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
+* dev-php/[spx](https://github.com/NoiseByNorthwest/php-spx) | A PHP wrapper fo the scrypt hashing algorithm
 * dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
 * dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory
 * dev-python/[anyconfig](https://github.com/ssato/python-anyconfig) | Generic access to configuration files in any formats

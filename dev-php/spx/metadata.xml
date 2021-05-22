@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	SPX, which stands for Simple Profiling eXtension, is a just another
+	profiling extension for PHP. It differentiates itself from other
+	similar extensions as being totally free and confined to target
+	infrastructure, able to collect data without losing context.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">NoiseByNorthwest/php-spx</remote-id>
+	</upstream>
+</pkgmetadata>
