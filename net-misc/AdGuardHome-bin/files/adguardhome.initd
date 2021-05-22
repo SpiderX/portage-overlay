@@ -22,11 +22,11 @@ reload() {
 	configcheck || return 1
 	ebegin "Reloading AdGuardHome configuration"
 	${command} ${command_args} -s reload
-	eend $? "Failed to reload nginx"
+	eend $? "Failed to reload"
 }
 
 configcheck() {
 	ebegin "Checking AdGuardHome configuration"
 	${command} ${command_args} --check-config
-	eend $? "failed, please correct errors above"
+	eend $? "Failed to check configuration"
 }
