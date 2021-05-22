@@ -14,10 +14,11 @@ SRC_URI=""
 LICENSE="Apache-2.0 BSL-1.1 MIT MPL-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 RESTRICT="mirror"
 
-S="${WORKDIR}/${P}/${PN}"
+S="${WORKDIR}/${P}/guard"
+
+QA_FLAGS_IGNORED="usr/bin/cfn-guard"
 
 src_unpack() {
 	git-r3_src_unpack
