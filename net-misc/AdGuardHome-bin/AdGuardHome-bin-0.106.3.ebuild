@@ -30,7 +30,7 @@ FILECAPS=( 'cap_net_bind_service=+eip cap_net_raw=+eip' usr/bin/AdGuardHome )
 DOC_CONTENTS="Credentials to access WebUI are admin:admin\\n
 You may need to review /etc/adguardhome/AdGuardHome.yaml\\n
 Default workdir path is /var/lib/adguardhome\\n
-Default web-gui URL is http://localhost:80/\\n\\n"
+Default WebUI URL is http://localhost:80/\\n\\n"
 
 src_install() {
 	einstalldocs
@@ -42,6 +42,7 @@ src_install() {
 	newinitd "${FILESDIR}"/adguardhome.initd adguardhome
 	newconfd "${FILESDIR}"/adguardhome.confd adguardhome
 	systemd_dounit "${FILESDIR}"/adguardhome.service
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
