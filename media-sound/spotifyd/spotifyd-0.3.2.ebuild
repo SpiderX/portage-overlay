@@ -418,14 +418,33 @@ SRC_URI="https://github.com/Spotifyd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-3 ISC MIT MPL-2.0 ZLIB"
 KEYWORDS="~amd64 ~x86"
+IUSE="alsa dbus libressl portaudio pulseaudio rodio"
+REQUIRED_USE="|| ( alsa portaudio pulseaudio rodio )"
 SLOT="0"
 
-RDEPEND="media-libs/alsa-lib"
+RDEPEND="
+alsa? ( media-libs/alsa-lib )
+dbus? ( sys-apps/dbus )
+!libressl? ( dev-libs/openssl:0= )
+libressl? ( dev-libs/libressl:0= )
+portaudio? ( media-libs/portaudio )
+pulseaudio? ( media-sound/pulseaudio )
+"
 DEPEND="${RDEPEND}"
 
 DOCS=( {CHANGELOG,README}.md )
 
 QA_FLAGS_IGNORED="usr/bin/spotifyd"
+
+src_configure() {
+	myfeatures=(
+		$(usex alsa alsa_backend "")
+		$(usex dbus "dbus_keyring dbus_mpris" "")
+		$(usex portaudio portaudio_backend "")
+		$(usex pulseaudio pulseaudio_backend "")
+		$(usex rodio rodio_backend "")
+	)
+}
 
 src_install() {
 	einstalldocs
@@ -435,5 +454,5 @@ src_install() {
 	insinto /etc
 	doins "${FILESDIR}"/spotifyd.conf
 
-	cargo_src_install
+	cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 }
