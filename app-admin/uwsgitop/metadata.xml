@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A top-like command that uses the uWSGI Stats Server
-	to monitor your uwsgi application
+	uwsgitop is a top-like command that uses the uWSGI Stats Server
+	to monitor your uwsgi application in different colors
 	</longdescription>
 	<upstream>
 		<remote-id type="github">xrmx/uwsgitop</remote-id>
