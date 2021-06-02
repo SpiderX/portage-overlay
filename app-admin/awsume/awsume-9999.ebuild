@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 EGIT_REPO_URI="https://github.com/trek10inc/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -16,7 +16,6 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
