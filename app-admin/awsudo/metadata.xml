@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A command-line tool that requests temporary credentials from STS to use an IAM role.
+	A command-line tool that requests temporary credentials from STS to use an IAM role,
+	with support of MFA
 	</longdescription>
 	<upstream>
 		<remote-id type="github">makethunder/awsudo</remote-id>
