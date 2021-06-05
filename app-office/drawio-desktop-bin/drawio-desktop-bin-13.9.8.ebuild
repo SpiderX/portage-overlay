@@ -69,8 +69,8 @@ src_install() {
 	insinto /usr/share/mime/packages
 	doins usr/share/mime/packages/drawio.xml
 
-	insinto /opt/draw.io
-	doins -r opt/draw.io/.
+	insinto /opt/drawio
+	doins -r opt/drawio/.
 	fperms +x /opt/draw.io/drawio /opt/draw.io/chrome-sandbox
 
 	echo "PATH=\"/opt/draw.io/\"" > "${T}"/99drawio

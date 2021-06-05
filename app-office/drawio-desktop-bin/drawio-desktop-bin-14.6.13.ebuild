@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop multilib-build pax-utils unpacker xdg-utils
+inherit desktop multilib-build pax-utils unpacker xdg
 
 DESCRIPTION="Diagram drawing application built on web technology"
 HOMEPAGE="https://github.com/jgraph/drawio-desktop"
-SRC_URI="https://github.com/jgraph/${MY_PN}/releases/download/v${PV}/draw.io-amd64-${PV}.deb"
+SRC_URI="https://github.com/jgraph/${MY_PN}/releases/download/v${PV}/drawio-amd64-${PV}.deb"
 
 LICENSE="Apache-2.0"
 SLOT=0
@@ -47,14 +47,13 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 
-QA_PREBUILT="opt/draw.io/crashpad_handler
-	opt/draw.io/drawio
-	opt/draw.io/libffmpeg.so
-	opt/draw.io/libEGL.so
-	opt/draw.io/libGLESv2.so
-	opt/draw.io/libvk_swiftshader.so
-	opt/draw.io/swiftshader/libEGL.so
-	opt/draw.io/swiftshader/libGLESv2.so"
+QA_PREBUILT="opt/drawio/drawio
+	opt/drawio/libffmpeg.so
+	opt/drawio/libEGL.so
+	opt/drawio/libGLESv2.so
+	opt/drawio/libvk_swiftshader.so
+	opt/drawio/swiftshader/libEGL.so
+	opt/drawio/swiftshader/libGLESv2.so"
 
 S="${WORKDIR}"
 
@@ -69,24 +68,15 @@ src_install() {
 	insinto /usr/share/mime/packages
 	doins usr/share/mime/packages/drawio.xml
 
-	insinto /opt/draw.io
-	doins -r opt/draw.io/.
-	fperms +x /opt/draw.io/drawio /opt/draw.io/chrome-sandbox
+	insinto /opt/drawio
+	doins -r opt/drawio/.
+	fperms +x /opt/drawio/drawio /opt/drawio/chrome-sandbox \
+		/opt/drawio/swiftshader/lib{EGL,GLESv2}.so \
+		/opt/drawio/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
+		/opt/drawio/libvulkan.so.1
 
-	echo "PATH=\"/opt/draw.io/\"" > "${T}"/99drawio
+	echo "PATH=\"/opt/drawio/\"" > "${T}"/99drawio
 	doenvd "${T}"/99drawio
 
-	pax-mark -m "${ED}"/opt/draw.io/drawio
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	pax-mark -m "${ED}"/opt/drawio/drawio
 }
