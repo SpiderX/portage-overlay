@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
 
@@ -22,8 +22,10 @@ RESTRICT="test" # tests fail
 DEPEND="<dev-db/postgresql-12:*
 	net-libs/zeromq:0="
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( $(python_gen_any_dep 'dev-python/psycopg:2[${PYTHON_USEDEP}]
-			dev-python/pytest[${PYTHON_USEDEP}]') )"
+BDEPEND="test? ( $(python_gen_any_dep '
+			dev-python/psycopg:2[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+		') )"
 
 S="${WORKDIR}/${MY_P}"
 
