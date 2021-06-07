@@ -3,9 +3,9 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/akesterson/${PN}-python.git"
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
+EGIT_REPO_URI="https://github.com/akesterson/${PN}-python.git"
 
 inherit distutils-r1 git-r3
 
