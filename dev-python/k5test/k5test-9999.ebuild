@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/pythongssapi/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -15,7 +15,6 @@ SRC_URI=""
 LICENSE="ISC MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 DEPEND="dev-python/six[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
