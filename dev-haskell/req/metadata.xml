@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Req is an HTTP client library that attempts to be easy-to-use
+	(designed to be beginner-friendly), type-safe (tries to eliminate
+	certain classes of errors), and expandable.
+	</longdescription>
+	<use>
+		<flag name="dev">Enable development settings</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mrkkrp/req</remote-id>
+	</upstream>
+</pkgmetadata>
