@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/pykickstart/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -15,15 +15,13 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="test vim-syntax"
-RESTRICT="!test? ( test )"
+IUSE="vim-syntax"
 
-RDEPEND="dev-python/ordered-set[${PYTHON_USEDEP}]
-	dev-python/polib[${PYTHON_USEDEP}]
+RDEPEND="dev-python/polib[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
-BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests nose
 
 python_test() {
 	PYTHONPATH=. NOSE_IGNORE_CONFIG_FILES=y "${EPYTHON}" -m nose \
