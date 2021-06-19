@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 EGIT_REPO_URI="https://github.com/python-trio/${MY_PN}.git"
 
 inherit distutils-r1 git-r3 linux-info
