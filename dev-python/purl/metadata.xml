@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	An immutable URL class with a clean API for interrogation and
-	manipulation.
+	manipulation with additional support template URLs as per RFC 6570.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">codeinthehole/purl</remote-id>
