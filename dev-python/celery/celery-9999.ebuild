@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_8 )
 EGIT_REPO_URI="https://github.com/celery/${PN}.git"
 
 inherit bash-completion-r1 distutils-r1 git-r3 optfeature
