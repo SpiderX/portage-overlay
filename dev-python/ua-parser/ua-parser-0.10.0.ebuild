@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
+
+inherit distutils-r1
 
 PN_CORE="uap-core"
 PV_CORE="0.8.0"
 P_CORE="${PN_CORE}-${PV_CORE}"
-
-inherit distutils-r1
 
 DESCRIPTION="A python implementation of the UA Parser"
 HOMEPAGE="https://github.com/ua-parser/uap-python"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/selwin/python-user-agents.git"
 
 inherit distutils-r1 git-r3
@@ -15,8 +15,6 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
 
