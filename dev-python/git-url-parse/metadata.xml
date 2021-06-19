@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A GIT URL parser
+	A GIT URL parser, with possibility to parse and rewrite git urls,
+	and support of GitHub, Bitbucket, FriendCode, Assembla, etc.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">coala/git-url-parse</remote-id>
