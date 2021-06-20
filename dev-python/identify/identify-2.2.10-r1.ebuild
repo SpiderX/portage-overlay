@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/pre-commit/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="File identification library for Python"
 HOMEPAGE="https://github.com/pre-commit/identify"
-SRC_URI=""
+SRC_URI="https://github.com/pre-commit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/editdistance-s[${PYTHON_USEDEP}]"
 

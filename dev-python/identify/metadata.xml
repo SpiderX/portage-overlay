@@ -15,7 +15,7 @@
 	a set of standardized tags identifying what the file is.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">chriskuehl/identify</remote-id>
+		<remote-id type="github">pre-commit/identify</remote-id>
 		<remote-id type="pypi">identify</remote-id>
 	</upstream>
 </pkgmetadata>
