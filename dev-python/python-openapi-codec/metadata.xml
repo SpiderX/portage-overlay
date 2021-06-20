@@ -10,8 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This is a Python Core API codec for the Open API schema format,
-	also known as "Swagger"
+	This is a Python Core API codec (used for decoding bytestring
+	into a Document instance, or for encoding a Document instance into a bytestring)
+	for the Open API schema format, also known as "Swagger".
 	</longdescription>
 	<upstream>
 		<remote-id type="github">core-api/python-openapi-codec</remote-id>
