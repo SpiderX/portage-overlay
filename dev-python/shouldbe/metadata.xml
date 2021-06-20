@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A Python Assertions Helper
+	Python Assertion Helpers Inspired by and based on Shouldly,
+	with list of built in assertions and possibility of writing own.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">directxman12/should_be</remote-id>
