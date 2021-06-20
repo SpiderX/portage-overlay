@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 MY_PV="$(ver_cut 1-2)"
 MY_P="${PN}-${MY_PV}"
@@ -17,13 +17,14 @@ SRC_URI="https://github.com/matthiask/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.t
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 RESTRICT="test" # fails
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite) ) "
 
 S="${WORKDIR}/${MY_P}"
+
+distutils_enable_tests unittest
 
 python_test() {
 	./tests/manage.py test testapp --verbosity 2 || die "tests failed with ${EPYTHON}"

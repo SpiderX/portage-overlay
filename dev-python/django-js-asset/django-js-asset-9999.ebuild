@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/matthiask/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -15,11 +15,11 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
+
+distutils_enable_tests unittest
 
 python_test() {
 	./tests/manage.py test testapp --verbosity 2 || die "tests failed with ${EPYTHON}"
