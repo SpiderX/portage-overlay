@@ -11,6 +11,9 @@
 	</maintainer>
 	<longdescription lang="en">
 	Allows Python code to extend built-in types
+	This project allows Python code to extend built-in types.
+	The first need this project attended was allowing a Python assertion library
+	to implement a similar API to RSpec Expectations and should.js.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">clarete/forbiddenfruit</remote-id>
