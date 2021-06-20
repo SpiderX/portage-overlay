@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
@@ -14,8 +14,6 @@ SRC_URI="https://github.com/encode/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
@@ -26,9 +24,14 @@ BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}] )"
 
+PATCHES="${FILESDIR}/${P}-test-markdown.patch"
+
+distutils_enable_tests pytest
+
 python_prepare_all() {
-	# Remove failed test
-	rm tests/test_description.py || die "rm failed"
+	# Backport test fix
+	sed -i '/class MockTimezone/s/:/(pytz.BaseTzInfo):/' tests/test_fields.py \
+		die "sed failed for test_fields.py"
 	distutils-r1_python_prepare_all
 }
 

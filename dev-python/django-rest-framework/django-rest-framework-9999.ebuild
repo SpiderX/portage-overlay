@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/encode/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -15,8 +15,6 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
@@ -27,11 +25,7 @@ BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-django-3.5.1[${PYTHON_USEDEP}] )"
 
-python_prepare_all() {
-	# Remove failed test
-	rm tests/test_description.py || die "rm failed"
-	distutils-r1_python_prepare_all
-}
+distutils_enable_tests pytest
 
 python_test() {
 	./runtests.py -v --nolint || die "tests failed with ${EPYTHON}"
