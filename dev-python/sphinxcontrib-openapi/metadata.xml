@@ -10,10 +10,13 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Sphinx extension to generate APIs docs from OpenAPI
+	sphinxcontrib-openapi is a Sphinx extension to generate APIs docs from OpenAPI
+	(fka Swagger) spec. It depends on sphinxcontrib-httpdomain that provides
+	an HTTP domain for describing RESTful HTTP APIs, so we don't need
+	to reinvent the wheel.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">ikalnytskyi/sphinxcontrib-openapi</remote-id>
+		<remote-id type="github">sphinx-contrib/openapi</remote-id>
 		<remote-id type="pypi">sphinxcontrib-openapi</remote-id>
 	</upstream>
 </pkgmetadata>
