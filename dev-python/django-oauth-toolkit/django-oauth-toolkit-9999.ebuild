@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,24 +16,28 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND=">=dev-python/django-2[${PYTHON_USEDEP}]
+RDEPEND="dev-python/django[${PYTHON_USEDEP}]
+	dev-python/jwcrypto[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-rest-framework[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}] ) "
 
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	# Remove coverage
+	sed -i '/--cov/d' tox.ini || die "sed failed for tox.ini"
+
 	# Don't install tests
 	sed -i '/exclude/s/ts/ts,tests.*/' setup.cfg \
 		|| die "sed failed for setup.cfg"
 
-	# Disable failed test
-	sed -i  -e '1 i\import unittest' \
-		-e '/test_response_when_auth_server_response_return_404/i\\    @unittest.skip("disable")' \
+	# Disable test (network-sandbox)
+	sed -i '/test_response_when_auth_server_response_return_404/i\\    @pytest.mark.skip("disable")' \
 		tests/test_oauth2_validators.py || die "sed failed for test_oauth2_validators.py"
 
 	distutils-r1_python_prepare_all
