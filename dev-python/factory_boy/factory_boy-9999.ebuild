@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 EGIT_REPO_URI="https://github.com/FactoryBoy/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-python/faker[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/Faker[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django[${PYTHON_USEDEP}]
