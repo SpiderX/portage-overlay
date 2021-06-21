@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 EGIT_REPO_URI="https://github.com/bridgecrewio/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -18,6 +18,7 @@ KEYWORDS=""
 
 RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/configargparse[${PYTHON_USEDEP}]
 	dev-python/deep_merge[${PYTHON_USEDEP}]
 	dev-python/docker-py[${PYTHON_USEDEP}]
 	dev-python/dockerfile-parse[${PYTHON_USEDEP}]
@@ -35,6 +36,7 @@ RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	dev-python/update_checker[${PYTHON_USEDEP}]
 	dev-util/cloudsplaining[${PYTHON_USEDEP}]
+	dev-util/detect-secrets[${PYTHON_USEDEP}]
 	dev-util/python-hcl2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
