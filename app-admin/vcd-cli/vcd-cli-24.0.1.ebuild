@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1
 
@@ -15,7 +15,6 @@ SRC_URI="https://github.com/vmware/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 RESTRICT="test" # network-sandbox
 
 RDEPEND=">=dev-python/click-7.0[${PYTHON_USEDEP}]
@@ -27,6 +26,8 @@ RDEPEND=">=dev-python/click-7.0[${PYTHON_USEDEP}]
 	$(python_gen_impl_dep sqlite)"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/unittest-xml-reporting[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	# pbr is unable to detect version
