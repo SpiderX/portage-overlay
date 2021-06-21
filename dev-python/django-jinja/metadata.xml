@@ -10,7 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Simple and nonobstructive jinja2 integration with Django
+	Simple and nonobstructive jinja2 integration with Django.
+	Jinja2 provides certain advantages over the native system of Django,
+	for example, explicit calls to callable from templates,
+	has better performance and has a plugin system, etc.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">niwinz/django-jinja</remote-id>
