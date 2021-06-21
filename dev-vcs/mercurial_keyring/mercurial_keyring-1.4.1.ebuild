@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -18,7 +18,6 @@ RESTRICT="test"
 
 RDEPEND="dev-python/keyring[${PYTHON_USEDEP}]
 	dev-vcs/mercurial-extension_utils[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 DOCS=( {HISTORY,README}.rst )
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 EHG_REPO_URI="https://foss.heptapod.net/mercurial/mercurial_keyring"
 
 inherit distutils-r1 mercurial
