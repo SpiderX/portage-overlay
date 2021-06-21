@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_REPO_URI="https://git.launchpad.net/cloud-utils"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3 python-r1
 
