@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/kmike/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="An utility and python library for TCP ports management"
 HOMEPAGE="https://github.com/kmike/port-for"
-SRC_URI=""
+SRC_URI="https://github.com/kmike/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
