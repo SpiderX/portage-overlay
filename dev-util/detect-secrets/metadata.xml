@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	detect-secrets is an aptly named module for detecting secrets
+	within a code base. However, unlike other similar packages
+	that solely focus on finding secrets, this package is designed
+	with the enterprise client in mind:
+	providing a backwards compatible, systematic means of:
+	Preventing new secrets from entering the code base,
+	Detecting if such preventions are explicitly bypassed, and
+	Providing a checklist of secrets to roll, and migrate off
+	to a more secure storage.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Yelp/detect-secrets</remote-id>
+		<remote-id type="pypi">detect-secrets</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 525](https://img.shields.io/badge/ebuild-525-orange.svg)](https://img.shields.io/badge/ebuild-525-orange.svg)
+[![Number of ebuilds: 526](https://img.shields.io/badge/ebuild-526-orange.svg)](https://img.shields.io/badge/ebuild-526-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -431,6 +431,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[css-html-js-minify](https://github.com/juancarlospaco/css-html-js-minify) | StandAlone Async cross-platform Minifier for the Web
 * dev-util/[cupt](https://github.com/jackyf/cupt) | Package manager for Debian
 * dev-util/[desed](https://github.com/SoptikHa2/desed) | Debugger for Sed
+* dev-util/[detect-secrets](https://github.com/Yelp/detect-secrets) | An enterprise friendly way of detecting and preventing secrets
 * dev-util/[dropwatch](https://github.com/nhorman/dropwatch) | Monitor for dropped network packets
 * dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
 * dev-util/[gibberish-detector](https://github.com/domanchi/gibberish-detector) | Train a model, and detect gibberish strings with it
