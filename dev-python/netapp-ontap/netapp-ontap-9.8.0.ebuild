@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -17,6 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="test" # no tests
 
-RDEPEND=">=dev-python/marshmallow-3.5.1[${PYTHON_USEDEP}]
+RDEPEND="dev-python/marshmallow[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
