@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 EGIT_REPO_URI="https://github.com/jieter/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -15,8 +15,6 @@ SRC_URI=""
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
@@ -30,14 +28,7 @@ BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/tablib[xls,yaml,${PYTHON_USEDEP}] )"
 
-python_prepare_all() {
-	# Disable failed test
-	sed -i  -e '1 i\import unittest' \
-		-e '/test_should_support_custom_dataset_kwargs/i\\    @unittest.skip("disable")' \
-		tests/test_export.py || die "sed failed for test_export.py"
-
-	distutils-r1_python_prepare_all
-}
+distutils_enable_tests unittest
 
 python_test() {
 	PYTHONPATH=. django-admin.py test --settings=tests.app.settings \
