@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 EHG_REPO_URI="https://foss.heptapod.net/mercurial/${PN}"
 
 inherit distutils-r1 mercurial
@@ -15,12 +15,12 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-vcs/mercurial[${PYTHON_USEDEP}] )"
 
 DOCS=( {HISTORY,README}.rst )
+
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	# Remove tests need access to filesystem
