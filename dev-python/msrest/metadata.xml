@@ -11,6 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	Runtime library for AutoRest generated Python clients
+	with Platform information in UserAgent, and other features.
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">msrest</remote-id>
