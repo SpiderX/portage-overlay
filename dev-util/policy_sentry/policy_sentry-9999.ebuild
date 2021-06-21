@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/salesforce/${PN}.git"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 git-r3
 
