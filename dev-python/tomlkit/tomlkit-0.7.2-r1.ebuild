@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -30,12 +30,4 @@ src_unpack() {
 		cp -R "${S}"/../"${P_TEST}"/. "${S}"/tests/"${PN_TEST}" \
 			|| die "copying of toml-test failed"
 	fi
-}
-
-python_prepare_all() {
-	# Fix backend specification
-	sed -i '/build-backend/s/poetry.core.masonry.api/poetry.masonry.api/' \
-		pyproject.toml || die "sed failed for pyproject.toml"
-
-	distutils-r1_python_prepare_all
 }

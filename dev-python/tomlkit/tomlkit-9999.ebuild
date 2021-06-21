@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/sdispater/${PN}.git"
 EGIT_SUBMODULES=( tests/toml-test )
 
@@ -19,11 +19,3 @@ SLOT="0"
 KEYWORDS=""
 
 distutils_enable_tests pytest
-
-python_prepare_all() {
-	# Fix backend specification
-	sed -i '/build-backend/s/poetry.core.masonry.api/poetry.masonry.api/' \
-		pyproject.toml || die "sed failed for pyproject.toml"
-
-	distutils-r1_python_prepare_all
-}
