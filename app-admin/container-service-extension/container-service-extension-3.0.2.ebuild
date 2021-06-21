@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1
 
@@ -15,7 +15,6 @@ SRC_URI="https://github.com/vmware/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 RESTRICT="test" # fails
 RDEPEND="dev-python/cachetools[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
