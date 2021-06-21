@@ -10,7 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	CTypes-based interface for some OpenSSL libcrypto features
+	CTypes-based interface for some OpenSSL libcrypto features.
+	This extension uses algorithm-agnostic EVP layer whenever possible
+	and so support any algorithms which are supported by underlying library,
+	even this algorithms are implemented in the loadable modules (engines).
 	</longdescription>
 	<use>
 		<flag name="gost">Enable gost algorithm</flag>
