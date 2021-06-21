@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -14,8 +14,6 @@ SRC_URI="https://github.com/glemmaPaul/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/django-taggit[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
@@ -23,6 +21,8 @@ RDEPEND="${RDEPEND}
 	dev-python/django-rest-framework[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-nose[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests nose
 
 python_test() {
 	"${PYTHON}" runtests.py --verbosity 2 || die "tests failed with ${EPYTHON}"
