@@ -5,17 +5,16 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{8,9} )
-EGIT_REPO_URI="https://github.com/GaretJax/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Autorebuild documentation on change"
 HOMEPAGE="https://github.com/GaretJax/sphinx-autobuild"
-SRC_URI=""
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/livereload[${PYTHON_USEDEP}]
