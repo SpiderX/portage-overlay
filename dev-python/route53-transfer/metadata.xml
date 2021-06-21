@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Backup and restore Route53 zones, or transfer between AWS accounts.
+	Backup and restore Route53 zones (Public and Private),
+	or transfer between AWS accounts, or integrate in your python projects.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">cosmin/route53-transfer</remote-id>
