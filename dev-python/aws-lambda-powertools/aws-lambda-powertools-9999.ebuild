@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 EGIT_REPO_URI="https://github.com/awslabs/aws-lambda-powertools-python.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -16,7 +16,6 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
 
 RDEPEND="dev-python/aws-xray-sdk-python[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
@@ -24,6 +23,7 @@ RDEPEND="dev-python/aws-xray-sdk-python[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/pydantic[${PYTHON_USEDEP}]
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-email-validator[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/typing-extensions[${PYTHON_USEDEP}]' python3_7) )"
@@ -31,8 +31,8 @@ BDEPEND="test? ( dev-python/pydantic[${PYTHON_USEDEP}]
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# Disable pytest options
-	sed -i '/addopts/d' pytest.ini || die "sed failed for pytest.ini"
+	# Disable performance test
+	rm tests/performance/test_metrics.py || die "rm failed"
 
 	distutils-r1_python_prepare_all
 }
