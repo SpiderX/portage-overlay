@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	>=dev-python/pyvmomi-6.5[${PYTHON_USEDEP}]
+	dev-python/pyvmomi[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/pbr[${PYTHON_USEDEP}]"
