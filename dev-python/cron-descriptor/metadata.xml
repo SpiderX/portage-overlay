@@ -11,7 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	A Python library that converts cron expressions into
-	human readable strings.
+	human readable strings with support of all cron expression,
+	including special characters.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">Salamek/cron-descriptor</remote-id>
