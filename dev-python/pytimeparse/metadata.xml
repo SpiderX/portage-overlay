@@ -11,6 +11,9 @@
 	</maintainer>
 	<longdescription lang="en">
 	A small Python library to parse various kinds of time expressions
+	The single function pytimeparse.timeparse.timeparse defined in
+	the library (also available as pytimeparse.parse) parses various
+	time expressions.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">wroberts/pytimeparse</remote-id>
