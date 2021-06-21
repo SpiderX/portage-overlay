@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -17,7 +17,4 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
-	dev-python/future[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]"
