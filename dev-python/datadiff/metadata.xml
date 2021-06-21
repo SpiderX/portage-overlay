@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A library to provide human-readable diffs of python data structures
+	DataDiff is a library to provide human-readable diffs of python data
+	structures. It can handle sequence types (lists, tuples, etc), sets,
+	and dictionaries.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">datadiff</remote-id>

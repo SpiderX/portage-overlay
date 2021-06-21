@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 
 inherit distutils-r1 git-r3
