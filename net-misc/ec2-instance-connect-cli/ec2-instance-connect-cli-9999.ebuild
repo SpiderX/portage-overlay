@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/aws/aws-ec2-instance-connect-cli.git"
 
 inherit distutils-r1 git-r3
@@ -21,7 +21,6 @@ KEYWORDS=""
 
 RDEPEND="dev-python/botocore[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
 
