@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/olav-st/${PN}.git"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake git-r3 python-single-r1 xdg
 
@@ -29,8 +29,6 @@ DEPEND="dev-libs/quazip
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	dev-libs/openssl:0="
-
-DOCS=( README.md )
 
 PATCHES=( "${FILESDIR}/${P}"-python-link.patch
 	"${FILESDIR}/${P}"-install.patch )
