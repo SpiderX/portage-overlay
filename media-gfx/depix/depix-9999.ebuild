@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/beurtschipper/${PN^}.git"
 
 inherit git-r3 python-single-r1
@@ -15,7 +15,6 @@ SRC_URI=""
 LICENSE="CC-BY-4.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
