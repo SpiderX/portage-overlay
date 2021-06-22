@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/farrokhi/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -20,4 +20,3 @@ RDEPEND="dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 	net-analyzer/python-cymruwhois[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
