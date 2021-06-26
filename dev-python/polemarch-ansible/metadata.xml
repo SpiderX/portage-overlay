@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A wrapper for Ansible CLI
+	A wrapper for Ansible CLI and ansible based service for
+	IT infrastructure management with support of projects, inventories,
+	history of executions and etc.
 	</longdescription>
 	<upstream>
 		<remote-id type="gitlab">vstconsulting/polemarch-ansible</remote-id>
