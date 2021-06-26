@@ -4,18 +4,20 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9} )
-EGIT_REPO_URI="https://github.com/cosmin/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+COMMIT="f82d92f1001a1c435323a686b0bd106664e7beb3"
 
 DESCRIPTION="Generic access to configuration files in any formats"
 HOMEPAGE="https://github.com/cosmin/route53-transfer"
-SRC_URI=""
+SRC_URI="https://github.com/cosmin/route53-transfer/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/boto[${PYTHON_USEDEP}]
 	dev-python/docopt[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${PN}-${COMMIT}"
