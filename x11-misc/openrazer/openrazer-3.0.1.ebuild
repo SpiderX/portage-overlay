@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit desktop linux-mod python-r1 readme.gentoo-r1 virtualx
 
@@ -37,15 +37,12 @@ DEPEND="${RDEPEND}
 DOC_CONTENTS="To run as non-root, add yourself to the plugdev group:\\n
 \\tusermod -a -G plugdev <user>"
 
-pkg_setup() {
-	BUILD_TARGETS="clean driver"
-	BUILD_PARAMS="O=${KV_OUT_DIR} KERNELDIR=${KERNEL_DIR} -C ${S} SUBDIRS=${S}/driver"
-	MODULE_NAMES="razeraccessory(hid:${S}/driver) \
-			razerkbd(hid:${S}/driver) \
-			razerkraken(hid:${S}/driver) \
-			razermouse(hid:${S}/driver)"
-	linux-mod_pkg_setup
-}
+BUILD_TARGETS="clean driver"
+BUILD_PARAMS="O=${KV_OUT_DIR} KERNELDIR=${KERNEL_DIR} -C ${S} SUBDIRS=${S}/driver"
+MODULE_NAMES="razeraccessory(hid:${S}/driver) \
+		razerkbd(hid:${S}/driver) \
+		razerkraken(hid:${S}/driver) \
+		razermouse(hid:${S}/driver)"
 
 src_prepare() {
 	default
