@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{8,9} )
 WEBAPP_MANUAL_SLOT="yes"
 
 inherit python-r1 webapp
@@ -20,18 +20,18 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="acct-group/netbox
 	acct-user/netbox
-	>=dev-python/django-3[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}
+	>=dev-python/django-3.2[${PYTHON_USEDEP}]
 	dev-python/django-cacheops[${PYTHON_USEDEP}]
 	dev-python/django-cors-headers[${PYTHON_USEDEP}]
-	>=dev-python/django-debug-toolbar-1.10[${PYTHON_USEDEP}]
+	dev-python/django-debug-toolbar[${PYTHON_USEDEP}]
 	dev-python/django-filter[${PYTHON_USEDEP}]
 	dev-python/django-mptt[${PYTHON_USEDEP}]
 	dev-python/django-pglocks[${PYTHON_USEDEP}]
 	dev-python/django-prometheus[${PYTHON_USEDEP}]
 	dev-python/django-rest-framework[${PYTHON_USEDEP}]
-	>=dev-python/django-tables2-2[${PYTHON_USEDEP}]
+	dev-python/django-tables2[${PYTHON_USEDEP}]
 	dev-python/django-taggit[${PYTHON_USEDEP}]
-	dev-python/django-taggit-serializer[${PYTHON_USEDEP}]
 	dev-python/django-timezone-field[${PYTHON_USEDEP}]
 	dev-python/drf-yasg[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -41,10 +41,11 @@ RDEPEND="acct-group/netbox
 	dev-python/psycopg:2[${PYTHON_USEDEP}]
 	dev-python/py-gfm[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-5.3[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/redis-py[${PYTHON_USEDEP}]
-	>=dev-python/svgwrite-1.4[${PYTHON_USEDEP}]
-	ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_USEDEP}] )
+	dev-python/svgwrite[${PYTHON_USEDEP}]
+	dev-python/tablib[${PYTHON_USEDEP}]
+	ldap? ( dev-python/django-auth-ldap[${PYTHON_USEDEP}] )
 	webhooks? ( dev-python/django-rq[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
