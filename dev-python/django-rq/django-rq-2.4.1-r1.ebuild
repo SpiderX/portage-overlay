@@ -25,8 +25,6 @@ distutils_enable_tests unittest
 
 python_test() {
 	DJANGO_SETTINGS_MODULE=django_rq.tests.settings PYTHONPATH=. python -m unittest discover -v
-
-
 }
 
 python_install_all() {
