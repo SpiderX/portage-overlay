@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit python-single-r1 xdg
+inherit python-single-r1 systemd xdg
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
 HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
@@ -19,7 +19,6 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -50,4 +49,5 @@ pkg_postinst() {
 	if ! has_version kde-plasma/kde-cli-tools:5 ; then
 		elog "${PN}-setup script supports Plasma 5 via kde-plasma/kde-cli-tools:5."
 	fi
+	systemd_dounit libinput-gestures.service
 }
