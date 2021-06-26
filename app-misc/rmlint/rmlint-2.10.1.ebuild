@@ -4,9 +4,9 @@
 EAPI=7
 
 PLOCALES="de es fr"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
-inherit eutils distutils-r1 gnome2-utils l10n python-r1 scons-utils
+inherit gnome2-utils l10n python-single-r1 scons-utils
 
 DESCRIPTION="Removes duplicates and other lint from your filesystem"
 HOMEPAGE="https://rmlint.rtfd.org https://github.com/sahib/rmlint"
@@ -15,37 +15,38 @@ SRC_URI="https://github.com/sahib/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_sse doc nls test X"
+IUSE="doc nls test X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib
 	sys-apps/util-linux
-	virtual/libelf
-	X? ( x11-libs/gtksourceview:3.0
-		dev-python/colorlog[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_USEDEP}] )"
+	virtual/libelf:0=
+	X? ( ${PYTHON_DEPS}
+		x11-libs/gtksourceview:3.0
+		$(python_gen_cond_dep '
+			dev-python/colorlog[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		') )"
 DEPEND="${RDEPEND}
-	dev-python/sphinx[${PYTHON_USEDEP}]
-	sys-kernel/linux-headers
+	doc? ( $(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx-bootstrap-theme[${PYTHON_MULTI_USEDEP}]
+		') )"
+BDEPEND="sys-kernel/linux-headers
 	virtual/pkgconfig
-	doc? ( dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}] )
 	nls? ( sys-devel/gettext )
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/parameterized[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/nose[${PYTHON_MULTI_USEDEP}]
+			dev-python/parameterized[${PYTHON_MULTI_USEDEP}]
+		') )"
 
-DOCS=( CHANGELOG.md README.rst gui/TODO )
-#TODO: install shredder, calling directly distutils?
+DOCS=( CHANGELOG.md README.rst )
 
 src_prepare() {
 	default
-
-	# DEBUG=1 - don't strip binary
-	scons_opts="DEBUG=1 --libdir=/usr/$(get_libdir) --prefix=${ED}/usr --actual-prefix=/usr \
-		$(usex cpu_flags_x86_sse --with-sse --without-sse) \
-		$(usex nls --with-gettext --without-gettext) \
-		$(usex X --with-gui --without-gui)"
 
 	l10n_prepare() {
 		rm po/"${1}".po || die "removing of ${1}.po failed"
@@ -55,6 +56,9 @@ src_prepare() {
 }
 
 src_configure() {
+	scons_opts="DEBUG=0 --libdir=/usr/$(get_libdir) \
+		$(usex nls --with-gettext --without-gettext) \
+		$(usex X --with-gui --without-gui)"
 	escons config "${scons_opts}"
 }
 
@@ -63,9 +67,8 @@ src_compile(){
 }
 
 src_install(){
-	default
-
-	escons "${scons_opts}" install
+	einstalldocs
+	escons "${scons_opts}" --prefix="${ED}"/usr --actual-prefix=/usr install
 
 	rm -f "${ED}"/usr/share/glib-2.0/schemas/gschemas.compiled
 	if ! use X; then
@@ -74,20 +77,12 @@ src_install(){
 	fi
 }
 
-pkg_preinst() {
-	use X && gnome2_schemas_savelist
-}
-
 pkg_postinst() {
-	if use X ; then
-		gnome2_schemas_update
-		gnome2_icon_cache_update
-	fi
+	use X && gnome2_schemas_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	if use X ; then
-		gnome2_schemas_update
-		gnome2_icon_cache_update
-	fi
+	use X && gnome2_schemas_update
+	xdg_icon_cache_update
 }

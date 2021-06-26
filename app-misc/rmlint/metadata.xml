@@ -11,7 +11,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	Utility finds space waste and other broken things on your filesystem
-	and offers to remove it.
+	and offers to remove it. It is able to find duplicate files and directories,
+	nonstripped binaries, broken symbolic links and etc.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sahib/rmlint</remote-id>
