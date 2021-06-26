@@ -30,9 +30,13 @@ src_prepare() {
 
 	# Rename due collision with net-analyzer/net-snmp
 	mv utils/snmptop utils/snmp-top || die "snmptop rename failed"
-	sed -i '/snmptop/s/snmptop/snmp-top/' tests/utils_runnable \
+	# Rename due collision with sys-apps/util-linux
+	mv utils/irqtop utils/irq-top || die "irqtop rename failed"
+	sed -i  -e '/snmptop/s/snmptop/snmp-top/' \
+		-e '/irqtop/s/irqtop/irq-top/' tests/utils_runnable \
 		|| die "sed for utils_runnable failed"
-	sed -i '/snmptop/s/snmptop/snmp-top/' README.rst \
+	sed -i  -e '/snmptop/s/snmptop/snmp-top/' \
+		-e '/irqtop/s/irqtop/irq-top/' README.rst \
 		|| die "sed for README.rst failed"
 }
 
