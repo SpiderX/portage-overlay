@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg-utils
+inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg
 
 PV_BUILD=$(ver_cut 4)
 MY_PN="VMware-Workstation-Full"
@@ -62,8 +62,6 @@ RDEPEND="app-arch/bzip2:=
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-themes/hicolor-icon-theme
-	!app-emulation/vmware-player
-	!app-emulation/vmware-tools
 	cups? ( net-print/cups )
 	modules? ( >=app-emulation/vmware-modules-${MY_PV} )
 	ovftool? ( !dev-util/ovftool )
@@ -546,10 +544,4 @@ pkg_postinst() {
 	xdg_mimeinfo_database_update
 	xdg_icon_cache_update
 	readme.gentoo_print_elog
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
