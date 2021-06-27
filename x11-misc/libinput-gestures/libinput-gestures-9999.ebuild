@@ -38,6 +38,12 @@ src_prepare() {
 
 src_test() { :; }
 
+src_install() {
+	default
+
+	systemd_dounit libinput-gestures.service
+}
+
 pkg_postinst() {
 	xdg_icon_cache_update
 
@@ -49,5 +55,4 @@ pkg_postinst() {
 	if ! has_version kde-plasma/kde-cli-tools:5 ; then
 		elog "${PN}-setup script supports Plasma 5 via kde-plasma/kde-cli-tools:5."
 	fi
-	systemd_dounit libinput-gestures.service
 }
