@@ -12,7 +12,7 @@ MY_PN="VMware-Workstation-Full"
 MY_PV=$(ver_cut 1-3)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 
-VMWARE_FUSION_VER="11.5.3/15870345"
+VMWARE_FUSION_VER="12.1.2/17964953"
 SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.0.3"
 
@@ -43,7 +43,8 @@ RDEPEND="app-arch/bzip2:=
 	dev-libs/icu:=
 	dev-libs/json-c:=
 	dev-libs/nettle:0
-	<=gnome-base/dconf-0.29.1
+	gnome-base/dconf
+	gnome-base/gconf:2
 	media-gfx/graphite2
 	media-libs/alsa-lib
 	media-libs/libart_lgpl
@@ -55,6 +56,7 @@ RDEPEND="app-arch/bzip2:=
 	net-libs/gnutls:=
 	sys-apps/tcp-wrappers
 	sys-apps/util-linux
+	sys-auth/polkit
 	x11-libs/libXxf86vm
 	sys-fs/fuse:3
 	x11-libs/libdrm
@@ -62,6 +64,7 @@ RDEPEND="app-arch/bzip2:=
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-themes/hicolor-icon-theme
+	virtual/libcrypt:=
 	cups? ( net-print/cups )
 	modules? ( >=app-emulation/vmware-modules-${MY_PV} )
 	ovftool? ( !dev-util/ovftool )
@@ -109,9 +112,6 @@ src_prepare() {
 		vmware-network-editor/lib/lib/ \
 		|| die "moving libvmware-netcfg.so failed"
 
-	rm -f vmware-workstation-server/bin/{openssl,configure-hostd.sh} \
-		|| die "removing vmware-workstation-server/bin failed"
-
 	rm -f vmware-installer/bin/configure-initscript.sh \
 		|| die "removing configure-initscript.sh failed"
 
@@ -145,10 +145,9 @@ src_install() {
 	# Install the binaries
 	into /opt/vmware
 	dobin vmware-vmx/bin/vmnet-{bridge,dhcpd,natd,netifup,sniffer} \
-		vmware-vmx/bin/vmware-{collect-host-support-info,gksu,modconfig,networks,ping} \
+		vmware-vmx/bin/vmware-{collect-host-support-info,gksu,networks,ping} \
 		vmware-workstation/bin/{vmss2core,vmware,vmware-tray,vmware-vdiskmanager} \
 		vmware-vprobe/bin/vmware-vprobe \
-		vmware-workstation-server/vmware-hostd \
 		vmware-player-app/bin/vmware-license-{check,enter}.sh \
 		vmware-usbarbitrator/bin/vmware-usbarbitrator
 	dosbin vmware-vmx/sbin/{vmware-authd,vmware-authdlauncher}
@@ -160,7 +159,6 @@ src_install() {
 		vmware-vmx/lib/. \
 		vmware-vprobe/lib/. \
 		vmware-workstation/lib/. \
-		vmware-workstation-server/lib/. \
 		vmware-vmx/roms
 	rm -rf "${ED}"/opt/vmware/lib/vmware/lib{nfc-types,soclient,vim-types}.so \
 		"${ED}"/opt/vmware/lib/vmware/libvm{acore,omi,ware-hostd,ware-wssc-adminTool}.so \
@@ -242,44 +240,6 @@ src_install() {
 	insinto /etc/modprobe.d
 	newins vmware-vmx/etc/modprobe.d/modprobe-vmware-fuse.conf vmware-fuse.conf
 
-	# Install vmware-workstation-server
-	cd vmware-workstation-server \
-		|| die "cd to vmware-workstation-server failed"
-
-	# Replace server startup script
-	into /opt/vmware/lib/vmware
-	dobin "${FILESDIR}"/configure-hostd.sh
-
-	# Install libraries
-	insinto /opt/vmware/lib/vmware/lib
-	doins -r lib/.
-
-	into /opt/vmware
-	for tool in vmware-hostd wssc-adminTool ; do
-		cat > "${T}/${tool}" <<-EOF
-			#!/usr/bin/env bash
-			set -e
-
-			. /etc/vmware/bootstrap
-
-			exec /opt/vmware/lib/vmware/bin/"${tool}" \\
-				"\$@"
-		EOF
-		dobin "${T}/${tool}"
-	done
-
-	insinto /opt/vmware/lib/vmware
-	doins -r hostd
-
-	# Create the configuration
-	insinto /etc/vmware
-	doins -r config/etc/vmware/.
-	doins -r etc/vmware/.
-
-	keepdir "/var/lib/vmware/Shared VMs" /var/log/vmware
-
-	cd - >/dev/null || die "cd from vmware-workstation-server failed"
-
 	# Install vmware-vix
 	if use vix ; then
 		into /opt/vmware
@@ -288,7 +248,7 @@ src_install() {
 		# Install libraries
 		insinto /opt/vmware/lib/vmware-vix
 		doins -r vmware-vix-core/lib/.
-		doins -r vmware-vix-lib-Workstation1500/lib/.
+		doins -r vmware-vix-lib-Workstation"$(ver_cut 1)"00/lib/.
 		dosym vmware-vix/libvixAllProducts.so /opt/vmware/lib/libbvixAllProducts.so
 
 		# Install headers
@@ -304,6 +264,8 @@ src_install() {
 		doins -r .
 
 		chmod 0755 "${ED}"/opt/vmware/lib/vmware-ovftool/{ovftool,ovftool.bin}
+		sed -i 's/readlink/readlink -f/' "${ED}"/opt/vmware/lib/vmware-ovftool/ovftool \
+			|| die "sed failed for vmware-ovftool/ovftool"
 		dosym ../lib/vmware-ovftool/ovftool /opt/vmware/bin/ovftool
 
 		cd - >/dev/null || die "cd from vmware-ovftool failed"
@@ -312,7 +274,7 @@ src_install() {
 	# Create symlinks for the various tools
 	local tool
 	for tool in thnuclnt vmware vmplayer{,-daemon} licenseTool vmamqpd \
-			vmware-{app-control,enter-serial,gksu,fuseUI,hostd,modconfig{,-console},netcfg,setup-helper,tray,unity-helper,vim-cmd,vmblock-fuse,vprobe,wssc-adminTool,zenity} ; do
+			vmware-{app-control,enter-serial,gksu,fuseUI,hostd,netcfg,{setup,unity}-helper,tray,vmblock-fuse,vprobe,zenity} ; do
 		dosym appLoader /opt/vmware/lib/vmware/bin/"${tool}"
 	done
 	dosym ../lib/vmware/bin/vmplayer /opt/vmware/bin/vmplayer
@@ -327,8 +289,6 @@ src_install() {
 	fperms 4711 /opt/vmware/lib/vmware/bin/vmware-vmx{,-debug,-stats}
 	fperms 0755 /opt/vmware/lib/vmware/lib/libvmware-gksu.so/gksu-run-helper
 	fperms 4711 /opt/vmware/sbin/vmware-authd
-	fperms 0755 /opt/vmware/bin/{vmware-hostd,wssc-adminTool}
-	fperms 1777 "/var/lib/vmware/Shared VMs"
 	use vix && fperms 0755 /opt/vmware/lib/vmware-vix/setup/vmware-config
 
 	fix-gnustack -f "${ED}"/opt/vmware/lib/vmware/lib/libvmware-gksu.so/libvmware-gksu.so > /dev/null \
@@ -380,9 +340,6 @@ src_install() {
 		installerDefaults.autoSoftwareUpdateEnabled = "no"
 		acceptEULA = "yes"
 		acceptOVFEULA = "yes"
-		authd.client.port = "902"
-		authd.proxy.nfc = "vmware-hostd:ha-nfc"
-		authd.soapserver = "TRUE"
 	EOF
 
 	if use vix; then
@@ -391,11 +348,6 @@ src_install() {
 			vix.config.version = "1"
 		EOF
 	fi
-
-	# Set configuration for GTK pixbuf
-	sed -i -e "s:@@LIBCONF_DIR@@:/opt/vmware/lib/vmware/libconf:g" \
-		"${ED}"/opt/vmware/lib/vmware/libconf/etc/gtk-3.0/gdk-pixbuf.loaders \
-		|| die "sed for gdk-pixbuf.loaders failed"
 
 	# Fix desktop files
 	sed -i  -e "s:@@BINARY@@:${EPREFIX}/opt/vmware/bin/vmplayer:g" \
@@ -411,88 +363,9 @@ src_install() {
 		"${ED}"/usr/share/applications/vmware-netcfg.desktop \
 		|| die "sed for vmware-netcfg.desktop failed"
 
-	# Set configuration fro datastores
-	sed -i  -e "s:##{DS_NAME}##:standard:g" \
-		-e "s:##{DS_PATH}##:/var/lib/vmware/Shared VMs:g" \
-		"${ED}"/etc/vmware/hostd/datastores.xml \
-		|| die "sed for hostd/datastores.xml failed"
-
-	# Set configuration for proxy
-	sed -i  -e "s:##{HTTP_PORT}##:-1:g" \
-		-e "s:##{HTTPS_PORT}##:443:g" \
-		-e "s:##{PIPE_PREFIX}##:/var/run/vmware/:g" \
-		"${ED}"/etc/vmware/hostd/proxy.xml \
-		|| die "sed for hostd/proxy.xml failed"
-
-	# Set configuration for vmvare-workstation-server
-	# (details in vmware-workstation-server.py)
-	sed -i  -e "s:##{BUILD_CFGDIR}##:/etc/vmware/hostd/:g" \
-		-e "s:##{CFGALTDIR}##:/etc/vmware/hostd/:g" \
-		-e "s:##{CFGDIR}##:/etc/vmware/:g" \
-		-e "s:##{ENABLE_AUTH}##:true:g" \
-		-e "s:##{HOSTDMODE}##:ws:g" \
-		-e "s:##{HOSTD_CFGDIR}##:/etc/vmware/hostd/:g" \
-		-e "s:##{HOSTD_MOCKUP}##:false:g" \
-		-e "s:##{LIBDIR}##:/opt/vmware/lib/vmware:g" \
-		-e "s:##{LIBDIR_INSTALLED}##:/opt/vmware/lib/vmware/:g" \
-		-e "s:##{LOGDIR}##:/var/log/vmware/:g" \
-		-e "s:##{LOGLEVEL}##:verbose:g" \
-		-e "s:##{MOCKUP}##:mockup-host-config.xml:g" \
-		-e "s:##{PLUGINDIR}##:./:g" \
-		-e "s:##{SHLIB_PREFIX}##:lib:g" \
-		-e "s:##{SHLIB_SUFFIX}##:.so:g" \
-		-e "s:##{USE_BLKLISTSVC}##:false:g" \
-		-e "s:##{USE_CBRCSVC}##:false:g" \
-		-e "s:##{USE_CIMSVC}##:false:g" \
-		-e "s:##{USE_DIRECTORYSVC}##:false:g" \
-		-e "s:##{USE_DIRECTORYSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_DYNAMIC_PLUGIN_LOADING}##:false:g" \
-		-e "s:##{USE_DYNAMO}##:false:g" \
-		-e "s:##{USE_DYNSVC}##:false:g" \
-		-e "s:##{USE_GUESTSVC}##:false:g" \
-		-e "s:##{USE_HBRSVC}##:false:g" \
-		-e "s:##{USE_HBRSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_HOSTSPECSVC}##:false:g" \
-		-e "s:##{USE_HOSTSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_HTTPNFCSVC}##:false:g" \
-		-e "s:##{USE_HTTPNFCSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_LICENSESVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_NFCSVC}##:true:g" \
-		-e "s:##{USE_NFCSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_OVFMGRSVC}##:true:g" \
-		-e "s:##{USE_PARTITIONSVC}##:false:g" \
-		-e "s:##{USE_SECURESOAP}##:false:g" \
-		-e "s:##{USE_SNMPSVC}##:false:g" \
-		-e "s:##{USE_SOLO_MOCKUP}##:false:g" \
-		-e "s:##{USE_STATSSVC}##:false:g" \
-		-e "s:##{USE_STATSSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_VCSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_VSLMSVC}##:false:g" \
-		-e "s:##{USE_VSLMSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_VDISKSVC}##:false:g" \
-		-e "s:##{USE_VDISKSVC_MOCKUP}##:false:g" \
-		-e "s:##{USE_VMSVC_MOCKUP}##:false:g" \
-		-e "s:##{VM_INVENTORY}##:vmInventory.xml:g" \
-		-e "s:##{VM_RESOURCES}##:vmResources.xml:g" \
-		-e "s:##{WEBSERVER_PORT_ENTRY}##::g" \
-		-e "s:##{WORKINGDIR}##:./:g" \
-		"${ED}"/etc/vmware/hostd/config.xml \
-		|| die "sed for hostd/config.xml failed"
-
-	# Set configuration for environments
-	sed -i -e "s:##{ENV_LOCATION}##:/etc/vmware/hostd/env/:g" \
-		"${ED}"/etc/vmware/hostd/environments.xml \
-		|| die "sed for hostd/environments.xml failed"
-
-	# Set configuration for clients
-	sed -i -e "s:@@AUTHD_PORT@@:902:g" \
-		"${ED}"/opt/vmware/lib/vmware/hostd/docroot/client/clients.xml \
-		|| die "sed for client/clients.xml failed"
-
 	# Install initscript for vmware-workstation
 	newinitd "${FILESDIR}"/vmware-net.initd vmware-net
 	newinitd "${FILESDIR}"/vmware-usb.initd vmware-usb
-	newinitd "${FILESDIR}"/vmware-server.initd vmware-server
 	use systemd && systemd_dounit "${WORKDIR}"/systemd-vmware-"${SYSTEMD_UNITS_TAG}"/vmware-{authentication,usb,vmblock,vmci,vmmon,vmnet,vmsock}.service \
 			vmware.target
 
