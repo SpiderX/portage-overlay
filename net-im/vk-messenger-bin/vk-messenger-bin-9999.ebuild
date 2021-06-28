@@ -1,17 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+inherit desktop multilib-build pax-utils xdg
+
 MY_PN="${PN/-bin/}"
-
-inherit desktop multilib-build pax-utils xdg-utils
-
-QA_PREBUILT="opt/vk-messenger/vk
-	opt/vk-messenger/libffmpeg.so
-	opt/vk-messenger/libnode.so
-	opt/vk-messenger/resources/app/dist/libEGL.so
-	opt/vk-messenger/resources/app/dist/libGLESv2.so"
 BASE_URI="https://desktop.userapi.com/linux_arch_/master/vk.zip"
 
 DESCRIPTION="Simple and Easy App for Messaging on VK"
@@ -23,7 +17,6 @@ SRC_URI="
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
 RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
@@ -57,6 +50,12 @@ BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
+QA_PREBUILT="opt/vk-messenger/vk
+	opt/vk-messenger/libffmpeg.so
+	opt/vk-messenger/libnode.so
+	opt/vk-messenger/resources/app/dist/libEGL.so
+	opt/vk-messenger/resources/app/dist/libGLESv2.so"
+
 src_install() {
 	fix-gnustack -f resources/app/dist/libppapi_voip_swiftshader_x86_64.so \
 		> /dev/null || die "execstack failed for libppapi_voip_swiftshader_x86_64.so"
@@ -74,14 +73,4 @@ src_install() {
 	dosym ../../opt/vk-messenger/vk /usr/bin/vk-messenger
 
 	pax-mark -m "${ED}"/opt/vk-messenger/vk
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
