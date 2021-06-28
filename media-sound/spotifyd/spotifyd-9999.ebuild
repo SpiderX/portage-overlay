@@ -419,9 +419,16 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 LICENSE="Apache-2.0 BSD BSD-2 GPL-3 ISC MIT MPL-2.0 ZLIB"
 KEYWORDS=""
 SLOT="0"
+IUSE="+alsa dbus portaudio pulseaudio rodio"
+REQUIRED_USE="|| ( alsa portaudio pulseaudio rodio ) rodio? ( alsa )"
 
-RDEPEND="media-libs/alsa-lib"
+RDEPEND="dev-libs/openssl:0=
+	alsa? ( media-libs/alsa-lib )
+	dbus? ( sys-apps/dbus )
+	portaudio? ( media-libs/portaudio )
+	pulseaudio? ( media-sound/pulseaudio )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -432,8 +439,23 @@ src_unpack() {
 	cargo_src_unpack
 }
 
+src_configure() {
+	myfeatures=(
+		"$(usex alsa alsa_backend '')"
+		"$(usex dbus "dbus_keyring dbus_mpris" '')"
+		"$(usex portaudio portaudio_backend '')"
+		"$(usex pulseaudio pulseaudio_backend '')"
+		"$(usex rodio rodio_backend '')"
+	)
+}
+
 src_install() {
 	einstalldocs
 	systemd_douserunit contrib/spotifyd.service
-	cargo_src_install
+	newinitd "${FILESDIR}"/spotifyd.initd spotifyd
+	newconfd "${FILESDIR}"/spotifyd.confd spotifyd
+	insinto /etc
+	doins "${FILESDIR}"/spotifyd.conf
+
+	cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 }

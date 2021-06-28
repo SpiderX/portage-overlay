@@ -16,6 +16,9 @@
 	which makes it show up as a device that can be controlled
 	from the official clients.
 	</longdescription>
+	<use>
+		<flag name="rodio">Enable rodio backend</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Spotifyd/spotifyd</remote-id>
 	</upstream>
