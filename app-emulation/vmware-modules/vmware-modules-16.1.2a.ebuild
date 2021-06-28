@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
 SRC_URI="https://github.com/mkubecek/vmware-host-modules/archive/w${MY_PV}-k${MY_KV}.tar.gz -> ${PN}-${MY_PV}-${MY_KV}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="4.9"
+SLOT="${MY_KV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/vmware"
