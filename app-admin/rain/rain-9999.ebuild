@@ -14,8 +14,6 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
-RESTRICT="test" #fails
 
 src_unpack() {
 	git-r3_src_unpack
@@ -35,4 +33,6 @@ src_install() {
 	dobin rain
 
 	newbashcomp docs/bash_completion.sh rain
+	insinto /usr/share/zsh/site-functions
+	newins docs/zsh_completion.sh _rain
 }
