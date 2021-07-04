@@ -229,6 +229,7 @@ SRC_URI="https://github.com/lesovsky/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test" # needs postgres
 
 src_compile() {
 	LDFLAGS="-X github.com/lesovsky/pgcenter/cmd.gitTag=${PV}

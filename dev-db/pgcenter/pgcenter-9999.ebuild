@@ -14,6 +14,7 @@ SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
+RESTRICT="test" # need postgres
 
 src_unpack() {
 	git-r3_src_unpack
