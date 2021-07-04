@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/wal-g/wal-g.git"
+EGIT_REPO_URI="https://github.com/wal-g/${PN}.git"
+EGIT_SUBMODULES=()
 
 inherit git-r3 go-module
 
@@ -11,12 +12,12 @@ DESCRIPTION="Archival restoration tool for databases"
 HOMEPAGE="https://github.com/wal-g/wal-g"
 SRC_URI=""
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE="lzo mongo mysql postgres redis sodium"
-REQUIRED_USE="|| ( mongo mysql postgres redis )"
-RESTRICT="test" # needs docker
+IUSE="fdb lzo mongo mysql +postgres redis sodium"
+REQUIRED_USE="|| ( fdb mongo mysql postgres redis )"
+RESTRICT="test" # fails
 
 DEPEND="app-arch/brotli:=
 	lzo? ( dev-libs/lzo:2 )
@@ -29,12 +30,15 @@ src_unpack() {
 }
 
 src_compile() {
-	for db in mongo mysql postgres redis ; do
+	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
+	for db in fdb mongo mysql postgres redis ; do
 		if use "$db" ; then
 			if [ "$db" == "postgres" ] ; then db="pg" ; fi
 			go build -o wal-g-"$db" \
 				-tags "brotli $(usex lzo lzo '' '' '') $(usex sodium libsodium '' '' '')" \
-				-ldflags "-X github.com/wal-g/wal-g/cmd/$db.WalgVersion=${PV}" \
+				-ldflags "-X github.com/wal-g/wal-g/cmd/$db.walgVersion=${PV}
+					-X \"github.com/wal-g/wal-g/cmd/$db.buildDate=${DATE}\"
+					-X github.com/wal-g/wal-g/cmd/mongo.gitRevision=${COMMIT}" \
 				./main/"$db"/... || die "build failed for $db"
 		fi
 	done
@@ -46,6 +50,7 @@ src_test() {
 
 src_install() {
 	einstalldocs
+	use fdb && dobin wal-g-fdb
 	use mongo && dobin wal-g-mongo
 	use mysql && dobin wal-g-mysql
 	use postgres && dobin wal-g-pg
