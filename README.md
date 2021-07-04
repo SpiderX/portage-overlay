@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 520](https://img.shields.io/badge/ebuild-520-orange.svg)](https://img.shields.io/badge/ebuild-520-orange.svg)
+[![Number of ebuilds: 521](https://img.shields.io/badge/ebuild-521-orange.svg)](https://img.shields.io/badge/ebuild-521-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -260,6 +260,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[click-option-group](https://github.com/click-contrib/click-option-group) | Option groups missing in Click
 * dev-python/[click-repl](https://github.com/click-contrib/click-repl) | Subcommand REPL for click apps
 * dev-python/[colorpedia](https://github.com/joowani/colorpedia) | Command-line tool for looking up colors and palettes
+* dev-python/[configparser](https://github.com/jaraco/configparser) | Backport of configparser from Python 3
 * dev-python/[convertdate](https://github.com/fitnr/convertdate) | Utils for converting between date formats and calculating holidays
 * dev-python/[coreapi](https://github.com/core-api/python-client) | Python client library for Core API
 * dev-python/[coreschema](https://github.com/core-api/python-coreschema) | Python CoreSchema
