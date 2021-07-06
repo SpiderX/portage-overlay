@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2086
@@ -198,7 +198,6 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2
 	BSD BSL-1.1 CC0-1.0 MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="mirror"
 
 src_install() {

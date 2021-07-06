@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	A simple command-line utility to update A record in Route53 with
-	current global IP address.
+	current global (public) IP address.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">coord-e/r53ddns</remote-id>
