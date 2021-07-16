@@ -57,6 +57,7 @@ QA_PREBUILT="opt/visual-studio-code/resources/app/node_modules.asar.unpacked/vsc
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/native-keymap/build/Release/keymapping.node
 	opt/visual-studio-code/resources/app/node_modules.asar.unpacked/native-watchdog/build/Release/watchdog.node
+	opt/visual-studio-code/resources/app/extensions/node_modules/esbuild/bin/esbuild
 	opt/visual-studio-code/code
 	opt/visual-studio-code/libffmpeg.so
 	opt/visual-studio-code/libGLESv2.so
