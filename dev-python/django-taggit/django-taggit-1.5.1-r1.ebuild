@@ -4,17 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/alex/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Django application for simple tagging"
 HOMEPAGE="https://github.com/alex/django-taggit"
-SRC_URI=""
+SRC_URI="https://github.com/alex/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/django-rest-framework[${PYTHON_USEDEP}]"
