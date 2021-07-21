@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,8 +47,14 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="opt/Insomnia/insomnia
-	opt/Insomnia/libnode.so
-	opt/Insomnia/libffmpeg.so"
+	opt/Insomnia/libffmpeg.so
+	opt/Insomnia/libEGL.so
+	opt/Insomnia/libGLESv2.so
+	opt/Insomnia/libvk_swiftshader.so
+	opt/Insomnia/swiftshader/libGLESv2.so
+	opt/Insomnia/swiftshader/libEGL.so
+	opt/Insomnia/libvulkan.so
+	opt/Insomnia/chrome-sandbox"
 
 S="${WORKDIR}"
 
@@ -73,7 +79,9 @@ src_install() {
 
 	insinto /opt/Insomnia
 	doins -r opt/Insomnia/.
-	fperms +x /opt/Insomnia/insomnia
+	fperms +x /opt/Insomnia/insomnia opt/Insomnia/chrome-sandbox \
+		/opt/Insomnia/swiftshader/lib{EGL,GLESv2}.so \
+		/opt/Insomnia/lib{EGL,ffmpeg,GLESv2,vk_swiftshader,vulkan}.so
 	dosym ../Insomnia/insomnia opt/bin/insomnia
 
 	pax-mark -m "${ED}"/opt/Insomnia/insomnia
