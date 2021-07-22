@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,10 +12,11 @@ DESCRIPTION="VMware Open Virtualization Format tool"
 HOMEPAGE="https://www.vmware.com/support/developer/ovf"
 SRC_URI="amd64? ( ${MY_P/_arch_/x86_64} )
 	x86? ( ${MY_P/_arch_/i386} )"
+#	arm64? ( ${MY_P/_arch_/x86_64} )
 
 LICENSE="vmware"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~arm64 ~x86"
 IUSE=""
 RESTRICT="bindist fetch mirror"
 
@@ -26,10 +27,11 @@ DOCS=( src/vmware-ovftool/README.txt )
 S="${WORKDIR}"
 
 QA_PREBUILT="opt/vmware-ovftool/libssl.so.1.0.2
-	opt/vmware-ovftool/libxerces-c-3.1.so
+	opt/vmware-ovftool/libxerces-c-3.2.so
 	opt/vmware-ovftool/libvmacore.so
 	opt/vmware-ovftool/libgoogleurl.so.59
-	opt/vmware-ovftool/libicudata.so.58
+	opt/vmware-ovftool/libicuuc.so.60
+	opt/vmware-ovftool/libicudata.so.60
 	opt/vmware-ovftool/libssoclient.so
 	opt/vmware-ovftool/libvim-types.so
 	opt/vmware-ovftool/libcrypto.so.1.0.2
@@ -56,6 +58,11 @@ src_unpack() {
 		cp "${DISTDIR}"/"${MY_P/_arch_/x86_64}" "${S}"/ || die "cp amd64 failed"
 		sh "${S}"/"${MY_P/_arch_/x86_64}" --console --required --eulas-agreed -x "${S}/src" \
 			|| die "extract amd64 failed"
+	fi
+	if use arm64 ; then
+		cp "${DISTDIR}"/"${MY_P/_arch_/arm64}" "${S}"/ || die "cp amd64 failed"
+		sh "${S}"/"${MY_P/_arch_/arm64}" --console --required --eulas-agreed -x "${S}/src" \
+			|| die "extract arm64 failed"
 	fi
 	if use x86 ; then
 		cp "${DISTDIR}"/"${MY_P/_arch_/x86_64}" "${S}"/ || die "cp x86 failed"
