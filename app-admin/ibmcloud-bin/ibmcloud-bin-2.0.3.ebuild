@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,16 +7,15 @@ inherit bash-completion-r1 pax-utils
 
 DESCRIPTION="IBM Cloud Developer Tools"
 HOMEPAGE="https://github.com/IBM-Cloud/ibm-cloud-cli-release"
-SRC_URI="amd64? ( https://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/${PV}/IBM_Cloud_CLI_${PV}_amd64.tar.gz )
-	x86? ( https://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/${PV}/IBM_Cloud_CLI_${PV}_386.tar.gz )"
+SRC_URI="amd64? ( https://download.clis.cloud.ibm.com/ibm-cloud-cli/${PV}/IBM_Cloud_CLI_${PV}_amd64.tar.gz )
+	x86? ( https://download.clis.cloud.ibm.com/ibm-cloud-cli/${PV}/IBM_Cloud_CLI_${PV}_386.tar.gz )"
 
 LICENSE="Apache-2.0 BSD IBM MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 RESTRICT="bindist mirror"
 
-QA_PREBUILT="usr/bin/cf usr/bin/ibmcloud usr/bin/ibmcloud-analytics"
+QA_PREBUILT="usr/bin/ibmcloud"
 
 S="${WORKDIR}/Bluemix_CLI"
 
@@ -31,8 +30,8 @@ src_install() {
 	newbashcomp autocomplete/bash_autocomplete ibmcloud
 	insinto /usr/share/zsh/site-functions
 	newins autocomplete/zsh_autocomplete _ibmcloud
-	dobin bin/ibmcloud{,-analytics}
-	pax-mark -m "${ED}"/bin/ibmcloud{,-analytics}
+	dobin bin/ibmcloud
+	pax-mark -m "${ED}"/bin/ibmcloud
 }
 
 pkg_postinst() {
