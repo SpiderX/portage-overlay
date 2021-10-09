@@ -1,0 +1,12 @@
+# Config file for /etc/init.d/semaphore
+
+# Various options.
+# run `semaphore --help` for valid cmdline options
+#OPTS=""
+
+# User and group daemon runs as
+SEMAPHORE_USER="semaphore"
+SEMAPHORE_GROUP="semaphore"
+
+# Semaphore config file
+#CONFIG="/etc/semaphore/config.json"

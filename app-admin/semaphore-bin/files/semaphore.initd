@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/semaphore"
+command_background="yes"
+name="Semaphore"
+description="Semaphore"
+command_user="${SEMAPHORE_USER:-semaphore}:${SEMAPHORE_GROUP:-semaphore}"
+pidfile="/run/semaphore.pid"
+config="${CONFIG:-/etc/semaphore/config.json}"
+command_args="--config $config ${OPTS}"
+#start_stop_daemon_args="-q"
+#retry="10"
+
+depend() {
+	need net
+}
