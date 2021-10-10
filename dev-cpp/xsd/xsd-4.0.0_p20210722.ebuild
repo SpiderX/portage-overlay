@@ -3,17 +3,17 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://git.codesynthesis.com/${PN}/${PN}.git"
+inherit multiprocessing toolchain-funcs vcs-snapshot
 
-inherit git-r3 multiprocessing toolchain-funcs
+MY_PV="4a6e690" # last version without requirements of build2-0.14
 
 DESCRIPTION="A cross-platform W3C XML Schema to C++ data binding compiler"
 HOMEPAGE="https://www.codesynthesis.com/products/xsd"
-SRC_URI=""
+SRC_URI="https://git.codesynthesis.com/cgit/${PN}/${PN}/snapshot/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples zlib"
 
 RDEPEND="dev-libs/xerces-c
