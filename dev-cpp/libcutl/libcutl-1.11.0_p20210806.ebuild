@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit multiprocessing toolchain-funcs vcs-snapshot
 
-MY_PV="6f37313"
+MY_PV="8653eff"
 
 DESCRIPTION="A collection of C++ libraries (successor of libcult)"
 HOMEPAGE="https://www.codesynthesis.com/projects/libcutl"
@@ -18,8 +18,6 @@ IUSE="static-libs"
 
 BDEPEND="dev-util/build2"
 
-PATCHES=( "${FILESDIR}/${PN}"-1.10.0-fix-c++14.patch )
-
 src_configure() {
 	local myconfigargs=(
 		config.cxx="$(tc-getCXX)"
@@ -28,27 +26,26 @@ src_configure() {
 		config.bin.ar="$(tc-getAR)"
 		config.bin.ranlib="$(tc-getRANLIB)"
 		config.bin.lib="$(usex static-libs both shared)"
-		config.install.root="${ED}/usr/"
 		config.install.lib="exec_root/$(get_libdir)"
 		config.install.doc="data_root/share/doc/${PF}"
 	)
 
-	MAKE=b MAKEOPTS="--jobs $(makeopts_jobs) --verbose 3" \
-	emake "${myconfigargs[@]}" configure
+	MAKE=b MAKEOPTS="--jobs $(makeopts_jobs) -V" \
+		emake "${myconfigargs[@]}" configure
 }
 
 src_compile() {
-	tc-is-gcc && export CCACHE_DISABLE=1
-	set -- b --jobs "$(makeopts_jobs)" --verbose 3 || die "set failed"
-	echo "${@}" || die "echo failed"
-	"${@}" || die "b failed"
+	MAKE=b MAKEOPTS="--jobs $(makeopts_jobs) -V" \
+		emake
 }
 
 src_test() {
-	MAKE=b MAKEOPTS="--jobs $(makeopts_jobs)" emake test
+	MAKE=b MAKEOPTS="--jobs $(makeopts_jobs) -V" \
+		emake test
 }
 
 src_install() {
-	MAKE=b MAKEOPTS="--jobs $(makeopts_jobs) --verbose 3" emake install
 	einstalldocs
+	MAKE=b MAKEOPTS="--jobs $(makeopts_jobs) -V" \
+		emake config.install.root="${ED}/usr" install
 }
