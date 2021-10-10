@@ -16,8 +16,8 @@ SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc examples +extensions test webkit"
-REQUIRED_USE="webkit? ( extensions ) ${PYTHON_REQUIRED_USE}"
+IUSE="debug doc examples +extensions test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
@@ -34,8 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtsql:5
 		dev-qt/qtsvg:5
 		dev-qt/qtxml:5
-		dev-qt/qtxmlpatterns:5
-		webkit? ( dev-qt/qtwebkit:5 ) )"
+		dev-qt/qtxmlpatterns:5 )"
 DEPEND="${RDEPEND}
 	dev-qt/qtxml:5
 	doc? ( app-doc/doxygen )"
@@ -57,12 +56,10 @@ src_prepare() {
 	if ! use test ; then
 		sed -i '/SUBDIRS/s/tests//' PythonQt.pro || die "sed for test"
 	fi
-	if ! use webkit ; then
-		# Remove webkit support if not used
-		sed -i '/qtHaveModule(webkit):CONFIG += PythonQtWebKit/d' \
-			extensions/PythonQt_QtAll/PythonQt_QtAll.pro \
-			|| die "sed for webkit"
-	fi
+	# Remove webkit support if not used
+	sed -i '/qtHaveModule(webkit):CONFIG += PythonQtWebKit/d' \
+		extensions/PythonQt_QtAll/PythonQt_QtAll.pro \
+		|| die "sed for webkit"
 
 	# Unset python version to use python-config
 	sed -i "/unix:PYTHON_VERSION=/s/2.7//" build/python.prf \
