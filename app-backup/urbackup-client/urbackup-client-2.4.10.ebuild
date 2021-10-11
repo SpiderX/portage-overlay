@@ -1,12 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PLOCALES="cs da de es fa fr it nl pl pt_BR ru sk uk zh_CN zh_TW"
 WX_GTK_VER="3.0"
 
-inherit autotools l10n readme.gentoo-r1 systemd wxwidgets
+inherit autotools readme.gentoo-r1 systemd wxwidgets
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://urbackup.org"
@@ -41,12 +40,6 @@ src_prepare() {
 		-e '/\/client\/info.txt/d' \
 		-e 's|client/info.txt ||' \
 		Makefile.am || die "sed failed for Makefile.am"
-
-	remove_locale() {
-		sed -i -e "/\/urbackup\/lang\/${1}/d" \
-			Makefile.am || die "sed failed to remove locale"
-	}
-	l10n_for_each_disabled_locale_do remove_locale
 
 	eautoreconf
 }
