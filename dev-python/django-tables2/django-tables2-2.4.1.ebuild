@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-filter[${PYTHON_USEDEP}]
-		dev-python/fudge[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -28,6 +27,13 @@ BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/tablib[xls,yaml,${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
+
+python_prepare_all() {
+	# Remove tests rely on fudge
+	rm tests/test_config.py || die "rm failed"
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	PYTHONPATH=. django-admin.py test --settings=tests.app.settings \
