@@ -17,15 +17,22 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="dev-db/sqlite:3
-	dev-libs/boost[static-libs]
+	dev-libs/boost:0=
 	dev-libs/openssl:0=
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwebkit:5"
+	dev-qt/qtgui:5"
 RDEPEND="${DEPEND}
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-libs/expat"
+
+src_prepare() {
+	# Remove WebKit reference
+	sed -i '/find_package/s/ QtWebKit//' CMakeLists.txt \
+		|| die "sed failed"
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	if use debug; then
