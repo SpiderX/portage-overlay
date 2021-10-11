@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/botocore[${PYTHON_USEDEP}]
-	dev-python/cfn-python-lint[${PYTHON_USEDEP}]
+	dev-python/cfn-lint[${PYTHON_USEDEP}]
 	dev-python/dataclasses-jsonschema[${PYTHON_USEDEP}]
 	dev-python/docker-py[${PYTHON_USEDEP}]
 	dev-python/dulwich[${PYTHON_USEDEP}]
