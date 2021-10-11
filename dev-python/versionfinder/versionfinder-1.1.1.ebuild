@@ -21,7 +21,7 @@ RDEPEND="dev-python/GitPython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/python-backoff[${PYTHON_USEDEP}]
+		dev-python/backoff[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
