@@ -1,12 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/whoozle/${PN}.git"
-PLOCALES="it ru"
 
-inherit cmake git-r3 l10n qmake-utils
+inherit cmake git-r3
 
 DESCRIPTION="Reliable MTP client with minimalistic UI"
 HOMEPAGE="https://whoozle.github.io/android-file-transfer-linux/"
@@ -31,20 +30,6 @@ BDEPEND="virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )"
 
 DOCS=( {FAQ,README}.md )
-
-src_prepare() {
-	default
-
-	local lr
-	lr="$(qt5_get_bindir)"/lrelease
-	l10n_prepare() {
-		$lr qt/translations/"${PN}"_"${1}".ts || die "lrelease ${1} failed"
-	}
-	l10n_find_plocales_changes qt/translations "${PN}"_ .ts
-	l10n_for_each_locale_do l10n_prepare
-
-	cmake_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
