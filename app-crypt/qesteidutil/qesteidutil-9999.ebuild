@@ -3,10 +3,9 @@
 
 EAPI=7
 
-PLOCALES="en et ru"
 EGIT_REPO_URI="https://github.com/open-eid/${PN}.git"
 
-inherit cmake git-r3 l10n qmake-utils readme.gentoo-r1
+inherit cmake git-r3 qmake-utils readme.gentoo-r1
 
 DESCRIPTION="Estonian ID card management desktop utility"
 HOMEPAGE="https://github.com/open-eid/qesteidutil https://id.ee/"
@@ -43,14 +42,6 @@ src_prepare() {
 		common/CMakeLists.txt || die "sed failed for CMakeLists.txt"
 	sed -i '/#include "/s|qtsingleapplication/src|QtSolutions|' \
 		common/Common.h || die "sed failed for Common.h"
-
-	local lr
-	lr="$(qt5_get_bindir)"/lrelease
-	l10n_prepare() {
-		$lr src/translations/"${1}".ts || die "lrelease ${1} failed"
-	}
-	l10n_find_plocales_changes src/translations "" .ts
-	l10n_for_each_locale_do l10n_prepare
 
 	cmake_src_prepare
 }
