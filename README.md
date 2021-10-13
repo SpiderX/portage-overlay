@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 531](https://img.shields.io/badge/ebuild-531-orange.svg)](https://img.shields.io/badge/ebuild-531-orange.svg)
+[![Number of ebuilds: 532](https://img.shields.io/badge/ebuild-532-orange.svg)](https://img.shields.io/badge/ebuild-532-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -518,6 +518,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-dns/[massdns](https://github.com/blechschmidt/massdns) | A high-performance DNS stub resolver
 * net-dns/[nsping](https://github.com/vovcat/nsping) | Measure reachability and latency of DNS nameservers
 * net-firewall/[ipt-ratelimit](https://github.com/aabc/ipt-ratelimit) | Ratelimit iptables module
+* net-firewall/[xt_dns](https://github.com/oskar456/xt_dns) | Netfilter extension to match various DNS atributes
 * net-firewall/[xt_nat](https://github.com/andrsharaev/xt_NAT) | Full Cone NAT module for Linux iptables
 * net-ftp/[weex](https://sourceforge.net/projects/weex) | A non-interactive FTP client for updating web pages
 * net-im/[communi-desktop](https://github.com/communi/communi-desktop) | A cross-platform IRC framework written with Qt
