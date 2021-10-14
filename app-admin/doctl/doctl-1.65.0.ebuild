@@ -12,11 +12,14 @@ SRC_URI="https://github.com/digitalocean/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="Apache-2.0 MIT BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 src_compile() {
+	LDFLAGS="-X github.com/digitalocean/doctl.Major=$(ver_cut 1)
+		-X github.com/digitalocean/doctl.Minor=$(ver_cut 2)
+		-X github.com/digitalocean/doctl.Patch=$(ver_cut 3-)
+		-X github.com/digitalocean/doctl.Label=release"
 	GOFLAGS="-v -x -mod=vendor" \
-		go build ./cmd/... || die "build failed"
+		go build -ldflags "$LDFLAGS" ./cmd/... || die "build failed"
 
 	./doctl completion bash > doctl.bash || die "completion for bash failed"
 	./doctl completion zsh > doctl.zsh || die "completion for sh failed"

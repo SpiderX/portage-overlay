@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="Apache-2.0 MIT BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
