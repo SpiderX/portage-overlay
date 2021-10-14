@@ -14,24 +14,20 @@ SRC_URI=""
 LICENSE="Apache-2.0 BSD-2 BSD-4 ECL-2.0 icu imagemagick ISC JSON MIT MPL-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 DOCS=( {README,CHANGELOG}.md )
 
 src_unpack() {
 	git-r3_src_unpack
-	rm -r "${S}"/vendor || die "removing failed"
 	go-module_live_vendor
 }
 
 src_compile() {
-	GOFLAGS="-v -x -mod=vendor" \
-		go build -o bin/packer ./ || die "build failed"
+	go build -work -o bin/packer ./ || die "build failed"
 }
 
 src_test() {
-	GOFLAGS="-v -x -mod=vendor" \
-		go test -work ./ || die "test failed"
+	go test -work ./ || die "test failed"
 }
 
 src_install() {
