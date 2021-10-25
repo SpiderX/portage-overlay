@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
@@ -58,7 +58,9 @@ RDEPEND="dev-libs/expat[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-renderutil[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-wm[${MULTILIB_USEDEP}]
 	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
+	pulseaudio? (
+		media-sound/pulseaudio[${MULTILIB_USEDEP}]
+		media-plugins/gst-plugins-pulse[${MULTILIB_USEDEP}] )"
 BDEPEND="sys-apps/fix-gnustack"
 
 S="${WORKDIR}"
