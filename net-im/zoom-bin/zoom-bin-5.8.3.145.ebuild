@@ -1,21 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop multilib-build pax-utils unpacker xdg-utils
+inherit desktop multilib-build pax-utils unpacker xdg
 
 MY_PN="${PN/-bin/}"
-BASE_URI="https://d11yldzmag5yn.cloudfront.net/prod/${PV}/zoom_-arch-.deb"
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us"
-SRC_URI="x86? ( ${BASE_URI/-arch-/i386} -> ${MY_PN}-${PV}_i386.deb )
-	amd64? ( ${BASE_URI/-arch-/amd64} -> ${MY_PN}-${PV}_amd64.deb )"
+SRC_URI="https://cdn.zoom.us/prod/${PV}/zoom_amd64.deb -> zoom-${PV}_amd64.deb"
 
 LICENSE="ZOOM"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="pulseaudio"
 RESTRICT="bindist mirror"
 
@@ -27,6 +25,7 @@ RDEPEND="!games-engines/zoom
 	dev-libs/libpcre:3[${MULTILIB_USEDEP}]
 	dev-libs/nspr[${MULTILIB_USEDEP}]
 	dev-libs/nss[${MULTILIB_USEDEP}]
+	dev-qt/qt3d[qml]
 	dev-qt/qtgui:5[eglfs]
 	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
@@ -49,15 +48,18 @@ RDEPEND="!games-engines/zoom
 	x11-libs/xcb-util-keysyms[${MULTILIB_USEDEP}]
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	!pulseaudio? ( media-libs/alsa-lib:0[${MULTILIB_USEDEP}] )"
-BDEPEND="app-admin/chrpath
+BDEPEND="sys-apps/fix-gnustack
 	!pulseaudio? ( dev-util/bbe )"
 
-QA_PREBUILT="opt/zoom/audio/libqt*.so
+QA_PREBUILT="opt/zoom/aomhost
+	opt/zoom/audio/libqt*.so
 	opt/zoom/egldeviceintegrations/libqeglfs-*-integration.so
 	opt/zoom/generic/libq*.plugin.so
 	opt/zoom/iconengines/libqsvgicon.so
 	opt/zoom/imageformats/libq*.so
+	opt/zoom/libaomagent.so
 	opt/zoom/libQt5*
+	opt/zoom/libOpenCL.so.1
 	opt/zoom/platforminputcontexts/lib*platforminputcontextplugin.so
 	opt/zoom/platforms/libq*.so
 	opt/zoom/platformthemes/libqgtk3.so
@@ -78,10 +80,8 @@ src_prepare() {
 		-e '/Categories/s/Application;//' \
 		-e '/Exec/s|=|=/usr/bin/env LD_LIBRARY_PATH="\\$LD_LIBRARY_PATH:/opt/zoom" |' \
 		usr/share/applications/Zoom.desktop || die "sed failed for Zoom.desktop"
-	chrpath -r '' opt/zoom/platforminputcontexts/libfcitxplatforminputcontextplugin.so \
-		|| die "chrpath failed"
 	scanelf -Xr opt/zoom/platforminputcontexts/libfcitxplatforminputcontextplugin.so \
-		|| die "scanelf failed"
+			opt/zoom/libturbojpeg.so || die "scanelf failed"
 
 	# Zoom cannot use any ALSA sound devices if it finds libpulse.
 	# This causes breakage if media-sound/apulse[sdk] is installed.
@@ -92,6 +92,9 @@ src_prepare() {
 }
 
 src_install() {
+	fix-gnustack -f opt/zoom/aomhost > /dev/null \
+		|| die "removing execstack flag failed"
+
 	doicon usr/share/pixmaps/Zoom.png usr/share/pixmaps/application-x-zoom.png
 	domenu usr/share/applications/Zoom.desktop
 	insinto /usr/share/mime/packages
@@ -103,16 +106,4 @@ src_install() {
 	dosym ../../opt/zoom/zoom usr/bin/zoom
 
 	pax-mark -m "${ED}"/opt/zoom/zoom
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
