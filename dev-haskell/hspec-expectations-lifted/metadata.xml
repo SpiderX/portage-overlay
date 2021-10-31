@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A version of hspec-expectations generalized to MonadIO.
+	Can be used with HUnit, or any framework that integrates with HUnit,
+	like test-framework or Hspec.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">hspec/hspec-expectations-lifted</remote-id>
+	</upstream>
+</pkgmetadata>
