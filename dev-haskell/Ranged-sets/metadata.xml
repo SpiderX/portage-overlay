@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A ranged set is an ordered list of ranges.
+	Ranged sets allow programming with sets of values that are described
+	by a list of ranges.  A value is a member of the set if it lies within
+	one of the ranges.  The ranges in a set are ordered and
+	non-overlapping, so the standard set operations can be implemented by
+	merge algorithms in O(n) time.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">PaulJohnson/Ranged-sets</remote-id>
+	</upstream>
+</pkgmetadata>
