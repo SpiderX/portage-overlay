@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 578](https://img.shields.io/badge/ebuild-578-orange.svg)](https://img.shields.io/badge/ebuild-578-orange.svg)
+[![Number of ebuilds: 579](https://img.shields.io/badge/ebuild-579-orange.svg)](https://img.shields.io/badge/ebuild-579-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -221,6 +221,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[ptr](https://github.com/nikita-volkov/ptr) | Abstractions for operations on pointers
 * dev-haskell/[rebase](https://github.com/nikita-volkov/rebase) | A more progressive alternative to the 'base' package
 * dev-haskell/[req](https://github.com/mrkkrp/req) | Easy-to-use, type-safe, expandable, high-level HTTP client library
+* dev-haskell/[rerebase](https://github.com/nikita-volkov/rerebase) | Reexports from 'base' with a bunch of other standard libraries
 * dev-haskell/[scotty](https://github.com/scotty-web/scotty) | Haskell web framework
 * dev-haskell/[scrypt](https://github.com/informatikr/scrypt) | Stronger password hashing via sequential memory-hard functions
 * dev-haskell/[semigroups](https://github.com/ekmett/semigroups) | Anything that associates
