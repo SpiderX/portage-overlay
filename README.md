@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 574](https://img.shields.io/badge/ebuild-574-orange.svg)](https://img.shields.io/badge/ebuild-574-orange.svg)
+[![Number of ebuilds: 575](https://img.shields.io/badge/ebuild-575-orange.svg)](https://img.shields.io/badge/ebuild-575-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -216,6 +216,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[optics-extra](https://github.com/well-typed/optics) | Extra utilities and instances for optics-core
 * dev-haskell/[optics-th](https://github.com/well-typed/optics) | Optics as an abstract interface
 * dev-haskell/[placeholders](https://github.com/ahammar/placeholders) | Placeholders for use while developing Haskell code
+* dev-haskell/[postgresql-binary](https://github.com/nikita-volkov/postgresql-binary) | Encoders and decoders for the PostgreSQL's binary format
 * dev-haskell/[req](https://github.com/mrkkrp/req) | Easy-to-use, type-safe, expandable, high-level HTTP client library
 * dev-haskell/[scotty](https://github.com/scotty-web/scotty) | Haskell web framework
 * dev-haskell/[scrypt](https://github.com/informatikr/scrypt) | Stronger password hashing via sequential memory-hard functions
