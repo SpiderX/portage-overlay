@@ -166,7 +166,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[ansi-wl-pprint](https://github.com/ekmett/ansi-wl-pprint) | The Wadler/Leijen Pretty Printer for colored ANSI terminal output
 * dev-haskell/[clock](https://github.com/corsis/clock) | High-resolution clock functions
 * dev-haskell/[daemons](https://github.com/scvalex/daemons) | Daemons in Haskell made fun and easy
-* dev-haskell/[glob](http://iki.fi/matti.niemenmaa/glob) | Globbing library
 * dev-haskell/[hspec-megaparsec](https://github.com/mrkkrp/hspec-megaparsec) | Utility functions for testing Megaparsec parsers with Hspec
 * dev-haskell/[hspec-wai](https://github.com/hspec/hspec-wai) | Experimental Hspec support for testing WAI applications
 * dev-haskell/[http-client](https://github.com/snoyberg/http-client) | An HTTP client engine
