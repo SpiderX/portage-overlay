@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 540](https://img.shields.io/badge/ebuild-540-orange.svg)](https://img.shields.io/badge/ebuild-540-orange.svg)
+[![Number of ebuilds: 541](https://img.shields.io/badge/ebuild-541-orange.svg)](https://img.shields.io/badge/ebuild-541-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -174,6 +174,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[bytestring-tree-builder](https://github.com/nikita-volkov/bytestring-tree-builder) | A ByteString builder implementation based on the binary tree
 * dev-haskell/[clock](https://github.com/corsis/clock) | High-resolution clock functions
 * dev-haskell/[concise](https://github.com/frasertweedale/hs-concise) | Utilities for Control.Lens.Cons
+* dev-haskell/[configurator-pg](https://github.com/robx/configurator-pg) | Reduced parser for configurator-ng config files
 * dev-haskell/[daemons](https://github.com/scvalex/daemons) | Daemons in Haskell made fun and easy
 * dev-haskell/[hspec-megaparsec](https://github.com/mrkkrp/hspec-megaparsec) | Utility functions for testing Megaparsec parsers with Hspec
 * dev-haskell/[hspec-wai](https://github.com/hspec/hspec-wai) | Experimental Hspec support for testing WAI applications

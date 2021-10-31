@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This module provides a simplified and updated interface to the
+	configuration file format of configurator and configurator-ng.
+	Its aim is primarily to allow updating programs that depend
+	on configurator-ng to new versions of GHC without changing
+	the configuration file format.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">robx/configurator-pg</remote-id>
+	</upstream>
+</pkgmetadata>
