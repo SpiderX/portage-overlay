@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 567](https://img.shields.io/badge/ebuild-567-orange.svg)](https://img.shields.io/badge/ebuild-567-orange.svg)
+[![Number of ebuilds: 568](https://img.shields.io/badge/ebuild-568-orange.svg)](https://img.shields.io/badge/ebuild-568-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -208,6 +208,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-haskell/[interpolatedstring-perl6](https://github.com/audreyt/interpolatedstring-perl6) | QuasiQuoter for Perl6 style multi-line interpolated
 * dev-haskell/[jose](https://github.com/frasertweedale/hs-jose) | Haskell JOSE and JWT library
 * dev-haskell/[json-ast](https://github.com/nikita-volkov/json-ast) | Universal JSON AST datastructure
+* dev-haskell/[loch-th](https://github.com/liskin/loch-th) | Support for precise error locations in source files
 * dev-haskell/[modern-uri](https://github.com/mrkkrp/modern-uri) | Modern library for working with URIs
 * dev-haskell/[req](https://github.com/mrkkrp/req) | Easy-to-use, type-safe, expandable, high-level HTTP client library
 * dev-haskell/[scotty](https://github.com/scotty-web/scotty) | Haskell web framework
