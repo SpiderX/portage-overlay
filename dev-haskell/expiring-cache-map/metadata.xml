@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A simple general purpose shared state cache map with
+	automatic expiration of values, for caching the results
+	of accessing a resource such as reading a file.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">elblake/expiring-cache-map</remote-id>
+	</upstream>
+</pkgmetadata>
