@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A composable abstraction over the retryable transactions for Hasql.
+	Executes multiple queries under the specified mode and isolation level,
+	while automatically retrying the transaction in case of conflicts.
+	Thus this abstraction closely reproduces the behaviour of STM.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">nikita-volkov/hasql-transaction</remote-id>
+	</upstream>
+</pkgmetadata>
