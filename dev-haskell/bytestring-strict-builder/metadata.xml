@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Practical benchmarks have proven it to be highly performant as well.
+	The encoders from the "postgresql-binary" library have shown a stable
+	performance improvement by factors of up to 10 after the migration
+	from the standard builder to "bytestring-strict-builder".
+	</longdescription>
+	<upstream>
+		<remote-id type="github">nikita-volkov/bytestring-strict-builder</remote-id>
+	</upstream>
+</pkgmetadata>
