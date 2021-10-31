@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	concise provides a handful of functions to extend what you can do
+	with Control.Lens.Cons, like convert one type with a Cons instance
+	into the other.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">frasertweedale/hs-concise</remote-id>
+	</upstream>
+</pkgmetadata>
