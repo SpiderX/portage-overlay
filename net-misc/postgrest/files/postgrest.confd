@@ -1,0 +1,16 @@
+# Config file for /etc/init.d/postgrest
+
+# Various options.
+# run `postgrest -h` for valid cmdline options
+#OPTS=""
+
+# User and group daemon runs as
+POSTGREST_USER="postgrest"
+POSTGREST_GROUP="postgrest"
+
+# PostgREST config file
+#CONFIG="/etc/postgrest/postgrest.conf"
+
+# PostgREST
+#POSTGREST_LOG="/var/log/postgrest/output.log"
+#POSTGREST_ERROR="/var/log/postgrest/error.log"

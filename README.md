@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 588](https://img.shields.io/badge/ebuild-588-orange.svg)](https://img.shields.io/badge/ebuild-588-orange.svg)
+[![Number of ebuilds: 589](https://img.shields.io/badge/ebuild-589-orange.svg)](https://img.shields.io/badge/ebuild-589-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -603,6 +603,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * net-misc/[qia](http://stg.codes) | Authorization tool for Stargazer Billing System written in Qt
 * net-misc/[msd](https://github.com/rozhuk-im/msd) | Program for IP TV streaming on the network via HTTP
 * net-misc/[opendrop](https://github.com/seemoo-lab/opendrop) | an Open Source AirDrop Implementation
+* net-misc/[postgrest](https://github.com/PostgREST/postgrest) | REST API for any Postgres database
 * net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
 * net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics
 * net-misc/[s5cmd](https://github.com/peak/s5cmd) | Parallel S3 and local filesystem execution tool

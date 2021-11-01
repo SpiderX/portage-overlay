@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/postgrest"
+command_background="yes"
+name="PostgREST"
+description="PostgREST"
+command_user="${POSTGREST_USER:-postgrest}:${POSTGREST:-postgrest}"
+pidfile="/run/${RC_SVCNAME}.pid"
+config="${CONFIG:-/etc/postgrest/postgrest.conf}"
+command_args="$config ${OPTS}"
+output_log="${POSTGREST_LOG:-/var/log/postgrest/output.log}"
+error_log="${POSTGREST_ERROR:-/var/log/postgrest/error.log}"
+
+depend() {
+	need net
+}
