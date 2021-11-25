@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	aiomultiprocess presents a simple interface, while running a full
+	AsyncIO event loop on each child process, enabling levels of
+	concurrency never before seen in a Python application.
+	Each child process can execute multiple coroutines at once,
+	limited only by the workload and number of cores available.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">omnilib/aiomultiprocess</remote-id>
+		<remote-id type="pypi">aiomultiprocess</remote-id>
+	</upstream>
+</pkgmetadata>
