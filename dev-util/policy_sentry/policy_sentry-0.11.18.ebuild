@@ -3,18 +3,17 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/salesforce/${PN}.git"
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="AWS IAM Least Privilege Policy Generator"
 HOMEPAGE="https://github.com/salesforce/policy_sentry"
-SRC_URI=""
+SRC_URI="https://github.com/salesforce/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
