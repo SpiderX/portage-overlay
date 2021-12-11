@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/knqyf263/${PN}.git"
 
@@ -14,9 +14,6 @@ SRC_URI=""
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="zsh-completion"
-
-RDEPEND="zsh-completion? ( app-shells/zsh-completions )"
 
 src_unpack() {
 	git-r3_src_unpack
@@ -24,25 +21,16 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
-}
-
-src_test() {
-	go test -work || die "test failed"
+	emake build
 }
 
 src_install() {
 	dobin pet
-
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		doins misc/completions/zsh/_pet
-	fi
+	insinto /usr/share/zsh/site-functions
+	doins misc/completions/zsh/_pet
 }
 
 pkg_postinst() {
-	go-module_pkg_postinst
-
 	if ! has_version app-shells/peco && ! has_version app-shells/fzf ; then
 		einfo "You should consider to install app-shells/peco or"
 		einfo "app-shells/fzf to be able to use selector command"
