@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	pretty-simple is a pretty printer for Haskell data types that
+	have a Show instance. pretty-simple can be used to pretty-print
+	the JSON-encoded bar in an easy-to-read format.
+	</longdescription>
+	<use>
+		<flag name="buildexe">Build program that pretty-prints anything from stdin</flag>
+		<flag name="buildexample">Build program showing how to use the pPrint function</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cdepillabout/pretty-simple</remote-id>
+	</upstream>
+</pkgmetadata>
