@@ -34,6 +34,7 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/junit-xml[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
+	dev-python/packageurl[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/policyuniverse[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -50,6 +51,7 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/aioresponses[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}] )"
 
@@ -58,7 +60,7 @@ distutils_enable_tests unittest
 python_prepare_all() {
 	# Disable integration test
 	rm -rf integration_tests || die "rm failed for integration_tests"
-	# Disable tests
+	# Disable tests need input
 	sed -i '/test_load_terraform_registry_check_cache/i\\    @unittest.skip("disable")' \
 		tests/terraform/module_loading/test_registry.py \
 		|| die "sed failed for test_registry.py"
