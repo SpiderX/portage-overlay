@@ -5,7 +5,7 @@ EAPI=7
 
 inherit linux-info linux-mod udev
 
-MY_KV="5.12"
+MY_KV="5.15"
 MY_PV="${PV%*f}"
 
 DESCRIPTION="VMware kernel modules"
@@ -17,7 +17,6 @@ SLOT="${MY_KV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/vmware"
-DEPEND=""
 
 S="${WORKDIR}/vmware-host-modules-w${MY_PV}-k${MY_KV}"
 

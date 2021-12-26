@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/vmware"
-DEPEND=""
 
 S="${WORKDIR}/vmware-host-modules-w${PV}-k${MY_KV}"
 
