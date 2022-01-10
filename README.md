@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 614](https://img.shields.io/badge/ebuild-614-orange.svg)](https://img.shields.io/badge/ebuild-614-orange.svg)
+[![Number of ebuilds: 615](https://img.shields.io/badge/ebuild-615-orange.svg)](https://img.shields.io/badge/ebuild-615-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -550,6 +550,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 * kde-misc/[paneltransparencybutton](https://github.com/psifidotos/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
 * kde-misc/[plasma-applet-eventcalendar](https://github.com/Zren/plasma-applet-eventcalendar) | Plasmoid for a calendar and agenda with weather
+* kde-misc/[plasma-applet-favoriteFolders](https://github.com/enky-marte/plasma-applet-favoriteFolders) | Plasma 5 widget for quick access to favorite folders
 * kde-misc/[Tiled-Quicklaunch](https://github.com/Risu/Tiled-Quicklaunch) | Plasma Menu Widget for KDE
 * media-gfx/[butteraugli](https://github.com/google/butteraugli) | A tool for measuring perceived differences between images
 * media-gfx/[colorpick](https://github.com/agateau/colorpick) | Color picker and contrast checker
