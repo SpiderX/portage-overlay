@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Lightly is a fork of breeze theme style that aims to be visually modern
+	and minimalistic. It is a work in progress theme, there is still a lot
+	to change, so expect bugs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Luwx/Lightly</remote-id>
+	</upstream>
+</pkgmetadata>
