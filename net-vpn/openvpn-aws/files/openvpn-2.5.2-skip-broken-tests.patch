@@ -1,0 +1,13 @@
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index bb23a9c1..e76e1503 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -14,7 +14,7 @@ MAINTAINERCLEANFILES = \
+ 
+ SUBDIRS = unit_tests
+ 
+-test_scripts = t_client.sh t_lpback.sh t_cltsrv.sh
++test_scripts = t_client.sh t_lpback.sh
+ if HAVE_SITNL
+ test_scripts += t_net.sh
+ endif

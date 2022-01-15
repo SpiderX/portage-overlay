@@ -1,0 +1,105 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+config_file="$HOME/.aws-vpn/awsvpn.env"
+
+if [ -f "$config_file" ]; then
+  echo "sourcing $config_file"
+  export $(egrep -v '^#' "$config_file" | xargs)
+else
+  echo "No env file found"
+fi
+
+# Set defaults
+VPN_CONF="${VPN_CONF:=$HOME/.aws-vpn/aws.ovpn}"
+VPN_PORT="${VPN_PORT:=443}"
+VPN_PROTO="${VPN_PROTO:=udp}"
+VPN_HOST="${VPN_HOST:=host}"
+
+if [ "${1-}" == "configure" ]; then
+  echo "Where is your .ovpn file located?: ($VPN_CONF)"
+  read -r new_val
+  VPN_CONF="${new_val:=$VPN_CONF}"
+  echo "VPN_CONF=$VPN_CONF" > "$config_file"
+
+  echo "What is your AWS VPN URL?: ($VPN_HOST)"
+  read -r new_val
+  VPN_HOST="${new_val:=$VPN_HOST}"
+  echo "VPN_HOST=$VPN_HOST" >> "$config_file"
+
+
+  echo "What port? ($VPN_PORT)"
+  read -r new_val
+  VPN_PORT="${new_val:=$VPN_PORT}"
+  echo "VPN_PORT=$VPN_PORT" >> "$config_file"
+
+  echo "What protocol? ($VPN_PROTO)"
+  read -r new_val
+  VPN_PORT="${new_val:=$VPN_PROTO}"
+  echo "VPN_PROTO=$VPN_PROTO" >> "$config_file"
+
+  cat "$config_file"
+  exit 0
+fi
+
+if [[ -z "$VPN_HOST" ]]; then
+  echo "Missing $VPN_HOST"
+  echo "Run awsvpn configure first"
+  exit 1
+fi
+
+if [[ ! -f "$VPN_CONF" ]]; then
+  echo "\$VPN_CONF does not exist ($VPN_CONF)"
+  echo "Run awsvpn configure if you need to change the location"
+  exit 1
+fi
+
+# Idea from https://stackoverflow.com/a/20018504
+coproc awsvpnserver
+srv_pid=$!
+exec 3>&"${COPROC[0]}"
+clean_up () {
+  arg=$?
+  echo "Stopping the server for SAML authentication ($srv_pid)"
+  kill -9 "$srv_pid" > /dev/null 2>&1 || true
+  exit "$arg"
+}
+trap clean_up EXIT
+
+# Give the server a moment to spin up
+sleep 2
+
+# Taken from aws-vpn-client/aws-connect.sh
+# create random hostname prefix for the vpn gw
+prefix=$(openssl rand -hex 12)
+
+# resolve manually hostname to IP, as we have to keep persistent ip address
+host=$(host "${prefix}.${VPN_HOST}"|cut -d' ' -f4|head -n1)
+echo "Getting SAML redirect URL"
+
+# Have openvpn connect with user N/A and Password ACS:35001. This will fail,
+# And the error payload will contain the SAML redirect URL
+initial_response=$(openvpn-aws --config "${VPN_CONF}" --verb 3 \
+     --proto "$VPN_PROTO" --remote "${host}" "$VPN_PORT" \
+     --auth-retry none \
+     --auth-user-pass <( printf "%s\n%s\n" "N/A" "ACS::35001" )  \
+    2>&1 | grep AUTH_FAILED,CRV1)
+
+redirect_url=$(echo "$initial_response" | grep -Eo 'https://.+')
+vpn_sid=$(echo "$initial_response" | awk -F : '{print $7}')
+
+echo "Opening a browser to perform SAML signin"
+xdg-open "$redirect_url"
+
+# Wait up to 30 seconds to log in and get the token
+IFS= read -r -t 30 -u 3 srv_output
+
+echo "Got the SAML token, connecting to the VPN..."
+
+sudo bash -c "openvpn-aws --config \"${VPN_CONF}\" \
+    --verb 3 --auth-nocache --inactive 3600 \
+    --proto \"$VPN_PROTO\" --remote \"${host}\" \"$VPN_PORT\" \
+    --script-security 2 \
+    --auth-user-pass <( printf \"%s\n%s\n\" \"N/A\" \"CRV1::${vpn_sid}::${srv_output}\" )" \
+    "$@"
