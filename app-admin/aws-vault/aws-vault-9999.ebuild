@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/99designs/${PN}.git"
 
@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 DOCS=( {README,USAGE}.md )
 
@@ -24,7 +23,7 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -ldflags="-X main.Version=${PV} -s -w" \
+	go build -ldflags="-X main.Version=${PV} -s -w" -trimpath \
 		-o ./bin/"${PN}" || die "build failed"
 }
 
@@ -41,5 +40,13 @@ src_install() {
 	newins contrib/completions/fish/aws-vault.fish aws-vault
 	insinto /usr/share/zsh/site-functions
 	newins contrib/completions/zsh/aws-vault.zsh _aws-vault
-	dodoc contrib/scripts/aws-iam-create-yubikey-mfa.sh
+	dodoc contrib/scripts/aws-iam-{create,resync}-yubikey-mfa.sh
+}
+
+pkg_postinst() {
+	if ! has_version app-admin/pass && ! has_version kde-apps/kwalletmanager \
+		&& ! has_version gnome-base/gnome-keyring ; then
+		einfo "You should consider to install app-admin/pass, gnome-base/gnome-keyring"
+		einfo "or kde-apps/kwalletmanager to be able to use them as backends"
+	fi
 }
