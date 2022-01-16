@@ -133,6 +133,9 @@ src_install() {
 	einstalldocs
 	dobin bin/aws-vault
 
+	newinitd "${FILESDIR}"/aws-vault.initd aws-vault
+	newconfd "${FILESDIR}"/aws-vault.confd aws-vault
+
 	newbashcomp contrib/completions/bash/aws-vault.bash aws-vault
 	insinto /usr/share/fish/completion
 	newins contrib/completions/fish/aws-vault.fish aws-vault

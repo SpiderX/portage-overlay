@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/aws-vault"
+command_args="${AWSVAULT_OPTS}"
+command_background="yes"
+command_user="${AWSVAULT_USER:-root}:${AWSVAULT_GROUP:-root}"
+description="AWS Vault"
+name="AWS Vault"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

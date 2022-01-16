@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/aws-vault
+
+# extra options (run aws-vault --help for a list of supported options)
+AWSVAULT_OPTS="exec -s"
+
+# User and group aws-vault is configured for
+#AWSVAULT_USER="root"
+#AWSVAULT_GROUP="root"
