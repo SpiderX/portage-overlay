@@ -14,6 +14,6 @@
 	for tracking and monitoring cryptocurrency coin stats in real-time.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">miguelmota/cointop</remote-id>
+		<remote-id type="github">cointop-sh/cointop</remote-id>
 	</upstream>
 </pkgmetadata>

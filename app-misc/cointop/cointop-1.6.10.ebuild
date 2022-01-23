@@ -1,23 +1,17 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-EGIT_REPO_URI="https://github.com/cointop-sh/${PN}.git"
-
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="Interactive cryptocurrency monitor"
-HOMEPAGE="https://github.com/cointop-sh/cointop"
-SRC_URI=""
+HOMEPAGE="https://github.com/miguelmota/cointop"
+SRC_URI="https://github.com/cointop-sh/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
-
-src_unpack() {
-	git-r3_src_unpack
-}
+KEYWORDS="~amd64 ~x86"
 
 src_compile() {
 	GOFLAGS="-v -x -mod=vendor" \
