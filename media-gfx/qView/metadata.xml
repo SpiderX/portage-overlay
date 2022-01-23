@@ -10,7 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	An image viewer designed with minimalism and usability in mind
+	An image viewer designed with minimalism and usability in mind.
+	It is a lightweight image viewer that allows you view JPEG, PNG,
+	GIF, SVG, PSD, KRA, XCF, TGA, AVIF and some other frequently used
+	image formats files quickly and easily.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">jurplel/qView</remote-id>
