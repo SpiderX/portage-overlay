@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
+EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 
 inherit cmake git-r3
 
@@ -15,18 +15,13 @@ LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
 IUSE="ssl static-libs test"
+PROPERTIES="test_network"
 RESTRICT="!test? ( test )"
 
 RDEPEND="ssl? ( net-libs/mbedtls )"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-util/bcunit )"
-
-src_prepare() {
-	sed -i 's/CU_automated_enable_partial_junit/CU_automated_enable_junit_xml/' \
-		src/tester.c || die "sed failed for src/tester.c"
-
-	cmake_src_prepare
-}
+BDEPEND="virtual/pkgconfig
+	test? ( dev-util/bcunit )"
 
 src_configure() {
 	local mycmakeargs=(
@@ -38,4 +33,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	"${S}"_build/tester/bctoolbox_tester || die "tests failed"
+
+	cmake_src_test
 }
