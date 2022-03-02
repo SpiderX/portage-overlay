@@ -15,7 +15,6 @@
 	oriented API. It also comprises a simple HTTP/HTTPS client implementation.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">BC/public/belle-sip</remote-id>
 		<remote-id type="github">BelledonneCommunications/belle-sip</remote-id>
 	</upstream>
 </pkgmetadata>
