@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
+EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 EGIT_SUBMODULES=()
 
 inherit cmake git-r3 xdg
@@ -15,10 +15,10 @@ SRC_URI=""
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
-IUSE=""
 RESTRICT="test" # needs sdk
 
 RDEPEND="dev-libs/belcard
+	dev-libs/jsoncpp:0=
 	dev-libs/liblinphone
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -41,17 +41,25 @@ DOCS=( {CHANGELOG,README}.md )
 
 src_prepare() {
 	# Don't build SDK and app-library targets, remove non-existed directory,
-	# reuse OUTPUT for bin directory, and create share directory
+	# reuse OUTPUT for bin directory, remove RPATH and create directories under share directory
 	sed  -i -e "/ExternalProject_Add(sdk/,+17d" \
 		-e "/app-library/d" \
-		-e "/set(LINPHONE_OUTPUT_DIR/s|/linphone-sdk/desktop||" \
+		-e '/set(LINPHONE_OUTPUT_DIR/s|/linphone-sdk/desktop||' \
 		-e "/set(APPLICATION_OUTPUT_DIR/s|/OUTPUT|/bin|" \
-		-e "\$aadd_custom_target(make-share ALL COMMAND \${CMAKE_COMMAND} -E make_directory \"\${CMAKE_BINARY_DIR}/share\")" \
+		-e "/ORIGIN/d" \
+		-e "\$aadd_custom_target(make-linphone ALL COMMAND \${CMAKE_COMMAND} -E make_directory \"\${CMAKE_BINARY_DIR}/share/linphone\")" \
+		-e "\$aadd_custom_target(make-sounds ALL COMMAND \${CMAKE_COMMAND} -E make_directory \"\${CMAKE_BINARY_DIR}/share/sounds/linphone\")" \
 		CMakeLists.txt || die "sed failed for CMakeLists.txt"
 	# Don't install qt.conf
 	sed -i "/install(FILES \"\${CMAKE_CURRENT_BINARY_DIR}\/..\/..\/qt.conf/d" \
 		linphone-app/cmake_builder/linphone_package/CMakeLists.txt \
 		|| die "sed failed for linphone_package/CMakeLists.txt"
+	# Don't install anything in compile phase and fix headers installation
+	sed -i  -e '/-E copy $<TARGET/d' \
+		-e '/-E copy_directory/d' \
+		-e '/-E make_directory/d' \
+		-e '/install(DIRECTORY/s|\.|${CMAKE_INSTALL_PREFIX}|' \
+		linphone-app/CMakeLists.txt || die "sed failed for linphone-app/CMakeLists.txt"
 
 	cmake_src_prepare
 }
