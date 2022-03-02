@@ -15,7 +15,6 @@
 	provides various interfaces to the framework.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">BC/public/bcunit</remote-id>
 		<remote-id type="github">BelledonneCommunications/bcunit</remote-id>
 	</upstream>
 </pkgmetadata>

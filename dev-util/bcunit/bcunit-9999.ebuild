@@ -1,24 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
+EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 
 inherit cmake git-r3
 
 DESCRIPTION="BC Unit Test Framework"
-HOMEPAGE="https://github.com/BelledonneCommunications/bcunit"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/bcunit"
 SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc examples ncurses static-libs test"
-RESTRICT="test" # fails
+RESTRICT="test" # fails: BCUnit.h: No such file or directory
 
 RDEPEND="ncurses? ( sys-libs/ncurses:0= )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(

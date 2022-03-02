@@ -1,22 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
 DESCRIPTION="BC Unit Test Framework"
-HOMEPAGE="https://github.com/BelledonneCommunications/bcunit"
-SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://gitlab.linphone.org/BC/public/bcunit"
+SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples ncurses static-libs test"
-RESTRICT="test" # fails
+RESTRICT="test" # fails: undefined reference to CU_trace_handler
 
 RDEPEND="ncurses? ( sys-libs/ncurses:0= )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
