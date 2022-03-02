@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
+EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 
 inherit cmake git-r3
 
@@ -49,14 +49,6 @@ RDEPEND="net-libs/bctoolbox[test?]
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
-
-src_prepare() {
-	# Replace wrong function
-	sed -i '/failed to connect to server/s/getSocketErrorWithCode(optVal/getSocketError(/' \
-		src/voip/turn_tcp.cpp || die "sed failed for turn_tcp.cpp"
-
-	cmake_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(

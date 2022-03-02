@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
 DESCRIPTION="Mediastreaming library for telephony application"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/mediastreamer2"
-SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
@@ -47,14 +47,6 @@ RDEPEND="net-libs/bctoolbox[test?]
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
-
-src_prepare() {
-	# Replace wrong function
-	sed -i '/failed to connect to server/s/getSocketErrorWithCode(optVal/getSocketError(/' \
-		src/voip/turn_tcp.cpp || die "sed failed for turn_tcp.cpp"
-
-	cmake_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
