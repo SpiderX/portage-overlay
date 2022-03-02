@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/BelledonneCommunications/${PN}.git"
+EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 
 inherit cmake git-r3
 
@@ -15,11 +15,12 @@ LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
 IUSE="static-libs test tools"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # fails: need environment
 
 RDEPEND="net-libs/bctoolbox[test?]"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/libudev"
+BDEPEND="virtual/libudev
+	virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
@@ -29,4 +30,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	"${S}"_build/tester/belr_tester || die "tests failed"
+
+	cmake_src_test
 }
