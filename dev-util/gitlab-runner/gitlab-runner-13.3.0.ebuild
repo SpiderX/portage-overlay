@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit go-module readme.gentoo-r1 systemd tmpfiles
 
@@ -23,7 +23,7 @@ IUSE="docker"
 RESTRICT="mirror"
 
 RDEPEND="acct-user/gitlab-runner
-	docker? ( app-emulation/docker )"
+	docker? ( app-containers/docker )"
 
 S="${WORKDIR}/${MY_P}"
 
