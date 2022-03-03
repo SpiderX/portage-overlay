@@ -20,7 +20,7 @@ REQUIRED_USE="zrtp? ( srtp )
 	|| ( ffmpeg opengl v4l )"
 
 RDEPEND="net-libs/bctoolbox[test?]
-	net-libs/ortp
+	>=net-libs/ortp-5.1.3
 	alsa? ( media-libs/alsa-lib )
 	bv16? ( media-libs/bv16-floatingpoint )
 	ffmpeg? ( media-video/ffmpeg:0= )
