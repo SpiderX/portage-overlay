@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 615](https://img.shields.io/badge/ebuild-615-orange.svg)](https://img.shields.io/badge/ebuild-615-orange.svg)
+[![Number of ebuilds: 616](https://img.shields.io/badge/ebuild-616-orange.svg)](https://img.shields.io/badge/ebuild-616-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -458,6 +458,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[shouldbe](https://github.com/directxman12/should_be) | A Python Assertions Helper
 * dev-python/[slimit](https://slimit.readthedocs.io/en/latest) | A JavaScript minifier written in Python
 * dev-python/[sniffio](https://github.com/python-trio/sniffio) | Sniff out which async library your code is running under
+* dev-python/[social-auth-core](https://github.com/python-social-auth/social-core) | Python Social Auth - Core
 * dev-python/[sphinx-autobuild](https://github.com/GaretJax/sphinx-autobuild) | Autorebuild documentation on change
 * dev-python/[sphinxcontrib-httpdomain](https://github.com/sphinx-contrib/httpdomain) | Documenting RESTful HTTP APIs
 * dev-python/[sphinxcontrib-mermaid](https://github.com/mgaitan/sphinxcontrib-mermaid) | Mermaid diagrams in sphinx powered docs
