@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/axnsan12/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -20,15 +21,14 @@ IUSE="+validation"
 RDEPEND=">=dev-python/coreapi-2.3.3[${PYTHON_USEDEP}]
 	>=dev-python/coreschema-0.0.4[${PYTHON_USEDEP}]
 	dev-python/django[${PYTHON_USEDEP}]
-	>=dev-python/django-rest-framework-3.7.7[${PYTHON_USEDEP}]
-	>=dev-python/inflection-0.3.1[${PYTHON_USEDEP}]
-	>=dev-python/ruamel-yaml-0.15.34[${PYTHON_USEDEP}]
+	dev-python/djangorestframework[${PYTHON_USEDEP}]
+	dev-python/inflection[${PYTHON_USEDEP}]
+	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	>=dev-python/uritemplate-3.0.0[${PYTHON_USEDEP}]
+	dev-python/uritemplate[${PYTHON_USEDEP}]
 	validation? ( dev-python/swagger_spec_validator[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/datadiff[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/datadiff[${PYTHON_USEDEP}]
 		dev-python/django-cors-headers[${PYTHON_USEDEP}]
 		dev-python/django-fake-model[${PYTHON_USEDEP}]
 		dev-python/django-filter[${PYTHON_USEDEP}]
