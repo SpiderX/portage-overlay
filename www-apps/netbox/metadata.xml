@@ -15,9 +15,6 @@
 	the network engineering team at DigitalOcean, NetBox was developed
 	specifically to address the needs of network and infrastructure engineers.
 	</longdescription>
-	<use>
-		<flag name="webhooks">Enable webhooks via django-rq</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">netbox-community/netbox</remote-id>
 	</upstream>

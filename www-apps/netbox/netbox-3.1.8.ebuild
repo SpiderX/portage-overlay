@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8,9} )
 WEBAPP_MANUAL_SLOT="yes"
@@ -15,38 +15,38 @@ SRC_URI="https://github.com/netbox-community/${PN}/archive/v${PV}.tar.gz -> ${P}
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ldap vhosts webhooks"
+IUSE="ldap vhosts"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="acct-group/netbox
-	acct-user/netbox
+RDEPEND="acct-user/netbox
 	${PYTHON_DEPS}
-	>=dev-python/django-3.2[${PYTHON_USEDEP}]
-	dev-python/django-cacheops[${PYTHON_USEDEP}]
+	<dev-python/django-4[${PYTHON_USEDEP}]
 	dev-python/django-cors-headers[${PYTHON_USEDEP}]
 	dev-python/django-debug-toolbar[${PYTHON_USEDEP}]
 	dev-python/django-filter[${PYTHON_USEDEP}]
 	dev-python/django-mptt[${PYTHON_USEDEP}]
 	dev-python/django-pglocks[${PYTHON_USEDEP}]
 	dev-python/django-prometheus[${PYTHON_USEDEP}]
-	dev-python/django-rest-framework[${PYTHON_USEDEP}]
+	dev-python/django-redis[${PYTHON_USEDEP}]
+	dev-python/django-rq[${PYTHON_USEDEP}]
 	dev-python/django-tables2[${PYTHON_USEDEP}]
 	dev-python/django-taggit[${PYTHON_USEDEP}]
 	dev-python/django-timezone-field[${PYTHON_USEDEP}]
+	dev-python/djangorestframework[${PYTHON_USEDEP}]
 	dev-python/drf-yasg[${PYTHON_USEDEP}]
+	dev-python/graphene-django[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
+	dev-python/markdown-include[${PYTHON_USEDEP}]
 	dev-python/netaddr[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/psycopg:2[${PYTHON_USEDEP}]
-	dev-python/py-gfm[${PYTHON_USEDEP}]
-	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/redis-py[${PYTHON_USEDEP}]
+	dev-python/social-auth-core[${PYTHON_USEDEP}]
+	dev-python/social-auth-app-django[${PYTHON_USEDEP}]
 	dev-python/svgwrite[${PYTHON_USEDEP}]
 	dev-python/tablib[${PYTHON_USEDEP}]
-	ldap? ( dev-python/django-auth-ldap[${PYTHON_USEDEP}] )
-	webhooks? ( dev-python/django-rq[${PYTHON_USEDEP}] )"
+	ldap? ( dev-python/django-auth-ldap[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,README}.md )
@@ -68,10 +68,8 @@ src_install() {
 
 	webapp_src_install
 
-	if use webhooks ; then
-		newinitd "${FILESDIR}"/netbox-rqworker.initd netbox-rqworker
-		newconfd "${FILESDIR}"/netbox-rqworker.confd netbox-rqworker
-	fi
+	newinitd "${FILESDIR}"/netbox-rqworker.initd netbox-rqworker
+	newconfd "${FILESDIR}"/netbox-rqworker.confd netbox-rqworker
 	diropts -o netbox -g netbox -m 0700
 	keepdir /var/log/netbox
 }
@@ -111,9 +109,7 @@ pkg_config() {
 	if [ ! -d "${path}/static" ] ; then
 		# Collect static files
 		"${path}"/manage.py collectstatic || die "collectstatic failed"
-
 		fowners -R netbox:netbox "${path}"/static
-		#chown -R netbox:netbox "${path}"/static || die "chown failed"
 	else
 		einfo "Not managing static files since ${path}/static exists"
 	fi
