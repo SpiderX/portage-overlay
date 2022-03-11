@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	pytest-random-order is a pytest plugin that randomises the order of tests.
+	This can be useful to detect a test that passes just because it happens
+	to run after an unrelated test that leaves the system in a favourable state.
+	The plugin allows user to control the level of randomness they want
+	to introduce and to disable reordering on subsets of tests.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jbasko/pytest-random-order</remote-id>
+		<remote-id type="pypi">pytest-random-order</remote-id>
+	</upstream>
+</pkgmetadata>
