@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/marcgibbons/${PN}.git"
@@ -17,15 +17,14 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="dev-python/coreapi[${PYTHON_USEDEP}]
-	dev-python/django-rest-framework[${PYTHON_USEDEP}]
+	dev-python/djangorestframework[${PYTHON_USEDEP}]
 	dev-python/python-openapi-codec[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 python_test() {
-	# no verbose in tests
-	./runtests.py || die "tests failed with ${EPYTHON}"
+	DJANGO_SETTINGS_MODULE=tests.settings PYTHONPATH=. epytest \
+		|| die "tests failed with ${EPYTHON}"
 }
