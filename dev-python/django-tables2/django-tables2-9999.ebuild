@@ -18,8 +18,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite)
-		dev-python/django-filter[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/django-filter[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
