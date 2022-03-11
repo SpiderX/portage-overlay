@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/heywbj/${PN}.git"
 
@@ -16,15 +17,12 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-python/django-rest-framework[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/djangorestframework[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
-
-# remove incorrectly defined test
-PATCHES=( "${FILESDIR}/${PN}"-0.1.2-test.patch )
 
 distutils_enable_tests pytest
 
-python_test() {
-	./runtests.py -v || die "tests failed with ${EPYTHON}"
-}
+EPYTEST_DESELECT=(
+	# serialized data does not match input
+	tests/test_recursive.py::TestRecursiveField::test_many_null_serializer
+)
