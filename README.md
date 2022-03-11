@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 617](https://img.shields.io/badge/ebuild-617-orange.svg)](https://img.shields.io/badge/ebuild-617-orange.svg)
+[![Number of ebuilds: 618](https://img.shields.io/badge/ebuild-618-orange.svg)](https://img.shields.io/badge/ebuild-618-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -350,6 +350,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[django-debug-toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar) | A configurable set of panels that display debug information
 * dev-python/[django-environ](https://github.com/joke2k/django-environ) | An environment variables to configure Django
 * dev-python/[django-fake-model](https://github.com/erm0l0v/django-fake-model) | A library for creating fake models in the unit tests
+* dev-python/[django-graphiql-debug-toolbar](https://github.com/flavors/django-graphiql-debug-toolbar) | Django Debug Toolbar for GraphiQL IDE
 * dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | Implementation of per object permissions for Django
 * dev-python/[django-jsonfield](https://github.com/dmkoch/django-jsonfield) | A Django field to store validated JSON in your model
 * dev-python/[django-jinja](https://github.com/niwinz/django-jinja) | Jinja2 templating language integrated in Django
