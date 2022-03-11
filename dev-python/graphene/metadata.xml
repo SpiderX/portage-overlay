@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Graphene is an opinionated Python library for building GraphQL schemas
+	and types fast and easily. Graphene supports any kind of data source:
+	SQL (Django, SQLAlchemy), NoSQL, custom Python objects, etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">graphql-python/graphene</remote-id>
+		<remote-id type="pypi">graphene</remote-id>
+	</upstream>
+</pkgmetadata>
