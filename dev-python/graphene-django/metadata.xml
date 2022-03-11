@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Graphene-Django is built on top of Graphene.
+	Graphene-Django provides some additional abstractions that make
+	it easy to add GraphQL functionality to your Django project.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">graphql-python/graphene-django</remote-id>
+		<remote-id type="pypi">graphene-django</remote-id>
+	</upstream>
+</pkgmetadata>
