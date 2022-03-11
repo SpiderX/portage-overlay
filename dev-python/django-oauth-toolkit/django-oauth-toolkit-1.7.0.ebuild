@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
@@ -13,17 +14,17 @@ SRC_URI="https://github.com/jazzband/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/jwcrypto[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
-		dev-python/django-rest-framework[${PYTHON_USEDEP}]
+		dev-python/djangorestframework[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}] ) "
+		dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
