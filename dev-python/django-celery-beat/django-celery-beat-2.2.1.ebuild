@@ -5,17 +5,16 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8,9} )
-EGIT_REPO_URI="https://github.com/celery/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Celery Periodic Tasks for Django"
 HOMEPAGE="https://github.com/celery/django-celery-beat"
-SRC_URI=""
+SRC_URI="https://github.com/celery/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/celery[${PYTHON_USEDEP}]
 	dev-python/django-timezone-field[${PYTHON_USEDEP}]
