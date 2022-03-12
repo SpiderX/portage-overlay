@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 
-inherit autotools readme.gentoo-r1 systemd wxwidgets
+inherit autotools systemd wxwidgets
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://urbackup.org"
@@ -22,7 +22,7 @@ RDEPEND="acct-user/urbackup
 	dev-libs/crypto++:0=
 	dev-libs/icu:0=
 	sys-libs/zlib:0=
-	X? ( x11-libs/wxGTK:${WX_GTK_VER} )"
+	X? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
