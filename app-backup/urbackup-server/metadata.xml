@@ -22,7 +22,6 @@
 	can be restored with a bootable CD or USB-Stick (bare metal restore).
 	</longdescription>
 	<use>
-		<flag name="cryptopp">Enables encrypted transfers and thus internet backups</flag>
 		<flag name="fuse">Enables mounting VHD containers via FUSE</flag>
 	</use>
 	<upstream>

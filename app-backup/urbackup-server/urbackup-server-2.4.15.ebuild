@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools readme.gentoo-r1 systemd
 
@@ -12,13 +12,14 @@ SRC_URI="https://hndl.urbackup.org/Server/${PV}/${P}.tar.gz"
 LICENSE="AGPL-3+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="cryptopp curl debug hardened fuse zlib"
+IUSE="curl debug hardened fuse zlib"
 
-# dev-lang/lua:5.3 masked, using embedded
 DEPEND="acct-user/urbackup
+	app-arch/zstd:0=
 	dev-db/lmdb:0=
 	dev-db/sqlite:3
-	cryptopp? ( dev-libs/crypto++:0= )
+	dev-lang/lua:5.4
+	dev-libs/crypto++:0=
 	curl? ( net-misc/curl )
 	fuse? ( sys-fs/fuse:0 )
 	zlib? ( sys-libs/zlib:0= )"
@@ -49,14 +50,17 @@ src_prepare() {
 }
 
 src_configure() {
-	econf "$(use_with cryptopp crypto)" \
-		"$(use_with curl mail)" \
+	econf "$(use_with curl mail)" \
 		"$(use_enable debug assertions)" \
 		"$(use_with fuse mountvhd)" \
 		"$(use_with zlib)" \
 		"$(usex hardened --enable-fortify "")" \
+		--disable-embedded-cryptopp \
+		--disable-embedded-zstd \
 		--enable-packaging \
+		--with-cryptopp \
 		--without-embedded-lmdb \
+		--without-embedded-lua \
 		--without-embedded-sqlite3
 }
 
