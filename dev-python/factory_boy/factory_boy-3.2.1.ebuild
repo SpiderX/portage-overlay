@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -17,8 +18,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="dev-python/Faker[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite)
-		dev-python/django[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}]
 		dev-python/mongoengine[${PYTHON_USEDEP}]
 		dev-python/pillow[jpeg,${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}] )"
