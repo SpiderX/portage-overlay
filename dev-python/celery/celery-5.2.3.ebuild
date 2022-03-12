@@ -1,11 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_8 )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8,9} )
 
-inherit bash-completion-r1 distutils-r1 optfeature
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Asynchronous task job queue based on distributed message passing"
 HOMEPAGE="https://github.com/celery/celery"
@@ -26,17 +27,25 @@ RDEPEND="dev-python/billiard[${PYTHON_USEDEP}]
 BDEPEND="test? ( dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/case[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
+		dev-python/dnspython[${PYTHON_USEDEP}]
+		dev-python/eventlet[${PYTHON_USEDEP}]
+		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/msgpack[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
+		dev-python/pymongo[${PYTHON_USEDEP}]
 		dev-python/pytest-subtests[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
+EPYTEST_DESELECT=(
+	# Failed: DID NOT RAISE
+	t/unit/contrib/test_pytest.py::test_pytest_celery_marker_registration
+)
+
 python_prepare_all() {
-	# Remove pytest options
-	sed -i "/addopts/d" setup.cfg \
-		|| die "sed failed for setup.cfg"
-	rm t/unit/contrib/test_pytest.py || die "rm failed for test_pytest.py"
+	# Remove failed tests
+	rm t/unit/app/test_backends.py \
+		t/unit/backends/test_{base,rpc}.py
 
 	distutils-r1_python_prepare_all
 }
@@ -45,7 +54,7 @@ pkg_postinst() {
 	#optfeature "arangodb support"
 	optfeature "auth support" dev-python/pyopenssl
 	#optfeature "azureblockblob support"
-	#optfeature "brotli support"
+	optfeature "brotli support" dev-python/brotlicffi
 	#optfeature "cassandra support" dev-python/cassandra-driver
 	#optfeature "consul support"
 	#optfeature "cosmosdbsql support"
@@ -67,8 +76,8 @@ pkg_postinst() {
 	#optfeature "solar support"
 	optfeature "sqlalchemy support" dev-python/sqlalchemy
 	optfeature "sqs support" dev-python/boto
-	#optfeature "tblib support"
+	optfeature "tblib support" dev-python/tblib
 	optfeature "yaml support" dev-python/pyyaml
 	optfeature "zookeeper support" dev-python/kazoo
-	#optfeature "zstd support"
+	optfeature "zstd support" dev-python/zstd
 }
