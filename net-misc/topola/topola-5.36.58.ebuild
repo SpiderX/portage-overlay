@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+# shellcheck disable=SC2086
+
+EAPI=8
 
 TOPOLA_BASE_PV="5.36.07"
 TOPOLA_BASE_P="${PN}-base-${TOPOLA_BASE_PV}"
@@ -54,8 +56,7 @@ pkg_nofetch() {
 		eerror "  and download"
 		eerror "TopolA: Main binaries i686+x86_64 (Licensed):"
 		eerror "    ${TOPOLA_LICENSED_BIN_P}.bin"
-		eerror "After downloading, put it in:"
-		eerror "  ${DISTDIR}/"
+		eerror "After downloading, put it into your DISTDIR directory."
 	fi
 }
 
@@ -72,7 +73,7 @@ my_unpack() {
 
 src_unpack() {
 	# Put $A into array for further access to its elements
-	IFS=" " read -r -a MY_A <<<"${A}"
+	IFS=" " read -r -a MY_A <<<${A}
 	use base           && my_unpack "${TOPOLA_BASE_P}" 88
 	use unlicensed-bin && my_unpack "${TOPOLA_UNLICENSED_BIN_P}" 90
 	use licensed-bin   && my_unpack "${TOPOLA_LICENSED_BIN_P}" 90
