@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 616](https://img.shields.io/badge/ebuild-616-orange.svg)](https://img.shields.io/badge/ebuild-616-orange.svg)
+[![Number of ebuilds: 615](https://img.shields.io/badge/ebuild-615-orange.svg)](https://img.shields.io/badge/ebuild-615-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -256,7 +256,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 * dev-ml/[biniou](https://github.com/ocaml-community/biniou) | Extensible binary data format, like JSON but faster
 * dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
-* dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | Camomile is a comprehensive Unicode library for ocaml
 * dev-ml/[dune](https://github.com/ocaml/dune) | A composable build system for OCaml
 * dev-ml/[extlib](https://github.com/ygrek/ocaml-extlib) | Standard library extensions for O'Caml
 * dev-ml/[gd4o](https://github.com/savonet/gd4o) | OCaml interface to the GD graphics library
