@@ -10,12 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for the fdk=aac library
+	This package contains an OCaml interface (OCaml binding)
+	for the fdk-aac library (The FDK AAC Codec Library).
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-fdkaac</remote-id>
 	</upstream>
