@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_9 ) #
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg
 
@@ -11,6 +11,7 @@ PV_BUILD=$(ver_cut 4)
 MY_PN="VMware-Workstation-Full"
 MY_PV=$(ver_cut 1-3)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
+MY_ED="$ED"
 
 VMWARE_FUSION_VER="12.2.1/18811640"
 SYSTEMD_UNITS_TAG="gentoo-02"
@@ -120,9 +121,9 @@ src_prepare() {
 	fi
 
 	if use macos-guests ; then
-		sed -i  -e "s#vmx_path = '/usr#vmx_path = '${ED}/opt/vmware#" \
-			-e "s#os.path.isfile('/usr#os.path.isfile('${ED}/opt/vmware#" \
-			-e "s#vmwarebase = '/usr#vmwarebase = '${ED}/opt/vmware#" \
+		sed -i  -e "s#vmx_path = '/usr#vmx_path = '${MY_ED}/opt/vmware#" \
+			-e "s#os.path.isfile('/usr#os.path.isfile('${MY_ED}/opt/vmware#" \
+			-e "s#vmwarebase = '/usr#vmwarebase = '${MY_ED}/opt/vmware#" \
 			"${WORKDIR}"/unlocker-"${UNLOCKER_VERSION}"/unlocker.py
 	fi
 
