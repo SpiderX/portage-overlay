@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/IJHack/${PN}.git"
 
@@ -28,8 +28,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 BDEPEND="dev-qt/linguist-tools:5"
 
-RESTRICT="!test? ( test )"
-
 DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
 
 src_prepare() {
@@ -42,7 +40,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 PREFIX="${D}"/usr
+	eqmake5 PREFIX="${EPREFIX}"/usr
 }
 
 src_test() {
