@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop pax-utils unpacker xdg
 
@@ -16,8 +16,9 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
 
-RDEPEND="x11-libs/gtk+:3
-	net-libs/webkit-gtk:4"
+RDEPEND="net-libs/libsoup:2.4
+	net-libs/webkit-gtk:4
+	x11-libs/gtk+:3"
 
 QA_PREBUILT="opt/workspacesclient/workspacesclient
 		opt/workspacesclient/libpcoip_core.so
