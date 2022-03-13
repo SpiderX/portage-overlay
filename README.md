@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 617](https://img.shields.io/badge/ebuild-617-orange.svg)](https://img.shields.io/badge/ebuild-617-orange.svg)
+[![Number of ebuilds: 616](https://img.shields.io/badge/ebuild-616-orange.svg)](https://img.shields.io/badge/ebuild-616-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -109,7 +109,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * app-editors/[FeatherPad](https://github.com/tsujan/FeatherPad) | Lightweight Qt5 plain-text editor
 * app-editors/[lite](https://github.com/rxi/lite) | A lightweight text editor written in Lua
 * app-editors/[micro](https://github.com/zyedidia/micro) | A modern and intuitive terminal-based text editor
-* app-editors/[visual-studio-code-bin](https://code.visualstudio.com) | Editor for building and debugging modern web and cloud applications
 * app-emulation/[looking-glass](https://looking-glass.hostfission.com) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 * app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
 * app-emulation/[vmware-modules](https://github.com/mkubecek/vmware-host-modules) | VMware kernel modules
