@@ -2,7 +2,7 @@
 
 _cli_bash_autocomplete() {
   if [[ "${COMP_WORDS[0]}" != "source" ]]; then
-    local cur opts base
+    local cur opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     if [[ "$cur" == "-"* ]]; then
