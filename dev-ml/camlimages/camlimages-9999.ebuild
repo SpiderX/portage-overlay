@@ -3,15 +3,17 @@
 
 EAPI=8
 
-inherit dune
+EGIT_REPO_URI="https://github.com/camlspotter/${PN}.git"
+
+inherit dune git-r3
 
 DESCRIPTION="An image manipulation library for ocaml"
 HOMEPAGE="https://gitlab.com/camlspotter/camlimages"
-SRC_URI="https://gitlab.com/camlspotter/${PN}/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI=""
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="exif gif gtk jpeg +ocamlopt png postscript tiff truetype X xpm"
 
 RDEPEND="exif? ( media-libs/libexif )
