@@ -14,10 +14,7 @@
 	These functions are implemented almost entirely in OCaml, not as
 	bindings to the standard C library.
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">ocaml/opam-repository</remote-id>
+		<remote-id type="github">geneanet/ocaml-syslog</remote-id>
 	</upstream>
 </pkgmetadata>
