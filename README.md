@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 613](https://img.shields.io/badge/ebuild-613-orange.svg)](https://img.shields.io/badge/ebuild-613-orange.svg)
+[![Number of ebuilds: 614](https://img.shields.io/badge/ebuild-614-orange.svg)](https://img.shields.io/badge/ebuild-614-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -257,6 +257,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 * dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
 * dev-ml/[gd4o](https://github.com/savonet/gd4o) | OCaml interface to the GD graphics library
+* dev-ml/[memtrace](https://github.com/janestreet/memtrace) | Streaming client for OCaml's Memprof
 * dev-ml/[ocaml-alsa](https://github.com/savonet/ocaml-alsa) | OCaml bindings to alsa-lib
 * dev-ml/[ocaml-ao](https://github.com/savonet/ocaml-ao) | OCaml bindings to libao
 * dev-ml/[ocaml-bjack](https://github.com/savonet/ocaml-bjack) | OCaml blocking JACK API
