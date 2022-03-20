@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 619](https://img.shields.io/badge/ebuild-619-orange.svg)](https://img.shields.io/badge/ebuild-619-orange.svg)
+[![Number of ebuilds: 620](https://img.shields.io/badge/ebuild-620-orange.svg)](https://img.shields.io/badge/ebuild-620-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -295,6 +295,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-ml/[ocaml-syslog](https://github.com/geneanet/ocaml-syslog) | OCaml syslog client functions
 * dev-ml/[ocaml-taglib](https://github.com/savonet/ocaml-taglib) | OCaml bindings to taglib
 * dev-ml/[ocaml-theora](https://github.com/savonet/ocaml-theora) | OCaml bindings to libtheora
+* dev-ml/[ocaml-unix-errno](https://github.com/xapi-project/ocaml-unix-errno) | Unix errno types, maps, and support for OCaml
 * dev-ml/[ocaml-vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
 * dev-ml/[ocaml-xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
 * dev-ml/[xmlm](http://erratique.ch/software/xmlm) | Ocaml XML manipulation module

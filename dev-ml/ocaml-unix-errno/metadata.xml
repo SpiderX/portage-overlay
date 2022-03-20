@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	ocaml-unix-errno provides an errno variant similar to Unix.error
+	but including POSIX 2008, Linux, OS X, and FreeBSD constructors.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">xapi-project/ocaml-unix-errno</remote-id>
+	</upstream>
+</pkgmetadata>
