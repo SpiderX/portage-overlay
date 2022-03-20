@@ -18,24 +18,25 @@
 	</longdescription>
 	<use>
 		<flag name="camlimages">Support for image manipulation library</flag>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
 		<flag name="dssi">Support for DSSI sound synthesis</flag>
 		<flag name="faad"><pkg>media-libs/faad2</pkg> decoding</flag>
 		<flag name="fdk"><pkg>media-libs/fdk-aac</pkg> decoding</flag>
 		<flag name="frei0r">Support for <pkg>media-plugins/frei0r-plugins</pkg></flag>
-		<flag name="gavl"><pkg>media-libs/gavl</pkg> video conversion</flag>
 		<flag name="graphics">Support for graphics in streams</flag>
-		<flag name="gui">Enable gui support</flag>
 		<flag name="json">Data import and export through json.</flag>
 		<flag name="ladspa">Support for Audio Developer's Simple Plugin API</flag>
 		<flag name="lastfm">Support for lastfm audioscrobbling and the like</flag>
+		<flag name="lilv">Support for LV2 audio plugins</flag>
+		<flag name="lo">Support for Lightweight Open Sound Control</flag>
 		<flag name="osc">Support for Lightweight OSC implementation</flag>
 		<flag name="magic">Enable filetype auto-detection</flag>
+		<flag name="memtrace">Enable client for OCaml Memprof</flag>
+		<flag name="memusage">Enable gathering statistics on memory usage</flag>
 		<flag name="opus">Support for Opus audio codec</flag>
-		<flag name="profiling">Build support for profiling</flag>
 		<flag name="shine">Support for fixed-point mp3 encoding</flag>
 		<flag name="shout">Stream to Shoutcast and Icecast</flag>
-		<flag name="soundtouch"><pkg>media-libs/libsoundtouch</pkg> effects.</flag>
+		<flag name="soundtouch"><pkg>media-libs/libsoundtouch</pkg> effects</flag>
+		<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">savonet/liquidsoap</remote-id>

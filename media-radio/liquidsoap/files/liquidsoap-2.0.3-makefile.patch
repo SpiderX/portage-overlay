@@ -1,0 +1,20 @@
+--- ../Makefile	2022-03-20 22:59:27.454203349 +0200
++++ ../Makefile	2022-03-20 23:00:50.022205680 +0200
+@@ -69,8 +69,7 @@
+ 
+ install-local: doc-install
+ ifeq ($(INSTALL_DAEMON),yes)
+-	$(INSTALL_DIRECTORY) -o ${user} -g ${group} -m 2775 ${localstatedir}/log/liquidsoap
+-	$(INSTALL_DIRECTORY) -o ${user} -g ${group} -m 2775 ${localstatedir}/run/liquidsoap
++	$(INSTALL_DIRECTORY) -o ${user} -g ${group} -m 2775 ${DESTDIR}/var/log/liquidsoap
+ endif
+ 	$(INSTALL_DIRECTORY) $(bindir)
+ 	$(INSTALL_DIRECTORY) $(liq_libs_dir)/bin
+@@ -83,7 +82,5 @@
+ 	$(INSTALL_DATA) examples/radio.liq ${sysconfdir}/liquidsoap/radio.liq.example
+ 	$(INSTALL_DIRECTORY) ${sysconfdir}/logrotate.d
+ 	$(INSTALL_DATA) scripts/liquidsoap.logrotate ${sysconfdir}/logrotate.d/liquidsoap
+-	-$(INSTALL_DIRECTORY) ${bashcompdir}
+-	-$(INSTALL_DATA) scripts/bash-completion ${bashcompdir}/liquidsoap
+ 	$(INSTALL_DIRECTORY) ${emacsdir}
+ 	$(INSTALL_DATA) scripts/liquidsoap-mode.el ${emacsdir}/
