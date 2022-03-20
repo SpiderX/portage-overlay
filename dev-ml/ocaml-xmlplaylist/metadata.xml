@@ -10,12 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A parser for various xml playlist
+	This package contains a parser for various xml playlist,
+	used to parse various file playlists in XML format.
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-xmlplaylist</remote-id>
 	</upstream>
