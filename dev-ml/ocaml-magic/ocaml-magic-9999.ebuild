@@ -3,15 +3,17 @@
 
 EAPI=7
 
-inherit autotools findlib
+EGIT_REPO_URI="https://github.com/Chris00/${PN}.git"
+
+inherit autotools findlib git-r3
 
 DESCRIPTION="OCaml bindings to libmagic"
 HOMEPAGE="https://github.com/Chris00/ocaml-magic"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 DOCS=( ChangeLog )
 

@@ -10,9 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for libmagic
+	This package provides OCaml interface (Ocaml bindings) for
+	libmagic (to determine the type of files).
 	</longdescription>
 	<upstream>
+		<remote-id type="github">Chris00/ocaml-magic</remote-id>
 		<remote-id type="sourceforge">ocaml-magic</remote-id>
 	</upstream>
 </pkgmetadata>
