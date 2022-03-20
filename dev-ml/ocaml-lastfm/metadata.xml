@@ -10,12 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for Lastfm API interface
+	This package contains an OCaml interface for Lastfm API interface,
+	used by the last.fm to keep count of played songs.
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-lastfm</remote-id>
 	</upstream>
