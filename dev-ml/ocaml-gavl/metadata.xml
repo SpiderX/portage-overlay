@@ -10,12 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for Gmerlin Audio Video Library
+	This package contains an OCaml interface for Gmerlin Audio Video
+	Library, otherwise known as gavl, which provides functions for
+	converting images formats, colorspaces, etc.
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-gavl</remote-id>
 	</upstream>

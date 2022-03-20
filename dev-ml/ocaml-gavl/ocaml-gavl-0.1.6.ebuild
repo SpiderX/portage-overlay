@@ -1,41 +1,32 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools findlib
+inherit findlib
 
 DESCRIPTION="OCaml bindings to Gavl video manipulation library"
 HOMEPAGE="https://github.com/savonet/ocaml-gavl"
-SRC_URI="https://github.com/savonet/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://api.github.com/repos/savonet/${PN}/tarball/a6ab72d -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+camlp4 debug +ocamlopt profiling"
 
-RDEPEND="dev-lang/ocaml:=[ocamlopt?]
-	media-libs/gavl
-	camlp4? ( dev-ml/camlp4:=[ocamlopt?] )"
-DEPEND="${RDEPEND}
-	dev-ml/findlib[ocamlopt?]
-	virtual/pkgconfig"
+RDEPEND="media-libs/gavl"
+
+S="${WORKDIR}/savonet-${PN}-a6ab72d"
 
 DOCS=( CHANGES README )
 
 src_prepare() {
 	default
 
-	sed -i 's/AC_CHECK_TOOL_STRICT/AC_CHECK_TOOL/g' m4/ocaml.m4 \
-		|| die "Failed editing m4/ocaml.m4!"
-	AT_M4DIR="m4" eautoreconf
+	./bootstrap || die "bootstrap failed"
 }
 
 src_configure() {
-	econf "$(use_enable camlp4)" \
-		"$(use_enable debug debugging)" \
-		"$(use_enable ocamlopt nativecode)" \
-		"$(use_enable profiling)"
+	econf "$(use_enable ocamlopt nativecode)" --host=''
 }
 
 src_install() {
