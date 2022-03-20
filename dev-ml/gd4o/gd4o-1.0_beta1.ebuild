@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,16 +12,12 @@ SRC_URI="https://api.github.com/repos/savonet/${PN}/tarball/5097a27 -> ${P}.tar.
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ocamlopt"
 
-RDEPEND="dev-lang/ocaml:=[ocamlopt?]
-	media-libs/gd[jpeg,png]
+RDEPEND="media-libs/gd[jpeg,png]
 	media-libs/freetype:2
 	media-libs/libpng:0=
 	sys-libs/zlib:=
 	virtual/jpeg:0"
-DEPEND="${DEPEND}
-	dev-ml/findlib[ocamlopt?]"
 
 S="${WORKDIR}/savonet-${PN}-5097a27"
 
