@@ -4,17 +4,16 @@
 EAPI=8
 
 DUNE_PKG_NAME="frei0r"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 
-inherit dune git-r3
+inherit dune
 
 DESCRIPTION="OCaml bindings to frei0r plugins"
 HOMEPAGE="https://github.com/savonet/ocaml-frei0r"
-SRC_URI=""
+SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="media-plugins/frei0r-plugins"
