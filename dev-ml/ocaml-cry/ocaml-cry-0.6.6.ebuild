@@ -4,17 +4,16 @@
 EAPI=8
 
 DUNE_PKG_NAME="cry"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 
-inherit dune git-r3
+inherit dune
 
 DESCRIPTION="OCaml native module for icecast/shoutcast source protocols"
 HOMEPAGE="https://github.com/savonet/ocaml-cry"
-SRC_URI=""
+SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/ocaml-ssl:0="

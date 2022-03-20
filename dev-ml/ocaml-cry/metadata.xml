@@ -10,12 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml low level implementation of the shout protocol
+	This package contains an OCaml implementation of the various icecast
+	and shoutcast source client protocols to connect to streaming servers
+	such as icecast
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-cry</remote-id>
 	</upstream>
