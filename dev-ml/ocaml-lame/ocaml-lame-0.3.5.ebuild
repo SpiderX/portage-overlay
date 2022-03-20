@@ -17,7 +17,4 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="media-sound/lame"
-DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/dune-configurator:0="
-
-DOCS=( CHANGES README.me )
