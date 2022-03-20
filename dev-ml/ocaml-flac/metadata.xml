@@ -10,12 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for Free Lossless Audio Codec
+	This package contains an OCaml interface (OCaml bindings) for the
+	flac library, Free Lossless Audio Codec
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-flac</remote-id>
 	</upstream>
