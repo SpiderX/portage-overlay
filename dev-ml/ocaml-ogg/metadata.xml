@@ -13,10 +13,6 @@
 	This package contains an OCaml interface (bindings) for
 	Ogg Bitstream Library, otherwise known as libogg.
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-ogg</remote-id>
 	</upstream>
