@@ -13,10 +13,6 @@
 	This package contains an OCaml interface (binding) for
 	Theora Video Compression Codec Library, otherwise known as libtheora.
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-theora</remote-id>
 	</upstream>
