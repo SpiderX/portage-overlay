@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 616](https://img.shields.io/badge/ebuild-616-orange.svg)](https://img.shields.io/badge/ebuild-616-orange.svg)
+[![Number of ebuilds: 617](https://img.shields.io/badge/ebuild-617-orange.svg)](https://img.shields.io/badge/ebuild-617-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -280,6 +280,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-ml/[ocaml-lo](https://github.com/savonet/ocaml-lo) | OCaml bindings to liblo
 * dev-ml/[ocaml-mad](https://github.com/savonet/ocaml-mad) | OCaml bindings to libmad
 * dev-ml/[ocaml-magic](https://github.com/Chris00/ocaml-magic) | OCaml bindings to libmagic
+* dev-ml/[ocaml-mem_usage](https://github.com/savonet/ocaml-mem_usage) | Cross-platform memory usage information
 * dev-ml/[ocaml-mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
 * dev-ml/[ocaml-ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 * dev-ml/[ocaml-opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
