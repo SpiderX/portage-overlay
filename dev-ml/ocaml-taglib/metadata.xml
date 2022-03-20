@@ -10,12 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	OCaml interface for TagLib Audio Meta-Data Library
+	This package contains an OCaml interface for TagLib Audio Meta-Data
+	Library, otherwise known as taglib, which provides functions for
+	reading tags in headers of audio files.
 	</longdescription>
-	<use>
-		<flag name="camlp4">Enable camlp4 syntax extension</flag>
-		<flag name="profiling">Build support for profiling</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">savonet/ocaml-taglib</remote-id>
 	</upstream>
