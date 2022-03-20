@@ -299,7 +299,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-ml/[ocaml-vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
 * dev-ml/[ocaml-xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
 * dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
-* dev-ml/[xmlm](http://erratique.ch/software/xmlm) | Ocaml XML manipulation module
+* dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 * dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 * dev-php/[spx](https://github.com/NoiseByNorthwest/php-spx) | A PHP wrapper fo the scrypt hashing algorithm
 * dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator

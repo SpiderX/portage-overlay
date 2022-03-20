@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/dbuenzli/xmlm.git"
+EGIT_REPO_URI="https://github.com/dbuenzli/${PN}.git"
 
 inherit git-r3 opam
 
 DESCRIPTION="Ocaml XML manipulation module"
-HOMEPAGE="http://erratique.ch/software/xmlm https://github.com/dbuenzli/xmlm"
+HOMEPAGE="https://github.com/dbuenzli/xmlm"
 SRC_URI=""
 
 LICENSE="ISC"
@@ -17,10 +17,7 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	dev-ml/findlib
-	dev-ml/topkg:="
+BDEPEND="dev-ml/topkg:="
 
 src_compile() {
 	ocaml pkg/pkg.ml build \
