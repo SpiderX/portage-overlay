@@ -17,7 +17,4 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="media-libs/fdk-aac:="
-DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/dune-configurator:0="
-
-DOCS=( CHANGES README.md )
