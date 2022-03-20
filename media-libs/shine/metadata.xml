@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	MP3 encoding library implemented in fixed-point arithmetic
+	shine is a blazing fast mp3 encoding library implemented in fixed-point
+	arithmetic. The library can thus be used to performe super fast mp3
+	encoding on architectures without a FPU.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">toots/shine</remote-id>
