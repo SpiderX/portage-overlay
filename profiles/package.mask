@@ -3,6 +3,3 @@
 
 # Mask xxd because of untraceable package version
 =dev-util/xxd-9999
-
-# Mask liquidsoap because of beta
-=media-radio/liquidsoap-1.4.0_beta2
