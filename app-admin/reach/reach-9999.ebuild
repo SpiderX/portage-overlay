@@ -1,29 +1,35 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGO_PN="github.com/luhring/${PN}"
+EGIT_REPO_URI="https://github.com/luhring/${PN}.git"
 
-inherit golang-build golang-vcs
+inherit git-r3 go-module
 
-DESCRIPTION="A vault for securely storing and accessing AWS credentials"
-HOMEPAGE="https://github.com/99designs/aws-vault"
+DESCRIPTION="A static network verification tool for AWS"
+HOMEPAGE="https://github.com/luhring/reach"
 SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+RESTRICT="test" # wrong exit code
 
-DEPEND=">=dev-lang/go-1.13:="
+src_unpack() {
+	git-r3_src_unpack
+	go-module_live_vendor
+}
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath):${EGO_STORE_DIR}" \
-		go build -v -work -x "${EGO_BUILD_FLAGS}" "${EGO_PN}"
+	go build -o ./bin/"${PN}" || die "build failed"
+}
+
+src_test() {
+	go test -work ./... || die "test failed"
 }
 
 src_install() {
 	einstalldocs
-	dobin reach
+	dobin bin/reach
 }
