@@ -3,24 +3,19 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/luhring/${PN}.git"
-
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="Utility to import/export data from HashiCorp Vault"
 HOMEPAGE="https://github.com/Jimdo/yaml-vault"
-SRC_URI=""
+SRC_URI="https://api.github.com/repos/Jimdo/${PN}/tarball/a696961 -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
+
+S="${WORKDIR}/Jimdo-${PN}-a696961"
 
 DOCS=( {README,History}.md )
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
 
 src_compile() {
 	LDFLAGS="-X main.version=${PV}"

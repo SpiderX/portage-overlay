@@ -10,8 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Utility to import data from a YAML file to Vault or
-	export keys from Vault into a YAML file
+	This package provides a small utility to import data from
+	a YAML file to Vault or export keys from Vault into
+	a YAML file.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">Jimdo/yaml-vault</remote-id>
