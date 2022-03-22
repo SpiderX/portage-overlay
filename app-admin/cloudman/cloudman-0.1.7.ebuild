@@ -255,21 +255,16 @@ CRATES="
 	xml-rs-0.8.3
 	zeroize-1.1.0
 "
-EGIT_REPO_URI="https://github.com/dutchcoders/${PN}.git"
 
-inherit cargo git-r3
+inherit cargo
 
 DESCRIPTION="Textual user interface to manage ec2 instances"
 HOMEPAGE="https://github.com/dutchcoders/cloudman"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
+SRC_URI="https://github.com/dutchcoders/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MIT"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 QA_FLAGS_IGNORED="usr/bin/cloudman"
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_src_unpack
-}
