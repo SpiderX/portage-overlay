@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Fast, multi-purpose tool for AWS CloudWatch Logs
+	This package provides a fast, multi-purpose tool for AWS CloudWatch Logs
+	with colorized output that can be formatted in various ways.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">TylerBrock/saw</remote-id>
