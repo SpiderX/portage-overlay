@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
@@ -16,7 +16,7 @@ KEYWORDS=""
 SLOT="0"
 
 DEPEND="app-arch/lz4:=
-	dev-db/postgresql:=[icu,ssl]
+	>=dev-db/postgresql-10:=[icu,ssl]
 	dev-lang/perl:0=
 	dev-libs/libxml2:2
 	dev-libs/openssl:0=
