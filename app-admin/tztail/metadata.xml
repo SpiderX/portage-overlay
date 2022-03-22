@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Tool can be used to convert timestamps in a log to any desired timezone
-	while tailing logs.
+	This package provides a tool can be used to convert timestamps
+	in a log to any desired timezone while tailing logs.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">thecasualcoder/tztail</remote-id>
