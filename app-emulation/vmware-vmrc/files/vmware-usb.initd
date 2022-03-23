@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/opt/vmware/bin/vmware-usbarbitrator"
+name="VMware USB Arbitrator"
+description="VMware USB Arbitrator"
+
+depend() {
+	need localmount
+	use net
+}
+
+stop() {
+	ebegin "Stopping ${description}"
+	"${command}" -k
+	eend $?
+}
