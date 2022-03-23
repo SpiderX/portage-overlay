@@ -5,8 +5,8 @@ EAPI=8
 
 inherit linux-info linux-mod udev
 
-MY_KV="4.9"
-MY_PV="${PV%*a}"
+MY_KV="5.16"
+MY_PV="${PV%*g}"
 
 DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
