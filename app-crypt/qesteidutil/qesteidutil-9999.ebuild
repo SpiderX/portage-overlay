@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/open-eid/${PN}.git"
 
-inherit cmake git-r3 qmake-utils readme.gentoo-r1
+inherit cmake git-r3 readme.gentoo-r1
 
 DESCRIPTION="Estonian ID card management desktop utility"
 HOMEPAGE="https://github.com/open-eid/qesteidutil https://id.ee/"
