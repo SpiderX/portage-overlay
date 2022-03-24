@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit qmake-utils xdg
 
@@ -22,6 +22,8 @@ RDEPEND="dev-qt/qtconcurrent:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5"
 DEPEND="${RDEPEND}"
+
+DOCS=( {CHANGELOG,README}.md )
 
 src_configure() {
 	eqmake5
