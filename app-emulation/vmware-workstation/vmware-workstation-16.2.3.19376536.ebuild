@@ -13,13 +13,13 @@ MY_PV=$(ver_cut 1-3)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="12.2.1/18811640"
+VMWARE_FUSION_VER="12.2.3/19436697"
 SYSTEMD_UNITS_TAG="gentoo-02"
-UNLOCKER_VERSION="3.0.3"
+UNLOCKER_VERSION="3.0.4"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
 HOMEPAGE="http://www.vmware.com/products/workstation"
-SRC_URI="https://download3.vmware.com/software/wkst/file/${MY_P}.x86_64.bundle
+SRC_URI="https://download3.vmware.com/software/WKST-${MY_PV//./}-LX-New/${MY_P}.x86_64.bundle
 	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz -> unlocker-${UNLOCKER_VERSION}.tar.gz
 			https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${VMWARE_FUSION_VER}/x86/core/com.vmware.fusion.zip.tar -> com.vmware.fusion-${PV}.zip.tar )
 	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz -> vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
