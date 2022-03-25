@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Integer logarithms, originally split from arithmoi package
+	This package provides an integer logarithms, originally split from
+	arithmoi package (efficient basic number-theoretic functions).
 	</longdescription>
 	<use>
 		<flag name="integer-gmp">integer-gmp or integer-simple</flag>
