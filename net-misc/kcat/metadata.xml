@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	kcat is a generic non-JVM producer and consumer for Apache Kafka,
+	think of it as a netcat for Kafka.
+	In producer mode kcat reads messages from stdin, delimited with a
+	configurable delimiter (-D, defaults to newline), and produces them
+	to the provided Kafka cluster (-b), topic (-t) and partition (-p).
+	In consumer mode kcat reads messages from a topic and partition and
+	prints them to stdout using the configured message delimiter.
+	</longdescription>
+	<use>
+		<flag name="avro">Enable avro serialization/deserialization support</flag>
+		<flag name="json">Enable json support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">edenhill/kafkacat</remote-id>
+	</upstream>
+</pkgmetadata>
