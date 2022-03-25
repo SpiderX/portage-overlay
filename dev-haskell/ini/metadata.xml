@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Quick and easy configuration files in the INI format
+	This package provides a library with quick and easy configuration files
+	in the INI format, with case-sensitive keys.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">chrisdone/ini</remote-id>
