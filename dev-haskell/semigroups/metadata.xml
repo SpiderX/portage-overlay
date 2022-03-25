@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Haskell 98 semigroups
+	This package provides semigroup, an algebraic structure consisting of
+	a set together with an associative binary operation. A semigroup generalizes
+	a monoid in that there might not exist an identity element.
 	</longdescription>
 	<use>
 		<flag name="binary">Build instances for <pkg>dev-haskell/binary</pkg></flag>
