@@ -402,7 +402,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[netapp-ontap](https://devnet.netapp.com/restapi) | A library for working with ONTAP's REST APIs simply in Python
 * dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
 * dev-python/[onetimepass](https://github.com/tadeck/onetimepass) | One-time password library for HOTP and TOTP passwords
-* dev-python/[openapi-spec-validator](https://github.com/p1c2u/openapi-spec-validator) | Python library that validates Swagger Specs
+* dev-python/[openapi-spec-validator](https://github.com/p1c2u/openapi-spec-validator) | OpenAPI Spec validator
 * dev-python/[outcome](https://github.com/python-trio/outcome) | Capture the outcome of Python function calls
 * dev-python/[oyaml](https://github.com/wimglenn/oyaml) | Ordered YAML
 * dev-python/[packageurl](https://github.com/package-url/packageurl-python) | Python implementation of the package url spec
