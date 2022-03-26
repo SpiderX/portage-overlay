@@ -1,16 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/open-eid/cmake.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/cmake"
-
-inherit cmake flag-o-matic git-r3
+inherit cmake flag-o-matic
 
 DESCRIPTION="DigiDoc digital signature library"
 HOMEPAGE="https://github.com/open-eid/libdigidoc http://id.ee"
-SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://api.github.com/repos/open-eid/cmake/tarball/eececc0 -> ${P}-cmake.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
@@ -28,18 +26,27 @@ BDEPEND="virtual/pkgconfig
 
 DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
 
-src_unpack() {
+src_prepare() {
 	default
 
-	git-r3_fetch
-	git-r3_checkout
+	# provide access to modules
+	ln -s ../../open-eid-cmake-eececc0/modules/ cmake/ || die "ln failed"
+
+	# fix version definition
+	sed  -i -e '/^\tVERSION/s/MAJOR_VER/PROJECT_VERSION_MAJOR/' \
+		-e '/^\tVERSION/s/MINOR_VER/PROJECT_VERSION_MINOR/' \
+		-e '/^\tVERSION/s/RELEASE_VER/PROJECT_VERSION_PATCH/' \
+		libdigidoc/CMakeLists.txt || die "sed failed"
+
+	cmake_src_prepare
 }
 
 src_configure() {
+	# gentoo zlib macro name
 	append-cppflags "-DOF=_Z_OF"
 
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=ON
+		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DDOXYGEN_FOUND="$(usex doc yes no)"
 		-DBUILD_TOOLS="$(usex utils)"
 	)
