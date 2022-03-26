@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/sphinx-contrib/${PN}.git"
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Sphinx extension to generate APIs docs from OpenAPI"
 HOMEPAGE="https://github.com/sphinx-contrib/openapi"
