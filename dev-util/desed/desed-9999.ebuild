@@ -16,7 +16,6 @@ SRC_URI=""
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
-IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack

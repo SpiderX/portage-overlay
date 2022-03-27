@@ -5,8 +5,6 @@
 
 EAPI=7
 
-inherit cargo
-
 CRATES="
 ansi_term-0.11.0
 anyhow-1.0.37
@@ -67,6 +65,8 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 ws2_32-sys-0.2.1
 "
 
+inherit cargo
+
 DESCRIPTION="Debugger for Sed"
 HOMEPAGE="https://github.com/SoptikHa2/desed"
 SRC_URI="https://github.com/SoptikHa2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -75,7 +75,6 @@ SRC_URI="https://github.com/SoptikHa2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE=""
 
 src_install() {
 	einstalldocs
