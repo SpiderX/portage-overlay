@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Expose local servers behind NATs and firewalls to the public internet
-	over secure tunnels.
+	This package provides an utility, which exposes local servers behind
+	NATs and firewalls to the public internet over secure tunnels.
 	</longdescription>
 	<upstream>
 		<doc>https://ngrok.com/docs</doc>
