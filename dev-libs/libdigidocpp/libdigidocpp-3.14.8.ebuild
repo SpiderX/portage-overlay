@@ -7,8 +7,7 @@ inherit cmake
 
 DESCRIPTION="Library for handling digitally signed documents"
 HOMEPAGE="https://github.com/open-eid/libdigidocpp https://id.ee"
-SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://api.github.com/repos/open-eid/cmake/tarball/eececc0 -> ${P}-cmake.tar.gz"
+SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2 MIT OASIS-Open W3C ZLIB"
 KEYWORDS="~amd64 ~x86"
@@ -28,7 +27,8 @@ RDEPEND="dev-libs/libdigidoc
 DEPEND="${RDEPEND}
 	java? ( dev-lang/swig )
 	virtual/libiconv"
-BDEPEND="dev-cpp/xsd
+BDEPEND="dev-cpp/open-eid-cmake
+	dev-cpp/xsd
 	virtual/pkgconfig
 	|| ( app-editors/vim-core dev-util/xxdi )
 	doc? ( app-doc/doxygen )
@@ -39,8 +39,9 @@ DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
 src_prepare() {
 	default
 
-	# provide access to modules
-	ln -s ../../open-eid-cmake-eececc0/modules/ cmake/ || die "ln failed"
+	# specify path to modules
+	sed -i '/CMAKE_MODULE_PATH/s|${CMAKE_SOURCE_DIR}/cmake/|/usr/share/cmake/open-eis/|' \
+		CMakeLists.txt || die "sed failed for CMakeLists.txt"
 
 	if ! has_version app-editors/vim-core ; then
 		sed -i -e '/COMMAND xxd/s:xxd -i \(${BASE}.crt\):xxdi.pl \1 >:' \
