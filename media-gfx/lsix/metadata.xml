@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Image viewer for terminal that use sixel graphics
+	This package provides image viewer, that acts like "ls",
+	but for images. Shows thumbnails in terminal using sixel graphics.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">hackerb9/lsix</remote-id>

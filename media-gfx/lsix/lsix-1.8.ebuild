@@ -3,17 +3,13 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/hackerb9/${PN}.git"
-
-inherit git-r3
-
 DESCRIPTION="Image viewer for terminal that use sixel graphics"
 HOMEPAGE="https://github.com/hackerb9/lsix"
-SRC_URI=""
+SRC_URI="https://github.com/hackerb9/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="djvu jpeg jpeg2k png svg tiff webp"
 
 RDEPEND="media-gfx/imagemagick[truetype,djvu?,jpeg?,jpeg2k?,png?,svg?,tiff?,webp?]"
