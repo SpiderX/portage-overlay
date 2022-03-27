@@ -37,7 +37,7 @@ SRC_URI="
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+IUSE="abi_x86_32 +abi_x86_64"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
@@ -73,6 +73,7 @@ src_prepare() {
 	default
 
 	local arch
+	multilib_get_enabled_abis
 	arch="$(usex amd64 "64" "32")"
 
 	# Remove hardcoded paths
