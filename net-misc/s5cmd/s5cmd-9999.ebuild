@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/peak/${PN}.git"
 
@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -23,8 +22,11 @@ src_unpack() {
 }
 
 src_compile() {
+	LDFLAGS="-X=github.com/peak/s5cmd/version.Version=${PV}
+		-X=github.com/peak/s5cmd/version.GitCommit=${COMMIT}"
+
 	GOFLAGS="-v -x -mod=vendor" \
-		go build || die "build failed"
+		go build -ldflags "${LDFLAGS}" || die "build failed"
 }
 
 src_test() {

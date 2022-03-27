@@ -10,7 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Parallel S3 and local filesystem execution tool
+	This package provides a very fast S3 and local filesystem execution tool.
+	It comes with support for a multitude of operations including tab
+	completion and wildcard support for files, which can be very handy for
+	object storage workflow while working with large number of files.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">peak/s5cmd</remote-id>
