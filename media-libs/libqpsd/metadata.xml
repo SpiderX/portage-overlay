@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	PSD (Photoshop Document) and PSB (Photoshop Big) Plugin for Qt/C++
+	This project provides PSD (Photoshop Document) and PSB (Photoshop Big)
+	Plugin for Qt/C++, and based on the Adobe Photoshop File Formats Spec.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">roniemartinez/libqpsd</remote-id>
