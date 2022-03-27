@@ -671,7 +671,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * sys-apps/[aptly](https://github.com/aptly-dev/aptly) | A swiss army knife for Debian repository management
 * sys-apps/[duf](https://github.com/muesli/duf) | Disk Usage/Free Utility
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/ethq.svg)](https://repology.org/metapackage/ethq) sys-apps/[ethq](https://github.com/isc-projects/ethq) | Ethernet NIC Queue stats viewer
-* sys-apps/[evhz](https://gitlab.com/iankelling/evhz) | Mouse refresh rate under evdev
+* sys-apps/[evhz](https://git.sr.ht/~iank/evhz) | Mouse refresh rate under evdev
 * sys-apps/[firetools](https://firejail.wordpress.com) | Graphical user interface of Firajail security sandbox
 * sys-apps/[nocache](https://github.com/Feh/nocache) | Minimize caching effects for applications
 * sys-apps/[psi-notify](https://github.com/cdown/psi-notify) | Minimalistic PSI notifier using libnotify

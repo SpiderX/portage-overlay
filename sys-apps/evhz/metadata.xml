@@ -10,9 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-	Display the current mouse refresh rate under evdev linux system
+	This package provides utility, which display the current mouse
+	refresh rate under evdev linux system. It reports average is for
+	the last 64 samples, or as many as we have so far.
 	</longdescription>
-	<upstream>
-		<remote-id type="gitlab">iankelling/evhz</remote-id>
-	</upstream>
 </pkgmetadata>
