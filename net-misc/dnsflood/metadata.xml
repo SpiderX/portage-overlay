@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Use raw sockets to generate DNS flood attack
+	This package provides an utility that uses raw sockets to
+	generate DNS flood attack, which uses /dev/urandom as
+	the random seed.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">hawell/dns-flood</remote-id>
