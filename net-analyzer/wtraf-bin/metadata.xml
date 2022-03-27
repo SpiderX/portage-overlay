@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This utility for monitoring SNMP traffic in real mode without GUI
+	This package provides an utility for monitoring SNMP traffic
+	in real mode without GUI and dependencies.
 	and dependencies.
 	</longdescription>
 	<upstream>
