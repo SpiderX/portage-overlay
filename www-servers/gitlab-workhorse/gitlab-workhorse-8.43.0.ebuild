@@ -1,15 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit go-module systemd tmpfiles
 
 MY_P="${PN}-v${PV}"
-EGIT_REPO_URI="https://gitlab.com/gitlab-org/gitlab-test.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_P}/testdata/data/group/test.git"
-EGIT_SUBMODULES=()
-
-inherit git-r3 go-module systemd tmpfiles
-
 EGO_SUM=(
 	"bazil.org/fuse v0.0.0-20180421153158-65cc252bf669/go.mod"
 	"cloud.google.com/go v0.26.0"
@@ -864,28 +860,29 @@ go-module_set_globals
 DESCRIPTION="GitLab reverse proxy"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-workhorse"
 SRC_URI="https://gitlab.com/gitlab-org/${PN}/-/archive/v${PV}/${MY_P}.tar.gz
+	https://gitlab.com/gitlab-org/gitlab-test/-/archive/v1.1.1/gitlab-test-v1.1.1.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="!test? ( test ) mirror"
+RESTRICT="test mirror" # fails
 
 RDEPEND="acct-user/gitlab-workhorse
-	app-admin/logrotate
 	media-libs/exiftool"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG README.md )
 
-src_unpack() {
-	go-module_src_unpack
+src_prepare() {
+	default
 
-	if use test ; then
-		git-r3_src_unpack
-	fi
+	mkdir -p testdata/data/group || die "mkdir failed"
+	ln -s ../../../../gitlab-test-v1.1.1/ \
+		testdata/data/group/test.git || die "ln failed"
+	sed -i '/prepare-tests:\ttestdata\/data/d' Makefile || die "sed failed"
 }
 
 src_install() {
