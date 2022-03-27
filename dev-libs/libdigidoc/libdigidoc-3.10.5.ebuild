@@ -7,8 +7,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="DigiDoc digital signature library"
 HOMEPAGE="https://github.com/open-eid/libdigidoc http://id.ee"
-SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://api.github.com/repos/open-eid/cmake/tarball/eececc0 -> ${P}-cmake.tar.gz"
+SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
@@ -21,7 +20,8 @@ RDEPEND="dev-libs/libxml2:2
 	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
 	virtual/libiconv"
-BDEPEND="virtual/pkgconfig
+BDEPEND="dev-cpp/open-eid-cmake
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
@@ -29,14 +29,15 @@ DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
 src_prepare() {
 	default
 
-	# provide access to modules
-	ln -s ../../open-eid-cmake-eececc0/modules/ cmake/ || die "ln failed"
+	# specify path to modules
+	sed -i '/CMAKE_MODULE_PATH/s|${CMAKE_SOURCE_DIR}/cmake/|/usr/share/cmake/open-eis/|' \
+		CMakeLists.txt || die "sed failed for CMakeLists.txt"
 
 	# fix version definition
 	sed  -i -e '/^\tVERSION/s/MAJOR_VER/PROJECT_VERSION_MAJOR/' \
 		-e '/^\tVERSION/s/MINOR_VER/PROJECT_VERSION_MINOR/' \
 		-e '/^\tVERSION/s/RELEASE_VER/PROJECT_VERSION_PATCH/' \
-		libdigidoc/CMakeLists.txt || die "sed failed"
+		libdigidoc/CMakeLists.txt || die "sed failed for libdigidoc/CMakeLists.txt"
 
 	cmake_src_prepare
 }
