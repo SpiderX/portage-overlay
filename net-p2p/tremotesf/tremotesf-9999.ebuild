@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/equeim/tremotesf2.git"
 
-inherit cmake git-r3 gnome2-utils xdg
+inherit cmake git-r3 xdg
 
 DESCRIPTION="A remote GUI for transmission"
 HOMEPAGE="https://github.com/equeim/tremotesf2"
@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtdbus:5
