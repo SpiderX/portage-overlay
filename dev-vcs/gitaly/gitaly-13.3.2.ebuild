@@ -572,7 +572,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RESTRICT="mirror network-sandbox test"
+RESTRICT="mirror test" # network-sandbox
 
 RDEPEND="acct-user/gitlab-gitaly
 	app-admin/logrotate"
