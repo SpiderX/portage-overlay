@@ -11,8 +11,8 @@ PP_COMMIT="617194e"
 DESCRIPTION="Linux perf GUI for performance analysis"
 HOMEPAGE="https://github.com/KDAB/hotspot"
 SRC_URI="https://github.com/KDAB/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/koenpoppe/PrefixTickLabels/tarball/${PTL_COMMIT} -> koenpoppe-PrefixTickLabels-${PTL_COMMIT}.tar.gz
-	https://github.com/KDAB/perfparser/tarball/${PP_COMMIT} -> KDAB-perfparser-${PP_COMMIT}.tar.gz"
+	https://api.github.com/repos/koenpoppe/PrefixTickLabels/tarball/${PTL_COMMIT} -> koenpoppe-PrefixTickLabels-${PTL_COMMIT}.tar.gz
+	https://api.github.com/repos/KDAB/perfparser/tarball/${PP_COMMIT} -> KDAB-perfparser-${PP_COMMIT}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
