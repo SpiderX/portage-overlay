@@ -442,7 +442,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-python/[PythonQt](https://mevislab.github.io/pythonqt) | A dynamic Python binding for the Qt framework
 * dev-python/[questionary](https://github.com/tmbo/questionary) | Python library to build pretty command line user prompts
 * dev-python/[random2](https://github.com/strichter/random2) | Python-2.7 random module ported to python-3
-* dev-python/[requests-credssp](https://github.com/jborean93/requests-credssp) | CredSSP authentication handler for Python Requests
 * dev-python/[requests-mock](https://github.com/jamielennox/requests-mock) | Mock out responses from the requests package
 * dev-python/[reprint](https://github.com/Yinzo/reprint) | Binding variables and refreshing multi-line output in terminal
 * dev-python/[rich](https://github.com/willmcgugan/rich) | Validate configuration and produce human readable error messages
