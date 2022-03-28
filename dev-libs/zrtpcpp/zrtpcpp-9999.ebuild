@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/wernerd/${PN^^}.git"
 
@@ -25,6 +25,8 @@ RDEPEND="dev-libs/ccrtp
 	sqlcipher? ( dev-db/sqlcipher )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${PN}"-4.7.0-CMakeLists.patch )
 
 src_configure() {
 	local mycmakeargs=(

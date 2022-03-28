@@ -1,0 +1,35 @@
+--- ../clients/tivi/CMakeLists.txt	2022-03-29 01:06:32.745774855 +0300
++++ ../clients/tivi/CMakeLists.txt	2022-03-29 01:07:23.338776283 +0300
+@@ -164,6 +164,15 @@
+     GENERATE_PACKAGING(${PACKAGE} ${VERSION})
+ endif()
+ 
++set(prefix ${CMAKE_INSTALL_PREFIX})
++set(exec_prefix ${prefix}/bin)
++set(libdir ${prefix}/${LIBDIRNAME})
++set(includedir ${prefix}/include)
++set(PACKAGE pkgconfig)
++
++configure_file(${CMAKE_SOURCE_DIR}/libzrtpcpp.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/lib${zrtplibName}.pc @ONLY)
++configure_file(${CMAKE_SOURCE_DIR}/libzrtpcpp.spec.cmake ${CMAKE_CURRENT_BINARY_DIR}/lib${zrtplibName}.spec @ONLY)
++
+ #
+ # Create the Android make files but do not execute them
+ if(ANDROID)
+@@ -197,3 +206,16 @@
+     configure_file(${CMAKE_SOURCE_DIR}/clients/tivi/android/jni/Application.mk
+                    ${CMAKE_BINARY_DIR}/clients/tivi/android/jni/Application.mk COPYONLY)
+ endif()
++
++set(tivi_inst
++    ${CMAKE_CURRENT_SOURCE_DIR}/CtZrtpNew.h)
++
++install(FILES
++        ${CMAKE_SOURCE_DIR}/zrtp/libzrtpcpp/ZrtpCodes.h
++        ${CMAKE_SOURCE_DIR}/zrtp/libzrtpcpp/ZrtpConfigure.h
++        ${CMAKE_SOURCE_DIR}/zrtp/libzrtpcpp/ZrtpCallback.h
++        ${CMAKE_SOURCE_DIR}/zrtp/libzrtpcpp/ZrtpCWrapper.h
++        ${CMAKE_SOURCE_DIR}/zrtp/libzrtpcpp/ZrtpUserCallback.h ${ccrtp_inst} DESTINATION include/libzrtpcpp)
++
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/lib${zrtplibName}.pc DESTINATION ${LIBDIRNAME}/pkgconfig)
++install(TARGETS ${zrtplibName} DESTINATION ${LIBDIRNAME})
