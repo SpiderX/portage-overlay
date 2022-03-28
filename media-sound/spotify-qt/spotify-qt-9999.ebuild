@@ -22,8 +22,3 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	xdg_src_prepare
-	cmake_src_prepare
-}
