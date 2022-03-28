@@ -14,7 +14,4 @@
 	to play online videos, through youtube-dl, toggle playlist with mouse-over,
 	playlist overlays the video, auto skip chapter containing certain words, etc.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">g-fb/haruna</remote-id>
-	</upstream>
 </pkgmetadata>

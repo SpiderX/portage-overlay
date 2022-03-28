@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/g-fb/${PN}.git"
+EGIT_REPO_URI="https://invent.kde.org/multimedia/${PN}.git"
 
 inherit cmake git-r3 xdg
 
 DESCRIPTION="Video player built with Qt/QML on top of libmpv"
-HOMEPAGE="https://github.com/g-fb/haruna"
+HOMEPAGE="https://invent.kde.org/multimedia/haruna"
 SRC_URI=""
 
 LICENSE="GPL-3"
@@ -42,7 +42,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="kde-frameworks/extra-cmake-modules:5
 	sys-devel/gettext"
 
-src_prepare() {
-	cmake_src_prepare
-	xdg_src_prepare
+src_configure() {
+	local mycmakeargs=(
+		-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help"
+	)
+	cmake_src_configure
 }
