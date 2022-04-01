@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a real-time data from a single NTRIP source.
+	ntripserver is a HTTP client based on Networked Transport of
+	RTCM via Internet Protocol (NTRIP).
+	</longdescription>
+	<upstream>
+		<doc>http://igs.bkg.bund.de/ntrip/index</doc>
+		<bugs-to>mailto:euref-ip@bkg.bund.de</bugs-to>
+		<remote-id type="github">nunojpg/ntripserver</remote-id>
+	</upstream>
+</pkgmetadata>
