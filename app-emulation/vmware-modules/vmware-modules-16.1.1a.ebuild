@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info linux-mod udev
+inherit linux-mod udev
 
 MY_KV="4.9"
 MY_PV="${PV%*a}"
@@ -20,16 +20,12 @@ RDEPEND="acct-group/vmware"
 
 S="${WORKDIR}/vmware-host-modules-w${MY_PV}-k${MY_KV}"
 
-BUILD_TARGETS="auto-build KERNEL_DIR=${KERNEL_DIR} KBUILD_OUTPUT=${KV_OUT_DIR}"
+BUILD_TARGETS="auto-build"
 CONFIG_CHECK="~HIGH_RES_TIMERS VMWARE_VMCI VMWARE_VMCI_VSOCKETS"
 MODULE_NAMES="vmmon(misc:${S}/vmmon-only) vmnet(misc:${S}/vmnet-only)"
 
-src_prepare() {
-	default
-
-	# Set kernel include dir
-	sed -i -e "s%HEADER_DIR = /lib/modules/\$(VM_UNAME)/build/include%HEADER_DIR = ${KERNEL_DIR}/include%" \
-		./Makefile || die "sed for Makefile failed"
+src_configure() {
+	export LINUXINCLUDE="${KERNEL_DIR}/include"
 }
 
 src_install() {
