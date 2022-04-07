@@ -5,7 +5,7 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac3fe79fe5e64bf0b8a78dd0c63b7d8d)](https://www.codacy.com/app/SpiderX/portage-overlay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
 [![pkgcheck](https://github.com/SpiderX/portage-overlay/actions/workflows/pkgcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/pkgcheck.yml)
-[![shellcheck](https://github.com/SpiderX/portage-overlay/actions/workflowsy/shellcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml)
+[![shellcheck](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml)
 
 ### References
 
