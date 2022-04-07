@@ -15,7 +15,6 @@
 	locked PIN codes and change the PUK code.
 	</longdescription>
 	<use>
-		<flag name="crash-reporter">add support for submit crash information to the upstream</flag>
 		<flag name="webcheck">add support for new version checking</flag>
 	</use>
 	<upstream>

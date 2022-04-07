@@ -14,7 +14,7 @@ SRC_URI=""
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="crash-reporter +webcheck"
+IUSE="+webcheck"
 REQUIRED_USE="webcheck" # build fails without it
 
 RDEPEND="dev-libs/openssl:0=
@@ -35,29 +35,36 @@ DOC_CONTENTS="You should install app-crypt/ccid to be able to use your reader"
 src_prepare() {
 	default
 
-	# Don't use bundled libs
+	# don't use bundled libs
 	sed -i \
 		-e '/add_subdirectory( qtsingleapplication )/d' \
 		-e '/list( APPEND LIBRARIES/s|qtsingleapplication|Qt5Solutions_SingleApplication-2.6|' \
 		common/CMakeLists.txt || die "sed failed for CMakeLists.txt"
 	sed -i '/#include "/s|qtsingleapplication/src|QtSolutions|' \
 		common/Common.h || die "sed failed for Common.h"
+	# fix missing include
+	sed -i '/include <QtWidgets\/QMessageBox/a#include <QButtonGroup>' \
+		src/MainWindow.cpp || die "sed failed for src/MainWindow.cpp"
+	sed -i '/#include <QtGui\/QPainter/a#include <QtGui/QIntValidator>' \
+		src/Updater.cpp || die "sed failed for src/Updater.cpp"
+	# correct path for appdata
+	sed -i '/qesteidutil.appdata.xml/s|/appdata|/metainfo|' CMakeLists.txt \
+		|| die "sed failed for CMakeLists.txt"
 
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DBREAKPAD=NO
 		-DCONFIG_URL="$(usex webcheck 'https://id.eesti.ee/config.json' '')"
 	)
 	cmake_src_configure
 }
 
 src_install() {
-	default
-
 	insinto /usr/share/qt5/translations
-	doins src/translations/*.qm
+	doins "${S}"_build/{en,et,ru}.qm
 
 	readme.gentoo_create_doc
 
