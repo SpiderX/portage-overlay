@@ -80,25 +80,25 @@ src_configure() {
 
 	if ! use mbedtls; then
 		myeconfargs+=(
-			$(use_enable pkcs11)
+			"$(use_enable pkcs11)"
 		)
 	fi
 
 	myeconfargs+=(
-		$(use_enable inotify async-push)
-		--with-crypto-library=$(usex mbedtls mbedtls openssl)
-		$(use_enable lz4)
-		$(use_enable lzo)
-		$(use_enable plugins)
-		$(use_enable iproute2)
-		$(use_enable pam plugin-auth-pam)
-		$(use_enable down-root plugin-down-root)
-		$(use_enable systemd)
+		"$(use_enable inotify async-push)"
+		--with-crypto-library="$(usex mbedtls mbedtls openssl)"
+		"$(use_enable lz4)"
+		"$(use_enable lzo)"
+		"$(use_enable plugins)"
+		"$(use_enable iproute2)"
+		"$(use_enable pam plugin-auth-pam)"
+		"$(use_enable down-root plugin-down-root)"
+		"$(use_enable systemd)"
 	)
 
-	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
+	SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" \
 		TMPFILES_DIR="/usr/lib/tmpfiles.d" \
-		IPROUTE=$(usex iproute2 '/bin/ip' '') \
+		IPROUTE="$(usex iproute2 '/bin/ip' '')" \
 		econf "${myeconfargs[@]}"
 }
 
