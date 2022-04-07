@@ -527,7 +527,6 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 * dev-util/[testmace](https://testmace.com) | Powerful IDE to work with API
 * dev-util/[tickgit](https://github.com/augmentable-dev/tickgit) | Manage your repository's TODOs as config in your codebase
 * dev-util/[xxd](https://github.com/vim/vim) | Hexdump utility from vim
-* dev-util/[yamllint](https://github.com/adrienverge/yamllint) | A linter for YAML files
 * dev-vcs/[blackbox](https://github.com/StackExchange/blackbox) | Safely store secrets in Git/Mercurial/Subversion
 * dev-vcs/[commitizen](https://github.com/Woile/commitizen) | Python commitizen client tool
 * dev-vcs/[gitaly](https://gitlab.com/gitlab-org/gitaly) | Git RPC service for handling GitLab git calls
