@@ -5,18 +5,11 @@ Describe your pull request here to communicate to the maintainers why we should 
 ## Types of changes
 
 What types of changes does your code introduce to this overlay?
-_Put an `x` in the boxes that apply_
-
-- [ ] Bugfix of ebuild
-- [ ] New ebuild
-- [ ] Other
 
 ## Checklist
 
-_Put an `x` in the boxes that apply. You can also fill these out after creating the PR. If you're unsure about any of them, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your code._
-
-- [ ] I have read the [CONTRIBUTING](https://github.com/SpiderX/portage-overlay/blob/master/CONTRIBUTING.md) doc
-- [ ] repoman and shellcheck tests pass locally with my changes
+Make sure that you've read the [CONTRIBUTING](https://github.com/SpiderX/portage-overlay/blob/master/CONTRIBUTING.md) doc
+and repoman and shellcheck tests pass locally with your changes
 
 ## Further comments
 

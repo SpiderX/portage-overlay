@@ -1,3 +1,5 @@
+### Contributing
+
 I welcome bug reports, feedbacks and ebuild feature requests; you can use the
 [GitHub issue tracker](https://github.com/SpiderX/portage-overlay/issues/) or
 [e-mail](repositories.xml#L9) to provide them.
@@ -20,11 +22,12 @@ for the following:
    this project.
 2. Create your feature branch:
    `git checkout -b my-new-feature develop`
-3. When your code changes are ready, make sure to run `repoman manifest` and
-   `repoman full` in the package directory to ensure that all the Gentoo's QA
-   tests pass. This is necessary to assure that nothing was accidentally broken
-   by your changes; for the purpose this project integrates
-   [Travis CI](.travis.yml) for _**repoman**_ and _**shellcheck**_ tests.
+3. When your code changes are ready, make sure to run `repoman manifest` ,
+   `repoman full` and `pkgcheck scan` in the package directory to ensure that
+   all the Gentoo's QA tests pass. This is necessary to assure that nothing
+   was accidentally broken by your changes; for the purpose this project
+   integrates [GitHub Actions](.github/workflows) for _**repoman**_, _pkgcheck_
+   and _**shellcheck**_ tests.
 4. Make sure your git commit messages are in the proper format to make reading
    history easier. Commit your message with `repoman commit`, which should look
    like:
@@ -46,7 +49,7 @@ for the following:
    submit a [pull request](https://help.github.com/articles/creating-a-pull-request).
 
    > **Note:**  If you get in trouble with _**shellcheck's**_ tests, please see
-   their [checks guide](https://github.com/koalaman/shellcheck/wiki/Checks).
+   > their [checks guide](https://github.com/koalaman/shellcheck/wiki/Checks).
 
 7. Squash your commits into a single one with `git rebase -i`. It's okay to
    force update your merge request.
