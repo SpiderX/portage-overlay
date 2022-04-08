@@ -9,7 +9,7 @@
 [![shellcheck](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml)
 [![gentoo overlay](https://img.shields.io/badge/gentoo-overlay-yellow)](https://github.com/gentoo-mirror/nest)
 
-# How to use this overlay
+## How to use this overlay
 
 For automatic install, you must have [`app-eselect/eselect-repository`](https://packages.gentoo.org/packages/app-eselect/eselect-repository)
 or [`app-portage/layman`](https://packages.gentoo.org/packages/app-portage/layman) installed on your system for this to work.
@@ -40,56 +40,56 @@ Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all o
 
 This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
 
-* app-admin/[awsdtc](https://github.com/c1982/awsdtc) | AWS Data Transfer Cost Explorer
-* app-admin/[awslimitchecker](https://github.com/jantman/awslimitchecker) | Utility to check AWS resource limits and usage
-* app-admin/[awslog](https://github.com/jaksi/awslog) | History and changes of configuration versions of AWS resources
-* app-admin/[awsls](https://github.com/jckuester/awsls) | A list command for AWS resources
-* app-admin/[awsometag](https://github.com/mhausenblas/awsometag) | Simple command-line snippet manager
-* app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
-* app-admin/[awsume](https://github.com/trek10inc/awsume) | A utility for easily assuming AWS IAM roles from command line
-* app-admin/[awstaghelper](https://github.com/mpostument/awstaghelper) | AWS bulk tagging tool
-* app-admin/[aws-vault](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
-* app-admin/[azcopy](https://github.com/Azure/azure-storage-azcopy) | A command-line utility to manage Azure Storage accounts
-* app-admin/[cli53](https://github.com/barnybug/cli53) | Command line tool for Amazon Route 53
-* app-admin/[cloudman](https://github.com/dutchcoders/cloudman) | Textual user interface to manage ec2 instances
-* app-admin/[container-service-extension](https://github.com/vmware/container-service-extension) | Container Service Extension for vCloud Director
-* app-admin/[csp-reporter](https://github.com/yandex/csp-reporter) | Content Security Policy logs parser
-* app-admin/[digaws](https://github.com/sampointer/digaws) | Look up region and other information for any AWS IP address
-* app-admin/[digaz](https://github.com/sampointer/digaz) | Look up region and other information for any Azure IP address
-* app-admin/[digg](https://github.com/sampointer/digg) | Look up region and other information for any Google IP address
-* app-admin/[docker-pretty-ps](https://github.com/politeauthority/docker-pretty-ps) | docker ps in colored and long output
-* app-admin/[doctl](https://github.com/digitalocean/doctl) | A command line tool for DigitalOcean services
-* app-admin/[ebs-autoresize](https://github.com/mpostument/ebs-autoresize) | Automatically resize EBS
-* app-admin/[fselect](https://github.com/jhspetersson/fselect) | Find files with SQL-like queries
-* app-admin/[grex](https://github.com/pemistahl/grex) | A CLI tool for generating regular expressions
-* app-admin/[ibmcloud-bin](https://github.com/IBM-Cloud/ibm-cloud-cli-release) | IBM Cloud Developer Tools
-* [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/qtpass.svg)](https://repology.org/metapackage/qtpass) app-admin/[qtpass](https://qtpass.org) | multi-platform GUI for pass, the standard unix password manager
-* app-admin/[jl](https://github.com/koenbollen/jl) | A tool for working with structured JSON logging
-* app-admin/[kconfig-hardened-check](https://github.com/a13xp0p0v/kconfig-hardened-check) | A script to check the hardening options in the Linux kernel config
-* app-admin/[netutils-linux](https://github.com/strizhechenko/netutils-linux) | Suite of network stack performance tunning utilities
-* app-admin/[rain](https://github.com/aws-cloudformation/rain) | A development workflow tool for working with AWS CloudFormation
-* app-admin/[reach](https://github.com/luhring/reach) | A static network verification tool for AWS
-* app-admin/[reprepro](https://salsa.debian.org/brlink/reprepro) | A tool to handle local repositories of Debian packages
-* app-admin/[rhit](https://github.com/Canop/rhit) | A nginx log explorer
-* app-admin/[ripe-atlas-tools](https://github.com/RIPE-NCC/ripe-atlas-tools) | The official command-line client for RIPE Atlas
-* app-admin/[saw](https://github.com/TylerBrock/saw) | Fast, multi-purpose tool for AWS CloudWatch Logs
-* app-admin/[semaphore-bin](https://github.com/ansible-semaphore/semaphore) | Modern UI for Ansible
-* app-admin/[sinker](https://github.com/plexsystems/sinker) | Sync images from one container registry to another
-* app-admin/[sops](https://github.com/mozilla/sops) | Simple and flexible tool for managing secrets
-* app-admin/[terraform-provider-vcd](https://www.terraform.io/docs/providers/vcd) | Terraform VMware vCloud Director provider
-* app-admin/[topngx](https://github.com/gsquire/topngx) | A top for NGINX
-* app-admin/[trailscraper](https://github.com/flosell/trailscraper) | Command-line tool to get information out of AWS CloudTrail
-* app-admin/[tztail](https://github.com/thecasualcoder/tztail) | A log view in various timezones
-* app-admin/[userdbadm](https://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
-* app-admin/[uwsgitop](https://github.com/unbit/uwsgitop) | uWSGI stats viewer
-* app-admin/[vault-backend-migrator](https://github.com/adamdecaf/vault-backend-migrator) | Tool to migrate data across vault clusters
-* app-admin/[vcd-cli](https://github.com/vmware/vcd-cli) | Utility to check AWS resource limits and usage
-* app-admin/[vector-bin](https://github.com/timberio/vector) | High performance logs, metrics, and events router
-* app-admin/[whatfiles](https://github.com/spieglt/whatfiles) | Log what files are accessed by any Linux process
-* app-admin/[yaml-vault](https://github.com/Jimdo/yaml-vault) | Utility to import/export data from HashiCorp Vault
-* app-backup/[clickhouse-backup](https://github.com/AlexAkulov/clickhouse-backup) | Tool for easy ClickHouse backup and restore
-* app-backup/[hashget](https://github.com/yaroslaff/hashget) | Deduplication tool for archiving data with extremely high ratio
-* app-backup/[pgbackrest](https://pgbackrest.org) | Reliable PostgreSQL Backup & Restore
+*  app-admin/[awsdtc](https://github.com/c1982/awsdtc) | AWS Data Transfer Cost Explorer
+*  app-admin/[awslimitchecker](https://github.com/jantman/awslimitchecker) | Utility to check AWS resource limits and usage
+*  app-admin/[awslog](https://github.com/jaksi/awslog) | History and changes of configuration versions of AWS resources
+*  app-admin/[awsls](https://github.com/jckuester/awsls) | A list command for AWS resources
+*  app-admin/[awsometag](https://github.com/mhausenblas/awsometag) | Simple command-line snippet manager
+*  app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
+*  app-admin/[awsume](https://github.com/trek10inc/awsume) | A utility for easily assuming AWS IAM roles from command line
+*  app-admin/[awstaghelper](https://github.com/mpostument/awstaghelper) | AWS bulk tagging tool
+*  app-admin/[aws-vault](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
+*  app-admin/[azcopy](https://github.com/Azure/azure-storage-azcopy) | A command-line utility to manage Azure Storage accounts
+*  app-admin/[cli53](https://github.com/barnybug/cli53) | Command line tool for Amazon Route 53
+*  app-admin/[cloudman](https://github.com/dutchcoders/cloudman) | Textual user interface to manage ec2 instances
+*  app-admin/[container-service-extension](https://github.com/vmware/container-service-extension) | Container Service Extension for vCloud Director
+*  app-admin/[csp-reporter](https://github.com/yandex/csp-reporter) | Content Security Policy logs parser
+*  app-admin/[digaws](https://github.com/sampointer/digaws) | Look up region and other information for any AWS IP address
+*  app-admin/[digaz](https://github.com/sampointer/digaz) | Look up region and other information for any Azure IP address
+*  app-admin/[digg](https://github.com/sampointer/digg) | Look up region and other information for any Google IP address
+*  app-admin/[docker-pretty-ps](https://github.com/politeauthority/docker-pretty-ps) | docker ps in colored and long output
+*  app-admin/[doctl](https://github.com/digitalocean/doctl) | A command line tool for DigitalOcean services
+*  app-admin/[ebs-autoresize](https://github.com/mpostument/ebs-autoresize) | Automatically resize EBS
+*  app-admin/[fselect](https://github.com/jhspetersson/fselect) | Find files with SQL-like queries
+*  app-admin/[grex](https://github.com/pemistahl/grex) | A CLI tool for generating regular expressions
+*  app-admin/[ibmcloud-bin](https://github.com/IBM-Cloud/ibm-cloud-cli-release) | IBM Cloud Developer Tools
+*  [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/qtpass.svg)](https://repology.org/metapackage/qtpass) app-admin/[qtpass](https://qtpass.org) | multi-platform GUI for pass, the standard unix password manager
+*  app-admin/[jl](https://github.com/koenbollen/jl) | A tool for working with structured JSON logging
+*  app-admin/[kconfig-hardened-check](https://github.com/a13xp0p0v/kconfig-hardened-check) | A script to check the hardening options in the Linux kernel config
+*  app-admin/[netutils-linux](https://github.com/strizhechenko/netutils-linux) | Suite of network stack performance tunning utilities
+*  app-admin/[rain](https://github.com/aws-cloudformation/rain) | A development workflow tool for working with AWS CloudFormation
+*  app-admin/[reach](https://github.com/luhring/reach) | A static network verification tool for AWS
+*  app-admin/[reprepro](https://salsa.debian.org/brlink/reprepro) | A tool to handle local repositories of Debian packages
+*  app-admin/[rhit](https://github.com/Canop/rhit) | A nginx log explorer
+*  app-admin/[ripe-atlas-tools](https://github.com/RIPE-NCC/ripe-atlas-tools) | The official command-line client for RIPE Atlas
+*  app-admin/[saw](https://github.com/TylerBrock/saw) | Fast, multi-purpose tool for AWS CloudWatch Logs
+*  app-admin/[semaphore-bin](https://github.com/ansible-semaphore/semaphore) | Modern UI for Ansible
+*  app-admin/[sinker](https://github.com/plexsystems/sinker) | Sync images from one container registry to another
+*  app-admin/[sops](https://github.com/mozilla/sops) | Simple and flexible tool for managing secrets
+*  app-admin/[terraform-provider-vcd](https://www.terraform.io/docs/providers/vcd) | Terraform VMware vCloud Director provider
+*  app-admin/[topngx](https://github.com/gsquire/topngx) | A top for NGINX
+*  app-admin/[trailscraper](https://github.com/flosell/trailscraper) | Command-line tool to get information out of AWS CloudTrail
+*  app-admin/[tztail](https://github.com/thecasualcoder/tztail) | A log view in various timezones
+*  app-admin/[userdbadm](https://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
+*  app-admin/[uwsgitop](https://github.com/unbit/uwsgitop) | uWSGI stats viewer
+*  app-admin/[vault-backend-migrator](https://github.com/adamdecaf/vault-backend-migrator) | Tool to migrate data across vault clusters
+*  app-admin/[vcd-cli](https://github.com/vmware/vcd-cli) | Utility to check AWS resource limits and usage
+*  app-admin/[vector-bin](https://github.com/timberio/vector) | High performance logs, metrics, and events router
+*  app-admin/[whatfiles](https://github.com/spieglt/whatfiles) | Log what files are accessed by any Linux process
+*  app-admin/[yaml-vault](https://github.com/Jimdo/yaml-vault) | Utility to import/export data from HashiCorp Vault
+*  app-backup/[clickhouse-backup](https://github.com/AlexAkulov/clickhouse-backup) | Tool for easy ClickHouse backup and restore
+*  app-backup/[hashget](https://github.com/yaroslaff/hashget) | Deduplication tool for archiving data with extremely high ratio
+*  app-backup/[pgbackrest](https://pgbackrest.org) | Reliable PostgreSQL Backup & Restore
 * [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/zbackup.svg)](https://repology.org/metapackage/zbackup) app-backup/[zbackup](https://github.com/zbackup/zbackup) | A versatile deduplicating backup tool
 * app-backup/[urbackup-client](https://urbackup.org) | Client Server backup system
 * app-backup/[urbackup-server](https://urbackup.org) | Client Server backup system
