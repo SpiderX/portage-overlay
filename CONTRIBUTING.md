@@ -22,12 +22,12 @@ for the following:
    this project.
 2. Create your feature branch:
    `git checkout -b my-new-feature develop`
-3. When your code changes are ready, make sure to run `repoman manifest` ,
-   `repoman full` and `pkgcheck scan` in the package directory to ensure that
-   all the Gentoo's QA tests pass. This is necessary to assure that nothing
-   was accidentally broken by your changes; for the purpose this project
-   integrates [GitHub Actions](.github/workflows) for _**repoman**_, _pkgcheck_
-   and _**shellcheck**_ tests.
+3. When your code changes are ready, make sure to run
+   `repoman manifest`, `repoman full` and `pkgcheck scan`
+   in the package directory to ensure that all the Gentoo's QA tests pass.
+   This is necessary to assure that nothing was accidentally broken by your changes;
+   for the purpose this project integrates [GitHub Actions](.github/workflows)
+   for _repoman_, _pkgcheck_ and _shellcheck_ tests.
 4. Make sure your git commit messages are in the proper format to make reading
    history easier. Commit your message with `repoman commit`, which should look
    like:
