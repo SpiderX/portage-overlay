@@ -18,16 +18,18 @@ This overlay assumes that you have read and properly understood the
 To make the process of merge requests submission as seamless as possible, I ask
 for the following:
 
-1.  Go ahead and [fork](https://help.github.com/articles/fork-a-repo)
-    this project.
+1.  Go ahead and [fork](https://help.github.com/articles/fork-a-repo) this project.
+
 2.  Create your feature branch:
     `git checkout -b my-new-feature develop`
+
 3.  When your code changes are ready, make sure to run
     `repoman manifest`, `repoman full` and `pkgcheck scan`
     in the package directory to ensure that all the Gentoo's QA tests pass.
     This is necessary to assure that nothing was accidentally broken by your changes;
     for the purpose this project integrates [GitHub Actions](.github/workflows)
     for _repoman_, _pkgcheck_ and _shellcheck_ tests.
+
 4.  Make sure your git commit messages are in the proper format to make reading
     history easier. Commit your message with `repoman commit`, which should look
     like:
@@ -44,7 +46,9 @@ for the following:
     [5 Useful Tips For A Better Commit Message](https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message).
     Both of them are excellent resources for learning how to write a well-crafted
     git commit message.
+
 5.  GPG signing your changes is a good idea, but not mandatory.
+
 6.  Push your changes in your fork `git push origin my-new-feature`, and then
     submit a [pull request](https://help.github.com/articles/creating-a-pull-request).
 
