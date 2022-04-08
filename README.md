@@ -14,12 +14,12 @@
 For automatic install, you must have [`app-eselect/eselect-repository`](https://packages.gentoo.org/packages/app-eselect/eselect-repository)
 or [`app-portage/layman`](https://packages.gentoo.org/packages/app-portage/layman) installed on your system for this to work.
 
-#### `eselect-repository`:
+### `eselect-repository`
 ```console
 eselect repository enable nest
 ```
 
-#### `layman`:
+### `layman`
 ```console
 layman -fa nest
 ```
