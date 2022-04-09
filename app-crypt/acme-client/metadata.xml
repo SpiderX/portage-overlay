@@ -17,6 +17,6 @@
 	validation.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">graywolf/acme-client-portable</remote-id>
+		<doc>https://git.sr.ht/~graywolf/acme-client-portable</doc>
 	</upstream>
 </pkgmetadata>

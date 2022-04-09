@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/graywolf/acme-client-portable.git"
+EGIT_REPO_URI="https://git.sr.ht/~graywolf/acme-client-portable"
 
 inherit autotools git-r3 systemd
 
 DESCRIPTION="Secure Let's Encrypt client"
-HOMEPAGE="https://github.com/graywolf/acme-client-portable"
+HOMEPAGE="https://git.sr.ht/~graywolf/acme-client-portable"
 SRC_URI=""
 
-LICENSE="ISC MIT"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
