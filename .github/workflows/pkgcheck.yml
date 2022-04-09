@@ -4,9 +4,23 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - *.md
+      - *.yml
+      - *.xml
+      - Manifest
+      - .cz
+      - .gitignore
   pull_request:
     branches:
       - master
+    paths-ignore:
+      - *.md
+      - *.yml
+      - *.xml
+      - Manifest
+      - .cz
+      - .gitignore
 
 jobs:
   build:
@@ -15,16 +29,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 2
+        fetch-depth: 0
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v18.7
       with:
-        files_ignore: |
-          *.md
-          *.xml
-          Manifest
-          **/files
+        files: |
+          *.ebuild
     - name: Get specific changed files
       id: changed-files-specific
       uses: tj-actions/changed-files@v18.7
@@ -59,3 +70,4 @@ jobs:
       uses: pkgcore/pkgcheck-action@v1
       with:
         args: ${{ steps.condition.outputs.value }} ${{ steps.changed-files.any_changed }}
+        pkgs: pkgcheck>=0.10.9 requests
