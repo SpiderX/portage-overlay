@@ -21,12 +21,12 @@ depend() {
 reload() {
 	configcheck || return 1
 	ebegin "Reloading AdGuardHome configuration"
-	${command} ${command_args} -s reload
+	"${command}" "${command_args}" -s reload
 	eend $? "Failed to reload"
 }
 
 configcheck() {
 	ebegin "Checking AdGuardHome configuration"
-	${command} ${command_args} --check-config
+	"${command}" "${command_args}" --check-config
 	eend $? "Failed to check configuration"
 }
