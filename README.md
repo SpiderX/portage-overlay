@@ -119,7 +119,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   app-misc/[cheat](https://github.com/cheat/cheat) | Interactive cheatsheets on the command-line
 *   app-misc/[cointop](https://github.com/cointop-sh/cointop) | Interactive cryptocurrency monitor
 *   app-misc/[cryptr-bin](https://github.com/jgraph/drawio-desktop) | Diagram drawing application built on web technology
-*   app-misc/[deco](https://deco.sourceforge.net) | Demos Commander, a free Norton Commander clone
+*   app-misc/[deco](https://sourceforge.net/projects/deco/) | Demos Commander, a free Norton Commander clone
 *   app-misc/[jshon](http://kmkeen.com/jshon) | JSON parser designed for maximum convenience within the shell
 *   app-misc/[jsqry-cli2-bin](https://github.com/jsqry/jsqry-cli2) | CLI tool (similar to jq) to query JSON using sane DSL
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pet.svg)](https://repology.org/metapackage/pet) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
