@@ -9,7 +9,7 @@ WX_GTK_VER="3.0-gtk3"
 inherit autotools git-r3 systemd wxwidgets
 
 DESCRIPTION="Client Server backup system"
-HOMEPAGE="https://urbackup.org"
+HOMEPAGE="https://www.urbackup.org/"
 SRC_URI=""
 
 LICENSE="AGPL-3+"
@@ -55,6 +55,7 @@ src_configure() {
 		"$(use_enable !X headless)" \
 		--without-embedded-sqlite3 \
 		--disable-clientupdate
+	use X && setup-wxwidgets
 }
 
 src_install() {
