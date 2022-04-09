@@ -12,7 +12,7 @@
 	<longdescription lang="en">
 	Jshon loads json text from stdin, performs actions, then displays
 	the last action on stdout. Some of the options output json,
-	others output plain text meta information. 
+	others output plain text meta information.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">keenerd/jshon</remote-id>
