@@ -5,9 +5,9 @@ on:
     branches:
       - master
     paths-ignore:
-      - '*.md'
-      - '*.yml'
-      - '*.xml'
+      - '**.md'
+      - '**.yml'
+      - '**.xml'
       - 'Manifest'
       - '.cz'
       - '.gitignore'
@@ -15,9 +15,9 @@ on:
     branches:
       - master
     paths-ignore:
-      - '*.md'
-      - '*.yml'
-      - '*.xml'
+      - '**.md'
+      - '**.yml'
+      - '**.xml'
       - 'Manifest'
       - '.cz'
       - '.gitignore'
