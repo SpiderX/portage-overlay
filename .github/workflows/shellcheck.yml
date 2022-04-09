@@ -17,10 +17,17 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Run shellcheck
+    - name: Run shellcheck on ebuild
       uses: ludeeus/action-shellcheck@master
       env:
-        SHELLCHECK_OPTS: -s bash -e SC2034 -e SC2016 -e SC2191 -e SC2037
+        SHELLCHECK_OPTS: -s bash -e SC2034 -e SC2016
       with:
         additional_files: '*.ebuild'
+        ignore_names: '*.bash *.zsh'
+    - name: Run shellcheck on init
+      uses: ludeeus/action-shellcheck@master
+      env:
+        SHELLCHECK_OPTS: -s sh -e SC2034
+      with:
+        additional_files: '*.initd'
         ignore_names: '*.bash *.zsh'
