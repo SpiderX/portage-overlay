@@ -6,7 +6,7 @@ EAPI=8
 inherit go-module
 
 DESCRIPTION="Interactive cryptocurrency monitor"
-HOMEPAGE="https://github.com/miguelmota/cointop"
+HOMEPAGE="https://github.com/cointop-sh/cointop"
 SRC_URI="https://github.com/cointop-sh/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
