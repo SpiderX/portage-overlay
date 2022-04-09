@@ -2,32 +2,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-NAME=${SVCNAME##*.}
-if [ -n "${NAME}" -a "${SVCNAME}" != "ntripserver" ]; then
-    PID="/run/ntripserver.${NAME}.pid"
-    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
-    CONF_DEFAULT="/etc/conf.d/ntripserver.${NAME}"
-else
-    PID="/run/ntripserver.pid"
-    PNAME=${RC_SVCNAME}
-    CONF_DEFAULT="/etc/conf.d/ntripserver"
-fi
-CONF=${CONF:-${CONF_DEFAULT}}
-EXEC=${EXEC:-/usr/bin/ntripserver}
+command="/usr/bin/ntripserver"
+command_args="${NTRIP_OPTS} -m ${MOUNTPOINT} ${CONFIG}"
+command_background="yes"
+description="Ntrip Command Line Server"
+name="Ntrip Command Line Server (${MOUNTPOINT})"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
-        need net
-}
-
-start() {
-        ebegin "Starting ntripserver"
-        start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PID} --exec ${EXEC} -- ${OPTS}
-        eend $?
-}
-
-stop() {
-        ebegin "Stopping ntripserver"
-        start-stop-daemon --stop --quiet --pidfile ${PID}
-        rm -f ${PID}
-        eend $?
+	need net
 }

@@ -2,4 +2,5 @@
 
 # Various options.
 # run `ntripserver --help` for valid cmdline options
-OPTS="-M 6 -O 1 -R 300"
+NTRIP_OPTS="-M 6 -O 1 -R 300"
+MOUNTPOINT="EXAMPLE"
