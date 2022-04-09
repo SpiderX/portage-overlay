@@ -14,6 +14,6 @@
 	collecting, transforming, and routing logs, metrics, and events.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">timberio/vector</remote-id>
+		<remote-id type="github">vectordotdev/vector</remote-id>
 	</upstream>
 </pkgmetadata>

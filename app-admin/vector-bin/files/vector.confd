@@ -2,7 +2,7 @@
 
 # Various options.
 # run `vector --help` for valid cmdline options
-OPTS="--log-format text"
+VECTOR_OPTS="--log-format text"
 
 # User and group daemon runs as
 VECTOR_USER="vector"
