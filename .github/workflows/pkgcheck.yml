@@ -2,19 +2,60 @@ name: pkgcheck
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
-  schedule:
-    - cron: '0 0 * * *'
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v18.7
+      with:
+        files_ignore: |
+          *.md
+          *.xml
+          Manifest
+          **/files
+    - name: Get specific changed files
+      id: changed-files-specific
+      uses: tj-actions/changed-files@v18.7
+      with:
+        files: |
+          app-admin/awsls/*.ebuild
+          app-admin/sinker/*.ebuild
+          app-admin/sops/*.ebuild
+          app-admin/terraform-provider-vcd/*.ebuild
+          app-backup/clickhouse-backup/*.ebuild
+          app-backup/wal-g/*.ebuild
+          dev-db/litestream/*.ebuild
+          dev-db/usql/*.ebuild
+          dev-vcs/gitaly/*.ebuild
+          app-metrics/amazon-cloudwatch-agent/*.ebuild
+          app-metrics/aws-otel-collector/*.ebuild
+          app-misc/pet/*.ebuild
+          dev-util/packer/*.ebuild
+          dev-util/tickgit/*.ebuild
+          net-analyzer/sx/*.ebuild
+          net-misc/wuzz/*.ebuild
+          sys-apps/aptly/*.ebuild
+          www-servers/gitlab-workhorse/*.ebuild
+    - name: Define pkgcheck args
+      uses: haya14busa/action-cond@v1
+      id: condition
+      with:
+        cond: ${{ steps.changed-files-specific.outputs.any_changed == 'true' }}
+        if_true: "--keywords=-RedundantVersion"
+        if_false: "--net --keywords=-RedundantVersion"
     - name: Run pkgcheck
       uses: pkgcore/pkgcheck-action@v1
       with:
-        args: --keywords=-RedundantVersion
+        args: ${{ steps.condition.outputs.value }} ${{ steps.changed-files.any_changed }}
