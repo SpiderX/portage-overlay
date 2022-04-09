@@ -16,7 +16,7 @@
 	With userdbadm, such a list can be easily maintained.
 	</longdescription>
 	<upstream>
-		<doc>http://nasauber.de/opensource/userdbadm/</doc>
-		<bugs-to>mailto:tobias.leupold@web.de</bugs-to>
+		<doc>https://nasauber.de/opensource/userdbadm/</doc>
+		<remote-id type="gitlab">l3u/userdbadm</remote-id>
 	</upstream>
 </pkgmetadata>
