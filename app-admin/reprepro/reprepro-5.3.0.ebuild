@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A tool to handle local repositories of Debian packages"
 HOMEPAGE="https://salsa.debian.org/brlink/reprepro"
-SRC_URI="http://ftp.debian.org/debian/pool/main/r/${PN}/${P/-/_}.orig.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://ftp.debian.org/debian/pool/main/r/${PN}/${P/-/_}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
