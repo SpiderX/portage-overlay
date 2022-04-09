@@ -82,7 +82,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   app-admin/[trailscraper](https://github.com/flosell/trailscraper) | Command-line tool to get information out of AWS CloudTrail
 *   app-admin/[tztail](https://github.com/thecasualcoder/tztail) | A log view in various timezones
 *   app-admin/[userdbadm](https://nasauber.de/opensource/userdbadm) | Tool to manage (PAM) userdb files with crypted passwords
-*   app-admin/[uwsgitop](https://github.com/unbit/uwsgitop) | uWSGI stats viewer
+*   app-admin/[uwsgitop](https://github.com/xrmx/uwsgitop) | uWSGI stats viewer
 *   app-admin/[vault-backend-migrator](https://github.com/adamdecaf/vault-backend-migrator) | Tool to migrate data across vault clusters
 *   app-admin/[vcd-cli](https://github.com/vmware/vcd-cli) | Utility to check AWS resource limits and usage
 *   app-admin/[vector-bin](https://github.com/timberio/vector) | High performance logs, metrics, and events router
