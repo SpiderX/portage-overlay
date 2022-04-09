@@ -1,0 +1,27 @@
+name: remark-lint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  remark-lint:
+    name: remark-lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: install remark presets
+      run: npm install remark-preset-lint-recommended
+      shell: bash
+    - name: Run remark-lint
+      uses: reviewdog/action-remark-lint@v5
+      with:
+        annotate: false
+        fail_on_error: true
