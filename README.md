@@ -8,6 +8,7 @@
 [![gentoo overlay](https://img.shields.io/badge/gentoo-overlay-yellow)](https://github.com/gentoo-mirror/nest)
 [![pkgcheck](https://github.com/SpiderX/portage-overlay/actions/workflows/pkgcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/pkgcheck.yml)
 [![shellcheck](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml)
+[![remark-lint](https://github.com/SpiderX/portage-overlay/actions/workflows/remark-lint.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/remark-lint.yml)
 
 ## How to use this overlay
 
