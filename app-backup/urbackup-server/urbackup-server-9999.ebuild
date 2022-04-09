@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://github.com/uroni/urbackup_backend.git"
 inherit autotools git-r3 readme.gentoo-r1 systemd
 
 DESCRIPTION="Client Server backup system"
-HOMEPAGE="https://urbackup.org"
+HOMEPAGE="https://www.urbackup.org/"
 SRC_URI=""
 
 LICENSE="AGPL-3+"

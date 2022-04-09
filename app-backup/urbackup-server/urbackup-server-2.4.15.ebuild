@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="Client Server backup system"
-HOMEPAGE="https://urbackup.org"
+HOMEPAGE="https://www.urbackup.org/"
 SRC_URI="https://hndl.urbackup.org/Server/${PV}/${P}.tar.gz"
 
 LICENSE="AGPL-3+"
