@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="php-${PN}"
 MY_P="${MY_PN}-${PV}"
@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 PHP_EXT_NAME="spx"
 PHP_EXT_NEEDED_USE="zlib,-threads"
 PHP_EXT_S="${WORKDIR}/${MY_P}"
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php7-4 php8-0 php8-1"
 
 inherit php-ext-source-r3
 
@@ -29,10 +29,9 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	# Remove Werror, relax requirement
-	sed -i '/CFLAGS=/s/-Werror //' config.m4 || die "sed failed for config.m4"
-	sed -i '/ZEND_MODULE_API_NO/s/20180731/20200930/' src/php_spx.h \
-		|| die "sed failed for php_spx.h"
+	# Remove Werror, respect CFLAGS
+	sed -i "/CFLAGS/s/-Werror -Wall -O3/$CFLAGS -Wall/" config.m4 \
+		|| die "sed failed for config.m4"
 
 	php-ext-source-r3_src_prepare
 }
