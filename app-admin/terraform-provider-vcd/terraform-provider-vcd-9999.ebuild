@@ -1,20 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/terraform-providers/${PN}.git"
+EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
 
 inherit git-r3 go-module readme.gentoo-r1
 
 DESCRIPTION="Terraform VMware vCloud Director provider"
-HOMEPAGE="https://www.terraform.io/docs/providers/vcd"
+HOMEPAGE="https://registry.terraform.io/providers/vmware/vcd/latest/docs"
 SRC_URI=""
 
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 RESTRICT="mirror test"
 
 RDEPEND="app-admin/terraform"
@@ -27,12 +26,13 @@ in ~/.terraform.d/plugins\\n"
 
 src_unpack() {
 	git-r3_src_unpack
-	rm -rf "${S}"/vendor || die "rm failed"
 	go-module_live_vendor
 }
 
 src_compile() {
-	go build || die "build failed"
+	LDFLAGS="-X github.com/vmware/terraform-provider-vcd/v3/vcd.BuildVersion=${PV}"
+
+	go build -ldflags "${LDFLAGS}" || die "build failed"
 }
 
 src_install() {
@@ -43,6 +43,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	go-module_pkg_postinst
 	readme.gentoo_print_elog
 }

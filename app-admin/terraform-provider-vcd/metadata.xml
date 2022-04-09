@@ -15,6 +15,6 @@
 	to be configured with the proper credentials before it can be used.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">terraform-providers/terraform-provider-vcd</remote-id>
+		<remote-id type="github">vmware/terraform-provider-vcd</remote-id>
 	</upstream>
 </pkgmetadata>
