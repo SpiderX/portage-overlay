@@ -65,7 +65,7 @@ jobs:
         with:
           cond: ${{ steps.changed-files-specific.outputs.any_changed == 'true' }}
           if_true: "--keywords=-RedundantVersion"
-          if_false: "--net --keywords=-RedundantVersion"
+          if_false: "--keywords=-RedundantVersion"
       - name: Run pkgcheck
         uses: pkgcore/pkgcheck-action@v1
         with:
