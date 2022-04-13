@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 624](https://img.shields.io/badge/ebuild-624-orange.svg)](https://img.shields.io/badge/ebuild-624-orange.svg)
+[![Number of ebuilds: 625](https://img.shields.io/badge/ebuild-625-orange.svg)](https://img.shields.io/badge/ebuild-625-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/01c60be97b884ea78bba7c232a4d8ca8)](https://www.codacy.com/gh/SpiderX/portage-overlay/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -95,6 +95,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   app-backup/[urbackup-client](https://www.urbackup.org/) | Client Server backup system
 *   app-backup/[urbackup-server](https://www.urbackup.org/) | Client Server backup system
 *   app-backup/[wal-g](https://github.com/wal-g/wal-g) | Archival restoration tool for databases
+*   app-containers/[lazydocker](https://github.com/jesseduffield/lazydocker) | Lazier way to manage everything docker
 *   app-crypt/[acmebot](https://github.com/plinss/acmebot) | ACME protocol automatic certitificate manager
 *   app-crypt/[acme-client](https://git.sr.ht/~graywolf/acme-client-portable) | Secure Let's Encrypt client
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/acme.sh.svg)](https://repology.org/metapackage/acme.sh) app-crypt/[acme-sh](https://github.com/acmesh-official/acme.sh) | An ACME Shell script
