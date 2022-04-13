@@ -61,6 +61,7 @@ jobs:
             dev-util/packer/*.ebuild
             dev-util/tickgit/*.ebuild
             net-analyzer/sx/*.ebuild
+            net-misc/curlie/*.ebuild
             net-misc/wuzz/*.ebuild
             sys-apps/aptly/*.ebuild
             www-servers/gitlab-workhorse/*.ebuild

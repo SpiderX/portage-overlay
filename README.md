@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 625](https://img.shields.io/badge/ebuild-625-orange.svg)](https://img.shields.io/badge/ebuild-625-orange.svg)
+[![Number of ebuilds: 626](https://img.shields.io/badge/ebuild-626-orange.svg)](https://img.shields.io/badge/ebuild-626-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/01c60be97b884ea78bba7c232a4d8ca8)](https://www.codacy.com/gh/SpiderX/portage-overlay/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -626,6 +626,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   net-misc/[awscurl](https://github.com/okigan/awscurl) | Make signed requests to AWS API
 *   net-misc/[bngblaster](https://github.com/rtbrick/bngblaster) | A tool to simulate thousands of PPPoE or IPoE subscribers
 *   net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
+*   net-misc/[curlie](https://github.com/rs/curlie) | The power of curl, the ease of use of httpie
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/dhcdrop.html) | Effectively suppresses illegal DHCP servers on the LAN
 *   net-misc/[dnsflood](https://github.com/hawell/dns-flood) | Use raw sockets to generate DNS flood attack
 *   net-misc/[ec2-instance-connect](https://github.com/aws/aws-ec2-instance-connect-config) | AWS EC2 Instance Connect Configuration
