@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	lazygit is a CLI tool to handle git repositories, written in Go with
+	the gocui library. You can add files easily, resolve merge conflicts,
+	checkout recent branches easily, scroll through logs/diffs of
+	branches/commits.stash, push/pull quickly, squash down and rename
+	commits in CLI.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jesseduffield/lazygit</remote-id>
+	</upstream>
+</pkgmetadata>
