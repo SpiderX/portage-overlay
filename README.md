@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 630](https://img.shields.io/badge/ebuild-630-orange.svg)](https://img.shields.io/badge/ebuild-630-orange.svg)
+[![Number of ebuilds: 631](https://img.shields.io/badge/ebuild-631-orange.svg)](https://img.shields.io/badge/ebuild-631-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/01c60be97b884ea78bba7c232a4d8ca8)](https://www.codacy.com/gh/SpiderX/portage-overlay/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -133,6 +133,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   app-office/[drawio-desktop-bin](https://github.com/jgraph/drawio-desktop) | Diagram drawing application built on web technology
 *   app-shells/[fzf](https://github.com/junegunn/fzf) | A command-line fuzzy finder
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/peco.svg)](https://repology.org/metapackage/peco) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
+*   app-shells/[zoxide](https://github.com/ajeetdsouza/zoxide) | A smarter cd command with supports of all major shells
 *   app-text/[keening](https://github.com/vehk/keening) | A simple command line pastebin designed to be used together with ssh
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[libxsd-frontend](https://www.codesynthesis.com/projects/libxsd-frontend) | A compiler frontend for the W3C XML Schema definition language
