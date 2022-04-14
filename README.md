@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 633](https://img.shields.io/badge/ebuild-633-orange.svg)](https://img.shields.io/badge/ebuild-633-orange.svg)
+[![Number of ebuilds: 634](https://img.shields.io/badge/ebuild-634-orange.svg)](https://img.shields.io/badge/ebuild-634-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/projects/2323)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/01c60be97b884ea78bba7c232a4d8ca8)](https://www.codacy.com/gh/SpiderX/portage-overlay/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpiderX/portage-overlay&amp;utm_campaign=Badge_Grade)
@@ -680,6 +680,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   sys-apps/[dust](https://github.com/bootandy/dust) | More intuitive version of du
 *   sys-apps/[evhz](https://git.sr.ht/~iank/evhz) | Mouse refresh rate under evdev
 *   sys-apps/[firetools](https://firejail.wordpress.com) | Graphical user interface of Firajail security sandbox
+*   sys-apps/[jless](https://github.com/PaulJuliusMartinez/jless) | Command-line JSON viewer
 *   sys-apps/[nocache](https://github.com/Feh/nocache) | Minimize caching effects for applications
 *   sys-apps/[psi-notify](https://github.com/cdown/psi-notify) | Minimalistic PSI notifier using libnotify
 *   sys-apps/[sampler](https://github.com/sqshq/sampler) | Visualization for any shell command
