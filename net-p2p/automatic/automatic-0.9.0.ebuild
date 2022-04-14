@@ -1,9 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools readme.gentoo-r1 systemd
+
+COMMIT="6301c30"
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
@@ -12,13 +14,15 @@ SRC_URI="https://github.com/1100101/Automatic/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="acct-user/automatic
 	dev-libs/libxml2:2
 	dev-libs/libpcre:3
 	net-misc/curl"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${P^}"
 
@@ -30,18 +34,26 @@ and check log file in /var/log/automatic/\\n"
 src_prepare() {
 	default
 
-	# https://bugs.gentoo.org/426262
-	mv configure.{in,ac} || die "rename failed"
+	# remove CFLAGS and CXXFLAGS defined by upstream
+	sed -i  -e '/CFLAGS=/s/=".*"/+=""/' \
+		-e '/CXXFLAGS=/s/=".*"/+=""/' \
+		configure.ac || die "sed failed for configure.ac"
 
-	# Remove CFLAGS and CXXFLAGS defined by upstream
-	sed -i  -e 's/CFLAGS="-Wdeclaration-after-statement -O3 -funroll-loops"/CFLAGS+=""/' \
-		-e 's/CXXFLAGS="-O3 -funroll-loops"/CXXFLAGS+=""/' \
-		configure.ac || die "sed for CXXFLAGS and CFLAGS failed"
+	# set version
+	sed -i  -e "/SVN_REVISION/s|'\`git rev-parse --short HEAD\`'|${COMMIT}|" \
+		-e "/LONG_VERSION_STRING/s|'\`git rev-parse --short HEAD\`'|${COMMIT}|" \
+		src/Makefile.am || die "sed failed for src/Makefile.am"
 
-	# tests fail with network-sandbox
-	sed -i  -e '/check_PROGRAMS /s/http_test //' \
-		-e '/check_PROGRAMS /s/prowl_test //' src/tests/Makefile.am \
-		|| die "sed failed for Makefile.am"
+	# provide test api keys for tests
+	sed -i '/correct_key/s|""|"05b363d4561aaaa5c4c49bbb15639068b8cb6646"|' \
+		src/tests/prowl_test.c || die "sed failed for prowl_test.c"
+	# disable pushover tests
+	sed -i '/check_PROGRAMS /s/ pushover_test//' src/tests/Makefile.am \
+		|| die "sed failed for src/tests/Makefile.am"
+
+	# wrt #836740
+	sed -i '/stdio.h/i#include <stdint.h>' src/tests/utils_test.c \
+		|| die "sed failed for utils_test.c"
 
 	eautoreconf
 }
