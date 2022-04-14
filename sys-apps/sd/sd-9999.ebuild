@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/chmln/${PN}.git"
 
-inherit cargo git-r3
+inherit bash-completion-r1 cargo git-r3
 
 DESCRIPTION="An intuitive find and replace tool"
 HOMEPAGE="https://github.com/chmln/sd"
@@ -22,4 +22,22 @@ QA_FLAGS_IGNORED="usr/bin/sd"
 src_unpack() {
 	git-r3_src_unpack
 	cargo_live_src_unpack
+}
+
+src_install() {
+	einstalldocs
+	cargo_src_install
+
+	# Find generated shell completions and man
+	local BUILD_DIR
+	BUILD_DIR="$(find target -name sd.bash -print -quit)"
+
+	pushd "${BUILD_DIR%sd.bash}" || die "pushd failed"
+	doman sd.1
+	newbashcomp sd.bash sd
+	insinto /usr/share/fish/vendor_completions.d
+	doins sd.fish
+	insinto /usr/share/zsh/site-functions
+	doins _sd
+	popd || die "popd failed"
 }

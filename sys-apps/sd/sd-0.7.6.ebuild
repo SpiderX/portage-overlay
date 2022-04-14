@@ -77,7 +77,7 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
-inherit cargo
+inherit bash-completion-r1 cargo
 
 DESCRIPTION="An intuitive find and replace tool"
 HOMEPAGE="https://github.com/chmln/sd"
@@ -91,3 +91,21 @@ KEYWORDS="~amd64 ~x86"
 DOCS=( {CHANGELOG,README}.md )
 
 QA_FLAGS_IGNORED="usr/bin/sd"
+
+src_install() {
+	einstalldocs
+	cargo_src_install
+
+	# Find generated shell completions and man
+	local BUILD_DIR
+	BUILD_DIR="$(find target -name sd.bash -print -quit)"
+
+	pushd "${BUILD_DIR%sd.bash}" || die "pushd failed"
+	doman sd.1
+	newbashcomp sd.bash sd
+	insinto /usr/share/fish/vendor_completions.d
+	doins sd.fish
+	insinto /usr/share/zsh/site-functions
+	doins _sd
+	popd || die "popd failed"
+}
