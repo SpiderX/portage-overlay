@@ -7,6 +7,7 @@
 [![gentoo qa-reports](https://img.shields.io/badge/gentoo-QA%20report-6E56AF)](https://qa-reports.gentoo.org/output/repos/nest.html)
 [![gentoo overlay](https://img.shields.io/badge/gentoo-overlay-yellow)](https://github.com/gentoo-mirror/nest)
 [![pkgcheck](https://github.com/SpiderX/portage-overlay/actions/workflows/pkgcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/pkgcheck.yml)
+[![repoman](https://github.com/SpiderX/portage-overlay/actions/workflows/repoman.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/repoman.yml)
 [![shellcheck](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/shellcheck.yml)
 [![remark-lint](https://github.com/SpiderX/portage-overlay/actions/workflows/remark-lint.yml/badge.svg)](https://github.com/SpiderX/portage-overlay/actions/workflows/remark-lint.yml)
 
