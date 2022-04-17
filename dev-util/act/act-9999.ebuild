@@ -14,12 +14,10 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
 RESTRICT="test" # needs dockerd
 PROPERTIES="test_network"
 
-RDEPEND="app-containers/docker-cli"
-BDEPEND="test? ( app-containers/docker )"
+RDEPEND="app-containers/docker"
 
 DOCS=( {IMAGES,README}.md )
 
@@ -29,7 +27,7 @@ src_unpack() {
 }
 
 src_compile() {
-	LDFLAGS="-X main.version=$${PV}"
+	LDFLAGS="-X main.version=${PV}"
 
 	go build -ldflags "${LDFLAGS}" || die "build failed"
 }
