@@ -1,0 +1,71 @@
+name: repoman
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.yml'
+      - '.cz'
+      - '.gitignore'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.yml'
+      - '.cz'
+      - '.gitignore'
+
+jobs:
+  list-ebuild:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v18.7
+        with:
+          since_last_remote_commit: true
+          files: |
+            **/*.ebuild
+      - name: Set matrix
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$(dirname ${{ steps.changed-files.outputs.all_changed_files }} | jq -Rsc 'split("\n")[:-1]|unique')"
+  repoman:
+    needs: list-ebuild
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ebuild: ${{ fromJson(needs.list-ebuild.outputs.matrix) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          base: 'master'
+          filters: |
+            exclusion:
+              - 'net-misc/dhcdrop/*'
+              - 'app-emulation/vmware-workstation/*'
+              - 'net-im/vk-messenger-bin/*'
+      - name: Define repoman args
+        uses: haya14busa/action-cond@v1
+        id: condition
+        with:
+          cond: ${{ steps.filter.outputs.exclusion == 'true' }}
+          if_true: "-dxv"
+          if_false: "-dxv -e y"
+      - name: Run repoman on ${{ matrix.ebuild }}
+        uses: lucianposton/repoman-ebuild-qa-action@v1
+        with:
+          path: ${{ matrix.ebuild }}
+          repoman_args: ${{ steps.condition.outputs.value }}
