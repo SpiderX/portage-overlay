@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -9,16 +9,11 @@ inherit python-single-r1 systemd xdg
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
 HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
-if [[ ${PV} == *9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/bulletmark/${PN}.git"
-else
-	SRC_URI="https://github.com/bulletmark/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://github.com/bulletmark/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
