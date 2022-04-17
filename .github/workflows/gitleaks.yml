@@ -15,9 +15,9 @@ jobs:
     name: gitleaks
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
-    - name: Run gitleaks
-      uses: zricethezav/gitleaks-action@master
+      - name: Run gitleaks
+        uses: zricethezav/gitleaks-action@master
