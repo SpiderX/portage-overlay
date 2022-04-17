@@ -1,0 +1,23 @@
+name: gitleaks
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  remark-lint:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+    - name: Run gitleaks
+      uses: zricethezav/gitleaks-action@master
