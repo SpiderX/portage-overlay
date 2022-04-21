@@ -8,7 +8,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Simple Integer library"
-HOMEPAGE="http://hackage.haskell.org/package/integer-simple"
+HOMEPAGE="https://hackage.haskell.org/package/integer-simple"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
