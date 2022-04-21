@@ -143,7 +143,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-cpp/[string-view-lite](https://github.com/martinmoene/string-view-lite) | A single-file header-only version of a C++17-like string_view
 *   dev-cpp/[xsd](https://www.codesynthesis.com/products/xsd) | A cross-platform W3C XML Schema to C++ data binding compiler
 *   dev-db/[datanymizer](https://github.com/datanymizer/datanymizer) | Powerful database anonymizer with flexible rules
-*   dev-db/[dbcrossbar](http://www.dbcrossbar.org) | Copy tabular data between databases, CSV files and cloud storage
+*   dev-db/[dbcrossbar](https://www.dbcrossbar.org) | Copy tabular data between databases, CSV files and cloud storage
 *   dev-db/[dbgate-bin](https://github.com/dbgate/dbgate) | Database manager for MySQL, PostgreSQL, SQL Server and MongoDB
 *   dev-db/[litestream](https://github.com/benbjohnson/litestream) | Streaming S3 replication for SQLite
 *   dev-db/[msodbcsql](https://docs.microsoft.com/en-us/sql/connect/odbc) | Microsoft ODBC Driver for SQL Server
