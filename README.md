@@ -240,7 +240,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[type-hint](https://github.com/mvv/type-hint) | Haskell library for helping type inference by using proxy values
 *   dev-haskell/[tzdata](https://github.com/nilcons/haskell-tzdata) | Distribution of the standard time zone database
 *   dev-haskell/[unordered-containers](https://github.com/haskell-unordered-containers/unordered-containers) | Efficient hashing-based container types
-*   dev-haskell/[websockets](http://jaspervdj.be/websockets) | Allows you to write WebSocket-capable servers
+*   dev-haskell/[websockets](https://jaspervdj.be/websockets) | Allows you to write WebSocket-capable servers
 *   dev-haskell/[wai-cors](https://github.com/larskuhtz/wai-cors) | Cross-Origin resource sharing (CORS) for Wai
 *   dev-haskell/[wai-middleware-static](https://github.com/scotty-web/wai-middleware-static) | WAI middleware that serves requests to static files
 *   dev-haskell/[wai-websockets](https://github.com/yesodweb/wai) | Provide a bridge between WAI and the websockets package
