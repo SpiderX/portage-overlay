@@ -3,15 +3,17 @@
 
 EAPI=7
 
-inherit savedconfig toolchain-funcs
+EGIT_REPO_URI="https://github.com/SpiderX/${PN}.git"
+
+inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="A simple command line pastebin designed to be used together with ssh"
 HOMEPAGE="https://github.com/SpiderX/keening"
-SRC_URI="https://github.com/SpiderX/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 RESTRICT="mirror"
 
