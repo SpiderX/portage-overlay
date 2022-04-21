@@ -247,7 +247,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[belcard](https://gitlab.linphone.org/BC/public/belcard) | VCard standard format manipulation library
 *   dev-libs/[belle-sip](https://gitlab.linphone.org/BC/public/belle-sip) | SIP (RFC3261) implementation
 *   dev-libs/[ccrtp](https://www.gnu.org/software/ccrtp) | GNU ccRTP - Implementation of the IETF real-time transport protocol
-*   dev-libs/[libcommuni](http://communi.github.io) | A cross-platform IRC framework written with Qt
+*   dev-libs/[libcommuni](https://communi.github.io) | A cross-platform IRC framework written with Qt
 *   dev-libs/[libdict](https://github.com/rtbrick/libdict) | C library of key-value data structures
 *   dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
 *   dev-libs/[libdigidocpp](https://github.com/open-eid/libdigidocpp) | Library for handling digitally signed documents
@@ -638,7 +638,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[ngrok-bin](https://ngrok.com/) | Secure introspected tunnels to localhost
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/pingu.svg)](https://repology.org/metapackage/pingu) net-misc/[pingu](https://github.com/ncopa/pingu) | Policy routing daemon with failover and load-balancing
 *   net-misc/[qfreerdp](https://github.com/zrax/qfreerdp) | Qt launcher GUI for XFreeRDP
-*   net-misc/[qia](http://stg.codes) | Authorization tool for Stargazer Billing System written in Qt
+*   net-misc/[qia](https://stg.codes) | Authorization tool for Stargazer Billing System written in Qt
 *   net-misc/[msd](https://github.com/rozhuk-im/msd) | Program for IP TV streaming on the network via HTTP
 *   net-misc/[ntripserver](https://github.com/nunojpg/ntripserver) | Ntrip Version 2.0 Command Line Server
 *   net-misc/[opendrop](https://github.com/seemoo-lab/opendrop) | an Open Source AirDrop Implementation

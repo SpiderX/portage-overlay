@@ -14,8 +14,8 @@
 	direct replacement for inetaccess utility
 	</longdescription>
 	<upstream>
-		<changelog>http://stg.codes/projects/qia/repository</changelog>
-		<doc>http://stg.codes/projects/qia/wiki</doc>
-		<bugs-to>http://stg.codes/projects/qia/issues</bugs-to>
+		<changelog>https://stg.codes/projects/qia/repository</changelog>
+		<doc>https://stg.codes/projects/qia/wiki</doc>
+		<bugs-to>https://stg.codes/projects/qia/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
