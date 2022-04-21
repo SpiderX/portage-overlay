@@ -15,6 +15,6 @@
 	Can be used to measure or monitor LAN, inter-office WAN, VPN broadband.
 	</longdescription>
 	<upstream>
-		<doc>http://www.ookla.com/support/</doc>
+		<doc>https://www.ookla.com/support/</doc>
 	</upstream>
 </pkgmetadata>

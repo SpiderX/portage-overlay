@@ -1,19 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Server software for testing internet bandwidth using speedtest.net"
-HOMEPAGE="http://www.ookla.com/"
-SRC_URI="x86? ( http://install.speedtest.net/ooklaserver/stable/OoklaServer-linux32.tgz )
-	amd64? ( http://install.speedtest.net/ooklaserver/stable/OoklaServer-linux64.tgz )"
+HOMEPAGE="https://www.ookla.com"
+SRC_URI="x86? ( https://install.speedtest.net/ooklaserver/stable/OoklaServer-linux32.tgz )
+	amd64? ( https://install.speedtest.net/ooklaserver/stable/OoklaServer-linux64.tgz )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="acct-user/netgauge"
 
