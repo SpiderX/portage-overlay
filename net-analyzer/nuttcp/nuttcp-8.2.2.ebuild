@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="Network performance measurement tool"
-HOMEPAGE="http://www.nuttcp.net"
-SRC_URI="http://nuttcp.net/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.nuttcp.net"
+SRC_URI="https://nuttcp.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
