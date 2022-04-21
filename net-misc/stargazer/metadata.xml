@@ -43,7 +43,7 @@
 		<flag name="module-store-postgres">Enable build of storage plugin for Stargazer, which uses PostgreSQL for storage.</flag>
 	</use>
 	<upstream>
-		<doc>http://stg.net.ua/doc/index.html</doc>
+		<doc>https://stg.net.ua/doc/index.html</doc>
 		<bugs-to>mailto:faust@stg.dp.ua</bugs-to>
 		<remote-id type="github">madf/stg</remote-id>
 	</upstream>

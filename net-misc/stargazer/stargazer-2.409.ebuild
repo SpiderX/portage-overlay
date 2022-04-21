@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PROJECTS="sgconv rscriptd sgauth sgconf sgconf_xml stargazer"
 
@@ -41,7 +41,7 @@ MY_P="stg-${PV}"
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Billing system for small home and office networks"
-HOMEPAGE="http://stg.net.ua"
+HOMEPAGE="https://stg.net.ua"
 SRC_URI="https://stg.net.ua/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -79,7 +79,7 @@ PATCHES=(
 	# Remove make from script (for keeping symbols), add variable to Makefile.conf
 	"${FILESDIR}"/patches/stg-2.409-build-no-rlm.patch
 	# Remove static-libs if not needed
-	"${FILESDIR}"/patches/stg-2.408-static-libs.patch
+	"${FILESDIR}"/patches/stg-2.409-static-libs.patch
 )
 
 IUSE="sgconv rscriptd sgauth sgconf sgconf-xml +stargazer radius debug"
