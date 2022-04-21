@@ -10,11 +10,13 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Enhanced completion for <pkg>dev-python/click</pkg>
-	Add automatic completion support for fish, Zsh, Bash and PowerShell to Click.
+	This package detects what shell the current Python executable is running in.
+	detect_shell pokes around the process's running environment to determine
+	what shell it is run in. It returns a 2-tuple: the shell name and the command
+	used to run the shell.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">click-contrib/click-completion</remote-id>
-		<remote-id type="pypi">click-completion</remote-id>
+		<remote-id type="github">sarugaku/shellingham</remote-id>
+		<remote-id type="pypi">shellingham</remote-id>
 	</upstream>
 </pkgmetadata>
