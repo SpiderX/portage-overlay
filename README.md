@@ -26,13 +26,13 @@ eselect repository enable nest
 layman -fa nest
 ```
 
-For manual install, through [local overlays](https://wiki.gentoo.org/wiki/Overlay/Local_overlay), you should add this in `/etc/portage/repos.conf/nest.conf`:
+For manual install, through [local overlay](https://wiki.gentoo.org/wiki/Creating_an_ebuild_repository), you should add this in `/etc/portage/repos.conf/nest.conf`:
 
 ```console
 [nest]
-location = /usr/local/portage/nest
+location = /var/db/repos/nest
 sync-type = git
-sync-uri = https://github.com/spiderx/portage-overlay.git
+sync-uri = https://github.com/gentoo-mirror/nest.git
 priority=9999
 ```
 
@@ -135,7 +135,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   app-shells/[fzf](https://github.com/junegunn/fzf) | A command-line fuzzy finder
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/peco.svg)](https://repology.org/metapackage/peco) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 *   app-shells/[zoxide](https://github.com/ajeetdsouza/zoxide) | A smarter cd command with supports of all major shells
-*   app-text/[keening](https://github.com/vehk/keening) | A simple command line pastebin designed to be used together with ssh
+*   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[libxsd-frontend](https://www.codesynthesis.com/projects/libxsd-frontend) | A compiler frontend for the W3C XML Schema definition language
 *   dev-cpp/[libcutl](https://www.codesynthesis.com/projects/libcutl) | A collection of C++ libraries (successor of libcult)
@@ -158,7 +158,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   dev-db/[pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) | A PostgreSQL extension for automatic bloat cleanup
 *   dev-db/[pg_timetable](https://github.com/cybertec-postgresql/pg_timetable) | Advanced scheduling for PostgreSQL
 *   dev-db/[pgcenter](https://github.com/lesovsky/pgcenter) | Command-line admin tool for observing and troubleshooting Postgres
-*   dev-db/[pipelinedb](https://www.pipelinedb.com/) | High-performance time-series aggregation for PostgreSQL
+*   dev-db/[pipelinedb](https://github.com/pipelinedb/pipelinedb) | High-performance time-series aggregation for PostgreSQL
 *   dev-db/[postgresql_anonymizer](https://gitlab.com/dalibo/postgresql_anonymizer) | Anonymization & Data Masking for PostgreSQL
 *   dev-db/[sqlbench](https://github.com/felixge/sqlbench) | Measures and compares execution time of one or more SQL queries
 *   dev-db/[sqlpackage](https://docs.microsoft.com/en-us/sql/tools/sqlpackage) | Automates SQL Server database development tasks
@@ -402,7 +402,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   dev-python/[mock-django](https://github.com/dcramer/mock-django) | A simple library for mocking certain Django behavior
 *   dev-python/[msrest](https://github.com/Azure/msrest-for-python) | AutoRest swagger generator Python client runtime
 *   dev-python/[netaddr](https://github.com/drkjam/netaddr) | Network address representation and manipulation library
-*   dev-python/[netapp-ontap](https://devnet.netapp.com/restapi) | A library for working with ONTAP's REST APIs simply in Python
+*   dev-python/[netapp-ontap](https://devnet.netapp.com/restapi.php) | A library for working with ONTAP's REST APIs simply in Python
 *   dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
 *   dev-python/[onetimepass](https://github.com/tadeck/onetimepass) | One-time password library for HOTP and TOTP passwords
 *   dev-python/[openapi-schema-validator](https://github.com/p1c2u/openapi-schema-validator) | OpenAPI schema validation for Python
@@ -451,13 +451,9 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   dev-python/[ripe-atlas-sagan](https://github.com/RIPE-NCC/ripe-atlas-sagan) | A parsing library for RIPE Atlas measurement results
 *   dev-python/[route53-transfer](https://github.com/cosmin/route53-transfer) | Generic access to configuration files in any formats
 *   dev-python/[rstr](https://pypi.org/project/rstr) | Generate random strings in Python
-*   dev-python/[ruamel-ordereddict](https://bitbucket.org/ruamel/ordereddict) | An ordered dictionary with KIO/KVIO
-*   dev-python/[ruamel-std-pathlib](https://bitbucket.org/ruamel/std.pathlib) | Ruamel enhancements to pathlib and pathlib2
-*   dev-python/[ruamel-yaml](https://bitbucket.org/ruamel/yaml) | YAML parser/emitter that supports roundtrip comment preservation
 *   dev-python/[schema](https://github.com/keleshev/schema) | Simple data validation library
 *   dev-python/[selinux](https://github.com/pycontribs/selinux) | Pure-python selinux shim module for use in virtualenvs
 *   dev-python/[sentry-sdk](https://github.com/getsentry/sentry-python) | Python client for Sentry
-*   dev-python/[sh](https://github.com/amoffat/shellingham) | Python subprocess interface
 *   dev-python/[shellingham](https://github.com/sarugaku/shellingham) | Detects what shell the current Python executable is running in
 *   dev-python/[shouldbe](https://github.com/directxman12/should_be) | A Python Assertions Helper
 *   dev-python/[slimit](https://slimit.readthedocs.io/en/latest) | A JavaScript minifier written in Python
@@ -527,7 +523,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   dev-util/[postman](https://www.postman.com) | Build, test, and document your APIs faster
 *   dev-util/[python-hcl2](https://github.com/amplify-education/python-hcl2) | A parser for HCL2 written in Python
 *   dev-util/[sqlfluff](https://github.com/sqlfluff/sqlfluff) | A SQL linter and auto-formatter
-*   dev-util/[swapusage](https://www.codesynthesis.com/hhoffstaette/swapusage) | Amount of swapped memory for running processes
+*   dev-util/[swapusage](https://github.com/hhoffstaette/swapusage) | Amount of swapped memory for running processes
 *   dev-util/[taskcat](https://github.com/aws-quickstart/taskcat) | An OpenSource Cloudformation Deployment Framework
 *   dev-util/[testmace](https://testmace.com) | Powerful IDE to work with API
 *   dev-util/[tickgit](https://github.com/augmentable-dev/tickgit) | Manage your repository's TODOs as config in your codebase
@@ -605,7 +601,7 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   net-analyzer/[ripe-atlas-probe](https://github.com/RIPE-NCC/ripe-atlas-software-probe) | RIPE Atlas Software Probe
 *   net-analyzer/[smtpping](https://github.com/halon/smtpping) | Simple, portable tool for measuring SMTP server delay
 *   net-analyzer/[sx](https://github.com/v-byte-cpu/sx) | Fast, modern, easy-to-use network scanner
-*   net-analyzer/[wtraf-bin](https://wtraf.sourceforge.net/) | SNMP traffic monitor in realtime
+*   net-analyzer/[wtraf-bin](https://sourceforge.net/projects/wtraf/) | SNMP traffic monitor in realtime
 *   net-dns/[ddns-route53](https://github.com/crazy-max/ddns-route53) | Dynamic DNS for Amazon Route 53 on a time-based schedule
 *   net-dns/[r53ddns](https://github.com/coord-e/r53ddns) | Updates A record in Route53 with current global IP
 *   net-dns/[flares](https://github.com/lfaoro/flares) | CloudFlare DNS backup tool
@@ -711,3 +707,8 @@ This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for
 *   x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 *   x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 *   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
+* net-analyzer/[wtraf-bin](https://wtraf.sourceforge.net/) | SNMP traffic monitor in realtime
+* dev-db/[pipelinedb](https://www.pipelinedb.com/) | High-performance time-series aggregation for PostgreSQL
+* dev-util/[swapusage](https://github.com/hhoffstaette/swapusage) | Amount of swapped memory for running processes
+* dev-python/[netapp-ontap](https://devnet.netapp.com/restapi) | A library for working with ONTAP's REST APIs simply in Python
+* app-text/[keening](https://github.com/vehk/keening) | A simple command line pastebin designed to be used together with ssh
