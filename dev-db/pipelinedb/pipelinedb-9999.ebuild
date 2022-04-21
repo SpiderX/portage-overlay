@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/pipelinedb/${PN}.git"
@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/pipelinedb/${PN}.git"
 inherit git-r3 python-any-r1
 
 DESCRIPTION="High-performance time-series aggregation for PostgreSQL"
-HOMEPAGE="https://www.pipelinedb.com/ https://github.com/pipelinedb/pipelinedb"
+HOMEPAGE="https://github.com/pipelinedb/pipelinedb"
 SRC_URI=""
 
 LICENSE="Apache-2.0"
