@@ -484,7 +484,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[vcd-api-schemas-type](https://github.com/vmware/vcd-api-schemas) | VMware vCloud Director Python API Schemas Type
 *   dev-python/[versionfinder](https://github.com/jantman/versionfinder) | Find version of python package, installed via pip, setuptools, git
 *   dev-python/[vsphere-guest-run](https://github.com/vmware/vsphere-guest-run) | Python library for guest operations
-*   dev-python/[yattag](http://www.yattag.org) | Generate HTML or XML in a pythonic way
+*   dev-python/[yattag](https://www.yattag.org) | Generate HTML or XML in a pythonic way
 *   dev-util/[act](https://github.com/nektos/act) | Run your GitHub Actions locally
 *   dev-util/[actionlint](https://github.com/rhysd/actionlint) | Static checker for GitHub Actions workflow files
 *   dev-util/[ansible-molecule](https://github.com/ansible/molecule) | Automated testing for Ansible roles
