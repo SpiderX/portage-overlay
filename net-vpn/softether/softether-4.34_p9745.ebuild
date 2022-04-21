@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd toolchain-funcs
 
@@ -9,8 +9,8 @@ DATE="2020.04.05"
 MY_P="v${PV/_p/-}"
 
 DESCRIPTION="Multi-protocol VPN software"
-HOMEPAGE="http://www.softether.org"
-SRC_URI="http://www.softether-download.com/files/${PN}/${MY_P}-rtm-${DATE}-tree/Source_Code/${PN}-src-${MY_P}-rtm.tar.gz"
+HOMEPAGE="https://www.softether.org"
+SRC_URI="https://www.softether-download.com/files/${PN}/${MY_P}-rtm-${DATE}-tree/Source_Code/${PN}-src-${MY_P}-rtm.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

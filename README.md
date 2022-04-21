@@ -671,7 +671,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-vpn/[innernet-bin](https://github.com/tonarino/innernet) | WireGuard based private network system
 *   net-vpn/[forticlient](https://www.forticlient.com) | Fortinet VPN client
 *   net-vpn/[openvpn-aws](https://openvpn.net) | Patched OpenVPN with SAML support for AWS Client VPN
-*   [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/498844) net-vpn/[softether](http://www.softether.org) | Multi-protocol VPN software
+*   [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/498844) net-vpn/[softether](https://www.softether.org) | Multi-protocol VPN software
 *   sci-visualization/[visidata](https://github.com/saulpw/visidata) | Terminal spreadsheet multitool for discovering and arranging data
 *   sys-apps/[aptly](https://github.com/aptly-dev/aptly) | A swiss army knife for Debian repository management
 *   sys-apps/[choose](https://github.com/theryangeary/choose) | Fast alternative to cut and awk
