@@ -1,69 +1,67 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-MULTILIB_COMPAT=( abi_x86_64 )
+inherit desktop pax-utils unpacker xdg
 
-inherit desktop multilib-build pax-utils unpacker xdg
+DESCRIPTION="Free text and calls"
+HOMEPAGE="https://www.viber.com"
+SRC_URI="https://download.cdn.viber.com/cdn/desktop/Linux/${PN}.deb -> ${P}.deb"
+
+LICENSE="viber"
+SLOT="0"
+KEYWORDS="-* ~amd64"
+IUSE="apulse +pulseaudio"
+REQUIRED_USE="^^ ( apulse pulseaudio )"
+RESTRICT="bindist mirror"
+
+RDEPEND="dev-libs/expat
+	dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
+	dev-libs/openssl-compat
+	dev-libs/wayland
+	media-libs/alsa-lib
+	media-libs/fontconfig:1.0
+	media-libs/freetype:2
+	media-libs/gst-plugins-base:1.0
+	media-libs/gstreamer:1.0
+	net-print/cups
+	sys-apps/dbus
+	sys-libs/zlib:0/1
+	x11-libs/libdrm
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
+	x11-libs/libxcb:0/1.12
+	x11-libs/libXcomposite
+	x11-libs/libXcursor
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXi
+	x11-libs/libXrandr
+	x11-libs/libXrender
+	x11-libs/libXScrnSaver
+	x11-libs/libXtst
+	x11-libs/xcb-util-image
+	x11-libs/xcb-util-keysyms
+	x11-libs/xcb-util-renderutil
+	x11-libs/xcb-util-wm
+	apulse? ( media-sound/apulse )
+	pulseaudio? (
+		media-sound/pulseaudio
+		media-plugins/gst-plugins-pulse )"
+BDEPEND="sys-apps/fix-gnustack"
+
+S="${WORKDIR}"
 
 QA_PREBUILT="/opt/viber/Viber
 	/opt/viber/libexec/QtWebEngineProcess
 	/opt/viber/plugins/*/*.so
 	/opt/viber/lib/*
 	/opt/viber/qml/*"
-
-DESCRIPTION="Free text and calls"
-HOMEPAGE="http://www.viber.com"
-SRC_URI="http://download.cdn.viber.com/cdn/desktop/Linux/${PN}.deb -> ${P}.deb"
-
-LICENSE="viber"
-SLOT="0"
-KEYWORDS="-* ~amd64"
-IUSE="+abi_x86_64 apulse +pulseaudio"
-REQUIRED_USE="^^ ( apulse pulseaudio )"
-RESTRICT="bindist mirror"
-
-RDEPEND="dev-libs/expat[${MULTILIB_USEDEP}]
-	dev-libs/glib:2[${MULTILIB_USEDEP}]
-	dev-libs/nspr[${MULTILIB_USEDEP}]
-	dev-libs/nss[${MULTILIB_USEDEP}]
-	dev-libs/openssl-compat[${MULTILIB_USEDEP}]
-	dev-libs/wayland[${MULTILIB_USEDEP}]
-	media-libs/alsa-lib[${MULTILIB_USEDEP}]
-	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
-	media-libs/freetype:2[${MULTILIB_USEDEP}]
-	media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}]
-	media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
-	net-print/cups[${MULTILIB_USEDEP}]
-	sys-apps/dbus[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0/1[${MULTILIB_USEDEP}]
-	x11-libs/libdrm[${MULTILIB_USEDEP}]
-	x11-libs/libICE[${MULTILIB_USEDEP}]
-	x11-libs/libSM[${MULTILIB_USEDEP}]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	x11-libs/libxcb:0/1.12[${MULTILIB_USEDEP}]
-	x11-libs/libXcomposite[${MULTILIB_USEDEP}]
-	x11-libs/libXcursor[${MULTILIB_USEDEP}]
-	x11-libs/libXdamage[${MULTILIB_USEDEP}]
-	x11-libs/libXext[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes[${MULTILIB_USEDEP}]
-	x11-libs/libXi[${MULTILIB_USEDEP}]
-	x11-libs/libXrandr[${MULTILIB_USEDEP}]
-	x11-libs/libXrender[${MULTILIB_USEDEP}]
-	x11-libs/libXScrnSaver[${MULTILIB_USEDEP}]
-	x11-libs/libXtst[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-image[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-keysyms[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-renderutil[${MULTILIB_USEDEP}]
-	x11-libs/xcb-util-wm[${MULTILIB_USEDEP}]
-	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )
-	pulseaudio? (
-		media-sound/pulseaudio[${MULTILIB_USEDEP}]
-		media-plugins/gst-plugins-pulse[${MULTILIB_USEDEP}] )"
-BDEPEND="sys-apps/fix-gnustack"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
