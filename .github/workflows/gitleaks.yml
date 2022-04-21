@@ -11,7 +11,7 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  remark-lint:
+  gitleaks:
     name: gitleaks
     runs-on: ubuntu-latest
     steps:
