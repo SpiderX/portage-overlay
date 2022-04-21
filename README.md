@@ -40,7 +40,7 @@ Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all o
 
 ## List of Ebuilds
 
-This overlay consists of an [Gentoo Portage](http://www.gentoo.org/) ebuilds for projects:
+This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds for projects:
 
 *   app-admin/[awsdtc](https://github.com/c1982/awsdtc) | AWS Data Transfer Cost Explorer
 *   app-admin/[awslimitchecker](https://github.com/jantman/awslimitchecker) | Utility to check AWS resource limits and usage
