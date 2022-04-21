@@ -650,7 +650,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[slowhttptest](https://github.com/shekyan/slowhttptest) | Application Layer DoS attack simulator
 *   net-misc/[sping](https://github.com/benjojo/sping) | Split ping, shows direction the loss or latency is on
 *   net-misc/[spoofer](https://spoofer.caida.org) | A tool to assess of deployment of source address validation
-*   net-misc/[ssmd](http://stg.codes/projects/ssmd) | SNMP Switch Management Daemon
+*   net-misc/[ssmd](https://stg.codes/projects/ssmd) | SNMP Switch Management Daemon
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/stargazer.svg)](https://repology.org/metapackage/stargazer) net-misc/[stargazer](http://stg.net.ua) | Billing system for small home and office networks
 *   net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management
 *   net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
