@@ -9,7 +9,7 @@ QA_PREBUILT="usr/bin/rslsync"
 BASE_URI="https://download-cdn.resilio.com/stable/linux-@arch@/${PN}_@arch@.tar.gz"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
-HOMEPAGE="https://resilio.com"
+HOMEPAGE="https://www.resilio.com"
 SRC_URI="amd64? ( ${BASE_URI//@arch@/x64} )
 	x86? ( ${BASE_URI//@arch@/i386} )"
 

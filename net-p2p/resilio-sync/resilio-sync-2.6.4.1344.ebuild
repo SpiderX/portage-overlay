@@ -9,7 +9,7 @@ QA_PREBUILT="usr/bin/rslsync"
 BASE_URI="http://download-cdn.resilio.com/${PV}/Debian/${PN}_${PV}-1_@arch@.deb"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
-HOMEPAGE="https://resilio.com"
+HOMEPAGE="https://www.resilio.com"
 SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
 	x86? ( ${BASE_URI/@arch@/i386} )"
 
