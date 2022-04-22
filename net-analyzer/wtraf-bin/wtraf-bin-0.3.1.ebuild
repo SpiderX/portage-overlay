@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="SNMP traffic monitor in realtime"
 HOMEPAGE="https://sourceforge.net/projects/wtraf/"
-SRC_URI="mirror://sourceforge/${MY_PN}/nix%20binaries/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${MY_PN}/nix%20binaries/${MY_P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
