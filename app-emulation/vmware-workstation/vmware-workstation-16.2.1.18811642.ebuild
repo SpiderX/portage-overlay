@@ -18,7 +18,7 @@ SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.0.3"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
-HOMEPAGE="https://www.vmware.com/products/workstation"
+HOMEPAGE="https://www.vmware.com/products/workstation-pro.html"
 SRC_URI="https://download3.vmware.com/software/wkst/file/${MY_P}.x86_64.bundle
 	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz -> unlocker-${UNLOCKER_VERSION}.tar.gz
 			https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${VMWARE_FUSION_VER}/x86/core/com.vmware.fusion.zip.tar -> com.vmware.fusion-${PV}.zip.tar )
