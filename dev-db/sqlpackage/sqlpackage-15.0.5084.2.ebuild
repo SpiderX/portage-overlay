@@ -6,7 +6,7 @@ EAPI=7
 inherit pax-utils unpacker
 
 DESCRIPTION="Automates SQL Server database development tasks"
-HOMEPAGE="https://docs.microsoft.com/en-us/sql/tools/sqlpackage"
+HOMEPAGE="https://docs.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage?view=sql-server-ver15"
 SRC_URI="https://download.microsoft.com/download/0/2/0/020aa2fa-f3f2-41ba-bacd-ff15557890d3/${PN}-linux-x64-en-US-${PV}.zip"
 
 LICENSE="Microsoft-TOOLS"
