@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A library for diffs of python data structures"
-HOMEPAGE="https://sourceforge.net/projects/datadiff"
+HOMEPAGE="https://sourceforge.net/projects/datadiff/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

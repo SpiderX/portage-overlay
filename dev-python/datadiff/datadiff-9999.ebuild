@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A library for diffs of python data structures"
-HOMEPAGE="https://sourceforge.net/projects/datadiff"
+HOMEPAGE="https://sourceforge.net/projects/datadiff/"
 SRC_URI=""
 
 LICENSE="Apache-2.0"
