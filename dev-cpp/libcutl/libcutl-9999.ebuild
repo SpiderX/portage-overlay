@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://git.codesynthesis.com/${PN}/${PN}.git"
 inherit git-r3 multiprocessing toolchain-funcs
 
 DESCRIPTION="A collection of C++ libraries (successor of libcult)"
-HOMEPAGE="https://www.codesynthesis.com/projects/libcutl"
+HOMEPAGE="https://www.codesynthesis.com/projects/libcutl/"
 SRC_URI=""
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ inherit multiprocessing toolchain-funcs vcs-snapshot
 MY_PV="8653eff"
 
 DESCRIPTION="A collection of C++ libraries (successor of libcult)"
-HOMEPAGE="https://www.codesynthesis.com/projects/libcutl"
+HOMEPAGE="https://www.codesynthesis.com/projects/libcutl/"
 SRC_URI="https://git.codesynthesis.com/cgit/${PN}/${PN}/snapshot/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
