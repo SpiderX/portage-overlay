@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Swagger UI for Django REST Framework"
-HOMEPAGE="https://marcgibbons.com/django-rest-swagger"
+HOMEPAGE="https://marcgibbons.com/django-rest-swagger/"
 SRC_URI="https://github.com/marcgibbons/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"

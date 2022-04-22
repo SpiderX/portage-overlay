@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/marcgibbons/${PN}.git"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Swagger UI for Django REST Framework"
-HOMEPAGE="https://marcgibbons.com/django-rest-swagger"
+HOMEPAGE="https://marcgibbons.com/django-rest-swagger/"
 SRC_URI=""
 
 LICENSE="BSD-2"
