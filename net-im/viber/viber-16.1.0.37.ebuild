@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop pax-utils unpacker xdg
 
 DESCRIPTION="Free text and calls"
-HOMEPAGE="https://www.viber.com"
+HOMEPAGE="https://www.viber.com/en/"
 SRC_URI="https://download.cdn.viber.com/cdn/desktop/Linux/${PN}.deb -> ${P}.deb"
 
 LICENSE="viber"
