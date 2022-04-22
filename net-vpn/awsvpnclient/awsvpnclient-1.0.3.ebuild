@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop pax-utils systemd unpacker xdg
 
 DESCRIPTION="AWS VPN Client"
-HOMEPAGE="https://aws.amazon.com/vpn"
+HOMEPAGE="https://aws.amazon.com/vpn/"
 SRC_URI="https://d20adtppz83p9s.cloudfront.net/GTK/${PV}/${PN}_amd64.deb"
 
 LICENSE="Apache-2.0 GPL-1 MIT"

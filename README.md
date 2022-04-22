@@ -665,7 +665,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/resilio-sync.svg)](https://repology.org/metapackage/resilio-sync) net-p2p/[resilio-sync](https://www.resilio.com) | Resilient, fast and scalable file synchronization tool
 *   net-voip/[linphone-desktop](https://gitlab.linphone.org/BC/public/linphone-desktop) | A free VoIP and video softphone based on the SIP protocol
 *   net-voip/[twinkle](https://github.com/LubosD/twinkle) | Softphone for voice over IP and IM communication using SIP
-*   net-vpn/[awsvpnclient](https://aws.amazon.com/vpn) | AWS VPN Client
+*   net-vpn/[awsvpnclient](https://aws.amazon.com/vpn/) | AWS VPN Client
 *   net-vpn/[cloudflared](https://github.com/cloudflare/cloudflared) | Argo Tunnel client
 *   net-vpn/[innernet-bin](https://github.com/tonarino/innernet) | WireGuard based private network system
 *   net-vpn/[forticlient](https://www.forticlient.com) | Fortinet VPN client
