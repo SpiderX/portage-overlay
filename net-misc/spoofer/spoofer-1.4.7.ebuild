@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools desktop systemd tmpfiles
 
 DESCRIPTION="A tool to assess of deployment of source address validation"
-HOMEPAGE="https://spoofer.caida.org"
+HOMEPAGE="https://www.caida.org/projects/spoofer/"
 SRC_URI="https://www.caida.org/projects/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-3"
