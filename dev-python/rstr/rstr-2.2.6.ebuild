@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Generate random strings in Python"
-HOMEPAGE="https://pypi.org/project/rstr"
+HOMEPAGE="https://pypi.org/project/rstr/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${PV}.tar.gz"
 
 LICENSE="BSD"
