@@ -561,7 +561,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-gfx/[guetzli](https://github.com/google/guetzli) | Perceptual JPEG encoder
 *   media-gfx/[lsix](https://github.com/hackerb9/lsix) | Image viewer for terminal that use sixel graphics
 *   media-gfx/[nomacs](https://nomacs.org) | Qt-based image viewer
-*   media-gfx/[qView](https://interversehq.com/qview) | Practical and minimal image viewer
+*   media-gfx/[qView](https://interversehq.com/qview/) | Practical and minimal image viewer
 *   media-gfx/[pineapple-pictures](https://github.com/BLumia/pineapple-pictures) | A homebrew lightweight image viewer
 *   media-gfx/[pingo-bin](https://css-ig.net/pingo) | Fast web image optimizer
 *   media-gfx/[screencloud](https://screencloud.net) | Screenshot capturing and sharing tool over various services

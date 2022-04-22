@@ -6,7 +6,7 @@ EAPI=8
 inherit qmake-utils optfeature virtualx xdg
 
 DESCRIPTION="Practical and minimal image viewer"
-HOMEPAGE="https://interversehq.com/qview https://github.com/jurplel/qView"
+HOMEPAGE="https://interversehq.com/qview/ https://github.com/jurplel/qView"
 SRC_URI="https://github.com/jurplel/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
