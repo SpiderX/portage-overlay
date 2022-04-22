@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://git.codesynthesis.com/${PN}/${PN}.git"
 inherit git-r3 multiprocessing toolchain-funcs
 
 DESCRIPTION="Command Line Interface compiler for C++"
-HOMEPAGE="https://www.codesynthesis.com/projects/cli"
+HOMEPAGE="https://www.codesynthesis.com/projects/cli/"
 SRC_URI=""
 
 LICENSE="MIT"

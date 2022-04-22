@@ -498,7 +498,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[cfn-template-flip](https://github.com/awslabs/aws-cfn-template-flip) | AWS CloudFormation Template Flip
 *   dev-util/[cfripper](https://github.com/Skyscanner/cfripper) | Analysing CloudFormation templates for security compliance
 *   dev-util/[checkov](https://github.com/bridgecrewio/checkov) | Static code analysis tool for infrastructure-as-code
-*   dev-util/[cli](https://www.codesynthesis.com/projects/cli) | Command Line Interface compiler for C++
+*   dev-util/[cli](https://www.codesynthesis.com/projects/cli/) | Command Line Interface compiler for C++
 *   dev-util/[cloud-utils](https://launchpad.net/cloud-utils) | Utilities for interacting with a cloud
 *   dev-util/[cloudsplaining](https://github.com/salesforce/cloudsplaining) | AWS IAM Security Assessment tool
 *   dev-util/[css-html-js-minify](https://github.com/juancarlospaco/css-html-js-minify) | StandAlone Async cross-platform Minifier for the Web

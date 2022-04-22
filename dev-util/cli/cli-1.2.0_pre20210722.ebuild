@@ -8,7 +8,7 @@ inherit multiprocessing toolchain-funcs vcs-snapshot
 MY_PV="a54c695"
 
 DESCRIPTION="Command Line Interface compiler for C++"
-HOMEPAGE="https://www.codesynthesis.com/projects/cli"
+HOMEPAGE="https://www.codesynthesis.com/projects/cli/"
 SRC_URI="https://git.codesynthesis.com/cgit/${PN}/${PN}/snapshot/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
