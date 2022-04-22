@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://git.codesynthesis.com/${PN}/${PN}.git"
 inherit git-r3 multiprocessing toolchain-funcs
 
 DESCRIPTION="A compiler frontend for the W3C XML Schema definition language"
-HOMEPAGE="https://www.codesynthesis.com/projects/libxsd-frontend"
+HOMEPAGE="https://www.codesynthesis.com/projects/libxsd-frontend/"
 SRC_URI=""
 
 LICENSE="GPL-2"

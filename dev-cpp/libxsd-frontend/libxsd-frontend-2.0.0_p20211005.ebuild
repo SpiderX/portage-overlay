@@ -8,7 +8,7 @@ inherit multiprocessing toolchain-funcs vcs-snapshot
 MY_PV="1cc4abe"
 
 DESCRIPTION="A compiler frontend for the W3C XML Schema definition language"
-HOMEPAGE="https://www.codesynthesis.com/projects/libxsd-frontend"
+HOMEPAGE="https://www.codesynthesis.com/projects/libxsd-frontend/"
 SRC_URI="https://git.codesynthesis.com/cgit/${PN}/${PN}/snapshot/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
