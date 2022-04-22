@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/MeVisLab/pythonqt.git"
 inherit git-r3 qmake-utils python-single-r1 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
-HOMEPAGE="https://mevislab.github.io/pythonqt"
+HOMEPAGE="https://mevislab.github.io/pythonqt/"
 SRC_URI=""
 
 LICENSE="LGPL-2.1"

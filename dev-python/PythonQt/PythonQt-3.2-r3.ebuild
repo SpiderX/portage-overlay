@@ -10,7 +10,7 @@ MY_P=${PN}${PV}
 inherit qmake-utils python-single-r1 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
-HOMEPAGE="https://mevislab.github.io/pythonqt"
+HOMEPAGE="https://mevislab.github.io/pythonqt/"
 SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
