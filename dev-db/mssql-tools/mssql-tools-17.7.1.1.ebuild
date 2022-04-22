@@ -6,13 +6,12 @@ EAPI=7
 inherit pax-utils unpacker
 
 DESCRIPTION="Microsoft SQL Server Tools for Linux"
-HOMEPAGE="https://docs.microsoft.com/en-us/sql/tools"
+HOMEPAGE="https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?view=sql-server-ver15"
 SRC_URI="https://packages.microsoft.com/debian/10/prod/pool/main/m/${PN}/${PN}_${PV}-1_amd64.deb"
 
 LICENSE="BSD Microsoft-TOOLS"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 RESTRICT="bindist mirror"
 
 RDEPEND="dev-db/unixODBC"
