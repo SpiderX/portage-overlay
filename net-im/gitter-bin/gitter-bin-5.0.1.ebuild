@@ -29,7 +29,7 @@ QA_FLAGS_IGNORED="opt/gitter/minidump_stackwalk
 	opt/gitter/lib/libGLESv2.so"
 
 DESCRIPTION="Chat and network platform"
-HOMEPAGE="https://www.gitter.im"
+HOMEPAGE="https://gitter.im"
 SRC_URI="
 	amd64? ( https://update.gitter.im/linux64/${MY_PN}_${PV}_amd64.deb )
 	x86? ( https://update.gitter.im/linux32/${MY_PN}_${PV}_i386.deb )"
