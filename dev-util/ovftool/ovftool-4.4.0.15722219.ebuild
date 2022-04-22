@@ -9,7 +9,7 @@ MY_PV="$(ver_rs 3 -)"
 MY_P="VMware-${PN}-${MY_PV}-lin._arch_.bundle"
 
 DESCRIPTION="VMware Open Virtualization Format tool"
-HOMEPAGE="https://www.vmware.com/support/developer/ovf"
+HOMEPAGE="https://developer.vmware.com/tools"
 SRC_URI="amd64? ( ${MY_P/_arch_/x86_64} )"
 #	arm64? ( ${MY_P/_arch_/x86_64} )
 #	x86? ( ${MY_P/_arch_/i386} )"
@@ -17,7 +17,6 @@ SRC_URI="amd64? ( ${MY_P/_arch_/x86_64} )"
 LICENSE="vmware"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64 ~x86"
-IUSE=""
 RESTRICT="bindist fetch mirror"
 
 BDEPEND="sys-libs/ncurses-compat:5[${MULTILIB_USEDEP}]"
