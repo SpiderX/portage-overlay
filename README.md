@@ -107,7 +107,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-editors/[FeatherPad](https://github.com/tsujan/FeatherPad) | Lightweight Qt5 plain-text editor
 *   app-editors/[lite](https://github.com/rxi/lite) | A lightweight text editor written in Lua
 *   app-editors/[micro](https://github.com/zyedidia/micro) | A modern and intuitive terminal-based text editor
-*   app-emulation/[looking-glass](https://looking-glass.hostfission.com) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
+*   app-emulation/[looking-glass](https://looking-glass.io) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 *   app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
 *   app-emulation/[vmware-modules](https://github.com/mkubecek/vmware-host-modules) | VMware kernel modules
 *   app-emulation/[vmware-vmrc](https://docs.vmware.com/en/VMware-Remote-Console/index.html) | VMware Remote Console

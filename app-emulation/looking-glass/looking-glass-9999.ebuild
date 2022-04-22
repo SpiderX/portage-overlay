@@ -11,7 +11,7 @@ EGIT_SUBMODULES=()
 inherit cmake git-r3
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
-HOMEPAGE="https://looking-glass.hostfission.com https://github.com/gnif/LookingGlass/"
+HOMEPAGE="https://looking-glass.io https://github.com/gnif/LookingGlass"
 SRC_URI="host? ( https://github.com/gnif/${MY_PN}/releases/download/${MY_PV}/looking-glass-host-${MY_PV}.zip )"
 
 LICENSE="GPL-2"

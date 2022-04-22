@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${MY_PV}"
 inherit cmake
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
-HOMEPAGE="https://looking-glass.hostfission.com https://github.com/gnif/LookingGlass/"
+HOMEPAGE="https://looking-glass.io https://github.com/gnif/LookingGlass"
 SRC_URI="https://github.com/gnif/${MY_PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz
 	host? ( https://github.com/gnif/${MY_PN}/releases/download/${MY_PV}/looking-glass-host.exe )"
 
