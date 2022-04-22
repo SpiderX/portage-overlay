@@ -10,7 +10,7 @@ inherit git-r3 systemd tmpfiles
 MY_P="${PN}.v.${PV}"
 
 DESCRIPTION="A simple dynamic DNS client"
-HOMEPAGE="http://inadyn-mt.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/inadyn-mt/"
 SRC_URI=""
 
 LICENSE="GPL-3"

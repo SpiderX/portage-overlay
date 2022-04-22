@@ -603,7 +603,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-dns/[ddns-route53](https://github.com/crazy-max/ddns-route53) | Dynamic DNS for Amazon Route 53 on a time-based schedule
 *   net-dns/[r53ddns](https://github.com/coord-e/r53ddns) | Updates A record in Route53 with current global IP
 *   net-dns/[flares](https://github.com/lfaoro/flares) | CloudFlare DNS backup tool
-*   net-dns/[inadyn-mt](http://inadyn-mt.sourceforge.net/) | A simple dynamic DNS client
+*   net-dns/[inadyn-mt](https://sourceforge.net/projects/inadyn-mt/) | A simple dynamic DNS client
 *   net-dns/[massdns](https://github.com/blechschmidt/massdns) | A high-performance DNS stub resolver
 *   net-dns/[nsping](https://github.com/vovcat/nsping) | Measure reachability and latency of DNS nameservers
 *   net-firewall/[ipt-ratelimit](https://github.com/aabc/ipt-ratelimit) | Ratelimit iptables module
@@ -706,3 +706,4 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 *   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
 * dev-db/[msodbcsql](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server?view) | Microsoft ODBC Driver for SQL Server
+* dev-db/[sqlpackage](https://docs.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage?view) | Automates SQL Server database development tasks

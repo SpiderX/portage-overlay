@@ -8,7 +8,7 @@ inherit systemd tmpfiles
 MY_P="${PN}.v.${PV}"
 
 DESCRIPTION="A simple dynamic DNS client"
-HOMEPAGE="http://inadyn-mt.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/inadyn-mt/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
