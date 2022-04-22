@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://git.codesynthesis.com/${PN}/${PN}.git"
 inherit git-r3 multiprocessing toolchain-funcs
 
 DESCRIPTION="A cross-platform W3C XML Schema to C++ data binding compiler"
-HOMEPAGE="https://www.codesynthesis.com/products/xsd"
+HOMEPAGE="https://www.codesynthesis.com/products/xsd/"
 SRC_URI=""
 
 LICENSE="GPL-2"
