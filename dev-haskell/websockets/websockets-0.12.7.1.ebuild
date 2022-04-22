@@ -8,7 +8,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal linux-info
 
 DESCRIPTION="Allows you to write WebSocket-capable servers"
-HOMEPAGE="https://jaspervdj.be/websockets"
+HOMEPAGE="https://jaspervdj.be/websockets/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
