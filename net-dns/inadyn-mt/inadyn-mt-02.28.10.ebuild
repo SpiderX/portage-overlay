@@ -9,7 +9,7 @@ MY_P="${PN}.v.${PV}"
 
 DESCRIPTION="A simple dynamic DNS client"
 HOMEPAGE="https://sourceforge.net/projects/inadyn-mt/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
