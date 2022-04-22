@@ -10,7 +10,7 @@ MY_PN="VMware-Remote-Console"
 MY_P="${MY_PN}-${MY_PV}.x86_64.bundle"
 
 DESCRIPTION="VMware Remote Console"
-HOMEPAGE="https://www.vmware.com/go/download-vmrc"
+HOMEPAGE="https://docs.vmware.com/en/VMware-Remote-Console/index.html"
 SRC_URI="${MY_P}"
 
 LICENSE="vmware"
