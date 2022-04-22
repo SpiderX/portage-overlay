@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop multilib-build pax-utils systemd unpacker xdg
 
 DESCRIPTION="Fortinet VPN client"
-HOMEPAGE="https://www.forticlient.com"
+HOMEPAGE="https://www.fortinet.com/products/endpoint-security/forticlient"
 SRC_URI="https://filestore.fortinet.com/${PN}/downloads/FortiClientFullVPNInstaller_${PV}.deb"
 
 LICENSE="Fortinet"
