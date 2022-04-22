@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://git.savannah.gnu.org/git/${PN}.git"
 inherit autotools git-r3 flag-o-matic
 
 DESCRIPTION="GNU ccRTP - Implementation of the IETF real-time transport protocol"
-HOMEPAGE="https://www.gnu.org/software/ccrtp"
+HOMEPAGE="https://www.gnu.org/software/ccrtp/"
 SRC_URI=""
 
 LICENSE="GPL-2"

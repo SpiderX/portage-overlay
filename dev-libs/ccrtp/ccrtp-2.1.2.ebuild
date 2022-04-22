@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic
 
 DESCRIPTION="GNU ccRTP - Implementation of the IETF real-time transport protocol"
-HOMEPAGE="https://www.gnu.org/software/ccrtp"
+HOMEPAGE="https://www.gnu.org/software/ccrtp/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
