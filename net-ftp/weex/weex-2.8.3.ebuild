@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A non-interactive FTP client for updating web pages"
-HOMEPAGE="https://sourceforge.net/projects/weex"
+HOMEPAGE="https://sourceforge.net/projects/weex/"
 SRC_URI="http://deb.debian.org/debian/pool/main/w/${PN}/${P//-/_}.tar.gz"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ ECVS_TOPDIR="${DISTDIR}/cvs-src/${ECVS_MODULE}"
 inherit autotools cvs
 
 DESCRIPTION="A non-interactive FTP client for updating web pages"
-HOMEPAGE="https://sourceforge.net/projects/weex"
+HOMEPAGE="https://sourceforge.net/projects/weex/"
 SRC_URI=""
 
 LICENSE="GPL-2"
