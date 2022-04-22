@@ -8,7 +8,7 @@ EGIT_REPO_URI="https://github.com/olegantonyan/${PN}.git"
 inherit git-r3 qmake-utils xdg
 
 DESCRIPTION="Music player for big local collections"
-HOMEPAGE="https://olegantonyan.github.io/mpz"
+HOMEPAGE="https://mpz-player.org"
 SRC_URI=""
 
 LICENSE="GPL-3"

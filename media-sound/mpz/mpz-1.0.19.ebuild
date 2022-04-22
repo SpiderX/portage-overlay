@@ -6,7 +6,7 @@ EAPI=8
 inherit qmake-utils xdg
 
 DESCRIPTION="Music player for big local collections"
-HOMEPAGE="https://olegantonyan.github.io/mpz"
+HOMEPAGE="https://mpz-player.org"
 SRC_URI="https://github.com/olegantonyan/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

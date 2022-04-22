@@ -574,7 +574,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
 *   media-libs/[QtApng](https://github.com/Skycoder42/QtApng) | An apng image plugin for Qt to support animated PNGs
 *   media-sound/[finetune](https://flavio.tordini.org/finetune) | Automatic music tagger
-*   media-sound/[mpz](https://olegantonyan.github.io/mpz) | Music player for big local collections
+*   media-sound/[mpz](https://mpz-player.org) | Music player for big local collections
 *   media-sound/[musique](https://github.com/flaviotordini/musique) | A finely crafted music player
 *   media-sound/[ncspot](https://github.com/hrkfdn/ncspot) | ncurses Spotify client
 *   media-sound/[plexamp](https://plexamp.com) | Music focused client for Plex
