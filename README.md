@@ -146,7 +146,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[dbcrossbar](https://www.dbcrossbar.org) | Copy tabular data between databases, CSV files and cloud storage
 *   dev-db/[dbgate-bin](https://github.com/dbgate/dbgate) | Database manager for MySQL, PostgreSQL, SQL Server and MongoDB
 *   dev-db/[litestream](https://github.com/benbjohnson/litestream) | Streaming S3 replication for SQLite
-*   dev-db/[msodbcsql](https://docs.microsoft.com/en-us/sql/connect/odbc) | Microsoft ODBC Driver for SQL Server
+*   dev-db/[msodbcsql](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server?view=sql-server-ver15) | Microsoft ODBC Driver for SQL Server
 *   dev-db/[mssql-cli](https://github.com/dbcli/mssql-cli) | CLI for SQL Server Database
 *   dev-db/[mssql-scripter](https://github.com/microsoft/mssql-scripter) | CLI for scripting SQL Server Databases
 *   dev-db/[mssql-tools](https://docs.microsoft.com/en-us/sql/tools) | Microsoft SQL Server Tools for Linux

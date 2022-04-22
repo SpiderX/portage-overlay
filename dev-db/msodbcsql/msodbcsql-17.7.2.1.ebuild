@@ -6,7 +6,7 @@ EAPI=7
 inherit unpacker
 
 DESCRIPTION="Microsoft ODBC Driver for SQL Server"
-HOMEPAGE="https://docs.microsoft.com/en-us/sql/connect/odbc"
+HOMEPAGE="https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server?view=sql-server-ver15"
 SRC_URI="https://packages.microsoft.com/debian/10/prod/pool/main/m/${PN}${PV%%.*}/${PN}${PV%%.*}_${PV}-1_amd64.deb"
 
 LICENSE="Microsoft-ODBC"
