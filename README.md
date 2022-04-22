@@ -440,7 +440,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pyvmomi](https://github.com/vmware/pyvmomi) | VMware vSphere API Python Bindings
 *   dev-python/[pywinrm](https://github.com/diyan/pywinrm) | Python library for Windows Remote Management
 *   dev-python/[PyMeeus](https://github.com/architest/pymeeus) | Library of astronomical algorithms in Python
-*   dev-python/[PythonQt](https://mevislab.github.io/pythonqt) | A dynamic Python binding for the Qt framework
+*   dev-python/[PythonQt](https://mevislab.github.io/pythonqt/) | A dynamic Python binding for the Qt framework
 *   dev-python/[questionary](https://github.com/tmbo/questionary) | Python library to build pretty command line user prompts
 *   dev-python/[random2](https://github.com/strichter/random2) | Python-2.7 random module ported to python-3
 *   dev-python/[requests-mock](https://github.com/jamielennox/requests-mock) | Mock out responses from the requests package
@@ -625,7 +625,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[bngblaster](https://github.com/rtbrick/bngblaster) | A tool to simulate thousands of PPPoE or IPoE subscribers
 *   net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
 *   net-misc/[curlie](https://github.com/rs/curlie) | The power of curl, the ease of use of httpie
-*   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/dhcdrop.html) | Effectively suppresses illegal DHCP servers on the LAN
+*   [![Gentoo package](https://repology.org/badge/version-only-for-repo/gentoo/dhcdrop.svg)](https://repology.org/metapackage/dhcdrop) net-misc/[dhcdrop](http://www.netpatch.ru/devel/dhcdrop/) | Effectively suppresses illegal DHCP servers on the LAN
 *   net-misc/[dnsflood](https://github.com/hawell/dns-flood) | Use raw sockets to generate DNS flood attack
 *   net-misc/[ec2-instance-connect](https://github.com/aws/aws-ec2-instance-connect-config) | AWS EC2 Instance Connect Configuration
 *   net-misc/[ec2-instance-connect-cli](https://github.com/aws/aws-ec2-instance-connect-cli) | Python client for accessing EC2 instances via EC2 Instance Connect

@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Effectively suppresses illegal DHCP servers on the LAN"
-HOMEPAGE="http://www.netpatch.ru/dhcdrop.html"
+HOMEPAGE="http://www.netpatch.ru/devel/dhcdrop/"
 SRC_URI="http://www.netpatch.ru/projects/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
