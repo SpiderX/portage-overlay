@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/aptly-dev/${PN}.git"
 
@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 RESTRICT="test" # fails
 
 RDEPEND="acct-user/aptly"
@@ -25,11 +24,15 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -o cmd/aptly -ldflags "-X main.Version=${PV}" || die "build failed"
+	LDFLAGS="-X main.Version=${PV}"
+
+	GOFLAGS="-v -x -mod=vendor" \
+		go build -o cmd/aptly -ldflags "${LDFLAGS}" || die "build failed"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	GOFLAGS="-v -x -mod=vendor" \
+		go test -work ./... || die "test failed"
 }
 
 src_install() {
