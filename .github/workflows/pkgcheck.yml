@@ -25,6 +25,7 @@ on:
 
 jobs:
   pkgcheck:
+    name: pkgcheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -64,7 +65,6 @@ jobs:
             net-analyzer/sx/*.ebuild
             net-misc/curlie/*.ebuild
             net-misc/wuzz/*.ebuild
-            sys-apps/aptly/*.ebuild
             www-servers/gitlab-workhorse/*.ebuild
       - name: Define pkgcheck args
         uses: haya14busa/action-cond@v1
