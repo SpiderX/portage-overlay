@@ -68,9 +68,16 @@ jobs:
               - 'net-misc/dhcdrop/*'
               - 'app-emulation/vmware-workstation/*'
               - 'net-im/vk-messenger-bin/*'
+      - name: Define repoman path
+        uses: haya14busa/action-cond@v1
+        id: condition-path
+        with:
+          cond: ${{ github.event_name == 'schedule' }}
+          if_true: "."
+          if_false: "${{ matrix.ebuild }}"
       - name: Define repoman args
         uses: haya14busa/action-cond@v1
-        id: condition
+        id: condition-args
         with:
           cond: ${{ steps.filter.outputs.exclusion == 'true' }}
           if_true: "-dxv"
@@ -78,8 +85,8 @@ jobs:
       - name: Run repoman on ${{ matrix.ebuild }}
         uses: lucianposton/repoman-ebuild-qa-action@v1
         with:
-          path: ${{ matrix.ebuild }}
-          repoman_args: ${{ steps.condition.outputs.value }}
+          path: ${{ steps.condition-path.outputs.value }}
+          repoman_args: ${{ steps.condition-args.outputs.value }}
   shellcheck:
     name: shellcheck
     needs: list-ebuild
