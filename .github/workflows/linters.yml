@@ -1,4 +1,4 @@
-name: repoman
+name: linters
 
 on:
   workflow_dispatch:
@@ -18,9 +18,12 @@ on:
       - '**/*.yml'
       - '.cz'
       - '.gitignore'
+  schedule:
+    - cron: '4 4 * * 6'
 
 jobs:
   list-ebuild:
+    name: list-ebuild
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -41,6 +44,7 @@ jobs:
         run: |
           echo "::set-output name=matrix::$(dirname ${{ steps.changed-files.outputs.all_changed_files }} | jq -Rsc 'split("\n")[:-1]|unique')"
   repoman:
+    name: repoman
     needs: list-ebuild
     runs-on: ubuntu-latest
     strategy:
@@ -73,3 +77,38 @@ jobs:
         with:
           path: ${{ matrix.ebuild }}
           repoman_args: ${{ steps.condition.outputs.value }}
+  shellcheck:
+    name: shellcheck
+    needs: list-ebuild
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ebuild: ${{ fromJson(needs.list-ebuild.outputs.matrix) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Define shellcheck path
+        uses: haya14busa/action-cond@v1
+        id: condition
+        with:
+          cond: ${{ github.event_name == 'schedule' }}
+          if_true: "."
+          if_false: "${{ matrix.ebuild }}"
+      - name: Run shellcheck for ebuild on ${{ matrix.ebuild }}
+        uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -s bash -e SC2034 -e SC2016
+        with:
+          additional_files: '*.ebuild'
+          ignore_names: '*.bash *.zsh'
+          scandir: ${{ steps.condition.outputs.value }}
+      - name: Run shellcheck for init on ${{ matrix.ebuild }}
+        uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -s sh -e SC2034
+        with:
+          additional_files: '*.initd'
+          ignore_names: '*.bash *.zsh'
+          scandir: ${{ steps.condition.outputs.value }}
