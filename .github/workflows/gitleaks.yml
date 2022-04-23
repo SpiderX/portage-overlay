@@ -11,6 +11,9 @@ on:
   schedule:
     - cron: '4 3 * * 6'
 
+permissions:
+  contents: read
+
 jobs:
   gitleaks:
     name: gitleaks

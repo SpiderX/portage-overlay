@@ -22,6 +22,11 @@ on:
       - 'Manifest'
       - '.cz'
       - '.gitignore'
+  schedule:
+    - cron: '4 6 * * 6'
+
+permissions:
+  contents: read
 
 jobs:
   pkgcheck:
