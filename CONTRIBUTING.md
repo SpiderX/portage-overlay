@@ -18,7 +18,7 @@ This overlay assumes that you have read and properly understood the
 To make the process of merge requests submission as seamless as possible, I ask
 for the following:
 
-1.  Go ahead and [fork](https://help.github.com/articles/fork-a-repo) this project.
+1.  Go ahead and [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this project.
 
 2.  Create your feature branch:
     `git checkout -b my-new-feature develop`
@@ -42,15 +42,15 @@ for the following:
 
     If you have questions about how to write the short/long descriptions,
     please read these blog articles:
-    [How to Write a Commit Message](https://chris.beams.io/posts/git-commit/),
-    [5 Useful Tips For A Better Commit Message](https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message).
+    [How to Write a Commit Message](https://cbea.ms/git-commit/),
+    [5 Useful Tips For A Better Commit Message](https://thoughtbot.com/blog/5-useful-tips-for-a-better-commit-message).
     Both of them are excellent resources for learning how to write a well-crafted
     git commit message.
 
 5.  GPG signing your changes is a good idea, but not mandatory.
 
 6.  Push your changes in your fork `git push origin my-new-feature`, and then
-    submit a [pull request](https://help.github.com/articles/creating-a-pull-request).
+    submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
 
     > **Note:**  If you get in trouble with _**shellcheck's**_ tests, please see
     > their [checks guide](https://github.com/koalaman/shellcheck/wiki/Checks).
