@@ -38,4 +38,4 @@ jobs:
       - name: Run whisper
         run: |
           pip install whispers
-          whispers -c .github/whispers.yml
+          whispers -c .github/whispers.yml .
