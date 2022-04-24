@@ -1,4 +1,4 @@
-name: gitleaks
+name: sasts
 
 on:
   workflow_dispatch:
@@ -25,3 +25,17 @@ jobs:
           fetch-depth: 2
       - name: Run gitleaks
         uses: zricethezav/gitleaks-action@master
+  whispers:
+    name: whispers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Setup python
+        uses: actions/checkout@v3
+      - name: Run whisper
+        run: |
+          pip install whispers
+          whispers -c .github/whispers.yml

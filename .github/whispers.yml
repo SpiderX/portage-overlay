@@ -1,0 +1,16 @@
+exclude:
+  keys:
+    - remote-id
+  values:
+    - "\\$2a\\$10\\$MI83juSZZuiX3DWcm7Lif\\.\\.NakIcazpshYupR\\/\\.pGh9nnr\\/So3IdC"
+  files:
+    - .git
+    - metadata/layout.conf
+    - media-sound/spotifyd/files/spotifyd.conf
+    - app-crypt/acme-client/files/acme-client.conf
+    - net-misc/spoofer/files/Spoofer.conf
+    - net-misc/virtualhere-usb/files/config.ini
+    - net-misc/ssmd/files/ssmd.conf
+    - sys-apps/aptly/files/aptly.conf
+    - app-admin/sops/files/sops.bash
+    - app-admin/sops/files/sops.zsh
