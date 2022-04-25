@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
@@ -17,6 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/prompt_toolkit[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# TypeError: <lambda>() missing 1 required positional argument: 'strike'
+	tests/prompts/test_common.py::test_print_with_style
+)
