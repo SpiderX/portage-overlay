@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
@@ -15,19 +16,24 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=dev-python/arrow-0.14.2[${PYTHON_USEDEP}]
-	>=dev-python/click-7.0[${PYTHON_USEDEP}]
+RDEPEND="dev-python/arrow[${PYTHON_USEDEP}]
+	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 python_prepare_all() {
-	# Relax requirements
+	# relax requirements
 	sed -i  -e '/arrow/s/==/>=/' \
 		-e '/Click/s/==/>=/' \
 		-e '/sh/s/==/>=/' setup.py || die "sed failed for setup.py"
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	export EDITOR="vim -n"
+	epytest gitlint-core
 }
 
 python_install_all() {
