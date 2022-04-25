@@ -1,0 +1,183 @@
+---
+commitizen:
+  name: cz_customize
+  style:
+    - - answer
+      - bg:#232627
+  customize:
+    message_template: "{% set type = 'ci docs revert' %}{{change_type}}\
+      {% if change_type not in type %}({{category}}/{{package}})\
+      {% endif %}: {{description}}"
+    example: |-
+             feat(dev-python/celery): new ebuild
+             fix(sys-apps/swapspace): version bump
+             style(net-p2p/automaic): sort dependencies
+             docs: remove stale reference
+             ci: update linters workflow
+             revert: refs ebf336
+    schema: |-
+            <type(feat|fix|style)>(category/package): <description>
+            <type(docs|ci|revert)>: <description>
+    schema_pattern: "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>\
+      acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|\
+      forensics|metrics|misc|office|shells|text)|dev-(cpp|db|haskell|libs|ml|\
+      php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
+      net-(analyzer|dns|firewall|ftp|im|libs|misc|p2p|voip|vpn)|\
+      sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|plugins|\
+      servers)|x11-misc)\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
+    info: |
+          ### The commit contains the following structural elements:
+          * feat: a commit of this type introduces a new ebuild, a new type
+          (normal/live) for an old one, or a new feature for them.
+          * fix: a commit of this type fixes bug/qa, introduces new version,
+          reflects dependency/keyword/slot change.
+          * style: a commit of this type reflects cosmetic code changes,
+          like sorting or work with comments
+          * docs: a commit of this type represents changes in documentation
+          * ci: a commit of this type holds CI related changes
+          * revert: a commit of this type reverts specified commits.
+          A scope, contained within paranthesis, must be provided to a commit
+          with type _feat_, _fix_ and _style_ to provide additional contextual
+          information that holds package name, e.g., fix(app-admin/azcopy):
+          version bump to <version>.
+          - <type>(<category>/<package>): <description>
+          - <type>: description
+    questions:
+      - type: select
+        name: change_type
+        message: Select the type of change
+        qmark: "*"
+        use_shortcuts: true
+        choices:
+          - value: feature
+            name: "feat(category/package): new ebuild | add live/normal ebuild
+                   | add USE-flag/init/unit | drop/add python/php/ruby support
+                   | add package user/group"
+          - value: fix
+            name: "fix(category/package): update ebuild/manifest/metadata/urls
+                   | version bump | fix/restrict/relax dependency | QA | EAPI
+                   | drop ebuild/eclass/arch | rework slots"
+          - value: style
+            name: "style(category/package): sort dependencies/keywords
+                   | add/remove comments"
+          - value: docs
+            name: "docs: update urls/badges | sort references"
+          - value: ci
+            name: "ci: fix indentation | update schedule | rename job"
+          - value: revert
+            name: "revert: refs"
+      - type: autocomplete
+        name: category
+        message: Select the category of package with autocomplition
+        qmark: "/"
+        default: "dev-python"
+        match_middle: true
+        ignore_case: true
+        meta_information:
+          acct-group: "packages for system groups"
+          acct-user: "packages for system users"
+          app-admin: "applications which relate to system administration"
+          app-backup: "tools for performing backups of data"
+          app-containers: "container related software"
+          app-crypt: "cryptographic (steganography and signing) software"
+          app-editors: "text editors"
+          app-emulation: "emulation software"
+          app-forensics: "software to detect and analyse security breaches"
+          app-metrics: "software to interact with service and system metrics"
+          app-misc: "miscellaneous application which dont belong anywhere else"
+          app-office: "word processing, spreadsheets, presentation software"
+          app-shells: "shells and their extensions"
+          app-text: "tools for working with human-language text files"
+          dev-cpp: "libraries and utilities relevant to the c++ language"
+          dev-db: "libraries and utilities for database programming"
+          dev-haskell: "libraries and utilities for Haskell language"
+          dev-libs: "various miscellaneous programming libraries"
+          dev-ml: "libraries and utilities relevant to the ML language"
+          dev-php: "libraries and utilities relevant to the PHP language"
+          dev-python: "python modules, extensions and bindings"
+          dev-util: "various miscellaneous development utilities"
+          dev-vcs: "utilities focused on version control"
+          kde-misc: "various miscellaneous KDE packages"
+          media-gfx: "graphics-related packages"
+          media-libs: "media-related libraries"
+          media-radio: "radio-related media applications"
+          media-sound: "sound, music and audio applications"
+          media-video: "video-related applications"
+          net-analyzer: "network analysis software"
+          net-dns: "domain name service related software"
+          net-firewall: "network firewall software"
+          net-ftp: "file transfer protocol software"
+          net-im: "instant messaging software"
+          net-libs: "libraries that are network-related"
+          net-misc: "miscellaneous networking tools and utilities"
+          net-p2p: "peer-to-peer networking applications"
+          net-voip: "packages related to Voice-over-IP"
+          net-vpn: "packages related to vpn and tunneling utilities"
+          sci-visualization: "scientific visualization applications"
+          sys-apps: "various core system applications"
+          sys-cluster: "cluster-related software"
+          sys-fs: "filesystem tools and utilities"
+          sys-power: "software which handles power management and CPU frequency"
+          sys-process: "packages which query or manipulate processes"
+          www-apps: "various world wide web applications"
+          www-plugins: "plug-ins for Web browsers"
+          www-servers: "web server packages"
+          x11-misc: "miscellaneous X11 applications"
+        choices:
+          - acct-group
+          - acct-user
+          - app-admin
+          - app-backup
+          - app-containers
+          - app-crypt
+          - app-editors
+          - app-emulation
+          - app-forensics
+          - app-metrics
+          - app-misc
+          - app-office
+          - app-shells
+          - app-text
+          - dev-cpp
+          - dev-db
+          - dev-haskell
+          - dev-libs
+          - dev-ml
+          - dev-php
+          - dev-python
+          - dev-util
+          - dev-vcs
+          - kde-misc
+          - media-gfx
+          - media-libs
+          - media-radio
+          - media-sound
+          - media-video
+          - net-analyzer
+          - net-dns
+          - net-firewall
+          - net-ftp
+          - net-im
+          - net-libs
+          - net-misc
+          - net-p2p
+          - net-voip
+          - net-vpn
+          - sci-visualization
+          - sys-apps
+          - sys-cluster
+          - sys-fs
+          - sys-power
+          - sys-process
+          - www-apps
+          - www-plugins
+          - www-servers
+          - x11-misc
+      - type: text
+        name: package
+        message: Type package name
+        qmark: "_"
+      - type: text
+        name: description
+        message: Type commit description
+        qmark: "_"
