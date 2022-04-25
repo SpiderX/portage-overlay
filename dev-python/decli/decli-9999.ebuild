@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/Woile/${PN}.git"
 
@@ -21,7 +21,7 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Add backend specification
-	sed -i '1 i[build-system]\nrequires = ["poetry>=0.12"]\nbuild-backend = "poetry.masonry.api"' \
+	sed -i '1 i[build-system]\nrequires = ["poetry>=0.12"]\nbuild-backend = "poetry.core.masonry.api"' \
 		pyproject.toml || die "sed failed for pyproject.toml"
 
 	distutils-r1_python_prepare_all
