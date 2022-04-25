@@ -1,16 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/Woile/${PN}.git"
+EGIT_REPO_URI="https://github.com/commitizen-tools/${PN}.git"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python commitizen client tool"
-HOMEPAGE="https://github.com/Woile/commitizen"
+HOMEPAGE="https://github.com/commitizen-tools/commitizen"
 SRC_URI=""
 
 LICENSE="MIT"
@@ -25,10 +25,15 @@ RDEPEND="dev-python/argcomplete[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/questionary[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
-	dev-python/tomlkit[${PYTHON_USEDEP}]"
+	dev-python/tomlkit[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-vcs/git
-	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytest-regressions[${PYTHON_USEDEP}] )"
+
+DOCS="CHANGELOG.md docs/*.md"
 
 distutils_enable_tests pytest
 

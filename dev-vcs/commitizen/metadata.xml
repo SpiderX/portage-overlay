@@ -17,7 +17,7 @@
 	the commiting style.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Woile/commitizen</remote-id>
+		<remote-id type="github">commitizen-tools/commitizen</remote-id>
 		<remote-id type="pypi">commitizen</remote-id>
 	</upstream>
 </pkgmetadata>

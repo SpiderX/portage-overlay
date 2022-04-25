@@ -529,7 +529,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[tickgit](https://github.com/augmentable-dev/tickgit) | Manage your repository's TODOs as config in your codebase
 *   dev-util/[xxd](https://github.com/vim/vim) | Hexdump utility from vim
 *   dev-vcs/[blackbox](https://github.com/StackExchange/blackbox) | Safely store secrets in Git/Mercurial/Subversion
-*   dev-vcs/[commitizen](https://github.com/Woile/commitizen) | Python commitizen client tool
+*   dev-vcs/[commitizen](https://github.com/commitizen-tools/commitizen) | Python commitizen client tool
 *   dev-vcs/[gitaly](https://gitlab.com/gitlab-org/gitaly) | Git RPC service for handling GitLab git calls
 *   dev-vcs/[gitlint](https://github.com/jorisroovers/gitlint) | Git commit message linter
 *   dev-vcs/[mercurial-extension_utils](https://foss.heptapod.net/mercurial/mercurial-extension_utils) | Mercurial Extension Utils
