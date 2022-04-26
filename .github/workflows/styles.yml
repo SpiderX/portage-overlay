@@ -20,7 +20,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - name: Install gitlint
         run: pip install gitlint-core
       - name: Run gitlint on pull request
@@ -36,6 +36,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Run gitlint-action
         uses: aschbacd/gitlint-action@v1.0.2
         with:
