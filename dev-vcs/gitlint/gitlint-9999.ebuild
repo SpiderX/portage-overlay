@@ -28,6 +28,8 @@ python_prepare_all() {
 	sed -i  -e '/arrow/s/==/>=/' \
 		-e '/Click/s/==/>=/' \
 		-e '/sh/s/==/>=/' setup.py || die "sed failed for setup.py"
+	# remove symbolic link
+	cp --remove-destination README.md gitlint-core || die "cp failed"
 
 	distutils-r1_python_prepare_all
 }
@@ -37,8 +39,13 @@ python_test() {
 	epytest gitlint-core
 }
 
+python_compile() {
+	cd gitlint-core || die "cd failed in compile"
+	distutils-r1_python_compile
+}
+
 python_install_all() {
+	cd gitlint-core || die "cd failed in install"
 	distutils-r1_python_install_all
 	find "${ED}" -type d -name "tests" -exec rm -rv {} + || die "tests removing failed"
-	find "${ED}" -type d -name "qa" -exec rm -rv {} + || die "integration tests removing failed"
 }

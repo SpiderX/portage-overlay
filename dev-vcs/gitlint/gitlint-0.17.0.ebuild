@@ -8,36 +8,22 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
+MY_PN="${PN}-core"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="Git commit message linter"
 HOMEPAGE="https://github.com/jorisroovers/gitlint"
-SRC_URI="https://github.com/jorisroovers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test" # no tests
 
 RDEPEND="dev-python/arrow[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]"
 
+S="${WORKDIR}/${MY_P}"
+
 distutils_enable_tests pytest
-
-python_prepare_all() {
-	# relax requirements
-	sed -i  -e '/arrow/s/==/>=/' \
-		-e '/Click/s/==/>=/' \
-		-e '/sh/s/==/>=/' setup.py || die "sed failed for setup.py"
-
-	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	export EDITOR="vim -n"
-	epytest gitlint-core
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${ED}" -type d -name "tests" -exec rm -rv {} + || die "tests removing failed"
-	find "${ED}" -type d -name "qa" -exec rm -rv {} + || die "integration tests removing failed"
-}
