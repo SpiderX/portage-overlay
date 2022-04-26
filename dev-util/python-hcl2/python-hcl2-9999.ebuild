@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 EGIT_REPO_URI="https://github.com/amplify-education/${PN}.git"
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -16,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-python/lark-parser[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/lark[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests nose
