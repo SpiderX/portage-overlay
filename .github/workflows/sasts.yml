@@ -33,8 +33,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - name: Setup python
-        uses: actions/checkout@v3
       - name: Run whisper
         run: |
           pip install whispers
