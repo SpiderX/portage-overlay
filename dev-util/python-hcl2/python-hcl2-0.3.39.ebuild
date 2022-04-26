@@ -18,8 +18,9 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test" # no tests
 
-RDEPEND="<dev-python/lark-0.11[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/lark-1.1.2[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
