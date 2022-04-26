@@ -49,7 +49,7 @@ commitizen:
         qmark: "*"
         use_shortcuts: true
         choices:
-          - value: feature
+          - value: feat
             name: "feat(category/package): new ebuild | add live/normal ebuild
                    | add USE-flag/init/unit | drop/add python/php/ruby support
                    | add package user/group"
