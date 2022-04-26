@@ -25,10 +25,10 @@ jobs:
         run: pip install gitlint-core
       - name: Run gitlint on pull request
         if: ${{ github.event_name == 'pull_request' }}
-        run: gitlint --commits ${{ github.event.pull_request.head.sha }}..HEAD
+        run: gitlint --commits "${{ github.event.pull_request.head.sha }}..HEAD"
       - name: Run gitlint on push
         if: ${{ github.event_name == 'push' }}
-        run: gitlint --commits ${{ github.event.before }}..HEAD
+        run: gitlint --debug --commits "${{ github.event.before }}..HEAD"
   gitlint-action:
     name: gitlint-action
     runs-on: ubuntu-latest
