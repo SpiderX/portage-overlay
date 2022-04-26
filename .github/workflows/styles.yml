@@ -1,0 +1,49 @@
+---
+name: styles
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  gitlint-utility:
+    name: gitlint-utility
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Install gitlint
+        run: pip install gitlint-core
+      - name: Run gitlint on pull request
+        if: ${{ github.event_name == 'pull_request' }}
+        run: gitlint --commits ${{ github.event.pull_request.head.sha }}..HEAD
+      - name: Run gitlint on push
+        if: ${{ github.event_name == 'push' }}
+        run: gitlint --commits ${{ github.event.before }}..HEAD
+  gitlint-action:
+    name: gitlint-action
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Run gitlint-action
+        uses: aschbacd/gitlint-action@v1.0.2
+        with:
+          re-commit-message-subject: >-
+            "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>
+            acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|
+            forensics|metrics|misc|office|shells|text)|dev-(cpp|db|haskell|libs|ml|
+            php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|
+            net-(analyzer|dns|firewall|ftp|im|libs|misc|p2p|voip|vpn)|
+            sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|plugins|
+            servers)|x11-misc)\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
