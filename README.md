@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 640](https://img.shields.io/badge/ebuild-640-orange.svg)](https://img.shields.io/badge/ebuild-640-orange.svg)
+[![Number of ebuilds: 641](https://img.shields.io/badge/ebuild-641-orange.svg)](https://img.shields.io/badge/ebuild-641-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -314,6 +314,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[apispec-webframeworks](https://github.com/marshmallow-code/apispec-webframeworks) | Web framework plugins for apispec
 *   dev-python/[applicationinsights](https://github.com/microsoft/ApplicationInsights-Python) | Application Insights SDK for Python
 *   dev-python/[aspectlib](https://github.com/ionelmc/python-aspectlib) | Aspect-oriented programming, monkey-patch and decorators library
+*   dev-python/[assertpy](https://github.com/assertpy/assertpy) | Assertion library for unit testing
 *   dev-python/[aws-lambda-powertools](https://github.com/awslabs/aws-lambda-powertools-python) | A suite of Python utilities for AWS Lambda functions
 *   dev-python/[billiard](https://github.com/celery/billiard) | Multiprocessing Pool Extensions
 *   dev-python/[binaryornot](https://github.com/audreyfeldroy/binaryornot) | Python package to guess whether a file is binary or text
