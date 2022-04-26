@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 640](https://img.shields.io/badge/ebuild-640-orange.svg)](https://img.shields.io/badge/ebuild-640-orange.svg)
+[![Number of ebuilds: 641](https://img.shields.io/badge/ebuild-641-orange.svg)](https://img.shields.io/badge/ebuild-641-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -394,6 +394,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[jproperties](https://github.com/Tblue/python-jproperties) | Java Property file parser and writer for Python
 *   dev-python/[jsmin](https://github.com/tikitu/jsmin) | JavaScript minifier
 *   dev-python/[jsonfield](https://github.com/rpkilby/jsonfield) | A reusable Django model field for storing ad-hoc JSON data
+*   dev-python/[jsonpath-ng](https://github.com/h2non/jsonpath-ng) | Python JSONPath Next-Generation
 *   dev-python/[k5test](https://github.com/pythongssapi/k5test) | A library for setting up self-contained Kerberos 5 environments
 *   dev-python/[lark](https://github.com/lark-parser/lark) | A modern general-purpose parsing library for Python
 *   dev-python/[livereload](https://github.com/lepture/python-livereload) | Python LiveReload is an awesome tool for web developers
