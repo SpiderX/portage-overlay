@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/bridgecrewio/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -15,14 +16,16 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-PROPERTIES="test_network"
 RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/aiomultiprocess[${PYTHON_USEDEP}]
+	dev-python/argcomplete[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/cachetools[${PYTHON_USEDEP}]
+	dev-python/charset_normalizer[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/configargparse[${PYTHON_USEDEP}]
@@ -33,13 +36,17 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	<dev-python/dpath-2[${PYTHON_USEDEP}]
 	dev-python/GitPython[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
+	dev-python/jsonpath-ng[${PYTHON_USEDEP}]
+	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/junit-xml[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/packageurl[${PYTHON_USEDEP}]
 	dev-python/policyuniverse[${PYTHON_USEDEP}]
+	dev-python/prettytable[${PYTHON_USEDEP}]
+	dev-python/pycep[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/semantic_version[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
@@ -59,7 +66,7 @@ distutils_enable_tests unittest
 python_prepare_all() {
 	# Disable integration test
 	rm -rf integration_tests || die "rm failed for integration_tests"
-	# Disable tests
+	# Disable tests need input
 	sed -i '/test_load_terraform_registry_check_cache/i\\    @unittest.skip("disable")' \
 		tests/terraform/module_loading/test_registry.py \
 		|| die "sed failed for test_registry.py"

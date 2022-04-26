@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -14,14 +15,16 @@ SRC_URI="https://github.com/bridgecrewio/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-PROPERTIES="test_network"
 RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/aiomultiprocess[${PYTHON_USEDEP}]
+	dev-python/argcomplete[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/cachetools[${PYTHON_USEDEP}]
+	dev-python/charset_normalizer[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/configargparse[${PYTHON_USEDEP}]
@@ -32,14 +35,17 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	<dev-python/dpath-2[${PYTHON_USEDEP}]
 	dev-python/GitPython[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
+	dev-python/jsonpath-ng[${PYTHON_USEDEP}]
+	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/junit-xml[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
-	dev-python/packageurl[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/packageurl[${PYTHON_USEDEP}]
 	dev-python/policyuniverse[${PYTHON_USEDEP}]
+	dev-python/prettytable[${PYTHON_USEDEP}]
+	dev-python/pycep[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/semantic_version[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
@@ -51,7 +57,6 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/aioresponses[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}] )"
 
