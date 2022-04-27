@@ -1,6 +1,7 @@
+---
 name: docs
 
-on:
+on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
   push:
     branches:
@@ -43,7 +44,10 @@ jobs:
       - name: Run lychee
         uses: lycheeverse/lychee-action@v1.4.1
         with:
-          args: -v -m 1 --require-https --exclude 'https://(github.com/SpiderX|www.codacy.com)/*' -n ${{ steps.condition.outputs.value }}
+          args: >-
+            -v -m 1 --require-https
+            --exclude 'https://(github.com/SpiderX|www.codacy.com)/*'
+            -n ${{ steps.condition.outputs.value }}
           fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
