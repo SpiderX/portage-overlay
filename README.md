@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 642](https://img.shields.io/badge/ebuild-642-orange.svg)](https://img.shields.io/badge/ebuild-642-orange.svg)
+[![Number of ebuilds: 643](https://img.shields.io/badge/ebuild-643-orange.svg)](https://img.shields.io/badge/ebuild-643-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -511,6 +511,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[desed](https://github.com/SoptikHa2/desed) | Debugger for Sed
 *   dev-util/[detect-secrets](https://github.com/Yelp/detect-secrets) | An enterprise friendly way of detecting and preventing secrets
 *   dev-util/[dropwatch](https://github.com/nhorman/dropwatch) | Monitor for dropped network packets
+*   dev-util/[dtm](https://github.com/dtm-labs/dtm) | Distributed transaction framework
 *   dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
 *   dev-util/[gibberish-detector](https://github.com/domanchi/gibberish-detector) | Train a model, and detect gibberish strings with it
 *   dev-util/[gh](https://github.com/cli/cli) | The GitHub CLI
