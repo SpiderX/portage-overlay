@@ -153,6 +153,7 @@ jobs:
             dev-db/litestream/*.ebuild
             dev-db/usql/*.ebuild
             dev-util/act/*.ebuild
+            dev-util/dtm/*.ebuild
             dev-vcs/gitaly/*.ebuild
             app-metrics/amazon-cloudwatch-agent/*.ebuild
             app-metrics/aws-otel-collector/*.ebuild
