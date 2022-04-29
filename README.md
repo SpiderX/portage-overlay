@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 659](https://img.shields.io/badge/ebuild-659-orange.svg)](https://img.shields.io/badge/ebuild-659-orange.svg)
+[![Number of ebuilds: 660](https://img.shields.io/badge/ebuild-660-orange.svg)](https://img.shields.io/badge/ebuild-660-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -528,6 +528,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[detect-secrets](https://github.com/Yelp/detect-secrets) | An enterprise friendly way of detecting and preventing secrets
 *   dev-util/[dropwatch](https://github.com/nhorman/dropwatch) | Monitor for dropped network packets
 *   dev-util/[dtm](https://github.com/dtm-labs/dtm) | Distributed transaction framework
+*   dev-util/[duplicate-code-detection-tool](https://github.com/platisd/duplicate-code-detection-tool) | A tool to detect similarities between files within a repository
 *   dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
 *   dev-util/[gibberish-detector](https://github.com/domanchi/gibberish-detector) | Train a model, and detect gibberish strings with it
 *   dev-util/[gh](https://github.com/cli/cli) | The GitHub CLI
