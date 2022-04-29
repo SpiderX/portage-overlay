@@ -52,7 +52,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	distutils-r1_python_compile $(usex test '--inplace' '')
+	distutils-r1_python_compile "$(usex test '-i' '-v')"
 }
 
 python_install_all() {
