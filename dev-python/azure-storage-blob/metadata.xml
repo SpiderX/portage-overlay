@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Azure Blob storage is Microsoft's object storage solution for the cloud.
+	Blob storage is optimized for storing massive amounts of unstructured
+	data, such as text or binary data.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Azure/azure-sdk-for-python</remote-id>
+		<remote-id type="pypi">azure-storage-blob</remote-id>
+	</upstream>
+</pkgmetadata>
