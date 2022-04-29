@@ -38,7 +38,7 @@ EPYTEST_DESELECT=(
 )
 
 python_compile() {
-	distutils-r1_python_compile $(usex test '-i' '')
+	distutils-r1_python_compile "$(usex test '-i' '-v')"
 }
 
 python_test() {
