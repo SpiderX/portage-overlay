@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 649](https://img.shields.io/badge/ebuild-649-orange.svg)](https://img.shields.io/badge/ebuild-649-orange.svg)
+[![Number of ebuilds: 650](https://img.shields.io/badge/ebuild-650-orange.svg)](https://img.shields.io/badge/ebuild-650-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -384,6 +384,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[forbiddenfruit](https://github.com/clarete/forbiddenfruit) | Patch python built-in objects
 *   dev-python/[gensim](https://github.com/RaRe-Technologies/gensim) | Topic Modelling for Humans
 *   dev-python/[git-url-parse](https://github.com/coala/git-url-parse) | A simple GIT URL parser
+*   dev-python/[google-crc32c](https://github.com/googleapis/python-crc32c) | Hardware-based implementation of the CRC32C hashing algorithm
 *   dev-python/[graphene](https://github.com/graphql-python/graphene) | GraphQL framework for Python
 *   dev-python/[graphene-django](https://github.com/graphql-python/graphene-django) | A Django integration for Graphene
 *   dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz
