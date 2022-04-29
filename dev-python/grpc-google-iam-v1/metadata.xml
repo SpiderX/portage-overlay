@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides an GRPC Google IAM API client library, which
+	is capable to manages identity and access control for Google Cloud
+	Platform resources.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">googleapis/python-grpc-google-iam-v1</remote-id>
+		<remote-id type="pypi">grpc-google-iam</remote-id>
+	</upstream>
+</pkgmetadata>
