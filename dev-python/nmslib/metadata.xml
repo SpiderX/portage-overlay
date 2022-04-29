@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Non-Metric Space Library (NMSLIB) is an efficient cross-platform
+	similarity search library and a toolkit for evaluation of similarity
+	search methods. The goal of the project is to create an effective and
+	comprehensive toolkit for searching in generic and non-metric spaces.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">nmslib/nmslib</remote-id>
+		<remote-id type="pypi">nmslib</remote-id>
+	</upstream>
+</pkgmetadata>
