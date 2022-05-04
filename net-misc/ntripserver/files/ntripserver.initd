@@ -2,11 +2,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+MP=${RC_SVCNAME#*.}
+
 command="/usr/bin/ntripserver"
-command_args="${NTRIP_OPTS} -m ${MOUNTPOINT} ${CONFIG}"
+command_args="${NTRIP_OPTS} -m ${MOUNTPOINT_D:-$MP} -D ${MOUNTPOINT_S:-$MP} ${CONFIG}"
 command_background="yes"
 description="Ntrip Command Line Server"
-name="Ntrip Command Line Server (${MOUNTPOINT})"
+name="Ntrip Command Line Server (${MOUNTPOINT_D:-$MP})"
 pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
