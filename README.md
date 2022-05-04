@@ -663,6 +663,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[qfreerdp](https://github.com/zrax/qfreerdp) | Qt launcher GUI for XFreeRDP
 *   net-misc/[qia](https://stg.codes) | Authorization tool for Stargazer Billing System written in Qt
 *   net-misc/[msd](https://github.com/rozhuk-im/msd) | Program for IP TV streaming on the network via HTTP
+*   net-misc/[ntriprelay](https://github.com/madf/ntriprelay) | NTRIP Relay
 *   net-misc/[ntripserver](https://github.com/nunojpg/ntripserver) | Ntrip Version 2.0 Command Line Server
 *   net-misc/[opendrop](https://github.com/seemoo-lab/opendrop) | an Open Source AirDrop Implementation
 *   net-misc/[postgrest](https://github.com/PostgREST/postgrest) | REST API for any Postgres database
@@ -730,4 +731,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 *   x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 *   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
-* net-misc/[ntriprelay](https://github.com/madf/ntriprelay) | NTRIP Relay
