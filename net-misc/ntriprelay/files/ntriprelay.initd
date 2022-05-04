@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+MP=${RC_SVCNAME#*.}
+
+command="/usr/bin/ntriprelay"
+command_args="${NTRIP_OPTS} -M ${MOUNTPOINT_S:-$MP} -m ${MOUNTPOINT_D:-$MP} ${CONFIG}"
+command_background="yes"
+description="NTRIP Relay"
+name="NTRIP Relay (${MOUNTPOINT_S:-$MP})"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

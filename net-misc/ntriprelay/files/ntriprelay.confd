@@ -1,0 +1,7 @@
+# Config file for /etc/init.d/ntriprelay
+
+# Various options.
+# run `ntriprelay -h` for valid cmdline options
+NTRIP_OPTS="-t 300"
+CONFIG="-S 127.0.0.1 -s 127.0.0.1"
+#MOUNTPOINT_S="EXAMPLE"
