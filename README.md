@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 663](https://img.shields.io/badge/ebuild-663-orange.svg)](https://img.shields.io/badge/ebuild-663-orange.svg)
+[![Number of ebuilds: 664](https://img.shields.io/badge/ebuild-664-orange.svg)](https://img.shields.io/badge/ebuild-664-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -107,6 +107,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-editors/[FeatherPad](https://github.com/tsujan/FeatherPad) | Lightweight Qt5 plain-text editor
 *   app-editors/[lite](https://github.com/rxi/lite) | A lightweight text editor written in Lua
 *   app-editors/[micro](https://github.com/zyedidia/micro) | A modern and intuitive terminal-based text editor
+*   app-editors/[NotepadNext](https://github.com/dail8859/NotepadNext) | A cross-platform reimplementation of Notepad++
 *   app-emulation/[looking-glass](https://looking-glass.io) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 *   app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
 *   app-emulation/[vmware-modules](https://github.com/mkubecek/vmware-host-modules) | VMware kernel modules
