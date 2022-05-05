@@ -31,8 +31,8 @@ jobs:
       - name: Run gitlint on push
         if: ${{ github.event_name == 'push' }}
         run: >-
-          gitlint --commits ${{ github.event.before }}..
-          ${{ github.event.after }}
+          echo ${{ github.event.before }}..
+          ${{ github.event.after }} | xargs gitlint --commits
   gitlint-action:
     name: gitlint-action
     runs-on: ubuntu-latest
