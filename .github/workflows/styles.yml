@@ -26,13 +26,14 @@ jobs:
       - name: Run gitlint on pull request
         if: ${{ github.event_name == 'pull_request' }}
         run: >-
-          gitlint --commits ${{ github.event.pull_request.head.sha }}..
-          ${{ github.event.pull_request.base.sha }}
+          echo '${{ github.event.pull_request.head.sha }}..
+          ${{ github.event.pull_request.base.sha }}' | tr -d ' ' \
+          | xargs gitlint --commits
       - name: Run gitlint on push
         if: ${{ github.event_name == 'push' }}
         run: >-
-          echo ${{ github.event.before }}..
-          ${{ github.event.after }} | xargs gitlint --commits
+          echo '${{ github.event.before }}..
+          ${{ github.event.after }}' | tr -d ' ' | xargs gitlint --commits
   gitlint-action:
     name: gitlint-action
     runs-on: ubuntu-latest
