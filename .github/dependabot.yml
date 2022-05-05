@@ -6,7 +6,7 @@ updates:
       interval: "weekly"
       day: "sunday"
     commit-message:
-      prefix: "[ci]"
+      prefix: "ci"
     labels:
       - "ci"
       - "dependencies"
