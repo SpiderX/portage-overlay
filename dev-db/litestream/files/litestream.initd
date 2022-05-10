@@ -1,11 +1,11 @@
 #!/sbin/openrc-run
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/litestream"
 name="Litestream"
 description="Litestream"
-command_args="${OPTS}"
+command_args="${LS_OPTS}"
 
 depend() {
 	need net

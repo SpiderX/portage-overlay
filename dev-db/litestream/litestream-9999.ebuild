@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/benbjohnson/${PN}.git"
 
 inherit go-module git-r3 systemd
 
-DESCRIPTION="Streaming S3 replication for SQLite"
+DESCRIPTION="Streaming replication for SQLite"
 HOMEPAGE="https://github.com/benbjohnson/litestream"
 SRC_URI=""
 
@@ -21,8 +21,9 @@ src_unpack() {
 }
 
 src_compile() {
-	LDFLAGS="-X main.Version=${PV}"
-	go build -v -ldflags "${LDFLAGS}" -o litestream ./cmd/litestream || die "build failed"
+	LDFLAGS="-s -w -X main.Version=${PV}"
+	go build -v -ldflags "${LDFLAGS}" -o litestream ./cmd/litestream \
+		|| die "build failed"
 }
 
 src_test() {
