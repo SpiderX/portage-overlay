@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/nginx-amplify-agent.py"
+name="NGINX Amplify Agent"
+description="NGINX Amplify Agent"
+user="${NGINX_USER:-nginx}"
+pidfile="/run/nginx-amplify-agent/nginx-amplify-agent.pid"
+config=${CONFIG:-/etc/nginx-amplify-agent/agent.conf}
+start_stop_daemon_args="start -q -- --config $config --pid $pidfile"
+extra_commands="configtest"
+description_configtest="Checks nginx-amplify-agent configuration"
+retry="10"
+
+depend() {
+	need net
+	use nginx dns
+}
+
+configtest() {
+	$command configtest --config "$config"
+}
