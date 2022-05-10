@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This Python package is a random collection of WSGI modules I've written.
+	fcgi and publisher have long existed since I became interested in Python
+	web programming a few years ago. They have been recently cleaned up and
+	retrofitted with WSGI. The other modules just followed as I explored the
+	possibilities of WSGI.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">flup</remote-id>
+	</upstream>
+</pkgmetadata>
