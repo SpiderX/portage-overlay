@@ -1,8 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
@@ -15,11 +16,4 @@ LICENSE="BSD"
 SLOT=0
 KEYWORDS="~amd64 ~x86"
 
-python_test() {
-	"${PYTHON}" -m unittest discover -v rstr/tests || die "tests failed with ${EPYTHON}"
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${ED}" -type d -name "tests" -exec rm -rv {} + || die "tests removing failed"
-}
+distutils_enable_tests unittest

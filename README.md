@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 664](https://img.shields.io/badge/ebuild-664-orange.svg)](https://img.shields.io/badge/ebuild-664-orange.svg)
+[![Number of ebuilds: 665](https://img.shields.io/badge/ebuild-665-orange.svg)](https://img.shields.io/badge/ebuild-665-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -385,6 +385,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[fire](https://github.com/google/python-fire) | Library for automatically generating CLI from object
 *   dev-python/[fleep](https://github.com/floyernick/fleep-py) | File format determination library for Python
 *   dev-python/[flex](https://github.com/pipermerriam/flex) | Validation tooling for Swagger 2.0 specifications
+*   dev-python/[flup](https://www.saddi.com/software/flup) | Random assortment of WSGI servers
 *   dev-python/[forbiddenfruit](https://github.com/clarete/forbiddenfruit) | Patch python built-in objects
 *   dev-python/[gensim](https://github.com/RaRe-Technologies/gensim) | Topic Modelling for Humans
 *   dev-python/[git-url-parse](https://github.com/coala/git-url-parse) | A simple GIT URL parser
