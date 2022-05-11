@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Random assortment of WSGI servers"
-HOMEPAGE="https://www.saddi.com/software/flup"
+HOMEPAGE="https://www.saddi.com/software/flup/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
