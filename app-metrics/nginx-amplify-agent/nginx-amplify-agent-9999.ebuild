@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/nginxinc/${PN}.git"
 inherit distutils-r1 git-r3 readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="System and NGINX metric collection"
-HOMEPAGE="https://amplify.nginx.com"
+HOMEPAGE="https://amplify.nginx.com/login"
 SRC_URI=""
 
 LICENSE="BSD-2"

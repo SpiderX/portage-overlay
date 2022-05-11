@@ -11,7 +11,7 @@ inherit distutils-r1 readme.gentoo-r1 systemd tmpfiles
 MY_PV=$(ver_rs 3 '-')
 
 DESCRIPTION="System and NGINX metric collection"
-HOMEPAGE="https://amplify.nginx.com"
+HOMEPAGE="https://amplify.nginx.com/login"
 SRC_URI="https://github.com/nginxinc/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
