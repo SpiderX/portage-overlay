@@ -27,7 +27,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: >-
           echo '${{ github.event.pull_request.head.sha }}..
-          ${{ github.event.pull_request.base.sha }}' | tr -d ' ' \
+          ${{ github.event.pull_request.base.sha }}' | tr -d ' '
           | xargs gitlint --commits
       - name: Run gitlint on push
         if: ${{ github.event_name == 'push' }}
