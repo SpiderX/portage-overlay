@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+CABAL_FEATURES="lib profile haddock hoogle hscolour nocabaldep test-suite"
 
 inherit haskell-cabal
 
