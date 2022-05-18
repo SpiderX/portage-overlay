@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 665](https://img.shields.io/badge/ebuild-665-orange.svg)](https://img.shields.io/badge/ebuild-665-orange.svg)
+[![Number of ebuilds: 663](https://img.shields.io/badge/ebuild-663-orange.svg)](https://img.shields.io/badge/ebuild-663-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -494,7 +494,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[testinfra](https://github.com/pytest-dev/pytest-testinfra) | Testinfra test your infrastructures
 *   dev-python/[text-unidecode](https://github.com/kmike/text-unidecode) | The most basic Text::Unidecode port
 *   dev-python/[timecop](https://github.com/bluekelp/pytimecop) | A port of TimeCop Ruby Gem for Python
-*   dev-python/[tomlkit](https://github.com/sdispater/tomlkit) | Style-preserving TOML library for Python
 *   dev-python/[tree-format](https://github.com/jml/tree-format) | Python library for printing trees on the console
 *   dev-python/[types-chardet](https://github.com/python/typeshed) | Collection of library stubs for Python, with static types
 *   dev-python/[ua-parser](https://github.com/ua-parser/uap-python) | A python implementation of the UA Parser
