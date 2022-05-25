@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 663](https://img.shields.io/badge/ebuild-663-orange.svg)](https://img.shields.io/badge/ebuild-663-orange.svg)
+[![Number of ebuilds: 664](https://img.shields.io/badge/ebuild-664-orange.svg)](https://img.shields.io/badge/ebuild-664-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -695,6 +695,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-vpn/[cloudflared](https://github.com/cloudflare/cloudflared) | Argo Tunnel client
 *   net-vpn/[innernet-bin](https://github.com/tonarino/innernet) | WireGuard based private network system
 *   net-vpn/[forticlient](https://www.fortinet.com/products/endpoint-security/forticlient) | Fortinet VPN client
+*   net-vpn/[openiked](https://github.com/openiked/openiked-portable) | Internet Key Exchange version 2 (IKEv2) daemon
 *   net-vpn/[openvpn-aws](https://openvpn.net) | Patched OpenVPN with SAML support for AWS Client VPN
 *   [![Gentoo Bug](https://img.shields.io/badge/Bug-498844-red.svg)](https://bugs.gentoo.org/show_bug.cgi?id=498844) net-vpn/[softether](https://www.softether.org) | Multi-protocol VPN software
 *   sci-visualization/[visidata](https://github.com/saulpw/visidata) | Terminal spreadsheet multitool for discovering and arranging data

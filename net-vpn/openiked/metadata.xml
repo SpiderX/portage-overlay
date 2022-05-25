@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a port of OpenBSD's OpenIKED to
+	different Unix-like operating systems, including Linux, macOS,
+	FreeBSD and NetBSD.
+	</longdescription>
+	<use>
+		<flag name="apparmor">Enable AppArmor support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">openiked/openiked-portable</remote-id>
+	</upstream>
+</pkgmetadata>

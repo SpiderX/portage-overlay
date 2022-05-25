@@ -1,0 +1,12 @@
+# Config file for /etc/init.d/openiked
+
+# Various options.
+# run `iked --help` for valid cmdline options
+#IKED_OPTS=""
+
+# User and group daemon runs as
+IKED_USER="_iked"
+IKED_GROUP="_iked"
+
+# openiked config file
+#CONFIG="/etc/iked.conf"
