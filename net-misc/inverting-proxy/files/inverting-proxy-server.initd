@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/inverting-proxy"
+command_args="${INVP_OPTS}"
+command_background="yes"
+command_user="${INVP_USER:-root}:${INVP_GROUP:-root}"
+description="Inverting Proxy server"
+name="Inverting Proxy server"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

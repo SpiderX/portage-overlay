@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/inverting-proxy-server
+
+# extra options (run inverting-proxy --help for a list of supported options)
+INVP_OPTS="--port 8081"
+
+# User and group inverting-proxy-server is configured for
+#INVP_USER="root"
+#INVP_GROUP="root"
