@@ -44,7 +44,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run gitlint-action
-        uses: aschbacd/gitlint-action@v1.0.2
+        uses: aschbacd/gitlint-action@v1.1.0
         with:
           re-commit-message-subject: >-
             "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>
