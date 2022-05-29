@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 665](https://img.shields.io/badge/ebuild-665-orange.svg)](https://img.shields.io/badge/ebuild-665-orange.svg)
+[![Number of ebuilds: 667](https://img.shields.io/badge/ebuild-667-orange.svg)](https://img.shields.io/badge/ebuild-667-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -154,6 +154,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[mssql-scripter](https://github.com/microsoft/mssql-scripter) | CLI for scripting SQL Server Databases
 *   dev-db/[mssql-tools](https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?view=sql-server-ver15) | Microsoft SQL Server Tools for Linux
 *   dev-db/[pg_cron](https://github.com/citusdata/pg_cron) | Run periodic jobs in PostgreSQL
+*   dev-db/[pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) | Manually force decisions in execution plans of PostgreSQL
 *   dev-db/[odyssey](https://github.com/yandex/odyssey) | Scalable PostgreSQL connection pooler
 *   dev-db/[pg_page_verification](https://github.com/google/pg_page_verification) | Checksums verification on PostgreSQL data pages
 *   dev-db/[pg_profile](https://github.com/zubkov-andrei/pg_profile) | Postgres historic performance reports
