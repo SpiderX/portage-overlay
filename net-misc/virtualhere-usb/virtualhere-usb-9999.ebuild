@@ -39,9 +39,9 @@ DEPEND="virtual/linux-sources"
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/vhusb/vhclient*
-	/opt/vhusb/vhuit*
-	/opt/vhusb/vhusbd*"
+QA_PREBUILT="/opt/vhusb/vhclient
+	/opt/vhusb/vhuit
+	/opt/vhusb/vhusbd"
 
 pkg_setup() {
 	use client && CONFIG_CHECK="~USBIP_VHCI_HCD"
@@ -61,24 +61,18 @@ src_install() {
 	exeinto /opt/vhusb
 	insinto /opt/vhusb
 
-	use gui && doexe vhuit*
+	use gui && newexe vhuit* vhuit
 
 	if use client ; then
-		doexe vhclient*
+		newexe vhclient* vhclient
 		newconfd "${FILESDIR}"/vhusb-client.confd vhusb-client
-		use amd64 && newinitd "${FILESDIR}"/vhusb-client.amd64 vhusb-client
-		use arm   && newconfd "${FILESDIR}"/vhusb-client.arm   vhusb-client
-		use x86   && newconfd "${FILESDIR}"/vhusb-client.x86   vhusb-client
+		newinitd "${FILESDIR}"/vhusb-client.initd vhusb-client
 	fi
 
 	if use server ; then
-		doexe vhusbd*
+		newexe vhusbd* vhusbd
 		doins "${FILESDIR}"/config.ini
 		newconfd "${FILESDIR}"/vhusb-server.confd vhusb-server
-		use amd64 && newinitd "${FILESDIR}"/vhusb-server.amd64 vhusb-server
-		use arm   && newinitd "${FILESDIR}"/vhusb-server.arm   vhusb-server
-		use arm64 && newinitd "${FILESDIR}"/vhusb-server.arm64 vhusb-server
-		use mips  && newinitd "${FILESDIR}"/vhusb-server.mips  vhusb-server
-		use x86   && newinitd "${FILESDIR}"/vhusb-server.x86   vhusb-server
+		newinitd "${FILESDIR}"/vhusb-server.initd vhusb-server
 	fi
 }

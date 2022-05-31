@@ -2,4 +2,4 @@
 
 # Various options.
 # run `vhclient... -h` for valid cmdline options
-OPTS="-n"
+VHUSB_OPTS="-n"

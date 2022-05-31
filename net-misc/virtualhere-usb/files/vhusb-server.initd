@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/opt/vhusb/vhusbd"
+command_args="${VHUSB_OPTS}"
+command_background="yes"
+command_user="${VHUSB_USER:-vhusb}:${VHUSB_GROUP:-vhusb}"
+description="VirtualHere USB Server"
+name="VirtualHere USB Server"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

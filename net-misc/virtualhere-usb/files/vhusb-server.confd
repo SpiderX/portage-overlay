@@ -2,4 +2,4 @@
 
 # Various options.
 # run `vhusbd... -h` for valid cmdline options
-OPTS="-b -c /opt/vhusb/config.ini"
+VHUSB_OPTS="-b -c /opt/vhusb/config.ini"
