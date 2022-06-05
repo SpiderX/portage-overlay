@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 667](https://img.shields.io/badge/ebuild-667-orange.svg)](https://img.shields.io/badge/ebuild-667-orange.svg)
+[![Number of ebuilds: 668](https://img.shields.io/badge/ebuild-668-orange.svg)](https://img.shields.io/badge/ebuild-668-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -669,6 +669,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[ntriprelay](https://github.com/madf/ntriprelay) | NTRIP Relay
 *   net-misc/[ntripserver](https://github.com/nunojpg/ntripserver) | Ntrip Version 2.0 Command Line Server
 *   net-misc/[opendrop](https://github.com/seemoo-lab/opendrop) | an Open Source AirDrop Implementation
+*   net-misc/[openvpn-update-resolv-conf](https://github.com/alfredopalhares/openvpn-update-resolv-conf) | Updates DNS settings are pushed by the OpenVPN server
 *   net-misc/[postgrest](https://github.com/PostgREST/postgrest) | REST API for any Postgres database
 *   net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
 *   net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics
