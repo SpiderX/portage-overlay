@@ -45,13 +45,14 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	x11-libs/libXtst:0
 	x11-libs/pango:0"
 
-QA_PREBUILT="opt/drawio/drawio
+QA_PREBUILT="opt/drawio/chrome_crashpad_handler
+	opt/drawio/chrome-sandbox
+	opt/drawio/drawio
 	opt/drawio/libffmpeg.so
 	opt/drawio/libEGL.so
 	opt/drawio/libGLESv2.so
 	opt/drawio/libvk_swiftshader.so
-	opt/drawio/swiftshader/libEGL.so
-	opt/drawio/swiftshader/libGLESv2.so"
+	opt/drawio/libvulkan.so.1"
 
 S="${WORKDIR}"
 
@@ -68,8 +69,7 @@ src_install() {
 
 	insinto /opt/drawio
 	doins -r opt/drawio/.
-	fperms +x /opt/drawio/drawio /opt/drawio/chrome-sandbox \
-		/opt/drawio/swiftshader/lib{EGL,GLESv2}.so \
+	fperms +x /opt/drawio/drawio /opt/drawio/chrome{-sandbox,_crashpad_handler} \
 		/opt/drawio/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/drawio/libvulkan.so.1
 
