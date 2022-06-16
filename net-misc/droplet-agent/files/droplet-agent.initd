@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/droplet-agent"
+command_args="${DRAGENT_OPTS}"
+command_background="yes"
+command_user="${DRAGENT_USER:-root}:${DRAGENT_GROUP:-root}"
+description="Droplet Agent"
+name="Droplet Agent"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}

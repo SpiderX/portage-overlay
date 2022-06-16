@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/droplet-agent
+
+# extra options (run droplet-agent -h for a list of supported options)
+DRAGENT_OPTS="-syslog"
+
+# User and group daemon runs as
+#DRAGENT_USER="root"
+#DRAGENT_GROUP="root"
