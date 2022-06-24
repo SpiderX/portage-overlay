@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="${PN/-bin/}"
 
-inherit bash-completion-r1 desktop multilib-build optfeature pax-utils xdg
+inherit bash-completion-r1 desktop edo multilib-build optfeature pax-utils xdg
 
 DESCRIPTION="Data management tool to work with DW, Azure, SQL Server"
 HOMEPAGE="https://github.com/microsoft/azuredatastudio"
@@ -48,19 +48,31 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	virtual/libcrypt:0[${MULTILIB_USEDEP}]
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/System.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/System.Security.Cryptography.Native.OpenSsl.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/System.Net.Http.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/MicrosoftSqlToolsServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/MicrosoftKustoServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/libhostfxr.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/System.Net.Security.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/MicrosoftSqlToolsCredentials
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/libhostpolicy.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/SqlToolsResourceProviderService
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.52/System.IO.Compression.Native.so
+QA_PREBUILT="opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libSystem.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libdbgshim.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/System.Net.Http.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/MicrosoftSqlToolsCredentials
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libcoreclr.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libclrjit.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/System.IO.Compression.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libhostfxr.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/MicrosoftKustoServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libSystem.Net.Security.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/createdump
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libhostpolicy.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/MicrosoftSqlToolsServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libcoreclrtraceptprovider.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/System.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/System.Security.Cryptography.Native.OpenSsl.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libmscordaccore.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libSystem.Security.Cryptography.Native.OpenSsl.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libmscordbi.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/SqlToolsResourceProviderService
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/3.0.0-release.139/libSystem.IO.Compression.Native.so
+	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node
 	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 	opt/azuredatastudio/azuredatastudio
 	opt/azuredatastudio/swiftshader/libEGL.so
@@ -73,7 +85,7 @@ S="${WORKDIR}/${MY_PN}-linux-x64"
 
 src_install() {
 	insinto /opt/azuredatastudio
-	cp -a . "${ED}"/opt/azuredatastudio || die "cp failed"
+	edo cp -a . "${ED}"/opt/azuredatastudio
 
 	dobashcomp resources/completions/bash/azuredatastudio
 	insinto /usr/share/zsh/site-functions
