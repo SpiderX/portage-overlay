@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 669](https://img.shields.io/badge/ebuild-669-orange.svg)](https://img.shields.io/badge/ebuild-669-orange.svg)
+[![Number of ebuilds: 670](https://img.shields.io/badge/ebuild-670-orange.svg)](https://img.shields.io/badge/ebuild-670-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -56,6 +56,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[cloudman](https://github.com/dutchcoders/cloudman) | Textual user interface to manage ec2 instances
 *   app-admin/[container-service-extension](https://github.com/vmware/container-service-extension) | Container Service Extension for vCloud Director
 *   app-admin/[csp-reporter](https://github.com/yandex/csp-reporter) | Content Security Policy logs parser
+*   app-admin/[cw](https://github.com/lucagrulla/cw) | Tail AWS CloudWatch Logs from your terminal
 *   app-admin/[digaws](https://github.com/sampointer/digaws) | Look up region and other information for any AWS IP address
 *   app-admin/[digaz](https://github.com/sampointer/digaz) | Look up region and other information for any Azure IP address
 *   app-admin/[digg](https://github.com/sampointer/digg) | Look up region and other information for any Google IP address
