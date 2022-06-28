@@ -32,7 +32,8 @@ src_install() {
 	einstalldocs
 	dobin cw-tail
 
-	newbashcomp cw.bash cw-tail
-	insinto /usr/share/zsh/site-functions
-	newins cw.zsh _cw-tail
+# unknown flag --completion-bash
+#	newbashcomp cw.bash cw-tail
+#	insinto /usr/share/zsh/site-functions
+#	newins cw.zsh _cw-tail
 }
