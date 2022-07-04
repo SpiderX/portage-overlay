@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -27,16 +27,18 @@ BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 
 distutils_enable_tests pytest
 
+EPYTEST_DESELECT=( # disable failing tests
+	tests/test_core.py::test_embeddable_json_schema
+	tests/test_core.py::test_property_serialisation
+	tests/test_core.py::test_property_serialisation_all_properties
+)
+
 python_prepare_all() {
 	# setuptools is unable to detect version, remove pytest-runner
 	sed -i -e "/setup(/a\\    version='${PV}'," \
 		-e "/use_scm_version/s/True/False/" \
 		-e "/setup_requires/s/'pytest-runner', //" \
 		setup.py || die "sed failed for setup.py"
-
-	# Disable failing tests
-	sed -i "/test_embeddable_json_schema/i\\@pytest.mark.skip(reason='test fails')" \
-		tests/test_core.py || die "sed failed for test_core.py"
 
 	distutils-r1_python_prepare_all
 }
