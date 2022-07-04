@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=flit
 EGIT_REPO_URI="https://github.com/omnilib/${PN}.git"
 PYTHON_COMPAT=( python3_{8..11} )
 
@@ -16,8 +16,6 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-
-BDEPEND="dev-python/flit_core[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest
 
