@@ -29,6 +29,14 @@ BDEPEND="test? ( app-text/xmldiff[${PYTHON_USEDEP}]
 
 distutils_enable_tests unittest
 
+python_prepare_all() {
+	# do not install license
+	sed -i '/include = \[/,+2d' pyproject.toml \
+		|| die "sed failed"
+
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	"${PYTHON}" -m unittest discover -v tests || die "tests failed with ${EPYTHON}"
 }
