@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -15,21 +15,21 @@ LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/boto3-1.9.175[${PYTHON_USEDEP}]
-	>=dev-python/botocore-1.12.175[${PYTHON_USEDEP}]
+RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
+	dev-python/botocore[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/versionfinder[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/freezegun[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/onetimepass[${PYTHON_USEDEP}]
-		dev-python/testfixtures[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}] )"
+		dev-python/testfixtures[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Do not reconfigure pytest
