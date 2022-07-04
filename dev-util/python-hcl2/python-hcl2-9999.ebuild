@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 EGIT_REPO_URI="https://github.com/amplify-education/${PN}.git"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 git-r3
 
@@ -20,7 +20,7 @@ KEYWORDS=""
 RDEPEND=">=dev-python/lark-1.1.2[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# Don't install tests
