@@ -9,7 +9,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 MY_PN="${PN}-python"
-#MY_PV="$(ver_rs 2 ,)"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A python module that will check for package updates"
