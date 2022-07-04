@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/halfak/${PN}.git"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 git-r3
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 RESTRICT="test" # fails
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 python_install_all() {
 	distutils-r1_python_install_all
