@@ -1,15 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/bluekelp/pytimecop.git"
+
+inherit distutils-r1
 
 MY_PV="${PV/_pre/dev}"
 MY_P="${PN}-${MY_PV}"
-
-inherit distutils-r1
 
 DESCRIPTION="A port of TimeCop Ruby Gem for Python"
 HOMEPAGE="https://github.com/bluekelp/pytimecop"
