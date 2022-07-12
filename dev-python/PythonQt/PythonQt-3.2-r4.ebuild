@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -46,6 +46,14 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
+
+	# Recent QT compatibility
+	sed -i -e '/static_Qt_qrand/s|qrand();|QRandomGenerator::global()->generate();|' \
+		-e '/include <QMetaProperty>/a#include <QRandomGenerator>' \
+		src/PythonQtStdDecorators.h || die "sed failed for PythonQtStdDecorators.h"
+	# Recent python compatibility
+	sed -i '/pydebug.h/s|pydebug.h|cpython/pydebug.h|' src/PythonQt.cpp \
+		|| die "sed failed for src/PythonQt.cpp"
 
 	if ! use examples ; then
 		sed -i '/SUBDIRS/s/examples//' PythonQt.pro || die "sed for examples"
