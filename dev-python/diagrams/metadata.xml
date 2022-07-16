@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Diagrams lets you draw the cloud system architecture in Python code.
+	It was born for prototyping a new system architecture design without
+	any design tools. You can also describe or visualize the existing
+	system architecture as well. Diagrams currently supports main major
+	providers including: AWS, Azure, GCP, Kubernetes, Alibaba Cloud, etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mingrammer/diagrams</remote-id>
+		<remote-id type="pypi">diagrams</remote-id>
+	</upstream>
+</pkgmetadata>
