@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/MeVisLab/pythonqt.git"
 
 inherit git-r3 qmake-utils python-single-r1 virtualx
