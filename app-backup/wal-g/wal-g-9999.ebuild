@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ src_unpack() {
 
 src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
-	for db in fdb mongo mysql postgres redis ; do
+	for db in fdb gp mongo mysql postgres redis sqlserver ; do
 		if use "$db" ; then
 			if [ "$db" == "postgres" ] ; then db="pg" ; fi
 			go build -o wal-g-"$db" \
@@ -51,8 +51,10 @@ src_test() {
 src_install() {
 	einstalldocs
 	use fdb && dobin wal-g-fdb
+	use gp && dobin wal-g-gp
 	use mongo && dobin wal-g-mongo
 	use mysql && dobin wal-g-mysql
 	use postgres && dobin wal-g-pg
 	use redis && dobin wal-g-redis
+	use sqlserver && dobin wal-g-sqlserver
 }

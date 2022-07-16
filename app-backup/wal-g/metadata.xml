@@ -11,12 +11,14 @@
 	</maintainer>
 	<longdescription lang="en">
 	WAL-G is an archival restoration tool for Postgres, MySQL, MongoDB,
-	Redis, SQLServer and FoundationDB.
+	Redis, SQLServer, FoundationDB, etc.
 	</longdescription>
 	<use>
 		<flag name="fdb">Enable FoundationDB support</flag>
+		<flag name="gp">Enable GreenplumDB support</flag>
 		<flag name="mongo">Enable MongoDB support</flag>
 		<flag name="redis">Enable Redis support</flag>
+		<flag name="sqlserver">Enable MSSQL support</flag>
 		<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg></flag>
 	</use>
 	<upstream>
