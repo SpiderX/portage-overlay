@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-single-r1 xdg
 
@@ -35,7 +35,8 @@ PATCHES=( "${FILESDIR}/${P}"-python-link.patch
 src_prepare() {
 	# Corrent finding QuaZip
 	sed -i  -e '/FIND_LIBRARY/s/quazip-qt5/quazip1-qt5/' \
-		-e '/PATH_SUFFIXES/s| include/quazip$| include/QuaZip-Qt5-1.1/quazip|' \
+		-e '/PATH_SUFFIXES/s| include/quazip$| include/QuaZip-Qt5-1.2/quazip|' \
+		-e '/FIND_PACKAGE_HANDLE_STANDARD_ARGS/s|quazip|QuaZip|' \
 		cmake/modules/FindQuaZip.cmake || die "sed failed for FindQuaZip.cmake"
 
 	cmake_src_prepare
