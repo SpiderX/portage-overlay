@@ -54,8 +54,11 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	insinto /usr/lib/pkgconfig
-	newins - libyuv.pc < <(sed "/Version/s|%%VERSION%%|${PV}|" \
+	insinto /usr/"$(get_libdir)"/pkgconfig
+	newins - libyuv.pc < <(sed -e "/Version/s|%%VERSION%%|${PV}|" \
+				-e "/libdir/s|%%LIBDIR%%|"$(get_libdir)"|" \
 				"${FILESDIR}"/libyuv.pc \
 				|| die "sed failed for libyuv.pc.in" )
+	insinto /usr/"$(get_libdir)"/cmake
+	doins "${FILESDIR}"/libyuv-config.cmake
 }
