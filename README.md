@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 674](https://img.shields.io/badge/ebuild-674-orange.svg)](https://img.shields.io/badge/ebuild-674-orange.svg)
+[![Number of ebuilds: 675](https://img.shields.io/badge/ebuild-675-orange.svg)](https://img.shields.io/badge/ebuild-675-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -602,6 +602,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-libs/[bcmatroska2](https://gitlab.linphone.org/BC/public/bcmatroska2) | Matroska media container support
 *   media-libs/[bv16-floatingpoint](https://gitlab.linphone.org/BC/public/external/bv16-floatingpoint) | BroadVoice 16 kbs codec
 *   media-libs/[libqpsd](https://github.com/roniemartinez/libqpsd) | PSD & PSB Plugin for Qt/C++
+*   media-libs/[libyuv](https://chromium.googlesource.com/libyuv/libyuv) | Library for freeswitch yuv graphics manipulation
 *   media-libs/[mediastreamer2](https://gitlab.linphone.org/BC/public/mediastreamer2) | Mediastreaming library for telephony application
 *   media-libs/[qt-heif](https://github.com/jakar/qt-heif-image-plugin) | Qt plugin for HEIF images
 *   media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
