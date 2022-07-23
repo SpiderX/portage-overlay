@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	It is a widget (Plasmoid) for KDE Plasma 5 that shows data from
+	Wunderground Personal Weather Stations. It sits in your taskbar and
+	periodically checks the current weather conditions as well as weather
+	forecast for your location.
+	</longdescription>
+	<use>
+		<flag name="plasma-nm">Add support for <pkg>kde-plasma/plasma-nm</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">rliwoch/plasmoid-wunderground-extended</remote-id>
+	</upstream>
+</pkgmetadata>
