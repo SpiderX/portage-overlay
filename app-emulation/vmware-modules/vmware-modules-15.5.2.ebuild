@@ -52,3 +52,13 @@ src_install() {
 		vmnet
 	EOF
 }
+
+pkg_postinst() {
+	linux-mod_pkg_postinst
+	udev_reload
+}
+
+pkg_postrm() {
+	linux-mod_pkg_postrm
+	udev_reload
+}
