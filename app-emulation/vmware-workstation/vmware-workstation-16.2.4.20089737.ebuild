@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg
 
@@ -13,13 +13,13 @@ MY_PV=$(ver_cut 1-3)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="12.2.3/19436697"
+VMWARE_FUSION_VER="12.2.4/20071091"
 SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.0.4"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
 HOMEPAGE="https://www.vmware.com/products/workstation-pro.html"
-SRC_URI="https://download3.vmware.com/software/WKST-${MY_PV//./}-LX-New/${MY_P}.x86_64.bundle
+SRC_URI="https://download3.vmware.com/software/WKST-${MY_PV//./}-LX/${MY_P}.x86_64.bundle
 	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz -> unlocker-${UNLOCKER_VERSION}.tar.gz
 			https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${VMWARE_FUSION_VER}/x86/core/com.vmware.fusion.zip.tar -> com.vmware.fusion-${PV}.zip.tar )
 	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz -> vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
@@ -417,8 +417,6 @@ pkg_config() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 	readme.gentoo_print_elog
 }
