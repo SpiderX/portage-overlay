@@ -10,7 +10,7 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="High performance logs, metrics, and events router"
 HOMEPAGE="https://github.com/vectordotdev/vector"
-SRC_URI="https://github.com/vectordotdev/${MY_PN}/releases/download/v${PV}/${MY_PN}-${PV}-amd64.deb"
+SRC_URI="https://github.com/vectordotdev/${MY_PN}/releases/download/v${PV}/${MY_PN}_${PV}-1_amd64.deb"
 
 LICENSE="MPL-2.0"
 KEYWORDS="~amd64"
