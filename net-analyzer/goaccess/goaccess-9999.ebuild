@@ -63,5 +63,10 @@ src_install() {
 }
 
 pkg_postinst() {
+	if ! has_version net-misc/geoipupdate ; then
+		einfo "You should consider to install net-misc/geoipupdate"
+		einfo "to be able to use GeoIP databases"
+	fi
+
 	tmpfiles_process goaccess.conf
 }
