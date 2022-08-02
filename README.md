@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 676](https://img.shields.io/badge/ebuild-676-orange.svg)](https://img.shields.io/badge/ebuild-676-orange.svg)
+[![Number of ebuilds: 677](https://img.shields.io/badge/ebuild-677-orange.svg)](https://img.shields.io/badge/ebuild-677-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -552,6 +552,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[policy_sentry](https://github.com/salesforce/policy_sentry) | AWS IAM Least Privilege Policy Generator
 *   dev-util/[postman](https://www.postman.com) | Build, test, and document your APIs faster
 *   dev-util/[python-hcl2](https://github.com/amplify-education/python-hcl2) | A parser for HCL2 written in Python
+*   dev-util/[shfmt](https://github.com/mvdan/sh) | A shell parser, formatter, and interpreter with bash support
 *   dev-util/[sqlfluff](https://github.com/sqlfluff/sqlfluff) | A SQL linter and auto-formatter
 *   dev-util/[swapusage](https://github.com/hhoffstaette/swapusage) | Amount of swapped memory for running processes
 *   dev-util/[taskcat](https://github.com/aws-quickstart/taskcat) | An OpenSource Cloudformation Deployment Framework
