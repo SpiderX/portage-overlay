@@ -5,7 +5,6 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/pemistahl/${PN}.git"
 CRATES="
 aho-corasick-0.7.18
 assert_cmd-2.0.4
@@ -157,20 +156,16 @@ winapi-util-0.1.5
 winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
-inherit cargo git-r3
+inherit cargo
 
 DESCRIPTION="A CLI tool for generating regular expressions"
 HOMEPAGE="https://github.com/pemistahl/grex"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
+SRC_URI="https://github.com/pemistahl/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 MIT"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 QA_PREBUILT="usr/bin/grex"
 QA_FLAGS_IGNORED="usr/bin/grex"
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_src_unpack
-}
