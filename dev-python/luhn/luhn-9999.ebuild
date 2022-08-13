@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/mmcloughlin/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -17,4 +17,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
+
+python_test() {
+	epytest -v ./test.py
+}
