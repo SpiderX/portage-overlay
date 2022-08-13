@@ -17,6 +17,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">adeptex/whispers</remote-id>
-		<remote-id type="pypi">whispers/</remote-id>
+		<remote-id type="pypi">whispers</remote-id>
 	</upstream>
 </pkgmetadata>
