@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Java Property file parser and writer for Python"
 HOMEPAGE="https://github.com/Tblue/python-jproperties"
-SRC_URI="https://github.com/Tblue/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/Tblue/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
