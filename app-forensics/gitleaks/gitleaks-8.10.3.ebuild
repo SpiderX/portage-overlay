@@ -3,22 +3,16 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/zricethezav/${PN}.git"
-
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="Auditing git repository for secrets and keys"
 HOMEPAGE="https://github.com/zricethezav/gitleaks"
-SRC_URI=""
+SRC_URI="https://github.com/zricethezav/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/raw/deps/${P}-deps.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
+KEYWORDS="~amd64 ~x86"
 
 src_compile() {
 	go build -ldflags "-X=github.com/zricethezav/gitleaks/v4/version.Version=${PV}" \
