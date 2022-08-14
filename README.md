@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 677](https://img.shields.io/badge/ebuild-677-orange.svg)](https://img.shields.io/badge/ebuild-677-orange.svg)
+[![Number of ebuilds: 678](https://img.shields.io/badge/ebuild-678-orange.svg)](https://img.shields.io/badge/ebuild-678-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -517,6 +517,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[actionlint](https://github.com/rhysd/actionlint) | Static checker for GitHub Actions workflow files
 *   dev-util/[ansible-molecule](https://github.com/ansible/molecule) | Automated testing for Ansible roles
 *   dev-util/[arctype](https://arctype.com) | SQL client for PostgreSQL and MySQL
+*   dev-util/[asio_wrapper](https://github.com/compwizk/asio_wrapper) | ASIO standalone CMake installer
 *   dev-util/[aws-config-rdk](https://github.com/awslabs/aws-config-rdk) | AWS Config Rules Development Kit
 *   dev-util/[aws-config-rdklib](https://github.com/awslabs/aws-config-rdklib) | Rule Development Kit Library for AWS Config
 *   dev-util/[azuredatastudio-bin](https://github.com/microsoft/azuredatastudio) | Data management tool to work with DW, Azure, SQL Server

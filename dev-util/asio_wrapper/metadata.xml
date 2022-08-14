@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This project addresses an inconvenience with the libasio-dev system
+	package or standalone header-only installation from the asio github
+	where pkg-config (*.pc) nor cmake find (*.cmake) are created rendering
+	CMake PkgConfig and find_package unusable.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">compwizk/asio_wrapper</remote-id>
+	</upstream>
+</pkgmetadata>
