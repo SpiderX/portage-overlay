@@ -137,7 +137,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[up](https://github.com/akavel/up) | Tool for writing Linux pipes with instant live preview
 *   app-misc/[xsv](https://github.com/BurntSushi/xsv) | A fast CSV command line toolkit
 *   app-office/[drawio-desktop-bin](https://github.com/jgraph/drawio-desktop) | Diagram drawing application built on web technology
-*   app-shells/[fzf](https://github.com/junegunn/fzf) | A command-line fuzzy finder
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/peco.svg?header=)](https://repology.org/project/peco/versions) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 *   app-shells/[zoxide](https://github.com/ajeetdsouza/zoxide) | A smarter cd command with supports of all major shells
 *   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
