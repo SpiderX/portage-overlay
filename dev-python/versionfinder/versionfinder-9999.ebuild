@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/jantman/versionfinder.git"
 
