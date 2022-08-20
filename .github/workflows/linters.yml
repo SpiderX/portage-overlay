@@ -87,6 +87,7 @@ jobs:
         with:
           path: ${{ steps.condition-path.outputs.value }}
           repoman_args: ${{ steps.condition-args.outputs.value }}
+          portage_version: 3.0.30
   shellcheck:
     name: shellcheck
     needs: list-ebuild
