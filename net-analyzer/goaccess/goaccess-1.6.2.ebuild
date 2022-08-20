@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools systemd tmpfiles
+inherit autotools optfeature systemd tmpfiles
 
 DESCRIPTION="A real-time web log analyzer and interactive viewer in a terminal"
 HOMEPAGE="https://goaccess.io"
@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug geoip geoipv2 getline ssl unicode"
 REQUIRED_USE="geoipv2? ( geoip )"
 
-RDEPEND="acct-user/goaccess
+RDEPEND="acct-group/goaccess
+	acct-user/goaccess
 	sys-libs/ncurses:=[unicode(+)?]
 	geoip? (
 		!geoipv2? ( dev-libs/geoip )
@@ -40,12 +41,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		"$(use_enable debug)" \
-		"$(use_enable geoip geoip "$(usex geoipv2 mmdb legacy)")" \
-		"$(use_enable unicode utf8)" \
-		"$(use_with getline)" \
-		"$(use_with ssl openssl)"
+	local myeconfargs=()
+	readarray -t myeconfargs < <(
+		use_enable debug
+		use_enable geoip geoip "$(usex geoipv2 mmdb legacy)"
+		use_enable unicode utf8
+		use_with getline
+		use_with ssl openssl
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -61,10 +65,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! has_version net-misc/geoipupdate ; then
-		einfo "You should consider to install net-misc/geoipupdate"
-		einfo "to be able to use GeoIP databases"
-	fi
-
+	optfeature "update GeoIP databases" net-misc/geoipupdate
 	tmpfiles_process goaccess.conf
 }
