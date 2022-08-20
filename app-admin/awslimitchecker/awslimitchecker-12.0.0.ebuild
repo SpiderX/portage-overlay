@@ -3,13 +3,14 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
 DESCRIPTION="Utility to check AWS resource limits and usage"
 HOMEPAGE="https://github.com/jantman/awslimitchecker"
-SRC_URI="https://github.com/jantman/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jantman/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="AGPL-3+"
 SLOT="0"
