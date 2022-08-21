@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Effectively suppresses illegal DHCP servers on the LAN"
 HOMEPAGE="http://www.netpatch.ru/devel/dhcdrop/"
@@ -23,7 +23,11 @@ src_prepare() {
 
 	# Fix building with clang, bug #731694
 	sed -i '/^PACKAGE_/s/"//g' configure \
-		|| die "sed failed for configured"
+		|| die "sed failed for configure"
+	# wrt #861608
+	sed -i  -e 's/inline void rand_ether_addr/static void rand_ether_addr/' \
+		-e 's/inline void print_ether/static void print_ether/' \
+		src/dhcdrop.{c,h} || die "sed failed ofr dhcdrop.c,h"
 }
 
 src_configure() {
