@@ -5,7 +5,7 @@ EAPI=8
 
 inherit acct-user
 
-ACCT_USER_ID=-1
+ACCT_USER_ID=523
 ACCT_USER_GROUPS=( goaccess )
 ACCT_USER_HOME="/var/lib/goaccess"
 ACCT_USER_HOME_OWNER="goaccess:goaccess"
