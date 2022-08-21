@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/1100101/${PN^}.git"
 
-inherit autotools git-r3 readme.gentoo-r1 systemd
+inherit autotools flag-o-matic git-r3 readme.gentoo-r1 systemd
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
@@ -17,12 +17,16 @@ KEYWORDS=""
 RESTRICT="test"
 PROPERTIES="test_network"
 
-RDEPEND="acct-user/automatic
+RDEPEND="acct-group/automatic
+	acct-user/automatic
 	dev-libs/libxml2:2
 	dev-libs/libpcre:3
 	net-misc/curl"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+# wrt #836740
+PATCHES=( "${FILESDIR}"/"${P}"-util_test-header.patch )
 
 DOC_CONTENTS="To run automatic you should move /etc/automatic.conf-sample
 to /etc/automatic.conf and config it.\\n
@@ -44,11 +48,13 @@ src_prepare() {
 	sed -i '/check_PROGRAMS /s/ pushover_test//' src/tests/Makefile.am \
 		|| die "sed failed for src/tests/Makefile.am"
 
-	# wrt #836740
-	sed -i '/stdio.h/i#include <stdint.h>' src/tests/utils_test.c \
-		|| die "sed failed for utils_test.c"
-
 	eautoreconf
+}
+
+src_configure() {
+	filter-lto # wrt #861842
+
+	econf
 }
 
 src_install() {
