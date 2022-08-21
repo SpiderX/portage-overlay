@@ -3,17 +3,17 @@
 
 EAPI=8
 
-inherit pax-utils readme.gentoo-r1 systemd tmpfiles
+inherit pax-utils readme.gentoo-r1 systemd tmpfiles unpacker
 
 QA_PREBUILT="usr/bin/rslsync"
-BASE_URI="https://download-cdn.resilio.com/stable/linux-@arch@/${PN}_@arch@.tar.gz"
+BASE_URI="https://download-cdn.resilio.com/${PV}/Debian/${PN}_${PV}-1_@arch@.deb"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://www.resilio.com"
-SRC_URI="amd64? ( ${BASE_URI//@arch@/x64} )
-	arm? ( ${BASE_URI//@arch@/armhf} )
-	arm64? ( ${BASE_URI//@arch@/arm64} )
-	x86? ( ${BASE_URI//@arch@/i386} )"
+SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
+	arm? ( ${BASE_URI/@arch@/armhf} )
+	arm64? ( ${BASE_URI/@arch@/arm64} )
+	x86? ( ${BASE_URI/@arch@/i386} )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -30,9 +30,17 @@ DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
 Default metadata path is /var/lib/resilio-sync/.sync\\n
 Default web-gui URL is http://localhost:8888/\\n\\n"
 
+src_unpack() {
+	unpacker_src_unpack
+
+	unpack usr/share/man/man1/resilio-sync.1.gz
+}
+
 src_install() {
-	dobin rslsync
+	dobin usr/bin/rslsync
 	pax-mark m "${ED}"/usr/bin/rslsync
+
+	doman resilio-sync.1
 
 	newinitd "${FILESDIR}"/resilio-sync.initd resilio-sync
 	newconfd "${FILESDIR}"/resilio-sync.confd resilio-sync
