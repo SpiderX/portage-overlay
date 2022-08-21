@@ -1,15 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
 inherit desktop multilib-build optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Team collaboration tool"
-HOMEPAGE="https://slack.com"
-SRC_URI="https://downloads.slack-edge.com/linux_releases/${PN}-desktop-${PV}-amd64.deb"
+HOMEPAGE="https://www.slack.com"
+SRC_URI="https://downloads.slack-edge.com/releases/linux/${PV}/prod/x64/${PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -44,17 +44,17 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="/opt/slack/chrome-sandbox
-	/opt/slack/libEGL.so
-	/opt/slack/libffmpeg.so
-	/opt/slack/libGLESv2.so
-	/opt/slack/libvk_swiftshader.so
-	/opt/slack/libvulkan.so
-	/opt/slack/resources/app.asar.unpacked/node_modules/*/*/build/Release/*.node
-	/opt/slack/resources/app.asar.unpacked/node_modules/*/build/Release/*.node
-	/opt/slack/slack
-	/opt/slack/swiftshader/libEGL.so
-	/opt/slack/swiftshader/libGLESv2.so"
+QA_PREBUILT="opt/slack/chrome-sandbox
+	opt/slack/chrome_crashpad_handler
+	opt/slack/libEGL.so
+	opt/slack/libGLESv2.so
+	opt/slack/libffmpeg.so
+	opt/slack/libvk_swiftshader.so
+	opt/slack/libvulkan.so.1
+	opt/slack/resources/app.asar.unpacked/node_modules/*
+	opt/slack/slack
+	opt/slack/swiftshader/libEGL.so
+	opt/slack/swiftshader/libGLESv2.so"
 
 S="${WORKDIR}"
 
