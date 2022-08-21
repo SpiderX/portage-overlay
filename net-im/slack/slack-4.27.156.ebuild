@@ -79,7 +79,7 @@ src_prepare() {
 			|| die "sed failed for seccomp"
 	fi
 
-	if ! use wayland ; then
+	if use wayland ; then
 		sed -i '/Exec/s/%U/%U --enable-features=WebRTCPipeWireCapturer/' \
 			usr/share/applications/slack.desktop \
 			|| die "sed failed for wayland"
