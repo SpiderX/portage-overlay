@@ -3,24 +3,18 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/peco/${PN}.git"
-
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="Simplistic interactive filtering tool"
 HOMEPAGE="https://github.com/peco/peco"
-SRC_URI=""
+SRC_URI="https://github.com/peco/peco/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/SpiderX/portage-overlay/raw/deps/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 DOCS=( {Changes,README.md} )
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
 
 src_compile() {
 	ego build ./cmd/...
