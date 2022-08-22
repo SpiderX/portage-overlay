@@ -16,7 +16,8 @@ CRATES="
 	aho-corasick-0.7.18
 	alsa-0.6.0
 	alsa-sys-0.3.1
-	async-trait-0.1.56
+	android_system_properties-0.1.4
+	async-trait-0.1.57
 	atty-0.2.14
 	autocfg-1.1.0
 	backtrace-0.3.66
@@ -26,7 +27,7 @@ CRATES="
 	block-0.1.6
 	block-buffer-0.9.0
 	block-buffer-0.10.2
-	bumpalo-3.10.0
+	bumpalo-3.11.0
 	bytecount-0.6.3
 	byteorder-1.4.3
 	bytes-1.2.1
@@ -34,15 +35,15 @@ CRATES="
 	cesu8-1.1.0
 	cexpr-0.6.0
 	cfg-if-1.0.0
-	chrono-0.4.19
+	chrono-0.4.22
 	chunked_transfer-1.4.0
 	cipher-0.2.5
 	clang-sys-1.3.3
-	clap-3.2.16
+	clap-3.2.17
 	clap_lex-0.2.4
 	clipboard-0.5.0
 	clipboard-win-2.2.0
-	combine-4.6.4
+	combine-4.6.6
 	convert_case-0.4.0
 	cookie-0.16.0
 	cookie_store-0.16.1
@@ -51,7 +52,7 @@ CRATES="
 	coreaudio-rs-0.10.0
 	coreaudio-sys-0.2.10
 	cpal-0.13.5
-	cpufeatures-0.2.2
+	cpufeatures-0.2.3
 	crossbeam-channel-0.5.6
 	crossbeam-utils-0.8.11
 	crypto-common-0.1.6
@@ -84,22 +85,21 @@ CRATES="
 	foreign-types-0.3.2
 	foreign-types-shared-0.1.1
 	form_urlencoded-1.0.1
-	futures-0.3.21
-	futures-channel-0.3.21
-	futures-core-0.3.21
-	futures-executor-0.3.21
-	futures-io-0.3.21
-	futures-macro-0.3.21
-	futures-sink-0.3.21
-	futures-task-0.3.21
-	futures-util-0.3.21
-	generic-array-0.14.5
+	futures-0.3.23
+	futures-channel-0.3.23
+	futures-core-0.3.23
+	futures-executor-0.3.23
+	futures-io-0.3.23
+	futures-macro-0.3.23
+	futures-sink-0.3.23
+	futures-task-0.3.23
+	futures-util-0.3.23
+	generic-array-0.14.6
 	getrandom-0.2.7
 	gimli-0.26.2
 	glob-0.3.0
-	h2-0.3.13
+	h2-0.3.14
 	half-1.8.2
-	hashbrown-0.11.2
 	hashbrown-0.12.3
 	headers-0.3.7
 	headers-core-0.2.0
@@ -114,13 +114,14 @@ CRATES="
 	hyper-0.14.20
 	hyper-proxy-0.9.1
 	hyper-tls-0.5.0
+	iana-time-zone-0.1.46
 	ident_case-1.0.1
 	idna-0.2.3
 	indexmap-1.9.1
 	instant-0.1.12
 	ioctl-rs-0.2.0
 	ipnet-2.5.0
-	itoa-1.0.2
+	itoa-1.0.3
 	jni-0.19.0
 	jni-sys-0.3.0
 	jobserver-0.1.24
@@ -128,10 +129,10 @@ CRATES="
 	lazy_static-1.4.0
 	lazycell-1.3.0
 	lewton-0.10.2
-	libc-0.2.126
+	libc-0.2.132
 	libdbus-sys-0.2.2
 	libloading-0.7.3
-	libm-0.2.3
+	libm-0.2.5
 	libpulse-binding-2.26.0
 	libpulse-simple-binding-2.25.0
 	libpulse-simple-sys-1.19.2
@@ -143,7 +144,7 @@ CRATES="
 	librespot-protocol-0.4.2
 	lock_api-0.4.7
 	log-0.4.17
-	mac-notification-sys-0.5.5
+	mac-notification-sys-0.5.6
 	mach-0.3.2
 	malloc_buf-0.0.6
 	maplit-1.0.2
@@ -190,14 +191,14 @@ CRATES="
 	oboe-0.4.6
 	oboe-sys-0.4.5
 	ogg-0.8.0
-	once_cell-1.13.0
+	once_cell-1.13.1
 	opaque-debug-0.3.0
 	openssl-0.10.41
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
 	openssl-sys-0.9.75
 	os_pipe-1.0.1
-	os_str_bytes-6.2.0
+	os_str_bytes-6.3.0
 	owning_ref-0.4.1
 	pancurses-0.17.0
 	parking_lot-0.11.2
@@ -218,14 +219,14 @@ CRATES="
 	portaudio-sys-0.1.1
 	ppv-lite86-0.2.16
 	priority-queue-1.2.3
-	proc-macro-crate-1.1.3
-	proc-macro2-1.0.42
+	proc-macro-crate-1.2.1
+	proc-macro2-1.0.43
 	protobuf-2.27.1
 	protobuf-codegen-2.27.1
 	protobuf-codegen-pure-2.27.1
-	psl-types-2.0.10
-	publicsuffix-2.1.1
-	quote-1.0.20
+	psl-types-2.0.11
+	publicsuffix-2.2.2
+	quote-1.0.21
 	rand-0.8.5
 	rand_chacha-0.3.1
 	rand_core-0.6.3
@@ -248,19 +249,19 @@ CRATES="
 	rustc-serialize-0.3.24
 	rustc_version-0.4.0
 	rustls-0.20.6
-	rustversion-1.0.8
-	ryu-1.0.10
+	rustversion-1.0.9
+	ryu-1.0.11
 	same-file-1.0.6
 	schannel-0.1.20
 	scopeguard-1.1.0
 	sct-0.7.0
-	security-framework-2.6.1
+	security-framework-2.7.0
 	security-framework-sys-2.6.1
-	semver-1.0.12
-	serde-1.0.140
+	semver-1.0.13
+	serde-1.0.143
 	serde_cbor-0.11.2
-	serde_derive-1.0.140
-	serde_json-1.0.82
+	serde_derive-1.0.143
+	serde_json-1.0.83
 	serde_urlencoded-0.7.1
 	sha-1-0.9.8
 	sha-1-0.10.0
@@ -280,20 +281,20 @@ CRATES="
 	strum-0.22.0
 	strum-0.24.1
 	strum_macros-0.22.0
-	strum_macros-0.24.2
+	strum_macros-0.24.3
 	subtle-2.4.1
-	syn-1.0.98
+	syn-1.0.99
 	synstructure-0.12.6
 	tempfile-3.3.0
 	term_size-0.3.2
 	termcolor-1.1.3
 	termion-1.5.6
 	textwrap-0.15.0
-	thiserror-1.0.31
-	thiserror-impl-1.0.31
+	thiserror-1.0.32
+	thiserror-impl-1.0.32
 	thread-id-4.0.0
 	time-0.1.44
-	time-0.3.11
+	time-0.3.13
 	time-macros-0.2.4
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.0
@@ -310,7 +311,7 @@ CRATES="
 	try-lock-0.2.3
 	typenum-1.15.0
 	unicode-bidi-0.3.8
-	unicode-ident-1.0.2
+	unicode-ident-1.0.3
 	unicode-normalization-0.1.21
 	unicode-segmentation-1.9.0
 	unicode-width-0.1.9
