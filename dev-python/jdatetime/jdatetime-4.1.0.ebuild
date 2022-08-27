@@ -5,19 +5,23 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
-EGIT_REPO_URI="https://github.com/slashmili/python-jalali.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+MY_PN="python-jalali"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Jalali implementation of Python's datetime module"
 HOMEPAGE="https://github.com/slashmili/python-jalali"
-SRC_URI=""
+SRC_URI="https://github.com/slashmili/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
 
 LICENSE="PYTHON"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="test? ( dev-python/greenlet[${PYTHON_USEDEP}] )"
+
+S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG.md README.rst )
 
