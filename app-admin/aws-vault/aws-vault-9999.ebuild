@@ -23,12 +23,12 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -ldflags="-X main.Version=${PV} -s -w" -trimpath \
-		-o ./bin/"${PN}" || die "build failed"
+	ego build -ldflags="-X main.Version=${PV} -s -w" -trimpath \
+		-o ./bin/"${PN}"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
