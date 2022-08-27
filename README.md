@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 679](https://img.shields.io/badge/ebuild-679-orange.svg)](https://img.shields.io/badge/ebuild-679-orange.svg)
+[![Number of ebuilds: 680](https://img.shields.io/badge/ebuild-680-orange.svg)](https://img.shields.io/badge/ebuild-680-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -253,6 +253,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[belcard](https://gitlab.linphone.org/BC/public/belcard) | VCard standard format manipulation library
 *   dev-libs/[belle-sip](https://gitlab.linphone.org/BC/public/belle-sip) | SIP (RFC3261) implementation
 *   dev-libs/[ccrtp](https://www.gnu.org/software/ccrtp/) | GNU ccRTP - Implementation of the IETF real-time transport protocol
+*   dev-libs/[fastText](https://github.com/facebookresearch/fastText) | Library for fast text representation and classification
 *   dev-libs/[libcommuni](https://communi.github.io) | A cross-platform IRC framework written with Qt
 *   dev-libs/[libdict](https://github.com/rtbrick/libdict) | C library of key-value data structures
 *   dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
