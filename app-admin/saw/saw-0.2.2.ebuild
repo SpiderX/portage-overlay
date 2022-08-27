@@ -3,24 +3,24 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/TylerBrock/${PN}.git"
+inherit go-module
 
-inherit git-r3 go-module
+COMMIT="1bb0b1b8cef90db82ee380339bcd1b3ce56d98d0"
 
 DESCRIPTION="Fast, multi-purpose tool for AWS CloudWatch Logs"
 HOMEPAGE="https://github.com/TylerBrock/saw"
-SRC_URI=""
+SRC_URI="https://github.com/TylerBrock/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/SpiderX/portage-overlay/raw/deps/${P}-deps.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 DOCS=( {CHANGELOG,README}.md )
 
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
+PATCHES=( "${FILESDIR}/${P}"-go.sum.patch )
 
 src_compile() {
 	ego build
