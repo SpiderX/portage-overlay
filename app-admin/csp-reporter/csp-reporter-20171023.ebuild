@@ -7,16 +7,20 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/yandex/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+COMMIT="b4aeddc5e6a0c7595502da47ea6383864faf90dc"
 
 DESCRIPTION="Content Security Policy logs parser"
 HOMEPAGE="https://github.com/yandex/csp-reporter"
-SRC_URI=""
+SRC_URI="https://github.com/yandex/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 DOCS=( README.md config.ini-sample )
