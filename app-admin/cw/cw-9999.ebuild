@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/TylerBrock/${PN}.git"
 
-inherit bash-completion-r1 git-r3 go-module
+inherit git-r3 go-module
 
 DESCRIPTION="Tail AWS CloudWatch Logs from your terminal"
 HOMEPAGE="https://github.com/lucagrulla/cw"
@@ -31,9 +31,4 @@ src_test() {
 src_install() {
 	einstalldocs
 	dobin cw-tail
-
-# unknown flag --completion-bash
-#	newbashcomp cw.bash cw-tail
-#	insinto /usr/share/zsh/site-functions
-#	newins cw.zsh _cw-tail
 }
