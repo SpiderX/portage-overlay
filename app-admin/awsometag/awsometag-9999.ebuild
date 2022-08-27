@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/mhausenblas/${PN}.git"
 
@@ -14,7 +14,6 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
@@ -22,11 +21,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
+	ego build
 }
 
 src_test() {
-	go test -work || die "test failed"
+	ego test -work
 }
 
 src_install() {
