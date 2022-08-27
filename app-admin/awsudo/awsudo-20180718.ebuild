@@ -12,7 +12,7 @@ COMMIT="d5800bc4a9785d179c678605d0ae5bf4e28f5205"
 
 DESCRIPTION="A temporary credentials for AWS roles via sudo-like utility"
 HOMEPAGE="https://github.com/makethunder/awsudo"
-SRC_URI="https://github.com/makethunder/awsudo/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/makethunder/awsudo/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
