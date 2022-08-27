@@ -410,7 +410,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[grpc-google-iam-v1](https://github.com/googleapis/python-grpc-google-iam-v1) | Google GRPC IAM API client library
 *   dev-python/[grpcio-status](https://grpc.io) | Status proto mapping for gRPC
 *   dev-python/[gssapi](https://github.com/pythongssapi/python-gssapi) | A Python interface to RFC 2743/2744
-*   dev-python/[hijri-converter](https://github.com/dralshehri/hijri-converter) | Hijri-Gregorian date converter
+*   dev-python/[hijri-converter](https://github.com/mhalshehri/hijri-converter) | Hijri-Gregorian date converter
 *   dev-python/[identify](https://github.com/pre-commit/identify) | File identification library for Python
 *   dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
 *   dev-python/[jdatetime](https://github.com/slashmili/python-jalali) | Jalali implementation of Python's datetime module
