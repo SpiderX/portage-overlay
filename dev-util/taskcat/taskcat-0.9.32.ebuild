@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="An OpenSource Cloudformation Deployment Framework"
-HOMEPAGE="https://github.com/aws-quickstart/taskcat"
-SRC_URI="https://github.com/aws-quickstart/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/aws-ia/taskcat"
+SRC_URI="https://github.com/aws-ia/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

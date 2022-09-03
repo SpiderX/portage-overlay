@@ -564,7 +564,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[shfmt](https://github.com/mvdan/sh) | A shell parser, formatter, and interpreter with bash support
 *   dev-util/[sqlfluff](https://github.com/sqlfluff/sqlfluff) | A SQL linter and auto-formatter
 *   dev-util/[swapusage](https://github.com/hhoffstaette/swapusage) | Amount of swapped memory for running processes
-*   dev-util/[taskcat](https://github.com/aws-quickstart/taskcat) | An OpenSource Cloudformation Deployment Framework
+*   dev-util/[taskcat](https://github.com/aws-ia/taskcat) | An OpenSource Cloudformation Deployment Framework
 *   dev-util/[testmace](https://testmace.com) | Powerful IDE to work with API
 *   dev-util/[tickgit](https://github.com/augmentable-dev/tickgit) | Manage your repository's TODOs as config in your codebase
 *   dev-util/[xxd](https://github.com/vim/vim) | Hexdump utility from vim

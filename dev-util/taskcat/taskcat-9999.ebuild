@@ -4,12 +4,12 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/aws-quickstart/${PN}.git"
+EGIT_REPO_URI="https://github.com/aws-ia/${PN}.git"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="An OpenSource Cloudformation Deployment Framework"
-HOMEPAGE="https://github.com/aws-quickstart/taskcat"
+HOMEPAGE="https://github.com/aws-ia/taskcat"
 SRC_URI=""
 
 LICENSE="Apache-2.0"
