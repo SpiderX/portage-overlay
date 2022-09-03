@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 681](https://img.shields.io/badge/ebuild-681-orange.svg)](https://img.shields.io/badge/ebuild-681-orange.svg)
+[![Number of ebuilds: 682](https://img.shields.io/badge/ebuild-682-orange.svg)](https://img.shields.io/badge/ebuild-682-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -175,6 +175,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[OneTuple](https://github.com/haskellari/OneTuple) | Singleton Tuple
 *   dev-haskell/[Ranged-sets](https://github.com/PaulJohnson/Ranged-sets) | Ranged sets for Haskell
 *   dev-haskell/[ansi-wl-pprint](https://github.com/ekmett/ansi-wl-pprint) | The Wadler/Leijen Pretty Printer for colored ANSI terminal output
+*   dev-haskell/[authenticate-oauth](https://github.com/yesodweb/authenticate) | Library to authenticate with OAuth for Haskell web applications
 *   dev-haskell/[base-prelude](https://github.com/nikita-volkov/base-prelude) | The most complete prelude formed only from the base package
 *   dev-haskell/[base64-bytestring](https://github.com/haskell/base64-bytestring) | Fast base64 encoding and decoding for Haskell
 *   dev-haskell/[binary-parser](https://github.com/nikita-volkov/binary-parser) | A highly-efficient but limited parser API for bytestrings
