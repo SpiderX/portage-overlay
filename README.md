@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 682](https://img.shields.io/badge/ebuild-682-orange.svg)](https://img.shields.io/badge/ebuild-682-orange.svg)
+[![Number of ebuilds: 683](https://img.shields.io/badge/ebuild-683-orange.svg)](https://img.shields.io/badge/ebuild-683-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -215,6 +215,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[integer-logarithms](https://github.com/Bodigrim/integer-logarithms) | Integer logarithms
 *   dev-haskell/[integer-simple](https://hackage.haskell.org/package/integer-simple) | Simple Integer library
 *   dev-haskell/[interpolatedstring-perl6](https://github.com/audreyt/interpolatedstring-perl6) | QuasiQuoter for Perl6 style multi-line interpolated
+*   dev-haskell/[inspection-testing](https://github.com/nomeata/inspection-testing) | GHC plugin to do inspection testing
 *   dev-haskell/[jose](https://github.com/frasertweedale/hs-jose) | Haskell JOSE and JWT library
 *   dev-haskell/[json-ast](https://github.com/nikita-volkov/json-ast) | Universal JSON AST datastructure
 *   dev-haskell/[loch-th](https://github.com/liskin/loch-th) | Support for precise error locations in source files
