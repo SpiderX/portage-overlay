@@ -45,8 +45,5 @@ BDEPEND="dev-haskell/cabal:=[profile?]
 src_prepare() {
 	cp "${DISTDIR}/${PF}.cabal" "${S}/${PN}.cabal" || die "cp failed"
 
-# Convert to unix line endings
-#        dos2unix "${S}/${PN}.cabal" || die
-
 	default
 }
