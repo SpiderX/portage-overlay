@@ -3,19 +3,20 @@
 
 EAPI=7
 
+CABAL_HACKAGE_REVISION=1
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
 
 DESCRIPTION="Easy-to-use, type-safe, expandable, high-level HTTP client library"
 HOMEPAGE="https://github.com/mrkkrp/req"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="dev"
-RESTRICT="test" # needs network
+IUSE="dev test"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/authenticate-oauth:=[profile?]
@@ -27,7 +28,7 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	>=dev-haskell/http-client-0.7:=[profile?]
 	dev-haskell/http-client-tls:=[profile?]
 	dev-haskell/http-types:=[profile?]
-	dev-haskell/modern-uri
+	dev-haskell/modern-uri:=[profile?]
 	dev-haskell/monad-control:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/retry:=[profile?]
