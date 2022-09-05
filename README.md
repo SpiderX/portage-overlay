@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 690](https://img.shields.io/badge/ebuild-690-orange.svg)](https://img.shields.io/badge/ebuild-690-orange.svg)
+[![Number of ebuilds: 691](https://img.shields.io/badge/ebuild-691-orange.svg)](https://img.shields.io/badge/ebuild-691-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -188,6 +188,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[conversion](https://github.com/nikita-volkov/conversion) | Universal converter between values of different types
 *   dev-haskell/[conversion-bytestring](https://github.com/nikita-volkov/conversion-bytestring) | Conversion instances for the bytestring library
 *   dev-haskell/[conversion-text](https://github.com/nikita-volkov/conversion-text) | Conversion instances for the text library
+*   dev-haskell/[crypto-pubkey-types](https://github.com/vincenthz/hs-crypto-pubkey-types) | Generic cryptography Public keys algorithm types
 *   dev-haskell/[daemons](https://github.com/scvalex/daemons) | Daemons in Haskell made fun and easy
 *   dev-haskell/[data-bword](https://github.com/mvv/data-bword) | Extra operations on binary words of fixed length
 *   dev-haskell/[data-checked](https://github.com/mvv/data-checked) | Type-indexed runtime-checked properties for Haskell
