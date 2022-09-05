@@ -15,6 +15,6 @@
 	of accessing a resource such as reading a file.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">elblake/expiring-cache-map</remote-id>
+		<bugs-to>https://codeberg.org/elblake/expiring-cache-map/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

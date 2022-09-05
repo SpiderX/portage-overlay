@@ -8,7 +8,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="General purpose simple caching"
-HOMEPAGE="https://github.com/elblake/expiring-cache-map"
+HOMEPAGE="https://codeberg.org/elblake/expiring-cache-map"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
