@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 692](https://img.shields.io/badge/ebuild-692-orange.svg)](https://img.shields.io/badge/ebuild-692-orange.svg)
+[![Number of ebuilds: 693](https://img.shields.io/badge/ebuild-693-orange.svg)](https://img.shields.io/badge/ebuild-693-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -245,6 +245,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[rebase](https://github.com/nikita-volkov/rebase) | A more progressive alternative to the 'base' package
 *   dev-haskell/[req](https://github.com/mrkkrp/req) | Easy-to-use, type-safe, expandable, high-level HTTP client library
 *   dev-haskell/[rerebase](https://github.com/nikita-volkov/rerebase) | Reexports from 'base' with a bunch of other standard libraries
+*   dev-haskell/[rsa](https://github.com/GaloisInc/RSA) | Implementation of RSA, using the padding schemes of PKCS#1 v2.1
 *   dev-haskell/[scotty](https://github.com/scotty-web/scotty) | Haskell web framework
 *   dev-haskell/[scrypt](https://github.com/informatikr/scrypt) | Stronger password hashing via sequential memory-hard functions
 *   dev-haskell/[selective](https://github.com/snowleopard/selective) | Selective applicative functors
