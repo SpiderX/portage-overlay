@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 691](https://img.shields.io/badge/ebuild-691-orange.svg)](https://img.shields.io/badge/ebuild-691-orange.svg)
+[![Number of ebuilds: 692](https://img.shields.io/badge/ebuild-692-orange.svg)](https://img.shields.io/badge/ebuild-692-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -196,6 +196,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[data-serializer](https://github.com/mvv/data-serializer) | Common API for Haskell serialization libraries
 *   dev-haskell/[data-textual](https://github.com/mvv/data-textual) | Human-friendly textual representations for Haskell
 *   dev-haskell/[deferred-folds](https://github.com/metrix-ai/deferred-folds) | Abstractions over deferred folds
+*   dev-haskell/[drbg](https://github.com/TomMD/DRBG) | Deterministic random bit generator (aka PRNG)
 *   dev-haskell/[either](https://github.com/ekmett/either) | An either monad transformer
 *   dev-haskell/[expiring-cache-map](https://github.com/elblake/expiring-cache-map) | General purpose simple caching
 *   dev-haskell/[filelock](https://github.com/takano-akio/filelock) | Portable interface to file locking
