@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/alfredopalhares/${PN}.git"
 
-inherit git-r3 readme.gentoo-r1
+inherit git-r3 readme.gentoo-r1 tmpfiles
 
 DESCRIPTION="Updates DNS settings are pushed by the OpenVPN server"
 HOMEPAGE="https://github.com/alfredopalhares/openvpn-update-resolv-conf"
@@ -33,10 +33,12 @@ src_install() {
 	newbin update-resolv-conf.sh update-resolv-conf
 	newbin update-systemd-network.sh update-systemd-network
 	newbin update-systemd-resolve.sh update-systemd-resolve
+	newtmpfiles "${FILESDIR}"/openvpn-update-resolv-conf.tmpfile openvpn-update-resolv-conf.conf
 
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
+	tmpfiles_process openvpn-update-resolv-conf.conf
 	readme.gentoo_print_elog
 }

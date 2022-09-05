@@ -35,10 +35,12 @@ src_install() {
 	newbin update-resolv-conf.sh update-resolv-conf
 	newbin update-systemd-network.sh update-systemd-network
 	newbin update-systemd-resolve.sh update-systemd-resolve
+	newtmpfiles "${FILESDIR}"/openvpn-update-resolv-conf.tmpfile openvpn-update-resolv-conf.conf
 
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
+	tmpfiles_process openvpn-update-resolv-conf.conf
 	readme.gentoo_print_elog
 }
