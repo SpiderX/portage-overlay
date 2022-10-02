@@ -16,7 +16,8 @@ IUSE="apulse +pulseaudio"
 REQUIRED_USE="^^ ( apulse pulseaudio )"
 RESTRICT="bindist mirror"
 
-RDEPEND="dev-libs/expat
+RDEPEND="app-arch/snappy:0/1
+	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
