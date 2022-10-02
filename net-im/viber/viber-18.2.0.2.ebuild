@@ -26,6 +26,7 @@ RDEPEND="app-arch/snappy:0/1
 	media-libs/alsa-lib
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
+	media-libs/gst-plugins-bad:1.0
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	net-print/cups
