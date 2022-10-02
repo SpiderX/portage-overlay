@@ -1,44 +1,24 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-MY_PN="${PN/-bin/}"
 
 inherit desktop multilib-build pax-utils unpacker xdg
 
-QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
-	opt/gitter/pnacl/pnacl_public_x86_64_ld_nexe
-	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_sz_nexe
-	opt/gitter/payload
-	opt/gitter/swiftshader/libEGL.so
-	opt/gitter/swiftshader/libGLESv2.so
-	opt/gitter/chromedriver
-	opt/gitter/lib/libnw.so
-	opt/gitter/lib/libnode.so
-	opt/gitter/lib/libffmpeg.so
-	opt/gitter/nacl_helper
-	opt/gitter/nwjc
-	opt/gitter/nacl_irt_x86_64.nexe
-	opt/gitter/Gitter"
-QA_FLAGS_IGNORED="opt/gitter/minidump_stackwalk
-	opt/gitter/nacl_helper_bootstrap
-	opt/gitter/crashpad_handler
-	opt/gitter/lib/libEGL.so
-	opt/gitter/lib/libGLESv2.so"
+MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Chat and network platform"
 HOMEPAGE="https://gitter.im"
-SRC_URI="
-	amd64? ( https://update.gitter.im/linux64/${MY_PN}_${PV}_amd64.deb )
+SRC_URI="amd64? ( https://update.gitter.im/linux64/${MY_PN}_${PV}_amd64.deb )
 	x86? ( https://update.gitter.im/linux32/${MY_PN}_${PV}_i386.deb )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="abi_x86_32 +abi_x86_64"
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/atk:0[${MULTILIB_USEDEP}]
@@ -68,6 +48,27 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}"
+
+QA_EXECSTACK="opt/gitter/pnacl/pnacl_public_x86_64_libcrt_platform_a*"
+QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
+	opt/gitter/pnacl/pnacl_public_x86_64_ld_nexe
+	opt/gitter/pnacl/pnacl_public_x86_64_pnacl_sz_nexe
+	opt/gitter/payload
+	opt/gitter/swiftshader/libEGL.so
+	opt/gitter/swiftshader/libGLESv2.so
+	opt/gitter/chromedriver
+	opt/gitter/lib/libnw.so
+	opt/gitter/lib/libnode.so
+	opt/gitter/lib/libffmpeg.so
+	opt/gitter/nacl_helper
+	opt/gitter/nwjc
+	opt/gitter/nacl_irt_x86_64.nexe
+	opt/gitter/Gitter"
+QA_FLAGS_IGNORED="opt/gitter/minidump_stackwalk
+	opt/gitter/nacl_helper_bootstrap
+	opt/gitter/crashpad_handler
+	opt/gitter/lib/libEGL.so
+	opt/gitter/lib/libGLESv2.so"
 
 src_prepare() {
 	default
