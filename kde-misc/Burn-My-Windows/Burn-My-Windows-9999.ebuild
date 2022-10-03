@@ -22,7 +22,7 @@ src_prepare() {
 	default
 
 	# do not create tarball
-	sed -i'/tar/d' kwin/build.sh || die "sed failed"
+	sed -i '/tar/d' kwin/build.sh || die "sed failed"
 }
 
 src_configure() { :; }
