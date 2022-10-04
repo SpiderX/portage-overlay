@@ -13,8 +13,6 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="app-shells/bash-completion"
-
 src_prepare() {
 	default
 
