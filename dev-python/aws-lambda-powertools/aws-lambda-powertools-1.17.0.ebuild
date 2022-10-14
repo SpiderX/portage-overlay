@@ -3,8 +3,8 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=poetry
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 optfeature
 
@@ -24,7 +24,8 @@ RDEPEND="dev-python/aws-xray-sdk-python[${PYTHON_USEDEP}]
 	dev-python/fastjsonschema[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/pydantic[${PYTHON_USEDEP}]
+BDEPEND="dev-python/poetry-core[${PYTHON_USEDEP}]
+		test? ( dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-email-validator[${PYTHON_USEDEP}]

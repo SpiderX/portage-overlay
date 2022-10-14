@@ -3,8 +3,8 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=poetry
+PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/awslabs/aws-lambda-powertools-python.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -22,7 +22,8 @@ RDEPEND="dev-python/aws-xray-sdk-python[${PYTHON_USEDEP}]
 	dev-python/fastjsonschema[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/pydantic[${PYTHON_USEDEP}]
+BDEPEND="dev-python/poetry-core[${PYTHON_USEDEP}]
+		test? ( dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-email-validator[${PYTHON_USEDEP}]
