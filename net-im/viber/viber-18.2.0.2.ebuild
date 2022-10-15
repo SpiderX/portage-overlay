@@ -16,36 +16,53 @@ IUSE="apulse +pulseaudio"
 REQUIRED_USE="^^ ( apulse pulseaudio )"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-arch/snappy:0/1
+RDEPEND="app-arch/brotli:0
+	app-arch/snappy:0
+	app-arch/zstd:0
+	app-crypt/libb2
+	app-crypt/mit-krb5
+	dev-libs/double-conversion
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/libpcre2:0
+	dev-libs/libxml2:2
+	dev-libs/libxslt:0
 	dev-libs/nspr
 	dev-libs/nss
-	dev-libs/openssl-compat
+	dev-libs/openssl:0
 	dev-libs/wayland
+	media-gfx/qrencode:0
 	media-libs/alsa-lib
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/gst-plugins-bad:1.0
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
+	media-libs/harfbuzz:0
+	media-libs/lcms:2
+	media-libs/libglvnd
+	media-libs/libmng:0
+	media-libs/libpng:0
+	media-libs/libwebp:0
+	media-libs/opus
+	media-libs/tiff
 	net-print/cups
 	sys-apps/dbus
-	sys-libs/zlib:0/1
+	sys-libs/zlib:0
 	x11-libs/libdrm
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
-	x11-libs/libxcb:0/1.12
+	x11-libs/libxcb:0
 	x11-libs/libXcomposite
-	x11-libs/libXcursor
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libXi
+	x11-libs/libxkbcommon
+	x11-libs/libxkbfile
 	x11-libs/libXrandr
-	x11-libs/libXrender
 	x11-libs/libXScrnSaver
+	x11-libs/libxshmfence
 	x11-libs/libXtst
 	x11-libs/tslib
 	x11-libs/xcb-util-image
@@ -55,7 +72,8 @@ RDEPEND="app-arch/snappy:0/1
 	apulse? ( media-sound/apulse )
 	pulseaudio? (
 		media-sound/pulseaudio
-		media-plugins/gst-plugins-pulse )"
+		media-plugins/gst-plugins-pulse )
+	|| ( sys-apps/systemd sys-apps/systemd-utils )"
 BDEPEND="sys-apps/fix-gnustack"
 
 S="${WORKDIR}"
