@@ -24,8 +24,7 @@ RDEPEND="dev-python/aws-xray-sdk-python[${PYTHON_USEDEP}]
 	dev-python/fastjsonschema[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/poetry-core[${PYTHON_USEDEP}]
-		test? ( dev-python/pydantic[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-email-validator[${PYTHON_USEDEP}]
