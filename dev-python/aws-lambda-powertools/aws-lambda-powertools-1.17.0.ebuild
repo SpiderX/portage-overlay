@@ -3,8 +3,8 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=poetry
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 optfeature
 

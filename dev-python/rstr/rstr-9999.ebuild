@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/leapfrogonline/${PN}.git"
 
 inherit distutils-r1 git-r3

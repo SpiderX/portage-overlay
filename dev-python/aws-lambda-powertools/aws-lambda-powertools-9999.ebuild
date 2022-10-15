@@ -3,8 +3,8 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8,9} )
+DISTUTILS_USE_PEP517=poetry
+PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/awslabs/aws-lambda-powertools-python.git"
 
 inherit distutils-r1 git-r3 optfeature
