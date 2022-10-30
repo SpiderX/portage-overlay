@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 697](https://img.shields.io/badge/ebuild-697-orange.svg)](https://img.shields.io/badge/ebuild-697-orange.svg)
+[![Number of ebuilds: 698](https://img.shields.io/badge/ebuild-698-orange.svg)](https://img.shields.io/badge/ebuild-698-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -113,6 +113,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-editors/[notes](https://github.com/nuttyartist/notes) | Note taking application, write down your thoughts
 *   app-editors/[NotepadNext](https://github.com/dail8859/NotepadNext) | A cross-platform reimplementation of Notepad++
 *   app-editors/[obsidian](https://obsidian.md/) | A knowledge base of plain text Markdown files
+*   app-editors/[typora](https://typora.io) | A minimal markdown editor and reader
 *   app-emulation/[looking-glass](https://looking-glass.io) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 *   app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
 *   app-emulation/[vmware-modules](https://github.com/mkubecek/vmware-host-modules) | VMware kernel modules
