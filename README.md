@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 696](https://img.shields.io/badge/ebuild-696-orange.svg)](https://img.shields.io/badge/ebuild-696-orange.svg)
+[![Number of ebuilds: 697](https://img.shields.io/badge/ebuild-697-orange.svg)](https://img.shields.io/badge/ebuild-697-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -109,7 +109,10 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-editors/[FeatherPad](https://github.com/tsujan/FeatherPad) | Lightweight Qt5 plain-text editor
 *   app-editors/[lite](https://github.com/rxi/lite) | A lightweight text editor written in Lua
 *   app-editors/[micro](https://github.com/zyedidia/micro) | A modern and intuitive terminal-based text editor
+*   app-editors/[marktext](https://github.com/marktext/marktext) | A simple and elegant open-source markdown editor
+*   app-editors/[notes](https://github.com/nuttyartist/notes) | Note taking application, write down your thoughts
 *   app-editors/[NotepadNext](https://github.com/dail8859/NotepadNext) | A cross-platform reimplementation of Notepad++
+*   app-editors/[obsidian](https://obsidian.md/) | A knowledge base of plain text Markdown files
 *   app-emulation/[looking-glass](https://looking-glass.io) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 *   app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
 *   app-emulation/[vmware-modules](https://github.com/mkubecek/vmware-host-modules) | VMware kernel modules
@@ -140,8 +143,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/peco.svg?header=)](https://repology.org/project/peco/versions) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 *   app-shells/[zoxide](https://github.com/ajeetdsouza/zoxide) | A smarter cd command with supports of all major shells
 *   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
-*   app-text/[notes](https://github.com/nuttyartist/notes) | Note taking application, write down your thoughts
-*   app-text/[obsidian](https://obsidian.md/) | A knowledge base of plain text Markdown files
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[libxsd-frontend](https://www.codesynthesis.com/projects/libxsd-frontend/) | A compiler frontend for the W3C XML Schema definition language
 *   dev-cpp/[libcutl](https://www.codesynthesis.com/projects/libcutl/) | A collection of C++ libraries (successor of libcult)
