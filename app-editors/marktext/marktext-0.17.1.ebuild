@@ -51,10 +51,10 @@ QA_PRESTRIPPED="opt/MarkText/chrome_crashpad_handler
 S="${WORKDIR}"
 
 src_install() {
-	for size in 16 32 48 64 128 256 512 1025 ; do
+	for size in 16 32 48 64 128 256 512 ; do
 		doicon -s "${size}" usr/share/icons/hicolor/"${size}x${size}"/apps/marktext.png
 	done
-	dosym ../icons/hicolor/1025x1025/apps/marktext.png \
+	dosym ../icons/hicolor/512x512/apps/marktext.png \
 		/usr/share/pixmaps/marktext.png
 
 	domenu usr/share/applications/marktext.desktop
