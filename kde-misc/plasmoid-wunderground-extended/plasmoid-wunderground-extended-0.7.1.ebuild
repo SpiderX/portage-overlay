@@ -26,6 +26,10 @@ src_prepare() {
 			-e '/PlasmaNM.NetworkStatus/,+18d' \
 			plasmoid/contents/ui/main.qml || die "sed failed"
 	fi
+
+	# https://github.com/rliwoch/plasmoid-wunderground-extended/issues/35
+	sed -i '/var apiKey/s|6532d6454b8aa370768e63d6ba5a832e|2b6ed19f3d474152aed19f3d4791527d|' \
+		plasmoid/contents/code/pws-api.js || die "sed for pws-api.js failed"
 }
 
 src_configure() { :; }
