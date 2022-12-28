@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 698](https://img.shields.io/badge/ebuild-698-orange.svg)](https://img.shields.io/badge/ebuild-698-orange.svg)
+[![Number of ebuilds: 699](https://img.shields.io/badge/ebuild-699-orange.svg)](https://img.shields.io/badge/ebuild-699-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -70,6 +70,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/qtpass.svg?header=)](https://repology.org/project/qtpass/versions) app-admin/[qtpass](https://qtpass.org) | multi-platform GUI for pass, the standard unix password manager
 *   app-admin/[jl](https://github.com/koenbollen/jl) | A tool for working with structured JSON logging
 *   app-admin/[kconfig-hardened-check](https://github.com/a13xp0p0v/kconfig-hardened-check) | A script to check the hardening options in the Linux kernel config
+*   app-admin/[mkeosimg](https://github.com/sowbug/mkeosimg) | Ubiquiti EdgeOS image from a system tarball
 *   app-admin/[netutils-linux](https://github.com/strizhechenko/netutils-linux) | Suite of network stack performance tunning utilities
 *   app-admin/[rain](https://github.com/aws-cloudformation/rain) | A development workflow tool for working with AWS CloudFormation
 *   app-admin/[reach](https://github.com/luhring/reach) | A static network verification tool for AWS
