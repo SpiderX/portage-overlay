@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ RDEPEND="dev-qt/qtconcurrent:5
 	kde-frameworks/kxmlgui:5
 	kde-frameworks/qqc2-desktop-style:5
 	media-video/mpv[libmpv]
-	net-misc/youtube-dl"
+	net-misc/yt-dlp"
 DEPEND="${RDEPEND}"
 BDEPEND="kde-frameworks/extra-cmake-modules:5
 	sys-devel/gettext"
