@@ -4,17 +4,19 @@
 EAPI=8
 
 USE_RUBY="ruby27 ruby30 ruby31"
-EGIT_REPO_URI="https://gitlab.com/gitlab-org/${PN}.git"
 
-inherit git-r3 go-module ruby-single systemd tmpfiles
+inherit go-module ruby-single systemd tmpfiles
+
+MY_P="${PN}-v${PV}"
 
 DESCRIPTION="Git RPC service for handling GitLab git calls"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitaly"
-SRC_URI=""
+SRC_URI="https://gitlab.com/gitlab-org/${PN}/-/archive/v${PV}/${MY_P}.tar.bz2
+	https://files.icw.tools/distfiles/gitaly/${P}-deps.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="mirror test"
 
@@ -34,6 +36,8 @@ BDEPEND="dev-ruby/bundler:2
 	dev-util/cmake
 	virtual/pkgconfig"
 
+S="${WORKDIR}/${MY_P}"
+
 DOCS=( {CHANGELOG,README}.md )
 
 pkg_setup() {
@@ -41,11 +45,6 @@ pkg_setup() {
 	einfo "Therefore network-sandbox feature (man 5 make.conf) must be disabled for it:"
 	einfo " echo 'FEATURES=\"-network-sandbox\"' > /etc/portage/env/no-network-sandbox.conf"
 	einfo " echo 'dev-vcs/gitaly no-network-sandbox.conf'/etc/portage/package.env/gitaly"
-}
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
 }
 
 src_prepare() {
