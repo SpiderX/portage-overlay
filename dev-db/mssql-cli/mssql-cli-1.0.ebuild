@@ -20,7 +20,7 @@ RDEPEND=">=dev-python/applicationinsights-0.11.1[${PYTHON_USEDEP}]
 	dev-python/cli_helpers[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/humanize[${PYTHON_USEDEP}]
-	dev-python/prompt_toolkit[${PYTHON_USEDEP}]
+	dev-python/prompt-toolkit[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]
 	dev-util/lttng-ust:0=
