@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-python/prompt_toolkit[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/prompt-toolkit[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 

@@ -10,13 +10,13 @@ inherit distutils-r1
 
 DESCRIPTION="Python library to build pretty command line user prompts"
 HOMEPAGE="https://github.com/tmbo/questionary"
-SRC_URI="https://github.com/tmbo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tmbo/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/prompt_toolkit[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/prompt-toolkit[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
