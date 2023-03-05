@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
-	dev-python/prompt_toolkit[${PYTHON_USEDEP}]
+	dev-python/prompt-toolkit[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
