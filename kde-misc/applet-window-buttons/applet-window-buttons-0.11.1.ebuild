@@ -27,3 +27,5 @@ DEPEND="dev-qt/qtdbus:5
 	kde-frameworks/plasma:5"
 
 DOCS=( {CHANGELOG,README}.md )
+
+PATCHES=( "${FILESDIR}"/"${P}"-support-modern-plasma.patch )
