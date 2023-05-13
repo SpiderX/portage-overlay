@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 699](https://img.shields.io/badge/ebuild-699-orange.svg)](https://img.shields.io/badge/ebuild-699-orange.svg)
+[![Number of ebuilds: 698](https://img.shields.io/badge/ebuild-698-orange.svg)](https://img.shields.io/badge/ebuild-698-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -481,6 +481,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pytest-random-order](https://github.com/jbasko/pytest-random-order) | pytest plugin to randomise the order of tests
 *   dev-python/[pytest-trio](https://github.com/python-trio/pytest-trio) | Python library for async concurrency and I/O
 *   dev-python/[pytimeparse](https://github.com/wroberts/pytimeparse) | A library to parse time from human readable string
+*   dev-python/[pythonqt](https://mevislab.github.io/pythonqt/) | A dynamic Python binding for the Qt framework
 *   dev-python/[python-crontab](https://gitlab.com/doctormo/python-crontab/) | Crontab module for reading and writing crontab files
 *   dev-python/[python-gilt](https://github.com/metacloud/gilt) | A GIT layering tool
 *   dev-python/[python-openapi-codec](https://github.com/core-api/python-openapi-codec) | An OpenAPI codec for Core API
@@ -490,7 +491,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pyvmomi](https://github.com/vmware/pyvmomi) | VMware vSphere API Python Bindings
 *   dev-python/[pywinrm](https://github.com/diyan/pywinrm) | Python library for Windows Remote Management
 *   dev-python/[PyMeeus](https://github.com/architest/pymeeus) | Library of astronomical algorithms in Python
-*   dev-python/[PythonQt](https://mevislab.github.io/pythonqt/) | A dynamic Python binding for the Qt framework
 *   dev-python/[questionary](https://github.com/tmbo/questionary) | Python library to build pretty command line user prompts
 *   dev-python/[random2](https://github.com/strichter/random2) | Python-2.7 random module ported to python-3
 *   dev-python/[requests-mock](https://github.com/jamielennox/requests-mock) | Mock out responses from the requests package

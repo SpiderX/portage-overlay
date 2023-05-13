@@ -1,17 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
-
-MY_P=${PN}${PV}
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit qmake-utils python-single-r1 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="https://mevislab.github.io/pythonqt/"
-SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
+SRC_URI="https://github.com/MeVisLab/pythonqt/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -42,18 +40,8 @@ BDEPEND="app-arch/unzip
 	virtual/pkgconfig
 	test? ( dev-qt/qttest:5 )"
 
-S="${WORKDIR}/${MY_P}"
-
 src_prepare() {
 	default
-
-	# Recent QT compatibility
-	sed -i -e '/static_Qt_qrand/s|qrand();|QRandomGenerator::global()->generate();|' \
-		-e '/include <QMetaProperty>/a#include <QRandomGenerator>' \
-		src/PythonQtStdDecorators.h || die "sed failed for PythonQtStdDecorators.h"
-	# Recent python compatibility
-	sed -i '/pydebug.h/s|pydebug.h|cpython/pydebug.h|' src/PythonQt.cpp \
-		|| die "sed failed for src/PythonQt.cpp"
 
 	if ! use examples ; then
 		sed -i '/SUBDIRS/s/examples//' PythonQt.pro || die "sed for examples"
@@ -68,19 +56,15 @@ src_prepare() {
 	sed -i '/qtHaveModule(webkit):CONFIG += PythonQtWebKit/d' \
 		extensions/PythonQt_QtAll/PythonQt_QtAll.pro \
 		|| die "sed for webkit"
-
-	# Unset python version to use python-config
-	sed -i "/unix:PYTHON_VERSION=/s/2.7//" build/python.prf \
-		|| die "sed for python version"
 }
 
 src_configure() {
-	eqmake5 CONFIG+="$(usex debug debug release '' '')" PREFIX="${EPREFIX}"/usr
+	eqmake5 PYTHON_DIR="/usr" PYTHON_VERSION="${EPYTHON/python}" \
+		CONFIG+="$(usex debug debug release '' '')" PREFIX="${EPREFIX}"/usr
 }
 
 src_test() {
-	LD_PRELOAD="${S}"/lib/libPythonQt-Qt5-Python"$(usex debug _d '' '' '')".so.3 \
-		virtx ./lib/PythonQtTest"$(usex debug _d '' '' '')"
+	virtx ./lib/PythonQtTest"$(usex debug _d '' '' '')"
 }
 
 src_install() {
