@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,10} )
 PYTHON_REQ_USE="threads(+)"
 EGIT_REPO_URI="https://github.com/AzureAD/${MY_PN}.git"
 
