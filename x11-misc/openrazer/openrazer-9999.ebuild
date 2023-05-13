@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,10} )
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 inherit desktop git-r3 linux-mod python-r1 readme.gentoo-r1 virtualx

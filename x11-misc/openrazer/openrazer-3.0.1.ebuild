@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8,10} )
 
 inherit desktop linux-mod python-r1 readme.gentoo-r1 virtualx
 
