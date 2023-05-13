@@ -3,13 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Screenshot capturing and sharing tool over various services"
 HOMEPAGE="https://screencloud.net"
-SRC_URI="https://github.com/olav-st/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/olav-st/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="dev-libs/quazip
-	>=dev-python/PythonQt-3.2[${PYTHON_SINGLE_USEDEP},extensions]
+	dev-python/pythonqt[${PYTHON_SINGLE_USEDEP},extensions]
 	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtnetwork:5
