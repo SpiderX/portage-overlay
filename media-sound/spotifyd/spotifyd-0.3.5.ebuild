@@ -5,7 +5,6 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/Spotifyd/${PN}.git"
 CRATES="
 	addr2line-0.19.0
 	adler-1.0.2
@@ -384,14 +383,15 @@ CRATES="
 	zvariant_utils-1.0.0
 "
 
-inherit cargo git-r3 systemd
+inherit cargo systemd
 
 DESCRIPTION="A spotify daemon"
 HOMEPAGE="https://github.com/Spotifyd/spotifyd"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
+SRC_URI="https://github.com/Spotifyd/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-3 ISC MIT MPL-2.0 ZLIB"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+alsa dbus portaudio pulseaudio rodio"
 REQUIRED_USE="|| ( alsa portaudio pulseaudio rodio ) rodio? ( alsa )"
@@ -407,11 +407,6 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( {CHANGELOG,README}.md )
 
 QA_FLAGS_IGNORED="usr/bin/spotifyd"
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_src_unpack
-}
 
 src_configure() {
 	myfeatures=(
