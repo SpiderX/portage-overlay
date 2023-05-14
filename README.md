@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 697](https://img.shields.io/badge/ebuild-697-orange.svg)](https://img.shields.io/badge/ebuild-697-orange.svg)
+[![Number of ebuilds: 696](https://img.shields.io/badge/ebuild-696-orange.svg)](https://img.shields.io/badge/ebuild-696-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -634,7 +634,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-sound/[finetune](https://flavio.tordini.org/finetune) | Automatic music tagger
 *   media-sound/[mpz](https://mpz-player.org) | Music player for big local collections
 *   media-sound/[musique](https://github.com/flaviotordini/musique) | A finely crafted music player
-*   media-sound/[ncspot](https://github.com/hrkfdn/ncspot) | ncurses Spotify client
 *   media-sound/[plexamp](https://plexamp.com) | Music focused client for Plex
 *   media-sound/[sayonara](https://sayonara-player.com) | Small, clear and fast Qt-based audio player
 *   media-sound/[spotifyd](https://github.com/Spotifyd/spotifyd) | A spotify daemon
