@@ -3,16 +3,16 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/agateau/${PN}.git"
+inherit cmake
 
-inherit cmake git-r3
+COMMIT="e13ad607ca9b9e58ee6f6484131a1db0e6e02d31"
 
 DESCRIPTION="Color picker and contrast checker"
 HOMEPAGE="https://github.com/agateau/colorpick"
-SRC_URI=""
+SRC_URI="https://github.com/agateau/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD-4"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 RDEPEND="dev-qt/qtcore:5
@@ -22,3 +22,5 @@ RDEPEND="dev-qt/qtcore:5
 	kde-frameworks/kguiaddons:5
 	kde-frameworks/kwidgetsaddons:5"
 DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${PN}-${COMMIT}"
