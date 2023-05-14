@@ -639,7 +639,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-sound/[sayonara](https://sayonara-player.com) | Small, clear and fast Qt-based audio player
 *   media-sound/[spotifyd](https://github.com/Spotifyd/spotifyd) | A spotify daemon
 *   media-sound/[spotify-qt](https://github.com/kraxarn/spotify-qt) | Lightweight Spotify client using Qt
-*   media-radio/[krudio](https://github.com/loast/krudio) | Radio tray for linux on QT
+*   media-radio/[krudio](https://github.com/alexyalinc/krudio) | Radio tray for linux on QT
 *   media-radio/[liquidsoap](https://github.com/savonet/liquidsoap) | A swiss-army knife for multimedia streaming, used for netradios
 *   media-video/[haruna](https://invent.kde.org/multimedia/haruna) | Video player built with Qt/QML on top of libmpv
 *   media-video/[qwinff](https://github.com/qwinff/qwinff) | Qt GUI Frontend for FFmpeg

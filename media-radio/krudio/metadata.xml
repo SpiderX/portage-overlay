@@ -14,6 +14,6 @@
 	that stays in system tray while playing radio stream.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">loast/krudio</remote-id>
+		<remote-id type="github">alexyalinc/krudio</remote-id>
 	</upstream>
 </pkgmetadata>
