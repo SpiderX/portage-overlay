@@ -16,6 +16,6 @@
 	a convenient way to create playlists directly from folders.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">olegantonyan/mpz</remote-id>
+		<remote-id type="github">olegantonyan/mpz</remote-id>
 	</upstream>
 </pkgmetadata>
