@@ -14,6 +14,6 @@
 	It is written in C++ using the Qt framework.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">flaviotordini/musique</remote-id>
+		<remote-id type="github">flaviotordini/musique</remote-id>
 	</upstream>
 </pkgmetadata>

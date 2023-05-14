@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit qmake-utils xdg
 
-HTTP_COMMIT="b85c564"
-IDLE_COMMIT="6aa092d"
-JS_COMMIT="13c9544"
-MEDIA_COMMIT="65afcf5"
-SCACHE_COMMIT="024e759"
-UPDATER_COMMIT="18ce1d0"
+HTTP_COMMIT="68b9cf0f16e605ad74110a2cdec9594091800c56"
+IDLE_COMMIT="6aa092da64a011e445bf31cf31c0cd8dda4c64ff"
+JS_COMMIT="deed5303b0b6a587c62be73a9bc198058964111c"
+MEDIA_COMMIT="5443f81c52ac008a6de6593124d03ee41f772633"
+SCACHE_COMMIT="eec981a4285c7b371aa9dc7f0074f03794e86a26"
+UPDATER_COMMIT="1a37eedf539179a9a61304a1c9aea22fbdbf6a38"
 
 DESCRIPTION="A finely crafted music player"
 HOMEPAGE="https://github.com/flaviotordini/musique"
