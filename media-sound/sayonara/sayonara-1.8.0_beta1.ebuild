@@ -3,17 +3,19 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://gitlab.com/luciocarreras/sayonara-player.git"
+inherit cmake xdg
 
-inherit cmake git-r3 xdg
+MY_PN="${PN}-player"
+MY_PV="${PV/_/-}"
+MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Small, clear and fast Qt-based audio player"
 HOMEPAGE="https://sayonara-player.com"
-SRC_URI=""
+SRC_URI="https://gitlab.com/luciocarreras/${MY_PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -41,6 +43,8 @@ BDEPEND="dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+S="${WORKDIR}/${MY_P}"
+
 src_prepare() {
 	# wrt 709450
 	sed -i  -e '/execute_process(COMMAND gzip/d' \
@@ -55,6 +59,10 @@ src_prepare() {
 		-e '/new_test(Tagging\/EditorTest.cpp)/d' \
 		-e '/new_test(Util\/StandardPathTest.cpp)/d' \
 		test/CMakeLists.txt || die "sed failed for test/CMakeLists.txt"
+
+	# Remove deprecated category
+	sed -i '/Categories/s|Application;||' resources/com.sayonara-player.Sayonara.desktop \
+		|| die "sed failed for com.sayonara-player.Sayonara.desktop"
 
 	cmake_src_prepare
 }
