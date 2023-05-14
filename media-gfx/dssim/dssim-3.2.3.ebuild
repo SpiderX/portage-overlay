@@ -5,8 +5,6 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/kornelski/${PN}.git"
-
 CRATES="
 	adler-1.0.2
 	ahash-0.7.6
@@ -81,24 +79,16 @@ CRATES="
 	yuv-0.1.5
 "
 
-inherit cargo git-r3
+inherit cargo
 
 DESCRIPTION="Image similarity comparison simulating human perception"
 HOMEPAGE="https://github.com/kornelski/dssim"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
+SRC_URI="https://github.com/kornelski/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="AGPL-3"
-KEYWORDS=""
+LICENSE="AGPL-3 Apache-2.0 BSD BSD-2 CC0-1.0 GPL-3+ IJG MIT MPL-2.0 ZLIB"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 RESTRICT="mirror"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_src_unpack
-}
-
-src_install() {
-	dobin target/release/dssim
-}
