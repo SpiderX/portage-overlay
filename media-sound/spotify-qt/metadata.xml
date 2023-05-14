@@ -17,6 +17,6 @@
 	Also like other clients, controlling music playback requires Spotify Premium.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">kraxarn/spotify-qt</remote-id>
+		<remote-id type="github">kraxarn/spotify-qt</remote-id>
 	</upstream>
 </pkgmetadata>
