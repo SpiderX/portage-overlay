@@ -7,8 +7,8 @@ Icon=azuredatastudio
 Type=Application
 StartupNotify=false
 StartupWMClass=azuredatastudio
-Categories=Utility;TextEditor;Development;IDE;
-MimeType=text/plain;inode/directory;
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-azuredatastudio-workspace;
 Actions=new-empty-window;
 Keywords=azuredatastudio;
 
