@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/step-ca"
+name="smallstep CA"
+description="smallstep CA"
+command_user="${STEP_USER:-step}:${STEP_GROUP:-step}"
+command_background="yes"
+pidfile="/run/step-ca/step-ca.pid"
+config="${CONFIG:-/etc/step/config/ca.json}"
+command_args="$config ${OPTS}"
+start_stop_daemon_args="-q --chdir ${STEP_PATH:-/etc/step}"
+
+depend() {
+	need net
+}
