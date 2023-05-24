@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 696](https://img.shields.io/badge/ebuild-696-orange.svg)](https://img.shields.io/badge/ebuild-696-orange.svg)
+[![Number of ebuilds: 697](https://img.shields.io/badge/ebuild-697-orange.svg)](https://img.shields.io/badge/ebuild-697-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -766,3 +766,5 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 *   x11-misc/[openrazer](https://openrazer.github.io) | Linux drivers for the Razer devices
 *   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
+* app-crypt/[step-cli](https://github.com/smallstep/cli) | A zero trust swiss army knife for working with X509
+* app-crypt/[step-ca](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
