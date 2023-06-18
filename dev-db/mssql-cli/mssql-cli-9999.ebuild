@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
 EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -83,8 +84,10 @@ src_prepare() {
 	rm tests/test_noninteractive_mode.py || die "rm failed for test_noninteractive_mode.py"
 	rm tests/test_special.py || die "rm failed for test_special.py"
 	# Remove broken tests
-	rm tests/test_smart_completion_multiple_schemata.py || die "rm failed for test_smart_completion_multiple_schemata.py"
-	rm tests/test_smart_completion_public_schema_only.py || die "rm failed for test_smart_completion_public_schema_only.py"
+	rm tests/test_smart_completion_multiple_schemata.py \
+		|| die "rm failed for test_smart_completion_multiple_schemata.py"
+	rm tests/test_smart_completion_public_schema_only.py \
+		|| die "rm failed for test_smart_completion_public_schema_only.py"
 	rm tests/test_main.py || die "rm failed for test_main.py"
 	# Disable broken tests
 	sed -i  -e '/test_distinct_and_order_by_suggestions_with_alias_given/i\    @unittest.skip("disable")' \
