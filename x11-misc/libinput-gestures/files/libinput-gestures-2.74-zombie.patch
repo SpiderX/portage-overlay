@@ -1,0 +1,22 @@
+# https://github.com/bulletmark/libinput-gestures/pull/242
+# https://github.com/bulletmark/libinput-gestures/issues/334
+--- ../libinput-gestures	2023-06-19 12:29:53.942177566 +0300
++++ ../libinput-gestures	2023-06-19 12:31:11.145997927 +0300
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python3
+ 'Read gestures from libinput touchpad and action shell commands.'
+ # Mark Blakeney, Sep 2015.
++import signal
+ import os
+ import sys
+ import argparse
+@@ -783,6 +784,9 @@
+     pidfile.flush()
+     os.fsync(pidfile.fileno())
+ 
++    # Avoid producing zombie processes
++    signal.signal(signal.SIGCHLD, signal.SIG_IGN)
++
+     # Sit in a loop forever reading the libinput messages ..
+     handler = None
+     for line in cmd.stdout:

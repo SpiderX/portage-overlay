@@ -15,6 +15,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="experimental"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
@@ -30,6 +31,8 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	use experimental && eapply "${FILESDIR}/${P}"-zombie.patch
 
 	# Fix docdir installation path
 	sed -i "/^DOCDIR/s@\$NAME@${PF}@" libinput-gestures-setup \
