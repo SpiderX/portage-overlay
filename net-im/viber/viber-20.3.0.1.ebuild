@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,6 @@ RDEPEND="app-arch/brotli:0
 	dev-libs/nss
 	dev-libs/openssl:0
 	dev-libs/wayland
-	media-gfx/qrencode:0
 	media-libs/alsa-lib
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
@@ -45,10 +44,13 @@ RDEPEND="app-arch/brotli:0
 	media-libs/libpng:0
 	media-libs/libwebp:0
 	media-libs/opus
-	media-libs/tiff
+	media-libs/tiff-compat:4
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/mtdev
 	sys-libs/zlib:0
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3
 	x11-libs/libdrm
 	x11-libs/libICE
 	x11-libs/libSM
@@ -64,6 +66,7 @@ RDEPEND="app-arch/brotli:0
 	x11-libs/libXScrnSaver
 	x11-libs/libxshmfence
 	x11-libs/libXtst
+	x11-libs/pango
 	x11-libs/tslib
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
@@ -71,18 +74,29 @@ RDEPEND="app-arch/brotli:0
 	x11-libs/xcb-util-wm
 	apulse? ( media-sound/apulse )
 	pulseaudio? (
-		media-sound/pulseaudio
+		media-sound/pulseaudio-daemon
 		media-plugins/gst-plugins-pulse )
 	|| ( sys-apps/systemd sys-apps/systemd-utils )"
-BDEPEND="sys-apps/fix-gnustack"
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/viber/Viber
-	/opt/viber/libexec/QtWebEngineProcess
-	/opt/viber/plugins/*/*.so
-	/opt/viber/lib/*
-	/opt/viber/qml/*"
+QA_PREBUILT="opt/viber/Viber
+	opt/viber/lib/libpcre2-16.so.0
+	opt/viber/lib/libdouble-conversion.so.3
+	opt/viber/lib/libicudata.so.66
+	opt/viber/lib/libwebp.so.6
+	opt/viber/lib/libjpeg.so.8
+	opt/viber/lib/libssl.so.1.1
+	opt/viber/lib/libXdamage.so.1
+	opt/viber/lib/libminizip.so.1
+	opt/viber/lib/libb2.so.1
+	opt/viber/lib/libpng16.so.16
+	opt/viber/lib/libre2.so.5
+	opt/viber/lib/libcrypto.so.1.1
+	opt/viber/lib/libicui18n.so.66
+	opt/viber/lib/libicuuc.so.66
+	opt/viber/lib/libXcomposite.so.1
+	opt/viber/libexec/QtWebEngineProcess"
 
 src_prepare() {
 	default
@@ -99,15 +113,12 @@ src_prepare() {
 }
 
 src_install() {
-	fix-gnustack -f opt/viber/lib/libQt6WebEngineCore.so.6 > /dev/null \
-		|| die "removing execstack flag failed"
-
 	newicon -s scalable usr/share/icons/hicolor/scalable/apps/Viber.svg \
 		viber.svg
 	for size in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
-		newicon -s "${size%%x*}" usr/share/viber/"${size}".png viber.png
+		newicon -s "${size}" usr/share/viber/"${size}".png viber.png
 	done
-	dosym ../icons/hicolor/96x96/apps/viber.png \
+	dosym ../icons/hicolor/256x256/apps/viber.png \
 		/usr/share/pixmaps/viber.png
 
 	domenu usr/share/applications/viber.desktop
@@ -119,7 +130,6 @@ src_install() {
 			"${ED}"/opt/viber/QtWebEngineProcess
 
 	fperms -R +x /opt/viber/Viber \
-		/opt/viber/lib/lib{ViberRTC,qrencode}.so \
 		/opt/viber/libexec/QtWebEngineProcess \
 		/opt/viber/plugins/{generic,imageformats,platforminputcontexts,platforms,printsupport,sqldrivers,tls,xcbglintegrations}/ \
 		/opt/viber/plugins/wayland-{decoration-client,graphics-integration-client,graphics-integration-server,shell-integration}/ \
