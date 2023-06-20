@@ -74,8 +74,9 @@ RDEPEND="app-arch/brotli:0
 	x11-libs/xcb-util-wm
 	apulse? ( media-sound/apulse )
 	pulseaudio? (
-		media-sound/pulseaudio-daemon
-		media-plugins/gst-plugins-pulse )
+		media-plugins/gst-plugins-pulse
+		|| ( media-sound/pulseaudio-daemon
+			media-video/pipewire[sound-server] ) )
 	|| ( sys-apps/systemd sys-apps/systemd-utils )"
 
 S="${WORKDIR}"
