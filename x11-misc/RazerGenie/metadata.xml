@@ -11,13 +11,9 @@
 	</maintainer>
 	<longdescription lang="en">
 	Qt application for configuring your Razer devices under GNU/Linux
-	RazerGenie is using <pkg>x11-misc/openrazer</pkg> for providing control
+	RazerGenie is using <pkg>sys-apps/openrazer</pkg> for providing control
 	over Razer peripherals.
 	</longdescription>
-	<use>
-		<flag name="experimental">Enable experimental features</flag>
-		<flag name="matrix">Enable matrix discovery feature</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">z3ntu/RazerGenie</remote-id>
 	</upstream>
