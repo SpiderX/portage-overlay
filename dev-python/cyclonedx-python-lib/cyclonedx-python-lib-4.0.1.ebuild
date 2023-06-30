@@ -5,17 +5,16 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{9..11} )
-EGIT_REPO_URI="https://github.com/CycloneDX/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python library for generating CycloneDX SBOMs"
 HOMEPAGE="https://github.com/CycloneDX/cyclonedx-python-lib"
-SRC_URI=""
+SRC_URI="https://github.com/CycloneDX/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 PROPERTIES="test_network"
 
