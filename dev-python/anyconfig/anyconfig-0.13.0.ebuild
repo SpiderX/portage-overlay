@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ MY_P="${MY_PN}_${PV}"
 
 DESCRIPTION="Generic access to configuration files in any formats"
 HOMEPAGE="https://github.com/ssato/python-anyconfig"
-SRC_URI="https://github.com/ssato/python-${PN}/archive/RELEASE_${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/ssato/python-${PN}/archive/RELEASE_${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,15 +24,17 @@ RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
-	dev-python/simplejson[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]"
+	dev-python/simplejson[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
-python_test() {
-	nosetests -v -c pkg/nose.cfg || die "tests failed with ${EPYTHON}"
+python_prepare_all() {
+	# Remove coverage
+	sed -i '/addopts/d' setup.cfg \
+		|| die "sed failed for setup.cfg"
+
+	distutils-r1_python_prepare_all
 }
