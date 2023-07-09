@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="dev-python/argcomplete[${PYTHON_USEDEP}]
-	dev-python/charset_normalizer[${PYTHON_USEDEP}]
+	dev-python/charset-normalizer[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/decli[${PYTHON_USEDEP}]
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
