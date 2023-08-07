@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A command-line interface for interaction with Apache Kafka with support of
+	support for avro schemas, configuration of different contexts, etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">deviceinsight/kafkactl</remote-id>
+	</upstream>
+</pkgmetadata>
