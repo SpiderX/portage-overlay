@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,9 +15,7 @@ KEYWORDS="-* ~amd64"
 IUSE="appindicator"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
-	dev-libs/atk:0
+RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/expat:0
 	dev-libs/glib:2
 	dev-libs/nspr:0
@@ -28,7 +26,6 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	net-print/cups:0
 	sys-apps/dbus:0
 	x11-libs/cairo:0
-	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/libdrm:0
 	x11-libs/libX11:0

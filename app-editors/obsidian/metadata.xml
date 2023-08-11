@@ -14,4 +14,7 @@
 	With possibilities to create and edit tables via GUI,
 	to share queries within team.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">obsidianmd/obsidian-releases</remote-id>
+	</upstream>
 </pkgmetadata>
