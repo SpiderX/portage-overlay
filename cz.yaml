@@ -175,6 +175,7 @@ commitizen:
           - www-plugins
           - www-servers
           - x11-misc
+          - x11-themes
       - type: text
         name: package
         message: Type package name
