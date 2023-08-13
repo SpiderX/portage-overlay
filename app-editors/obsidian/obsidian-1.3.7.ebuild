@@ -70,7 +70,6 @@ src_install() {
 	fperms +x /opt/Obsidian/chrome{-sandbox,_crashpad_handler} \
 		/opt/Obsidian/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/Obsidian/libvulkan.so.1 /opt/Obsidian/obsidian \
-		/opt/Obsidian/swiftshader/lib{EGL,GLESv2}.so \
 		/opt/Obsidian/resources/obsidian.asar \
 		/opt/Obsidian/resources/app.asar.unpacked/node_modules/{btime,get-fonts,vibrancy-win}/binding.node
 	dosym ../Obsidian/obsidian opt/bin/obsidian
