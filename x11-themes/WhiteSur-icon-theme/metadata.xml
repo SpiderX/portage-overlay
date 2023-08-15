@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a MacOS Big Sur like style icon theme for
+	linux desktops, comes in both light and dark variants.
+	</longdescription>
+	<use>
+		<flag name="all">Install all colors</flag>
+		<flag name="alternative">Install alternative icons for software center and file-manager</flag>
+		<flag name="black">Install black panel icons version</flag>
+		<flag name="bold">Install bold panel icons version</flag>
+		<flag name="default">Install blue (default) color</flag>
+		<flag name="green">Install green color</flag>
+		<flag name="grey">Install grey color</flag>
+		<flag name="nord">Install nord color</flag>
+		<flag name="orange">Install orange color</flag>
+		<flag name="pink">Install pink color</flag>
+		<flag name="purple">Install purple color</flag>
+		<flag name="red">Install red color</flag>
+		<flag name="yellow">Install yellow color</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">vinceliuice/WhiteSur-icon-theme</remote-id>
+	</upstream>
+</pkgmetadata>
