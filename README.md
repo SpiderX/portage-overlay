@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 705](https://img.shields.io/badge/ebuild-705-orange.svg)](https://img.shields.io/badge/ebuild-705-orange.svg)
+[![Number of ebuilds: 706](https://img.shields.io/badge/ebuild-706-orange.svg)](https://img.shields.io/badge/ebuild-706-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -697,6 +697,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[inverting-proxy](https://github.com/google/inverting-proxy) | Reverse proxy that inverts the direction of traffic
 *   net-misc/[kafkactl](https://github.com/deviceinsight/kafkactl) | A command-line interface for interaction with Apache Kafka
 *   net-misc/[kcat](https://github.com/edenhill/kcat) | Generic command line non-JVM Apache Kafka producer and consumer
+*   net-misc/[kcl](https://github.com/twmb/kcl) | Your one stop shop to do anything with Kafka
 *   net-misc/[lychee](https://github.com/lycheeverse/lychee) | Fast, async, stream-based link checker
 *   net-misc/[mpssh](https://github.com/ndenev/mpssh) | Mass parallel ssh
 *   net-misc/[ngrok-bin](https://ngrok.com/) | Secure introspected tunnels to localhost
