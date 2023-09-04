@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,9 +16,7 @@ SLOT=0
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
-	dev-libs/atk:0
+RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/expat:0
 	dev-libs/glib:2
 	dev-libs/nspr:0
@@ -27,10 +25,9 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	media-libs/mesa:0
 	net-print/cups:0
 	sys-apps/dbus:0
-	sys-apps/util-linux:0
 	x11-libs/cairo:0
-	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
+	x11-libs/libdrm:0
 	x11-libs/libX11:0
 	x11-libs/libxcb:0/1.12
 	x11-libs/libXcomposite:0
@@ -41,8 +38,6 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	x11-libs/libXi:0
 	x11-libs/libXrandr:0
 	x11-libs/libXrender:0
-	x11-libs/libXScrnSaver:0
-	x11-libs/libXtst:0
 	x11-libs/pango:0"
 
 QA_PREBUILT="opt/drawio/chrome_crashpad_handler
@@ -57,10 +52,10 @@ QA_PREBUILT="opt/drawio/chrome_crashpad_handler
 S="${WORKDIR}"
 
 src_install() {
-	for size in 16x16 32x32 48x48 64x64 96x96 128x128 192x192 256x256 ; do
-		doicon -s "${size%%x*}" usr/share/icons/hicolor/"${size}"/apps/drawio.png
+	for size in 16 32 48 64 96 128 192 256 512 1024 ; do
+		doicon -s "${size}" usr/share/icons/hicolor/"${size}x${size}"/apps/drawio.png
 	done
-	dosym ../icons/hicolor/256x256/apps/drawio.png \
+	dosym ../icons/hicolor/512x512/apps/drawio.png \
 		/usr/share/pixmaps/drawio.png
 
 	domenu usr/share/applications/drawio.desktop
@@ -73,8 +68,7 @@ src_install() {
 		/opt/drawio/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/drawio/libvulkan.so.1
 
-	echo "PATH=\"/opt/drawio/\"" > "${T}"/99drawio
-	doenvd "${T}"/99drawio
+	dosym ../drawio/drawio opt/bin/drawio
 
 	pax-mark -m "${ED}"/opt/drawio/drawio
 }
