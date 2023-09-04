@@ -20,10 +20,10 @@ RDEPEND="dev-qt/qtconcurrent:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
-	dev-qt/qtquickcontrols:5
-	dev-qt/qtquickcontrols2:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtquickcontrols2:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	kde-frameworks/breeze-icons:5
 	kde-frameworks/kconfig:5

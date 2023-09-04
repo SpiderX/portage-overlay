@@ -14,4 +14,7 @@
 	to play online videos, through youtube-dl, toggle playlist with mouse-over,
 	playlist overlays the video, auto skip chapter containing certain words, etc.
 	</longdescription>
+	<upstream>
+		<remote-id type="kde-invent">multimedia/haruna</remote-id>
+	</upstream>
 </pkgmetadata>
