@@ -3,9 +3,9 @@
 
 EAPI=8
 
-inherit linux-mod udev
+inherit linux-mod-r1 udev
 
-COMMIT="663ae4b95951f126db0561cec04013f1e04813c0"
+COMMIT="6c5be3d8027feb3101e66a4ff4105a395cfde416"
 
 DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
@@ -19,16 +19,19 @@ RDEPEND="acct-group/vmware"
 
 S="${WORKDIR}/vmware-host-modules-${COMMIT}"
 
-BUILD_TARGETS="auto-build"
 CONFIG_CHECK="~HIGH_RES_TIMERS VMWARE_VMCI VMWARE_VMCI_VSOCKETS"
-MODULE_NAMES="vmmon(misc:${S}/vmmon-only) vmnet(misc:${S}/vmnet-only)"
 
 src_configure() {
 	export LINUXINCLUDE="${KERNEL_DIR}/include"
 }
 
+src_compile() {
+	local modlist=( vmmon=misc:vmmon-only vmnet=misc:vmnet-only )
+	linux-mod-r1_src_compile
+}
+
 src_install() {
-	linux-mod_src_install
+	linux-mod-r1_src_install
 	local udevrules="${T}/60-vmware.rules"
 	cat > "${udevrules}" <<-EOF
 		KERNEL=="vmci",  GROUP="vmware", MODE="660"
@@ -54,11 +57,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	linux-mod_pkg_postinst
+	linux-mod-r1_pkg_postinst
 	udev_reload
 }
 
 pkg_postrm() {
-	linux-mod_pkg_postrm
 	udev_reload
 }
