@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg
 
@@ -13,16 +13,19 @@ MY_PV=$(ver_cut 1-3)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="12.2.4/20071091"
+VMWARE_FUSION_VER="13.0.1/21139760"
 SYSTEMD_UNITS_TAG="gentoo-02"
-UNLOCKER_VERSION="3.0.4"
+UNLOCKER_VERSION="3.0.5"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
 HOMEPAGE="https://www.vmware.com/products/workstation-pro.html"
 SRC_URI="https://download3.vmware.com/software/WKST-${MY_PV//./}-LX/${MY_P}.x86_64.bundle
-	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz -> unlocker-${UNLOCKER_VERSION}.tar.gz
-			https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${VMWARE_FUSION_VER}/x86/core/com.vmware.fusion.zip.tar -> com.vmware.fusion-${PV}.zip.tar )
-	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz -> vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
+	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz ->
+			unlocker-${UNLOCKER_VERSION}.tar.gz
+			https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${VMWARE_FUSION_VER}/universal/core/com.vmware.fusion.zip.tar ->
+			com.vmware.fusion-${PV}.zip.tar )
+	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz ->
+			vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
 
 LICENSE="GPL-2 GPL-3 MIT-with-advertising vmware"
 SLOT="0"
@@ -35,21 +38,15 @@ done
 REQUIRED_USE="vmware-tools-darwin? ( macos-guests )"
 RESTRICT="mirror preserve-libs strip"
 
-CDEPEND="dev-db/sqlite:3"
-RDEPEND="app-arch/bzip2:=
-	app-shells/bash:0
-	dev-cpp/gtkmm:3.0
+RDEPEND="dev-db/sqlite:3
 	dev-libs/dbus-glib
 	dev-libs/gmp:0
 	dev-libs/icu:=
 	dev-libs/json-c:=
 	dev-libs/nettle:0
 	gnome-base/dconf
-	gnome-base/gconf:2
 	media-gfx/graphite2
 	media-libs/alsa-lib
-	media-libs/libart_lgpl
-	media-libs/libcanberra
 	media-libs/libvorbis
 	media-libs/mesa
 	media-plugins/alsa-plugins[speex]
@@ -58,27 +55,29 @@ RDEPEND="app-arch/bzip2:=
 	sys-apps/tcp-wrappers
 	sys-apps/util-linux
 	sys-auth/polkit
-	x11-libs/libXxf86vm
 	sys-fs/fuse:3
+	virtual/libcrypt:=
+	x11-libs/libXinerama
+	x11-libs/libXxf86vm
 	x11-libs/libdrm
 	x11-libs/libxshmfence
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-themes/hicolor-icon-theme
-	x11-libs/libXinerama
-	virtual/libcrypt:=
 	cups? ( net-print/cups )
 	modules? ( >=app-emulation/vmware-modules-${MY_PV} )
-	ovftool? ( !dev-util/ovftool )
-	${CDEPEND}"
+	ovftool? ( !dev-util/ovftool )"
 DEPEND="${PYTHON_DEPS}"
-BDEPEND="${CDEPEND}
+BDEPEND="app-admin/chrpath
 	app-arch/unzip
-	sys-apps/fix-gnustack
-	sys-libs/ncurses-compat:5
-	ovftool? ( app-admin/chrpath )"
+	sys-apps/fix-gnustack"
 
 S="${WORKDIR}"/extracted
+
+QA_SONAME="opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_bz2.cpython-310-x86_64-linux-gnu.so
+	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_dbm.cpython-310-x86_64-linux-gnu_failed.so
+	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_gdbm.cpython-310-x86_64-linux-gnu.so
+	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/readline.cpython-310-x86_64-linux-gnu.so"
 
 src_unpack() {
 	for AFILE in ${A}; do
@@ -99,7 +98,7 @@ src_unpack() {
 
 	if use vmware-tools-darwin ; then
 		unzip -j -d extracted/vmware-tools-darwin/ com.vmware.fusion.zip \
-			"payload/VMware Fusion.app/Contents/Library/isoimages/darwin.iso" \
+			"payload/VMware Fusion.app/Contents/Library/isoimages/x86_x64/darwin.iso" \
 			|| die "unzip for darwin.iso failed"
 	fi
 }
@@ -117,9 +116,7 @@ src_prepare() {
 	rm -f vmware-installer/bin/configure-initscript.sh \
 		|| die "removing configure-initscript.sh failed"
 
-	if use ovftool ; then
-		chrpath -d vmware-ovftool/libcurl.so.4 || die "chrpath failed"
-	fi
+	chrpath -d vmware-ovftool/libcurl.so.4 || die "chrpath failed"
 
 	if use macos-guests ; then
 		sed -i  -e "s#vmx_path = '/usr#vmx_path = '${MY_ED}/opt/vmware#" \
@@ -147,7 +144,7 @@ src_install() {
 	# Install the binaries
 	into /opt/vmware
 	dobin vmware-vmx/bin/vmnet-{bridge,dhcpd,natd,netifup,sniffer} \
-		vmware-vmx/bin/vmware-{collect-host-support-info,gksu,networks,ping} \
+		vmware-vmx/bin/vmware-{collect-host-support-info,gksu,modconfig,networks,ping} \
 		vmware-workstation/bin/{vmss2core,vmware,vmware-tray,vmware-vdiskmanager} \
 		vmware-vprobe/bin/vmware-vprobe \
 		vmware-player-app/bin/vmware-license-{check,enter}.sh \
@@ -169,7 +166,10 @@ src_install() {
 
 	# Install the installer
 	insinto /opt/vmware/lib/vmware-installer/"${vmware_installer_version}"
-	doins -r vmware-installer/{cdsHelper,vmis,vmis-launcher,vmware-cds-helper,vmware-installer,vmware-installer.py}
+	doins -r vmware-installer/{cdsHelper,vmis,vmis-launcher,vmware-cds-helper,vmware-installer,vmware-installer.py,python}
+	chrpath -k -r '/../lib:$ORIGIN/../lib' \
+		"${ED}"/opt/vmware/lib/vmware-installer/"${vmware_installer_version}"/python/lib/lib-dynload/*.so >/dev/null \
+		|| die "chrpath for lib-dynload failed"
 	fperms 0755 /opt/vmware/lib/vmware-installer/"${vmware_installer_version}"/{vmis-launcher,cdsHelper,vmware-installer}
 	dosym ../lib/vmware-installer/"${vmware_installer_version}"/vmware-installer /opt/vmware/bin/vmware-installer
 	insinto /etc/vmware-installer
@@ -182,8 +182,8 @@ src_install() {
 	insinto /usr/share/metainfo
 	doins vmware-workstation/share/appdata/vmware-workstation.appdata.xml
 	domenu vmware-workstation/share/applications/vmware-workstation.desktop
-	for size in 16x16 22x22 24x24 32x32 48x48 256x256 ; do
-		doicon -s "${size}" vmware-workstation/share/icons/hicolor/"${size}"/apps/vmware-workstation.png
+	for size in 16 22 24 32 48 256 ; do
+		doicon -s "${size}" vmware-workstation/share/icons/hicolor/"${size}x${size}"/apps/vmware-workstation.png
 	done
 	dosym ../icons/hicolor/256x256/apps/vmware-workstation.png \
 		/usr/share/pixmaps/vmware-workstation.png
@@ -192,25 +192,34 @@ src_install() {
 	insinto /usr/share/metainfo
 	doins vmware-player-app/share/appdata/vmware-player.appdata.xml
 	domenu vmware-player-app/share/applications/vmware-player.desktop
-	for size in 16x16 22x22 24x24 32x32 48x48 256x256 ; do
-		doicon -s "${size}" vmware-player-app/share/icons/hicolor/"${size}"/apps/vmware-player.png
-		if [ "${size}" == "16x16" ] || [ "$size" == "32x32" ] ; then
-			doicon -s "${size}" -c mimetypes vmware-player-app/share/icons/hicolor/"${size}"/mimetypes/application-certificate.png
-			doicon -s "${size}" -c mimetypes vmware-player-app/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{easter-egg,team}.png
-			doicon -s "${size}" -c mimetypes vmware-player-app/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{vm-clone,vm-legacy,vm}.png
+	for size in 16 22 24 32 48 256 ; do
+		doicon -s "${size}" vmware-player-app/share/icons/hicolor/"${size}x${size}"/apps/vmware-player.png
+		if [ "${size}" == "16" ] || [ "$size" == "32" ] ; then
+			doicon -s "${size}" -c mimetypes \
+				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
+			doicon -s "${size}" -c mimetypes \
+				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,team}.png
+			doicon -s "${size}" -c mimetypes \
+				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm-legacy,vm}.png
 		fi
-		if [ "${size}" == "22x22" ] || [ "$size" == "24x24" ] ; then
-			doicon -s "${size}" -c mimetypes vmware-player-app/share/icons/hicolor/"${size}"/mimetypes/application-certificate.png
-			doicon -s "${size}" -c mimetypes vmware-player-app/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{vm-clone,vm}.png
+		if [ "${size}" == "22" ] || [ "$size" == "24" ] ; then
+			doicon -s "${size}" -c mimetypes \
+				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
+			doicon -s "${size}" -c mimetypes \
+				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm}.png
 		fi
-		if [ "${size}" == "48x48" ] ; then
-			doicon -s "${size}" -c mimetypes vmware-player-app/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.png
-			doicon -s "${size}" -c mimetypes vmware-player-app/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{vm-clone,vmdisk,vmfoundry,vm-legacy,vm}.png
+		if [ "${size}" == "48" ] ; then
+			doicon -s "${size}" -c mimetypes \
+				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.png
+			doicon -s "${size}" -c mimetypes \
+				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vmdisk,vmfoundry,vm-legacy,vm}.png
 		fi
 	done
 	doicon -s scalable -c mimetypes vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-certificate.svg
-	doicon -s scalable -c mimetypes vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.svg
-	doicon -s scalable -c mimetypes vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{vm-clone,vmfoundry,vm-legacy,vm}.svg
+	doicon -s scalable -c mimetypes \
+		vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.svg
+	doicon -s scalable -c mimetypes \
+		vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{vm-clone,vmfoundry,vm-legacy,vm}.svg
 	dosym ../icons/hicolor/256x256/apps/vmware-player.png \
 		/usr/share/pixmaps/vmware-player.png
 	insinto usr/share/mime/packages
@@ -218,8 +227,8 @@ src_install() {
 
 	# Install vmware-network-editor ancillaries
 	domenu vmware-network-editor-ui/share/applications/vmware-netcfg.desktop
-	for size in 16x16 22x22 24x24 32x32 48x48 256x256 ; do
-		doicon -s "${size}" vmware-network-editor-ui/share/icons/hicolor/"${size}"/apps/vmware-netcfg.png
+	for size in 16 22 24 32 48 256 ; do
+		doicon -s "${size}" vmware-network-editor-ui/share/icons/hicolor/"${size}x${size}"/apps/vmware-netcfg.png
 	done
 	dosym ../icons/hicolor/256x256/apps/vmware-netcfg.png \
 		/usr/share/pixmaps/vmware-netcfg.png
@@ -276,7 +285,7 @@ src_install() {
 	# Create symlinks for the various tools
 	local tool
 	for tool in thnuclnt vmware vmplayer{,-daemon} licenseTool vmamqpd \
-			vmware-{app-control,enter-serial,gksu,fuseUI,hostd,netcfg,{setup,unity}-helper,tray,vmblock-fuse,vprobe,zenity} ; do
+			vmware-{app-control,enter-serial,gksu,fuseUI,modconfig{,-console},netcfg,{setup,unity}-helper,tray,vmblock-fuse,vprobe,zenity} ; do
 		dosym appLoader /opt/vmware/lib/vmware/bin/"${tool}"
 	done
 	dosym ../lib/vmware/bin/vmplayer /opt/vmware/bin/vmplayer
@@ -354,6 +363,9 @@ src_install() {
 	fi
 
 	# Fix desktop files
+	sed -i  -e "s:@@LIBCONF_DIR@@:${EPREFIX}/opt/vmware/lib/vmware/libconf:g" \
+		"${ED}"/opt/vmware/lib/vmware/libconf/etc/gtk-3.0/gdk-pixbuf.loaders \
+		|| die "sed for gdk-pixbuf.loaders failed"
 	sed -i  -e "s:@@BINARY@@:${EPREFIX}/opt/vmware/bin/vmplayer:g" \
 		-e "/^Encoding/d" \
 		"${ED}"/usr/share/applications/vmware-player.desktop \
@@ -373,21 +385,23 @@ src_install() {
 	use systemd && systemd_dounit "${WORKDIR}"/systemd-vmware-"${SYSTEMD_UNITS_TAG}"/vmware-{authentication,usb,vmblock,vmci,vmmon,vmnet,vmsock}.service \
 			vmware.target
 
-	# enable macOS guests support
+	# Enable macOS guests support
 	if use macos-guests ; then
 		python "${WORKDIR}"/unlocker-"${UNLOCKER_VERSION}"/unlocker.py >/dev/null || die "unlocker.py failed"
 	fi
 
-	# install vmware tools
+	# Install vmware tools
 	for guest in ${IUSE_VMWARE_GUESTS} ; do
 		if use vmware-tools-"${guest}" ; then
 			local dbfile
 			dbfile="${ED}"/etc/vmware-installer/database
 			if ! [ -e "${dbfile}" ] ; then
 				touch "${dbfile}" || die "create database failed"
-				sqlite3 "${dbfile}" "CREATE TABLE settings(key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL, component_name VARCHAR NOT NULL);" \
+				sqlite3 "${dbfile}" \
+					"CREATE TABLE settings(key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL, component_name VARCHAR NOT NULL);" \
 					|| die "sqlite3 for create table settings failed"
-				sqlite3 "${dbfile}" "INSERT INTO settings(key,value,component_name) VALUES('db.schemaVersion','2','vmware-installer');" \
+				sqlite3 "${dbfile}" \
+					"INSERT INTO settings(key,value,component_name) VALUES('db.schemaVersion','2','vmware-installer');" \
 					|| die "sqlite3 for insert table settings failed"
 				sqlite3 "${dbfile}" "CREATE TABLE components(id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL, buildNumber INTEGER NOT NULL, component_core_id INTEGER NOT NULL, longName VARCHAR NOT NULL, description VARCHAR, type INTEGER NOT NULL);" \
 					|| die "sqlite3 for create table components failed"
@@ -397,14 +411,18 @@ src_install() {
 			if [ -e "${manifest}" ] ; then
 				local version
 				version="$(grep -oPm1 '(?<=<version>)[^<]+' "${manifest}")"
-				sqlite3 "${dbfile}" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$guest\",\"$version\",\"${PV_BUILD}\",1,\"$guest\",\"$guest\",1);" \
+				sqlite3 "${dbfile}" \
+					"INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) \
+					VALUES('vmware-tools-$guest','$version','${PV_BUILD}',1,'$guest','$guest',1);" \
 					|| die "sqlite3 for insert table components failed"
 			else
-				sqlite3 "${dbfile}" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$guest\",\"${VMWARE_FUSION_VER%/*}\",\"${VMWARE_FUSION_VER#*/}\",1,\"$guest\",\"$guest\",1);" \
+				sqlite3 "${dbfile}" \
+					"INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) \
+					VALUES('vmware-tools-$guest','${VMWARE_FUSION_VER%/*}','${VMWARE_FUSION_VER#*/}',1,'$guest','$guest',1);" \
 					|| die "sqlite3 for macos insert table components failed"
 			fi
 			insinto /opt/vmware/lib/vmware/isoimages
-			doins vmware-tools-"${guest}"/"${guest}".iso
+			doins vmware-tools-"${guest}/${guest}".iso
 		fi
 	done
 
