@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -63,7 +63,7 @@ QA_PREBUILT="opt/plexamp/libEGL.so
 	opt/plexamp/resources/treble/libbassflac.so
 	opt/plexamp/resources/treble/libbassmix.so
 	opt/plexamp/resources/treble/libbassopus.so
-	opt/plexamp/swiftshader/*
+	opt/plexamp/resources/treble/libjack.so
 	opt/plexamp/usr/lib/libXss.so.1
 	opt/plexamp/usr/lib/libXtst.so.6
 	opt/plexamp/usr/lib/libappindicator.so.1
@@ -109,11 +109,12 @@ src_install() {
 	doins -r squashfs-root/.
 	fperms -R +x /opt/plexamp/plexamp /opt/plexamp/chrome-sandbox \
 		/opt/plexamp/libEGL.so /opt/plexamp/libGLESv2.so /opt/plexamp/libffmpeg.so \
-		/opt/plexamp/libvk_swiftshader.so /opt/plexamp/libvulkan.so \
-		/opt/plexamp/swiftshader/ \
+		/opt/plexamp/libvk_swiftshader.so /opt/plexamp/libvulkan.so.1 \
 		/opt/plexamp/resources/treble/obj.target/treble.node \
 		/opt/plexamp/resources/treble/treble.node \
 		/opt/plexamp/resources/treble/libbass{,_aac,_ape,_fx,_mpc,alac,dsd,flac,mix,opus}.so
+	dosym ../../../../../../../../../../../../../../usr/bin/python3 \
+		opt/plexamp/resources/app.asar.unpacked/node_modules/electron-media-service/build/node_gyp_bins/python3
 	dosym ../plexamp/plexamp opt/bin/plexamp
 
 	pax-mark -m "${ED}"/opt/plexamp/plexamp
