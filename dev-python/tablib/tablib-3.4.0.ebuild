@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Format-agnostic tabular dataset library"
 HOMEPAGE="https://github.com/jazzband/tablib"
-SRC_URI="https://github.com/jazzband/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jazzband/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,7 +20,7 @@ IUSE="xls yaml"
 RDEPEND="xls? ( dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}] )
 	yaml? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/MarkupPy[${PYTHON_USEDEP}]
 		dev-python/odfpy[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
@@ -33,10 +33,7 @@ BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# setuptools is unable to detect version
-	sed -i -e "/setup(/a\\    version='${PV}'," \
-		-e "/use_scm_version/,+2d" \
-		setup.py || die "sed failed for setup.py"
+	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
 
 	# Disable pytest options
 	sed -i '/addopts/d' pytest.ini || die "sed failed for pytest.ini"

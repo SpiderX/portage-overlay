@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10,11} )
 EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -21,7 +21,7 @@ IUSE="xls yaml"
 RDEPEND="xls? ( dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}] )
 	yaml? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/MarkupPy[${PYTHON_USEDEP}]
 		dev-python/odfpy[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
