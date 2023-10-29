@@ -16,6 +16,6 @@
 	a build of the ffmpeg video converter
 	</longdescription>
 	<upstream>
-		<remote-id type="github">mi-g/vdhcoapp</remote-id>
+		<remote-id type="github">aclap-dev/vdhcoapp</remote-id>
 	</upstream>
 </pkgmetadata>
