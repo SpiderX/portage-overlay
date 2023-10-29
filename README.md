@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 710](https://img.shields.io/badge/ebuild-710-orange.svg)](https://img.shields.io/badge/ebuild-710-orange.svg)
+[![Number of ebuilds: 711](https://img.shields.io/badge/ebuild-711-orange.svg)](https://img.shields.io/badge/ebuild-711-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -775,6 +775,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   www-plugins/[chrome-token-signing](https://github.com/open-eid/chrome-token-signing) | Native client and extension for signing with your eID on the web
 *   www-plugins/[vdhcoapp-bin](https://github.com/mi-g/vdhcoapp) | Companion application for Video DownloadHelper browser add-on
 *   www-servers/[gitlab-workhorse](https://gitlab.com/gitlab-org/gitlab-workhorse) | GitLab reverse proxy
+*   www-servers/[imgproxy](https://github.com/imgproxy/imgproxy) | Server for resizing and converting remote images
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/libinput-gestures.svg?header=)](https://repology.org/project/libinput-gestures/versions) x11-misc/[libinput-gestures](https://github.com/bulletmark/libinput-gestures) | Actions gestures on your touchpad using libinput
 *   x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 *   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
