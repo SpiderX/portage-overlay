@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	The AWS Serverless Application Model (SAM) CLI is an open-source CLI tool
+	that helps you develop serverless applications containing Lambda functions,
+	Step Functions, API Gateway, EventBridge, SQS, SNS and more.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aws/aws-sam-cli</remote-id>
+		<remote-id type="pypi">aws-sam-cli</remote-id>
+	</upstream>
+</pkgmetadata>

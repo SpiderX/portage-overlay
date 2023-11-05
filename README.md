@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 718](https://img.shields.io/badge/ebuild-718-orange.svg)](https://img.shields.io/badge/ebuild-718-orange.svg)
+[![Number of ebuilds: 719](https://img.shields.io/badge/ebuild-719-orange.svg)](https://img.shields.io/badge/ebuild-719-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -43,6 +43,7 @@ Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all o
 This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds for projects:
 
 *   app-admin/[awsdtc](https://github.com/c1982/awsdtc) | AWS Data Transfer Cost Explorer
+*   app-admin/[aws-sam-cli](https://github.com/aws/aws-sam-cli) | CLI tool to manage Serverless applications using AWS SAM
 *   app-admin/[awslimitchecker](https://github.com/jantman/awslimitchecker) | Utility to check AWS resource limits and usage
 *   app-admin/[awslog](https://github.com/jaksi/awslog) | History and changes of configuration versions of AWS resources
 *   app-admin/[awsls](https://github.com/jckuester/awsls) | A list command for AWS resources
