@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 715](https://img.shields.io/badge/ebuild-715-orange.svg)](https://img.shields.io/badge/ebuild-715-orange.svg)
+[![Number of ebuilds: 716](https://img.shields.io/badge/ebuild-716-orange.svg)](https://img.shields.io/badge/ebuild-716-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -532,6 +532,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[tree-format](https://github.com/jml/tree-format) | Python library for printing trees on the console
 *   dev-python/[types-awscrt](https://github.com/youtype/types-awscrt) | Type annotations and code completion for awscrt
 *   dev-python/[types-chardet](https://github.com/python/typeshed) | Collection of library stubs for Python, with static types
+*   dev-python/[types-s3transfer](https://github.com/youtype/types-s3transfer) | Type annotations and code completion for s3transfer
 *   dev-python/[ua-parser](https://github.com/ua-parser/uap-python) | A python implementation of the UA Parser
 *   dev-python/[ujson](https://github.com/esnme/ultrajson) | Ultra fast JSON encoder and decoder for Python
 *   dev-python/[ukpostcodeparser](https://github.com/hamstah/ukpostcodeparser) | UK postcode parser library
