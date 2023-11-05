@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 EGIT_REPO_URI="https://github.com/scrapinghub/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -28,6 +28,7 @@ RDEPEND="dev-python/convertdate[${PYTHON_USEDEP}]
 	dev-python/umalqurra[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/GitPython[${PYTHON_USEDEP}]
+		dev-python/langdetect[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/ruamel-yaml[${PYTHON_USEDEP}] )"
 
@@ -47,5 +48,6 @@ python_prepare_all() {
 }
 
 pkg_postinst() {
-	optfeature "operations on language files" dev-python/ruamel-yaml
+	optfeature "operations on language files" dev-python/ruamel-yaml \
+		dev-python/langdetect
 }
