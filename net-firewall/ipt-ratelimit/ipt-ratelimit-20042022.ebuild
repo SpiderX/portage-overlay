@@ -3,22 +3,24 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/aabc/${PN}.git"
+inherit linux-mod-r1 toolchain-funcs
 
-inherit git-r3 linux-mod-r1 toolchain-funcs
+COMMIT="469af6c925ea912eef7460303c3f3cd7b132e9ef"
 
 DESCRIPTION="Ratelimit iptables module"
 HOMEPAGE="https://github.com/aabc/ipt-ratelimit"
-SRC_URI=""
+SRC_URI="https://github.com/aabc/ipt-ratelimit/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="net-firewall/iptables:0="
 BDEPEND="virtual/linux-sources
 	virtual/pkgconfig"
+
+S="${WORKDIR}/ipt-ratelimit-${COMMIT}"
 
 DOCS=( NEWS README )
 
