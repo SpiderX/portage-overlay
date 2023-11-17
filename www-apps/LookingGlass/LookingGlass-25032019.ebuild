@@ -6,17 +6,18 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..12} )
 WEBAPP_MANUAL_SLOT="yes"
-EGIT_REPO_URI="https://github.com/ramnode/${PN}.git"
 
-inherit git-r3 python-r1 webapp
+inherit python-r1 webapp
+
+COMMIT="a1db4790cb3bbd9ed95b3773208e50f8003488f8"
 
 DESCRIPTION="A Python-backed Looking Glass"
 HOMEPAGE="https://github.com/ramnode/LookingGlass"
-SRC_URI=""
+SRC_URI="https://github.com/ramnode/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="vhosts"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
