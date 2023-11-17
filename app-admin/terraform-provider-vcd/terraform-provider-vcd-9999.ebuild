@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ src_unpack() {
 src_compile() {
 	LDFLAGS="-X github.com/vmware/terraform-provider-vcd/v3/vcd.BuildVersion=${PV}"
 
-	go build -ldflags "${LDFLAGS}" || die "build failed"
+	ego build -ldflags "${LDFLAGS}"
 }
 
 src_install() {
