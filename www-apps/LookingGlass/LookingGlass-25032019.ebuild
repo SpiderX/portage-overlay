@@ -34,6 +34,8 @@ RDEPEND="${DEPEND}
 	net-analyzer/traceroute
 	net-dns/bind-tools"
 
+S="${WORKDIR}/${PN}-${COMMIT}"
+
 src_install() {
 	webapp_src_preinst
 
