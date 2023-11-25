@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/jckuester/${PN}.git"
 
@@ -25,11 +25,16 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
+	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
+	LDFLAGS="-w -X github.com/jckuester/awsls/internal.version=${PV}
+	-X github.com/jckuester/awsls/internal.commit=${COMMIT}
+	-X \"github.com/jckuester/awsls/internal.date=${DATE}\""
+
+	ego build -buildmode=pie -ldflags "${LDFLAGS}"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
