@@ -1,0 +1,13 @@
+--- ../CMakeLists.txt	2023-11-25 23:08:49.062715916 +0200
++++ ../CMakeLists.txt	2023-11-25 23:09:03.653380623 +0200
+@@ -448,10 +448,6 @@
+       RENAME ${APP_ID}.png)
+   endforeach()
+ 
+-  install(
+-    FILES ${PROJECT_SOURCE_DIR}/LICENSE
+-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/licenses/${PROJECT_NAME_LOWERCASE})
+-
+   # On Debian-based distros, compress the changelog file and install the copyright file.
+   # FIXME: Find out if it's possible to only do this when creating a deb package with CPack.
+   if(EXISTS /etc/debian_version)
