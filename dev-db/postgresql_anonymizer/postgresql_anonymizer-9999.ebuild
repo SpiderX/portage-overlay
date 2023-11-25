@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,13 +22,15 @@ DOCS=( {CHANGELOG,NEWS,README}.md )
 src_compile() {
 	default
 
-	ego build -o bin/pg_dump_anon ./pg_dump_anon/pg_dump_anon.go
+	pushd pg_dump_anon
+	ego build -o ../bin/pg_dump_anon main.go
+	popd
 }
 
 src_install() {
 	default
 
 	local PGSLOT="$(postgresql-config show)"
-	exeinto /usr/$(get_libdir)/postgresql-${PGSLOT}/bin/
+	exeinto /usr/"$(get_libdir)"/postgresql-"${PGSLOT}"/bin/
 	doexe bin/pg_dump_anon
 }
