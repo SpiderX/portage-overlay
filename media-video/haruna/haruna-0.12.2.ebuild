@@ -39,7 +39,7 @@ RDEPEND="dev-qt/qtconcurrent:5
 	media-video/mpv[libmpv]
 	net-misc/yt-dlp"
 DEPEND="${RDEPEND}"
-BDEPEND="kde-frameworks/extra-cmake-modules:5
+BDEPEND="kde-frameworks/extra-cmake-modules
 	sys-devel/gettext"
 
 S="${WORKDIR}/${MY_P}"
