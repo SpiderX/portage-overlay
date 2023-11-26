@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="kde-misc/latte-dock
 	kde-frameworks/kdeclarative:5
-	kde-frameworks/plasma:5"
+	kde-plasma/plasma-workspace:5"
 
 DOCS=( {CHANGELOG,README}.md )
 
