@@ -24,7 +24,7 @@ DEPEND="dev-qt/qtdbus:5
 	kde-frameworks/ki18n:5
 	kde-frameworks/kservice
 	kde-frameworks/kwindowsystem:5
-	kde-frameworks/plasma:5"
+	kde-plasma/plasma-workspace:5"
 
 DOCS=( {CHANGELOG,README}.md )
 
