@@ -22,7 +22,7 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules
 	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcoreaddons:5
 	kde-frameworks/ki18n:5
