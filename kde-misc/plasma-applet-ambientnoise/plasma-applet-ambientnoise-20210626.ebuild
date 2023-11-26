@@ -16,7 +16,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtquickcontrols2:5
-	kde-frameworks/plasma:5"
+	kde-plasma/plasma-workspace:5"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 

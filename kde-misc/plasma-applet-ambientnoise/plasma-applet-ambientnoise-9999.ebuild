@@ -18,4 +18,4 @@ SLOT="5"
 KEYWORDS=""
 
 RDEPEND="dev-qt/qtquickcontrols2:5
-	kde-frameworks/plasma:5"
+	kde-plasma/plasma-workspace:5"
