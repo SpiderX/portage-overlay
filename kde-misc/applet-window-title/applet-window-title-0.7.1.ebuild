@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="kde-frameworks/kdeclarative:5
 	kde-frameworks/kirigami:5
-	kde-frameworks/plasma:5"
+	kde-plasma/plasma-workspace:5"
 
 DOCS=( {CHANGELOG,README}.md )
 
