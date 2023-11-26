@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS=""
 
-RDEPEND="kde-frameworks/plasma:5"
+RDEPEND="kde-plasma/plasma-workspace:5"
 
 DOCS=( {CHANGELOG,README}.md )
 
