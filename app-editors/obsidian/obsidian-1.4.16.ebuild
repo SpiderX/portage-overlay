@@ -38,7 +38,7 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	x11-libs/libXrandr:0
 	x11-libs/libXrender:0
 	x11-libs/pango:0
-	appindicator? ( dev-libs/libappindicator:3 )"
+	appindicator? ( dev-libs/libayatana-appindicator )"
 
 QA_FLAGS_IGNORED="opt/Obsidian/resources/app.asar.unpacked/node_modules/vibrancy-win/binding.node
 	opt/Obsidian/resources/app.asar.unpacked/node_modules/btime/binding.node
@@ -73,6 +73,9 @@ src_install() {
 		/opt/Obsidian/resources/obsidian.asar \
 		/opt/Obsidian/resources/app.asar.unpacked/node_modules/{btime,get-fonts,vibrancy-win}/binding.node
 	dosym ../Obsidian/obsidian opt/bin/obsidian
+
+	use appindicator && dosym ../../usr/"$(get_libdir)"/libayatana-appindicator3.so \
+		/opt/Obsidian/libappindicator3.so
 
 	pax-mark -m "${ED}"/opt/Obsidian/obsidian
 }
