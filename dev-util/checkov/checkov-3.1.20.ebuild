@@ -4,18 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-EGIT_REPO_URI="https://github.com/bridgecrewio/${PN}.git"
 PYTHON_COMPAT=( python3_{10,11} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Static code analysis tool for infrastructure-as-code"
 HOMEPAGE="https://github.com/bridgecrewio/checkov"
-SRC_URI=""
+SRC_URI="https://github.com/bridgecrewio/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 RESTRICT="test"
 PROPERTIES="test_network"
 
