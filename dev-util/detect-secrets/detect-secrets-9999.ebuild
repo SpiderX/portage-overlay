@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 EGIT_REPO_URI="https://github.com/Yelp/${PN}.git"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit distutils-r1 git-r3 optfeature
 
@@ -15,14 +16,26 @@ SRC_URI=""
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-RESTRICT="test" # fails
 
-RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]
+RDEPEND="!dev-python/bc-detect-secrets[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/ahocorasick[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
+		dev-python/unidiff[${PYTHON_USEDEP}]
 		dev-util/gibberish-detector[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# assertion error
+	tests/main_test.py::TestScan::test_saves_to_baseline
+	tests/audit/audit_test.py::test_make_decisions
+	tests/audit/audit_test.py::test_start_halfway
+	tests/core/baseline_test.py::TestCreate::test_basic_usage
+	tests/core/scan_test.py::TestGetFilesToScan::test_handles_each_path_separately
+	tests/core/scan_test.py::TestGetFilesToScan::test_handles_multiple_directories
+)
 
 python_prepare_all() {
 	if use test ; then
