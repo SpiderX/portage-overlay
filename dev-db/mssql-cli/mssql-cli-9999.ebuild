@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -17,9 +17,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND=">=dev-python/applicationinsights-0.11.1[${PYTHON_USEDEP}]
+RDEPEND="dev-python/applicationinsights[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/cli_helpers[${PYTHON_USEDEP}]
+	dev-python/cli-helpers[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/humanize[${PYTHON_USEDEP}]
 	dev-python/prompt-toolkit[${PYTHON_USEDEP}]
