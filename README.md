@@ -413,7 +413,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[django-rest-swagger](https://marcgibbons.com/django-rest-swagger/) | Swagger UI for Django REST Framework
 *   dev-python/[django-tables2](https://github.com/jieter/django-tables2) | Django application for creating HTML tables
 *   dev-python/[dockerfile-parse](https://github.com/containerbuildsystem/dockerfile-parse) | Python library for parsing Dockerfile files
-*   dev-python/[dpath](https://github.com/akesterson/dpath-python) | A python module that will check for package updates
+*   dev-python/[dpath](https://github.com/dpath-maintainers/dpath-python) | A python module that will check for package updates
 *   dev-python/[drf-yasg](https://github.com/axnsan12/drf-yasg) | Yet another Swagger generator
 *   dev-python/[editdistance](https://github.com/roy-ht/editdistance) | Fast implementation of the edit distance(Levenshtein distance)
 *   dev-python/[editdistance-s](https://github.com/asottile/editdistance-s) | Fast implementation of edit (Levenshtein) distance

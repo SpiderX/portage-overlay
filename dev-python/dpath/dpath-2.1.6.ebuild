@@ -5,17 +5,15 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10,11} )
-EGIT_REPO_URI="https://github.com/dpath-maintainers/${PN}-python.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="A python module that will check for package updates"
 HOMEPAGE="https://github.com/dpath-maintainers/dpath-python"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="test? ( dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
