@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 720](https://img.shields.io/badge/ebuild-720-orange.svg)](https://img.shields.io/badge/ebuild-720-orange.svg)
+[![Number of ebuilds: 721](https://img.shields.io/badge/ebuild-721-orange.svg)](https://img.shields.io/badge/ebuild-721-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -355,6 +355,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[azure-core](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Core Library for Python
 *   dev-python/[azure-storage-blob](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Storage Blobs Library for Python
 *   dev-python/[bc-detect-secrets](https://github.com/bridgecrewio/detect-secrets) | A fork of enterprise friendly way of detecting and preventing secrets
+*   dev-python/[bc-jsonpath-ng](https://github.com/bridgecrewio/jsonpath-ng) | Python JSONPath Next-Generation
 *   dev-python/[bc-python-hcl2](https://github.com/bridgecrewio/python-hcl2) | A fork of parser for HCL2 written in Python
 *   dev-python/[billiard](https://github.com/celery/billiard) | Multiprocessing Pool Extensions
 *   dev-python/[binaryornot](https://github.com/audreyfeldroy/binaryornot) | Python package to guess whether a file is binary or text
