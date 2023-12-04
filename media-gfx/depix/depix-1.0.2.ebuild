@@ -3,24 +3,18 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10,11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1
-
-COMMIT="6dbbc29cd8e5ad7e52ddd18964e47b51ac2b54cb"
+inherit distutils-r1 pypi
 
 DESCRIPTION="A tool for recovering passwords from pixelized screenshots"
 HOMEPAGE="https://github.com/beurtschipper/Depix"
-SRC_URI="https://github.com/beurtschipper/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="CC-BY-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}/${PN^}-${COMMIT}"
 
 src_prepare() {
 	default

@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">beurtschipper/Depix</remote-id>
+		<remote-id type="pypi">depix</remote-id>
 	</upstream>
 </pkgmetadata>
