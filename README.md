@@ -588,7 +588,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[mapforce-advanced](https://www.altova.com/mapforce) | Advanced data mapping, conversion, and transformation tool
 *   dev-util/[ovftool](https://developer.vmware.com/tools) | VMware Open Virtualization Format tool
 *   dev-util/[packer](https://www.packer.io) | A tool to create identical machine images for multiple platforms
-*   dev-util/[policy_sentry](https://github.com/salesforce/policy_sentry) | AWS IAM Least Privilege Policy Generator
+*   dev-util/[policy-sentry](https://github.com/salesforce/policy_sentry) | AWS IAM Least Privilege Policy Generator
 *   dev-util/[postman](https://www.postman.com) | Build, test, and document your APIs faster
 *   dev-util/[rpmlint](https://github.com/rpm-software-management/rpmlint) | Tool for checking common errors in RPM packages
 *   dev-util/[shfmt](https://github.com/mvdan/sh) | A shell parser, formatter, and interpreter with bash support
