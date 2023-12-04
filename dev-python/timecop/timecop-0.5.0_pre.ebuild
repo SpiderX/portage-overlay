@@ -1,26 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
-EGIT_REPO_URI="https://github.com/bluekelp/pytimecop.git"
+PYTHON_COMPAT=( python3_{9..12} )
 
-inherit distutils-r1
-
-MY_PV="${PV/_pre/dev}"
-MY_P="${PN}-${MY_PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="A port of TimeCop Ruby Gem for Python"
 HOMEPAGE="https://github.com/bluekelp/pytimecop"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+SRC_URI="$(pypi_sdist_url "${PN}" "${PV/_pre/dev}" )"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN}-${PV/_pre/dev}"
 
 distutils_enable_tests unittest
 
