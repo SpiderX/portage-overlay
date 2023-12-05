@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Topic Modelling for Humans"
 HOMEPAGE="https://github.com/RaRe-Technologies/gensim"
-SRC_URI="https://github.com/RaRe-Technologies/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/RaRe-Technologies/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -21,7 +21,7 @@ PROPERTIES="test_network"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
-	dev-python/smart_open[${PYTHON_USEDEP}]"
+	dev-python/smart-open[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 	test? ( dev-python/annoy[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
