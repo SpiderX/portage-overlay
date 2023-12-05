@@ -11,7 +11,6 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Microsoft Azure Core Library for Python"
 HOMEPAGE="https://github.com/Azure/azure-sdk-for-python"
-SRC_URI="$(pypi_sdist_url --no-normalize "${PN}" "${PV}" .zip)"
 
 LICENSE="MIT"
 SLOT="0"
