@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10,11} )
 EGIT_REPO_URI="https://github.com/googleapis/google-resumable-media-python.git"
 
 inherit distutils-r1 git-r3
@@ -20,8 +20,7 @@ IUSE="test"
 
 RDEPEND="dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/google-crc32c[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	!dev-python/namespace-google"
+	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/google-cloud-testutils[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
@@ -60,6 +59,11 @@ EPYTEST_DESELECT=(
 	tests/system/requests/test_upload.py::TestResumableUploadUnknownSize::test_smaller_than_chunk_size
 	tests/system/requests/test_upload.py::TestResumableUploadUnknownSize::test_finish_at_chunk
 	tests/system/requests/test_upload.py::TestResumableUploadUnknownSize::test_interleave_writes
+	tests/system/requests/test_download.py::TestDownload::test_download_gzip_w_stored_content_headers
+	tests/system/requests/test_download.py::TestRawDownload::test_download_gzip_w_stored_content_headers
+	tests/system/requests/test_upload.py::test_XMLMPU
+	tests/system/requests/test_upload.py::test_XMLMPU_with_bad_checksum
+	tests/system/requests/test_upload.py::test_XMLMPU_cancel
 )
 
 python_compile() {

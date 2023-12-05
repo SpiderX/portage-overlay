@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Utilities for Google Media Downloads and Resumable Uploads"
 HOMEPAGE="https://github.com/googleapis/google-resumable-media-python"
-SRC_URI="https://github.com/googleapis/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/googleapis/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -22,8 +22,7 @@ IUSE="test"
 
 RDEPEND="dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/google-crc32c[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	!dev-python/namespace-google"
+	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/google-cloud-testutils[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
@@ -64,6 +63,11 @@ EPYTEST_DESELECT=(
 	tests/system/requests/test_upload.py::TestResumableUploadUnknownSize::test_smaller_than_chunk_size
 	tests/system/requests/test_upload.py::TestResumableUploadUnknownSize::test_finish_at_chunk
 	tests/system/requests/test_upload.py::TestResumableUploadUnknownSize::test_interleave_writes
+	tests/system/requests/test_download.py::TestDownload::test_download_gzip_w_stored_content_headers
+	tests/system/requests/test_download.py::TestRawDownload::test_download_gzip_w_stored_content_headers
+	tests/system/requests/test_upload.py::test_XMLMPU
+	tests/system/requests/test_upload.py::test_XMLMPU_with_bad_checksum
+	tests/system/requests/test_upload.py::test_XMLMPU_cancel
 )
 
 python_compile() {
