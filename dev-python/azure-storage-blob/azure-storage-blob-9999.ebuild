@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..12} )
 EGIT_REPO_URI="https://github.com/Azure/azure-sdk-for-python.git"
 
 inherit distutils-r1 git-r3
@@ -16,12 +16,11 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-RESTRICT="test" # not ready
+RESTRICT="test" # https://github.com/Azure/azure-sdk-for-python/issues/9616
 
 RDEPEND="dev-python/azure-core[${PYTHON_USEDEP}]
 	dev-python/msrest[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]"
-BDEPEND="app-arch/unzip"
 
 DOCS=( {CHANGELOG,README}.md )
 
