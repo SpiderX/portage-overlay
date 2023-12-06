@@ -1,28 +1,32 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Terminal spreadsheet multitool for discovering and arranging data"
 HOMEPAGE="https://github.com/saulpw/visidata"
-SRC_URI="https://github.com/saulpw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/saulpw/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test"
+PROPERTIES="test_network"
 
-RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
-	$(python_gen_impl_dep sqlite)"
-DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-vcs/git
-		dev-python/h5py[${PYTHON_USEDEP}]
+RDEPEND="dev-python/importlib-metadata[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/h5py[${PYTHON_USEDEP}]
+		dev-python/odfpy[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}] )"
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-vcs/git )"
 
 distutils_enable_tests pytest
 
