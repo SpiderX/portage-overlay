@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1 optfeature
@@ -52,7 +53,8 @@ python_prepare_all() {
 }
 
 python_compile() {
-	distutils-r1_python_compile "$(usex test '-i' '-v')"
+	distutils-r1_python_compile
+	use test && esetup.py build_ext --inplace
 }
 
 python_install_all() {
