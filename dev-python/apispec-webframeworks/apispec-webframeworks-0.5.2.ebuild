@@ -1,15 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Web framework plugins for apispec"
 HOMEPAGE="https://github.com/marshmallow-code/apispec-webframeworks"
-SRC_URI="https://github.com/marshmallow-code/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/marshmallow-code/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,7 +21,7 @@ RDEPEND="dev-python/apispec[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}] )"
+		dev-python/tornado[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
