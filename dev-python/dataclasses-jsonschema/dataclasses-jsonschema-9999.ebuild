@@ -1,9 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10,11} )
 EGIT_REPO_URI="https://github.com/s-knibbs/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -21,14 +22,15 @@ RDEPEND="dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/apispec[${PYTHON_USEDEP}]
 		dev-python/apispec-webframeworks[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=( # disable failing tests
+EPYTEST_DESELECT=(
+	# AssertionError
 	tests/test_core.py::test_embeddable_json_schema
 	tests/test_core.py::test_property_serialisation
 	tests/test_core.py::test_property_serialisation_all_properties
