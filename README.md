@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 726](https://img.shields.io/badge/ebuild-726-orange.svg)](https://img.shields.io/badge/ebuild-726-orange.svg)
+[![Number of ebuilds: 725](https://img.shields.io/badge/ebuild-725-orange.svg)](https://img.shields.io/badge/ebuild-725-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -557,7 +557,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[vcd-api-schemas-type](https://github.com/vmware/vcd-api-schemas) | VMware vCloud Director Python API Schemas Type
 *   dev-python/[versionfinder](https://github.com/jantman/versionfinder) | Find version of python package, installed via pip, setuptools, git
 *   dev-python/[vsphere-guest-run](https://github.com/vmware/vsphere-guest-run) | Python library for guest operations
-*   dev-python/[yattag](https://www.yattag.org) | Generate HTML or XML in a pythonic way
 *   dev-util/[act](https://github.com/nektos/act) | Run your GitHub Actions locally
 *   dev-util/[actionlint](https://github.com/rhysd/actionlint) | Static checker for GitHub Actions workflow files
 *   dev-util/[ansible-molecule](https://github.com/ansible/molecule) | Automated testing for Ansible roles
