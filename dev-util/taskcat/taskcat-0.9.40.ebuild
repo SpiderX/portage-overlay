@@ -1,9 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1
 
@@ -20,14 +21,17 @@ RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/botocore[${PYTHON_USEDEP}]
 	dev-python/cfn-lint[${PYTHON_USEDEP}]
 	dev-python/dataclasses-jsonschema[${PYTHON_USEDEP}]
-	dev-python/docker-py[${PYTHON_USEDEP}]
+	dev-python/docker[${PYTHON_USEDEP}]
 	dev-python/dulwich[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
+	dev-python/markupsafe[${PYTHON_USEDEP}]
+	dev-python/pathspec[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/reprint[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/yattag[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
