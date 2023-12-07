@@ -5,22 +5,23 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..12} )
-EGIT_REPO_URI="https://github.com/pykickstart/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python library for reading and writing kickstart files"
 HOMEPAGE="https://github.com/pykickstart/pykickstart"
-SRC_URI=""
+SRC_URI="https://github.com/pykickstart/${PN}/archive/r${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="vim-syntax"
 
 RDEPEND="dev-python/polib[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
+
+S="${WORKDIR}/${PN}-r${PV}"
 
 distutils_enable_tests unittest
 
