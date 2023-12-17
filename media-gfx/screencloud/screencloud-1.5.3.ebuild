@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="dev-libs/quazip
+DEPEND="dev-libs/quazip:0=
 	dev-python/pythonqt[${PYTHON_SINGLE_USEDEP},extensions]
 	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtconcurrent:5
@@ -35,7 +35,7 @@ PATCHES=( "${FILESDIR}/${P}"-python-link.patch
 src_prepare() {
 	# Corrent finding QuaZip
 	sed -i  -e '/FIND_LIBRARY/s/quazip-qt5/quazip1-qt5/' \
-		-e '/PATH_SUFFIXES/s| include/quazip$| include/QuaZip-Qt5-1.2 include/QuaZip-Qt5-1.3/quazip|' \
+		-e '/PATH_SUFFIXES/s| include/quazip$| include/QuaZip-Qt5-1.2 include/QuaZip-Qt5-1.4/quazip|' \
 		-e '/FIND_PACKAGE_HANDLE_STANDARD_ARGS/s|quazip|QuaZip|' \
 		cmake/modules/FindQuaZip.cmake || die "sed failed for FindQuaZip.cmake"
 
