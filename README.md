@@ -494,7 +494,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pygaljs](https://github.com/ionelmc/python-pygaljs) | Python package providing assets from js module for pygal
 *   dev-python/[pymysql](https://github.com/PyMySQL/PyMySQL) | Pure-Python MySQL Driver
 *   dev-python/[pyspnego](https://github.com/jborean93/pyspnego) | Python SPNEGO authentication library
-*   dev-python/[pystache](https://github.com/sarnold/pystache) | Mustache templating system for Python
+*   dev-python/[pystache](https://github.com/PennyDreadfulMTG/pystache) | Mustache templating system for Python
 *   dev-python/[pytest-benchmark](https://github.com/ionelmc/pytest-benchmark) | py.test fixture for benchmarking code
 *   dev-python/[pytest-celery](https://github.com/click-contrib/click-repl) | Subcommand REPL for click apps
 *   dev-python/[pytest-django](https://github.com/pytest-dev/pytest-django) | A Django plugin for py.test
