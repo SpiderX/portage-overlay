@@ -15,7 +15,7 @@
 	for Ruby, inspired by ctemplate and etc.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">sarnold/pystache</remote-id>
+		<remote-id type="github">PennyDreadfulMTG/pystache</remote-id>
 		<remote-id type="pypi">pystache</remote-id>
 	</upstream>
 </pkgmetadata>
