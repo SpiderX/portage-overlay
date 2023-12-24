@@ -3,15 +3,15 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
-
-inherit cmake git-r3
+inherit cmake
 
 DESCRIPTION="BC Unit Test Framework"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/bcunit"
+SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples ncurses test"
 RESTRICT="test" # fails: BCUnit_intl.h: No such file or directory
 
