@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.linphone.org/BC/public/belr"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="static-libs test tools"
+IUSE="test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="net-libs/bctoolbox[test?]"
@@ -22,16 +22,16 @@ BDEPEND="virtual/libudev
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_STATIC="$(usex static-libs)"
-		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_STRICT=NO
 		-DENABLE_TOOLS="$(usex tools)"
+		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure
 }
 
 src_test() {
-	"${S}"_build/tester/belr_tester --resource-dir "${S}"/tester/res \
+	"${S}"_build/tester/belr-tester --resource-dir "${S}"/tester/res \
 		|| die "tests failed"
 
 	cmake_src_test

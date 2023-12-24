@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="static-libs test tools"
+IUSE="test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="net-libs/bctoolbox[test?]"
@@ -20,26 +20,18 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/libudev
 	virtual/pkgconfig"
 
-src_prepare() {
-	# fix incorrect loading path
-	sed -i '/loader.addPath/s|"res"|std::string(bc_tester_get_resource_dir_prefix())|' \
-		tester/grammar-tester.cpp || die "sed failed"
-
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_STATIC="$(usex static-libs)"
-		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_STRICT=NO
 		-DENABLE_TOOLS="$(usex tools)"
+		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure
 }
 
 src_test() {
-	"${S}"_build/tester/belr_tester --resource-dir "${S}"/tester/res \
+	"${S}"_build/tester/belr-tester --resource-dir "${S}"/tester/res \
 		|| die "tests failed"
 
 	cmake_src_test
