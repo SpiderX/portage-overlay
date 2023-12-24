@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.linphone.org/BC/public/belcard"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="static-libs test tools"
+IUSE="test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/belr
@@ -22,7 +22,6 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_STATIC="$(usex static-libs)"
 		-DENABLE_TOOLS="$(usex tools)"
 		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
@@ -31,7 +30,7 @@ src_configure() {
 }
 
 src_test() {
-	"${S}"_build/tester/belcard_tester \
+	"${S}"_build/tester/belcard-tester \
 		--resource-dir "${S}"/tester/ \
 		|| die "tests failed"
 
