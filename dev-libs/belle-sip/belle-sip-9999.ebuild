@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,14 +9,12 @@ inherit cmake git-r3
 
 DESCRIPTION="SIP (RFC3261) implementation"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/belle-sip"
-SRC_URI=""
 
 LICENSE="GPL-3"
-KEYWORDS=""
 SLOT="0"
 IUSE="static-libs test zeroconf"
+RESTRICT="test"
 PROPERTIES="test_network"
-RESTRICT="!test? ( test )"
 
 RDEPEND="net-libs/bctoolbox[test?]
 	sys-libs/zlib:=
