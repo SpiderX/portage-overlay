@@ -17,6 +17,7 @@
 	to an application.
 	</longdescription>
 	<use>
+		<flag name="qrcode">Support for qrcodes using <pkg>media-libs/zxing-cpp</pkg></flag>
 		<flag name="tools">Build tools</flag>
 	</use>
 	<upstream>

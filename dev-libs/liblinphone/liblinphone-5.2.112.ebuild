@@ -1,22 +1,23 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake python-r1
 
 DESCRIPTION="SIP library supporting voice/video calls and text messaging"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/liblinphone"
-SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="debug doc ldap libnotify static-libs test tools"
+IUSE="debug doc ldap libnotify qrcode static-libs test tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-cpp/belr
 	dev-cpp/xsd
@@ -35,6 +36,7 @@ RDEPEND="dev-cpp/belr
 	virtual/libiconv
 	virtual/libintl
 	virtual/libudev
+	qrcode? ( media-libs/zxing-cpp:0= )
 	tools? ( ${PYTHON_DEPS}
 		dev-python/pystache[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}] )"
@@ -47,15 +49,19 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}"/"${P}"-jsoncpp-cmake.patch )
+PATCHES=( "${FILESDIR}"/"${PN}"-5.1.3-jsoncpp-cmake.patch )
 
 src_prepare() {
-	# QnD fix: incapability to detect jsoncpp
-	sed -i '/json\/json.h/s|<|<jsoncpp/|' src/FlexiAPIClient.{cc,hh} \
-		tester/{flexiapiclient-tester,remote-provisioning-tester}.cpp \
+	sed -i 's/Werror=return-type/Wno-error=return-type/' CMakeLists.txt \
+		|| die "sed failed for CMakeLists.txt"
+
+	# fix incapability to detect jsoncpp
+	sed -i '/json\/json.h/s|<|<jsoncpp/|' src/FlexiAPIClient.cc \
+		include/linphone/FlexiAPIClient.hh \
+		tester/{account_creator_flexiapi_tester,flexiapiclient-tester,remote-provisioning-tester}.cpp \
 		|| die "sed failed for FlexiAPIClient"
-	sed -i 's/jsoncpp_object/jsoncpp/' {src,tester}/CMakeLists.txt \
-		|| die "sed failed for src/CMakeLists.txt and tester/CMakeLists.txt"
+	sed -i '/target_link_libraries/s/jsoncpp_lib/jsoncpp/' src/CMakeLists.txt \
+		|| die "sed failed for src/CMakeLists.txt"
 
 	cmake_src_prepare
 }
@@ -69,9 +75,12 @@ src_configure() {
 		-DENABLE_LDAP="$(usex ldap)"
 		-DENABLE_LIME=NO
 		-DENABLE_NOTIFY="$(usex libnotify)"
+		-DENABLE_QRCODE="$(usex qrcode)"
 		-DENABLE_STATIC="$(usex static-libs)"
+		-DENABLE_STRICT=NO
 		-DENABLE_TOOLS="$(usex tools)"
 		-DENABLE_UNIT_TESTS="$(usex test)"
+		-Wno-dev
 	)
 
 	cmake_src_configure
