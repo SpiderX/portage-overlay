@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,12 +9,10 @@ inherit cmake git-r3
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/ortp"
-SRC_URI=""
 
 LICENSE="GPL-3"
-KEYWORDS=""
 SLOT="0"
-IUSE="debug doc ntp-timestamp minimal static-libs test"
+IUSE="debug doc ntp-timestamp minimal test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="net-libs/bctoolbox[test?]"
@@ -23,15 +21,9 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {
-	# Fix path for datadir
-	sed -i  -e "/ORTP_DOC_VERSION/s/MINOR}/MINOR}.\${ORTP_MICRO_VERSION}/" \
-		-e "/ORTP_DOC_VERSION/s/ORTP_VERSION_MAJOR/ORTP_MAJOR_VERSION/" \
-		-e "/ORTP_DOC_VERSION/s/ORTP_VERSION_MINOR/ORTP_MINOR_VERSION/" \
-		CMakeLists.txt || die "sed failed for CMakeLists.txt"
-
-	# Fix tests
-	sed -i '/EXECUTABLES/s/ fectest//' src/tests/CMakeLists.txt \
-		|| die "sed failed for tests/CMakeLists.txt"
+	# fix version
+	sed -i '/project(Ortp/s|0|1|' CMakeLists.txt \
+		|| die "sed failed for CMakeLists.txt"
 
 	cmake_src_prepare
 }
@@ -42,9 +34,15 @@ src_configure() {
 		-DENABLE_DOC="$(usex doc)"
 		-DENABLE_NTP_TIMESTAMP="$(usex ntp-timestamp)"
 		-DENABLE_PERF="$(usex minimal)"
-		-DENABLE_STATIC="$(usex static-libs)"
 		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	"${S}"_build/tester/ortp-tester || die "tests failed"
+
+	cmake_src_test
 }
