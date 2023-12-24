@@ -9,10 +9,8 @@ inherit cmake git-r3
 
 DESCRIPTION="Database access library for C++"
 HOMEPAGE="https://github.com/SOCI/soci"
-SRC_URI=""
 
 LICENSE="BSD-1"
-KEYWORDS=""
 SLOT="0"
 IUSE="firebird mysql odbc oracle postgres sqlite static-libs test"
 RESTRICT="!test? ( test )"
