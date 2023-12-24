@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,10 +9,8 @@ inherit cmake git-r3
 
 DESCRIPTION="C++ library implementing Open Whisper System Signal protocol"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/lime"
-SRC_URI=""
 
 LICENSE="GPL-3"
-KEYWORDS=""
 SLOT="0"
 IUSE="doc static-libs test"
 RESTRICT="test" # fail: segfault
