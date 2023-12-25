@@ -1,11 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+CMAKE_IN_SOURCE_BUILD="1"
+
 inherit cmake edo
 
-COMMIT="d62ee21e6627888e84466b5a5ed15775582ac67b"
+COMMIT="04821d1e7d60845525e8db55c7bcd41ef5be9406"
 # Version bump :
 # The stable libyuv version follows the chromium browser:
 # https://chromereleases.googleblog.com/search/label/Desktop%20Update
@@ -28,27 +30,32 @@ RESTRICT="!test? ( test )"
 RDEPEND="media-libs/libjpeg-turbo:0="
 BDEPEND="test? ( dev-cpp/gtest )"
 
-S="${WORKDIR}"
+S="${WORKDIR}/"
 
 src_prepare() {
-	# do not install static, fix libdir
-	sed -i  -e "/DESTINATION/s| lib| $(get_libdir)|" \
-		-e "/TARGETS \${ly_lib_static}/d" CMakeLists.txt \
-		|| die "sed failed for CMakeLists.txt"
+	# cmake_minimum_required() should be called prior to
+	# this top-level project(), do not install static, fix libdir,
+	# install yuvconstants
+	sed -i  -e '/CMAKE_MINIMUM_REQUIRED( VERSION 2.8.12 )/d' \
+		-e '/PROJECT (/iCMAKE_MINIMUM_REQUIRED( VERSION 2.8.12 )' \
+		-e "/DESTINATION/s| lib| $(get_libdir)|" \
+		-e "/TARGETS \${ly_lib_static}/d" \
+		-e "/INSTALL ( PROGRAMS/aINSTALL ( PROGRAMS \${CMAKE_BINARY_DIR}/yuvconstants                  DESTINATION bin )" \
+		CMakeLists.txt || die "sed failed for CMakeLists.txt"
 
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DTEST="$(usex test)"
+		-DUNIT_TEST="$(usex test)"
 	)
 
 	cmake_src_configure
 }
 
 src_test() {
-	edo "${S}"_build/libyuv_unittest
+	edo ./libyuv_unittest
 }
 
 src_install() {
@@ -59,6 +66,6 @@ src_install() {
 				-e "/libdir/s|%%LIBDIR%%|"$(get_libdir)"|" \
 				"${FILESDIR}"/libyuv.pc \
 				|| die "sed failed for libyuv.pc.in" )
-	insinto /usr/"$(get_libdir)"/cmake
+	insinto /usr/"$(get_libdir)"/cmake/libyuv
 	doins "${FILESDIR}"/libyuv-config.cmake
 }
