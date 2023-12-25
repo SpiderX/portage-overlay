@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,16 +9,17 @@ inherit cmake git-r3
 
 DESCRIPTION="Matroska media container support"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/bcmatroska2"
-SRC_URI=""
 
 LICENSE="GPL-3"
-KEYWORDS=""
 SLOT="0"
-IUSE="static-libs"
+IUSE="debug"
+
+RDEPEND="net-libs/bctoolbox"
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_STATIC="$(usex static-libs)"
+		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -z muldefs"
+		-DCONFIG_DEBUG_LEAKS="$(usex debug)"
 	)
 
 	cmake_src_configure
