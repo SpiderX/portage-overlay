@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,12 +7,12 @@ inherit cmake
 
 DESCRIPTION="Mediastreaming library for telephony application"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/mediastreamer2"
-SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="alsa bv16 debug doc ffmpeg g726 g729 gsm jpeg matroska opengl opus pcap portaudio +pulseaudio qrcode speex srtp static-libs resample test theora tools +v4l vpx zrtp"
+IUSE="alsa av1 bv16 debug doc ffmpeg g726 g729 gsm jpeg matroska opengl opus pcap portaudio +pulseaudio qrcode speex srtp resample test theora tools +v4l vpx yuv zrtp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="zrtp? ( srtp )
 	resample? ( speex )
@@ -20,8 +20,10 @@ REQUIRED_USE="zrtp? ( srtp )
 	|| ( ffmpeg opengl v4l )"
 
 RDEPEND="net-libs/bctoolbox[test?]
-	>=net-libs/ortp-5.1.3
+	net-libs/ortp
 	alsa? ( media-libs/alsa-lib )
+	av1? ( || ( media-libs/dav1d
+		media-libs/libaom ) )
 	bv16? ( media-libs/bv16-floatingpoint )
 	ffmpeg? ( media-video/ffmpeg:0= )
 	g726? ( media-libs/spandsp )
@@ -35,7 +37,7 @@ RDEPEND="net-libs/bctoolbox[test?]
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-sound/pulseaudio-daemon )
 	qrcode? ( media-libs/zxing-cpp )
 	speex? ( media-libs/speex
 		media-libs/speexdsp )
@@ -43,6 +45,7 @@ RDEPEND="net-libs/bctoolbox[test?]
 	theora? ( media-libs/libtheora )
 	v4l? ( media-libs/libv4l )
 	vpx? ( media-libs/libvpx:= )
+	yuv? ( media-libs/libyuv )
 	zrtp? ( net-libs/bzrtp[sqlite] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
@@ -51,6 +54,7 @@ BDEPEND="virtual/pkgconfig
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_ALSA="$(usex alsa)"
+		-DENABLE_AV1="$(usex av1)"
 		-DENABLE_BV16="$(usex bv16)"
 		-DENABLE_DEBUG_LOGS="$(usex debug)"
 		-DENABLE_DOC="$(usex doc)"
@@ -62,6 +66,7 @@ src_configure() {
 		-DENABLE_GLX="$(usex opengl)"
 		-DENABLE_GSM="$(usex gsm)"
 		-DENABLE_JPEG="$(usex jpeg)"
+		-DENABLE_LIBYUV="$(usex yuv)"
 		-DENABLE_MKV="$(usex matroska)"
 		-DENABLE_OPUS="$(usex opus)"
 		-DENABLE_PCAP="$(usex pcap)"
@@ -72,7 +77,7 @@ src_configure() {
 		-DENABLE_SPEEX_CODEC="$(usex speex)"
 		-DENABLE_SPEEX_DSP="$(usex speex)"
 		-DENABLE_SRTP="$(usex srtp)"
-		-DENABLE_STATIC="$(usex static-libs)"
+		-DENABLE_STRICT=NO
 		-DENABLE_THEORA="$(usex theora)"
 		-DENABLE_TOOLS="$(usex tools)"
 		-DENABLE_UNIT_TESTS="$(usex test)"

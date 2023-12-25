@@ -17,6 +17,7 @@
 	and rendering.
 	</longdescription>
 	<use>
+		<flag name="av1">Support for AV1 via <pkg>media-libs/dav1d</pkg></flag>
 		<flag name="bv16">Support for BroadVoice 16 kbs codec via <pkg>media-libs/bv16-floatingpoint</pkg></flag>
 		<flag name="g726">Support for SpanDSP codec via <pkg>media-libs/spandsp</pkg></flag>
 		<flag name="g729">Support for ITU G729 Annex A/B speech codec via <pkg>media-libs/bcg729</pkg></flag>
@@ -26,6 +27,7 @@
 		<flag name="resample">Enable resampling capability</flag>
 		<flag name="tools">Build tools</flag>
 		<flag name="vpx">Support for VPX codec via <pkg>media-libs/libvpx</pkg></flag>
+		<flag name="yuv">Support for YUV scaling via <pkg>media-libs/libyuv</pkg></flag>
 		<flag name="zrtp">Support for Media Path Key Agreement for Unicast Secure RTP via <pkg>net-libs/bzrtp</pkg></flag>
 	</use>
 	<upstream>
