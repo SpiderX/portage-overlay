@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="static-libs test zeroconf"
+IUSE="test tunnel zeroconf"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -25,8 +25,9 @@ BDEPEND="virtual/pkgconfig"
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_MDNS="$(usex zeroconf)"
-		-DENABLE_STATIC="$(usex static-libs)"
-		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_STRICT=NO
+		-DENABLE_TUNNEL="$(usex tunnel)"
+		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure
@@ -34,7 +35,7 @@ src_configure() {
 
 src_test() {
 	# no cmake_src_test since it supports in source build only
-	"${S}"_build/tester/belle_sip_tester \
+	"${S}"_build/tester/belle-sip-tester \
 		--resource-dir "${S}"/tester/ \
 		|| die "tests failed"
 }
