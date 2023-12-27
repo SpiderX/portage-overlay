@@ -23,14 +23,12 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	dev-util/lttng-ust:0
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
-	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	net-misc/curl:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
+	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
-	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	x11-libs/libdrm:0[${MULTILIB_USEDEP}]
 	x11-libs/libX11:0[${MULTILIB_USEDEP}]
@@ -61,29 +59,29 @@ QA_PREBUILT="opt/azuredatastudio/resources/app/node_modules.asar.unpacked/spdlog
 	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/native-watchdog/build/Release/watchdog.node
 	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/obj.target/foreground_love.node
 	opt/azuredatastudio/resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/MicrosoftSqlToolsServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libclrgc.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libSystem.Net.Security.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libcoreclrtraceptprovider.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libSystem.Security.Cryptography.Native.OpenSsl.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/MicrosoftSqlToolsMigration
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/MicrosoftSqlToolsCredentials
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/MicrosoftKustoServiceLayer
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libcoreclr.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/System.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/SqlToolsResourceProviderService
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libmscordaccore.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libmscordbi.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libhostpolicy.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/createdump
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libSystem.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libhostfxr.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/System.Net.Http.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/System.Security.Cryptography.Native.OpenSsl.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libSystem.IO.Compression.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libSystem.Globalization.Native.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/libclrjit.so
-	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.6.1.4/System.IO.Compression.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/MicrosoftSqlToolsServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libclrgc.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libSystem.Net.Security.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libcoreclrtraceptprovider.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libSystem.Security.Cryptography.Native.OpenSsl.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/MicrosoftSqlToolsMigration
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/MicrosoftSqlToolsCredentials
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/MicrosoftKustoServiceLayer
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libcoreclr.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/System.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/SqlToolsResourceProviderService
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libmscordaccore.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libmscordbi.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libhostpolicy.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/createdump
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libSystem.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libhostfxr.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/System.Net.Http.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/System.Security.Cryptography.Native.OpenSsl.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libSystem.IO.Compression.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libSystem.Globalization.Native.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/libclrjit.so
+	opt/azuredatastudio/resources/app/extensions/mssql/sqltoolsservice/Linux/4.10.1.3/System.IO.Compression.Native.so
 	opt/azuredatastudio/chrome_crashpad_handler
 	opt/azuredatastudio/chrome-sandbox
 	opt/azuredatastudio/libffmpeg.so
@@ -115,6 +113,4 @@ src_install() {
 	doins "${FILESDIR}"/azuredatastudio.appdata.xml
 
 	pax-mark -m "${ED}"/opt/azuredatastudio/azuredatastudio
-
-	dosym ./liblttng-ust.so.1.0.0 /usr/"$(get_libdir)"/liblttng-ust.so.0
 }
