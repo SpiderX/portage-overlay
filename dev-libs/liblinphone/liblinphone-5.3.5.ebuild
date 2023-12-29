@@ -14,13 +14,14 @@ SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="debug doc ldap libnotify qrcode static-libs test tools"
+IUSE="debug doc ldap lime qrcode test tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="dev-cpp/belr
 	dev-cpp/xsd
+	dev-cpp/jsoncpp
 	dev-db/sqlite:3
 	dev-db/soci
 	dev-libs/belcard
@@ -49,34 +50,24 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}"/"${PN}"-5.1.3-jsoncpp-cmake.patch )
-
 src_prepare() {
-	sed -i 's/Werror=return-type/Wno-error=return-type/' CMakeLists.txt \
-		|| die "sed failed for CMakeLists.txt"
-
 	# fix incapability to detect jsoncpp
-	sed -i '/json\/json.h/s|<|<jsoncpp/|' src/FlexiAPIClient.cc \
-		include/linphone/FlexiAPIClient.hh \
-		tester/{account_creator_flexiapi_tester,flexiapiclient-tester,remote-provisioning-tester}.cpp \
-		|| die "sed failed for FlexiAPIClient"
-	sed -i '/target_link_libraries/s/jsoncpp_lib/jsoncpp/' src/CMakeLists.txt \
-		|| die "sed failed for src/CMakeLists.txt"
+	sed -i '/json\/json.h/s|<|<jsoncpp/|' include/linphone/flexi-api-client.h \
+		src/account_creator/flexi-api-client.cpp \
+		tester/{account_creator_flexiapi_,flexiapiclient-,remote-provisioning-}tester.cpp \
+		|| die "sed failed for json"
 
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_ASSISTANT=YES
+		-DENABLE_CONSOLE_UI=YES
 		-DENABLE_DEBUG_LOGS="$(usex debug)"
 		-DENABLE_DOC="$(usex doc)"
-		-DENABLE_FLEXIAPI=YES
 		-DENABLE_LDAP="$(usex ldap)"
-		-DENABLE_LIME=NO
-		-DENABLE_NOTIFY="$(usex libnotify)"
+		-DENABLE_LIME_X3DH="$(usex lime)"
 		-DENABLE_QRCODE="$(usex qrcode)"
-		-DENABLE_STATIC="$(usex static-libs)"
 		-DENABLE_STRICT=NO
 		-DENABLE_TOOLS="$(usex tools)"
 		-DENABLE_UNIT_TESTS="$(usex test)"
@@ -87,7 +78,7 @@ src_configure() {
 }
 
 src_test() {
-	"${S}"_build/tester/liblinphone_tester \
+	"${S}"_build/tester/liblinphone-tester \
 		--resource-dir "${S}"/tester/ \
 		|| die "tests failed"
 
