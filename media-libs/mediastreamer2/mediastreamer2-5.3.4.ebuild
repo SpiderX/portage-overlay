@@ -51,6 +51,16 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+PATCHES=( "${FILESDIR}"/"${P}"-pkgconfig.patch )
+
+src_prepare() {
+	# fix path for nowebcamCIF.jpg
+	sed -i '/DESTINATION ${CMAKE_INSTALL_DATADIR}/s|}|}/Mediastreamer2|' \
+		src/CMakeLists.txt || die "sed for CMakeLists.txt failed"
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_ALSA="$(usex alsa)"
@@ -87,4 +97,12 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	# path is needed for Mediastreamer2Config.cmake
+	# portage doesn't install empty dirs
+	keepdir /usr/$(get_libdir)/mediastreamer/plugins
 }

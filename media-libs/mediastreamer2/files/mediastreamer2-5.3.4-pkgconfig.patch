@@ -1,0 +1,45 @@
+--- ../CMakeLists.txt	2023-12-29 14:57:23.147610838 +0200
++++ ../CMakeLists.txt	2023-12-29 14:58:27.416271714 +0200
+@@ -697,8 +697,12 @@
+ 	set(PACKAGE_DATA_DIR "${CMAKE_INSTALL_DATADIR}")
+ endif()
+ 
++set(libdir ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
++set(includedir ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR})
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer-config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer-config.h)
+ set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/mediastreamer-config.h PROPERTIES GENERATED ON)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc)
++set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc PROPERTIES GENERATED ON)
+ add_definitions("-DHAVE_CONFIG_H")
+ 
+ if(ENABLE_DOC)
+@@ -795,6 +799,11 @@
+ 	install(FILES "cmake/FindZXing.cmake" DESTINATION ${CMAKE_MODULES_INSTALL_DIR})
+ endif()
+ 
++install(FILES
++       "${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc"
++       DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
++)
++
+ install(EXPORT ${PROJECT_NAME}Targets
+ 	FILE "${PROJECT_NAME}Targets.cmake"
+ 	DESTINATION ${CMAKE_MODULES_INSTALL_DIR}
+--- ../mediastreamer.pc.in	2023-12-29 14:58:37.813236316 +0200
++++ ../mediastreamer.pc.in	2023-12-29 14:59:28.592129537 +0200
+@@ -1,11 +1,11 @@
+ # This is a comment
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=@CMAKE_INSTALL_PREFIX@
+ includedir=@includedir@
+ 
+-Name: mediastreamer 
++Name: mediastreamer
+ Description: A mediastreaming library for telephony applications
+ Requires: ortp bctoolbox
+ Version: @MEDIASTREAMER_VERSION@
+-Libs: -L@libdir@ -lmediastreamer_base -lmediastreamer_voip
++Libs: -L@CMAKE_INSTALL_FULL_LIBDIR@ -lmediastreamer_base -lmediastreamer_voip
+ Cflags: -I@includedir@ @MS_PUBLIC_CFLAGS@
