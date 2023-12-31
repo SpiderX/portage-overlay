@@ -16,7 +16,8 @@ IUSE="test tunnel zeroconf"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-RDEPEND="net-libs/bctoolbox[test?]
+RDEPEND="dev-cpp/belr
+	net-libs/bctoolbox[test?]
 	sys-libs/zlib:=
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )"
 DEPEND="${RDEPEND}"
