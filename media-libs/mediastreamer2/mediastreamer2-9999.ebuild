@@ -12,12 +12,12 @@ HOMEPAGE="https://gitlab.linphone.org/BC/public/mediastreamer2"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="alsa av1 bv16 debug doc ffmpeg g726 g729 gsm jpeg matroska opengl opus pcap portaudio +pulseaudio qrcode speex srtp resample test theora tools +v4l vpx yuv zrtp"
+IUSE="alsa av1 bv16 debug doc g726 g729 gsm jpeg matroska opengl opus pcap portaudio +pulseaudio qrcode speex srtp resample test theora tools +v4l vpx yuv zrtp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="zrtp? ( srtp )
 	resample? ( speex )
 	|| ( alsa portaudio pulseaudio )
-	|| ( ffmpeg opengl v4l )"
+	|| ( opengl v4l )"
 
 RDEPEND="net-libs/bctoolbox[test?]
 	net-libs/ortp
@@ -25,7 +25,6 @@ RDEPEND="net-libs/bctoolbox[test?]
 	av1? ( || ( media-libs/dav1d
 		media-libs/libaom ) )
 	bv16? ( media-libs/bv16-floatingpoint )
-	ffmpeg? ( media-video/ffmpeg:0= )
 	g726? ( media-libs/spandsp )
 	g729? ( media-libs/bcg729 )
 	gsm? ( media-sound/gsm )
@@ -68,7 +67,7 @@ src_configure() {
 		-DENABLE_BV16="$(usex bv16)"
 		-DENABLE_DEBUG_LOGS="$(usex debug)"
 		-DENABLE_DOC="$(usex doc)"
-		-DENABLE_FFMPEG="$(usex ffmpeg)"
+		-DENABLE_FFMPEG=NO
 		-DENABLE_G726="$(usex g726)"
 		-DENABLE_G729="$(usex g729)"
 		-DENABLE_G729B_CNG="$(usex g729)"
