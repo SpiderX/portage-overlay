@@ -36,6 +36,7 @@ RDEPEND="dev-cpp/belr
 	virtual/libiconv
 	virtual/libintl
 	virtual/libudev
+	ldap? ( net-nds/openldap:0= )
 	qrcode? ( media-libs/zxing-cpp:0= )
 	tools? ( ${PYTHON_DEPS}
 		dev-python/pystache[${PYTHON_USEDEP}]
@@ -82,4 +83,12 @@ src_test() {
 		|| die "tests failed"
 
 	cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+
+	# path is needed for LibLinphoneConfig.cmake
+	# portage doesn't install empty dirs
+	keepdir /usr/$(get_libdir)/liblinphone/plugins
 }
