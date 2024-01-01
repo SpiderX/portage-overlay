@@ -56,6 +56,9 @@ src_prepare() {
 		src/account_creator/flexi-api-client.cpp \
 		tester/{account_creator_flexiapi_,flexiapiclient-,remote-provisioning-}tester.cpp \
 		|| die "sed failed for json"
+	# rename target, name is used further in linking with linphone
+	sed -i '/set(JsonCPP_TARGET/s|_lib||' cmake/FindJsonCPP.cmake \
+		|| die "sed failed for FindJsonCPP.cmake"
 
 	cmake_src_prepare
 }
