@@ -3,11 +3,11 @@
 
 EAPI=8
 
-inherit desktop pax-utils unpacker
+inherit desktop pax-utils rpm
 
 DESCRIPTION="Modern, native, and friendly GUI tool for relational databases"
 HOMEPAGE="https://tableplus.com"
-SRC_URI="https://deb.tableplus.com/debian/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
+SRC_URI="https://yum.tableplus.com/rpm/x86_64/${PN}-$(ver_rs 3 '-').x86_64.rpm"
 
 LICENSE="TablePlus"
 SLOT="0"
