@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="net-libs/bctoolbox[test?]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 src_prepare() {
 	# fix version

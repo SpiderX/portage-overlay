@@ -23,7 +23,7 @@ RDEPEND="dev-libs/xerces-c
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-util/build2-0.16
 	dev-util/cli
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 src_configure() {
 	local myconfigargs=(

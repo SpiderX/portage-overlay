@@ -22,7 +22,7 @@ RDEPEND="dev-libs/libxml2:2
 DEPEND="${RDEPEND}
 	virtual/libiconv"
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 DOCS=( AUTHORS {README,RELEASE-NOTES}.md )
 

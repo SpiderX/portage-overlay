@@ -48,7 +48,7 @@ RDEPEND="net-libs/bctoolbox[test?]
 	zrtp? ( net-libs/bzrtp[sqlite] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 PATCHES=( "${FILESDIR}"/"${PN}"-5.3.4-pkgconfig.patch )
 

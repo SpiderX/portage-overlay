@@ -16,7 +16,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 BDEPEND=">=dev-util/build2-0.16
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 src_configure() {
 	local myconfigargs=(

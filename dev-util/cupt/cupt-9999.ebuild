@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	sys-libs/readline:0="
 BDEPEND="dev-util/debhelper
 	sys-devel/gettext
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 src_prepare() {
 	# Don't link against Debian libcurl

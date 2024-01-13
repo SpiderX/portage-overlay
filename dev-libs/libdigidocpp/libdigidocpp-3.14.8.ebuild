@@ -31,7 +31,7 @@ BDEPEND="dev-cpp/open-eid-cmake
 	dev-cpp/xsd
 	virtual/pkgconfig
 	|| ( app-editors/vim-core dev-util/xxdi )
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	test? ( dev-libs/boost:= )"
 
 DOCS=( AUTHORS {README,RELEASE-NOTES}.md )

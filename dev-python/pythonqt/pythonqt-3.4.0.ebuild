@@ -35,7 +35,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtxmlpatterns:5 )"
 DEPEND="${RDEPEND}
 	dev-qt/qtxml:5
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 BDEPEND="app-arch/unzip
 	virtual/pkgconfig
 	test? ( dev-qt/qttest:5 )"

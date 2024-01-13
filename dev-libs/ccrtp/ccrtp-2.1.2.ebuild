@@ -19,7 +19,7 @@ RDEPEND="dev-cpp/commoncpp2:0=
 	dev-libs/ucommon:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 src_configure() {
 	append-cxxflags -std=c++11
