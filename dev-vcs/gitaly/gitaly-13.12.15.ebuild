@@ -33,7 +33,7 @@ DEPEND="dev-libs/gmp:=
 	dev-libs/libxslt
 	sys-libs/libxcrypt:="
 BDEPEND="dev-ruby/bundler:2
-	dev-util/cmake
+	dev-build/cmake
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
