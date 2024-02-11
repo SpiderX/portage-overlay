@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 725](https://img.shields.io/badge/ebuild-725-orange.svg)](https://img.shields.io/badge/ebuild-725-orange.svg)
+[![Number of ebuilds: 726](https://img.shields.io/badge/ebuild-726-orange.svg)](https://img.shields.io/badge/ebuild-726-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -81,6 +81,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[semaphore-bin](https://github.com/ansible-semaphore/semaphore) | Modern UI for Ansible
 *   app-admin/[sinker](https://github.com/plexsystems/sinker) | Sync images from one container registry to another
 *   app-admin/[sops](https://github.com/mozilla/sops) | Simple and flexible tool for managing secrets
+*   app-admin/[spotinfo](https://github.com/alexei-led/spotinfo) | Exploring AWS EC2 Spot inventory
 *   app-admin/[terraform-provider-proxmox](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) | Terraform Provider for Proxmox
 *   app-admin/[terraform-provider-vcd](https://registry.terraform.io/providers/vmware/vcd/latest/docs) | Terraform VMware vCloud Director provider
 *   app-admin/[topngx](https://github.com/gsquire/topngx) | A top for NGINX
