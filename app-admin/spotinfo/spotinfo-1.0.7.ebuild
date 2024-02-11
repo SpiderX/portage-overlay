@@ -65,7 +65,7 @@ RESTRICT="test" #fail on pricingLazyLoad
 
 src_unpack() {
 	# extract only archives
-	unpack ${P}.gh.tar.gz
+	unpack "${P}".gh.tar.gz
 	go-module_src_unpack
 }
 
