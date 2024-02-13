@@ -14,6 +14,9 @@
 	instances in a terminal and use the spot data it provides for
 	scripting and automation.
 	</longdescription>
+	<use>
+		<flag name="embed-data-files">Embed data files in binary</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">alexei-led/spotinfo</remote-id>
 	</upstream>
