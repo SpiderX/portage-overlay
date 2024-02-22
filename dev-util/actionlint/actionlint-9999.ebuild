@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,16 +9,14 @@ inherit git-r3 go-module
 
 DESCRIPTION="Static checker for GitHub Actions workflow files"
 HOMEPAGE="https://github.com/rhysd/actionlint"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-BDEPEND="doc? ( app-text/ronn )"
+BDEPEND="doc? ( app-text/ronn-ng )"
 
 DOCS=( {CHANGELOG,README}.md docs/{checks,config,usage}.md )
 
