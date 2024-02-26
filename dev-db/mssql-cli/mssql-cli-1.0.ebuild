@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RDEPEND="dev-python/applicationinsights[${PYTHON_USEDEP}]
 	dev-python/prompt-toolkit[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]
-	dev-util/lttng-ust:0=
+	dev-util/lttng-ust:=
 	virtual/krb5"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"

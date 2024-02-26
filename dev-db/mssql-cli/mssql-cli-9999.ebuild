@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,11 +11,9 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="CLI for SQL Server Database"
 HOMEPAGE="https://github.com/dbcli/mssql-cli"
-SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="dev-python/applicationinsights[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
@@ -25,7 +23,7 @@ RDEPEND="dev-python/applicationinsights[${PYTHON_USEDEP}]
 	dev-python/prompt-toolkit[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]
-	dev-util/lttng-ust:0=
+	dev-util/lttng-ust:=
 	virtual/krb5"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
