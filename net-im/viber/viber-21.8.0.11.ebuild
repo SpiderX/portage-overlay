@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,6 @@ RDEPEND="app-arch/brotli:0
 	dev-libs/libxslt:0
 	dev-libs/nspr
 	dev-libs/nss
-	dev-libs/openssl:0
 	dev-libs/wayland
 	media-libs/alsa-lib
 	media-libs/fontconfig:1.0
@@ -85,6 +84,7 @@ S="${WORKDIR}"
 
 QA_PREBUILT="opt/viber/Viber
 	opt/viber/lib/libpcre2-16.so.0
+	opt/viber/lib/libxcb-cursor.so.0
 	opt/viber/lib/libdouble-conversion.so.3
 	opt/viber/lib/libicudata.so.66
 	opt/viber/lib/libwebp.so.6
