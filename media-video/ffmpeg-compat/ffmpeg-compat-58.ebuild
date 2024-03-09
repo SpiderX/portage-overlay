@@ -142,7 +142,8 @@ CPU_FEATURES_MAP=(
 IUSE="${IUSE} ${CPU_FEATURES_MAP[@]%:*}"
 CPU_REQUIRED_USE="${ARM_CPU_REQUIRED_USE} ${PPC_CPU_REQUIRED_USE} ${X86_CPU_REQUIRED_USE}"
 
-RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
+RDEPEND="!media-video/ffmpeg:0/56.58.58
+	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	amr? ( >=media-libs/opencore-amr-0.1.3-r1[${MULTILIB_USEDEP}] )
 	bluray? ( >=media-libs/libbluray-0.3.0-r1:=[${MULTILIB_USEDEP}] )
 	bs2b? ( >=media-libs/libbs2b-3.1.0-r1[${MULTILIB_USEDEP}] )
