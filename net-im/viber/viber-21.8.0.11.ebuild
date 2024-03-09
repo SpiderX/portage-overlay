@@ -45,6 +45,7 @@ RDEPEND="app-arch/brotli:0
 	media-libs/libwebp:0
 	media-libs/opus
 	media-libs/tiff-compat:4
+	media-video/ffmpeg-compat
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/mtdev
