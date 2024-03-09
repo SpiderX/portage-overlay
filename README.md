@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 730](https://img.shields.io/badge/ebuild-730-orange.svg)](https://img.shields.io/badge/ebuild-730-orange.svg)
+[![Number of ebuilds: 731](https://img.shields.io/badge/ebuild-731-orange.svg)](https://img.shields.io/badge/ebuild-731-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -669,6 +669,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-sound/[spotify-qt](https://github.com/kraxarn/spotify-qt) | Lightweight Spotify client using Qt
 *   media-radio/[krudio](https://github.com/alexyalinc/krudio) | Radio tray for linux on QT
 *   media-radio/[liquidsoap](https://github.com/savonet/liquidsoap) | A swiss-army knife for multimedia streaming, used for netradios
+*   media-video/[ffmpeg-compat](https://ffmpeg.org) | Compatibility package for ffmpeg to provide versions 58 of libraries
 *   media-video/[haruna](https://invent.kde.org/multimedia/haruna) | Video player built with Qt/QML on top of libmpv
 *   media-video/[qwinff](https://github.com/qwinff/qwinff) | Qt GUI Frontend for FFmpeg
 *   media-video/[rtsp-simple-server](https://github.com/aler9/rtsp-simple-server) | RTSP server and RTSP proxy to read, publish and proxy media stream
