@@ -409,7 +409,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[django-jsonfield](https://github.com/dmkoch/django-jsonfield) | A Django field to store validated JSON in your model
 *   dev-python/[django-jinja](https://github.com/niwinz/django-jinja) | Jinja2 templating language integrated in Django
 *   dev-python/[django-js-asset](https://github.com/matthiask/django-js-asset) | A script tag with additional attributes for django.forms.Media
-*   dev-python/[django-nose](https://github.com/jazzband/django-nose) | Django test runner using nose
 *   dev-python/[django-oauth-toolkit](https://github.com/jazzband/django-oauth-toolkit) | OAuth2 Provider for Django
 *   dev-python/[django-pipeline](https://github.com/jazzband/django-pipeline) | An asset packaging library for Django
 *   dev-python/[django-pglocks](https://github.com/Xof/django-pglocks) | PostgreSQL locking context managers and functions for Django
