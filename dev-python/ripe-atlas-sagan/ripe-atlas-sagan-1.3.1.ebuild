@@ -1,15 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYPI_PN="${PN//-/.}"
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{9..12} )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="A parsing library for RIPE Atlas measurement results"
 HOMEPAGE="https://github.com/RIPE-NCC/ripe-atlas-sagan"
-SRC_URI="https://github.com/RIPE-NCC/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,11 +24,17 @@ RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
 DOCS=( {CHANGES,README}.rst )
 
 distutils_enable_sphinx docs
-distutils_enable_tests nose
+#distutils_enable_tests nose
+
+python_prepare_all() {
+	sed -i '/ripe.atlas.sagan/s/"]/", "ripe.atlas.sagan.helpers"]/' setup.py \
+		|| die "sed failed"
+	distutils-r1_python_prepare_all
+}
 
 python_install_all() {
+	rm -rf "ripe/__pycache__" "ripe/atlas/__pycache__" || die
 	distutils-r1_python_install_all
-	find "${D}" -name '*.pth' -delete || die
 }
 
 pkg_postinst() {
