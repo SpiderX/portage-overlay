@@ -5,14 +5,14 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
-EGIT_REPO_URI="https://github.com/zulip/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="An implementation of a LDAPObject to fake a ldap server"
 HOMEPAGE="https://github.com/zulip/fakeldap"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-python/python-ldap[${PYTHON_USEDEP}]"

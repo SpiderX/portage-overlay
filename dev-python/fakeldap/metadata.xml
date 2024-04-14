@@ -15,7 +15,7 @@
 	that can be queried or set fixed return values to ldap queries.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">zulip/fakeldap</remote-id>
+		<remote-id type="github">zulip/fakeldap</remote-id>
 		<remote-id type="pypi">fakeldap</remote-id>
 	</upstream>
 </pkgmetadata>
