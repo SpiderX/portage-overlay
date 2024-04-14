@@ -4,16 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_PN="${PN//-/.}"
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{10,11} )
-EGIT_REPO_URI="https://github.com/RIPE-NCC/${PN}.git"
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="The official command-line client for RIPE Atlas"
 HOMEPAGE="https://github.com/RIPE-NCC/ripe-atlas-tools"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -34,6 +36,8 @@ distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
+	# no docs
+	tests/test_docs.py::DocTest::test_text_documentation
 	# format is deprecated
 	tests/test_docs.py::DocTest::test_html_documentation
 	# assertion error
