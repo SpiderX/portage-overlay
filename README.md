@@ -681,7 +681,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/nuttcp.svg?header=)](https://repology.org/project/nuttcp/versions) net-analyzer/[nuttcp](https://www.nuttcp.net) | Network performance measurement tool
 *   net-analyzer/[passivedns](https://github.com/gamelinux/passivedns) | Network sniffer that logs all DNS server replies
 *   net-analyzer/[pkt-netflow](https://github.com/aabc/pkt-netflow) | NetFlow v5, v9, IPFIX flow data exporter
-*   net-analyzer/[python-cymruwhois](https://github.com/JustinAzoff/python-cymruwhois) | Python client for the whois.cymru.com service
+*   net-analyzer/[cymruwhois](https://github.com/JustinAzoff/python-cymruwhois) | Python client for the whois.cymru.com service
 *   net-analyzer/[ripe-atlas-probe](https://github.com/RIPE-NCC/ripe-atlas-software-probe) | RIPE Atlas Software Probe
 *   net-analyzer/[smtpping](https://github.com/halon/smtpping) | Simple, portable tool for measuring SMTP server delay
 *   net-analyzer/[sx](https://github.com/v-byte-cpu/sx) | Fast, modern, easy-to-use network scanner
