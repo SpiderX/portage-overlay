@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_EXT=1
+PYTHON_COMPAT=( python3_{8..11} )
 EGIT_REPO_URI="https://github.com/microsoft/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -18,7 +19,6 @@ SRC_URI="https://github.com/microsoft/sqltoolsservice/releases/download/v3.0.0-r
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="app-crypt/mit-krb5
 	dev-python/future[${PYTHON_USEDEP}]
