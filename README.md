@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 731](https://img.shields.io/badge/ebuild-731-orange.svg)](https://img.shields.io/badge/ebuild-731-orange.svg)
+[![Number of ebuilds: 732](https://img.shields.io/badge/ebuild-732-orange.svg)](https://img.shields.io/badge/ebuild-732-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -167,6 +167,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[dbgate-bin](https://github.com/dbgate/dbgate) | Database manager for MySQL, PostgreSQL, SQL Server and MongoDB
 *   dev-db/[go-sqlcmd](https://github.com/microsoft/go-sqlcmd) | CLI for SQL Server and Azure SQL
 *   dev-db/[litestream](https://github.com/benbjohnson/litestream) | Streaming replication for SQLite
+*   dev-db/[mongodb-compass](https://github.com/mongodb-js/compass) | The MongoDB GUI
 *   dev-db/[msodbcsql](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server?view=sql-server-ver15) | Microsoft ODBC Driver for SQL Server
 *   dev-db/[mssql-cli](https://github.com/dbcli/mssql-cli) | CLI for SQL Server Database
 *   dev-db/[mssql-scripter](https://github.com/microsoft/mssql-scripter) | CLI for scripting SQL Server Databases
