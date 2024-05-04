@@ -1,20 +1,19 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 EGIT_REPO_URI="https://github.com/bulletmark/${PN}.git"
 
 inherit git-r3 python-single-r1 xdg
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
 HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
-SRC_URI=""
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+IUSE="experimental"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
@@ -25,12 +24,10 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="dev-libs/libinput
 	dev-util/desktop-file-utils"
 
-PATCHES=(
-	"${FILESDIR}/${PN}"-2.73-python-39-tests.patch
-)
-
 src_prepare() {
 	default
+
+	use experimental && eapply "${FILESDIR}/${P}"-zombie.patch
 
 	# Fix docdir installation path
 	sed -i "/^DOCDIR/s@\$NAME@${PF}@" libinput-gestures-setup \
