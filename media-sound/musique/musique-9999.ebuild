@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,18 +9,15 @@ inherit git-r3 qmake-utils xdg
 
 DESCRIPTION="A finely crafted music player"
 HOMEPAGE="https://github.com/flaviotordini/musique"
-SRC_URI=""
 
 LICENSE="GPL-3 MIT"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
@@ -32,14 +29,14 @@ BDEPEND="dev-qt/linguist-tools:5"
 src_prepare() {
 	default
 
-	# use system qtsingleapplication
-	sed -i  -e '/CONFIG += /s/rtti_off/rtti_off qtsingleapplication/' \
-		-e '/qtsingleapplication.pri/d' \
-		musique.pro || die "sed failed for musique.pro"
+	# don't use lrelease from path
+	# https://github.com/flaviotordini/musique/commit/05bf89e143728a0e1c1be496d761d80d4a8469f8
+	sed -i '/else:QMAKE_LRELEASE/s|= |= $$[QT_INSTALL_BINS]/|' locale/locale.pri \
+		|| die "sed failed for locale.pri"
 }
 
 src_configure() {
-	eqmake5 musique.pro PREFIX="/usr"
+	eqmake6 musique.pro PREFIX="/usr"
 }
 
 src_install() {

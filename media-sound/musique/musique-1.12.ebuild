@@ -1,16 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit qmake-utils xdg
 
-HTTP_COMMIT="68b9cf0f16e605ad74110a2cdec9594091800c56"
-IDLE_COMMIT="6aa092da64a011e445bf31cf31c0cd8dda4c64ff"
-JS_COMMIT="deed5303b0b6a587c62be73a9bc198058964111c"
-MEDIA_COMMIT="5443f81c52ac008a6de6593124d03ee41f772633"
-SCACHE_COMMIT="eec981a4285c7b371aa9dc7f0074f03794e86a26"
-UPDATER_COMMIT="1a37eedf539179a9a61304a1c9aea22fbdbf6a38"
+HTTP_COMMIT="e7689c1"
+IDLE_COMMIT="8a8bbb7"
+JS_COMMIT="0d7ea97"
+MEDIA_COMMIT="b0310b8"
+QWIDGET_COMMIT="197e874"
+SCACHE_COMMIT="eec981a"
+SINGLE_COMMIT="494772e"
+UPDATER_COMMIT="081df10"
 
 DESCRIPTION="A finely crafted music player"
 HOMEPAGE="https://github.com/flaviotordini/musique"
@@ -19,7 +21,9 @@ SRC_URI="https://github.com/flaviotordini/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 	https://api.github.com/repos/flaviotordini/idle/tarball/${IDLE_COMMIT} -> ${P}-idle.tar.gz
 	https://api.github.com/repos/flaviotordini/js/tarball/${JS_COMMIT} -> ${P}-js.tar.gz
 	https://api.github.com/repos/flaviotordini/media/tarball/${MEDIA_COMMIT} -> ${P}-media.tar.gz
+	https://api.github.com/repos/flaviotordini/qt-reusable-widgets/tarball/${QWIDGET_COMMIT} -> ${P}-qwidget.tar.gz
 	https://api.github.com/repos/flaviotordini/sharedcache/tarball/${SCACHE_COMMIT} -> ${P}-sharedcache.tar.gz
+	https://api.github.com/repos/itay-grudev/SingleApplication/tarball/${SINGLE_COMMIT} -> ${P}-single.tar.gz
 	https://api.github.com/repos/flaviotordini/updater/tarball/${UPDATER_COMMIT} -> ${P}-updater.tar.gz"
 
 LICENSE="GPL-3 MIT"
@@ -31,7 +35,6 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
@@ -43,7 +46,7 @@ BDEPEND="dev-qt/linguist-tools:5"
 src_prepare() {
 	default
 
-	rmdir lib/{http,idle,js,media,sharedcache,updater} \
+	rmdir lib/{http,idle,js,media,qt-reusable-widgets,singleapplication,sharedcache,updater} \
 		|| die "rmdir failed for lib"
 	ln -s ../../flaviotordini-http-"${HTTP_COMMIT}" lib/http \
 		|| die "ln failed for http"
@@ -53,19 +56,23 @@ src_prepare() {
 		|| die "ln failed for js"
 	ln -s ../../flaviotordini-media-"${MEDIA_COMMIT}" lib/media \
 		|| die "ln failed for media"
+	ln -s ../../flaviotordini-qt-reusable-widgets-"${QWIDGET_COMMIT}" lib/qt-reusable-widgets \
+		|| die "ln failed for qwidgets"
 	ln -s ../../flaviotordini-sharedcache-"${SCACHE_COMMIT}" lib/sharedcache \
 		|| die "ln failed for sharedcache"
+	ln -s ../../itay-grudev-SingleApplication-"${SINGLE_COMMIT}" lib/singleapplication \
+		|| die "ln failed for single"
 	ln -s ../../flaviotordini-updater-"${UPDATER_COMMIT}" lib/updater \
 		|| die "ln failed for updater"
 
-	# use system qtsingleapplication
-	sed -i  -e '/CONFIG += /s/rtti_off/rtti_off qtsingleapplication/' \
-		-e '/qtsingleapplication.pri/d' \
-		musique.pro || die "sed failed for musique.pro"
+	# don't use lrelease from path
+	# https://github.com/flaviotordini/musique/commit/05bf89e143728a0e1c1be496d761d80d4a8469f8
+	sed -i '/else:QMAKE_LRELEASE/s|= |= $$[QT_INSTALL_BINS]/|' locale/locale.pri \
+		|| die "sed failed for locale.pri"
 }
 
 src_configure() {
-	eqmake5 musique.pro PREFIX="/usr"
+	eqmake6 musique.pro PREFIX="/usr"
 }
 
 src_install() {
