@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,6 +13,7 @@ DESCRIPTION="Chat and network platform"
 HOMEPAGE="https://gitter.im"
 SRC_URI="amd64? ( https://update.gitter.im/linux64/${MY_PN}_${PV}_amd64.deb )
 	x86? ( https://update.gitter.im/linux32/${MY_PN}_${PV}_i386.deb )"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -21,12 +22,12 @@ IUSE="abi_x86_32 +abi_x86_64"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
-	dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
+	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
@@ -46,8 +47,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
-
-S="${WORKDIR}"
 
 QA_EXECSTACK="opt/gitter/pnacl/pnacl_public_x86_64_libcrt_platform_a*"
 QA_PREBUILT="opt/gitter/pnacl/pnacl_public_x86_64_pnacl_llc_nexe
