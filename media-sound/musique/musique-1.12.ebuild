@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils xdg
+inherit qmake-utils optfeature xdg
 
 HTTP_COMMIT="e7689c1"
 IDLE_COMMIT="8a8bbb7"
@@ -78,4 +78,9 @@ src_configure() {
 src_install() {
 	einstalldocs
 	emake INSTALL_ROOT="${D}" install
+}
+
+pkg_postinst() {
+	optfeature "automatic music tagging via finetune" media-sound/finetune
+	xdg_pkg_postinst
 }

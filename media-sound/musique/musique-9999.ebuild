@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://gitlab.com/flaviotordini/${PN}.git"
 
-inherit git-r3 qmake-utils xdg
+inherit git-r3 qmake-utils optfeature xdg
 
 DESCRIPTION="A finely crafted music player"
 HOMEPAGE="https://github.com/flaviotordini/musique"
@@ -42,4 +42,9 @@ src_configure() {
 src_install() {
 	einstalldocs
 	emake INSTALL_ROOT="${D}" install
+}
+
+pkg_postinst() {
+	optfeature "automatic music tagging via finetune" media-sound/finetune
+	xdg_pkg_postinst
 }
