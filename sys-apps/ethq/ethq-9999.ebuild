@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/isc-projects/${PN}.git"
 
-inherit git-r3
+inherit git-r3 flag-o-matic
 
 DESCRIPTION="Ethernet NIC Queue stats viewer"
 HOMEPAGE="https://github.com/isc-projects/ethq"
@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="sys-libs/ncurses:0"
+DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -30,6 +30,13 @@ src_prepare() {
 		sed -i '/TARGETS/s/ethq_test//' Makefile \
 			|| die "sed failed for USE flag test"
 	fi
+}
+
+src_configure() {
+	# https://github.com/isc-projects/ethq/issues/30 (bug #879893)
+	filter-lto
+
+	default
 }
 
 src_test() {

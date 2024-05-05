@@ -3,7 +3,7 @@
 
 EAPI=8
 
-#inherit toolchain-funcs
+inherit flag-o-matic
 
 MY_PV=${PV//./_}
 MY_P=${PN}-${MY_PV}
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="sys-libs/ncurses:0"
+DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -34,6 +34,13 @@ src_prepare() {
 		sed -i '/TARGETS/s/ethq_test//' Makefile \
 			|| die "sed failed for USE flag test"
 	fi
+}
+
+src_configure() {
+	# https://github.com/isc-projects/ethq/issues/30 (bug #879893)
+	filter-lto
+
+	default
 }
 
 src_test() {
