@@ -1,13 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit desktop qmake-utils virtualx
 
-DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
-HOMEPAGE="https://qtpass.org"
-SRC_URI="https://github.com/IJHack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Multi-platform GUI for pass, the standard unix password manager"
+HOMEPAGE="https://qtpass.org https://github.com/IJHack/qtpass"
+SRC_URI="https://github.com/IJHack/qtpass/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/QtPass-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,10 +26,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qtsvg:5
 	test? ( dev-qt/qttest:5 )"
 BDEPEND="dev-qt/linguist-tools:5"
-
-RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/QtPass-${PV}"
 
 DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
 
@@ -50,10 +47,11 @@ src_test() {
 }
 
 src_install() {
-	default
+	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 
 	insinto /usr/share/qtpass/translations
-	doins localization/*.qm
+	doins src/.qm/*.qm
 
 	doman qtpass.1
 	domenu qtpass.desktop
