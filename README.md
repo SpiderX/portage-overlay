@@ -68,7 +68,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[glaball](https://github.com/flant/glaball) | Gitlab bulk administration tool
 *   app-admin/[grex](https://github.com/pemistahl/grex) | A CLI tool for generating regular expressions
 *   app-admin/[ibmcloud-bin](https://github.com/IBM-Cloud/ibm-cloud-cli-release) | IBM Cloud Developer Tools
-*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/qtpass.svg?header=)](https://repology.org/project/qtpass/versions) app-admin/[qtpass](https://qtpass.org) | multi-platform GUI for pass, the standard unix password manager
+*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/qtpass.svg?header=)](https://repology.org/project/qtpass/versions) app-admin/[qtpass](https://qtpass.org) | Multi-platform GUI for pass, the standard unix password manager
 *   app-admin/[jl](https://github.com/koenbollen/jl) | A tool for working with structured JSON logging
 *   app-admin/[mkeosimg](https://github.com/sowbug/mkeosimg) | Ubiquiti EdgeOS image from a system tarball
 *   app-admin/[netutils-linux](https://github.com/strizhechenko/netutils-linux) | Suite of network stack performance tunning utilities
@@ -804,4 +804,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
 *   x11-themes/[Vimix-cursors](https://github.com/vinceliuice/Vimix-cursors) | Vimix-cursors for linux desktop
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
-* app-admin/[qtpass](https://qtpass.org) | Multi-platform GUI for pass, the standard unix password manager
