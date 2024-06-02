@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 732](https://img.shields.io/badge/ebuild-732-orange.svg)](https://img.shields.io/badge/ebuild-732-orange.svg)
+[![Number of ebuilds: 733](https://img.shields.io/badge/ebuild-733-orange.svg)](https://img.shields.io/badge/ebuild-733-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -484,6 +484,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[oyaml](https://github.com/wimglenn/oyaml) | Ordered YAML
 *   dev-python/[packageurl](https://github.com/package-url/packageurl-python) | Python implementation of the package url spec
 *   dev-python/[parameterized](https://github.com/wolever/parameterized) | Parameterized testing with any Python test framework
+*   dev-python/[parsel](https://github.com/scrapy/parsel) | Utility to extract data from XML/HTML documents using XPath or CSS selectors
 *   dev-python/[pathspec](https://github.com/cpburnz/python-path-specification) | A utility library for pattern matching of file paths
 *   dev-python/[polemarch-ansible](https://gitlab.com/vstconsulting/polemarch-ansible) | Wrapper for Ansible CLI
 *   dev-python/[policyuniverse](https://github.com/Netflix-Skunkworks/policyuniverse) | Parse and Process AWS IAM Policies, Statements, ARNs
