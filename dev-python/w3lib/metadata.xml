@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A Python package with web-related functions, like:
+	remove comments, or tags, extract base url, translate entites
+	from HTML snippets, etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">scrapy/w3lib</remote-id>
+		<remote-id type="pypi">w3lib</remote-id>
+	</upstream>
+</pkgmetadata>
