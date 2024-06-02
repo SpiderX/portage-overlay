@@ -1,16 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10,11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="CLI tool to manage Serverless applications using AWS SAM"
 HOMEPAGE="https://github.com/aws/aws-sam-cli"
-SRC_URI="https://github.com/aws/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -35,7 +34,6 @@ RDEPEND="dev-python/aws-lambda-builders[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/tomlkit[${PYTHON_USEDEP}]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]
 	dev-util/cookiecutter[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -46,6 +44,9 @@ BDEPEND="test? ( dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
+
+QA_PREBUILT="usr/lib/python3.12/site-packages/samcli/local/rapid/aws-lambda-rie-arm64
+	/usr/lib/python3.12/site-packages/samcli/local/rapid/aws-lambda-rie-x86_64"
 
 distutils_enable_tests pytest
 
