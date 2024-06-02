@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 731](https://img.shields.io/badge/ebuild-731-orange.svg)](https://img.shields.io/badge/ebuild-731-orange.svg)
+[![Number of ebuilds: 732](https://img.shields.io/badge/ebuild-732-orange.svg)](https://img.shields.io/badge/ebuild-732-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -451,6 +451,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[grpc-google-iam-v1](https://github.com/googleapis/python-grpc-google-iam-v1) | Google GRPC IAM API client library
 *   dev-python/[grpcio-status](https://grpc.io) | Status proto mapping for gRPC
 *   dev-python/[gssapi](https://github.com/pythongssapi/python-gssapi) | A Python interface to RFC 2743/2744
+*   dev-python/[hijridate](https://github.com/mhalshehri/hijri-converter) | Hijri-Gregorian date converter
 *   dev-python/[hijri-converter](https://github.com/mhalshehri/hijri-converter) | Hijri-Gregorian date converter
 *   dev-python/[identify](https://github.com/pre-commit/identify) | File identification library for Python
 *   dev-python/[igraph](https://github.com/igraph/python-igraph) | Python interface for igraph
