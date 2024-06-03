@@ -42,6 +42,9 @@ Afterwards, simply run `emerge --sync`, and Portage should seamlessly make all o
 
 This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds for projects:
 
+<details>
+    <summary>Expand</summary>
+
 *   app-admin/[awsdtc](https://github.com/c1982/awsdtc) | AWS Data Transfer Cost Explorer
 *   app-admin/[aws-sam-cli](https://github.com/aws/aws-sam-cli) | CLI tool to manage Serverless applications using AWS SAM
 *   app-admin/[awslimitchecker](https://github.com/jantman/awslimitchecker) | Utility to check AWS resource limits and usage
@@ -807,3 +810,5 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
 *   x11-themes/[Vimix-cursors](https://github.com/vinceliuice/Vimix-cursors) | Vimix-cursors for linux desktop
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
+
+</details>
