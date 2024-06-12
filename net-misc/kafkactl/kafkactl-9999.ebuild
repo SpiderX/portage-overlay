@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,13 +9,11 @@ inherit bash-completion-r1 edo git-r3 go-module
 
 DESCRIPTION="A command-line interface for interaction with Apache Kafka"
 HOMEPAGE="https://github.com/deviceinsight/kafkactl"
-SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 
-DOCS=( {CHANGELOG,README}.md )
+DOCS=( CHANGELOG.md README.adoc )
 
 src_unpack() {
 	git-r3_src_unpack
