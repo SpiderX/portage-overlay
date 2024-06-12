@@ -22,9 +22,9 @@ src_unpack() {
 
 src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
-	LDFLAGS="-w -X github.com/deviceinsight/kafkactl/cmd.Version=${PV}
-	-X github.com/deviceinsight/kafkactl/cmd.GitCommit=${COMMIT}
-	-X \"github.com/deviceinsight/kafkactl/cmd.BuildTime=${DATE}\""
+	LDFLAGS="-w -X github.com/deviceinsight/kafkactl/v5/cmd.Version=${PV}
+	-X github.com/deviceinsight/kafkactl/v5/cmd.GitCommit=${COMMIT}
+	-X \"github.com/deviceinsight/kafkactl/v5/cmd.BuildTime=${DATE}\""
 
 	ego build -buildmode=pie \
 		-ldflags "${LDFLAGS}" -trimpath -o kafkactl
