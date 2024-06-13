@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 734](https://img.shields.io/badge/ebuild-734-orange.svg)](https://img.shields.io/badge/ebuild-734-orange.svg)
+[![Number of ebuilds: 734](https://img.shields.io/badge/ebuild-733-orange.svg)](https://img.shields.io/badge/ebuild-733-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -696,7 +696,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-analyzer/[wtraf-bin](https://sourceforge.net/projects/wtraf/) | SNMP traffic monitor in realtime
 *   net-dns/[ddns-route53](https://github.com/crazy-max/ddns-route53) | Dynamic DNS for Amazon Route 53 on a time-based schedule
 *   net-dialup/[tio](https://github.com/tio/tio) | A simple serial device I/O tool
-*   net-dns/[r53ddns](https://github.com/coord-e/r53ddns) | Updates A record in Route53 with current global IP
 *   net-dns/[flares](https://github.com/lfaoro/flares) | CloudFlare DNS backup tool
 *   net-dns/[inadyn-mt](https://sourceforge.net/projects/inadyn-mt/) | A simple dynamic DNS client
 *   net-dns/[massdns](https://github.com/blechschmidt/massdns) | A high-performance DNS stub resolver

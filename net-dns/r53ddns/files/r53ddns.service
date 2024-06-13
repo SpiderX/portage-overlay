@@ -1,9 +1,0 @@
-[Unit]
-Description=Update DDNS
-
-[Service]
-Type=Simple
-ExecStart=/usr/bin/r53ddns -l Info -k <key id> -s <key secret> -z <zone id> -n <record name>
-
-[Install]
-WantedBy=multi-user.target

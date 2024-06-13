@@ -1,5 +1,0 @@
-# Config file for /etc/init.d/r53ddns
-
-# Various options.
-# run `r53ddns --help` for valid cmdline options
-OPTS="-l Info -k 'key id' -s 'key secret' -z 'zone id' -n 'record name'"
