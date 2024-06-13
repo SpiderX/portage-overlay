@@ -5,7 +5,6 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/SoptikHa2/${PN}.git"
 CRATES="anyhow@1.0.65
 	atty@0.2.14
 	autocfg@1.1.0
@@ -16,6 +15,7 @@ CRATES="anyhow@1.0.65
 	clap_lex@0.2.4
 	crossterm@0.25.0
 	crossterm_winapi@0.9.0
+	desed@1.2.1
 	futures-core@0.3.24
 	hashbrown@0.12.3
 	hermit-abi@0.1.19
@@ -59,7 +59,7 @@ CRATES="anyhow@1.0.65
 	windows_x86_64_gnu@0.36.1
 	windows_x86_64_msvc@0.36.1"
 
-inherit cargo git-r3
+inherit cargo
 
 DESCRIPTION="Debugger for Sed"
 HOMEPAGE="https://github.com/SoptikHa2/desed"
@@ -67,13 +67,9 @@ SRC_URI="${CARGO_CRATE_URIS}"
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions GPL-3+ ISC MIT Unlicense ZLIB"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 QA_FLAGS_IGNORED="usr/bin/desed"
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_live_src_unpack
-}
 
 src_install() {
 	einstalldocs
