@@ -5,7 +5,6 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/Canop/${PN}.git"
 CRATES="adler@1.0.2
 	ahash@0.4.7
 	aho-corasick@1.0.4
@@ -165,24 +164,19 @@ CRATES="adler@1.0.2
 	windows_x86_64_msvc@0.48.5
 	xterm-query@0.2.0"
 
-inherit cargo git-r3
+inherit cargo
 
 DESCRIPTION="A nginx log explorer"
 HOMEPAGE="https://github.com/Canop/rhit"
 SRC_URI="${CARGO_CRATE_URIS}"
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
-
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 DOCS=( {CHANGELOG,README}.md )
 
 QA_PREBUILT="usr/bin/rhit"
-
-src_unpack() {
-	git-r3_src_unpack
-	cargo_src_unpack
-}
 
 src_install() {
 	einstalldocs
