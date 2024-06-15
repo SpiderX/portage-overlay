@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,9 @@ inherit cargo git-r3
 
 DESCRIPTION="Fast alternative to cut and awk"
 HOMEPAGE="https://github.com/theryangeary/choose"
-SRC_URI=""
 
-LICENSE="Apache-2.0 GPL-3+ MIT"
+LICENSE="Apache-2.0 GPL-3+ MIT Unlicense"
 SLOT="0"
-KEYWORDS=""
 
 DOCS=( readme.md )
 
@@ -26,4 +24,9 @@ src_unpack() {
 
 src_test() {
 	emake test
+}
+
+src_install() {
+	einstalldocs
+	cargo_src_install
 }
