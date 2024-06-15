@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 731](https://img.shields.io/badge/ebuild-731-orange.svg)](https://img.shields.io/badge/ebuild-731-orange.svg)
+[![Number of ebuilds: 732](https://img.shields.io/badge/ebuild-732-orange.svg)](https://img.shields.io/badge/ebuild-732-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -369,6 +369,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[binaryornot](https://github.com/audreyfeldroy/binaryornot) | Python package to guess whether a file is binary or text
 *   dev-python/[boto3-stubs](https://github.com/youtype/mypy_boto3_builder) | Type annotations for boto3
 *   dev-python/[botocore-stubs](https://github.com/youtype/botocore-stubs) | Type annotations and code completion for botocore
+*   dev-python/[cached-property](https://github.com/pydanny/cached-property) | A cached-property for decorating methods in classes
 *   dev-python/[celery](https://github.com/celery/celery) | Asynchronous task job queue based on distributed message passing
 *   dev-python/[cerberus](https://github.com/pyeve/cerberus) | Lightweight and extensible data validation library for Python
 *   dev-python/[chevron](https://github.com/noahmorrison/chevron) | Mustache templating language renderer
