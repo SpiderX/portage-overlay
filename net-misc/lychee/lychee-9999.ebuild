@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,12 +9,10 @@ inherit cargo git-r3
 
 DESCRIPTION="Fast, async, stream-based link checker"
 HOMEPAGE="https://github.com/lycheeverse/lychee"
-SRC_URI=""
 
-LICENSE="AGPL-3 Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 ZLIB"
+LICENSE="0BSD AGPL-3 Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS=""
-RESTRICT="test"
+RESTRICT="mirror test"
 PROPERTIES="test_network"
 
 DOCS=( {docs/TROUBLESHOOTING,README}.md lychee.example.toml )
