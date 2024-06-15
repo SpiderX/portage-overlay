@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,10 @@ inherit cargo git-r3
 
 DESCRIPTION="Command-line JSON viewer"
 HOMEPAGE="https://github.com/PaulJuliusMartinez/jless"
-SRC_URI=""
 
-LICENSE="Apache-2.0 MIT"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
-KEYWORDS=""
+RESTRICT="mirror"
 
 DOCS=( {CHANGELOG,README,SEARCH}.md )
 
@@ -22,4 +21,9 @@ QA_FLAGS_IGNORED="usr/bin/jless"
 src_unpack() {
 	git-r3_src_unpack
 	cargo_live_src_unpack
+}
+
+src_install() {
+	einstalldocs
+	cargo_src_install
 }
