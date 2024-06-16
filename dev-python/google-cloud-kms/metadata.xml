@@ -15,7 +15,7 @@
 	and applications.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/python-kms</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">google-cloud-kms</remote-id>
 	</upstream>
 </pkgmetadata>
