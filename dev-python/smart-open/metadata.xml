@@ -17,7 +17,7 @@
 	formats.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">RaRe-Technologies/smart_open</remote-id>
+		<remote-id type="github">piskvorky/smart_open</remote-id>
 		<remote-id type="pypi">smart-open</remote-id>
 	</upstream>
 </pkgmetadata>
