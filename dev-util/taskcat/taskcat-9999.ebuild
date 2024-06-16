@@ -1,21 +1,20 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10,11} )
+PYTHON_COMPAT=( python3_{10..12} )
 EGIT_REPO_URI="https://github.com/aws-ia/${PN}.git"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="An OpenSource Cloudformation Deployment Framework"
 HOMEPAGE="https://github.com/aws-ia/taskcat"
-SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+RESTRICT="test"
 
 RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/botocore[${PYTHON_USEDEP}]
@@ -33,7 +32,6 @@ RDEPEND="dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/yattag[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
 
