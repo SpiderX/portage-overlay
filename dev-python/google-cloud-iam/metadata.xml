@@ -15,7 +15,7 @@
 	which you can use to authenticate to Google and make API calls.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/python-iam</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">google-cloud-iam</remote-id>
 	</upstream>
 </pkgmetadata>
