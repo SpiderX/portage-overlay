@@ -1,22 +1,20 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{10,11} )
-EGIT_REPO_URI="https://github.com/RaRe-Technologies/${PN}.git"
+PYTHON_COMPAT=( python3_{10..12} )
+EGIT_REPO_URI="https://github.com/piskvorky/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Topic Modelling for Humans"
-HOMEPAGE="https://github.com/RaRe-Technologies/gensim"
-SRC_URI=""
+HOMEPAGE="https://github.com/piskvorky/gensim"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -31,8 +29,10 @@ BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		dev-python/nmslib[${PYTHON_USEDEP}]
 		dev-python/pyemd[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/testfixtures[${PYTHON_USEDEP}] )"
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(

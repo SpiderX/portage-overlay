@@ -14,7 +14,7 @@
 	document indexing and similarity retrieval with large corpora.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">RaRe-Technologies/gensim</remote-id>
+		<remote-id type="github">piskvorky/gensim</remote-id>
 		<remote-id type="pypi">gensim</remote-id>
 	</upstream>
 </pkgmetadata>
