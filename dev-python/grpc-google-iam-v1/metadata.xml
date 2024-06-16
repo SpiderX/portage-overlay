@@ -12,10 +12,10 @@
 	<longdescription lang="en">
 	This package provides an GRPC Google IAM API client library, which
 	is capable to manages identity and access control for Google Cloud
-	Platform resources.
+	Platform resources
 	</longdescription>
 	<upstream>
 		<remote-id type="github">googleapis/python-grpc-google-iam-v1</remote-id>
-		<remote-id type="pypi">grpc-google-iam</remote-id>
+		<remote-id type="pypi">grpc-google-iam-v1</remote-id>
 	</upstream>
 </pkgmetadata>
