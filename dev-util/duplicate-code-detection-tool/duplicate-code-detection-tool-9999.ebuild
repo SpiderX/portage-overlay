@@ -1,20 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10,11} )
+PYTHON_COMPAT=( python3_{10..12} )
 EGIT_REPO_URI="https://github.com/platisd/duplicate-code-detection-tool.git"
 
 inherit git-r3 python-single-r1
 
 DESCRIPTION="A tool to detect similarities between files within a repository"
 HOMEPAGE="https://github.com/platisd/duplicate-code-detection-tool"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
