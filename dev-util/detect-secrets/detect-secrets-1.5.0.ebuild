@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 optfeature
 
@@ -35,6 +35,15 @@ EPYTEST_DESELECT=(
 	tests/core/baseline_test.py::TestCreate::test_basic_usage
 	tests/core/scan_test.py::TestGetFilesToScan::test_handles_each_path_separately
 	tests/core/scan_test.py::TestGetFilesToScan::test_handles_multiple_directories
+	# AttributeError: 'TestAWSKeyDetector' object has no attribute 'example_key'
+	tests/plugins/aws_key_test.py::TestAWSKeyDetector::test_verify_no_secret
+	tests/plugins/aws_key_test.py::TestAWSKeyDetector::test_verify_valid_secret
+	tests/plugins/aws_key_test.py::TestAWSKeyDetector::test_verify_invalid_secret
+	tests/plugins/aws_key_test.py::TestAWSKeyDetector::test_verify_keep_trying_until_found_something
+	# AttributeError: 'TestAnalyzeLine' object has no attribute 'filename'
+	tests/plugins/base_test.py::TestAnalyzeLine::test_potential_secret_constructed_correctly
+	tests/plugins/base_test.py::TestAnalyzeLine::test_no_verification_call_if_verification_filter_is_disabled
+	tests/plugins/base_test.py::TestAnalyzeLine::test_handle_verify_exception_gracefully
 )
 
 python_prepare_all() {
