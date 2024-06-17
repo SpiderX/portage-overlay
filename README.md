@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 737](https://img.shields.io/badge/ebuild-737-orange.svg)](https://img.shields.io/badge/ebuild-737-orange.svg)
+[![Number of ebuilds: 736](https://img.shields.io/badge/ebuild-736-orange.svg)](https://img.shields.io/badge/ebuild-736-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -51,7 +51,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[awslog](https://github.com/jaksi/awslog) | History and changes of configuration versions of AWS resources
 *   app-admin/[awsls](https://github.com/jckuester/awsls) | A list command for AWS resources
 *   app-admin/[awsometag](https://github.com/mhausenblas/awsometag) | Simple command-line snippet manager
-*   app-admin/[awsudo](https://github.com/makethunder/awsudo) | A temporary credentials for AWS roles via sudo-like utility
 *   app-admin/[awsume](https://github.com/trek10inc/awsume) | A utility for easily assuming AWS IAM roles from command line
 *   app-admin/[awstaghelper](https://github.com/mpostument/awstaghelper) | AWS bulk tagging tool
 *   app-admin/[aws-vault](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
