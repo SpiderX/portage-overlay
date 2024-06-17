@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 EGIT_REPO_URI="https://github.com/WojciechMula/pyahocorasick.git"
 
 inherit distutils-r1 git-r3
