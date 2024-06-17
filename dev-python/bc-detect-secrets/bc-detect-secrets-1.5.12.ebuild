@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 optfeature
 
@@ -13,6 +13,7 @@ MY_PN="detect-secrets"
 DESCRIPTION="A fork of enterprise friendly way of detecting and preventing secrets"
 HOMEPAGE="https://github.com/bridgecrewio/detect-secrets"
 SRC_URI="https://github.com/bridgecrewio/${MY_PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -25,9 +26,8 @@ BDEPEND="test? ( dev-vcs/git
 		dev-python/ahocorasick[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		dev-python/unidiff[${PYTHON_USEDEP}]
-		dev-util/gibberish-detector[${PYTHON_USEDEP}] )"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
+		dev-util/gibberish-detector[${PYTHON_USEDEP}]
+		dev-vcs/git )"
 
 distutils_enable_tests pytest
 
