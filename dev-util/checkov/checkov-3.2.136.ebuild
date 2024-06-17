@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10,11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -64,33 +64,26 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/aioresponses[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
-		dev-python/time-machine[${PYTHON_USEDEP}] )"
+		dev-python/time-machine[${PYTHON_USEDEP}]
+		dev-vcs/git )"
 
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# assertion error
-	tests/bicep/test_graph_manager.py::test_build_graph_from_source_directory
-	tests/bicep/test_graph_manager.py::test_build_graph_from_definitions
-	tests/bicep/graph/graph_builder/test_local_graph.py::test_build_graph
+	tests/sca_package_2/test_output_reports.py::test_get_cyclonedx_report
+	tests/sca_package_2/test_output_reports.py::test_get_csv_report
 	tests/bicep/graph/graph_builder/test_renderer.py::test_render_parameter
 	tests/bicep/graph/graph_builder/test_renderer.py::test_render_variable
 	tests/bicep/graph/graph_builder/test_renderer.py::test_render_mixed
-	tests/kustomize/graph/test_running_graph_checks.py::test_runner
-	tests/sca_package_2/test_output_reports.py::test_get_cyclonedx_report
-	tests/sca_package_2/test_output_reports.py::test_get_csv_report
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_custom_multiline_regex_detector
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_custom_multiline_regex_detector_only_scan_file
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_custom_multiline_regex_detector_only_supported_files
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_custom_regex_detector
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_custom_regex_detector_in_custom_limit_characters
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_custom_regex_detector_out_custom_limit_characters
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_custom_regex_detector_value_str
-	tests/secrets/test_load_detectors.py::TestLoadDetectors::test_non_entropy_take_precedence_over_entropy
-	tests/secrets/test_plugin_multiline_yml.py::TestCombinatorPluginMultilineYml::test_non_multiline_pair_time_limit_creating_report
+	tests/bicep/test_graph_manager.py::test_build_graph_from_source_directory
+	tests/bicep/test_graph_manager.py::test_build_graph_from_definitions
 	dogfood_tests/test_checkov_dogfood.py::test_helm_framework
+	tests/bicep/graph/graph_builder/test_local_graph.py::test_build_graph
 )
 
 python_prepare_all() {
@@ -98,6 +91,12 @@ python_prepare_all() {
 	rm -rf {cdk_,sast_,}integration_tests || die "rm failed for integration_tests"
 	rm -rf performance_tests || die "rm failed for performance_tests"
 	rm -rf flake8_plugins || die "rm failed for flake8_plugins"
+
+	if use test ; then
+		git init > /dev/null || die "git init failed"
+		git config --global user.email "${PN}@gentoo.org" || die "git config failed"
+		git config --global user.name "${PN}" || die "git config failed"
+	fi
 
 	distutils-r1_python_prepare_all
 }
