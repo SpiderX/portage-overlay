@@ -16,7 +16,7 @@
 	such as Terraform.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">amplify-education/python-hcl2</remote-id>
+		<remote-id type="github">bridgecrewio/python-hcl2</remote-id>
 		<remote-id type="pypi">bc-python-hcl2</remote-id>
 	</upstream>
 </pkgmetadata>
