@@ -5,15 +5,16 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
-EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature
 
 DESCRIPTION="VMware vSphere API Python Bindings"
 HOMEPAGE="https://github.com/vmware/pyvmomi"
+SRC_URI="https://github.com/vmware/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/vcrpy[${PYTHON_USEDEP}] )"
