@@ -1,28 +1,28 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
 EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="VMware vCloud Director Python SDK"
 HOMEPAGE="https://github.com/vmware/pyvcloud"
-SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
-RESTRICT="test" # network-sandbox
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-python/humanfriendly[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-4.2[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	>=dev-python/vcd-api-schemas-type-9.1.2_pre10[${PYTHON_USEDEP}]"
+	dev-python/vcd-api-schemas-type[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/unittest-xml-reporting[${PYTHON_USEDEP}] )"
