@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/plexsystems/${PN}.git"
 
@@ -9,12 +9,9 @@ inherit git-r3 go-module
 
 DESCRIPTION="Sync images from one container registry to another"
 HOMEPAGE="https://github.com/plexsystems/sinker"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 src_unpack() {
 	git-r3_src_unpack
@@ -23,11 +20,11 @@ src_unpack() {
 
 src_compile() {
 	LDFLAGS="-X github.com/plexsystems/sinker/internal/commands.sinkerVersion=${PV}"
-	go build -ldflags="${LDFLAGS}" || die "build failed"
+	ego build -ldflags="${LDFLAGS}"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
