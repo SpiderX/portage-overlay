@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/sampointer/${PN}.git"
 
@@ -9,13 +9,11 @@ inherit git-r3 go-module
 
 DESCRIPTION="Look up region and other information for any Google IP address"
 HOMEPAGE="https://github.com/sampointer/digg"
-SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
-RESTRICT="test" # needs net
+RESTRICT="test"
+PROPERTIES="test_network"
 
 src_unpack() {
 	git-r3_src_unpack
@@ -23,11 +21,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
+	ego build
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
