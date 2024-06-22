@@ -1,0 +1,25 @@
+--- ../ngxtop/config_parser.py.org	2020-05-29 18:00:09.000000000 +0000
++++ ../ngxtop/config_parser.py	2024-06-22 09:46:30.665190015 +0000
+@@ -34,6 +34,13 @@
+     '"$request" $status $body_bytes_sent '
+     '"$http_x_forwarded_for"'
+ )
++LOG_FORMAT_MAIN = (
++    "$remote_addr - $remote_user $host [$time_local] "
++    '"$request" $status $body_bytes_sent '
++    '$request_length $bytes_sent "$http_referer" '
++    '"$http_user_agent" $request_time "$gzip_ratio"'
++    '$upstream_addr $upstream_cache_status'
++)
+ 
+ # common parser element
+ semicolon = Literal(";").suppress()
+@@ -168,6 +175,8 @@
+         log_format = LOG_FORMAT_COMBINED
+     elif log_format == "common":
+         log_format = LOG_FORMAT_COMMON
++    elif log_format == "main":
++        log_format = LOG_FORMAT_MAIN
+     pattern = re.sub(REGEX_SPECIAL_CHARS, r"\\\1", log_format)
+     pattern = re.sub(REGEX_LOG_FORMAT_VARIABLE, "(?P<\\1>.*)", pattern)
+     return re.compile(pattern)
