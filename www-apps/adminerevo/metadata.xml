@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides utility called Adminer for database management in
+	a single PHP file, and utiliry called Adminer Editor for data manipulation
+	for end-users.
+	</longdescription>
+	<use>
+		<flag name="adminer-js">Plugin. Enable auto-detection and inclusion of adminer.js, like adminer.css</flag>
+		<flag name="brade">Design. CSS style</flag>
+		<flag name="bueltge">Design. CSS style</flag>
+		<flag name="clickhouse">Plugin driver for ClickHouse</flag>
+		<flag name="cvicebni-ubor">Design. CSS style</flag>
+		<flag name="database-hide">Plugin. Hide some databases from the interface - just to improve design, not a security plugin</flag>
+		<flag name="design">Install custom design CSS style</flag>
+		<flag name="designs">Plugin. Allow switching designs</flag>
+		<flag name="dracula">Design. CSS style</flag>
+		<flag name="dump-alter">Plugin. Exports one database so that it can be synced with other database</flag>
+		<flag name="dump-bz2">Plugin. Dump to Bzip2 format</flag>
+		<flag name="dump-date">Plugin. Include current date and time in export filename</flag>
+		<flag name="dump-json">Plugin. Dump to JSON format</flag>
+		<flag name="dump-php">Plugin. Dump to PHP format</flag>
+		<flag name="dump-xml">Plugin. Dump to XML format</flag>
+		<flag name="dump-zip">Plugin. Dump to ZIP format</flag>
+		<flag name="edit-calendar">Plugin. Display jQuery UI Timepicker for each date and datetime field</flag>
+		<flag name="edit-foreign">Plugin. Select foreign key in edit form</flag>
+		<flag name="edit-textarea">Plugin. Use textarea for char and varchar</flag>
+		<flag name="editor">Install AdminerEvo Editor</flag>
+		<flag name="elasticsearch">Plugin driver for Elasticsearch</flag>
+		<flag name="email-table">Plugin. Get e-mail subject and message from database (Adminer Editor)</flag>
+		<flag name="enum-option">Plugin. Use select-option for enum</flag>
+		<flag name="enum-types">Plugin. Use select-option for enum edit instead of regular input text on enum type in PostgreSQL</flag>
+		<flag name="esterka">Design. CSS style</flag>
+		<flag name="file-upload">Plugin. Edit fields ending with _path by input type="file" and link to the uploaded files from select</flag>
+		<flag name="flat">Design. CSS style</flag>
+		<flag name="foreign-system">Plugin. Link system tables (in mysql and information_schema databases) by foreign keys</flag>
+		<flag name="frames">Plugin. Allow using Adminer inside a frame</flag>
+		<flag name="galkaev">Design. CSS style</flag>
+		<flag name="haeckel">Design. CSS style</flag>
+		<flag name="hever">Design. CSS style</flag>
+		<flag name="hydra">Design. CSS style</flag>
+		<flag name="import-from-dir">Plugin. Import SQL files from a directory</flag>
+		<flag name="json-column">Plugin. Display JSON values as table in edit</flag>
+		<flag name="jukin">Design. CSS style</flag>
+		<flag name="kahi">Design. CSS style</flag>
+		<flag name="konya">Design. CSS style</flag>
+		<flag name="login-external">Plugin. Enables use of saved credentials for accessing a database</flag>
+		<flag name="login-ip">Plugin. Check IP address and allow empty password</flag>
+		<flag name="login-otp">Plugin. Require One Time Password at login</flag>
+		<flag name="login-password-less">Plugin. Enable login without password</flag>
+		<flag name="login-servers">Plugin. Display constant list of servers in login form</flag>
+		<flag name="login-ssl">Plugin. Connect to MySQL using SSL</flag>
+		<flag name="login-table">Plugin. Authenticate a user from the login table</flag>
+		<flag name="lucas-sandery">Design. CSS style</flag>
+		<flag name="mancave">Design. CSS style</flag>
+		<flag name="mancave-hever">Design. CSS style</flag>
+		<flag name="master-slave">Plugin. Execute writes on master and reads on slave</flag>
+		<flag name="mongodb">Plugin driver for MongoDB</flag>
+		<flag name="mvt">Design. CSS style</flag>
+		<flag name="nette">Design. CSS style</flag>
+		<flag name="ng9">Design. CSS style</flag>
+		<flag name="nicu">Design. CSS style</flag>
+		<flag name="pappu687">Design. CSS style</flag>
+		<flag name="paranoiq">Design. CSS style</flag>
+		<flag name="pdo">Enable the PHP Data Objects extension</flag>
+		<flag name="pepa-linha">Design. CSS style</flag>
+		<flag name="pepa-linha-dark">Design. CSS style</flag>
+		<flag name="pilot">Design. CSS style</flag>
+		<flag name="plugin">Required to run any plugin</flag>
+		<flag name="pokorny">Design. CSS style</flag>
+		<flag name="pretty-json-column">Pretty print JSON values in edit</flag>
+		<flag name="price">Design. CSS style</flag>
+		<flag name="rmsoft">Design. CSS style</flag>
+		<flag name="rmsoft-blue">Design. CSS style</flag>
+		<flag name="simpledb">Plugin driver for SimpleDB</flag>
+		<flag name="slugify">Plugin. Prefill field containing _slug with slugified value of a previous field (JavaScript)</flag>
+		<flag name="sql-log">Plugin. Log all queries to SQL file</flag>
+		<flag name="struct-comments">Plugin. Show comments of sql structure in more places (mainly where you edit things)</flag>
+		<flag name="table-indexes-structure">Plugin. Expanded table indexes structure output</flag>
+		<flag name="table-structure">Plugin. Expanded table structure output</flag>
+		<flag name="tables-filter">Plugin. Filter names in tables list</flag>
+		<flag name="tinymce">Plugin. Edit all fields containing _html by HTML editor TinyMCE and display the HTML in select</flag>
+		<flag name="translation">Plugin. Translate all table and field comments, enum and set values from the translation table</flag>
+		<flag name="version-noverify">Plugin. Disable version checker</flag>
+		<flag name="wymeditor">Plugin. Edit all fields containing _html by HTML editor WYMeditor and display the HTML in select</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">adminerevo/adminerevo</remote-id>
+	</upstream>
+</pkgmetadata>
