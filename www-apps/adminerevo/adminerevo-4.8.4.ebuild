@@ -43,6 +43,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://api.github.com/repos/pepa-linha/Adminer-Design-Dark/tarball/${PLDARK_COMMIT} -> ${P}-pldark.tar.gz"
 
 LICENSE="Apache-2.0"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="design editor +mysql oci8-instant-client pdo plugin"
 REQUIRED_USE="mysql adminer-js? ( plugin ) dump-bz2? ( plugin ) dump-zip? ( plugin ) enum-option? ( plugin )

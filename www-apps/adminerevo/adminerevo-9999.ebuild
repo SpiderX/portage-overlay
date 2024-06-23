@@ -34,6 +34,7 @@ DESCRIPTION="Database management in a single PHP file"
 HOMEPAGE="https://github.com/adminerevo/adminerevo"
 
 LICENSE="Apache-2.0"
+SLOT="0"
 IUSE="design editor +mysql oci8-instant-client pdo plugin"
 REQUIRED_USE="mysql adminer-js? ( plugin ) dump-bz2? ( plugin ) dump-zip? ( plugin ) enum-option? ( plugin )
 	import-from-dir? ( plugin ) login-password-less? ( plugin ) struct-comments? ( plugin )
