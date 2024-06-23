@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 739](https://img.shields.io/badge/ebuild-739-orange.svg)](https://img.shields.io/badge/ebuild-739-orange.svg)
+[![Number of ebuilds: 740](https://img.shields.io/badge/ebuild-740-orange.svg)](https://img.shields.io/badge/ebuild-740-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -804,6 +804,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   www-apps/[keeweb](https://github.com/keeweb/keeweb) | Cross-platform password manager compatible with KeePass
 *   www-apps/[LookingGlass](https://github.com/ramnode/LookingGlass) | A Python-backed Looking Glass
 *   www-apps/[netbox](https://github.com/netbox-community/netbox) | IP address and data center infrastructure management tool
+*   www-apps/[tinyfilemanager](https://github.com/prasathmani/tinyfilemanager) | Single-file PHP file manager
 *   www-apps/[webui-aria2](https://github.com/ziahamza/webui-aria2) | The worlds best and hottest interface to interact with aria2
 *   www-plugins/[bypass-paywalls](https://github.com/iamadamdev/bypass-paywalls-chrome) | Bypass Paywalls browser extension
 *   www-plugins/[chrome-token-signing](https://github.com/open-eid/chrome-token-signing) | Native client and extension for signing with your eID on the web
