@@ -10,9 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	In a nutshell it is a parser for CSP (Content Security Policy) reports.
-	Main purpose is to create easy to read and understand report
-	from big size logs.
+	This package provides a parser for CSP (Content Security Policy) reports.
+	Main purpose is to create easy to read and understand report from big size logs.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">yandex/csp-reporter</remote-id>
