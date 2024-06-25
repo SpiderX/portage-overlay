@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CABAL_HACKAGE_REVISION=7
+CABAL_HACKAGE_REVISION=2
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
@@ -21,19 +21,19 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/blaze-builder:=[profile?]
 	dev-haskell/case-insensitive:=[profile?]
 	dev-haskell/data-default-class:=[profile?]
-	>=dev-haskell/exceptions-0.7:=[profile?]
+	dev-haskell/exceptions:=[profile?]
 	dev-haskell/fail:=[profile?]
 	dev-haskell/http-types:=[profile?]
-	>=dev-haskell/monad-control-1.0.1.0:=[profile?]
+	dev-haskell/monad-control:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/nats:=[profile?]
-	>=dev-haskell/network-2.6.0.2:=[profile?]
+	dev-haskell/network:=[profile?]
 	dev-haskell/regex-compat:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/transformers:=[profile?]
 	dev-haskell/transformers-base:=[profile?]
-	>=dev-haskell/transformers-compat-0.4:=[profile?]
-	>=dev-haskell/wai-3.0.0:=[profile?]
+	dev-haskell/transformers-compat:=[profile?]
+	dev-haskell/wai:=[profile?]
 	dev-haskell/wai-extra:=[profile?]
 	dev-haskell/warp:=[profile?]
 	dev-lang/ghc:="
