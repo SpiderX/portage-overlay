@@ -11,14 +11,13 @@ MY_PV="${PV%*f}"
 DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
 SRC_URI="https://github.com/mkubecek/vmware-host-modules/archive/w${MY_PV}-k${MY_KV}.tar.gz -> ${PN}-${MY_PV}-${MY_KV}.tar.gz"
+S="${WORKDIR}/vmware-host-modules-w${MY_PV}-k${MY_KV}"
 
 LICENSE="GPL-2"
 SLOT="${MY_KV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/vmware"
-
-S="${WORKDIR}/vmware-host-modules-w${MY_PV}-k${MY_KV}"
 
 BUILD_TARGETS="auto-build"
 CONFIG_CHECK="~HIGH_RES_TIMERS VMWARE_VMCI VMWARE_VMCI_VSOCKETS"

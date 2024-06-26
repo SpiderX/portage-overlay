@@ -10,14 +10,13 @@ COMMIT="8b2d31498a8df9b1215f407c989b065953b73455"
 DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
 SRC_URI="https://github.com/mkubecek/vmware-host-modules/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
+S="${WORKDIR}/vmware-host-modules-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="${PV%.*}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/vmware"
-
-S="${WORKDIR}/vmware-host-modules-${COMMIT}"
 
 CONFIG_CHECK="~HIGH_RES_TIMERS VMWARE_VMCI VMWARE_VMCI_VSOCKETS"
 

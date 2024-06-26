@@ -1,0 +1,46 @@
+diff --git a/vmmon-only/include/x86cpuid.h b/vmmon-only/include/x86cpuid.h
+index e2d297bf..c46fad70 100644
+--- a/vmmon-only/include/x86cpuid.h
++++ b/vmmon-only/include/x86cpuid.h
+@@ -92,7 +92,7 @@ typedef struct CPUIDQuery {
+    uint32 eax;                // IN
+    uint32 ecx;                // IN
+    uint32 numLogicalCPUs;     // IN/OUT
+-   CPUIDReply logicalCPUs[0]; // OUT
++   CPUIDReply logicalCPUs[]; // OUT
+ } CPUIDQuery;
+ #pragma pack(pop)
+ #endif
+diff --git a/vmmon-only/include/x86msr.h b/vmmon-only/include/x86msr.h
+index f67a0e12..74eaae03 100644
+--- a/vmmon-only/include/x86msr.h
++++ b/vmmon-only/include/x86msr.h
+@@ -67,7 +67,7 @@ typedef struct MSRReply {
+ typedef struct MSRQuery {
+    uint32 msrNum;           // IN
+    uint32 numLogicalCPUs;   // IN/OUT
+-   MSRReply logicalCPUs[0]; // OUT
++   MSRReply logicalCPUs[]; // OUT
+ } MSRQuery;
+ #pragma pack(pop)
+ 
+diff --git a/vmnet-only/vmnetInt.h b/vmnet-only/vmnetInt.h
+index b49c3990..f8fbc75a 100644
+--- a/vmnet-only/vmnetInt.h
++++ b/vmnet-only/vmnetInt.h
+@@ -41,8 +41,13 @@
+     compat_skb_set_network_header(skb, sizeof (struct ethhdr)),  \
+     dev_queue_xmit(skb)                                   \
+   )
+-#define dev_lock_list()    read_lock(&dev_base_lock)
+-#define dev_unlock_list()  read_unlock(&dev_base_lock)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
++#   define dev_lock_list()    rcu_read_lock()
++#   define dev_unlock_list()  rcu_read_unlock()
++#else
++#   define dev_lock_list()    read_lock(&dev_base_lock)
++#   define dev_unlock_list()  read_unlock(&dev_base_lock)
++#endif
+ 
+ 
+ extern struct proto vmnet_proto;
