@@ -1,44 +1,42 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg
 
 PV_BUILD=$(ver_cut 4)
-MY_PN="VMware-Workstation-Full"
+MY_PN="VMware-Workstation"
 MY_PV=$(ver_cut 1-3)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="13.0.1/21139760"
+VMWARE_FUSION_VER="13.5.2/23775688"
 SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.0.5"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
-HOMEPAGE="https://www.vmware.com/products/workstation-pro.html"
-SRC_URI="https://download3.vmware.com/software/WKST-${MY_PV//./}-LX/${MY_P}.x86_64.bundle
+HOMEPAGE="https://www.vmware.com/products/desktop-hypervisor.html"
+SRC_URI="https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${MY_PV}/${PV_BUILD}/linux/core/${MY_P}.x86_64.bundle.tar
 	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz ->
 			unlocker-${UNLOCKER_VERSION}.tar.gz
 			https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${VMWARE_FUSION_VER}/universal/core/com.vmware.fusion.zip.tar ->
 			com.vmware.fusion-${PV}.zip.tar )
 	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz ->
 			vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
+S="${WORKDIR}"/extracted
 
 LICENSE="GPL-2 GPL-3 MIT-with-advertising vmware"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cups macos-guests +modules ovftool systemd vix"
-IUSE_VMWARE_GUESTS="darwin linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista"
-for guest in ${IUSE_VMWARE_GUESTS}; do
-	IUSE+=" vmware-tools-${guest}"
-done
+IUSE="macos-guests +modules ovftool systemd vix"
 REQUIRED_USE="vmware-tools-darwin? ( macos-guests )"
 RESTRICT="mirror preserve-libs strip"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="app-arch/unzip
+	dev-db/sqlite:3
 	dev-libs/dbus-glib
 	dev-libs/gmp:0
 	dev-libs/icu:=
@@ -64,7 +62,6 @@ RDEPEND="dev-db/sqlite:3
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-themes/hicolor-icon-theme
-	cups? ( net-print/cups )
 	modules? ( >=app-emulation/vmware-modules-${MY_PV} )
 	ovftool? ( !dev-util/ovftool )"
 DEPEND="${PYTHON_DEPS}"
@@ -72,12 +69,13 @@ BDEPEND="app-admin/chrpath
 	app-arch/unzip
 	sys-apps/fix-gnustack"
 
-S="${WORKDIR}"/extracted
-
 QA_SONAME="opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_bz2.cpython-310-x86_64-linux-gnu.so
 	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_dbm.cpython-310-x86_64-linux-gnu_failed.so
 	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_gdbm.cpython-310-x86_64-linux-gnu.so
 	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/readline.cpython-310-x86_64-linux-gnu.so"
+
+IUSE_VMWARE_GUESTS="darwin linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista"
+for guest in ${IUSE_VMWARE_GUESTS}; do IUSE+=" vmware-tools-${guest}" ; done
 
 src_unpack() {
 	for AFILE in ${A}; do
@@ -232,14 +230,6 @@ src_install() {
 	done
 	dosym ../icons/hicolor/256x256/apps/vmware-netcfg.png \
 		/usr/share/pixmaps/vmware-netcfg.png
-
-	if use cups ; then
-		exeinto "$(cups-config --serverbin)"/filter
-		doexe vmware-player-app/extras/thnucups
-
-		insinto /etc/cups
-		doins vmware-player-app/etc/cups/thnuclnt.{convs,types}
-	fi
 
 	exeinto /opt/vmware/lib/vmware/setup
 	doexe vmware-player-setup/vmware-config
