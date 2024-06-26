@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/LubosD/${PN}.git"
 
@@ -9,10 +9,8 @@ inherit cmake git-r3 xdg
 
 DESCRIPTION="Softphone for voice over IP and IM communication using SIP"
 HOMEPAGE="https://github.com/LubosD/twinkle"
-SRC_URI=""
 
 LICENSE="GPL-2"
-KEYWORDS=""
 SLOT="0"
 IUSE="alsa g729 gsm speex zrtp"
 

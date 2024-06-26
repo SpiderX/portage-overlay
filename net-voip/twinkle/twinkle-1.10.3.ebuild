@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake xdg
 
@@ -10,8 +10,8 @@ HOMEPAGE="https://github.com/LubosD/twinkle"
 SRC_URI="https://github.com/LubosD/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa g729 gsm speex zrtp"
 
 RDEPEND="dev-cpp/commoncpp2
@@ -35,7 +35,7 @@ BDEPEND="dev-qt/linguist-tools:5
 	sys-devel/bison
 	sys-devel/flex"
 
-PATCHES=( "${FILESDIR}/${P}"-g729.patch )
+PATCHES=( "${FILESDIR}/${PN}"-1.10.2-g729.patch )
 
 src_prepare() {
 	cmake_src_prepare
