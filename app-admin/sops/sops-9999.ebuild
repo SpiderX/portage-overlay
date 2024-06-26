@@ -1,19 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 EGIT_REPO_URI="https://github.com/mozilla/${PN}.git"
 
-inherit bash-completion-r1 git-r3 go-module
+inherit git-r3 go-module shell-completion
 
 DESCRIPTION="Simple and flexible tool for managing secrets"
 HOMEPAGE="https://github.com/mozilla/sops"
-SRC_URI=""
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS=""
 
 DOCS=( {CHANGELOG,README}.rst )
 
@@ -23,11 +21,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build ./cmd/sops || die "build failed"
+	ego build ./cmd/sops
 }
 
 src_test() {
-	go test -work || die "test failed"
+	ego test -work
 }
 
 src_install() {
@@ -35,6 +33,5 @@ src_install() {
 	dobin sops
 
 	newbashcomp "${FILESDIR}"/sops.bash sops
-	insinto /usr/share/zsh/site-functions
-	newins "${FILESDIR}"/sops.zsh _sops
+	newzshcomp "${FILESDIR}"/sops.zsh _sops
 }
