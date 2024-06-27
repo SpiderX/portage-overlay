@@ -1,0 +1,11 @@
+--- ../linphone-app/cmake/FindBelcard.cmake	2024-06-27 23:04:00.436818501 +0300
++++ ..//linphone-app/cmakeFindBelcard.cmake	2024-06-27 23:04:14.921452331 +0300
+@@ -26,7 +26,7 @@
+ if(NOT TARGET belcard)
+     set(EXPORT_PATH ${LINPHONE_OUTPUT_DIR})
+     include(GNUInstallDirs)
+-    include(${EXPORT_PATH}/${CMAKE_INSTALL_DATADIR}/Belcard/cmake/BelcardTargets.cmake)
++    include(${EXPORT_PATH}/${CMAKE_INSTALL_DATADIR}/BelCard/cmake/BelCardTargets.cmake)
+ endif()
+ 
+ set(_Belcard_REQUIRED_VARS Belcard_TARGET)

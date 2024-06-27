@@ -3,16 +3,15 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
-EGIT_SUBMODULES=()
-
-inherit cmake git-r3 xdg
+inherit cmake xdg
 
 DESCRIPTION="A free VoIP and video softphone based on the SIP protocol"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/linphone-desktop"
+SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="ldap qrcode"
 RESTRICT="test" # needs sdk
 

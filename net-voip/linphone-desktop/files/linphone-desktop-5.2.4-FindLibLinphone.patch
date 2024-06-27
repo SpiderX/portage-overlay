@@ -1,0 +1,12 @@
+--- ../linphone-app/cmake/FindLibLinphone.cmake	2024-04-11 15:10:51.000000000 +0300
++++ ../linphone-app/cmake/FindLibLinphone.cmake	2024-06-27 22:57:50.295873778 +0300
+@@ -27,7 +27,8 @@
+ if(NOT TARGET liblinphone)
+     set(EXPORT_PATH ${LINPHONE_OUTPUT_DIR})
+     include(GNUInstallDirs)
+-    include(${EXPORT_PATH}/${CMAKE_INSTALL_DATADIR}/linphone/cmake/linphoneTargets.cmake)
++    include(${EXPORT_PATH}/${CMAKE_INSTALL_DATADIR}/LibLinphone/cmake/LibLinphoneConfig.cmake)
++    include(${EXPORT_PATH}/${CMAKE_INSTALL_DATADIR}/LibLinphone/cmake/LibLinphoneTargets.cmake)
+ endif()
+ 
+ set(_LibLinphone_REQUIRED_VARS LibLinphone_TARGET LibLinphone_PLUGINS_DIR)
