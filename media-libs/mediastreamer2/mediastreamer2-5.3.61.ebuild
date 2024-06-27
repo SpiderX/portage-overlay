@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/doxygen )"
 
-PATCHES=( "${FILESDIR}"/"${P}"-pkgconfig.patch )
+PATCHES=( "${FILESDIR}"/"${PN}"-5.3.4-pkgconfig.patch )
 
 src_prepare() {
 	# fix path for nowebcamCIF.jpg
