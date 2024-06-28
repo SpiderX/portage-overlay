@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit autotools
+EGIT_REPO_URI="https://github.com/tlwg/${PN}.git"
+
+inherit autotools git-r3
 
 DESCRIPTION="A a set of Thai language support routines"
 HOMEPAGE="https://github.com/tlwg/libthai"
-SRC_URI="https://github.com/tlwg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-libs/libdatrie"
 DEPEND="${RDEPEND}"
@@ -19,9 +19,6 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
-
-	# set version (build-aux/git-version-gen)
-	echo "${PV}" > VERSION
 
 	eautoreconf
 }
