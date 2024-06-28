@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 742](https://img.shields.io/badge/ebuild-742-orange.svg)](https://img.shields.io/badge/ebuild-742-orange.svg)
+[![Number of ebuilds: 741](https://img.shields.io/badge/ebuild-741-orange.svg)](https://img.shields.io/badge/ebuild-741-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -716,7 +716,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/gitter.svg?header=)](https://repology.org/project/gitter/versions) net-im/[gitter-bin](https://gitter.im) | Chat and network platform
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/slack.svg?header=)](https://repology.org/project/slack/versions) net-im/[slack](https://slack.com) | Team collaboration tool
 *   net-im/[viber](https://www.viber.com/en/) | Free text and calls
-*   net-im/[zoom-bin](https://zoom.us) | Video conferencing and web conferencing service
 *   net-libs/[bctoolbox](https://gitlab.linphone.org/BC/public/bctoolbox) | Utilities library used by Belledonne Communications softwares
 *   net-libs/[bzrtp](https://gitlab.linphone.org/BC/public/bzrtp) | Media Path Key Agreement for Unicast Secure RTP
 *   net-libs/[ortp](https://gitlab.linphone.org/BC/public/ortp) | Open Real-time Transport Protocol (RTP, RFC3550) stack
