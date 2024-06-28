@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 741](https://img.shields.io/badge/ebuild-741-orange.svg)](https://img.shields.io/badge/ebuild-741-orange.svg)
+[![Number of ebuilds: 742](https://img.shields.io/badge/ebuild-742-orange.svg)](https://img.shields.io/badge/ebuild-742-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -297,6 +297,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[libdigidocpp](https://github.com/open-eid/libdigidocpp) | Library for handling digitally signed documents
 *   dev-libs/[liblinphone](https://gitlab.linphone.org/BC/public/liblinphone) | SIP library supporting voice/video calls and text messaging
 *   dev-libs/[libopenrazer](https://github.com/z3ntu/libopenrazer) | Qt wrapper around the D-Bus API from OpenRazer
+*   dev-libs/[libthai](https://github.com/tlwg/libthai) | A a set of Thai language support routines
 *   dev-libs/[lime](https://gitlab.linphone.org/BC/public/lime) | C++ library implementing Open Whisper System Signal protocol
 *   dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 *   dev-libs/[zrtpcpp](https://github.com/wernerd/ZRTPCPP) | VCard standard format manipulation library
