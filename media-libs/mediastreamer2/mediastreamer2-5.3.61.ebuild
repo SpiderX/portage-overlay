@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,8 +10,8 @@ HOMEPAGE="https://gitlab.linphone.org/BC/public/mediastreamer2"
 SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa av1 bv16 debug doc g726 g729 gsm jpeg matroska opengl opus pcap portaudio +pulseaudio qrcode speex srtp resample test theora tools +v4l vpx yuv zrtp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="zrtp? ( srtp )
