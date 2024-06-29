@@ -4,27 +4,26 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-MY_PN="${PN/-bin/}"
 
 inherit multilib-build pax-utils unpacker
 
+MY_PN="${PN/-bin/}"
+
 DESCRIPTION="Companion application for Video DownloadHelper browser add-on"
 HOMEPAGE="https://github.com/aclap-dev/vdhcoapp"
-SRC_URI="
-	amd64? ( https://github.com/aclap-dev/${MY_PN}/releases/download/v${PV}/vdhcoapp-linux-x86_64.deb
+SRC_URI="amd64? ( https://github.com/aclap-dev/${MY_PN}/releases/download/v${PV}/vdhcoapp-linux-x86_64.deb
 		-> vdhcoapp-${PV}-x86_64.deb )
 	x86? ( https://github.com/aclap-dev/${MY_PN}/releases/download/v${PV}/vdhcoapp-linux-i686.deb
 		-> vdhcoapp-${PV}-i686.deb )"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
-KEYWORDS="-* ~amd64 ~x86"
 SLOT="0"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="+abi_x86_64"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="media-video/ffmpeg:=[${MULTILIB_USEDEP}]"
-
-S="${WORKDIR}"
 
 QA_PREBUILT="opt/vdhcoapp/vdhcoapp"
 
