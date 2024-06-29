@@ -9,10 +9,11 @@ DESCRIPTION="IIT End User CA-1 browser extension"
 HOMEPAGE="https://iit.com.ua"
 SRC_URI="amd64? ( https://iit.com.ua/download/productfiles/${PN}i.64.deb -> ${P}-amd64.deb )
 	x86? ( https://iit.com.ua/download/productfiles/euswi.deb -> ${P}-x86.deb )"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="app-accessibility/at-spi2-core:2
 	sys-apps/pcsc-lite
@@ -20,8 +21,6 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango"
-
-S="${WORKDIR}"
 
 QA_PREBUILT="opt/iit/eu/sw/cac.so
 	opt/iit/eu/sw/cagui.so
