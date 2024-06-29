@@ -8,6 +8,7 @@ inherit desktop pax-utils rpm
 DESCRIPTION="Modern, native, and friendly GUI tool for relational databases"
 HOMEPAGE="https://tableplus.com"
 SRC_URI="https://yum.tableplus.com/rpm/x86_64/${PN}-$(ver_rs 3 '-').x86_64.rpm"
+S="${WORKDIR}"
 
 LICENSE="TablePlus"
 SLOT="0"
@@ -25,8 +26,6 @@ RDEPEND="app-crypt/libsecret:0
 	x11-libs/gtk+:3
 	x11-libs/gtksourceview:3.0
 	x11-libs/pango:0"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
