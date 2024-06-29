@@ -78,7 +78,7 @@ RDEPEND="app-arch/brotli:0
 		media-plugins/gst-plugins-pulse
 		|| ( media-sound/pulseaudio-daemon
 			media-video/pipewire[sound-server] ) )
-	|| ( media-video/ffmpeg-compat media-video/ffmpeg:0/56.58.58 )
+	|| ( media-video/ffmpeg-compat:58 media-video/ffmpeg:0/56.58.58 )
 	|| ( sys-apps/systemd sys-apps/systemd-utils )"
 
 S="${WORKDIR}"
