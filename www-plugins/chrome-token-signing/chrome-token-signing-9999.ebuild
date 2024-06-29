@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/open-eid/${PN}.git"
 
@@ -9,14 +9,12 @@ inherit git-r3 qmake-utils
 
 DESCRIPTION="Native client and extension for signing with your eID on the web"
 HOMEPAGE="https://github.com/open-eid/chrome-token-signing http://id.ee/"
-SRC_URI=""
+S="${WORKDIR}/${P}/host-linux"
 
 LICENSE="LGPL-2.1"
-KEYWORDS=""
 SLOT="0"
 IUSE="chromium firefox vivaldi"
 
-BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/openssl:0=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -24,8 +22,7 @@ DEPEND="dev-libs/openssl:0=
 	dev-qt/qtnetwork:5
 	sys-apps/pcsc-lite"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${P}/host-linux"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
