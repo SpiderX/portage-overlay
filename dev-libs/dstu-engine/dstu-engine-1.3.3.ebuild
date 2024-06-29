@@ -10,8 +10,8 @@ HOMEPAGE="https://github.com/dstucrypt/dstu-engine"
 SRC_URI="https://github.com/dstucrypt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
