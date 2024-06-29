@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -16,6 +16,7 @@ DESCRIPTION="CLI for scripting SQL Server Databases"
 HOMEPAGE="https://github.com/microsoft/mssql-scripter"
 SRC_URI="https://github.com/microsoft/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.gh.tar.gz
 	https://github.com/microsoft/sqltoolsservice/releases/download/v3.0.0-release.251/Microsoft.SqlTools.ServiceLayer-rhel-x64-net6.0.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,8 +26,6 @@ RDEPEND="app-crypt/mit-krb5
 	dev-python/future[${PYTHON_USEDEP}]
 	dev-util/lttng-ust:0=
 	net-misc/curl"
-
-S="${WORKDIR}/${MY_P}"
 
 distutils_enable_tests pytest
 
