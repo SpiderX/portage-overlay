@@ -20,6 +20,7 @@ COMMIT="04821d1e7d60845525e8db55c7bcd41ef5be9406"
 DESCRIPTION="Library for freeswitch yuv graphics manipulation"
 HOMEPAGE="https://chromium.googlesource.com/libyuv/libyuv"
 SRC_URI="https://chromium.googlesource.com/${PN}/${PN}.git/+archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/"
 
 LICENSE="BSD"
 SLOT="0"
@@ -29,8 +30,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="media-libs/libjpeg-turbo:0="
 BDEPEND="test? ( dev-cpp/gtest )"
-
-S="${WORKDIR}/"
 
 src_prepare() {
 	# cmake_minimum_required() should be called prior to
