@@ -11,6 +11,7 @@ DESCRIPTION="Amazon Workspace Client"
 HOMEPAGE="https://clients.amazonworkspaces.com"
 SRC_URI="https://d3nt0h4h6pmmc4.cloudfront.net/new_workspacesclient_focal_amd64.deb
 	-> workspacesclient-${PV}_amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved Apache-2.0 GPL-2 MIT no-source-code"
 SLOT="0"
@@ -28,7 +29,7 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/fribidi
 	dev-libs/hiredis:0=
 	dev-libs/hyphen
-	dev-libs/icu:0/73.1
+	dev-libs/icu:0=
 	dev-libs/libffi:0=
 	dev-libs/libtasn1:0=
 	dev-libs/libgcrypt:0/20
@@ -222,8 +223,6 @@ QA_PREBUILT="usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libepoxy.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavfilter.so.7.110.100
 	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavutil.so
 	usr/lib/x86_64-linux-gnu/pcoip-client/vchan_plugins/libvchan-plugin-clipboard.so"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
