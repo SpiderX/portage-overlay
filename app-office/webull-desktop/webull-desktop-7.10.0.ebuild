@@ -1,6 +1,8 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# shellcheck disable=SC2317
+
 EAPI=8
 
 PLOCALES="am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv sw ta te th tr uk vi zh-CN zh-TW"
@@ -58,6 +60,7 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	x11-libs/libXrandr:0
 	x11-libs/libXrender:0
 	x11-libs/pango:0"
+BDEPEND="dev-util/patchelf"
 
 QA_PREBUILT="opt/WebullDesktop/QtWebEngineProcess
 	opt/WebullDesktop/libwebpmux.so.3
@@ -254,7 +257,7 @@ src_prepare() {
 		-e '/Icon/s|.png||' \
 		-e '/Categories/s|Utiltity|Finance|' \
 		-e '/Version/d' \
-		-e '/Exec/s|=.*$|=env LD_LIBRARY_PATH=\\$LD_LIBRARY_PATH:/opt/WebullDesktop /opt/WebullDesktop/WebullDesktop|' \
+		-e "/Exec/s|=.*$|=env LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/WebullDesktop /opt/WebullDesktop/WebullDesktop|" \
 		usr/share/applications/WebullDesktop.desktop
 }
 
@@ -289,6 +292,11 @@ src_install() {
 		/opt/WebullDesktop/libsentry.so \
 		/opt/WebullDesktop/libwb{basecore,basestore,baseui,charts,commonui,grpc,httpsclient,mqtt,storecommon}.so \
 		/opt/WebullDesktop/libwb{uiframeworkmanager,updater,webviewui}.so
+
+	patchelf --set-rpath "\$ORIGIN" "${ED}"/opt/WebullDesktop/libQtAV.so.1{,.13,.13.0} \
+		"${ED}"/opt/WebullDesktop/libQtAVWidgets.so.1{,.13,.13.0} \
+		|| die "patchelf failed"
+
 	dosym ../WebullDesktop/WebullDesktop opt/bin/WebullDesktop
 	dobin "${FILESDIR}"/webulldesktop
 	pax-mark -m "${ED}"/opt/WebullDesktop/WebullDesktop
