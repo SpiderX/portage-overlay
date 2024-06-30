@@ -48,7 +48,7 @@ BDEPEND="virtual/pkgconfig
 	iso? ( app-cdr/cdrtools )
 	wayland? ( dev-util/wayland-scanner )"
 
-#CONFIG_CHECK="~UIO"
+CONFIG_CHECK="~UIO"
 
 src_unpack() {
 	git-r3_src_unpack

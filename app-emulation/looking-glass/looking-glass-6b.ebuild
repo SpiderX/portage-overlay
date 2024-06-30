@@ -52,7 +52,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=( "${FILESDIR}/${P}-kernel-6.4.patch" )
 
-#CONFIG_CHECK="~UIO"
+CONFIG_CHECK="~UIO"
 
 src_unpack() {
 	einfo "Unpacking ${P}.tar.gz ..."
