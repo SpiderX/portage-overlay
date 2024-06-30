@@ -17,7 +17,11 @@
 	require high performance graphics.
 	</longdescription>
 	<use>
-		<flag name="host">Download Windows host application</flag>
+		<flag name="binary">Install Windows host application</flag>
+		<flag name="host">Build Linux host application</flag>
+		<flag name="iso">Build an iso image with host application</flag>
+		<flag name="obs">Build plugin for <pkg>media-video/obs-studio</pkg></flag>
+		<flag name="pipewire">Enable sound support via native PipeWire backend</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">gnif/LookingGlass</remote-id>

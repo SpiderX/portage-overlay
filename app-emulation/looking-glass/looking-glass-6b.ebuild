@@ -3,19 +3,21 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/gnif/LookingGlass.git"
 MODULES_OPTIONAL_IUSE="modules"
 
-inherit cmake desktop git-r3 linux-mod-r1 tmpfiles xdg
+inherit cmake desktop linux-mod-r1 tmpfiles xdg
 
-MY_PV="B7-rc1"
+MY_PV="$(ver_cut 2 "${PV^^}")$(ver_cut 1)$(ver_cut 3-)"
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
 HOMEPAGE="https://looking-glass.io https://github.com/gnif/LookingGlass"
-SRC_URI="binary? ( https://looking-glass.io/artifact/${MY_PV}/host -> looking-glass-host-${PV}.zip )"
+SRC_URI="https://looking-glass.io/artifact/${MY_PV}/source -> ${P}.tar.gz
+	binary? ( https://looking-glass.io/artifact/${MY_PV}/host -> looking-glass-host-${PV}.zip )"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="binary gnome host iso obs opengl pipewire pulseaudio wayland X"
 REQUIRED_USE="gnome? ( wayland ) iso? ( binary )"
 RESTRICT="mirror"
@@ -48,10 +50,14 @@ BDEPEND="virtual/pkgconfig
 	iso? ( app-cdr/cdrtools )
 	wayland? ( dev-util/wayland-scanner )"
 
+PATCHES=( "${FILESDIR}/${P}-kernel-6.4.patch" )
+
 #CONFIG_CHECK="~UIO"
 
 src_unpack() {
-	git-r3_src_unpack
+	einfo "Unpacking ${P}.tar.gz ..."
+	tar -xzf "${DISTDIR}/${P}.tar.gz" "${PN}-${MY_PV}" \
+		|| die "unpack failed ${P}"
 	if use binary ; then
 		einfo "Unpacking looking-glass-host-${PV}.zip ..."
 		mkdir "${PN}-host" || die "mkdir failed"
