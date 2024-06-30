@@ -33,12 +33,12 @@ QA_PREBUILT="opt/vdhcoapp/filepicker
 src_install() {
 	keepdir /etc/chromium/native-messaging-hosts \
 		/etc/opt/chrome/native-messaging-hosts \
-		/usr/lib/mozilla/native-messaging-hosts
+		/usr/lib/mozilla/native-messaging-hosts \
+		/etc/opt/edge/native-messaging-hosts
 
 	exeinto /opt/vdhcoapp
 	doexe opt/vdhcoapp/{filepicker,vdhcoapp,xdg-open}
 	dosym ../../usr/bin/ffmpeg opt/vdhcoapp/ffmpeg
-	dosym ../../usr/bin/ffplay opt/vdhcoapp/ffplay
 	dosym ../../usr/bin/ffprobe opt/vdhcoapp/ffprobe
 
 	dodir /opt/bin
