@@ -18,6 +18,15 @@ src_unpack() {
 	go-module_live_vendor
 }
 
+src_prepare() {
+	default
+
+	# rename reference (app-misc/yq)
+	sed -i '/Use:/s|xq|xxq|' cmd/root.go || die "sed failed for root.go"
+	# rename man
+	sed -i 's/xq/xxq/;s/XQ/XXQ/' docs/xq.man || die "sed failed for xq.man"
+}
+
 src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
 	COMMIT="$(git log -n 1 --format='%h')"
@@ -32,6 +41,6 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	dobin xq
-	newman docs/xq.man xq.1
+	newbin xq xxq
+	newman docs/xq.man xxq.1
 }
