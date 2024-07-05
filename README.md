@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 746](https://img.shields.io/badge/ebuild-746-orange.svg)](https://img.shields.io/badge/ebuild-746-orange.svg)
+[![Number of ebuilds: 747](https://img.shields.io/badge/ebuild-747-orange.svg)](https://img.shields.io/badge/ebuild-747-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -386,6 +386,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[click-option-group](https://github.com/click-contrib/click-option-group) | Option groups missing in Click
 *   dev-python/[click-repl](https://github.com/click-contrib/click-repl) | Subcommand REPL for click apps
 *   dev-python/[colorpedia](https://github.com/joowani/colorpedia) | Command-line tool for looking up colors and palettes
+*   dev-python/[commandlines](https://github.com/chrissimpkins/commandlines) | Python command line argument to object parsing library
 *   dev-python/[configparser](https://github.com/jaraco/configparser) | Backport of configparser from Python 3
 *   dev-python/[convertdate](https://github.com/fitnr/convertdate) | Utils for converting between date formats and calculating holidays
 *   dev-python/[coreapi](https://github.com/core-api/python-client) | Python client library for Core API
