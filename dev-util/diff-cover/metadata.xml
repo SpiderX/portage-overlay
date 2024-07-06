@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Diff coverage is the percentage of new or modified lines that are covered by tests.
+	The diff-cover command line tool compares an XML coverage report with the output
+	of git diff. It then reports coverage information for lines in the diff.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">diff-cover</remote-id>
+		<remote-id type="github">Bachmann1234/diff_cover</remote-id>
+	</upstream>
+</pkgmetadata>
