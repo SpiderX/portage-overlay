@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 EGIT_REPO_URI="https://github.com/saulpw/${PN}.git"
 
@@ -12,11 +12,11 @@ inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Terminal spreadsheet multitool for discovering and arranging data"
 HOMEPAGE="https://github.com/saulpw/visidata"
-SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]"
@@ -29,8 +29,7 @@ BDEPEND="test? ( dev-python/h5py[${PYTHON_USEDEP}]
 distutils_enable_tests pytest
 
 python_test() {
-	git init || die "git init failed"
-	git add tests/golden/ || die "git add failed"
+	epytest -v visidata/tests/
 	dev/test.sh || die "test failed"
 }
 
@@ -48,12 +47,12 @@ pkg_postinst() {
 	optfeature "integration with shapefiles" sci-libs/pyshp
 	optfeature "integration with namestand" dev-python/graphviz
 	optfeature "integration with tabulate/wcwidth" dev-python/tabulate # saver
+	optfeature "integration with pdf" app-text/pdfminer
+	optfeature "integration with mbtiles" dev-python/mapbox-vector-tile
+	optfeature "integration with vcf" dev-python/vobject
 	#optfeature "integration with pcap" dev-python/dnslib #dpkt
-	#optfeature "integration with pdf" pdfminer.six tabula
-	#optfeature "integration with mbtiles" mapbox-vector-tile
 	#optfeature "integration with xpt (SAS)" xport
 	#optfeature "integration with sas7bdat (SAS)" sas7bdat
 	#optfeature "integration with sav (SPSS)" savReaderWriter
 	#optfeature "integration with datapackage" frictionless .json
-	#optfeature "integration with vcf" vobject
 }
