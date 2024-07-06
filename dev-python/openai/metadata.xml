@@ -15,6 +15,9 @@
 	request params and response fields, and offers both synchronous and
 	asynchronous clients powered by httpx.
 	</longdescription>
+	<use>
+		<flag name="datalib">Support data analysis and statistics</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">openai/openai-python</remote-id>
 		<remote-id type="pypi">openai</remote-id>

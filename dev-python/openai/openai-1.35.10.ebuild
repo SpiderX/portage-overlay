@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit distutils-r1
 
@@ -19,6 +19,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="datalib"
 
 RDEPEND="dev-python/anyio[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
@@ -26,10 +27,13 @@ RDEPEND="dev-python/anyio[${PYTHON_USEDEP}]
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/sniffio[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]"
+	dev-python/typing-extensions[${PYTHON_USEDEP}]
+	datalib? ( dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/pandas-stubs[${PYTHON_USEDEP}] )"
 BDEPEND="test? ( dev-python/dirty-equals[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}] )"
-#dev-python/respx[${PYTHON_USEDEP}] doesn't have python3_10, used in removed tests
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/respx[${PYTHON_USEDEP}] )"
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
