@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 748](https://img.shields.io/badge/ebuild-748-orange.svg)](https://img.shields.io/badge/ebuild-748-orange.svg)
+[![Number of ebuilds: 749](https://img.shields.io/badge/ebuild-749-orange.svg)](https://img.shields.io/badge/ebuild-749-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -504,6 +504,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[policyuniverse](https://github.com/Netflix-Skunkworks/policyuniverse) | Parse and Process AWS IAM Policies, Statements, ARNs
 *   dev-python/[port-for](https://github.com/kmike/port-for) | An utility and python library for TCP ports management
 *   dev-python/[prance](https://github.com/jfinkhaeuser/prance) | Resolving Swagger/OpenAPI 2.0 and 3.0 Parser
+*   dev-python/[proglog](https://github.com/Edinburgh-Genome-Foundry/Proglog) | Logs and progress bars manager for Python
 *   dev-python/[promise](https://github.com/syrusakbary/promise) | Python port of GraphQL.js
 *   dev-python/[purl](https://github.com/codeinthehole/purl) | Simple Python URL class
 *   dev-python/[py3dns](https://launchpad.net/py3dns) | Python 3 DNS library
