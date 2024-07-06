@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 755](https://img.shields.io/badge/ebuild-755-orange.svg)](https://img.shields.io/badge/ebuild-755-orange.svg)
+[![Number of ebuilds: 754](https://img.shields.io/badge/ebuild-754-orange.svg)](https://img.shields.io/badge/ebuild-754-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -541,7 +541,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[random2](https://github.com/strichter/random2) | Python-2.7 random module ported to python-3
 *   dev-python/[requests-mock](https://github.com/jamielennox/requests-mock) | Mock out responses from the requests package
 *   dev-python/[reprint](https://github.com/Yinzo/reprint) | Binding variables and refreshing multi-line output in terminal
-*   dev-python/[respx](https://github.com/lundberg/respx) | Mock HTTPX with request patterns and response side effects
 *   dev-python/[rich](https://github.com/willmcgugan/rich) | Validate configuration and produce human readable error messages
 *   dev-python/[ripe-atlas-cousteau](https://github.com/RIPE-NCC/ripe-atlas-cousteau) | Official python wrapper around RIPE Atlas API
 *   dev-python/[ripe-atlas-sagan](https://github.com/RIPE-NCC/ripe-atlas-sagan) | A parsing library for RIPE Atlas measurement results
