@@ -1,0 +1,37 @@
+--- ../vendor/autoload.php	2024-07-07 16:56:25.105822016 +0300
++++ ../vendor/autoload.php	2024-07-07 16:57:32.819305228 +0300
+@@ -286,3 +286,34 @@
+     __DIR__ . '/../src'
+ );
+ // @codeCoverageIgnoreEnd
++
++// Dependencies
++\Fedora\Autoloader\Dependencies::required([
++    '/usr/share/php/Composer/CaBundle/autoload.php',
++    '/usr/share/php/Composer/ClassMapGenerator/autoload.php',
++    '/usr/share/php/Composer/MetadataMinifier/autoload.php',
++    '/usr/share/php/Composer/Pcre/autoload.php',
++    '/usr/share/php/Composer/Semver/autoload.php',
++    '/usr/share/php/Composer/XdebugHandler/autoload.php',
++    '/usr/share/php/Composer/Spdx/autoload.php',
++    '/usr/share/php/Psr/Log/autoload.php',
++    '/usr/share/php/Seld/PharUtils/autoload.php',
++    '/usr/share/php/Seld/JsonLint/autoload.php',
++    '/usr/share/php/Seld/SignalHandler/autoload.php',
++    '/usr/share/php/Fedora/Autoloader/autoload.php',
++    '/usr/share/php/JsonSchema/autoload.php',
++    '/usr/share/php/React/Promise/autoload.php',
++    '/usr/share/php/Symfony/Component/PolyfillCtype/autoload.php',
++    '/usr/share/php/Symfony/Component/DeprecationContracts/autoload.php',
++    '/usr/share/php/Symfony/Component/ServiceContracts/autoload.php',
++    '/usr/share/php/Symfony/Component/PolyfillIntlNormalizer/autoload.php',
++    '/usr/share/php/Symfony/Component/Filesystem/autoload.php',
++    '/usr/share/php/Symfony/Component/Finder/autoload.php',
++    '/usr/share/php/Symfony/Component/Console/autoload.php',
++    '/usr/share/php/Symfony/Component/PolyfillMbstring/autoload.php',
++    '/usr/share/php/Symfony/Component/Process/autoload.php',
++    '/usr/share/php/Symfony/Component/PolyfillIntlGrapheme/autoload.php',
++    '/usr/share/php/Symfony/Component/Polyfill-php80/autoload.php',
++    '/usr/share/php/Symfony/Component/Polyfill-php81/autoload.php',
++    '/usr/share/php/Symfony/Component/String/autoload.php',
++]);
