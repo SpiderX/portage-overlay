@@ -1,0 +1,10 @@
+--- ../autoload.php	2024-07-07 17:55:53.415562861 +0300
++++ ../autoload.php	2024-07-07 17:56:21.765645447 +0300
+@@ -98,6 +98,7 @@
+                 'symfony\\component\\console\\messenger\\runcommandcontext' => '/Messenger/RunCommandContext.php',
+                 'symfony\\component\\console\\messenger\\runcommandmessage' => '/Messenger/RunCommandMessage.php',
+                 'symfony\\component\\console\\messenger\\runcommandmessagehandler' => '/Messenger/RunCommandMessageHandler.php',
++                'symfony\\component\\console\\output\\ansicolormode' => '/Output/AnsiColorMode.php',
+                 'symfony\\component\\console\\output\\bufferedoutput' => '/Output/BufferedOutput.php',
+                 'symfony\\component\\console\\output\\consoleoutput' => '/Output/ConsoleOutput.php',
+                 'symfony\\component\\console\\output\\consoleoutputinterface' => '/Output/ConsoleOutputInterface.php',
