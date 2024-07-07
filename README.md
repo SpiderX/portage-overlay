@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 758](https://img.shields.io/badge/ebuild-758-orange.svg)](https://img.shields.io/badge/ebuild-758-orange.svg)
+[![Number of ebuilds: 759](https://img.shields.io/badge/ebuild-759-orange.svg)](https://img.shields.io/badge/ebuild-759-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -352,6 +352,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-php/[class-map-generator](https://github.com/composer/class-map-generator) | Utilities to scan PHP code and generate class maps
 *   dev-php/[pcre](https://github.com/composer/pcre) | PCRE wrapping library that offers type-safe preg_ replacements
+*   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[spx](https://github.com/NoiseByNorthwest/php-spx) | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
