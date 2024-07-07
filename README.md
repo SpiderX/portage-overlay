@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 768](https://img.shields.io/badge/ebuild-768-orange.svg)](https://img.shields.io/badge/ebuild-768-orange.svg)
+[![Number of ebuilds: 769](https://img.shields.io/badge/ebuild-769-orange.svg)](https://img.shields.io/badge/ebuild-769-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -364,6 +364,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-polyfill-ctype](https://github.com/symfony/polyfill-ctype) | Symfony polyfill for ctype functions
 *   dev-php/[symfony-polyfill-intl-grapheme](https://github.com/symfony/polyfill-intl-grapheme) | Symfony polyfill for intl's grapheme_ functions
 *   dev-php/[symfony-polyfill-intl-normalizer](https://github.com/symfony/polyfill-intl-normalizer) | Symfony polyfill for intl's Normalizer class
+*   dev-php/[symfony-polyfill-mbstring](https://github.com/symfony/polyfill-mbstring) | Symfony polyfill for the Mbstring extension
 *   dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
 *   dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory
 *   dev-python/[ahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
