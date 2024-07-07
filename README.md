@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 755](https://img.shields.io/badge/ebuild-755-orange.svg)](https://img.shields.io/badge/ebuild-755-orange.svg)
+[![Number of ebuilds: 756](https://img.shields.io/badge/ebuild-756-orange.svg)](https://img.shields.io/badge/ebuild-756-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -686,6 +686,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-libs/[qt-heif](https://github.com/jakar/qt-heif-image-plugin) | Qt plugin for HEIF images
 *   media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
 *   media-libs/[QtApng](https://github.com/Skycoder42/QtApng) | An apng image plugin for Qt to support animated PNGs
+*   media-sound/[cider](https://cider.sh) | A new cross-platform Apple Music experience based on Electron
 *   media-sound/[cozy](https://github.com/geigi/cozy) | Modern audiobook player
 *   media-sound/[finetune](https://flavio.tordini.org/finetune) | Automatic music tagger
 *   media-sound/[mpz](https://mpz-player.org) | Music player for big local collections
