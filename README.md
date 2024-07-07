@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 763](https://img.shields.io/badge/ebuild-763-orange.svg)](https://img.shields.io/badge/ebuild-763-orange.svg)
+[![Number of ebuilds: 764](https://img.shields.io/badge/ebuild-764-orange.svg)](https://img.shields.io/badge/ebuild-764-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -359,6 +359,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[spx](https://github.com/NoiseByNorthwest/php-spx) | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[symfony-console](https://github.com/symfony/console) | Eases the creation of beautiful and testable command line interfaces
 *   dev-php/[symfony-deprecation-contracts](https://github.com/symfony/deprecation-contracts) | A generic function and convention to trigger deprecation notices
+*   dev-php/[symfony-filesystem](https://github.com/symfony/filesystem) | Provides basic utilities for the filesystem
 *   dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
 *   dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory
 *   dev-python/[ahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
