@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a PHP component from Symfony eases
+	This package provides a PHP component from Symfony eases
 	the creation of beautiful and testable command line interfaces.
 	</longdescription>
 	<upstream>
