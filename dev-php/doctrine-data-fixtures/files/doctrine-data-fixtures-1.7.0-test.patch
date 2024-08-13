@@ -1,0 +1,86 @@
+From dcef9ac4326ea1b73ea5bf6ce5950eff7df022ce Mon Sep 17 00:00:00 2001
+From: "Alexander M. Turek" <me@derrabus.de>
+Date: Sun, 5 May 2024 15:50:08 +0200
+Subject: [PATCH] Use stub implementations instead of mocks
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+… when we need control over the class name.
+---
+ tests/Common/DataFixtures/LoaderTest.php | 43 ++++++++++++++++++------
+ 1 file changed, 33 insertions(+), 10 deletions(-)
+
+diff --git a/tests/Common/DataFixtures/LoaderTest.php b/tests/Common/DataFixtures/LoaderTest.php
+index 3a4900d9..250631e7 100644
+--- a/tests/Common/DataFixtures/LoaderTest.php
++++ b/tests/Common/DataFixtures/LoaderTest.php
+@@ -6,7 +6,9 @@
+ 
+ use Doctrine\Common\DataFixtures\FixtureInterface;
+ use Doctrine\Common\DataFixtures\Loader;
++use Doctrine\Common\DataFixtures\ReferenceRepository;
+ use Doctrine\Common\DataFixtures\SharedFixtureInterface;
++use Doctrine\Persistence\ObjectManager;
+ use TestFixtures\MyFixture1;
+ use TestFixtures\NotAFixture;
+ 
+@@ -18,11 +20,9 @@ class LoaderTest extends BaseTestCase
+     public function testLoadFromDirectory(): void
+     {
+         $loader = new Loader();
+-        $loader->addFixture($this->getMockBuilder(FixtureInterface::class)->setMockClassName('Mock1')->getMock());
+-        $loader->addFixture($this->getMockBuilder(FixtureInterface::class)->setMockClassName('Mock2')->getMock());
+-        $loader->addFixture(
+-            $this->getMockBuilder(SharedFixtureInterface::class)->setMockClassName('Mock3')->getMock(),
+-        );
++        $loader->addFixture(new DummyFixtureOne());
++        $loader->addFixture(new DummyFixtureTwo());
++        $loader->addFixture(new SharedDummyFixture());
+ 
+         $this->assertCount(3, $loader->getFixtures());
+ 
+@@ -35,11 +35,9 @@ public function testLoadFromDirectory(): void
+     public function testLoadFromFile(): void
+     {
+         $loader = new Loader();
+-        $loader->addFixture($this->getMockBuilder(FixtureInterface::class)->setMockClassName('Mock1')->getMock());
+-        $loader->addFixture($this->getMockBuilder(FixtureInterface::class)->setMockClassName('Mock2')->getMock());
+-        $loader->addFixture(
+-            $this->getMockBuilder(SharedFixtureInterface::class)->setMockClassName('Mock3')->getMock(),
+-        );
++        $loader->addFixture(new DummyFixtureOne());
++        $loader->addFixture(new DummyFixtureTwo());
++        $loader->addFixture(new SharedDummyFixture());
+ 
+         $this->assertCount(3, $loader->getFixtures());
+ 
+@@ -63,3 +61,28 @@ public function testGetFixture(): void
+         $this->assertInstanceOf(MyFixture1::class, $fixture);
+     }
+ }
++
++final class DummyFixtureOne implements FixtureInterface
++{
++    public function load(ObjectManager $manager): void
++    {
++    }
++}
++
++final class DummyFixtureTwo implements FixtureInterface
++{
++    public function load(ObjectManager $manager): void
++    {
++    }
++}
++
++final class SharedDummyFixture implements SharedFixtureInterface
++{
++    public function load(ObjectManager $manager): void
++    {
++    }
++
++    public function setReferenceRepository(ReferenceRepository $referenceRepository): void
++    {
++    }
++}
