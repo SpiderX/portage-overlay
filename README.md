@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 824](https://img.shields.io/badge/ebuild-824-orange.svg)](https://img.shields.io/badge/ebuild-824-orange.svg)
+[![Number of ebuilds: 825](https://img.shields.io/badge/ebuild-825-orange.svg)](https://img.shields.io/badge/ebuild-825-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -402,6 +402,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[laminas-code](https://github.com/laminas/laminas-code) | Extensions to the PHP Reflection API
 *   dev-php/[laminas-diactoros](https://github.com/laminas/laminas-stdlib) | SPL extensions, array utilities, error handlers, and more
 *   dev-php/[laminas-stdlib](https://github.com/laminas/laminas-stdlib) | SPL extensions, array utilities, error handlers, and more
+*   dev-php/[league-flysystem](https://github.com/thephpleague/flysystem) | Abstraction for local and remote filesystems
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
@@ -904,4 +905,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
-
