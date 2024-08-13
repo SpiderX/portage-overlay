@@ -1,0 +1,190 @@
+From a23ce52b659b841fcc693ca800be8794d963c929 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?David=20Pr=C3=A9vot?= <taffit@debian.org>
+Date: Sun, 12 Jul 2020 12:18:05 -0400
+Subject: [PATCH] Compatibility with recent PHPUnit (8)
+
+---
+ tests/Hamcrest/Core/CombinableMatcherTest.php          | 2 +-
+ tests/Hamcrest/Core/IsInstanceOfTest.php               | 2 +-
+ tests/Hamcrest/Core/SetTest.php                        | 2 +-
+ tests/Hamcrest/FeatureMatcherTest.php                  | 2 +-
+ tests/Hamcrest/MatcherAssertTest.php                   | 2 +-
+ tests/Hamcrest/StringDescriptionTest.php               | 2 +-
+ tests/Hamcrest/Text/IsEqualIgnoringWhiteSpaceTest.php  | 2 +-
+ tests/Hamcrest/Text/StringContainsIgnoringCaseTest.php | 2 +-
+ tests/Hamcrest/Text/StringContainsInOrderTest.php      | 2 +-
+ tests/Hamcrest/Text/StringContainsTest.php             | 2 +-
+ tests/Hamcrest/Text/StringEndsWithTest.php             | 2 +-
+ tests/Hamcrest/Text/StringStartsWithTest.php           | 2 +-
+ tests/Hamcrest/Xml/HasXPathTest.php                    | 2 +-
+ 13 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/tests/Hamcrest/Core/CombinableMatcherTest.php b/tests/Hamcrest/Core/CombinableMatcherTest.php
+index 463c75437..5a5fe235c 100644
+--- a/tests/Hamcrest/Core/CombinableMatcherTest.php
++++ b/tests/Hamcrest/Core/CombinableMatcherTest.php
+@@ -7,7 +7,7 @@ class CombinableMatcherTest extends \Hamcrest\AbstractMatcherTest
+     private $_either_3_or_4;
+     private $_not_3_and_not_4;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_either_3_or_4 = \Hamcrest\Core\CombinableMatcher::either(equalTo(3))->orElse(equalTo(4));
+         $this->_not_3_and_not_4 = \Hamcrest\Core\CombinableMatcher::both(not(equalTo(3)))->andAlso(not(equalTo(4)));
+diff --git a/tests/Hamcrest/Core/IsInstanceOfTest.php b/tests/Hamcrest/Core/IsInstanceOfTest.php
+index f74cfdb52..0d6228ae5 100644
+--- a/tests/Hamcrest/Core/IsInstanceOfTest.php
++++ b/tests/Hamcrest/Core/IsInstanceOfTest.php
+@@ -7,7 +7,7 @@ class IsInstanceOfTest extends \Hamcrest\AbstractMatcherTest
+     private $_baseClassInstance;
+     private $_subClassInstance;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_baseClassInstance = new \Hamcrest\Core\SampleBaseClass('good');
+         $this->_subClassInstance = new \Hamcrest\Core\SampleSubClass('good');
+diff --git a/tests/Hamcrest/Core/SetTest.php b/tests/Hamcrest/Core/SetTest.php
+index aa5e4e7be..35ae3b996 100644
+--- a/tests/Hamcrest/Core/SetTest.php
++++ b/tests/Hamcrest/Core/SetTest.php
+@@ -7,7 +7,7 @@ class SetTest extends \Hamcrest\AbstractMatcherTest
+     public static $_classProperty;
+     public $_instanceProperty;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         self::$_classProperty = null;
+         unset($this->_instanceProperty);
+diff --git a/tests/Hamcrest/FeatureMatcherTest.php b/tests/Hamcrest/FeatureMatcherTest.php
+index 1b0230498..0308300ac 100644
+--- a/tests/Hamcrest/FeatureMatcherTest.php
++++ b/tests/Hamcrest/FeatureMatcherTest.php
+@@ -34,7 +34,7 @@ class FeatureMatcherTest extends \Hamcrest\AbstractMatcherTest
+ 
+     private $_resultMatcher;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_resultMatcher = $this->_resultMatcher();
+     }
+diff --git a/tests/Hamcrest/MatcherAssertTest.php b/tests/Hamcrest/MatcherAssertTest.php
+index dc12fba54..ee287fb1e 100644
+--- a/tests/Hamcrest/MatcherAssertTest.php
++++ b/tests/Hamcrest/MatcherAssertTest.php
+@@ -6,7 +6,7 @@
+ class MatcherAssertTest extends TestCase
+ {
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         \Hamcrest\MatcherAssert::resetCount();
+     }
+diff --git a/tests/Hamcrest/StringDescriptionTest.php b/tests/Hamcrest/StringDescriptionTest.php
+index ed716d13e..402682ac7 100644
+--- a/tests/Hamcrest/StringDescriptionTest.php
++++ b/tests/Hamcrest/StringDescriptionTest.php
+@@ -23,7 +23,7 @@ class StringDescriptionTest extends TestCase
+ 
+     private $_description;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_description = new \Hamcrest\StringDescription();
+     }
+diff --git a/tests/Hamcrest/Text/IsEqualIgnoringWhiteSpaceTest.php b/tests/Hamcrest/Text/IsEqualIgnoringWhiteSpaceTest.php
+index 27ad338b7..48ad19eb9 100644
+--- a/tests/Hamcrest/Text/IsEqualIgnoringWhiteSpaceTest.php
++++ b/tests/Hamcrest/Text/IsEqualIgnoringWhiteSpaceTest.php
+@@ -6,7 +6,7 @@ class IsEqualIgnoringWhiteSpaceTest extends \Hamcrest\AbstractMatcherTest
+ 
+     private $_matcher;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_matcher = \Hamcrest\Text\IsEqualIgnoringWhiteSpace::equalToIgnoringWhiteSpace(
+             "Hello World   how\n are we? "
+diff --git a/tests/Hamcrest/Text/StringContainsIgnoringCaseTest.php b/tests/Hamcrest/Text/StringContainsIgnoringCaseTest.php
+index 73023007b..3d2b287de 100644
+--- a/tests/Hamcrest/Text/StringContainsIgnoringCaseTest.php
++++ b/tests/Hamcrest/Text/StringContainsIgnoringCaseTest.php
+@@ -8,7 +8,7 @@ class StringContainsIgnoringCaseTest extends \Hamcrest\AbstractMatcherTest
+ 
+     private $_stringContains;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_stringContains = \Hamcrest\Text\StringContainsIgnoringCase::containsStringIgnoringCase(
+             strtolower(self::EXCERPT)
+diff --git a/tests/Hamcrest/Text/StringContainsInOrderTest.php b/tests/Hamcrest/Text/StringContainsInOrderTest.php
+index 4c465b29d..0f9d0a0a1 100644
+--- a/tests/Hamcrest/Text/StringContainsInOrderTest.php
++++ b/tests/Hamcrest/Text/StringContainsInOrderTest.php
+@@ -6,7 +6,7 @@ class StringContainsInOrderTest extends \Hamcrest\AbstractMatcherTest
+ 
+     private $_m;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_m = \Hamcrest\Text\StringContainsInOrder::stringContainsInOrder(array('a', 'b', 'c'));
+     }
+diff --git a/tests/Hamcrest/Text/StringContainsTest.php b/tests/Hamcrest/Text/StringContainsTest.php
+index bf4afa3c9..971fa98fd 100644
+--- a/tests/Hamcrest/Text/StringContainsTest.php
++++ b/tests/Hamcrest/Text/StringContainsTest.php
+@@ -8,7 +8,7 @@ class StringContainsTest extends \Hamcrest\AbstractMatcherTest
+ 
+     private $_stringContains;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_stringContains = \Hamcrest\Text\StringContains::containsString(self::EXCERPT);
+     }
+diff --git a/tests/Hamcrest/Text/StringEndsWithTest.php b/tests/Hamcrest/Text/StringEndsWithTest.php
+index 9a30f9520..58b43e538 100644
+--- a/tests/Hamcrest/Text/StringEndsWithTest.php
++++ b/tests/Hamcrest/Text/StringEndsWithTest.php
+@@ -8,7 +8,7 @@ class StringEndsWithTest extends \Hamcrest\AbstractMatcherTest
+ 
+     private $_stringEndsWith;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_stringEndsWith = \Hamcrest\Text\StringEndsWith::endsWith(self::EXCERPT);
+     }
+diff --git a/tests/Hamcrest/Text/StringStartsWithTest.php b/tests/Hamcrest/Text/StringStartsWithTest.php
+index 3be201f1a..72fa59b6e 100644
+--- a/tests/Hamcrest/Text/StringStartsWithTest.php
++++ b/tests/Hamcrest/Text/StringStartsWithTest.php
+@@ -8,7 +8,7 @@ class StringStartsWithTest extends \Hamcrest\AbstractMatcherTest
+ 
+     private $_stringStartsWith;
+ 
+-    protected function setUp()
++    protected function setUp(): void
+     {
+         $this->_stringStartsWith = \Hamcrest\Text\StringStartsWith::startsWith(self::EXCERPT);
+     }
+diff --git a/tests/Hamcrest/Xml/HasXPathTest.php b/tests/Hamcrest/Xml/HasXPathTest.php
+index 677488716..f51264ea9 100644
+--- a/tests/Hamcrest/Xml/HasXPathTest.php
++++ b/tests/Hamcrest/Xml/HasXPathTest.php
+@@ -7,7 +7,7 @@ class HasXPathTest extends \Hamcrest\AbstractMatcherTest
+     protected static $doc;
+     protected static $html;
+ 
+-    public static function setUpBeforeClass()
++    public static function setUpBeforeClass(): void
+     {
+         self::$xml = <<<XML
+ <?xml version="1.0"?>
