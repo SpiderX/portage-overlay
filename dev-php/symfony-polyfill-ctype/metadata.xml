@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a PHP component with ctype_ functions to users
+	This package provides a PHP component with ctype_ functions to users
 	who run php versions without the ctype extension.
 	</longdescription>
 	<upstream>

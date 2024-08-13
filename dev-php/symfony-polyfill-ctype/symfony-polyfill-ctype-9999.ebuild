@@ -12,25 +12,13 @@ HOMEPAGE="https://github.com/symfony/polyfill-ctype"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test" # no phpunit
+RESTRICT="test" # no tests
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload"
-
-src_prepare() {
-	default
-
-	phpab --quiet --output autoload.php \
-		--template fedora2 --basedir . . \
-		|| die "phpab failed"
-
-	echo "\Fedora\Autoloader\Dependencies::required([__DIR__ . '/bootstrap.php']);" \
-		>> autoload.php || die "echo failed"
-}
 
 src_install() {
 	einstalldocs
-	insinto /usr/share/php/Symfony/Component/PolyfillCtype
-	doins -r *.php
+	insinto /usr/share/php/Symfony/Polyfill/Ctype
+	doins -r "${FILESDIR}"/autoload.php ./*.php
 }
