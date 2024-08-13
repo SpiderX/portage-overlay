@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 834](https://img.shields.io/badge/ebuild-834-orange.svg)](https://img.shields.io/badge/ebuild-834-orange.svg)
+[![Number of ebuilds: 835](https://img.shields.io/badge/ebuild-835-orange.svg)](https://img.shields.io/badge/ebuild-835-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -412,6 +412,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[masterminds-html5](https://github.com/Masterminds/html5-php) | An HTML5 parser and serializer for PHP
 *   dev-php/[mikehaertl-php-shellcommand](https://github.com/mikehaertl/php-shellcommand) | Simple object oriented interface to execute shell commands in PHP
 *   dev-php/[mockery](https://github.com/hamcrest/hamcrest-php) | PHP Hamcrest implementation
+*   dev-php/[mongodb](https://github.com/mongodb/mongo-php-library) | The Official MongoDB PHP library
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
