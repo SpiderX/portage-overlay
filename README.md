@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 794](https://img.shields.io/badge/ebuild-794-orange.svg)](https://img.shields.io/badge/ebuild-794-orange.svg)
+[![Number of ebuilds: 795](https://img.shields.io/badge/ebuild-795-orange.svg)](https://img.shields.io/badge/ebuild-795-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -368,6 +368,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[amphp-sync](https://github.com/amphp/sync) | Non-blocking synchronization primitives for PHP
 *   dev-php/[amphp-windows-registry](https://github.com/amphp/windows-registry) | Windows Registry Reader
 *   dev-php/[cache](https://github.com/php-cache/cache) | PHP Cache adapters
+*   dev-php/[cache-integration-tests](https://github.com/php-cache/integration-tests) | Integration tests for PSR-6 cache
 *   dev-php/[composer](https://github.com/composer/composer) | Dependency Manager for PHP
 *   dev-php/[composer-class-map-generator](https://github.com/composer/class-map-generator) | Utilities to scan PHP code and generate class maps
 *   dev-php/[composer-pcre](https://github.com/composer/pcre) | PCRE wrapping library that offers type-safe preg_ replacements

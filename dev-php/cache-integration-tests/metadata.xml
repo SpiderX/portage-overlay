@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides integration tests to make sure implementation of
+	a PSR-6 and/or PSR-16 cache follows the rules by PHP-FIG.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">php-cache/integration-tests</remote-id>
+	</upstream>
+</pkgmetadata>
