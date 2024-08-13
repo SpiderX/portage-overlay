@@ -1,0 +1,76 @@
+--- ../test/DnsConfigTest.php	2024-08-08 18:35:59.743117443 +0300
++++ ../test/DnsConfigTest.php	2024-08-08 18:36:08.523150397 +0300
+@@ -23,8 +23,6 @@
+         return [
+             [["127.1.1.1"]],
+             [["127.1.1.1:1"]],
+-            [["[::1]:52"]],
+-            [["[::1]"]],
+         ];
+     }
+ 
+--- ../test/IntegrationTest.php	2024-08-08 18:37:04.516357122 +0300
++++ ../test/IntegrationTest.php	2024-08-08 18:38:41.587704075 +0300
+@@ -55,20 +55,6 @@
+         }
+     }
+ 
+-    public function testResolveIPv6only(): void
+-    {
+-        $records = Dns\resolve("google.com", DnsRecord::AAAA);
+-
+-        foreach ($records as $record) {
+-            self::assertSame(DnsRecord::AAAA, $record->getType());
+-            $inAddr = @\inet_pton($record->getValue());
+-            self::assertNotFalse(
+-                $inAddr,
+-                "Server name google.com did not resolve to a valid IP address"
+-            );
+-        }
+-    }
+-
+     private function loadConfig(): Dns\DnsConfig
+     {
+         $configLoader = \stripos(PHP_OS, "win") === 0
+--- ../test/UnixDnsConfigLoaderTest.php	2024-08-08 18:39:37.598899222 +0300
++++ ../test/UnixDnsConfigLoaderTest.php	2024-08-08 18:40:06.442998591 +0300
+@@ -16,7 +16,6 @@
+ 
+         self::assertSame([
+             "127.0.0.1:53",
+-            "[2001:4860:4860::8888]:53",
+         ], $result->getNameservers());
+ 
+         self::assertSame(30.0, $result->getTimeout());
+@@ -40,7 +39,6 @@
+ 
+         self::assertSame([
+             "127.0.0.1:53",
+-            "[2001:4860:4860::8888]:53",
+         ], $result->getNameservers());
+ 
+         self::assertSame(30.0, $result->getTimeout());
+@@ -58,7 +56,6 @@
+ 
+         self::assertSame([
+             "127.0.0.1:53",
+-            "[2001:4860:4860::8888]:53",
+         ], $result->getNameservers());
+ 
+         self::assertSame(5.0, $result->getTimeout());
+@@ -74,7 +71,6 @@
+ 
+         self::assertSame([
+             "127.0.0.1:53",
+-            "[2001:4860:4860::8888]:53",
+         ], $result->getNameservers());
+ 
+         self::assertSame(5.0, $result->getTimeout());
+@@ -93,7 +89,6 @@
+ 
+         self::assertSame([
+             "127.0.0.1:53",
+-            "[2001:4860:4860::8888]:53",
+         ], $result->getNameservers());
+ 
+         self::assertSame(['local'], $result->getSearchList());
