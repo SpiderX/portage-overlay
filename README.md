@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 803](https://img.shields.io/badge/ebuild-803-orange.svg)](https://img.shields.io/badge/ebuild-803-orange.svg)
+[![Number of ebuilds: 804](https://img.shields.io/badge/ebuild-804-orange.svg)](https://img.shields.io/badge/ebuild-804-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -381,6 +381,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[doctrine-annotations](https://github.com/doctrine/annotations) | Doctrine Annotations
 *   dev-php/[doctrine-cache](https://github.com/doctrine/cache) | Doctrine Cache
 *   dev-php/[doctrine-collections](https://github.com/doctrine/collections) | Doctrine Collections Abstraction Layer
+*   dev-php/[doctrine-common](https://github.com/doctrine/common) | Doctrine Common
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
