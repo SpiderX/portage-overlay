@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 776](https://img.shields.io/badge/ebuild-776-orange.svg)](https://img.shields.io/badge/ebuild-776-orange.svg)
+[![Number of ebuilds: 777](https://img.shields.io/badge/ebuild-777-orange.svg)](https://img.shields.io/badge/ebuild-777-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -350,6 +350,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[ocaml-xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
 *   dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
+*   dev-php/[amphp-amp](https://github.com/amphp/amp) | A non-blocking concurrency framework for PHP applications
 *   dev-php/[composer](https://github.com/composer/composer) | Dependency Manager for PHP
 *   dev-php/[composer-class-map-generator](https://github.com/composer/class-map-generator) | Utilities to scan PHP code and generate class maps
 *   dev-php/[composer-pcre](https://github.com/composer/pcre) | PCRE wrapping library that offers type-safe preg_ replacements
