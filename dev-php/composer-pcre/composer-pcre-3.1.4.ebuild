@@ -3,31 +3,24 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/composer/${PN}.git"
-
-inherit git-r3
+MY_PN="${PN//composer-/}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="PCRE wrapping library that offers type-safe preg_ replacements"
 HOMEPAGE="https://github.com/composer/pcre"
+SRC_URI="https://github.com/composer/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test" # no phpunit
+KEYWORDS="~amd64 ~x86"
+RESTRICT="test" # https://github.com/sebastianbergmann/phpunit/issues/5062
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload"
-
-src_prepare() {
-	default
-
-	phpab --quiet --output src/autoload.php \
-		--template fedora2 --basedir src/ src \
-		|| die "phpab failed"
-}
 
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Composer/Pcre
-	doins -r src/.
+	doins -r "${FILESDIR}"/autoload.php src/.
 }
