@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 851](https://img.shields.io/badge/ebuild-851-orange.svg)](https://img.shields.io/badge/ebuild-851-orange.svg)
+[![Number of ebuilds: 852](https://img.shields.io/badge/ebuild-852-orange.svg)](https://img.shields.io/badge/ebuild-852-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -429,6 +429,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[phpdocumentor-reflection-docblock](https://github.com/phpDocumentor/ReflectionDocBlock) | phpDocumentor ReflectionDocBlock component
 *   dev-php/[phpdocumentor-type-resolver](https://github.com/phpDocumentor/TypeResolver) | phpDocumentor TypeResolver component
 *   dev-php/[phpstan-phpdoc-parser](https://github.com/phpstan/phpdoc-parser) | PHPDoc Parser for PHPStan
+*   dev-php/[phpunit](https://github.com/sebastianbergmann/phpunit) | The PHP Unit Testing framework
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
