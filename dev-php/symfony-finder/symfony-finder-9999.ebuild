@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/phpunit
-		dev-php/symfony-filesystem )"
+		>=dev-php/symfony-filesystem-6.4.9 )"
 
 DOCS=( {CHANGELOG,README}.md )
 
