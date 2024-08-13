@@ -397,7 +397,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[guzzlehttp-psr7](https://github.com/guzzle/psr7) | PSR-7 HTTP message library
 *   dev-php/[hamcrest](https://github.com/hamcrest/hamcrest-php) | PHP Hamcrest implementation
 *   dev-php/[http-interop-http-factory-tests](https://github.com/http-interop/http-factory-tests) | Unit tests for HTTP Factory implementations
-*   dev-php/[jean85-pretty-package-versions](https://github.com/Jean85/pretty-package-versions) | Symfony DependencyInjection Component
+*   dev-php/[jean85-pretty-package-versions](https://github.com/Jean85/pretty-package-versions) | Independent wrapper to get pretty versions strings
 *   dev-php/[kelunik-certificate](https://github.com/kelunik/certificate) | Access certificate details and transform between different formats
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm

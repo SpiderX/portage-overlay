@@ -6,7 +6,7 @@ EAPI=8
 MY_PN="${PN//jean85-/}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Symfony DependencyInjection Component"
+DESCRIPTION="Independent wrapper to get pretty versions strings"
 HOMEPAGE="https://github.com/Jean85/pretty-package-versions"
 SRC_URI="https://github.com/Jean85/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"

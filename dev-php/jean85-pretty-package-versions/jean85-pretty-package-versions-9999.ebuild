@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://github.com/Jean85/pretty-package-versions.git"
 
 inherit git-r3
 
-DESCRIPTION="Symfony DependencyInjection Component"
+DESCRIPTION="Independent wrapper to get pretty versions strings"
 HOMEPAGE="https://github.com/Jean85/pretty-package-versions"
 
 LICENSE="MIT"
