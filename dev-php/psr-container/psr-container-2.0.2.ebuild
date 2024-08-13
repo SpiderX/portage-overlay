@@ -18,18 +18,9 @@ RESTRICT="test" # no tests
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload"
-
-src_prepare() {
-	default
-
-	phpab --quiet --output autoload.php \
-		--template fedora2 --basedir src/ src \
-		|| die "phpab failed"
-}
 
 src_install() {
 	einstalldocs
-	insinto /usr/share/php/PSR/Container
-	doins -r autoload.php src/.
+	insinto /usr/share/php/Psr/Container
+	doins -r "${FILESDIR}"/autoload.php src/.
 }
