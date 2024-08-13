@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 782](https://img.shields.io/badge/ebuild-782-orange.svg)](https://img.shields.io/badge/ebuild-782-orange.svg)
+[![Number of ebuilds: 783](https://img.shields.io/badge/ebuild-783-orange.svg)](https://img.shields.io/badge/ebuild-783-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -356,6 +356,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[amphp-dns](https://github.com/amphp/dns) | Async DNS resolution for PHP
 *   dev-php/[amphp-file](https://github.com/amphp/file) | An abstraction layer and non-blocking file access solution
 *   dev-php/[amphp-hpack](https://github.com/amphp/hpack) | HTTP/2 header compression implementation in PHP
+*   dev-php/[amphp-http](https://github.com/amphp/http) | HTTP primitives which can be shared by servers and clients
 *   dev-php/[composer](https://github.com/composer/composer) | Dependency Manager for PHP
 *   dev-php/[composer-class-map-generator](https://github.com/composer/class-map-generator) | Utilities to scan PHP code and generate class maps
 *   dev-php/[composer-pcre](https://github.com/composer/pcre) | PCRE wrapping library that offers type-safe preg_ replacements
