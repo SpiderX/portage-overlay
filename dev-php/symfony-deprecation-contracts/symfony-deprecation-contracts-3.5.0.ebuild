@@ -22,10 +22,8 @@ BDEPEND="dev-php/theseer-Autoload"
 
 DOCS=( {CHANGELOG,README}.md )
 
-PATCHES=( "${FILESDIR}/${PN}"-3.5.0-autoload.patch )
-
 src_install() {
 	einstalldocs
-	insinto /usr/share/php/Symfony/Component/DeprecationContracts
-	doins -r *.php
+	insinto /usr/share/php/Symfony/Contracts/Deprecation
+	doins -r "${FILESDIR}"/autoload.php ./*.php
 }
