@@ -1,0 +1,32 @@
+From 552c4236c4b06f5792d3521aaadcaf34124920a7 Mon Sep 17 00:00:00 2001
+From: Aad Mathijssen <aad.mathijssen@iodigital.com>
+Date: Mon, 15 Jul 2024 14:52:13 +0200
+Subject: [PATCH] Replace `setMethods` by `onlyMethods`
+
+This resolves the following error when running the test suite using PHPUnit 10:
+
+    Call to undefined method PHPUnit\Framework\MockObject\MockBuilder::setMethods()
+---
+ tests/Constraint/ConstraintTest.php | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/Constraint/ConstraintTest.php b/tests/Constraint/ConstraintTest.php
+index e4e42921..1fb2c3b5 100644
+--- a/tests/Constraint/ConstraintTest.php
++++ b/tests/Constraint/ConstraintTest.php
+@@ -377,13 +377,13 @@ public function testInverseMatchingOtherConstraints()
+         $multiConstraint = $this
+             ->getMockBuilder('Composer\Semver\Constraint\MultiConstraint')
+             ->disableOriginalConstructor()
+-            ->setMethods(array('matches'))
++            ->onlyMethods(array('matches'))
+             ->getMock()
+         ;
+ 
+         $matchAllConstraint = $this
+             ->getMockBuilder('Composer\Semver\Constraint\MatchAllConstraint')
+-            ->setMethods(array('matches'))
++            ->onlyMethods(array('matches'))
+             ->getMock()
+         ;
+ 

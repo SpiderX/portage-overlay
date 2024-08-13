@@ -1,0 +1,82 @@
+From ea5eed307f3f58b6fc8b7d8157f1fc5275328ff3 Mon Sep 17 00:00:00 2001
+From: Aad Mathijssen <aad.mathijssen@iodigital.com>
+Date: Mon, 15 Jul 2024 14:53:58 +0200
+Subject: [PATCH] Avoid mandatory `void` return type of the inherited `setUp`
+ method in PHPUnit 10
+
+This is done by renaming the inherited `setUp` method to a new `setUpTestCase` method and adding an `@before` annotation.
+---
+ tests/Constraint/ConstraintTest.php          | 6 +++++-
+ tests/Constraint/MatchAllConstraintTest.php  | 6 +++++-
+ tests/Constraint/MatchNoneConstraintTest.php | 6 +++++-
+ tests/Constraint/MultiConstraintTest.php     | 6 +++++-
+ 4 files changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/tests/Constraint/ConstraintTest.php b/tests/Constraint/ConstraintTest.php
+index 1fb2c3b5c..a6b2f2763 100644
+--- a/tests/Constraint/ConstraintTest.php
++++ b/tests/Constraint/ConstraintTest.php
+@@ -25,7 +25,11 @@ class ConstraintTest extends TestCase
+      */
+     protected $versionProvide;
+ 
+-    protected function setUp()
++    /**
++     * @before
++     * @return void
++     */
++    public function setUpTestCase()
+     {
+         $this->constraint = new Constraint('==', '1');
+         $this->versionProvide = new Constraint('==', 'dev-foo');
+diff --git a/tests/Constraint/MatchAllConstraintTest.php b/tests/Constraint/MatchAllConstraintTest.php
+index 21e5978e3..ad4152e46 100644
+--- a/tests/Constraint/MatchAllConstraintTest.php
++++ b/tests/Constraint/MatchAllConstraintTest.php
+@@ -24,7 +24,11 @@ class MatchAllConstraintTest extends TestCase
+      */
+     protected $matchAllConstraint;
+ 
+-    protected function setUp()
++    /**
++     * @before
++     * @return void
++     */
++    public function setUpTestCase()
+     {
+         $this->versionProvide = new Constraint('==', '1.1');
+         $this->matchAllConstraint = new MatchAllConstraint();
+diff --git a/tests/Constraint/MatchNoneConstraintTest.php b/tests/Constraint/MatchNoneConstraintTest.php
+index 8e7d73cb3..801d2af5c 100644
+--- a/tests/Constraint/MatchNoneConstraintTest.php
++++ b/tests/Constraint/MatchNoneConstraintTest.php
+@@ -20,7 +20,11 @@ class MatchNoneConstraintTest extends TestCase
+      */
+     protected $matchNoneConstraint;
+ 
+-    protected function setUp()
++    /**
++     * @before
++     * @return void
++     */
++    public function setUpTestCase()
+     {
+         $this->matchNoneConstraint = new MatchNoneConstraint();
+     }
+diff --git a/tests/Constraint/MultiConstraintTest.php b/tests/Constraint/MultiConstraintTest.php
+index e27446f7b..b616efa90 100644
+--- a/tests/Constraint/MultiConstraintTest.php
++++ b/tests/Constraint/MultiConstraintTest.php
+@@ -26,7 +26,11 @@ class MultiConstraintTest extends TestCase
+      */
+     protected $versionRequireEnd;
+ 
+-    protected function setUp()
++    /**
++     * @before
++     * @return void
++     */
++    public function setUpTestCase()
+     {
+         $this->versionRequireStart = new Constraint('>', '1.0');
+         $this->versionRequireEnd = new Constraint('<', '1.2');
