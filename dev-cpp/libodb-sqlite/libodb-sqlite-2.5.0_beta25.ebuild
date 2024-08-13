@@ -5,7 +5,7 @@ EAPI=8
 
 inherit toolchain-funcs multiprocessing
 
-MY_P="${PN}-$(ver_cut 1-3)-b.$(ver_cut 5)"
+MY_P="${PN}-$(ver_cut 1-3)-b.$(ver_cut 5)+1"
 # Compare BUILD2_PV with the version in the tarball in the 'manifest' file.
 # e.g. from 2.5.0_beta25's manifest:
 # +depends: * build2 >= 0.15.0
