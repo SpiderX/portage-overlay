@@ -356,6 +356,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[composer-semver](https://github.com/composer/semver) | Semantic versioning utilities, constraint parsing, and checking
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
+*   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
 *   dev-php/[semver](https://github.com/composer/semver) | Semantic versioning utilities, constraint parsing, and checking
 *   dev-php/[signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
 *   dev-php/[spx](https://github.com/NoiseByNorthwest/php-spx) | A PHP wrapper fo the scrypt hashing algorithm

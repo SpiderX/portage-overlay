@@ -13,6 +13,9 @@
 	A PHP library providing a simple unix signal handler that silently
 	fails on windows for easy cross-platform development
 	</longdescription>
+	<use>
+		<flag name="pcntl">Enable test for Process Control extension</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Seldaek/signal-handler</remote-id>
 	</upstream>
