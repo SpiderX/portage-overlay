@@ -1,0 +1,58 @@
+--- ../test/PhpParser/Parser/Php5Test.php	2024-07-16 16:44:14.985815583 +0300
++++ ../test/PhpParser/Parser/Php5Test.php	2024-07-16 16:44:40.572962005 +0300
+@@ -3,9 +3,9 @@
+ namespace PhpParser\Parser;
+ 
+ use PhpParser\Lexer;
+-use PhpParser\ParserTest;
++use PhpParser\ParserTestAbstract;
+ 
+-class Php5Test extends ParserTest
++class Php5Test extends ParserTestAbstract
+ {
+     protected function getParser(Lexer $lexer) {
+         return new Php5($lexer);
+--- ../test/PhpParser/Parser/Php7Test.php	2024-07-16 16:45:03.301089241 +0300
++++ ../test/PhpParser/Parser/Php7Test.php	2024-07-16 16:45:09.232122035 +0300
+@@ -3,9 +3,9 @@
+ namespace PhpParser\Parser;
+ 
+ use PhpParser\Lexer;
+-use PhpParser\ParserTest;
++use PhpParser\ParserTestAbstract;
+ 
+-class Php7Test extends ParserTest
++class Php7Test extends ParserTestAbstract
+ {
+     protected function getParser(Lexer $lexer) {
+         return new Php7($lexer);
+--- ../test/PhpParser/Parser/MultipleTest.php	2024-07-16 16:45:29.750234264 +0300
++++ ../test/PhpParser/Parser/MultipleTest.php	2024-07-16 16:45:48.970337779 +0300
+@@ -9,9 +9,9 @@
+ use PhpParser\Node\Scalar\LNumber;
+ use PhpParser\Node\Stmt;
+ use PhpParser\ParserAbstract;
+-use PhpParser\ParserTest;
++use PhpParser\ParserTestAbstract;
+ 
+-class MultipleTest extends ParserTest
++class MultipleTest extends ParserTestAbstract
+ {
+     // This provider is for the generic parser tests, just pick an arbitrary order here
+     protected function getParser(Lexer $lexer) {
+diff --git a/ParserTest.php b/ParserTestAbstract.php
+similarity index 99%
+rename from ParserTest.php
+rename to ParserTestAbstract.php
+index 6a240da..ef8c35e 100644
+--- a/test/PhpParser/ParserTest.php
++++ b/test/PhpParser/ParserTestAbstract.php
+@@ -7,7 +7,7 @@ use PhpParser\Node\Scalar;
+ use PhpParser\Node\Scalar\String_;
+ use PhpParser\Node\Stmt;
+ 
+-abstract class ParserTest extends \PHPUnit\Framework\TestCase
++abstract class ParserTestAbstract extends \PHPUnit\Framework\TestCase
+ {
+     /** @returns Parser */
+     abstract protected function getParser(Lexer $lexer);
