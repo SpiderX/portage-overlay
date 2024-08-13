@@ -31,7 +31,7 @@ BDEPEND="test? ( dev-php/composer
 		dev-php/symfony-event-dispatcher
 		dev-php/symfony-lock
 		dev-php/symfony-phpunit-bridge
-		dev-php/symfony-process
+		>=dev-php/symfony-process-6.4.8
 		dev-php/symfony-var-dumper )"
 
 DOCS=( {CHANGELOG,README}.md )
