@@ -1,0 +1,75 @@
+<?php
+// @codingStandardsIgnoreFile
+// @codeCoverageIgnoreStart
+require_once 'Fedora/Autoloader'.'/autoload.php';
+
+\Fedora\Autoloader\Autoload::addClassMap(
+    array(
+        'phpdocumentor\\reflection\\fqsenresolver' => '/../FqsenResolver.php',
+                'phpdocumentor\\reflection\\pseudotype' => '/../PseudoType.php',
+                'phpdocumentor\\reflection\\pseudotypes\\arrayshape' => '/../PseudoTypes/ArrayShape.php',
+                'phpdocumentor\\reflection\\pseudotypes\\arrayshapeitem' => '/../PseudoTypes/ArrayShapeItem.php',
+                'phpdocumentor\\reflection\\pseudotypes\\callablestring' => '/../PseudoTypes/CallableString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\constexpression' => '/../PseudoTypes/ConstExpression.php',
+                'phpdocumentor\\reflection\\pseudotypes\\false_' => '/../PseudoTypes/False_.php',
+                'phpdocumentor\\reflection\\pseudotypes\\floatvalue' => '/../PseudoTypes/FloatValue.php',
+                'phpdocumentor\\reflection\\pseudotypes\\htmlescapedstring' => '/../PseudoTypes/HtmlEscapedString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\integerrange' => '/../PseudoTypes/IntegerRange.php',
+                'phpdocumentor\\reflection\\pseudotypes\\integervalue' => '/../PseudoTypes/IntegerValue.php',
+                'phpdocumentor\\reflection\\pseudotypes\\list_' => '/../PseudoTypes/List_.php',
+                'phpdocumentor\\reflection\\pseudotypes\\literalstring' => '/../PseudoTypes/LiteralString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\lowercasestring' => '/../PseudoTypes/LowercaseString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\negativeinteger' => '/../PseudoTypes/NegativeInteger.php',
+                'phpdocumentor\\reflection\\pseudotypes\\nonemptylist' => '/../PseudoTypes/NonEmptyList.php',
+                'phpdocumentor\\reflection\\pseudotypes\\nonemptylowercasestring' => '/../PseudoTypes/NonEmptyLowercaseString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\nonemptystring' => '/../PseudoTypes/NonEmptyString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\numeric_' => '/../PseudoTypes/Numeric_.php',
+                'phpdocumentor\\reflection\\pseudotypes\\numericstring' => '/../PseudoTypes/NumericString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\positiveinteger' => '/../PseudoTypes/PositiveInteger.php',
+                'phpdocumentor\\reflection\\pseudotypes\\stringvalue' => '/../PseudoTypes/StringValue.php',
+                'phpdocumentor\\reflection\\pseudotypes\\traitstring' => '/../PseudoTypes/TraitString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\true_' => '/../PseudoTypes/True_.php',
+                'phpdocumentor\\reflection\\type' => '/../Type.php',
+                'phpdocumentor\\reflection\\typeresolver' => '/../TypeResolver.php',
+                'phpdocumentor\\reflection\\types\\abstractlist' => '/../Types/AbstractList.php',
+                'phpdocumentor\\reflection\\types\\aggregatedtype' => '/../Types/AggregatedType.php',
+                'phpdocumentor\\reflection\\types\\array_' => '/../Types/Array_.php',
+                'phpdocumentor\\reflection\\types\\arraykey' => '/../Types/ArrayKey.php',
+                'phpdocumentor\\reflection\\types\\boolean' => '/../Types/Boolean.php',
+                'phpdocumentor\\reflection\\types\\callable_' => '/../Types/Callable_.php',
+                'phpdocumentor\\reflection\\types\\callableparameter' => '/../Types/CallableParameter.php',
+                'phpdocumentor\\reflection\\types\\classstring' => '/../Types/ClassString.php',
+                'phpdocumentor\\reflection\\types\\collection' => '/../Types/Collection.php',
+                'phpdocumentor\\reflection\\types\\compound' => '/../Types/Compound.php',
+                'phpdocumentor\\reflection\\types\\context' => '/../Types/Context.php',
+                'phpdocumentor\\reflection\\types\\contextfactory' => '/../Types/ContextFactory.php',
+                'phpdocumentor\\reflection\\types\\expression' => '/../Types/Expression.php',
+                'phpdocumentor\\reflection\\types\\float_' => '/../Types/Float_.php',
+                'phpdocumentor\\reflection\\types\\integer' => '/../Types/Integer.php',
+                'phpdocumentor\\reflection\\types\\interfacestring' => '/../Types/InterfaceString.php',
+                'phpdocumentor\\reflection\\types\\intersection' => '/../Types/Intersection.php',
+                'phpdocumentor\\reflection\\types\\iterable_' => '/../Types/Iterable_.php',
+                'phpdocumentor\\reflection\\types\\mixed_' => '/../Types/Mixed_.php',
+                'phpdocumentor\\reflection\\types\\never_' => '/../Types/Never_.php',
+                'phpdocumentor\\reflection\\types\\null_' => '/../Types/Null_.php',
+                'phpdocumentor\\reflection\\types\\nullable' => '/../Types/Nullable.php',
+                'phpdocumentor\\reflection\\types\\object_' => '/../Types/Object_.php',
+                'phpdocumentor\\reflection\\types\\parent_' => '/../Types/Parent_.php',
+                'phpdocumentor\\reflection\\types\\resource_' => '/../Types/Resource_.php',
+                'phpdocumentor\\reflection\\types\\scalar' => '/../Types/Scalar.php',
+                'phpdocumentor\\reflection\\types\\self_' => '/../Types/Self_.php',
+                'phpdocumentor\\reflection\\types\\static_' => '/../Types/Static_.php',
+                'phpdocumentor\\reflection\\types\\string_' => '/../Types/String_.php',
+                'phpdocumentor\\reflection\\types\\this' => '/../Types/This.php',
+                'phpdocumentor\\reflection\\types\\void_' => '/../Types/Void_.php',
+    ),
+    __DIR__
+);
+// @codeCoverageIgnoreEnd
+
+// Dependencies
+\Fedora\Autoloader\Dependencies::required([
+    '/usr/share/php/phpDocumentor/Reflection/Common/autoload.php',
+    '/usr/share/php/PHPStan/PhpDocParser/autoload.php',
+    '/usr/share/php/Doctrine/Deprecations/autoload.php',
+]);
