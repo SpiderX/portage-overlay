@@ -31,11 +31,11 @@ RDEPEND="dev-lang/php:*[curl]
 	dev-php/seld-signal-handler
 	dev-php/spdx-licenses
 	dev-php/symfony-console
-	dev-php/symfony-filesystem
-	dev-php/symfony-finder
+	>=dev-php/symfony-filesystem-6.4.9
+	>=dev-php/symfony-finder-6.4.8
 	dev-php/symfony-polyfill-php80
 	dev-php/symfony-polyfill-php81
-	dev-php/symfony-process
+	>=dev-php/symfony-process-6.4.8
 	dev-php/xdebug-handler"
 BDEPEND="dev-php/theseer-Autoload
 	test? ( dev-php/phpunit )"
