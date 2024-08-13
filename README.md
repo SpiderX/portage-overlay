@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 822](https://img.shields.io/badge/ebuild-822-orange.svg)](https://img.shields.io/badge/ebuild-822-orange.svg)
+[![Number of ebuilds: 823](https://img.shields.io/badge/ebuild-823-orange.svg)](https://img.shields.io/badge/ebuild-823-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -400,6 +400,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[jean85-pretty-package-versions](https://github.com/Jean85/pretty-package-versions) | Independent wrapper to get pretty versions strings
 *   dev-php/[kelunik-certificate](https://github.com/kelunik/certificate) | Access certificate details and transform between different formats
 *   dev-php/[laminas-code](https://github.com/laminas/laminas-code) | Extensions to the PHP Reflection API
+*   dev-php/[laminas-diactoros](https://github.com/laminas/laminas-stdlib) | SPL extensions, array utilities, error handlers, and more
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
