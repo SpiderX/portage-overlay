@@ -1,0 +1,10 @@
+--- ../src/Context/ThreadContext.php	2024-08-10 00:45:02.797720344 +0300
++++ ../src/Context/ThreadContext.php	2024-08-10 00:45:12.592469361 +0300
+@@ -70,6 +70,7 @@
+             $paths = [
+                 \dirname(__DIR__, 2) . \DIRECTORY_SEPARATOR . "vendor" . \DIRECTORY_SEPARATOR . "autoload.php",
+                 \dirname(__DIR__, 4) . \DIRECTORY_SEPARATOR . "autoload.php",
++                \dirname(__DIR__, 1) . \DIRECTORY_SEPARATOR . "autoload.php",
+             ];
+ 
+             foreach ($paths as $path) {
