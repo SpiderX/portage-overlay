@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a Symfony polyfill backporting some
+	This package provides a Symfony polyfill backporting some
 	PHP 8.1+ features to lower PHP versions.
 	</longdescription>
 	<upstream>
