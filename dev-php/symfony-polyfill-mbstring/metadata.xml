@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a partial, native PHP implementation for
+	This package provides a partial, native PHP implementation for
 	the Mbstring extension to users who run php versions without it.
 	</longdescription>
 	<upstream>
