@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 838](https://img.shields.io/badge/ebuild-838-orange.svg)](https://img.shields.io/badge/ebuild-838-orange.svg)
+[![Number of ebuilds: 839](https://img.shields.io/badge/ebuild-839-orange.svg)](https://img.shields.io/badge/ebuild-839-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -416,6 +416,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[nikic-php-parser](https://github.com/nikic/PHP-Parser) | A PHP parser written in PHP
 *   dev-php/[nyholm-psr7](https://github.com/Nyholm/psr7) | A super lightweight PSR-7 implementation
 *   dev-php/[pecl-eio]() | PHP wrapper for libeio library
+*   dev-php/[pecl-parallel]() | A succint parallel concurrency API for PHP
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
