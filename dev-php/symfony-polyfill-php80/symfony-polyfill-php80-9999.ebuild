@@ -12,24 +12,13 @@ HOMEPAGE="https://github.com/symfony/polyfill-php80"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test" # no phpunit
+RESTRICT="test" # no tests
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload"
-
-src_prepare() {
-	default
-
-	phpab --quiet --output autoload.php \
-		--template fedora2 --basedir . . \
-		|| die "phpab failed"
-
-	echo "\Fedora\Autoloader\Dependencies::required([__DIR__ . '/bootstrap.php']);" >> autoload.php
-}
 
 src_install() {
 	einstalldocs
-	insinto /usr/share/php/Symfony/Component/Polyfill-php80
-	doins -r Resources *.php
+	insinto /usr/share/php/Symfony/Polyfill/Php80
+	doins -r Resources "${FILESDIR}"/autoload.php ./*.php
 }
