@@ -20,20 +20,14 @@ RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
 	dev-php/psr-container
 	dev-php/symfony-deprecation-contracts"
-BDEPEND="dev-php/theseer-Autoload"
+
+# remove non-existed method in PHPUnit
+PATCHES=( "${FILESDIR}/${PN}"-3.5.0-test.patch )
 
 DOCS=( {CHANGELOG,README}.md )
 
-src_prepare() {
-	default
-
-	phpab --quiet --output autoload.php \
-		--template fedora2 --basedir . . \
-		|| die "phpab failed"
-}
-
 src_install() {
 	einstalldocs
-	insinto /usr/share/php/Symfony/Component/ServiceContracts
-	doins -r Attribute Test *.php
+	insinto /usr/share/php/Symfony/Contracts/Service
+	doins -r Attribute Test "${FILESDIR}"/autoload.php ./*.php
 }

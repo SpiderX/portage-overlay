@@ -1,0 +1,15 @@
+--- ../Test/ServiceLocatorTestCase.php	2024-07-28 18:06:42.060125455 +0300
++++ ../Test/ServiceLocatorTestCase.php	2024-07-28 18:06:55.780018195 +0300
+@@ -72,10 +72,8 @@
+             'foo' => function () use (&$locator) { return $locator->get('bar'); },
+         ]);
+ 
+-        if (!$this->getExpectedException()) {
+-            $this->expectException(NotFoundExceptionInterface::class);
+-            $this->expectExceptionMessage('The service "foo" has a dependency on a non-existent service "bar". This locator only knows about the "foo" service.');
+-        }
++        $this->expectException(NotFoundExceptionInterface::class);
++        $this->expectExceptionMessage('The service "foo" has a dependency on a non-existent service "bar". This locator only knows about the "foo" service.');
+ 
+         $locator->get('foo');
+     }

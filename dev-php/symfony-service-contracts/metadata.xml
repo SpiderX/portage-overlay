@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a set of abstractions extracted out of
+	This package provides a set of abstractions extracted out of
 	the Symfony components, that can be used to build on semantics
 	that the Symfony components.
 	</longdescription>
