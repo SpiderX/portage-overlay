@@ -21,10 +21,10 @@ PROPERTIES="test_network"
 RDEPEND="dev-lang/php:*
 	dev-php/composer-pcre
 	dev-php/fedora-autoloader
-	dev-php/symfony-finder"
+	>=dev-php/symfony-finder-6.4.8"
 BDEPEND="test? ( dev-php/composer
 		dev-php/phpunit
-		dev-php/symfony-filesystem )"
+		>=dev-php/symfony-filesystem-6.4.9 )"
 
 src_prepare() {
 	default
