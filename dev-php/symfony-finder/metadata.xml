@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a PHP component from Symfony to finds files
+	This package provides a PHP component from Symfony to find files
 	and directories via an intuitive fluent interface.
 	</longdescription>
 	<upstream>
