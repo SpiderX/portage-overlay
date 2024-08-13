@@ -1,0 +1,109 @@
+--- ../test/Internal/FunctionsTest.php	2024-08-08 19:36:00.410138197 +0300
++++ ../test/Internal/FunctionsTest.php	2024-08-08 19:38:05.772467738 +0300
+@@ -22,10 +22,6 @@
+                 'udp://host:4321',
+                 ['udp', 'host', 4321],
+             ],
+-            [
+-                'tcp://[2001:db8:85a3:8d3:1319:8a2e:370:7348]:443',
+-                ['tcp', '[2001:db8:85a3:8d3:1319:8a2e:370:7348]', 443],
+-            ],
+         ];
+     }
+ 
+@@ -82,10 +78,6 @@
+             ['127.0.0.1', '127.0.0.1:0'],
+             ['127.0.0.1:0', '127.0.0.1:0'],
+             ['123.123.123.123:1234', '123.123.123.123:1234'],
+-            ['[::1]', '[::1]:0'],
+-            ['[a:b::c]', '[a:b::c]:0'],
+-            ['[1:2::3]:4', '[1:2::3]:4'],
+-            ['[0000:abcd:0000:abcd:0000:abcd:0127:2258]:4567', '[0000:abcd:0000:abcd:0000:abcd:0127:2258]:4567'],
+         ];
+     }
+ 
+@@ -105,8 +97,6 @@
+             ['a.b.c.d'],
+             ['123.123.123.123:-0'],
+             ['123.123.123.123:-1234567'],
+-            ['[0000:abcd:0000:abcd:0000:abcd:0127:2258]:-67899'],
+-            ['[e:f:g:h]'],
+         ];
+     }
+ 
+@@ -125,7 +115,6 @@
+     {
+         return [
+             ['123.123.123.123:123456'],
+-            ['[0000:abcd:0000:abcd:0000:abcd:0127:2258]:67899'],
+         ];
+     }
+ 
+@@ -139,25 +128,6 @@
+ 
+         Internal\normalizeBindToOption($bindTo);
+     }
+-
+-    public function normalizeBindToOptionInvalidIpv6DataProvider(): array
+-    {
+-        return [
+-            ['[::::]'],
+-            ['[:::1]'],
+-        ];
+-    }
+-
+-    /**
+-     * @dataProvider normalizeBindToOptionInvalidIpv6DataProvider
+-     */
+-    public function testNormalizeBindToOptionInvalidIpv6($bindTo): void
+-    {
+-        $this->expectException(\Error::class);
+-        $this->expectExceptionMessage('Invalid IPv6 address:');
+-
+-        Internal\normalizeBindToOption($bindTo);
+-    }
+ 
+     public function normalizeBindToOptionInvalidIpv4DataProvider(): array
+     {
+--- ../test/CidrMatcherTest.php	2024-08-08 19:52:25.870579669 +0300
++++ ../test/CidrMatcherTest.php	2024-08-08 19:52:42.203117518 +0300
+@@ -16,16 +16,6 @@
+                 "192.31.0.0" => false,
+             ],
+         ],
+-        [
+-            "cidr" => "::ffff:1.2.3.4/128",
+-            "tests" => [
+-                "1.2.3.4" => true,
+-                "1.2.3.5" => false,
+-                "4.3.2.1" => false,
+-                "::ffff:1.2.3.4" => true,
+-                "::1" => false,
+-            ],
+-        ],
+     ];
+ 
+     /**
+--- ../test/ResourceSocketServerTest.php	2024-08-08 19:42:07.953165321 +0300
++++ ../test/ResourceSocketServerTest.php	2024-08-08 19:43:44.800817764 +0300
+@@ -30,20 +30,6 @@
+         Socket\listen('error');
+     }
+ 
+-    public function testListenIPv6(): void
+-    {
+-        try {
+-            $socket = Socket\listen('[::1]:0');
+-            self::assertMatchesRegularExpression('(\[::1]:\d+)', (string) $socket->getAddress());
+-        } catch (Socket\SocketException $e) {
+-            if ($e->getMessage() === 'Could not create server tcp://[::1]:0: [Error: #0] Cannot assign requested address') {
+-                self::markTestSkipped('Missing IPv6 support');
+-            }
+-
+-            throw $e;
+-        }
+-    }
+-
+     public function testAccept(): void
+     {
+         $server = Socket\listen('127.0.0.1:0');
