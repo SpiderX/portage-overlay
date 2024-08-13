@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a PHP component from Symfony for object-oriented API
+	This package provides a PHP component from Symfony for object-oriented API
 	to strings and deals with bytes, UTF-8 code points and grapheme clusters
 	in a unified way.
 	</longdescription>
