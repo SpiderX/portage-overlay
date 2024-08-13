@@ -10,9 +10,12 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provided a PHP component from Symfony to executes
+	This package provides a PHP component from Symfony to executes
 	commands in sub-processes.
 	</longdescription>
+	<use>
+		<flag name="pcntl">Enable test for Process Control extension</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">symfony/process</remote-id>
 	</upstream>

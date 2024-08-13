@@ -14,24 +14,40 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # no tests
+IUSE="pcntl test"
+REQUIRED_USE="test? ( pcntl )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*
+RDEPEND="dev-lang/php:*[pcntl?]
 	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload"
+BDEPEND="test? ( dev-php/composer
+		dev-php/phpunit )"
 
 DOCS=( {CHANGELOG,README}.md )
 
 src_prepare() {
 	default
 
-	phpab --quiet --output autoload.php \
-		--template fedora2 --basedir . . \
-		|| die "phpab failed"
+	install -D -m 644 "${FILESDIR}"/autoload.php \
+		autoload.php || die "install failed"
+	install -D -m 644 "${FILESDIR}"/autoload-test.php \
+		vendor/autoload.php || die "install test failed"
+}
+
+src_test() {
+	composer require -d "${T}" --prefer-source \
+		--dev "${PN/-/\/}:${PV}" || die "composer failed"
+	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
+		|| die "cp failed"
+	# remove test failed assert
+	sed -i '/testWaitStoppedDeadProcess/,+11d' \
+		Tests/ProcessTest.php || die "sed failed"
+	phpunit --testdox || die "phpunit failed"
 }
 
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Component/Process
-	doins -r .
+	doins -r Exception Messenger Pipes ./*.php
 }

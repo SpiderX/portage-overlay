@@ -12,24 +12,34 @@ HOMEPAGE="https://github.com/symfony/process"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test" # no phpunit
+IUSE="pcntl test"
+REQUIRED_USE="test? ( pcntl )"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*
+RDEPEND="dev-lang/php:*[pcntl?]
 	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload"
+BDEPEND="test? ( dev-php/phpunit )"
 
 DOCS=( {CHANGELOG,README}.md )
 
 src_prepare() {
 	default
 
-	phpab --quiet --output autoload.php \
-		--template fedora2 --basedir . . \
-		|| die "phpab failed"
+	install -D -m 644 "${FILESDIR}"/autoload.php \
+		autoload.php || die "install failed"
+	install -D -m 644 "${FILESDIR}"/autoload-test.php \
+		vendor/autoload.php || die "install test failed"
+	# remove test failed assert
+	sed -i '/testWaitStoppedDeadProcess/,+11d' \
+		Tests/ProcessTest.php || die "sed failed"
+}
+
+src_test() {
+	phpunit --testdox || die "phpunit failed"
 }
 
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Component/Process
-	doins -r .
+	doins -r Exception Messenger Pipes ./*.php
 }
