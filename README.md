@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 871](https://img.shields.io/badge/ebuild-871-orange.svg)](https://img.shields.io/badge/ebuild-871-orange.svg)
+[![Number of ebuilds: 872](https://img.shields.io/badge/ebuild-872-orange.svg)](https://img.shields.io/badge/ebuild-872-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -451,6 +451,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[sebastian-cli-parser](https://github.com/sebastianbergmann/cli-parser) | Library for parsing CLI options
 *   dev-php/[sebastian-code-unit](https://github.com/sebastianbergmann/code-unit) | Collection of PHP code units
 *   dev-php/[sebastian-code-unit-reverse-lookup](https://github.com/sebastianbergmann/code-unit-reverse-lookup) | Looks up which function or method a line of code belongs to
+*   dev-php/[sebastian-comparator](https://github.com/sebastianbergmann/comparator) | Compare PHP values for equality
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
 *   dev-php/[semver](https://github.com/composer/semver) | Semantic versioning utilities, constraint parsing, and checking
 *   dev-php/[signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
