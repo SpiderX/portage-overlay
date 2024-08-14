@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 931](https://img.shields.io/badge/ebuild-931-orange.svg)](https://img.shields.io/badge/ebuild-931-orange.svg)
+[![Number of ebuilds: 932](https://img.shields.io/badge/ebuild-932-orange.svg)](https://img.shields.io/badge/ebuild-932-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -528,6 +528,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[theseer-Autoload](https://github.com/theseer/Autoload) | PHP Autoload Builder
 *   dev-php/[twig](https://github.com/twigphp/Twig) | PHP templating engine with syntax similar to Django
 *   dev-php/[webmozart-assert](https://github.com/webmozarts/assert) | Webmozart Assert
+*   dev-php/[zetacomponents-UnitTest](https://github.com/zetacomponents/UnitTest) | Unit tests for any Zeta component
 *   dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
 *   dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory
 *   dev-python/[ahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
