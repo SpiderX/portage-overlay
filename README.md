@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 869](https://img.shields.io/badge/ebuild-869-orange.svg)](https://img.shields.io/badge/ebuild-869-orange.svg)
+[![Number of ebuilds: 870](https://img.shields.io/badge/ebuild-870-orange.svg)](https://img.shields.io/badge/ebuild-870-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -449,6 +449,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[revolt-event-loop](https://github.com/revoltphp/event-loop) | Event loop for concurrent PHP applications
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[sebastian-cli-parser](https://github.com/sebastianbergmann/cli-parser) | Library for parsing CLI options
+*   dev-php/[sebastian-code-unit](https://github.com/sebastianbergmann/code-unit) | Collection of PHP code units
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
 *   dev-php/[semver](https://github.com/composer/semver) | Semantic versioning utilities, constraint parsing, and checking
 *   dev-php/[signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
