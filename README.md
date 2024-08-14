@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 909](https://img.shields.io/badge/ebuild-909-orange.svg)](https://img.shields.io/badge/ebuild-909-orange.svg)
+[![Number of ebuilds: 910](https://img.shields.io/badge/ebuild-910-orange.svg)](https://img.shields.io/badge/ebuild-910-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -499,6 +499,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-polyfill-ctype](https://github.com/symfony/polyfill-ctype) | Symfony polyfill for ctype functions
 *   dev-php/[symfony-polyfill-intl-grapheme](https://github.com/symfony/polyfill-intl-grapheme) | Symfony polyfill for intl's grapheme_ functions
 *   dev-php/[symfony-polyfill-intl-icu](https://github.com/symfony/polyfill-intl-icu) | Symfony polyfill for intl's ICU-related data and classes
+*   dev-php/[symfony-polyfill-intl-idn](https://github.com/symfony/polyfill-intl-idn) | Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions
 *   dev-php/[symfony-polyfill-intl-normalizer](https://github.com/symfony/polyfill-intl-normalizer) | Symfony polyfill for intl's Normalizer class
 *   dev-php/[symfony-polyfill-mbstring](https://github.com/symfony/polyfill-mbstring) | Symfony polyfill for the Mbstring extension
 *   dev-php/[symfony-polyfill-php80](https://github.com/symfony/polyfill-php80) | Backport of some PHP 8.0+ features to lower PHP versions
