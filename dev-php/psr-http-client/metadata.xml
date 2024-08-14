@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package holds all the common code related to PSR-18 (HTTP Client).
+	Note that this is not a HTTP Client implementation of its own.
+	It is merely abstractions that describe the components of a HTTP Client.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">php-fig/http-client</remote-id>
+	</upstream>
+</pkgmetadata>
