@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 886](https://img.shields.io/badge/ebuild-886-orange.svg)](https://img.shields.io/badge/ebuild-886-orange.svg)
+[![Number of ebuilds: 887](https://img.shields.io/badge/ebuild-887-orange.svg)](https://img.shields.io/badge/ebuild-887-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -471,6 +471,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-cache-contracts](https://github.com/symfony/cache-contracts) | Symfony Cache Contracts
 *   dev-php/[symfony-clock](https://github.com/symfony/clock) | Symfony Clock Component
 *   dev-php/[symfony-css-selector](https://github.com/symfony/css-selector) | Symfony CssSelector Component
+*   dev-php/[symfony-dependency-injection](https://github.com/symfony/dependency-injection) | Symfony DependencyInjection Component
 *   dev-php/[symfony-deprecation-contracts](https://github.com/symfony/deprecation-contracts) | A generic function and convention to trigger deprecation notices
 *   dev-php/[symfony-filesystem](https://github.com/symfony/filesystem) | Provides basic utilities for the filesystem
 *   dev-php/[symfony-finder](https://github.com/symfony/finder) | Symfony Finder Component
