@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 855](https://img.shields.io/badge/ebuild-855-orange.svg)](https://img.shields.io/badge/ebuild-855-orange.svg)
+[![Number of ebuilds: 856](https://img.shields.io/badge/ebuild-856-orange.svg)](https://img.shields.io/badge/ebuild-856-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -433,6 +433,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[phpunit-php-code-coverage](https://github.com/sebastianbergmann/php-code-coverage) | Library for PHP code coverage information
 *   dev-php/[phpunit-php-file-iterator](https://github.com/sebastianbergmann/php-file-iterator) | FilterIterator implementation that filters files
 *   dev-php/[phpunit-php-invoker](https://github.com/sebastianbergmann/php-invoker) | Library to invoke PHP callables with a timeout
+*   dev-php/[phpunit-php-text-template](https://github.com/sebastianbergmann/php-text-template) | A simple template engine
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
