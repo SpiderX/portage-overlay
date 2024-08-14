@@ -1,0 +1,66 @@
+--- ../Tests/Session/Storage/Handler/MemcachedSessionHandlerTest.php	2024-08-05 23:32:25.887458981 +0300
++++ ../Tests/Session/Storage/Handler/MemcachedSessionHandlerTest.php	2024-08-05 23:08:01.687849558 +0300
+@@ -109,6 +109,7 @@
+ 
+     public function testDestroySession()
+     {
++        $this->storage->open('', 'memcached');
+         $this->memcached
+             ->expects($this->once())
+             ->method('delete')
+--- ../Tests/Session/Storage/Handler/MigratingSessionHandlerTest.php	2024-08-05 23:30:00.965719925 +0300
++++ ../Tests/Session/Storage/Handler/MigratingSessionHandlerTest.php	2024-08-05 23:44:00.601250672 +0300
+@@ -64,6 +64,7 @@
+             ->with($sessionId)
+             ->willReturn(false);
+ 
++        $this->dualHandler->open('', 'session');
+         $result = $this->dualHandler->destroy($sessionId);
+ 
+         $this->assertTrue($result);
+--- ../Tests/Session/Storage/Handler/StrictSessionHandlerTest.php	2024-08-05 23:27:01.694218694 +0300
++++ ../Tests/Session/Storage/Handler/StrictSessionHandlerTest.php	2024-08-05 23:59:38.202505324 +0300
+@@ -130,6 +130,7 @@
+         $handler->expects($this->never())->method('write');
+         $handler->expects($this->once())->method('destroy')->willReturn(true);
+         $proxy = new StrictSessionHandler($handler);
++        $proxy->open('', 'session');
+ 
+         $this->assertFalse($proxy->validateId('id'));
+         $this->assertSame('', $proxy->read('id'));
+@@ -144,6 +145,7 @@
+         $handler->expects($this->never())->method('write');
+         $handler->expects($this->once())->method('destroy')->willReturn(true);
+         $proxy = new StrictSessionHandler($handler);
++        $proxy->open('', 'session');
+ 
+         $this->assertSame('data', $proxy->read('id'));
+         $this->assertTrue($proxy->write('id', ''));
+@@ -152,9 +154,11 @@
+     public function testDestroy()
+     {
+         $handler = $this->createMock(\SessionHandlerInterface::class);
++        $handler->open('', 'session');
+         $handler->expects($this->once())->method('destroy')
+             ->with('id')->willReturn(true);
+         $proxy = new StrictSessionHandler($handler);
++        $proxy->open('', 'session');
+ 
+         $this->assertTrue($proxy->destroy('id'));
+     }
+@@ -166,6 +170,7 @@
+             ->with('id')->willReturn('');
+         $handler->expects($this->once())->method('destroy')->willReturn(true);
+         $proxy = new StrictSessionHandler($handler);
++        $proxy->open('', 'session');
+ 
+         $this->assertSame('', $proxy->read('id'));
+         $this->assertTrue($proxy->destroy('id'));
+@@ -181,6 +186,7 @@
+         $handler->expects($this->once())->method('destroy')
+             ->with('id')->willReturn(true);
+         $proxy = new StrictSessionHandler($handler);
++        $proxy->open('', 'session');
+ 
+         $this->assertSame('', $proxy->read('id'));
+         $this->assertTrue($proxy->write('id', 'data'));
