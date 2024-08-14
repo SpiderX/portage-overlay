@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 859](https://img.shields.io/badge/ebuild-859-orange.svg)](https://img.shields.io/badge/ebuild-859-orange.svg)
+[![Number of ebuilds: 860](https://img.shields.io/badge/ebuild-860-orange.svg)](https://img.shields.io/badge/ebuild-860-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -437,6 +437,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[phpunit-php-timer](https://github.com/sebastianbergmann/php-timer) | Utility class for timing
 *   dev-php/[phpunit-phpcov](https://github.com/sebastianbergmann/phpcov) | TextUI frontend for php-code-coverage
 *   dev-php/[predis](https://github.com/predis/predis) | Flexible and feature-complete Redis client for PHP
+*   dev-php/[psr-cache](https://github.com/php-fig/cache) | Common Cache Interface (PHP FIG PSR-6)
 *   dev-php/[psr-container](https://github.com/php-fig/container) | Common Container Interface (PHP FIG PSR-11)
 *   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
