@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 878](https://img.shields.io/badge/ebuild-878-orange.svg)](https://img.shields.io/badge/ebuild-878-orange.svg)
+[![Number of ebuilds: 879](https://img.shields.io/badge/ebuild-879-orange.svg)](https://img.shields.io/badge/ebuild-879-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -458,6 +458,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[sebastian-object-reflector](https://github.com/sebastianbergmann/object-reflector) | Allows reflection of object attributes
 *   dev-php/[sebastian-recursion-context](https://github.com/sebastianbergmann/recursion-context) | Recursively process PHP variables
 *   dev-php/[sebastian-type](https://github.com/sebastianbergmann/type) | Library that helps with managing the version number
+*   dev-php/[sebastian-version](https://github.com/sebastianbergmann/version) | Library that helps with managing the version number
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
 *   dev-php/[semver](https://github.com/composer/semver) | Semantic versioning utilities, constraint parsing, and checking
 *   dev-php/[signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
