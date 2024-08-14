@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 921](https://img.shields.io/badge/ebuild-921-orange.svg)](https://img.shields.io/badge/ebuild-921-orange.svg)
+[![Number of ebuilds: 922](https://img.shields.io/badge/ebuild-922-orange.svg)](https://img.shields.io/badge/ebuild-922-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -518,6 +518,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-service-contracts](https://github.com/symfony/service-contracts) | A set of service abstractions
 *   dev-php/[symfony-stopwatch](https://github.com/symfony/stopwatch) | Symfony Stopwatch Component
 *   dev-php/[symfony-string](https://github.com/symfony/string) | An object-oriented API to strings
+*   dev-php/[symfony-translation](https://github.com/symfony/translation) | Symfony Translation Component
 *   dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
 *   dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory
 *   dev-python/[ahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
