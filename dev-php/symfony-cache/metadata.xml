@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a PHP component from Symfony, which has extended
+	PSR-6 implementations for adding cache to your applications.
+	It is designed to have a low overhead so that caching is fastest.
+	</longdescription>
+	<use>
+		<flag name="pdo">Enable test for PHP Data Objects extension</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">symfony/cache</remote-id>
+	</upstream>
+</pkgmetadata>

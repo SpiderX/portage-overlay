@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 881](https://img.shields.io/badge/ebuild-881-orange.svg)](https://img.shields.io/badge/ebuild-881-orange.svg)
+[![Number of ebuilds: 882](https://img.shields.io/badge/ebuild-882-orange.svg)](https://img.shields.io/badge/ebuild-882-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -466,6 +466,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-amqp-messenger](https://github.com/symfony/amqp-messenger) | Symfony AMQP Messenger
 *   dev-php/[symfony-browser-kit](https://github.com/symfony/browser-kit) | Symfony BrowserKit Component
 *   dev-php/[symfony-console](https://github.com/symfony/console) | Eases the creation of beautiful and testable command line interfaces
+*   dev-php/[symfony-cache](https://github.com/symfony/cache) | Symfony PSR-6 implementation for caching
 *   dev-php/[symfony-deprecation-contracts](https://github.com/symfony/deprecation-contracts) | A generic function and convention to trigger deprecation notices
 *   dev-php/[symfony-filesystem](https://github.com/symfony/filesystem) | Provides basic utilities for the filesystem
 *   dev-php/[symfony-finder](https://github.com/symfony/finder) | Symfony Finder Component
