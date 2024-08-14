@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 894](https://img.shields.io/badge/ebuild-894-orange.svg)](https://img.shields.io/badge/ebuild-894-orange.svg)
+[![Number of ebuilds: 895](https://img.shields.io/badge/ebuild-895-orange.svg)](https://img.shields.io/badge/ebuild-895-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -482,6 +482,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-expression-language](https://github.com/symfony/expression-language) | Symfony ExpressionLanguage Component
 *   dev-php/[symfony-filesystem](https://github.com/symfony/filesystem) | Provides basic utilities for the filesystem
 *   dev-php/[symfony-finder](https://github.com/symfony/finder) | Symfony Finder Component
+*   dev-php/[symfony-form](https://github.com/symfony/form) | Symfony Form Component
 *   dev-php/[symfony-polyfill-ctype](https://github.com/symfony/polyfill-ctype) | Symfony polyfill for ctype functions
 *   dev-php/[symfony-polyfill-intl-grapheme](https://github.com/symfony/polyfill-intl-grapheme) | Symfony polyfill for intl's grapheme_ functions
 *   dev-php/[symfony-polyfill-intl-normalizer](https://github.com/symfony/polyfill-intl-normalizer) | Symfony polyfill for intl's Normalizer class
