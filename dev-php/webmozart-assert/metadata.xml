@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a PHP component with a library, which contains
+	efficient assertions to test the input and output of your methods.
+	With these assertions, you can greatly reduce the amount of coding
+	needed to write a safe implementation.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">webmozart/assert</remote-id>
+	</upstream>
+</pkgmetadata>
