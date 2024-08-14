@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 910](https://img.shields.io/badge/ebuild-910-orange.svg)](https://img.shields.io/badge/ebuild-910-orange.svg)
+[![Number of ebuilds: 911](https://img.shields.io/badge/ebuild-911-orange.svg)](https://img.shields.io/badge/ebuild-911-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -504,6 +504,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-polyfill-mbstring](https://github.com/symfony/polyfill-mbstring) | Symfony polyfill for the Mbstring extension
 *   dev-php/[symfony-polyfill-php80](https://github.com/symfony/polyfill-php80) | Backport of some PHP 8.0+ features to lower PHP versions
 *   dev-php/[symfony-polyfill-php81](https://github.com/symfony/polyfill-php81) | Backport of some PHP 8.1+ features to lower PHP versions
+*   dev-php/[symfony-polyfill-php83](https://github.com/symfony/polyfill-php83) | Backport of some PHP 8.1+ features to lower PHP versions
 *   dev-php/[symfony-process](https://github.com/symfony/process) | Executes commands in sub-processes
 *   dev-php/[symfony-service-contracts](https://github.com/symfony/service-contracts) | A set of service abstractions
 *   dev-php/[symfony-string](https://github.com/symfony/string) | An object-oriented API to strings
