@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*[xml,unicode]
 	dev-php/fedora-autoloader
-	dev-php/sebastian-diff
+	>=dev-php/sebastian-diff-5.1.1
 	dev-php/sebastian-exporter"
 BDEPEND="dev-php/theseer-Autoload
 	test? ( dev-php/phpunit )"
