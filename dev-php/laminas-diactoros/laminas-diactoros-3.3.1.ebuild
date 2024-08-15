@@ -11,7 +11,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="curl gd ipv6 test xml"
-#REQUIRED_USE="test? ( curl gd xml )"
+REQUIRED_USE="test? ( curl gd xml )"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -47,6 +47,14 @@ src_test() {
 	sed -i 's/setMethods/onlyMethods/' test/StreamTest.php || die "sed failed"
 	# replace exception
 	sed -i '502s/Runtime/InvalidArgument/' test/StreamTest.php
+	# fix test does not extend TestCase
+	mv test/TestAsset/CallbacksForCallbackStream{Test,}.php || die "mv failed"
+	sed -i '/class /s|Test||' test/TestAsset/CallbacksForCallbackStream.php \
+		|| die "sed failed for CallbacksForCallbackStream.php"
+	sed -i '/CallbacksForCallback/s|StreamTest|Stream|' test/CallbackStreamTest.php \
+		|| die "sed faled for CallbackStreamTest.php"
+	# do not test stream factory till https://github.com/laminas/laminas-diactoros/pull/190
+	sed -i '/STREAM_FACTORY/d' phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
 	phpunit --testdox || die "phpunit failed"
 }
 

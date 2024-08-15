@@ -1,13 +1,6 @@
 <?php
 
 require_once 'Fedora/Autoloader/autoload.php';
-#require_once 'functions/create_uploaded_file.php';
-#require_once 'functions/marshal_headers_from_sapi.php';
-#require_once 'functions/marshal_method_from_sapi.php';
-#require_once 'functions/marshal_protocol_version_from_sapi.php';
-#require_once 'functions/normalize_server.php';
-#require_once 'functions/normalize_uploaded_files.php';
-#require_once 'functions/parse_cookie_header.php';
 
 Fedora\Autoloader\Autoload::addPsr4('Laminas\\Diactoros\\', __DIR__);
 

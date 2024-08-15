@@ -400,7 +400,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[jean85-pretty-package-versions](https://github.com/Jean85/pretty-package-versions) | Independent wrapper to get pretty versions strings
 *   dev-php/[kelunik-certificate](https://github.com/kelunik/certificate) | Access certificate details and transform between different formats
 *   dev-php/[laminas-code](https://github.com/laminas/laminas-code) | Extensions to the PHP Reflection API
-*   dev-php/[laminas-diactoros](https://github.com/laminas/laminas-stdlib) | SPL extensions, array utilities, error handlers, and more
+*   dev-php/[laminas-diactoros](https://github.com/laminas/laminas-diactoros) | PSR HTTP Message implementations
 *   dev-php/[laminas-stdlib](https://github.com/laminas/laminas-stdlib) | SPL extensions, array utilities, error handlers, and more
 *   dev-php/[league-flysystem](https://github.com/thephpleague/flysystem) | Abstraction for local and remote filesystems
 *   dev-php/[league-flysystem-local](https://github.com/thephpleague/flysystem-local) | Sub-split of Flysystem for local file storage
@@ -411,7 +411,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[league-uri-interfaces](https://github.com/thephpleague/uri-interfaces) | League URI Interfaces
 *   dev-php/[masterminds-html5](https://github.com/Masterminds/html5-php) | An HTML5 parser and serializer for PHP
 *   dev-php/[mikehaertl-php-shellcommand](https://github.com/mikehaertl/php-shellcommand) | Simple object oriented interface to execute shell commands in PHP
-*   dev-php/[mockery](https://github.com/hamcrest/hamcrest-php) | PHP Hamcrest implementation
+*   dev-php/[mockery](https://github.com/mockery/mockery) | Flexible PHP mock object framework
 *   dev-php/[mongodb](https://github.com/mongodb/mongo-php-library) | The Official MongoDB PHP library
 *   dev-php/[nikic-php-parser](https://github.com/nikic/PHP-Parser) | A PHP parser written in PHP
 *   dev-php/[nyholm-psr7](https://github.com/Nyholm/psr7) | A super lightweight PSR-7 implementation
