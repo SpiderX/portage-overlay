@@ -11,8 +11,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # https://github.com/mockery/mockery/pull/1219/commits
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
@@ -29,7 +28,6 @@ src_prepare() {
 		library/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
-	#phpab -q -o tests/autoload.php -t fedora2 tests || die "phpab failed"
 }
 
 src_test() {
@@ -37,9 +35,6 @@ src_test() {
 		--dev "${PN}/${PN}:${PV}" || die "composer failed"
 	cp -r "${T}/vendor/${PN}/${PN}"/{phpunit.xml.dist,tests} "${S}" \
 		|| die "cp failed"
-	mkdir -p vendor/hamcrest/hamcrest-php || die "mkdir failed"
-	ln -s ../../../../../../../../../../usr/share/php/Hamcrest/ \
-		vendor/hamcrest/hamcrest-php/hamcrest || die "ln failed"
 	phpunit --testdox || die "phpunit failed"
 }
 

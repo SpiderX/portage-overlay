@@ -8,5 +8,4 @@ Fedora\Autoloader\Autoload::addPsr4('test\\', 'tests/');
 
 \Fedora\Autoloader\Dependencies::required([
 	'library/autoload.php',
-#	'tests/autoload.php',
 ]);
