@@ -28,7 +28,7 @@ RDEPEND="dev-lang/php:*[xmlwriter,unicode]
 	dev-php/sebastian-cli-parser
 	dev-php/sebastian-code-unit
 	dev-php/sebastian-comparator
-	dev-php/sebastian-diff
+	>=dev-php/sebastian-diff-5.1.1
 	dev-php/sebastian-environment
 	dev-php/sebastian-exporter
 	dev-php/sebastian-global-state
