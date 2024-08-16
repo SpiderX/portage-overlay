@@ -12,12 +12,10 @@ HOMEPAGE="https://github.com/predis/predis"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # no support of phpunit 10
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload"
 
 src_prepare() {
 	default
@@ -27,20 +25,7 @@ src_prepare() {
 }
 
 src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN}/${PN}:${PV}" || die "composer failed"
-	cp -r "${T}/vendor/${PN}/${PN}"/{phpunit.xml,tests} "${S}" \
-		|| die "cp tests failed"
-	# generate autoload for unit
-	phpab -q -o tests/unit/autoload.php -t fedora2 tests/unit/ \
-		|| die "phpab tests unit failed"
-	# generate autoload for fixtures
-	phpab -q -o tests/_files/autoload.php -t fedora2 tests/_files/ \
-		|| die "phpab tests files failed"
-	phpab -o tests/end-to-end/execution-order/_files/autoload.php \
-		-t fedora2 tests/end-to-end/execution-order/_files/ \
-		|| die "phpab tests end-to-end failed"
-	phpunit --testsuite unit || die "phpunit failed"
+	phpunit --testdox || die "phpunit failed"
 }
 
 src_install() {
