@@ -1,0 +1,26 @@
+--- ../phpcov	2024-08-16 11:51:12.735914258 +0300
++++ ../phpcov	2024-08-16 11:52:04.362148387 +0300
+@@ -9,22 +9,6 @@
+  * file that was distributed with this source code.
+  */
+ 
+-$loaded = false;
+-
+-foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+-    if (file_exists($file)) {
+-        require $file;
+-        $loaded = true;
+-        break;
+-    }
+-}
+-
+-if (!$loaded) {
+-    die(
+-        'You need to set up the project dependencies using the following commands:' . PHP_EOL .
+-        'wget http://getcomposer.org/composer.phar' . PHP_EOL .
+-        'php composer.phar install' . PHP_EOL
+-    );
+-}
++require '/usr/share/php/SebastianBergmann/PHPCOV/autoload.php';
+ 
+ exit((new SebastianBergmann\PHPCOV\Application)->run($_SERVER['argv']));

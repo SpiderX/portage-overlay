@@ -3,17 +3,20 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/sebastianbergmann/phpcov.git"
-
-inherit git-r3
+MY_PN="${PN//phpunit-/}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="TextUI frontend for php-code-coverage"
 HOMEPAGE="https://github.com/sebastianbergmann/phpcov"
+SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-lang/php:*
 	dev-php/phpunit
@@ -35,14 +38,18 @@ src_prepare() {
 		src/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+}
+
+src_test() {
+	composer require -d "${T}" --prefer-source \
+		--dev "${PN/-/\/}:${PV}" || die "composer failed"
+	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml,tests} "${S}" \
+		|| die "cp failed"
 	# remove tests with hardcoded path in data
 	rm tests/end-to-end/merge/valid-directory-with-text-report-stdout.phpt \
 		tests/end-to-end/patch-coverage/valid-arguments-with-valid-path-prefix.phpt \
 		tests/end-to-end/merge/valid-directory-with-text-report.phpt \
 		|| die "rm failed"
-}
-
-src_test() {
 	phpunit --testdox || die "phpunit failed"
 }
 
