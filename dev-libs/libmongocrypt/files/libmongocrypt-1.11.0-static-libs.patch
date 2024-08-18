@@ -1,0 +1,204 @@
+From d6225c9b68cc6d0bc3ab5e3d3c3ac6e746d564a1 Mon Sep 17 00:00:00 2001
+From: tharvik <tharvik@users.noreply.github.com>
+Date: Sat, 29 Jul 2023 18:38:29 +0200
+Subject: [PATCH 1/4] cmake/bson: enforce local build for test
+
+---
+ cmake/ImportBSON.cmake | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/ImportBSON.cmake b/cmake/ImportBSON.cmake
+index b33750142..f168681ff 100644
+--- a/cmake/ImportBSON.cmake
++++ b/cmake/ImportBSON.cmake
+@@ -105,9 +105,12 @@ if (NOT DEFINED MONGOCRYPT_MONGOC_DIR)
+    include (FetchMongoC)
+    # The FetchMongoC module defines a MONGOCRYPT_MONGOC_DIR for us to use
+ endif ()
++if (ENABLE_ONLINE_TESTS AND (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" OR USE_SHARED_LIBBSON))
++   message (FATAL_ERROR "Online tests requires static local build of libbson")
++endif ()
+ 
+ function (_import_bson)
+-   if (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" AND USE_SHARED_LIBBSON AND NOT ENABLE_ONLINE_TESTS)
++   if (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" AND USE_SHARED_LIBBSON)
+       message (STATUS "NOTE: Using system-wide libbson library. This is intended only for package maintainers.")
+       find_library (_MONGOCRYPT_SYSTEM_LIBBSON_SHARED "${CMAKE_SHARED_LIBRARY_PREFIX}bson-1.0${CMAKE_SHARED_LIBRARY_SUFFIX}")
+       find_library (_MONGOCRYPT_SYSTEM_LIBBSON_STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-1.0${CMAKE_STATIC_LIBRARY_SUFFIX}")
+
+From 41b1fd383f61182c42bbaa76705f730a33e7ede2 Mon Sep 17 00:00:00 2001
+From: tharvik <tharvik@users.noreply.github.com>
+Date: Sat, 29 Jul 2023 19:16:53 +0200
+Subject: [PATCH 2/4] cmake/bson: refact system import
+
+---
+ cmake/ImportBSON.cmake | 43 +++++++++++++++++++++++++-----------------
+ 1 file changed, 26 insertions(+), 17 deletions(-)
+
+diff --git a/cmake/ImportBSON.cmake b/cmake/ImportBSON.cmake
+index f168681ff..18e5d58fc 100644
+--- a/cmake/ImportBSON.cmake
++++ b/cmake/ImportBSON.cmake
+@@ -109,26 +109,35 @@ if (ENABLE_ONLINE_TESTS AND (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" OR USE_
+    message (FATAL_ERROR "Online tests requires static local build of libbson")
+ endif ()
+ 
++function (_import_system_libbson target library_type library_name)
++   # import a system libbson
++   # target: target to add library under
++   # library_type: STATIC or SHARED
++   # library_name: filename to seek
++
++   set (lib "_MONGOCRYPT_SYSTEM_LIBBSON_${library_type}")
++
++   find_library (${lib} ${library_name})
++   if (${${lib}} STREQUAL "${lib}-NOTFOUND")
++      message (FATAL_ERROR "system ${library_name} not found")
++   endif ()
++   find_path (_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR bson/bson.h PATH_SUFFIXES libbson-1.0)
++
++   add_library (${target} ${library_type} IMPORTED)
++
++   set_target_properties (${target} PROPERTIES
++      IMPORTED_CONFIGURATIONS "Release"
++      INTERFACE_INCLUDE_DIRECTORIES "${_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR}"
++      IMPORTED_LOCATION "${${lib}}"
++   )
++   set_property (CACHE ${lib} _MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR PROPERTY ADVANCED TRUE)
++endfunction ()
++
+ function (_import_bson)
+    if (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" AND USE_SHARED_LIBBSON)
+       message (STATUS "NOTE: Using system-wide libbson library. This is intended only for package maintainers.")
+-      find_library (_MONGOCRYPT_SYSTEM_LIBBSON_SHARED "${CMAKE_SHARED_LIBRARY_PREFIX}bson-1.0${CMAKE_SHARED_LIBRARY_SUFFIX}")
+-      find_library (_MONGOCRYPT_SYSTEM_LIBBSON_STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-1.0${CMAKE_STATIC_LIBRARY_SUFFIX}")
+-      find_path (_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR bson/bson.h PATH_SUFFIXES libbson-1.0)
+-      add_library (bson_shared SHARED IMPORTED)
+-      add_library (bson_static STATIC IMPORTED)
+-      set_target_properties (bson_shared bson_static PROPERTIES
+-         IMPORTED_CONFIGURATIONS "Release"
+-         INTERFACE_INCLUDE_DIRECTORIES "${_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR}"
+-         )
+-      set_property (TARGET bson_shared PROPERTY IMPORTED_LOCATION "${_MONGOCRYPT_SYSTEM_LIBBSON_SHARED}")
+-      set_property (TARGET bson_static PROPERTY IMPORTED_LOCATION "${_MONGOCRYPT_SYSTEM_LIBBSON_STATIC}")
+-      set_property (
+-         CACHE _MONGOCRYPT_SYSTEM_LIBBSON_SHARED
+-               _MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR
+-         PROPERTY ADVANCED
+-         TRUE
+-      )
++      _import_system_libbson(bson_shared SHARED "${CMAKE_SHARED_LIBRARY_PREFIX}bson-1.0${CMAKE_SHARED_LIBRARY_SUFFIX}")
++      _import_system_libbson(bson_static STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-1.0${CMAKE_STATIC_LIBRARY_SUFFIX}")
+    else ()
+       message (STATUS "Using [${MONGOCRYPT_MONGOC_DIR}] as a sub-project for libbson")
+       # Disable AWS_AUTH, to prevent it from building the kms-message symbols, which we build ourselves
+
+From 1b7ba197aabb35384e3eb80476e0f4584cce2c71 Mon Sep 17 00:00:00 2001
+From: tharvik <tharvik@users.noreply.github.com>
+Date: Sat, 29 Jul 2023 20:09:10 +0200
+Subject: [PATCH 3/4] cmake/bson: install static iff not system
+
+---
+ cmake/ImportBSON.cmake | 40 ++++++++++++++++++++--------------------
+ 1 file changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/cmake/ImportBSON.cmake b/cmake/ImportBSON.cmake
+index 18e5d58fc..afc784826 100644
+--- a/cmake/ImportBSON.cmake
++++ b/cmake/ImportBSON.cmake
+@@ -161,6 +161,26 @@ function (_import_bson)
+       else ()
+          add_subdirectory ("${MONGOCRYPT_MONGOC_DIR}" _mongo-c-driver EXCLUDE_FROM_ALL)
+       endif ()
++
++      # Put the libbson dynamic library into the current binary directory (plus possible config suffix).
++      # This ensures that libbson DLL will resolve on Windows when it searches during tests
++      set_property (TARGET bson_shared PROPERTY RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
++
++      if (ENABLE_STATIC)
++         # We are going to build a static libmongocrypt. Enable the static library as
++         # part of "all", and install the archive alongside the rest of our static libraries.
++         # (Useful for some users for convenience of static-linking libmongocrypt: CDRIVER-3187)
++         set_target_properties (bson_static PROPERTIES
++            EXCLUDE_FROM_ALL FALSE
++            OUTPUT_NAME bson-static-for-libmongocrypt
++            )
++         install (
++            FILES $<TARGET_FILE:bson_static>
++            DESTINATION "${CMAKE_INSTALL_LIBDIR}"
++            RENAME ${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-for-libmongocrypt${CMAKE_STATIC_LIBRARY_SUFFIX}
++            )
++      endif ()
++
+       if (TARGET mongoc_static)
+          # Workaround: Embedded mongoc_static does not set its INCLUDE_DIRECTORIES for user targets
+          target_include_directories (mongoc_static
+@@ -201,23 +221,3 @@ if (TARGET mongoc_static)
+    # And an alias to the mongoc target for use in some test cases
+    add_library (_mongocrypt::mongoc ALIAS mongoc_static)
+ endif ()
+-
+-# Put the libbson dynamic library into the current binary directory (plus possible config suffix).
+-# This ensures that libbson DLL will resolve on Windows when it searches during tests
+-set_property (TARGET bson_shared PROPERTY RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+-
+-if (ENABLE_STATIC)
+-   # We are going to build a static libmongocrypt.
+-   # We want the static libbson target from the embedded mongoc. Enable the static library as
+-   # part of "all", and install the archive alongside the rest of our static libraries.
+-   # (Useful for some users for convenience of static-linking libmongocrypt: CDRIVER-3187)
+-   set_target_properties (bson_static PROPERTIES
+-      EXCLUDE_FROM_ALL FALSE
+-      OUTPUT_NAME bson-static-for-libmongocrypt
+-      )
+-   install (
+-      FILES $<TARGET_FILE:bson_static>
+-      DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+-      RENAME ${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-for-libmongocrypt${CMAKE_STATIC_LIBRARY_SUFFIX}
+-      )
+-endif ()
+
+From 70c6d9cfbfa7608428391b6d796337d5e8abde14 Mon Sep 17 00:00:00 2001
+From: tharvik <tharvik@users.noreply.github.com>
+Date: Sat, 29 Jul 2023 23:05:26 +0200
+Subject: [PATCH 4/4] cmake/bson: only load needed system lib
+
+---
+ cmake/ImportBSON.cmake | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/cmake/ImportBSON.cmake b/cmake/ImportBSON.cmake
+index afc784826..672034082 100644
+--- a/cmake/ImportBSON.cmake
++++ b/cmake/ImportBSON.cmake
+@@ -134,10 +134,13 @@ function (_import_system_libbson target library_type library_name)
+ endfunction ()
+ 
+ function (_import_bson)
+-   if (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" AND USE_SHARED_LIBBSON)
++   if (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM")
+       message (STATUS "NOTE: Using system-wide libbson library. This is intended only for package maintainers.")
+-      _import_system_libbson(bson_shared SHARED "${CMAKE_SHARED_LIBRARY_PREFIX}bson-1.0${CMAKE_SHARED_LIBRARY_SUFFIX}")
+-      _import_system_libbson(bson_static STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-1.0${CMAKE_STATIC_LIBRARY_SUFFIX}")
++      if (USE_SHARED_LIBBSON)
++         _import_system_libbson (bson_shared SHARED "${CMAKE_SHARED_LIBRARY_PREFIX}bson-1.0${CMAKE_SHARED_LIBRARY_SUFFIX}")
++      else ()
++         _import_system_libbson (bson_static STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-1.0${CMAKE_STATIC_LIBRARY_SUFFIX}")
++      endif ()
+    else ()
+       message (STATUS "Using [${MONGOCRYPT_MONGOC_DIR}] as a sub-project for libbson")
+       # Disable AWS_AUTH, to prevent it from building the kms-message symbols, which we build ourselves
+@@ -211,11 +214,11 @@ install (
+ # users during find_package()
+ if (USE_SHARED_LIBBSON)
+    target_link_libraries (_mongocrypt-libbson_for_shared INTERFACE $<BUILD_INTERFACE:bson_shared>)
++   target_link_libraries (_mongocrypt-libbson_for_static INTERFACE $<BUILD_INTERFACE:bson_shared>)
+ else ()
+    target_link_libraries (_mongocrypt-libbson_for_shared INTERFACE $<BUILD_INTERFACE:bson_static>)
++   target_link_libraries (_mongocrypt-libbson_for_static INTERFACE $<BUILD_INTERFACE:bson_static>)
+ endif ()
+-# libbson_for_static always links to the static libbson:
+-target_link_libraries (_mongocrypt-libbson_for_static INTERFACE $<BUILD_INTERFACE:bson_static>)
+ 
+ if (TARGET mongoc_static)
+    # And an alias to the mongoc target for use in some test cases
