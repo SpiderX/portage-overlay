@@ -1,0 +1,37 @@
+Description: Ensure that abs() is not used without being declared
+Author: Sébastien Villemot <sebastien@debian.org>
+Bug-Debian: https://bugs.debian.org/970791
+Forwarded: no
+Last-Update: 2020-09-23
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/LIBRARY/src/bid128_pow.c
++++ b/LIBRARY/src/bid128_pow.c
+@@ -27,6 +27,7 @@
+   THE POSSIBILITY OF SUCH DAMAGE.
+ ******************************************************************************/
+ 
++#include <stdlib.h>
+ #include "bid_trans.h"
+ 
+ int abs(int);
+--- a/LIBRARY/src/bid32_pow.c
++++ b/LIBRARY/src/bid32_pow.c
+@@ -28,6 +28,7 @@
+ ******************************************************************************/
+ 
+ 
++#include <stdlib.h>
+ #include "bid_internal.h"
+ 
+ #define BID32_NAN 0x7c000000ul
+--- a/LIBRARY/src/bid64_pow.c
++++ b/LIBRARY/src/bid64_pow.c
+@@ -28,6 +28,7 @@
+ ******************************************************************************/
+ 
+ 
++#include <stdlib.h>
+ #include "bid_trans.h"
+ 
+ int abs(int);

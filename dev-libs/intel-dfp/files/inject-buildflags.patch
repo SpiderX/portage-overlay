@@ -1,0 +1,44 @@
+Description: Inject build flags at several places
+ - ensure that CFLAGS are used when compiling files under LIBRARY/float128/
+ - inject CPPFLAGS everywhere
+Author: Sébastien Villemot
+Bug-Debian: https://bugs.debian.org/970790
+Forwarded: no
+Last-Update: 2020-09-23
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/LIBRARY/makefile
++++ b/LIBRARY/makefile
+@@ -351,12 +351,12 @@
+ $(OBJ_DIR)/bid32_div.$O    :: $(SRC_DIR)/bid_div_macros.h
+ 
+ $(BID_TRANS_OBJS)    :: $(OBJ_DIR)/%.$O : $(SRC_DIR)/%.c $(SRC_DIR)/bid_trans.h
+-	$(CC) -c $(FO)$@ $(CFLAGS) $(BID_BLD_FLAGS) $<
++	$(CC) -c $(FO)$@ $(CPPFLAGS) $(CFLAGS) $(BID_BLD_FLAGS) $<
+ 
+ 
+ $(BID_INTERNAL_OBJS) :: $(OBJ_DIR)/%.$O : $(SRC_DIR)/%.c \
+                         $(SRC_DIR)/bid_internal.h
+-	$(CC) -c $(FO)$@ $(CFLAGS) $(BID_BLD_FLAGS) $<
++	$(CC) -c $(FO)$@ $(CPPFLAGS) $(CFLAGS) $(BID_BLD_FLAGS) $<
+ 
+ $(SRC_DIR)/bid_trans.h : $(SRC_DIR)/bid_internal.h
+ 	touch $@
+@@ -401,7 +401,7 @@
+ F128_PLATFORM_FLAGS := $(foreach n, IML_HOST_ARCH IML_HOST_OS CC_NAME \
+                         ,-D$(call ToLower,$($n)))
+ 
+-F128_CFLAGS := $(CFLAGS_OPT) -DUSE_NATIVE_QUAD_TYPE=0 $(F128_PLATFORM_FLAGS)
++F128_CFLAGS := $(CFLAGS) -DUSE_NATIVE_QUAD_TYPE=0 $(F128_PLATFORM_FLAGS)
+ 
+ F128_HDR_NAMES := bessel cons int  lgamma powi sqrt     bid  erf inv_hyper \
+                   log    pow  trig cbrt   exp  inv_trig mod
+@@ -432,7 +432,7 @@
+ $(F128_HDR_OBJS) :: $(OBJ_DIR)/dpml_ux_%.$O : $(F128_DIR)/dpml_%_x.h
+ 
+ $(F128_OBJS) :: $(OBJ_DIR)/%.$O : $(F128_DIR)/%.c $(F128_DIR)/dpml_ux.h
+-	$(CC) -c $(FO)$@ $(F128_CFLAGS) $<
++	$(CC) -c $(FO)$@ $(CPPFLAGS) $(F128_CFLAGS) $<
+ 
+ 
+ # =============================================================================

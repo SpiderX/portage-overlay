@@ -1,0 +1,18 @@
+Description: Disable -Werror in tests
+Author: Stephen Kitt <skitt@debian.org>
+Bug-Debian: https://bugs.debian.org/1037527
+
+Setting -Werror means the build can fail on new compilers. This isn't
+particularly useful, especially in tests.
+
+--- a/TESTS/makefile
++++ b/TESTS/makefile
+@@ -81,7 +81,7 @@
+ ifeq ($(CC),icx)
+ COPT = -Werror -Qoption,cpp,--extended_float_types
+ else
+-COPT = -Werror
++COPT =
+ endif
+ endif
+ 

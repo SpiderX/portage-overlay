@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 933](https://img.shields.io/badge/ebuild-933-orange.svg)](https://img.shields.io/badge/ebuild-933-orange.svg)
+[![Number of ebuilds: 934](https://img.shields.io/badge/ebuild-934-orange.svg)](https://img.shields.io/badge/ebuild-934-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -292,6 +292,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[ucommon](https://www.gnu.org/software/commoncpp/) | A class framework that was specifically designed for telephony applications
 *   dev-libs/[dstu-engine](https://github.com/dstucrypt/dstu-engine) | OpenSSL engine for DSTU 4145
 *   dev-libs/[fastText](https://github.com/facebookresearch/fastText) | Library for fast text representation and classification
+*   dev-libs/[intel-dfp](https://software.intel.com/en-us/articles/intel-decimal-floating-point-math-library) | Library routines related to building,parsing and iterating BSON documents
 *   dev-libs/[libcommuni](https://communi.github.io) | A cross-platform IRC framework written with Qt
 *   dev-libs/[libdatrie](https://github.com/tlwg/libdatrie) | Double-Array Trie Library
 *   dev-libs/[libdict](https://github.com/rtbrick/libdict) | C library of key-value data structures
