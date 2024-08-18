@@ -15,17 +15,17 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test"
-#PROPERTIES="test_network"
+RESTRICT="test" # not ready for phpunit 10
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
 	dev-php/jean85-pretty-package-versions
-	dev-php/pecl-mongodb
+	~dev-php/pecl-mongodb-1.18.0
 	dev-php/symfony-polyfill-php80
 	dev-php/symfony-polyfill-php81"
 BDEPEND="test? ( dev-php/composer
-		dev-php/phpunit )"
+		dev-php/phpunit
+		dev-php/symfony-phpunit-bridge )"
 
 src_prepare() {
 	default
@@ -41,9 +41,13 @@ src_test() {
 		--dev "${PN}/${PN}:${PV}" || die "composer failed"
 	cp -r "${T}/vendor/${PN}/${PN}"/{phpunit.xml.dist,tests} "${S}" \
 		|| die "cp tests failed"
-	local PORT=27017
-	mongod --port ${PORT} --bind_ip 127.0.0.1 --nounixsocket --fork \
+	mongod --port 27017 --bind_ip 127.0.0.1 --nounixsocket --fork \
 		--dbpath="${T}" --logpath="${T}/mongod.log" || die "mondod failed"
+	# fix funciton declaration
+	sed -i  -e '/function accepts/s|\$|mixed \$|g' \
+		-e '/function accepts/s|$|: bool|' tests/Comparator/Int64Comparator.php \
+		|| die "sed failed for Int64Comparator.php"
+	# php.ini must have zend.assertions = 1
 	phpunit --testdox || die "phpunit failed"
 	kill "$(<"${T}/mongod.lock")" || die "kill failed"
 }
