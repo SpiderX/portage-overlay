@@ -88,7 +88,7 @@ src_test() {
 src_install() {
 	einstalldocs
 	insinto /usr/share/composer
-	doins -r res LICENSE "${FILESDIR}"/installed.json
+	doins -r res LICENSE
 	insinto /usr/share/php
 	doins -r src/Composer
 	dobin bin/composer
