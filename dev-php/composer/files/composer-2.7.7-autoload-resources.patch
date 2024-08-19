@@ -1,0 +1,55 @@
+--- ../bin/composer	2024-08-18 18:50:01.494896760 +0300
++++ ../bin/composer	2024-08-18 18:50:29.549984114 +0300
+@@ -16,7 +16,7 @@
+ }
+ 
+ setlocale(LC_ALL, 'C');
+-require __DIR__.'/../src/bootstrap.php';
++require __DIR__.'/../share/php/Composer/autoload.php';
+ 
+ use Composer\Console\Application;
+ use Composer\XdebugHandler\XdebugHandler;
+--- ../src/Composer/Json/JsonFile.php	2024-08-18 19:11:21.614032347 +0300
++++ ../src/Composer/Json/JsonFile.php	2024-08-18 19:11:36.855640647 +0300
+@@ -40,7 +40,7 @@
+     /** @deprecated Use \JSON_UNESCAPED_UNICODE */
+     public const JSON_UNESCAPED_UNICODE = 256;
+ 
+-    public const COMPOSER_SCHEMA_PATH = __DIR__ . '/../../../res/composer-schema.json';
++    public const COMPOSER_SCHEMA_PATH = __DIR__ . '/../../../composer/res/composer-schema.json';
+ 
+     public const INDENT_DEFAULT = '    ';
+ 
+--- ../src/Composer/Autoload/AutoloadGenerator.php	2024-08-18 19:14:14.294077858 +0300
++++ ../src/Composer/Autoload/AutoloadGenerator.php	2024-08-18 19:15:29.931290340 +0300
+@@ -458,7 +458,7 @@
+         $filesystem->filePutContentsIfModified($targetDir.'/autoload_real.php', $this->getAutoloadRealFile(true, (bool) $includePathFileContents, $targetDirLoader, (bool) $includeFilesFileContents, $vendorPathCode, $appBaseDirCode, $suffix, $useGlobalIncludePath, $prependAutoloader, $checkPlatform));
+ 
+         $filesystem->safeCopy(__DIR__.'/ClassLoader.php', $targetDir.'/ClassLoader.php');
+-        $filesystem->safeCopy(__DIR__.'/../../../LICENSE', $targetDir.'/LICENSE');
++        $filesystem->safeCopy(__DIR__.'/../../../composer/LICENSE', $targetDir.'/LICENSE');
+ 
+         if ($this->runScripts) {
+             $this->eventDispatcher->dispatchScript(ScriptEvents::POST_AUTOLOAD_DUMP, $this->devMode, [], [
+--- ../src/Composer/Compiler.php	2024-08-18 19:16:58.963678427 +0300
++++ ../src/Composer/Compiler.php	2024-08-18 19:17:23.171296268 +0300
+@@ -105,7 +105,7 @@
+         // Add Composer resources
+         $finder = new Finder();
+         $finder->files()
+-            ->in(__DIR__.'/../../res')
++            ->in('/../../composer/res')
+             ->sort($finderSort)
+         ;
+         foreach ($finder as $file) {
+--- ../src/Composer/Command/DiagnoseCommand.php	2024-08-19 02:30:28.783874306 +0300
++++ ../src/Composer/Command/DiagnoseCommand.php	2024-08-19 02:39:56.553401847 +0300
+@@ -488,7 +488,7 @@
+ 
+         $auditor = new Auditor();
+         $repoSet = new RepositorySet();
+-        $installedJson = new JsonFile(__DIR__ . '/../../../vendor/composer/installed.json');
++        $installedJson = new JsonFile(__DIR__ . '/../../../composer/res/installed.json');
+         if (!$installedJson->exists()) {
+             return '<warning>Could not find Composer\'s installed.json, this must be a non-standard Composer installation.</>';
+         }
