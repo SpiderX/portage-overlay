@@ -54,7 +54,7 @@ src_prepare() {
 	# change return type
 	sed -i '/includeIfExists/s|: ?ClassLoader|: ?int|' src/bootstrap.php \
 		|| die "sed failed for src/bootstrap.php"
-	# mimic system path for bootstrap, assume ${S} as /usr/share
+	# mimic system path for bootstrap, assume ${S} as /usr
 	mkdir -p composer share/php vendor || die "mkdir failed"
 	ln -s -t composer ../res || die "ln for res failed"
 	ln -s -t composer ../LICENSE || die "ln for license failed"
