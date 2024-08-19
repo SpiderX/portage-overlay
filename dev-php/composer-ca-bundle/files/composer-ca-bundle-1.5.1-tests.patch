@@ -1,0 +1,11 @@
+--- ../tests/CaBundleTest.php	2024-08-19 13:12:22.100756715 +0300
++++ ../tests/CaBundleTest.php	2024-08-19 13:12:51.913533106 +0300
+@@ -97,7 +97,7 @@
+     public function testOpenBaseDir(): void
+     {
+         $oldValue = ini_get('open_basedir') ?: '';
+-        ini_set('open_basedir', dirname(__DIR__));
++        ini_set('open_basedir', dirname(__DIR__) . ':/usr/share');
+         $certFilePath = CaBundle::getSystemCaRootBundlePath();
+         $validResult = CaBundle::validateCaFile($certFilePath, null);
+         $this->assertTrue($validResult);

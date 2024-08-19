@@ -1,0 +1,11 @@
+--- ../src/CaBundle.php	2024-08-19 13:02:30.426086394 +0300
++++ ../src/CaBundle.php	2024-08-19 13:03:27.564264010 +0300
+@@ -125,7 +125,7 @@
+      */
+     public static function getBundledCaBundlePath()
+     {
+-        $caBundleFile = __DIR__.'/../res/cacert.pem';
++        $caBundleFile = __DIR__.'/../../../composer/res/cacert.pem';
+ 
+         // cURL does not understand 'phar://' paths
+         // see https://github.com/composer/ca-bundle/issues/10
