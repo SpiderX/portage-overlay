@@ -1,0 +1,21 @@
+--- ../phpunit	2024-08-19 17:53:05.740868439 +0300
++++ ../phpunit	2024-08-19 17:53:48.430024297 +0300
+@@ -47,7 +47,7 @@
+ 
+     unset($GLOBALS['_composer_autoload_path']);
+ } else {
+-    foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
++    foreach (array(__DIR__ . '/../share/php/PHPUnit/autoload.php', __DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+         if (file_exists($file)) {
+             define('PHPUNIT_COMPOSER_INSTALL', $file);
+ 
+--- ../src/TextUI/Configuration/Xml/SchemaFinder.php	2024-08-19 18:11:59.438845562 +0300
++++ ../src/TextUI/Configuration/Xml/SchemaFinder.php	2024-08-19 18:12:04.631839725 +0300
+@@ -75,6 +75,6 @@
+             return __PHPUNIT_PHAR_ROOT__ . '/';
+         }
+ 
+-        return __DIR__ . '/../../../../';
++        return __DIR__ . '/../../../';
+     }
+ }

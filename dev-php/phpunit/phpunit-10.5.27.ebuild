@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit optfeature
+
 DESCRIPTION="The PHP Unit Testing framework"
 HOMEPAGE="https://github.com/sebastianbergmann/phpunit"
 SRC_URI="https://github.com/sebastianbergmann/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -10,10 +12,12 @@ SRC_URI="https://github.com/sebastianbergmann/${PN}/archive/${PV}.tar.gz -> ${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="soap test"
+REQUIRED_USE="test? ( soap )"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*[xmlwriter,unicode]
+RDEPEND="dev-lang/php:*[soap?,xml,xmlwriter,unicode]
 	dev-php/fedora-autoloader
 	dev-php/myclabs-deepcopy
 	dev-php/phar-io-manifest
@@ -36,23 +40,17 @@ RDEPEND="dev-lang/php:*[xmlwriter,unicode]
 	dev-php/sebastian-version"
 BDEPEND=">=dev-php/theseer-Autoload-1.29.1"
 
+PATCHES=( "${FILESDIR}/${PN}"-10.5.27-autoload-resources.patch )
+
 DOCS=( {ChangeLog-10.5,DEPRECATIONS,README}.md )
 
 src_prepare() {
 	default
 
-	# search for schema in PHPUnit directory
-	sed -i '/return __DIR__/s|/../../../../|/../../../|' \
-		src/TextUI/Configuration/Xml/SchemaFinder.php \
-		|| die "sed failed for SchemaFinder.php"
-	mkdir src/vendor || die "mkdir failed"
-	phpab --quiet --output src/vendor/autoload.php \
-		--template fedora2 --basedir src/vendor/ src \
-		|| die "phpab failed"
-	install -D -m 644 "${FILESDIR}"/autoload.php \
+	phpab -q -o src/autoload.php -t "${FILESDIR}"/autoload.php.tpl \
+		src || die "phpab failed"
+	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install failed"
-	# add dependencies to autoload
-	eapply "${FILESDIR}/${PN}"-10.5.27-autoload.patch
 }
 
 src_test() {
@@ -62,18 +60,25 @@ src_test() {
 	# move tests into work dir
 	cp -r "${T}/vendor/${PN}/${PN}"/{phpunit.xml,tests} "${S}" \
 		|| die "cp tests failed"
-	# remove failed tests
-	sed -i '/testIsInitialized/,+17d' tests/unit/Util/ExcludeListTest.php \
-		|| die "sed failed for ExcludeListTest.php"
 	# generate autoload for unit
 	phpab -q -o tests/unit/autoload.php -t fedora2 tests/unit/ \
 		|| die "phpab tests unit failed"
 	# generate autoload for fixtures
 	phpab -q -o tests/_files/autoload.php -t fedora2 tests/_files/ \
 		|| die "phpab tests files failed"
+	# generate autoloads for end-to-end
 	phpab -o tests/end-to-end/execution-order/_files/autoload.php \
 		-t fedora2 tests/end-to-end/execution-order/_files/ \
-		|| die "phpab tests end-to-end failed"
+		|| die "phpab tests execution order failed"
+	phpab -o tests/end-to-end/event/autoload.php -t fedora2 \
+		tests/end-to-end/event || die "phpab tests event failed"
+	phpab -o tests/end-to-end/regression/autoload.php -t fedora2 \
+		-e tests/end-to-end/regression/4376/tests/Test.php \
+		tests/end-to-end/regression || die "phpab tests regression failed"
+	phpab -o tests/end-to-end/testdox/autoload.php -t fedora2 \
+		tests/end-to-end/testdox || die "phpab tests testdox failed"
+	eapply "${FILESDIR}/${PN}"-10.5.27-tests.patch
+	# paths need to be fixed to run end-to-end
 	phpunit --testsuite unit || die "phpunit failed"
 }
 
@@ -81,8 +86,9 @@ src_install() {
 	einstalldocs
 	insinto /usr/share/php/PHPUnit
 	doins -r schema phpunit.xsd src/.
+	dobin phpunit
+}
 
-	exeinto /usr/share/php/PHPUnit
-	doexe phpunit
-	dosym ../share/php/PHPUnit/phpunit /usr/bin/phpunit
+pkg_postinst() {
+	optfeature "Support to generate mocks based on WSDL files" dev-lang/php[soap]
 }

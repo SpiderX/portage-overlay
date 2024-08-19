@@ -1,0 +1,29 @@
+--- ../tests/unit/Util/ExcludeListTest.php	2024-08-20 00:07:41.698625111 +0300
++++ ../tests/unit/Util/ExcludeListTest.php	2024-08-20 00:08:40.543958145 +0300
+@@ -26,7 +26,7 @@
+         $excludeList = new ExcludeList(true);
+ 
+         $this->assertContains(
+-            realpath(__DIR__ . '/../../../src'),
++            realpath('/usr/share/php/PHPUnit'),
+             $excludeList->getExcludedDirectories(),
+         );
+     }
+@@ -35,7 +35,7 @@
+     {
+         $excludeList = new ExcludeList(true);
+ 
+-        $this->assertTrue($excludeList->isExcluded(realpath(__DIR__ . '/../../../src/Framework/TestCase.php')));
++        $this->assertTrue($excludeList->isExcluded(realpath('/usr/share/php/PHPUnit/Framework/TestCase.php')));
+         $this->assertFalse($excludeList->isExcluded(__FILE__));
+     }
+ 
+@@ -43,7 +43,7 @@
+     {
+         $excludeList = new ExcludeList(false);
+ 
+-        $this->assertFalse($excludeList->isExcluded(realpath(__DIR__ . '/../../../src/Framework/TestCase.php')));
++        $this->assertFalse($excludeList->isExcluded(realpath('/usr/share/php/PHPUnit/Framework/TestCase.php')));
+     }
+ 
+     public function testAdditionalDirectoryCanBeExcluded(): void
