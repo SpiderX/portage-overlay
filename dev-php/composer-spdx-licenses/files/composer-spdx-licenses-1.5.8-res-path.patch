@@ -1,0 +1,11 @@
+--- ../src/SpdxLicenses.php	2024-08-19 00:25:24.260422799 +0300
++++ ../src/SpdxLicenses.php	2024-08-19 00:27:32.730461815 +0300
+@@ -213,7 +213,7 @@
+      */
+     public static function getResourcesDir()
+     {
+-        return dirname(__DIR__) . '/res';
++        return dirname(__DIR__) . '/../../composer/res';
+     }
+ 
+     /**
