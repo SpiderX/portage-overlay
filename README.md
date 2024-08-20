@@ -512,7 +512,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-polyfill-mbstring](https://github.com/symfony/polyfill-mbstring) | Symfony polyfill for the Mbstring extension
 *   dev-php/[symfony-polyfill-php80](https://github.com/symfony/polyfill-php80) | Backport of some PHP 8.0+ features to lower PHP versions
 *   dev-php/[symfony-polyfill-php81](https://github.com/symfony/polyfill-php81) | Backport of some PHP 8.1+ features to lower PHP versions
-*   dev-php/[symfony-polyfill-php83](https://github.com/symfony/polyfill-php83) | Backport of some PHP 8.1+ features to lower PHP versions
+*   dev-php/[symfony-polyfill-php83](https://github.com/symfony/polyfill-php83) | Backport of some PHP 8.3+ features to lower PHP versions
 *   dev-php/[symfony-polyfill-uuid](https://github.com/symfony/polyfill-uuid) | Symfony polyfill for uuid functions
 *   dev-php/[symfony-process](https://github.com/symfony/process) | Executes commands in sub-processes
 *   dev-php/[symfony-property-access](https://github.com/symfony/property-access) | Symfony PropertyAccess Component
