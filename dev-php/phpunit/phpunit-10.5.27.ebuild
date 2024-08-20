@@ -21,7 +21,7 @@ RDEPEND="dev-lang/php:*[soap?,xml,xmlwriter,unicode]
 	dev-php/fedora-autoloader
 	dev-php/myclabs-deepcopy
 	dev-php/phar-io-manifest
-	dev-php/phar-io-version
+	>=dev-php/phar-io-version-3.2.1
 	dev-php/phpunit-php-code-coverage
 	dev-php/phpunit-php-file-iterator
 	dev-php/phpunit-php-invoker
@@ -36,8 +36,8 @@ RDEPEND="dev-lang/php:*[soap?,xml,xmlwriter,unicode]
 	dev-php/sebastian-global-state
 	dev-php/sebastian-object-enumerator
 	dev-php/sebastian-recursion-context
-	dev-php/sebastian-type
-	dev-php/sebastian-version"
+	>=dev-php/sebastian-type-4.0.0
+	>=dev-php/sebastian-version-4.0.1"
 BDEPEND=">=dev-php/theseer-Autoload-1.29.1"
 
 PATCHES=( "${FILESDIR}/${PN}"-10.5.27-autoload-resources.patch )
