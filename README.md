@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 940](https://img.shields.io/badge/ebuild-940-orange.svg)](https://img.shields.io/badge/ebuild-940-orange.svg)
+[![Number of ebuilds: 941](https://img.shields.io/badge/ebuild-941-orange.svg)](https://img.shields.io/badge/ebuild-941-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -361,6 +361,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[amphp-hpack](https://github.com/amphp/hpack) | HTTP/2 header compression implementation in PHP
 *   dev-php/[amphp-http](https://github.com/amphp/http) | HTTP primitives which can be shared by servers and clients
 *   dev-php/[amphp-http-client](https://github.com/amphp/http-client) | Advanced async HTTP client library for PHP
+*   dev-php/[amphp-http-server](https://github.com/amphp/http-server) | An advanced async HTTP server library for PHP
 *   dev-php/[amphp-parallel](https://github.com/amphp/parallel) | An advanced parallelization library for PHP
 *   dev-php/[amphp-parser](https://github.com/amphp/parser) | A generator parser to make streaming parsers simple
 *   dev-php/[amphp-phpunit-util](https://github.com/amphp/phpunit-util) | Helper package to ease testing with PHPUnit
