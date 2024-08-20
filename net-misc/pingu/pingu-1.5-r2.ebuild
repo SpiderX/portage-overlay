@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit systemd tmpfiles toolchain-funcs
+inherit edo systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="Policy routing daemon with failover and load-balancing"
 HOMEPAGE="https://github.com/ncopa/pingu"
@@ -14,26 +14,32 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc"
 
-RDEPEND="dev-libs/libev:="
+RDEPEND="dev-libs/libev"
 DEPEND="${RDEPEND}
-	sys-kernel/linux-headers
-	virtual/pkgconfig
+	sys-kernel/linux-headers"
+BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
 # Fix QA with install into path /run/pingu must be created at runtime
-PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch )
+PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch
+	"${FILESDIR}"/"${P}"-pingu.c.patch )
+
+QA_CONFIG_IMPL_DECL_SKIP=( 'strlcpy' )
 
 src_prepare() {
 	default
 
 	# Fix compilation issue
-	sed -i '/icp->un.frag.__unused = 0;/d' src/icmp.c \
-		|| die "sed failed for src/icmp.c"
+	sed -i '/icp->un.frag.__unused = 0;/d' src/icmp.c || die
 }
 
 src_configure() {
-	./configure "$(use_enable debug)" "$(use_enable doc)" \
-		--prefix=/usr || die "configure failed"
+	local myconf=(
+		--prefix=/usr
+		"$(use_enable debug)"
+		"$(use_enable doc)"
+	)
+	edo ./configure "${myconf[@]}"
 }
 
 src_compile() {
