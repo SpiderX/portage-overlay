@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/symfony/polyfill-intl-icu.git"
 
-inherit git-r3
+inherit git-r3 optfeature
 
 DESCRIPTION="Symfony polyfill for intl's ICU-related data and classes"
 HOMEPAGE="https://github.com/symfony/polyfill-intl-icu"
@@ -21,4 +21,8 @@ src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Polyfill/Intl/Icu
 	doins -r DateFormat Exception Resources "${FILESDIR}"/autoload.php ./*.php
+}
+
+pkg_postinst() {
+	optfeature "Support of more locales" dev-lang/php[intl]
 }
