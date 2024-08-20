@@ -12,11 +12,11 @@ HOMEPAGE="https://github.com/composer/composer"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="ipv6 test zip"
-REQUIRED_USE="test? ( zip )"
+IUSE="curl intl ipv6 test zip"
+REQUIRED_USE="test? ( curl intl zip )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*[ssl,zlib,zip?]
+RDEPEND="dev-lang/php:*[curl?,intl?,ssl,zlib,zip?]
 	dev-php/composer-ca-bundle
 	dev-php/composer-class-map-generator
 	dev-php/composer-pcre
@@ -38,8 +38,7 @@ RDEPEND="dev-lang/php:*[ssl,zlib,zip?]
 	>=dev-php/symfony-process-6.4.8
 	dev-php/xdebug-handler"
 BDEPEND="dev-php/theseer-Autoload
-	test? ( dev-php/composer
-		dev-php/phpunit
+	test? ( dev-php/phpunit
 		dev-php/sebastian-object-reflector )"
 
 PATCHES=( "${FILESDIR}/${PN}"-2.7.7-autoload-resources.patch )
