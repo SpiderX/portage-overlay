@@ -8,3 +8,10 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Polyfill\\Intl\\Normalizer\\', __D
 \Fedora\Autoloader\Dependencies::required([
 	__DIR__ . '/bootstrap.php',
 ]);
+
+\Fedora\Autoloader\Autoload::addClassMap(
+    array(
+	'normalizer' => '/Resources/stubs/Normalizer.php',
+    ),
+    __DIR__
+);
