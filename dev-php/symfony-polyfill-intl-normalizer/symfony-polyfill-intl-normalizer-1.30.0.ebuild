@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit optfeature
+
 MY_PN="${PN//symfony-/}"
 MY_P="${MY_PN}-${PV}"
 
@@ -23,4 +25,8 @@ src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Polyfill/Intl/Normalizer
 	doins -r Resources "${FILESDIR}"/autoload.php ./*.php
+}
+
+pkg_postinst() {
+	optfeature "Support of more locales" dev-lang/php[intl]
 }
