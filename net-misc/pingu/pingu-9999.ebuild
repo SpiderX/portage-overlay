@@ -21,8 +21,9 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
 # Fix QA with install into path /run/pingu must be created at runtime
-PATCHES=( "${FILESDIR}"/"${PN}"-1.5-makefile.patch
-	"${FILESDIR}"/"${PN}"-1.5-pingu.c.patch )
+PATCHES=( "${FILESDIR}"/"${PN}"-1.5-makefile.patch )
+
+QA_CONFIG_IMPL_DECL_SKIP=( 'strlcpy' )
 
 src_configure() {
 	local myconf=(

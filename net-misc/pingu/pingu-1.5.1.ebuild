@@ -21,17 +21,9 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
 # Fix QA with install into path /run/pingu must be created at runtime
-PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch
-	"${FILESDIR}"/"${P}"-pingu.c.patch )
+PATCHES=( "${FILESDIR}"/"${PN}"-1.5-makefile.patch )
 
 QA_CONFIG_IMPL_DECL_SKIP=( 'strlcpy' )
-
-src_prepare() {
-	default
-
-	# Fix compilation issue
-	sed -i '/icp->un.frag.__unused = 0;/d' src/icmp.c || die
-}
 
 src_configure() {
 	local myconf=(
