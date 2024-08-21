@@ -1,13 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# shellcheck disable=SC2317
 
 EAPI=8
 
-inherit desktop pax-utils unpacker xdg
+PLOCALES="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
+PLOCALE_BACKUP="en"
+
+inherit desktop pax-utils plocale unpacker xdg
 
 DESCRIPTION="A minimal markdown editor and reader"
 HOMEPAGE="https://typora.io"
 SRC_URI="https://typora.io/linux/${PN}_${PV}_amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="Typora"
 SLOT="0"
@@ -15,10 +21,8 @@ KEYWORDS="-* ~amd64"
 IUSE="appindicator"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
+RDEPEND="app-accessibility/at-spi2-core:2
 	app-crypt/libsecret:0
-	dev-libs/atk:0
 	dev-libs/expat:0
 	dev-libs/glib:2
 	dev-libs/nspr:0
@@ -42,9 +46,18 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	x11-libs/libXrandr:0
 	x11-libs/libxshmfence:0
 	x11-libs/pango:0
-	appindicator? ( dev-libs/libappindicator:3 )"
+	appindicator? ( dev-libs/libayatana-indicator:3 )"
 
-S="${WORKDIR}"
+src_prepare() {
+	default
+
+	plocale_find_changes "${S}"/usr/share/typora/locales '' '.pak'
+	my_rm_loc() {
+		rm "${S}"/usr/share/typora/locales/"${1}".pak \
+			|| die "rm failed for locale ${1}"
+	}
+	plocale_for_each_disabled_locale my_rm_loc
+}
 
 src_install() {
 	for size in 32 64 128 256 ; do
@@ -60,6 +73,7 @@ src_install() {
 	fperms +x /opt/Typora/chrome{-sandbox,_crashpad_handler} \
 		/opt/Typora/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/Typora/libvulkan.so.1 /opt/Typora/Typora \
+		/opt/Typora/resources/node_modules/fswin/build/Release/fswin.node \
 		/opt/Typora/resources/node_modules/spellchecker/node_modules/cld/build/Release/cld.node \
 		/opt/Typora/resources/node_modules/vscode-ripgrep/bin/rg
 
