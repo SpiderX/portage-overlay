@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,6 +8,7 @@ inherit desktop pax-utils unpacker xdg
 DESCRIPTION="A simple and elegant open-source markdown editor"
 HOMEPAGE="https://github.com/marktext/marktext"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${PN}-amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -15,10 +16,8 @@ KEYWORDS="-* ~amd64"
 IUSE="appindicator"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
+RDEPEND="app-accessibility/at-spi2-core:2
 	app-crypt/libsecret:0
-	dev-libs/atk:0
 	dev-libs/expat:0
 	dev-libs/glib:2
 	dev-libs/nspr:0
@@ -42,13 +41,11 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	x11-libs/libXrandr:0
 	x11-libs/libxshmfence:0
 	x11-libs/pango:0
-	appindicator? ( dev-libs/libappindicator:3 )"
+	appindicator? ( dev-libs/libayatana-indicator:3 )"
 
 QA_PRESTRIPPED="opt/MarkText/chrome_crashpad_handler
 	opt/MarkText/libvk_swiftshader.so
 	opt/MarkText/resources/app.asar.unpacked/node_modules/vscode-ripgrep/bin/rg"
-
-S="${WORKDIR}"
 
 src_install() {
 	for size in 16 32 48 64 128 256 512 ; do
