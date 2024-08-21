@@ -20,7 +20,7 @@ S="${WORKDIR}"
 LICENSE="MIT"
 SLOT=0
 KEYWORDS="~amd64"
-IUSE="+abi_x86_64 appindicator suid"
+IUSE="appindicator suid"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-core:2
