@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,8 @@ inherit desktop multilib-build optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://slack.com"
-SRC_URI="https://downloads.slack-edge.com/releases/linux/${PV}/prod/x64/${PN}-desktop-${PV}-amd64.deb"
+SRC_URI="https://downloads.slack-edge.com/desktop-releases/linux/x64/${PV}/${PN}-desktop-${PV}-amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -17,13 +18,12 @@ KEYWORDS="-* ~amd64"
 IUSE="appindicator +seccomp suid wayland"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
-	app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
-	dev-libs/atk:0[${MULTILIB_USEDEP}]
+RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
+	dev-libs/wayland[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
 	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
@@ -42,7 +42,7 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libxkbfile:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
-	appindicator? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
+	appindicator? ( dev-libs/libayatana-appindicator )"
 
 QA_PREBUILT="opt/slack/chrome-sandbox
 	opt/slack/chrome_crashpad_handler
@@ -55,8 +55,6 @@ QA_PREBUILT="opt/slack/chrome-sandbox
 	opt/slack/slack
 	opt/slack/swiftshader/libEGL.so
 	opt/slack/swiftshader/libGLESv2.so"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
@@ -101,6 +99,11 @@ src_install() {
 	dosym ../../opt/slack/slack usr/bin/slack
 
 	pax-mark -m "${ED}"/opt/slack/slack
+
+	# https://bugs.gentoo.org/898912
+	if use appindicator; then
+		dosym ../../usr/lib64/libayatana-appindicator3.so /opt/slack/libappindicator3.so
+	fi
 }
 
 pkg_postinst() {
