@@ -19,7 +19,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="+abi_x86_64 +seccomp suid"
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror splitdebug"
 
 RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	app-arch/bzip2:0[${MULTILIB_USEDEP}]
