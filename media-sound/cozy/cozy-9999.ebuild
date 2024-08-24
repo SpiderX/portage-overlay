@@ -1,13 +1,15 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# shellcheck disable=SC2317
+
 EAPI=8
 
 EGIT_REPO_URI="https://github.com/geigi/${PN}.git"
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 
-inherit git-r3 gnome2-utils meson python-single-r1 readme.gentoo-r1 xdg
+inherit git-r3 gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="Modern audiobook player"
 HOMEPAGE="https://github.com/geigi/cozy"
@@ -38,9 +40,22 @@ RDEPEND="${PYTHON_DEPS}
 BDEPEND="sys-devel/gettext
 	virtual/pkgconfig"
 
+src_prepare() {
+	default
+
+	my_rm_loc() {
+		rm po/"${1}".po || die "rm failed for po/${1}.po"
+		sed -i "/${1}/d" po/LINGUAS || die "sed failed for po/LINGUAS"
+		if [ -f po/extra/"${1}".po ] ; then
+			rm po/extra/"${1}".po || die "rm failed for extra/${1}.po"
+			sed -i "/${1}/d" po/extra/LINGUAS || die "sed failed for po/extra/LINGUAS"
+		fi
+	}
+	plocale_for_each_disabled_locale my_rm_loc
+}
+
 src_install() {
 	meson_src_install
-	readme.gentoo_create_doc
 	python_optimize
 	python_fix_shebang "${ED}"/usr/bin
 	dosym ./com.github.geigi.cozy /usr/bin/cozy
@@ -52,7 +67,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	readme.gentoo_print_elog
 	xdg_pkg_postinst
 	gnome2_schemas_update
 }
