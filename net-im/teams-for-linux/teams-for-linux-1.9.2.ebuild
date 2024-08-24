@@ -71,18 +71,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	x11-libs/pixman[${MULTILIB_USEDEP}]"
 
-#QA_PREBUILT="opt/slack/chrome-sandbox
-#	opt/slack/chrome_crashpad_handler
-#	opt/slack/libEGL.so
-#	opt/slack/libGLESv2.so
-#	opt/slack/libffmpeg.so
-#	opt/slack/libvk_swiftshader.so
-#	opt/slack/libvulkan.so.1
-#	opt/slack/resources/app.asar.unpacked/node_modules/*
-#	opt/slack/slack
-#	opt/slack/swiftshader/libEGL.so
-#	opt/slack/swiftshader/libGLESv2.so"
-
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
 }
