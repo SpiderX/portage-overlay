@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils xdg
+inherit chromium-2 desktop multilib-build optfeature pax-utils xdg
 
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/en"
@@ -111,4 +111,9 @@ src_install() {
 
 	pax-mark -m "${ED}"/opt/skypeforlinux/skypeforlinux
 	pax-mark -m "${ED}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+}
+
+pkg_postinst() {
+	optfeature "storing passwords via Secret Service API provider" virtual/secret-service
+	xdg_pkg_postinst
 }
