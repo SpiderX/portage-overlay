@@ -5,10 +5,12 @@
 
 EAPI=8
 
-PLOCALES="am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv sw ta te th tr uk vi zh-CN zh-TW"
-PLOCALE_BACKUP="en-GB"
+CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr
+	gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru
+	sk sl sr sv sw ta te th tr uk vi zh-CN zh-TW"
+MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop pax-utils plocale unpacker xdg
+inherit chromium-2 desktop pax-utils multilib-build unpacker xdg
 
 BUILD="7001000"
 
@@ -20,46 +22,47 @@ S="${WORKDIR}"
 LICENSE="Apache-2.0 GPL-3 LGPL-2.1"
 SLOT=0
 KEYWORDS="-* ~amd64"
-RESTRICT="bindist mirror strip"
+IUSE="+abi_x86_64 suid"
+RESTRICT="bindist mirror splitdebug strip"
 
-RDEPEND="app-accessibility/at-spi2-core:2
-	app-crypt/mit-krb5
-	app-crypt/p11-kit
-	dev-db/sqlite:3
-	dev-libs/dbus-glib
-	dev-libs/expat:0
-	dev-libs/glib:2
-	dev-libs/gmp:0
-	dev-libs/libbsd
-	dev-libs/libgcrypt:0
-	dev-libs/libgpg-error
-	dev-libs/libltdl
-	dev-libs/libtasn1
-	dev-libs/libthai
-	dev-libs/libxml2:2
-	dev-libs/nspr:0
-	dev-libs/nss:0
-	gnome-base/librsvg:2
-	media-libs/alsa-lib:0
-	media-libs/fontconfig:1.0
-	media-libs/freetype:2
-	media-libs/harfbuzz
-	media-video/ffmpeg-compat:57
-	sys-apps/dbus:0
-	x11-libs/cairo:0
-	x11-libs/gtk+:3
-	x11-libs/libdrm:0
-	x11-libs/libX11:0
-	x11-libs/libxcb:0/1.12
-	x11-libs/libXcomposite:0
-	x11-libs/libXcursor:0
-	x11-libs/libXdamage:0
-	x11-libs/libXext:0
-	x11-libs/libXfixes:0
-	x11-libs/libXi:0
-	x11-libs/libXrandr:0
-	x11-libs/libXrender:0
-	x11-libs/pango:0"
+RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
+	app-crypt/mit-krb5[${MULTILIB_USEDEP}]
+	app-crypt/p11-kit[${MULTILIB_USEDEP}]
+	dev-db/sqlite:3[${MULTILIB_USEDEP}]
+	dev-libs/dbus-glib[${MULTILIB_USEDEP}]
+	dev-libs/expat:0[${MULTILIB_USEDEP}]
+	dev-libs/glib:2[${MULTILIB_USEDEP}]
+	dev-libs/gmp:0[${MULTILIB_USEDEP}]
+	dev-libs/libbsd[${MULTILIB_USEDEP}]
+	dev-libs/libgcrypt:0[${MULTILIB_USEDEP}]
+	dev-libs/libgpg-error[${MULTILIB_USEDEP}]
+	dev-libs/libltdl[${MULTILIB_USEDEP}]
+	dev-libs/libtasn1[${MULTILIB_USEDEP}]
+	dev-libs/libthai[${MULTILIB_USEDEP}]
+	dev-libs/libxml2:2[${MULTILIB_USEDEP}]
+	dev-libs/nspr:0[${MULTILIB_USEDEP}]
+	dev-libs/nss:0[${MULTILIB_USEDEP}]
+	gnome-base/librsvg:2[${MULTILIB_USEDEP}]
+	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
+	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
+	media-libs/freetype:2[${MULTILIB_USEDEP}]
+	media-libs/harfbuzz[${MULTILIB_USEDEP}]
+	media-video/ffmpeg-compat:57[${MULTILIB_USEDEP}]
+	sys-apps/dbus:0[${MULTILIB_USEDEP}]
+	x11-libs/cairo:0[${MULTILIB_USEDEP}]
+	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+	x11-libs/libdrm:0[${MULTILIB_USEDEP}]
+	x11-libs/libX11:0[${MULTILIB_USEDEP}]
+	x11-libs/libxcb:0/1.12[${MULTILIB_USEDEP}]
+	x11-libs/libXcomposite:0[${MULTILIB_USEDEP}]
+	x11-libs/libXcursor:0[${MULTILIB_USEDEP}]
+	x11-libs/libXdamage:0[${MULTILIB_USEDEP}]
+	x11-libs/libXext:0[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes:0[${MULTILIB_USEDEP}]
+	x11-libs/libXi:0[${MULTILIB_USEDEP}]
+	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
+	x11-libs/libXrender:0[${MULTILIB_USEDEP}]
+	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 BDEPEND="dev-util/patchelf"
 
 QA_PREBUILT="opt/WebullDesktop/QtWebEngineProcess
@@ -240,30 +243,40 @@ QA_PREBUILT="opt/WebullDesktop/QtWebEngineProcess
 	opt/WebullDesktop/libtwolame.so.0
 	opt/WebullDesktop/libgio-2.0.so.0"
 
+pkg_pretend() {
+	use suid || chromium_suid_sandbox_check_kernel_config
+}
+
 src_prepare() {
 	default
-
-	my_rm_loc() {
-		rm usr/local/WebullDesktop/locales/"${1}".pak{,.info} \
-			usr/local/WebullDesktop/translations/qtwebengine_locales/"${1}".pak \
-			|| die "rm failed for locale ${1}"
-	}
-	plocale_for_each_disabled_locale my_rm_loc
+	pushd usr/local/WebullDesktop/locales || die "pushd failed"
+	chromium_remove_language_paks
+	popd || die "popd failed"
+	pushd usr/local/WebullDesktop/translations/qtwebengine_locales || die "pushd failed for qt"
+	chromium_remove_language_paks
+	popd || die "popd failed for qt"
 
 	# don't install licenses
-	rm usr/local/WebullDesktop/{apache-2.0,gpl-3.0,lgpl-2.1,LICENSE}.txt
+	rm usr/local/WebullDesktop/{apache-2.0,gpl-3.0,lgpl-2.1,LICENSE}.txt \
+		|| die "rm failed for licenses"
+
 	# fix desktop
 	sed -i  -e '/Name/s|Desktop   |Desktop|' \
 		-e '/Icon/s|.png||' \
 		-e '/Categories/s|Utiltity|Finance|' \
 		-e '/Version/d' \
-		-e "/Exec/s|=.*$|=env LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/WebullDesktop /opt/WebullDesktop/WebullDesktop|" \
+		-e "/Exec/s|=.*$|=env LD_LIBRARY_PATH=\\${LD_LIBRARY_PATH}:/opt/WebullDesktop /opt/WebullDesktop/WebullDesktop|" \
 		usr/share/applications/WebullDesktop.desktop
+
+	if ! use suid ; then
+		rm usr/local/WebullDesktop/chrome-sandbox || die "rm failed"
+	fi
 }
 
 src_install() {
 	doicon -s 64 usr/share/icons/hicolor/64x64/apps/WebullDesktop.png
 	domenu usr/share/applications/WebullDesktop.desktop
+
 	insinto /opt/WebullDesktop
 	doins -r usr/local/WebullDesktop/.
 	fperms +x /opt/WebullDesktop/platforms/libqxcb.so \
@@ -281,7 +294,6 @@ src_install() {
 		/opt/WebullDesktop/wbplugins/lib{networkdetection,settingsui,stockui,tradeui,usercenterstore}.so \
 		/opt/WebullDesktop/QtWebEngineProcess \
 		/opt/WebullDesktop/WebullDesktop \
-		/opt/WebullDesktop/chrome-sandbox \
 		/opt/WebullDesktop/libicu{uc,data,i18n}.so.56 \
 		/opt/WebullDesktop/libquazip1-qt5.1.4.so \
 		/opt/WebullDesktop/libQt5{Concurrent,Core,DBus,Gui,Network,OpenGL,Positioning,PrintSupport,QmlModels}.so.5 \
@@ -292,12 +304,15 @@ src_install() {
 		/opt/WebullDesktop/libsentry.so \
 		/opt/WebullDesktop/libwb{basecore,basestore,baseui,charts,commonui,grpc,httpsclient,mqtt,storecommon}.so \
 		/opt/WebullDesktop/libwb{uiframeworkmanager,updater,webviewui}.so
+	use suid && fperms u+s,+x /opt/WebullDesktop/chrome-sandbox
 
 	patchelf --set-rpath "\$ORIGIN" "${ED}"/opt/WebullDesktop/libQtAV.so.1{,.13,.13.0} \
 		"${ED}"/opt/WebullDesktop/libQtAVWidgets.so.1{,.13,.13.0} \
 		|| die "patchelf failed"
 
 	dosym ../WebullDesktop/WebullDesktop opt/bin/WebullDesktop
+
 	dobin "${FILESDIR}"/webulldesktop
+
 	pax-mark -m "${ED}"/opt/WebullDesktop/WebullDesktop
 }
