@@ -19,7 +19,7 @@ LICENSE="Skype-TOS MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 Boost-1.0
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="+abi_x86_64 +appindicator +seccomp selinux suid"
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror splitdebug"
 
 RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	app-arch/bzip2:0[${MULTILIB_USEDEP}]
