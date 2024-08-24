@@ -1,14 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# shellcheck disable=SC2317
-
 EAPI=8
 
-PLOCALES="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
-PLOCALE_BACKUP="en"
+CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
+	fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro
+	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
+MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop pax-utils plocale unpacker xdg
+inherit chromium-2 desktop multilib-build pax-utils unpacker xdg
 
 MY_PN="${PN/-bin/}"
 
@@ -19,47 +19,51 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT=0
-KEYWORDS="~amd64"
-IUSE="appindicator suid"
-RESTRICT="bindist mirror"
+KEYWORDS="-* ~amd64"
+IUSE="+abi_x86_64 suid"
+RESTRICT="bindist mirror splitdebug"
 
-RDEPEND="app-accessibility/at-spi2-core:2
-	dev-libs/expat
-	dev-libs/glib:2
-	dev-libs/nspr
-	dev-libs/nss
-	media-libs/alsa-lib
-	media-libs/mesa
-	net-print/cups
-	sys-apps/dbus
-	sys-apps/util-linux
-	x11-libs/cairo
-	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
-	x11-libs/libX11
-	x11-libs/libxcb:0/1.12
-	x11-libs/libXcomposite
-	x11-libs/libXcursor
-	x11-libs/libXdamage
-	x11-libs/libXext
-	x11-libs/libXfixes
-	x11-libs/libXi
-	x11-libs/libXrandr
-	x11-libs/libXrender
-	x11-libs/libXScrnSaver
-	x11-libs/libXtst
-	x11-libs/pango:0
-	appindicator? ( dev-libs/libayatana-indicator:3 )"
+RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
+	dev-libs/expat[${MULTILIB_USEDEP}]
+	dev-libs/glib:2[${MULTILIB_USEDEP}]
+	dev-libs/libffi:0[${MULTILIB_USEDEP}]
+	dev-libs/nspr[${MULTILIB_USEDEP}]
+	dev-libs/nss[${MULTILIB_USEDEP}]
+	dev-libs/libpcre2:0[${MULTILIB_USEDEP}]
+	media-libs/alsa-lib[${MULTILIB_USEDEP}]
+	media-libs/mesa[${MULTILIB_USEDEP}]
+	net-print/cups[${MULTILIB_USEDEP}]
+	sys-apps/dbus[${MULTILIB_USEDEP}]
+	sys-apps/util-linux[${MULTILIB_USEDEP}]
+	sys-libs/zlib:0[${MULTILIB_USEDEP}]
+	x11-libs/cairo[${MULTILIB_USEDEP}]
+	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
+	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+	x11-libs/libdrm[${MULTILIB_USEDEP}]
+	x11-libs/libX11[${MULTILIB_USEDEP}]
+	x11-libs/libXau[${MULTILIB_USEDEP}]
+	x11-libs/libxcb:0/1.12[${MULTILIB_USEDEP}]
+	x11-libs/libXcomposite[${MULTILIB_USEDEP}]
+	x11-libs/libXcursor[${MULTILIB_USEDEP}]
+	x11-libs/libXdamage[${MULTILIB_USEDEP}]
+	x11-libs/libXdmcp[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	x11-libs/libXi[${MULTILIB_USEDEP}]
+	x11-libs/libXrandr[${MULTILIB_USEDEP}]
+	x11-libs/libXrender[${MULTILIB_USEDEP}]
+	x11-libs/libXtst[${MULTILIB_USEDEP}]
+	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 
 src_prepare() {
 	default
+	pushd opt/DbGate/locales || die "pushd failed"
+	chromium_remove_language_paks
+	popd || die "popd failed"
 
-	plocale_find_changes "${S}"/opt/DbGate/locales '' '.pak'
-	my_rm_loc() {
-		rm "${S}"/opt/DbGate/locales/"${1}".pak \
-			|| die "rm failed for locale ${1}"
-	}
-	plocale_for_each_disabled_locale my_rm_loc
+	if ! use suid ; then
+		rm opt/DbGate/chrome-sandbox || die "rm failed"
+	fi
 }
 
 src_install() {
@@ -73,12 +77,12 @@ src_install() {
 
 	insinto /opt/DbGate
 	doins -r opt/DbGate/.
-	fperms -R +x /opt/DbGate/dbgate /opt/DbGate/chrome{-sandbox,_crashpad_handler} \
+	fperms -R +x /opt/DbGate/dbgate /opt/DbGate/chrome_crashpad_handler \
 		/opt/DbGate/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/DbGate/libvulkan.so.1 \
 		/opt/DbGate/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node
+	use suid && fperms u+s,+x /opt/DbGate/chrome-sandbox
 
-	use suid && fperms u+s /opt/DbGate/chrome-sandbox
 	dosym ../../opt/DbGate/dbgate /usr/bin/dbgate
 
 	pax-mark -m "${ED}"/opt/DbGate/dbgate
