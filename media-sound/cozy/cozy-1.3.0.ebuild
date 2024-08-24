@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 
-inherit gnome2-utils meson python-single-r1 readme.gentoo-r1 xdg
+inherit gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="Modern audiobook player"
 HOMEPAGE="https://github.com/geigi/cozy"
@@ -41,7 +41,6 @@ BDEPEND="sys-devel/gettext
 
 src_install() {
 	meson_src_install
-	readme.gentoo_create_doc
 	python_optimize
 	python_fix_shebang "${ED}"/usr/bin
 	dosym ./com.github.geigi.cozy /usr/bin/cozy
@@ -53,7 +52,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	readme.gentoo_print_elog
 	xdg_pkg_postinst
 	gnome2_schemas_update
 }
