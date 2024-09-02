@@ -76,6 +76,7 @@ src_prepare() {
 		|| die "sed failed in Icon for slack.desktop"
 
 	rm usr/lib/slack/LICENSE{,S-linux.json} \
+		usr/lib/slack/resources/LICENSES.chromium.html \
 		|| die "rm licenses failed"
 
 	if use appindicator ; then
