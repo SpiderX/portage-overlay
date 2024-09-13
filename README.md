@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 945](https://img.shields.io/badge/ebuild-945-orange.svg)](https://img.shields.io/badge/ebuild-945-orange.svg)
+[![Number of ebuilds: 946](https://img.shields.io/badge/ebuild-946-orange.svg)](https://img.shields.io/badge/ebuild-946-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)

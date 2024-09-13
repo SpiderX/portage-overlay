@@ -255,15 +255,6 @@ multilib_src_configure() {
 	# only libraries needed
 	myconf+=( --disable-programs )
 
-	# bug 842201
-	use ia64 && tc-is-gcc && append-flags \
-		-fno-tree-ccp \
-		-fno-tree-dominator-opts \
-		-fno-tree-fre \
-		-fno-code-hoisting \
-		-fno-tree-pre \
-		-fno-tree-vrp
-
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
 	use openssl && myconf+=( --enable-nonfree )
 	use samba && myconf+=( --enable-version3 )
