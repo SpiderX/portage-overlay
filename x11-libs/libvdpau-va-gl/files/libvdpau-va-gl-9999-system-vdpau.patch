@@ -1,0 +1,21 @@
+--- ../CMakeLists.txt	2024-09-15 14:27:08.046906565 +0300
++++ ../CMakeLists.txt	2024-09-15 14:27:54.985341978 +0300
+@@ -10,12 +10,17 @@
+ find_package(X11 REQUIRED)
+ pkg_check_modules(LIBVA      libva-x11  REQUIRED)
+ pkg_check_modules(LIBGL      gl         REQUIRED)
++pkg_check_modules(LIBVDPAU vdpau)
+ 
+ set(DRIVER_NAME "vdpau_va_gl" CACHE STRING "driver name")
+ 
++if(NOT LIBVDPAU_FOUND)
++    set(LIBVDPAU_INCLUDE_DIRS 3rdparty)
++endif()
++
+ include_directories (
+-    3rdparty
+     ${X11_INCLUDE_DIRS}
++    ${LIBVDPAU_INCLUDE_DIRS}
+     ${LIBVA_INCLUDE_DIRS}
+     ${LIBGL_INCLUDE_DIRS}
+     ${GENERATED_INCLUDE_DIRS}

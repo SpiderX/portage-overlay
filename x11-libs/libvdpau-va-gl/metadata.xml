@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a driver for VDPAU, named libvdpau_va_gl.so.1.
+	It uses OpenGL under the hood to accelerate drawing and scaling and VA-API
+	(if available) to accelerate video decoding. For now VA-API is available on
+	some Intel chips, and on some AMD video adapters with help of xvba-va-driver.
+	</longdescription>
+	<use>
+		<flag name="system-vdpau">Use the headers from <pkg>x11-libs/libvdpau</pkg> instead of bundled</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">i-rinat/libvdpau-va-gl</remote-id>
+	</upstream>
+</pkgmetadata>
