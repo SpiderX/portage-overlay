@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/deviceinsight/${PN}.git"
 
-inherit bash-completion-r1 edo git-r3 go-module
+inherit edo git-r3 go-module shell-completion
 
 DESCRIPTION="A command-line interface for interaction with Apache Kafka"
 HOMEPAGE="https://github.com/deviceinsight/kafkactl"
@@ -39,8 +39,6 @@ src_install() {
 	einstalldocs
 	dobin kafkactl
 	newbashcomp kafkactl.bash kafkactl
-	insinto /usr/share/fish/completion
-	newins kafkactl.fish kafkactl
-	insinto /usr/share/zsh/site-functions
-	newins kafkactl.zsh _kafkactl
+	dofishcomp kafkactl.fish kafkactl
+	newzshcomp kafkactl.zsh _kafkactl
 }
