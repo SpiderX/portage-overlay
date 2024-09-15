@@ -123,6 +123,7 @@ commitizen:
           www-apps: "various world wide web applications"
           www-plugins: "plug-ins for Web browsers"
           www-servers: "web server packages"
+          x11-libs: "various X11-related libraries"
           x11-misc: "miscellaneous X11 applications"
         choices:
           - acct-group
@@ -174,6 +175,7 @@ commitizen:
           - www-apps
           - www-plugins
           - www-servers
+          - x11-libs
           - x11-misc
           - x11-themes
       - type: text
