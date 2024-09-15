@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="system-vdpau"
+RESTRICT="test" # need access to DRI, make check in build dir manually instead
 
 RDEPEND="media-libs/libglvnd
 	media-libs/libva:0=
