@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,10 +10,11 @@ MY_P="${PN}-v${PV}"
 DESCRIPTION="Video player built with Qt/QML on top of libmpv"
 HOMEPAGE="https://invent.kde.org/multimedia/haruna"
 SRC_URI="https://invent.kde.org/multimedia/${PN}/-/archive/v${PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
+SLOT="5"
 KEYWORDS="~amd64 ~x86"
-SLOT="0"
 
 RDEPEND="dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -41,8 +42,6 @@ RDEPEND="dev-qt/qtconcurrent:5
 DEPEND="${RDEPEND}"
 BDEPEND="kde-frameworks/extra-cmake-modules
 	sys-devel/gettext"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local mycmakeargs=(
