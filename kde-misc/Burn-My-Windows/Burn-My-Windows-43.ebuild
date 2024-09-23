@@ -13,10 +13,10 @@ HOMEPAGE="https://github.com/Schneegans/Burn-My-Windows"
 SRC_URI="https://github.com/Schneegans/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="5"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="kde-plasma/kwin:5"
+RDEPEND="kde-plasma/kwin:6"
 BDEPEND="dev-lang/perl:0="
 
 src_prepare() {
