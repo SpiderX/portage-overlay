@@ -3,15 +3,18 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/zzag/${PN}.git"
+inherit ecm
 
-inherit ecm git-r3
+COMMIT="1fd1a3fdf9cb0b6d43c89926f760d4e84d8f31d5"
 
 DESCRIPTION="Sliding animation for notification windows"
 HOMEPAGE="https://github.com/zzag/kwin-effects-sliding-notifications"
+SRC_URI="https://github.com/zzag/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3+ MIT"
 SLOT="6"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5

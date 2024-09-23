@@ -14,16 +14,14 @@ SLOT="5"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtnetwork:5
 	dev-qt/qtgui:5
 	kde-frameworks/kconfig:5
 	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcoreaddons:5
 	kde-frameworks/ki18n:5
 	kde-frameworks/kwindowsystem:5
-	kde-plasma/kwin:5
+	kde-plasma/kwin:6
 	media-libs/libepoxy
 	x11-libs/libxcb:="
 DEPEND="${RDEPEND}"
+BDEPEND="kde-frameworks/extra-cmake-modules"
