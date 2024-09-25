@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Plasma 5 widget that provides quick access to user-defined ambient noise player.
+	Plasma widget that provides quick access to user-defined ambient noise player.
 	With features like, having unlimited defined noise.
 	</longdescription>
 	<upstream>
