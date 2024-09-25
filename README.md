@@ -847,7 +847,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[latte_slideshow_wallpaper](https://github.com/psifidotos/latte_slideshow_wallpaper) | Plasma 5 Wallpaper plugin that informs Latte about background
 *   kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[paneltransparencybutton](https://github.com/psifidotos/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
-*   kde-misc/[plasma-applet-ambientnoise](https://github.com//plasma-applet-ambientnoise) | Plasma 5 widget for play ambient noise
+*   kde-misc/[plasma-applet-ambientnoise](https://github.com//plasma-applet-ambientnoise) | Plasma widget for play ambient noise
 *   kde-misc/[plasma-applet-eventcalendar](https://github.com/Zren/plasma-applet-eventcalendar) | Plasmoid for a calendar and agenda with weather
 *   kde-misc/[plasma-applet-favoriteFolders](https://github.com/enky-marte/plasma-applet-favoriteFolders) | Plasma 5 widget for quick access to favorite folders
 *   kde-misc/[plasma-applet-grammarly](https://github.com/kevinbburns/com.kevinbburns.grammarly) | KDE Plasma6 Panel Widget for a Webview to Grammarly Editor

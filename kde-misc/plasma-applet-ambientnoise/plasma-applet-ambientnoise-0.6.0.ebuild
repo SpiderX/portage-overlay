@@ -5,17 +5,16 @@ EAPI=8
 
 PLOCALES="en it nl sv"
 PLOCALE_BACKUP="en"
-EGIT_REPO_URI="https://github.com/m-pilia/${PN}.git"
 
-inherit ecm git-r3 plocale
-
-COMMIT="ccbe62f58b72931008a7b26c3e8ab92e2bc3a52c"
+inherit ecm plocale
 
 DESCRIPTION="Plasma widget for play ambient noise"
-HOMEPAGE="https://github.com//plasma-applet-ambientnoise"
+HOMEPAGE="https://github.com/m-pilia/plasma-applet-ambientnoise"
+SRC_URI="https://github.com/m-pilia/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="6"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtmultimedia:6
 	dev-qt/qtquickcontrols2:5
