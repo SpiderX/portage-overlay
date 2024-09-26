@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Use profile-cleaner to reduce the size of browser profiles by organizing
+	their sqlite databases using sqlite3's vacuum and reindex functions.
+	The term "browser" is used loosely since profile-cleaner happily works on
+	some email clients and newsreaders too.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">graysky2/profile-cleaner</remote-id>
+	</upstream>
+</pkgmetadata>
