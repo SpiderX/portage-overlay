@@ -116,6 +116,7 @@ commitizen:
           net-vpn: "packages related to vpn and tunneling utilities"
           sci-visualization: "scientific visualization applications"
           sys-apps: "various core system applications"
+          sys-auth: "applications and libraries for authentication and authorization"
           sys-cluster: "cluster-related software"
           sys-fs: "filesystem tools and utilities"
           sys-power: "software which handles power management and CPU frequency"
@@ -168,6 +169,7 @@ commitizen:
           - net-vpn
           - sci-visualization
           - sys-apps
+          - sys-auth
           - sys-cluster
           - sys-fs
           - sys-power
