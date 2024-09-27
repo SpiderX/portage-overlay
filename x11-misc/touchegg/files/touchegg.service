@@ -1,0 +1,13 @@
+[Unit]
+Description=Touchegg Daemon
+Documentation=https://github.com/JoseExposito/touchegg
+
+[Service]
+Type=simple
+Group=input
+ExecStart=/usr/bin/touchegg --daemon
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

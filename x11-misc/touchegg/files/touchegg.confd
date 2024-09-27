@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/touchegg
+
+# Various options.
+# run `touchegg --help` for valid cmdline options
+TOUCHEGG_OPTS="--daemon"
