@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 956](https://img.shields.io/badge/ebuild-956-orange.svg)](https://img.shields.io/badge/ebuild-956-orange.svg)
+[![Number of ebuilds: 957](https://img.shields.io/badge/ebuild-957-orange.svg)](https://img.shields.io/badge/ebuild-957-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -968,6 +968,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
 *   net-misc/[virtualhere-usb](https://virtualhere.com) | Share USB devices over the network
 *   net-misc/[websocat](https://github.com/vi/websocat) | Netcat, curl and socat for WebSockets
+*   net-misc/[winbox](https://mikrotik.com/) | Standalone client for Mikrotik routers
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/x11-ssh-askpass.svg?header=)](https://repology.org/project/x11-ssh-askpass/versions) net-misc/[x11-ssh-askpass](https://github.com/sigmavirus24/x11-ssh-askpass) | X11-based passphrase dialog for use with OpenSSH
 *   net-misc/[xh](https://github.com/ducaale/xh) | Friendly and fast tool for sending HTTP requests
 *   net-misc/[wuzz](https://github.com/asciimoo/wuzz) | Interactive cli tool for HTTP inspection
@@ -1034,4 +1035,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
-
