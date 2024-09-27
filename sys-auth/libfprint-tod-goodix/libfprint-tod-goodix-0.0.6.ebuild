@@ -7,9 +7,8 @@ inherit udev
 
 DESCRIPTION="Goodix driver module for libfprint-2 Touch OEM Driver"
 HOMEPAGE="https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix"
-SRC_URI="https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix/tree/usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/${PN}-53xc-${PV}.so
-	https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix/tree/lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules"
-S="${WORKDIR}"
+SRC_URI="http://dell.archive.canonical.com/updates/pool/public/libf/libfprint-2-tod1-goodix/libfprint-2-tod1-goodix_${PV}.orig.tar.gz"
+S="${WORKDIR}/libfprint-2-tod1-goodix-${PV}"
 
 LICENSE="Goodix"
 SLOT="0"
@@ -19,13 +18,13 @@ DEPEND="sys-auth/libfprint-tod:2"
 RDEPEND="${DEPEND}
 	acct-group/plugdev"
 
-src_unpack() { :; }
+QA_PREBUILT="usr/lib64/libfprint-2/tod-1/libfprint-tod-goodix-53xc-0.0.6.so"
 
 src_install() {
 	insopts -m 0755
 	insinto /usr/"$(get_libdir)"/libfprint-2/tod-1
-	doins "${DISTDIR}"/libfprint-tod-goodix-53xc-"${PV}".so
-	udev_dorules "${DISTDIR}"/60-libfprint-2-tod1-goodix.rules
+	doins usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/libfprint-tod-goodix-53xc-"${PV}".so
+	udev_dorules lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules
 }
 
 pkg_postinst() {
