@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 953](https://img.shields.io/badge/ebuild-953-orange.svg)](https://img.shields.io/badge/ebuild-953-orange.svg)
+[![Number of ebuilds: 954](https://img.shields.io/badge/ebuild-954-orange.svg)](https://img.shields.io/badge/ebuild-954-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -999,6 +999,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   sys-apps/[sampler](https://github.com/sqshq/sampler) | Visualization for any shell command
 *   sys-apps/[sd](https://github.com/chmln/sd) | An intuitive find and replace tool
 *   sys-apps/[swapspace](https://github.com/Tookmund/Swapspace) | A dynamic swap space manager
+*   sys-auth/[libfprint-tod-goodix](https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix) | Goodix driver module for libfprint-2 Touch OEM Driver
 *   sys-cluster/[minishift-bin](https://github.com/minishift/minishift) | Single Node OpenShift Cluster
 *   sys-fs/[adhocify](https://github.com/quitesimpleorg/adhocify) | Tool which monitors for inotify events and executes script
 *   sys-fs/[duf](https://github.com/muesli/duf) | Disk Usage/Free Utility
