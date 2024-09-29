@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 957](https://img.shields.io/badge/ebuild-957-orange.svg)](https://img.shields.io/badge/ebuild-957-orange.svg)
+[![Number of ebuilds: 958](https://img.shields.io/badge/ebuild-958-orange.svg)](https://img.shields.io/badge/ebuild-958-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -836,6 +836,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[applet-window-buttons](https://github.com/psifidotos/applet-window-buttons) | Plasma 5 applet in order to show window buttons in your panels
 *   kde-misc/[applet-window-buttons6](https://github.com/moodyhunter/applet-window-buttons6) | Plasma 6 applet in order to show window buttons in your panels
 *   kde-misc/[applet-window-title](https://github.com/psifidotos/applet-window-title) | Plasma 5 applet shows window title and icon in your panels
+*   kde-misc/[applet-window-title6](https://github.com/moodyhunter/applet-window-title6) | Plasma 6 applet shows window title and icon in your panels
 *   kde-misc/[Burn-My-Windows](https://github.com/Schneegans/Burn-My-Windows) | Disintegrate your windows with style
 *   kde-misc/[qCheckGMail](https://github.com/mhogomchungu/qCheckGMail) | qCheckGmail is a Qt/C++ multiple gmail account checker
 *   kde-misc/[kde-relaxingsounds](https://github.com/Prayag2/kde_relaxingsounds) | Plasma 5 widget for play relaxing sounds
