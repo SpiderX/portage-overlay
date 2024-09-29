@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 
 inherit cmake git-r3 python-r1
@@ -20,7 +20,6 @@ PROPERTIES="test_network"
 
 RDEPEND="dev-cpp/belr
 	dev-cpp/xsd
-	dev-cpp/jsoncpp
 	dev-db/sqlite:3
 	dev-db/soci
 	dev-libs/belcard
