@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 957](https://img.shields.io/badge/ebuild-957-orange.svg)](https://img.shields.io/badge/ebuild-957-orange.svg)
+[![Number of ebuilds: 956](https://img.shields.io/badge/ebuild-956-orange.svg)](https://img.shields.io/badge/ebuild-956-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -160,7 +160,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-text/[notes](https://github.com/nuttyartist/notes) | Note taking application, write down your thoughts
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[commoncpp2](http://www.gnu.org/software/commoncpp/) | GNU Common C++ 2
-*   dev-cpp/[jsoncpp](https://github.com/open-source-parsers/jsoncpp) | CMake files for C++ JSON reader and writer
 *   dev-cpp/[libodb](https://codesynthesis.com/products/odb/) | Common ODB runtime library
 *   dev-cpp/[libodb-sqlite](https://codesynthesis.com/products/odb/) | Common ODB runtime library
 *   dev-cpp/[libxsd](https://www.codesynthesis.com/products/xsd/) | A cross-platform W3C XML Schema to C++ data binding compiler library
