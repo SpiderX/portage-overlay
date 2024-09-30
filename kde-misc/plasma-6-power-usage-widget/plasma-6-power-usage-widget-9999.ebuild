@@ -13,7 +13,11 @@ HOMEPAGE="https://github.com/magillos/Plasma-6-power-usage-widget"
 LICENSE="GPL-3"
 SLOT="6"
 
-RDEPEND="kde-plasma/plasma-workspace:6"
+RDEPEND="kde-frameworks/kdeclarative:6
+	kde-frameworks/ki18n:6
+	kde-frameworks/kirigami:6
+	kde-plasma/plasma5support:6
+	kde-plasma/plasma-workspace:6"
 
 src_prepare() {
 	default
@@ -27,5 +31,5 @@ src_install() {
 	default
 
 	insinto /usr/share/plasma/plasmoids/org.kde.plasma.powerusage
-	doins -r Power-Usage
+	doins -r Power-Usage/.
 }
