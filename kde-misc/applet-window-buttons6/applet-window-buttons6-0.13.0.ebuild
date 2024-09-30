@@ -13,7 +13,8 @@ LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-qt/qtdeclarative:5
+RDEPEND="!kde-misc/applet-window-buttons:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	kde-frameworks/kcoreaddons:6
