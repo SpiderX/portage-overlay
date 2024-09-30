@@ -13,7 +13,8 @@ HOMEPAGE="https://github.com/psifidotos/applet-window-buttons"
 LICENSE="GPL-2"
 SLOT="5"
 
-DEPEND="dev-qt/qtdbus:5
+RDEPEND="!kde-misc/applet-window-buttons6:6
+	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
