@@ -16,7 +16,8 @@ LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="kde-frameworks/kdeclarative:6
+RDEPEND="!kde-misc/applet-window-title:5
+	kde-frameworks/kdeclarative:6
 	kde-frameworks/kirigami:6
 	kde-plasma/plasma-workspace:6"
 
@@ -34,6 +35,6 @@ src_install() {
 	default
 
 	insinto /usr/share/plasma/plasmoids/org.kde.windowtitle
-	doins metadata.desktop
+	doins metadata.json
 	doins -r contents
 }
