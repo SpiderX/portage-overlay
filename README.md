@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 959](https://img.shields.io/badge/ebuild-959-orange.svg)](https://img.shields.io/badge/ebuild-959-orange.svg)
+[![Number of ebuilds: 960](https://img.shields.io/badge/ebuild-960-orange.svg)](https://img.shields.io/badge/ebuild-960-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -152,6 +152,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[up](https://github.com/akavel/up) | Tool for writing Linux pipes with instant live preview
 *   app-misc/[xsv](https://github.com/BurntSushi/xsv) | A fast CSV command line toolkit
 *   app-misc/[xq](https://github.com/sibprogrammer/xq) | Command-line JSON processor for binary data
+*   app-office/[tradingview](https://www.tradingview.com/desktop/) | A charting platform for traders and investors
 *   app-office/[webull-desktop](https://www.webull.com/introduce/desktop-native) | Invest in stocks, ETFs, and options with Webull Financial
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/peco.svg?header=)](https://repology.org/project/peco/versions) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 *   app-shells/[zoxide](https://github.com/ajeetdsouza/zoxide) | A smarter cd command with supports of all major shells
