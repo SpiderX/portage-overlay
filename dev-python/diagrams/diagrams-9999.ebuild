@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="dev-python/graphviz[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]"
+	dev-python/jinja2[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
