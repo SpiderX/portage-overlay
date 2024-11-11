@@ -16,6 +16,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/jinja2[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
