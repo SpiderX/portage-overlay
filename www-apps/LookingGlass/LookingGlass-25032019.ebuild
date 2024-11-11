@@ -22,7 +22,7 @@ IUSE="vhosts"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="dev-python/flask[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
