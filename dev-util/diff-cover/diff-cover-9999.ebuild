@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/tomli[${PYTHON_USEDEP}]"
