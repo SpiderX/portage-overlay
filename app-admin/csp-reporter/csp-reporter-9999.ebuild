@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 RESTRICT="test" # no tests
 
-RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/jinja2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 python_prepare_all() {
