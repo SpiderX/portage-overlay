@@ -19,7 +19,7 @@ KEYWORDS=""
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
-		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/jinja2[${PYTHON_USEDEP}]
 		dev-python/jsmin[${PYTHON_USEDEP}]
 		dev-python/ply[${PYTHON_USEDEP}]
 		dev-python/slimit[${PYTHON_USEDEP}]
