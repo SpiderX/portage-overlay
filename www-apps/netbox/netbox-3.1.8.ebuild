@@ -35,7 +35,7 @@ RDEPEND="acct-user/netbox
 	dev-python/djangorestframework[${PYTHON_USEDEP}]
 	dev-python/drf-yasg[${PYTHON_USEDEP}]
 	dev-python/graphene-django[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/markdown-include[${PYTHON_USEDEP}]
 	dev-python/netaddr[${PYTHON_USEDEP}]
