@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # https://github.com/niwinz/django-jinja/issues/181
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]"
+	dev-python/jinja2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/django-pipeline[${PYTHON_USEDEP}] )"
