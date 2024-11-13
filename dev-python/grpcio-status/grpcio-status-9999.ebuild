@@ -19,6 +19,6 @@ RESTRICT="test" # no tests
 
 RDEPEND="dev-python/googleapis-common-protos[${PYTHON_USEDEP}]
 	dev-python/grpcio[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]"
+	dev-python/python[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
