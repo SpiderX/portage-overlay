@@ -18,7 +18,7 @@ SLOT="0"
 
 RDEPEND="dev-libs/openssl:0=[-bindist(-)]
 	dev-libs/re2:=
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	net-dns/c-ares:=
 	sys-libs/zlib:="
 DEPEND="${RDEPEND}"
