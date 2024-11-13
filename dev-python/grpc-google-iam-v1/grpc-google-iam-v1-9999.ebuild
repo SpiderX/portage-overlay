@@ -17,7 +17,7 @@ SLOT="0"
 
 RDEPEND="dev-python/googleapis-common-protos[${PYTHON_USEDEP}]
 	dev-python/grpcio[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]"
+	dev-python/protobuf[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
