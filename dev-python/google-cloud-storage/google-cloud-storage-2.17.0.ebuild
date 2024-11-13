@@ -26,7 +26,7 @@ RDEPEND="dev-python/google-auth[${PYTHON_USEDEP}]
 	dev-python/google-cloud-core[${PYTHON_USEDEP}]
 	dev-python/google-crc32c[${PYTHON_USEDEP}]
 	dev-python/google-resumable-media[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/google-cloud-iam[${PYTHON_USEDEP}]
 		dev-python/google-cloud-kms[${PYTHON_USEDEP}]
