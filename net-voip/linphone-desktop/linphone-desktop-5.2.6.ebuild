@@ -74,6 +74,9 @@ src_prepare() {
 	sed -i '/SpellChecker/d' linphone-app/src/app/App.cpp \
 		|| die "sed failed for App.cpp"
 
+	# make plugins headers visible
+	ln -s "${S}/linphone-app/include/LinphoneApp" "${S}/linphone-app/src/LinphoneApp"
+
 	cmake_src_prepare
 }
 
