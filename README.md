@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1002](https://img.shields.io/badge/ebuild-1002-orange.svg)](https://img.shields.io/badge/ebuild-1002-orange.svg)
+[![Number of ebuilds: 1003](https://img.shields.io/badge/ebuild-1003-orange.svg)](https://img.shields.io/badge/ebuild-1003-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -350,6 +350,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[cl-variates](https://gitlab.common-lisp.net/cl-variates/cl-variates) | Portable Common Lisp Random Number Generation
 *   dev-lisp/[cl-who](https://github.com/edicl/cl-who) | Yet another Lisp markup language
 *   dev-lisp/[closer-mop](https://closer.common-lisp.dev/closer-mop.html) | Common Lisp Metaobject Protocol compatibility layer
+*   dev-lisp/[closure-common](https://github.com/sharplispers/closure-common) | An internal helper library for the closure web browser
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
