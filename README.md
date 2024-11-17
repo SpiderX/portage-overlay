@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 958](https://img.shields.io/badge/ebuild-958-orange.svg)](https://img.shields.io/badge/ebuild-958-orange.svg)
+[![Number of ebuilds: 959](https://img.shields.io/badge/ebuild-959-orange.svg)](https://img.shields.io/badge/ebuild-959-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -299,6 +299,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[libdict](https://github.com/rtbrick/libdict) | C library of key-value data structures
 *   dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
 *   dev-libs/[libdigidocpp](https://github.com/open-eid/libdigidocpp) | Library for handling digitally signed documents
+*   dev-libs/[libfixposix](https://github.com/sionescu/libfixposix) | Thin wrapper over POSIX syscalls
 *   dev-libs/[liblinphone](https://gitlab.linphone.org/BC/public/liblinphone) | SIP library supporting voice/video calls and text messaging
 *   dev-libs/[libmongocrypt](https://github.com/mongodb/libmongocrypt) | C library for Client Side and Queryable Encryption in MongoDB
 *   dev-libs/[libopenrazer](https://github.com/z3ntu/libopenrazer) | Qt wrapper around the D-Bus API from OpenRazer
