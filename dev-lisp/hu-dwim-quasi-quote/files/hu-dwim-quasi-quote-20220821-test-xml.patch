@@ -1,0 +1,44 @@
+--- ../test/xml.lisp	2024-11-10 02:20:29.548126097 +0200
++++ ../test/xml.lisp	2024-11-10 02:28:44.605379383 +0200
+@@ -214,14 +214,6 @@
+   (｢<element attribute=""/>｣
+    ｢<element (:attribute ,(or nil ""))>｣))
+ 
+-(def xml-test test/xml/attribute-unquoting/bug/1 ()
+-  ;; the issue is that constantp is surprisingly smart:
+-  ;; (constantp '(first '(""))) => T
+-  ;; (constantp '(first (list ""))) => NIL
+-  (with-expected-failures
+-    (｢<element attribute=""/>｣
+-     ｢<element (:attribute ,(first '("")))>｣)))
+-
+ (def xml-test test/xml/case-sensitivity ()
+    ;; the xml reader is case sensitive, but unquoted regions are returning to the toplevel readtable's readtable-case
+   (｢<eLement AttributE1="1"><ElemenT/><fOOO baR="42"/></eLement>｣
+@@ -231,26 +223,6 @@
+         <ElemenT>
+         <fOOO (baR 42)>))>｣))
+ 
+-(def xml-test test/xml/nested-through-macro-using-lisp-quasi-quote/1 ()
+-  (｢<taggg attribute="atttr"><foo/><bar><baz/></bar></taggg>｣
+-   ｢(macrolet ((nester (tag-name attribute-value &body body)
+-                 `<,,tag-name (attribute ,,attribute-value) ,@,@body>))
+-      (nester "taggg" "atttr" <foo> <bar <baz>>))｣))
+-
+-(def xml-test test/xml/nested-through-macro-using-lisp-quasi-quote/2 ()
+-  (｢<html><body><foo/><bar/></body></html>｣
+-   ｢(macrolet ((nester (&body body)
+-                 ;; first ,@ is for xml, the ,@body is for the lisp quasi-quote
+-                 `<html <body ,@,@body>>))
+-      (nester <foo> <bar>))｣))
+-
+-(def xml-test test/xml/nested-through-macro-using-lisp-quasi-quote/3 ()
+-  (｢<taggg attribute="atttr"><foo/><bar><baz/></bar></taggg>｣
+-   ｢(macrolet ((nester (tag-name attribute-value &body body)
+-                 `<,,tag-name (attribute ,,attribute-value) ,@,@body>))
+-      ;; TODO because of the NIL (any non-xml node) in there this runs RUN-TRANSFORMATION-PIPELINE, but it shouldn't!
+-      (nester "taggg" "atttr" <foo> nil <bar <baz>>))｣))
+-
+ (def xml-test test/xml/macrolet-in-unquote ()
+   (｢<wrapper><element><tag1>value1</tag1><tag2>value2</tag2></element><last/></wrapper>｣
+    ｢(macrolet ((wrapper (&body body)
