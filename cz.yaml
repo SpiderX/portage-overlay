@@ -20,7 +20,7 @@ commitizen:
             <type(docs|ci|revert)>: <description>
     schema_pattern: "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>\
       acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|\
-      forensics|metrics|misc|office|shells|text)|dev-(cpp|db|haskell|libs|ml|\
+      forensics|metrics|misc|office|shells|text)|dev-(cpp|db|haskell|libs|lisp|ml|\
       php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
       net-(analyzer|dns|firewall|ftp|im|libs|misc|p2p|voip|vpn)|\
       sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|plugins|\
@@ -92,6 +92,7 @@ commitizen:
           dev-db: "libraries and utilities for database programming"
           dev-haskell: "libraries and utilities for Haskell language"
           dev-libs: "various miscellaneous programming libraries"
+          dev-lisp: "libraries and utilities relevant to Lisp language"
           dev-ml: "libraries and utilities relevant to the ML language"
           dev-php: "libraries and utilities relevant to the PHP language"
           dev-python: "python modules, extensions and bindings"
@@ -145,6 +146,7 @@ commitizen:
           - dev-db
           - dev-haskell
           - dev-libs
+          - dev-lisp
           - dev-ml
           - dev-php
           - dev-python
