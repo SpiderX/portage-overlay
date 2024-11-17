@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 973](https://img.shields.io/badge/ebuild-973-orange.svg)](https://img.shields.io/badge/ebuild-973-orange.svg)
+[![Number of ebuilds: 974](https://img.shields.io/badge/ebuild-974-orange.svg)](https://img.shields.io/badge/ebuild-974-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -321,6 +321,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[chipz](https://github.com/sharplispers/chipz) | A library for decompressing deflate, zlib, and gzip data
 *   dev-lisp/[chunga](https://github.com/edicl/chunga) | Portable chunked streams for Common Lisp
 *   dev-lisp/[cl-abnf](https://github.com/dimitri/cl-abnf) | Common Lisp ABNF Parser Generator
+*   dev-lisp/[cl-ansi-text](https://github.com/pnathan/cl-ansi-text) | ANSI control string characters, focused on color
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
