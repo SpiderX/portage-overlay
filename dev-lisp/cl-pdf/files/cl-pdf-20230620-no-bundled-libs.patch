@@ -1,0 +1,234 @@
+--- ../cl-pdf-parser.asd	2024-11-03 23:52:36.716450537 +0200
++++ ../cl-pdf-parser.asd	2024-11-03 23:53:21.533011193 +0200
+@@ -1,6 +1,11 @@
+ ;;;; -*- Mode: LISP; Syntax: ANSI-Common-Lisp; Base: 10 -*-
+ 
+-(in-package asdf)
++(in-package :common-lisp-user)
++
++(defpackage #:cl-pdf-parser-system
++  (:use #:cl #:asdf))
++
++(in-package #:cl-pdf-parser-system)
+ 
+ (defsystem :cl-pdf-parser
+   :name "cl-pdf-parser"
+--- ../zlib.lisp	2024-11-03 23:54:14.898565314 +0200
++++ ../zlib.lisp	2024-11-03 23:55:54.372908247 +0200
+@@ -4,113 +4,13 @@
+ 
+ (in-package #:pdf)
+ 
+-;;; UFFI zlib
+-
+-#+use-uffi-zlib
+-(defun load-zlib (&optional force)
+-  (when force (setf *zlib-loaded* nil))
+-  (unless *zlib-loaded*
+-    (let ((zlib-path (find-zlib-path)))
+-      (if zlib-path
+-	  (progn
+-	    (format t "~&;;; Loading ~s" zlib-path)
+-	    (uffi:load-foreign-library zlib-path
+-				       :module "zlib"
+-				       :supporting-libraries '("c"))
+-	    (uffi:def-function ("compress" c-compress)
+-		((dest (* :unsigned-char))
+-		 (destlen (* :long))
+-		 (source :cstring)
+-		 (source-len :long))
+-	      :returning :int
+-	      :module "zlib")
+-	    (setf *zlib-loaded* t *compress-streams* t))
+-	  (progn
+-	    (warn "Unable to load zlib. Disabling compression.")
+-	    (setf *compress-streams* nil))))))
+-
+-#+use-uffi-zlib
+-(defun compress-string (source)
+-  "Returns two values: array of bytes containing the compressed data
+- and the numbe of compressed bytes"
+-  (let* ((sourcelen (length source))
+-	 (destsize (+ 12 (ceiling (* sourcelen 1.01))))
+-	 (dest (uffi:allocate-foreign-string destsize :unsigned t))
+-	 (destlen (uffi:allocate-foreign-object :long)))
+-    (setf (uffi:deref-pointer destlen :long) destsize)
+-    (uffi:with-cstring (source-native source)
+-      (let ((result (c-compress dest destlen source-native sourcelen))
+-	    (newdestlen (uffi:deref-pointer destlen :long)))
+-	(unwind-protect
+-	     (if (zerop result)
+-		 (values (uffi:convert-from-foreign-string
+-			  dest
+-;			  :external-format '(:latin-1 :eol-style :lf)
+-			  :length newdestlen
+-			  :null-terminated-p nil)
+-			 newdestlen)
+-		 (error "zlib error, code ~D" result))
+-	  (progn
+-	    (uffi:free-foreign-object destlen)
+-	    (uffi:free-foreign-object dest)))))))
+-
+-;;; ABCL zlib
+-
+-#+use-abcl-zlib
+-(defun load-zlib (&optional force)
+-  (declare (ignore force))
+-  (setf *compress-streams* t))
+-
+-#+use-abcl-zlib
+-(defun compress-string (string)
+-  (let* ((string-bytes
+-	  (java:jcall
+-	   (java:jmethod "java.lang.String" "getBytes" "java.lang.String") string "UTF-8"))
+-	 (out-array (java:jnew (java:jconstructor "java.io.ByteArrayOutputStream")))
+-	 (compresser (java:jnew (java:jconstructor "java.util.zip.Deflater" "int")
+-				(java:jfield "java.util.zip.Deflater" "BEST_COMPRESSION")))
+-	 (defl-out-stream
+-	  (java:jnew
+-	   (java:jconstructor
+-	    "java.util.zip.DeflaterOutputStream" "java.io.OutputStream" "java.util.zip.Deflater")
+-	   out-array compresser)))
+-    (java:jcall (java:jmethod "java.util.zip.Deflater" "setInput" "[B") compresser string-bytes)
+-      (java:jcall (java:jmethod "java.util.zip.DeflaterOutputStream" "close") defl-out-stream)
+-      (java:jcall (java:jmethod "java.io.ByteArrayOutputStream" "toString") out-array)))
+-
+-;;; salza zlib
+-
+-#+use-salza-zlib
+-(defun load-zlib (&optional force)
+-  (declare (ignore force))
+-  (setf *compress-streams* t))
+-
+-#+use-salza-zlib
+-(defun compress-string (string)
+-  (let* ((input (if (stringp string)
+-		    (deflate::string-to-octets string 0 (length string))
+-		    string))
+-	 (buffer-size (min 8192 (* 2 (length string))))
+-         (zlib-buffer (make-array buffer-size :element-type 'salza::octet))
+-         (chunks ()))
+-    (flet ((zlib-callback (zlib-stream)
+-	     (push (subseq (salza::zlib-stream-buffer zlib-stream)
+-			   0 (salza::zlib-stream-position zlib-stream)) chunks)
+-	     (setf (salza::zlib-stream-position zlib-stream) 0)))
+-      (let ((zlib-stream (salza::make-zlib-stream zlib-buffer :callback #'zlib-callback)))
+-        (salza::zlib-write-sequence input zlib-stream)
+-        (salza::finish-zlib-stream zlib-stream)
+-	(nreverse chunks)))))
+-
+ ;;; salza2 zlib
+ 
+-#+use-salza2-zlib
+ (defun load-zlib (&optional force)
+   (declare (ignore force))
+   (setf *compress-streams* t))
+ 
+ ;; string-to-octets copied from the original salza
+-#+use-salza2-zlib
+ (defun string-to-octets (string start end)
+   "Convert STRING to a sequence of octets, if possible."
+   (declare (type string string)
+@@ -136,7 +36,6 @@
+   #+(and (not octet-characters) (not (or sbcl allegro clisp ccl cmu lispworks abcl ecl)))
+   (error "Do not know how to convert a string to octets."))
+ 
+-#+use-salza2-zlib
+ (defun compress-string (string)
+   (let ((input (if (stringp string)
+ 		   (string-to-octets string 0 (length string))
+@@ -152,16 +51,6 @@
+ 	(salza2:finish-compression compressor)))
+     (reverse chunks)))
+ 
+-;;; no-zlib
+-#+use-no-zlib
+-(defun load-zlib (&optional force)
+-  (declare (ignore force))
+-  (setf *compress-streams* nil))
+-
+-#+use-no-zlib
+-(defun compress-string (string)
+-  string)
+-
+ ;;; load it!
+ 
+ (load-zlib)
+--- ../config.lisp	2024-11-03 23:56:34.187694583 +0200
++++ ../config.lisp	2024-11-03 23:57:38.667394271 +0200
+@@ -58,7 +58,7 @@
+ ;;  Neither of the versions of search-for-file can search the original value of
+ ;;  *afm-files-directories* (#P"cl-pdf/afm/*.afm") as it contains wildcards!
+ (defparameter *afm-files-directories*
+-  (list (merge-pathnames #P"afm/" *cl-pdf-base-directory*))
++  (list #p"/usr/share/fonts/afm/")
+   "The list of directories containing the Adobe Font Metrics and other font files.
+  Can be expanded by additionally loaded modules.")
+ 
+@@ -69,17 +69,6 @@
+ #+(or lispworks allegro sbcl)
+ (pushnew :pdf-binary *features*)
+ 
+-;(eval-when (:compile-toplevel :load-toplevel :execute)
+-#+use-uffi-zlib
+-(defvar *zlib-search-paths* `(,(directory-namestring *load-truename*)
+-                              #+lispworks
+-                              ,(directory-namestring (lw:lisp-image-name))
+-                              "/usr/local/lib/"
+-                              "/usr/lib/"
+-                              "/windows/system32/"
+-                              "/winnt/system32/")
+-  "The paths where to search the zlib shared library")
+-
+ ;a catchall for various kind of errors that can happen in the generation of a document.
+ ; just catch 'max-number-of-pages-reached if you want to do something with this.
+ (defvar *max-number-of-pages* 1000
+--- ../cl-pdf.asd	2024-11-03 23:58:03.296292154 +0200
++++ ../cl-pdf.asd	2024-11-04 00:00:29.616791977 +0200
+@@ -11,28 +11,6 @@
+ 
+ (in-package #:cl-pdf-system)
+ 
+-;;;Choose the zlib implementation you want to use (only one!)
+-;; Put one of those preferably somewhere else than in that file
+-(eval-when (:load-toplevel :compile-toplevel :execute)
+-  ;;(pushnew :use-salza2-zlib *features*)
+-  ;;(pushnew :use-salza-zlib *features*)
+-  ;;(pushnew :use-uffi-zlib *features*)
+-  ;;(pushnew :use-abcl-zlib *features*)
+-  (when (notany #'(lambda (feature) (find feature *features*))
+-                '(:use-salza2-zlib :use-salza-zlib :use-uffi-zlib :use-abcl-zlib :use-no-zlib))
+-    (push :use-no-zlib *features*))
+-  )
+-
+-#-(or use-uffi-zlib use-salza-zlib use-salza2-zlib use-abcl-zlib use-no-zlib)
+-(error "You must choose which zlib implementation you want to use!")
+-
+-#+(and (not uffi) use-uffi-zlib)
+-(ignore-errors
+-  (print "Trying to load UFFI:")
+-  (operate 'load-op :uffi)
+-  (pushnew :uffi *features*)
+-  (print "UFFI loaded."))
+-
+ #+clisp (setf *warn-on-floating-point-contagion* nil)
+ 
+ (defsystem :cl-pdf
+@@ -47,10 +25,8 @@
+                     (pushnew :cl-pdf *features*))
+   :components ((:file "defpackage")
+                (:file "config" :depends-on ("defpackage"))
+-               #+use-uffi-zlib (:file "init" :depends-on ("config"))
+                (:file "zlib"
+-                      :depends-on ("config" "defpackage"
+-                                            #+use-uffi-zlib "init"))
++                      :depends-on ("config" "defpackage"))
+                (:file "font-metrics"  :depends-on ("config"))
+                (:file "encodings"  :depends-on ("config"))
+                (:file "t1-font" :depends-on ("font-metrics" "encodings"))
+@@ -66,4 +42,4 @@
+                (:file "bar-codes" :depends-on ("pdf-geom"))
+                (:file "chart" :depends-on ("text" "pdf-geom"))
+                (:file "zzinit" :depends-on ("config")))
+-  :depends-on (:iterate #+use-salza-zlib :salza #+use-salza2-zlib :salza2 :zpb-ttf :uiop))
++  :depends-on (:iterate :salza2 :zpb-ttf :uiop))
