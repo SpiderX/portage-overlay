@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1021](https://img.shields.io/badge/ebuild-1021-orange.svg)](https://img.shields.io/badge/ebuild-1021-orange.svg)
+[![Number of ebuilds: 1022](https://img.shields.io/badge/ebuild-1022-orange.svg)](https://img.shields.io/badge/ebuild-1022-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -369,6 +369,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[fiasco](https://github.com/joaotavora/fiasco) | A test framework for Common Lisp
 *   dev-lisp/[fiveam](https://github.com/lispci/fiveam) | Common Lisp regression testing framework
 *   dev-lisp/[flexi-streams](https://github.com/edicl/flexi-streams) | Flexible bivalent streams for Common Lisp
+*   dev-lisp/[form-fiddle](https://github.com/Shinmera/form-fiddle) | A collection of utilities to destructure lambda forms
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
