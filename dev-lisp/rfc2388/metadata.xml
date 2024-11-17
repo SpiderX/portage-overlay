@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package contains an implementation of RFC 2388, which is used
+	to process form data posted with HTTP POST method using
+	enctype "multipart/form-data".
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jdz/rfc2388</remote-id>
+	</upstream>
+</pkgmetadata>
