@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1016](https://img.shields.io/badge/ebuild-1016-orange.svg)](https://img.shields.io/badge/ebuild-1016-orange.svg)
+[![Number of ebuilds: 1017](https://img.shields.io/badge/ebuild-1017-orange.svg)](https://img.shields.io/badge/ebuild-1017-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -364,6 +364,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[drakma](https://github.com/edicl/drakma) | HTTP client written in Common Lisp
 *   dev-lisp/[dynamic-classes](https://github.com/hraban/dynamic-classes) | Dynamic class definition for Common Lisp
 *   dev-lisp/[eos](https://github.com/adlai/Eos) | A unit test library for Common Lisp
+*   dev-lisp/[esrap](https://github.com/scymtym/esrap) | Common Lisp packrat parser
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
