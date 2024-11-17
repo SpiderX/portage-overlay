@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1086](https://img.shields.io/badge/ebuild-1086-orange.svg)](https://img.shields.io/badge/ebuild-1086-orange.svg)
+[![Number of ebuilds: 1087](https://img.shields.io/badge/ebuild-1087-orange.svg)](https://img.shields.io/badge/ebuild-1087-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -434,6 +434,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[rfc2388-binary](https://gitlab.common-lisp.net/ucw/rfc2388-binary) | Parsing multipart/form-data data streams library
 *   dev-lisp/[rt](http://www.cliki.net/rt) | Common Lisp regression tester from MIT
 *   dev-lisp/[salza2](https://github.com/xach/salza2) | Compressed data in the ZLIB, DEFLATE, or GZIP data formats
+*   dev-lisp/[slime](https://github.com/slime/slime) | The Superior Lisp Interaction Mode for Emacs
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
