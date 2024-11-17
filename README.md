@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1070](https://img.shields.io/badge/ebuild-1070-orange.svg)](https://img.shields.io/badge/ebuild-1070-orange.svg)
+[![Number of ebuilds: 1071](https://img.shields.io/badge/ebuild-1071-orange.svg)](https://img.shields.io/badge/ebuild-1071-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -418,6 +418,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[moptilities](https://github.com/hraban/moptilities) | Compatibility layer for minor MOP implementation differences
 *   dev-lisp/[multilang-documentation](https://github.com/Shinmera/multilang-documentation) | A drop-in replacement for cl:documentation
 *   dev-lisp/[named-readtables](https://github.com/melisgl/named-readtables) | Flexible bivalent streams for Common Lisp
+*   dev-lisp/[optima](https://github.com/m2ym/optima) | Optimized Pattern Matching Library for Common Lisp
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
