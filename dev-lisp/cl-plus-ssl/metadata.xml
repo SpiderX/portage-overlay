@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a portable code based on CFFI and gray streams.
+	It defines its own libssl BIO_METHOD, so that TLS I/O can be written
+	over portable Lisp streams instead of bypassing the streams and giving
+	OpenSSL a socket file descriptor to send data over.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">cl-plus-ssl/cl-plus-ssl</remote-id>
+	</upstream>
+</pkgmetadata>
