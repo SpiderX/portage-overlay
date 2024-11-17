@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a cryptography library written entirely in Common Lisp.
+	It includes support for several popular ciphers, digests, MACs and public key
+	cryptography algorithms. For several implementations that support Gray streams,
+	support is included for convenient stream wrappers.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sharplispers/ironclad</remote-id>
+	</upstream>
+</pkgmetadata>
