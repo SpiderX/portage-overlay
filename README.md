@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 959](https://img.shields.io/badge/ebuild-959-orange.svg)](https://img.shields.io/badge/ebuild-959-orange.svg)
+[![Number of ebuilds: 960](https://img.shields.io/badge/ebuild-960-orange.svg)](https://img.shields.io/badge/ebuild-960-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -307,6 +307,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[lime](https://gitlab.linphone.org/BC/public/lime) | C++ library implementing Open Whisper System Signal protocol
 *   dev-libs/[mongo-c-driver](https://github.com/mongodb/mongo-c-driver) | Client library written in C for MongoDB*   dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 *   dev-libs/[zrtpcpp](https://github.com/wernerd/ZRTPCPP) | VCard standard format manipulation library
+*   dev-lisp/[3bmd](https://github.com/3b/3bmd) | Markdown processor in Common Lisp using Esrap parser
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
