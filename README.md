@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 996](https://img.shields.io/badge/ebuild-996-orange.svg)](https://img.shields.io/badge/ebuild-996-orange.svg)
+[![Number of ebuilds: 997](https://img.shields.io/badge/ebuild-997-orange.svg)](https://img.shields.io/badge/ebuild-997-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -344,6 +344,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[cl-mustache](https://github.com/kanru/cl-mustache) | Common Lisp Mustache Template Renderer
 *   dev-lisp/[cl-pdf](https://github.com/mbattyani/cl-pdf) | Cross-platform Common Lisp library for generating PDF files
 *   dev-lisp/[cl-plus-ssl](https://github.com/cl-plus-ssl/cl-plus-ssl) | A Common Lisp interface to OpenSSL
+*   dev-lisp/[cl-sqlite](https://github.com/TeMPOraL/cl-sqlite) | Common Lisp binding for SQLite
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
