@@ -18,8 +18,6 @@ RESTRICT="!test? ( test )" # tests not ready
 BDEPEND="dev-lisp/asdf
 	test? ( dev-lisp/eos )"
 
-DOCS=( README.md doc/index.txt )
-
 src_test() {
 	local -x CL_SOURCE_REGISTRY="${S}:${CLSYSTEMROOT}"
 	common-lisp-export-impl-args "$(common-lisp-find-lisp-impl)"
