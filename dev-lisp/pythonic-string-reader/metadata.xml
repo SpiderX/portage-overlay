@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a piece of code stolen from Yury Sulsky which has been
+	slightly modified/improved by myself. It sets up some reader macros that make
+	it simpler to input string literals which contain backslashes and double quotes.
+	This is very useful for writing complicated docstrings and, as it turns out,
+	writing code that contains string literals that contain code themselves.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">smithzvk/pythonic-string-reader</remote-id>
+	</upstream>
+</pkgmetadata>
