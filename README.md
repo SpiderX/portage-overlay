@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1040](https://img.shields.io/badge/ebuild-1040-orange.svg)](https://img.shields.io/badge/ebuild-1040-orange.svg)
+[![Number of ebuilds: 1041](https://img.shields.io/badge/ebuild-1041-orange.svg)](https://img.shields.io/badge/ebuild-1041-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -388,6 +388,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[hu-dwim-quasi-quote](https://github.com/hu-dwim/hu.dwim.quasi-quote) | Quasi quoted domain specific languages and transformations
 *   dev-lisp/[hu-dwim-rdbms](https://hub.darcs.net/hu.dwim/hu.dwim.rdbms) | Relational database independent RDBMS and SQL abstractions
 *   dev-lisp/[hu-dwim-serializer](https://github.com/hu-dwim/hu.dwim.serializer) | Generic serializer and deserializer for Common Lisp
+*   dev-lisp/[hu-dwim-stefil](https://github.com/hu-dwim/hu.dwim.stefil) | A Simple Test Framework In Lisp
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
