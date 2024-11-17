@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 978](https://img.shields.io/badge/ebuild-978-orange.svg)](https://img.shields.io/badge/ebuild-978-orange.svg)
+[![Number of ebuilds: 979](https://img.shields.io/badge/ebuild-979-orange.svg)](https://img.shields.io/badge/ebuild-979-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -326,6 +326,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[cl-colors](https://github.com/tpapp/cl-colors) | Simple color library for Common Lisp
 *   dev-lisp/[cl-colors2](https://codeberg.org/cage/cl-colors2) | Simple color library for Common Lisp
 *   dev-lisp/[cl-containers](https://github.com/hraban/cl-containers) | Containers Library for Common Lisp
+*   dev-lisp/[cl-csv](https://github.com/AccelerationNet/cl-csv) | A common lisp library providing easy csv reading and writing
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
