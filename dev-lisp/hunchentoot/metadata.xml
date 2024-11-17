@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a web server written in Common Lisp and at
+	the same time a toolkit for building dynamic websites.
+	As a stand-alone web server, Hunchentoot is capable of HTTP/1.1
+	chunking (both directions), persistent connections (keep-alive), SSL.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">edicl/hunchentoot</remote-id>
+	</upstream>
+</pkgmetadata>
