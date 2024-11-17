@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1031](https://img.shields.io/badge/ebuild-1031-orange.svg)](https://img.shields.io/badge/ebuild-1031-orange.svg)
+[![Number of ebuilds: 1032](https://img.shields.io/badge/ebuild-1032-orange.svg)](https://img.shields.io/badge/ebuild-1032-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -379,6 +379,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[hu-dwim-computed-class](https://github.com/hu-dwim/hu.dwim.computed-class) | Constraint based change propagation with CLOS integration
 *   dev-lisp/[hu-dwim-def](https://github.com/hu-dwim/hu.dwim.def) | One macro to define them all
 *   dev-lisp/[hu-dwim-defclass-star](https://github.com/hu-dwim/hu.dwim.defclass-star) | A Common Lisp DEFCLASS* for less boilerplate
+*   dev-lisp/[hu-dwim-delico](https://github.com/hu-dwim/hu.dwim.delico) | Delimited, interpreted shift-reset continuation
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
