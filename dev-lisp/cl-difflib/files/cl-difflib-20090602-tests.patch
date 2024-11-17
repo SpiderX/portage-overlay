@@ -1,0 +1,62 @@
+From 682e9e1d7d1af903a9e6d9864c8418a5f2dd5b1e Mon Sep 17 00:00:00 2001
+From: Hraban Luyat <hraban@0brg.net>
+Date: Fri, 2 Jun 2023 15:37:50 -0400
+Subject: [PATCH] test: fix test syntax for ASDFv3
+
+---
+ cl-difflib-tests.asd | 10 ++++------
+ cl-difflib.asd       |  6 +-----
+ unit-tests.lisp      |  3 ++-
+ 3 files changed, 7 insertions(+), 12 deletions(-)
+
+diff --git a/cl-difflib-tests.asd b/cl-difflib-tests.asd
+index 03ed39d..7cc9c91 100644
+--- a/cl-difflib-tests.asd
++++ b/cl-difflib-tests.asd
+@@ -18,9 +18,7 @@
+ 
+ (asdf:defsystem :cl-difflib-tests
+     :depends-on (:cl-difflib)
+-    :components ((:file "unit-tests")))
+-
+-(defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system :cl-difflib-tests))))
+-  (or (funcall (intern (symbol-name '#:run-tests)
+-                       (find-package '#:difflib-test)))
+-      (error "test-op failed")))
++    :components ((:file "unit-tests"))
++    :perform (test-op (o s)
++                      (unless (uiop:symbol-call :difflib-test '#:run-tests)
++                        (error "test-op failed"))))
+diff --git a/cl-difflib.asd b/cl-difflib.asd
+index 88ab74c..9389a56 100644
+--- a/cl-difflib.asd
++++ b/cl-difflib.asd
+@@ -22,12 +22,8 @@
+     :description "A Lisp library for computing differences between sequences."
+     :long-description "A Lisp library for computing differences between sequences.  Based on Python's difflib module."
+     
++    :in-order-to ((test-op (test-op "cl-difflib-tests")))
+     :components ((:file "package")
+ 		 (:file "difflib" :depends-on ("package"))
+ 		 (:static-file "LICENSE.txt")
+ 		 (:static-file "NEWS.txt")))
+-
+-
+-(defmethod perform ((o test-op) (c (eql (find-system 'cl-difflib))))
+-  (oos 'load-op 'cl-difflib-tests)
+-  (oos 'test-op 'cl-difflib-tests :force t))
+\ No newline at end of file
+diff --git a/unit-tests.lisp b/unit-tests.lisp
+index 6a9ee41..23fbb04 100644
+--- a/unit-tests.lisp
++++ b/unit-tests.lisp
+@@ -99,7 +99,8 @@
+ 	(test-similarity-ratio)
+ 	(test-close-matches)
+ 	(test-unified-diff)
+-	(test-context-diff))
++	(test-context-diff)
++        (null *failed-tests*))
+     (end-tests)))
+ 
+ 
