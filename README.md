@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1109](https://img.shields.io/badge/ebuild-1109-orange.svg)](https://img.shields.io/badge/ebuild-1109-orange.svg)
+[![Number of ebuilds: 1110](https://img.shields.io/badge/ebuild-1110-orange.svg)](https://img.shields.io/badge/ebuild-1110-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -457,6 +457,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[xmls](https://github.com/rpgoldman/xmls) | Simple, lightweight XML library for Common Lisp
 *   dev-lisp/[yason](https://github.com/phmarek/yason) | Common Lisp JSON serializer written with simplicity in mind
 *   dev-lisp/[zpb-ttf](https://github.com/xach/zpb-ttf) | Access TrueType fonts with Common Lisp
+*   dev-lisp/[zs3](https://github.com/xach/zs3) | Common Lisp library for working with Amazon's S3
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
