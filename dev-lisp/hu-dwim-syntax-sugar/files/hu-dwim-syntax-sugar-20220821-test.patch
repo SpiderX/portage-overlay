@@ -1,0 +1,9 @@
+--- ../test/suite.lisp	2024-11-10 14:59:55.501757755 +0200
++++ ../test/suite.lisp	2024-11-10 15:04:14.776058319 +0200
+@@ -19,5 +19,5 @@
+        (enable-readtime-wrapper-syntax)
+        ;; Stefil captures the value of *package* at compile time and binds it when running
+        ;; the tests, but again, let's just not test Stefil here...
+-       (bind ((*package* (find-package 'temporary-package-for-tests)))
++       (bind ()
+          ,@body))))
