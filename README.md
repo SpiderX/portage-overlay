@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 985](https://img.shields.io/badge/ebuild-985-orange.svg)](https://img.shields.io/badge/ebuild-985-orange.svg)
+[![Number of ebuilds: 986](https://img.shields.io/badge/ebuild-986-orange.svg)](https://img.shields.io/badge/ebuild-986-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -333,6 +333,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[cl-graph](https://github.com/hraban/cl-graph) | Common Lisp library for manipulating graphs
 *   dev-lisp/[cl-html-diff](https://github.com/wiseman/cl-html-diff) | A Common Lisp library for generating a human-readable diff
 *   dev-lisp/[cl-interpol](https://github.com/edicl/cl-interpol) | Common Lisp surface syntax niceties
+*   dev-lisp/[cl-ixf](https://github.com/dimitri/cl-ixf) | Tools to handle IBM PC version of IXF file format
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
