@@ -1,0 +1,19 @@
+--- ../hyphenation-fp.lisp	2024-11-04 12:22:06.882185515 +0200
++++ ../hyphenation-fp.lisp	2024-11-04 12:23:07.874939163 +0200
+@@ -23,15 +23,8 @@
+ 
+ (in-package :cl-typesetting-hyphen)
+ 
+-(defvar *cl-typesetting-base-directory*
+-   (make-pathname :name nil :type nil :version nil
+-     :defaults #.(or #-gcl *compile-file-truename* *load-truename*))
+-   "The base directory for cl-typesetting source and auxiliary data")
+-
+ (defvar *hyphen-patterns-directory*
+-  (merge-pathnames (make-pathname :name nil :type nil :version nil
+-                                  :directory '(:relative "hyphen-patterns"))
+-                   *cl-typesetting-base-directory*))
++  #p"/usr/share/cl-typesetting/hyphen-patterns/")
+ 
+ (defvar *language-hyphen-file-list*
+   '((:british        . "gbhyph")
