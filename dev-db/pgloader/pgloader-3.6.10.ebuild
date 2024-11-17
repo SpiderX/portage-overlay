@@ -47,6 +47,7 @@ RDEPEND="app-arch/zstd:0=
 	dev-lisp/quri
 	dev-lisp/split-sequence
 	dev-lisp/trivial-backtrace
+	dev-lisp/uax15
 	dev-lisp/uiop
 	dev-lisp/usocket
 	dev-lisp/uuid
