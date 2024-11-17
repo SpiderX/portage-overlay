@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/dstucrypt/dstu-engine"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
-RESTRICT="test" #https://github.com/dstucrypt/dstu-engine/issues/22
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/openssl:0/3"
 DEPEND="${RDEPEND}"
