@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1062](https://img.shields.io/badge/ebuild-1062-orange.svg)](https://img.shields.io/badge/ebuild-1062-orange.svg)
+[![Number of ebuilds: 1063](https://img.shields.io/badge/ebuild-1063-orange.svg)](https://img.shields.io/badge/ebuild-1063-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -410,6 +410,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[local-time](https://github.com/dlowe-net/local-time) | Time manipulation library for Common Lisp
 *   dev-lisp/[lparallel](https://github.com/lmj/lparallel) | Parallelism for Common Lisp
 *   dev-lisp/[lw-compat](https://github.com/pcostanza/lw-compat) | A few utility functions from the LispWorks library
+*   dev-lisp/[md5](https://github.com/pmai/md5) | Common Lisp implementation of the MD5 Message-Digest Algorithm
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[camomile](https://github.com/yoriyuki/Camomile) | A Unicode library for OCaml
