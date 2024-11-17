@@ -1,0 +1,22 @@
+--- ../t/ci.lisp	2024-11-11 03:02:03.535355449 +0200
++++ ../t/ci.lisp	2024-11-11 03:02:48.293350985 +0200
+@@ -28,6 +28,8 @@
+ 
+ ;;;; Code:
+ 
++(require "asdf")
++
+ (in-package :cl-user)
+ (defpackage :mustache-test-ci
+   (:use :cl))
+@@ -41,8 +43,8 @@
+       (quit (funcall quit :unix-status code))
+       (t (error "No exit or quit function")))))
+ 
+-(ql:quickload :prove)
+-(ql:quickload :cl-mustache)
++(asdf:load-system "prove")
++(asdf:load-system "cl-mustache")
+ 
+ (unless (and (prove:run #P"t/test-api")
+              (prove:run #P"t/test-spec"))
