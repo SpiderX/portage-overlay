@@ -1,0 +1,20 @@
+diff -Naur a/chipz.asd b/chipz.asd
+--- a/chipz.asd	2013-01-15 03:07:50.000000000 +0100
++++ b/chipz.asd	2013-07-09 20:55:11.589840183 +0200
+@@ -17,15 +17,7 @@
+   :maintainer "Nathan Froyd <froydnj@gmail.com>"
+   :description "A library for decompressing deflate, zlib, and gzip data"
+   :license "BSD style"
+-  :components ((:static-file "NEWS")
+-               (:static-file "LICENSE")
+-               (:static-file "TODO")
+-               (:file "package")
+-               (:module "doc"
+-                        :components
+-                        ((:html-file "index")
+-                         (:txt-file "chipz-doc")
+-                         (:css-file "style")))
++  :components ((:file "package")
+                (:file "constants" :depends-on ("package"))
+                (:file "types-and-tables" :depends-on ("constants"))
+                (:file "crc32" :depends-on ("types-and-tables"))
