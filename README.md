@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1114](https://img.shields.io/badge/ebuild-1114-orange.svg)](https://img.shields.io/badge/ebuild-1114-orange.svg)
+[![Number of ebuilds: 1115](https://img.shields.io/badge/ebuild-1115-orange.svg)](https://img.shields.io/badge/ebuild-1115-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -255,6 +255,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[mime-mail](https://github.com/snoyberg/mime-mail) | Compose MIME email messages
 *   dev-haskell/[modern-uri](https://github.com/mrkkrp/modern-uri) | Modern library for working with URIs
 *   dev-haskell/[monad-time](https://github.com/scrive/monad-time) | Type class for monads which carry the notion of the current time
+*   dev-haskell/[network-byte-order](https://hackage.haskell.org/package/network-byte-order) | Network byte order utilities
 *   dev-haskell/[network-ip](https://github.com/mvv/network-ip) | Internet Protocol data structures
 *   dev-haskell/[optics-core](https://github.com/well-typed/optics) | Optics as an abstract interface
 *   dev-haskell/[optics-extra](https://github.com/well-typed/optics) | Extra utilities and instances for optics-core
