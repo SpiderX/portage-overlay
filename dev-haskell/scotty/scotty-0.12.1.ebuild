@@ -16,34 +16,44 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/aeson:=[profile?]
+	dev-haskell/base-compat-batteries:=[profile?]
 	dev-haskell/blaze-builder:=[profile?]
 	dev-haskell/case-insensitive:=[profile?]
-	dev-haskell/cookie:=[profile?]
 	dev-haskell/data-default-class:=[profile?]
+	dev-haskell/exceptions:=[profile?]
+	dev-haskell/fail:=[profile?]
 	dev-haskell/http-types:=[profile?]
 	dev-haskell/monad-control:=[profile?]
+	dev-haskell/mtl:=[profile?]
+	dev-haskell/nats:=[profile?]
 	dev-haskell/network:=[profile?]
 	dev-haskell/regex-compat:=[profile?]
 	dev-haskell/text:=[profile?]
+	dev-haskell/transformers:=[profile?]
 	dev-haskell/transformers-base:=[profile?]
 	dev-haskell/transformers-compat:=[profile?]
-	dev-haskell/unliftio:=[profile?]
 	dev-haskell/wai:=[profile?]
 	dev-haskell/wai-extra:=[profile?]
 	dev-haskell/warp:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal:=[profile?]
 	test? ( dev-haskell/async:=[profile?]
-		dev-haskell/doctest:=[profile?]
-		dev-haskell/hspec:=[profile?]
+		>=dev-haskell/hspec-2:=[profile?]
 		dev-haskell/hspec-wai:=[profile?]
-		dev-haskell/http-client:=[profile?]
 		dev-haskell/lifted-base:=[profile?] )"
+
+CABAL_CHDEPS=(
+	'warp                  >= 3.0.13   && < 3.4' 'warp                  >= 3.0.13'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
 
 	sed -i '/license-file/d' scotty.cabal \
 		|| die "sed failed"
+}
+
+src_configure() {
+	haskell-cabal_src_configure --flag=-hpc-coveralls
 }
