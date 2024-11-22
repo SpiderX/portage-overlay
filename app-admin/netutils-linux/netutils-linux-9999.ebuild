@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/ConfigArgParse[${PYTHON_USEDEP}]
+	dev-python/configargparse[${PYTHON_USEDEP}]
 	dev-python/prettytable[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
