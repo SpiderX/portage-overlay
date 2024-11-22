@@ -17,7 +17,7 @@ SLOT="0"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-RDEPEND="dev-python/IPy[${PYTHON_USEDEP}]
+RDEPEND="dev-python/ipy[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
