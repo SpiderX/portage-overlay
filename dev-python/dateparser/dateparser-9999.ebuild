@@ -26,7 +26,7 @@ RDEPEND="dev-python/convertdate[${PYTHON_USEDEP}]
 	dev-python/tzlocal[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-libs/fastText[${PYTHON_USEDEP}]
-		dev-python/GitPython[${PYTHON_USEDEP}]
+		dev-python/gitpython[${PYTHON_USEDEP}]
 		dev-python/langdetect[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/parsel[${PYTHON_USEDEP}]
