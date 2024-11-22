@@ -19,7 +19,7 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="test" # requires git repository
 
-RDEPEND="dev-python/GitPython[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/gitpython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
