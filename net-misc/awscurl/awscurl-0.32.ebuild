@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 PROPERTIES="test_network"
 RESTRICT="test"
 
-RDEPEND="dev-python/ConfigArgParse[${PYTHON_USEDEP}]
+RDEPEND="dev-python/configargparse[${PYTHON_USEDEP}]
 	dev-python/configparser[${PYTHON_USEDEP}]
 	dev-python/botocore[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
