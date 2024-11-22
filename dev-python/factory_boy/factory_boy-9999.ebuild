@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-python/Faker[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/faker[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}]
 		dev-python/mongoengine[${PYTHON_USEDEP}]
