@@ -25,7 +25,7 @@ BDEPEND="dev-haskell/cabal:=
 		dev-haskell/text:=[profile?] )"
 
 src_prepare() {
-	default
+	haskell-cabal_src_prepare
 
 	sed -i '/license-file/d' network-control.cabal \
 		|| die "sed failed"
