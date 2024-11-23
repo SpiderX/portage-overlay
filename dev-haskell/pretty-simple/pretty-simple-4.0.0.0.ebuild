@@ -30,7 +30,7 @@ BDEPEND="dev-haskell/cabal:=
 		dev-haskell/quickcheck:=[profile?] )"
 
 src_prepare() {
-	default
+	haskell-cabal_src_prepare
 
 	sed -i '/license-file/d' pretty-simple.cabal \
 		|| die "sed failed"
