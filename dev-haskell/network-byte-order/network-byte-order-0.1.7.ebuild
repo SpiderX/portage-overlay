@@ -19,7 +19,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:="
 
 src_prepare() {
-	default
+	haskell-cabal_src_prepare
 
 	sed -i '/license-file/d' network-byte-order.cabal \
 		|| die "sed failed"
