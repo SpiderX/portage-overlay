@@ -43,7 +43,7 @@ BDEPEND="dev-haskell/cabal:=[profile?]
 		dev-haskell/quickcheck:=[profile?] )"
 
 src_prepare() {
-	default
+	haskell-cabal_src_prepare
 
 	sed -i '/license-file/d' warp.cabal \
 		|| die "sed failed"
