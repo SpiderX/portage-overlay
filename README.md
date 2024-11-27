@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1116](https://img.shields.io/badge/ebuild-1116-orange.svg)](https://img.shields.io/badge/ebuild-1116-orange.svg)
+[![Number of ebuilds: 1115](https://img.shields.io/badge/ebuild-1115-orange.svg)](https://img.shields.io/badge/ebuild-1115-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -201,7 +201,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[authenticate-oauth](https://github.com/yesodweb/authenticate) | Library to authenticate with OAuth for Haskell web applications
 *   dev-haskell/[auto-update](https://github.com/yesodweb/wai) | Efficiently run periodic, on-demand actions
 *   dev-haskell/[base-prelude](https://github.com/nikita-volkov/base-prelude) | The most complete prelude formed only from the base package
-*   dev-haskell/[base64-bytestring](https://github.com/haskell/base64-bytestring) | Fast base64 encoding and decoding for Haskell
 *   dev-haskell/[binary-parser](https://github.com/nikita-volkov/binary-parser) | A highly-efficient but limited parser API for bytestrings
 *   dev-haskell/[bytestring-strict-builder](https://github.com/nikita-volkov/bytestring-strict-builder) | An efficient strict bytestring builder
 *   dev-haskell/[bytestring-tree-builder](https://github.com/nikita-volkov/bytestring-tree-builder) | A ByteString builder implementation based on the binary tree
