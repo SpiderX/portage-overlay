@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1106](https://img.shields.io/badge/ebuild-1106-orange.svg)](https://img.shields.io/badge/ebuild-1106-orange.svg)
+[![Number of ebuilds: 1105](https://img.shields.io/badge/ebuild-1105-orange.svg)](https://img.shields.io/badge/ebuild-1105-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -277,7 +277,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[unix-time](https://hackage.haskell.org/package/unix-time) | Unix time parser/formatter and utilities
 *   dev-haskell/[websockets](https://jaspervdj.be/websockets/) | Allows you to write WebSocket-capable servers
 *   dev-haskell/[wai](https://github.com/yesodweb/wai) | Web Application Interface
-*   dev-haskell/[wai-cors](https://github.com/larskuhtz/wai-cors) | Cross-Origin resource sharing (CORS) for Wai
 *   dev-haskell/[wai-middleware-static](https://github.com/scotty-web/wai-middleware-static) | WAI middleware that serves requests to static files
 *   dev-haskell/[wai-websockets](https://github.com/yesodweb/wai) | Provide a bridge between WAI and the websockets package
 *   dev-haskell/[warp](https://github.com/yesodweb/wai) | A fast, light-weight web server for WAI applications
