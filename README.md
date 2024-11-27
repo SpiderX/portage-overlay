@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1119](https://img.shields.io/badge/ebuild-1119-orange.svg)](https://img.shields.io/badge/ebuild-1119-orange.svg)
+[![Number of ebuilds: 1118](https://img.shields.io/badge/ebuild-1118-orange.svg)](https://img.shields.io/badge/ebuild-1118-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -197,7 +197,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[soci](https://github.com/SOCI/soci) | Database access library for C++
 *   dev-db/[tableplus](https://tableplus.com) | Modern, native, and friendly GUI tool for relational databases
 *   dev-db/[usql](https://github.com/xo/usql) | Universal command-line interface for SQL databases
-*   dev-haskell/[OneTuple](https://github.com/haskellari/OneTuple) | Singleton Tuple
 *   dev-haskell/[Ranged-sets](https://github.com/PaulJohnson/Ranged-sets) | Ranged sets for Haskell
 *   dev-haskell/[ansi-wl-pprint](https://github.com/ekmett/ansi-wl-pprint) | The Wadler/Leijen Pretty Printer for colored ANSI terminal output
 *   dev-haskell/[authenticate-oauth](https://github.com/yesodweb/authenticate) | Library to authenticate with OAuth for Haskell web applications
@@ -240,7 +239,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[http-client](https://github.com/snoyberg/http-client) | An HTTP client engine
 *   dev-haskell/[http-media](https://github.com/zmthy/http-media) | Processing HTTP Content-Type and Accept headers
 *   dev-haskell/[indexed-profunctors](https://github.com/well-typed/optics) | Utilities for indexed profunctors
-*   dev-haskell/[indexed-traversable-instances](https://github.com/haskellari/indexed-traversable) | More instances of FunctorWithIndex, FoldableWithIndex
 *   dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
 *   dev-haskell/[insert-ordered-containers](https://github.com/phadej/insert-ordered-containers) | Associative containers retating insertion order for traversals
 *   dev-haskell/[integer-logarithms](https://github.com/Bodigrim/integer-logarithms) | Integer logarithms
