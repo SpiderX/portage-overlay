@@ -197,7 +197,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[soci](https://github.com/SOCI/soci) | Database access library for C++
 *   dev-db/[tableplus](https://tableplus.com) | Modern, native, and friendly GUI tool for relational databases
 *   dev-db/[usql](https://github.com/xo/usql) | Universal command-line interface for SQL databases
-*   dev-haskell/[ChasingBottoms](https://hackage.haskell.org/package/ChasingBottoms) | For testing partial and infinite values
 *   dev-haskell/[OneTuple](https://github.com/haskellari/OneTuple) | Singleton Tuple
 *   dev-haskell/[Ranged-sets](https://github.com/PaulJohnson/Ranged-sets) | Ranged sets for Haskell
 *   dev-haskell/[ansi-wl-pprint](https://github.com/ekmett/ansi-wl-pprint) | The Wadler/Leijen Pretty Printer for colored ANSI terminal output
