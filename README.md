@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1103](https://img.shields.io/badge/ebuild-1103-orange.svg)](https://img.shields.io/badge/ebuild-1103-orange.svg)
+[![Number of ebuilds: 1101](https://img.shields.io/badge/ebuild-1101-orange.svg)](https://img.shields.io/badge/ebuild-1101-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -235,7 +235,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[indexed-profunctors](https://github.com/well-typed/optics) | Utilities for indexed profunctors
 *   dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
 *   dev-haskell/[insert-ordered-containers](https://github.com/phadej/insert-ordered-containers) | Associative containers retating insertion order for traversals
-*   dev-haskell/[integer-simple](https://hackage.haskell.org/package/integer-simple) | Simple Integer library
 *   dev-haskell/[interpolatedstring-perl6](https://github.com/audreyt/interpolatedstring-perl6) | QuasiQuoter for Perl6 style multi-line interpolated
 *   dev-haskell/[inspection-testing](https://github.com/nomeata/inspection-testing) | GHC plugin to do inspection testing
 *   dev-haskell/[jose](https://github.com/frasertweedale/hs-jose) | Haskell JOSE and JWT library
