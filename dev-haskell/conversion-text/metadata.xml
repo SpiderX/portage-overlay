@@ -15,6 +15,7 @@
 	in other libraries.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">conversion-text</remote-id>
 		<remote-id type="github">nikita-volkov/conversion-text</remote-id>
 	</upstream>
 </pkgmetadata>
