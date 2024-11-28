@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1122](https://img.shields.io/badge/ebuild-1122-orange.svg)](https://img.shields.io/badge/ebuild-1122-orange.svg)
+[![Number of ebuilds: 1123](https://img.shields.io/badge/ebuild-1123-orange.svg)](https://img.shields.io/badge/ebuild-1123-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -292,6 +292,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[text-printer](https://github.com/mvv/text-printer) | Abstract interace for Haskell text builders/printers
 *   dev-haskell/[th-expand-syns](https://github.com/DanielSchuessler/th-expand-syns) | Expands type synonyms in Template Haskell ASTs
 *   dev-haskell/[th-orphans](https://github.com/mgsloan/th-orphans) | Orphan instances for TH datatypes
+*   dev-haskell/[th-reify-many](https://github.com/mgsloan/th-reify-many) | Recurseively reify template haskell datatype info
 *   dev-haskell/[time-manager](https://github.com/yesodweb/wai) | Scalable timer
 *   dev-haskell/[tz](https://github.com/nilcons/haskell-tz) | Library for time zone conversions
 *   dev-haskell/[type-hint](https://github.com/mvv/type-hint) | Haskell library for helping type inference by using proxy values
