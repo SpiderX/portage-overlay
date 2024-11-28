@@ -14,6 +14,7 @@
 	and JSON Web Token (JWT; RFC 7519) formats.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">jose</remote-id>
 		<remote-id type="github">frasertweedale/hs-jose</remote-id>
 	</upstream>
 </pkgmetadata>
