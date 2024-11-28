@@ -14,6 +14,7 @@
 	Latin-1 portions of the Char and Word8 data types.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">text-latin1</remote-id>
 		<remote-id type="github">mvv/text-latin1</remote-id>
 	</upstream>
 </pkgmetadata>
