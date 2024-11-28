@@ -3,13 +3,13 @@
 
 EAPI=8
 
+CABAL_HACKAGE_REVISION=7
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
-CABAL_HACKAGE_REVISION=6
 
 inherit haskell-cabal
 
-DESCRIPTION="Library for time zone conversions"
-HOMEPAGE="https://github.com/nilcons/haskell-tz"
+DESCRIPTION="Efficient time zone handling"
+HOMEPAGE="https://github.com/ysangkok/haskell-tz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
@@ -28,6 +28,11 @@ BDEPEND="dev-haskell/cabal:=[profile?]
 		dev-haskell/tasty-hunit:=[profile?]
 		dev-haskell/tasty-quickcheck:=[profile?]
 		dev-haskell/tasty-th:=[profile?] )"
+
+src_prepare() {
+	haskell-cabal_src_prepare
+	sed -i '/License-File/d' tz.cabal || die "sed failed"
+}
 
 src_configure() {
 	haskell-cabal_src_configure \

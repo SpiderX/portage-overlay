@@ -294,7 +294,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[th-orphans](https://github.com/mgsloan/th-orphans) | Orphan instances for TH datatypes
 *   dev-haskell/[th-reify-many](https://github.com/mgsloan/th-reify-many) | Recurseively reify template haskell datatype info
 *   dev-haskell/[time-manager](https://github.com/yesodweb/wai) | Scalable timer
-*   dev-haskell/[tz](https://github.com/nilcons/haskell-tz) | Library for time zone conversions
+*   dev-haskell/[tz](https://github.com/ysangkok/haskell-tz) | Efficient time zone handling
 *   dev-haskell/[type-hint](https://github.com/mvv/type-hint) | Haskell library for helping type inference by using proxy values
 *   dev-haskell/[tzdata](https://github.com/nilcons/haskell-tzdata) | Distribution of the standard time zone database
 *   dev-haskell/[unix-time](https://hackage.haskell.org/package/unix-time) | Unix time parser/formatter and utilities

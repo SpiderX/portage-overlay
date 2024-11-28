@@ -17,6 +17,7 @@
 		<flag name="template-haskell">Enable and use template haskell support.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">nilcons/haskell-tz</remote-id>
+		<remote-id type="hackage">tz</remote-id>
+		<remote-id type="github">ysangkok/haskell-tz</remote-id>
 	</upstream>
 </pkgmetadata>
