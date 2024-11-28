@@ -15,6 +15,7 @@
 	It supports all Postgres versions starting from 8.3.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">postgresql-binary</remote-id>
 		<remote-id type="github">nikita-volkov/postgresql-binary</remote-id>
 	</upstream>
 </pkgmetadata>
