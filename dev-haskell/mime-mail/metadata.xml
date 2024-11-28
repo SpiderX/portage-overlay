@@ -15,6 +15,7 @@
 	and the ability to send bytestrings via the sendmail executable.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">mime-mail</remote-id>
 		<remote-id type="github">snoyberg/mime-mail</remote-id>
 	</upstream>
 </pkgmetadata>
