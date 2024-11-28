@@ -15,6 +15,7 @@
 	not necessarily the fastest ones on the planet.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">RSA</remote-id>
 		<remote-id type="github">GaloisInc/RSA</remote-id>
 	</upstream>
 </pkgmetadata>
