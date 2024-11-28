@@ -14,6 +14,7 @@
 	via OAuth protocol for Haskell web applications.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">authenticate-oauth</remote-id>
 		<remote-id type="github">yesodweb/authenticate</remote-id>
 	</upstream>
 </pkgmetadata>
