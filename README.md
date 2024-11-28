@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1111](https://img.shields.io/badge/ebuild-1111-orange.svg)](https://img.shields.io/badge/ebuild-1111-orange.svg)
+[![Number of ebuilds: 1110](https://img.shields.io/badge/ebuild-1110-orange.svg)](https://img.shields.io/badge/ebuild-1110-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -239,7 +239,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[hasql-transaction](https://github.com/nikita-volkov/hasql-transaction) | Abstraction over transactions for Hasql
 *   dev-haskell/[heredoc](https://hackage.haskell.org/package/heredoc) | multi-line string / here document using QuasiQuotes
 *   dev-haskell/[hspec-expectations-lifted](https://github.com/hspec/hspec-expectations-lifted) | A version of hspec-expectations generalized to MonadIO
-*   dev-haskell/[hspec-wai](https://github.com/hspec/hspec-wai) | Experimental Hspec support for testing WAI applications
+*   dev-haskell/[hspec-wai](https://github.com/hspec/hspec-wai) | Testing JSON APIs with hspec-wai
 *   dev-haskell/[hspec-wai-json](https://github.com/hspec/hspec-wai) | Testing JSON APIs with hspec-wai
 *   dev-haskell/[http2](https://github.com/kazu-yamamoto/http2) | HTTP/2 library
 *   dev-haskell/[indexed-profunctors](https://github.com/well-typed/optics) | Utilities for indexed profunctors
