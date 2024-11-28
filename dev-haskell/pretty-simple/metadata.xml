@@ -19,6 +19,7 @@
 		<flag name="buildexample">Build program showing how to use the pPrint function</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">pretty-simple</remote-id>
 		<remote-id type="github">cdepillabout/pretty-simple</remote-id>
 	</upstream>
 </pkgmetadata>
