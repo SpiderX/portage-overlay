@@ -14,6 +14,7 @@
 	The implementation is based on unordered-containers.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">insert-ordered-containers</remote-id>
 		<remote-id type="github">phadej/insert-ordered-containers</remote-id>
 	</upstream>
 </pkgmetadata>
