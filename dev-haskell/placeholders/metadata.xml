@@ -15,6 +15,7 @@
 	so that they do not get forgotten so easily.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">placeholders</remote-id>
 		<remote-id type="github">ahammar/placeholders</remote-id>
 	</upstream>
 </pkgmetadata>
