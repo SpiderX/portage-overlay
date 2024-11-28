@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,17 +7,12 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
 
-HACKAGE_REV="8"
-
 DESCRIPTION="Mid-Level PostgreSQL client library"
 HOMEPAGE="https://github.com/haskellari/postgresql-libpq"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz
-	https://hackage.haskell.org/package/${P}/revision/${HACKAGE_REV}.cabal -> ${PF}.cabal"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/attoparsec:=[profile?]
@@ -33,8 +28,8 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/vector:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
-	test? ( dev-haskell/base16-bytestring
+BDEPEND="dev-haskell/cabal:=
+	test? ( dev-haskell/base16-bytestring:=[profile?]
 		dev-haskell/cryptohash-md5:=[profile?]
 		dev-haskell/hunit:=[profile?]
 		dev-haskell/inspection-testing:=[profile?]
@@ -42,8 +37,11 @@ BDEPEND="dev-haskell/cabal:=[profile?]
 		dev-haskell/tasty-golden:=[profile?]
 		dev-haskell/tasty-hunit:=[profile?] )"
 
-src_prepare() {
-	cp "${DISTDIR}/${PF}.cabal" "${S}/${PN}.cabal" || die "cp failed"
+CABAL_CHDEPS=(
+	'postgresql-libpq    >=0.9.4.3    && <0.10' 'postgresql-libpq    >=0.9.4.3'
+)
 
-	default
+src_prepare() {
+	haskell-cabal_src_prepare
+	sed -i '/license-file/d' postgresql-simple.cabal || die "sed failed"
 }

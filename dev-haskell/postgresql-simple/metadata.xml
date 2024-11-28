@@ -15,6 +15,7 @@
 	mysql-simple.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">postgresql-simple</remote-id>
 		<remote-id type="github">haskellari/postgresql-simple</remote-id>
 	</upstream>
 </pkgmetadata>
