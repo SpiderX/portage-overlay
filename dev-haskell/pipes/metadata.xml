@@ -14,6 +14,7 @@
 	that lets you build and connect reusable streaming components.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">pipes</remote-id>
 		<remote-id type="github">Gabriella439/pipes</remote-id>
 	</upstream>
 </pkgmetadata>

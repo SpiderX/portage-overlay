@@ -16,10 +16,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/exceptions:=[profile?]
-	dev-haskell/fail:=[profile?]
 	dev-haskell/mmorph:=[profile?]
 	dev-haskell/mtl:=[profile?]
-	dev-haskell/semigroups:=[profile?]
 	dev-haskell/void:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
@@ -27,3 +25,8 @@ BDEPEND="dev-haskell/cabal:=[profile?]
 	test? ( dev-haskell/quickcheck:=[profile?]
 		dev-haskell/test-framework:=[profile?]
 		dev-haskell/test-framework-quickcheck2:=[profile?] )"
+
+src_prepare() {
+	haskell-cabal_src_prepare
+	sed -i '/License-file/d' pipes.cabal || die "sed failed"
+}
