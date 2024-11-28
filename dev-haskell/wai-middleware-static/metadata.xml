@@ -15,6 +15,7 @@
 	modify incoming URIs.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">wai-middleware-static</remote-id>
 		<remote-id type="github">scotty-web/wai-middleware-static</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,18 +9,18 @@ inherit haskell-cabal
 
 DESCRIPTION="WAI middleware that serves requests to static files"
 HOMEPAGE="https://github.com/scotty-web/wai-middleware-static"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/cryptonite:=[profile?]
+RDEPEND="dev-haskell/base16-bytestring:=[profile?]
+	dev-haskell/cryptohash-sha1:=[profile?]
 	dev-haskell/expiring-cache-map:=[profile?]
 	dev-haskell/http-types:=[profile?]
-	dev-haskell/memory:=[profile?]
 	dev-haskell/mime-types:=[profile?]
 	dev-haskell/old-locale:=[profile?]
+	dev-haskell/semigroups:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/wai:=[profile?]
 	dev-lang/ghc:="
@@ -34,8 +34,6 @@ BDEPEND="dev-haskell/cabal:=
 		dev-haskell/wai-extra:=[profile?] )"
 
 src_prepare() {
-	default
-
-	sed -i '/License-file/d' wai-middleware-static.cabal \
-		|| die "sed failed"
+	haskell-cabal_src_prepare
+	sed -i '/License-file/d' wai-middleware-static.cabal || die "sed failed"
 }
