@@ -16,6 +16,7 @@
 	the modern tendencies in the language.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">rebase</remote-id>
 		<remote-id type="github">nikita-volkov/rebase</remote-id>
 	</upstream>
 </pkgmetadata>
