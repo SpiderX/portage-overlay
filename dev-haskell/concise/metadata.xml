@@ -15,6 +15,7 @@
 	into the other.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">concise</remote-id>
 		<remote-id type="github">frasertweedale/hs-concise</remote-id>
 	</upstream>
 </pkgmetadata>
