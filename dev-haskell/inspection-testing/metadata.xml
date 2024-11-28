@@ -15,6 +15,7 @@
 	checked by GHC.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">inspection-testing</remote-id>
 		<remote-id type="github">nomeata/inspection-testing</remote-id>
 	</upstream>
 </pkgmetadata>
