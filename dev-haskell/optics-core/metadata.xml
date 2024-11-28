@@ -19,6 +19,7 @@
 		<flag name="explicit-generic-labels">Enable generics-based labels</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">optics-core</remote-id>
 		<remote-id type="github">well-typed/optics</remote-id>
 	</upstream>
 </pkgmetadata>
