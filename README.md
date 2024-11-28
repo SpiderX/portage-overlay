@@ -226,7 +226,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[drbg](https://github.com/TomMD/DRBG) | Deterministic random bit generator (aka PRNG)
 *   dev-haskell/[either](https://github.com/ekmett/either) | An either monad transformer
 *   dev-haskell/[expiring-cache-map](https://github.com/elblake/expiring-cache-map) | General purpose simple caching
-*   dev-haskell/[filelock](https://github.com/takano-akio/filelock) | Portable interface to file locking
+*   dev-haskell/[filelock](https://github.com/haskell-pkg-janitors/filelock) | Portable interface to file locking
 *   dev-haskell/[hasql](https://github.com/nikita-volkov/hasql) | An efficient PostgreSQL driver with a flexible mapping API
 *   dev-haskell/[hasql-dynamic-statements](https://github.com/nikita-volkov/hasql-dynamic-statements) | Dynamic statements for Hasql
 *   dev-haskell/[hasql-implicits](https://github.com/nikita-volkov/hasql-implicits) | Implicit definitions for Hasql

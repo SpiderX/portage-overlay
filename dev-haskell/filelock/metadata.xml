@@ -14,6 +14,7 @@
 	functionalities (flock / LockFileEx)
 	</longdescription>
 	<upstream>
-		<remote-id type="github">takano-akio/filelock</remote-id>
+		<remote-id type="hackage">filelock</remote-id>
+		<remote-id type="github">haskell-pkg-janitors/filelock</remote-id>
 	</upstream>
 </pkgmetadata>
