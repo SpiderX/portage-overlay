@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1106](https://img.shields.io/badge/ebuild-1106-orange.svg)](https://img.shields.io/badge/ebuild-1106-orange.svg)
+[![Number of ebuilds: 1107](https://img.shields.io/badge/ebuild-1107-orange.svg)](https://img.shields.io/badge/ebuild-1107-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -219,6 +219,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[data-bword](https://github.com/mvv/data-bword) | Extra operations on binary words of fixed length
 *   dev-haskell/[data-checked](https://github.com/mvv/data-checked) | Type-indexed runtime-checked properties for Haskell
 *   dev-haskell/[data-dword](https://github.com/mvv/data-dword) | Stick two binary words together to get a bigger one
+*   dev-haskell/[data-endian](https://github.com/mvv/data-endian) | Endian-sensitive data
 *   dev-haskell/[data-serializer](https://github.com/mvv/data-serializer) | Common API for Haskell serialization libraries
 *   dev-haskell/[data-textual](https://github.com/mvv/data-textual) | Human-friendly textual representations for Haskell
 *   dev-haskell/[deferred-folds](https://github.com/metrix-ai/deferred-folds) | Abstractions over deferred folds
