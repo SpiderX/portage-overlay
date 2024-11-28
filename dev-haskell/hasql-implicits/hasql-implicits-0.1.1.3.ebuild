@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ inherit haskell-cabal
 
 DESCRIPTION="Implicit definitions for Hasql"
 HOMEPAGE="https://github.com/nikita-volkov/hasql-implicits"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
@@ -27,8 +26,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:="
 
 src_prepare() {
-	default
-
-	sed -i '/license-file/d' hasql-implicits.cabal \
-		|| die "sed failed"
+	haskell-cabal_src_prepare
+	cabal-mksetup
+	sed -i '/license-file/d' hasql-implicits.cabal || die "sed failed"
 }

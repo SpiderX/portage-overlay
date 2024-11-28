@@ -14,6 +14,7 @@
 	( Char, Double, Float, Scientific, Text, etc).
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hasql-implicits</remote-id>
 		<remote-id type="github">nikita-volkov/hasql-implicits</remote-id>
 	</upstream>
 </pkgmetadata>
