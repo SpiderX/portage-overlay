@@ -1,0 +1,48 @@
+From 0f7692ad76a795ffa7920482bec1a90de97a1891 Mon Sep 17 00:00:00 2001
+From: Mark Karpov <markkarpov92@gmail.com>
+Date: Thu, 21 Sep 2023 21:11:21 +0200
+Subject: [PATCH] Fix the httpbun test suite (again)
+
+---
+ httpbun-tests/Network/HTTP/ReqSpec.hs | 21 +++++----------------
+ 1 file changed, 5 insertions(+), 16 deletions(-)
+
+diff --git a/httpbun-tests/Network/HTTP/ReqSpec.hs b/httpbun-tests/Network/HTTP/ReqSpec.hs
+index 3d81a1d..3db192f 100644
+--- a/httpbun-tests/Network/HTTP/ReqSpec.hs
++++ b/httpbun-tests/Network/HTTP/ReqSpec.hs
+@@ -54,21 +54,6 @@ spec = do
+       req GET (httpbun /: "foo") NoReqBody ignoreResponse mempty
+         `shouldThrow` selector404ByStatusCodeException
+ 
+-  describe "receiving user-agent header back" $
+-    it "works" $ do
+-      r <-
+-        req
+-          GET
+-          (httpbun /: "user-agent")
+-          NoReqBody
+-          jsonResponse
+-          (header "user-agent" "Req")
+-      responseBody r
+-        `shouldBe` object
+-          ["user-agent" .= ("Req" :: Text)]
+-      responseStatusCode r `shouldBe` 200
+-      responseStatusMessage r `shouldBe` "OK"
+-
+   describe "receiving request headers back" $
+     it "works" $ do
+       r <-
+@@ -98,7 +83,11 @@ spec = do
+             "headers"
+               .= object
+                 [ "Accept-Encoding" .= ("gzip" :: Text)
+-                ]
++                ],
++            "form" .= emptyObject,
++            "files" .= emptyObject,
++            "data" .= ("" :: Text),
++            "json" .= Null
+           ]
+       responseHeader r "Content-Type" `shouldBe` return "application/json"
+       responseStatusCode r `shouldBe` 200
