@@ -15,6 +15,7 @@
 	and generic-lens package families.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">indexed-profunctors</remote-id>
 		<remote-id type="github">well-typed/optics</remote-id>
 	</upstream>
 </pkgmetadata>
