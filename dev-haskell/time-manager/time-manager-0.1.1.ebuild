@@ -21,9 +21,6 @@ BDEPEND="dev-haskell/cabal:="
 
 src_prepare() {
 	haskell-cabal_src_prepare
-
-	sed -i '/License-file/d' time-manager.cabal \
-		|| die "sed failed"
-
 	cabal-mksetup
+	sed -i '/License-file/d' time-manager.cabal || die "sed failed"
 }
