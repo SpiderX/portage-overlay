@@ -17,6 +17,7 @@
 	from those libraries as well as "base" under the same namespaces.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">rerebase</remote-id>
 		<remote-id type="github">nikita-volkov/rerebase</remote-id>
 	</upstream>
 </pkgmetadata>
