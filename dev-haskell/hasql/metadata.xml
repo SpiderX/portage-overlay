@@ -16,6 +16,7 @@
 	providing them with higher-level APIs.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hasql</remote-id>
 		<remote-id type="github">nikita-volkov/hasql</remote-id>
 	</upstream>
 </pkgmetadata>
