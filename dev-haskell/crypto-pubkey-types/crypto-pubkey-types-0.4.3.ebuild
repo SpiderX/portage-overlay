@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ inherit haskell-cabal
 
 DESCRIPTION="Generic cryptography Public keys algorithm types"
 HOMEPAGE="https://github.com/vincenthz/hs-crypto-pubkey-types"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -20,3 +19,8 @@ RDEPEND="dev-haskell/asn1-encoding:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=[profile?]"
+
+src_prepare() {
+	haskell-cabal_src_prepare
+	sed -i '/License-file/d' crypto-pubkey-types.cabal || die "sed failed"
+}

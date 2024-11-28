@@ -14,6 +14,7 @@
 	algorithm types for Haskell ecosystem.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">crypto-pubkey-types</remote-id>
 		<remote-id type="github">vincenthz/hs-crypto-pubkey-types</remote-id>
 	</upstream>
 </pkgmetadata>
