@@ -271,7 +271,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[postgresql-simple](https://github.com/haskellari/postgresql-libpq) | Mid-Level PostgreSQL client library
 *   dev-haskell/[pretty-simple](https://github.com/cdepillabout/pretty-simple) | Haskell data types that have a Show instance
 *   dev-haskell/[prettyclass](https://hackage.haskell.org/package/prettyclass) | Pretty printing class similar to Show
-*   dev-haskell/[protolude](https://github.com/protolude/protolude) | A sensible starting Prelude template
+*   dev-haskell/[protolude](https://github.com/sdiehl/protolude) | A sensible starting Prelude template
 *   dev-haskell/[ptr](https://github.com/nikita-volkov/ptr) | Abstractions for operations on pointers
 *   dev-haskell/[ranged-sets](https://github.com/PaulJohnson/Ranged-sets) | Ranged sets for Haskell
 *   dev-haskell/[rebase](https://github.com/nikita-volkov/rebase) | A more progressive alternative to the 'base' package
