@@ -243,7 +243,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[hspec-wai-json](https://github.com/hspec/hspec-wai) | Testing JSON APIs with hspec-wai
 *   dev-haskell/[http2](https://github.com/kazu-yamamoto/http2) | HTTP/2 library
 *   dev-haskell/[indexed-profunctors](https://github.com/well-typed/optics) | Utilities for indexed profunctors
-*   dev-haskell/[ini](https://github.com/chrisdone/ini) | Quick and easy configuration files in the INI format
+*   dev-haskell/[ini](https://github.com/andreasabel/ini) | Configuration files in the INI format
 *   dev-haskell/[insert-ordered-containers](https://github.com/phadej/insert-ordered-containers) | Associative containers retating insertion order for traversals
 *   dev-haskell/[interpolatedstring-perl6](https://github.com/audreyt/interpolatedstring-perl6) | QuasiQuoter for Perl6 style multi-line interpolated
 *   dev-haskell/[inspection-testing](https://github.com/nomeata/inspection-testing) | GHC plugin to do inspection testing

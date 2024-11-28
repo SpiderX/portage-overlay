@@ -14,6 +14,7 @@
 	in the INI format, with case-sensitive keys.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">chrisdone/ini</remote-id>
+		<remote-id type="hackage">ini</remote-id>
+		<remote-id type="github">andreasabel/ini</remote-id>
 	</upstream>
 </pkgmetadata>
