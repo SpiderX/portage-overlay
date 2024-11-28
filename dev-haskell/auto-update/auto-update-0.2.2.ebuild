@@ -24,7 +24,5 @@ BDEPEND="dev-haskell/cabal:=
 
 src_prepare() {
 	haskell-cabal_src_prepare
-
-	sed -i '/license-file/d' auto-update.cabal \
-		|| die "sed failed"
+	sed -i '/license-file/d' auto-update.cabal || die "sed failed"
 }
