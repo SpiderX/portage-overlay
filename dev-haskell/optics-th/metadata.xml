@@ -15,6 +15,7 @@
 	package for optics to work with template-haskell types.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">optics-th</remote-id>
 		<remote-id type="github">well-typed/optics</remote-id>
 	</upstream>
 </pkgmetadata>
