@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1111](https://img.shields.io/badge/ebuild-1111-orange.svg)](https://img.shields.io/badge/ebuild-1111-orange.svg)
+[![Number of ebuilds: 1112](https://img.shields.io/badge/ebuild-1112-orange.svg)](https://img.shields.io/badge/ebuild-1112-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -250,6 +250,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[isomorphism-class](https://github.com/nikita-volkov/isomorphism-class) | Isomorphism typeclass solving the conversion problem
 *   dev-haskell/[jose](https://github.com/frasertweedale/hs-jose) | Haskell JOSE and JWT library
 *   dev-haskell/[json-ast](https://github.com/nikita-volkov/json-ast) | Universal JSON AST datastructure
+*   dev-haskell/[keys](https://github.com/ekmett/keys) | Keyed functors and containers
 *   dev-haskell/[loch-th](https://github.com/liskin/loch-th) | Support for precise error locations in source files
 *   dev-haskell/[mime-mail](https://github.com/snoyberg/mime-mail) | Compose MIME email messages
 *   dev-haskell/[modern-uri](https://github.com/mrkkrp/modern-uri) | Modern library for working with URIs
