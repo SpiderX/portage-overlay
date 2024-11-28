@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ inherit haskell-cabal
 
 DESCRIPTION="Internet Protocol data structures"
 HOMEPAGE="https://github.com/mvv/network-ip"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -31,8 +30,6 @@ BDEPEND="dev-haskell/cabal:=
 		dev-haskell/tasty-quickcheck:=[profile?] )"
 
 src_prepare() {
-	default
-
-	sed -i '/License-File/d' network-ip.cabal \
-		|| die "sed failed"
+	haskell-cabal_src_prepare
+	sed -i '/License-File/d' network-ip.cabal || die "sed failed"
 }

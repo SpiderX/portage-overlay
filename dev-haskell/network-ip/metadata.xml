@@ -14,6 +14,7 @@
 	including address ranges classification from RFC6890.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">network-ip</remote-id>
 		<remote-id type="github">mvv/network-ip</remote-id>
 	</upstream>
 </pkgmetadata>
