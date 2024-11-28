@@ -14,6 +14,7 @@
 	and NOTIFY to the database server) with your Hasql Types.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hasql-notifications</remote-id>
 		<remote-id type="github">diogob/hasql-notifications</remote-id>
 	</upstream>
 </pkgmetadata>
