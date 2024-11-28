@@ -15,6 +15,7 @@
 	160, 192, 224, and 256-bit types are predefined.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">data-dword</remote-id>
 		<remote-id type="github">mvv/data-dword</remote-id>
 	</upstream>
 </pkgmetadata>
