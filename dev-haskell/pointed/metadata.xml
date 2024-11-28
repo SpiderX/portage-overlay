@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a Haskell 98 pointed and copointed data types,
+	without Safe Haskell support.
+	</longdescription>
+	<use>
+		<flag name="comonad">Disable the use of <pkg>dev-haskell/comonad</pkg>.</flag>
+		<flag name="kan-extensions">Disable the use of <pkg>dev-haskell/kan-extensions</pkg>.</flag>
+		<flag name="semigroupoids">Disable the use of <pkg>dev-haskell/semigroupoids</pkg>.</flag>
+		<flag name="stm">Disable the use of <pkg>dev-haskell/stm</pkg>.</flag>
+		<flag name="tagged">Disable the use of <pkg>dev-haskell/tagged</pkg>.</flag>
+		<flag name="transformers">Disable the use of <pkg>dev-haskell/transformers</pkg>.</flag>
+		<flag name="unordered-containers">Disable the use of <pkg>dev-haskell/unordered-containers</pkg>.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">pointed</remote-id>
+		<remote-id type="github">ekmett/pointed</remote-id>
+	</upstream>
+</pkgmetadata>
