@@ -222,7 +222,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[data-endian](https://github.com/mvv/data-endian) | Endian-sensitive data
 *   dev-haskell/[data-serializer](https://github.com/mvv/data-serializer) | Common API for Haskell serialization libraries
 *   dev-haskell/[data-textual](https://github.com/mvv/data-textual) | Human-friendly textual representations for Haskell
-*   dev-haskell/[deferred-folds](https://github.com/metrix-ai/deferred-folds) | Abstractions over deferred folds
+*   dev-haskell/[deferred-folds](https://github.com/nikita-volkov/deferred-folds) | Abstractions over deferred folds
 *   dev-haskell/[drbg](https://github.com/TomMD/DRBG) | Deterministic random bit generator (aka PRNG)
 *   dev-haskell/[either](https://github.com/ekmett/either) | An either monad transformer
 *   dev-haskell/[expiring-cache-map](https://codeberg.org/elblake/expiring-cache-map) | General purpose simple caching

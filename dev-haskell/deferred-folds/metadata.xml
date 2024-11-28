@@ -14,6 +14,7 @@
 	over deferred folds.  Users should be prepared for frequent updates.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">metrix-ai/deferred-folds</remote-id>
+		<remote-id type="hackage">deferred-folds</remote-id>
+		<remote-id type="github">nikita-volkov/deferred-folds</remote-id>
 	</upstream>
 </pkgmetadata>
