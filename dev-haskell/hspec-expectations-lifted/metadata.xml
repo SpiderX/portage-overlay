@@ -15,6 +15,7 @@
 	like test-framework or Hspec.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hspec-expectations-lifted</remote-id>
 		<remote-id type="github">hspec/hspec-expectations-lifted</remote-id>
 	</upstream>
 </pkgmetadata>
