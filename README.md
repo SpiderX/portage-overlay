@@ -1193,3 +1193,4 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
+* dev-haskell/[network-control](https://github.com/kazu-yamamoto/network-control) | Library to control network protocols
