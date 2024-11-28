@@ -256,7 +256,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[mime-mail](https://github.com/snoyberg/mime-mail) | Compose MIME email messages
 *   dev-haskell/[modern-uri](https://github.com/mrkkrp/modern-uri) | Modern library for working with URIs
 *   dev-haskell/[monad-time](https://github.com/scrive/monad-time) | Type class for monads which carry the notion of the current time
-*   dev-haskell/[network-byte-order](https://hackage.haskell.org/package/network-byte-order) | Network byte order utilities
+*   dev-haskell/[network-byte-order](https://github.com/kazu-yamamoto/network-byte-order) | Network byte order utilities
 *   dev-haskell/[network-control](https://hackage.haskell.org/package/network-control) | Library to control network protocols
 *   dev-haskell/[network-ip](https://github.com/mvv/network-ip) | Internet Protocol data structures
 *   dev-haskell/[optics-core](https://github.com/well-typed/optics) | Optics as an abstract interface

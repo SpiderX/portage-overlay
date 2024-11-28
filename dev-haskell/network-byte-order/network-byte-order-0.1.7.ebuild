@@ -8,7 +8,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Network byte order utilities"
-HOMEPAGE="https://hackage.haskell.org/package/network-byte-order"
+HOMEPAGE="https://github.com/kazu-yamamoto/network-byte-order"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -20,7 +20,6 @@ BDEPEND="dev-haskell/cabal:="
 
 src_prepare() {
 	haskell-cabal_src_prepare
-
 	sed -i '/license-file/d' network-byte-order.cabal \
 		|| die "sed failed"
 }
