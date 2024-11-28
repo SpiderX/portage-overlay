@@ -17,6 +17,7 @@
 	to starting, and controlling detached jobs.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">daemons</remote-id>
 		<remote-id type="github">scvalex/daemons</remote-id>
 	</upstream>
 </pkgmetadata>
