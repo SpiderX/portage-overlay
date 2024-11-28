@@ -17,6 +17,7 @@
 		<flag name="dev">Enable development settings</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">modern-uri</remote-id>
 		<remote-id type="github">mrkkrp/modern-uri</remote-id>
 	</upstream>
 </pkgmetadata>
