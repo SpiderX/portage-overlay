@@ -15,6 +15,7 @@
 	uniformly on all platforms.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">nilcons/haskell-tzdata</remote-id>
+		<remote-id type="hackage">tzdata</remote-id>
+		<remote-id type="github">ysangkok/haskell-tzdata</remote-id>
 	</upstream>
 </pkgmetadata>
