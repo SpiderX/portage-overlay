@@ -16,6 +16,7 @@
 	Thus this abstraction closely reproduces the behaviour of STM.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hasql-transaction</remote-id>
 		<remote-id type="github">nikita-volkov/hasql-transaction</remote-id>
 	</upstream>
 </pkgmetadata>
