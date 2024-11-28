@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a JSON quasiquoter for Haskell which exposes
+	the function aesonQQ that compile-time converts a string representation
+	of a JSON value into a Data.Aeson.Value.aesonQQ.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">aeson-qq</remote-id>
+		<remote-id type="github">sol/aeson-qq</remote-id>
+	</upstream>
+</pkgmetadata>
