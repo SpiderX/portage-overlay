@@ -15,6 +15,7 @@
 	associated with the type.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">data-checked</remote-id>
 		<remote-id type="github">mvv/data-checked</remote-id>
 	</upstream>
 </pkgmetadata>
