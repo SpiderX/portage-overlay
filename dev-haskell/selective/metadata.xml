@@ -14,6 +14,7 @@
 	functors for short, an abstraction between applicative functors and monads.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">selective</remote-id>
 		<remote-id type="github">snowleopard/selective</remote-id>
 	</upstream>
 </pkgmetadata>
