@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ inherit haskell-cabal
 
 DESCRIPTION="multi-line string / here document using QuasiQuotes"
 HOMEPAGE="https://hackage.haskell.org/package/heredoc"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0/${PV}"
@@ -20,8 +19,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:="
 
 src_prepare() {
-	default
-
-	sed -i '/License-File/d' heredoc.cabal \
-		|| die "sed failed"
+	haskell-cabal_src_prepare
+	sed -i '/License-File/d' heredoc.cabal || die "sed failed"
 }

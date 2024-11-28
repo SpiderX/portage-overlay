@@ -14,4 +14,7 @@
 	Create a string-literal expression from the string being quoted.
 	Newline literals are normalized to UNIX newlines (one '\n' character).
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">heredoc</remote-id>
+	</upstream>
 </pkgmetadata>
