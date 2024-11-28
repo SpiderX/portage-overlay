@@ -16,6 +16,7 @@
 	PostgreSQL backend server and to receive the results of these queries.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">postgresql-libpq</remote-id>
 		<remote-id type="github">haskellari/postgresql-libpq</remote-id>
 	</upstream>
 </pkgmetadata>
