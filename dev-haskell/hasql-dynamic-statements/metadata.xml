@@ -16,6 +16,7 @@
 	statement depends on the parameters, that you want to pass in.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hasql-dynamic-statements</remote-id>
 		<remote-id type="github">nikita-volkov/hasql-dynamic-statements</remote-id>
 	</upstream>
 </pkgmetadata>
