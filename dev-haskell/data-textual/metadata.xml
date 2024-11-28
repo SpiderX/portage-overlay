@@ -14,6 +14,7 @@
 	and its (human-friendly) textual representation.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">data-textual</remote-id>
 		<remote-id type="github">mvv/data-textual</remote-id>
 	</upstream>
 </pkgmetadata>
