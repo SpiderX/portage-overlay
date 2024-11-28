@@ -33,7 +33,9 @@ BDEPEND="dev-haskell/cabal:=
 		dev-haskell/aeson-pretty:=[profile?]
 		>=dev-haskell/base16-bytestring-1.0:=[profile?]
 		dev-haskell/crypton:=[profile?]
+		dev-haskell/network-run:=[profile?]
 		dev-haskell/text:=[profile?]
+		dev-haskell/typed-process:=[profile?]
 		dev-haskell/unordered-containers:=[profile?]
 		dev-haskell/vector:=[profile?] )"
 
@@ -43,9 +45,7 @@ CABAL_CHDEPS=(
 
 src_prepare() {
 	haskell-cabal_src_prepare
-
-	sed -i '/license-file/d' http2.cabal \
-		|| die "sed failed"
+	sed -i '/license-file/d' http2.cabal || die "sed failed"
 
 	# remove failed test
 	sed -i '/prevents attacks/,+8d' test/HTTP2/ServerSpec.hs \
