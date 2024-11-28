@@ -18,6 +18,7 @@
 	merge algorithms in O(n) time.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">Ranged-sets</remote-id>
 		<remote-id type="github">PaulJohnson/Ranged-sets</remote-id>
 	</upstream>
 </pkgmetadata>
