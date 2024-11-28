@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ inherit haskell-cabal
 
 DESCRIPTION="Swagger 2.0 data model"
 HOMEPAGE="https://github.com/GetShopTV/swagger2"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -24,14 +23,12 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/http-media:=[profile?]
 	dev-haskell/insert-ordered-containers:=[profile?]
 	dev-haskell/lens:=[profile?]
-	dev-haskell/mtl:=[profile?]
-	>=dev-haskell/network-2.6.3.5:=[profile?]
+	dev-haskell/network:=[profile?]
 	dev-haskell/optics-core:=[profile?]
 	dev-haskell/optics-th:=[profile?]
-	dev-haskell/quickcheck:2=[profile?]
+	dev-haskell/quickcheck:=[profile?]
 	dev-haskell/scientific:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/transformers-compat:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
 	dev-haskell/uuid-types:=[profile?]
 	dev-haskell/vector:=[profile?]
@@ -46,12 +43,9 @@ BDEPEND="dev-haskell/cabal:=
 		dev-haskell/quickcheck-instances:=[profile?]
 		dev-haskell/utf8-string:=[profile?] )"
 
+GHC_BOOTSTRAP_PACKAGES=( cabal-doctest )
+
 src_prepare() {
-	default
-
-	cabal_chdeps \
-		'optics-core               >=0.2      && <0.4' 'optics-core               >=0.2'
-
-	sed -i '/license-file/d' swagger2.cabal \
-		|| die "sed failed"
+	haskell-cabal_src_prepare
+	sed -i '/license-file/d' swagger2.cabal || die "sed failed"
 }

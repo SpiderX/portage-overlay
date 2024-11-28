@@ -14,6 +14,7 @@
 	Swagger 2.0 API specifications as well as manipulating them.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">swagger2</remote-id>
 		<remote-id type="github">GetShopTV/swagger2</remote-id>
 	</upstream>
 </pkgmetadata>
