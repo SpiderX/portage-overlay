@@ -1,45 +1,42 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+CABAL_PN="${PN^^}"
 
 inherit haskell-cabal
 
-MY_PN="${PN^^}"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="Deterministic random bit generator (aka PRNG)"
 HOMEPAGE="https://github.com/TomMD/DRBG"
-SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="test" # fails
+RESTRICT="test" # https://github.com/TomMD/DRBG/issues/7
 
 RDEPEND="dev-haskell/cereal:=[profile?]
 	dev-haskell/cipher-aes128:=[profile?]
 	dev-haskell/crypto-api:=[profile?]
 	dev-haskell/cryptohash-cryptoapi:=[profile?]
 	dev-haskell/entropy:=[profile?]
-	dev-haskell/mtl:=[profile?]
 	dev-haskell/parallel:=[profile?]
 	dev-haskell/prettyclass:=[profile?]
 	dev-haskell/tagged:=[profile?]
-	dev-haskell/sha:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
+BDEPEND="dev-haskell/cabal:=
 	test? ( dev-haskell/crypto-api-tests:=[profile?]
 		dev-haskell/hunit:=[profile?]
-		dev-haskell/quickcheck:2=[profile?]
+		dev-haskell/quickcheck:=[profile?]
 		dev-haskell/test-framework:=[profile?]
 		dev-haskell/test-framework-hunit:=[profile?] )"
 
-S="${WORKDIR}/${MY_P}"
+src_prepare() {
+	haskell-cabal_src_prepare
+	sed -i '/license-file/d' DRBG.cabal || die "sed failed"
+}
 
 src_configure() {
 	haskell-cabal_src_configure "$(cabal_flag test test)"

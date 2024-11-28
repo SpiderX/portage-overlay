@@ -14,6 +14,7 @@
 	(also known as RNG, PRNG) based HMACs, Hashes, and Ciphers.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">DRBG</remote-id>
 		<remote-id type="github">TomMD/DRBG</remote-id>
 	</upstream>
 </pkgmetadata>
