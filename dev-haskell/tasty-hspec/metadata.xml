@@ -16,6 +16,7 @@
 	as a tasty TestTree.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">tasty-hspec</remote-id>
 		<remote-id type="github">mitchellwrosen/tasty-hspec</remote-id>
 	</upstream>
 </pkgmetadata>
