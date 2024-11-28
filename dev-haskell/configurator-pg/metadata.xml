@@ -17,6 +17,7 @@
 	the configuration file format.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">configurator-pg</remote-id>
 		<remote-id type="github">robx/configurator-pg</remote-id>
 	</upstream>
 </pkgmetadata>

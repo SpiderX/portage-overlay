@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ inherit haskell-cabal
 
 DESCRIPTION="Reduced parser for configurator-ng config files"
 HOMEPAGE="https://github.com/robx/configurator-pg"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -22,13 +21,11 @@ RDEPEND="dev-haskell/megaparsec:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( >=dev-haskell/hunit-1.3.1.2:=[profile?]
+	test? ( dev-haskell/hunit:=[profile?]
 		dev-haskell/test-framework:=[profile?]
 		dev-haskell/test-framework-hunit:=[profile?] )"
 
 src_prepare() {
-	default
-
-	sed -i '/license-file/d' configurator-pg.cabal \
-		|| die "sed failed"
+	haskell-cabal_src_prepare
+	sed -i '/license-file/d' configurator-pg.cabal || die "sed failed"
 }
