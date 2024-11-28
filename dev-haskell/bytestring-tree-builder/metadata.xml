@@ -15,6 +15,7 @@
 	beating the standard builder by at least the factor of 4.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">bytestring-tree-builder</remote-id>
 		<remote-id type="github">nikita-volkov/bytestring-tree-builder</remote-id>
 	</upstream>
 </pkgmetadata>
