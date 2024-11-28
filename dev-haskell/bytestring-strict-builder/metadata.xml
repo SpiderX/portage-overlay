@@ -16,6 +16,7 @@
 	from the standard builder to "bytestring-strict-builder".
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">bytestring-strict-builder</remote-id>
 		<remote-id type="github">nikita-volkov/bytestring-strict-builder</remote-id>
 	</upstream>
 </pkgmetadata>
