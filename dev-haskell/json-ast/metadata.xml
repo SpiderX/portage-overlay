@@ -14,6 +14,7 @@
 	as a shared data-type by all kinds of JSON libraries.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">json-ast</remote-id>
 		<remote-id type="github">nikita-volkov/json-ast</remote-id>
 	</upstream>
 </pkgmetadata>
