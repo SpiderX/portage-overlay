@@ -15,6 +15,7 @@
 	in the database determine the API endpoints and operations.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">postgrest</remote-id>
 		<remote-id type="github">PostgREST/postgrest</remote-id>
 	</upstream>
 </pkgmetadata>
