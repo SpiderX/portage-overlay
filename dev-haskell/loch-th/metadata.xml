@@ -15,6 +15,7 @@
 	message includes the file name, line and column numbers.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">loch-th</remote-id>
 		<remote-id type="github">liskin/loch-th</remote-id>
 	</upstream>
 </pkgmetadata>
