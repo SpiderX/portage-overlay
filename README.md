@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1119](https://img.shields.io/badge/ebuild-1119-orange.svg)](https://img.shields.io/badge/ebuild-1119-orange.svg)
+[![Number of ebuilds: 1120](https://img.shields.io/badge/ebuild-1120-orange.svg)](https://img.shields.io/badge/ebuild-1120-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -288,6 +288,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[text-builder](https://github.com/nikita-volkov/text-builder) | Efficient strict text builder
 *   dev-haskell/[text-builder-dev](https://github.com/nikita-volkov/text-builder-dev) | Edge of developments for text-builder
 *   dev-haskell/[text-latin1](https://github.com/mvv/text-latin1) | Latin-1 (including ASCII) utility functions for Haskell
+*   dev-haskell/[text-metrics](https://github.com/mrkkrp/text-metrics) | Calculate various string metrics efficiently in Haskell
 *   dev-haskell/[text-printer](https://github.com/mvv/text-printer) | Abstract interace for Haskell text builders/printers
 *   dev-haskell/[time-manager](https://github.com/yesodweb/wai) | Scalable timer
 *   dev-haskell/[tz](https://github.com/nilcons/haskell-tz) | Library for time zone conversions
