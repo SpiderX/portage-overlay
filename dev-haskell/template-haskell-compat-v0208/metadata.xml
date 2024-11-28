@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a collection of functions that aims to help you
+	to write Template Haskell that is compatible with all versions of GHC
+	starting from 7.6. The oldest GHC serves as the common denominator here,
+	so the newer functionality is avoided here.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">template-haskell-compat-v0208</remote-id>
+		<remote-id type="github">nikita-volkov/template-haskell-compat-v0208</remote-id>
+	</upstream>
+</pkgmetadata>
