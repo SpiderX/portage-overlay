@@ -15,6 +15,7 @@
 	for type inference.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">type-hint</remote-id>
 		<remote-id type="github">mvv/type-hint</remote-id>
 	</upstream>
 </pkgmetadata>
