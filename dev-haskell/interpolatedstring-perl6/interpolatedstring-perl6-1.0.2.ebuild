@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,6 @@ inherit haskell-cabal
 
 DESCRIPTION="QuasiQuoter for Perl6 style multi-line interpolated"
 HOMEPAGE="https://github.com/audreyt/interpolatedstring-perl6"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0/${PV}"
@@ -22,8 +21,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:="
 
 src_prepare() {
-	default
-
+	haskell-cabal_src_prepare
 	sed -i '/license-file/d' interpolatedstring-perl6.cabal \
 		|| die "sed failed"
 }
