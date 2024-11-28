@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides an implementation of AES and common modes of operation.
+	It borrows Hanquez C AES code but is unique due to including compile-time
+	detection of NI compiler support, a slightly more functional interface for
+	GCM operations, exposure of Ptr based operations via the .Internal module,
+	and build-in crypto-api support.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">cipher-aes128</remote-id>
+		<remote-id type="github">TomMD/cipher-aes128</remote-id>
+	</upstream>
+</pkgmetadata>
