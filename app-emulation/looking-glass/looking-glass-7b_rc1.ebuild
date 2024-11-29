@@ -50,6 +50,8 @@ BDEPEND="virtual/pkgconfig
 	iso? ( app-cdr/cdrtools )
 	wayland? ( dev-util/wayland-scanner )"
 
+PATCHES=( "${FILESDIR}/${P}-kernel-6.10.patch" )
+
 CONFIG_CHECK="~UIO"
 
 src_unpack() {
