@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,14 +6,13 @@ EAPI=8
 inherit pax-utils readme.gentoo-r1 systemd tmpfiles
 
 QA_PREBUILT="usr/bin/rslsync"
-BASE_URI="https://download-cdn.resilio.com/stable/linux-@arch@/${PN}_@arch@.tar.gz"
+BASE_URI="https://download-cdn.resilio.com/stable/linux/@arch@/0/${PN}_@arch@.tar.gz"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://www.resilio.com"
 SRC_URI="amd64? ( ${BASE_URI//@arch@/x64} )
-	arm? ( ${BASE_URI//@arch@/armhf} )
-	arm64? ( ${BASE_URI//@arch@/arm64} )
-	x86? ( ${BASE_URI//@arch@/i386} )"
+	arm64? ( ${BASE_URI//@arch@/arm64} )"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -23,8 +22,6 @@ RESTRICT="bindist mirror"
 RDEPEND="acct-group/rslsync
 	acct-user/rslsync
 	virtual/libcrypt:="
-
-S="${WORKDIR}"
 
 DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
 Default metadata path is /var/lib/resilio-sync/.sync\\n
