@@ -1,19 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 EGIT_REPO_URI="https://gitlab.com/luciocarreras/sayonara-player.git"
 
-inherit cmake git-r3 xdg
+inherit cmake git-r3 virtualx xdg
 
 DESCRIPTION="Small, clear and fast Qt-based audio player"
 HOMEPAGE="https://sayonara-player.com"
-SRC_URI=""
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -49,12 +47,14 @@ src_prepare() {
 		-e '/install(FILES/s/sayonara-query.1.gz/sayonara-query.1/' \
 		resources/CMakeLists.txt || die "sed failed for resources/CMakeLists.txt"
 
-	# Remove failed tests
-	sed -i  -e '/new_test(Covers\/CoverLocationTest.cpp)/d' \
-		-e '/new_test(Tagging\/CoverTest.cpp  Tagging\/AbstractTaggingTest.cpp)/d' \
-		-e '/new_test(Tagging\/EditorTest.cpp)/d' \
-		-e '/new_test(Util\/StandardPathTest.cpp)/d' \
-		test/CMakeLists.txt || die "sed failed for test/CMakeLists.txt"
+	# remove tests with temp path failed in sandbox
+	sed -i  -e '/testTempPath/,+5d' \
+		-e '/coverTempDirectory/d' \
+		test/Util/StandardPathTest.cpp || die "sed failed for StandardPathTest.cpp"
+
+	# remove deprecated category
+	sed -i '/Categories/s|Application;||' resources/com.sayonara-player.Sayonara.desktop \
+		|| die "sed failed for com.sayonara-player.Sayonara.desktop"
 
 	cmake_src_prepare
 }
@@ -66,4 +66,8 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_src_test
 }

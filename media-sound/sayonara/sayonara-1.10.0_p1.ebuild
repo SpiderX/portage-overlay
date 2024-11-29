@@ -1,17 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake virtualx xdg
 
 MY_PN="${PN}-player"
-MY_PV="${PV/_/-}"
+MY_PV="${PV/_p/-stable}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Small, clear and fast Qt-based audio player"
 HOMEPAGE="https://sayonara-player.com"
 SRC_URI="https://gitlab.com/luciocarreras/${MY_PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -43,8 +44,6 @@ BDEPEND="dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )"
 
-S="${WORKDIR}/${MY_P}"
-
 src_prepare() {
 	# wrt 709450
 	sed -i  -e '/execute_process(COMMAND gzip/d' \
@@ -53,14 +52,12 @@ src_prepare() {
 		-e '/install(FILES/s/sayonara-query.1.gz/sayonara-query.1/' \
 		resources/CMakeLists.txt || die "sed failed for resources/CMakeLists.txt"
 
-	# Remove failed tests
-	sed -i  -e '/new_test(Covers\/CoverLocationTest.cpp)/d' \
-		-e '/new_test(Tagging\/CoverTest.cpp  Tagging\/AbstractTaggingTest.cpp)/d' \
-		-e '/new_test(Tagging\/EditorTest.cpp)/d' \
-		-e '/new_test(Util\/StandardPathTest.cpp)/d' \
-		test/CMakeLists.txt || die "sed failed for test/CMakeLists.txt"
+	# remove tests with temp path failed in sandbox
+	sed -i  -e '/testTempPath/,+5d' \
+		-e '/coverTempDirectory/d' \
+		test/Util/StandardPathTest.cpp || die "sed failed for StandardPathTest.cpp"
 
-	# Remove deprecated category
+	# remove deprecated category
 	sed -i '/Categories/s|Application;||' resources/com.sayonara-player.Sayonara.desktop \
 		|| die "sed failed for com.sayonara-player.Sayonara.desktop"
 
@@ -74,4 +71,8 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_src_test
 }
