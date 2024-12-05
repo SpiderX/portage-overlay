@@ -14,8 +14,9 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-db/postgresql:=
+RDEPEND="dev-db/postgresql:*
 	dev-haskell/postgresql-libpq-configure
+	dev-haskell/postgresql-libpq-pkgconfig
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=[profile?]
@@ -34,7 +35,7 @@ src_prepare() {
 }
 
 src_configure() {
-	haskell-cabal_src_configure --flag=-use-pkg-config
+	haskell-cabal_src_configure --flag=use-pkg-config
 }
 
 src_test() {
