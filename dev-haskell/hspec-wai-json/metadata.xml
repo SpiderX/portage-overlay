@@ -14,6 +14,7 @@
 	Helpers to test WAI application with Hspec (Testing Framework for Haskell)
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">hspec-wai-json</remote-id>
 		<remote-id type="github">hspec/hspec-wai</remote-id>
 	</upstream>
 </pkgmetadata>

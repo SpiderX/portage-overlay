@@ -1,15 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+CABAL_HACKAGE_REVISION=1
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
 
 DESCRIPTION="Testing JSON APIs with hspec-wai"
 HOMEPAGE="https://github.com/hspec/hspec-wai"
-SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
@@ -26,11 +26,6 @@ BDEPEND="dev-haskell/cabal:=
 		dev-haskell/hspec-wai:=[profile?] )"
 
 src_prepare() {
-	default
-
-	cabal_chdeps \
-		'hspec-wai ==0.11.0' 'hspec-wai >=0.10.0'
-
-	sed -i '/license-file/d' hspec-wai-json.cabal \
-		|| die "sed failed"
+	haskell-cabal_src_prepare
+	sed -i '/license-file/d' hspec-wai-json.cabal || die "sed failed"
 }
