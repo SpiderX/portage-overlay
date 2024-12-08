@@ -57,6 +57,7 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/mtdev
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	sys-process/numactl[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	x11-libs/libdrm[${MULTILIB_USEDEP}]
