@@ -18,6 +18,6 @@
 		<flag name="chromium">Install plugin for <pkg>www-client/chromium</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">iamadamdev/bypass-paywalls-chrome</remote-id>
+		<remote-id type="github">bpc-clone/bypass-paywalls-chrome-clean</remote-id>
 	</upstream>
 </pkgmetadata>
