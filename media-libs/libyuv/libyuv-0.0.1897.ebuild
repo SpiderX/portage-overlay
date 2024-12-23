@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,8 @@ CMAKE_IN_SOURCE_BUILD="1"
 
 inherit cmake edo
 
-COMMIT="04821d1e7d60845525e8db55c7bcd41ef5be9406"
+#COMMIT="04821d1e7d60845525e8db55c7bcd41ef5be9406"
+COMMIT="a8e59d207483f75b87dd5fc670e937672cdf5776"
 # Version bump :
 # The stable libyuv version follows the chromium browser:
 # https://chromereleases.googleblog.com/search/label/Desktop%20Update
