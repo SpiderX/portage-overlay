@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1126](https://img.shields.io/badge/ebuild-1126-orange.svg)](https://img.shields.io/badge/ebuild-1126-orange.svg)
+[![Number of ebuilds: 1127](https://img.shields.io/badge/ebuild-1127-orange.svg)](https://img.shields.io/badge/ebuild-1127-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -146,6 +146,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[gron](https://github.com/tomnomnom/gron) | Make JSON greppable
 *   app-misc/[jshon](http://kmkeen.com/jshon/) | JSON parser designed for maximum convenience within the shell
 *   app-misc/[jsqry-cli2-bin](https://github.com/jsqry/jsqry-cli2) | CLI tool (similar to jq) to query JSON using sane DSL
+*   app-misc/[kando-bin](https://github.com/kando-menu/kando) | A pie menu for the desktop
 *   app-misc/[mop](https://github.com/mop-tracker/mop) | Stock market tracker for hackers
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/pet.svg?header=)](https://repology.org/project/pet/versions) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
 *   app-misc/[topfew](https://github.com/timbray/topfew) | Finds most often fields in a stream of records
