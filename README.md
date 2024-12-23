@@ -1066,7 +1066,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-video/[haruna](https://invent.kde.org/multimedia/haruna) | Video player built with Qt/QML on top of libmpv
 *   media-video/[qwinff](https://github.com/qwinff/qwinff) | Qt GUI Frontend for FFmpeg
 *   media-video/[rtsp-simple-server](https://github.com/aler9/rtsp-simple-server) | RTSP server and RTSP proxy to read, publish and proxy media stream
-*   net-analyzer/[bandwhich](https://github.com/imsnif/bandwhich) | Network utilization by process, connection and hostname
 *   net-analyzer/[dnsdiag](https://github.com/farrokhi/dnsdiag) | DNS Measurement, Troubleshooting and Security Auditing Toolset
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/goaccess.svg?header=)](https://repology.org/project/goaccess/versions) net-analyzer/[goaccess](https://goaccess.io) | A real-time web log analyzer and interactive viewer in a terminal
 *   net-analyzer/[gping](https://github.com/orf/gping) | Ping, but with a graph
@@ -1192,7 +1191,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   www-apps/[netbox](https://github.com/netbox-community/netbox) | IP address and data center infrastructure management tool
 *   www-apps/[tinyfilemanager](https://github.com/prasathmani/tinyfilemanager) | Single-file PHP file manager
 *   www-apps/[webui-aria2](https://github.com/ziahamza/webui-aria2) | The worlds best and hottest interface to interact with aria2
-*   www-plugins/[bypass-paywalls](https://github.com/iamadamdev/bypass-paywalls-chrome) | Bypass Paywalls browser extension
+*   www-plugins/[bypass-paywalls](https://gitflic.ru/project/magnolia1234/bypass-paywalls-chrome-clean) | Bypass Paywalls browser extension
 *   www-plugins/[chrome-token-signing](https://github.com/open-eid/chrome-token-signing) | Native client and extension for signing with your eID on the web
 *   www-plugins/[eusw](https://iit.com.ua) | IIT End User CA-1 browser extension
 *   www-plugins/[vdhcoapp-bin](https://github.com/aclap-dev/vdhcoapp) | Companion application for Video DownloadHelper browser add-on
