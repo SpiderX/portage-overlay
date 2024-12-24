@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1139](https://img.shields.io/badge/ebuild-1139-orange.svg)](https://img.shields.io/badge/ebuild-1139-orange.svg)
+[![Number of ebuilds: 1140](https://img.shields.io/badge/ebuild-1140-orange.svg)](https://img.shields.io/badge/ebuild-1140-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -160,6 +160,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-net-speed](https://github.com/tmux-plugins/tmux-net-speed) | Tmux plugin to monitor upload and download speed
 *   app-misc/[tmux-newsboat](https://github.com/tmux-plugins/tmux-newsboat) | Display newsboat counters in tmux status line
 *   app-misc/[tmux-online-status](https://github.com/tmux-plugins/tmux-online-status) | Tmux plugin that displays online status
+*   app-misc/[tmux-open](https://github.com/tmux-plugins/tmux-open) | Tmux key bindings for quick opening of file or url
 *   app-misc/[topfew](https://github.com/timbray/topfew) | Finds most often fields in a stream of records
 *   app-misc/[up](https://github.com/akavel/up) | Tool for writing Linux pipes with instant live preview
 *   app-misc/[xsv](https://github.com/BurntSushi/xsv) | A fast CSV command line toolkit
