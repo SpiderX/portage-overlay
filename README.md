@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1141](https://img.shields.io/badge/ebuild-1141-orange.svg)](https://img.shields.io/badge/ebuild-1141-orange.svg)
+[![Number of ebuilds: 1142](https://img.shields.io/badge/ebuild-1142-orange.svg)](https://img.shields.io/badge/ebuild-1142-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -162,6 +162,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-online-status](https://github.com/tmux-plugins/tmux-online-status) | Tmux plugin that displays online status
 *   app-misc/[tmux-open](https://github.com/tmux-plugins/tmux-open) | Tmux key bindings for quick opening of file or url
 *   app-misc/[tmux-pain-control](https://github.com/tmux-plugins/tmux-pain-control) | Standard pane key-bindings for tmux
+*   app-misc/[tmux-prefix-highlight](https://github.com/tmux-plugins/tmux-prefix-highlight) | Tmux plugin for highlights by tmux prefix key
 *   app-misc/[topfew](https://github.com/timbray/topfew) | Finds most often fields in a stream of records
 *   app-misc/[up](https://github.com/akavel/up) | Tool for writing Linux pipes with instant live preview
 *   app-misc/[xsv](https://github.com/BurntSushi/xsv) | A fast CSV command line toolkit
