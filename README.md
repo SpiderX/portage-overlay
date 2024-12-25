@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1151](https://img.shields.io/badge/ebuild-1151-orange.svg)](https://img.shields.io/badge/ebuild-1151-orange.svg)
+[![Number of ebuilds: 1152](https://img.shields.io/badge/ebuild-1152-orange.svg)](https://img.shields.io/badge/ebuild-1152-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -150,6 +150,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[kando-bin](https://github.com/kando-menu/kando) | A pie menu for the desktop
 *   app-misc/[mop](https://github.com/mop-tracker/mop) | Stock market tracker for hackers
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/pet.svg?header=)](https://repology.org/project/pet/versions) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
+*   app-misc/[tmux-autoreload](https://github.com/b0o/tmux-autoreload) | Automatically reload your tmux config file on change
 *   app-misc/[tmux-battery](https://github.com/tmux-plugins/tmux-battery) | Plug and play battery percentage and icon indicator for Tmux
 *   app-misc/[tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) | Continuous saving of tmux environment
 *   app-misc/[tmux-copycat](https://github.com/tmux-plugins/tmux-copycat) | A plugin that enhances tmux search
