@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1152](https://img.shields.io/badge/ebuild-1152-orange.svg)](https://img.shields.io/badge/ebuild-1152-orange.svg)
+[![Number of ebuilds: 1153](https://img.shields.io/badge/ebuild-1153-orange.svg)](https://img.shields.io/badge/ebuild-1153-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -158,6 +158,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-cpu](https://github.com/tmux-plugins/tmux-cpu) | Plug and play cpu percentage and icon indicator for Tmux
 *   app-misc/[tmux-fastcopy](https://github.com/abhinav/tmux-fastcopy) | Easymotion-style text copying for tmux
 *   app-misc/[tmux-fpp](https://github.com/tmux-plugins/tmux-fpp) | Quickly open any path on terminal window in editor
+*   app-misc/[tmux-git-autofetch](https://github.com/thepante/tmux-git-autofetch) | Automatically fetches current opened git repositories
 *   app-misc/[tmux-logging](https://github.com/tmux-plugins/tmux-logging) | Easy logging and screen capturing for Tmux
 *   app-misc/[tmux-maildir-counter](https://github.com/tmux-plugins/tmux-maildir-counter) | Plugin that counts files on a specific mail directory
 *   app-misc/[tmux-net-speed](https://github.com/tmux-plugins/tmux-net-speed) | Tmux plugin to monitor upload and download speed
