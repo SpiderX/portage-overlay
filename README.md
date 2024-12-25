@@ -1046,6 +1046,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[latte-indicator-win7](https://github.com/psifidotos/latte-indicator-win7) | Windows 7 style indicator for Latte Dock
 *   kde-misc/[latte_slideshow_wallpaper](https://github.com/psifidotos/latte_slideshow_wallpaper) | Plasma 5 Wallpaper plugin that informs Latte about background
 *   kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
+*   kde-misc/[lightly](https://github.com/xuzhao9/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[paneltransparencybutton](https://github.com/psifidotos/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
 *   kde-misc/[plasma-6-power-usage-widget](https://github.com/magillos/Plasma-6-power-usage-widget) | Plasma 6 compatibile widget showing power usage
 *   kde-misc/[plasma-applet-ambientnoise](https://github.com//plasma-applet-ambientnoise) | Plasma widget for play ambient noise
