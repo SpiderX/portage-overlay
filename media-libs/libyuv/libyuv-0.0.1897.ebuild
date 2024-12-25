@@ -7,7 +7,6 @@ CMAKE_IN_SOURCE_BUILD="1"
 
 inherit cmake edo
 
-#COMMIT="04821d1e7d60845525e8db55c7bcd41ef5be9406"
 COMMIT="a8e59d207483f75b87dd5fc670e937672cdf5776"
 # Version bump :
 # The stable libyuv version follows the chromium browser:
@@ -17,11 +16,12 @@ COMMIT="a8e59d207483f75b87dd5fc670e937672cdf5776"
 #     -> 'src/third_party/libyuv': '6afd9becdf58822b1da6770598d8597c583ccfad'
 # https://chromium.googlesource.com/libyuv/libyuv/+/6afd9becdf58822b1da6770598d8597c583ccfad/include/libyuv/version.h
 #  -> #define LIBYUV_VERSION 1822
+# original: SRC_URI="https://chromium.googlesource.com/${PN}/${PN}.git/+archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Library for freeswitch yuv graphics manipulation"
 HOMEPAGE="https://chromium.googlesource.com/libyuv/libyuv"
-SRC_URI="https://chromium.googlesource.com/${PN}/${PN}.git/+archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/"
+SRC_URI="https://github.com/lemenkov/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"

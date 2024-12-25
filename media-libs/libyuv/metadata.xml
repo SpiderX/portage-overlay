@@ -14,4 +14,7 @@
 	functionality ( prepare content for compression, with point, bilinear or
 	box filter, convert to YUV from webcam formats, etc.).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">lemenkov/libyuv</remote-id>
+	</upstream>
 </pkgmetadata>
