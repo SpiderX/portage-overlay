@@ -22,7 +22,7 @@ commitizen:
       acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|\
       forensics|metrics|misc|office|shells|text)|dev-(cpp|db|haskell|libs|lisp|ml|\
       php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
-      net-(analyzer|dns|firewall|ftp|im|libs|misc|p2p|voip|vpn)|\
+      net-(analyzer|dns|firewall|ftp|im|libs|mail|misc|p2p|voip|vpn)|\
       sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|plugins|\
       servers)|x11-misc)\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
     info: |
@@ -111,6 +111,7 @@ commitizen:
           net-ftp: "file transfer protocol software"
           net-im: "instant messaging software"
           net-libs: "libraries that are network-related"
+          net-mail: "various email-related utilities"
           net-misc: "miscellaneous networking tools and utilities"
           net-p2p: "peer-to-peer networking applications"
           net-voip: "packages related to Voice-over-IP"
@@ -165,6 +166,7 @@ commitizen:
           - net-ftp
           - net-im
           - net-libs
+          - net-mail
           - net-misc
           - net-p2p
           - net-voip
