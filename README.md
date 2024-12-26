@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1153](https://img.shields.io/badge/ebuild-1153-orange.svg)](https://img.shields.io/badge/ebuild-1153-orange.svg)
+[![Number of ebuilds: 1154](https://img.shields.io/badge/ebuild-1154-orange.svg)](https://img.shields.io/badge/ebuild-1154-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1126,6 +1126,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-libs/[bctoolbox](https://gitlab.linphone.org/BC/public/bctoolbox) | Utilities library used by Belledonne Communications softwares
 *   net-libs/[bzrtp](https://gitlab.linphone.org/BC/public/bzrtp) | Media Path Key Agreement for Unicast Secure RTP
 *   net-libs/[ortp](https://gitlab.linphone.org/BC/public/ortp) | Open Real-time Transport Protocol (RTP, RFC3550) stack
+*   net-mail/[mailcheck](https://mailcheck.sourceforge.net) | Check multiple mailboxes/maildirs for mail from the command line
 *   net-misc/[AdGuardHome-bin](https://github.com/AdguardTeam/AdGuardHome) | Network-wide ads & trackers blocking DNS server
 *   net-misc/[amazon-workspaces-bin](https://clients.amazonworkspaces.com) | Amazon Workspace Client
 *   net-misc/[awscurl](https://github.com/okigan/awscurl) | Make signed requests to AWS API

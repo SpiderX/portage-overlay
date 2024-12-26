@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	Mailcheck is a simple, configurable tool that allows multiple mailboxes
+	to be checked for the existence of new mail messages. It supports both
+	mbox and maildir-style mailboxes for compatibility with most mail
+	transport agents. It also supports remote POP3 and IMAP mailboxes.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">mailcheck</remote-id>
+	</upstream>
+</pkgmetadata>
