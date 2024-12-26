@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1158](https://img.shields.io/badge/ebuild-1158-orange.svg)](https://img.shields.io/badge/ebuild-1158-orange.svg)
+[![Number of ebuilds: 1159](https://img.shields.io/badge/ebuild-1159-orange.svg)](https://img.shields.io/badge/ebuild-1159-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -171,6 +171,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-open](https://github.com/tmux-plugins/tmux-open) | Tmux key bindings for quick opening of file or url
 *   app-misc/[tmux-pain-control](https://github.com/tmux-plugins/tmux-pain-control) | Standard pane key-bindings for tmux
 *   app-misc/[tmux-plugin-manager](https://github.com/tmux-plugins/tpm) | Tmux Plugin Manager
+*   app-misc/[tmux-powerline](https://github.com/erikw/tmux-powerline) | A hackable status bar for tmux
 *   app-misc/[tmux-prefix-highlight](https://github.com/tmux-plugins/tmux-prefix-highlight) | Tmux plugin for highlights by tmux prefix key
 *   app-misc/[tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) | Persists tmux environment across system restarts
 *   app-misc/[tmux-sensible](https://github.com/tmux-plugins/tmux-sensible) | Basic tmux settings everyone can agree on
