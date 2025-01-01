@@ -14,6 +14,9 @@
 	consisting of segments. It's easily extensible with custom segments
 	and themes.
 	</longdescription>
+	<use>
+		<flag name="mpd">Enable support for the Music Player Daemon</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">erikw/tmux-powerline</remote-id>
 	</upstream>

@@ -57,6 +57,9 @@ src_install() {
 		/usr/share/tmux-plugins/tmux-powerline/segments/{vcs_others,vcs_revision,vcs_staged,wan_ip}.sh \
 		/usr/share/tmux-plugins/tmux-powerline/segments/{weather,xkb_layout}.sh \
 		/usr/share/tmux-plugins/tmux-powerline/segments/np_pithos.py \
+		/usr/share/tmux-plugins/tmux-powerline/color_palette.sh \
+		/usr/share/tmux-plugins/tmux-powerline/generate_rc.sh \
+		/usr/share/tmux-plugins/tmux-powerline/{mute_,}powerline.sh \
 		/usr/share/tmux-plugins/tmux-powerline/main.tmux
 
 	if use mpd ; then
