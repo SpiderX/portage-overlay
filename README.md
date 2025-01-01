@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1160](https://img.shields.io/badge/ebuild-1160-orange.svg)](https://img.shields.io/badge/ebuild-1160-orange.svg)
+[![Number of ebuilds: 1161](https://img.shields.io/badge/ebuild-1161-orange.svg)](https://img.shields.io/badge/ebuild-1161-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -156,6 +156,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-copycat](https://github.com/tmux-plugins/tmux-copycat) | A plugin that enhances tmux search
 *   app-misc/[tmux-cowboy](https://github.com/tmux-plugins/tmux-cowboy) | Kill hanging processes fast inside tmux pane
 *   app-misc/[tmux-cpu](https://github.com/tmux-plugins/tmux-cpu) | Plug and play cpu percentage and icon indicator for Tmux
+*   app-misc/[tmux-df](https://github.com/tassaron/tmux-df) | Tmux plugin to show disk space in the statusbar
 *   app-misc/[tmux-fastcopy](https://github.com/abhinav/tmux-fastcopy) | Easymotion-style text copying for tmux
 *   app-misc/[tmux-fpp](https://github.com/tmux-plugins/tmux-fpp) | Quickly open any path on terminal window in editor
 *   app-misc/[tmux-fzf](https://github.com/sainnhe/tmux-fzf) | Use fzf to manage your tmux work environment
