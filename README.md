@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1161](https://img.shields.io/badge/ebuild-1161-orange.svg)](https://img.shields.io/badge/ebuild-1161-orange.svg)
+[![Number of ebuilds: 1162](https://img.shields.io/badge/ebuild-1162-orange.svg)](https://img.shields.io/badge/ebuild-1162-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -178,6 +178,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-sensible](https://github.com/tmux-plugins/tmux-sensible) | Basic tmux settings everyone can agree on
 *   app-misc/[tmux-sessionist](https://github.com/tmux-plugins/tmux-sessionist) | Lightweight tmux utils for manipulating sessions
 *   app-misc/[tmux-sidebar](https://github.com/tmux-plugins/tmux-sessionist) | A sidebar with the directory tree for tmux
+*   app-misc/[tmux-suspend](https://github.com/MunifTanjim/tmux-suspend) | Suspend local tmux session
 *   app-misc/[tmux-urlview](https://github.com/tmux-plugins/tmux-urlview) | Quickly open any url in tmux pane
 *   app-misc/[tmux-yank](https://github.com/tmux-plugins/tmux-yank) | Tmux plugin for copying to system clipboard
 *   app-misc/[topfew](https://github.com/timbray/topfew) | Finds most often fields in a stream of records
