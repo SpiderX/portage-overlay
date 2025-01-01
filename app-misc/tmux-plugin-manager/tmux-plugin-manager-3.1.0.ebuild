@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo
+inherit edo readme.gentoo-r1
 
 MY_PN="tpm"
 MY_P="${MY_PN}-${PV}"
@@ -26,6 +26,10 @@ RDEPEND="app-misc/tmux
 	dev-vcs/git"
 BDEPEND="test? ( dev-tcltk/expect )"
 
+DOC_CONTENTS="Add the following into .tmux.conf:\\n
+set-environment -g TMUX_PLUGIN_MANAGER_PATH '/usr/share/tmux-plugins'\\n
+to install plugins via portage and manage them via tpm."
+
 src_prepare() {
 	default
 
@@ -47,4 +51,9 @@ src_install() {
 		/usr/share/tmux-plugin-manager/scripts/{clean,install,source}_plugins.sh \
 		/usr/share/tmux-plugin-manager/scripts/update_plugin{,_prompt_handler}.sh \
 		/usr/share/tmux-plugin-manager/tpm
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
