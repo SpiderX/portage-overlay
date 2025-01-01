@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1165](https://img.shields.io/badge/ebuild-1165-orange.svg)](https://img.shields.io/badge/ebuild-1165-orange.svg)
+[![Number of ebuilds: 1166](https://img.shields.io/badge/ebuild-1166-orange.svg)](https://img.shields.io/badge/ebuild-1166-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -170,6 +170,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-nerd-font-window-name](https://github.com/joshmedeski/tmux-nerd-font-window-name) | Nerd Font icons for your tmux windows
 *   app-misc/[tmux-net-speed](https://github.com/tmux-plugins/tmux-net-speed) | Tmux plugin to monitor upload and download speed
 *   app-misc/[tmux-newsboat](https://github.com/tmux-plugins/tmux-newsboat) | Display newsboat counters in tmux status line
+*   app-misc/[tmux-notify](https://github.com/rickstaa/tmux-notify) | Tmux plugin to notify about finished processes
 *   app-misc/[tmux-online-status](https://github.com/tmux-plugins/tmux-online-status) | Tmux plugin that displays online status
 *   app-misc/[tmux-open](https://github.com/tmux-plugins/tmux-open) | Tmux key bindings for quick opening of file or url
 *   app-misc/[tmux-pain-control](https://github.com/tmux-plugins/tmux-pain-control) | Standard pane key-bindings for tmux
