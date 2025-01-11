@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 EGIT_REPO_URI="https://github.com/aws/${PN}.git"
 
 inherit distutils-r1 git-r3
@@ -44,6 +44,9 @@ BDEPEND="test? ( dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
+
+QA_PREBUILT="usr/lib/python3.12/site-packages/samcli/local/rapid/aws-lambda-rie-arm64
+	usr/lib/python3.12/site-packages/samcli/local/rapid/aws-lambda-rie-x86_64"
 
 distutils_enable_tests pytest
 
