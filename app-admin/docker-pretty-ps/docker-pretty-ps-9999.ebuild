@@ -1,21 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{10..13} python3_13t )
 EGIT_REPO_URI="https://github.com/politeauthority/${PN}.git"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="docker ps in colored and long output"
 HOMEPAGE="https://github.com/politeauthority/docker-pretty-ps"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 distutils_enable_tests pytest
 
