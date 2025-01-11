@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1166](https://img.shields.io/badge/ebuild-1166-orange.svg)](https://img.shields.io/badge/ebuild-1166-orange.svg)
+[![Number of ebuilds: 1167](https://img.shields.io/badge/ebuild-1167-orange.svg)](https://img.shields.io/badge/ebuild-1167-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -52,6 +52,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[awsls](https://github.com/jckuester/awsls) | A list command for AWS resources
 *   app-admin/[awsometag](https://github.com/mhausenblas/awsometag) | Simple command-line snippet manager
 *   app-admin/[awsume](https://github.com/trek10inc/awsume) | A utility for easily assuming AWS IAM roles from command line
+*   app-admin/[awsume-console-plugin](https://github.com/trek10inc/awsume-console-plugin) | Use assumed role to open AWS console in default browser
 *   app-admin/[awstaghelper](https://github.com/mpostument/awstaghelper) | AWS bulk tagging tool
 *   app-admin/[aws-vault](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
 *   app-admin/[azcopy](https://github.com/Azure/azure-storage-azcopy) | A command-line utility to manage Azure Storage accounts
