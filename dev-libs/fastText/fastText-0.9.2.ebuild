@@ -17,8 +17,9 @@ SRC_URI="https://github.com/facebookresearch/${PN}/archive/v${PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="python test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) test? ( python )"
 
 RDEPEND="python? ( ${PYTHON_DEPS}
 	dev-python/pybind11[${PYTHON_USEDEP}]

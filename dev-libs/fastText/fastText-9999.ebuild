@@ -16,8 +16,9 @@ HOMEPAGE="https://github.com/facebookresearch/fastText"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="python test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) test? ( python )"
 
 RDEPEND="python? ( ${PYTHON_DEPS}
 	dev-python/pybind11[${PYTHON_USEDEP}]
