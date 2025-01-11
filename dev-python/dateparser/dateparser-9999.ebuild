@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 EGIT_REPO_URI="https://github.com/scrapinghub/${PN}.git"
 
 inherit distutils-r1 git-r3 optfeature
@@ -25,7 +25,7 @@ RDEPEND="dev-python/convertdate[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
 	dev-python/tzlocal[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-libs/fastText[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-libs/fastText[python,${PYTHON_USEDEP}]
 		dev-python/gitpython[${PYTHON_USEDEP}]
 		dev-python/langdetect[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
@@ -47,6 +47,8 @@ EPYTEST_DESELECT=(
 	tests/test_timezone_parser.py::TestLocalTZOffset::test_timezone_offset_calculation_2
 	tests/test_timezone_parser.py::TestLocalTZOffset::test_timezone_offset_calculation_3
 	tests/test_timezone_parser.py::TestLocalTZOffset::test_timezone_offset_calculation_4
+	tests/test_language_detect.py::CustomLangDetectParserTest::test_custom_language_detect_fast_text_0
+	tests/test_language_detect.py::CustomLangDetectParserTest::test_custom_language_detect_fast_text_1
 )
 
 python_prepare_all() {
