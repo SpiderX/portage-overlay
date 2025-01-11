@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,12 @@ src_compile() {
 }
 
 src_test() {
-	GOFLAGS="-v -x -mod=vendor" ego test -work ./do/... ./pkg/... .
+	git init || die "git init failed"
+	git config user.email "you@example.com" || die "git mail config failed"
+	git config user.name "Your Name" || die "git user config failed"
+
+	GOFLAGS="-v -x -mod=vendor" ego test -work ./commands/... ./do/... \
+		./pkg/... ./internal/... .
 }
 
 src_install() {
