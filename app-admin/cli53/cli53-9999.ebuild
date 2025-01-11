@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,9 @@ inherit git-r3 go-module
 
 DESCRIPTION="Command line tool for Amazon Route 53"
 HOMEPAGE="https://github.com/barnybug/cli53"
-SRC_URI=""
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
 
 DOCS=( {CHANGELOG,README}.md )
 
