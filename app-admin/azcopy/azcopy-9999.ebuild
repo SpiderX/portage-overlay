@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,9 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A command-line utility to manage Azure Storage accounts"
 HOMEPAGE="https://github.com/Azure/azure-storage-azcopy"
-SRC_URI=""
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
 
 DOCS=( {ChangeLog,README}.md )
 
