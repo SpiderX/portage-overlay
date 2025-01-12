@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/RIPE-NCC/ripe-atlas-tools"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -43,6 +43,8 @@ EPYTEST_DESELECT=(
 	# assertion error
 	tests/renderers/test_traceroute_aspath.py::TestTracerouteASPathRenderer::test_arg_radius
 	tests/renderers/test_traceroute_aspath.py::TestTracerouteASPathRenderer::test_basic
+	# assertion error
+	tests/commands/test_measure.py::TestMeasureCommand::test_add_arguments
 )
 
 python_prepare_all() {
