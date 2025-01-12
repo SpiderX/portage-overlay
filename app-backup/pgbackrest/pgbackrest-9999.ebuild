@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,10 +9,8 @@ inherit git-r3
 
 DESCRIPTION="Reliable PostgreSQL Backup & Restore"
 HOMEPAGE="https://pgbackrest.org https://github.com/pgbackrest/pgbackrest"
-SRC_URI=""
 
 LICENSE="MIT"
-KEYWORDS=""
 SLOT="0"
 
 DEPEND="app-arch/lz4:=
