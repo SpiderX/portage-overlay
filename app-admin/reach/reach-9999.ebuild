@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,9 @@ inherit git-r3 go-module
 
 DESCRIPTION="A static network verification tool for AWS"
 HOMEPAGE="https://github.com/luhring/reach"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 RESTRICT="test" # wrong exit code
 
 src_unpack() {
