@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,14 @@ DESCRIPTION="Modern UI for Ansible"
 HOMEPAGE="https://github.com/ansible-semaphore/semaphore"
 SRC_URI="https://github.com/ansible-semaphore/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz
 	https://github.com/ansible-semaphore/${MY_PN}/releases/download/v${PV}/${MY_PN}_${PV}_linux_amd64.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="acct-user/semaphore"
-
-S="${WORKDIR}/${MY_P}"
+RDEPEND="acct-group/semaphore
+	acct-user/semaphore"
 
 QA_PREBUILT="usr/bin/semaphore"
 
