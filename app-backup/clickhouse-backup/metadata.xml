@@ -15,6 +15,6 @@
 	Atomic Database Engine and multi disks are supported.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">AlexAkulov/clickhouse-backup</remote-id>
+		<remote-id type="github">Altinity/clickhouse-backup</remote-id>
 	</upstream>
 </pkgmetadata>
