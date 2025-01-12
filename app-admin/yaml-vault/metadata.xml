@@ -15,6 +15,6 @@
 	a YAML file.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Jimdo/yaml-vault</remote-id>
+		<remote-id type="github">jimdo/yaml-vault</remote-id>
 	</upstream>
 </pkgmetadata>
