@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,9 @@ inherit git-r3 go-module
 
 DESCRIPTION="Fast, multi-purpose tool for AWS CloudWatch Logs"
 HOMEPAGE="https://github.com/TylerBrock/saw"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 DOCS=( {CHANGELOG,README}.md )
 

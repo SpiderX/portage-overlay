@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,11 @@ DESCRIPTION="Fast, multi-purpose tool for AWS CloudWatch Logs"
 HOMEPAGE="https://github.com/TylerBrock/saw"
 SRC_URI="https://github.com/TylerBrock/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz
 	https://github.com/SpiderX/portage-overlay/raw/deps/${P}-deps.tar.xz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 DOCS=( {CHANGELOG,README}.md )
 
