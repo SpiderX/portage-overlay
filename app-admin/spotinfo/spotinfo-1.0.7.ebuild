@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,8 +58,8 @@ SRC_URI="https://github.com/alexei-led/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar
 
 LICENSE="Apache-2.0 BSD-2 MIT"
 SLOT="0"
-IUSE="embed-data-files"
 KEYWORDS="~amd64"
+IUSE="embed-data-files"
 RESTRICT="test" #fail on pricingLazyLoad
 
 src_unpack() {
