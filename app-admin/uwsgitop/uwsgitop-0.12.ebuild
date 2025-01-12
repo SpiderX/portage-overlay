@@ -5,12 +5,12 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} python3_13t )
-EGIT_REPO_URI="https://github.com/xrmx/${PN}.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="uWSGI stats viewer"
 HOMEPAGE="https://github.com/xrmx/uwsgitop"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
