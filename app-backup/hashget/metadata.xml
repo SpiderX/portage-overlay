@@ -19,7 +19,7 @@
 	archive (leaving only very short meta-information about it).
 	Upon decompressing, hashget downloads these files, verifies hashsum
 	and places it on target system with same permissions, ownership,
-	atime and mtime. Hashget compression is lossless, based on 
+	atime and mtime. Hashget compression is lossless, based on
 	cryptographically strong SHA256 hashsum.
 	</longdescription>
 	<upstream>

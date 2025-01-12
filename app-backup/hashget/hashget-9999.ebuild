@@ -1,29 +1,25 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
 EGIT_REPO_URI="https://github.com/yaroslaff/${PN}.git"
 
 inherit distutils-r1 git-r3 systemd
 
 DESCRIPTION="Deduplication tool for archiving data with extremely high ratio"
 HOMEPAGE="https://github.com/yaroslaff/hashget"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE="test"
 RESTRICT="test" # requires infra to run
 
 RDEPEND="app-arch/patool[${PYTHON_USEDEP}]
 	dev-python/filelock[${PYTHON_USEDEP}]
 	dev-python/filetype[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
 
