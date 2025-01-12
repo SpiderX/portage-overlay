@@ -1,0 +1,199 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# shellcheck disable=SC2086
+
+EAPI=8
+
+CRATES="adler2@2.0.0
+	ahash@0.8.11
+	aho-corasick@1.1.3
+	android-tzdata@0.1.1
+	android_system_properties@0.1.5
+	anstream@0.6.15
+	anstyle-parse@0.2.5
+	anstyle-query@1.1.1
+	anstyle-wincon@3.0.4
+	anstyle@1.0.8
+	anyhow@1.0.86
+	argh@0.1.12
+	argh_derive@0.1.12
+	argh_shared@0.1.12
+	arrayvec@0.7.6
+	autocfg@1.3.0
+	base64@0.13.1
+	bet@1.0.4
+	bitflags@2.6.0
+	bumpalo@3.16.0
+	cc@1.1.14
+	cfg-if@1.0.0
+	cfg_aliases@0.2.1
+	chrono@0.4.38
+	clap-help@1.3.0
+	clap@4.5.16
+	clap_builder@4.5.15
+	clap_derive@4.5.13
+	clap_lex@0.7.2
+	cli-log@2.0.0
+	colorchoice@1.0.2
+	coolor@1.0.0
+	core-foundation-sys@0.8.7
+	crc32fast@1.4.2
+	crokey-proc_macros@1.1.0
+	crokey@1.1.0
+	crossbeam-channel@0.5.13
+	crossbeam-deque@0.8.5
+	crossbeam-epoch@0.9.18
+	crossbeam-queue@0.3.11
+	crossbeam-utils@0.8.20
+	crossbeam@0.8.4
+	crossterm@0.28.1
+	crossterm_winapi@0.9.1
+	csv-core@0.1.11
+	csv2svg@0.2.3
+	csv@1.3.0
+	directories@5.0.1
+	dirs-sys@0.4.1
+	either@1.13.0
+	errno@0.3.9
+	fallible-iterator@0.3.0
+	fallible-streaming-iterator@0.1.9
+	fastrand@2.1.0
+	file-size@1.0.3
+	flate2@1.0.32
+	form_urlencoded@1.2.1
+	getrandom@0.2.15
+	git2@0.19.0
+	glassbench@0.4.3
+	hashbrown@0.14.5
+	hashlink@0.9.1
+	have@0.1.1
+	heck@0.5.0
+	hermit-abi@0.3.9
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.60
+	idna@0.5.0
+	is_terminal_polyfill@1.70.1
+	itertools@0.13.0
+	itoa@1.0.11
+	jobserver@0.1.32
+	js-sys@0.3.70
+	lazy-regex-proc_macros@3.3.0
+	lazy-regex@3.3.0
+	lazy_static@1.5.0
+	libc@0.2.158
+	libgit2-sys@0.17.0+1.8.1
+	libredox@0.1.3
+	libsqlite3-sys@0.28.0
+	libz-sys@1.1.19
+	linux-raw-sys@0.4.14
+	lock_api@0.4.12
+	log@0.4.22
+	memchr@2.7.4
+	minimad@0.13.1
+	miniz_oxide@0.8.0
+	mio@1.0.2
+	nix@0.29.0
+	num-format@0.4.4
+	num-traits@0.2.19
+	once_cell@1.19.0
+	open@1.7.1
+	option-ext@0.2.0
+	parking_lot@0.12.3
+	parking_lot_core@0.9.10
+	pathdiff@0.2.1
+	percent-encoding@2.3.1
+	pkg-config@0.3.30
+	proc-macro2@1.0.86
+	proc-status@0.1.1
+	quote@1.0.37
+	redox_syscall@0.5.3
+	redox_users@0.4.6
+	regex-automata@0.4.7
+	regex-syntax@0.8.4
+	regex@1.10.6
+	rhit@2.0.3
+	rusqlite@0.31.0
+	rustix@0.38.34
+	ryu@1.0.18
+	scopeguard@1.2.0
+	serde@1.0.208
+	serde_derive@1.0.208
+	serde_json@1.0.125
+	shlex@1.3.0
+	signal-hook-mio@0.2.4
+	signal-hook-registry@1.4.2
+	signal-hook@0.3.17
+	smallvec@1.13.2
+	strict@0.2.0
+	strsim@0.11.1
+	svg@0.16.0
+	syn@1.0.109
+	syn@2.0.75
+	tempfile@3.12.0
+	termimad@0.30.0
+	terminal-light@1.5.0
+	thiserror-impl@1.0.63
+	thiserror@1.0.63
+	tinyvec@1.8.0
+	tinyvec_macros@0.1.1
+	unicode-bidi@0.3.15
+	unicode-ident@1.0.12
+	unicode-normalization@0.1.23
+	unicode-width@0.1.13
+	url@2.5.2
+	utf8parse@0.2.2
+	vcpkg@0.2.15
+	version_check@0.9.5
+	wasi@0.11.0+wasi-snapshot-preview1
+	wasm-bindgen-backend@0.2.93
+	wasm-bindgen-macro-support@0.2.93
+	wasm-bindgen-macro@0.2.93
+	wasm-bindgen-shared@0.2.93
+	wasm-bindgen@0.2.93
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
+	windows-core@0.52.0
+	windows-sys@0.48.0
+	windows-sys@0.52.0
+	windows-sys@0.59.0
+	windows-targets@0.48.5
+	windows-targets@0.52.6
+	windows_aarch64_gnullvm@0.48.5
+	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_msvc@0.48.5
+	windows_aarch64_msvc@0.52.6
+	windows_i686_gnu@0.48.5
+	windows_i686_gnu@0.52.6
+	windows_i686_gnullvm@0.52.6
+	windows_i686_msvc@0.48.5
+	windows_i686_msvc@0.52.6
+	windows_x86_64_gnu@0.48.5
+	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnullvm@0.48.5
+	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_msvc@0.48.5
+	windows_x86_64_msvc@0.52.6
+	xterm-query@0.4.1
+	zerocopy-derive@0.7.35
+	zerocopy@0.7.35"
+
+inherit cargo
+
+DESCRIPTION="A nginx log explorer"
+HOMEPAGE="https://github.com/Canop/rhit"
+SRC_URI="${CARGO_CRATE_URIS}"
+
+LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
+SLOT="0"
+KEYWORDS="~amd64"
+
+DOCS=( {CHANGELOG,README}.md )
+
+QA_PREBUILT="usr/bin/rhit"
+
+src_install() {
+	einstalldocs
+	cargo_src_install
+}
