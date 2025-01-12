@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,9 @@ inherit bash-completion-r1 edo git-r3 go-module
 
 DESCRIPTION="Gitlab bulk administration tool"
 HOMEPAGE="https://github.com/flant/glaball"
-SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 RESTRICT="test" # no tests
 
 src_compile() {
