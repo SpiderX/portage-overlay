@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,9 @@ inherit git-r3 go-module readme.gentoo-r1
 
 DESCRIPTION="Terraform VMware vCloud Director provider"
 HOMEPAGE="https://registry.terraform.io/providers/vmware/vcd/latest/docs"
-SRC_URI=""
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS=""
 RESTRICT="mirror test"
 
 RDEPEND="app-admin/terraform"
