@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit go-module
 
-COMMIT="6fd5337"
+COMMIT="be05115"
 
 DESCRIPTION="Lazier way to manage everything docker"
 HOMEPAGE="https://github.com/jesseduffield/lazydocker"
@@ -22,12 +22,11 @@ src_compile() {
 	LDFLAGS="-s -w -X main.version=${PV} -X \"main.date=${DATE}\"
 		-X main.buildSource=tarball -X main.commit=${COMMIT}"
 
-	GOFLAGS="-v -x -mod=vendor" \
-		go build -ldflags "${LDFLAGS}" -trimpath || die "build failed"
+	GOFLAGS="-v -x -mod=vendor" ego build -ldflags "${LDFLAGS}"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
