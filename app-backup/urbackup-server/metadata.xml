@@ -22,6 +22,7 @@
 	can be restored with a bootable CD or USB-Stick (bare metal restore).
 	</longdescription>
 	<use>
+		<flag name="crypt">Enables encrypted transfers over the Internet</flag>
 		<flag name="fuse">Enables mounting VHD containers via FUSE</flag>
 	</use>
 	<upstream>

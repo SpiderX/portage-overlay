@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,24 +9,21 @@ inherit autotools git-r3 readme.gentoo-r1 systemd
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://www.urbackup.org/"
-SRC_URI=""
 
 LICENSE="AGPL-3+"
-KEYWORDS=""
 SLOT="0"
-IUSE="curl debug hardened fuse zlib"
+IUSE="crypt curl debug hardened fuse zlib"
 
-DEPEND="acct-user/urbackup
+RDEPEND="acct-user/urbackup
+	acct-group/urbackup
 	app-arch/zstd:0=
 	dev-db/lmdb:0=
 	dev-db/sqlite:3
 	dev-lang/lua:5.4
-	dev-libs/crypto++:0=
+	crypt? ( dev-libs/crypto++:0= )
 	curl? ( net-misc/curl )
 	fuse? ( sys-fs/fuse:0 )
 	zlib? ( sys-libs/zlib:0= )"
-RDEPEND="${DEPEND}
-	app-admin/logrotate"
 
 DOC_CONTENTS="You may need to open the following ports in firewall:\\n
 55413/tcp, 55414/tcp, 55415/tcp, 35623/udp
@@ -35,15 +32,8 @@ Default web-gui URL is http://localhost:55414/\\n\\n"
 src_prepare() {
 	default
 
-	# Prepare files for server build
-	cp "${S}"/Makefile.am_server "${S}"/Makefile.am \
-		|| die "cp failed for Makefile.am_server"
-	cp "${S}"/configure.ac_server "${S}"/configure.ac \
-		|| die "cp failed for configure.ac_server"
-
-	# Change Windows path to /tmp and disable client autoupdate
-	sed -i  -e '/"backupfolder"/s|C:\\\\urbackup|/tmp|' \
-		-e '/download_client/s/true/false/' \
+	# Disable client autoupdate
+	sed -i  -e '/download_client/s/true/false/' \
 		-e '/autoupdate_clients/s/true/false/' \
 		urbackupserver/server_settings.cpp \
 		|| die "sed failed for server_settings.cpp"
@@ -58,18 +48,18 @@ src_prepare() {
 }
 
 src_configure() {
-	econf "$(use_with curl mail)" \
-		"$(use_enable debug assertions)" \
-		"$(use_with fuse mountvhd)" \
-		"$(use_with zlib)" \
-		"$(usex hardened --enable-fortify "")" \
+	econf --enable-packaging \
 		--disable-embedded-cryptopp \
-		--disable-embedded-zstd \
-		--enable-packaging \
-		--with-cryptopp \
 		--without-embedded-lmdb \
 		--without-embedded-lua \
-		--without-embedded-sqlite3
+		--without-embedded-sqlite3 \
+		--disable-embedded-zstd \
+		"$(use_enable debug assertions)" \
+		"$(use_enable hardened fortify)" \
+		"$(use_with crypt crypto)" \
+		"$(use_with curl mail)" \
+		"$(use_with fuse mountvhd)" \
+		"$(use_with zlib)"
 }
 
 src_install() {
