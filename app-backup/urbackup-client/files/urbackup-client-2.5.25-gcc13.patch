@@ -1,0 +1,15 @@
+diff --git a/blockalign_src/crc.cpp b/blockalign_src/crc.cpp
+index 188ef65..1f9a8e5 100644
+--- a/blockalign_src/crc.cpp
++++ b/blockalign_src/crc.cpp
+@@ -122,6 +122,7 @@
+ 
+ #if CRYPTOPP_BOOL_SSE4_INTRINSICS_AVAILABLE
+ #include <smmintrin.h>
++#include <cstdint>
+ #endif
+ 
+ #ifndef CRYPTOPP_MS_STYLE_INLINE_ASSEMBLY
+-- 
+2.41.0
+

@@ -1,23 +1,24 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 EGIT_REPO_URI="https://github.com/uroni/urbackup_backend.git"
+PLOCALES="cs da de es fa fr it nl pl pt_BR ru sk uk zh_CN zh_TW"
+PLOCALE_BACKUP="en"
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools git-r3 systemd wxwidgets
+inherit autotools git-r3 plocale systemd wxwidgets
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://www.urbackup.org/"
-SRC_URI=""
 
 LICENSE="AGPL-3+"
-KEYWORDS=""
 SLOT="0"
-IUSE="debug hardened nls X"
+IUSE="debug hardened nls X zlib zstd"
 
-RDEPEND="acct-user/urbackup
+RDEPEND="acct-group/urbackup
+	acct-user/urbackup
 	app-arch/zstd:=
 	dev-db/sqlite:3
 	dev-libs/crypto++:0=
@@ -28,6 +29,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}/${PN}"-2.5.25-gcc13.patch )
+
 src_prepare() {
 	default
 
@@ -37,24 +40,17 @@ src_prepare() {
 	cp "${S}"/configure.ac_client "${S}"/configure.ac \
 		|| die "cp failed for configure.ac_server"
 
-	# Remove key, version file for client autoupdate
-	sed -i  -e '/\/client\/data\/urbackup_ecdsa409k1.pub/d' \
-		-e 's|client/data/urbackup_ecdsa409k1.pub ||' \
-		-e '/\/client\/version.txt/d' \
-		-e 's|client/version.txt ||' \
-		-e '/\/client\/info.txt/d' \
-		-e 's|client/info.txt ||' \
-		Makefile.am || die "sed failed for Makefile.am"
-
 	eautoreconf
 }
 
 src_configure() {
-	econf "$(usex hardened --enable-fortify "")" \
-		"$(use_enable debug assertions)" \
-		"$(use_enable !X headless)" \
+	econf --disable-clientupdate \
 		--without-embedded-sqlite3 \
-		--disable-clientupdate
+		"$(use_enable debug assertions)" \
+		"$(use_enable hardened fortify)" \
+		"$(use_enable !X headless)" \
+		"$(use_with zlib)" \
+		"$(use_with zstd)"
 	use X && setup-wxwidgets
 }
 
