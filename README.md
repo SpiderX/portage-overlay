@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1166](https://img.shields.io/badge/ebuild-1166-orange.svg)](https://img.shields.io/badge/ebuild-1166-orange.svg)
+[![Number of ebuilds: 1165](https://img.shields.io/badge/ebuild-1165-orange.svg)](https://img.shields.io/badge/ebuild-1165-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -102,7 +102,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-backup/[clickhouse-backup](https://github.com/Altinity/clickhouse-backup) | Tool for easy ClickHouse backup and restore
 *   app-backup/[hashget](https://github.com/yaroslaff/hashget) | Deduplication tool for archiving data with extremely high ratio
 *   app-backup/[pgbackrest](https://pgbackrest.org) | Reliable PostgreSQL Backup & Restore
-*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/zbackup.svg?header=)](https://repology.org/project/zbackup/versions) app-backup/[zbackup](https://github.com/zbackup/zbackup) | A versatile deduplicating backup tool
 *   app-backup/[urbackup-client](https://www.urbackup.org/) | Client Server backup system
 *   app-backup/[urbackup-server](https://www.urbackup.org/) | Client Server backup system
 *   app-backup/[wal-g](https://github.com/wal-g/wal-g) | Archival restoration tool for databases
