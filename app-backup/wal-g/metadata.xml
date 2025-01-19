@@ -14,6 +14,7 @@
 	Redis, SQLServer, FoundationDB, etc.
 	</longdescription>
 	<use>
+		<flag name="etcd">Enable etcd support</flag>
 		<flag name="fdb">Enable FoundationDB support</flag>
 		<flag name="gp">Enable GreenplumDB support</flag>
 		<flag name="mongo">Enable MongoDB support</flag>

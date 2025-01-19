@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,19 +10,16 @@ inherit git-r3 go-module
 
 DESCRIPTION="Archival restoration tool for databases"
 HOMEPAGE="https://github.com/wal-g/wal-g"
-SRC_URI=""
 
 LICENSE="Apache-2.0 GPL-3+"
 SLOT="0"
-KEYWORDS=""
-IUSE="fdb lzo mongo mysql +postgres redis sodium"
-REQUIRED_USE="|| ( fdb mongo mysql postgres redis )"
+IUSE="brotli etcd fdb gp lzo mongo mysql +postgres redis sqlserver sodium"
+REQUIRED_USE="|| ( etcd fdb mongo mysql postgres redis )"
 RESTRICT="test" # fails
 
-DEPEND="app-arch/brotli:=
+RDEPEND="brotli? ( app-arch/brotli:= )
 	lzo? ( dev-libs/lzo:2 )
 	sodium? ( dev-libs/libsodium:= )"
-RDEPEND="${DEPEND}"
 
 src_unpack() {
 	git-r3_src_unpack
@@ -30,26 +27,28 @@ src_unpack() {
 }
 
 src_compile() {
+	COMMIT="$(git rev-parse --short HEAD)"
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
-	for db in fdb gp mongo mysql postgres redis sqlserver ; do
+	TAGS="$(usex brotli brotli '' '' '') $(usex lzo lzo '' '' '') $(usex sodium libsodium '' '' '')"
+	for db in etcd fdb gp mongo mysql postgres redis sqlserver ; do
 		if use "$db" ; then
 			if [ "$db" == "postgres" ] ; then db="pg" ; fi
-			go build -o wal-g-"$db" \
-				-tags "brotli $(usex lzo lzo '' '' '') $(usex sodium libsodium '' '' '')" \
+			ego build -o wal-g-"$db" -tags "${TAGS}" \
 				-ldflags "-X github.com/wal-g/wal-g/cmd/$db.walgVersion=${PV}
 					-X \"github.com/wal-g/wal-g/cmd/$db.buildDate=${DATE}\"
-					-X github.com/wal-g/wal-g/cmd/mongo.gitRevision=${COMMIT}" \
-				./main/"$db"/... || die "build failed for $db"
+					-X github.com/wal-g/wal-g/cmd/$db.gitRevision=${COMMIT}" \
+				./main/"$db"/...
 		fi
 	done
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
 	einstalldocs
+	use etcd && dobin wal-g-etcd
 	use fdb && dobin wal-g-fdb
 	use gp && dobin wal-g-gp
 	use mongo && dobin wal-g-mongo
