@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 EGIT_REPO_URI="https://github.com/magillos/${PN}.git"
 
-inherit ecm
+inherit ecm git-r3
 
 DESCRIPTION="Plasma 6 compatibile widget showing power usage"
 HOMEPAGE="https://github.com/magillos/Plasma-6-power-usage-widget"
