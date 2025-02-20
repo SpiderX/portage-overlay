@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1166](https://img.shields.io/badge/ebuild-1166-orange.svg)](https://img.shields.io/badge/ebuild-1166-orange.svg)
+[![Number of ebuilds: 1167](https://img.shields.io/badge/ebuild-1167-orange.svg)](https://img.shields.io/badge/ebuild-1167-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1057,6 +1057,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[latte_slideshow_wallpaper](https://github.com/psifidotos/latte_slideshow_wallpaper) | Plasma 5 Wallpaper plugin that informs Latte about background
 *   kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[lightly](https://github.com/xuzhao9/Lightly) | KDE theme style with aim to be visually modern and minimalistic
+*   kde-misc/[lyrics-on-panel](https://github.com/KangweiZhu/plasmusic-toolbar) | Lyrics for currently playing song in Plasma 6
 *   kde-misc/[paneltransparencybutton](https://github.com/psifidotos/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
 *   kde-misc/[plasma-6-power-usage-widget](https://github.com/magillos/Plasma-6-power-usage-widget) | Plasma 6 compatibile widget showing power usage
 *   kde-misc/[plasma-applet-ambientnoise](https://github.com//plasma-applet-ambientnoise) | Plasma widget for play ambient noise
