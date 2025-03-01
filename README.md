@@ -1103,7 +1103,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-radio/[krudio](https://github.com/alexyalinc/krudio) | Radio tray for linux on QT
 *   media-radio/[liquidsoap](https://github.com/savonet/liquidsoap) | A swiss-army knife for multimedia streaming, used for netradios
 *   media-video/[ffmpeg-compat](https://ffmpeg.org) | Compatibility package for ffmpeg to provide versions 58 of libraries
-*   media-video/[haruna](https://invent.kde.org/multimedia/haruna) | Video player built with Qt/QML on top of libmpv
 *   media-video/[qwinff](https://github.com/qwinff/qwinff) | Qt GUI Frontend for FFmpeg
 *   media-video/[rtsp-simple-server](https://github.com/aler9/rtsp-simple-server) | RTSP server and RTSP proxy to read, publish and proxy media stream
 *   net-analyzer/[dnsdiag](https://github.com/farrokhi/dnsdiag) | DNS Measurement, Troubleshooting and Security Auditing Toolset
