@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,6 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtdbus:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/qtsvg:5"
