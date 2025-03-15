@@ -3,11 +3,12 @@
 
 EAPI=8
 
-inherit bash-completion-r1 edo go-module
+inherit edo go-module shell-completion
 
 DESCRIPTION="A command line tool for DigitalOcean services"
 HOMEPAGE="https://github.com/digitalocean/doctl"
-SRC_URI="https://github.com/digitalocean/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/digitalocean/${PN}/releases/download/v${PV}/${P}-source.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0 MIT BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
@@ -41,8 +42,6 @@ src_install() {
 	dobin doctl
 
 	newbashcomp doctl.bash doctl
-	insinto /usr/share/zsh/site-functions
-	newins doctl.zsh _doctl
-	insinto /usr/share/fish/completion
-	newins doctl.fish doctl
+	newfishcomp doctl.fish doctl
+	newzshcomp doctl.zsh _doctl
 }

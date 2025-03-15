@@ -5,7 +5,7 @@ EAPI=8
 
 EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
 
-inherit bash-completion-r1 edo git-r3 go-module
+inherit edo git-r3 go-module shell-completion
 
 DESCRIPTION="A command line tool for DigitalOcean services"
 HOMEPAGE="https://github.com/digitalocean/doctl"
@@ -39,8 +39,6 @@ src_install() {
 	dobin doctl
 
 	newbashcomp doctl.bash doctl
-	insinto /usr/share/zsh/site-functions
-	newins doctl.zsh _doctl
-	insinto /usr/share/fish/completion
-	newins doctl.fish doctl
+	newfishcomp doctl.fish doctl
+	newzshcomp doctl.zsh _doctl
 }
