@@ -10,11 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	awsls supports listing of over 200 types of resources across
-	76 different AWS services. The goal is to code-generate a list
-	function for every AWS resource
+	This package provides a single cross-platform CLI tool to validate
+	different configuration file types, such as xml, csv, ini, etc.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">jckuester/awsls</remote-id>
+		<remote-id type="github">Boeing/config-file-validator</remote-id>
 	</upstream>
 </pkgmetadata>
