@@ -108,6 +108,7 @@ commitizen:
           net-dialup: "dialup-related networking software"
           net-dns: "domain name service related software"
           net-firewall: "network firewall software"
+          net-fs: "network filesystem software"
           net-ftp: "file transfer protocol software"
           net-im: "instant messaging software"
           net-libs: "libraries that are network-related"
@@ -163,6 +164,7 @@ commitizen:
           - net-dialup
           - net-dns
           - net-firewall
+          - net-fs
           - net-ftp
           - net-im
           - net-libs
