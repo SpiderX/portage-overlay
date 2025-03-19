@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-EGIT_REPO_URI="https://github.com/pandas-dev/${PN^}.git"
+EGIT_REPO_URI="https://github.com/pandas-dev/${PN}.git"
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 git-r3
@@ -23,13 +23,14 @@ BDEPEND="test? ( dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/tables[${PYTHON_USEDEP}]
 		dev-python/tabulate[${PYTHON_USEDEP}]
 		dev-python/xarray[${PYTHON_USEDEP}]
 		dev-python/xlsxwriter[${PYTHON_USEDEP}] )"
 
-EPYTEST_XDIST=1
+#EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
@@ -44,4 +45,6 @@ EPYTEST_DESELECT=(
 	tests/test_io.py::test_read_excel # ImportError: 'python-calamine'
 	tests/test_series.py::test_types_agg # RuntimeError
 	tests/test_series.py::test_types_aggregate # RuntimeError
+	tests/test_io.py::test_excel_reader # ImportError: 'python-calamine'
+	tests/test_plotting.py::test_plot_keywords # TypeError: Axes.boxplot()
 )
