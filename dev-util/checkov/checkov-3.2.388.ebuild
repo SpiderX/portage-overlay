@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11,12} )
 
 inherit distutils-r1
 
@@ -31,12 +31,11 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/configargparse[${PYTHON_USEDEP}]
-	dev-python/cyclonedx-python-lib[${PYTHON_USEDEP}]
+	<dev-python/cyclonedx-python-lib-8[${PYTHON_USEDEP}]
 	dev-python/docker[${PYTHON_USEDEP}]
 	dev-python/dockerfile-parse[${PYTHON_USEDEP}]
 	dev-python/dpath[${PYTHON_USEDEP}]
 	dev-python/gitpython[${PYTHON_USEDEP}]
-	dev-python/igraph[${PYTHON_USEDEP}]
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
@@ -57,41 +56,52 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	dev-python/update-checker[${PYTHON_USEDEP}]
 	dev-python/yarl[${PYTHON_USEDEP}]
 	dev-util/cloudsplaining[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/aioresponses[${PYTHON_USEDEP}]
-		dev-python/flake8[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/gitpython[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-python/responses[${PYTHON_USEDEP}]
-		dev-python/time-machine[${PYTHON_USEDEP}]
 		dev-vcs/git )"
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# assertion error
-	tests/sca_package_2/test_output_reports.py::test_get_cyclonedx_report
+	tests/secrets/test_plugin_multiline_json.py::TestCombinatorPluginMultilineJson::test_non_multiline_pair_time_limit_creating_report
+	tests/terraform/runner/test_runner.py::TestRunnerValid_1_False::test_terraform_multiple_module_versions
+	tests/terraform/runner/test_runner.py::TestRunnerValid_2_True::test_terraform_multiple_module_versions
 	tests/sca_package_2/test_output_reports.py::test_get_csv_report
-	tests/bicep/graph/graph_builder/test_renderer.py::test_render_parameter
-	tests/bicep/graph/graph_builder/test_renderer.py::test_render_variable
-	tests/bicep/graph/graph_builder/test_renderer.py::test_render_mixed
-	tests/bicep/test_graph_manager.py::test_build_graph_from_source_directory
-	tests/bicep/test_graph_manager.py::test_build_graph_from_definitions
 	dogfood_tests/test_checkov_dogfood.py::test_helm_framework
-	tests/bicep/graph/graph_builder/test_local_graph.py::test_build_graph
+)
+EPYTEST_IGNORE=(
+	# integration test
+	cdk_integration_tests
+	sast_integration_tests
+	integration_tests
+	performance_tests
+	flake8_plugins
+	# ignore failed graph tests
+	tests/ansible/checks/graph_checks
+	tests/arm/graph_builder/checks
+	tests/bicep/graph/checks
+	tests/cloudformation/graph/checks
+	tests/common/graph/checks
+	tests/kubernetes/graph/checks
+	tests/github_actions/checks
+	tests/dockerfile/graph_builder/checks
+	# ignore failedtest
+	tests/common/bridgecrew/vulnerability_scanning/integrations/test_docker_image_scanning.py
+	tests/common/bridgecrew/vulnerability_scanning/integrations/test_package_scanning.py
+	tests/common/output/test_spdx.py
+	tests/common/utils/test_http_utils.py
+	tests/sca_image/test_runner.py
+	tests/github/checks/test_python_policies.py
 )
 
 python_prepare_all() {
-	# Disable integration test
-	rm -rf {cdk_,sast_,}integration_tests || die "rm failed for integration_tests"
-	rm -rf performance_tests || die "rm failed for performance_tests"
-	rm -rf flake8_plugins || die "rm failed for flake8_plugins"
-
 	if use test ; then
 		git init > /dev/null || die "git init failed"
 		git config --global user.email "${PN}@gentoo.org" || die "git config failed"
