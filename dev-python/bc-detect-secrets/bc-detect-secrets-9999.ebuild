@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,10 +17,10 @@ SLOT="0"
 
 RDEPEND="!dev-util/detect-secrets[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]"
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/unidiff[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/ahocorasick[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
-		dev-python/unidiff[${PYTHON_USEDEP}]
 		dev-util/gibberish-detector[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
