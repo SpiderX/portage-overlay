@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1172](https://img.shields.io/badge/ebuild-1172-orange.svg)](https://img.shields.io/badge/ebuild-1172-orange.svg)
+[![Number of ebuilds: 1173](https://img.shields.io/badge/ebuild-1173-orange.svg)](https://img.shields.io/badge/ebuild-1173-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -631,6 +631,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[nyholm-psr7](https://github.com/Nyholm/psr7) | A super lightweight PSR-7 implementation
 *   dev-php/[pecl-eio]() | PHP wrapper for libeio library
 *   dev-php/[pecl-mcrypt]() | Bindings for the libmcrypt library
+*   dev-php/[pecl-memcache]() | PHP extension for using memcached
 *   dev-php/[pecl-mongodb]() | MongoDB database driver for PHP
 *   dev-php/[pecl-parallel]() | A succint parallel concurrency API for PHP
 *   dev-php/[pecl-uuid]() | PHP PECL UUID extension
