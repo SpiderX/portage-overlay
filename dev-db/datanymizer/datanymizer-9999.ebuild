@@ -1,7 +1,5 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# shellcheck disable=SC2086
 
 EAPI=8
 
@@ -22,16 +20,6 @@ QA_FLAGS_IGNORED="usr/bin/pg_datanymizer"
 src_unpack() {
 	git-r3_src_unpack
 	cargo_src_unpack
-}
-
-src_prepare() {
-	default
-
-	# use tera crate from registry
-	sed -i '/tera#/s|".*|"registry+https://github.com/rust-lang/crates.io-index"|' \
-		Cargo.lock || die "sed failed for Cargo.lock"
-	sed -i '/tera/s|git = "https://github.com/datanymizer/tera"|version = "1.15.0"|' \
-		datanymizer_engine/Cargo.toml || die "sed failed for Cargo.toml"
 }
 
 src_compile() {
