@@ -37,39 +37,39 @@ SRC_URI=""
 # --- begin ebuild-configurable settings
 
 # darcs command to run
-# @ECLASS-VARIABLE: EDARCS_DARCS_CMD
+# @ECLASS_VARIABLE: EDARCS_DARCS_CMD
 # @DESCRIPTION:
 # Path to darcs binary.
 : ${EDARCS_DARCS_CMD:=darcs}
 
 # darcs commands with command-specific options
 
-# @ECLASS-VARIABLE: EDARCS_GET_CMD
+# @ECLASS_VARIABLE: EDARCS_GET_CMD
 # @DESCRIPTION:
 # First fetch darcs command.
 : ${EDARCS_GET_CMD:=get --lazy}
 
-# @ECLASS-VARIABLE: EDARCS_UPDATE_CMD
+# @ECLASS_VARIABLE: EDARCS_UPDATE_CMD
 # @DESCRIPTION:
 # Repo update darcs command.
 : ${EDARCS_UPDATE_CMD:=pull}
 
-# @ECLASS-VARIABLE: EDARCS_OPTIONS
+# @ECLASS_VARIABLE: EDARCS_OPTIONS
 # @DESCRIPTION:
 # Options to pass to both the "get" and "update" commands
 : ${EDARCS_OPTIONS:=--set-scripts-executable}
 
-# @ECLASS-VARIABLE: EDARCS_TOP_DIR
+# @ECLASS_VARIABLE: EDARCS_TOP_DIR
 # @DESCRIPTION:
 # Where the darcs repositories are stored/accessed
 : ${EDARCS_TOP_DIR:=${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/darcs-src}
 
-# @ECLASS-VARIABLE: EDARCS_REPOSITORY
+# @ECLASS_VARIABLE: EDARCS_REPOSITORY
 # @DESCRIPTION:
 # The URI to the repository.
 : ${EDARCS_REPOSITORY:=}
 
-# @ECLASS-VARIABLE: EDARCS_OFFLINE
+# @ECLASS_VARIABLE: EDARCS_OFFLINE
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
@@ -77,7 +77,7 @@ SRC_URI=""
 # tree by users. Defaults to EVCS_OFFLINE value.
 : ${EDARCS_OFFLINE:=${EVCS_OFFLINE}}
 
-# @ECLASS-VARIABLE: EDARCS_CLEAN
+# @ECLASS_VARIABLE: EDARCS_CLEAN
 # @DESCRIPTION:
 # Set this to something to get a clean copy when updating
 # (removes the working directory, then uses EDARCS_GET_CMD to
