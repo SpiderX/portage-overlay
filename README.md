@@ -107,7 +107,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-backup/[wal-g](https://github.com/wal-g/wal-g) | Archival restoration tool for databases
 *   app-containers/[lazydocker](https://github.com/jesseduffield/lazydocker) | Lazier way to manage everything docker
 *   app-crypt/[acme-client](https://git.sr.ht/~graywolf/acme-client-portable) | Secure Let's Encrypt client
-*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/acme.sh.svg?header=)](https://repology.org/project/acme.sh/versions) app-crypt/[acme-sh](https://github.com/acmesh-official/acme.sh) | An ACME Shell script
+*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/acme.sh.svg?header=)](https://repology.org/project/acme.sh/versions) app-crypt/[acme-sh](https://github.com/acmesh-official/acme.sh) | A pure Unix shell script implementing ACME client protocol
 *   app-crypt/[age](https://github.com/FiloSottile/age) | Simple, modern and secure encryption tool
 *   app-crypt/[qesteidutil](https://github.com/open-eid/qesteidutil) | Estonian ID card management desktop utility
 *   app-crypt/[step-cli](https://github.com/smallstep/cli) | A zero trust swiss army knife for working with X509

@@ -1,40 +1,40 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/acmesh-official/${PN/-/.}.git"
-
 inherit git-r3 optfeature
 
-DESCRIPTION="An ACME Shell script"
+DESCRIPTION="A pure Unix shell script implementing ACME client protocol"
 HOMEPAGE="https://github.com/acmesh-official/acme.sh"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/acmesh-official/${PN/-/.}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+IUSE="selinux"
 
 RDEPEND="dev-libs/openssl:0
 	net-misc/curl
-	net-misc/socat"
+	net-misc/socat
+	selinux? ( sec-policy/selinux-certbot )"
 
 src_install() {
-	einstalldocs
-	newdoc dnsapi/README.md README-dnsapi.md
 	newdoc deploy/README.md README-deploy.md
-	rm {deploy,dnsapi}/README.md || die "rm failed"
-
-	keepdir /etc/acme-sh
-	doenvd "${FILESDIR}"/99acme-sh
-	insinto /etc/bash/bashrc.d
-	doins "${FILESDIR}"/acme.sh
+	newdoc dnsapi/README.md README-dnsapi.md
+	rm {deploy,dnsapi}/README.md || die
+	einstalldocs
 
 	exeinto /usr/share/acme.sh
 	doexe acme.sh
 
 	insinto /usr/share/acme.sh
 	doins -r deploy dnsapi notify
+
+	keepdir /etc/acme-sh
+	doenvd "${FILESDIR}"/99acme-sh
+
+	insinto /etc/bash/bashrc.d
+	doins "${FILESDIR}"/acme.sh
 
 	dosym ../share/acme.sh/acme.sh usr/bin/acme.sh
 }
