@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/arcanericky/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="Time-Based One-Time Password Code Generator"
 HOMEPAGE="https://github.com/arcanericky/totp"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/arcanericky/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 src_unpack() {
 	git-r3_src_unpack
@@ -21,12 +18,12 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -ldflags="-X github.com/arcanericky/totp/cmd.versionText=${PV} -s -w" \
-		-o ./bin/"${PN}" ./totp || die "build failed"
+	ego build -ldflags="-X github.com/arcanericky/totp/cmd.versionText=${PV} -s -w" \
+		-o ./bin/"${PN}" ./cmd/totp
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
