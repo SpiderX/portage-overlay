@@ -5,12 +5,12 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} python3_13t )
-EGIT_REPO_URI="https://github.com/scrapy/${PN}.git"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Library of web-related functions"
 HOMEPAGE="https://github.com/scrapy/w3lib"
+EGIT_REPO_URI="https://github.com/scrapy/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
