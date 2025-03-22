@@ -1,25 +1,21 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/smallstep/certificates.git"
-
-inherit fcaps git-r3 go-module systemd
+inherit fcaps git-r3 go-module systemd tmpfiles
 
 DESCRIPTION="A private certificate authority and ACME server"
 HOMEPAGE="https://github.com/smallstep/certificates"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/smallstep/certificates.git"
+S="${WORKDIR}/certificates-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="acct-group/step
 	acct-user/step
 	sys-apps/pcsc-lite"
-
-S="${WORKDIR}/certificates-${PV}"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -34,8 +30,7 @@ src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
 	LDFLAGS="-w -X main.Version=${PV} -X \"main.BuildTime=${DATE}\""
 
-	ego build -buildmode=pie \
-		-ldflags "${LDFLAGS}" -trimpath ./cmd/...
+	ego build -ldflags "${LDFLAGS}" ./cmd/...
 }
 
 src_test() {
