@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Container Service Extension for vCloud Director"
 HOMEPAGE="https://github.com/vmware/container-service-extension"
+EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
 
 LICENSE="BSD-2"
 SLOT="0"
