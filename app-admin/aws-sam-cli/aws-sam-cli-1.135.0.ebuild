@@ -45,8 +45,7 @@ BDEPEND="test? ( dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
 
-QA_PREBUILT="usr/lib/python3.12/site-packages/samcli/local/rapid/aws-lambda-rie-arm64
-	usr/lib/python3.12/site-packages/samcli/local/rapid/aws-lambda-rie-x86_64"
+QA_PREBUILT="usr/lib/python.*/site-packages/samcli/local/rapid/aws-lambda-rie-.*"
 
 distutils_enable_tests pytest
 
