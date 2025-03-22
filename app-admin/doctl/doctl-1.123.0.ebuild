@@ -13,6 +13,10 @@ S="${WORKDIR}"
 LICENSE="Apache-2.0 MIT BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( dev-vcs/git )"
 
 src_compile() {
 	LDFLAGS="-X github.com/digitalocean/doctl.Major=$(ver_cut 1)

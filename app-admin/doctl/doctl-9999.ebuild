@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
-
 inherit edo git-r3 go-module shell-completion
 
 DESCRIPTION="A command line tool for DigitalOcean services"
 HOMEPAGE="https://github.com/digitalocean/doctl"
+EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
 
 LICENSE="Apache-2.0 MIT BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
