@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/rxi/${PN}.git"
 
 inherit desktop git-r3 toolchain-funcs xdg
 
 DESCRIPTION="A lightweight text editor written in Lua"
 HOMEPAGE="https://github.com/rxi/lite"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/rxi/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="media-libs/libsdl2"
 DEPEND="${RDEPEND}"
