@@ -19,6 +19,7 @@ IUSE="datalib test"
 RDEPEND="dev-python/anyio[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/httpx[${PYTHON_USEDEP}]
+	dev-python/jiter[${PYTHON_USEDEP}]
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/sniffio[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
