@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,8 +10,8 @@ HOMEPAGE="http://hugo.pereira.free.fr/software/index.php"
 SRC_URI="http://hugo.pereira.free.fr/software/tgz/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="aspell"
 
 RDEPEND="dev-qt/qtcore:5
