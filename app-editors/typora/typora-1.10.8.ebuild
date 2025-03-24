@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -78,8 +78,7 @@ src_install() {
 	fperms +x /opt/Typora/chrome_crashpad_handler \
 		/opt/Typora/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/Typora/libvulkan.so.1 /opt/Typora/Typora \
-		/opt/Typora/resources/node_modules/fswin/build/Release/fswin.node \
-		/opt/Typora/resources/node_modules/spellchecker/node_modules/cld/build/Release/cld.node \
+		/opt/Typora/resources/node_modules/cld/build/Release/cld.node \
 		/opt/Typora/resources/node_modules/vscode-ripgrep/bin/rg
 	use suid && fperms u+s,+x /opt/Typora/chrome-sandbox
 
