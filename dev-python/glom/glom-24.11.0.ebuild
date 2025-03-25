@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/boltons[${PYTHON_USEDEP}]
 	dev-python/face[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]"
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/tomli[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
