@@ -853,7 +853,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz
 *   dev-python/[graphql-core](https://github.com/graphql-python/graphql-core) | Python port of GraphQL.js
 *   dev-python/[graphql-relay](https://github.com/graphql-python/graphql-relay-py) | A library to help construct a graphql-py server supporting react-relay
-*   dev-python/[grpc-google-iam-v1](https://github.com/googleapis/python-grpc-google-iam-v1) | Google GRPC IAM API client library
+*   dev-python/[grpc-google-iam-v1](https://github.com/googleapis/google-cloud-python) | Python Client for Cloud Identity and Access Management
 *   dev-python/[grpcio](https://grpc.io) | High-performance RPC framework (python libraries)
 *   dev-python/[grpcio-status](https://grpc.io) | Status proto mapping for gRPC
 *   dev-python/[gssapi](https://github.com/pythongssapi/python-gssapi) | A Python interface to RFC 2743/2744
