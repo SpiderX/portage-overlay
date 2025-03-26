@@ -7,15 +7,16 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Natural Language Toolkit"
 HOMEPAGE="https://github.com/nltk/nltk"
-EGIT_REPO_URI="https://github.com/nltk/${PN}.git"
+SRC_URI="https://github.com/nltk/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test tk"
+KEYWORDS="~amd64"
+IUSE="tk"
 RESTRICT="test"
 PROPERTIES="test_network"
 
