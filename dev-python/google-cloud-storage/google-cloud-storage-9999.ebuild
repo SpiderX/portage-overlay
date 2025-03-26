@@ -1,16 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
-EGIT_REPO_URI="https://github.com/googleapis/python-storage.git"
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
 DESCRIPTION="Google Cloud Storage API client library"
 HOMEPAGE="https://github.com/googleapis/python-storage"
+EGIT_REPO_URI="https://github.com/googleapis/python-storage.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -20,13 +20,13 @@ RDEPEND="dev-python/google-auth[${PYTHON_USEDEP}]
 	dev-python/google-api-core[${PYTHON_USEDEP}]
 	dev-python/google-cloud-core[${PYTHON_USEDEP}]
 	dev-python/google-crc32c[${PYTHON_USEDEP}]
-	dev-python/google-resumable-media[${PYTHON_USEDEP}]
 	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/google-cloud-iam[${PYTHON_USEDEP}]
 		dev-python/google-cloud-kms[${PYTHON_USEDEP}]
 		dev-python/google-cloud-pubsub[${PYTHON_USEDEP}]
-		dev-python/google-cloud-testutils[${PYTHON_USEDEP}] )"
+		dev-python/google-cloud-testutils[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
