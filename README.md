@@ -843,7 +843,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-crc32c](https://github.com/googleapis/python-crc32c) | Hardware-based implementation of the CRC32C hashing algorithm
 *   dev-python/[google-cloud-iam](https://github.com/googleapis/python-iam) | Google Cloud IAM API client library
 *   dev-python/[google-cloud-core](https://github.com/googleapis/python-cloud-core) | Google Cloud API client core library
-*   dev-python/[google-cloud-kms](https://github.com/googleapis/python-kms) | Google Cloud KMS API client library
+*   dev-python/[google-cloud-kms](https://github.com/googleapis/google-cloud-python) | Python Client for Google Cloud Key Management Service
 *   dev-python/[google-cloud-pubsub](https://github.com/googleapis/python-pubsub) | Google Cloud Pub/Sub API client library
 *   dev-python/[google-cloud-storage](https://github.com/googleapis/python-storage) | Google Cloud Storage API client library
 *   dev-python/[google-cloud-testutils](https://github.com/googleapis/python-test-utils) | Google Cloud Storage API client library
