@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,6 @@ RESTRICT="bindist mirror"
 BDEPEND="app-arch/unzip"
 
 PACKAGES_ZIP=(
-	# wget -O - https://www.nltk.org/nltk_data/ | xml sel -t -m '//package[@unzip=0]' -v @subdir -o "/" -v @id -n - | sort
 	corpora/bcp47
 	corpora/comtrans
 	corpora/conll2007
@@ -41,8 +40,8 @@ PACKAGES_ZIP=(
 )
 
 PACKAGES_UNPACK=(
-	# wget -O - https://www.nltk.org/nltk_data/ | xml sel -t -m '//package[@unzip=1]' -v @subdir -o "/" -v @id -n - | sort
 	chunkers/maxent_ne_chunker
+	chunkers/maxent_ne_chunker_tab
 	corpora/abc
 	corpora/alpino
 	corpora/biocreative_ppi
@@ -59,6 +58,7 @@ PACKAGES_UNPACK=(
 	corpora/crubadan
 	corpora/dependency_treebank
 	corpora/dolch
+	corpora/english_wordnet
 	corpora/europarl_raw
 	corpora/floresta
 	corpora/framenet_v15
@@ -121,6 +121,7 @@ PACKAGES_UNPACK=(
 	grammars/sample_grammars
 	grammars/spanish_grammars
 	help/tagsets
+	help/tagsets_json
 	misc/mwa_ppdb
 	misc/perluniprops
 	models/bllip_wsj_no_aux
@@ -130,16 +131,20 @@ PACKAGES_UNPACK=(
 	stemmers/porter_test
 	stemmers/rslp
 	taggers/averaged_perceptron_tagger
+	taggers/averaged_perceptron_tagger_eng
 	taggers/averaged_perceptron_tagger_ru
+	taggers/averaged_perceptron_tagger_rus
 	taggers/maxent_treebank_pos_tagger
+	taggers/maxent_treebank_pos_tagger_tab
 	taggers/universal_tagset
 	tokenizers/punkt
+	tokenizers/punkt_tab
 )
 
 add_data() {
-	local data=${1}
+	local data="${1}"
 
-	for data; do
+	for data ; do
 		SRC_URI+="
 			https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/${data}.zip
 				-> nltk-${data#*/}-${PV}.zip"
@@ -152,11 +157,11 @@ CHECKREQS_DISK_USR=3G
 CHECKREQS_DISK_BUILD=${CHECKREQS_DISK_USR}
 
 unpack_data() {
-	local data=${1}
+	local data="${1}"
 
-	for data; do
-		local cat=${data%/*}
-		local pkg=${data#*/}
+	for data ; do
+		local cat="${data%/*}"
+		local pkg="${data#*/}"
 
 		mkdir -p "${S}/${cat}" || die
 		cd "${S}/${cat}" || die
@@ -169,11 +174,11 @@ src_unpack() {
 }
 
 install_zips() {
-	local data=${1}
+	local data="${1}"
 
-	for data; do
-		local cat=${data%/*}
-		local pkg=${data#*/}
+	for data ; do
+		local cat="${data%/*}"
+		local pkg="${data#*/}"
 
 		insinto "/usr/share/nltk_data/${cat}"
 		newins "${DISTDIR}/nltk-${pkg}-${PV}.zip" "${pkg}.zip"
@@ -182,7 +187,7 @@ install_zips() {
 
 src_install() {
 	dodir /usr/share/nltk_data
-	mv * "${ED}/usr/share/nltk_data/" || die
+	mv ./* "${ED}/usr/share/nltk_data" || die
 
 	install_zips "${PACKAGES_ZIP[@]}"
 }
