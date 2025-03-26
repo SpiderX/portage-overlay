@@ -1,16 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
-EGIT_REPO_URI="https://github.com/googleapis/python-${PN}.git"
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Google GRPC IAM API client library"
-HOMEPAGE="https://github.com/googleapis/python-grpc-google-iam-v1"
+DESCRIPTION="Python Client for Cloud Identity and Access Management"
+HOMEPAGE="https://github.com/googleapis/google-cloud-python"
+EGIT_REPO_URI="https://github.com/googleapis/python-${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
