@@ -1,26 +1,26 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-EGIT_REPO_URI="https://github.com/sqlfluff/${PN}.git"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A SQL linter and auto-formatter"
 HOMEPAGE="https://github.com/sqlfluff/sqlfluff"
+EGIT_REPO_URI="https://github.com/sqlfluff/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="dev-python/appdirs[${PYTHON_USEDEP}]
-	dev-python/chardet[${PYTHON_USEDEP}]
+RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
+	dev-python/platformdirs[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
