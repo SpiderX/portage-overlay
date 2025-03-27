@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	rolesanywhere-credential-helper implements the signing process for
+	IAM Roles Anywhere's CreateSession API and returns temporary
+	credentials in a standard JSON format that is compatible with the
+	credential_process feature available across the language SDKs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aws/rolesanywhere-credential-helper</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1179](https://img.shields.io/badge/ebuild-1179-orange.svg)](https://img.shields.io/badge/ebuild-1179-orange.svg)
+[![Number of ebuilds: 1180](https://img.shields.io/badge/ebuild-1180-orange.svg)](https://img.shields.io/badge/ebuild-1180-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -110,6 +110,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/acme.sh.svg?header=)](https://repology.org/project/acme.sh/versions) app-crypt/[acme-sh](https://github.com/acmesh-official/acme.sh) | A pure Unix shell script implementing ACME client protocol
 *   app-crypt/[age](https://github.com/FiloSottile/age) | Simple, modern and secure encryption tool
 *   app-crypt/[qesteidutil](https://github.com/open-eid/qesteidutil) | Estonian ID card management desktop utility
+*   app-crypt/[rolesanywhere-credential-helper](https://github.com/aws/rolesanywhere-credential-helper) | AWS IAM Roles Anywhere Credential Helper
 *   app-crypt/[step-cli](https://github.com/smallstep/cli) | A zero trust swiss army knife for working with X509
 *   app-crypt/[step-ca](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
 *   app-crypt/[totp](https://github.com/arcanericky/totp) | Time-Based One-Time Password Code Generator
