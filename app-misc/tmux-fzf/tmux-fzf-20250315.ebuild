@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-COMMIT="1547f18083ead1b235680aa5f98427ccaf5beb21"
+COMMIT="e91c1ae55389f2b34480ea23df77682bdd51d735"
 
 DESCRIPTION="Use fzf to manage your tmux work environment"
 HOMEPAGE="https://github.com/sainnhe/tmux-fzf"
