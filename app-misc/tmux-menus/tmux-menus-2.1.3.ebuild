@@ -3,14 +3,13 @@
 
 EAPI=8
 
-inherit git-r3
-
 DESCRIPTION="Popup menus for tmux to help with managing your environment"
 HOMEPAGE="https://github.com/jaclu/tmux-menus"
-EGIT_REPO_URI="https://github.com/jaclu/${PN}.git"
+SRC_URI="https://github.com/jaclu/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="app-misc/tmux"
 
