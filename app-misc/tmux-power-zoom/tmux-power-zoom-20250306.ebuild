@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT="3a1de2280e9b7ffcb8efd009fc87fd34ecbb14ac"
+COMMIT="84b8e3dd5b7e10db793ac925e1e65fe204a4e47b"
 
 DESCRIPTION="Zoom pane to separate window, and unzoom it back"
 HOMEPAGE="https://github.com/jaclu/tmux-power-zoom"

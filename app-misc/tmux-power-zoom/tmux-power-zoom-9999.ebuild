@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/jaclu/${PN}.git"
-
 inherit git-r3
 
 DESCRIPTION="Zoom pane to separate window, and unzoom it back"
 HOMEPAGE="https://github.com/jaclu/tmux-power-zoom"
+EGIT_REPO_URI="https://github.com/jaclu/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
