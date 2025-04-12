@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2086
@@ -44,10 +44,11 @@ src_compile() {
 src_install() {
 	einstalldocs
 	insinto /usr/share/tmux-plugins/tmux-powerline
-	doins -r config lib themes main.tmux color_palette.sh generate_rc.sh mute_powerline.sh powerline.sh
+	doins -r config lib scripts themes main.tmux color_palette.sh generate_config.sh mute_powerline.sh powerline.sh
 	insinto /usr/share/tmux-plugins/tmux-powerline/segments
 	doins segments/*.{sh,py}
-	fperms -R +x /usr/share/tmux-plugins/tmux-powerline/segments/{battery,cpu,date_day,date,disk_usage}.sh \
+	fperms -R +x /usr/share/tmux-plugins/tmux-powerline/scripts \
+		/usr/share/tmux-plugins/tmux-powerline/segments/{battery,cpu,date_day,date,disk_usage}.sh \
 		/usr/share/tmux-plugins/tmux-powerline/segments/{earthquake,hostname,ifstat,ifstat_sys}.sh \
 		/usr/share/tmux-plugins/tmux-powerline/segments/{lan_ip,load,macos_notification_count}.sh \
 		/usr/share/tmux-plugins/tmux-powerline/segments/{lan_ip,load,macos_notification_count}.sh \
@@ -58,7 +59,7 @@ src_install() {
 		/usr/share/tmux-plugins/tmux-powerline/segments/{weather,xkb_layout}.sh \
 		/usr/share/tmux-plugins/tmux-powerline/segments/np_pithos.py \
 		/usr/share/tmux-plugins/tmux-powerline/color_palette.sh \
-		/usr/share/tmux-plugins/tmux-powerline/generate_rc.sh \
+		/usr/share/tmux-plugins/tmux-powerline/generate_config.sh \
 		/usr/share/tmux-plugins/tmux-powerline/{mute_,}powerline.sh \
 		/usr/share/tmux-plugins/tmux-powerline/main.tmux
 
