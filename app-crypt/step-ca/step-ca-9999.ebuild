@@ -8,7 +8,6 @@ inherit fcaps git-r3 go-module systemd tmpfiles
 DESCRIPTION="A private certificate authority and ACME server"
 HOMEPAGE="https://github.com/smallstep/certificates"
 EGIT_REPO_URI="https://github.com/smallstep/certificates.git"
-S="${WORKDIR}/certificates-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
