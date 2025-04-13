@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/step-cli
+
+# Various options.
+# run `step-cli --help` for valid cmdline options
+OPTS=""

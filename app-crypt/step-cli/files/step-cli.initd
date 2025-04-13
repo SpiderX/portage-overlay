@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/step-cli"
+name="smallstep CLI"
+description="smallstep CLI"
+command_user="${STEP_USER:-step}:${STEP_GROUP:-step}"
+command_background="yes"
+pidfile="/run/step/${RC_SVCNAME}.pid"
+command_args="ca renew --daemon ${OPTS}"
+
+depend() {
+	need net
+}

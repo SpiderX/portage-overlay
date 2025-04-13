@@ -3,12 +3,11 @@
 
 EAPI=8
 
-inherit edo git-r3 go-module readme.gentoo-r1 shell-completion systemd
+inherit edo git-r3 go-module readme.gentoo-r1 shell-completion systemd tmpfiles
 
 DESCRIPTION="A zero trust swiss army knife for working with X509"
 HOMEPAGE="https://github.com/smallstep/cli"
 EGIT_REPO_URI="https://github.com/smallstep/cli.git"
-S="${WORKDIR}/cli-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -51,6 +50,9 @@ src_install() {
 	doenvd "${FILESDIR}"/99step-cli
 	systemd_dounit systemd/{cert-renewer@,ssh-cert-renewer}.service \
 		systemd/cert-renewer.target systemd/{cert-renewer@,ssh-cert-renewer}.timer
+	newinitd "${FILESDIR}"/step-cli.initd step-cli
+	newconfd "${FILESDIR}"/step-cli.confd step-cli
+	newtmpfiles "${FILESDIR}"/step-cli.tmpfile step-cli.conf
 
 	newbashcomp step-cli.bash step-cli
 	newfishcomp step-cli.fish step-cli
@@ -59,4 +61,5 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
+	tmpfiles_process step-cli.conf
 }
