@@ -1054,6 +1054,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[applet-window-buttons6](https://github.com/moodyhunter/applet-window-buttons6) | Plasma 6 applet in order to show window buttons in your panels
 *   kde-misc/[applet-window-title](https://github.com/psifidotos/applet-window-title) | Plasma 5 applet shows window title and icon in your panels
 *   kde-misc/[applet-window-title6](https://github.com/moodyhunter/applet-window-title6) | Plasma 6 applet shows window title and icon in your panels
+*   kde-misc/[cpu-power-monitor](https://github.com/kphanipavan/cpu-power-monitor) | KDE Plasma widget to monitor the CPU power consumption
 *   kde-misc/[Burn-My-Windows](https://github.com/Schneegans/Burn-My-Windows) | Disintegrate your windows with style
 *   kde-misc/[darkly](https://github.com/Bali10050/Darkly) | A modern style for qt applications
 *   kde-misc/[qCheckGMail](https://github.com/mhogomchungu/qCheckGMail) | qCheckGmail is a Qt/C++ multiple gmail account checker
