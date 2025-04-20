@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit ecm
+inherit ecm linux-info tmpfiles
 
 COMMIT="8a3eae097a9770a8c3c6e5e81a9d45413ef2463a"
 
@@ -22,6 +22,8 @@ RDEPEND="kde-frameworks/kdeclarative:6
 	kde-plasma/plasma5support:6
 	kde-plasma/plasma-workspace:6"
 
+CONFIG_CHECK="~INTEL_RAPL"
+
 src_prepare() {
 	default
 }
@@ -35,4 +37,9 @@ src_install() {
 
 	insinto /usr/share/plasma/plasmoids/boi.walle.cpuPowerMonitor
 	doins -r package/.
+	newtmpfiles "${FILESDIR}"/cpu-power-monitor.tmpfile cpu-power-monitor.conf
+}
+
+pkg_postinst() {
+	tmpfiles_process cpu-power-monitor.conf
 }

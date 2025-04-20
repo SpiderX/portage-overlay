@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit ecm git-r3
+inherit ecm git-r3 linux-info tmpfiles
 
 DESCRIPTION="KDE Plasma widget to monitor the CPU power consumption"
 HOMEPAGE="https://github.com/kphanipavan/cpu-power-monitor"
@@ -18,6 +18,8 @@ RDEPEND="kde-frameworks/kdeclarative:6
 	kde-plasma/plasma5support:6
 	kde-plasma/plasma-workspace:6"
 
+CONFIG_CHECK="~INTEL_RAPL"
+
 src_prepare() {
 	default
 }
@@ -31,4 +33,9 @@ src_install() {
 
 	insinto /usr/share/plasma/plasmoids/boi.walle.cpuPowerMonitor
 	doins -r package/.
+	newtmpfiles "${FILESDIR}"/cpu-power-monitor.tmpfile cpu-power-monitor.conf
+}
+
+pkg_postinst() {
+	tmpfiles_process cpu-power-monitor.conf
 }
