@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -87,7 +87,7 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 		media-plugins/gst-plugins-pulse[${MULTILIB_USEDEP}]
 		|| ( media-sound/pulseaudio-daemon[${MULTILIB_USEDEP}]
 			media-video/pipewire[sound-server,${MULTILIB_USEDEP}] ) )
-	|| ( media-video/ffmpeg-compat:58[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}]
+	|| ( media-video/ffmpeg-compat:4[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}]
 		media-video/ffmpeg:0/56.58.58[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}] )
 	|| ( sys-apps/systemd[${MULTILIB_USEDEP}] sys-apps/systemd-utils[udev,${MULTILIB_USEDEP}] )"
 
