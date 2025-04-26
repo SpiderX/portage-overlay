@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/Bali10050/${PN^}.git"
-
 inherit ecm git-r3
 
 DESCRIPTION="A modern style for qt applications"
 HOMEPAGE="https://github.com/Bali10050/Darkly"
+EGIT_REPO_URI="https://github.com/Bali10050/${PN^}.git"
 
 LICENSE="GPL-2"
 SLOT="6"
