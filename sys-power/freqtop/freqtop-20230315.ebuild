@@ -3,14 +3,18 @@
 
 EAPI=8
 
-inherit git-r3 toolchain-funcs
+inherit toolchain-funcs
+
+COMMIT="bff91f1017c0f3abf2edae52498641c65fa9b0b9"
 
 DESCRIPTION="Monitor for the CPU Frequency Scaling under Linux"
 HOMEPAGE="https://github.com/stolk/freqtop"
-EGIT_REPO_URI="https://github.com/stolk/${PN}.git"
+SRC_URI="https://github.com/stolk/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 src_prepare() {
 	default
