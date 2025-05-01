@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 git-r3
@@ -19,8 +20,11 @@ RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]"
 src_prepare() {
 	default
 
-	# Fix brackets
+	# fix brackets
 	sed -i -e '/return cast/s|\[|\(|g' \
 		-e '/return cast/s|\]|\)|g' \
 		depixlib/LoadedImage.py || die "sed failed for LoadedImage.py"
+
+	# fix parser
+	sed -i '/depix.depix/s|\.|:|' setup.py || die "sed failed for setup.py"
 }
