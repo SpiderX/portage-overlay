@@ -20,6 +20,7 @@ RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="dev-cpp/belr
+	dev-cpp/jsoncpp
 	dev-cpp/xsd
 	dev-db/sqlite:3
 	dev-db/soci
