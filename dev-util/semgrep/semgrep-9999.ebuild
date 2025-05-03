@@ -13,7 +13,7 @@ DESCRIPTION="Lightweight static analysis for many languages"
 HOMEPAGE="https://github.com/semgrep/semgrep"
 EGIT_REPO_URI="https://github.com/semgrep/${PN}.git"
 
-LICENSE="GPL-3"
+LICENSE="LGPL-2.1"
 SLOT="0"
 RESTRICT="test"
 PROPERTIES="test_network"
