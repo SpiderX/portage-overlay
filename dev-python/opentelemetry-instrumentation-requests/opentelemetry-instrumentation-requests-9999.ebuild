@@ -9,12 +9,14 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="OpenTelemetry requests instrumentation"
-HOMEPAGE="https://github.com/open-telemetry/opentelemetry-contrib"
-EGIT_REPO_URI="https://github.com/open-telemetry/opentelemetry-python.git"
+HOMEPAGE="https://github.com/open-telemetry/opentelemetry-python-contrib"
+EGIT_REPO_URI="https://github.com/open-telemetry/opentelemetry-python-contrib.git"
 S="${WORKDIR}/${P}/instrumentation/${PN}"
 
 LICENSE="Apache-2.0"
 SLOT=0
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 	dev-python/opentelemetry-instrumentation[${PYTHON_USEDEP}]

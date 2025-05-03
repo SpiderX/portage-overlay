@@ -893,7 +893,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[opentelemetry-exporter-otlp-proto-common](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Protobuf encoding
 *   dev-python/[opentelemetry-exporter-otlp-proto-http](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Collector Protobuf over HTTP Exporter
 *   dev-python/[opentelemetry-instrumentation](https://github.com/open-telemetry/opentelemetry-contrib) | Instrumentation Tools for OpenTelemetry Python
-*   dev-python/[opentelemetry-instrumentation-requests](https://github.com/open-telemetry/opentelemetry-contrib) | OpenTelemetry requests instrumentation
+*   dev-python/[opentelemetry-instrumentation-requests](https://github.com/open-telemetry/opentelemetry-python-contrib) | OpenTelemetry requests instrumentation
 *   dev-python/[opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Python Proto
 *   dev-python/[opentelemetry-test-utils](https://github.com/open-telemetry/opentelemetry-python) | Test utilities for OpenTelemetry unit tests
 *   dev-python/[opentelemetry-util-http](https://github.com/open-telemetry/opentelemetry-python-contrib) | Web util for OpenTelemetry
