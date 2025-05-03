@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Instrumentation Tools for OpenTelemetry Python"
-HOMEPAGE="https://github.com/open-telemetry/opentelemetry-contrib"
+HOMEPAGE="https://github.com/open-telemetry/opentelemetry-python-contrib"
 EGIT_REPO_URI="https://github.com/open-telemetry/opentelemetry-python-contrib.git"
 S="${WORKDIR}/${P}/${PN}"
 
