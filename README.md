@@ -896,7 +896,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[opentelemetry-instrumentation-requests](https://github.com/open-telemetry/opentelemetry-contrib) | OpenTelemetry requests instrumentation
 *   dev-python/[opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Python Proto
 *   dev-python/[opentelemetry-test-utils](https://github.com/open-telemetry/opentelemetry-python) | Test utilities for OpenTelemetry unit tests
-*   dev-python/[opentelemetry-util-http](https://github.com/open-telemetry/opentelemetry-contrib) | Web util for OpenTelemetry
+*   dev-python/[opentelemetry-util-http](https://github.com/open-telemetry/opentelemetry-python-contrib) | Web util for OpenTelemetry
 *   dev-python/[outcome](https://github.com/python-trio/outcome) | Capture the outcome of Python function calls
 *   dev-python/[oyaml](https://github.com/wimglenn/oyaml) | Ordered YAML
 *   dev-python/[packageurl](https://github.com/package-url/packageurl-python) | Python implementation of the package url spec
