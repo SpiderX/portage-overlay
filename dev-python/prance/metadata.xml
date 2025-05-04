@@ -17,7 +17,7 @@
 	the OpenAPI spec.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">jfinkhaeuser/prance</remote-id>
+		<remote-id type="github">RonnyPfannschmidt/prance</remote-id>
 		<remote-id type="pypi">prance</remote-id>
 	</upstream>
 </pkgmetadata>

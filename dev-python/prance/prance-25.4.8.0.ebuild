@@ -5,16 +5,19 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
-EGIT_SUBMODULES=( "tests/OpenAPI-Specification" )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature pypi
+
+COMMIT="902e505"
 
 DESCRIPTION="Resolving Swagger/OpenAPI 2.0 and 3.0 Parser"
 HOMEPAGE="https://github.com/RonnyPfannschmidt/prance"
-EGIT_REPO_URI="https://github.com/RonnyPfannschmidt/${PN}.git"
+SRC_URI+="
+	test? ( https://github.com/OAI/OpenAPI-Specification/archive/${COMMIT}.tar.gz -> ${P}-test.gh.tar.gz )"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
@@ -26,6 +29,9 @@ BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	# provide access to tests
+	ln -s ../../OAI-OpenAPI-Specification-"${COMMIT}" tests/OpenAPI-Specification \
+		|| die "ln failed"
 	# disable pytest options
 	sed -i '/addopts/d' setup.cfg || die "sed failed for setup.cfg"
 
