@@ -795,7 +795,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[diagrams](https://github.com/mingrammer/diagrams) | Diagram as Code for prototyping cloud system architectures
 *   dev-python/[decli](https://github.com/Woile/decli) | Minimal declarative cli tool
 *   dev-python/[deep_merge](https://github.com/halfak/deep_merge) | A simple utility for merging python dictionaries
-*   dev-python/[delegator-py](https://github.com/kennethreitz/delegator.py) | Simple library for dealing with subprocesses
 *   dev-python/[dj-email-url](https://github.com/migonzalvar/dj-email-url) | URL based email backend configuration in Django
 *   dev-python/[dj-search-url](https://github.com/dstufft/dj-search-url) | Environment based search backend configuration in Django
 *   dev-python/[django-cache-url](https://github.com/epicserve/django-cache-url) | URL based cache backend configuration in Django
