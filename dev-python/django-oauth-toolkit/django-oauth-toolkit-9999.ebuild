@@ -1,21 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="OAuth2 Provider for Django"
 HOMEPAGE="https://github.com/jazzband/django-oauth-toolkit"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/jwcrypto[${PYTHON_USEDEP}]
@@ -24,18 +22,14 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 BDEPEND="test? ( $(python_gen_impl_dep sqlite)
 		dev-python/djangorestframework[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
+		dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# Remove coverage
-	sed -i '/--cov/d' tox.ini || die "sed failed for tox.ini"
-
-	# Don't install tests
-	sed -i '/exclude/s/ts/ts,tests.*/' setup.cfg \
-		|| die "sed failed for setup.cfg"
+	# remove addopts
+	sed -i '/addopts/,+5d' pyproject.toml || die "sed failed for pyproject.toml"
 
 	# Disable test (network-sandbox)
 	sed -i '/test_response_when_auth_server_response_return_404/i\\    @pytest.mark.skip("disable")' \
