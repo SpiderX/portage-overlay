@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -12,28 +13,22 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python client for accessing EC2 instances via EC2 Instance Connect"
 HOMEPAGE="https://github.com/aws/aws-ec2-instance-connect-cli"
-SRC_URI="https://github.com/aws/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/aws/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/botocore[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]"
 
-S="${WORKDIR}/${MY_P}"
-
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# Remove coverage from tests
+	# remove coverage from tests
 	sed -i '/addopts/s/--cov ec2instanceconnectcli //' pytest.ini \
 		|| die "sed failed for pytest.ini"
 
 	distutils-r1_python_prepare_all
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${D}" -name '*.cmd' -delete || die "cmd removal failed"
 }
