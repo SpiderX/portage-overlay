@@ -1,9 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -13,19 +14,21 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library for authentication in Azure Active Directory"
 HOMEPAGE="https://github.com/AzureAD/azure-activedirectory-library-for-python"
-SRC_URI="https://github.com/AzureAD/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AzureAD/${MY_PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
-SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/httpretty[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}] )"
-
-S="${WORKDIR}/${MY_P}"
 
 distutils_enable_tests unittest
 
