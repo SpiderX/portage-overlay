@@ -15,6 +15,7 @@
 	and Schemas, response schemas and descriptions, etc.
 	</longdescription>
 	<use>
+		<flag name="coreapi">Enable Core API</flag>
 		<flag name="validation">Enable swagger spec validation</flag>
 	</use>
 	<upstream>
