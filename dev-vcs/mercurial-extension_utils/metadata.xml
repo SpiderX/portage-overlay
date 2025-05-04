@@ -14,6 +14,7 @@
 	Mostly handling compatibility with various Mercurial versions.
 	</longdescription>
 	<upstream>
+		<remote-id type="heptapod">mercurial/mercurial-extension_utils</remote-id>
 		<remote-id type="pypi">mercurial_extension_utils</remote-id>
 	</upstream>
 </pkgmetadata>
