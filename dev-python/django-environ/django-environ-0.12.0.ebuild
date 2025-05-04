@@ -6,14 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="An environment variables to configure Django"
 HOMEPAGE="https://github.com/joke2k/django-environ"
-EGIT_REPO_URI="https://github.com/joke2k/${PN}.git"
+SRC_URI="https://github.com/joke2k/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 
