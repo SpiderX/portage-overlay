@@ -963,7 +963,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[sphinxcontrib-mermaid](https://github.com/mgaitan/sphinxcontrib-mermaid) | Mermaid diagrams in sphinx powered docs
 *   dev-python/[sphinxcontrib-openapi](https://github.com/sphinx-contrib/openapi) | Sphinx extension to generate APIs docs from OpenAPI
 *   dev-python/[ssh2-python](https://github.com/ParallelSSH/ssh2-python) | Super fast SSH2 protocol library, Python bindings for libssh2
-*   dev-python/[swagger_spec_validator](https://github.com/Yelp/swagger_spec_validator) | Python library that validates Swagger Specs
+*   dev-python/[swagger-spec-validator](https://github.com/Yelp/swagger_spec_validator) | Python library that validates Swagger Specs
 *   dev-python/[tablib](https://github.com/jazzband/tablib) | Format-agnostic tabular dataset library
 *   dev-python/[testinfra](https://github.com/pytest-dev/pytest-testinfra) | Testinfra test your infrastructures
 *   dev-python/[text-unidecode](https://github.com/kmike/text-unidecode) | The most basic Text::Unidecode port
