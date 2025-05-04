@@ -1,25 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Recursive Serialization for Django REST framework"
 HOMEPAGE="https://github.com/heywbj/django-rest-framework-recursive"
-SRC_URI="https://github.com/heywbj/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/heywbj/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64"
 
 RDEPEND="dev-python/djangorestframework[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}"-test-model.patch )
 
 distutils_enable_tests pytest
 
