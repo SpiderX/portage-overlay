@@ -4,16 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="py.test fixture for benchmarking code"
 HOMEPAGE="https://github.com/ionelmc/pytest-benchmark"
-EGIT_REPO_URI="https://github.com/ionelmc/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/py-cpuinfo[${PYTHON_USEDEP}]"

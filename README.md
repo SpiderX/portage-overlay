@@ -1257,3 +1257,4 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
+* dev-python/[promise](https://github.com/syrusakbary/promise) | Ultra-performant Promise implementation in Python
