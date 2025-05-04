@@ -1,25 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit git-r3 python-single-r1
 
 DESCRIPTION="A toolkit for testing, tweaking and cracking JSON Web Tokens"
 HOMEPAGE="https://github.com/ticarpi/jwt_tool"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/ticarpi/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/pycryptodome[${PYTHON_USEDEP}]')"
-BDEPEND="${RDEPEND}"
+	$(python_gen_cond_dep 'dev-python/cprint[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/pycryptodome[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/ratelimit[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/requests[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/termcolor[${PYTHON_USEDEP}]')"
 
 src_prepare() {
 	default
