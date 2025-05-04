@@ -1,22 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
-EGIT_REPO_URI="https://github.com/graphql-python/${PN}.git"
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="A Django integration for Graphene"
 HOMEPAGE="https://github.com/graphql-python/graphene-django"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/graphql-python/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-RESTRICT="test" # fails
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/graphene[${PYTHON_USEDEP}]
@@ -34,7 +31,8 @@ BDEPEND="test? ( dev-python/django-filter[${PYTHON_USEDEP}]
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -i '/pytest-runner/d' setup.py || die "sed failed"
+	# disable pytest-runner
+	sed -i '/pytest-runner/d' setup.py || die "sed failed for setup.py"
 
 	distutils-r1_python_prepare_all
 }
