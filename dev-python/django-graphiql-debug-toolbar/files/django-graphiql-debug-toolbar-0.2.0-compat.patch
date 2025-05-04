@@ -1,0 +1,29 @@
+From ea020cdc91f82e4ba69ff123c19557081a0796b1 Mon Sep 17 00:00:00 2001
+From: AlexCLeduc <ledualex@gmail.com>
+Date: Mon, 7 Oct 2024 15:57:10 -0400
+Subject: [PATCH] Add compatibility for py-django-debug-toolbar >= 4.4.6
+
+---
+ graphiql_debug_toolbar/middleware.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/graphiql_debug_toolbar/middleware.py b/graphiql_debug_toolbar/middleware.py
+index f08117b..4945887 100644
+--- a/graphiql_debug_toolbar/middleware.py
++++ b/graphiql_debug_toolbar/middleware.py
+@@ -4,7 +4,14 @@
+ from django.template.loader import render_to_string
+ from django.utils.encoding import force_str
+ 
+-from debug_toolbar.middleware import _HTML_TYPES
++
++import debug_toolbar
++
++if debug_toolbar.VERSION < "4.4.6":
++    from debug_toolbar.middleware import _HTML_TYPES
++else:
++    from debug_toolbar.utils import _HTML_TYPES
++
+ from debug_toolbar.middleware import DebugToolbarMiddleware as BaseMiddleware
+ from debug_toolbar.toolbar import DebugToolbar
+ from graphene_django.views import GraphQLView
