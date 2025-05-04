@@ -6,14 +6,14 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Asynchronous task job queue based on distributed message passing"
 HOMEPAGE="https://github.com/celery/celery"
-EGIT_REPO_URI="https://github.com/celery/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/billiard[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
