@@ -909,7 +909,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[port-for](https://github.com/kmike/port-for) | An utility and python library for TCP ports management
 *   dev-python/[prance](https://github.com/jfinkhaeuser/prance) | Resolving Swagger/OpenAPI 2.0 and 3.0 Parser
 *   dev-python/[proglog](https://github.com/Edinburgh-Genome-Foundry/Proglog) | Logs and progress bars manager for Python
-*   dev-python/[promise](https://github.com/syrusakbary/promise) | Python port of GraphQL.js
+*   dev-python/[promise](https://github.com/syrusakbary/promise) | Ultra-performant Promise implementation in Python
 *   dev-python/[purl](https://github.com/codeinthehole/purl) | Simple Python URL class
 *   dev-python/[py3dns](https://launchpad.net/py3dns) | Python 3 DNS library
 *   dev-python/[pybeam](https://github.com/matwey/pybeam) | Python module to parse Erlang BEAM files
@@ -922,7 +922,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pyspnego](https://github.com/jborean93/pyspnego) | Python SPNEGO authentication library
 *   dev-python/[pystache](https://github.com/PennyDreadfulMTG/pystache) | Mustache templating system for Python
 *   dev-python/[pytest-benchmark](https://github.com/ionelmc/pytest-benchmark) | py.test fixture for benchmarking code
-*   dev-python/[pytest-celery](https://github.com/click-contrib/click-repl) | Subcommand REPL for click apps
+*   dev-python/[pytest-celery](https://github.com/celery/pytest-celery) | A shim pytest plugin to enable celery.contrib.pytest
 *   dev-python/[pytest-datadir-ng](https://github.com/Tblue/pytest-datadir-ng) | Fixtures for pytest to retrieve test resources from filesystem
 *   dev-python/[pytest-django](https://github.com/pytest-dev/pytest-django) | A Django plugin for py.test
 *   dev-python/[pytest-pythonpath](https://github.com/bigsassy/pytest-pythonpath) | plugin for adding to the PYTHONPATH from command line or configs
@@ -1257,4 +1257,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
-* dev-python/[promise](https://github.com/syrusakbary/promise) | Ultra-performant Promise implementation in Python
