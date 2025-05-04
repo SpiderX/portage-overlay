@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1164](https://img.shields.io/badge/ebuild-1164-orange.svg)](https://img.shields.io/badge/ebuild-1164-orange.svg)
+[![Number of ebuilds: 1163](https://img.shields.io/badge/ebuild-1163-orange.svg)](https://img.shields.io/badge/ebuild-1163-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -876,7 +876,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[nmslib](https://github.com/nmslib/nmslib) | Non-Metric Space Library
 *   dev-python/[onetimepass](https://github.com/tadeck/onetimepass) | One-time password library for HOTP and TOTP passwords
 *   dev-python/[openai](https://github.com/openai/openai-python) | The official Python library for the OpenAI API
-*   dev-python/[openapi-schema-validator](https://github.com/p1c2u/openapi-schema-validator) | OpenAPI schema validation for Python
 *   dev-python/[openapi-spec-validator](https://github.com/p1c2u/openapi-spec-validator) | OpenAPI Spec validator
 *   dev-python/[opentelemetry-exporter-otlp-proto-common](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Protobuf encoding
 *   dev-python/[opentelemetry-exporter-otlp-proto-http](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Collector Protobuf over HTTP Exporter
