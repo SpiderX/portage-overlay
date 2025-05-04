@@ -1,25 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-EHG_REPO_URI="https://foss.heptapod.net/mercurial/mercurial_keyring"
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 mercurial
 
 DESCRIPTION="Mercurial Keyring Extension"
 HOMEPAGE="https://foss.heptapod.net/mercurial/mercurial_keyring"
-SRC_URI=""
+EHG_REPO_URI="https://foss.heptapod.net/mercurial/mercurial_keyring"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-RESTRICT="test"
+RESTRICT="test" # fails
 
 RDEPEND="dev-python/keyring[${PYTHON_USEDEP}]
 	dev-vcs/mercurial-extension_utils[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 DOCS=( {HISTORY,README}.rst )
 
