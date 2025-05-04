@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1161](https://img.shields.io/badge/ebuild-1161-orange.svg)](https://img.shields.io/badge/ebuild-1161-orange.svg)
+[![Number of ebuilds: 1160](https://img.shields.io/badge/ebuild-1160-orange.svg)](https://img.shields.io/badge/ebuild-1160-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -904,7 +904,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pyemd](https://github.com/wmayner/pyemd) | Fast EMD for Python
 *   dev-python/[pygaljs](https://github.com/ionelmc/python-pygaljs) | Python package providing assets from js module for pygal
 *   dev-python/[pymysql](https://github.com/PyMySQL/PyMySQL) | Pure-Python MySQL Driver
-*   dev-python/[pyspnego](https://github.com/jborean93/pyspnego) | Python SPNEGO authentication library
 *   dev-python/[pystache](https://github.com/PennyDreadfulMTG/pystache) | Mustache templating system for Python
 *   dev-python/[pytest-benchmark](https://github.com/ionelmc/pytest-benchmark) | py.test fixture for benchmarking code
 *   dev-python/[pytest-celery](https://github.com/celery/pytest-celery) | A shim pytest plugin to enable celery.contrib.pytest
