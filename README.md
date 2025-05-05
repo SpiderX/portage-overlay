@@ -943,7 +943,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[social-auth-core](https://github.com/python-social-auth/social-core) | Python Social Auth - Core
 *   dev-python/[social-auth-app-django](https://github.com/python-social-auth/social-app-django) | Python Social Auth - Application - Django
 *   dev-python/[spdx-tools](https://github.com/spdx/tools-python) | Python library to parse, validate and create SPDX documents
-*   dev-python/[sphinx-autobuild](https://github.com/GaretJax/sphinx-autobuild) | Autorebuild documentation on change
+*   dev-python/[sphinx-autobuild](https://github.com/sphinx-doc/sphinx-autobuild) | Autorebuild documentation on change
 *   dev-python/[sphinx-mdinclude](https://github.com/omnilib/sphinx-mdinclude) | Markdown extension for Sphinx
 *   dev-python/[sphinxcontrib-httpdomain](https://github.com/sphinx-contrib/httpdomain) | Documenting RESTful HTTP APIs
 *   dev-python/[sphinxcontrib-mermaid](https://github.com/mgaitan/sphinxcontrib-mermaid) | Mermaid diagrams in sphinx powered docs
