@@ -816,7 +816,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[drf-yasg](https://github.com/axnsan12/drf-yasg) | Yet another Swagger generator
 *   dev-python/[email-validator](https://github.com/JoshData/python-email-validator) | An email syntax and deliverability validation library
 *   dev-python/[face](https://github.com/mahmoud/face) | Straightforward CLI parsing and dispatching microframework
-*   dev-python/[factory_boy](https://github.com/FactoryBoy/factory_boy) | A fixtures replacement tool
+*   dev-python/[factory-boy](https://github.com/FactoryBoy/factory_boy) | A fixtures replacement tool
 *   dev-python/[fakeldap](https://github.com/zulip/fakeldap) | An implementation of a LDAPObject to fake a ldap server
 *   dev-python/[faker](https://github.com/joke2k/faker) | Python package that generates fake data
 *   dev-python/[filetype](https://github.com/h2non/filetype.py) | Infer file type and MIME type of any file/buffer
