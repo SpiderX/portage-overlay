@@ -1,25 +1,22 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=poetry
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1
-
-MY_PN="rdklib"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Rule Development Kit Library for AWS Config"
 HOMEPAGE="https://github.com/awslabs/aws-config-rdklib"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="$(pypi_sdist_url rdklib)"
+S="${WORKDIR}/rdklib-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-util/aws-config-rdk[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
-	dev-python/botocore[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}/${MY_P}"
+	dev-python/pyyaml[${PYTHON_USEDEP}]"
