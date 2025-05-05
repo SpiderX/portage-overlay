@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1154](https://img.shields.io/badge/ebuild-1154-orange.svg)](https://img.shields.io/badge/ebuild-1154-orange.svg)
+[![Number of ebuilds: 1155](https://img.shields.io/badge/ebuild-1155-orange.svg)](https://img.shields.io/badge/ebuild-1155-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -919,6 +919,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[python-gilt](https://github.com/metacloud/gilt) | A GIT layering tool
 *   dev-python/[python-openapi-codec](https://github.com/core-api/python-openapi-codec) | An OpenAPI codec for Core API
 *   dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
+*   dev-python/[python3-openid](https://github.com/python-social-auth/social-core) | OpenID support for modern servers and consumers
 *   dev-python/[pykickstart](https://github.com/pykickstart/pykickstart) | Python library for reading and writing kickstart files
 *   dev-python/[pymeeus](https://github.com/architest/pymeeus) | Library of astronomical algorithms in Python
 *   dev-python/[pyvcloud](https://github.com/vmware/pyvcloud) | VMware vCloud Director Python SDK
