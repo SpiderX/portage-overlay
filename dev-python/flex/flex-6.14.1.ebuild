@@ -25,7 +25,7 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/strict-rfc3339[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/validate_email[${PYTHON_USEDEP}]"
+	dev-python/validate-email[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}]
 		dev-python/factory_boy[${PYTHON_USEDEP}]
 		dev-python/falcon[${PYTHON_USEDEP}]
