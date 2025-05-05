@@ -6,14 +6,14 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Python Social Auth - Core"
 HOMEPAGE="https://github.com/python-social-auth/social-core"
-EGIT_REPO_URI="https://github.com/python-social-auth/social-core.git"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 RESTRICT="test"
 PROPERTIES="test_network"
 
