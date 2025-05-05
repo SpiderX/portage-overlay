@@ -26,7 +26,7 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}
 	dev-python/validate-email[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/django[${PYTHON_USEDEP}]
-		dev-python/factory_boy[${PYTHON_USEDEP}]
+		dev-python/factory-boy[${PYTHON_USEDEP}]
 		dev-python/falcon[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
