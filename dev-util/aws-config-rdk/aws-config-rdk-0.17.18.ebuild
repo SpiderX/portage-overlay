@@ -6,14 +6,16 @@ EAPI=8
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="AWS Config Rules Development Kit"
 HOMEPAGE="https://github.com/awslabs/aws-config-rdk"
-EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
+SRC_URI="$(pypi_sdist_url rdk)"
+S="${WORKDIR}/rdk-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
