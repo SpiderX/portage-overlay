@@ -1,21 +1,51 @@
---- ../ukpostcodeparser/test/parser.py	2018-12-19 17:55:53.435338634 +0200
-+++ ../ukpostcodeparser/test/parser.py	2018-12-19 17:56:54.075385419 +0200
-@@ -796,14 +796,6 @@
-             expected=InvalidPostcodeError
+--- ../ukpostcodeparser/test/parser.py	2025-05-05 20:18:20.049123858 +0300
++++ ../ukpostcodeparser/test/parser.py	2025-05-05 20:19:13.484329900 +0300
+@@ -18,7 +18,7 @@
+ 
+         with self.assertRaises(ValueError) as cm:
+             parse_uk_postcode('N16', True, True)
+-        self.assertEquals(cm.exception.__class__, IncodeNotFoundError)
++        self.assertEqual(cm.exception.__class__, IncodeNotFoundError)
+ 
+     def test_max_length_exceeded_error_is_value_error(self):
+         """
+@@ -28,7 +28,7 @@
+ 
+         with self.assertRaises(ValueError) as cm:
+             parse_uk_postcode('N16 8QSSS', True, True)
+-        self.assertEquals(cm.exception.__class__, MaxLengthExceededError)
++        self.assertEqual(cm.exception.__class__, MaxLengthExceededError)
+ 
+     def test_invalid_postcode_error_is_value_error(self):
+         """
+@@ -38,7 +38,7 @@
+ 
+         with self.assertRaises(ValueError) as cm:
+             parse_uk_postcode('xx0 2yr', True, True)
+-        self.assertEquals(cm.exception.__class__, InvalidPostcodeError)
++        self.assertEqual(cm.exception.__class__, InvalidPostcodeError)
+ 
+ 
+ class PostcodeTestCase(unittest.TestCase):
+@@ -68,7 +68,7 @@
+             m = 'Expected {!r} but got {!r} for postcode={!r}, strict={!r} and ' \
+                 'incode_mandatory={!r}'
+ 
+-            self.assertEquals(
++            self.assertEqual(
+                 expected,
+                 result,
+                 m.format(
+@@ -801,7 +801,7 @@
+             postcode='w1m 4zz',
+             strict=True,
+             incode_mandatory=False,
+-            expected=InvalidPostcodeError
++            expected=('W1M','4ZZ')
          )
  
--    def test_091(self):
--        self.run_parser(
--            postcode='w1m 4zz',
--            strict=True,
--            incode_mandatory=False,
--            expected=InvalidPostcodeError
--        )
--
      def test_092(self):
-         self.run_parser(
-             postcode='3r0',
-@@ -844,22 +836,6 @@
+@@ -844,20 +844,12 @@
              expected=('GIR', '')
          )
  
@@ -27,33 +57,26 @@
 -            expected=InvalidPostcodeError
 -        )
 -
--    def test_098(self):
--        self.run_parser(
--            postcode='w1m',
--            strict=True,
--            incode_mandatory=False,
--            expected=InvalidPostcodeError
--        )
--
-     def test_099(self):
+     def test_098(self):
          self.run_parser(
-             postcode='dn169aaA',
-@@ -1068,14 +1044,6 @@
-             expected=InvalidPostcodeError
+             postcode='w1m',
+             strict=True,
+             incode_mandatory=False,
+-            expected=InvalidPostcodeError
++            expected=('W1M', '')
          )
  
--    def test_125(self):
--        self.run_parser(
--            postcode='w1m 4zz',
--            strict=True,
--            incode_mandatory=True,
+     def test_099(self):
+@@ -1073,7 +1065,7 @@
+             postcode='w1m 4zz',
+             strict=True,
+             incode_mandatory=True,
 -            expected=InvalidPostcodeError
--        )
--
++            expected=('W1M', '4ZZ')
+         )
+ 
      def test_126(self):
-         self.run_parser(
-             postcode='3r0',
-@@ -1116,14 +1084,6 @@
+@@ -1116,14 +1108,6 @@
              expected=IncodeNotFoundError
          )
  
