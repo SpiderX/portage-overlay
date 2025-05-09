@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
+PYTHON_COMPAT=( python3_{10..14} python3_{13..14}t )
 EGIT_REPO_URI="https://github.com/bulletmark/${PN}.git"
 
 inherit git-r3 python-single-r1 xdg
