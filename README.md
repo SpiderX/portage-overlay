@@ -1195,7 +1195,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   sys-apps/[dust](https://github.com/bootandy/dust) | More intuitive version of du
 *   sys-apps/[evhz](https://git.sr.ht/~iank/evhz) | Mouse refresh rate under evdev
 *   sys-apps/[firetools](https://firejail.wordpress.com) | Graphical user interface of Firajail security sandbox
-*   sys-apps/[gdisk-efi-bin](https://sourceforge.net/projects/gptfdisk/) | GPT partition table manipulator for Linux (EFI version)
 *   sys-apps/[jless](https://github.com/PaulJuliusMartinez/jless) | Command-line JSON viewer
 *   sys-apps/[nocache](https://github.com/Feh/nocache) | Minimize caching effects for applications
 *   sys-apps/[psi-notify](https://github.com/cdown/psi-notify) | Minimalistic PSI notifier using libnotify
