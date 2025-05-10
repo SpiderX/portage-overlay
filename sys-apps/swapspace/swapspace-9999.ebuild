@@ -1,20 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/Tookmund/${PN^}.git"
+EAPI=8
 
 inherit autotools git-r3 systemd
 
 DESCRIPTION="A dynamic swap space manager"
 HOMEPAGE="https://github.com/Tookmund/Swapspace"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/Tookmund/${PN^}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="acct-user/swapspace"
 

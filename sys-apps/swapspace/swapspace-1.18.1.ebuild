@@ -1,22 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools systemd
 
 DESCRIPTION="A dynamic swap space manager"
 HOMEPAGE="https://github.com/Tookmund/Swapspace"
 SRC_URI="https://github.com/Tookmund/${PN^}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="acct-user/swapspace"
-
-S="${WORKDIR}/${P^}"
 
 src_prepare() {
 	default
