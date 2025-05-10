@@ -34,6 +34,8 @@ src_prepare() {
 		|| die "sed failed for libinput-gestures-setup"
 }
 
+src_compile() { :; }
+
 src_test() {
 	emake test
 }
