@@ -42,7 +42,7 @@ jobs:
           if_true: './**/*.md'
           if_false: 'README.md'
       - name: Run lychee
-        uses: lycheeverse/lychee-action@v2.4.0
+        uses: lycheeverse/lychee-action@v2.4.1
         with:
           args: >-
             -v -m 1 --require-https
