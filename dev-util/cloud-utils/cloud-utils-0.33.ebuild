@@ -1,15 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit python-r1
 
 DESCRIPTION="Utilities for interacting with a cloud"
-HOMEPAGE="https://launchpad.net/cloud-utils"
-SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://github.com/canonical/cloud-utils"
+SRC_URI="https://github.com/canonical/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -36,5 +36,6 @@ src_install() {
 	fi
 	if use qemu ; then
 		dobin bin/mount-image-callback
+		doman man/write-mime-multipart.1
 	fi
 }

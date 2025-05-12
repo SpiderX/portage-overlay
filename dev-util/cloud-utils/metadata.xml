@@ -14,10 +14,9 @@
 	interacting with a cloud:
 	cloud-localds - create a disk for cloud-init
 	ec2metadata - query and display AWS EC2 metadata
-	growpart - rewrite partition table to utilize all the space
 	mount-image-callback - mount a file to a temporary mount point
 	resize-part-image - resize a partition and filesystem on it to a new size
-	ubuntu-cloudimage-query - get the latest Ubuntu AWS AMI 
+	ubuntu-cloudimage-query - get the latest Ubuntu AWS AMI
 	vcs-run - obtain a repository and execute a command
 	write-mime-multipart - utilty for creating mime-multipart files
 	</longdescription>
@@ -27,6 +26,7 @@
 		<flag name="qemu">Enable QEMU stuff</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">canonical/cloud-utils</remote-id>
 		<remote-id type="launchpad">cloud-utils</remote-id>
 	</upstream>
 </pkgmetadata>

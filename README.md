@@ -980,7 +980,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[cfripper](https://github.com/Skyscanner/cfripper) | Analysing CloudFormation templates for security compliance
 *   dev-util/[checkov](https://github.com/bridgecrewio/checkov) | Static code analysis tool for infrastructure-as-code
 *   dev-util/[cli](https://www.codesynthesis.com/projects/cli/) | Command Line Interface compiler for C++
-*   dev-util/[cloud-utils](https://launchpad.net/cloud-utils) | Utilities for interacting with a cloud
+*   dev-util/[cloud-utils](https://github.com/canonical/cloud-utils) | Utilities for interacting with a cloud
 *   dev-util/[cloudsplaining](https://github.com/salesforce/cloudsplaining) | AWS IAM Security Assessment tool
 *   dev-util/[config-file-validator](https://github.com/Boeing/config-file-validator) | Cross Platform tool to validate configuration files
 *   dev-util/[crudini](https://github.com/pixelb/crudini) | A utility for manipulating ini files
