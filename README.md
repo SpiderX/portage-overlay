@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1150](https://img.shields.io/badge/ebuild-1150-orange.svg)](https://img.shields.io/badge/ebuild-1150-orange.svg)
+[![Number of ebuilds: 1151](https://img.shields.io/badge/ebuild-1151-orange.svg)](https://img.shields.io/badge/ebuild-1151-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1217,6 +1217,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   www-apps/[draw-io](https://github.com/jgraph/drawio) | Online diagramming web application
 *   www-apps/[keeweb](https://github.com/keeweb/keeweb) | Cross-platform password manager compatible with KeePass
 *   www-apps/[LookingGlass](https://github.com/ramnode/LookingGlass) | A Python-backed Looking Glass
+*   www-apps/[lookingglass](https://github.com/hybula/lookingglass) | Modern, simple and fresh looking glass based on Bootstrap 5 and PHP 8
 *   www-apps/[netbox](https://github.com/netbox-community/netbox) | IP address and data center infrastructure management tool
 *   www-apps/[tinyfilemanager](https://github.com/prasathmani/tinyfilemanager) | Single-file PHP file manager
 *   www-apps/[webui-aria2](https://github.com/ziahamza/webui-aria2) | The worlds best and hottest interface to interact with aria2
