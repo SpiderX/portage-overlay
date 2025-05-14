@@ -1,5 +1,0 @@
-# Config file for /etc/init.d/netgauge
-
-# Various options.
-# run `OoklaServer -h` for valid cmdline options
-OPTS="--daemon"
