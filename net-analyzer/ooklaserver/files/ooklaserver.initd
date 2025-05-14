@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/opt/ookla/OoklaServer"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_args="${OPTS} --pidfile=$pidfile"
+name="OoklaServer"
+
+depend() {
+	need net
+}
+
+stop_pre() {
+	pgrep -f -i "${RC_SVCNAME%%.*} --ward" | xargs kill -9
+}
+
+stop() {
+	start-stop-daemon --stop --quiet --pidfile ${pidfile} \
+		--signal=9
+}

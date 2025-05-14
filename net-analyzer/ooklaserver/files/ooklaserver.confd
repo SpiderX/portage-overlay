@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/ooklaserver
+
+# Various options.
+# run `OoklaServer -h` for valid cmdline options
+OPTS="--daemon"

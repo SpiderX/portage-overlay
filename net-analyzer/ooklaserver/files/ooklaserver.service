@@ -1,0 +1,18 @@
+[Unit]
+Description=OoklaServer
+Documentation=https://support.ookla.com/hc/en-us/articles/234578528-OoklaServer-Installation-Linux-Unix
+After=network.target
+StartLimitIntervalSec=3
+
+[Service]
+Type=forking
+User=ookla
+Group=ookla
+WorkingDirectory=/opt/ookla
+KillMode=process
+Restart=always
+RestartSec=1
+ExecStart=/opt/ookla/OoklaServer --daemon
+
+[Install]
+WantedBy=multi-user.target
