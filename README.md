@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1152](https://img.shields.io/badge/ebuild-1152-orange.svg)](https://img.shields.io/badge/ebuild-1152-orange.svg)
+[![Number of ebuilds: 1153](https://img.shields.io/badge/ebuild-1153-orange.svg)](https://img.shields.io/badge/ebuild-1153-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -143,6 +143,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[fq](https://github.com/wader/fq) | Command-line JSON processor for binary data
 *   app-misc/[gitmux](https://github.com/arl/gitmux) | Git in your tmux status bar
 *   app-misc/[gron](https://github.com/tomnomnom/gron) | Make JSON greppable
+*   app-misc/[hq](https://github.com/coderobe/hq) | A HTML processor inspired by jq
 *   app-misc/[jshon](http://kmkeen.com/jshon/) | JSON parser designed for maximum convenience within the shell
 *   app-misc/[jsqry-cli2-bin](https://github.com/jsqry/jsqry-cli2) | CLI tool (similar to jq) to query JSON using sane DSL
 *   app-misc/[kando-bin](https://github.com/kando-menu/kando) | A pie menu for the desktop
