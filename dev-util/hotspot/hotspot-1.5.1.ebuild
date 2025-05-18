@@ -3,14 +3,22 @@
 
 EAPI=8
 
-inherit ecm git-r3 xdg
+inherit ecm xdg
+
+PTL_COMMIT="6e86393f546429113e4ee78f7702eb820b21a0d2"
+PP_COMMIT="8972055d87d46ae5388310844b1e4405b9276962"
 
 DESCRIPTION="Linux perf GUI for performance analysis"
 HOMEPAGE="https://github.com/KDAB/hotspot"
-EGIT_REPO_URI="https://github.com/KDAB/${PN}.git"
+SRC_URI="https://github.com/KDAB/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/koenpoppe/PrefixTickLabels/archive/${PTL_COMMIT}.tar.gz
+		-> koenpoppe-PrefixTickLabels-${PTL_COMMIT}.tar.gz
+	https://github.com/KDAB/perfparser/archive/${PP_COMMIT}.tar.gz
+		-> KDAB-perfparser-${PP_COMMIT}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -40,6 +48,12 @@ RDEPEND="app-arch/zstd:=
 	virtual/libelf:="
 
 src_prepare() {
+	rmdir "${S}"/3rdparty/{PrefixTickLabels,perfparser} || die "rmdir failed"
+	ln -s ../../perfparser-"${PP_COMMIT}"/ 3rdparty/perfparser \
+		|| die "ln faild for perfparser"
+	ln -s ../../PrefixTickLabels-"${PTL_COMMIT}"/ 3rdparty/PrefixTickLabels \
+		|| die "ln faild for PrefixTickLabels"
+
 	if ! use test ; then
 		sed -i '/add_subdirectory(tests)/d' CMakeLists.txt \
 			|| die "sed failed for CMakeLists.txt"
