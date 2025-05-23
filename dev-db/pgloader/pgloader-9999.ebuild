@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/dimitri/${PN}.git"
-
-inherit common-lisp-3 git-r3
+inherit common-lisp-3 readme.gentoo-r1 git-r3
 
 DESCRIPTION="A data loading tool for PostgreSQL, using the COPY command"
 HOMEPAGE="https://github.com/dimitri/pgloader"
+EGIT_REPO_URI="https://github.com/dimitri/${PN}.git"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
@@ -59,6 +58,12 @@ BDEPEND="dev-lisp/asdf
 
 QA_FLAGS_IGNORED="/usr/bin/pgloader"
 
+DOC_CONTENTS="Garbage Collector heap size varies architecture pgloader compiled on\\n
+architecture pgloader compiled:\\n
+4GB on x86 and 16GB on amd64.\\n
+Depending on size of database it might need to be increased:\\n
+pgloader --dynamic-space-size 32768\\n\\n"
+
 src_prepare() {
 	default
 
@@ -81,7 +86,7 @@ src_compile() {
 		--load-system pgloader \
 		--load src/hooks.lisp \
 		--entry pgloader:main \
-		--dynamic-space-size "$(usex amd64 16384 1024)" \
+		--dynamic-space-size "$(usex amd64 16384 4096)" \
 		--compress-core \
 		--output build/bin/pgloader || die "buildapp failed"
 }
@@ -98,4 +103,9 @@ src_test() {
 
 src_install() {
 	dobin build/bin/pgloader
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
