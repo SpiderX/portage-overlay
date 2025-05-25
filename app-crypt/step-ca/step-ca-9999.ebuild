@@ -39,6 +39,7 @@ src_test() {
 src_install() {
 	einstalldocs
 	dobin step-ca
+	diropts -o step -g step
 	keepdir /var/log/step-ca
 	newinitd "${FILESDIR}"/step-ca.initd step-ca
 	newconfd "${FILESDIR}"/step-ca.confd step-ca

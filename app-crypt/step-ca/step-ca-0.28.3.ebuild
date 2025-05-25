@@ -613,6 +613,7 @@ src_install() {
 	einstalldocs
 	dobin step-ca
 	use utils && dobin scripts/badger-migration/badger-migration
+	diropts -o step -g step
 	keepdir /var/log/step-ca
 	newinitd "${FILESDIR}"/step-ca.initd step-ca
 	newconfd "${FILESDIR}"/step-ca.confd step-ca
