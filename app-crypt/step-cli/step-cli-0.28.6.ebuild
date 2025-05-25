@@ -525,6 +525,7 @@ S="${WORKDIR}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="+client"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -553,10 +554,10 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	readme.gentoo_create_doc
+	! use client && readme.gentoo_create_doc
 
 	dobin step-cli
-	doenvd "${FILESDIR}"/99step-cli
+	! use client && doenvd "${FILESDIR}"/99step-cli
 	systemd_dounit systemd/{cert-renewer@,ssh-cert-renewer}.service \
 		systemd/cert-renewer.target systemd/{cert-renewer@,ssh-cert-renewer}.timer
 	newinitd "${FILESDIR}"/step-cli.initd step-cli
@@ -569,6 +570,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	readme.gentoo_print_elog
+	! use client && readme.gentoo_print_elog
 	tmpfiles_process step-cli.conf
 }

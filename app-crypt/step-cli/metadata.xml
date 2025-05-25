@@ -13,6 +13,9 @@
 	step is an easy-to-use CLI tool for building, operating, and automating
 	Public Key Infrastructure (PKI) systems and workflows.
 	</longdescription>
+	<use>
+		<flag name="client">Do not install env var STEPPATH system-wide</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">smallstep/cli</remote-id>
 	</upstream>
