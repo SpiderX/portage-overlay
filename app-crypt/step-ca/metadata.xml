@@ -14,6 +14,9 @@
 	with possibility to issue X.509 certificates for your internal infrastructure,
 	issue SSH certificates, easily automate certificate management.
 	</longdescription>
+	<use>
+		<flag name="utils">Install database migration utility</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">smallstep/certificates</remote-id>
 	</upstream>

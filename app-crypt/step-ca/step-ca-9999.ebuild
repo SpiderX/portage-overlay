@@ -39,6 +39,7 @@ src_test() {
 src_install() {
 	einstalldocs
 	dobin step-ca
+	keepdir /var/log/step-ca
 	newinitd "${FILESDIR}"/step-ca.initd step-ca
 	newconfd "${FILESDIR}"/step-ca.confd step-ca
 	systemd_dounit systemd/step-ca.service

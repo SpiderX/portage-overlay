@@ -582,6 +582,7 @@ S="${WORKDIR}/certificates-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="utils"
 
 RDEPEND="acct-group/step
 	acct-user/step
@@ -596,6 +597,12 @@ src_compile() {
 	LDFLAGS="-w -X main.Version=${PV} -X \"main.BuildTime=${DATE}\""
 
 	ego build -ldflags "${LDFLAGS}" ./cmd/...
+
+	if use utils ; then
+		pushd scripts/badger-migration
+		ego build -o badger-migration
+		popd
+	fi
 }
 
 src_test() {
@@ -605,6 +612,8 @@ src_test() {
 src_install() {
 	einstalldocs
 	dobin step-ca
+	use utils && dobin scripts/badger-migration/badger-migration
+	keepdir /var/log/step-ca
 	newinitd "${FILESDIR}"/step-ca.initd step-ca
 	newconfd "${FILESDIR}"/step-ca.confd step-ca
 	systemd_dounit systemd/step-ca.service

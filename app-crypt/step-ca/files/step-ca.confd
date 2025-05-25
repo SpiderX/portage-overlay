@@ -2,7 +2,5 @@
 
 # Various options.
 # run `step-ca --help` for valid cmdline options
-OPTS="--password-file /etc/step/password.txt"
-
-# smallstep CA config file
-#CONFIG="/etc/step/config/ca.json"
+# OPTS="--context vpn"
+OPTS="/etc/step/config/ca.json --password-file /etc/step/password.txt"
