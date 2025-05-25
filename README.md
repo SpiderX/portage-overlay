@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1155](https://img.shields.io/badge/ebuild-1155-orange.svg)](https://img.shields.io/badge/ebuild-1155-orange.svg)
+[![Number of ebuilds: 1156](https://img.shields.io/badge/ebuild-1156-orange.svg)](https://img.shields.io/badge/ebuild-1156-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -234,6 +234,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[sqlbench](https://github.com/felixge/sqlbench) | Measures and compares execution time of one or more SQL queries
 *   dev-db/[sqlpackage](https://docs.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage?view=sql-server-ver15) | Automates SQL Server database development tasks
 *   dev-db/[soci](https://github.com/SOCI/soci) | Database access library for C++
+*   dev-db/[step-badger](https://github.com/lukasz-lobocki/step-badger) | Exporting data out of the badger database of step-ca
 *   dev-db/[tableplus](https://tableplus.com) | Modern, native, and friendly GUI tool for relational databases
 *   dev-db/[usql](https://github.com/xo/usql) | Universal command-line interface for SQL databases
 *   dev-haskell/[aeson-qq](https://github.com/sol/aeson-qq) | JSON quasiquoter for Haskell

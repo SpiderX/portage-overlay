@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package contains the step-badger utility with features to
+	display issued x509 and ssh certificates, as well as content of
+	a given data bucket from <pkg>app-crypt/step-ca</pkg> badger database.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lukasz-lobocki/step-badger</remote-id>
+	</upstream>
+</pkgmetadata>
