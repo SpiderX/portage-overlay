@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/labca-gui"
+name="LabCA"
+description="LabCA"
+command_user="${STEP_USER:-labca}:${STEP_GROUP:-labca}"
+command_background="yes"
+pidfile="/run/labca/${RC_SVCNAME}.pid"
+command_args="${OPTS}"
+start_stop_daemon_args="
+	--stdout /var/log/labca/${RC_SVCNAME}.log
+	--stderr /var/log/labca/${RC_SVCNAME}.log"
+
+depend() {
+	need net
+}

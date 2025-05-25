@@ -1,0 +1,39 @@
+{
+  "address": "172.17.0.194:443",
+  "config": {
+    "complete": false
+  },
+  "crt": "/etc/step/authorities/aws/certs/intermediate_ca.crt",
+  "db": {
+    "conn": "root@tcp(boulder-mysql:3306)/boulder_sa_integration",
+    "type": "mysql"
+  },
+  "dnsnames": [
+    "ca.icw.tools"
+  ],
+  "insecureaddress": "",
+  "key": "tpmkms:name=icw-aws",
+  "keys": {
+    "auth": "64BOnL2ZYyCIx7MRDXUDiQmSWtX1PKns8un2jt1nfus=",
+    "enc": "oRmA1bjpQEvd2OwbYc+zY3qIVgv0HDkuHSZeHMqXXEk="
+  },
+  "kms": {
+    "type": "tpmkms",
+    "uri": "tpmkms:storage-directory=/etc/step/authorities/aws/tpm"
+  },
+  "root": "/etc/step/authorities/aws/certs/root_ca.crt",
+  "server": {
+    "addr": "172.16.250.64",
+    "port": 3000,
+    "session": {
+      "maxage": 3600
+    }
+  },
+  "standalone": true,
+  "user": {
+    "email": "spiderx@spiderx.dp.ua",
+    "name": "spiderx",
+    "password": "$2a$04$wyKXKeRNbo0MfeFMwuhu8.vxwuXpZvP.oCxHhjKZE6.oBT2QhROUS"
+  },
+  "version": "25.03"
+}

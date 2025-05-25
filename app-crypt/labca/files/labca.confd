@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/labca
+
+# Various options.
+# run `labca --help` for valid cmdline options
+OPTS="-config /etc/labca/ca.json"
