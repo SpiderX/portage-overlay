@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	There are over 800 different instance types available on EC2 which
+	can make the process of selecting appropriate instance types difficult.
+	Instance Selector helps you select compatible instance types for your
+	application to run on. The command line interface can be passed resource
+	criteria like vcpus, memory, network performance, and much more and then
+	return the available, matching instance types.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aws/amazon-ec2-instance-selector</remote-id>
+	</upstream>
+</pkgmetadata>

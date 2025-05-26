@@ -1,0 +1,147 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit go-module
+
+EGO_SUM=(
+	"dario.cat/mergo v1.0.1"
+	"dario.cat/mergo v1.0.1/go.mod"
+	"github.com/atotto/clipboard v0.1.4"
+	"github.com/atotto/clipboard v0.1.4/go.mod"
+	"github.com/aws/aws-sdk-go-v2 v1.36.2"
+	"github.com/aws/aws-sdk-go-v2 v1.36.2/go.mod"
+	"github.com/aws/aws-sdk-go-v2/config v1.29.7"
+	"github.com/aws/aws-sdk-go-v2/config v1.29.7/go.mod"
+	"github.com/aws/aws-sdk-go-v2/credentials v1.17.60"
+	"github.com/aws/aws-sdk-go-v2/credentials v1.17.60/go.mod"
+	"github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.29"
+	"github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.29/go.mod"
+	"github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.33"
+	"github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.33/go.mod"
+	"github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.33"
+	"github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.33/go.mod"
+	"github.com/aws/aws-sdk-go-v2/internal/ini v1.8.3"
+	"github.com/aws/aws-sdk-go-v2/internal/ini v1.8.3/go.mod"
+	"github.com/aws/aws-sdk-go-v2/service/ec2 v1.203.1"
+	"github.com/aws/aws-sdk-go-v2/service/ec2 v1.203.1/go.mod"
+	"github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.12.3"
+	"github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.12.3/go.mod"
+	"github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.12.14"
+	"github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.12.14/go.mod"
+	"github.com/aws/aws-sdk-go-v2/service/pricing v1.32.17"
+	"github.com/aws/aws-sdk-go-v2/service/pricing v1.32.17/go.mod"
+	"github.com/aws/aws-sdk-go-v2/service/sso v1.24.16"
+	"github.com/aws/aws-sdk-go-v2/service/sso v1.24.16/go.mod"
+	"github.com/aws/aws-sdk-go-v2/service/ssooidc v1.28.15"
+	"github.com/aws/aws-sdk-go-v2/service/ssooidc v1.28.15/go.mod"
+	"github.com/aws/aws-sdk-go-v2/service/sts v1.33.15"
+	"github.com/aws/aws-sdk-go-v2/service/sts v1.33.15/go.mod"
+	"github.com/aws/smithy-go v1.22.2"
+	"github.com/aws/smithy-go v1.22.2/go.mod"
+	"github.com/aymanbagabas/go-osc52/v2 v2.0.1"
+	"github.com/aymanbagabas/go-osc52/v2 v2.0.1/go.mod"
+	"github.com/blang/semver/v4 v4.0.0"
+	"github.com/blang/semver/v4 v4.0.0/go.mod"
+	"github.com/charmbracelet/bubbles v0.20.0"
+	"github.com/charmbracelet/bubbles v0.20.0/go.mod"
+	"github.com/charmbracelet/bubbletea v1.3.3"
+	"github.com/charmbracelet/bubbletea v1.3.3/go.mod"
+	"github.com/charmbracelet/lipgloss v1.0.0"
+	"github.com/charmbracelet/lipgloss v1.0.0/go.mod"
+	"github.com/charmbracelet/x/ansi v0.8.0"
+	"github.com/charmbracelet/x/ansi v0.8.0/go.mod"
+	"github.com/charmbracelet/x/term v0.2.1"
+	"github.com/charmbracelet/x/term v0.2.1/go.mod"
+	"github.com/cpuguy83/go-md2man/v2 v2.0.6/go.mod"
+	"github.com/davecgh/go-spew v1.1.1"
+	"github.com/davecgh/go-spew v1.1.1/go.mod"
+	"github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f"
+	"github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f/go.mod"
+	"github.com/evertras/bubble-table v0.17.1"
+	"github.com/evertras/bubble-table v0.17.1/go.mod"
+	"github.com/inconshreveable/mousetrap v1.1.0"
+	"github.com/inconshreveable/mousetrap v1.1.0/go.mod"
+	"github.com/kylelemons/godebug v1.1.0"
+	"github.com/kylelemons/godebug v1.1.0/go.mod"
+	"github.com/lucasb-eyer/go-colorful v1.2.0"
+	"github.com/lucasb-eyer/go-colorful v1.2.0/go.mod"
+	"github.com/mattn/go-isatty v0.0.20"
+	"github.com/mattn/go-isatty v0.0.20/go.mod"
+	"github.com/mattn/go-localereader v0.0.1"
+	"github.com/mattn/go-localereader v0.0.1/go.mod"
+	"github.com/mattn/go-runewidth v0.0.12/go.mod"
+	"github.com/mattn/go-runewidth v0.0.16"
+	"github.com/mattn/go-runewidth v0.0.16/go.mod"
+	"github.com/mitchellh/go-homedir v1.1.0"
+	"github.com/mitchellh/go-homedir v1.1.0/go.mod"
+	"github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6"
+	"github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6/go.mod"
+	"github.com/muesli/cancelreader v0.2.2"
+	"github.com/muesli/cancelreader v0.2.2/go.mod"
+	"github.com/muesli/reflow v0.3.0"
+	"github.com/muesli/reflow v0.3.0/go.mod"
+	"github.com/muesli/termenv v0.16.0"
+	"github.com/muesli/termenv v0.16.0/go.mod"
+	"github.com/oliveagle/jsonpath v0.0.0-20180606110733-2e52cf6e6852"
+	"github.com/oliveagle/jsonpath v0.0.0-20180606110733-2e52cf6e6852/go.mod"
+	"github.com/patrickmn/go-cache v2.1.0+incompatible"
+	"github.com/patrickmn/go-cache v2.1.0+incompatible/go.mod"
+	"github.com/pmezard/go-difflib v1.0.0"
+	"github.com/pmezard/go-difflib v1.0.0/go.mod"
+	"github.com/rivo/uniseg v0.1.0/go.mod"
+	"github.com/rivo/uniseg v0.2.0/go.mod"
+	"github.com/rivo/uniseg v0.4.7"
+	"github.com/rivo/uniseg v0.4.7/go.mod"
+	"github.com/russross/blackfriday/v2 v2.1.0/go.mod"
+	"github.com/sahilm/fuzzy v0.1.1"
+	"github.com/sahilm/fuzzy v0.1.1/go.mod"
+	"github.com/samber/lo v1.47.0"
+	"github.com/samber/lo v1.47.0/go.mod"
+	"github.com/spf13/cobra v1.9.1"
+	"github.com/spf13/cobra v1.9.1/go.mod"
+	"github.com/spf13/pflag v1.0.6"
+	"github.com/spf13/pflag v1.0.6/go.mod"
+	"github.com/stretchr/testify v1.7.0"
+	"github.com/stretchr/testify v1.7.0/go.mod"
+	"go.uber.org/multierr v1.11.0"
+	"go.uber.org/multierr v1.11.0/go.mod"
+	"golang.org/x/sync v0.11.0"
+	"golang.org/x/sync v0.11.0/go.mod"
+	"golang.org/x/sys v0.0.0-20210809222454-d867a43fc93e/go.mod"
+	"golang.org/x/sys v0.6.0/go.mod"
+	"golang.org/x/sys v0.30.0"
+	"golang.org/x/sys v0.30.0/go.mod"
+	"golang.org/x/text v0.22.0"
+	"golang.org/x/text v0.22.0/go.mod"
+	"gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod"
+	"gopkg.in/yaml.v3 v3.0.1"
+	"gopkg.in/yaml.v3 v3.0.1/go.mod"
+	)
+go-module_set_globals
+
+DESCRIPTION="Amazon EC2 Instance Selector"
+HOMEPAGE="https://github.com/aws/amazon-ec2-instance-selector"
+SRC_URI="https://github.com/aws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${EGO_SUM_SRC_URI}"
+
+LICENSE="Apache-2.0"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+src_compile() {
+	LDFLAGS="-w -X main.versionID=${PV}"
+
+	ego build -ldflags "${LDFLAGS}" -tags aeislinux \
+		-o ec2-instance-selector ./cmd/main.go
+}
+
+src_test() {
+	emake unit-test
+}
+
+src_install() {
+	einstalldocs
+	dobin ec2-instance-selector
+}
