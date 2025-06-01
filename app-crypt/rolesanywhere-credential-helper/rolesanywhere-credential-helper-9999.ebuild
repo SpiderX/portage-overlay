@@ -28,7 +28,6 @@ src_compile() {
 		edo ./bin/aws_signing_helper completion ${completion} > aws_signing_helper.${completion} \
 			|| die "completion for ${completion} failed"
 	done
-
 }
 
 src_test() {

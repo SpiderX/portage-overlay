@@ -163,8 +163,8 @@ EGO_SUM=(
 	"golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod"
 	"golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9/go.mod"
 	"golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod"
-	"golang.org/x/crypto v0.31.0"
-	"golang.org/x/crypto v0.31.0/go.mod"
+	"golang.org/x/crypto v0.35.0"
+	"golang.org/x/crypto v0.35.0/go.mod"
 	"golang.org/x/exp v0.0.0-20190121172915-509febef88a4/go.mod"
 	"golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3/go.mod"
 	"golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961/go.mod"
@@ -176,8 +176,8 @@ EGO_SUM=(
 	"golang.org/x/net v0.0.0-20190213061140-3a22650c66bd/go.mod"
 	"golang.org/x/net v0.0.0-20190311183353-d8887717615a/go.mod"
 	"golang.org/x/net v0.0.0-20190522155817-f3200d17e092/go.mod"
-	"golang.org/x/net v0.33.0"
-	"golang.org/x/net v0.33.0/go.mod"
+	"golang.org/x/net v0.36.0"
+	"golang.org/x/net v0.36.0/go.mod"
 	"golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod"
 	"golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod"
 	"golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod"
@@ -190,10 +190,10 @@ EGO_SUM=(
 	"golang.org/x/sys v0.0.0-20181205085412-a5c9d58dba9a/go.mod"
 	"golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod"
 	"golang.org/x/sys v0.0.0-20210629170331-7dc0b73dc9fb/go.mod"
-	"golang.org/x/sys v0.28.0"
-	"golang.org/x/sys v0.28.0/go.mod"
-	"golang.org/x/term v0.27.0"
-	"golang.org/x/term v0.27.0/go.mod"
+	"golang.org/x/sys v0.30.0"
+	"golang.org/x/sys v0.30.0/go.mod"
+	"golang.org/x/term v0.29.0"
+	"golang.org/x/term v0.29.0/go.mod"
 	"golang.org/x/text v0.3.0/go.mod"
 	"golang.org/x/time v0.0.0-20190308202827-9d24e82272b4/go.mod"
 	"golang.org/x/tools v0.0.0-20180221164845-07fd8470d635/go.mod"
@@ -252,7 +252,6 @@ src_compile() {
 		edo ./bin/aws_signing_helper completion ${completion} > aws_signing_helper.${completion} \
 			|| die "completion for ${completion} failed"
 	done
-
 }
 
 src_test() {
