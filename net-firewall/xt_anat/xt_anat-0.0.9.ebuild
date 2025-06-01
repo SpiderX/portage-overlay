@@ -10,7 +10,7 @@ MY_P="axt_NAT_v0_09_public_01_v6_patch"
 DESCRIPTION="Assimetric NAT module for Linux xtables"
 HOMEPAGE="https://forum.nag.ru/index.php?/topic/195398-anat-advanced-asymmetric-cg-nat-xt_anat-module-yadra-dlya-linux"
 SRC_URI="${MY_P}.tar.bz2"
-S="${WORKDIR}"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
