@@ -29,8 +29,7 @@ iptables -t raw -A PREROUTING -d 11.103.133.0/24 -j ANAT --dnat\\n
 iptables -A FORWARD -s 172.20.0.0/16 -i vlan3500 -o vlan102 -j ANAT --snat\\n"
 
 pkg_nofetch() {
-	einfo "Please download ${MY_P/_arch_/x86_64} or"
-	einfo "${MY_P/_arch_/i386} from"
+	einfo "Please download ${MY_P} from"
 	einfo "${HOMEPAGE}"
 	einfo "and place it into your DISTDIR directory"
 }
