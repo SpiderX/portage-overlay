@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">andrsharaev/xt_NAT</remote-id>
+		<remote-id type="github">gonarh/xt_NAT_with_netflow_v9</remote-id>
 	</upstream>
 </pkgmetadata>
