@@ -529,6 +529,9 @@ IUSE="+client"
 RESTRICT="test"
 PROPERTIES="test_network"
 
+RDEPEND="acct-group/step
+	acct-user/step"
+
 DOCS=( {CHANGELOG,README}.md )
 
 DOC_CONTENTS="Run 'env-update && source /etc/profile' to\\n
