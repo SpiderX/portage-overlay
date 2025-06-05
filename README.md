@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1166](https://img.shields.io/badge/ebuild-1166-orange.svg)](https://img.shields.io/badge/ebuild-1166-orange.svg)
+[![Number of ebuilds: 1167](https://img.shields.io/badge/ebuild-1167-orange.svg)](https://img.shields.io/badge/ebuild-1167-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -770,6 +770,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[aws-lambda-powertools](https://github.com/awslabs/aws-lambda-powertools-python) | A suite of Python utilities for AWS Lambda functions
 *   dev-python/[azure-common](https://github.com/Azure/azure-python-devtools) | Microsoft Azure Client Common Library for Python
 *   dev-python/[azure-core](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Core Library for Python
+*   dev-python/[azure-identity](https://github.com/Azure/azure-sdk-for-python) | Azure Identity client library for Python
 *   dev-python/[azure-keyvault-secrets](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Key Vault Secrets Client Library for Python
 *   dev-python/[azure-storage-blob](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Storage Blobs Library for Python
 *   dev-python/[bc-detect-secrets](https://github.com/bridgecrewio/detect-secrets) | A fork of enterprise friendly way of detecting and preventing secrets
