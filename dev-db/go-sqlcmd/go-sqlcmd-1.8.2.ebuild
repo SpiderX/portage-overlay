@@ -741,7 +741,7 @@ RESTRICT="test" # needs mssql
 src_compile() {
 	LDFLAGS="-w -X main.version=${PV}"
 
-	ego build -ldflags "${LDFLAGS}" -o sqlcmd ./cmd/modern
+	ego build -ldflags "${LDFLAGS}" -o go-sqlcmd ./cmd/modern
 }
 
 src_test() {
@@ -750,5 +750,5 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	dobin sqlcmd
+	dobin go-sqlcmd
 }

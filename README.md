@@ -221,7 +221,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[msodbcsql](https://learn.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) | Microsoft ODBC Driver for SQL Server
 *   dev-db/[mssql-cli](https://github.com/dbcli/mssql-cli) | CLI for SQL Server Database
 *   dev-db/[mssql-scripter](https://github.com/microsoft/mssql-scripter) | CLI for scripting SQL Server Databases
-*   dev-db/[mssql-tools](https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?view=sql-server-ver15) | Microsoft SQL Server Tools for Linux
+*   dev-db/[mssql-tools](https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools) | Microsoft SQL Server Tools for Linux
 *   dev-db/[pg_cron](https://github.com/citusdata/pg_cron) | Run periodic jobs in PostgreSQL
 *   dev-db/[pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) | Manually force decisions in execution plans of PostgreSQL
 *   dev-db/[odyssey](https://github.com/yandex/odyssey) | Scalable PostgreSQL connection pooler
