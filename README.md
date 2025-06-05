@@ -1045,7 +1045,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[darkly](https://github.com/Bali10050/Darkly) | A modern style for qt applications
 *   kde-misc/[qCheckGMail](https://github.com/mhogomchungu/qCheckGMail) | qCheckGmail is a Qt/C++ multiple gmail account checker
 *   kde-misc/[kde-relaxingsounds](https://github.com/Prayag2/kde_relaxingsounds) | Plasma 5 widget for play relaxing sounds
-*   kde-misc/[kwin-effects-cube](https://github.com/zzag/kwin-effects-cube) | Desktop cube effect for kwin
 *   kde-misc/[kwin-effects-sliding-notifications](https://github.com/zzag/kwin-effects-sliding-notifications) | Sliding animation for notification windows
 *   kde-misc/[latte-dock](https://apps.kde.org/latte-dock/) | Elegant dock, based on KDE Frameworks
 *   kde-misc/[latte-indicator-dashtopanel](https://github.com/psifidotos/latte-indicator-dashtopanel) | Dash To Panel indicator for Latte Dock
