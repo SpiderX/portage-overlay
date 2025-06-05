@@ -15,7 +15,7 @@
 	asynchronously easier
 	</longdescription>
 	<upstream>
-		<remote-id type="github">awslabs/aws-lambda-powertools-python</remote-id>
+		<remote-id type="github">aws-powertools/powertools-lambda-python</remote-id>
 		<remote-id type="pypi">aws-lambda-powertools</remote-id>
 	</upstream>
 </pkgmetadata>

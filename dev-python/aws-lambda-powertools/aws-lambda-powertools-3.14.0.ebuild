@@ -6,14 +6,19 @@ EAPI=8
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature pypi
+
+MY_PN="powertools-lambda-python"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A suite of Python utilities for AWS Lambda functions"
 HOMEPAGE="https://github.com/aws-powertools/powertools-lambda-python"
-EGIT_REPO_URI="https://github.com/awslabs/aws-lambda-powertools-python.git"
+SRC_URI="https://github.com/aws-powertools/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 RESTRICT="test"
 PROPERTIES="test_network"
 

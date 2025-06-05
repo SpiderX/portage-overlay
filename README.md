@@ -769,7 +769,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[aws-lambda-builders](https://github.com/aws/aws-lambda-builders) | Python library to manage AWS Lambda functions
 *   dev-python/[aws-lambda-powertools](https://github.com/awslabs/aws-lambda-powertools-python) | A suite of Python utilities for AWS Lambda functions
 *   dev-python/[azure-common](https://github.com/Azure/azure-python-devtools) | Microsoft Azure Client Common Library for Python
-*   dev-python/[azure-core](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Core Library for Python
+*   dev-python/[azure-core](https://github.com/Azure/azure-sdk-for-python) | Azure Core shared client library for Python
 *   dev-python/[azure-identity](https://github.com/Azure/azure-sdk-for-python) | Azure Identity client library for Python
 *   dev-python/[azure-keyvault-secrets](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Key Vault Secrets Client Library for Python
 *   dev-python/[azure-storage-blob](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Storage Blobs Library for Python
