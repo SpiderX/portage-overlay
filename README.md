@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1168](https://img.shields.io/badge/ebuild-1168-orange.svg)](https://img.shields.io/badge/ebuild-1168-orange.svg)
+[![Number of ebuilds: 1169](https://img.shields.io/badge/ebuild-1169-orange.svg)](https://img.shields.io/badge/ebuild-1169-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -766,6 +766,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[applicationinsights](https://github.com/microsoft/ApplicationInsights-Python) | Application Insights SDK for Python
 *   dev-python/[aspectlib](https://github.com/ionelmc/python-aspectlib) | Aspect-oriented programming, monkey-patch and decorators library
 *   dev-python/[assertpy](https://github.com/assertpy/assertpy) | Assertion library for unit testing
+*   dev-python/[aws-cryptography-internal-standard-library](https://github.com/aws/aws-cryptographic-material-providers-library) | AWS Cryptographic Internal StandardLibrary
 *   dev-python/[aws-encryption-sdk](https://github.com/aws/aws-encryption-sdk-python) | AWS Encryption SDK
 *   dev-python/[aws-lambda-builders](https://github.com/aws/aws-lambda-builders) | Python library to manage AWS Lambda functions
 *   dev-python/[aws-lambda-powertools](https://github.com/aws-powertools/powertools-lambda-python) | A suite of Python utilities for AWS Lambda functions
