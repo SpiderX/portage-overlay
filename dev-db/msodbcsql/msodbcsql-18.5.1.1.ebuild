@@ -37,7 +37,7 @@ src_prepare() {
 src_install() {
 	einstalldocs
 
-	insinto /etc/unixODBC
+	insinto /usr/share/"${PN}-${SLOT}"
 	doins opt/microsoft/msodbcsql"${PV%%.*}"/etc/odbcinst.ini
 
 	doheader opt/microsoft/msodbcsql"${PV%%.*}"/include/msodbcsql.h
@@ -46,4 +46,24 @@ src_install() {
 
 	insinto /usr/share/resources/en_US
 	doins opt/microsoft/msodbcsql"${PV%%.*}"/share/resources/en_US/msodbcsqlr"${PV%%.*}".rll
+}
+
+pkg_config() {
+	local driver drivers
+	driver="ODBC Driver ${SLOT} for SQL Server"
+	drivers="$(/usr/bin/odbcinst -q -d)"
+
+	if echo "$drivers" | grep -vq "^\[$driver\]$" ; then
+		ebegin "Installing ${driver}"
+		/usr/bin/odbcinst -i -d -f /usr/share/"${PN}-${SLOT}"/odbcinst.ini
+		eend $? "Failed to install ${driver}"
+	else
+		einfo "Skipping already installed ${driver}"
+	fi
+}
+
+pkg_postinst() {
+	elog "If this is a new install, please run the following command"
+	elog "to configure the MSSQL ODBC driver:"
+	elog "emerge --config =${CATEGORY}/${PF}"
 }
