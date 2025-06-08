@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/aws-cloudformation/${PN}.git"
-
-inherit bash-completion-r1 git-r3 go-module
+inherit git-r3 go-module shell-completion
 
 DESCRIPTION="A development workflow tool for working with AWS CloudFormation"
 HOMEPAGE="https://github.com/aws-cloudformation/rain"
+EGIT_REPO_URI="https://github.com/aws-cloudformation/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -31,6 +30,5 @@ src_install() {
 	dobin rain
 
 	newbashcomp docs/bash_completion.sh rain
-	insinto /usr/share/zsh/site-functions
-	newins docs/zsh_completion.sh _rain
+	newzshcomp docs/zsh_completion.sh _rain
 }
