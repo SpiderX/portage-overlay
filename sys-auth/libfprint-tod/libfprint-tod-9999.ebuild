@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://gitlab.freedesktop.org/3v1n0/libfprint.git"
 
 inherit git-r3 meson udev
 
 DESCRIPTION="libfprint for Touch OEM Drivers"
 HOMEPAGE="https://gitlab.freedesktop.org/3v1n0/libfprint/-/tree/tod/"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/3v1n0/libfprint.git"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
