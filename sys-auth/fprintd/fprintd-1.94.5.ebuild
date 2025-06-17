@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PLOCALES="af ar as ast az be bg bn_IN ca ca@valencia cs cy da de el en_GB eo es et eu fa fi fo fr fur ga gl gu he hi hr hu ia id it ja ka kk kn ko ky lt lv ml mr ms nb nl nn oc or pa pl pt_BR pt ro ru sk sl sq sr@latin sr sv ta te th tr uk vi wa zh_CN zh_HK zh_TW"
 PLOCALE_BACKUP="en"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit meson pam plocale python-any-r1 systemd
 
@@ -22,8 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc pam selinux systemd test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/dbus-glib
-	dev-libs/glib:2
+RDEPEND="dev-libs/glib:2
 	|| ( sys-auth/libfprint:2 sys-auth/libfprint-tod:2 )
 	sys-auth/polkit
 	pam? ( sys-libs/pam
