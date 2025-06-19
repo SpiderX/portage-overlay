@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1173](https://img.shields.io/badge/ebuild-1173-orange.svg)](https://img.shields.io/badge/ebuild-1173-orange.svg)
+[![Number of ebuilds: 1172](https://img.shields.io/badge/ebuild-1172-orange.svg)](https://img.shields.io/badge/ebuild-1172-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1235,7 +1235,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   sys-process/[btop](https://github.com/aristocratos/btop) | A monitor of resources
 *   sys-process/[falco-bin](https://falco.org) | Cloud-Native runtime security
 *   sys-process/[nq](https://github.com/leahneukirchen/nq) | Unix command line queue utility
-*   sys-process/[nvtop](https://github.com/Syllo/nvtop) | GPU & Accelerator process monitoring
 *   www-apps/[adminerevo](https://github.com/adminerevo/adminerevo) | Database management in a single PHP file
 *   www-apps/[draw-io](https://github.com/jgraph/drawio) | Online diagramming web application
 *   www-apps/[keeweb](https://github.com/keeweb/keeweb) | Cross-platform password manager compatible with KeePass
