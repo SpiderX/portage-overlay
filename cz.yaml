@@ -20,7 +20,7 @@ commitizen:
             <type(docs|ci|revert)>: <description>
     schema_pattern: "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>\
       acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|\
-      forensics|metrics|misc|office|shells|text)|dev-(cpp|db|haskell|libs|lisp|ml|\
+      forensics|metrics|misc|office|shells|text)|dev-(build|cpp|db|haskell|libs|lisp|ml|\
       php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
       net-(analyzer|dns|firewall|ftp|im|libs|mail|misc|p2p|voip|vpn)|\
       sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|plugins|\
@@ -88,6 +88,7 @@ commitizen:
           app-office: "word processing, spreadsheets, presentation software"
           app-shells: "shells and their extensions"
           app-text: "tools for working with human-language text files"
+          dev-build: "build systems and related tools"
           dev-cpp: "libraries and utilities relevant to the c++ language"
           dev-db: "libraries and utilities for database programming"
           dev-haskell: "libraries and utilities for Haskell language"
@@ -144,6 +145,7 @@ commitizen:
           - app-office
           - app-shells
           - app-text
+          - dev-build
           - dev-cpp
           - dev-db
           - dev-haskell
