@@ -3,14 +3,15 @@
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake
 
 DESCRIPTION="Color picker and contrast checker"
 HOMEPAGE="https://github.com/qtilities/colorpick"
-EGIT_REPO_URI="https://github.com/qtilities/${PN}.git"
+SRC_URI="https://github.com/qtilities/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtbase:6[widgets]"
 BDEPEND="dev-build/qtilitools"

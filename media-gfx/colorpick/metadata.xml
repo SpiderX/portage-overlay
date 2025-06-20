@@ -21,6 +21,6 @@
 	as different formats.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">agateau/colorpick</remote-id>
+		<remote-id type="github">qtilities/colorpick</remote-id>
 	</upstream>
 </pkgmetadata>
