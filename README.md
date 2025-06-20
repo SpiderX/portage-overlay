@@ -1087,7 +1087,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[pminhibition](https://github.com/popov895/pminhibition) | Plasma applet shows information about power management inhibition
 *   kde-misc/[Tiled-Quicklaunch](https://github.com/Risu/Tiled-Quicklaunch) | Plasma Menu Widget for KDE
 *   media-gfx/[butteraugli](https://github.com/google/butteraugli) | A tool for measuring perceived differences between images
-*   media-gfx/[colorpick](https://github.com/agateau/colorpick) | Color picker and contrast checker
+*   media-gfx/[colorpick](https://github.com/qtilities/colorpick) | Color picker and contrast checker
 *   media-gfx/[depix](https://github.com/beurtschipper/Depix) | A tool for recovering passwords from pixelized screenshots
 *   media-gfx/[dssim](https://github.com/kornelski/dssim) | Image similarity comparison simulating human perception
 *   media-gfx/[guetzli](https://github.com/google/guetzli) | Perceptual JPEG encoder
