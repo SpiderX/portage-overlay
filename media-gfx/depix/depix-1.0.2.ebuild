@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -16,8 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]"
-
-#PATCHES=( "${FILESDIR}/${PN}"-1.0.2-setup.py.patch )
 
 src_prepare() {
 	default
