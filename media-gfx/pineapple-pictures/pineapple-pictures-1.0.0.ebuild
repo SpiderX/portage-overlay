@@ -6,14 +6,15 @@ EAPI=8
 PLOCALES="ca de en es fr id it ja ko nb_NO nl pa_PK ru si ta tr uk zh_CN"
 PLOCALE_BACKUP="en"
 
-inherit cmake git-r3 optfeature plocale xdg
+inherit cmake optfeature plocale xdg
 
 DESCRIPTION="A homebrew lightweight image viewer"
 HOMEPAGE="https://github.com/BLumia/pineapple-pictures"
-EGIT_REPO_URI="https://github.com/BLumia/${PN}.git"
+SRC_URI="https://github.com/BLumia/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="dbus"
 
 RDEPEND="dev-qt/qtbase:6[dbus?,widgets]
