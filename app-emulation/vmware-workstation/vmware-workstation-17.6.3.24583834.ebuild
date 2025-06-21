@@ -1,28 +1,27 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg
 
 PV_BUILD=$(ver_cut 4)
-MY_PN="VMware-Workstation"
+MY_PN="VMware-Workstation-Full"
 MY_PV=$(ver_cut 1-3)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="13.5.2/23775688"
+VMWARE_FUSION_VER="13.6.3/24585314"
 SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.0.5"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
-HOMEPAGE="https://www.vmware.com/products/desktop-hypervisor.html"
-SRC_URI="https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${MY_PV}/${PV_BUILD}/linux/core/${MY_P}.x86_64.bundle.tar
+HOMEPAGE="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion"
+SRC_URI="${MY_P}.x86_64.bundle
 	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz ->
 			unlocker-${UNLOCKER_VERSION}.tar.gz
-			https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${VMWARE_FUSION_VER}/universal/core/com.vmware.fusion.zip.tar ->
 			com.vmware.fusion-${PV}.zip.tar )
 	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz ->
 			vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
@@ -55,6 +54,7 @@ RDEPEND="app-arch/unzip
 	sys-auth/polkit
 	sys-fs/fuse:3
 	virtual/libcrypt:=
+	x11-libs/libXcursor
 	x11-libs/libXinerama
 	x11-libs/libXxf86vm
 	x11-libs/libdrm
@@ -62,20 +62,25 @@ RDEPEND="app-arch/unzip
 	x11-libs/startup-notification
 	x11-libs/xcb-util
 	x11-themes/hicolor-icon-theme
-	modules? ( >=app-emulation/vmware-modules-${MY_PV} )
+	modules? ( app-emulation/vmware-modules )
 	ovftool? ( !dev-util/ovftool )"
 DEPEND="${PYTHON_DEPS}"
 BDEPEND="app-admin/chrpath
 	app-arch/unzip
 	sys-apps/fix-gnustack"
 
-QA_SONAME="opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_bz2.cpython-310-x86_64-linux-gnu.so
-	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_dbm.cpython-310-x86_64-linux-gnu_failed.so
+QA_SONAME="opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_dbm.cpython-310-x86_64-linux-gnu_failed.so
 	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_gdbm.cpython-310-x86_64-linux-gnu.so
 	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/readline.cpython-310-x86_64-linux-gnu.so"
 
 IUSE_VMWARE_GUESTS="darwin linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista"
 for guest in ${IUSE_VMWARE_GUESTS}; do IUSE+=" vmware-tools-${guest}" ; done
+
+pkg_nofetch() {
+	einfo "Please the client file ${A} from"
+	einfo "${HOMEPAGE}"
+	einfo "and place it into your DISTDIR directory"
+}
 
 src_unpack() {
 	for AFILE in ${A}; do
