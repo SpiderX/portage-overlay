@@ -1,9 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/gnif/LookingGlass.git"
 MODULES_OPTIONAL_IUSE="modules"
 
 inherit cmake desktop git-r3 linux-mod-r1 tmpfiles xdg
@@ -12,6 +11,7 @@ MY_PV="B7-rc1"
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
 HOMEPAGE="https://looking-glass.io https://github.com/gnif/LookingGlass"
+EGIT_REPO_URI="https://github.com/gnif/LookingGlass.git"
 SRC_URI="binary? ( https://looking-glass.io/artifact/${MY_PV}/host -> looking-glass-host-${PV}.zip )"
 
 LICENSE="GPL-2"
@@ -20,7 +20,9 @@ IUSE="binary gnome host iso obs opengl pipewire pulseaudio wayland X"
 REQUIRED_USE="gnome? ( wayland ) iso? ( binary )"
 RESTRICT="mirror"
 
-RDEPEND="media-libs/fontconfig:1.0
+RDEPEND="acct-group/qemu
+	acct-user/qemu
+	media-libs/fontconfig:1.0
 	media-libs/libglvnd
 	sys-libs/binutils-libs:=
 	x11-libs/libxkbcommon

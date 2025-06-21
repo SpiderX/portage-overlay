@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE="modules"
 
 inherit cmake desktop linux-mod-r1 tmpfiles xdg
 
-MY_PV="$(ver_cut 2 "${PV^^}")$(ver_cut 1)-$(ver_cut 3-)"
+MY_PV="$(ver_cut 2 "${PV^^}")$(ver_cut 1)"
 
 DESCRIPTION="A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough"
 HOMEPAGE="https://looking-glass.io https://github.com/gnif/LookingGlass"
@@ -22,7 +22,9 @@ IUSE="binary gnome host iso obs opengl pipewire pulseaudio wayland X"
 REQUIRED_USE="gnome? ( wayland ) iso? ( binary )"
 RESTRICT="mirror"
 
-RDEPEND="media-libs/fontconfig:1.0
+RDEPEND="acct-group/qemu
+	acct-user/qemu
+	media-libs/fontconfig:1.0
 	media-libs/libglvnd
 	sys-libs/binutils-libs:=
 	x11-libs/libxkbcommon
@@ -49,8 +51,6 @@ BDEPEND="virtual/pkgconfig
 	host? ( app-arch/unzip )
 	iso? ( app-cdr/cdrtools )
 	wayland? ( dev-util/wayland-scanner )"
-
-PATCHES=( "${FILESDIR}/${P}-kernel-6.10.patch" )
 
 CONFIG_CHECK="~UIO"
 
