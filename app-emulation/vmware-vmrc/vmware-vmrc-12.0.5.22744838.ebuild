@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,7 @@ MY_P="${MY_PN}-${MY_PV}.x86_64.bundle"
 DESCRIPTION="VMware Remote Console"
 HOMEPAGE="https://docs.vmware.com/en/VMware-Remote-Console/index.html"
 SRC_URI="${MY_P}"
+S="${WORKDIR}/src"
 
 LICENSE="vmware"
 SLOT="0"
@@ -21,10 +22,6 @@ RESTRICT="bindist fetch mirror"
 
 RDEPEND="app-emulation/vmware-workstation
 	standalone? ( !app-emulation/vmware-workstation )"
-BDEPEND="sys-apps/fix-gnustack
-	sys-libs/ncurses-compat:5"
-
-S="${WORKDIR}/src"
 
 pkg_nofetch() {
 	einfo "Please the client file ${A} from"
@@ -75,8 +72,8 @@ src_install() {
 
 	doicon vmware-vmrc/lib/share/pixmaps/{vmware-vmrc,vmrc_sidebar}.png
 
-	for size in 16x16 24x24 32x32 48x48 ; do
-		doicon -s "${size}" vmware-vmrc/share/icons/hicolor/"${size}"/apps/vmware-vmrc.png
+	for size in 16 24 32 48 ; do
+		doicon -s "${size}" vmware-vmrc/share/icons/hicolor/"${size}x${size}"/apps/vmware-vmrc.png
 	done
 
 	insinto /usr/share/metainfo
@@ -115,24 +112,34 @@ src_install() {
 		doins vmware-installer/bootstrap
 
 		# Install vmware-vmrc ancillaries
-		for size in 16x16 22x22 24x24 32x32 48x48 ; do
-			if [ "${size}" == "16x16" ] || [ "$size" == "32x32" ] ; then
-				doicon -s "${size}" -c mimetypes vmware-vmrc/share/icons/hicolor/"${size}"/mimetypes/application-certificate.png
-				doicon -s "${size}" -c mimetypes vmware-vmrc/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{easter-egg,team}.png
-				doicon -s "${size}" -c mimetypes vmware-vmrc/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{vm-clone,vm-legacy,vm}.png
+		for size in 16 22 24 32 48 ; do
+			if [ "${size}" == "16" ] || [ "$size" == "32" ] ; then
+				doicon -s "${size}" -c mimetypes \
+					vmware-vmrc/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
+				doicon -s "${size}" -c mimetypes \
+					vmware-vmrc/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,team}.png
+				doicon -s "${size}" -c mimetypes \
+					vmware-vmrc/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm-legacy,vm}.png
 			fi
-			if [ "${size}" == "22x22" ] || [ "$size" == "24x24" ] ; then
-				doicon -s "${size}" -c mimetypes vmware-vmrc/share/icons/hicolor/"${size}"/mimetypes/application-certificate.png
-				doicon -s "${size}" -c mimetypes vmware-vmrc/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{vm-clone,vm}.png
+			if [ "${size}" == "22" ] || [ "$size" == "24" ] ; then
+				doicon -s "${size}" -c mimetypes \
+					vmware-vmrc/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
+				doicon -s "${size}" -c mimetypes \
+					vmware-vmrc/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm}.png
 			fi
-			if [ "${size}" == "48x48" ] ; then
-				doicon -s "${size}" -c mimetypes vmware-vmrc/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.png
-				doicon -s "${size}" -c mimetypes vmware-vmrc/share/icons/hicolor/"${size}"/mimetypes/application-x-vmware-{vm-clone,vmdisk,vmfoundry,vm-legacy,vm}.png
+			if [ "${size}" == "48" ] ; then
+				doicon -s "${size}" -c mimetypes \
+					vmware-vmrc/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.png
+				doicon -s "${size}" -c mimetypes \
+					vmware-vmrc/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vmdisk,vmfoundry,vm-legacy,vm}.png
 			fi
 		done
-		doicon -s scalable -c mimetypes vmware-vmrc/share/icons/hicolor/scalable/mimetypes/application-certificate.svg
-		doicon -s scalable -c mimetypes vmware-vmrc/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.svg
-		doicon -s scalable -c mimetypes vmware-vmrc/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{vm-clone,vmfoundry,vm-legacy,vm}.svg
+		doicon -s scalable -c mimetypes \
+			vmware-vmrc/share/icons/hicolor/scalable/mimetypes/application-certificate.svg
+		doicon -s scalable -c mimetypes \
+			vmware-vmrc/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.svg
+		doicon -s scalable -c mimetypes \
+			vmware-vmrc/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{vm-clone,vmfoundry,vm-legacy,vm}.svg
 
 		exeinto /opt/vmware/lib/vmware/setup
 		doexe vmware-vmrc-setup/vmware-config
