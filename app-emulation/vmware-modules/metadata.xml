@@ -16,6 +16,6 @@
 	currently handled as the rest has been upstreamed for some time.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">mkubecek/vmware-host-modules</remote-id>
+		<remote-id type="github">bytium/vmware-host-modules</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1026,7 +1026,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[jwt_tool](https://github.com/ticarpi/jwt_tool) | A toolkit for testing, tweaking and cracking JSON Web Tokens
 *   dev-util/[lazygit](https://github.com/jesseduffield/lazygit) | Simple terminal UI for git commands
 *   dev-util/[mapforce-advanced](https://www.altova.com/mapforce) | Advanced data mapping, conversion, and transformation tool
-*   dev-util/[ovftool](https://developer.vmware.com/tools) | VMware Open Virtualization Format tool
+*   dev-util/[ovftool](https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool) | VMware Open Virtualization Format tool
 *   dev-util/[packer](https://www.packer.io) | A tool to create identical machine images for multiple platforms
 *   dev-util/[policy-sentry](https://github.com/salesforce/policy_sentry) | AWS IAM Least Privilege Policy Generator
 *   dev-util/[postman](https://www.postman.com) | Build, test, and document your APIs faster
