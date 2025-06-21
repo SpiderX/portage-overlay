@@ -6,7 +6,7 @@ EAPI=8
 EGIT_REPO_URI="https://github.com/uroni/urbackup_backend.git"
 PLOCALES="cs da de es fa fr it nl pl pt_BR ru sk uk zh_CN zh_TW"
 PLOCALE_BACKUP="en"
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 
 inherit autotools git-r3 plocale systemd wxwidgets
 
