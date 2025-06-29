@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1186](https://img.shields.io/badge/ebuild-1186-orange.svg)](https://img.shields.io/badge/ebuild-1186-orange.svg)
+[![Number of ebuilds: 1187](https://img.shields.io/badge/ebuild-1187-orange.svg)](https://img.shields.io/badge/ebuild-1187-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -882,6 +882,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[hsh](https://github.com/chrissimpkins/hsh) | Simple cross-platform file hash digests and file integrity checks
 *   dev-python/[identify](https://github.com/pre-commit/identify) | File identification library for Python
 *   dev-python/[igraph](https://github.com/igraph/python-igraph) | Python interface for igraph
+*   dev-python/[impacket](https://github.com/fortra/impacket) | Collection of Python classes for working with network protocols
 *   dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
 *   dev-python/[jdatetime](https://github.com/slashmili/python-jalali) | Jalali implementation of Python's datetime module
 *   dev-python/[jiter](https://github.com/pydantic/jiter) | Fast iterable JSON parser
