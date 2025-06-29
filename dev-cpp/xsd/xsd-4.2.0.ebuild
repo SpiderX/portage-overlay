@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RDEPEND="dev-libs/xerces-c
 	dev-cpp/libxsd-frontend
 	zlib? ( sys-libs/zlib:= )"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-util/build2-0.16
+BDEPEND="dev-util/build2
 	dev-util/cli
 	doc? ( app-text/doxygen )"
 
