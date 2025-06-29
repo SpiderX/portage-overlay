@@ -1,0 +1,12 @@
+--- ../CMakeLists.txt	2025-06-22 17:43:26.314440652 +0300
++++ ../CMakeLists.txt	2025-06-22 17:44:27.530734154 +0300
+@@ -120,6 +120,9 @@
+ 	endif()
+ endif()
+ 
++if(ENABLE_UNIT_TESTS)
++	find_package(httplib REQUIRED)
++endif()
+ 
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake" "${CMAKE_CURRENT_BINARY_DIR}/config.h")
+ 

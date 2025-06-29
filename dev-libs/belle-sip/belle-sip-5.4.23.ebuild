@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,8 @@ SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}/${P}.tar.bz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test tunnel zeroconf"
-RESTRICT="test"
+IUSE="test zeroconf"
+RESTRICT="test" # tester doesn't see sip grammar
 PROPERTIES="test_network"
 
 RDEPEND="dev-cpp/belr
@@ -21,13 +21,23 @@ RDEPEND="dev-cpp/belr
 	sys-libs/zlib:=
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	test? ( dev-cpp/cpp-httplib:0= )"
+
+PATCHES=( "${FILESDIR}/${PN}"-5.4.23-CMakeLists.txt.patch )
+
+src_prepare() {
+	# link agains system httplib
+	sed -i  -e '/add_subdirectory(cpp-httplib)/d' \
+		-e "s/PUBLIC httplib/PRIVATE \${HTTPLIB_LIBRARY}/" \
+		tester/CMakeLists.txt || die "sed failed for CMakeLists.txt"
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_MDNS="$(usex zeroconf)"
 		-DENABLE_STRICT=NO
-		-DENABLE_TUNNEL="$(usex tunnel)"
 		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
 

@@ -14,9 +14,6 @@
 	transaction and dialog layers. It is written in C, with an object
 	oriented API. It also comprises a simple HTTP/HTTPS client implementation.
 	</longdescription>
-	<use>
-		<flag name="tunnel">Enable tunnel support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">BelledonneCommunications/belle-sip</remote-id>
 	</upstream>
