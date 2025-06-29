@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1175](https://img.shields.io/badge/ebuild-1175-orange.svg)](https://img.shields.io/badge/ebuild-1175-orange.svg)
+[![Number of ebuilds: 1176](https://img.shields.io/badge/ebuild-1176-orange.svg)](https://img.shields.io/badge/ebuild-1176-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -762,6 +762,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[aesedb](https://github.com/skelsec/aesedb) | NTDS parser toolkit
 *   dev-python/[ahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
 *   dev-python/[aiomultiprocess](https://github.com/omnilib/aiomultiprocess) | asyncio version of the standard multiprocessing module
+*   dev-python/[aiosmb](https://github.com/skelsec/aiosmb) | Asynchronous SMB protocol implementation
 *   dev-python/[annoy](https://github.com/spotify/annoy) | Approximate Nearest Neighbors in C++/Python
 *   dev-python/[anyconfig](https://github.com/ssato/python-anyconfig) | Generic access to configuration files in any formats
 *   dev-python/[apispec](https://github.com/marshmallow-code/apispec) | A pluggable API specification generator
