@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1196](https://img.shields.io/badge/ebuild-1196-orange.svg)](https://img.shields.io/badge/ebuild-1196-orange.svg)
+[![Number of ebuilds: 1197](https://img.shields.io/badge/ebuild-1197-orange.svg)](https://img.shields.io/badge/ebuild-1197-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -931,6 +931,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[parameterized](https://github.com/wolever/parameterized) | Parameterized testing with any Python test framework
 *   dev-python/[parsel](https://github.com/scrapy/parsel) | Utility to extract data from XML/HTML documents using XPath or CSS selectors
 *   dev-python/[pathspec](https://github.com/cpburnz/python-path-specification) | A utility library for pattern matching of file paths
+*   dev-python/[poetry-dynamic-versioning](https://github.com/mtkennerly/poetry-dynamic-versioning) | Plugin for Poetry to enable dynamic versioning based on VCS tags
 *   dev-python/[policyuniverse](https://github.com/Netflix-Skunkworks/policyuniverse) | Parse and Process AWS IAM Policies, Statements, ARNs
 *   dev-python/[port-for](https://github.com/fizyk/port-for) | An utility and python library for TCP ports management
 *   dev-python/[prance](https://github.com/RonnyPfannschmidt/prance) | Resolving Swagger/OpenAPI 2.0 and 3.0 Parser

@@ -1,0 +1,26 @@
+--- ../tests/test_unit.py	2025-06-28 11:51:22.891863015 +0300
++++ ../tests/test_unit.py	2025-06-28 11:52:01.580656196 +0300
+@@ -279,7 +279,6 @@
+             [project]
+             dynamic = ["version"]
+ 
+-            [tool]
+             [tool.poetry-dynamic-versioning]
+             enable = true
+ 
+@@ -307,7 +306,6 @@
+             [project]
+             dynamic = ["version"]
+ 
+-            [tool]
+             [tool.poetry-dynamic-versioning]
+             enable = true
+ 
+@@ -336,7 +334,6 @@
+             [project]
+             dynamic = ["version", "dependencies"]
+ 
+-            [tool]
+             [tool.poetry-dynamic-versioning]
+             enable = true
+ 
