@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,5 @@ src_configure() {
 		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -z muldefs"
 		-DCONFIG_DEBUG_LEAKS="$(usex debug)"
 	)
-
 	cmake_src_configure
 }
