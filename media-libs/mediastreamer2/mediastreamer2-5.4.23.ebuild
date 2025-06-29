@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa av1 bv16 debug doc g726 g729 gsm jpeg matroska opengl opus pcap portaudio +pulseaudio qrcode speex srtp resample test theora tools +v4l vpx yuv zrtp"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # tester doesn't build
 REQUIRED_USE="zrtp? ( srtp )
 	resample? ( speex )
 	|| ( alsa portaudio pulseaudio )
@@ -50,13 +50,13 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/doxygen )"
 
-PATCHES=( "${FILESDIR}"/"${PN}"-5.3.4-pkgconfig.patch )
+PATCHES=( "${FILESDIR}"/"${PN}"-5.3.4-pkgconfig.patch
+	"${FILESDIR}"/"${PN}"-5.4.23-ms_srtp.cpp.patch )
 
 src_prepare() {
 	# fix path for nowebcamCIF.jpg
-	sed -i '/DESTINATION ${CMAKE_INSTALL_DATADIR}/s|}|}/Mediastreamer2|' \
+	sed -i "/DESTINATION \${CMAKE_INSTALL_DATADIR}/s|}|}/Mediastreamer2|" \
 		src/CMakeLists.txt || die "sed for CMakeLists.txt failed"
-
 	cmake_src_prepare
 }
 
@@ -94,7 +94,6 @@ src_configure() {
 		-DENABLE_VPX="$(usex vpx)"
 		-DENABLE_ZRTP="$(usex zrtp)"
 	)
-
 	cmake_src_configure
 }
 
@@ -103,5 +102,5 @@ src_install() {
 
 	# path is needed for Mediastreamer2Config.cmake
 	# portage doesn't install empty dirs
-	keepdir /usr/$(get_libdir)/mediastreamer/plugins
+	keepdir /usr/"$(get_libdir)"/mediastreamer/plugins
 }
