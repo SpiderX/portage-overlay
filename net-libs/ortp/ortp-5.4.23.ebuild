@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,9 +22,8 @@ BDEPEND="virtual/pkgconfig
 
 src_prepare() {
 	# fix version
-	sed -i '/project(Ortp/s|0|1|' CMakeLists.txt \
+	sed -i "/project(Ortp/s|0|$(ver_cut 3-)|" CMakeLists.txt \
 		|| die "sed failed for CMakeLists.txt"
-
 	cmake_src_prepare
 }
 
@@ -37,12 +36,10 @@ src_configure() {
 		-DENABLE_TESTS="$(usex test)"
 		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
-
 	cmake_src_configure
 }
 
 src_test() {
 	"${S}"_build/tester/ortp-tester || die "tests failed"
-
 	cmake_src_test
 }
