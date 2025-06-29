@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,6 +11,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Cross-platform toolchain for building and packaging C++ code"
 HOMEPAGE="https://build2.org"
 SRC_URI="https://download.build2.org/${PV}/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,8 +24,6 @@ RDEPEND="dev-cpp/libodb
 	dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}/${PN}"-0.14.0-update-for-install.patch
 	"${FILESDIR}/${PN}"-0.16.0-gcc-13-segfault.patch )
