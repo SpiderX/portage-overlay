@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1198](https://img.shields.io/badge/ebuild-1198-orange.svg)](https://img.shields.io/badge/ebuild-1198-orange.svg)
+[![Number of ebuilds: 1199](https://img.shields.io/badge/ebuild-1199-orange.svg)](https://img.shields.io/badge/ebuild-1199-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -948,6 +948,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pygaljs](https://github.com/ionelmc/python-pygaljs) | Python package providing assets from js module for pygal
 *   dev-python/[pylnk3](https://github.com/strayge/pylnk) | Windows LNK File Parser and Creator
 *   dev-python/[pymysql](https://github.com/PyMySQL/PyMySQL) | Pure-Python MySQL Driver
+*   dev-python/[pynfsclient](https://github.com/Pennyw0rth/NfsClient) | Python library to simulate NFS client
 *   dev-python/[pystache](https://github.com/PennyDreadfulMTG/pystache) | Mustache templating system for Python
 *   dev-python/[pytest-benchmark](https://github.com/ionelmc/pytest-benchmark) | py.test fixture for benchmarking code
 *   dev-python/[pytest-celery](https://github.com/celery/pytest-celery) | A shim pytest plugin to enable celery.contrib.pytest
