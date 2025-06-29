@@ -13,6 +13,10 @@
 	Utilities library used by Belledonne Communications softwares like
 	belle-sip, mediastreamer2 and liblinphone.
 	</longdescription>
+	<use>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as crypto engine</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto engine</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">BelledonneCommunications/bctoolbox</remote-id>
 	</upstream>
