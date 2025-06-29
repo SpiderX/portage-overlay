@@ -1,6 +1,8 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# shellcheck disable=SC2115
+
 EAPI=8
 
 inherit cmake
@@ -24,7 +26,6 @@ src_configure() {
 		-DBUILD_STATIC_LIBS="$(usex static-libs)"
 		-DBUILD_OBJECT_LIBS=OFF
 	)
-
 	cmake_src_configure
 }
 
