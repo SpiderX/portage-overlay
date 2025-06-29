@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,13 +26,11 @@ src_configure() {
 		-DENABLE_TOOLS="$(usex tools)"
 		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
-
 	cmake_src_configure
 }
 
 src_test() {
 	"${S}"_build/tester/belr-tester --resource-dir "${S}"/tester/res \
 		|| die "tests failed"
-
 	cmake_src_test
 }
