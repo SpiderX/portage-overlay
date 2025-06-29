@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1185](https://img.shields.io/badge/ebuild-1185-orange.svg)](https://img.shields.io/badge/ebuild-1185-orange.svg)
+[![Number of ebuilds: 1186](https://img.shields.io/badge/ebuild-1186-orange.svg)](https://img.shields.io/badge/ebuild-1186-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -842,6 +842,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dpath](https://github.com/dpath-maintainers/dpath-python) | A python module that will check for package updates
 *   dev-python/[drf-yasg](https://github.com/axnsan12/drf-yasg) | Yet another Swagger generator
 *   dev-python/[dsinternals](https://github.com/p0dalirius/pydsinternals) | Directory Services Internals Library
+*   dev-python/[dunamai](https://github.com/mtkennerly/dunamai) | Dynamic versioning library and CLI
 *   dev-python/[email-validator](https://github.com/JoshData/python-email-validator) | An email syntax and deliverability validation library
 *   dev-python/[face](https://github.com/mahmoud/face) | Straightforward CLI parsing and dispatching microframework
 *   dev-python/[factory-boy](https://github.com/FactoryBoy/factory_boy) | A fixtures replacement tool
