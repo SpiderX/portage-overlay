@@ -12,10 +12,10 @@ SRC_URI="https://github.com/SOCI/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="mysql odbc oracle postgres sqlite static-libs test"
+IUSE="boost firebird mysql odbc oracle postgres sqlite static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/boost:=
+RDEPEND="boost? ( dev-libs/boost:= )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
 	oracle? ( dev-db/oracle-instantclient:= )
@@ -25,10 +25,9 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DSOCI_CXX11=ON
 		-DSOCI_STATIC="$(usex static-libs)"
 		-DSOCI_TESTS="$(usex test)"
+		-DWITH_BOOST="$(usex boost)"
 	)
-
 	cmake_src_configure
 }

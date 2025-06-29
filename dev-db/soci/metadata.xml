@@ -14,6 +14,9 @@
 	embedding SQL queries in the regular C++ code, staying entirely
 	within the Standard C++.
 	</longdescription>
+	<use>
+		<flag name="boost">Enable support for <pkg>dev-libs/boost</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">SOCI/soci</remote-id>
 		<remote-id type="sourceforge">soci</remote-id>
