@@ -3,16 +3,18 @@
 
 EAPI=8
 
-EGIT_SUBMODULES=()
-
 inherit cmake desktop xdg
+
+MY_E="CallEdition"
 
 DESCRIPTION="A free VoIP and video softphone based on the SIP protocol"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/linphone-desktop"
-EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
+SRC_URI="https://gitlab.linphone.org/BC/public/${PN}/-/archive/${PV}-${MY_E}/${P}-${MY_E}.tar.bz2"
+S="${WORKDIR}/${P}-${MY_E}"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="ldap qrcode"
 RESTRICT="test" # no tests
 
