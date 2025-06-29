@@ -1,20 +1,19 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://git.codesynthesis.com/${PN}/${PN}.git"
 
 inherit git-r3 multiprocessing toolchain-funcs
 
 DESCRIPTION="A collection of C++ libraries (successor of libcult)"
 HOMEPAGE="https://www.codesynthesis.com/projects/libcutl/"
+EGIT_REPO_URI="https://git.codesynthesis.com/${PN}/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="static-libs"
 
-BDEPEND=">=dev-util/build2-0.16"
+BDEPEND="dev-util/build2"
 
 src_configure() {
 	local myconfigargs=(
