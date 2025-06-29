@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit cmake python-r1
+inherit cmake flag-o-matic python-r1
 
 DESCRIPTION="SIP library supporting voice/video calls and text messaging"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/liblinphone"
@@ -16,16 +16,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc ldap lime qrcode test tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # needs include from belle-sip
 
 RDEPEND="dev-cpp/belr
 	dev-cpp/jsoncpp
 	dev-cpp/xsd
 	dev-db/sqlite:3
-	dev-db/soci
+	<dev-db/soci-4.1
 	dev-libs/belcard
-	dev-libs/belle-sip
+	dev-libs/belle-sip[test?]
 	dev-libs/jsoncpp:0=
 	dev-libs/libxml2:2
 	dev-libs/lime
@@ -55,12 +54,15 @@ src_prepare() {
 	# fix incapability to detect jsoncpp
 	sed -i '/json\/json.h/s|<|<jsoncpp/|' include/linphone/flexi-api-client.h \
 		src/account_creator/flexi-api-client.cpp \
+		src/account-manager-services/account-manager-services{,-request}.h \
 		tester/{account_creator_flexiapi_,flexiapiclient-,remote-provisioning-}tester.cpp \
+		|| die "sed failed for json"
+	sed -i '/#include "json\/json.h"/s|"json/json.h"|<jsoncpp/json/json.h>|' src/http/http-client.h \
+		src/core/core.cpp \
 		|| die "sed failed for json"
 	# rename target, name is used further in linking with linphone
 	sed -i '/set(JsonCPP_TARGET/s|_lib||' cmake/FindJsonCPP.cmake \
 		|| die "sed failed for FindJsonCPP.cmake"
-
 	cmake_src_prepare
 }
 
@@ -77,7 +79,7 @@ src_configure() {
 		-DENABLE_UNIT_TESTS="$(usex test)"
 		-Wno-dev
 	)
-
+	append-flags -Wno-error=incompatible-pointer-types
 	cmake_src_configure
 }
 
@@ -85,7 +87,6 @@ src_test() {
 	"${S}"_build/tester/liblinphone-tester \
 		--resource-dir "${S}"/tester/ \
 		|| die "tests failed"
-
 	cmake_src_test
 }
 
@@ -94,5 +95,5 @@ src_install() {
 
 	# path is needed for LibLinphoneConfig.cmake
 	# portage doesn't install empty dirs
-	keepdir /usr/$(get_libdir)/liblinphone/plugins
+	keepdir /usr/"$(get_libdir)"/liblinphone/plugins
 }
