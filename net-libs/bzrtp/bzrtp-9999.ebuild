@@ -1,14 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 
 inherit cmake git-r3
 
 DESCRIPTION="Media Path Key Agreement for Unicast Secure RTP"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/bzrtp"
+EGIT_REPO_URI="https://gitlab.linphone.org/BC/public/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,6 +27,5 @@ src_configure() {
 		-DENABLE_UNIT_TESTS="$(usex test)"
 		-DENABLE_ZIDCACHE="$(usex sqlite)"
 	)
-
 	cmake_src_configure
 }
