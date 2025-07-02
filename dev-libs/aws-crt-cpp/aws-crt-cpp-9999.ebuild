@@ -19,12 +19,12 @@ RDEPEND="dev-libs/aws-c-auth:=
 	dev-libs/aws-c-cal:=
 	dev-libs/aws-c-common:=
 	dev-libs/aws-c-compression:=
-	dev-libs/aws-checksums:=
 	dev-libs/aws-c-event-stream:=
 	dev-libs/aws-c-http:=
 	dev-libs/aws-c-io:=
 	dev-libs/aws-c-mqtt:=
 	dev-libs/aws-c-sdkutils:=
+	dev-libs/aws-checksums:=
 	dev-libs/s2n-tls:="
 DEPEND="${RDEPEND}"
 
