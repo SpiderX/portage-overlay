@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1210](https://img.shields.io/badge/ebuild-1210-orange.svg)](https://img.shields.io/badge/ebuild-1210-orange.svg)
+[![Number of ebuilds: 1211](https://img.shields.io/badge/ebuild-1211-orange.svg)](https://img.shields.io/badge/ebuild-1211-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -349,6 +349,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[wai](https://github.com/yesodweb/wai) | Web Application Interface
 *   dev-haskell/[wai-middleware-static](https://github.com/scotty-web/wai-middleware-static) | WAI middleware that serves requests to static files
 *   dev-haskell/[warp](https://github.com/yesodweb/wai) | A fast, light-weight web server for WAI applications
+*   dev-libs/[aws-c-s3](https://github.com/awslabs/aws-c-s3) | AWS SDK S3 implementation
 *   dev-libs/[aws-c-sdkutils](https://github.com/awslabs/aws-c-sdkutils) | AWS SDK Utilities
 *   dev-libs/[aws-checksums](https://github.com/awslabs/aws-checksums) | Cross-Platform HW accelerated CRC32c and CRC32
 *   dev-libs/[aws-crt-cpp](https://github.com/awslabs/aws-crt-cpp) | AWS SDK Core CRT package
