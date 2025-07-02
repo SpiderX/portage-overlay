@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1220](https://img.shields.io/badge/ebuild-1220-orange.svg)](https://img.shields.io/badge/ebuild-1220-orange.svg)
+[![Number of ebuilds: 1221](https://img.shields.io/badge/ebuild-1221-orange.svg)](https://img.shields.io/badge/ebuild-1221-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -218,6 +218,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[dbcrossbar](https://www.dbcrossbar.org) | Copy tabular data between databases, CSV files and cloud storage
 *   dev-db/[dbgate-bin](https://github.com/dbgate/dbgate) | Database manager for MySQL, PostgreSQL, SQL Server and MongoDB
 *   dev-db/[dynamodb-shell](https://github.com/awslabs/dynamodb-shell) | A command line client (shell) for AWS DynamoDB
+*   dev-db/[dynein](https://github.com/awslabs/dynein) | DynamoDB Command Line Interface
 *   dev-db/[go-sqlcmd](https://github.com/microsoft/go-sqlcmd) | CLI for SQL Server and Azure SQL
 *   dev-db/[ip4r](https://github.com/RhodiumToad/ip4r) | IP address and IP range index types for PostgreSQL
 *   dev-db/[litestream](https://github.com/benbjohnson/litestream) | Streaming replication for SQLite
