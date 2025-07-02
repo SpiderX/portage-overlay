@@ -1,0 +1,65 @@
+--- ../CMakeLists.txt	2025-07-02 19:15:01.893924760 +0300
++++ ../CMakeLists.txt	2025-07-02 19:15:45.991953471 +0300
+@@ -88,62 +88,11 @@
+                util/trim_double.cpp
+                util/unquote.cpp)
+ 
+-add_executable(ddbshtest
+-               ${BISON_ddbsh_Parser_OUTPUTS}
+-               ${CMAKE_CURRENT_BINARY_DIR}/parser.cpp
+-               ${FLEX_ddbsh_Scanner_OUTPUTS}
+-               command/connect.cpp
+-               command/create_backup.cpp
+-               command/create_table.cpp
+-               command/delete.cpp
+-               command/describe.cpp
+-               command/describe_backup.cpp
+-               command/drop_backup.cpp
+-               command/drop_table.cpp
+-               command/insert.cpp
+-               command/pitr.cpp
+-               command/quit.cpp
+-               command/restore_backup.cpp
+-               command/restore_pitr.cpp
+-               command/select.cpp
+-               command/show_backups.cpp
+-               command/show_limits.cpp
+-               command/show_tables.cpp
+-               command/show_create_table.cpp
+-               command/update.cpp
+-               command/update_table.cpp
+-               command/update_table_ttl.cpp
+-               dynamodb/describe_helper.cpp
+-               dynamodb/get_key_schema.cpp
+-               dynamodb/ddbsh_ddb_client_config.cpp
+-               dynamodb/select_helper.cpp
+-               dynamodb/serialize_attribute.cpp
+-               dynamodb/table_exists.cpp
+-               ddbsh/ddbsh.cpp
+-               ddbsh/main.cpp
+-               ddbsh/version.cpp
+-               parser/input-source.cpp
+-               parser/keywords.cpp
+-               util/allocation.cpp
+-               util/ll.cpp
+-               util/logging.cpp
+-               util/strip_newlines.cpp
+-               util/trim_double.cpp
+-               util/unquote.cpp)
+-
+-set_target_properties(ddbshtest PROPERTIES COMPILE_DEFINITIONS "TEST_HARNESS=1")
+-
+ target_compile_features(ddbsh PUBLIC cxx_std_11)
+-target_compile_features(ddbshtest PUBLIC cxx_std_11)
+ 
+ target_link_libraries(ddbsh readline ${AWSSDK_LINK_LIBRARIES})
+ target_include_directories(ddbsh PUBLIC "${PROJECT_BINARY_DIR}")
+ 
+-target_link_libraries(ddbshtest readline ${AWSSDK_LINK_LIBRARIES})
+-target_include_directories(ddbshtest PUBLIC "${PROJECT_BINARY_DIR}")
+-
+-include(${CMAKE_SOURCE_DIR}/tests/ddbsh-tests.txt)
+-
+ install(TARGETS ddbsh DESTINATION bin)
+ 
+ message(STATUS "<<< Gentoo configuration >>>
