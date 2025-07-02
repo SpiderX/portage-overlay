@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1218](https://img.shields.io/badge/ebuild-1218-orange.svg)](https://img.shields.io/badge/ebuild-1218-orange.svg)
+[![Number of ebuilds: 1219](https://img.shields.io/badge/ebuild-1219-orange.svg)](https://img.shields.io/badge/ebuild-1219-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -352,6 +352,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[aws-c-auth](https://github.com/awslabs/aws-c-auth) | AWS client-side authentication
 *   dev-libs/[aws-c-cal](https://github.com/awslabs/aws-c-cal) | AWS Crypto Abstraction Layer
 *   dev-libs/[aws-c-common](https://github.com/awslabs/aws-c-common) | Core AWS SDK package
+*   dev-libs/[aws-c-compression](https://github.com/awslabs/aws-c-common) | AWS C Compression
 *   dev-libs/[aws-c-event-stream](https://github.com/awslabs/aws-c-event-stream) | C99 implementation of the eventstream content-type
 *   dev-libs/[aws-c-http](https://github.com/awslabs/aws-c-http) | HTTP C99 implementation
 *   dev-libs/[aws-c-io](https://github.com/awslabs/aws-c-io) | AWS SDK module for IO and TLS
