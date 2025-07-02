@@ -17,8 +17,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/aws-c-cal:=
 	dev-libs/aws-c-common:=
-	dev-libs/aws-checksums:=
 	dev-libs/aws-c-io:=
+	dev-libs/aws-checksums:=
 	dev-libs/s2n-tls:="
 DEPEND="${RDEPEND}"
 
