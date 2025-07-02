@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1205](https://img.shields.io/badge/ebuild-1205-orange.svg)](https://img.shields.io/badge/ebuild-1205-orange.svg)
+[![Number of ebuilds: 1206](https://img.shields.io/badge/ebuild-1206-orange.svg)](https://img.shields.io/badge/ebuild-1206-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -499,6 +499,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[rfc2388](https://github.com/jdz/rfc2388) | An implementation of RFC 2388 in Common Lisp
 *   dev-lisp/[rfc2388-binary](https://gitlab.common-lisp.net/ucw/rfc2388-binary) | Parsing multipart/form-data data streams library
 *   dev-lisp/[rt](http://www.cliki.net/rt) | Common Lisp regression tester from MIT
+*   dev-libs/[s2n-tls](https://github.com/aws/s2n-tls) | An implementation of the TLS/SSL protocols
 *   dev-lisp/[salza2](https://github.com/xach/salza2) | Compressed data in the ZLIB, DEFLATE, or GZIP data formats
 *   dev-lisp/[slime](https://github.com/slime/slime) | The Superior Lisp Interaction Mode for Emacs
 *   dev-lisp/[split-sequence](http://www.cliki.net/split-sequence) | Functions to partition a Common Lisp sequence
