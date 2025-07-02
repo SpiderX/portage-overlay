@@ -24,6 +24,7 @@ RDEPEND="dev-libs/aws-c-auth:=
 	dev-libs/aws-c-http:=
 	dev-libs/aws-c-io:=
 	dev-libs/aws-c-mqtt:=
+	dev-libs/aws-c-s3:=
 	dev-libs/aws-c-sdkutils:=
 	dev-libs/aws-checksums:=
 	dev-libs/s2n-tls:="
