@@ -1,0 +1,44 @@
+--- ../tests/socket_test.c	2025-07-01 22:18:36.601602238 +0300
++++ ../tests/socket_test.c	2025-07-01 22:20:52.335293055 +0300
+@@ -833,17 +833,6 @@
+     options.domain = AWS_SOCKET_IPV4;
+     ASSERT_SUCCESS(s_test_socket(allocator, &options, &endpoint));
+ 
+-    struct aws_socket_endpoint endpoint_ipv6 = {.address = "::1", .port = 8129};
+-    options.type = AWS_SOCKET_STREAM;
+-    options.domain = AWS_SOCKET_IPV6;
+-    if (s_test_socket(allocator, &options, &endpoint_ipv6)) {
+-        /* Skip test if server can't bind to address (e.g. Codebuild's ubuntu runners don't allow IPv6) */
+-        if (aws_last_error() == AWS_IO_SOCKET_INVALID_ADDRESS) {
+-            return AWS_OP_SKIP;
+-        }
+-        ASSERT_TRUE(false, "s_test_socket() failed");
+-    }
+-
+     return AWS_OP_SUCCESS;
+ }
+ AWS_TEST_CASE(test_socket_with_bind_to_interface, s_test_socket_with_bind_to_interface)
+--- ../tests/socket_handler_test.c	2025-07-01 22:21:38.086773896 +0300
++++ ../tests/socket_handler_test.c	2025-07-01 22:22:07.114429189 +0300
+@@ -1123,11 +1123,6 @@
+ }
+ AWS_TEST_CASE(socket_handler_ipv4_read_to_eof_after_peer_hangup, s_socket_ipv4_read_to_eof_after_peer_hangup_test)
+ 
+-static int s_socket_ipv6_read_to_eof_after_peer_hangup_test(struct aws_allocator *allocator, void *ctx) {
+-    return s_socket_read_to_eof_after_peer_hangup_test_common(allocator, ctx, AWS_SOCKET_IPV6);
+-}
+-AWS_TEST_CASE(socket_handler_ipv6_read_to_eof_after_peer_hangup, s_socket_ipv6_read_to_eof_after_peer_hangup_test)
+-
+ static void s_creation_callback_test_channel_creation_callback(
+     struct aws_client_bootstrap *bootstrap,
+     int error_code,
+--- ../tests/CMakeLists.txt	2025-07-01 22:24:16.674778783 +0300
++++ ../tests/CMakeLists.txt	2025-07-01 22:24:22.483701335 +0300
+@@ -182,7 +182,6 @@
+ if(NOT WIN32)
+     add_net_test_case(socket_handler_read_to_eof_after_peer_hangup)
+     add_net_test_case(socket_handler_ipv4_read_to_eof_after_peer_hangup)
+-    add_net_test_case(socket_handler_ipv6_read_to_eof_after_peer_hangup)
+ endif()
+ add_test_case(socket_pinned_event_loop)
+ add_net_test_case(socket_pinned_event_loop_dns_failure)
