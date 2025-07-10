@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="0a54e65e13f2eb174d47d3d2d21ae46ff29c547d"
+COMMIT="f850c88c34ac6f8c6a63e61aba2e677a6844648f"
 
 DESCRIPTION="Markdown processor in Common Lisp using Esrap parser"
 HOMEPAGE="https://github.com/3b/3bmd"
