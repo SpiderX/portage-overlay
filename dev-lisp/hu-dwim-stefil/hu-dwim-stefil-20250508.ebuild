@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="7a172486ea51c5d38836e5b209d7135014506d19"
+COMMIT="70fd678f9754c8274cfa84a2a747c2df0d4de497"
 MY_PN="${PN//-/.}"
 
 DESCRIPTION="A Simple Test Framework In Lisp"
