@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="4796e2833ad39f3e375a99c632de9f5973fd353f"
+COMMIT="aae9defaac911ca322233f25bf96d35d637e96dc"
 MY_PN="${PN//-/.}"
 
 DESCRIPTION="Common Lisp extensions to ASDF"
