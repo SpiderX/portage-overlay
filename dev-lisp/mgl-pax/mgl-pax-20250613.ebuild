@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="6bfd77ddfa79f0e0905eb4b99d46ac5d2dd69c24"
+COMMIT="18f1d93b962781f273d2362bd190ce1744c120c4"
 
 DESCRIPTION="Common Lisp documentation system"
 HOMEPAGE="https://github.com/melisgl/mgl-pax"
@@ -39,6 +39,7 @@ src_test() {
 
 src_install() {
 	common-lisp-3_src_install
+	common-lisp-install-sources -t all version.lisp-expr
 	insinto /usr/share/common-lisp/source/mgl-pax/test
 	doins test/mgl-pax-tests.el
 	insinto /usr/share/common-lisp/source/mgl-pax/src
