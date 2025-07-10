@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="b24c56851ee6ee6c4a9dc3725a634c06b604f207"
+COMMIT="dd654e199aa3cbbdbcb0c2d8e1d240745bff75e8"
 
 DESCRIPTION="Common Lisp unit testing framework"
 HOMEPAGE="https://codeberg.org/cage/clunit2"
