@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="3a698325983bb7449f39b3d2516c5652c2cfc38f"
+COMMIT="fbeb45660b469bd4f5511a07c144f4982110a7c1"
 MY_PN="${PN//-/.}"
 
 DESCRIPTION="Generic purpose logger utility"
