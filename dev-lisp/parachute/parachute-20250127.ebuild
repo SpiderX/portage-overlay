@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="3c04273cc61b353d7f1a087f9ae144f6f3fe4121"
+COMMIT="86fc13df9d08ec3681a36541d1ded03653d0fd34"
 
 DESCRIPTION="An extensible and cross-compatible testing framework"
 HOMEPAGE="https://github.com/Shinmera/parachute"
