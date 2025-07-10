@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="455fbaaf5aed25e296edb513fce8819c655977e8"
+COMMIT="8bd0045267007f03d7a59211d4446a1d8aa7c26c"
 
 DESCRIPTION="Flexible bivalent streams for Common Lisp"
 HOMEPAGE="https://github.com/melisgl/named-readtables"
