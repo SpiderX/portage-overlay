@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sionescu/${PN}.git"
 
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="Efficient endianness conversion for SBCL"
 HOMEPAGE="https://github.com/sionescu/swap-bytes"
+EGIT_REPO_URI="https://github.com/sionescu/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
