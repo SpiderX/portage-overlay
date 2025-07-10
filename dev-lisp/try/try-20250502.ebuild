@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="cf2a8887d091bf297b72ef69e15012e7e849ba3b"
+COMMIT="f3b4646b2c7d64ec87363e502fa46c551ae9a41e"
 
 DESCRIPTION="Flexible bivalent streams for Common Lisp"
 HOMEPAGE="https://github.com/melisgl/try"
@@ -38,6 +38,6 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	common-lisp-install-sources -t all src test
+	common-lisp-install-sources -t all src test version.lisp-expr
 	common-lisp-install-asdf
 }
