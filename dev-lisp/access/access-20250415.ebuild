@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="a4f87fc1007f5c9a0a2abfddc1c23a77e87096f8"
+COMMIT="346e97b3539c7eff645868a87acf0b902c629ad4"
 
 DESCRIPTION="A common lisp library to unify access to common data-structures"
 HOMEPAGE="https://github.com/AccelerationNet/access"
