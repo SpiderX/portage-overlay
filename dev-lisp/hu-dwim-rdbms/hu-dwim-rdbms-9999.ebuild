@@ -1,9 +1,7 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EDARCS_REPOSITORY="https://hub.darcs.net/hu.dwim/hu.dwim.rdbms"
 
 inherit common-lisp-3 darcs
 
@@ -11,6 +9,7 @@ MY_PN="${PN//-/.}"
 
 DESCRIPTION="Relational database independent RDBMS and SQL abstractions"
 HOMEPAGE="https://hub.darcs.net/hu.dwim/hu.dwim.rdbms"
+EDARCS_REPOSITORY="https://hub.darcs.net/hu.dwim/hu.dwim.rdbms"
 
 LICENSE="MIT-0"
 SLOT="0"
