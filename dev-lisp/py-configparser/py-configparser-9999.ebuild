@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-ESVN_REPO_URI="https://svn.common-lisp.net/py-configparser/trunk"
 
 inherit common-lisp-3 subversion
 
 DESCRIPTION="ConfigParser Python module functionality in Common Lisp"
 HOMEPAGE="https://tracker.debian.org/pkg/cl-py-configparser"
+ESVN_REPO_URI="https://svn.common-lisp.net/py-configparser/trunk"
 
 LICENSE="MIT"
 SLOT="0"
