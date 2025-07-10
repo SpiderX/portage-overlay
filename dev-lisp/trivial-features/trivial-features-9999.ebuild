@@ -1,23 +1,22 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/trivial-features/${PN}.git"
 
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="Ensures consistent FEATURES across multiple implementations"
 HOMEPAGE="https://github.com/trivial-features/trivial-features"
+EGIT_REPO_URI="https://github.com/trivial-features/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lisp/alexandria
-	dev-lisp/cffi"
+RDEPEND="dev-lisp/alexandria"
 BDEPEND="test? ( dev-lisp/asdf
+		dev-lisp/cffi
 		dev-lisp/rt )"
 
 DOCS=( {README,SPEC}.md )
