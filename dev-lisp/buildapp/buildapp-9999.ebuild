@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/xach/${PN}.git"
 
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="Buildapp makes it easy to build application executables with SBCL"
 HOMEPAGE="https://github.com/xach/buildapp"
+EGIT_REPO_URI="https://github.com/xach/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
