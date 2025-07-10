@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3 optfeature
 
-COMMIT="0196f6ce6828a745121374c238972491074f5eb1"
+COMMIT="0665d6e43d135d02658292ac1dae3b17ff426889"
 
 DESCRIPTION="A few simple tools to help you with documenting your library"
 HOMEPAGE="https://github.com/Shinmera/documentation-utils"
