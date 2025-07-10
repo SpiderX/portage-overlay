@@ -1,19 +1,18 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/AccelerationNet/${PN}.git"
 
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="A bag-of-tools utilities library"
 HOMEPAGE="https://github.com/AccelerationNet/arnesi"
+EGIT_REPO_URI="https://github.com/AccelerationNet/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
-RESTRICT="test" # https://github.com/AccelerationNet/arnesi/issues/2
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lisp/cl-ppcre
 	dev-lisp/collectors

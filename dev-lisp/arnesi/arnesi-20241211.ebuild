@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="1e7dc4cb2cad8599113c7492c78f4925e839522e"
+COMMIT="93dc9061743b6d816d96074f25abea872e2e229c"
 
 DESCRIPTION="A bag-of-tools utilities library"
 HOMEPAGE="https://github.com/AccelerationNet/arnesi"
@@ -16,7 +16,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test" # https://github.com/AccelerationNet/arnesi/issues/2
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lisp/cl-ppcre
 	dev-lisp/collectors
