@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="32c90d4a9a01e809f591276c058e5b3c7f39b154"
+COMMIT="48eaef6f64c2c4830f3a1104432c66e6bad721a4"
 
 DESCRIPTION="The Common Foreign Function Interface"
 HOMEPAGE="https://github.com/cffi/cffi"
