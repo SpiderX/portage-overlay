@@ -9,7 +9,7 @@ COMMIT="6456a3f7ece05c8b8f077dd079daffb8de122ead"
 
 DESCRIPTION="Universal socket library for Common Lisp"
 HOMEPAGE="https://github.com/usocket/usocket"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="MIT"
