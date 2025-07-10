@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,8 @@ IUSE="test"
 RESTRICT="!test? ( test )" # some tests fail
 
 BDEPEND="test? ( dev-lisp/flexi-streams )"
+
+PATCHES=( "${FILESDIR}/${PN}"-1.1.5-test.patch )
 
 src_test() {
 	local -x CL_SOURCE_REGISTRY="${S}:${CLSYSTEMROOT}"
