@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="501c72becc64da7fb5546af8c34be9c655a86dac"
+COMMIT="a4ee4410ad3e42dcefdfa4ae8c2b40d15257de3e"
 
 DESCRIPTION="HTTP client written in Common Lisp"
 HOMEPAGE="https://github.com/edicl/drakma"
