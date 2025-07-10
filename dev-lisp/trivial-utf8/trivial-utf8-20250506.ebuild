@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # WRITE-UTF-8-BYTES is undefined
 
-RDEPEND="dev-lisp/mgl-pax"
+PDEPEND="dev-lisp/mgl-pax"
 BDEPEND="dev-lisp/asdf"
 
 src_test() {
