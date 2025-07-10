@@ -1,9 +1,7 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sabracrolleton/uax-15.git"
 
 inherit common-lisp-3 git-r3
 
@@ -13,6 +11,7 @@ CLSYSTEMS="${MY_PN}"
 
 DESCRIPTION="Common lisp implementation of unicode normalization functions"
 HOMEPAGE="https://github.com/sabracrolleton/uax-15"
+EGIT_REPO_URI="https://github.com/sabracrolleton/uax-15.git"
 
 LICENSE="MIT"
 SLOT="0"
