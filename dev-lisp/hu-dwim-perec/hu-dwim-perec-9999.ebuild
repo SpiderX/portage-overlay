@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EDARCS_REPOSITORY="https://hub.darcs.net/hu.dwim/hu.dwim.presentation"
 
 inherit common-lisp-3 darcs
 
 DESCRIPTION="RDBMS based persistent CLOS, an object relational mapping (ORM)"
 HOMEPAGE="https://hub.darcs.net/hu.dwim/hu.dwim.perec"
+EDARCS_REPOSITORY="https://hub.darcs.net/hu.dwim/hu.dwim.presentation"
 
 LICENSE="MIT-0"
 SLOT="0"
