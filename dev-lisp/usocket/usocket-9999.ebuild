@@ -1,19 +1,18 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/usocket/${PN}.git"
 
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="Universal socket library for Common Lisp"
 HOMEPAGE="https://github.com/usocket/usocket"
+EGIT_REPO_URI="https://github.com/usocket/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="test" # 4 out of 33 total tests failed
+RESTRICT="test" # 3 out of 33 total tests failed
 PROPERTIES="test_network"
 
 RDEPEND="dev-lisp/bordeaux-threads
