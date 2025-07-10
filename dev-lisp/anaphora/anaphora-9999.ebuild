@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/spwhitton/${PN}.git"
 
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="The anaphoric macro collection from Hell"
 HOMEPAGE="https://github.com/spwhitton/anaphora"
+EGIT_REPO_URI="https://github.com/spwhitton/${PN}.git"
 
 LICENSE="public-domain"
 SLOT="0"
