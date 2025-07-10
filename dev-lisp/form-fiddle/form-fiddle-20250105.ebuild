@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="3bd0dfdae8f83918fce6cb4a05826bd325da401d"
+COMMIT="fc4e7e607200356f4e665b9282e4125a3136a2e7"
 
 DESCRIPTION="A collection of utilities to destructure lambda forms"
 HOMEPAGE="https://github.com/Shinmera/form-fiddle"
