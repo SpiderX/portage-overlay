@@ -15,4 +15,7 @@
 	for data definition and manipulation as well as an integrated symbolic
 	SQL syntax.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">sharplispers/clsql</remote-id>
+	</upstream>
 </pkgmetadata>

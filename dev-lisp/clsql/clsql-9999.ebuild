@@ -3,17 +3,16 @@
 
 EAPI=8
 
-inherit common-lisp-3 toolchain-funcs
+inherit git-r3 common-lisp-3 toolchain-funcs
 
 MY_PN="cl-sql"
 
 DESCRIPTION="A multi-platform SQL interface for Common Lisp"
 HOMEPAGE="https://github.com/sharplispers/clsql"
-SRC_URI="https://github.com/sharplispers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/sharplispers/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="mysql odbc oracle postgres sqlite test"
 RESTRICT="!test? ( test )"
 
