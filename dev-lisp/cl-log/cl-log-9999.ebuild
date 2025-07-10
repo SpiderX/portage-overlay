@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/nicklevine/${PN}.git"
-
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="Common Lisp general purpose logging utility"
 HOMEPAGE="https://www.cliki.net/cl-log"
+EGIT_REPO_URI="https://github.com/nicklevine/${PN}.git"
 
 LICENSE="public-domain"
 SLOT="0"
