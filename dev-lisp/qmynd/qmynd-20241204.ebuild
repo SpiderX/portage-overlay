@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="7e56daf73f0ed5f49a931c01af75fb874bcf3445"
+COMMIT="42664f5fd15a2f308c958c1062edebec30125308"
 
 DESCRIPTION="MySQL Native Driver for Common Lisp"
 HOMEPAGE="https://github.com/qitab/qmynd"
