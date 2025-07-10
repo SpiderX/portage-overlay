@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="d9d4100159dc9897614683b4490d2919ab35ff8b"
+COMMIT="d6438079934d5b114d5daa972f3b7cda83c2da85"
 
 DESCRIPTION="Common Lisp packrat parser"
 HOMEPAGE="https://github.com/scymtym/esrap"
