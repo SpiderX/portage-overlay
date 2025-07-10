@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="17d5cdd65405f1d26e26f3e875e70027d0c8eedb"
+COMMIT="38e501f9415332d2fca53bab2b9add71fa97d8f6"
 
 DESCRIPTION="A Common Lisp interface to OpenSSL"
 HOMEPAGE="https://github.com/cl-plus-ssl/cl-plus-ssl"
