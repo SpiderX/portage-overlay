@@ -432,7 +432,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[cl-who](https://github.com/edicl/cl-who) | Yet another Lisp markup language
 *   dev-lisp/[closer-mop](https://closer.common-lisp.dev/closer-mop.html) | Common Lisp Metaobject Protocol compatibility layer
 *   dev-lisp/[closure-common](https://github.com/sharplispers/closure-common) | An internal helper library for the closure web browser
-*   dev-lisp/[clsql](https://tracker.debian.org/pkg/cl-sql) | A multi-platform SQL interface for Common Lisp
+*   dev-lisp/[clsql](https://github.com/sharplispers/clsql) | A multi-platform SQL interface for Common Lisp
 *   dev-lisp/[clsql-helper](https://github.com/AccelerationNet/clsql-helper) | A Common Lisp library to smooth some of CLSQLs rough edges
 *   dev-lisp/[clunit2](https://codeberg.org/cage/clunit2) | Common Lisp unit testing framework
 *   dev-lisp/[collectors](https://github.com/AccelerationNet/collectors) | A Common lisp library providing collector macros
