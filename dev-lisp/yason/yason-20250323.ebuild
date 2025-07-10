@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="cbad2f6ed064e434a94ee1a09c4952cc4fa578d4"
+COMMIT="0c84b29a32c284f6b4be6f8587ff89b5702a6fda"
 
 DESCRIPTION="Common Lisp JSON serializer written with simplicity in mind"
 HOMEPAGE="https://github.com/phmarek/yason"
