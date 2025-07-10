@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="5a0955283b6ac585a8f13229bbda9f9193c59903"
+COMMIT="fea5b154ad02e8eb68434c31770be6913c099d64"
 
 DESCRIPTION="Time manipulation library for Common Lisp"
 HOMEPAGE="https://github.com/dlowe-net/local-time"
@@ -23,7 +23,7 @@ RDEPEND="dev-lisp/uiop
 BDEPEND="dev-lisp/asdf
 	test? ( dev-lisp/fiasco )"
 
-PATCHES=( "${FILESDIR}/${PN}"-20240817-system-zoneinfo.patch )
+PATCHES=( "${FILESDIR}/${PN}"-20250427-system-zoneinfo.patch )
 
 src_test() {
 	local -x CL_SOURCE_REGISTRY="${S}:${CLSYSTEMROOT}"
