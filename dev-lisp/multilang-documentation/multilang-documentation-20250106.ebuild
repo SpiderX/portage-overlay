@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="aa0c7d14f59cbddcfcb6c6bedc3904fe95d654cf"
+COMMIT="178a2635c6a931062df4c12c2f3633fd83bb6bc6"
 
 DESCRIPTION="A drop-in replacement for cl:documentation"
 HOMEPAGE="https://github.com/Shinmera/multilang-documentation"
