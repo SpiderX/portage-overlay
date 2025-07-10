@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/hu-dwim/hu.dwim.walker.git"
 
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="Customizable code walker for Common Lisp"
 HOMEPAGE="https://github.com/hu-dwim/hu.dwim.walker"
+EGIT_REPO_URI="https://github.com/hu-dwim/hu.dwim.walker.git"
 
 LICENSE="BSD"
 SLOT="0"

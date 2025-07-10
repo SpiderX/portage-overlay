@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit common-lisp-3
 
-COMMIT="4f66d246dd5dffe9994d8c659c206dc92ef79386"
+COMMIT="334c20f4ca44085351fbdf570ff0665ffd94aae8"
 MY_PN="${PN//-/.}"
 
 DESCRIPTION="Customizable code walker for Common Lisp"
