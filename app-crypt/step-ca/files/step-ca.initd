@@ -2,6 +2,8 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+export "STEPPATH=${STEP_PATH:-/etc/step}"
+
 extra_started_commands="reload"
 
 command="/usr/bin/step-ca"
