@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/ccatterina/${PN}.git"
-
 inherit ecm git-r3
 
 DESCRIPTION="Currently playing song and playback controls in Plasma 6"
 HOMEPAGE="https://github.com/ccatterina/plasmusic-toolbar"
+EGIT_REPO_URI="https://github.com/ccatterina/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="6"
