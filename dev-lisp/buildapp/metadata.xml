@@ -13,6 +13,9 @@
 	This package provides an application for SBCL and CCL that configures
 	and saves an executable Common Lisp image or non-executable core.
 	</longdescription>
+	<use>
+		<flag name="runtime-options">Use runtime options as command line arguments</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">xach/buildapp</remote-id>
 	</upstream>

@@ -11,11 +11,22 @@ EGIT_REPO_URI="https://github.com/xach/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
+IUSE="runtime-options"
 RESTRICT="strip"
 
 BDEPEND="dev-lisp/asdf"
 
 QA_FLAGS_IGNORED="/usr/bin/buildapp"
+
+src_prepare() {
+	default
+
+	# https://github.com/sbcl/sbcl/commit/cab2298
+	if use runtime-options ; then
+		sed -i '/save-runtime-options/s| t| :accept-runtime-options|' buildapp.lisp \
+			|| die "sed failed for buildapp.lisp"
+	fi
+}
 
 src_compile() {
 	emake
