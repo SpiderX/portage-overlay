@@ -15,6 +15,9 @@
 	and after the loading. It uses the COPY PostgreSQL protocol to stream
 	the data into the server, and manages errors.
 	</longdescription>
+	<use>
+		<flag name="runtime-options">Use runtime options as command line arguments</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">dimitri/pgloader</remote-id>
 	</upstream>

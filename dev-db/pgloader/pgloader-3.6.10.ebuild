@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dimitri/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="POSTGRESQL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE="runtime-options test"
 RESTRICT="!test? ( test ) strip"
 
 RDEPEND="app-arch/zstd:0=
@@ -54,7 +54,7 @@ RDEPEND="app-arch/zstd:0=
 	dev-lisp/yason
 	dev-lisp/zs3"
 BDEPEND="dev-lisp/asdf
-	dev-lisp/buildapp
+	dev-lisp/buildapp[runtime-options?]
 	test? ( dev-db/ip4r )"
 
 QA_FLAGS_IGNORED="/usr/bin/pgloader"

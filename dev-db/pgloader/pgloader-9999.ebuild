@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/dimitri/${PN}.git"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-IUSE="test"
+IUSE="runtime-options test"
 RESTRICT="!test? ( test ) strip"
 
 RDEPEND="app-arch/zstd:0=
@@ -53,13 +53,12 @@ RDEPEND="app-arch/zstd:0=
 	dev-lisp/yason
 	dev-lisp/zs3"
 BDEPEND="dev-lisp/asdf
-	dev-lisp/buildapp
+	dev-lisp/buildapp[runtime-options?]
 	test? ( dev-db/ip4r )"
 
 QA_FLAGS_IGNORED="/usr/bin/pgloader"
 
 DOC_CONTENTS="Garbage Collector heap size varies architecture pgloader compiled on\\n
-architecture pgloader compiled:\\n
 4GB on x86 and 16GB on amd64.\\n
 Depending on size of database it might need to be increased:\\n
 pgloader --dynamic-space-size 32768\\n\\n"
