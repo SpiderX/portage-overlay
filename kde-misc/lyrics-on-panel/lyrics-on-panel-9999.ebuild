@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/KangweiZhu/${PN}.git"
-
 inherit ecm git-r3
 
 DESCRIPTION="Lyrics for currently playing song in Plasma 6"
 HOMEPAGE="https://github.com/KangweiZhu/plasmusic-toolbar"
+EGIT_REPO_URI="https://github.com/KangweiZhu/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="6"

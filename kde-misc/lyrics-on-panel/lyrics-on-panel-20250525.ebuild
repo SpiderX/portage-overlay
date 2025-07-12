@@ -5,7 +5,7 @@ EAPI=8
 
 inherit ecm
 
-COMMIT="5c15a23dfe18b7cecbee8eaca450873d03860bac"
+COMMIT="55f00e3852de93f16e34b1f4d0d6d5db407d3f07"
 
 DESCRIPTION="Lyrics for currently playing song in Plasma 6"
 HOMEPAGE="https://github.com/KangweiZhu/plasmusic-toolbar"
