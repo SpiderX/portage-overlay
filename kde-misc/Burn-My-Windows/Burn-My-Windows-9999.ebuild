@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,12 +6,11 @@ EAPI=8
 PLOCALES="ar az cs da de eo es fa fi fr he hi hu id it ja ko lt nb_NO nl pl pt_BR pt ro ru sk sv tr uk zh_Hans"
 PLOCALE_BACKUP="en"
 
-EGIT_REPO_URI="https://github.com/Schneegans/${PN}.git"
-
 inherit ecm edo git-r3 plocale
 
 DESCRIPTION="Disintegrate your windows with style"
 HOMEPAGE="https://github.com/Schneegans/Burn-My-Windows"
+EGIT_REPO_URI="https://github.com/Schneegans/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
