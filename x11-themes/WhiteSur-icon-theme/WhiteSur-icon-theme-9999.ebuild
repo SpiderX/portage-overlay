@@ -16,19 +16,12 @@ SLOT="0"
 IUSE="all alternative black bold +default green grey nord orange pink purple red yellow"
 REQUIRED_USE="^^ ( all default green grey nord orange pink purple red yellow )"
 
-src_prepare() {
-	default
-
-	# don't update icon cache from install, use relative symlinks
-	sed -i  -e '/gtk-update-icon-cache/d' \
-		-e '/ln -s "${THEME_DIR}"/s|"${THEME_DIR}"/preferences/32|32|' \
-		install.sh || die "sed failed"
-}
+PATCHES=( "${FILESDIR}/${PN}"-2025.02.10-install.patch )
 
 src_install() {
 	local TV OPTIONS
 	OPTIONS="WhiteSur"
-	for color in all default green grey nord orange pink red yellow ; do
+	for color in all default green grey nord orange pink purple red yellow ; do
 		use "$color" && TV="$color"
 	done
 	for option in alternative black bold ; do

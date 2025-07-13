@@ -1,0 +1,42 @@
+# don't update icon cache from install, use relative symlinks,
+# prevent internal collisions between non-identical files by moving in src_prepare phase
+--- ../install.sh	2025-07-14 00:44:18.661814658 +0300
++++ ../install.sh	2025-07-14 00:45:56.161912332 +0300
+@@ -86,7 +86,7 @@
+     rm -rf "${THEME_DIR}"/places/scalable/user-trash{'','-full'}-dark.svg
+ 
+     cp -r "${SRC_DIR}"/links/{actions,apps,categories,devices,emotes,emblems,mimes,places,status,preferences} "${THEME_DIR}"
+-    ln -s "${THEME_DIR}"/preferences/32 "${THEME_DIR}"/preferences/22
++    ln -s 32 "${THEME_DIR}"/preferences/22
+   fi
+ 
+   if [[ ${color} == '-light' ]]; then
+@@ -118,6 +118,9 @@
+   if [[ ${color} == '-dark' ]]; then
+     mkdir -p                                                                                 "${THEME_DIR}"/{apps,categories,emblems,devices,mimes,places,status}
+ 
++    mv -f "${SRC_DIR}"/src/places/scalable/user-trash-dark.svg "${SRC_DIR}"/src/places/scalable/user-trash.svg
++    mv -f "${SRC_DIR}"/src/places/scalable/user-trash-full-dark.svg "${SRC_DIR}"/src/places/scalable/user-trash-full.svg
++
+     cp -r "${SRC_DIR}"/src/actions                                                           "${THEME_DIR}"
+     cp -r "${SRC_DIR}"/src/apps/{22,32,symbolic}                                             "${THEME_DIR}"/apps
+     cp -r "${SRC_DIR}"/src/categories/{22,symbolic}                                          "${THEME_DIR}"/categories
+@@ -147,9 +150,6 @@
+       cp -r "${SRC_DIR}"/src/status/symbolic-budgie/*.svg                                    "${THEME_DIR}"/status/symbolic
+     fi
+ 
+-    mv -f "${THEME_DIR}"/places/scalable/user-trash-dark.svg "${THEME_DIR}"/places/scalable/user-trash.svg
+-    mv -f "${THEME_DIR}"/places/scalable/user-trash-full-dark.svg "${THEME_DIR}"/places/scalable/user-trash-full.svg
+-
+     # Change icon color for dark theme
+     sed -i "s/#363636/#dedede/g" "${THEME_DIR}"/{actions,devices,places}/{16,22,24}/*.svg
+     sed -i "s/#363636/#dedede/g" "${THEME_DIR}"/apps/{22,32}/*.svg
+@@ -198,8 +198,6 @@
+     ln -sf preferences preferences@2x
+     ln -sf status status@2x
+   )
+-
+-  gtk-update-icon-cache "${THEME_DIR}"
+ }
+ 
+ uninstall() {
