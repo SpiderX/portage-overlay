@@ -5,14 +5,19 @@
 
 EAPI=8
 
-inherit git-r3 xdg
+inherit xdg
+
+MY_PV="${PV//./-}"
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="comes in both light and dark variants"
 HOMEPAGE="https://github.com/vinceliuice/WhiteSur-icon-theme"
-EGIT_REPO_URI="https://github.com/vinceliuice/${PN}.git"
+SRC_URI="https://github.com/vinceliuice/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="all alternative black bold +default green grey nord orange pink purple red yellow"
 REQUIRED_USE="^^ ( all default green grey nord orange pink purple red yellow )"
 
@@ -28,7 +33,7 @@ src_prepare() {
 src_install() {
 	local TV OPTIONS
 	OPTIONS="WhiteSur"
-	for color in all default green grey nord orange pink red yellow ; do
+	for color in all default green grey nord orange pink purple red yellow ; do
 		use "$color" && TV="$color"
 	done
 	for option in alternative black bold ; do
