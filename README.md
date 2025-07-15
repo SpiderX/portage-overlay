@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1223](https://img.shields.io/badge/ebuild-1223-orange.svg)](https://img.shields.io/badge/ebuild-1223-orange.svg)
+[![Number of ebuilds: 1224](https://img.shields.io/badge/ebuild-1224-orange.svg)](https://img.shields.io/badge/ebuild-1224-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -812,6 +812,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[billiard](https://github.com/celery/billiard) | Multiprocessing Pool Extensions
 *   dev-python/[binaryornot](https://github.com/audreyfeldroy/binaryornot) | Python package to guess whether a file is binary or text
 *   dev-python/[bitstruct](https://github.com/eerimoq/bitstruct) | Python bit pack/unpack package
+*   dev-python/[bleak](https://github.com/hbldh/bleak) | Bluetooth Low Energy platform Agnostic Klient
 *   dev-python/[bloodhound](https://github.com/dirkjanm/bloodhound.py) | Python based ingestor for BloodHound
 *   dev-python/[boto3-stubs](https://github.com/youtype/mypy_boto3_builder) | Type annotations for boto3
 *   dev-python/[botocore-stubs](https://github.com/youtype/botocore-stubs) | Type annotations and code completion for botocore
