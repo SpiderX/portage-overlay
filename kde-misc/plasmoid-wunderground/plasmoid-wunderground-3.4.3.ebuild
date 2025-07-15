@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PLOCALES="de_DE es_ES fr_FR ja_JP nl_NL ru_RU"
+PLOCALES="de_DE es_ES fr_FR it_IT ja_JP nl_NL pl_PL pt_BR ru_RU sr_Latn zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
 inherit ecm plocale
