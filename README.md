@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1222](https://img.shields.io/badge/ebuild-1222-orange.svg)](https://img.shields.io/badge/ebuild-1222-orange.svg)
+[![Number of ebuilds: 1223](https://img.shields.io/badge/ebuild-1223-orange.svg)](https://img.shields.io/badge/ebuild-1223-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1105,6 +1105,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[applet-window-buttons6](https://github.com/moodyhunter/applet-window-buttons6) | Plasma 6 applet in order to show window buttons in your panels
 *   kde-misc/[applet-window-title](https://github.com/psifidotos/applet-window-title) | Plasma 5 applet shows window title and icon in your panels
 *   kde-misc/[applet-window-title6](https://github.com/moodyhunter/applet-window-title6) | Plasma 6 applet shows window title and icon in your panels
+*   kde-misc/[chatai](https://github.com/DenysMb/ChatAI-Plasmoid) | Chatbots as Plasmoid for KDE Plasma
 *   kde-misc/[cpu-power-monitor](https://github.com/kphanipavan/cpu-power-monitor) | KDE Plasma widget to monitor the CPU power consumption
 *   kde-misc/[Burn-My-Windows](https://github.com/Schneegans/Burn-My-Windows) | Disintegrate your windows with style
 *   kde-misc/[darkly](https://github.com/Bali10050/Darkly) | A modern style for qt applications
