@@ -118,6 +118,7 @@ commitizen:
           net-p2p: "peer-to-peer networking applications"
           net-voip: "packages related to Voice-over-IP"
           net-vpn: "packages related to vpn and tunneling utilities"
+          net-wireless: "wireless networking software and utilities"
           sci-visualization: "scientific visualization applications"
           sys-apps: "various core system applications"
           sys-auth: "applications and libraries for authentication and authorization"
@@ -175,6 +176,7 @@ commitizen:
           - net-p2p
           - net-voip
           - net-vpn
+          - net-wireless
           - sci-visualization
           - sys-apps
           - sys-auth
