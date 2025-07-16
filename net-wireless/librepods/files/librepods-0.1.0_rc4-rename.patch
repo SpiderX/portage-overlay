@@ -1,0 +1,69 @@
+From 05c0a7c88b3b3444802c4fa2729b7e78c0aefcb4 Mon Sep 17 00:00:00 2001
+From: Tim Gromeyer <tim.gromeyer@gmail.com>
+Date: Mon, 16 Jun 2025 11:46:15 +0200
+Subject: [PATCH] [Linux] Rename to Librepods
+
+---
+ linux/CMakeLists.txt | 10 +++++-----
+ linux/Main.qml       |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/linux/CMakeLists.txt b/linux/CMakeLists.txt
+index 850467c..c384aaa 100644
+--- a/linux/CMakeLists.txt
++++ b/linux/CMakeLists.txt
+@@ -9,7 +9,7 @@ find_package(OpenSSL REQUIRED)
+ 
+ qt_standard_project_setup(REQUIRES 6.4)
+ 
+-qt_add_executable(applinux
++qt_add_executable(librepods
+     main.cpp
+     logger.h
+     media/mediacontroller.cpp
+@@ -36,7 +36,7 @@ qt_add_executable(applinux
+     media/playerstatuswatcher.h
+ )
+ 
+-qt_add_qml_module(applinux
++qt_add_qml_module(librepods
+     URI linux
+     VERSION 1.0
+     QML_FILES
+@@ -49,7 +49,7 @@ qt_add_qml_module(applinux
+ )
+ 
+ # Add the resource file
+-qt_add_resources(applinux "resources"
++qt_add_resources(librepods "resources"
+     PREFIX "/icons"
+     FILES
+         assets/airpods.png
+@@ -64,12 +64,12 @@ qt_add_resources(applinux "resources"
+         assets/fonts/SF-Symbols-6.ttf
+ )
+ 
+-target_link_libraries(applinux
++target_link_libraries(librepods
+     PRIVATE Qt6::Quick Qt6::Widgets Qt6::Bluetooth Qt6::DBus OpenSSL::SSL OpenSSL::Crypto
+ )
+ 
+ include(GNUInstallDirs)
+-install(TARGETS applinux
++install(TARGETS librepods
+     BUNDLE DESTINATION .
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+diff --git a/linux/Main.qml b/linux/Main.qml
+index 9c4026b..6ec6331 100644
+--- a/linux/Main.qml
++++ b/linux/Main.qml
+@@ -8,7 +8,7 @@ ApplicationWindow {
+     visible: !airPodsTrayApp.hideOnStart
+     width: 400
+     height: 300
+-    title: "AirPods Settings"
++    title: "Librepods"
+     objectName: "mainWindowObject"
+ 
+     onClosing: mainWindow.visible = false
