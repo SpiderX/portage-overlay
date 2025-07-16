@@ -22,4 +22,11 @@ RDEPEND="dev-qt/qtbase:6[dbus,widgets]
 	dev-qt/qtmultimedia:6[ffmpeg]"
 DEPEND="dev-libs/openssl:="
 
-PATCHES=( "${FILESDIR}/${PN}"-0.1.0_rc4-rename.patch )
+src_prepare() {
+	sed -i 's/applinux/librepods/g' CMakeLists.txt \
+		|| die "sed failed for CMakeLists.txt"
+	sed -i '/title:/s|AirPods Settings|Librepods|' Main.qml \
+		|| die "sed failed for Main.qml"
+
+	cmake_src_prepare
+}
