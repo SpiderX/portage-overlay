@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/yaroslaff/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3 systemd
 
 DESCRIPTION="Deduplication tool for archiving data with extremely high ratio"
 HOMEPAGE="https://github.com/yaroslaff/hashget"
+EGIT_REPO_URI="https://github.com/yaroslaff/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
