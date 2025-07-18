@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 pax-utils
+inherit pax-utils shell-completion
 
 DESCRIPTION="IBM Cloud Developer Tools"
 HOMEPAGE="https://github.com/IBM-Cloud/ibm-cloud-cli-release"
@@ -27,8 +27,7 @@ src_prepare() {
 
 src_install() {
 	newbashcomp autocomplete/bash_autocomplete ibmcloud
-	insinto /usr/share/zsh/site-functions
-	newins autocomplete/zsh_autocomplete _ibmcloud
+	newzshcomp autocomplete/zsh_autocomplete _ibmcloud
 	dobin bin/ibmcloud
 	pax-mark -m "${ED}"/bin/ibmcloud
 }
