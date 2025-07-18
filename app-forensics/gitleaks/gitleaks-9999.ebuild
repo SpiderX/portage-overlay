@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/zricethezav/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="Auditing git repository for secrets and keys"
 HOMEPAGE="https://github.com/zricethezav/gitleaks"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/zricethezav/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 
 src_unpack() {
 	git-r3_src_unpack
