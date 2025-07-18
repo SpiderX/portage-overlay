@@ -38,6 +38,6 @@ src_compile() { :; }
 src_install() {
 	default
 
-	insinto /usr/share/plasma/plasmoids/com.github.denysmb.chatai
-	doins -r content/.
+	insinto /usr/share/plasma/plasmoids/ChatAI-Plasmoid
+	doins -r contents metadata.json
 }
