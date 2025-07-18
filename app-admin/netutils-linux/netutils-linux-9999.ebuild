@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/strizhechenko/netutils-linux.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Suite of network stack performance tunning utilities"
 HOMEPAGE="https://github.com/strizhechenko/netutils-linux"
+EGIT_REPO_URI="https://github.com/strizhechenko/netutils-linux.git"
 
 LICENSE="MIT"
 SLOT="0"
