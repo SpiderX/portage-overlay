@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/aws-observability/${PN}.git"
 
 inherit git-r3 go-module systemd tmpfiles
 
 DESCRIPTION="Amazon AWS Opentelemetry Collector"
 HOMEPAGE="https://github.com/aws-observability/aws-otel-collector"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/aws-observability/${PN}.git"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="cwagent"
 RESTRICT="test" # fails
 
