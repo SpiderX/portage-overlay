@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/99designs/${PN}.git"
-
-inherit bash-completion-r1 git-r3 go-module
+inherit git-r3 go-module shell-completion
 
 DESCRIPTION="A vault for securely storing and accessing AWS credentials"
 HOMEPAGE="https://github.com/99designs/aws-vault"
+EGIT_REPO_URI="https://github.com/99designs/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -37,10 +36,8 @@ src_install() {
 	newconfd "${FILESDIR}"/aws-vault.confd aws-vault
 
 	newbashcomp contrib/completions/bash/aws-vault.bash aws-vault
-	insinto /usr/share/fish/completion
-	newins contrib/completions/fish/aws-vault.fish aws-vault
-	insinto /usr/share/zsh/site-functions
-	newins contrib/completions/zsh/aws-vault.zsh _aws-vault
+	newfishcomp contrib/completions/fish/aws-vault.fish aws-vault
+	newzshcomp contrib/completions/zsh/aws-vault.zsh _aws-vault
 	dodoc contrib/scripts/aws-iam-{create,resync}-yubikey-mfa.sh
 }
 
