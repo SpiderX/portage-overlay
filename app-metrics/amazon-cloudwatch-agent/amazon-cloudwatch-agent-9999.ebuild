@@ -1,20 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/aws/${PN}.git"
 EGIT_SUBMODULES=()
 
 inherit git-r3 go-module readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="Amazon Cloudwatch Agent"
 HOMEPAGE="https://github.com/aws/amazon-cloudwatch-agent"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/aws/${PN}.git"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="otel"
 RESTRICT="test"
 
