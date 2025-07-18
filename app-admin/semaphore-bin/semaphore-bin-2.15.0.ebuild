@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 systemd
+inherit systemd shell-completion
 
 MY_PN="${PN/-bin/}"
 MY_P="${MY_PN}-${PV}"
@@ -36,11 +36,9 @@ src_install() {
 
 	newbashcomp - semaphore < <("${ED}"/usr/bin/semaphore completion bash \
 		|| die "sed failed bash completion" )
-	insinto /usr/share/fish/completion
-	newins - semaphore < <("${ED}"/usr/bin/semaphore completion fish \
+	newfishcomp - semaphore < <("${ED}"/usr/bin/semaphore completion fish \
 		|| die "sed failed fish completion" )
-	insinto /usr/share/zsh/site-functions
-	newins - _semaphore < <("${ED}"/usr/bin/semaphore completion zsh \
+	newzshcomp - _semaphore < <("${ED}"/usr/bin/semaphore completion zsh \
 		|| die "sed failed zsh completion" )
 
 	diropts -o semaphore -g semaphore -m 0700
