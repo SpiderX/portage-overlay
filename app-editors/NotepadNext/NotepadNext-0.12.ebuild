@@ -5,11 +5,11 @@ EAPI=8
 
 inherit qmake-utils xdg
 
-QSU_COMMIT="3cc832cbe55b70c54f56a0b9b6f2cdd3c43c2337"
-QADS_COMMIT="5edbcc1970bc8858ad09a41f4c3ac1700e489c8b"
-EC_COMMIT="52820d59769fcba6d0ed94f685406c0383fe1a30"
-SA_COMMIT="8c48163c4d3fbba603cfe8a5b94046c9dad71825"
-UC_COMMIT="edae8e81cfb8092496f94da1a306c4c9f0ce32bb"
+QSU_COMMIT="8e7017f7fbdc2b4b1a26ed1eef9ebcba6a50639c"
+QADS_COMMIT="c020f82a6cfc43e7127e315b1a8f0e05e8a7113f"
+EC_COMMIT="ab62f0554abf2bbe4d45427b36a8b2f81ca7b4ab"
+SA_COMMIT="494772e98cef0aa88124f154feb575cc60b08b38"
+UC_COMMIT="9699dfce074fac80d8d622f02ea6d8bb2f55cf00"
 
 DESCRIPTION="A cross-platform reimplementation of Notepad++"
 HOMEPAGE="https://github.com/dail8859/NotepadNext"
