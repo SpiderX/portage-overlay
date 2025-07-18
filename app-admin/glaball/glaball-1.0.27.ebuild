@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 edo go-module
+inherit edo go-module shell-completion
 
 EGO_SUM=(
 	"dario.cat/mergo v1.0.1"
@@ -213,6 +213,5 @@ src_install() {
 	dobin glaball
 
 	newbashcomp globall.bash globall
-	insinto /usr/share/zsh/site-functions
-	newins globall.zsh _globall
+	newzshcomp globall.zsh _globall
 }

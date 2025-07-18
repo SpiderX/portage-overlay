@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/flant/${PN}.git"
-
-inherit bash-completion-r1 edo git-r3 go-module
+inherit edo git-r3 go-module shell-completion
 
 DESCRIPTION="Gitlab bulk administration tool"
 HOMEPAGE="https://github.com/flant/glaball"
+EGIT_REPO_URI="https://github.com/flant/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -34,6 +33,5 @@ src_install() {
 	dobin glaball
 
 	newbashcomp globall.bash globall
-	insinto /usr/share/zsh/site-functions
-	newins globall.zsh _globall
+	newzshcomp globall.zsh _globall
 }
