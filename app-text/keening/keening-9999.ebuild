@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/SpiderX/${PN}.git"
+EAPI=8
 
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="A simple command line pastebin designed to be used together with ssh"
 HOMEPAGE="https://github.com/SpiderX/keening"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/SpiderX/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 
 RESTRICT="mirror"
 
