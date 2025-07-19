@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P="${P}-x86_64"
 
@@ -10,16 +10,14 @@ inherit autotools toolchain-funcs
 DESCRIPTION="Demos Commander, a free Norton Commander clone"
 HOMEPAGE="https://sourceforge.net/projects/deco/"
 SRC_URI="https://topola.unity.net/files/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 DEPEND="sys-libs/ncurses:0=[tinfo]"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
