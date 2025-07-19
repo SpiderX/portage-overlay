@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/Scribery/${PN}.git"
 
 inherit autotools git-r3 tmpfiles
 
 DESCRIPTION="Terminal I/O logger"
 HOMEPAGE="https://github.com/Scribery/tlog"
+EGIT_REPO_URI="https://github.com/Scribery/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
