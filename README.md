@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1223](https://img.shields.io/badge/ebuild-1223-orange.svg)](https://img.shields.io/badge/ebuild-1223-orange.svg)
+[![Number of ebuilds: 1222](https://img.shields.io/badge/ebuild-1222-orange.svg)](https://img.shields.io/badge/ebuild-1222-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -143,7 +143,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[ccut](https://github.com/ColumPaget/ColumsCut) | A unix cut command with a couple of extra features
 *   app-misc/[cheat](https://github.com/cheat/cheat) | Interactive cheatsheets on the command-line
 *   app-misc/[cointop](https://github.com/cointop-sh/cointop) | Interactive cryptocurrency monitor
-*   app-misc/[cryptr-bin](https://github.com/jgraph/drawio-desktop) | Diagram drawing application built on web technology
 *   app-misc/[deco](https://sourceforge.net/projects/deco/) | Demos Commander, a free Norton Commander clone
 *   app-misc/[fq](https://github.com/wader/fq) | Command-line JSON processor for binary data
 *   app-misc/[gitmux](https://github.com/arl/gitmux) | Git in your tmux status bar
