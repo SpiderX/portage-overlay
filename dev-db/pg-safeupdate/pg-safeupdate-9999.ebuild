@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/eradman/${PN}.git"
 
 inherit git-r3
 
 DESCRIPTION="PostgreSQL extension that requires criteria for UPDATE and DELETE"
 HOMEPAGE="https://github.com/eradman/pg-safeupdate"
+EGIT_REPO_URI="https://github.com/eradman/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0"
