@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/knqyf263/${PN}.git"
-
-inherit git-r3 go-module
+inherit git-r3 go-module shell-completion
 
 DESCRIPTION="Simple command-line snippet manager"
 HOMEPAGE="https://github.com/knqyf263/pet"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/knqyf263/${PN}.git"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
 
 src_unpack() {
 	git-r3_src_unpack
@@ -26,8 +23,7 @@ src_compile() {
 
 src_install() {
 	dobin pet
-	insinto /usr/share/zsh/site-functions
-	doins misc/completions/zsh/_pet
+	dozshcomp misc/completions/zsh/_pet
 }
 
 pkg_postinst() {
