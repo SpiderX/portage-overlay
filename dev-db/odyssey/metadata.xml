@@ -13,6 +13,9 @@
 	Advanced multi-threaded PostgreSQL connection pooler and request router,
 	with pooling control, authentication and logging.
 	</longdescription>
+	<use>
+		<flag name="compression">Build compression support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">yandex/odyssey</remote-id>
 	</upstream>
