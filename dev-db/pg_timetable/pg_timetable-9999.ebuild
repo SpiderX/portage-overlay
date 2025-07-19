@@ -1,20 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/cybertec-postgresql/${PN}.git"
+EAPI=8
 
 inherit git-r3 go-module
 
 DESCRIPTION="Advanced scheduling for PostgreSQL"
 HOMEPAGE="https://github.com/cybertec-postgresql/pg_timetable"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/cybertec-postgresql/${PN}.git"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 RESTRICT="test" # need database
 
 src_unpack() {
@@ -23,11 +19,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
+	ego build
 }
 
 src_test() {
-	go test -v -work ./... || die "test failed"
+	ego test -v -work ./...
 }
 
 src_install() {
