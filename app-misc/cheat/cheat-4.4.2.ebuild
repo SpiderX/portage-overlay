@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit bash-completion-r1 go-module
+inherit go-module shell-completion
 
 DESCRIPTION="Interactive cheatsheets on the command-line"
 HOMEPAGE="https://github.com/cheat/cheat"
@@ -12,7 +12,6 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 src_compile() {
 	GOFLAGS="-v -x -mod=vendor" \
@@ -30,8 +29,6 @@ src_install() {
 	doman doc/cheat.1
 
 	newbashcomp scripts/cheat.bash cheat
-	insinto /usr/share/zsh/site-functions
-	newins scripts/cheat.zsh _cheat
-	insinto /usr/share/fish/completion
-	newins scripts/cheat.fish cheat
+	newfishcomp scripts/cheat.fish cheat
+	newzshcomp scripts/cheat.zsh _cheat
 }
