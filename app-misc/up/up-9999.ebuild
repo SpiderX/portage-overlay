@@ -1,19 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/akavel/${PN}.git"
+EAPI=8
 
 inherit git-r3 go-module
 
 DESCRIPTION="Tool for writing Linux pipes with instant live preview"
 HOMEPAGE="https://github.com/akavel/up"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/akavel/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 
 src_unpack() {
 	git-r3_src_unpack
@@ -21,11 +18,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
+	ego build
 }
 
 src_test() {
-	go test || die "test failed"
+	ego test
 }
 
 src_install() {
