@@ -1,18 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/reorg/${PN}.git"
 
 inherit git-r3
 
 DESCRIPTION="PostgreSQL extension for data reorganization"
 HOMEPAGE="https://github.com/reorg/pg_repack"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/reorg/${PN}.git"
 
 LICENSE="BSD"
-KEYWORDS=""
 SLOT="0"
 IUSE="client debug static-libs"
 REQUIRED_USE="debug? ( client ) client? ( static-libs )"
@@ -23,7 +20,7 @@ DEPEND="dev-db/postgresql:*[static-libs?]"
 src_prepare() {
 	default
 
-	# Don't build client by default
+	# don't build client by default
 	if ! use client ; then
 		sed -i '/SUBDIRS =/s/bin //' Makefile \
 			|| die "sed failed for Makefile"
