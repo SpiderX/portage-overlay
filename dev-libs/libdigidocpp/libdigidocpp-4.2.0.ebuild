@@ -3,14 +3,15 @@
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake
 
 DESCRIPTION="Library for handling digitally signed documents"
 HOMEPAGE="https://github.com/open-eid/libdigidocpp https://id.ee"
-EGIT_REPO_URI="https://github.com/open-eid/${PN}.git"
+SRC_URI="https://github.com/open-eid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc java test +utils"
 RESTRICT="!test? ( test )"
 
