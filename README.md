@@ -196,7 +196,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-shells/[fpp](https://github.com/facebook/pathpicker) | Command line tool to select files out of bash output
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/peco.svg?header=)](https://repology.org/project/peco/versions) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 *   app-shells/[tlog](https://github.com/Scribery/tlog) | Terminal I/O logger
-*   app-shells/[zoxide](https://github.com/ajeetdsouza/zoxide) | A smarter cd command with supports of all major shells
 *   app-text/[confget](https://devel.ringlet.net/textproc/confget/) | Read variables from INI-style configuration files
 *   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
 *   dev-build/[qtilitools](https://github.com/qtilities/qtilitools) | Scripts/commands used in the Qtilities organization
