@@ -1,18 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/martinmoene/${PN}.git"
+EAPI=8
 
 inherit cmake git-r3
 
 DESCRIPTION="A single-file header-only version of a C++17-like string_view"
 HOMEPAGE="https://github.com/martinmoene/string-view-lite"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/martinmoene/${PN}.git"
 
 LICENSE="BSD-1"
-KEYWORDS=""
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
