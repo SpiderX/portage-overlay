@@ -1,20 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/ColumPaget/ColumsCut.git"
+EAPI=8
 
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="A unix cut command with a couple of extra features"
 HOMEPAGE="https://github.com/ColumPaget/ColumsCut"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/ColumPaget/ColumsCut.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 src_prepare() {
 	default

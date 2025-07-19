@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -11,13 +11,11 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A unix cut command with a couple of extra features"
 HOMEPAGE="https://github.com/ColumPaget/ColumsCut"
 SRC_URI="https://github.com/ColumPaget/ColumsCut/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
