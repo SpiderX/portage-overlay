@@ -1,5 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# shellcheck disable=SC2046
 
 EAPI=8
 
@@ -42,12 +44,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug) \
-		$(use_with ipv6) \
-		$(use_with ssl $(usex gnutls gnutls openssl)) \
-		$(use_enable static-libs static) \
-		$(use_with doc doxygen)
+	econf "$(use_enable debug)" \
+		"$(use_with ipv6)" \
+		"$(use_with ssl $(usex gnutls gnutls openssl))" \
+		"$(use_enable static-libs static)" \
+		"$(use_with doc doxygen)"
 }
 
 src_install() {
