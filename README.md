@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1218](https://img.shields.io/badge/ebuild-1218-orange.svg)](https://img.shields.io/badge/ebuild-1218-orange.svg)
+[![Number of ebuilds: 1217](https://img.shields.io/badge/ebuild-1217-orange.svg)](https://img.shields.io/badge/ebuild-1217-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -370,7 +370,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[libcommuni](https://communi.github.io) | A cross-platform IRC framework written with Qt
 *   dev-libs/[libdatrie](https://github.com/tlwg/libdatrie) | Double-Array Trie Library
 *   dev-libs/[libdict](https://github.com/rtbrick/libdict) | C library of key-value data structures
-*   dev-libs/[libdigidoc](https://github.com/open-eid/libdigidoc) | DigiDoc digital signature library
 *   dev-libs/[libdigidocpp](https://github.com/open-eid/libdigidocpp) | Library for handling digitally signed documents
 *   dev-libs/[libfixposix](https://github.com/sionescu/libfixposix) | Thin wrapper over POSIX syscalls
 *   dev-libs/[liblinphone](https://gitlab.linphone.org/BC/public/liblinphone) | SIP library supporting voice/video calls and text messaging
