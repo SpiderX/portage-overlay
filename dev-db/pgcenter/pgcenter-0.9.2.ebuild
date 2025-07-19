@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -204,12 +204,11 @@ src_compile() {
 	LDFLAGS="-X github.com/lesovsky/pgcenter/cmd.gitTag=${PV}
 		-X github.com/lesovsky/pgcenter/cmd.gitCommit=${PV}
 		-X github.com/lesovsky/pgcenter/cmd.gitBranch=${PV}"
-	go build -ldflags "${LDFLAGS}" -o pgcenter ./cmd \
-		|| die "build failed"
+	ego build -ldflags "${LDFLAGS}" -o pgcenter ./cmd
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
