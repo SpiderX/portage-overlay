@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit go-module
+inherit go-module shell-completion
 
 EGO_SUM=(
 	"github.com/fatih/color v1.7.0"
@@ -16,6 +16,8 @@ EGO_SUM=(
 	"github.com/nwidger/jsoncolor v0.0.0-20170215171346-75a6de4340e5/go.mod"
 	"github.com/pkg/errors v0.8.0"
 	"github.com/pkg/errors v0.8.0/go.mod"
+	"golang.org/x/sys v0.0.0-20220412211240-33da011f77ad"
+	"golang.org/x/sys v0.0.0-20220412211240-33da011f77ad/go.mod"
 	)
 go-module_set_globals
 
@@ -33,17 +35,15 @@ DOCS=( {ADVANCED,CHANGELOG,README}.mkd )
 src_compile() {
 	LDFLAGS="-X main.gronVersion=${PV}"
 
-	go build -ldflags "${LDFLAGS}" || die "build failed"
+	ego build -ldflags "${LDFLAGS}"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
 	einstalldocs
 	dobin gron
-
-	insinto /usr/share/fish/functions/
-	doins completions/gron.fish
+	newfishcomp completions/gron.fish gron
 }
