@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1217](https://img.shields.io/badge/ebuild-1217-orange.svg)](https://img.shields.io/badge/ebuild-1217-orange.svg)
+[![Number of ebuilds: 1216](https://img.shields.io/badge/ebuild-1216-orange.svg)](https://img.shields.io/badge/ebuild-1216-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -220,7 +220,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[mongodb-compass](https://github.com/mongodb-js/compass) | The MongoDB GUI
 *   dev-db/[msodbcsql](https://learn.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) | Microsoft ODBC Driver for SQL Server
 *   dev-db/[mssql-cli](https://github.com/dbcli/mssql-cli) | CLI for SQL Server Database
-*   dev-db/[mssql-scripter](https://github.com/microsoft/mssql-scripter) | CLI for scripting SQL Server Databases
 *   dev-db/[mssql-tools](https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools) | Microsoft SQL Server Tools for Linux
 *   dev-db/[pg_cron](https://github.com/citusdata/pg_cron) | Run periodic jobs in PostgreSQL
 *   dev-db/[pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) | Manually force decisions in execution plans of PostgreSQL
