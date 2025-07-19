@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/microsoft/${PN}.git"
-
 inherit git-r3 go-module
 
 DESCRIPTION="CLI for SQL Server and Azure SQL"
 HOMEPAGE="https://github.com/microsoft/go-sqlcmd"
+EGIT_REPO_URI="https://github.com/microsoft/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
