@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ inherit chromium-2 desktop pax-utils multilib-build optfeature unpacker xdg
 
 DESCRIPTION="A charting platform for traders and investors"
 HOMEPAGE="https://www.tradingview.com/desktop/"
-SRC_URI="https://tvd-packages.${PN}.com/ubuntu/stable/pool/multiverse/t/${PN}/jammy/${PN}-$(ver_rs 3 '-')_amd64.deb"
+SRC_URI="https://tvd-packages.${PN}.com/ubuntu/stable/pool/multiverse/t/${PN}/jammy/${PN}-$(ver_rs 3 '-')-1_amd64.deb"
 S="${WORKDIR}"
 
 LICENSE="TradingView"
