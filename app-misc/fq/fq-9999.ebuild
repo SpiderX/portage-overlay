@@ -1,19 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/wader/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="Command-line JSON processor for binary data"
 HOMEPAGE="https://github.com/wader/fq"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/wader/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( dev-tcltk/expect )"
 
 DOCS=( {CHANGES,README}.md )
 
@@ -23,9 +24,9 @@ src_unpack() {
 }
 
 src_compile() {
-	LDFLAGS="-s -w"
+	export CGO_ENABLED=0
 
-	go build -ldflags "${LDFLAGS}" -trimpath || die "build failed"
+	ego build -trimpath -o fq
 }
 
 src_test() {
