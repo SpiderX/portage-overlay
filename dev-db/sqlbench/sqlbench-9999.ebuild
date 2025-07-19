@@ -1,19 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/felixge/${PN}.git"
+EAPI=8
 
 inherit git-r3 go-module
 
 DESCRIPTION="Measures and compares execution time of one or more SQL queries"
 HOMEPAGE="https://github.com/felixge/sqlbench"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/felixge/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 RESTRICT="test" # requires postgresql running
 
 src_unpack() {
@@ -22,11 +19,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
+	ego build
 }
 
 src_test() {
-	go test || die "test failed"
+	ego test
 }
 
 src_install() {
