@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/peco/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="Simplistic interactive filtering tool"
 HOMEPAGE="https://github.com/peco/peco"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/peco/${PN}.git"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
 
 DOCS=( {Changes,README.md} )
 
