@@ -51,7 +51,33 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 
-QA_PREBUILT="/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/mongodb-client-encryption/build/Release/mongocrypt.node"
+QA_FLAGS_IGNORED="opt/mongodb-compass/resources/app.asar.unpacked/build/05f74eb1cf47584b426240e7d7072c27.node
+	opt/mongodb-compass/resources/app.asar.unpacked/build/assets/mongo_crypt_v1.79cc2f6ff49473ae6e80.so
+	opt/mongodb-compass/resources/app.asar.unpacked/build/486426e4d6af72c7cda4c74c04341df3.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/mongodb-client-encryption/build/Release/mongocrypt.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/native-machine-id/bin/linux-x64-136/native-machine-id.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/native-machine-id/build/Release/native_machine_id.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/native-machine-id/build/Release/obj.target/native_machine_id.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/os-dns-native/bin/linux-x64-136/os-dns-native.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/os-dns-native/build/Release/os_dns_native.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/os-dns-native/build/Release/obj.target/os_dns_native.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/kerberos/bin/linux-x64-136/kerberos.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/kerberos/build/Release/kerberos.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/kerberos/build/Release/obj.target/kerberos.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/keytar/bin/linux-x64-136/keytar.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/keytar/build/Release/keytar.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/keytar/build/Release/obj.target/keytar.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/interruptor/bin/linux-x64-136/interruptor.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/interruptor/build/Release/interruptor.node
+	opt/mongodb-compass/resources/app.asar.unpacked/node_modules/interruptor/build/Release/obj.target/interruptor.node
+	opt/mongodb-compass/libEGL.so
+	opt/mongodb-compass/chrome_crashpad_handler
+	opt/mongodb-compass/libvk_swiftshader.so
+	opt/mongodb-compass/libGLESv2.so
+	opt/mongodb-compass/libffmpeg.so
+	opt/mongodb-compass/libvulkan.so.1
+	opt/mongodb-compass/MongoDB.*"
+QA_PREBUILT="opt/mongodb-compass/resources/app.asar.unpacked/node_modules/mongodb-client-encryption/build/Release/mongocrypt.node"
 
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
@@ -87,11 +113,13 @@ src_install() {
 		/opt/mongodb-compass/chrome_crashpad_handler \
 		/opt/mongodb-compass/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/mongodb-compass/libvulkan.so.1 \
-		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/interruptor/{bin/linux-x64-123,build/Release,build/Release/obj.target}/interruptor.node \
-		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/kerberos/{bin/linux-x64-123,build/Release,build/Release/obj.target}/kerberos.node \
-		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/keytar/{bin/linux-x64-123,build/Release,build/Release/obj.target}/keytar.node \
+		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/interruptor/{bin/linux-x64-136,build/Release,build/Release/obj.target}/interruptor.node \
+		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/kerberos/{bin/linux-x64-136,build/Release,build/Release/obj.target}/kerberos.node \
+		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/keytar/{bin/linux-x64-136,build/Release,build/Release/obj.target}/keytar.node \
 		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/mongodb-client-encryption/build/Release/mongocrypt.node \
-		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/os-dns-native/bin/linux-x64-123/os-dns-native.node \
+		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/native-machine-id/bin/linux-x64-136/native-machine-id.node \
+		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/native-machine-id/{build/Release,build/Release/obj.target}/native_machine_id.node \
+		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/os-dns-native/bin/linux-x64-136/os-dns-native.node \
 		/opt/mongodb-compass/resources/app.asar.unpacked/node_modules/os-dns-native/{build/Release,build/Release/obj.target}/os_dns_native.node
 	use suid && fperms u+s,+x /opt/mongodb-compass/chrome-sandbox
 
