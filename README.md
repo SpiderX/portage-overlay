@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1215](https://img.shields.io/badge/ebuild-1215-orange.svg)](https://img.shields.io/badge/ebuild-1215-orange.svg)
+[![Number of ebuilds: 1216](https://img.shields.io/badge/ebuild-1216-orange.svg)](https://img.shields.io/badge/ebuild-1216-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1103,6 +1103,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[darkly](https://github.com/Bali10050/Darkly) | A modern style for qt applications
 *   kde-misc/[qCheckGMail](https://github.com/mhogomchungu/qCheckGMail) | qCheckGmail is a Qt/C++ multiple gmail account checker
 *   kde-misc/[kde-relaxingsounds](https://github.com/Prayag2/kde_relaxingsounds) | Plasma 5 widget for play relaxing sounds
+*   kde-misc/[kde-translator-widget](https://github.com/y4my4my4m/kde-translator-widget) | KDE Translator Widget
 *   kde-misc/[kwin-effects-sliding-notifications](https://github.com/zzag/kwin-effects-sliding-notifications) | Sliding animation for notification windows
 *   kde-misc/[latte-dock](https://apps.kde.org/latte-dock/) | Elegant dock, based on KDE Frameworks
 *   kde-misc/[latte-indicator-dashtopanel](https://github.com/psifidotos/latte-indicator-dashtopanel) | Dash To Panel indicator for Latte Dock
