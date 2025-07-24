@@ -8,7 +8,7 @@ USE_PHP="php8-2 php8-3 php8-4"
 
 inherit php-ext-pecl-r3
 
-DESCRIPTION="A PHP wrapper fo the scrypt hashing algorithm"
+DESCRIPTION="A PHP wrapper for the scrypt hashing algorithm"
 
 LICENSE="BSD-2"
 SLOT="0"
