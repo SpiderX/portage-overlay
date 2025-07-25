@@ -684,7 +684,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[psr-simple-cache](https://github.com/php-fig/simple-cache) | PHP FIG Simple Cache PSR
 *   dev-php/[ralouphie-getallheaders](https://github.com/ralouphie/getallheaders) | PHP getallheaders polyfill
 *   dev-php/[revolt-event-loop](https://github.com/revoltphp/event-loop) | Event loop for concurrent PHP applications
-*   dev-php/[scrypt]() | A PHP wrapper fo the scrypt hashing algorithm
+*   dev-php/[scrypt]() | A PHP wrapper for the scrypt hashing algorithm
 *   dev-php/[sebastian-cli-parser](https://github.com/sebastianbergmann/cli-parser) | Library for parsing CLI options
 *   dev-php/[sebastian-code-unit](https://github.com/sebastianbergmann/code-unit) | Collection of PHP code units
 *   dev-php/[sebastian-code-unit-reverse-lookup](https://github.com/sebastianbergmann/code-unit-reverse-lookup) | Looks up which function or method a line of code belongs to
