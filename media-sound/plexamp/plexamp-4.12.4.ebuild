@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,23 +56,50 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]"
 
-QA_PREBUILT="opt/plexamp/usr/lib/libindicator.so.7
+QA_FLAGS_IGNORED="opt/plexamp/resources/app.asar.unpacked/node_modules/electron-media-service/build/Release/electron_media_service.node
+	opt/plexamp/resources/treble/libbassmix.so
+	opt/plexamp/resources/treble/libjack.so
+	opt/plexamp/resources/treble/libbass_fx.so
+	opt/plexamp/resources/treble/libbass.so
+	opt/plexamp/resources/treble/libbassalac.so
+	opt/plexamp/resources/treble/treble.node
+	opt/plexamp/resources/treble/libbassdsd.so
+	opt/plexamp/resources/treble/libbassape.so
+	opt/plexamp/resources/treble/libbass_mpc.so
+	opt/plexamp/resources/treble/libbassflac.so
+	opt/plexamp/resources/treble/libbass_aac.so
+	opt/plexamp/resources/treble/libbassopus.so
+	opt/plexamp/usr/lib/libXtst.so.6
+	opt/plexamp/usr/lib/libindicator.so.7
+	opt/plexamp/usr/lib/libnotify.so.4
 	opt/plexamp/usr/lib/libgconf-2.so.4
 	opt/plexamp/usr/lib/libappindicator.so.1
 	opt/plexamp/usr/lib/libXss.so.1
-	opt/plexamp/usr/lib/libXtst.so.6
-	opt/plexamp/usr/lib/libnotify.so.4
-	opt/plexamp/resources/treble/libbass.so
-	opt/plexamp/resources/treble/libbass_aac.so
-	opt/plexamp/resources/treble/libbass_ape.so
+	opt/plexamp/libEGL.so
+	opt/plexamp/chrome_crashpad_handler
+	opt/plexamp/plexamp
+	opt/plexamp/libvk_swiftshader.so
+	opt/plexamp/libGLESv2.so
+	opt/plexamp/libffmpeg.so
+	opt/plexamp/libvulkan.so.1"
+
+QA_PREBUILT="opt/plexamp/resources/treble/libbassmix.so
+	opt/plexamp/resources/treble/libjack.so
 	opt/plexamp/resources/treble/libbass_fx.so
-	opt/plexamp/resources/treble/libbass_mpc.so
+	opt/plexamp/resources/treble/libbass.so
 	opt/plexamp/resources/treble/libbassalac.so
 	opt/plexamp/resources/treble/libbassdsd.so
+	opt/plexamp/resources/treble/libbassape.so
+	opt/plexamp/resources/treble/libbass_mpc.so
 	opt/plexamp/resources/treble/libbassflac.so
-	opt/plexamp/resources/treble/libbassmix.so
+	opt/plexamp/resources/treble/libbass_aac.so
 	opt/plexamp/resources/treble/libbassopus.so
-	opt/plexamp/resources/treble/libjack.so"
+	opt/plexamp/usr/lib/libXtst.so.6
+	opt/plexamp/usr/lib/libindicator.so.7
+	opt/plexamp/usr/lib/libnotify.so.4
+	opt/plexamp/usr/lib/libgconf-2.so.4
+	opt/plexamp/usr/lib/libappindicator.so.1
+	opt/plexamp/usr/lib/libXss.so.1"
 
 src_unpack() {
 	cp "${DISTDIR}"/"${MY_P}".AppImage . || die "cp failed"
@@ -112,9 +139,7 @@ src_install() {
 	fperms -R +x /opt/plexamp/plexamp /opt/plexamp/chrome_crashpad_handler \
 		/opt/plexamp/lib{EGL,GLESv2,ffmpeg,vk_swiftshader}.so /opt/plexamp/libvulkan.so.1 \
 		/opt/plexamp/resources/app.asar.unpacked/node_modules/electron-media-service/build/Release/electron_media_service.node \
-		/opt/plexamp/resources/treble/treble.node \
-		/opt/plexamp/resources/treble/libbass{,_aac,_ape,_fx,_mpc,alac,dsd,flac,mix,opus}.so \
-		/opt/plexamp/resources/treble/libjack.so
+		/opt/plexamp/resources/treble/treble.node
 	use suid && fperms u+s,+x /opt/plexamp/chrome-sandbox
 
 	dosym ../../../../../../../../../../../../../../usr/bin/python3 \
