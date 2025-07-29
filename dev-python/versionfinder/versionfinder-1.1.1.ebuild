@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -16,7 +16,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test" # requires git repository
+RESTRICT="test" # needs virtualenv
 
 RDEPEND="dev-python/gitpython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

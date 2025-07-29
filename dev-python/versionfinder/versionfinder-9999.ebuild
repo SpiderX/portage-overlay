@@ -4,18 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/jantman/versionfinder.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Find version of python package, installed via pip, setuptools, git"
 HOMEPAGE="https://github.com/jantman/versionfinder"
+EGIT_REPO_URI="https://github.com/jantman/versionfinder.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
 IUSE="test"
-RESTRICT="test" # requires git repository
+RESTRICT="test" # needs virtualenv
 
 RDEPEND="dev-python/gitpython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
