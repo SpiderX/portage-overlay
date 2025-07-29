@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1214](https://img.shields.io/badge/ebuild-1214-orange.svg)](https://img.shields.io/badge/ebuild-1214-orange.svg)
+[![Number of ebuilds: 1215](https://img.shields.io/badge/ebuild-1215-orange.svg)](https://img.shields.io/badge/ebuild-1215-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -800,6 +800,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[azure-identity](https://github.com/Azure/azure-sdk-for-python) | Azure Identity client library for Python
 *   dev-python/[azure-keyvault-secrets](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Key Vault Secrets Client Library for Python
 *   dev-python/[azure-storage-blob](https://github.com/Azure/azure-sdk-for-python) | Microsoft Azure Storage Blobs Library for Python
+*   dev-python/[backoff](https://github.com/litl/backoff) | Function decoration for backoff and retry
 *   dev-python/[bc-detect-secrets](https://github.com/bridgecrewio/detect-secrets) | A fork of enterprise friendly way of detecting and preventing secrets
 *   dev-python/[bc-jsonpath-ng](https://github.com/bridgecrewio/jsonpath-ng) | Python JSONPath Next-Generation
 *   dev-python/[bc-python-hcl2](https://github.com/bridgecrewio/python-hcl2) | A fork of parser for HCL2 written in Python
