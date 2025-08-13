@@ -1,32 +1,34 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# shellcheck disable=SC2086
 
 EAPI=8
 
-CRATES="Inflector@0.11.4
-	aho-corasick@0.7.20
+CRATES="aho-corasick@0.7.20
 	aho-corasick@1.1.2
+	android-tzdata@0.1.1
+	android_system_properties@0.1.5
 	anstream@0.6.11
-	anstyle@1.0.6
 	anstyle-parse@0.2.3
 	anstyle-query@1.0.2
 	anstyle-wincon@3.0.2
+	anstyle@1.0.6
 	anyhow@1.0.81
 	arrayvec@0.5.2
-	async-stream@0.3.3
 	async-stream-impl@0.3.3
+	async-stream@0.3.3
 	atty@0.2.14
 	autocfg@1.1.0
 	bit-set@0.5.3
 	bit-vec@0.6.3
 	bitflags@1.3.2
 	bstr@1.2.0
+	bumpalo@3.16.0
 	bytecount@0.6.3
 	bytes@1.4.0
+	cc@1.1.16
 	cfg-if@1.0.0
-	cfn-guard@3.1.1
+	cfn-guard@3.1.2
+	chrono@0.4.38
 	clap@4.5.0
 	clap_builder@4.5.0
 	clap_complete@4.1.2
@@ -34,6 +36,8 @@ CRATES="Inflector@0.11.4
 	clap_lex@0.7.0
 	colorchoice@1.0.0
 	colored@2.0.0
+	core-foundation-sys@0.8.7
+	cruet@0.14.0
 	diff@0.1.13
 	encoding_rs@0.8.32
 	encoding_rs_io@0.1.7
@@ -42,7 +46,6 @@ CRATES="Inflector@0.11.4
 	fancy-regex@0.13.0
 	ffi-support@0.4.4
 	fnv@1.0.7
-	futures@0.3.26
 	futures-channel@0.3.26
 	futures-core@0.3.26
 	futures-executor@0.3.26
@@ -52,6 +55,7 @@ CRATES="Inflector@0.11.4
 	futures-task@0.3.26
 	futures-timer@3.0.2
 	futures-util@0.3.26
+	futures@0.3.26
 	grep-matcher@0.1.6
 	grep-regex@0.1.11
 	grep-searcher@0.1.11
@@ -60,15 +64,18 @@ CRATES="Inflector@0.11.4
 	heck@0.4.1
 	hermit-abi@0.1.19
 	hermit-abi@0.2.6
-	http@0.2.8
 	http-body@0.4.5
+	http@0.2.8
 	httparse@1.8.0
 	httpdate@1.0.2
 	hyper@0.14.24
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.60
 	indexmap@1.9.2
 	indoc@1.0.9
 	itertools@0.4.19
 	itoa@1.0.5
+	js-sys@0.3.69
 	lambda_runtime@0.3.0
 	lazy_static@1.4.0
 	lexical-core@0.7.6
@@ -79,6 +86,7 @@ CRATES="Inflector@0.11.4
 	mio@0.8.11
 	nom@5.1.3
 	nom_locate@2.1.0
+	num-traits@0.2.19
 	num_cpus@1.15.0
 	num_threads@0.1.6
 	once_cell@1.17.0
@@ -88,11 +96,11 @@ CRATES="Inflector@0.11.4
 	proc-macro2@1.0.78
 	quick-xml@0.30.0
 	quote@1.0.35
-	regex@1.10.2
 	regex-automata@0.1.10
 	regex-automata@0.4.3
 	regex-syntax@0.6.28
 	regex-syntax@0.8.2
+	regex@1.10.2
 	rstest@0.15.0
 	rstest_macros@0.14.0
 	rustc_version@0.4.0
@@ -104,6 +112,7 @@ CRATES="Inflector@0.11.4
 	serde_json@1.0.93
 	serde_yaml@0.9.17
 	sharded-slab@0.1.4
+	shlex@1.3.0
 	simple_logger@4.0.0
 	slab@0.4.7
 	socket2@0.4.7
@@ -113,21 +122,21 @@ CRATES="Inflector@0.11.4
 	strsim@0.11.0
 	syn@1.0.107
 	syn@2.0.55
-	thiserror@1.0.38
 	thiserror-impl@1.0.38
+	thiserror@1.0.38
 	thread_local@1.1.4
-	time@0.3.17
 	time-core@0.1.0
 	time-macros@0.2.6
-	tokio@1.25.0
+	time@0.3.17
 	tokio-macros@1.8.2
 	tokio-stream@0.1.11
+	tokio@1.25.0
 	tower-service@0.3.2
-	tracing@0.1.37
 	tracing-attributes@0.1.23
 	tracing-core@0.1.30
 	tracing-error@0.1.2
 	tracing-subscriber@0.2.25
+	tracing@0.1.37
 	try-lock@0.2.4
 	unicode-ident@1.0.6
 	unicode-segmentation@1.10.1
@@ -141,10 +150,16 @@ CRATES="Inflector@0.11.4
 	walkdir@2.3.2
 	want@0.3.0
 	wasi@0.11.0+wasi-snapshot-preview1
-	winapi@0.3.9
+	wasm-bindgen-backend@0.2.92
+	wasm-bindgen-macro-support@0.2.92
+	wasm-bindgen-macro@0.2.92
+	wasm-bindgen-shared@0.2.92
+	wasm-bindgen@0.2.92
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.5
 	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
+	windows-core@0.52.0
 	windows-sys@0.42.0
 	windows-sys@0.48.0
 	windows-sys@0.52.0
@@ -179,9 +194,9 @@ DESCRIPTION="AWS CloudFormation Guard"
 HOMEPAGE="https://github.com/aws-cloudformation/cloudformation-guard"
 SRC_URI="${CARGO_CRATE_URIS}"
 
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 MIT MPL-2.0 Unicode-DFS-2016 Unlicense"
+LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="mirror"
 
 QA_FLAGS_IGNORED="usr/bin/cfn-guard"
