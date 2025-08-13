@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools systemd
 
 MY_P="rpc.${PN}-${PV}"
 
-inherit systemd
-
 DESCRIPTION="Client-server linux performance statistics"
 HOMEPAGE="http://rstatd.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,19 +22,22 @@ RDEPEND="net-nds/rpcbind
 DEPEND="${RDEPEND}
 	net-libs/rpcsvc-proto"
 
-S="${WORKDIR}/${MY_P}"
-
 PATCHES=( # Add support for new kernels
 	"${FILESDIR}"/"${P}"-new-kernels-support.patch
 	# Use debug logging only with debug build
 	"${FILESDIR}"/"${P}"-debug.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf "$(use_enable debug)" CPPFLAGS="-I/usr/include/tirpc"
 }
 
 src_compile() {
-	emake LDFLAGS="-ltirpc"
+	emake LDFLAGS="-ltirpc ${LDFLAGS}"
 }
 
 src_install() {
