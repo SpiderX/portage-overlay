@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/PaulJuliusMartinez/${PN}.git"
 
 inherit cargo git-r3
 
 DESCRIPTION="Command-line JSON viewer"
 HOMEPAGE="https://github.com/PaulJuliusMartinez/jless"
+EGIT_REPO_URI="https://github.com/PaulJuliusMartinez/${PN}.git"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"

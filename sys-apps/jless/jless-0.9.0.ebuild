@@ -1,7 +1,5 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# shellcheck disable=SC2086
 
 EAPI=8
 
@@ -96,7 +94,7 @@ SRC_URI="${CARGO_CRATE_URIS}"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 RESTRICT="mirror"
 
 DOCS=( {CHANGELOG,README,SEARCH}.md )
