@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1213](https://img.shields.io/badge/ebuild-1213-orange.svg)](https://img.shields.io/badge/ebuild-1213-orange.svg)
+[![Number of ebuilds: 1212](https://img.shields.io/badge/ebuild-1212-orange.svg)](https://img.shields.io/badge/ebuild-1212-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1257,7 +1257,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   sys-apps/[choose](https://github.com/theryangeary/choose) | Fast alternative to cut and awk
 *   sys-apps/[direnv](https://github.com/direnv/direnv) | Environment variable manager for shell
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/ethq.svg?header=)](https://repology.org/project/ethq/versions) sys-apps/[ethq](https://github.com/isc-projects/ethq) | Ethernet NIC Queue stats viewer
-*   sys-apps/[dust](https://github.com/bootandy/dust) | More intuitive version of du
 *   sys-apps/[evhz](https://git.sr.ht/~iank/evhz) | Mouse refresh rate under evdev
 *   sys-apps/[firetools](https://firejail.wordpress.com) | Graphical user interface of Firajail security sandbox
 *   sys-apps/[jless](https://github.com/PaulJuliusMartinez/jless) | Command-line JSON viewer
