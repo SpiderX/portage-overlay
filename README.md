@@ -1233,7 +1233,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management
 *   net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
 *   net-misc/[virtualhere-usb](https://virtualhere.com) | Share USB devices over the network
-*   net-misc/[websocat](https://github.com/vi/websocat) | Netcat, curl and socat for WebSockets
 *   net-misc/[winbox](https://mikrotik.com/) | Standalone client for Mikrotik routers
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/x11-ssh-askpass.svg?header=)](https://repology.org/project/x11-ssh-askpass/versions) net-misc/[x11-ssh-askpass](https://github.com/sigmavirus24/x11-ssh-askpass) | X11-based passphrase dialog for use with OpenSSH
 *   net-misc/[xh](https://github.com/ducaale/xh) | Friendly and fast tool for sending HTTP requests
