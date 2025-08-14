@@ -1,16 +1,15 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/theryangeary/${PN}.git"
 
 inherit cargo git-r3
 
 DESCRIPTION="Fast alternative to cut and awk"
 HOMEPAGE="https://github.com/theryangeary/choose"
+EGIT_REPO_URI="https://github.com/theryangeary/${PN}.git"
 
-LICENSE="Apache-2.0 GPL-3+ MIT Unlicense"
+LICENSE="GPL-3+ MIT Unicode-DFS-2016"
 SLOT="0"
 
 DOCS=( readme.md )
