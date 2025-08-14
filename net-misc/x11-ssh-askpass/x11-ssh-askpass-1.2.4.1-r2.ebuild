@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -11,8 +11,7 @@ SRC_URI="https://github.com/sigmavirus24/${PN}/archive/${PV}.tar.gz -> ${P}.gh.t
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="virtual/ssh
 	x11-libs/libICE
@@ -21,12 +20,14 @@ RDEPEND="virtual/ssh
 	x11-libs/libXt"
 DEPEND="${RDEPEND}"
 BDEPEND="app-text/rman
+	sys-devel/gcc
 	x11-misc/imake"
 
 src_configure() {
 	econf --libexecdir=/usr/"$(get_libdir)"/misc \
 		--disable-installing-app-defaults
-	xmkmf || die "xmkmf failed"
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die "xmkmf failed"
 }
 
 src_compile() {
