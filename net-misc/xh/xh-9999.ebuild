@@ -1,21 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# shellcheck disable=SC2086
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/ducaale/${PN}.git"
-
-inherit bash-completion-r1 cargo git-r3
+inherit cargo git-r3 shell-completion
 
 DESCRIPTION="Friendly and fast tool for sending HTTP requests"
 HOMEPAGE="https://github.com/ducaale/xh"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/ducaale/${PN}.git"
 
-LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0 ZLIB"
+LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-3.0"
 SLOT="0"
-KEYWORDS=""
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -34,8 +29,6 @@ src_install() {
 
 	doman doc/xh.1
 	newbashcomp completions/xh.bash xh
-	insinto /usr/share/zsh/site-functions
-	doins completions/_xh
-	insinto /usr/share/fish/vendor_completions.d
-	doins completions/xh.fish
+	dozshcomp completions/_xh
+	newfishcomp completions/xh.fish xh
 }
