@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,19 +11,19 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Internet Key Exchange version 2 (IKEv2) daemon"
 HOMEPAGE="https://github.com/openiked/openiked-portable"
 SRC_URI="https://github.com/${PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="ISC"
-KEYWORDS="~amd64"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="apparmor debug test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="acct-user/_iked
-	dev-libs/openssl:0=
+RDEPEND="acct-group/_iked
+	acct-user/_iked
 	dev-libs/libevent:0=
+	dev-libs/openssl:0=
 	apparmor? ( sys-apps/apparmor )"
-
-S="${WORKDIR}/${MY_P}"
 
 DOC_CONTENTS="Create a key pair if not already present:\\n
 openssl ecparam -genkey -name prime256v1 -noout -out /etc/iked/private/local.key\\n
@@ -74,7 +74,7 @@ src_install() {
 		/etc/iked/pubkeys/{ipv4,ipv6,fqdn,ufqdn}
 
 	fperms 0700 /etc/iked/private
-	fowners -R iked:iked /etc/iked
+	fowners -R _iked:_iked /etc/iked
 
 	readme.gentoo_create_doc
 }

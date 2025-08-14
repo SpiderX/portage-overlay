@@ -1,25 +1,23 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 inherit cmake flag-o-matic git-r3 readme.gentoo-r1 systemd
 
 DESCRIPTION="Internet Key Exchange version 2 (IKEv2) daemon"
 HOMEPAGE="https://github.com/openiked/openiked-portable"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="ISC"
-KEYWORDS=""
 SLOT="0"
 IUSE="apparmor debug test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="acct-user/_iked
-	dev-libs/openssl:0=
+RDEPEND="acct-group/_iked
+	acct-user/_iked
 	dev-libs/libevent:0=
+	dev-libs/openssl:0=
 	apparmor? ( sys-apps/apparmor )"
 
 DOC_CONTENTS="Create a key pair if not already present:\\n
@@ -71,7 +69,7 @@ src_install() {
 		/etc/iked/pubkeys/{ipv4,ipv6,fqdn,ufqdn}
 
 	fperms 0700 /etc/iked/private
-	fowners -R iked:iked /etc/iked
+	fowners -R _iked:_iked /etc/iked
 
 	readme.gentoo_create_doc
 }
