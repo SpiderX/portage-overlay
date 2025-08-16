@@ -15,6 +15,7 @@
 	generating dummy data, or other applications.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">leapfrogonline/rstr</remote-id>
 		<remote-id type="pypi">rstr</remote-id>
 	</upstream>
 </pkgmetadata>
