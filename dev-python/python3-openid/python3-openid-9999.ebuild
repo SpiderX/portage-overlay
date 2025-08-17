@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="OpenID support for modern servers and consumers"
 HOMEPAGE="https://github.com/python-social-auth/social-core"
-EGIT_REPO_URI="https://github.com/python-social-auth/social-core.git"
+EGIT_REPO_URI="https://github.com/necaris/python3-openid.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
