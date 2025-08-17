@@ -1,22 +1,16 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/wernerd/${PN^^}.git"
 
 inherit git-r3 meson
 
 DESCRIPTION="Qt wrapper around the D-Bus API from OpenRazer"
 HOMEPAGE="https://github.com/z3ntu/libopenrazer"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/wernerd/${PN^^}.git"
 
 LICENSE="GPL-3"
-KEYWORDS=""
 SLOT="0"
 
-RDEPEND="dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
-	dev-qt/qtxml:5"
+RDEPEND="dev-qt/qtbase:6[dbus,xml]"
 BDEPEND="virtual/pkgconfig"
