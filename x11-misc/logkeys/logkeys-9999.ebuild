@@ -1,23 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/kernc/${PN}.git"
 
 inherit autotools git-r3 systemd
 
 DESCRIPTION="A Linux keylogger"
 HOMEPAGE="https://github.com/kernc/logkeys"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/kernc/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="suid"
-
-DEPEND=""
-RDEPEND=""
 
 src_prepare() {
 	default
@@ -31,12 +25,12 @@ src_prepare() {
 src_install() {
 	default
 
-	insinto /usr/share/"${PN}"
+	insinto /usr/share/logkeys
 	doins keymaps/*.map
 
-	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
-	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
-	systemd_dounit "${FILESDIR}"/"${PN}".service
+	newinitd "${FILESDIR}"/logkeys.initd logkeys
+	newconfd "${FILESDIR}"/logkeys.confd logkeys
+	systemd_dounit "${FILESDIR}"/logkeys.service
 
 	if ! use suid; then
 		rm -f "${ED}"/etc/logkeys-{kill,start}.sh || die "remove logkeys failed"
