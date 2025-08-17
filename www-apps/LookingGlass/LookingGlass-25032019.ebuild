@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 WEBAPP_MANUAL_SLOT="yes"
 
 inherit python-r1 webapp
@@ -14,6 +14,7 @@ COMMIT="a1db4790cb3bbd9ed95b3773208e50f8003488f8"
 DESCRIPTION="A Python-backed Looking Glass"
 HOMEPAGE="https://github.com/ramnode/LookingGlass"
 SRC_URI="https://github.com/ramnode/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -33,8 +34,6 @@ RDEPEND="${DEPEND}
 	net-analyzer/mtr
 	net-analyzer/traceroute
 	net-dns/bind-tools"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_install() {
 	webapp_src_preinst
