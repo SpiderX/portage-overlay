@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 EGIT_SUBMODULES=( "tests/OpenAPI-Specification" )
 
 inherit distutils-r1 git-r3 optfeature
@@ -40,6 +40,5 @@ pkg_postinst() {
 	optfeature "integration with icu" dev-python/pyicu
 	optfeature "integration with swagger" dev-python/swagger-spec-validator
 	optfeature "integration with openapi" dev-python/openapi-spec-validator
-	optfeature "integration with swagger validator" dev-python/flex
 	optfeature "command line client" dev-python/click
 }
