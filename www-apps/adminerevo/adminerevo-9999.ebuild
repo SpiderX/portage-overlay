@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2317
@@ -7,7 +7,6 @@ EAPI=8
 
 PLOCALES="ar bg bn bs ca cs da de el en es et fa fi fr gl he hu id it ja ka ko lt lv ms nl no pl pt-br pt ro ru sk sl sr sv ta th tr uk vi zh zh-tw"
 PLOCALE_BACKUP="en"
-EGIT_REPO_URI="https://github.com/adminerevo/${PN}.git"
 
 inherit edo git-r3 plocale webapp
 
@@ -20,7 +19,7 @@ DRIVERS=( [elasticsearch]="elastic"
 	[sqlite]="sqlite"
 )
 
-PLUGIN_DRIVERS="clickhouse firebird simpledb"
+PLUGIN_DRIVERS="clickhouse simpledb"
 PLUGINS="adminer-js dump-bz2 dump-zip enum-option import-from-dir login-password-less struct-comments translation
 	database-hide dump-date edit-calendar enum-types json-column login-servers pretty-json-column
 	table-indexes-structure version-noverify designs dump-json edit-foreign file-upload login-external
@@ -32,6 +31,7 @@ DESIGNS="brade cvicebni-ubor esterka galkaev hever jukin konya mancave mvt ng9 p
 
 DESCRIPTION="Database management in a single PHP file"
 HOMEPAGE="https://github.com/adminerevo/adminerevo"
+EGIT_REPO_URI="https://github.com/adminerevo/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -46,7 +46,7 @@ REQUIRED_USE="mysql adminer-js? ( plugin ) dump-bz2? ( plugin ) dump-zip? ( plug
 	foreign-system? ( plugin ) login-ip? ( plugin ) login-table? ( plugin ) slugify? ( plugin )
 	table-structure? ( plugin ) dump-alter? ( plugin ) dump-xml? ( plugin ) email-table? ( plugin )
 	frames? ( plugin ) login-otp? ( plugin ) master-slave? ( plugin ) sql-log? ( plugin ) tinymce? ( plugin )
-	firebird? ( pdo ) mongodb? ( pdo ) elasticsearch? ( pdo ) clickhouse? ( pdo ) oracle? ( oci8-instant-client )
+	mongodb? ( pdo ) elasticsearch? ( pdo ) clickhouse? ( pdo ) oracle? ( oci8-instant-client )
 	simpledb? ( pdo )"
 
 for driver in "${!DRIVERS[@]}" ; do IUSE="${IUSE} ${driver}" ; done
@@ -54,9 +54,8 @@ for plugin_driver in ${PLUGIN_DRIVERS} ; do IUSE="${IUSE} ${plugin_driver}" ; do
 for plugin in ${PLUGINS} ; do IUSE="${IUSE} ${plugin}" ; done
 for design in ${DESIGNS} ; do IUSE="${IUSE} ${design}" ; done
 
-CDEPEND="dev-lang/php[firebird?,mssql?,postgres?,sqlite?,pdo?,session]"
-RDEPEND="firebird? ( dev-db/firebird )
-	postgres? ( dev-db/postgresql:= )
+CDEPEND="dev-lang/php[mssql?,postgres?,sqlite?,pdo?,session]"
+RDEPEND="postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite:3 )
 	${CDEPEND}"
 BDEPEND="${CDEPEND}"
@@ -93,10 +92,9 @@ src_install() {
 	einstalldocs
 	webapp_src_preinst
 
-	if use clickhouse || use firebird || use simpledb ; then
+	if use clickhouse || use simpledb ; then
 		insinto "${MY_HTDOCSDIR}"/plugins/drivers
 		use clickhouse && doins plugins/drivers/clickhouse.php
-		use firebird && doins plugins/drivers/firebird.php
 		use simpledb && doins plugins/drivers/simpledb.php
 	fi
 
