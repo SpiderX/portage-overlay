@@ -1271,7 +1271,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   sys-fs/[xfs_undelete](https://github.com/ianka/xfs_undelete) | An undelete tool for the XFS filesystem
 *   sys-power/[freqtop](https://github.com/stolk/freqtop) | Monitor for the CPU Frequency Scaling under Linux
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/powerstat.svg?header=)](https://repology.org/project/powerstat/versions) sys-power/[powerstat](https://launchpad.net/ubuntu/+source/powerstat) | Laptop power measuring tool
-*   sys-process/[btop](https://github.com/aristocratos/btop) | A monitor of resources
 *   sys-process/[falco-bin](https://falco.org) | Cloud-Native runtime security
 *   sys-process/[nq](https://github.com/leahneukirchen/nq) | Unix command line queue utility
 *   www-apps/[adminerevo](https://github.com/adminerevo/adminerevo) | Database management in a single PHP file
