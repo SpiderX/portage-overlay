@@ -1,13 +1,14 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1 desktop multilib-build pax-utils systemd unpacker xdg
+inherit desktop multilib-build pax-utils systemd unpacker xdg
 
 DESCRIPTION="Fortinet VPN client"
 HOMEPAGE="https://www.fortinet.com/products/endpoint-security/forticlient"
-SRC_URI="https://repo.fortinet.com/repo/$(ver_cut 1-2)/debian/pool/non-free/f/${PN}/${PN}_${PV}_amd64.deb"
+SRC_URI="https://repo.fortinet.com/repo/forticlient/$(ver_cut 1-2)/ubuntu22/pool/non-free/f/${PN}/${PN}_${PV}_amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="Fortinet"
 SLOT="0"
@@ -15,9 +16,8 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="appindicator"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
+RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	app-crypt/libsecret:0[${MULTILIB_USEDEP}]
-	dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
@@ -48,13 +48,14 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libayatana-appindicator )"
 
 QA_PREBUILT="opt/forticlient/fortitraylauncher
+	opt/forticlient/forticlient-cli
 	opt/forticlient/update
 	opt/forticlient/fctsched
 	opt/forticlient/fortivpn
 	opt/forticlient/scanunit
 	opt/forticlient/fazlogupload
 	opt/forticlient/vulscan
-	opt/forticlient/update_tls
+	opt/forticlient/ztproxy
 	opt/forticlient/fortitray
 	opt/forticlient/confighandler
 	opt/forticlient/vpn
@@ -62,26 +63,33 @@ QA_PREBUILT="opt/forticlient/fortitraylauncher
 	opt/forticlient/libav.so
 	opt/forticlient/fmon
 	opt/forticlient/fchelper"
-QA_FLAGS_IGNORED="opt/forticlient/forticlient-cli
+QA_FLAGS_IGNORED="opt/forticlient/fortitraylauncher
+	opt/forticlient/forticlient-cli
+	opt/forticlient/update
+	opt/forticlient/fctsched
+	opt/forticlient/fortivpn
+	opt/forticlient/scanunit
+	opt/forticlient/fazlogupload
+	opt/forticlient/vulscan
 	opt/forticlient/libvcm.so
 	opt/forticlient/ztproxy
-	opt/forticlient/gui/FortiClient-linux-x64/libEGL.so
-	opt/forticlient/gui/FortiClient-linux-x64/libvulkan.so
-	opt/forticlient/gui/FortiClient-linux-x64/libvk_swiftshader.so
-	opt/forticlient/gui/FortiClient-linux-x64/chrome-sandbox
-	opt/forticlient/gui/FortiClient-linux-x64/FortiClient
-	opt/forticlient/gui/FortiClient-linux-x64/libGLESv2.so
-	opt/forticlient/gui/FortiClient-linux-x64/libffmpeg.so
-	opt/forticlient/gui/FortiClient-linux-x64/FortiClient
-	opt/forticlient/gui/FortiClient-linux-x64/libffmpeg.so
-	opt/forticlient/gui/FortiClient-linux-x64/swiftshader/libEGL.so
-	opt/forticlient/gui/FortiClient-linux-x64/swiftshader/libGLESv2.so"
-
-S="${WORKDIR}"
+	opt/forticlient/fortitray
+	opt/forticlient/confighandler
+	opt/forticlient/vpn
+	opt/forticlient/epctrl
+	opt/forticlient/libav.so
+	opt/forticlient/fmon
+	opt/forticlient/gui/libEGL.so
+	opt/forticlient/gui/chrome_crashpad_handler
+	opt/forticlient/gui/libvk_swiftshader.so
+	opt/forticlient/gui/chrome-sandbox
+	opt/forticlient/gui/FortiClient
+	opt/forticlient/gui/libGLESv2.so
+	opt/forticlient/gui/libffmpeg.so
+	opt/forticlient/gui/libvulkan.so.1
+	opt/forticlient/fchelper"
 
 src_install() {
-	dobashcomp etc/bash_completion.d/{fct_cli_autocomplete,forticlient-completion}
-
 	keepdir /var/lib/forticlient /etc/forticlient /opt/forticlient/{XMLs,quarantine} \
 		/var/log/forticlient/{fmon,vcm}_log
 
@@ -115,7 +123,6 @@ src_install() {
 		opt/forticlient/libvcm.so \
 		opt/forticlient/scanunit \
 		opt/forticlient/update \
-		opt/forticlient/update_tls \
 		opt/forticlient/vulscan \
 		opt/forticlient/ztproxy
 
@@ -125,8 +132,8 @@ src_install() {
 	insinto /opt/forticlient/images
 	doins -r opt/forticlient/images/.
 
-	insinto /opt/forticlient/gui/FortiClient-linux-x64
-	doins -r opt/forticlient/gui/FortiClient-linux-x64/.
+	insinto /opt/forticlient/gui
+	doins -r opt/forticlient/gui/.
 
 	insinto /opt/forticlient/vcm_sig
 	doins opt/forticlient/vcm_sig/vulns.dat
@@ -134,22 +141,20 @@ src_install() {
 	insinto /opt/forticlient/vir_sig
 	doins opt/forticlient/vir_sig/vir_high
 
-	fperms +x /opt/forticlient/gui/FortiClient-linux-x64/swiftshader/libEGL.so \
-		/opt/forticlient/gui/FortiClient-linux-x64/swiftshader/libGLESv2.so \
-		/opt/forticlient/gui/FortiClient-linux-x64/FortiClient \
-		/opt/forticlient/gui/FortiClient-linux-x64/chrome-sandbox \
-		/opt/forticlient/gui/FortiClient-linux-x64/libEGL.so \
-		/opt/forticlient/gui/FortiClient-linux-x64/libGLESv2.so \
-		/opt/forticlient/gui/FortiClient-linux-x64/libffmpeg.so \
-		/opt/forticlient/gui/FortiClient-linux-x64/libvk_swiftshader.so \
-		/opt/forticlient/gui/FortiClient-linux-x64/libvulkan.so
+	fperms +x /opt/forticlient/gui/FortiClient \
+		/opt/forticlient/gui/chrome-sandbox \
+		/opt/forticlient/gui/libEGL.so \
+		/opt/forticlient/gui/libGLESv2.so \
+		/opt/forticlient/gui/libffmpeg.so \
+		/opt/forticlient/gui/libvk_swiftshader.so \
+		/opt/forticlient/gui/libvulkan.so.1
 
 	dodir /opt/bin
-	dosym ../forticlient/gui/FortiClient-linux-x64/FortiClient opt/bin/FortiClient
+	dosym ../forticlient/gui/FortiClient opt/bin/FortiClient
 	dosym ../forticlient/fortivpn opt/bin/fortivpn
 	dosym ../../opt/forticlient/forticlient-cli  /usr/bin/forticlient
 
 	systemd_dounit lib/systemd/system/forticlient.service
 
-	pax-mark -m "${ED}"/opt/forticlient/gui/FortiClient-linux-x64/FortiClient
+	pax-mark -m "${ED}"/opt/forticlient/gui/FortiClient
 }
