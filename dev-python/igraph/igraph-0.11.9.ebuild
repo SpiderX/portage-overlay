@@ -7,14 +7,14 @@ DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python interface for igraph"
 HOMEPAGE="https://github.com/igraph/python-igraph"
-EGIT_REPO_URI="https://github.com/igraph/python-igraph.git"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="dev-libs/igraph
