@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1207](https://img.shields.io/badge/ebuild-1207-orange.svg)](https://img.shields.io/badge/ebuild-1207-orange.svg)
+[![Number of ebuilds: 1206](https://img.shields.io/badge/ebuild-1206-orange.svg)](https://img.shields.io/badge/ebuild-1206-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1085,7 +1085,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-vcs/[mercurial_keyring](https://foss.heptapod.net/mercurial/mercurial_keyring) | Mercurial Keyring Extension
 *   dev-vcs/[pre-commit](https://github.com/pre-commit/pre-commit) | A framework for multi-language pre-commit hooks
 *   dev-vcs/[transcrypt](https://github.com/elasticdog/transcrypt) | Transparently encrypt files within a git repository
-*   kde-misc/[applet-latte-analogclock](https://github.com/psifidotos/applet-latte-analogclock) | Analog clock applet that respects Latte items size
 *   kde-misc/[applet-latte-separator](https://github.com/psifidotos/applet-latte-separator) | Plasma 5 applet that acts as a separator between applets
 *   kde-misc/[applet-latte-sidebar-button](https://github.com/psifidotos/applet-latte-sidebar-button) | Plasma 5 applet to show and hide Latte Sidebars
 *   kde-misc/[applet-latte-spacer](https://github.com/psifidotos/applet-latte-spacer) | Plasma 5 applet that acts as a spacer between applets
