@@ -985,7 +985,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[rich](https://github.com/willmcgugan/rich) | Validate configuration and produce human readable error messages
 *   dev-python/[ripe-atlas-cousteau](https://github.com/RIPE-NCC/ripe-atlas-cousteau) | Official python wrapper around RIPE Atlas API
 *   dev-python/[ripe-atlas-sagan](https://github.com/RIPE-NCC/ripe-atlas-sagan) | A parsing library for RIPE Atlas measurement results
-*   dev-python/[route53-transfer](https://github.com/cosmin/route53-transfer) | Generic access to configuration files in any formats
 *   dev-python/[rstr](https://github.com/leapfrogonline/rstr) | Generate random strings in Python
 *   dev-python/[ruff](https://github.com/astral-sh/ruff) | Pytest module for ruff
 *   dev-python/[schema](https://github.com/keleshev/schema) | Simple data validation library
