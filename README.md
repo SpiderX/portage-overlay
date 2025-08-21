@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1199](https://img.shields.io/badge/ebuild-1199-orange.svg)](https://img.shields.io/badge/ebuild-1199-orange.svg)
+[![Number of ebuilds: 1198](https://img.shields.io/badge/ebuild-1198-orange.svg)](https://img.shields.io/badge/ebuild-1198-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1111,7 +1111,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[plasma-applet-grammarly](https://github.com/kevinbburns/com.kevinbburns.grammarly) | KDE Plasma6 Panel Widget for a Webview to Grammarly Editor
 *   kde-misc/[plasma-panel-spacer-extended](https://github.com/luisbocanegra/plasma-panel-spacer-extended) | Spacer with Mouse gestures for the KDE Plasma Panel
 *   kde-misc/[plasma-pass](https://www.dvratil.cz/2018/05/plasma-pass/) | Plasma applet to access password from pass
-*   kde-misc/[plasma-power-monitor](https://github.com/atul-g/plasma-power-monitor) | Plasma widget to monitor the power consumption of your battery
 *   kde-misc/[plasma5-wallpapers-dynamic](https://github.com/zzag/plasma5-wallpapers-dynamic) | Dynamic wallpaper plugin for KDE Plasma
 *   kde-misc/[plasmoid-wunderground](https://github.com/k-donn/plasmoid-wunderground) | Plasma 5/6 widget for showing data from Wunderground PWS
 *   kde-misc/[plasmoid-wunderground-extended](https://github.com/rliwoch/plasmoid-wunderground-extended) | KDE5 Plasma Weather Widget
