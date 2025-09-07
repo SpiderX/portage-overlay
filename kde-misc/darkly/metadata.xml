@@ -14,6 +14,9 @@
 	different approach from boehs, with the assumption that Luwx
 	won't ever resume his project.
 	</longdescription>
+	<use>
+		<flag name="qt5">Enable building for QT5</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Bali10050/Darkly</remote-id>
 	</upstream>
