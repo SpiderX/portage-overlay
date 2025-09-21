@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -42,29 +42,18 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	# remove failed test
-	sed -i -e '/testBaselineFileWriteError/,+23d' \
-		-e '/testBaselineGenerationWithDeprecationTriggeredByDebugClassLoader(/,+36d' \
-		Tests/DeprecationErrorHandler/ConfigurationTest.php \
-		|| die "sed failed for ConfigurationTest.php"
-	sed -i  -e '/testItCanTellWhetherItIsInternal/,+11d' \
-		-e '/testGetTypeDetectsSelf/,+11d' \
-		-e '/testGetTypeUsesRightTrace/,+9d' \
-		Tests/DeprecationErrorHandler/DeprecationTest.php \
-		|| die "sed failed for DeprecationTest.php"
-	rm Tests/DeprecationErrorHandler/debug_class_loader_autoload.phpt \
-		Tests/DeprecationErrorHandler/debug_class_loader_deprecation.phpt \
-		Tests/ProcessIsolationTest.php \
-		Tests/ExpectDeprecationTraitTest.php \
-		Tests/ExpectedDeprecationAnnotationTest.php \
-		|| die "rm failed"
+	# https://github.com/symfony/symfony/commit/71a40f4d
+	# https://github.com/symfony/symfony/commit/652ba2eb
+	eapply "${FILESDIR}/${PN}"-7.3.3-tests.patch
+	# skipped 41
 	phpunit --testdox || die "phpunit failed"
 }
 
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Bridge/PhpUnit
-	doins -r DeprecationErrorHandler Legacy TextUI bin/simple-phpunit.php ./*.php
+	doins -r Attribute DeprecationErrorHandler Extension Legacy \
+		Metadata TextUI bin/simple-phpunit.php ./*.php
 
 	exeinto /usr/share/php/Symfony/Bridge/PhpUnit
 	doexe bin/simple-phpunit
