@@ -1,19 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/webmozarts/assert.git"
 
 inherit git-r3
 
 DESCRIPTION="Webmozart Assert"
 HOMEPAGE="https://github.com/webmozarts/assert"
+EGIT_REPO_URI="https://github.com/webmozarts/assert.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*[ctype]
 	dev-php/fedora-autoloader"
