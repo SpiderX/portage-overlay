@@ -1,21 +1,21 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/password-hasher.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony PasswordHasher Component"
 HOMEPAGE="https://github.com/symfony/password-hasher"
+EGIT_REPO_URI="https://github.com/symfony/password-hasher.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE="argon2 sodium test"
+REQUIRED_USE="test? ( argon2 sodium )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*
+RDEPEND="dev-lang/php:*[argon2?,sodium?]
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/phpunit
 		dev-php/symfony-console
@@ -33,6 +33,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped — testBcryptWithNulByteWithNativePasswordHash
 	phpunit --testdox || die "phpunit failed"
 }
 

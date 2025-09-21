@@ -13,6 +13,10 @@
 	This package provides a PHP component from Symfony, which provides
 	an access to secure password hashing utilities.
 	</longdescription>
+	<use>
+		<flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
+		<flag name="sodium">Enable support for crypto through <pkg>dev-libs/libsodium</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">symfony/password-hasher</remote-id>
 	</upstream>
