@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/dependency-injection.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony DependencyInjection Component"
 HOMEPAGE="https://github.com/symfony/dependency-injection"
+EGIT_REPO_URI="https://github.com/symfony/dependency-injection.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -36,11 +35,7 @@ src_prepare() {
 		autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install failed"
-	# remove failed tests
-	rm Tests/Dumper/PhpDumperTest.php || die "rm failed"
-	# ignore risky tests
-	sed -i '/failOnRisky/s|true|false|' phpunit.xml.dist \
-		|| die "sed failed for phpunit.xml.dist"
+	eapply "${FILESDIR}/${PN}"-7.3.3-tests-preload.patch
 }
 
 src_test() {
