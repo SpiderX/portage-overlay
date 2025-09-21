@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,15 +14,12 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # no tests
+RESTRICT="test" # tests here https://github.com/symfony/contracts/tree/main/Tests/Service
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
 	dev-php/psr-container
 	dev-php/symfony-deprecation-contracts"
-
-# remove non-existed method in PHPUnit
-PATCHES=( "${FILESDIR}/${PN}"-3.5.0-test.patch )
 
 DOCS=( {CHANGELOG,README}.md )
 
