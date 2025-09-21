@@ -1,0 +1,64 @@
+diff --git a/src/Test/IntegrationTestCase.php b/src/Test/IntegrationTestCase.php
+index f3f7adc..dd54475 100644
+--- a/src/Test/IntegrationTestCase.php
++++ b/src/Test/IntegrationTestCase.php
+@@ -11,6 +11,9 @@
+ 
+ namespace Twig\Test;
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\IgnoreDeprecations;
++use PHPUnit\Framework\Constraint\Exception;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Error\Error;
+@@ -114,6 +117,7 @@ abstract class IntegrationTestCase extends TestCase
+      *
+      * @return void
+      */
++    #[DataProvider('getTests')]
+     public function testIntegration($file, $message, $condition, $templates, $exception, $outputs, $deprecation = '')
+     {
+         $this->doIntegrationTest($file, $message, $condition, $templates, $exception, $outputs, $deprecation);
+@@ -126,17 +130,13 @@ abstract class IntegrationTestCase extends TestCase
+      *
+      * @return void
+      */
++    #[DataProvider('getLegacyTests'), IgnoreDeprecations]
+     public function testLegacyIntegration($file, $message, $condition, $templates, $exception, $outputs, $deprecation = '')
+     {
+         $this->doIntegrationTest($file, $message, $condition, $templates, $exception, $outputs, $deprecation);
+     }
+ 
+-    /**
+-     * @return iterable
+-     *
+-     * @final since Twig 3.13
+-     */
+-    public function getTests($name, $legacyTests = false)
++    private static function assembleTests(bool $legacyTests): array
+     {
+         try {
+             $fixturesDir = static::getFixturesDirectory();
+@@ -188,14 +188,14 @@ abstract class IntegrationTestCase extends TestCase
+         return $tests;
+     }
+ 
+-    /**
+-     * @final since Twig 3.13
+-     *
+-     * @return iterable
+-     */
+-    public function getLegacyTests()
++    final public static function getTests(): array
++    {
++        return self::assembleTests(false);
++    }
++
++    final public static function getLegacyTests(): array
+     {
+-        return $this->getTests('testLegacyIntegration', true);
++        return self::assembleTests(true);
+     }
+ 
+     /**

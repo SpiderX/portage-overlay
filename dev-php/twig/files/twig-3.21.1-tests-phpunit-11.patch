@@ -1,0 +1,725 @@
+diff --git a/tests/Cache/ChainTest.php b/tests/Cache/ChainTest.php
+index 3120ab1..48cd1c1 100644
+--- a/tests/Cache/ChainTest.php
++++ b/tests/Cache/ChainTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Cache;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Cache\ChainCache;
+ use Twig\Cache\FilesystemCache;
+@@ -203,9 +204,7 @@ class ChainTest extends TestCase
+         $this->assertSame(0, $this->cache->getTimestamp($this->key));
+     }
+ 
+-    /**
+-     * @dataProvider provideInput
+-     */
++    #[DataProvider('provideInput')]
+     public function testGenerateKey($expected, $input)
+     {
+         $cache = new ChainCache([]);
+diff --git a/tests/Cache/FilesystemTest.php b/tests/Cache/FilesystemTest.php
+index e880562..ae4b7d0 100644
+--- a/tests/Cache/FilesystemTest.php
++++ b/tests/Cache/FilesystemTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Cache;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Cache\FilesystemCache;
+ use Twig\Tests\FilesystemHelper;
+@@ -162,9 +163,8 @@ class FilesystemTest extends TestCase
+ 
+     /**
+      * Test file cache is tolerant towards trailing (back)slashes on the configured cache directory.
+-     *
+-     * @dataProvider provideDirectories
+      */
++    #[DataProvider('provideDirectories')]
+     public function testGenerateKey($expected, $input)
+     {
+         $cache = new FilesystemCache($input);
+diff --git a/tests/Cache/ReadOnlyFilesystemTest.php b/tests/Cache/ReadOnlyFilesystemTest.php
+index 34bc14f..aa2eeab 100644
+--- a/tests/Cache/ReadOnlyFilesystemTest.php
++++ b/tests/Cache/ReadOnlyFilesystemTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Cache;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Cache\ReadOnlyFilesystemCache;
+ use Twig\Tests\FilesystemHelper;
+@@ -100,9 +101,8 @@ class ReadOnlyFilesystemTest extends TestCase
+ 
+     /**
+      * Test file cache is tolerant towards trailing (back)slashes on the configured cache directory.
+-     *
+-     * @dataProvider provideDirectories
+      */
++    #[DataProvider('provideDirectories')]
+     public function testGenerateKey($expected, $input)
+     {
+         $cache = new ReadOnlyFilesystemCache($input);
+diff --git a/tests/CustomExtensionTest.php b/tests/CustomExtensionTest.php
+index 174ad5e..146bbdb 100644
+--- a/tests/CustomExtensionTest.php
++++ b/tests/CustomExtensionTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Extension\ExtensionInterface;
+@@ -23,6 +24,7 @@ class CustomExtensionTest extends TestCase
+      *
+      * @dataProvider provideInvalidExtensions
+      */
++    #[DataProvider('provideInvalidExtensions')]
+     public function testGetInvalidOperators(ExtensionInterface $extension, $expectedExceptionMessage)
+     {
+         $env = new Environment(new ArrayLoader());
+diff --git a/tests/ErrorTest.php b/tests/ErrorTest.php
+index 43ab907..35afbe8 100644
+--- a/tests/ErrorTest.php
++++ b/tests/ErrorTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Attribute\YieldReady;
+ use Twig\Compiler;
+@@ -132,9 +133,7 @@ EOHTML,
+         }
+     }
+ 
+-    /**
+-     * @dataProvider getErroredTemplates
+-     */
++    #[DataProvider('getErroredTemplates')]
+     public function testTwigExceptionAddsFileAndLine($templates, $name, $line)
+     {
+         $loader = new ArrayLoader($templates);
+diff --git a/tests/ExpressionParserTest.php b/tests/ExpressionParserTest.php
+index f134052..5e60dfc 100644
+--- a/tests/ExpressionParserTest.php
++++ b/tests/ExpressionParserTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Symfony\Bridge\PhpUnit\ExpectDeprecationTrait;
+ use Twig\Attribute\FirstClassTwigCallableReady;
+@@ -40,9 +41,7 @@ class ExpressionParserTest extends TestCase
+ {
+     use ExpectDeprecationTrait;
+ 
+-    /**
+-     * @dataProvider getFailingTestsForAssignment
+-     */
++    #[DataProvider('getFailingTestsForAssignment')]
+     public function testCanOnlyAssignToNames($template)
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false, 'autoescape' => false]);
+@@ -70,9 +69,7 @@ class ExpressionParserTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getTestsForSequence
+-     */
++    #[DataProvider('getTestsForSequence')]
+     public function testSequenceExpression($template, $expected)
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false, 'autoescape' => false]);
+@@ -83,9 +80,7 @@ class ExpressionParserTest extends TestCase
+         $this->assertEquals($expected, $parser->parse($stream)->getNode('body')->getNode('0')->getNode('expr'));
+     }
+ 
+-    /**
+-     * @dataProvider getFailingTestsForSequence
+-     */
++    #[DataProvider('getFailingTestsForSequence')]
+     public function testSequenceSyntaxError($template)
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false, 'autoescape' => false]);
+@@ -222,9 +217,7 @@ class ExpressionParserTest extends TestCase
+         $parser->parse($stream);
+     }
+ 
+-    /**
+-     * @dataProvider getTestsForString
+-     */
++    #[DataProvider('getTestsForString')]
+     public function testStringExpression($template, $expected)
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false, 'autoescape' => false, 'optimizations' => 0]);
+@@ -290,9 +283,7 @@ class ExpressionParserTest extends TestCase
+         $parser->parse($env->tokenize(new Source('{% macro foo("a") %}{% endmacro %}', 'index')));
+     }
+ 
+-    /**
+-     * @dataProvider             getMacroDefinitionDoesNotSupportNonConstantDefaultValues
+-     */
++    #[DataProvider('getMacroDefinitionDoesNotSupportNonConstantDefaultValues')]
+     public function testMacroDefinitionDoesNotSupportNonConstantDefaultValues($template)
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false, 'autoescape' => false]);
+@@ -312,9 +303,7 @@ class ExpressionParserTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getMacroDefinitionSupportsConstantDefaultValues
+-     */
++    #[DataProvider('getMacroDefinitionSupportsConstantDefaultValues')]
+     public function testMacroDefinitionSupportsConstantDefaultValues($template)
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false, 'autoescape' => false]);
+diff --git a/tests/Extension/CoreTest.php b/tests/Extension/CoreTest.php
+index bbea3d5..4e83a17 100644
+--- a/tests/Extension/CoreTest.php
++++ b/tests/Extension/CoreTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Extension;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Error\RuntimeError;
+@@ -22,9 +23,7 @@ use Twig\Sandbox\SecurityPolicy;
+ 
+ class CoreTest extends TestCase
+ {
+-    /**
+-     * @dataProvider provideCycleCases
+-     */
++    #[DataProvider('provideCycleCases')]
+     public function testCycleFunction($values, $position, $expected)
+     {
+         $this->assertSame($expected, CoreExtension::cycle($values, $position));
+@@ -45,9 +44,7 @@ class CoreTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideCycleInvalidCases
+-     */
++    #[DataProvider('provideCycleInvalidCases')]
+     public function testCycleFunctionThrowRuntimeError($values, mixed $position = null)
+     {
+         $this->expectException(RuntimeError::class);
+@@ -63,9 +60,7 @@ class CoreTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getRandomFunctionTestData
+-     */
++    #[DataProvider('getRandomFunctionTestData')]
+     public function testRandomFunction(array $expectedInArray, $value1, $value2 = null)
+     {
+         for ($i = 0; $i < 100; ++$i) {
+@@ -163,9 +158,7 @@ class CoreTest extends TestCase
+         $this->assertEquals($output, 'éÄ');
+     }
+ 
+-    /**
+-     * @dataProvider provideTwigFirstCases
+-     */
++    #[DataProvider('provideTwigFirstCases')]
+     public function testTwigFirst($expected, $input)
+     {
+         $this->assertSame($expected, CoreExtension::first('UTF-8', $input));
+@@ -184,9 +177,7 @@ class CoreTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideTwigLastCases
+-     */
++    #[DataProvider('provideTwigLastCases')]
+     public function testTwigLast($expected, $input)
+     {
+         $this->assertSame($expected, CoreExtension::last('UTF-8', $input));
+@@ -205,9 +196,7 @@ class CoreTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideArrayKeyCases
+-     */
++    #[DataProvider('provideArrayKeyCases')]
+     public function testArrayKeysFilter(array $expected, $input)
+     {
+         $this->assertSame($expected, CoreExtension::keys($input));
+@@ -228,9 +217,7 @@ class CoreTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideInFilterCases
+-     */
++    #[DataProvider('provideInFilterCases')]
+     public function testInFilter($expected, $value, $compare)
+     {
+         $this->assertSame($expected, CoreExtension::inFilter($value, $compare));
+@@ -256,9 +243,7 @@ class CoreTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideSliceFilterCases
+-     */
++    #[DataProvider('provideSliceFilterCases')]
+     public function testSliceFilter($expected, $input, $start, $length = null, $preserveKeys = false)
+     {
+         $this->assertSame($expected, CoreExtension::slice('UTF-8', $input, $start, $length, $preserveKeys));
+@@ -285,9 +270,7 @@ class CoreTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideCompareCases
+-     */
++    #[DataProvider('provideCompareCases')]
+     public function testCompare($expected, $a, $b)
+     {
+         $this->assertSame($expected, CoreExtension::compare($a, $b));
+diff --git a/tests/Extension/SandboxTest.php b/tests/Extension/SandboxTest.php
+index 3fb1f65..fd655f7 100644
+--- a/tests/Extension/SandboxTest.php
++++ b/tests/Extension/SandboxTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Extension;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Symfony\Bridge\PhpUnit\ExpectDeprecationTrait;
+ use Twig\Environment;
+@@ -76,9 +77,7 @@ class SandboxTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getSandboxedForCoreTagsTests
+-     */
++    #[DataProvider('getSandboxedForCoreTagsTests')]
+     public function testSandboxForCoreTags(string $tag, string $template)
+     {
+         $twig = $this->getEnvironment(true, [], self::$templates, []);
+@@ -279,9 +278,7 @@ class SandboxTest extends TestCase
+         }
+     }
+ 
+-    /**
+-     * @dataProvider getSandboxUnallowedToStringTests
+-     */
++    #[DataProvider('getSandboxUnallowedToStringTests')]
+     public function testSandboxUnallowedToString($template)
+     {
+         $twig = $this->getEnvironment(true, [], ['index' => $template], [], ['upper', 'join', 'replace'], ['Twig\Tests\Extension\FooObject' => 'getAnotherFooObject'], [], ['random']);
+@@ -324,9 +321,7 @@ class SandboxTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getSandboxAllowedToStringTests
+-     */
++    #[DataProvider('getSandboxAllowedToStringTests')]
+     public function testSandboxAllowedToString($template, $output)
+     {
+         $twig = $this->getEnvironment(true, [], ['index' => $template], ['set'], [], ['Twig\Tests\Extension\FooObject' => ['foo', 'getAnotherFooObject']]);
+diff --git a/tests/FileExtensionEscapingStrategyTest.php b/tests/FileExtensionEscapingStrategyTest.php
+index ed5ce06..411f9da 100644
+--- a/tests/FileExtensionEscapingStrategyTest.php
++++ b/tests/FileExtensionEscapingStrategyTest.php
+@@ -11,14 +11,13 @@ namespace Twig\Tests;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\FileExtensionEscapingStrategy;
+ 
+ class FileExtensionEscapingStrategyTest extends TestCase
+ {
+-    /**
+-     * @dataProvider getGuessData
+-     */
++    #[DataProvider('getGuessData')]
+     public function testGuess($strategy, $filename)
+     {
+         $this->assertSame($strategy, FileExtensionEscapingStrategy::guess($filename));
+diff --git a/tests/LexerTest.php b/tests/LexerTest.php
+index 3a5ff98..839f156 100644
+--- a/tests/LexerTest.php
++++ b/tests/LexerTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Symfony\Bridge\PhpUnit\ExpectDeprecationTrait;
+ use Twig\Environment;
+@@ -171,9 +172,7 @@ class LexerTest extends TestCase
+         $this->assertEquals('922337203685477580700', $node->getValue());
+     }
+ 
+-    /**
+-     * @dataProvider getStringWithEscapedDelimiter
+-     */
++    #[DataProvider('getStringWithEscapedDelimiter')]
+     public function testStringWithEscapedDelimiter(string $template, string $expected)
+     {
+         $lexer = new Lexer(new Environment(new ArrayLoader()));
+@@ -474,9 +473,7 @@ bar
+         $this->addToAssertionCount(1);
+     }
+ 
+-    /**
+-     * @dataProvider getTemplateForErrorsAtTheEndOfTheStream
+-     */
++    #[DataProvider('getTemplateForErrorsAtTheEndOfTheStream')]
+     public function testErrorsAtTheEndOfTheStream(string $template)
+     {
+         $lexer = new Lexer(new Environment(new ArrayLoader()));
+@@ -497,9 +494,7 @@ bar
+         yield ['{{ ..'];
+     }
+ 
+-    /**
+-     * @dataProvider getTemplateForStrings
+-     */
++    #[DataProvider('getTemplateForStrings')]
+     public function testStrings(string $expected)
+     {
+         $template = '{{ "'.$expected.'" }}';
+diff --git a/tests/Loader/FilesystemTest.php b/tests/Loader/FilesystemTest.php
+index c7315ea..62b0645 100644
+--- a/tests/Loader/FilesystemTest.php
++++ b/tests/Loader/FilesystemTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Loader;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Error\LoaderError;
+@@ -26,9 +27,7 @@ class FilesystemTest extends TestCase
+         $this->assertEquals(realpath($path.'/errors/index.html'), realpath($loader->getSourceContext('errors/index.html')->getPath()));
+     }
+ 
+-    /**
+-     * @dataProvider getSecurityTests
+-     */
++    #[DataProvider('getSecurityTests')]
+     public function testSecurity($template)
+     {
+         $loader = new FilesystemLoader([__DIR__.'/../Fixtures']);
+@@ -71,9 +70,7 @@ class FilesystemTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getBasePaths
+-     */
++    #[DataProvider('getBasePaths')]
+     public function testPaths($basePath, $cacheKey, $rootPath)
+     {
+         $loader = new FilesystemLoader([$basePath.'/normal', $basePath.'/normal_bis'], $rootPath);
+@@ -206,9 +203,7 @@ class FilesystemTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getArrayInheritanceTests
+-     */
++    #[DataProvider('getArrayInheritanceTests')]
+     public function testArrayInheritance(string $templateName)
+     {
+         $loader = new FilesystemLoader([]);
+diff --git a/tests/Node/NodeTest.php b/tests/Node/NodeTest.php
+index 13ad334..a4d3f4a 100644
+--- a/tests/Node/NodeTest.php
++++ b/tests/Node/NodeTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Node;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\IgnoreDeprecations;
+ use PHPUnit\Framework\TestCase;
+ use Symfony\Bridge\PhpUnit\ExpectDeprecationTrait;
+ use Twig\Node\NameDeprecation;
+@@ -75,9 +76,7 @@ EOF
+         $this->assertFalse($node->getAttribute('foo', false));
+     }
+ 
+-    /**
+-     * @group legacy
+-     */
++    #[IgnoreDeprecations]
+     public function testAttributeDeprecationWithoutAlternative()
+     {
+         $node = new NodeForTest([], ['foo' => false]);
+@@ -87,9 +86,7 @@ EOF
+         $this->assertFalse($node->getAttribute('foo'));
+     }
+ 
+-    /**
+-     * @group legacy
+-     */
++    #[IgnoreDeprecations]
+     public function testAttributeDeprecationWithAlternative()
+     {
+         $node = new NodeForTest([], ['foo' => false]);
+@@ -107,9 +104,7 @@ EOF
+         $this->assertSame($foo, $node->getNode('foo', false));
+     }
+ 
+-    /**
+-     * @group legacy
+-     */
++    #[IgnoreDeprecations]
+     public function testNodeDeprecationWithoutAlternative()
+     {
+         $node = new NodeForTest(['foo' => $foo = new NodeForTest()]);
+@@ -119,9 +114,7 @@ EOF
+         $this->assertSame($foo, $node->getNode('foo'));
+     }
+ 
+-    /**
+-     * @group legacy
+-     */
++    #[IgnoreDeprecations]
+     public function testNodeAttributeDeprecationWithAlternative()
+     {
+         $node = new NodeForTest(['foo' => $foo = new NodeForTest()]);
+diff --git a/tests/NodeVisitor/OptimizerTest.php b/tests/NodeVisitor/OptimizerTest.php
+index 859f417..b765b48 100644
+--- a/tests/NodeVisitor/OptimizerTest.php
++++ b/tests/NodeVisitor/OptimizerTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\NodeVisitor;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Loader\ArrayLoader;
+@@ -78,9 +79,7 @@ class OptimizerTest extends TestCase
+         }
+     }
+ 
+-    /**
+-     * @dataProvider getTestsForForLoopOptimizer
+-     */
++    #[DataProvider('getTestsForForLoopOptimizer')]
+     public function testForLoopOptimizer($template, $expected)
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false]);
+diff --git a/tests/ParserTest.php b/tests/ParserTest.php
+index 1b222d0..5483791 100644
+--- a/tests/ParserTest.php
++++ b/tests/ParserTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Error\SyntaxError;
+@@ -61,9 +62,7 @@ class ParserTest extends TestCase
+         $parser->parse($stream);
+     }
+ 
+-    /**
+-     * @dataProvider getFilterBodyNodesData
+-     */
++    #[DataProvider('getFilterBodyNodesData')]
+     public function testFilterBodyNodes($input, $expected)
+     {
+         $parser = $this->getParser();
+@@ -91,9 +90,7 @@ class ParserTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getFilterBodyNodesDataThrowsException
+-     */
++    #[DataProvider('getFilterBodyNodesDataThrowsException')]
+     public function testFilterBodyNodesThrowsException($input)
+     {
+         $parser = $this->getParser();
+@@ -113,9 +110,7 @@ class ParserTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getFilterBodyNodesWithBOMData
+-     */
++    #[DataProvider('getFilterBodyNodesWithBOMData')]
+     public function testFilterBodyNodesWithBOM($emptyNode)
+     {
+         $parser = $this->getParser();
+diff --git a/tests/Runtime/EscaperRuntimeTest.php b/tests/Runtime/EscaperRuntimeTest.php
+index 706c007..86f2e2a 100644
+--- a/tests/Runtime/EscaperRuntimeTest.php
++++ b/tests/Runtime/EscaperRuntimeTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests\Runtime;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Error\RuntimeError;
+ use Twig\Runtime\EscaperRuntime;
+@@ -347,9 +348,7 @@ class EscaperRuntimeTest extends TestCase
+         (new EscaperRuntime())->escape('foo', 'bar');
+     }
+ 
+-    /**
+-     * @dataProvider provideCustomEscaperCases
+-     */
++    #[DataProvider('provideCustomEscaperCases')]
+     public function testCustomEscaper($expected, $string, $strategy, $charset)
+     {
+         $escaper = new EscaperRuntime();
+@@ -366,9 +365,7 @@ class EscaperRuntimeTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideObjectsForEscaping
+-     */
++    #[DataProvider('provideObjectsForEscaping')]
+     public function testObjectEscaping(string $escapedHtml, string $escapedJs, array $safeClasses)
+     {
+         $obj = new Extension_TestClass();
+diff --git a/tests/TemplateTest.php b/tests/TemplateTest.php
+index eb0e2db..afe2882 100644
+--- a/tests/TemplateTest.php
++++ b/tests/TemplateTest.php
+@@ -11,6 +11,7 @@ namespace Twig\Tests;
+  * file that was distributed with this source code.
+  */
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Error\RuntimeError;
+@@ -34,9 +35,7 @@ class TemplateTest extends TestCase
+         $template->displayBlock('foo', [], ['foo' => [new \stdClass(), 'foo']]);
+     }
+ 
+-    /**
+-     * @dataProvider getAttributeExceptions
+-     */
++    #[DataProvider('getAttributeExceptions')]
+     public function testGetAttributeExceptions($template, $message)
+     {
+         $templates = ['index' => $template];
+@@ -84,9 +83,7 @@ class TemplateTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getGetAttributeWithSandbox
+-     */
++    #[DataProvider('getGetAttributeWithSandbox')]
+     public function testGetAttributeWithSandbox($object, $item, $allowed)
+     {
+         $twig = new Environment(new ArrayLoader());
+@@ -123,9 +120,7 @@ class TemplateTest extends TestCase
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getRenderTemplateWithoutOutputData
+-     */
++    #[DataProvider('getRenderTemplateWithoutOutputData')]
+     public function testRenderTemplateWithoutOutput(string $template)
+     {
+         $twig = new Environment(new ArrayLoader(['index' => $template]));
+@@ -206,9 +201,7 @@ class TemplateTest extends TestCase
+         $this->assertSame('EmptyString', CoreExtension::getAttribute($twig, $template->getSourceContext(), $array, null), 'null is treated as "" when accessing a sequence/mapping (equals PHP behavior)');
+     }
+ 
+-    /**
+-     * @dataProvider getGetAttributeTests
+-     */
++    #[DataProvider('getGetAttributeTests')]
+     public function testGetAttribute($defined, $value, $object, $item, $arguments, $type)
+     {
+         $twig = new Environment(new ArrayLoader());
+@@ -217,9 +210,7 @@ class TemplateTest extends TestCase
+         $this->assertEquals($value, CoreExtension::getAttribute($twig, $template->getSourceContext(), $object, $item, $arguments, $type));
+     }
+ 
+-    /**
+-     * @dataProvider getGetAttributeTests
+-     */
++    #[DataProvider('getGetAttributeTests')]
+     public function testGetAttributeStrict($defined, $value, $object, $item, $arguments, $type, $exceptionMessage = null)
+     {
+         $twig = new Environment(new ArrayLoader(), ['strict_variables' => true]);
+@@ -236,9 +227,7 @@ class TemplateTest extends TestCase
+         }
+     }
+ 
+-    /**
+-     * @dataProvider getGetAttributeTests
+-     */
++    #[DataProvider('getGetAttributeTests')]
+     public function testGetAttributeDefined($defined, $value, $object, $item, $arguments, $type)
+     {
+         $twig = new Environment(new ArrayLoader());
+@@ -247,9 +236,7 @@ class TemplateTest extends TestCase
+         $this->assertEquals($defined, CoreExtension::getAttribute($twig, $template->getSourceContext(), $object, $item, $arguments, $type, true));
+     }
+ 
+-    /**
+-     * @dataProvider getGetAttributeTests
+-     */
++    #[DataProvider('getGetAttributeTests')]
+     public function testGetAttributeDefinedStrict($defined, $value, $object, $item, $arguments, $type)
+     {
+         $twig = new Environment(new ArrayLoader(), ['strict_variables' => true]);
+diff --git a/tests/TokenParser/TypesTokenParserTest.php b/tests/TokenParser/TypesTokenParserTest.php
+index 0acbb4d..428b059 100644
+--- a/tests/TokenParser/TypesTokenParserTest.php
++++ b/tests/TokenParser/TypesTokenParserTest.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Twig\Tests\TokenParser;
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Twig\Environment;
+ use Twig\Loader\ArrayLoader;
+@@ -10,7 +11,7 @@ use Twig\Source;
+ 
+ class TypesTokenParserTest extends TestCase
+ {
+-    /** @dataProvider getMappingTests */
++    #[DataProvider('getMappingTests')]
+     public function testMappingParsing(string $template, array $expected): void
+     {
+         $env = new Environment(new ArrayLoader(), ['cache' => false, 'autoescape' => false]);
