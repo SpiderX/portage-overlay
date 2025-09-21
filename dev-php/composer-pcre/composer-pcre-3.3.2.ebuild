@@ -3,20 +3,24 @@
 
 EAPI=8
 
-inherit git-r3
+MY_PN="${PN//composer-/}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="PCRE wrapping library that offers type-safe preg_ replacements"
 HOMEPAGE="https://github.com/composer/pcre"
-EGIT_REPO_URI="https://github.com/composer/pcre.git"
+SRC_URI="https://github.com/composer/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test" # https://github.com/sebastianbergmann/phpunit/issues/5062
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="test? ( dev-php/phpunit )"
+BDEPEND="test? ( dev-php/composer
+		dev-php/phpunit )"
 
 src_prepare() {
 	default
@@ -28,6 +32,10 @@ src_prepare() {
 }
 
 src_test() {
+	composer require -d "${T}" --prefer-source \
+		--dev "${PN/-/\/}":"${PV}" || die "composer failed"
+	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,tests} "${S}" \
+		|| die "cp tests failed"
 	phpunit --testdox || die "phpunit failed"
 }
 
