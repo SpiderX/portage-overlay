@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,6 @@ RDEPEND="dev-lang/php:*"
 src_prepare() {
 	default
 
-	# pre-generated autoload since this is revdep for phpab
 	install -D -m 644 "${FILESDIR}"/autoload.php \
 		src/autoload.php || die "install failed"
 }
