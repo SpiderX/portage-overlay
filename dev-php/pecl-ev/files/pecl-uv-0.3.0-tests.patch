@@ -1,0 +1,38 @@
+--- ../tests/400-tcp_bind6.phpt	2024-08-10 10:39:30.759717080 +0300
++++ ../tests/400-tcp_bind6.phpt	2024-08-10 10:40:01.757314068 +0300
+@@ -1,5 +1,7 @@
+ --TEST--
+ Check for tcp bind
++--SKIPIF--
++<?php if (!defined('AF_INET6')) print "skip"; ?>
+ --FILE--
+ <?php
+ $tcp = uv_tcp_init();
+--- ../tests/500-udp_bind6.phpt	2024-08-10 10:42:27.777649452 +0300
++++ ../tests/500-udp_bind6.phpt	2024-08-10 10:42:56.493037913 +0300
+@@ -1,5 +1,7 @@
+ --TEST--
+ Check for udp bind
++--SKIPIF--
++<?php if (!defined('AF_INET6')) print "skip"; ?>
+ --FILE--
+ <?php
+ $udp = uv_udp_init();
+--- ../tests/005-uv_listen_cb-not-destroyed.phpt	2024-08-10 11:05:01.728035527 +0300
++++ ../tests/005-uv_listen_cb-not-destroyed.phpt	2024-08-10 11:05:14.894532225 +0300
+@@ -43,13 +43,13 @@
+ $loop = uv_loop_new();
+ 
+ $tcpServer = new TcpServer($loop);
+-$tcpServer->bind('0.0.0.0', 9876);
++$tcpServer->bind('127.0.0.1', 9876);
+ $tcpServer->listen();
+ 
+ $closed = 0;
+ for ($i = 0; $i < 4; $i++) {
+     $c = uv_tcp_init($loop);
+-    uv_tcp_connect($c, uv_ip4_addr('0.0.0.0', 9876), function ($stream, $stat) use (&$closed, $tcpServer) {
++    uv_tcp_connect($c, uv_ip4_addr('127.0.0.1', 9876), function ($stream, $stat) use (&$closed, $tcpServer) {
+         $closed++;
+         uv_close($stream);
+ 
