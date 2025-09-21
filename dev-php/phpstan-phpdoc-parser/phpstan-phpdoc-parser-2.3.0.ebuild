@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -23,7 +23,7 @@ RDEPEND="dev-lang/php:*
 BDEPEND="test? ( dev-php/composer
 		dev-php/doctrine-annotations
 		dev-php/phpunit
-		>=dev-php/symfony-process-6.4.8
+		>=dev-php/symfony-process-6
 		dev-util/abnfgen )"
 
 src_prepare() {
@@ -40,12 +40,11 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml,tests,doc} "${S}" \
 		|| die "cp failed"
-	# remove coverage
-	sed -i '/<coverage/,+13d' phpunit.xml || die "sed failed for phpunit.xml"
 	# replace path to abnfgen
 	sed -i '/abnfgen/s|tools/abnfgen|../../../../../../../usr/bin|' \
 		tests/PHPStan/Parser/FuzzyTest.php \
 		|| die "sed failed for FuzzyTest.php"
+	eapply "${FILESDIR}/${PN}"-2.3.0-tests-phpunit-11.patch
 	phpunit --bootstrap vendor/autoload.php --testdox || die "phpunit failed"
 }
 

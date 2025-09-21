@@ -1,0 +1,614 @@
+diff --git a/tests/PHPStan/Ast/NodeTraverserTest.php b/tests/PHPStan/Ast/NodeTraverserTest.php
+index 49f3646..1c66cff 100644
+--- a/tests/PHPStan/Ast/NodeTraverserTest.php
++++ b/tests/PHPStan/Ast/NodeTraverserTest.php
+@@ -365,7 +365,7 @@ class NodeTraverserTest extends TestCase
+ 	/**
+ 	 * @return list<list<mixed>>
+ 	 */
+-	public function provideTestInvalidReturn(): array
++	public static function provideTestInvalidReturn(): array
+ 	{
+ 		$num = new ConstExprIntegerNode('42');
+ 		$expr = new ConstTypeNode($num);
+diff --git a/tests/PHPStan/Parser/ConstExprParserTest.php b/tests/PHPStan/Parser/ConstExprParserTest.php
+index f823674..f800135 100644
+--- a/tests/PHPStan/Parser/ConstExprParserTest.php
++++ b/tests/PHPStan/Parser/ConstExprParserTest.php
+@@ -87,7 +87,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideTrueNodeParseData(): Iterator
++	public static function provideTrueNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'true',
+@@ -106,7 +106,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideFalseNodeParseData(): Iterator
++	public static function provideFalseNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'false',
+@@ -125,7 +125,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideNullNodeParseData(): Iterator
++	public static function provideNullNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'null',
+@@ -144,7 +144,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideIntegerNodeParseData(): Iterator
++	public static function provideIntegerNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'123',
+@@ -208,7 +208,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideFloatNodeParseData(): Iterator
++	public static function provideFloatNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'123.4',
+@@ -307,7 +307,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideStringNodeParseData(): Iterator
++	public static function provideStringNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'"foo"',
+@@ -336,7 +336,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideArrayNodeParseData(): Iterator
++	public static function provideArrayNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'[]',
+@@ -438,7 +438,7 @@ class ConstExprParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideFetchNodeParseData(): Iterator
++	public static function provideFetchNodeParseData(): Iterator
+ 	{
+ 		yield [
+ 			'GLOBAL_CONSTANT',
+diff --git a/tests/PHPStan/Parser/FuzzyTest.php b/tests/PHPStan/Parser/FuzzyTest.php
+index 9491bf6..6c4f2ae 100644
+--- a/tests/PHPStan/Parser/FuzzyTest.php
++++ b/tests/PHPStan/Parser/FuzzyTest.php
+@@ -50,9 +50,9 @@ class FuzzyTest extends TestCase
+ 		);
+ 	}
+ 
+-	public function provideTypeParserData(): Iterator
++	public static function provideTypeParserData(): Iterator
+ 	{
+-		return $this->provideFuzzyInputsData('Type');
++		return self::provideFuzzyInputsData('Type');
+ 	}
+ 
+ 	/**
+@@ -70,12 +70,12 @@ class FuzzyTest extends TestCase
+ 		);
+ 	}
+ 
+-	public function provideConstExprParserData(): Iterator
++	public static function provideConstExprParserData(): Iterator
+ 	{
+-		return $this->provideFuzzyInputsData('ConstantExpr');
++		return self::provideFuzzyInputsData('ConstantExpr');
+ 	}
+ 
+-	private function provideFuzzyInputsData(string $startSymbol): Iterator
++	private static function provideFuzzyInputsData(string $startSymbol): Iterator
+ 	{
+ 		$inputsDirectory = sprintf('%s/fuzzy/%s', __DIR__ . '/../../../temp', $startSymbol);
+ 
+diff --git a/tests/PHPStan/Parser/PhpDocParserTest.php b/tests/PHPStan/Parser/PhpDocParserTest.php
+index b2857b2..1ec1dc6 100644
+--- a/tests/PHPStan/Parser/PhpDocParserTest.php
++++ b/tests/PHPStan/Parser/PhpDocParserTest.php
+@@ -156,7 +156,7 @@ class PhpDocParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideParamTagsData(): Iterator
++	public static function provideParamTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -536,7 +536,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideTypelessParamTagsData(): Iterator
++	public static function provideTypelessParamTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -619,7 +619,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideParamImmediatelyInvokedCallableTagsData(): Iterator
++	public static function provideParamImmediatelyInvokedCallableTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -650,7 +650,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideParamLaterInvokedCallableTagsData(): Iterator
++	public static function provideParamLaterInvokedCallableTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -681,7 +681,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideParamClosureThisTagsData(): Iterator
++	public static function provideParamClosureThisTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -729,7 +729,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function providePureUnlessCallableIsImpureTagsData(): Iterator
++	public static function providePureUnlessCallableIsImpureTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -760,7 +760,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideVarTagsData(): Iterator
++	public static function provideVarTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description and variable name',
+@@ -1155,7 +1155,7 @@ class PhpDocParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function providePropertyTagsData(): Iterator
++	public static function providePropertyTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -1357,7 +1357,7 @@ class PhpDocParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideReturnTagsData(): Iterator
++	public static function provideReturnTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -1888,7 +1888,7 @@ class PhpDocParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideThrowsTagsData(): Iterator
++	public static function provideThrowsTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -1975,7 +1975,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideMixinTagsData(): Iterator
++	public static function provideMixinTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -2080,7 +2080,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideRequireExtendsTagsData(): Iterator
++	public static function provideRequireExtendsTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -2146,7 +2146,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideRequireImplementsTagsData(): Iterator
++	public static function provideRequireImplementsTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -2212,7 +2212,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideSealedTagsData(): Iterator
++	public static function provideSealedTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description',
+@@ -2287,7 +2287,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideDeprecatedTagsData(): Iterator
++	public static function provideDeprecatedTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK with no description',
+@@ -2393,7 +2393,7 @@ class PhpDocParserTest extends TestCase
+ 		];
+ 	}
+ 
+-	public function provideMethodTagsData(): Iterator
++	public static function provideMethodTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK non-static, without return type',
+@@ -2907,7 +2907,7 @@ class PhpDocParserTest extends TestCase
+ 	}
+ 
+ 
+-	public function provideSingleLinePhpDocData(): Iterator
++	public static function provideSingleLinePhpDocData(): Iterator
+ 	{
+ 		yield [
+ 			'empty',
+@@ -4502,7 +4502,7 @@ test',
+ 		];
+ 	}
+ 
+-	public function provideTemplateTagsData(): Iterator
++	public static function provideTemplateTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK without bound and description',
+@@ -4734,7 +4734,7 @@ test',
+ 		];
+ 	}
+ 
+-	public function provideExtendsTagsData(): Iterator
++	public static function provideExtendsTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK with one argument',
+@@ -4953,7 +4953,7 @@ test',
+ 		];
+ 	}
+ 
+-	public function provideTypeAliasTagsData(): Iterator
++	public static function provideTypeAliasTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -5156,7 +5156,7 @@ test',
+ 		];
+ 	}
+ 
+-	public function provideTypeAliasImportTagsData(): Iterator
++	public static function provideTypeAliasImportTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -5294,7 +5294,7 @@ test',
+ 		];
+ 	}
+ 
+-	public function provideAssertTagsData(): Iterator
++	public static function provideAssertTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK',
+@@ -5584,7 +5584,7 @@ test',
+ 		];
+ 	}
+ 
+-	public function providerDebug(): Iterator
++	public static function providerDebug(): Iterator
+ 	{
+ 		$sample = '/**
+ 			 * Returns the schema for the field.
+@@ -5610,7 +5610,7 @@ Computed fields having no schema should return an empty array.'),
+ 		];
+ 	}
+ 
+-	public function provideRealWorldExampleData(): Iterator
++	public static function provideRealWorldExampleData(): Iterator
+ 	{
+ 			$sample = "/**
+ 			 * Returns the schema for the field.
+@@ -6182,7 +6182,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideDescriptionWithOrWithoutHtml(): Iterator
++	public static function provideDescriptionWithOrWithoutHtml(): Iterator
+ 	{
+ 		yield [
+ 			'Description with HTML tags in @return tag (close tags together)',
+@@ -6259,7 +6259,7 @@ Finder::findFiles('*.php')
+ 	/**
+ 	 * @return array<mixed>
+ 	 */
+-	public function dataParseTagValue(): array
++	public static function dataParseTagValue(): array
+ 	{
+ 		return [
+ 			[
+@@ -6291,7 +6291,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideTagsWithNumbers(): Iterator
++	public static function provideTagsWithNumbers(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description and tag with number in it',
+@@ -6305,7 +6305,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideTagsWithBackslash(): Iterator
++	public static function provideTagsWithBackslash(): Iterator
+ 	{
+ 		yield [
+ 			'OK without description and tag with backslashes in it',
+@@ -6333,7 +6333,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideSelfOutTagsData(): Iterator
++	public static function provideSelfOutTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK phpstan-self-out',
+@@ -6406,7 +6406,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideCommentLikeDescriptions(): Iterator
++	public static function provideCommentLikeDescriptions(): Iterator
+ 	{
+ 		yield [
+ 			'Comment after @param',
+@@ -6541,7 +6541,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideInlineTags(): Iterator
++	public static function provideInlineTags(): Iterator
+ 	{
+ 		yield [
+ 			'Inline @link tag in @copyright',
+@@ -6562,7 +6562,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideParamOutTagsData(): Iterator
++	public static function provideParamOutTagsData(): Iterator
+ 	{
+ 		yield [
+ 			'OK param-out',
+@@ -6595,7 +6595,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideDoctrineData(): Iterator
++	public static function provideDoctrineData(): Iterator
+ 	{
+ 		yield [
+ 			'single tag node with empty parameters',
+@@ -7150,7 +7150,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideDoctrineWithoutDoctrineCheckData(): Iterator
++	public static function provideDoctrineWithoutDoctrineCheckData(): Iterator
+ 	{
+ 		yield [
+ 			'Dummy 1',
+@@ -7439,7 +7439,7 @@ Finder::findFiles('*.php')
+ 		];
+ 	}
+ 
+-	public function provideSpecializedTags(): Iterator
++	public static function provideSpecializedTags(): Iterator
+ 	{
+ 		yield [
+ 			'Ok specialized tag',
+@@ -7507,7 +7507,7 @@ Finder::findFiles('*.php')
+ 	/**
+ 	 * @return array<mixed>
+ 	 */
+-	public function dataLinesAndIndexes(): iterable
++	public static function dataLinesAndIndexes(): iterable
+ 	{
+ 		yield [
+ 			'/** @param Foo $a */',
+@@ -7631,7 +7631,7 @@ Finder::findFiles('*.php')
+ 	/**
+ 	 * @return iterable<array{string, list<array{int, int, int, int}>}>
+ 	 */
+-	public function dataDeepNodesLinesAndIndexes(): iterable
++	public static function dataDeepNodesLinesAndIndexes(): iterable
+ 	{
+ 		yield [
+ 			'/**' . PHP_EOL .
+@@ -7716,7 +7716,7 @@ Finder::findFiles('*.php')
+ 	/**
+ 	 * @return array<mixed>
+ 	 */
+-	public function dataReturnTypeLinesAndIndexes(): iterable
++	public static function dataReturnTypeLinesAndIndexes(): iterable
+ 	{
+ 		yield [
+ 			'/** @return Foo */',
+diff --git a/tests/PHPStan/Parser/TypeParserTest.php b/tests/PHPStan/Parser/TypeParserTest.php
+index 01a511b..cfaaa16 100644
+--- a/tests/PHPStan/Parser/TypeParserTest.php
++++ b/tests/PHPStan/Parser/TypeParserTest.php
+@@ -223,7 +223,7 @@ class TypeParserTest extends TestCase
+ 	/**
+ 	 * @return array<mixed>
+ 	 */
+-	public function provideParseData(): array
++	public static function provideParseData(): array
+ 	{
+ 		return [
+ 			[
+@@ -3057,7 +3057,7 @@ class TypeParserTest extends TestCase
+ 	/**
+ 	 * @return array<mixed>
+ 	 */
+-	public function dataLinesAndIndexes(): iterable
++	public static function dataLinesAndIndexes(): iterable
+ 	{
+ 		yield [
+ 			'int | object{foo: int}[]',
+diff --git a/tests/PHPStan/Printer/DifferTest.php b/tests/PHPStan/Printer/DifferTest.php
+index cca1f61..a8c3a0f 100644
+--- a/tests/PHPStan/Printer/DifferTest.php
++++ b/tests/PHPStan/Printer/DifferTest.php
+@@ -52,7 +52,7 @@ class DifferTest extends TestCase
+ 	/**
+ 	 * @return list<array{string, string, string}>
+ 	 */
+-	public function provideTestDiff(): array
++	public static function provideTestDiff(): array
+ 	{
+ 		return [
+ 			['abc', 'abc', 'abc'],
+@@ -78,7 +78,7 @@ class DifferTest extends TestCase
+ 	/**
+ 	 * @return list<array{string, string, string}>
+ 	 */
+-	public function provideTestDiffWithReplacements(): array
++	public static function provideTestDiffWithReplacements(): array
+ 	{
+ 		return [
+ 			['abcde', 'axyze', 'a/bx/cy/dze'],
+diff --git a/tests/PHPStan/Printer/IntegrationPrinterWithPhpParserTest.php b/tests/PHPStan/Printer/IntegrationPrinterWithPhpParserTest.php
+index 045156e..994abd7 100644
+--- a/tests/PHPStan/Printer/IntegrationPrinterWithPhpParserTest.php
++++ b/tests/PHPStan/Printer/IntegrationPrinterWithPhpParserTest.php
+@@ -37,7 +37,7 @@ class IntegrationPrinterWithPhpParserTest extends TestCase
+ 	/**
+ 	 * @return iterable<array{string, string, NodeVisitor}>
+ 	 */
+-	public function dataPrint(): iterable
++	public static function dataPrint(): iterable
+ 	{
+ 		$insertParameter = new class () extends AbstractNodeVisitor {
+ 
+diff --git a/tests/PHPStan/Printer/PrinterTest.php b/tests/PHPStan/Printer/PrinterTest.php
+index 464b723..0982ae5 100644
+--- a/tests/PHPStan/Printer/PrinterTest.php
++++ b/tests/PHPStan/Printer/PrinterTest.php
+@@ -90,7 +90,7 @@ class PrinterTest extends TestCase
+ 	/**
+ 	 * @return iterable<array{string, string, NodeVisitor}>
+ 	 */
+-	public function dataPrintFormatPreserving(): iterable
++	public static function dataPrintFormatPreserving(): iterable
+ 	{
+ 		$noopVisitor = new class extends AbstractNodeVisitor {
+ 
+@@ -2680,7 +2680,7 @@ class PrinterTest extends TestCase
+ 	/**
+ 	 * @return iterable<array{TypeNode, string}>
+ 	 */
+-	public function dataPrintType(): iterable
++	public static function dataPrintType(): iterable
+ 	{
+ 		yield [
+ 			new IdentifierTypeNode('int'),
+@@ -2824,7 +2824,7 @@ class PrinterTest extends TestCase
+ 	/**
+ 	 * @return iterable<array{PhpDocNode, string}>
+ 	 */
+-	public function dataPrintPhpDocNode(): iterable
++	public static function dataPrintPhpDocNode(): iterable
+ 	{
+ 		yield [
+ 			new PhpDocNode([
+diff --git a/phpunit.xml b/phpunit.xml
+index 23404a2..9d91ba5 100644
+--- a/phpunit.xml
++++ b/phpunit.xml
+@@ -12,19 +12,6 @@
+          failOnWarning="true"
+          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xml"
+ >
+-    <coverage>
+-        <include>
+-            <directory suffix=".php">./src</directory>
+-        </include>
+-        <report>
+-            <clover outputFile="tests/tmp/clover.xml"/>
+-            <text
+-                outputFile="php://stdout"
+-                showUncoveredFiles="true"
+-                showOnlySummary="true"
+-            />
+-        </report>
+-    </coverage>
+ 
+     <testsuites>
+         <testsuite name="PHPStan PHPDoc Parser">
+diff --git a/tests/PHPStan/Parser/PhpDocParserTest.php b/tests/PHPStan/Parser/PhpDocParserTest.php
+index 1ec1dc6..3d1bf70 100644
+--- a/tests/PHPStan/Parser/PhpDocParserTest.php
++++ b/tests/PHPStan/Parser/PhpDocParserTest.php
+@@ -3074,7 +3074,7 @@ class PhpDocParserTest extends TestCase
+ 	/**
+ 	 * @return iterable<array<mixed>>
+ 	 */
+-	public function provideMultiLinePhpDocData(): iterable
++	public static function provideMultiLinePhpDocData(): iterable
+ 	{
+ 		yield from [
+ 			[
+@@ -7856,7 +7856,7 @@ Finder::findFiles('*.php')
+ 	/**
+ 	 * @return iterable<array{string, PhpDocNode}>
+ 	 */
+-	public function dataTextBetweenTagsBelongsToDescription(): iterable
++	public static function dataTextBetweenTagsBelongsToDescription(): iterable
+ 	{
+ 		yield [
+ 			'/**' . PHP_EOL .
+diff --git a/tests/PHPStan/Parser/TokenIteratorTest.php b/tests/PHPStan/Parser/TokenIteratorTest.php
+index 3cc51fc..99f9510 100644
+--- a/tests/PHPStan/Parser/TokenIteratorTest.php
++++ b/tests/PHPStan/Parser/TokenIteratorTest.php
+@@ -13,7 +13,7 @@ class TokenIteratorTest extends TestCase
+ 	/**
+ 	 * @return iterable<array{string, ?string}>
+ 	 */
+-	public function dataGetDetectedNewline(): iterable
++	public static function dataGetDetectedNewline(): iterable
+ 	{
+ 		yield [
+ 			'/** @param Foo $a */',
