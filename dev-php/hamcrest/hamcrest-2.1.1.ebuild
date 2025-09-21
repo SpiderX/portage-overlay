@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,16 +13,16 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="test? ( dev-php/phpunit )"
-
-PATCHES=( "${FILESDIR}/${PN}"-2.0.1-tests.patch )
+BDEPEND="test? ( dev-php/composer
+		dev-php/phpunit
+		dev-php/phpunit-php-file-iterator )"
 
 DOCS=( CHANGES.txt README.md )
 
@@ -33,15 +33,17 @@ src_prepare() {
 		hamcrest/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+}
+
+src_test() {
+	composer require -d "${T}" --prefer-source \
+		--dev "${PN}/${PN}"-php:"${PV}" || die "composer failed"
+	cp -r "${T}"/vendor/"${PN}/${PN}"-php/tests "${S}" \
+		|| die "cp failed"
 	# remove notification of ricky tests
 	sed -i  -e '/stopOnFailure/s|>||' \
 		-e '/stopOnFailure/a\\t beStrictAboutTestsThatDoNotTestAnything="false">' \
 		tests/phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
-	# replace deprecated method, remove tests
-	sed -i  -e "/assertInternalType/s|InternalType('array', |IsArray(|" \
-		-e '/testCheckAllAreMatchersAcceptsMatchers/,+7d' \
-		-e '/testCheckAllAreMatchersFailsForPrimitive/,+7d' \
-		tests/Hamcrest/UtilTest.php || die "sed failed for UtilTest.php"
 	# fix abstract class with Test suffix
 	mv tests/Hamcrest/AbstractMatcherTest{,X}.php \
 		|| die "mv failed for AbstractMatcherTest.php"
@@ -57,9 +59,6 @@ src_prepare() {
 	sed -i '/class SampleInvokeMatcher/s|$|X|' tests/Hamcrest/InvokedMatcherTest.php \
 		|| die "sed failed for InvokedMatcherTest.php"
 	phpab -q -o tests/autoload.php -t fedora2 tests || die "phpab failed"
-}
-
-src_test() {
 	phpunit -c tests/phpunit.xml.dist --testdox || die "phpunit failed"
 }
 

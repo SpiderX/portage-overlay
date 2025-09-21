@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/hamcrest/hamcrest-php.git"
 
 inherit git-r3
 
 DESCRIPTION="PHP Hamcrest implementation"
 HOMEPAGE="https://github.com/hamcrest/hamcrest-php"
+EGIT_REPO_URI="https://github.com/hamcrest/hamcrest-php.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,8 +17,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/phpunit )"
-
-PATCHES=( "${FILESDIR}/${PN}"-2.0.1-tests.patch )
 
 DOCS=( CHANGES.txt README.md )
 
@@ -34,11 +31,6 @@ src_prepare() {
 	sed -i  -e '/stopOnFailure/s|>||' \
 		-e '/stopOnFailure/a\\t beStrictAboutTestsThatDoNotTestAnything="false">' \
 		tests/phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
-	# replace deprecated method, remove tests
-	sed -i  -e "/assertInternalType/s|InternalType('array', |IsArray(|" \
-		-e '/testCheckAllAreMatchersAcceptsMatchers/,+7d' \
-		-e '/testCheckAllAreMatchersFailsForPrimitive/,+7d' \
-		tests/Hamcrest/UtilTest.php || die "sed failed for UtilTest.php"
 	# fix abstract class with Test suffix
 	mv tests/Hamcrest/AbstractMatcherTest{,X}.php \
 		|| die "mv failed for AbstractMatcherTest.php"
