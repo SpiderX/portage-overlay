@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/php-cache/cache.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="PHP Cache adapters"
 HOMEPAGE="https://github.com/php-cache/cache"
+EGIT_REPO_URI="https://github.com/php-cache/cache.git"
 
 LICENSE="MIT"
 SLOT="0"
