@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -34,12 +34,12 @@ BDEPEND="test? ( dev-php/composer
 		dev-php/symfony-cache
 		dev-php/symfony-config
 		dev-php/symfony-dependency-injection
+		dev-php/symfony-expression-language
 		dev-php/symfony-form
 		dev-php/symfony-http-kernel
 		dev-php/symfony-lock
 		dev-php/symfony-messenger
 		dev-php/symfony-phpunit-bridge
-		dev-php/symfony-proxy-manager-bridge
 		dev-php/symfony-security-core
 		dev-php/symfony-stopwatch
 		dev-php/symfony-validator
@@ -62,22 +62,13 @@ src_test() {
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
 	# remove tests require classes from tests for another package
-	rm Tests/Form/Type/EntityTypePerformanceTest.php \
-		Tests/Form/Type/EntityTypeTest.php \
-		|| die "rm failed"
-	# remove failed test
-	rm Tests/ArgumentResolver/EntityValueResolverTest.php \
-		|| die "rm failed for EntityValueResolverTest.php"
-	# fix 'Cannot find TestCase'
-	sed -i '39d' Tests/LegacyManagerRegistryTest.php \
-		|| die "sed failed for LegacyManagerRegistryTest.php"
-	# remove flickering assertion
-	sed -i '219d' Tests/Middleware/Debug/MiddlewareTest.php \
-		|| die "sed failed for MiddlewareTest.php"
-	# remove test with failed assert
-	sed -i '/testCollectTime/,+54d' \
-		Tests/DataCollector/DoctrineDataCollectorTestTrait.php \
-		|| die "sed failed for DoctrineDataCollectorTestTrait.php"
+	rm Tests/Form/Type/EntityTypeTest.php || die "rm failed"
+	# remove tests with failed assertions
+	sed -i  -e '/testCollectTime(/,+23d' \
+		-e '/testCollectTimeWithFloatExecutionMS(/,+28d' \
+		Tests/DataCollector/DoctrineDataCollectorTest.php \
+		|| die "sed failed for DoctrineDataCollectorTest.php"
+	# 4 skipped tests
 	phpunit --testdox || die "phpunit failed"
 }
 
@@ -85,7 +76,7 @@ src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Bridge/Doctrine
 	doins -r ArgumentResolver Attribute CacheWarmer DataCollector \
-		DataFixtures DependencyInjection Form IdGenerator \
-		Logger Messenger Middleware PropertyInfo SchemaListener \
+		DependencyInjection Form IdGenerator Messenger \
+		Middleware PropertyInfo SchemaListener \
 		Security Types Validator ./*.php
 }
