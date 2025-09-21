@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/translation.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Translation Component"
 HOMEPAGE="https://github.com/symfony/translation"
+EGIT_REPO_URI="https://github.com/symfony/translation.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,7 +24,7 @@ BDEPEND="test? ( dev-php/nikic-php-parser
 		dev-php/symfony-config
 		dev-php/symfony-console
 		dev-php/symfony-dependency-injection
-		>=dev-php/symfony-finder-6.4.8
+		>=dev-php/symfony-finder-6
 		dev-php/symfony-http-client-contracts
 		dev-php/symfony-http-kernel
 		dev-php/symfony-phpunit-bridge
