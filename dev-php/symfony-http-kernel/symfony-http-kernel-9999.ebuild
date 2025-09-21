@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/http-kernel.git"
 
 inherit git-r3
 
 DESCRIPTION="Structured process for converting a Request into a Response"
 HOMEPAGE="https://github.com/symfony/http-kernel"
+EGIT_REPO_URI="https://github.com/symfony/http-kernel.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -50,28 +49,11 @@ src_prepare() {
 		autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
-	# ignore risky tests
-	sed -i '/failOnRisky/s|true|false|' phpunit.xml.dist \
-		|| die "sed failed for phpunit.xml.dist"
-	# remove composer specific test
-	sed -i '/testGetScript/,+8d' Tests/HttpKernelBrowserTest.php \
-		|| die "sed failed for HttpKernelBrowserTest.php"
-	# rename class not extending TestCase
-	mv Tests/Fixtures/KernelFor{Test,}.php || die "mv failed"
-	sed -i '/class Kernel/s|Test||' Tests/Fixtures/KernelFor.php \
-		|| die "sed failed for KernelFor.php"
-	# rename, descrease timeout, change serialize after rename
-	sed -i  -e 's/KernelForTest/KernelFor/' \
-		-e 's/KernelForW/KernelForTestW/' \
-		-e '/sleep/s|60||' \
-		-e '/expected/s|57|53|' Tests/KernelTest.php \
-		|| die "sed failed for KernelTest.php"
-	sed -i '/class/s|Test$||' Tests/Fixtures/KernelForTestWithLoadClassCache.php \
-		|| die "sed failed for KernelForTestWithLoadClassCache.php"
 }
 
 src_test() {
-	phpunit --testdox || die "phpunit failed"
+	# time-sensitive runs long
+	phpunit --group default --testdox || die "phpunit failed"
 }
 
 src_install() {
