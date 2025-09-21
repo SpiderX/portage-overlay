@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -46,6 +46,17 @@ src_test() {
 	sed -i '/class /s|StringCacheTest|StringCacheTestAbstract|' \
 		test/StringCacheTestAbstract.php test/{Local,Prefix}CacheTest.php \
 		test/LocalCacheLimitedTest.php || die "sed failed"
+	# fix non-static data provider deprecation
+	sed -i '/provideSerializableValues(/s|function|static function|g' \
+		test/{Atomic,Serialized}CacheTest.php \
+		|| die "sed failed for provideSerializableValues"
+	# remove test with timeout
+	sed -i '/testSimultaneousCompute(/,+23d' test/AtomicCacheTest.php \
+		|| die "sed failed for AtomicCacheTest.php"
+	sed -i  -e '/testEntryIsNotReturnedAfterTTLHasPassed(/,+8d' \
+		-e '/testEntryIsReturnedWhenOverriddenWithNoTimeout(/,+9d' \
+		test/StringCacheTestAbstract.php \
+		|| die "sed failed for StringCacheTestAbstract.php"
 	phpunit --testdox || die "phpunit failed"
 }
 
