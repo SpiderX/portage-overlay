@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,12 +15,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test"
+RESTRICT="test" # fails in sandbox only
 PROPERTIES="test_network"
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
-BDEPEND="test? ( dev-php/pecl-event
+BDEPEND="test? ( dev-php/pecl-ev
+		dev-php/pecl-event
 		dev-php/pecl-uv )"
 
 src_prepare() {
@@ -37,22 +38,17 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,test} "${S}" \
 		|| die "cp failed"
-	# remove call of non-existed method
-	sed -i '/getTestResultObject/,+2d' test/Driver/DriverTest.php \
-		|| die "sed failed for DriverTest.php"
 	# remove flickering test
 	sed -i '/testTooLargeFileDescriptorSet/,+39d' \
 		test/Driver/StreamSelectDriverTest.php \
 		|| die "sed failed for StreamSelectDriverTest.php"
-	# fix abstract class with Test suffix
-	mv test/Driver/DriverTest{,Abstract}.php || die "mv failed"
-	sed -i '/abstract class/s|DriverTest|DriverTestAbstract|' \
-		test/Driver/DriverTestAbstract.php \
-		|| die "sed failed for DriverTestAbstract.php"
-	sed -i '/class /s|$|Abstract|' \
-		test/Driver/{Ev,Event,StreamSelect,Tracing,Uv}DriverTest.php \
-		|| die "sed failed"
-	phpunit --testdox || die "phpunit failed"
+	# fix non-static data provider deprecation
+	sed -i '/provideRegistrationArgs(/s|function|static function|' \
+		test/Driver/DriverTest.php \
+		|| die "sed failed for provideRegistrationArgs"
+	# don't select memoryleak group since it requires not existed
+	# after phpunit 10 method getTestResultObject()
+	phpunit --group default --testdox || die "phpunit failed"
 }
 
 src_install() {
