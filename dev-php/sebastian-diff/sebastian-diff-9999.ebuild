@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sebastianbergmann/diff.git"
 
 inherit git-r3
 
 DESCRIPTION="PHP Diff implementation"
 HOMEPAGE="https://github.com/sebastianbergmann/diff"
+EGIT_REPO_URI="https://github.com/sebastianbergmann/diff.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -16,9 +15,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader
-	dev-php/phpunit
-	>=dev-php/symfony-process-6.4.8"
+	dev-php/fedora-autoloader"
 BDEPEND="dev-php/theseer-Autoload
 	test? ( dev-php/phpunit )"
 
@@ -34,7 +31,7 @@ src_prepare() {
 }
 
 src_test() {
-	phpunit --testdox || die "phpunit failed"
+	phpunit --bootstrap vendor/autoload.php --testdox || die "phpunit failed"
 }
 
 src_install() {
