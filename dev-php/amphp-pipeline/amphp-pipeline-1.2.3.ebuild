@@ -3,22 +3,27 @@
 
 EAPI=8
 
-inherit git-r3
+MY_PN="${PN//amphp-/}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Concurrent iterators and pipeline operations"
 HOMEPAGE="https://github.com/amphp/pipeline"
-EGIT_REPO_URI="https://github.com/amphp/pipeline.git"
+SRC_URI="https://github.com/amphp/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
 	dev-php/fedora-autoloader
 	dev-php/revolt-event-loop"
 BDEPEND="test? ( dev-php/amphp-phpunit-util
+		dev-php/composer
 		dev-php/phpunit )"
 
 src_prepare() {
@@ -28,6 +33,13 @@ src_prepare() {
 		src/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+}
+
+src_test() {
+	composer require -d "${T}" --prefer-source \
+		--dev "${PN/-/\/}:${PV}" || die "composer failed"
+	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,test} "${S}" \
+		|| die "cp failed"
 	# fix non-static data provider deprecation
 	sed -i '/getArrays(/s|function|static function|g' \
 		test/{Concat,Merge}Test.php \
@@ -52,9 +64,6 @@ src_prepare() {
 	sed -i  -e '/testBackPressureOnComplete(/,+28d' \
 		-e '/testBackPressureOnDisposal/,+19d' test/QueueTest.php \
 		|| die "sed failed for QueueTest.php"
-}
-
-src_test() {
 	phpunit --testdox || die "phpunit failed"
 }
 
