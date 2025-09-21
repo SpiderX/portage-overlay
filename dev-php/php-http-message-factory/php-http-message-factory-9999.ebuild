@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/php-http/message-factory.git"
 
 inherit git-r3
 
 DESCRIPTION="Httplug Factory interfaces for PSR-7 HTTP Message"
 HOMEPAGE="https://github.com/php-http/message-factory"
+EGIT_REPO_URI="https://github.com/php-http/message-factory.git"
 
 LICENSE="MIT"
 SLOT="0"
