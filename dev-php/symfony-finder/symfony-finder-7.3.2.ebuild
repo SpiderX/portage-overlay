@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -22,7 +22,7 @@ RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/composer
 		dev-php/phpunit
-		>=dev-php/symfony-filesystem-6.4.9 )"
+		>=dev-php/symfony-filesystem-6 )"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -40,12 +40,8 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	sed -i '/testDelegate/,+6d' Tests/Iterator/LazyIteratorTest.php \
-		|| die "sed failed for LazyIteratorTest.php"
-	sed -i '/testIn(/,+23d' Tests/FinderTest.php \
-		|| die "sed failed for FinderTest.php"
-	# ftp layout on network tests changed
-	phpunit --group default --testdox || die "phpunit failed"
+	# skipped — testRewindOnFtp, testSeekOnFtp
+	phpunit --testdox || die "phpunit failed"
 }
 
 src_install() {

@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/finder.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Finder Component"
 HOMEPAGE="https://github.com/symfony/finder"
+EGIT_REPO_URI="https://github.com/symfony/finder.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,7 +17,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/phpunit
-		>=dev-php/symfony-filesystem-6.4.9 )"
+		>=dev-php/symfony-filesystem-6 )"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -29,15 +28,11 @@ src_prepare() {
 		autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
-	sed -i '/testDelegate/,+6d' Tests/Iterator/LazyIteratorTest.php \
-		|| die "sed failed for LazyIteratorTest.php"
-	sed -i '/testIn(/,+23d' Tests/FinderTest.php \
-		|| die "sed failed for FinderTest.php"
 }
 
 src_test() {
-	# ftp layout on network tests changed
-	phpunit --group default --testdox || die "phpunit failed"
+	# skipped — testRewindOnFtp, testSeekOnFtp
+	phpunit --testdox || die "phpunit failed"
 }
 
 src_install() {
