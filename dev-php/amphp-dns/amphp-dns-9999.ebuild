@@ -1,19 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/amphp/dns.git"
 
 inherit git-r3
 
 DESCRIPTION="Async DNS resolution for PHP"
 HOMEPAGE="https://github.com/amphp/dns"
+EGIT_REPO_URI="https://github.com/amphp/dns.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="ipv6 test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*[filter,ipv6?]
 	dev-php/amphp-amp

@@ -11,6 +11,6 @@ Fedora\Autoloader\Autoload::addPsr4('Amp\\Dns\\', __DIR__);
 	'/usr/share/php/Amp/Cache/autoload.php',
 	'/usr/share/php/Amp/Parser/autoload.php',
 	'/usr/share/php/Amp/WindowsRegistry/autoload.php',
-	'/usr/share/php/LibDNS/autoload.php',
+	'/usr/share/php/DaveRandom/LibDNS/autoload.php',
 	'/usr/share/php/Revolt/autoload.php',
 ]);
