@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/options-resolver.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Ldap Component"
 HOMEPAGE="https://github.com/symfony/ldap"
+EGIT_REPO_URI="https://github.com/symfony/options-resolver.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,6 +19,7 @@ RDEPEND="dev-lang/php:*[ldap]
 	dev-php/symfony-deprecation-contracts
 	dev-php/symfony-options-resolver"
 BDEPEND="test? ( dev-php/phpunit
+		dev-php/symfony-phpunit-bridge
 		dev-php/symfony-security-core
 		dev-php/symfony-security-http )"
 
@@ -35,6 +35,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped 28
 	phpunit --testdox || die "phpunit failed"
 }
 
