@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sebastianbergmann/php-timer.git"
 
 inherit git-r3
 
 DESCRIPTION="Utility class for timing"
 HOMEPAGE="https://github.com/sebastianbergmann/php-timer"
+EGIT_REPO_URI="https://github.com/sebastianbergmann/php-timer.git"
 
 LICENSE="BSD"
 SLOT="0"
