@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1197](https://img.shields.io/badge/ebuild-1197-orange.svg)](https://img.shields.io/badge/ebuild-1197-orange.svg)
+[![Number of ebuilds: 1198](https://img.shields.io/badge/ebuild-1198-orange.svg)](https://img.shields.io/badge/ebuild-1198-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -651,6 +651,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[pecl-ds]() | Native Data Structures for PHP
 *   dev-php/[pecl-eio]() | PHP wrapper for libeio library
 *   dev-php/[pecl-ev]() | PECL extension providing interface to libev library
+*   dev-php/[pecl-igbinary]() | Drop in replacement for the standard PHP serializer
 *   dev-php/[pecl-mcrypt]() | Bindings for the libmcrypt library
 *   dev-php/[pecl-memcache]() | PHP extension for using memcached
 *   dev-php/[pecl-mongodb]() | MongoDB database driver for PHP
