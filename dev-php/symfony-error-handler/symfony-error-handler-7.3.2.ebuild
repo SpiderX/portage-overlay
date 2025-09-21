@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -47,6 +47,6 @@ src_test() {
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Component/ErrorHandler
-	doins -r Error ErrorEnhancer ErrorRenderer Exception \
+	doins -r Command Error ErrorEnhancer ErrorRenderer Exception \
 		Internal Resources ./*.php
 }

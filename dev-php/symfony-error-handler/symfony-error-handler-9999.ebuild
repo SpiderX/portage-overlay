@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/error-handler.git"
 
 inherit git-r3
 
 DESCRIPTION="Tools to manage errors and ease debugging PHP code"
 HOMEPAGE="https://github.com/symfony/error-handler"
+EGIT_REPO_URI="https://github.com/symfony/error-handler.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -39,6 +38,6 @@ src_test() {
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Component/ErrorHandler
-	doins -r Error ErrorEnhancer ErrorRenderer Exception \
+	doins -r Command Error ErrorEnhancer ErrorRenderer Exception \
 		Internal Resources ./*.php
 }
