@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/rate-limiter.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Rate Limiter Component"
 HOMEPAGE="https://github.com/symfony/rate-limiter"
+EGIT_REPO_URI="https://github.com/symfony/rate-limiter.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -17,7 +16,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
-	dev-php/symfony-deprecation-contracts
 	dev-php/symfony-options-resolver"
 BDEPEND="test? ( dev-php/phpunit
 		dev-php/psr-cache
