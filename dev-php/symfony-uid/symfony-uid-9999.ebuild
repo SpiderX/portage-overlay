@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/uid.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="Object-oriented API to generate and represent UIDs"
 HOMEPAGE="https://github.com/symfony/uid"
+EGIT_REPO_URI="https://github.com/symfony/uid.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -40,7 +39,7 @@ src_test() {
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Symfony/Component/Uid
-	doins -r Command Factory ./*.php
+	doins -r Command Exception Factory ./*.php
 }
 
 pkg_postinst() {
