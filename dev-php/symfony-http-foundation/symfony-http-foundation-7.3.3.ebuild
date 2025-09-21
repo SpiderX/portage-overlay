@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="ipv6 test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -23,12 +23,17 @@ RDEPEND="dev-lang/php:*
 	dev-php/symfony-deprecation-contracts
 	dev-php/symfony-polyfill-mbstring
 	dev-php/symfony-polyfill-php83"
-BDEPEND="test? ( dev-php/composer
+BDEPEND="test? ( dev-db/redis
+		dev-php/composer
+		dev-php/doctrine-dbal
+		dev-php/pecl-memcached
 		dev-php/phpunit
+		dev-php/predis
+		dev-php/symfony-clock
 		dev-php/symfony-expression-language
 		dev-php/symfony-mime
 		dev-php/symfony-phpunit-bridge
-		>=dev-php/symfony-process-6.4.8
+		>=dev-php/symfony-process-6
 		dev-php/symfony-rate-limiter
 		net-misc/curl )"
 
@@ -48,23 +53,23 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	# https://github.com/symfony/symfony/issues/25445
-	eapply "${FILESDIR}/${PN}"-6.4.8-test-session.patch
 	if ! use ipv6 ; then
 		rm Tests/{IpUtilsTest,RequestTest}.php || die "rm failed for ipv6"
 	fi
-	# remove tests
+	# remove tests with failed assertion
 	rm Tests/Session/Storage/Handler/AbstractSessionHandlerTest.php \
 		|| die "rm failed for AbstractSessionHandlerTest.php"
 	rm Tests/ResponseFunctionalTest.php \
 		|| die "rm failed for ResponseFunctionalTest.php"
-	# remove test with unsupported method TestFailure
-	rm Tests/Test/Constraint/{RequestAttribute,ResponseCookie}ValueSameTest.php \
-		Tests/Test/Constraint/Response{HasCookie,HasHeader}Test.php \
-		Tests/Test/Constraint/Response{IsRedirected,IsSuccessful}Test.php \
-		Tests/Test/Constraint/Response{Format,Header,StatusCode}SameTest.php \
-		|| die "rm failed"
-	phpunit --testdox || die "phpunit failed"
+	"${EPREFIX}"/usr/sbin/redis-server - <<- EOF || die "redis-server failed"
+		daemonize yes
+		pidfile "${T}/redis.pid"
+		port 6379
+		bind 127.0.0.1
+	EOF
+	# skipped 110
+	REDIS_HOST=127.0.0.1 phpunit --testdox || die "phpunit failed"
+	kill "$(<"${T}/redis.pid")" || die "kill failed"
 }
 
 src_install() {
