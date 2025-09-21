@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,9 @@ src_prepare() {
 	# set version
 	sed -i "s/%development%/${PV}/" phpab.php \
 		composer/bin/phpab || die "sed failed for phpab"
+	# fix non-static data provider deprecation
+	sed -i '/directoriesProvider/s|function|static function|' \
+		tests/PathComparatorTest.php || die "sed failed for test"
 	# add templates
 	install -D -m 644 "${FILESDIR}"/fedora{,2}.php.tpl \
 		src/templates/ci || die "install failed"
@@ -49,7 +52,6 @@ src_prepare() {
 	ln -s ../../../../../../../../../../usr/share/php/ezc/ConsoleTools \
 		vendor/zetacomponents/console-tools/src \
 		|| die "ln failed for console-tools"
-
 	./phpab.php -q -o src/autoload.php \
 		-t "${FILESDIR}"/autoload.php.tpl src \
 		|| die "phpab failed"
