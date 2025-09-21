@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,10 +15,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
@@ -71,6 +70,18 @@ src_test() {
 		test/Interceptor/RetryRequestsTest.php \
 		test/Interceptor/ModifyRe{quest,sponse}Test.php \
 		test/Interceptor/InterceptorTestAbstract.php || die "sed failed"
+	# fix non-static data provider deprecation
+	sed -i '/provideStatusCodes(/s|function|static function|' \
+		test/ClientHttpBinIntegrationTest.php \
+		|| die "sed failed for ClientHttpBinIntegrationTest.php"
+	sed -i '/providerValidUriPaths(/s|function|static function|' \
+		test/Connection/Http{1,2}ConnectionTest.php \
+		|| die "sed failed for providerValidUriPaths"
+	sed -i '/provideUris(/s|function|static function|' \
+		test/FollowRedirectsTest.php \
+		|| die "sed failed for FollowRedirectsTest.php"
+	sed -i '/provideInvalidProtocolVersions(/s|function|static function|' \
+		test/Re{sponse,quest}Test.php || die "sed failed for provideInvalidProtocolVersions"
 	phpunit --testdox || die "phpunit failed"
 }
 

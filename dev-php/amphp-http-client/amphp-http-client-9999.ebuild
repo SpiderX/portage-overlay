@@ -1,19 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/amphp/http-client.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="Advanced async HTTP client library for PHP"
 HOMEPAGE="https://github.com/amphp/http-client"
+EGIT_REPO_URI="https://github.com/amphp/http-client.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
@@ -58,6 +57,18 @@ src_prepare() {
 		test/Interceptor/RetryRequestsTest.php \
 		test/Interceptor/ModifyRe{quest,sponse}Test.php \
 		test/Interceptor/InterceptorTestAbstract.php || die "sed failed"
+	# fix non-static data provider deprecation
+	sed -i '/provideStatusCodes(/s|function|static function|' \
+		test/ClientHttpBinIntegrationTest.php \
+		|| die "sed failed for ClientHttpBinIntegrationTest.php"
+	sed -i '/providerValidUriPaths(/s|function|static function|' \
+		test/Connection/Http{1,2}ConnectionTest.php \
+		|| die "sed failed for providerValidUriPaths"
+	sed -i '/provideUris(/s|function|static function|' \
+		test/FollowRedirectsTest.php \
+		|| die "sed failed for FollowRedirectsTest.php"
+	sed -i '/provideInvalidProtocolVersions(/s|function|static function|' \
+		test/Re{sponse,quest}Test.php || die "sed failed for provideInvalidProtocolVersions"
 }
 
 src_test() {
