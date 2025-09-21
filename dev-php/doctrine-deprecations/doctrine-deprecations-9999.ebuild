@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/doctrine/deprecations.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="Doctrine Deprecations"
 HOMEPAGE="https://github.com/doctrine/deprecations"
+EGIT_REPO_URI="https://github.com/doctrine/deprecations.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,7 +23,7 @@ src_prepare() {
 	default
 
 	install -D -m 644 "${FILESDIR}"/autoload.php \
-		lib/Doctrine/Deprecations/autoload.php || die "install failed"
+		src/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
 }
@@ -35,8 +34,8 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	insinto /usr/share/php
-	doins -r lib/.
+	insinto /usr/share/php/Doctrine/Deprecations
+	doins -r src/.
 }
 
 pkg_postinst() {
