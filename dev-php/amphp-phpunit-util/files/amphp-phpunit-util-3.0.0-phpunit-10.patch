@@ -26,3 +26,16 @@ index 9bdcf93..2eb0dde 100644
          parent::setName('runAsyncTest');
          return parent::runTest();
      }
+diff --git a/test/AsyncTestCaseTest.php b/test/AsyncTestCaseTest.php
+index f800ec9..b6d232b 100644
+--- a/test/AsyncTestCaseTest.php
++++ b/test/AsyncTestCaseTest.php
+@@ -80,7 +80,7 @@ public function testExpectingAnErrorThrown(): Future
+         });
+     }
+ 
+-    public function provideArguments(): array
++    public static function provideArguments(): array
+     {
+         return [
+             ['foo', 42, true],
