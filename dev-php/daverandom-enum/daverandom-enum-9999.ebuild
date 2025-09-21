@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/DaveRandom/Enum.git"
 
 inherit git-r3
 
 DESCRIPTION="A base class for enumerations in PHP"
 HOMEPAGE="https://github.com/DaveRandom/Enum"
+EGIT_REPO_URI="https://github.com/DaveRandom/Enum.git"
 
 LICENSE="MIT"
 SLOT="0"
