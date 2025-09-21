@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/egulias/EmailValidator.git"
 
 inherit git-r3
 
 DESCRIPTION="PHP Email address validator"
 HOMEPAGE="https://github.com/egulias/EmailValidator"
+EGIT_REPO_URI="https://github.com/egulias/EmailValidator.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -31,6 +30,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped — testDNSWarnings, testInvalidUTF16
 	phpunit --testdox || die "phpunit failed"
 }
 
