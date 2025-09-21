@@ -1,7 +1,6 @@
 <?php
 
 require_once 'Fedora/Autoloader/autoload.php';
-#require_once 'Resources/now.php';
 
 Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\Clock\\', __DIR__);
 
