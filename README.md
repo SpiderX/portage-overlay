@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1200](https://img.shields.io/badge/ebuild-1200-orange.svg)](https://img.shields.io/badge/ebuild-1200-orange.svg)
+[![Number of ebuilds: 1201](https://img.shields.io/badge/ebuild-1201-orange.svg)](https://img.shields.io/badge/ebuild-1201-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -657,6 +657,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[pecl-mongodb]() | MongoDB database driver for PHP
 *   dev-php/[pecl-msgpack]() | PHP extension for interfacing with MessagePack
 *   dev-php/[pecl-parallel]() | A succint parallel concurrency API for PHP
+*   dev-php/[pecl-rdkafka]() | PHP Kafka client
 *   dev-php/[pecl-uuid]() | PHP PECL UUID extension
 *   dev-php/[pecl-uv]() | PHP PECL UV extension
 *   dev-php/[phar-io-version](https://github.com/phar-io/version) | Library for handling version information and constraints
