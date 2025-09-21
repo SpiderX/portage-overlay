@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,14 +6,19 @@ EAPI=8
 PHP_EXT_NAME="eio"
 PHP_EXT_ECONF_ARGS="--with-eio"
 PHP_EXT_S="${WORKDIR}/${P}"
-USE_PHP="php8-1 php8-2 php8-3"
-EGIT_REPO_URI="https://github.com/rosmanov/pecl-eio.git"
+USE_PHP="php8-2 php8-3 php8-4"
 
 inherit git-r3 php-ext-pecl-r3
 
 DESCRIPTION="PHP wrapper for libeio library"
 SRC_URI=""
+EGIT_REPO_URI="https://github.com/rosmanov/pecl-eio.git"
 S="${PHP_EXT_S}"
 
 LICENSE="PHP-3.01"
 SLOT="0"
+IUSE="pcntl test"
+REQUIRED_USE="test? ( pcntl )"
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( dev-lang/php:*[pcntl?] )" # skipped 2

@@ -10,11 +10,14 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	A PHP library providing a wrapper around libuuid from
-	the ext2utils project, used to generate UUID.
+	A PHP library providing a wrapper around the libeio,
+	an asynchronous I/O library.
 	</longdescription>
+	<use>
+		<flag name="pcntl">Enable test for Process Control extension</flag>
+	</use>
 	<upstream>
-		<remote-id type="github">php/pecl-networking-uuid</remote-id>
-		<remote-id type="pecl">uuid</remote-id>
+		<remote-id type="github">rosmanov/pecl-eio</remote-id>
+		<remote-id type="pecl">eio</remote-id>
 	</upstream>
 </pkgmetadata>
