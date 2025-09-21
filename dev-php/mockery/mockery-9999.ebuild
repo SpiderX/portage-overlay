@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/mockery/mockery.git"
 
 inherit git-r3
 
 DESCRIPTION="Flexible PHP mock object framework"
 HOMEPAGE="https://github.com/mockery/mockery"
+EGIT_REPO_URI="https://github.com/mockery/mockery.git"
 
 LICENSE="BSD"
 SLOT="0"
