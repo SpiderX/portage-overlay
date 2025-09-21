@@ -13,6 +13,9 @@
 	This package provides a PHP component with the functionality to compare
 	PHP values for equality.
 	</longdescription>
+	<use>
+		<flag name="bcmath">Enable the BCMath Arbitrary Precision Mathematics extension</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">sebastianbergmann/comparator</remote-id>
 	</upstream>

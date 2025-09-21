@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,14 +13,15 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="test"
+KEYWORDS="~amd64"
+IUSE="bcmath test"
+REQUIRED_USE="test? ( bcmath )"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*[xml,unicode]
+RDEPEND="dev-lang/php:*[bcmath?,xml,unicode]
 	dev-php/fedora-autoloader
-	>=dev-php/sebastian-diff-5.1.1
+	>=dev-php/sebastian-diff-6.0.2
 	dev-php/sebastian-exporter"
 BDEPEND="dev-php/theseer-Autoload
 	test? ( dev-php/composer
@@ -42,9 +43,8 @@ src_test() {
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml,tests} "${S}" \
 		|| die "cp failed"
 	phpab -q -o tests/autoload.php -t fedora2 tests || die "phpab test failed"
-	# remove tests with deprecated method
-	rm tests/MockObjectComparatorTest.php || die "rm failed"
-	phpunit --testdox || die "phpunit failed"
+	# skipped 5
+	phpunit --bootstrap vendor/autoload.php --testdox || die "phpunit failed"
 }
 
 src_install() {
