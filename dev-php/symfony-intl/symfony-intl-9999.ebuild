@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/intl.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Intl Component"
 HOMEPAGE="https://github.com/symfony/intl"
+EGIT_REPO_URI="https://github.com/symfony/intl.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,8 +17,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/phpunit
-		>=dev-php/symfony-filesystem-6.4.9
-		>=dev-php/symfony-finder-6.4.8
+		>=dev-php/symfony-filesystem-6
+		>=dev-php/symfony-finder-6
 		dev-php/symfony-var-exporter )"
 
 DOCS=( {CHANGELOG,README}.md )
