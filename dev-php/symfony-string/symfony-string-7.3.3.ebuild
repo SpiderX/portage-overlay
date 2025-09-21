@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -26,6 +26,7 @@ RDEPEND="dev-lang/php:*
 	dev-php/symfony-polyfill-mbstring"
 BDEPEND="test? ( dev-php/composer
 		dev-php/phpunit
+		dev-php/symfony-emoji
 		dev-php/symfony-error-handler
 		dev-php/symfony-intl
 		dev-php/symfony-translation-contracts )"
@@ -46,11 +47,6 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	# fix assert
-	sed -i  -e 's/un-et-un/un-3-et-un/' \
-		-e 's/a-and-a-go-to/a-3-and-a-go-to-3/' \
-		Tests/Slugger/AsciiSluggerTest.php \
-		|| die "sed failed for AsciiSluggerTest.php"
 	phpunit --testdox || die "phpunit failed"
 }
 
