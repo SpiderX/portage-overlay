@@ -1,21 +1,20 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/html-sanitizer.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony HtmlSanitizer Component"
 HOMEPAGE="https://github.com/symfony/html-sanitizer"
+EGIT_REPO_URI="https://github.com/symfony/html-sanitizer.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*[xml]
+RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
 	dev-php/league-uri
 	dev-php/masterminds-html5"
