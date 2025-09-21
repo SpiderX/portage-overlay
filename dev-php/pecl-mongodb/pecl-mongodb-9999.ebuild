@@ -1,18 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PHP_EXT_NAME="mongodb"
-USE_PHP="php8-1 php8-2 php8-3"
+USE_PHP="php8-2 php8-3 php8-4"
 PHP_EXT_S="${WORKDIR}/${P}"
-EGIT_REPO_URI="https://github.com/mongodb/mongo-php-driver.git"
 EGIT_SUBMODULES=()
 
 inherit git-r3 php-ext-pecl-r3
 
 DESCRIPTION="MongoDB database driver for PHP"
 SRC_URI=""
+EGIT_REPO_URI="https://github.com/mongodb/mongo-php-driver.git"
 S="${PHP_EXT_S}"
 
 LICENSE="Apache-2.0"
@@ -22,7 +22,7 @@ RESTRICT="x86? ( test ) !test? ( test )"
 
 RDEPEND="dev-lang/php:*[ssl,zlib]
 	>=dev-libs/libbson-1.27.5
-	>=dev-libs/mongo-c-driver-1.27.5[sasl?,ssl]
+	>=dev-libs/mongo-c-driver-1.30.5[sasl?,ssl]
 	dev-libs/openssl:=
 	crypt? ( dev-libs/libmongocrypt )
 	sasl? ( dev-libs/cyrus-sasl:2 )"
