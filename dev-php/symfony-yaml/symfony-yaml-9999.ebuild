@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/yaml.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Yaml Component"
 HOMEPAGE="https://github.com/symfony/yaml"
+EGIT_REPO_URI="https://github.com/symfony/yaml.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -35,6 +34,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped — testDumpNumericValueWithLocale
 	phpunit --testdox || die "phpunit failed"
 }
 
