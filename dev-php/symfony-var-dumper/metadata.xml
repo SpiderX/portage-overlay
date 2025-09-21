@@ -13,6 +13,10 @@
 	This package provides a PHP component from Symfony, which provides
 	mechanisms for walking through any arbitrary PHP variable.
 	</longdescription>
+	<use>
+		<flag name="ffi">Enable the Foreign Function Interface (FFI) extension using <pkg>dev-libs/libffi</pkg></flag>
+		<flag name="mysqli">Add support for the improved mySQL libraries</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">symfony/var-dumper</remote-id>
 	</upstream>

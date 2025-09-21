@@ -1,31 +1,34 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/var-dumper.git"
 
 inherit git-r3
 
 DESCRIPTION="Mechanisms for walking through any arbitrary PHP variable"
 HOMEPAGE="https://github.com/symfony/var-dumper"
+EGIT_REPO_URI="https://github.com/symfony/var-dumper.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE="ipv6 ffi mysqli test"
+REQUIRED_USE="test? ( ffi mysqli )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*[iconv]
+RDEPEND="dev-lang/php:*[ffi?,mysqli?,xmlreader]
 	dev-php/fedora-autoloader
 	dev-php/symfony-deprecation-contracts
 	dev-php/symfony-polyfill-mbstring"
 BDEPEND="test? ( dev-db/redis
+		dev-php/pecl-redis
 		dev-php/phpunit
 		dev-php/symfony-console
 		dev-php/symfony-http-kernel
-		>=dev-php/symfony-process-6.4.8
+		>=dev-php/symfony-process-6
 		dev-php/symfony-uid
 		>=dev-php/twig-3.10.3 )"
+# needs brokers for dev-php/pecl-rdkafka
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -41,6 +44,7 @@ src_prepare() {
 		|| die "sed failed for ExceptionCasterTest.php"
 	sed -i '/testGet/,+95d' Tests/Dumper/HtmlDumperTest.php \
 		|| die "sed failed for HtmlDumperTest.php"
+	! use ipv6 && eapply "${FILESDIR}/${PN}"-7.3.3-no-ipv6.patch
 }
 
 src_test() {
