@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/messenger.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Messenger Component"
 HOMEPAGE="https://github.com/symfony/messenger"
+EGIT_REPO_URI="https://github.com/symfony/messenger.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,11 +23,11 @@ BDEPEND="test? ( dev-php/phpunit
 		dev-php/symfony-amqp-messenger
 		dev-php/symfony-console
 		dev-php/symfony-dependency-injection
-		dev-php/symfony-doctrine-bridge
 		dev-php/symfony-doctrine-messenger
 		dev-php/symfony-event-dispatcher
 		dev-php/symfony-error-handler
 		dev-php/symfony-http-kernel
+		dev-php/symfony-lock
 		dev-php/symfony-phpunit-bridge
 		dev-php/symfony-routing
 		dev-php/symfony-serializer
@@ -44,17 +43,10 @@ src_prepare() {
 		autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
-	# replace deprecated method
-	sed -i 's/getInvocationCount/numberOfInvocations/' \
-		Tests/Middleware/DispatchAfterCurrentBusMiddlewareTest.php \
-		|| die "sed failed for DispatchAfterCurrentBusMiddlewareTest.php"
-	# rename object
-	sed -i '/assertStringMatchesFormat/s|Mock|MockObject|' \
-		Tests/Middleware/SendMessageMiddlewareTest.php \
-		|| die "sed failed for SendMessageMiddlewareTest.php"
 }
 
 src_test() {
+	# runs long because 1m timeout in testWorkerRateLimitMessages
 	phpunit --testdox || die "phpunit failed"
 }
 

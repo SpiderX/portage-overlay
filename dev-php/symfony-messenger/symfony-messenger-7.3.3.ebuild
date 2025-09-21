@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -28,11 +28,11 @@ BDEPEND="test? ( dev-php/composer
 		dev-php/symfony-amqp-messenger
 		dev-php/symfony-console
 		dev-php/symfony-dependency-injection
-		dev-php/symfony-doctrine-bridge
 		dev-php/symfony-doctrine-messenger
 		dev-php/symfony-event-dispatcher
 		dev-php/symfony-error-handler
 		dev-php/symfony-http-kernel
+		dev-php/symfony-lock
 		dev-php/symfony-phpunit-bridge
 		dev-php/symfony-routing
 		dev-php/symfony-serializer
@@ -55,14 +55,7 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	# replace deprecated method
-	sed -i 's/getInvocationCount/numberOfInvocations/' \
-		Tests/Middleware/DispatchAfterCurrentBusMiddlewareTest.php \
-		|| die "sed failed for DispatchAfterCurrentBusMiddlewareTest.php"
-	# rename object
-	sed -i '/assertStringMatchesFormat/s|Mock|MockObject|' \
-		Tests/Middleware/SendMessageMiddlewareTest.php \
-		|| die "sed failed for SendMessageMiddlewareTest.php"
+	# runs long because 1m timeout in testWorkerRateLimitMessages
 	phpunit --testdox || die "phpunit failed"
 }
 
