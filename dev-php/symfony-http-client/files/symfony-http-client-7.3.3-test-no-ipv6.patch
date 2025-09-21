@@ -1,0 +1,70 @@
+--- ../Tests/NoPrivateNetworkHttpClientTest.php	2025-09-15 20:09:00.973993368 +0300
++++ ../Tests/NoPrivateNetworkHttpClientTest.php	2025-09-15 20:10:14.519681538 +0300
+@@ -32,24 +32,14 @@
+             ['10.0.0.1',    null,          true],
+             ['172.16.0.1',  null,          true],
+             ['192.168.0.1', null,          true],
+-            ['::1',         null,          true],
+-            ['::ffff:0:1',  null,          true],
+-            ['fe80::1',     null,          true],
+-            ['fc00::1',     null,          true],
+-            ['fd00::1',     null,          true],
+             ['10.0.0.1',    '10.0.0.0/24', true],
+             ['10.0.0.1',    '10.0.0.1',    true],
+-            ['fc00::1',     'fc00::1/120', true],
+-            ['fc00::1',     'fc00::1',     true],
+ 
+             ['172.16.0.1',  ['10.0.0.0/8', '192.168.0.0/16'], false],
+-            ['fc00::1',     ['fe80::/10', '::ffff:0:0/96'],   false],
+ 
+             // public
+             ['104.26.14.6',            null,                false],
+             ['104.26.14.6',            '104.26.14.0/24',    true],
+-            ['2606:4700:20::681a:e06', null,                false],
+-            ['2606:4700:20::681a:e06', '2606:4700:20::/43', true],
+         ];
+     }
+ 
+@@ -58,12 +48,7 @@
+         yield from self::getExcludeIpData();
+ 
+         // no ipv4/ipv6 at all
+-        yield ['2606:4700:20::681a:e06', '::/0',      true];
+         yield ['104.26.14.6',            '0.0.0.0/0', true];
+-
+-        // weird scenarios (e.g.: when trying to match ipv4 address on ipv6 subnet)
+-        yield ['10.0.0.1', 'fc00::/7',   true];
+-        yield ['fc00::1',  '10.0.0.0/8', true];
+     }
+ 
+     /**
+--- ../Tests/NativeHttpClientTest.php	2025-09-15 23:14:07.546648904 +0300
++++ ../Tests/NativeHttpClientTest.php	2025-09-15 23:14:26.026810791 +0300
+@@ -51,27 +51,6 @@
+         $this->markTestSkipped('NativeHttpClient doesn\'t support HTTP/2.');
+     }
+ 
+-    public function testIPv6Resolve()
+-    {
+-        TestHttpServer::start(-8087);
+-
+-        DnsMock::withMockedHosts([
+-            'symfony.com' => [
+-                [
+-                    'type' => 'AAAA',
+-                    'ipv6' => '::1',
+-                ],
+-            ],
+-        ]);
+-
+-        $client = $this->getHttpClient(__FUNCTION__);
+-        $response = $client->request('GET', 'http://symfony.com:8087/');
+-
+-        $this->assertSame(200, $response->getStatusCode());
+-
+-        DnsMock::withMockedHosts([]);
+-    }
+-
+     public function testUnixSocket()
+     {
+         $this->markTestSkipped('NativeHttpClient doesn\'t support binding to unix sockets.');
