@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/Masterminds/html5-php.git"
 
 inherit git-r3
 
 DESCRIPTION="An HTML5 parser and serializer for PHP"
 HOMEPAGE="https://github.com/Masterminds/html5-php"
+EGIT_REPO_URI="https://github.com/Masterminds/html5-php.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -30,6 +29,11 @@ src_prepare() {
 	sed -i 's/assertRegExp/assertMatchesRegularExpression/' \
 		test/HTML5/{Html5Test,Serializer/OutputRulesTest}.php \
 		|| die "sed failed"
+	# fix non-static data provider deprecation
+	sed -i  -e '/getEncData(/s|function|static function|g' \
+		-e '/booleanAttributes(/s|function|static function|' \
+		test/HTML5/Serializer/OutputRulesTest.php \
+		|| die "sed failed for OutputRulesTest.php"
 }
 
 src_test() {
