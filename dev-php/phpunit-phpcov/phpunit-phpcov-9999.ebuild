@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sebastianbergmann/phpcov.git"
 
 inherit git-r3
 
 DESCRIPTION="TextUI frontend for php-code-coverage"
 HOMEPAGE="https://github.com/sebastianbergmann/phpcov"
+EGIT_REPO_URI="https://github.com/sebastianbergmann/phpcov.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -36,13 +35,17 @@ src_prepare() {
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
 	# remove tests with hardcoded path in data
-	rm tests/end-to-end/merge/valid-directory-with-text-report-stdout.phpt \
-		tests/end-to-end/patch-coverage/valid-arguments-with-valid-path-prefix.phpt \
+	rm tests/end-to-end/patch-coverage/valid-arguments-with-invalid-path-prefix.phpt \
+		tests/end-to-end/patch-coverage/valid-arguments-without-path-prefix.phpt \
+		tests/end-to-end/execute/valid-script-argument-with-cli-include-with-text-report.phpt \
 		tests/end-to-end/merge/valid-directory-with-text-report.phpt \
+		tests/end-to-end/merge/valid-directory-with-text-report-stdout.phpt \
+		tests/end-to-end/patch-coverage/valid-arguments-with-valid-path-prefix.phpt \
 		|| die "rm failed"
 }
 
 src_test() {
+	# skipped 2
 	phpunit --testdox || die "phpunit failed"
 }
 
