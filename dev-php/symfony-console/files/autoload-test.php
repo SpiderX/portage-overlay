@@ -9,6 +9,8 @@ require_once 'Fedora/Autoloader/autoload.php';
 	'/usr/share/php/Symfony/Component/DependencyInjection/autoload.php',
 	'/usr/share/php/Symfony/Component/EventDispatcher/autoload.php',
 	'/usr/share/php/Symfony/Component/Lock/autoload.php',
+	'/usr/share/php/Symfony/Component/Messenger/autoload.php',
 	'/usr/share/php/Symfony/Component/Process/autoload.php',
+	'/usr/share/php/Symfony/Component/Stopwatch/autoload.php',
 	'/usr/share/php/Symfony/Component/VarDumper/autoload.php',
 ]);

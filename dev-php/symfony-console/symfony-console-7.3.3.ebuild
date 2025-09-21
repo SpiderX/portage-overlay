@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -30,8 +30,10 @@ BDEPEND="test? ( dev-php/composer
 		dev-php/symfony-dependency-injection
 		dev-php/symfony-event-dispatcher
 		dev-php/symfony-lock
+		dev-php/symfony-messenger
 		dev-php/symfony-phpunit-bridge
-		>=dev-php/symfony-process-6.4.8
+		>=dev-php/symfony-process-6
+		dev-php/symfony-stopwatch
 		dev-php/symfony-var-dumper )"
 
 DOCS=( {CHANGELOG,README}.md )
@@ -50,14 +52,7 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	# remove test with unsupported method TestFailure
-	sed -i '/testUnsuccessfulCommand/,+15d' \
-		Tests/Tester/Constraint/CommandIsSuccessfulTest.php \
-		|| die "sed failed for CommandIsSuccessfulTest.php"
-	# remove failed test
-	sed -i '/testAutocompleteMoveCursorBackwards/,+18d' \
-		Tests/Helper/QuestionHelperTest.php \
-		|| die "sed failed for QuestionHelperTest.php"
+	# skipped - testSttyOnWindows, needs tty, without it skipped 16
 	phpunit --testdox || die "phpunit failed"
 }
 
