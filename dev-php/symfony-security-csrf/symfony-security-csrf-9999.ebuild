@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/security-csrf.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Security CSRF Component"
 HOMEPAGE="https://github.com/symfony/security-csrf"
+EGIT_REPO_URI="https://github.com/symfony/security-csrf.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,7 +18,9 @@ RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
 	dev-php/symfony-security-core"
 BDEPEND="test? ( dev-php/phpunit
-		dev-php/symfony-http-foundation )"
+		dev-php/psr-log
+		dev-php/symfony-http-foundation
+		dev-php/symfony-http-kernel )"
 
 DOCS=( {CHANGELOG,README}.md )
 
