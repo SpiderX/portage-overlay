@@ -4,11 +4,11 @@
 require_once 'Fedora/Autoloader'.'/autoload.php';
 
 \Fedora\Autoloader\Autoload::addClassMap(
-    array(
-        'phpdocumentor\\reflection\\fqsenresolver' => '/../FqsenResolver.php',
+	array(
+                'phpdocumentor\\reflection\\fqsenresolver' => '/../FqsenResolver.php',
                 'phpdocumentor\\reflection\\pseudotype' => '/../PseudoType.php',
                 'phpdocumentor\\reflection\\pseudotypes\\arrayshape' => '/../PseudoTypes/ArrayShape.php',
-                'phpdocumentor\\reflection\\pseudotypes\\arrayshapeitem' => '/../PseudoTypes/ArrayShapeItem.php',
+        'phpdocumentor\\reflection\\pseudotypes\\arrayshapeitem' => '/../PseudoTypes/ArrayShapeItem.php',
                 'phpdocumentor\\reflection\\pseudotypes\\callablestring' => '/../PseudoTypes/CallableString.php',
                 'phpdocumentor\\reflection\\pseudotypes\\constexpression' => '/../PseudoTypes/ConstExpression.php',
                 'phpdocumentor\\reflection\\pseudotypes\\false_' => '/../PseudoTypes/False_.php',
@@ -17,15 +17,21 @@ require_once 'Fedora/Autoloader'.'/autoload.php';
                 'phpdocumentor\\reflection\\pseudotypes\\integerrange' => '/../PseudoTypes/IntegerRange.php',
                 'phpdocumentor\\reflection\\pseudotypes\\integervalue' => '/../PseudoTypes/IntegerValue.php',
                 'phpdocumentor\\reflection\\pseudotypes\\list_' => '/../PseudoTypes/List_.php',
+                'phpdocumentor\\reflection\\pseudotypes\\listshape' => '/../PseudoTypes/ListShape.php',
+                'phpdocumentor\\reflection\\pseudotypes\\listshapeitem' => '/../PseudoTypes/ListShapeItem.php',
                 'phpdocumentor\\reflection\\pseudotypes\\literalstring' => '/../PseudoTypes/LiteralString.php',
                 'phpdocumentor\\reflection\\pseudotypes\\lowercasestring' => '/../PseudoTypes/LowercaseString.php',
                 'phpdocumentor\\reflection\\pseudotypes\\negativeinteger' => '/../PseudoTypes/NegativeInteger.php',
+                'phpdocumentor\\reflection\\pseudotypes\\nonemptyarray' => '/../PseudoTypes/NonEmptyArray.php',
                 'phpdocumentor\\reflection\\pseudotypes\\nonemptylist' => '/../PseudoTypes/NonEmptyList.php',
                 'phpdocumentor\\reflection\\pseudotypes\\nonemptylowercasestring' => '/../PseudoTypes/NonEmptyLowercaseString.php',
                 'phpdocumentor\\reflection\\pseudotypes\\nonemptystring' => '/../PseudoTypes/NonEmptyString.php',
                 'phpdocumentor\\reflection\\pseudotypes\\numeric_' => '/../PseudoTypes/Numeric_.php',
                 'phpdocumentor\\reflection\\pseudotypes\\numericstring' => '/../PseudoTypes/NumericString.php',
+                'phpdocumentor\\reflection\\pseudotypes\\objectshape' => '/../PseudoTypes/ObjectShape.php',
+                'phpdocumentor\\reflection\\pseudotypes\\objectshapeitem' => '/../PseudoTypes/ObjectShapeItem.php',
                 'phpdocumentor\\reflection\\pseudotypes\\positiveinteger' => '/../PseudoTypes/PositiveInteger.php',
+                'phpdocumentor\\reflection\\pseudotypes\\shapeitem' => '/../PseudoTypes/ShapeItem.php',
                 'phpdocumentor\\reflection\\pseudotypes\\stringvalue' => '/../PseudoTypes/StringValue.php',
                 'phpdocumentor\\reflection\\pseudotypes\\traitstring' => '/../PseudoTypes/TraitString.php',
                 'phpdocumentor\\reflection\\pseudotypes\\true_' => '/../PseudoTypes/True_.php',
@@ -62,14 +68,14 @@ require_once 'Fedora/Autoloader'.'/autoload.php';
                 'phpdocumentor\\reflection\\types\\string_' => '/../Types/String_.php',
                 'phpdocumentor\\reflection\\types\\this' => '/../Types/This.php',
                 'phpdocumentor\\reflection\\types\\void_' => '/../Types/Void_.php',
-    ),
-    __DIR__
+	),
+	__DIR__
 );
 // @codeCoverageIgnoreEnd
 
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
-    '/usr/share/php/phpDocumentor/Reflection/Common/autoload.php',
-    '/usr/share/php/PHPStan/PhpDocParser/autoload.php',
-    '/usr/share/php/Doctrine/Deprecations/autoload.php',
+	'/usr/share/php/phpDocumentor/Reflection/Common/autoload.php',
+	'/usr/share/php/PHPStan/PhpDocParser/autoload.php',
+	'/usr/share/php/Doctrine/Deprecations/autoload.php',
 ]);

@@ -3,23 +3,28 @@
 
 EAPI=8
 
-inherit git-r3
+MY_PN="TypeResolver"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="phpDocumentor TypeResolver component"
 HOMEPAGE="https://github.com/phpDocumentor/TypeResolver"
-EGIT_REPO_URI="https://github.com/phpDocumentor/TypeResolver.git"
+SRC_URI="https://github.com/phpDocumentor/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-lang/php:*[tokenizer]
 	dev-php/doctrine-deprecations
 	dev-php/fedora-autoloader
 	dev-php/phpdocumentor-reflection-common
 	dev-php/phpstan-phpdoc-parser"
-BDEPEND="test? ( dev-php/phpunit )"
+BDEPEND="test? ( dev-php/composer
+		dev-php/phpunit )"
 
 src_prepare() {
 	default
@@ -28,6 +33,13 @@ src_prepare() {
 		src/TypeResolver/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+}
+
+src_test() {
+	composer require -d "${T}" --prefer-source \
+		--dev "${PN/-/\/}:${PV}" || die "composer failed"
+	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,tests} "${S}" \
+		|| die "cp failed"
 	# fix non-static data provider deprecation
 	sed -i '/provideArrays(/s|function|static function|' \
 		tests/unit/PseudoTypes/{IntRange,List,NonEmptyArray,NonEmptyList}Test.php \
@@ -57,9 +69,6 @@ src_prepare() {
 	sed -i '/provideIterables(/s|function|static function|' \
 		tests/unit/Types/IterableTest.php \
 		|| die "sed failed for IterableTest.php"
-}
-
-src_test() {
 	phpunit --testdox || die "phpunit failed"
 }
 
