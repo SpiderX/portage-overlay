@@ -1,0 +1,13 @@
+diff --git a/tests/Tests/OrmFunctionalTestCase.php b/tests/Tests/OrmFunctionalTestCase.php
+index 67a42d30909..d06d85c7d79 100644
+--- a/tests/Tests/OrmFunctionalTestCase.php
++++ b/tests/Tests/OrmFunctionalTestCase.php
+@@ -540,7 +540,7 @@ protected function tearDown(): void
+         $conn = static::$sharedConn;
+ 
+         // In case test is skipped, tearDown is called, but no setup may have run
+-        if (! $conn) {
++        if (! $conn || ! isset($this->_em)) {
+             return;
+         }
+ 

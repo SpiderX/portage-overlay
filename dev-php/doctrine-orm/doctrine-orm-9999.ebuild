@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/doctrine/orm.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="Doctrine Object Relational Mapper"
 HOMEPAGE="https://github.com/doctrine/orm"
+EGIT_REPO_URI="https://github.com/doctrine/orm.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,13 +22,13 @@ RDEPEND="dev-lang/php:*[ctype,mysql?,mssql?,postgres?,sqlite?]
 	dev-php/doctrine-deprecations
 	dev-php/doctrine-event-manager
 	dev-php/doctrine-inflector
-	dev-php/doctrine-instantiator
+	>=dev-php/doctrine-instantiator-2
 	dev-php/doctrine-lexer
 	dev-php/doctrine-persistence
 	dev-php/psr-cache
 	dev-php/symfony-console
 	dev-php/symfony-var-exporter"
-BDEPEND="test? ( dev-php/pecl-apcu
+BDEPEND="test? ( dev-db/redis
 		dev-php/phpunit
 		dev-php/symfony-cache )"
 
@@ -46,7 +45,15 @@ src_prepare() {
 }
 
 src_test() {
-	phpunit --testdox || die "phpunit failed"
+	"${EPREFIX}"/usr/sbin/redis-server - <<- EOF || die "redis-server failed"
+		daemonize yes
+		pidfile "${T}/redis.pid"
+		port 6379
+		bind 127.0.0.1
+	EOF
+	# skipped 60
+	REDIS_HOST=127.0.0.1 phpunit --testdox || die "phpunit failed"
+	kill "$(<"${T}/redis.pid")" || die "kill failed"
 }
 
 src_install() {
