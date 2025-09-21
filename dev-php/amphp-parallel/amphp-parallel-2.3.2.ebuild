@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,10 +13,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
@@ -72,6 +71,7 @@ src_test() {
 		|| die "mv failed for AbstractPoolTest"
 	sed -i '/class /s|AbstractPoolTest|AbstractPoolTestAbstract|' \
 		test/Worker/AbstractPoolTestAbstract.php \
+		test/Worker/DelegatingWorkerPoolTest.php \
 		|| die "sed failed for AbstractPoolTest"
 	sed -i '/^class /s|$|Abstract|' test/Worker/{Process,Thread}PoolTest.php \
 		|| die "sed failed for PoolTest"
