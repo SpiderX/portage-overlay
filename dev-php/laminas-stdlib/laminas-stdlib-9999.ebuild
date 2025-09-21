@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/laminas/laminas-stdlib.git"
 
 inherit git-r3
 
 DESCRIPTION="SPL extensions, array utilities, error handlers, and more"
 HOMEPAGE="https://github.com/laminas/laminas-stdlib"
+EGIT_REPO_URI="https://github.com/laminas/laminas-stdlib.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -29,6 +28,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped 58
 	phpunit --testdox || die "phpunit failed"
 }
 
