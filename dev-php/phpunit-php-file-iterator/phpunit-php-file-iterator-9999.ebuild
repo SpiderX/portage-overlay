@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sebastianbergmann/php-file-iterator.git"
 
 inherit git-r3
 
 DESCRIPTION="FilterIterator implementation that filters files"
 HOMEPAGE="https://github.com/sebastianbergmann/php-file-iterator"
+EGIT_REPO_URI="https://github.com/sebastianbergmann/php-file-iterator.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -25,9 +24,6 @@ DOCS=( {ChangeLog,README}.md )
 src_prepare() {
 	default
 
-	# The attribute 'ignoreIndirectDeprecations' is not allowed
-	sed -i 's|ignoreIndirectDeprecations="true" ||' phpunit.xml \
-		|| die "sed failed"
 	phpab -q -o src/autoload.php -t fedora2 src || die "phpab failed"
 	install -D -m 644 /dev/null \
 		vendor/autoload.php || die "install failed"
