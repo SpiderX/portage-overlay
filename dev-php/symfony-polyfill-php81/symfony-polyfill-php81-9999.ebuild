@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/polyfill-php81.git"
 
 inherit git-r3
 
 DESCRIPTION="Backport of some PHP 8.1+ features to lower PHP versions"
 HOMEPAGE="https://github.com/symfony/polyfill-php81"
+EGIT_REPO_URI="https://github.com/symfony/polyfill-php81.git"
 
 LICENSE="MIT"
 SLOT="0"
