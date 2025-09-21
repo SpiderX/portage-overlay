@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,8 +19,15 @@ RESTRICT="test" # needs separate package with test data
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
 
+src_prepare() {
+	default
+
+	install -D -m 644 "${FILESDIR}"/autoload.php \
+		src/Internal/autoload.php || die "install failed"
+}
+
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/Amp/Http
-	doins -r "${FILESDIR}"/autoload.php src/.
+	doins -r src/.
 }
