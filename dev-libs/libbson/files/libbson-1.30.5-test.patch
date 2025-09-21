@@ -1,0 +1,19 @@
+--- ../src/libmongoc/tests/import-tests.cmake	2025-09-10 14:41:43.709394342 +0300
++++ ../src/libmongoc/tests/import-tests.cmake	2025-09-10 14:41:51.863426553 +0300
+@@ -11,16 +11,6 @@
+ )
+ 
+ add_test_cmake_project(
+-   mongoc/CMake/bare-mongoc-import src/libmongoc/tests/cmake-import
+-   INSTALL_PARENT
+-   SETTINGS
+-      FIND_MONGOC=1
+-      "FIND_MONGOC_ARGS=REQUIRED"
+-      "EXPECT_BSON_VERSION=${mongo-c-driver_VERSION_FULL}"
+-      "EXPECT_MONGOC_VERSION=${mongo-c-driver_VERSION_FULL}"
+-)
+-
+-add_test_cmake_project(
+    mongoc/CMake/bson-import-1.0 src/libmongoc/tests/cmake-import
+    INSTALL_PARENT
+    SETTINGS

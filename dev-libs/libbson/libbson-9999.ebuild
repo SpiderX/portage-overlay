@@ -1,21 +1,28 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/mongodb/mongo-c-driver.git"
+PYTHON_COMPAT=( python3_{13,14} )
 
-inherit cmake git-r3
+inherit cmake git-r3 python-any-r1
 
 DESCRIPTION="Library routines related to building,parsing and iterating BSON documents"
 HOMEPAGE="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson"
+EGIT_REPO_URI="https://github.com/mongodb/mongo-c-driver.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="static-libs"
-RESTRICT="test"
+IUSE="static-libs test"
+RESTRICT="test" # tests need exact version of libbson
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	test? ( $(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
+			dev-python/legacy-cgi[${PYTHON_USEDEP}]') )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	cmake_src_prepare
