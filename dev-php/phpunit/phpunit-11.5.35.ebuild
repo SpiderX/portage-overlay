@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sebastianbergmann/${PN}/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="soap test"
 REQUIRED_USE="test? ( soap )"
 RESTRICT="test"
@@ -35,14 +35,14 @@ RDEPEND="dev-lang/php:*[soap?,xml,xmlwriter,unicode]
 	dev-php/sebastian-exporter
 	dev-php/sebastian-global-state
 	dev-php/sebastian-object-enumerator
-	dev-php/sebastian-recursion-context
 	>=dev-php/sebastian-type-4.0.0
 	>=dev-php/sebastian-version-4.0.1"
-BDEPEND=">=dev-php/theseer-Autoload-1.29.1"
+BDEPEND=">=dev-php/theseer-Autoload-1.29.1
+	test? ( dev-php/composer )"
 
 PATCHES=( "${FILESDIR}/${PN}"-10.5.27-autoload-resources.patch )
 
-DOCS=( {ChangeLog-10.5,DEPRECATIONS,README}.md )
+DOCS=( {ChangeLog-11.5,DEPRECATIONS,README}.md )
 
 src_prepare() {
 	default
@@ -60,13 +60,10 @@ src_test() {
 	# move tests into work dir
 	cp -r "${T}/vendor/${PN}/${PN}"/{phpunit.xml,tests} "${S}" \
 		|| die "cp tests failed"
-	# generate autoload for unit
 	phpab -q -o tests/unit/autoload.php -t fedora2 tests/unit/ \
 		|| die "phpab tests unit failed"
-	# generate autoload for fixtures
 	phpab -q -o tests/_files/autoload.php -t fedora2 tests/_files/ \
 		|| die "phpab tests files failed"
-	# generate autoloads for end-to-end
 	phpab -o tests/end-to-end/execution-order/_files/autoload.php \
 		-t fedora2 tests/end-to-end/execution-order/_files/ \
 		|| die "phpab tests execution order failed"
@@ -77,8 +74,9 @@ src_test() {
 		tests/end-to-end/regression || die "phpab tests regression failed"
 	phpab -o tests/end-to-end/testdox/autoload.php -t fedora2 \
 		tests/end-to-end/testdox || die "phpab tests testdox failed"
-	eapply "${FILESDIR}/${PN}"-10.5.27-tests.patch
 	# paths need to be fixed to run end-to-end
+	eapply "${FILESDIR}/${PN}"-10.5.27-tests.patch
+	# skipped 6
 	phpunit --testsuite unit || die "phpunit failed"
 }
 

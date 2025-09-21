@@ -25,9 +25,9 @@ require_once 'Fedora/Autoloader/autoload.php';
 	'/usr/share/php/SebastianBergmann/GlobalState/autoload.php',
 	'/usr/share/php/SebastianBergmann/Invoker/autoload.php',
 	'/usr/share/php/SebastianBergmann/ObjectEnumerator/autoload.php',
-	'/usr/share/php/SebastianBergmann/RecursionContext/autoload.php',
 	'/usr/share/php/SebastianBergmann/Template/autoload.php',
 	'/usr/share/php/SebastianBergmann/Timer/autoload.php',
 	'/usr/share/php/SebastianBergmann/Type/autoload.php',
 	'/usr/share/php/SebastianBergmann/Version/autoload.php',
+	'/usr/share/php/staabm/SideEffectsDetector/autoload.php',
 ]);

@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sebastianbergmann/${PN}.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="The PHP Unit Testing framework"
 HOMEPAGE="https://github.com/sebastianbergmann/phpunit"
+EGIT_REPO_URI="https://github.com/sebastianbergmann/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -37,7 +36,8 @@ RDEPEND="dev-lang/php:*[soap?,xml,xmlwriter,unicode]
 	dev-php/sebastian-recursion-context
 	>=dev-php/sebastian-type-4.0.0
 	>=dev-php/sebastian-version-4.0.1"
-BDEPEND=">=dev-php/theseer-Autoload-1.29.1"
+BDEPEND=">=dev-php/theseer-Autoload-1.29.1
+	test? ( dev-php/composer )"
 
 PATCHES=( "${FILESDIR}/${PN}"-10.5.27-autoload-resources.patch
 	"${FILESDIR}/${PN}"-10.5.27-tests.patch )
@@ -51,13 +51,10 @@ src_prepare() {
 		src || die "phpab failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install failed"
-	# generate autoload for unit
 	phpab -q -o tests/unit/autoload.php -t fedora2 tests/unit/ \
 		|| die "phpab tests unit failed"
-	# generate autoload for fixtures
 	phpab -q -o tests/_files/autoload.php -t fedora2 tests/_files/ \
 		|| die "phpab tests files failed"
-	# generate autoloads for end-to-end
 	phpab -o tests/end-to-end/execution-order/_files/autoload.php \
 		-t fedora2 tests/end-to-end/execution-order/_files/ \
 		|| die "phpab tests execution order failed"
@@ -71,7 +68,7 @@ src_prepare() {
 }
 
 src_test() {
-	# paths need to be fixed to run end-to-end
+	# paths need to be fixed to run end-to-end, skipped 6
 	phpunit --testsuite unit || die "phpunit failed"
 }
 
