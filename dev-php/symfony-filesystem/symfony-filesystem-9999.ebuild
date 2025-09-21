@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/filesystem.git"
 
 inherit git-r3
 
 DESCRIPTION="Provides basic utilities for the filesystem"
 HOMEPAGE="https://github.com/symfony/filesystem"
+EGIT_REPO_URI="https://github.com/symfony/filesystem.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +20,7 @@ RDEPEND="dev-lang/php:*
 	dev-php/symfony-polyfill-mbstring"
 BDEPEND="test? ( dev-php/composer
 		dev-php/phpunit
-		>=dev-php/symfony-process-6.4.8 )"
+		>=dev-php/symfony-process-6 )"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -35,6 +34,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped 3, needs tty, without it skipped 5
 	phpunit --testdox || die "phpunit failed"
 }
 
