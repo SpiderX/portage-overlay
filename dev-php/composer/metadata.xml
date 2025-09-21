@@ -13,6 +13,9 @@
 	This package provides a tool to manage dependency management for PHP,
 	including declaring, managing, and installing dependencies of PHP projects.
 	</longdescription>
+	<use>
+		<flag name="intl">nables the intl extension for extended internalization support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">composer/composer</remote-id>
 	</upstream>

@@ -1,0 +1,57 @@
+--- ../src/Composer/Autoload/AutoloadGenerator.php	2025-08-30 22:26:46.055634381 +0300
++++ ../src/Composer/Autoload/AutoloadGenerator.php	2025-08-30 22:27:36.814182007 +0300
+@@ -467,7 +467,7 @@
+         $filesystem->filePutContentsIfModified($targetDir.'/autoload_real.php', $this->getAutoloadRealFile(true, (bool) $includePathFileContents, $targetDirLoader, (bool) $includeFilesFileContents, $vendorPathCode, $appBaseDirCode, $suffix, $useGlobalIncludePath, $prependAutoloader, $checkPlatform));
+ 
+         $filesystem->safeCopy(__DIR__.'/ClassLoader.php', $targetDir.'/ClassLoader.php');
+-        $filesystem->safeCopy(__DIR__.'/../../../LICENSE', $targetDir.'/LICENSE');
++        $filesystem->safeCopy(__DIR__.'/../../../composer/LICENSE', $targetDir.'/LICENSE');
+ 
+         if ($this->runScripts) {
+             $this->eventDispatcher->dispatchScript(ScriptEvents::POST_AUTOLOAD_DUMP, $this->devMode, [], [
+--- ../src/Composer/Compiler.php	2025-08-30 22:28:29.266697515 +0300
++++ ../src/Composer/Compiler.php	2025-08-30 22:29:19.110073023 +0300
+@@ -109,7 +109,7 @@
+         // Add Composer resources
+         $finder = new Finder();
+         $finder->files()
+-            ->in(__DIR__.'/../../res')
++            ->in('/../../composer/res')
+             ->sort($finderSort)
+         ;
+         foreach ($finder as $file) {
+--- ../src/Composer/Command/DiagnoseCommand.php	2025-08-30 22:30:15.597569987 +0300
++++ ../src/Composer/Command/DiagnoseCommand.php	2025-08-30 22:30:44.781321823 +0300
+@@ -575,7 +575,7 @@
+ 
+         $auditor = new Auditor();
+         $repoSet = new RepositorySet();
+-        $installedJson = new JsonFile(__DIR__ . '/../../../vendor/composer/installed.json');
++        $installedJson = new JsonFile(__DIR__ . '/../../../composer/res/installed.json');
+         if (!$installedJson->exists()) {
+             return '<warning>Could not find Composer\'s installed.json, this must be a non-standard Composer installation.</>';
+         }
+--- ../bin/composer	2025-08-30 22:32:10.748072594 +0300
++++ ../bin/composer	2025-08-30 22:32:39.055905927 +0300
+@@ -16,7 +16,7 @@
+ }
+ 
+ setlocale(LC_ALL, 'C');
+-require __DIR__.'/../src/bootstrap.php';
++require __DIR__.'/../share/php/Composer/autoload.php';
+ 
+ use Composer\Console\Application;
+ use Composer\XdebugHandler\XdebugHandler;
+--- ../src/Composer/Json/JsonFile.php	2025-08-30 22:33:30.942583979 +0300
++++ ../src/Composer/Json/JsonFile.php	2025-08-30 22:34:41.518287286 +0300
+@@ -41,8 +41,8 @@
+     /** @deprecated Use \JSON_UNESCAPED_UNICODE */
+     public const JSON_UNESCAPED_UNICODE = 256;
+ 
+-    public const COMPOSER_SCHEMA_PATH = __DIR__ . '/../../../res/composer-schema.json';
+-    public const LOCK_SCHEMA_PATH = __DIR__ . '/../../../res/composer-lock-schema.json';
++    public const COMPOSER_SCHEMA_PATH = __DIR__ . '/../../../composer/res/composer-schema.json';
++    public const LOCK_SCHEMA_PATH = __DIR__ . '/../../../composer/res/composer-lock-schema.json';
+ 
+     public const INDENT_DEFAULT = '    ';
+ 
