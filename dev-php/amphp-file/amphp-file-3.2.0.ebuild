@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,10 +15,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
@@ -30,7 +29,6 @@ RDEPEND="dev-lang/php:*
 	dev-php/revolt-event-loop"
 BDEPEND="test? ( dev-php/composer
 		dev-php/pecl-eio
-		>=dev-php/pecl-parallel-1.2.3
 		dev-php/pecl-uv
 		dev-php/phpunit )"
 
@@ -53,26 +51,13 @@ src_test() {
 		vendor/amphp/cache || die "ln failed for cache"
 	ln -s ../../../../../temp/vendor/amphp/sync/test \
 		vendor/amphp/sync || die "ln failed for sync"
-	# fix abstract class with Test suffix
-	mv test/FileTest{,Abstract}.php || die "mv failed for FileTest"
-	sed -i '/class/s|FileTest|FileTestAbstract|' test/FileTestAbstract.php \
-		|| die "sed failed for FileTestAbstract.php"
-	sed -i -r '/[class|use] /s/(\\|\ )FileTest/\1FileTestAbstract/' \
-		test/Driver/{Blocking,StatusCaching}FileTest.php \
-		test/AsyncFileTest.php || die "sed failed for FileTest"
-	mv test/AsyncFileTest{,Abstract}.php || die "mv failed for AsyncFileTest"
-	sed -i '/[class|use] /s|AsyncFileTest|AsyncFileTestAbstract|' \
-		test/Driver/{Eio,Parallel,Uv}FileTest.php \
-		test/AsyncFileTestAbstract.php || die "sed failed for AsyncFileTest"
-	mv test/FilesystemDriverTest{,Abstract}.php || die "mv failed for FilesystemDriverTest"
-	sed -i '/class/s|FilesystemDriverTest|FilesystemDriverTestAbstract|' \
-		test/FilesystemDriverTestAbstract.php || "sed failed for FilesystemDriverTestAbstract.php"
-	sed -i -r '/[class|use] /s/(\\|\ )FilesystemDriverTest/\1FilesystemDriverTestAbstract/' \
-		test/Driver/{Blocking,Eio,Parallel,StatusCaching,Uv}FilesystemDriverTest.php \
-		|| die "sed failed for FilesystemDriverTest"
-	mv test/FilesystemTest{,Abstract}.php || die "mv failed for FilesystemTest"
-	sed -i '/class /s|FilesystemTest|FilesystemTestAbstract|' \
-		test/File{,system,systemDriver}TestAbstract.php || die "sed failed for FilesystemTest"
+	# fix non-static data provider deprecation
+	sed -i  -e '/symlinkPathProvider(/s|function|static function|' \
+		-e '/dataForDirectoryCheck(/s|function|static function|' \
+		-e '/dataForFileCheck(/s|function|static function|' \
+		-e '/dataForSymlinkCheck(/s|function|static function|' \
+		test/FilesystemDriverTest.php \
+		|| die "sed failed for CompliesTest.php"
 	phpunit --testdox || die "phpunit failed"
 }
 

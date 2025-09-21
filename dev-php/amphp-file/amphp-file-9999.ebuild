@@ -1,20 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/amphp/file.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="An abstraction layer and non-blocking file access solution"
 HOMEPAGE="https://github.com/amphp/file"
+EGIT_REPO_URI="https://github.com/amphp/file.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
@@ -26,7 +24,7 @@ RDEPEND="dev-lang/php:*
 	dev-php/revolt-event-loop"
 BDEPEND="test? ( dev-php/composer
 		dev-php/pecl-eio
-		>=dev-php/pecl-parallel-1.2.3
+		dev-php/pecl-parallel
 		dev-php/pecl-uv
 		dev-php/phpunit )"
 
@@ -38,7 +36,7 @@ src_prepare() {
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
 	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
+		--dev "${PN/-/\/}":3.2.0 || die "composer failed"
 	mkdir -p vendor/amphp/{cache,sync} || die "mkdir failed"
 	ln -s ../../../../../temp/vendor/amphp/cache/test \
 		vendor/amphp/cache || die "ln failed for cache"
