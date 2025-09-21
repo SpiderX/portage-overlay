@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -59,6 +59,18 @@ src_test() {
 		|| die "sed failed for AbstractReaderTestX.php"
 	sed -i '/extends/s|$|X|' tests/Doctrine/Tests/Common/Annotations/AnnotationReaderTest.php \
 		|| die "sed failed for AnnotationReaderTest.php"
+	# fix non-static data provider deprecation
+	sed -i '/provideEnumProperties(/s|function|static function|' \
+		tests/Doctrine/Tests/Common/Annotations/AnnotationReaderTest.php \
+		|| die "sed failed for AnnotationReaderTest.php"
+	sed -i  -e '/getAnnotationVarTypeProviderValid(/s|function|static function|g' \
+		-e '/getAnnotationVarTypeProviderInvalid(/s|function|static function|g' \
+		-e '/getAnnotationVarTypeArrayProviderInvalid(/s|function|static function|g' \
+		-e '/getConstantsProvider(/s|function|static function|g' \
+		-e '/provideTestIgnoreWholeNamespaces(/s|function|static function|g' \
+		tests/Doctrine/Tests/Common/Annotations/DocParserTest.php \
+		|| die "sed failed for DocParserTest.php"
+	# skipped — testMultiByteAnnotation
 	phpunit --testdox || die "phpunit failed"
 }
 
