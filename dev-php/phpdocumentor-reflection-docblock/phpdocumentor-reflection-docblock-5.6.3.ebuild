@@ -3,16 +3,20 @@
 
 EAPI=8
 
-inherit git-r3
+MY_PN="ReflectionDocBlock"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="phpDocumentor ReflectionDocBlock component"
 HOMEPAGE="https://github.com/phpDocumentor/ReflectionDocBlock"
-EGIT_REPO_URI="https://github.com/phpDocumentor/ReflectionDocBlock.git"
+SRC_URI="https://github.com/phpDocumentor/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-lang/php:*[filter]
 	dev-php/doctrine-deprecations
@@ -21,7 +25,8 @@ RDEPEND="dev-lang/php:*[filter]
 	dev-php/phpdocumentor-type-resolver
 	dev-php/phpstan-phpdoc-parser
 	dev-php/webmozart-assert"
-BDEPEND="test? ( dev-php/mockery
+BDEPEND="test? ( dev-php/composer
+		dev-php/mockery
 		dev-php/phpunit )"
 
 src_prepare() {
@@ -31,6 +36,13 @@ src_prepare() {
 		src/DocBlock/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+}
+
+src_test() {
+	composer require -d "${T}" --prefer-source \
+		--dev "${PN/-/\/}:${PV}" || die "composer failed"
+	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,examples,tests} "${S}" \
+		|| die "cp failed"
 	# fix non-static data provider deprecation
 	sed -i  -e '/provideSimpleExampleDescriptions(/s|function|static function|' \
 		-e '/provideEscapeSequences(/s|function|static function|' \
@@ -65,11 +77,6 @@ src_prepare() {
 	sed -i '/errorCodeProvider(/s|function|static function|' \
 		tests/unit/Exception/PcreExceptionTest.php \
 		|| die "sed failed for PcreExceptionTest.php"
-}
-
-src_compile() { :; }
-
-src_test() {
 	# skipped 2
 	phpunit --testdox || die "phpunit failed"
 }
