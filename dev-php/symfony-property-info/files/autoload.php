@@ -7,4 +7,5 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\PropertyInfo\\', __DIR_
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/Symfony/Component/String/autoload.php',
+	'/usr/share/php/Symfony/Component/TypeInfo/autoload.php',
 ]);
