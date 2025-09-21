@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="fileinfo ftp test zip"
-#REQUIRED_USE="test? ( fileinfo ftp zip )"
+REQUIRED_USE="test? ( fileinfo ftp zip )"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -43,6 +43,7 @@ src_test() {
 		|| die "cp failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/src/{AdapterTestUtilities,InMemory,*Test.php} "${S}"/src \
 		|| die "cp failed for src"
+	# skipped 10
 	phpunit --testdox || die "phpunit failed"
 	# clean up test files before install
 	rm -rf src/{AdapterTestUtilities,InMemory,*Test.php} || die "rm failed"

@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/thephpleague/flysystem.git"
 
 inherit git-r3
 
 DESCRIPTION="Abstraction for local and remote filesystems"
 HOMEPAGE="https://github.com/thephpleague/flysystem"
+EGIT_REPO_URI="https://github.com/thephpleague/flysystem.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,8 +21,6 @@ RDEPEND="dev-lang/php:*[fileinfo?,ftp?,zip?]
 	dev-php/league-mime-type-detection"
 BDEPEND="test? ( dev-php/composer
 		dev-php/guzzlehttp-psr7
-		dev-php/mongodb
-		dev-php/pecl-mongodb
 		dev-php/phpunit )"
 
 src_prepare() {
@@ -36,6 +33,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped 10
 	phpunit --testdox || die "phpunit failed"
 }
 
