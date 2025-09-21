@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,12 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="dev-lang/php:*[pdo,sqlite]
-	dev-php/doctrine-deprecations
 	dev-php/doctrine-persistence
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/composer
@@ -43,7 +42,7 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,tests} "${S}" \
 		|| die "cp failed"
-	eapply "${FILESDIR}/${PN}"-1.7.0-test.patch
+	# skipped 7
 	phpunit --testdox || die "phpunit failed"
 }
 

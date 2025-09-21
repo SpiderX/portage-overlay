@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/doctrine/data-fixtures.git"
 
 inherit optfeature git-r3
 
 DESCRIPTION="Doctrine Data Fixtures Extension"
 HOMEPAGE="https://github.com/doctrine/data-fixtures"
+EGIT_REPO_URI="https://github.com/doctrine/data-fixtures.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,7 +15,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*[pdo,sqlite]
-	dev-php/doctrine-deprecations
 	dev-php/doctrine-persistence
 	dev-php/fedora-autoloader"
 BDEPEND="test? ( dev-php/doctrine-orm
@@ -33,6 +31,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped 7
 	phpunit --testdox || die "phpunit failed"
 }
 
