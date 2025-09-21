@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/browser-kit.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony BrowserKit Component"
 HOMEPAGE="https://github.com/symfony/browser-kit"
+EGIT_REPO_URI="https://github.com/symfony/browser-kit.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,7 +22,7 @@ BDEPEND="test? ( dev-php/composer
 		dev-php/symfony-css-selector
 		dev-php/symfony-http-client
 		dev-php/symfony-mime
-		>=dev-php/symfony-process-6.4.8 )"
+		>=dev-php/symfony-process-6 )"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -34,11 +33,6 @@ src_prepare() {
 		autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
-	# replace TestFailure with ThrowableToStringMapper
-	sed -i  -e '/use PHPUnit/s|Framework\\\TestFailure|Util\\\ThrowableToStringMapper|' \
-		-e '/assertEquals/s|TestFailure::exceptionToString|ThrowableToStringMapper::map|' \
-		Tests/Test/Constraint/Browser{HasCookie,CookieValueSame}Test.php \
-		|| die "sed failed"
 }
 
 src_test() {
