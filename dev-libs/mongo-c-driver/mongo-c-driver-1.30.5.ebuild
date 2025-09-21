@@ -1,9 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+PYTHON_COMPAT=( python3_{13,14} )
+
+inherit cmake python-any-r1
 
 DESCRIPTION="Client library written in C for MongoDB"
 HOMEPAGE="https://github.com/mongodb/mongo-c-driver"
@@ -14,17 +16,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="aws debug sasl snappy +ssl static-libs test zlib zstd"
 REQUIRED_USE="aws? ( ssl ) test? ( static-libs )"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # no test-libmongoc
 
 RDEPEND=">=dev-libs/libbson-${PV}[static-libs?]
-	>=dev-libs/libmongocrypt-1.11.0
+	>=dev-libs/libmongocrypt-1.15.1
 	dev-libs/libutf8proc[static-libs?]
 	sasl? ( dev-libs/cyrus-sasl:2 )
 	snappy? ( app-arch/snappy:0= )
 	ssl? ( dev-libs/openssl:= )
 	zlib? ( sys-libs/zlib:0= )
 	zstd? ( app-arch/zstd:0= )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	test? ( $(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
+			dev-python/legacy-cgi[${PYTHON_USEDEP}]') )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	# remove doc files, build test and not fail on system wide libbson
@@ -32,15 +40,6 @@ src_prepare() {
 		-e '/SET (ENABLE_TESTS OFF)/d' \
 		-e '/System libbson built without static/s|FATAL_ERROR|STATUS|' \
 		CMakeLists.txt || die "sed failed for CMakeLists.txt"
-
-	# copy private headers for system wide libbson
-	if use test ; then
-		mkdir -p src/libbson/tests/bson || die "mkdir failed"
-		cp src/libbson/src/bson/bson-*.h src/libbson/tests/bson \
-			|| die "cp failed"
-		sed -i 's#<bson/bson-private.h>#"bson/bson-private.h"#' \
-			src/libbson/tests/test-bson.c || die "sed failed for test-bson.c"
-	fi
 
 	cmake_src_prepare
 }
