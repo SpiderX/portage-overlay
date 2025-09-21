@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ RESTRICT="test" # no tests
 
 RDEPEND="dev-lang/php:*[filter]
 	dev-php/fedora-autoloader
+	dev-php/psr-http-factory
 	dev-php/psr-http-message"
 
 src_prepare() {
@@ -30,5 +31,5 @@ src_prepare() {
 src_install() {
 	einstalldocs
 	insinto /usr/share/php/League/Uri
-	doins -r Contracts Exceptions Idna Interfaces IPv4 KeyValuePair ./*.php
+	doins -r Contracts Exceptions Interfaces IPv4 IPv6 Idna KeyValuePair ./*.php
 }
