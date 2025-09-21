@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="pcntl test"
 REQUIRED_USE="test? ( pcntl )"
 RESTRICT="test"
@@ -31,7 +31,7 @@ src_prepare() {
 	default
 
 	phpab -q -o src/autoload.php -t fedora2 src || die "phpab failed"
-	install -D -m 644 /dev/null \
+	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install failed"
 }
 
