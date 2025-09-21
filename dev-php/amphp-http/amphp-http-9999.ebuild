@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/amphp/http.git"
 
 inherit git-r3
 
 DESCRIPTION="HTTP primitives which can be shared by servers and clients"
 HOMEPAGE="https://github.com/amphp/http"
+EGIT_REPO_URI="https://github.com/amphp/http.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -35,6 +34,21 @@ src_prepare() {
 	sed -i '/class /s|HeaderParsingTest|HeaderParsingTestAbstract|' \
 		test/HeaderParsingTestAbstract.php test/SplitHeaderTest.php \
 		test/ParseHeaderFieldsTest.php || die "sed failed"
+	# fix non-static data provider deprecation
+	sed -i  -e '/provideValidHeaders(/s|function|static function|g' \
+		-e '/provideInvalidHeaders(/s|function|static function|' \
+		test/Http1/Rfc7230Test.php \
+		|| die "sed failed for Rfc7230Test.php"
+	sed -i '/provideStatuses(/s|function|static function|' \
+		test/HttpResponseTest.php \
+		|| die "sed failed for HttpResponseTest.php"
+	sed -i  -e '/provideMultipleHeaderCases(/s|function|static function|' \
+		-e '/provideTokenCases(/s|function|static function|' \
+		test/ParseHeaderFieldsTest.php \
+		|| die "sed failed for ParseHeaderFieldsTest.php"
+	sed -i '/provideCases(/s|function|static function|' \
+		test/SplitHeaderTest.php \
+		|| die "sed failed for SplitHeaderTest.php"
 }
 
 src_test() {
