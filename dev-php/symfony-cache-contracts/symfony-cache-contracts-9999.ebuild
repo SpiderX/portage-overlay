@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/cache-contracts.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Cache Contracts"
 HOMEPAGE="https://github.com/symfony/cache-contracts"
+EGIT_REPO_URI="https://github.com/symfony/cache-contracts.git"
 
 LICENSE="MIT"
 SLOT="0"
