@@ -8,4 +8,5 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\Serializer\\', __DIR__)
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/Symfony/Contracts/Deprecation/autoload.php',
 	'/usr/share/php/Symfony/Polyfill/Ctype/autoload.php',
+	'/usr/share/php/Symfony/Polyfill/Php84/autoload.php',
 ]);
