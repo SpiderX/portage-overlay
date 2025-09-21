@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/doctrine/dbal.git"
 
 inherit git-r3 optfeature
 
 DESCRIPTION="Doctrine Database Abstraction Layer"
 HOMEPAGE="https://github.com/doctrine/dbal"
+EGIT_REPO_URI="https://github.com/doctrine/dbal.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -35,6 +34,7 @@ src_prepare() {
 }
 
 src_test() {
+	# skipped 579
 	phpunit --bootstrap vendor/autoload.php --testdox || die "phpunit failed"
 }
 

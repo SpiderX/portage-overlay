@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="mysql postgres sqlite test"
 REQUIRED_USE="test? ( mysql postgres sqlite )"
 RESTRICT="test"
@@ -45,6 +45,7 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,tests} "${S}" \
 		|| die "cp failed"
+	# skipped 579
 	phpunit --bootstrap vendor/autoload.php --testdox || die "phpunit failed"
 }
 
