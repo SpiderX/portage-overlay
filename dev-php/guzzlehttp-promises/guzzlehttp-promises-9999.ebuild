@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/guzzle/promises.git"
 
 inherit git-r3
 
 DESCRIPTION="Guzzle Promises library for PHP with synchronous support"
 HOMEPAGE="https://github.com/guzzle/promises"
+EGIT_REPO_URI="https://github.com/guzzle/promises.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,6 +26,8 @@ src_prepare() {
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
 }
+
+src_compile() { :; }
 
 src_test() {
 	phpunit --testdox || die "phpunit failed"
