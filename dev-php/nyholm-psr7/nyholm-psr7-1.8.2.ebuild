@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -46,6 +46,10 @@ src_test() {
 	ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
 		vendor/http-interop/http-factory-tests/test \
 		|| die "ln failed"
+	# fix non-static data provider deprecation
+	sed -i '/invalidWithHeaderProvider(/s|function|static function|' \
+		tests/ResponseTest.php \
+		|| die "sed failed for ResponseTest.php"
 	phpunit --testdox || die "phpunit failed"
 }
 
