@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,12 +14,19 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="ipv6"
 RESTRICT="test" # no tests
 
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader"
 
 DOCS=( {CHANGELOG,README}.md )
+
+src_prepare() {
+	default
+
+	! use ipv6 && eapply "${FILESDIR}/${PN}"-3.6.0-no-ipv6.patch
+}
 
 src_install() {
 	einstalldocs
