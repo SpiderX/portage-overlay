@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/amphp/byte-stream.git"
 
 inherit git-r3
 
 DESCRIPTION="A non-blocking stream abstraction for PHP based on Amp"
 HOMEPAGE="https://github.com/amphp/byte-stream"
+EGIT_REPO_URI="https://github.com/amphp/byte-stream.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,9 +31,14 @@ src_prepare() {
 		src/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+	# fix non-static data provider deprecation
+	sed -i '/provideEngineIterables(/s|function|static function|' \
+		test/ReadableIterableStreamTest.php \
+		|| die "sed failed for ReadableIterableStreamTest.php"
 }
 
 src_test() {
+	# skipped — testIssue47
 	phpunit --testdox || die "phpunit failed"
 }
 
