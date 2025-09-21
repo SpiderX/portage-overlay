@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/php-cache/tag-interop.git"
 
 inherit git-r3
 
 DESCRIPTION="Shared interfaces for tags. These are soon-to-be-PSR"
 HOMEPAGE="https://github.com/php-cache/tag-interop"
+EGIT_REPO_URI="https://github.com/php-cache/tag-interop.git"
 
 LICENSE="MIT"
 SLOT="0"
