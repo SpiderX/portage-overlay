@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -21,12 +21,12 @@ PROPERTIES="test_network"
 RDEPEND="dev-lang/php:*
 	dev-php/fedora-autoloader
 	dev-php/symfony-deprecation-contracts
-	>=dev-php/symfony-filesystem-6.4.9
+	>=dev-php/symfony-filesystem-6
 	dev-php/symfony-polyfill-ctype"
 BDEPEND="test? ( dev-php/composer
 		dev-php/phpunit
 		dev-php/symfony-event-dispatcher
-		>=dev-php/symfony-finder-6.4.8
+		>=dev-php/symfony-finder-6
 		dev-php/symfony-messenger
 		dev-php/symfony-service-contracts
 		dev-php/symfony-yaml )"
@@ -47,11 +47,10 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
+	eapply "${FILESDIR}/${PN}"-7.3.2-test-composer-version.patch
 	# remove composer specific test
 	sed -i '/testGetVendor/,+16d' Tests/Resource/ComposerResourceTest.php \
 		|| die "sed failed for ComposerResourceTest.php"
-	# don't fail test
-	sed -i '52d' Tests/Util/XmlUtilsTest.php || die "sed failed for XmlUtilsTest.php"
 	phpunit --testdox || die "phpunit failed"
 }
 

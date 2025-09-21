@@ -1,0 +1,33 @@
+--- a/Definition/Builder/NodeDefinition.php
++++ b/Definition/Builder/NodeDefinition.php
+@@ -97,6 +97,19 @@ abstract class NodeDefinition implements NodeParentInterface
+         ]));
+     }
+ 
++    public function docUrlNoComposer(string $uri, ?string $package = null, ?string $version = null): static
++    {
++        if ($package) {
++            preg_match('/^(\d+)\.(\d+)\.(\d+)/', $version ?? '', $m);
++        }
++
++        return $this->attribute('docUrl', strtr($uri, [
++            '{package}' => $package ?? '',
++            '{version:major}' => $m[1] ?? '',
++            '{version:minor}' => $m[2] ?? '',
++        ]));
++    }
++
+     /**
+      * Sets an attribute on the node.
+      *
+--- a/Tests/Definition/Builder/NodeDefinitionTest.php
++++ b/Tests/Definition/Builder/NodeDefinitionTest.php
+@@ -39,7 +39,7 @@ class NodeDefinitionTest extends TestCase
+     public function testDocUrl()
+     {
+         $node = new ArrayNodeDefinition('node');
+-        $node->docUrl('https://example.com/doc/{package}/{version:major}.{version:minor}', 'phpunit/phpunit');
++        $node->docUrlNoComposer('https://example.com/doc/{package}/{version:major}.{version:minor}', 'phpunit/phpunit', '12.1.4');
+ 
+         $r = new \ReflectionObject($node);
+         $p = $r->getProperty('attributes');
