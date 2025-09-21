@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1203](https://img.shields.io/badge/ebuild-1203-orange.svg)](https://img.shields.io/badge/ebuild-1203-orange.svg)
+[![Number of ebuilds: 1204](https://img.shields.io/badge/ebuild-1204-orange.svg)](https://img.shields.io/badge/ebuild-1204-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -765,6 +765,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-string](https://github.com/symfony/string) | An object-oriented API to strings
 *   dev-php/[symfony-translation](https://github.com/symfony/translation) | Symfony Translation Component
 *   dev-php/[symfony-translation-contracts](https://github.com/symfony/translation-contracts) | Symfony Translation Contracts
+*   dev-php/[symfony-type-info](https://github.com/symfony/type-info) | Extracts PHP types information
 *   dev-php/[symfony-uid](https://github.com/symfony/uid) | Object-oriented API to generate and represent UIDs
 *   dev-php/[symfony-validator](https://github.com/symfony/validator) | Symfony Validator Component
 *   dev-php/[symfony-var-dumper](https://github.com/symfony/var-dumper) | Mechanisms for walking through any arbitrary PHP variable
