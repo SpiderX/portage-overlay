@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -37,6 +37,16 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,test} "${S}" \
 		|| die "cp failed"
+	# fix non-static data provider deprecation
+	sed -i '/provideSerializableData(/s|function|static function|g' \
+		test/{Compressing,}JsonSerializerTest.php \
+		|| die "sed failed for CompressingJsonSerializerTest.php"
+	sed -i  -e '/provideSerializeData(/s|function|static function|' \
+		-e '/provideLargeSerializeData(/s|function|static function|' \
+		-e '/provideUnserializableData(/s|function|static function|' \
+		-e '/provideInvalidData(/s|function|static function|' \
+		test/{Compressing,}NativeSerializerTest.php \
+		|| die "sed failed for CompressingNativeSerializerTest.php"
 	phpunit --testdox || die "phpunit failed"
 }
 
