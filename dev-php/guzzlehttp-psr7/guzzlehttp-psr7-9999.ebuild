@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/guzzle/promises.git"
 
 inherit git-r3
 
 DESCRIPTION="PSR-7 HTTP message library"
 HOMEPAGE="https://github.com/guzzle/psr7"
+EGIT_REPO_URI="https://github.com/guzzle/psr7.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -34,12 +33,12 @@ src_prepare() {
 	ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
 		vendor/http-interop/http-factory-tests/test \
 		|| die "ln failed"
-	# remove test with deprecated method
-	sed -i '/testReturnsFalseWhenStreamDoesNotExist/,+5d' \
-		tests/StreamWrapperTest.php || die "sed failed"
 }
 
+src_compile() { :; }
+
 src_test() {
+	# skipped 5
 	phpunit --testdox || die "phpunit failed"
 }
 
