@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/laminas/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="curl gd ipv6 test xml"
 REQUIRED_USE="test? ( curl gd xml )"
 RESTRICT="test"
@@ -42,19 +42,7 @@ src_test() {
 	ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
 		vendor/http-interop/http-factory-tests/test \
 		|| die "ln failed"
-	! use ipv6 && eapply "${FILESDIR}/${PN}"-3.3.1-test-no-ipv6.patch
-	# replace deprecated method
-	sed -i 's/setMethods/onlyMethods/' test/StreamTest.php || die "sed failed"
-	# replace exception
-	sed -i '502s/Runtime/InvalidArgument/' test/StreamTest.php
-	# fix test does not extend TestCase
-	mv test/TestAsset/CallbacksForCallbackStream{Test,}.php || die "mv failed"
-	sed -i '/class /s|Test||' test/TestAsset/CallbacksForCallbackStream.php \
-		|| die "sed failed for CallbacksForCallbackStream.php"
-	sed -i '/CallbacksForCallback/s|StreamTest|Stream|' test/CallbackStreamTest.php \
-		|| die "sed faled for CallbackStreamTest.php"
-	# do not test stream factory till https://github.com/laminas/laminas-diactoros/pull/190
-	sed -i '/STREAM_FACTORY/d' phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
+	! use ipv6 && eapply "${FILESDIR}/${PN}"-3.6.0-test-no-ipv6.patch
 	phpunit --testdox || die "phpunit failed"
 }
 

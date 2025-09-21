@@ -1,6 +1,6 @@
---- ../test/ServerRequestFilter/FilterUsingXForwardedHeadersTest.php	2024-08-12 02:37:45.810886316 +0300
-+++ ../test/ServerRequestFilter/FilterUsingXForwardedHeadersTest.php	2024-08-12 02:38:58.340582668 +0300
-@@ -263,9 +263,6 @@
+--- ../test/ServerRequestFilter/FilterUsingXForwardedHeadersTest.php	2025-09-08 19:08:19.959527528 +0300
++++ ../test/ServerRequestFilter/FilterUsingXForwardedHeadersTest.php	2025-09-08 19:09:21.598288036 +0300
+@@ -264,9 +264,6 @@
          yield 'ipv4-class-a' => ['10.10.10.10'];
          yield 'ipv4-class-b' => ['172.16.16.16'];
          yield 'ipv4-class-c' => ['192.168.2.1'];
@@ -9,8 +9,8 @@
 -        yield 'ipv6-local-link' => ['fe80:0000:0000:0000:abcd:abcd:abcd:abcd'];
      }
  
-     /** @dataProvider trustedReservedNetworkList */
-@@ -303,9 +300,6 @@
+     #[DataProvider('trustedReservedNetworkList')]
+@@ -304,9 +301,6 @@
          yield 'ipv4-no-class-a' => ['19.10.10.10'];
          yield 'ipv4-not-class-b' => ['173.16.16.16'];
          yield 'ipv4-not-class-c' => ['193.168.2.1'];
@@ -19,10 +19,10 @@
 -        yield 'ipv6-not-local-link' => ['ef80:0000:0000:0000:abcd:abcd:abcd:abcd'];
      }
  
-     /** @dataProvider unreservedNetworkAddressList */
---- ../test/ServerRequestFilter/IPRangeTest.php	2024-08-12 02:41:34.818014379 +0300
-+++ ../test/ServerRequestFilter/IPRangeTest.php	2024-08-12 02:42:29.862502164 +0300
-@@ -44,39 +44,6 @@
+     #[DataProvider('unreservedNetworkAddressList')]
+--- ../test/ServerRequestFilter/IPRangeTest.php	2025-09-08 19:40:48.931459859 +0300
++++ ../test/ServerRequestFilter/IPRangeTest.php	2025-09-08 19:41:36.209857770 +0300
+@@ -43,37 +43,6 @@
      }
  
      /**
@@ -32,7 +32,7 @@
 -     *     2: string,
 -     * }>
 -     */
--    public function IPv6Data(): array
+-    public static function IPv6Data(): array
 -    {
 -        // @codingStandardsIgnoreStart
 -        return [
@@ -50,9 +50,7 @@
 -        // @codingStandardsIgnoreEnd
 -    }
 -
--    /**
--     * @dataProvider IPv6Data
--     */
+-    #[DataProvider('IPv6Data')]
 -    public function testIPv6(bool $result, string $remoteAddr, string $cidr): void
 -    {
 -        $this->assertSame($result, IPRange::matchesIPv6($remoteAddr, $cidr));
@@ -62,20 +60,15 @@
       * @psalm-return iterable<string, array{
       *     0: bool,
       *     1: string,
-@@ -89,16 +56,5 @@
+@@ -86,11 +55,6 @@
              $name = "IPv4 - {$test}";
              yield $name => $data;
          }
 -
--        foreach ($this->IPv6Data() as $test => $data) {
+-        foreach (self::IPv6Data() as $test => $data) {
 -            $name = "IPv6 - {$test}";
 -            yield $name => $data;
 -        }
--    }
--
--    /** @dataProvider combinedData */
--    public function testCombinedIPv4AndIPv6Pool(bool $result, string $remoteAddr, string $cidr): void
--    {
--        $this->assertSame($result, IPRange::matches($remoteAddr, $cidr));
      }
- }
+ 
+     #[DataProvider('combinedData')]
