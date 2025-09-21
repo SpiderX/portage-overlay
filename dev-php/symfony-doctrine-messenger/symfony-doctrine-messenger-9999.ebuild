@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/symfony/doctrine-messenger.git"
 
 inherit git-r3
 
 DESCRIPTION="Symfony Doctrine Messenger"
 HOMEPAGE="https://github.com/symfony/doctrine-messenger"
+EGIT_REPO_URI="https://github.com/symfony/doctrine-messenger.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -34,9 +33,13 @@ src_prepare() {
 		autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+	# remove integration tests need postgresql, pgbouncer
+	rm Tests/Transport/DoctrinePostgreSql{,Filter,Pgbouncer,Regular}IntegrationTest.php \
+		|| die "rm failed"
 }
 
 src_test() {
+	# skipped — testGetWithSkipLockedWithoutForUpdateMethod
 	phpunit --testdox || die "phpunit failed"
 }
 
