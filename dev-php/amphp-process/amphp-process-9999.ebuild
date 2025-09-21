@@ -1,19 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/amphp/process.git"
 
 inherit git-r3
 
 DESCRIPTION="An async process dispatcher"
 HOMEPAGE="https://github.com/amphp/process"
+EGIT_REPO_URI="https://github.com/amphp/process.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
@@ -30,6 +29,10 @@ src_prepare() {
 		src/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+	# fix non-static data provider deprecation
+	sed -i '/getProcessCounts(/s|function|static function|' \
+		test/ProcessTest.php \
+		|| die "sed failed for ProcessTest.php"
 }
 
 src_test() {

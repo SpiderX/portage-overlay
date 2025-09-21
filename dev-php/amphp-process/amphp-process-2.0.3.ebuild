@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,10 +13,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
+RESTRICT="test" # not ready for phpunit 11
 
 RDEPEND="dev-lang/php:*
 	dev-php/amphp-amp
@@ -41,6 +40,10 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,test} "${S}" \
 		|| die "cp failed"
+	# fix non-static data provider deprecation
+	sed -i '/getProcessCounts(/s|function|static function|' \
+		test/ProcessTest.php \
+		|| die "sed failed for ProcessTest.php"
 	phpunit --testdox || die "phpunit failed"
 }
 
