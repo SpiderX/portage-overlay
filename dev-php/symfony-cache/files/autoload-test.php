@@ -8,6 +8,7 @@ require_once 'Fedora/Autoloader/autoload.php';
 	'/usr/share/php/Doctrine/DBAL/autoload.php',
 	'/usr/share/php/Predis/autoload.php',
 	'/usr/share/php/Psr/SimpleCache/autoload.php',
+	'/usr/share/php/Symfony/Bridge/PhpUnit/autoload.php',
 	'/usr/share/php/Symfony/Component/DependencyInjection/autoload.php',
 	'/usr/share/php/Symfony/Component/Filesystem/autoload.php',
 	'/usr/share/php/Symfony/Component/HttpKernel/autoload.php',

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="pdo postgres sqlite test zlib"
 REQUIRED_USE="test? ( pdo postgres sqlite zlib )"
 RESTRICT="test"
@@ -30,17 +30,18 @@ BDEPEND="test? ( dev-db/redis
 		dev-php/cache-integration-tests
 		dev-php/composer
 		dev-php/doctrine-dbal
-		dev-php/igbinary
-		>=dev-php/pecl-memcached-3.2.0_p20231008
+		dev-php/pecl-apcu
+		dev-php/pecl-igbinary
+		dev-php/pecl-memcached
 		dev-php/pecl-redis
 		dev-php/phpunit
 		dev-php/predis
 		dev-php/psr-simple-cache
 		dev-php/symfony-dependency-injection
-		>=dev-php/symfony-filesystem-6.4.9
+		>=dev-php/symfony-filesystem-6
 		dev-php/symfony-http-kernel
-		dev-php/symfony-messenger )"
-# dev-php/pecl-apcu enables tests with non-existed method getName
+		dev-php/symfony-messenger
+		dev-php/symfony-phpunit-bridge )"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -58,20 +59,15 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	# remove test with failed assert
-	sed -i '/testKnownTagVersionsTtl/,+29d' Tests/Adapter/TagAwareAdapterTest.php \
-		|| die "sed failed for TagAwareAdapterTest.php"
-	# SQLSTATE[HY000]: General error: 1 table cache_items already exists
-	sed -i '/testConfigureSchemaDecoratedDbalDriver/,+24d' \
-		Tests/Adapter/DoctrineDbalAdapterTest.php \
-		|| die "sed failed for DoctrineDbalAdapterTest.php"
 	"${EPREFIX}"/usr/sbin/redis-server - <<- EOF || die "redis-server failed"
 		daemonize yes
 		pidfile "${T}/redis.pid"
 		port 6379
 		bind 127.0.0.1
 	EOF
-	REDIS_HOST=127.0.0.1 phpunit --testdox || die "phpunit failed"
+	# needs apc.enable_cli=1
+	REDIS_HOST=127.0.0.1 phpunit --exclude-group time-sensitive --testdox \
+		|| die "phpunit failed"
 	kill "$(<"${T}/redis.pid")" || die "kill failed"
 }
 
