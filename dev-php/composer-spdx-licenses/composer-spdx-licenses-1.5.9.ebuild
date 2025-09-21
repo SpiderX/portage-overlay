@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -25,8 +25,6 @@ BDEPEND="test? ( dev-php/composer
 		dev-php/phpunit )"
 
 PATCHES=( "${FILESDIR}/${PN}"-1.5.8-res-path.patch )
-
-DOCS=( {CHANGELOG,README}.md )
 
 src_prepare() {
 	default
@@ -51,6 +49,13 @@ src_test() {
 		|| die "sed failed for SpdxLicensesTest.php"
 	# mimic system path for bootstrap
 	cp -a src tests tmp/fake || die "cp failed"
+	# fix non-static data provider deprecation
+	sed -i  -e '/provideValidLicenses(/s|function|static function|' \
+		-e '/provideInvalidLicenses(/s|function|static function|' \
+		-e '/provideInvalidArgument(/s|function|static function|' \
+		-e '/provideResourceFiles(/s|function|static function|g' \
+		tmp/fake/tests/SpdxLicensesTest.php \
+		|| die "sed failed for SpdxLicensesTest.php"
 	phpunit --bootstrap tmp/fake/src/autoload.php \
 		tmp/fake/tests --testdox || die "phpunit failed"
 }
