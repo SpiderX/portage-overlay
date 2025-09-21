@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/sebastianbergmann/global-state.git"
 
 inherit git-r3
 
 DESCRIPTION="Snapshotting of global state"
 HOMEPAGE="https://github.com/sebastianbergmann/global-state"
+EGIT_REPO_URI="https://github.com/sebastianbergmann/global-state.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -34,7 +33,7 @@ src_prepare() {
 }
 
 src_test() {
-	phpunit --testdox || die "phpunit failed"
+	phpunit --bootstrap vendor/autoload.php --testdox || die "phpunit failed"
 }
 
 src_install() {
