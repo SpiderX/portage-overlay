@@ -1,12 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/symfony/security-http.git"
+inherit git-r3
 
 DESCRIPTION="Symfony Security HTTP Component"
 HOMEPAGE="https://github.com/symfony/security-http"
+EGIT_REPO_URI="https://github.com/symfony/security-http.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,6 +25,7 @@ RDEPEND="dev-lang/php:*
 	dev-php/symfony-service-contracts"
 BDEPEND="test? ( dev-php/phpunit
 		dev-php/symfony-expression-language
+		dev-php/symfony-http-client
 		dev-php/symfony-http-client-contracts
 		dev-php/symfony-phpunit-bridge
 		dev-php/symfony-rate-limiter
@@ -40,20 +42,13 @@ src_prepare() {
 		autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
-	# ignore risky tests
-	sed -i '/failOnRisky/s|true|false|' phpunit.xml.dist \
-		|| die "sed failed for phpunit.xml.dist"
 	# remove tests require web-token/jwt-signature
 	rm Tests/AccessToken/Oidc/OidcTokenHandlerTest.php \
 		|| die "rm failed"
-	# rename object
-	sed -i '/Mock_/s|Mock|MockObject|' \
-		Tests/Authentication/AuthenticatorManagerTest.php \
-		Tests/Controller/UserValueResolverTest.php \
-		|| die "sed failed for AuthenticatorManagerTest.php"
 }
 
 src_test() {
+	# skipped 14
 	phpunit --testdox || die "phpunit failed"
 }
 

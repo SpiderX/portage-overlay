@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -30,6 +30,7 @@ RDEPEND="dev-lang/php:*
 BDEPEND="test? ( dev-php/composer
 		dev-php/phpunit
 		dev-php/symfony-expression-language
+		dev-php/symfony-http-client
 		dev-php/symfony-http-client-contracts
 		dev-php/symfony-phpunit-bridge
 		dev-php/symfony-rate-limiter
@@ -53,17 +54,10 @@ src_test() {
 		--dev "${PN/-/\/}:${PV}" || die "composer failed"
 	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,Tests} "${S}" \
 		|| die "cp failed"
-	# ignore risky tests
-	sed -i '/failOnRisky/s|true|false|' phpunit.xml.dist \
-		|| die "sed failed for phpunit.xml.dist"
 	# remove tests require web-token/jwt-signature
 	rm Tests/AccessToken/Oidc/OidcTokenHandlerTest.php \
 		|| die "rm failed"
-	# rename object
-	sed -i '/Mock_/s|Mock|MockObject|' \
-		Tests/Authentication/AuthenticatorManagerTest.php \
-		Tests/Controller/UserValueResolverTest.php \
-		|| die "sed failed for AuthenticatorManagerTest.php"
+	# skipped 14
 	phpunit --testdox || die "phpunit failed"
 }
 
