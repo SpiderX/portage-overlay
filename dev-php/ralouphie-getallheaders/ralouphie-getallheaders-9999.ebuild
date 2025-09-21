@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/ralouphie/getallheaders.git"
 
 inherit git-r3
 
 DESCRIPTION="PHP getallheaders polyfill"
 HOMEPAGE="https://github.com/ralouphie/getallheaders"
+EGIT_REPO_URI="https://github.com/ralouphie/getallheaders.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -26,6 +25,10 @@ src_prepare() {
 		src/autoload.php || die "install failed"
 	install -D -m 644 "${FILESDIR}"/autoload-test.php \
 		vendor/autoload.php || die "install test failed"
+	# fix non-static data provider deprecation
+	sed -i '/dataWorks(/s|function|static function|' \
+		tests/GetAllHeadersTest.php \
+		|| die "sed failed for CompliesTest.php"
 }
 
 src_test() {
