@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1205](https://img.shields.io/badge/ebuild-1205-orange.svg)](https://img.shields.io/badge/ebuild-1205-orange.svg)
+[![Number of ebuilds: 1206](https://img.shields.io/badge/ebuild-1206-orange.svg)](https://img.shields.io/badge/ebuild-1206-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -307,6 +307,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[pipes](https://github.com/Gabriella439/pipes) | Compositional pipelines
 *   dev-haskell/[placeholders](https://github.com/ahammar/placeholders) | Placeholders for use while developing Haskell code
 *   dev-haskell/[pointed](https://github.com/ekmett/pointed) | Pointed and copointed data
+*   dev-haskell/[port-utils](https://github.com/jfischoff/port-utils) | Utilities for creating and waiting on ports
 *   dev-haskell/[postgresql-binary](https://github.com/nikita-volkov/postgresql-binary) | Encoders and decoders for the PostgreSQL's binary format
 *   dev-haskell/[postgresql-libpq](https://github.com/haskellari/postgresql-libpq) | low-level binding to libpq
 *   dev-haskell/[postgresql-libpq-configure](https://github.com/haskellari/postgresql-libpq) | A low-level binding to libpq to configure based provider
