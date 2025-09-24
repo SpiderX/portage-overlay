@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1207](https://img.shields.io/badge/ebuild-1207-orange.svg)](https://img.shields.io/badge/ebuild-1207-orange.svg)
+[![Number of ebuilds: 1208](https://img.shields.io/badge/ebuild-1208-orange.svg)](https://img.shields.io/badge/ebuild-1208-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -339,6 +339,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[th-orphans](https://github.com/mgsloan/th-orphans) | Orphan instances for TH datatypes
 *   dev-haskell/[th-reify-many](https://github.com/mgsloan/th-reify-many) | Recurseively reify template haskell datatype info
 *   dev-haskell/[time-manager](https://github.com/yesodweb/wai) | Scalable timer
+*   dev-haskell/[tmp-postgres](https://github.com/jfischoff/tmp-postgres) | Create temporary postgres instances
 *   dev-haskell/[tz](https://github.com/ysangkok/haskell-tz) | Efficient time zone handling
 *   dev-haskell/[tzdata](https://github.com/ysangkok/haskell-tzdata) | Distribution of the standard time zone database
 *   dev-haskell/[type-hint](https://github.com/mvv/type-hint) | Haskell library for helping type inference by using proxy values

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides functions for creating a temporary postgres
+	instance. By default it will create a temporary data directory and
+	a temporary directory for a UNIX domain socket for postgres to listen on.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">tmp-postgres</remote-id>
+		<remote-id type="github">jfischoff/tmp-postgres</remote-id>
+	</upstream>
+</pkgmetadata>
