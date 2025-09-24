@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1208](https://img.shields.io/badge/ebuild-1208-orange.svg)](https://img.shields.io/badge/ebuild-1208-orange.svg)
+[![Number of ebuilds: 1209](https://img.shields.io/badge/ebuild-1209-orange.svg)](https://img.shields.io/badge/ebuild-1209-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -345,6 +345,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[type-hint](https://github.com/mvv/type-hint) | Haskell library for helping type inference by using proxy values
 *   dev-haskell/[tzdata](https://github.com/nilcons/haskell-tzdata) | Distribution of the standard time zone database
 *   dev-haskell/[unix-time](https://hackage.haskell.org/package/unix-time) | Unix time parser/formatter and utilities
+*   dev-haskell/[uri-bytestring](https://github.com/Soostone/uri-bytestring) | Haskell URI parsing as ByteStrings
 *   dev-haskell/[vector-instances](https://github.com/ekmett/vector-instances) | Additional Instances for Data.Vector
 *   dev-haskell/[wai](https://github.com/yesodweb/wai) | Web Application Interface
 *   dev-haskell/[wai-middleware-static](https://github.com/scotty-web/wai-middleware-static) | WAI middleware that serves requests to static files
