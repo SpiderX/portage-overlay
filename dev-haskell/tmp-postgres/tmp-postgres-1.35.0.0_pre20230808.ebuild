@@ -20,7 +20,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # https://github.com/jfischoff/tmp-postgres/issues/283
 
-RDEPEND="dev-haskell/async:=[profile?]
+RDEPEND="dev-db/postgresql:*[server]
+	dev-haskell/async:=[profile?]
 	dev-haskell/base64-bytestring:=[profile?]
 	dev-haskell/cryptohash-sha1:=[profile?]
 	dev-haskell/generic-monoid:=[profile?]
