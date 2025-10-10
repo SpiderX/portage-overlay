@@ -1,0 +1,34 @@
+From b01d2493143ba2b20944ca48a79e0c292369e30e Mon Sep 17 00:00:00 2001
+From: Ananthu C V <weepingclown@debian.org>
+Date: Sun, 7 Sep 2025 10:20:49 +0530
+Subject: [PATCH] add dim to Attrs initialization to work with
+ prompt-toolkit=3.0.52
+
+---
+ tests/prompts/test_common.py | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/tests/prompts/test_common.py b/tests/prompts/test_common.py
+index 13a93e2e..8be9e45d 100644
+--- a/tests/prompts/test_common.py
++++ b/tests/prompts/test_common.py
+@@ -216,6 +216,19 @@ def test_print_with_style(monkeypatch):
+             reverse=False,
+             hidden=False,
+         )
++    elif prompt_toolkit_version >= (3, 0, 52):
++        assert mock.method_calls[0][1][0] == Attrs(
++            color="8b0000",
++            bgcolor="",
++            bold=True,
++            underline=False,
++            italic=True,
++            blink=False,
++            reverse=False,
++            hidden=False,
++            strike=False,
++            dim=False,
++        )
+     else:
+         assert mock.method_calls[0][1][0] == Attrs(
+             color="8b0000",

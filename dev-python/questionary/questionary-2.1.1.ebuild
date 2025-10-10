@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -17,5 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/prompt-toolkit[${PYTHON_USEDEP}]"
+
+PATCHES=( "${FILESDIR}/${PN}"-2.1.1-test.patch )
 
 distutils_enable_tests pytest
