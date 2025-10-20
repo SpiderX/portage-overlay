@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1285](https://img.shields.io/badge/ebuild-1285-orange.svg)](https://img.shields.io/badge/ebuild-1285-orange.svg)
+[![Number of ebuilds: 1286](https://img.shields.io/badge/ebuild-1286-orange.svg)](https://img.shields.io/badge/ebuild-1286-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1015,6 +1015,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[opentelemetry-instrumentation-asgi](https://github.com/open-telemetry/opentelemetry-python-contrib) | OpenTelemetry ASGI Instrumentation
 *   dev-python/[opentelemetry-instrumentation-requests](https://github.com/open-telemetry/opentelemetry-python-contrib) | OpenTelemetry requests instrumentation
 *   dev-python/[opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Python Proto
+*   dev-python/[opentelemetry-resourcedetector-gcp](https://github.com/GoogleCloudPlatform/opentelemetry-operations-python) | OpenTelemetry Google Cloud Resource Detector
 *   dev-python/[opentelemetry-test-utils](https://github.com/open-telemetry/opentelemetry-python) | Test utilities for OpenTelemetry unit tests
 *   dev-python/[opentelemetry-util-http](https://github.com/open-telemetry/opentelemetry-python-contrib) | Web util for OpenTelemetry
 *   dev-python/[oscrypto](https://github.com/wbond/oscrypto) | Kerberos manipulation library
