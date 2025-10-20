@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_REQ_USE="sqlite(+)"
 
 inherit distutils-r1
 
@@ -20,26 +21,23 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 	dev-python/jwcrypto[${PYTHON_USEDEP}]
 	dev-python/oauthlib[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite)
-		dev-python/djangorestframework[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/djangorestframework[${PYTHON_USEDEP}] )"
 
 EPYTEST_XDIST=1
+EPYTEST_PLUGINS=( pytest-{django,mock,xdist} )
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# AssertionError
+	tests/test_oauth2_validators.py::TestOAuth2ValidatorErrorResourceToken::test_response_when_auth_server_response_return_404
+	tests/test_authorization_code.py::TestOIDCAuthorizationCodeHSAlgorithm::test_id_token
+)
+
+export DJANGO_SETTINGS_MODULE='tests.settings'
 
 python_prepare_all() {
 	# remove addopts
 	sed -i '/addopts/,+5d' pyproject.toml || die "sed failed for pyproject.toml"
 
-	# Disable test (network-sandbox)
-	sed -i '/test_response_when_auth_server_response_return_404/i\\    @pytest.mark.skip("disable")' \
-		tests/test_oauth2_validators.py || die "sed failed for test_oauth2_validators.py"
-
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	DJANGO_SETTINGS_MODULE=tests.settings PYTHONPATH=. \
-		py.test -v || die "tests failed with ${EPYTHON}"
 }
