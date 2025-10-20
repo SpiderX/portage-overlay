@@ -17,11 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-benchmark[${PYTHON_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}/${PN}"-2.3.0-tests.patch )
 
+EPYTEST_PLUGINS=( pytest-{asyncio,benchmark} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
