@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1283](https://img.shields.io/badge/ebuild-1283-orange.svg)](https://img.shields.io/badge/ebuild-1283-orange.svg)
+[![Number of ebuilds: 1284](https://img.shields.io/badge/ebuild-1284-orange.svg)](https://img.shields.io/badge/ebuild-1284-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1006,6 +1006,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[nltk](https://github.com/nltk/nltk) | Natural Language Toolkit
 *   dev-python/[nltk-data](https://www.nltk.org/nltk_data/) | Data files for NLTK
 *   dev-python/[nmslib](https://github.com/nmslib/nmslib) | Non-Metric Space Library
+*   dev-python/[oci](https://github.com/oracle/oci-python-sdk) | Oracle Cloud Infrastructure Python SDK
 *   dev-python/[onetimepass](https://github.com/tadeck/onetimepass) | One-time password library for HOTP and TOTP passwords
 *   dev-python/[openai](https://github.com/openai/openai-python) | The official Python library for the OpenAI API
 *   dev-python/[opentelemetry-exporter-otlp-proto-common](https://github.com/open-telemetry/opentelemetry-python) | OpenTelemetry Protobuf encoding
