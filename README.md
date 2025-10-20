@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1249](https://img.shields.io/badge/ebuild-1249-orange.svg)](https://img.shields.io/badge/ebuild-1249-orange.svg)
+[![Number of ebuilds: 1250](https://img.shields.io/badge/ebuild-1250-orange.svg)](https://img.shields.io/badge/ebuild-1250-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -911,6 +911,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[factory-boy](https://github.com/FactoryBoy/factory_boy) | A fixtures replacement tool
 *   dev-python/[fakeldap](https://github.com/zulip/fakeldap) | An implementation of a LDAPObject to fake a ldap server
 *   dev-python/[faker](https://github.com/joke2k/faker) | Python package that generates fake data
+*   dev-python/[fastapi](https://github.com/fastapi/fastapi) | FastAPI framework
 *   dev-python/[filetype](https://github.com/h2non/filetype.py) | Infer file type and MIME type of any file/buffer
 *   dev-python/[fire](https://github.com/google/python-fire) | Library for automatically generating CLI from object
 *   dev-python/[fleep](https://github.com/floyernick/fleep-py) | File format determination library for Python
