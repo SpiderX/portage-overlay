@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1254](https://img.shields.io/badge/ebuild-1254-orange.svg)](https://img.shields.io/badge/ebuild-1254-orange.svg)
+[![Number of ebuilds: 1255](https://img.shields.io/badge/ebuild-1255-orange.svg)](https://img.shields.io/badge/ebuild-1255-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -925,6 +925,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[gevent](https://github.com/gevent/gevent) | Coroutine-based concurrency library for Python
 *   dev-python/[glom](https://github.com/mahmoud/glom) | A declarative object transformer for conglomerating nested data
 *   dev-python/[google-crc32c](https://github.com/googleapis/python-crc32c) | Hardware-based implementation of the CRC32C hashing algorithm
+*   dev-python/[google-cloud-bigquery](https://github.com/googleapis/python-bigquery) | Google Cloud BigQuery API client library
 *   dev-python/[google-cloud-iam](https://github.com/googleapis/python-iam) | Google Cloud IAM API client library
 *   dev-python/[google-cloud-core](https://github.com/googleapis/python-cloud-core) | Google Cloud API client core library
 *   dev-python/[google-cloud-kms](https://github.com/googleapis/google-cloud-python) | Python Client for Google Cloud Key Management Service

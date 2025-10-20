@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Querying massive datasets can be time consuming and expensive without
+	the right hardware and infrastructure. Google BigQuery solves this problem
+	by enabling super-fast, SQL queries against append-mostly tables,
+	using the processing power of Google infrastructure.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">googleapis/python-bigquery</remote-id>
+		<remote-id type="pypi">google-cloud-bigquery</remote-id>
+	</upstream>
+</pkgmetadata>
