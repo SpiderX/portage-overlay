@@ -1,0 +1,40 @@
+From 5fcdabc2a1309af0cb5177cccd303c4eda2ee547 Mon Sep 17 00:00:00 2001
+From: Raphael Pierzina <raphael@hackebrot.de>
+Date: Wed, 15 Sep 2021 11:27:03 +0200
+Subject: [PATCH] Add wildcard to fnmatch pattern for skipped test
+
+---
+ tests/test_emoji.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_emoji.py b/tests/test_emoji.py
+index bfeb1a3..5d23115 100644
+--- a/tests/test_emoji.py
++++ b/tests/test_emoji.py
+@@ -12,7 +12,7 @@ def test_emoji_disabled_by_default_verbose(testdir, emoji_tests):
+             "*::test_failed FAILED",
+             "*::test_xfailed XFAIL",
+             "*::test_xpassed XPASS",
+-            "*::test_skipped SKIPPED",
++            "*::test_skipped SKIPPED *",
+             "*::test_error ERROR",
+         ]
+     )
+@@ -38,7 +38,7 @@ def test_emoji_enabled_verbose(testdir, emoji_tests):
+             "*::test_failed FAILED 😰 ",
+             "*::test_xfailed XFAIL 😞 ",
+             "*::test_xpassed XPASS 😲 ",
+-            "*::test_skipped SKIPPED 🙄 ",
++            "*::test_skipped SKIPPED 🙄 *",
+             "*::test_error ERROR 😡 ",
+         ]
+     )
+@@ -66,7 +66,7 @@ def test_emoji_enabled_custom_verbose(testdir, emoji_tests, custom_emojis):
+             "*::test_failed FAILED 😿 ",
+             "*::test_xfailed XFAIL 🤓 ",
+             "*::test_xpassed XPASS 😜 ",
+-            "*::test_skipped SKIPPED 🙈 ",
++            "*::test_skipped SKIPPED 🙈 *",
+             "*::test_error ERROR 💩 ",
+         ]
+     )
