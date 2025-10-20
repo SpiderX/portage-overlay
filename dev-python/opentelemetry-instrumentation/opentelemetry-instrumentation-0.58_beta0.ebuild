@@ -19,5 +19,6 @@ RDEPEND="dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 	dev-python/opentelemetry-semantic-conventions[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/wrapt[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/opentelemetry-test-utils )"
 
 distutils_enable_tests pytest
