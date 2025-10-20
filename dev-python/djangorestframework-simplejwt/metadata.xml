@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Simple JWT provides a JSON Web Token authentication backend for the
+	Django REST Framework. It aims to cover the most common use cases of
+	JWTs by offering a conservative set of default features. It also aims
+	to be easily extensible in case a desired feature is not present.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jazzband/djangorestframework-simplejwt</remote-id>
+		<remote-id type="pypi">djangorestframework-simplejwt</remote-id>
+	</upstream>
+</pkgmetadata>
