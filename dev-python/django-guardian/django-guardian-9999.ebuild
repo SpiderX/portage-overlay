@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_REQ_USE="sqlite(+)"
 
 inherit distutils-r1 git-r3
 
@@ -17,10 +18,9 @@ SLOT="0"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite)
-		dev-python/django-environ[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/django-environ[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-django )
 distutils_enable_tests pytest
 
 python_test() {
