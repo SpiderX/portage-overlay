@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package extracts as much schema information from DRF as possible,
+	provides flexibility to make the schema usable in the real world,
+	generate a schema that works well with the most popular client generators.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">tfranzel/drf-spectacular</remote-id>
+		<remote-id type="pypi">drf-spectacular</remote-id>
+	</upstream>
+</pkgmetadata>
