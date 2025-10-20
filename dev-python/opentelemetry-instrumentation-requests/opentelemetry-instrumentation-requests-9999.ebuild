@@ -15,8 +15,6 @@ S="${WORKDIR}/${P}/instrumentation/${PN}"
 
 LICENSE="Apache-2.0"
 SLOT=0
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 	dev-python/opentelemetry-instrumentation[${PYTHON_USEDEP}]
