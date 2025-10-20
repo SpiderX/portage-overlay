@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1297](https://img.shields.io/badge/ebuild-1297-orange.svg)](https://img.shields.io/badge/ebuild-1297-orange.svg)
+[![Number of ebuilds: 1298](https://img.shields.io/badge/ebuild-1298-orange.svg)](https://img.shields.io/badge/ebuild-1298-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1055,6 +1055,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pypsrp](https://github.com/jborean93/pypsrp) | PowerShell Remoting Protocol and WinRM for Python
 *   dev-python/[pypi-json](https://github.com/repo-helper/pypi-json) | PyPI JSON API client library
 *   dev-python/[pyproject-examples](https://github.com/repo-helper/pyproject-examples) | Example pyproject.toml configs for testing
+*   dev-python/[pyproject-parser](https://github.com/repo-helper/pyproject-parser) | Parser for pyproject.toml
 *   dev-python/[pypykatz](https://github.com/skelsec/pypykatz) | Python library to extract passwords from memory
 *   dev-python/[pystache](https://github.com/PennyDreadfulMTG/pystache) | Mustache templating system for Python
 *   dev-python/[pytest-benchmark](https://github.com/ionelmc/pytest-benchmark) | py.test fixture for benchmarking code
