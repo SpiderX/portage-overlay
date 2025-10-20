@@ -1,0 +1,31 @@
+From c2734bb8c63d93442a1dd88de6cfd69c4b0c8cb9 Mon Sep 17 00:00:00 2001
+From: Dmitry Pytaylo <dpytaylo@gmail.com>
+Date: Sat, 2 Aug 2025 20:51:09 +0300
+Subject: [PATCH] fix: add required annotations
+
+---
+ src/asgi_lifespan/_concurrency/trio.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/asgi_lifespan/_concurrency/trio.py b/src/asgi_lifespan/_concurrency/trio.py
+index 93716c9..ca9dd06 100644
+--- a/src/asgi_lifespan/_concurrency/trio.py
++++ b/src/asgi_lifespan/_concurrency/trio.py
+@@ -2,6 +2,7 @@
+ import typing
+ 
+ import trio
++from trio import MemoryReceiveChannel, MemorySendChannel
+ 
+ from .._compat import AsyncExitStack
+ from .base import BaseEvent, BaseQueue, ConcurrencyBackend
+@@ -20,6 +21,9 @@ async def wait(self) -> None:
+ 
+ class TrioQueue(BaseQueue):
+     def __init__(self, capacity: int) -> None:
++        self._send_channel: MemorySendChannel
++        self._receive_channel: MemoryReceiveChannel
++
+         self._send_channel, self._receive_channel = trio.open_memory_channel(
+             max_buffer_size=capacity
+         )

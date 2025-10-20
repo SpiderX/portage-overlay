@@ -1,0 +1,43 @@
+From 7ca65451c37fe90debb79808b525cee4d7045389 Mon Sep 17 00:00:00 2001
+From: Dmitry Pytaylo <dpytaylo@gmail.com>
+Date: Sat, 2 Aug 2025 19:57:54 +0300
+Subject: [PATCH] fix: use `ExceptionGroup` for other tests to fix them
+
+---
+ tests/test_manager.py | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_manager.py b/tests/test_manager.py
+index 99431de..3dd0419 100644
+--- a/tests/test_manager.py
++++ b/tests/test_manager.py
+@@ -172,8 +172,12 @@ async def slow_shutdown(
+ 
+ @pytest.mark.usefixtures("concurrency")
+ @pytest.mark.parametrize("app", [slow_startup, slow_shutdown])
+-async def test_lifespan_timeout(app: typing.Callable) -> None:
+-    with pytest.raises(TimeoutError):
++async def test_lifespan_timeout(concurrency: str, app: typing.Callable) -> None:
++    expected_exceptions = (
++        (TimeoutError, ExceptionGroup) if concurrency == "trio" 
++        else TimeoutError
++    )
++    with pytest.raises(expected_exceptions):
+         async with LifespanManager(app, startup_timeout=0.01, shutdown_timeout=0.01):
+             pass
+ 
+@@ -233,8 +237,12 @@ async def http_no_assert_before_receive_request(
+         ),
+     ],
+ )
+-async def test_lifespan_not_supported(app: typing.Callable) -> None:
+-    with pytest.raises(LifespanNotSupported):
++async def test_lifespan_not_supported(concurrency: str, app: typing.Callable) -> None:
++    expected_exceptions = (
++        ExceptionGroup if concurrency == "trio" 
++        else LifespanNotSupported
++    )
++    with pytest.raises(expected_exceptions):
+         async with LifespanManager(app):
+             pass  # pragma: no cover
+ 

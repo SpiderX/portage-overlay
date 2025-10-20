@@ -1,0 +1,22 @@
+From 1840de1fcddb64536b1b349ce32fadf540b521d1 Mon Sep 17 00:00:00 2001
+From: Dmitry Pytaylo <dpytaylo@gmail.com>
+Date: Fri, 1 Aug 2025 18:11:29 +0300
+Subject: [PATCH] fix: add `ASGITransport()`
+
+---
+ tests/test_manager.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_manager.py b/tests/test_manager.py
+index d4e4e2e..e2f5d93 100644
+--- a/tests/test_manager.py
++++ b/tests/test_manager.py
+@@ -241,7 +241,7 @@ async def get(request: Request) -> Response:
+ 
+     async with LifespanManager(app) as manager:
+         async with httpx.AsyncClient(
+-            app=manager.app, base_url="http://example.org"
++            transport=httpx.ASGITransport(app=manager.app), base_url="http://example.org"
+         ) as client:
+             response = await client.get("/get")
+             assert response.status_code == 200
