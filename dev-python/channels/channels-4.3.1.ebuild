@@ -1,0 +1,39 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..14} )
+
+inherit distutils-r1 optfeature
+
+DESCRIPTION="Brings async, event-driven capabilities to Django"
+HOMEPAGE="https://github.com/django/channels"
+SRC_URI="https://github.com/django/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64"
+
+RDEPEND="dev-python/asgiref[${PYTHON_USEDEP}]
+	dev-python/django[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/async-timeout[${PYTHON_USEDEP}]
+		dev-python/daphne[${PYTHON_USEDEP}]
+		dev-python/selenium[${PYTHON_USEDEP}]
+		dev-util/selenium-manager
+		www-apps/chromedriver-bin )"
+
+EPYTEST_PLUGINS=( pytest-{asyncio,django} )
+distutils_enable_tests pytest
+
+src_prepare() {
+	default
+
+	# don't install tests
+	sed -i '/tests$/s|$|*|' setup.cfg || die "sed failed for setup.cfg"
+}
+
+pkg_postinst() {
+	optfeature "integration with daphne" dev-python/daphne
+}

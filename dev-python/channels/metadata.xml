@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Channels augments Django to bring WebSocket, long-poll HTTP, task offloading
+	and other async support to your code, using familiar Django design patterns
+	and a flexible underlying framework that lets you not only customize
+	behaviours but also write support for your own protocols and needs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">django/channels</remote-id>
+		<remote-id type="pypi">channels</remote-id>
+	</upstream>
+</pkgmetadata>
