@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1240](https://img.shields.io/badge/ebuild-1240-orange.svg)](https://img.shields.io/badge/ebuild-1240-orange.svg)
+[![Number of ebuilds: 1241](https://img.shields.io/badge/ebuild-1241-orange.svg)](https://img.shields.io/badge/ebuild-1241-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -891,6 +891,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[django-storages](https://github.com/jschneier/django-storages) | Support for many storage backends in Django
 *   dev-python/[django-tree-queries](https://github.com/feincms/django-tree-queries) | Tree queries with explicit opt-in, without configurability
 *   dev-python/[djangorestframework-camel-case](https://github.com/vbabiy/djangorestframework-camel-case) | Camel case JSON support for Django REST framework
+*   dev-python/[djangorestframework-dataclasses](https://github.com/oxan/djangorestframework-dataclasses) | Dataclasses serializer for Django REST framework
 *   dev-python/[djangorestframework-recursive](https://github.com/heywbj/django-rest-framework-recursive) | Recursive Serialization for Django REST framework
 *   dev-python/[dockerfile-parse](https://github.com/containerbuildsystem/dockerfile-parse) | Python library for parsing Dockerfile files
 *   dev-python/[dpath](https://github.com/dpath-maintainers/dpath-python) | A python module that will check for package updates
