@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1217](https://img.shields.io/badge/ebuild-1217-orange.svg)](https://img.shields.io/badge/ebuild-1217-orange.svg)
+[![Number of ebuilds: 1218](https://img.shields.io/badge/ebuild-1218-orange.svg)](https://img.shields.io/badge/ebuild-1218-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -829,6 +829,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[bloodhound](https://github.com/dirkjanm/bloodhound.py) | Python based ingestor for BloodHound
 *   dev-python/[boto3-stubs](https://github.com/youtype/mypy_boto3_builder) | Type annotations for boto3
 *   dev-python/[botocore-stubs](https://github.com/youtype/botocore-stubs) | Type annotations and code completion for botocore
+*   dev-python/[bson](https://github.com/py-bson/bson) | Independent BSON codec for Python
 *   dev-python/[cached-property](https://github.com/pydanny/cached-property) | A cached-property for decorating methods in classes
 *   dev-python/[celery](https://github.com/celery/celery) | Asynchronous task job queue based on distributed message passing
 *   dev-python/[chevron](https://github.com/noahmorrison/chevron) | Mustache templating language renderer
