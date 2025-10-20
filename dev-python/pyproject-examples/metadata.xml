@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides an example pyproject.toml configs for testing.
+	These are designed to be used in the testsuite for <pkg>dev-python/pyproject-parser</pkg>
+	and <pkg>dev-python/whey</pkg>, but may be useful for other tools based on those.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">repo-helper/pyproject-examples</remote-id>
+		<remote-id type="pypi">pyproject-examples</remote-id>
+	</upstream>
+</pkgmetadata>
