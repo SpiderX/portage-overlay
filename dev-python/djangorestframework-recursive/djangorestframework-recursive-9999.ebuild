@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Recursive Serialization for Django REST framework"
 HOMEPAGE="https://github.com/heywbj/django-rest-framework-recursive"
-EGIT_REPO_URI="https://github.com/heywbj/${PN}.git"
+EGIT_REPO_URI="https://github.com/heywbj/django-rest-framework-recursive.git"
 
 LICENSE="ISC"
 SLOT="0"
