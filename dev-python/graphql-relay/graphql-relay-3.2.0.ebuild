@@ -17,9 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="dev-python/graphql-core[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-describe[${PYTHON_USEDEP}] )"
 
-PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-PYTEST_PLUGINS=pytest-describe,asyncio
+EPYTEST_PLUGINS=( pytest-{asyncio,describe} )
 distutils_enable_tests pytest
