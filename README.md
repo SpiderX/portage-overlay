@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1232](https://img.shields.io/badge/ebuild-1232-orange.svg)](https://img.shields.io/badge/ebuild-1232-orange.svg)
+[![Number of ebuilds: 1233](https://img.shields.io/badge/ebuild-1233-orange.svg)](https://img.shields.io/badge/ebuild-1233-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -879,6 +879,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | Implementation of per object permissions for Django
 *   dev-python/[django-jsonfield](https://github.com/dmkoch/django-jsonfield) | A Django field to store validated JSON in your model
 *   dev-python/[django-jinja](https://github.com/niwinz/django-jinja) | Jinja2 templating language integrated in Django
+*   dev-python/[django-model-utils](https://github.com/jazzband/django-model-utils) | Django model mixins and utilities
 *   dev-python/[django-oauth-toolkit](https://github.com/jazzband/django-oauth-toolkit) | OAuth2 Provider for Django
 *   dev-python/[django-pipeline](https://github.com/jazzband/django-pipeline) | An asset packaging library for Django
 *   dev-python/[django-pglocks](https://github.com/Xof/django-pglocks) | PostgreSQL locking context managers and functions for Django
