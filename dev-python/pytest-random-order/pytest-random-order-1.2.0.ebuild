@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -19,10 +18,3 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
-
-EPYTEST_DESELECT=(
-	# AttributeError: module 'py' has no attribute 'code'
-	tests/test_actual_test_runs.py::test_it_works_with_actual_tests
-	tests/test_actual_test_runs.py::test_failed_first
-	tests/test_doctests.py::test_doctests
-)
