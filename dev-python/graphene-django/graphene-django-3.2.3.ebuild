@@ -25,10 +25,9 @@ RDEPEND="dev-python/django[${PYTHON_USEDEP}]
 BDEPEND="test? ( dev-python/django-filter[${PYTHON_USEDEP}]
 		dev-python/djangorestframework[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}]
-		dev-python/pytest-random-order[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-{django,random-order} )
 distutils_enable_tests pytest
 
 python_prepare_all() {
