@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Litestar is a powerful, flexible yet opinionated ASGI framework,
+	focused on building APIs. It offers high-performance data validation,
+	dependency injection, first-class ORM integration, authorization primitives,
+	a rich plugin API, middleware, and much more that's needed
+	to get applications up and running.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">litestar-org/litestar</remote-id>
+		<remote-id type="pypi">litestar</remote-id>
+	</upstream>
+</pkgmetadata>
