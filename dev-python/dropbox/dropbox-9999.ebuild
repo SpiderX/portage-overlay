@@ -1,0 +1,32 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..14} )
+
+inherit distutils-r1 git-r3
+
+DESCRIPTION="Official Dropbox API Client"
+HOMEPAGE="https://github.com/dropbox/dropbox-sdk-python"
+EGIT_REPO_URI="https://github.com/dropbox/dropbox-sdk-python.git"
+
+LICENSE="MIT"
+SLOT="0"
+RESTRICT="test"
+PROPERTIES="test_network"
+
+RDEPEND="dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/stone[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+
+EPYTEST_PLUGINS=( pytest-mock )
+distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# disable integration tests need SCOPED_USER_DROPBOX_TOKEN
+	test/integration/test_dropbox.py
+)
