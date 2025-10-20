@@ -19,8 +19,6 @@ RDEPEND="dev-python/graphql-core[${PYTHON_USEDEP}]
 	dev-python/graphql-relay[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-benchmark[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-{asyncio,benchmark,mock} )
 distutils_enable_tests pytest
