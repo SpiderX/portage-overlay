@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a variety of storage backends in a single library,
+	which is usually compatible with the currently supported versions of Django.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jschneier/django-storages</remote-id>
+		<remote-id type="pypi">django-storages</remote-id>
+	</upstream>
+</pkgmetadata>
