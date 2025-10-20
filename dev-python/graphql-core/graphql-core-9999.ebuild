@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=uv-build
 PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 git-r3
@@ -15,8 +15,5 @@ EGIT_REPO_URI="https://github.com/graphql-python/${PN}.git"
 LICENSE="MIT"
 SLOT="0"
 
-BDEPEND="test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-benchmark[${PYTHON_USEDEP}] )"
-
-EPYTEST_TIMEOUT=1
+EPYTEST_PLUGINS=( pytest-{asyncio,benchmark,timeout} )
 distutils_enable_tests pytest

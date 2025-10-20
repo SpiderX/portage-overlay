@@ -16,8 +16,5 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-benchmark[${PYTHON_USEDEP}] )"
-
-EPYTEST_TIMEOUT=1
+EPYTEST_PLUGINS=( pytest-{asyncio,benchmark,timeout} )
 distutils_enable_tests pytest
