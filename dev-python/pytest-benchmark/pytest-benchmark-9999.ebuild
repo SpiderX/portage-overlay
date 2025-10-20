@@ -24,6 +24,7 @@ BDEPEND="test? ( dev-python/aspectlib[${PYTHON_USEDEP}]
 		dev-python/pygaljs[${PYTHON_USEDEP}] )"
 
 EPYTEST_XDIST=1
+EPYTEST_PLUGINS=( pytest-xdist )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
