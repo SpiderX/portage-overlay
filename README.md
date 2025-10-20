@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1290](https://img.shields.io/badge/ebuild-1290-orange.svg)](https://img.shields.io/badge/ebuild-1290-orange.svg)
+[![Number of ebuilds: 1291](https://img.shields.io/badge/ebuild-1291-orange.svg)](https://img.shields.io/badge/ebuild-1291-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1040,6 +1040,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pybeam](https://github.com/matwey/pybeam) | Python module to parse Erlang BEAM files
 *   dev-python/[pycep](https://github.com/gruebel/pycep) | A Python based Bicep parser
 *   dev-python/[pycfmodel](https://github.com/Skyscanner/pycfmodel) | A python model for Cloud Formation scripts
+*   dev-python/[pydantic-extra-types](https://github.com/pydantic/pydantic-extra-types) | Extra Pydantic types
 *   dev-python/[pydantic-settings](https://github.com/pydantic/pydantic-settings) | Settings management using pydantic
 *   dev-python/[pydash](https://github.com/dgilland/pydash) | The kitchen sink of Python functional utility libraries
 *   dev-python/[pyemd](https://github.com/wmayner/pyemd) | Fast EMD for Python
