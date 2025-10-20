@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1222](https://img.shields.io/badge/ebuild-1222-orange.svg)](https://img.shields.io/badge/ebuild-1222-orange.svg)
+[![Number of ebuilds: 1223](https://img.shields.io/badge/ebuild-1223-orange.svg)](https://img.shields.io/badge/ebuild-1223-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -848,6 +848,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[coreschema](https://github.com/core-api/python-coreschema) | Python CoreSchema
 *   dev-python/[cprint](https://github.com/EVasseure/cprint) | Printing in color in python
 *   dev-python/[crayons](https://github.com/kennethreitz/crayons) | Text UI colors
+*   dev-python/[cron-converter](https://github.com/Sonic0/cron-converter) | Cron string parser and scheduler for Python
 *   dev-python/[cron-descriptor](https://github.com/Salamek/cron-descriptor) | Converts cron expressions into human readable strings
 *   dev-python/[crossplane](https://github.com/nginxinc/crossplane) | Fast and reliable NGINX configuration parser
 *   dev-python/[ctypescrypto](https://github.com/vbwagner/ctypescrypto) | File format determination library for Python
