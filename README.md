@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1269](https://img.shields.io/badge/ebuild-1269-orange.svg)](https://img.shields.io/badge/ebuild-1269-orange.svg)
+[![Number of ebuilds: 1270](https://img.shields.io/badge/ebuild-1270-orange.svg)](https://img.shields.io/badge/ebuild-1270-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -970,6 +970,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[lia-web](https://github.com/patrick91/lia) | A library for working with web frameworks
 *   dev-python/[libvalkey](https://github.com/valkey-io/libvalkey-py) | Python wrapper for libvalkey
 *   dev-python/[litestar](https://github.com/litestar-org/litestar) | A production-ready, highly performant, extensible ASGI API Framework
+*   dev-python/[litestar-htmx](https://github.com/litestar-org/litestar-htmx) | The HTMX Plugin for Litestar
 *   dev-python/[livereload](https://github.com/lepture/python-livereload) | Python LiveReload is an awesome tool for web developers
 *   dev-python/[luhn](https://github.com/mmcloughlin/luhn) | Generate and verify Luhn check digits
 *   dev-python/[llvmlite](https://github.com/numba/llvmlite) | A lightweight wrapper around basic LLVM functionality
