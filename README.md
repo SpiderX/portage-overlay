@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1231](https://img.shields.io/badge/ebuild-1231-orange.svg)](https://img.shields.io/badge/ebuild-1231-orange.svg)
+[![Number of ebuilds: 1232](https://img.shields.io/badge/ebuild-1232-orange.svg)](https://img.shields.io/badge/ebuild-1232-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -873,6 +873,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[django-celery-beat](https://github.com/celery/django-celery-beat) | Celery Periodic Tasks for Django
 *   dev-python/[django-debug-toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar) | A configurable set of panels that display debug information
 *   dev-python/[django-environ](https://github.com/joke2k/django-environ) | An environment variables to configure Django
+*   dev-python/[django-htmx](https://github.com/adamchainz/django-htmx) | Extensions for using Django with htmx
 *   dev-python/[django-fake-model](https://github.com/erm0l0v/django-fake-model) | A library for creating fake models in the unit tests
 *   dev-python/[django-graphiql-debug-toolbar](https://github.com/flavors/django-graphiql-debug-toolbar) | Django Debug Toolbar for GraphiQL IDE
 *   dev-python/[django-guardian](https://github.com/django-guardian/django-guardian) | Implementation of per object permissions for Django
