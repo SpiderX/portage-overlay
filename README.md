@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1289](https://img.shields.io/badge/ebuild-1289-orange.svg)](https://img.shields.io/badge/ebuild-1289-orange.svg)
+[![Number of ebuilds: 1290](https://img.shields.io/badge/ebuild-1290-orange.svg)](https://img.shields.io/badge/ebuild-1290-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1035,6 +1035,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[proglog](https://github.com/Edinburgh-Genome-Foundry/Proglog) | Logs and progress bars manager for Python
 *   dev-python/[promise](https://github.com/syrusakbary/promise) | Ultra-performant Promise implementation in Python
 *   dev-python/[purl](https://github.com/codeinthehole/purl) | Simple Python URL class
+*   dev-python/[pwdlib](https://github.com/frankie567/pwdlib) | Modern password hashing for Python
 *   dev-python/[py3dns](https://launchpad.net/py3dns) | Python 3 DNS library
 *   dev-python/[pybeam](https://github.com/matwey/pybeam) | Python module to parse Erlang BEAM files
 *   dev-python/[pycep](https://github.com/gruebel/pycep) | A Python based Bicep parser

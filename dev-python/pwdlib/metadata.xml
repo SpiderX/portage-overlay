@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a password hash helper for the modern Python era.
+	However, it's not designed to be a complete replacement for <pkg>dev-python/passlib</pkg>,
+	which supports numerous hashing algorithms and features.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">frankie567/pwdlib</remote-id>
+		<remote-id type="pypi">pwdlib</remote-id>
+	</upstream>
+</pkgmetadata>
