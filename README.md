@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1224](https://img.shields.io/badge/ebuild-1224-orange.svg)](https://img.shields.io/badge/ebuild-1224-orange.svg)
+[![Number of ebuilds: 1225](https://img.shields.io/badge/ebuild-1225-orange.svg)](https://img.shields.io/badge/ebuild-1225-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -860,6 +860,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dataclasses-jsonschema](https://github.com/s-knibbs/dataclasses-jsonschema) | JSON schema generation from dataclasses
 *   dev-python/[datadiff](https://sourceforge.net/projects/datadiff/) | A library for diffs of python data structures
 *   dev-python/[dateparser](https://github.com/scrapinghub/dateparser) | Date parsing library designed to parse dates from HTML pages
+*   dev-python/[db-dtypes](https://github.com/googleapis/python-db-dtypes-pandas) | Pandas Data Types for SQL systems
 *   dev-python/[diagrams](https://github.com/mingrammer/diagrams) | Diagram as Code for prototyping cloud system architectures
 *   dev-python/[decli](https://github.com/Woile/decli) | Minimal declarative cli tool
 *   dev-python/[deep_merge](https://github.com/halfak/deep_merge) | A simple utility for merging python dictionaries
