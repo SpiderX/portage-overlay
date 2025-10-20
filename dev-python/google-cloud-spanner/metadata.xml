@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Cloud Spanner is the world’s first fully managed relational database
+	service to offer both strong consistency and horizontal scalability
+	for mission-critical online transaction processing (OLTP) applications.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">googleapis/python-spanner</remote-id>
+		<remote-id type="pypi">google-cloud-spanner</remote-id>
+	</upstream>
+</pkgmetadata>
