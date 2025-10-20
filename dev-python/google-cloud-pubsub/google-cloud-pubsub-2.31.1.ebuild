@@ -29,9 +29,9 @@ RDEPEND="dev-python/google-api-core[${PYTHON_USEDEP}]
 	dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
 	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/proto-plus[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/flaky[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 python_compile() {
