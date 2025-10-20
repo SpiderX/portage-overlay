@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	The fastavro library was written to offer performance comparable to
+	the Java library. With regular CPython, fastavro uses C extensions
+	which allow it to iterate the same 10,000 record file in 1.7 seconds.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fastavro/fastavro</remote-id>
+		<remote-id type="pypi">fastavro</remote-id>
+	</upstream>
+</pkgmetadata>
