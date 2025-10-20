@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1279](https://img.shields.io/badge/ebuild-1279-orange.svg)](https://img.shields.io/badge/ebuild-1279-orange.svg)
+[![Number of ebuilds: 1280](https://img.shields.io/badge/ebuild-1280-orange.svg)](https://img.shields.io/badge/ebuild-1280-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -990,6 +990,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[mongo-thingy](https://github.com/Refty/mongo-thingy) | Object-Document Mapper to use MongoDB with Python
 *   dev-python/[mongoengine](https://github.com/MongoEngine/mongoengine) | Python Object-Document Mapper for working with MongoDB
 *   dev-python/[mongomock](https://github.com/mongomock/mongomock) | Small library for mocking pymongo collection objects for testing purposes
+*   dev-python/[mongomock-motor](https://github.com/michaelkryukov/mongomock_motor) | Library for mocking AsyncIOMotorClient built on top of mongomock
 *   dev-python/[moviepy](https://github.com/Zulko/moviepy) | Video editing with Python
 *   dev-python/[msal](https://github.com/AzureAD/microsoft-authentication-library-for-python) | Microsoft Authentication Library (MSAL) for Python
 *   dev-python/[msal-extensions](https://github.com/AzureAD/microsoft-authentication-extensions-for-python) | Microsoft Authentication Extensions for Python
