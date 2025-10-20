@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1252](https://img.shields.io/badge/ebuild-1252-orange.svg)](https://img.shields.io/badge/ebuild-1252-orange.svg)
+[![Number of ebuilds: 1253](https://img.shields.io/badge/ebuild-1253-orange.svg)](https://img.shields.io/badge/ebuild-1253-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -916,6 +916,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[fido2](https://github.com/Yubico/python-fido2) | Python based FIDO 2.0 library
 *   dev-python/[filetype](https://github.com/h2non/filetype.py) | Infer file type and MIME type of any file/buffer
 *   dev-python/[fire](https://github.com/google/python-fire) | Library for automatically generating CLI from object
+*   dev-python/[first](https://github.com/hynek/first) | Return the first true value of an iterable
 *   dev-python/[fleep](https://github.com/floyernick/fleep-py) | File format determination library for Python
 *   dev-python/[flup](https://www.saddi.com/software/flup/) | Random assortment of WSGI servers
 *   dev-python/[forbiddenfruit](https://github.com/clarete/forbiddenfruit) | Patch python built-in objects
