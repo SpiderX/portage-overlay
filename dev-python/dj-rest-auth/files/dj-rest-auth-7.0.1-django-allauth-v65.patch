@@ -1,0 +1,165 @@
+From 59b8cab7e2f4e3f2fdc11ab3b027a32cad45deef Mon Sep 17 00:00:00 2001
+From: Bruno Alla <alla.brunoo@gmail.com>
+Date: Mon, 24 Feb 2025 22:18:12 +0000
+Subject: [PATCH] feat: add compatibility with django-allauth v65.4
+
+Fix #679
+---
+ demo/demo/settings.py          |  2 +-
+ dj_rest_auth/forms.py          |  6 ++++
+ dj_rest_auth/serializers.py    | 10 ++++--
+ dj_rest_auth/tests/test_api.py | 64 ++++++++++++++++++++++++++++++++++
+ 4 files changed, 79 insertions(+), 3 deletions(-)
+
+diff --git a/demo/demo/settings.py b/demo/demo/settings.py
+index 0d1bf842..b4254dd1 100644
+--- a/demo/demo/settings.py
++++ b/demo/demo/settings.py
+@@ -120,7 +120,7 @@
+ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ SITE_ID = 1
+ ACCOUNT_EMAIL_REQUIRED = False
+-ACCOUNT_AUTHENTICATION_METHOD = 'username'
++ACCOUNT_LOGIN_METHODS = {'username'}
+ ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ 
+ 
+diff --git a/dj_rest_auth/forms.py b/dj_rest_auth/forms.py
+index 78b66e0b..6312d37c 100644
+--- a/dj_rest_auth/forms.py
++++ b/dj_rest_auth/forms.py
+@@ -73,8 +73,14 @@ def save(self, request, **kwargs):
+                 'uid': uid,
+             }
+             if (
++                getattr(allauth_account_settings, "LOGIN_METHODS", None) and  # noqa: W504
++                allauth_account_settings.AuthenticationMethod.EMAIL not in allauth_account_settings.LOGIN_METHODS
++            ):
++                context['username'] = user_username(user)
++            elif (
+                 allauth_account_settings.AUTHENTICATION_METHOD != allauth_account_settings.AuthenticationMethod.EMAIL
+             ):
++                # AUTHENTICATION_METHOD is deprecated
+                 context['username'] = user_username(user)
+             get_adapter(request).send_mail(
+                 'account/email/password_reset_key', email, context
+diff --git a/dj_rest_auth/serializers.py b/dj_rest_auth/serializers.py
+index aa519563..9b4fb817 100644
+--- a/dj_rest_auth/serializers.py
++++ b/dj_rest_auth/serializers.py
+@@ -59,11 +59,17 @@ def get_auth_user_using_allauth(self, username, email, password):
+         from allauth.account import app_settings as allauth_account_settings
+ 
+         # Authentication through email
+-        if allauth_account_settings.AUTHENTICATION_METHOD == allauth_account_settings.AuthenticationMethod.EMAIL:
++        if (
++            getattr(allauth_account_settings, "LOGIN_METHODS", None) == {allauth_account_settings.AuthenticationMethod.EMAIL}
++            or allauth_account_settings.AUTHENTICATION_METHOD == allauth_account_settings.AuthenticationMethod.EMAIL   # noqa: W503
++        ):
+             return self._validate_email(email, password)
+ 
+         # Authentication through username
+-        if allauth_account_settings.AUTHENTICATION_METHOD == allauth_account_settings.AuthenticationMethod.USERNAME:
++        if (
++            getattr(allauth_account_settings, "LOGIN_METHODS", None) == {allauth_account_settings.AuthenticationMethod.USERNAME}
++            or allauth_account_settings.AUTHENTICATION_METHOD == allauth_account_settings.AuthenticationMethod.USERNAME   # noqa: W503
++        ):
+             return self._validate_username(username, password)
+ 
+         # Authentication through either username or email
+diff --git a/dj_rest_auth/tests/test_api.py b/dj_rest_auth/tests/test_api.py
+index 520050dc..08ab6be7 100644
+--- a/dj_rest_auth/tests/test_api.py
++++ b/dj_rest_auth/tests/test_api.py
+@@ -89,6 +89,20 @@ def _generate_uid_and_token(self, user):
+     @override_settings(
+         ACCOUNT_AUTHENTICATION_METHOD=allauth_account_settings.AuthenticationMethod.EMAIL
+     )
++    def test_login_failed_email_validation_deprecated_setting(self):
++        # Remove this test when django-allauth drops
++        # support for ACCOUNT_AUTHENTICATION_METHOD
++        payload = {
++            'email': '',
++            'password': self.PASS,
++        }
++
++        resp = self.post(self.login_url, data=payload, status_code=400)
++        self.assertEqual(resp.json['non_field_errors'][0], 'Must include "email" and "password".')
++
++    @override_settings(
++        ACCOUNT_LOGIN_METHODS={allauth_account_settings.AuthenticationMethod.EMAIL},
++    )
+     def test_login_failed_email_validation(self):
+         payload = {
+             'email': '',
+@@ -101,6 +115,20 @@ def test_login_failed_email_validation(self):
+     @override_settings(
+         ACCOUNT_AUTHENTICATION_METHOD=allauth_account_settings.AuthenticationMethod.USERNAME
+     )
++    def test_login_failed_username_validation_deprecated_setting(self):
++        # Remove this test when django-allauth drops
++        # support for ACCOUNT_AUTHENTICATION_METHOD
++        payload = {
++            'username': '',
++            'password': self.PASS,
++        }
++
++        resp = self.post(self.login_url, data=payload, status_code=400)
++        self.assertEqual(resp.json['non_field_errors'][0], 'Must include "username" and "password".')
++
++    @override_settings(
++        ACCOUNT_LOGIN_METHODS={allauth_account_settings.AuthenticationMethod.USERNAME},
++    )
+     def test_login_failed_username_validation(self):
+         payload = {
+             'username': '',
+@@ -113,6 +141,22 @@ def test_login_failed_username_validation(self):
+     @override_settings(
+         ACCOUNT_AUTHENTICATION_METHOD=allauth_account_settings.AuthenticationMethod.USERNAME_EMAIL
+     )
++    def test_login_failed_username_email_validation_deprecated_setting(self):
++        # Remove this test when django-allauth drops
++        # support for ACCOUNT_AUTHENTICATION_METHOD
++        payload = {
++            'password': self.PASS,
++        }
++
++        resp = self.post(self.login_url, data=payload, status_code=400)
++        self.assertEqual(resp.json['non_field_errors'][0], 'Must include either "username" or "email" and "password".')
++
++    @override_settings(
++        ACCOUNT_LOGIN_METHODS={
++            allauth_account_settings.AuthenticationMethod.USERNAME,
++            allauth_account_settings.AuthenticationMethod.EMAIL,
++        },
++    )
+     def test_login_failed_username_email_validation(self):
+         payload = {
+             'password': self.PASS,
+@@ -158,6 +202,26 @@ def test_allauth_login_with_username(self):
+     @override_settings(
+         ACCOUNT_AUTHENTICATION_METHOD=allauth_account_settings.AuthenticationMethod.EMAIL
+     )
++    def test_allauth_login_with_email_deprecated_setting(self):
++        # Remove this test when django-allauth drops
++        # support for ACCOUNT_AUTHENTICATION_METHOD
++        payload = {
++            'email': self.EMAIL,
++            'password': self.PASS,
++        }
++        # there is no users in db so it should throw error (400)
++        self.post(self.login_url, data=payload, status_code=400)
++
++        self.post(self.password_change_url, status_code=403)
++
++        # create user
++        get_user_model().objects.create_user(self.EMAIL, email=self.EMAIL, password=self.PASS)
++
++        self.post(self.login_url, data=payload, status_code=200)
++
++    @override_settings(
++        ACCOUNT_LOGIN_METHODS={allauth_account_settings.AuthenticationMethod.EMAIL},
++    )
+     def test_allauth_login_with_email(self):
+         payload = {
+             'email': self.EMAIL,
