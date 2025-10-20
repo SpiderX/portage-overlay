@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1219](https://img.shields.io/badge/ebuild-1219-orange.svg)](https://img.shields.io/badge/ebuild-1219-orange.svg)
+[![Number of ebuilds: 1220](https://img.shields.io/badge/ebuild-1220-orange.svg)](https://img.shields.io/badge/ebuild-1220-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -835,6 +835,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[channels](https://github.com/django/channels) | Brings async, event-driven capabilities to Django
 *   dev-python/[chevron](https://github.com/noahmorrison/chevron) | Mustache templating language renderer
 *   dev-python/[cfgv](https://github.com/asottile/cfgv) | Validate configuration and produce human readable error messages
+*   dev-python/[circuitbreaker](https://github.com/fabfuel/circuitbreaker) | Python Circuit Breaker pattern implementation
 *   dev-python/[click-completion](https://github.com/click-contrib/click-completion) | Enhanced completion for bash, fish, zsh in Click
 *   dev-python/[click-repl](https://github.com/click-contrib/click-repl) | Subcommand REPL for click apps
 *   dev-python/[colorpedia](https://github.com/joowani/colorpedia) | Command-line tool for looking up colors and palettes
