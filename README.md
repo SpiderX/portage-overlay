@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1247](https://img.shields.io/badge/ebuild-1247-orange.svg)](https://img.shields.io/badge/ebuild-1247-orange.svg)
+[![Number of ebuilds: 1248](https://img.shields.io/badge/ebuild-1248-orange.svg)](https://img.shields.io/badge/ebuild-1248-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -901,6 +901,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dpath](https://github.com/dpath-maintainers/dpath-python) | A python module that will check for package updates
 *   dev-python/[drf-nested-routers](https://github.com/alanjds/drf-nested-routers) | Nested resources for the Django Rest Framework
 *   dev-python/[drf-spectacular](https://github.com/tfranzel/drf-spectacular) | Sane and flexible OpenAPI 3 schema generation for Django REST framework
+*   dev-python/[drf-spectacular-sidecar](https://github.com/tfranzel/drf-spectacular-sidecar) | Self-contained distribution builds of Swagger UI and Redoc with Django
 *   dev-python/[drf-yasg](https://github.com/axnsan12/drf-yasg) | Yet another Swagger generator
 *   dev-python/[dsinternals](https://github.com/p0dalirius/pydsinternals) | Directory Services Internals Library
 *   dev-python/[dunamai](https://github.com/mtkennerly/dunamai) | Dynamic versioning library and CLI
