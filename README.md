@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1291](https://img.shields.io/badge/ebuild-1291-orange.svg)](https://img.shields.io/badge/ebuild-1291-orange.svg)
+[![Number of ebuilds: 1292](https://img.shields.io/badge/ebuild-1292-orange.svg)](https://img.shields.io/badge/ebuild-1292-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1044,6 +1044,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pydantic-settings](https://github.com/pydantic/pydantic-settings) | Settings management using pydantic
 *   dev-python/[pydash](https://github.com/dgilland/pydash) | The kitchen sink of Python functional utility libraries
 *   dev-python/[pyemd](https://github.com/wmayner/pyemd) | Fast EMD for Python
+*   dev-python/[pyinstrument](https://github.com/joerick/pyinstrument) | Call stack profiler for Python
 *   dev-python/[pygaljs](https://github.com/ionelmc/python-pygaljs) | Python package providing assets from js module for pygal
 *   dev-python/[pylnk3](https://github.com/strayge/pylnk) | Windows LNK File Parser and Creator
 *   dev-python/[pymysql](https://github.com/PyMySQL/PyMySQL) | Pure-Python MySQL Driver
