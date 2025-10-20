@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
@@ -21,8 +21,8 @@ RDEPEND="dev-python/google-api-core[${PYTHON_USEDEP}]
 	dev-python/grpc-google-iam-v1[${PYTHON_USEDEP}]
 	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/proto-plus[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
