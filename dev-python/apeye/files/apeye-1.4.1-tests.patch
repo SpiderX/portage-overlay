@@ -1,0 +1,50 @@
+From f2f042c145d5ad6e992af2bbb0657ce749955eff Mon Sep 17 00:00:00 2001
+From: Dominic Davis-Foster <dominic@davis-foster.co.uk>
+Date: Thu, 15 May 2025 10:40:05 +0100
+Subject: [PATCH] Use different URL for options test
+
+---
+ tests/test_url.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_url.py b/tests/test_url.py
+index 374348a..33e160d 100644
+--- a/tests/test_url.py
++++ b/tests/test_url.py
+@@ -878,11 +878,11 @@ def test_head(self):
+ 		assert headers["Content-Type"] == "application/json; charset=utf-8"
+ 		assert headers["Server"] == "cloudflare"
+ 		# TODO: On conda brotli is used -- is the required package installed there?
+-		assert headers["Content-Encoding"] in {"gzip", "br"}
++		assert headers["Content-Encoding"] in {"zstd", "gzip", "br"}
+ 
+ 	def test_options(self):
+-		options = SlumberURL("https://readthedocs.org").options()
+-		assert options == "GET, HEAD, OPTIONS"
++		options = SlumberURL("https://bot.repo-helper.uk").options()
++		assert options == "OPTIONS, HEAD, POST, GET"
+ 
+ 	def test_post(self):
+ 		assert self.base / "posts" == URL("https://jsonplaceholder.typicode.com/posts")
+From c5bc87eb2c9fec053179ae85caea27827c604736 Mon Sep 17 00:00:00 2001
+From: Dominic Davis-Foster <dominic@davis-foster.co.uk>
+Date: Mon, 12 May 2025 15:53:20 +0100
+Subject: [PATCH] Change test URL as the PyPI website blocks automated requests
+
+---
+ tests/test_url.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_url.py b/tests/test_url.py
+index 5737fbf..374348a 100644
+--- a/tests/test_url.py
++++ b/tests/test_url.py
+@@ -1005,7 +1005,7 @@ def test_isinstance(self):
+ 			"url, expected",
+ 			[
+ 					("https://github.com/domdfcoding/PyMassSpec", "https://github.com/PyMassSpec/PyMassSpec"),
+-					("http://pypi.io/p/domdf_python_tools", "https://pypi.org/project/domdf-python-tools"),
++					("https://pypi.org/simple/domdf_python_tools", "https://pypi.org/simple/domdf-python-tools"),
+ 					]
+ 			)
+ 	def test_resolve(self, url: str, expected: str):
