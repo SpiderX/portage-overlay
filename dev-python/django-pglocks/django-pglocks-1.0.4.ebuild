@@ -5,9 +5,9 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 edo pypi
 
 DESCRIPTION="PostgreSQL locking context managers and functions for Django"
 HOMEPAGE="https://github.com/Xof/django-pglocks"
@@ -15,8 +15,20 @@ HOMEPAGE="https://github.com/Xof/django-pglocks"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # needs posgtresql
+RESTRICT="test" # no tests
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-db/postgresql:* )"
 
 distutils_enable_tests pytest
+
+export DJANGO_SETTINGS_MODULE='django_pglocks'
+
+python_test() {
+	local PYTHONPATH=. db="${T}/pgsql"
+	edo initdb -U postgres -A trust -D "${db}" || die "initdb failed"
+	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'" \
+		|| die "pg_ctl for start failed"
+	epytest
+	edo pg_ctl -w -D "${db}" stop || die "pg_ctl for stop failed"
+}
