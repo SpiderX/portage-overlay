@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 optfeature git-r3
+inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Microsoft Azure Storage Blobs Library for Python"
 HOMEPAGE="https://github.com/Azure/azure-sdk-for-python"
