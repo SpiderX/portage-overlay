@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1213](https://img.shields.io/badge/ebuild-1213-orange.svg)](https://img.shields.io/badge/ebuild-1213-orange.svg)
+[![Number of ebuilds: 1214](https://img.shields.io/badge/ebuild-1214-orange.svg)](https://img.shields.io/badge/ebuild-1214-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -792,6 +792,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[annoy](https://github.com/spotify/annoy) | Approximate Nearest Neighbors in C++/Python
 *   dev-python/[anyconfig](https://github.com/ssato/python-anyconfig) | Generic access to configuration files in any formats
 *   dev-python/[apeye](https://github.com/domdfcoding/apeye) | Handy tools for working with URLs and APIs
+*   dev-python/[apeye-core](https://github.com/domdfcoding/apeye-core) | Core functionality for the apeye library
 *   dev-python/[apispec](https://github.com/marshmallow-code/apispec) | A pluggable API specification generator
 *   dev-python/[apispec-webframeworks](https://github.com/marshmallow-code/apispec-webframeworks) | Web framework plugins for apispec
 *   dev-python/[applicationinsights](https://github.com/microsoft/ApplicationInsights-Python) | Application Insights SDK for Python
