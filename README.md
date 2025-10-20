@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1223](https://img.shields.io/badge/ebuild-1223-orange.svg)](https://img.shields.io/badge/ebuild-1223-orange.svg)
+[![Number of ebuilds: 1224](https://img.shields.io/badge/ebuild-1224-orange.svg)](https://img.shields.io/badge/ebuild-1224-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -855,6 +855,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[curio](https://github.com/dabeaz/curio) | Coroutine-based library for concurrent Python systems programming
 *   dev-python/[cyclonedx-python-lib](https://github.com/CycloneDX/cyclonedx-python-lib) | Python library for generating CycloneDX SBOMs
 *   dev-python/[dafnyruntimepython](https://github.com/dafny-lang/dafny) | Dafny runtime for Python
+*   dev-python/[daphne](https://github.com/django/daphne) | Django ASGI (HTTP/WebSocket) server
 *   dev-python/[dataclasses](https://github.com/ericvsmith/dataclasses) | A backport of the dataclasses module for Python 3.6
 *   dev-python/[dataclasses-jsonschema](https://github.com/s-knibbs/dataclasses-jsonschema) | JSON schema generation from dataclasses
 *   dev-python/[datadiff](https://sourceforge.net/projects/datadiff/) | A library for diffs of python data structures
