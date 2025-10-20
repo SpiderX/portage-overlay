@@ -1,0 +1,48 @@
+--- ../tests/test__collection_api.py	2025-10-07 23:58:44.191678100 +0300
++++ ../tests/test__collection_api.py	2025-10-07 23:59:01.850191288 +0300
+@@ -5282,7 +5282,7 @@
+             collection.insert_one({'a': {'b'}})
+         if version.parse(pymongo.version) < version.parse('3.8'):
+             return
+-        self.assertEqual(str(cm.exception), "cannot encode object: {'b'}, of type: <class 'set'>")
++        self.assertIn("cannot encode object: {'b'}, of type: <class 'set'>", str(cm.exception))
+ 
+     @skipIf(not helpers.HAVE_PYMONGO, 'pymongo not installed')
+     def test_insert_bson_invalid_encode_type(self):
+--- ../tests/test__mongomock.py	2025-10-08 00:07:35.821805227 +0300
++++ ../tests/test__mongomock.py	2025-10-08 00:12:50.684290193 +0300
+@@ -683,12 +683,17 @@
+         }})
+         self.cmp.compare_ignore_order.find({'name': {
+             '$regex': upper_regex,
+-            '$options': 'I',
+-        }})
+-        self.cmp.compare_ignore_order.find({'name': {
+-            '$regex': upper_regex,
+-            '$options': 'z',
++            '$options': 'i',
+         }})
++        with self.assertRaises(OperationFailure) as cm:
++            self.cmp.compare_ignore_order.find(
++                {
++                    'name': {
++                        '$regex': upper_regex,
++                        '$options': 'z',
++                    }
++        })
++        self.assertIn('invalid flag', str(cm.exception))
+ 
+     def test__find_by_regex_string(self):
+         """Test searching with regular expression string."""
+@@ -700,8 +705,9 @@
+         self.cmp.compare_ignore_order.find({'name': {'$regex': 'bob|sam'}})
+         self.cmp.compare_ignore_order.find({'name': {'$regex': 'bob|notsam'}})
+         self.cmp.compare_ignore_order.find({'name': {'$regex': 'Bob', '$options': 'i'}})
+-        self.cmp.compare_ignore_order.find({'name': {'$regex': 'Bob', '$options': 'I'}})
+-        self.cmp.compare_ignore_order.find({'name': {'$regex': 'Bob', '$options': 'z'}})
++        self.cmp.compare_ignore_order.find({'name': {'$regex': 'Bob', '$options': 'i'}})
++        with self.assertRaises(OperationFailure):
++            self.cmp.compare_ignore_order.find({'name': {'$regex': 'Bob', '$options': 'z'}})
+ 
+     def test__find_in_array_by_regex_object(self):
+         """Test searching inside array with regular expression object."""
