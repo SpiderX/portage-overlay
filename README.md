@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1260](https://img.shields.io/badge/ebuild-1260-orange.svg)](https://img.shields.io/badge/ebuild-1260-orange.svg)
+[![Number of ebuilds: 1261](https://img.shields.io/badge/ebuild-1261-orange.svg)](https://img.shields.io/badge/ebuild-1261-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -945,6 +945,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz
 *   dev-python/[graphql-core](https://github.com/graphql-python/graphql-core) | Python port of GraphQL.js
 *   dev-python/[graphql-relay](https://github.com/graphql-python/graphql-relay-py) | A library to help construct a graphql-py server supporting react-relay
+*   dev-python/[grpc-interceptor](https://github.com/d5h-foss/grpc-interceptor) | Simplifies gRPC interceptors
 *   dev-python/[grpc-google-iam-v1](https://github.com/googleapis/google-cloud-python) | Python Client for Cloud Identity and Access Management
 *   dev-python/[gssapi](https://github.com/pythongssapi/python-gssapi) | A Python interface to RFC 2743/2744
 *   dev-python/[hijridate](https://github.com/mhalshehri/hijri-converter) | Hijri-Gregorian date converter
