@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1245](https://img.shields.io/badge/ebuild-1245-orange.svg)](https://img.shields.io/badge/ebuild-1245-orange.svg)
+[![Number of ebuilds: 1246](https://img.shields.io/badge/ebuild-1246-orange.svg)](https://img.shields.io/badge/ebuild-1246-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -899,6 +899,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dom-toml](https://github.com/domdfcoding/dom_toml) | Dom's tools for Tom's Obvious, Minimal Language
 *   dev-python/[domdf-python-tools](https://github.com/domdfcoding/domdf_python_tools) | Helpful functions for Python
 *   dev-python/[dpath](https://github.com/dpath-maintainers/dpath-python) | A python module that will check for package updates
+*   dev-python/[drf-nested-routers](https://github.com/alanjds/drf-nested-routers) | Nested resources for the Django Rest Framework
 *   dev-python/[drf-yasg](https://github.com/axnsan12/drf-yasg) | Yet another Swagger generator
 *   dev-python/[dsinternals](https://github.com/p0dalirius/pydsinternals) | Directory Services Internals Library
 *   dev-python/[dunamai](https://github.com/mtkennerly/dunamai) | Dynamic versioning library and CLI
