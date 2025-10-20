@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1292](https://img.shields.io/badge/ebuild-1292-orange.svg)](https://img.shields.io/badge/ebuild-1292-orange.svg)
+[![Number of ebuilds: 1293](https://img.shields.io/badge/ebuild-1293-orange.svg)](https://img.shields.io/badge/ebuild-1293-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1047,6 +1047,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pyinstrument](https://github.com/joerick/pyinstrument) | Call stack profiler for Python
 *   dev-python/[pygaljs](https://github.com/ionelmc/python-pygaljs) | Python package providing assets from js module for pygal
 *   dev-python/[pylnk3](https://github.com/strayge/pylnk) | Windows LNK File Parser and Creator
+*   dev-python/[pymongo-auth-aws](https://github.com/mongodb/pymongo-auth-aws) | The Python MONGODB-AWS authentication mechanism for PyMongo
 *   dev-python/[pymysql](https://github.com/PyMySQL/PyMySQL) | Pure-Python MySQL Driver
 *   dev-python/[pynfsclient](https://github.com/Pennyw0rth/NfsClient) | Python library to simulate NFS client
 *   dev-python/[pypsrp](https://github.com/jborean93/pypsrp) | PowerShell Remoting Protocol and WinRM for Python
