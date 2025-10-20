@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This library provides a lazy interface for parsing objects from
+	dictionaries. During the parsing, it saves the raw data inside
+	the object and parses each field on demand.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">BeanieODM/lazy_model</remote-id>
+		<remote-id type="pypi">lazy-model</remote-id>
+	</upstream>
+</pkgmetadata>
