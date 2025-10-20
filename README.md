@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1270](https://img.shields.io/badge/ebuild-1270-orange.svg)](https://img.shields.io/badge/ebuild-1270-orange.svg)
+[![Number of ebuilds: 1271](https://img.shields.io/badge/ebuild-1271-orange.svg)](https://img.shields.io/badge/ebuild-1271-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -980,6 +980,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[mbedtls](https://github.com/Synss/python-mbedtls) | Cryptographic library with an mbed TLS back end
 *   dev-python/[minidump](https://github.com/skelsec/minidump) | Python library to parse Windows minidump file format
 *   dev-python/[minikerberos](https://github.com/skelsec/minikerberos) | Kerberos manipulation library
+*   dev-python/[minijinja](https://github.com/mitsuhiko/minijinja) | Powerful template engine for Rust with minimal dependencies
 *   dev-python/[mock-django](https://github.com/dcramer/mock-django) | A simple library for mocking certain Django behavior
 *   dev-python/[moviepy](https://github.com/Zulko/moviepy) | Video editing with Python
 *   dev-python/[msal](https://github.com/AzureAD/microsoft-authentication-library-for-python) | Microsoft Authentication Library (MSAL) for Python
