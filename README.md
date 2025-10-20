@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1264](https://img.shields.io/badge/ebuild-1264-orange.svg)](https://img.shields.io/badge/ebuild-1264-orange.svg)
+[![Number of ebuilds: 1265](https://img.shields.io/badge/ebuild-1265-orange.svg)](https://img.shields.io/badge/ebuild-1265-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -954,6 +954,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[hijri-converter](https://github.com/mhalshehri/hijri-converter) | Hijri-Gregorian date converter
 *   dev-python/[hsh](https://github.com/chrissimpkins/hsh) | Simple cross-platform file hash digests and file integrity checks
 *   dev-python/[html5tagger](https://github.com/sanic-org/html5tagger) | Pythonic HTML generation/templating
+*   dev-python/[httpx-sse](https://github.com/florimondmanca/httpx-sse) | Consume Server-Sent Event (SSE) messages with HTTPX
 *   dev-python/[identify](https://github.com/pre-commit/identify) | File identification library for Python
 *   dev-python/[igraph](https://github.com/igraph/python-igraph) | Python interface for igraph
 *   dev-python/[impacket](https://github.com/fortra/impacket) | Collection of Python classes for working with network protocols
