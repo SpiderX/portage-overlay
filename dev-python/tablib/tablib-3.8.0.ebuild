@@ -6,14 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Format-agnostic tabular dataset library"
 HOMEPAGE="https://github.com/jazzband/tablib"
-EGIT_REPO_URI="https://github.com/jazzband/${PN}.git"
+SRC_URI="https://github.com/jazzband/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="cli ods pandas xls xlsx yaml"
 REQUIRED_USE="test? ( cli ods pandas xls xlsx yaml )"
 
@@ -29,6 +30,8 @@ BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
+
 	# disable pytest options
 	sed -i '/addopts/d' pytest.ini || die "sed failed for pytest.ini"
 

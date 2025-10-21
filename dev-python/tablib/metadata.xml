@@ -15,8 +15,12 @@
 	TSV, ODS, CSV, DBF.
 	</longdescription>
 	<use>
+		<flag name="cli">Support for CLI via <pkg>dev-python/tabulate</pkg></flag>
+		<flag name="ods">Support for CLI via <pkg>dev-python/odfpy</pkg></flag>
+		<flag name="pandas">Support for pandas via <pkg>dev-python/pandas</pkg></flag>
 		<flag name="xls">Support for xls</flag>
-		<flag name="yaml">Support for yaml</flag>
+		<flag name="xlsx">Support for xlsx via <pkg>dev-python/openpyxl</pkg></flag>
+		<flag name="yaml">Support for yaml via <pkg>dev-python/pyyaml</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">jazzband/tablib</remote-id>
