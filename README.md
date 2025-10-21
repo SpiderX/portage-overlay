@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1330](https://img.shields.io/badge/ebuild-1330-orange.svg)](https://img.shields.io/badge/ebuild-1330-orange.svg)
+[![Number of ebuilds: 1331](https://img.shields.io/badge/ebuild-1331-orange.svg)](https://img.shields.io/badge/ebuild-1331-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1156,6 +1156,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[vsphere-guest-run](https://github.com/vmware/vsphere-guest-run) | Python library for guest operations
 *   dev-python/[w3lib](https://github.com/scrapy/w3lib) | Library of web-related functions
 *   dev-python/[winacl](https://github.com/skelsec/winacl) | ACL/ACE/Security Descriptor manipulation library
+*   dev-python/[whey](https://github.com/repo-helper/whey) | A simple Python wheel builder for simple projects
 *   dev-python/[zstd](https://github.com/sergey-dryabzhinsky/python-zstd) | Simple python bindings to Yann Collet ZSTD compression library
 *   dev-util/[abnfgen](https://www.quut.com/abnfgen/) | ABNF-grammar based test case generator
 *   dev-util/[actionlint](https://github.com/rhysd/actionlint) | Static checker for GitHub Actions workflow files
