@@ -2,12 +2,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-name="NetBox RQ worker daemon"
-description="NetBox RQ worker daemon"
-command=/usr/bin/python3
-command_args="${NETBOX_DIR}/manage.py rqworker high default low"
+name="NetBox"
+description="NetBox"
+command=/usr/bin/gunicorn
+command_args="--pythonpath ${NETBOX_DIR} --user ${NETBOX_USER} --config ${NETBOX_CONFIG}"
 command_user="${NETBOX_USER}:${NETBOX_GROUP}"
 directory="${NETBOX_DIR}"
-error_log="${NETBOX_LOG}/netbox-rqworker.log"
+error_log="${NETBOX_LOG}/${RC_SVCNAME}.log"
 output_log="${NETBOX_LOG}/${RC_SVCNAME}.log"
 supervisor=supervise-daemon
