@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1328](https://img.shields.io/badge/ebuild-1328-orange.svg)](https://img.shields.io/badge/ebuild-1328-orange.svg)
+[![Number of ebuilds: 1329](https://img.shields.io/badge/ebuild-1329-orange.svg)](https://img.shields.io/badge/ebuild-1329-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1147,6 +1147,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[unicrypto](https://github.com/skelsec/unicrypto) | Unified interface for cryptographic libraries
 *   dev-python/[unittest-xml-reporting](https://github.com/xmlrunner/unittest-xml-reporting) | unittest-based test runner with Ant/JUnit like XML reporting
 *   dev-python/[update-checker](https://github.com/bboe/update_checker) | A python module that will check for package updates
+*   dev-python/[uuid-utils](https://github.com/aminalaee/uuid-utils) | Python bindings to Rust UUID
 *   dev-python/[validate-email](https://github.com/syrusakbary/validate_email) | Python email validation library
 *   dev-python/[validators](https://github.com/kvesteri/validators) | Python data validation library
 *   dev-python/[vcd-api-schemas-type](https://github.com/vmware/vcd-api-schemas) | VMware vCloud Director Python API Schemas Type
