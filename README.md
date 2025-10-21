@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1311](https://img.shields.io/badge/ebuild-1311-orange.svg)](https://img.shields.io/badge/ebuild-1311-orange.svg)
+[![Number of ebuilds: 1312](https://img.shields.io/badge/ebuild-1312-orange.svg)](https://img.shields.io/badge/ebuild-1312-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1101,6 +1101,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[schema](https://github.com/keleshev/schema) | Simple data validation library
 *   dev-python/[scikit-learn](https://github.com/scikit-learn/scikit-learn) | Machine learning in Python
 *   dev-python/[sdjson](https://github.com/domdfcoding/singledispatch-json) | Custom JSON Encoder for Python
+*   dev-python/[sentinels](https://github.com/vmalloc/sentinels) | Various objects to denote special meanings in python
 *   dev-python/[selinux](https://github.com/pycontribs/selinux) | Pure-python selinux shim module for use in virtualenvs
 *   dev-python/[sentry-sdk](https://github.com/getsentry/sentry-python) | Python client for Sentry
 *   dev-python/[serializable](https://github.com/madpah/serializable) | Serialize and deserialize Python objects to and from JSON and XML
