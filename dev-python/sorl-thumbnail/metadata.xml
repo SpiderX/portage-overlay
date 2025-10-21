@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package adds support for thumbnails for Django, with storage
+	support and pluggable backend.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jazzband/sorl-thumbnail</remote-id>
+		<remote-id type="pypi">sorl-thumbnail</remote-id>
+	</upstream>
+</pkgmetadata>
