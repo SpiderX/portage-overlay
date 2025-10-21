@@ -1,0 +1,63 @@
+From 69fa47925e8ed717655619bf28490e80415a53a5 Mon Sep 17 00:00:00 2001
+From: Dominic Davis-Foster <dominic@davis-foster.co.uk>
+Date: Mon, 28 Apr 2025 11:24:48 +0100
+Subject: [PATCH] Test on Python 3.13
+
+---
+ .github/workflows/python_ci.yml       |  3 ++-
+ .github/workflows/python_ci_linux.yml |  3 ++-
+ .github/workflows/python_ci_macos.yml |  3 ++-
+ pyproject.toml                        |  2 +-
+ repo_helper.yml                       |  1 +
+ tests/stdlib_tests/test_fail.py       | 20 +++++++++++++++++---
+ tox.ini                               | 10 +++++++++-
+ 7 files changed, 34 insertions(+), 8 deletions(-)
+
+diff --git a/tests/stdlib_tests/test_fail.py b/tests/stdlib_tests/test_fail.py
+index 072f539..0115bf1 100644
+--- a/tests/stdlib_tests/test_fail.py
++++ b/tests/stdlib_tests/test_fail.py
+@@ -4,6 +4,7 @@
+ 
+ # 3rd party
+ import pytest
++from coincidence.selectors import max_version, min_version
+ from domdf_python_tools.compat import PYPY
+ 
+ # this package
+@@ -162,11 +163,18 @@ def test_truncated_input(data: str, msg: str, idx: int):
+ 				('{"spam":[}', unexpected_right_brace, 9),
+ 				("[42:", unexpected_colon, 3),
+ 				('[42 "spam"', "Unexpected '\"' when decoding array" if PYPY else "Expecting ',' delimiter", 4),
+-				("[42,]", "Unexpected ']'" if PYPY else "Expecting value", 4),
++				pytest.param("[42,]", "Illegal trailing comma before end of array", 3, marks=min_version((3, 13))),
++				pytest.param(
++						"[42,]", "Unexpected ']'" if PYPY else "Expecting value", 4, marks=max_version((3, 12))
++						),
+ 				('{"spam":[42}', "Unexpected '}' when decoding array" if PYPY else "Expecting ',' delimiter", 11),
+ 				('["]', "Unterminated string starting at", 1),
+ 				('["spam":', unexpected_colon, 7),
+-				('["spam",]', "Unexpected ']'" if PYPY else "Expecting value", 8),
++				pytest.param(
++						'["spam",]', "Illegal trailing comma before end of array", 7, marks=min_version((3, 13))
++						),
++				pytest.
++				param('["spam",]', "Unexpected ']'" if PYPY else "Expecting value", 8, marks=max_version((3, 12))),
+ 				("{:", property_name_string, 1),
+ 				("{,", property_name_string, 1),
+ 				("{42", property_name_string, 1),
+@@ -182,7 +190,13 @@ def test_truncated_input(data: str, msg: str, idx: int):
+ 						11
+ 						),
+ 				('[{"spam":42]', "Unexpected ']' when decoding object" if PYPY else "Expecting ',' delimiter", 11),
+-				('{"spam":42,}', property_name_string, 11),
++				pytest.param(
++						'{"spam":42,}',
++						"Illegal trailing comma before end of object",
++						10,
++						marks=min_version((3, 13))
++						),
++				pytest.param('{"spam":42,}', property_name_string, 11, marks=max_version((3, 12))),
+ 				]
+ 		)
+ def test_unexpected_data(data: str, msg: str, idx: int):
