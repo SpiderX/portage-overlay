@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1327](https://img.shields.io/badge/ebuild-1327-orange.svg)](https://img.shields.io/badge/ebuild-1327-orange.svg)
+[![Number of ebuilds: 1328](https://img.shields.io/badge/ebuild-1328-orange.svg)](https://img.shields.io/badge/ebuild-1328-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1143,6 +1143,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[ujson](https://github.com/esnme/ultrajson) | Ultra fast JSON encoder and decoder for Python
 *   dev-python/[ukpostcodeparser](https://github.com/hamstah/ukpostcodeparser) | UK postcode parser library
 *   dev-python/[umalqurra](https://github.com/tytkal/python-hijiri-ummalqura) | Date Api that support Hijri Umalqurra calendar
+*   dev-python/[umongo](https://github.com/Scille/umongo) | Sync/async MongoDB ODM
 *   dev-python/[unicrypto](https://github.com/skelsec/unicrypto) | Unified interface for cryptographic libraries
 *   dev-python/[unittest-xml-reporting](https://github.com/xmlrunner/unittest-xml-reporting) | unittest-based test runner with Ant/JUnit like XML reporting
 *   dev-python/[update-checker](https://github.com/bboe/update_checker) | A python module that will check for package updates
