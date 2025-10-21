@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1321](https://img.shields.io/badge/ebuild-1321-orange.svg)](https://img.shields.io/badge/ebuild-1321-orange.svg)
+[![Number of ebuilds: 1322](https://img.shields.io/badge/ebuild-1322-orange.svg)](https://img.shields.io/badge/ebuild-1322-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1124,6 +1124,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[sse-starlette](https://github.com/sysid/sse-starlette) | SSE plugin for Starlette
 *   dev-python/[ssh2-python](https://github.com/ParallelSSH/ssh2-python) | Super fast SSH2 protocol library, Python bindings for libssh2
 *   dev-python/[stone](https://github.com/dropbox/stone) | The Official Api Spec Language for Dropbox
+*   dev-python/[strawberry-graphql](https://github.com/strawberry-graphql/strawberry) | A library for creating GraphQL APIs
 *   dev-python/[swagger-spec-validator](https://github.com/Yelp/swagger_spec_validator) | Python library that validates Swagger Specs
 *   dev-python/[tablib](https://github.com/jazzband/tablib) | Format-agnostic tabular dataset library
 *   dev-python/[testinfra](https://github.com/pytest-dev/pytest-testinfra) | Testinfra test your infrastructures
