@@ -1,0 +1,24 @@
+From 659f0ca17f58596ca8898cd3e8e0cb1fdc658b09 Mon Sep 17 00:00:00 2001
+From: ramnes <contact@ramnes.eu>
+Date: Tue, 18 Apr 2023 14:58:08 +0200
+Subject: [PATCH] Don't test Python
+
+---
+ test_thingy.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/test_thingy.py b/test_thingy.py
+index 9275f93..492c4d3 100644
+--- a/test_thingy.py
++++ b/test_thingy.py
+@@ -49,9 +49,8 @@ def foo(self):
+     foo = Foo()
+     assert foo.foo == "bar"
+ 
+-    with raises(AttributeError) as excinfo:
++    with raises(AttributeError):
+         foo = Foo(foo="baz")
+-    assert str(excinfo.value) in ("can't set attribute", "can't set attribute 'foo'")
+ 
+     foo = Foo({"foo": "baz"})
+     assert foo._foo == "bar"
