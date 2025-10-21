@@ -1,0 +1,18 @@
+--- ../tests?test_touchup.py	2025-10-17 23:24:49.610212981 +0300
++++ ../tests/test_touchup.py	2025-10-17 23:25:19.482932032 +0300
+@@ -33,6 +33,7 @@
+ 
+ 
+ @pytest.mark.parametrize("skip_it,result", ((False, True), (True, False)))
++@pytest.mark.asyncio
+ async def test_skip_touchup(app, caplog, skip_it, result):
+     app.config.TOUCHUP = not skip_it
+     with caplog.at_level(logging.DEBUG, logger="sanic.root"):
+@@ -61,6 +62,7 @@
+ 
+ 
+ @pytest.mark.parametrize("skip_it,result", ((False, True), (True, True)))
++@pytest.mark.asyncio
+ async def test_skip_touchup_non_reserved(app, caplog, skip_it, result):
+     app.config.TOUCHUP = not skip_it
+ 

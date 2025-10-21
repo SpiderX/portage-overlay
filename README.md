@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1306](https://img.shields.io/badge/ebuild-1306-orange.svg)](https://img.shields.io/badge/ebuild-1306-orange.svg)
+[![Number of ebuilds: 1307](https://img.shields.io/badge/ebuild-1307-orange.svg)](https://img.shields.io/badge/ebuild-1307-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1094,6 +1094,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[ripe-atlas-sagan](https://github.com/RIPE-NCC/ripe-atlas-sagan) | A parsing library for RIPE Atlas measurement results
 *   dev-python/[rstr](https://github.com/leapfrogonline/rstr) | Generate random strings in Python
 *   dev-python/[ruff](https://github.com/astral-sh/ruff) | Pytest module for ruff
+*   dev-python/[sanic](https://github.com/sanic-org/sanic) | A web server and web framework that's written to go fast
 *   dev-python/[schema](https://github.com/keleshev/schema) | Simple data validation library
 *   dev-python/[scikit-learn](https://github.com/scikit-learn/scikit-learn) | Machine learning in Python
 *   dev-python/[selinux](https://github.com/pycontribs/selinux) | Pure-python selinux shim module for use in virtualenvs

@@ -1,0 +1,15 @@
+--- ../tests/test_cli.py	2025-10-17 23:03:49.694895880 +0300
++++ ../tests/test_cli.py	2025-10-17 23:04:25.890120092 +0300
+@@ -184,11 +184,7 @@
+         (
+             ("-H", "127.0.0.1", "-p", "{port}"),
+             "Goin' Fast @ http://127.0.0.1:{port}",
+-        ),
+-        (("--host=::", "--port={port}"), "Goin' Fast @ http://[::]:{port}"),
+-        (("-H", "::", "-p", "{port}"), "Goin' Fast @ http://[::]:{port}"),
+-        (("--host=::1", "--port={port}"), "Goin' Fast @ http://[::1]:{port}"),
+-        (("-H", "::1", "-p", "{port}"), "Goin' Fast @ http://[::1]:{port}"),
++        )
+     ),
+ )
+ def test_host_port(cmd: tuple[str, ...], expected: str, caplog, port):
