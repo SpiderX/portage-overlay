@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1319](https://img.shields.io/badge/ebuild-1319-orange.svg)](https://img.shields.io/badge/ebuild-1319-orange.svg)
+[![Number of ebuilds: 1320](https://img.shields.io/badge/ebuild-1320-orange.svg)](https://img.shields.io/badge/ebuild-1320-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1121,6 +1121,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[sphinxcontrib-httpdomain](https://github.com/sphinx-contrib/httpdomain) | Documenting RESTful HTTP APIs
 *   dev-python/[sphinxcontrib-openapi](https://github.com/sphinx-contrib/openapi) | Sphinx extension to generate APIs docs from OpenAPI
 *   dev-python/[sqlmodel](https://github.com/fastapi/sqlmodel) | SQL databases in Python
+*   dev-python/[sse-starlette](https://github.com/sysid/sse-starlette) | SSE plugin for Starlette
 *   dev-python/[ssh2-python](https://github.com/ParallelSSH/ssh2-python) | Super fast SSH2 protocol library, Python bindings for libssh2
 *   dev-python/[swagger-spec-validator](https://github.com/Yelp/swagger_spec_validator) | Python library that validates Swagger Specs
 *   dev-python/[tablib](https://github.com/jazzband/tablib) | Format-agnostic tabular dataset library
