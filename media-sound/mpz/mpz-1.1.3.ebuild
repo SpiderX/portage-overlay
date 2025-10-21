@@ -3,14 +3,15 @@
 
 EAPI=8
 
-inherit cmake git-r3 xdg
+inherit cmake xdg
 
 DESCRIPTION="Music player for big local collections"
 HOMEPAGE="https://mpz-player.org"
-EGIT_REPO_URI="https://github.com/olegantonyan/${PN}.git"
+SRC_URI="https://github.com/olegantonyan/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-cpp/yaml-cpp:=
 	dev-qt/qtbase:6[concurrent,dbus,gui,network,widgets]
