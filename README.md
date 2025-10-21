@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1308](https://img.shields.io/badge/ebuild-1308-orange.svg)](https://img.shields.io/badge/ebuild-1308-orange.svg)
+[![Number of ebuilds: 1309](https://img.shields.io/badge/ebuild-1309-orange.svg)](https://img.shields.io/badge/ebuild-1309-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1096,6 +1096,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[ruff](https://github.com/astral-sh/ruff) | Pytest module for ruff
 *   dev-python/[sanic](https://github.com/sanic-org/sanic) | A web server and web framework that's written to go fast
 *   dev-python/[sanic-ext](https://github.com/sanic-org/sanic-ext) | Extend Sanic installation with some core functionality
+*   dev-python/[sanic-routing](https://github.com/sanic-org/sanic-routing) | Core routing component for Sanic
 *   dev-python/[schema](https://github.com/keleshev/schema) | Simple data validation library
 *   dev-python/[scikit-learn](https://github.com/scikit-learn/scikit-learn) | Machine learning in Python
 *   dev-python/[selinux](https://github.com/pycontribs/selinux) | Pure-python selinux shim module for use in virtualenvs

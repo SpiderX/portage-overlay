@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a core routing component for Sanic. This
+	package comes with a BaseRouter that needs to be subclassed
+	in order to be used for its specific needs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sanic-org/sanic-routing</remote-id>
+		<remote-id type="pypi">sanic-routing</remote-id>
+	</upstream>
+</pkgmetadata>
