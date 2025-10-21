@@ -1,0 +1,13 @@
+--- ../setup.cfg	2025-10-18 18:42:53.596405500 +0300
++++ ../setup.cfg	2025-10-18 18:43:25.748187778 +0300
+@@ -28,6 +28,10 @@
+     py.typed
+     extensions/openapi/ui/*
+ 
++[options.packages.find]
++exclude =
++    tests*
++
+ [options.extras_require]
+ test =
+     sanic_testing>=22.9.0
