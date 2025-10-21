@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1326](https://img.shields.io/badge/ebuild-1326-orange.svg)](https://img.shields.io/badge/ebuild-1326-orange.svg)
+[![Number of ebuilds: 1327](https://img.shields.io/badge/ebuild-1327-orange.svg)](https://img.shields.io/badge/ebuild-1327-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1136,6 +1136,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[toml](https://github.com/uiri/toml) | Python Library for TOML
 *   dev-python/[tracerite](https://github.com/sanic-org/tracerite) | Human-readable HTML tracebacks for Python exceptions
 *   dev-python/[tree-format](https://github.com/jml/tree-format) | Python library for printing trees on the console
+*   dev-python/[txmongo](https://github.com/twisted/txmongo) | Asynchronous Python driver for MongoDB
 *   dev-python/[types-awscrt](https://github.com/youtype/types-awscrt) | Type annotations and code completion for awscrt
 *   dev-python/[types-s3transfer](https://github.com/youtype/types-s3transfer) | Type annotations and code completion for s3transfer
 *   dev-python/[ua-parser](https://github.com/ua-parser/uap-python) | A python implementation of the UA Parser
