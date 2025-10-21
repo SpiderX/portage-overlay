@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1329](https://img.shields.io/badge/ebuild-1329-orange.svg)](https://img.shields.io/badge/ebuild-1329-orange.svg)
+[![Number of ebuilds: 1330](https://img.shields.io/badge/ebuild-1330-orange.svg)](https://img.shields.io/badge/ebuild-1330-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1150,6 +1150,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[uuid-utils](https://github.com/aminalaee/uuid-utils) | Python bindings to Rust UUID
 *   dev-python/[validate-email](https://github.com/syrusakbary/validate_email) | Python email validation library
 *   dev-python/[validators](https://github.com/kvesteri/validators) | Python data validation library
+*   dev-python/[valkey](https://github.com/valkey-io/valkey-py) | The Python interface to the Valkey key-value store
 *   dev-python/[vcd-api-schemas-type](https://github.com/vmware/vcd-api-schemas) | VMware vCloud Director Python API Schemas Type
 *   dev-python/[versionfinder](https://github.com/jantman/versionfinder) | Find version of python package, installed via pip, setuptools, git
 *   dev-python/[vsphere-guest-run](https://github.com/vmware/vsphere-guest-run) | Python library for guest operations
