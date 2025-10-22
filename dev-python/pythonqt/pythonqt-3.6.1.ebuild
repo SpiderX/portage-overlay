@@ -5,14 +5,15 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit edo git-r3 qmake-utils python-single-r1 virtualx
+inherit edo qmake-utils python-single-r1 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="https://mevislab.github.io/pythonqt/"
-EGIT_REPO_URI="https://github.com/MeVisLab/${PN}.git"
+SRC_URI="https://github.com/MeVisLab/pythonqt/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples +extensions test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE} test? ( extensions ) examples? ( extensions )"
 RESTRICT="!test? ( test )"
