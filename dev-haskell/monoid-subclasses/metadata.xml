@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a hierarchy of subclasses of Monoid together
+	with their instances for all data structures from base,
+	containers, and text packages.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">monoid-subclasses</remote-id>
+		<remote-id type="github">blamario/monoid-subclasses</remote-id>
+	</upstream>
+</pkgmetadata>
