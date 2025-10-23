@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,8 +16,9 @@ LICENSE="GPL-3"
 SLOT="6"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-qt/qtmultimedia:6
-	dev-qt/qtquickcontrols2:5
+RDEPEND="dev-qt/qtdeclarative:6
+	dev-qt/qtmultimedia:6
+	kde-frameworks/kirigami:6
 	kde-plasma/plasma-workspace:6"
 
 src_prepare() {
