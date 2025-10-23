@@ -1,0 +1,31 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CABAL_HACKAGE_REVISION=6
+CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+
+inherit haskell-cabal
+
+DESCRIPTION="Convenient interface for printing colourful messages"
+HOMEPAGE="https://github.com/kowainik/colourista"
+
+LICENSE="MPL-2.0"
+SLOT="0/${PV}"
+KEYWORDS="~amd64 ~x86"
+
+RDEPEND="dev-haskell/ansi-terminal:=[profile?]
+	dev-haskell/text:=[profile?]
+	dev-lang/ghc:="
+DEPEND="${RDEPEND}"
+BDEPEND="dev-haskell/cabal:=
+	test? ( dev-haskell/hspec:=[profile?] )"
+
+DOCS=( {CHANGELOG,README}.md )
+
+src_prepare() {
+	haskell-cabal_src_prepare
+	cabal-mksetup
+	sed -i '/license-file/d' colourista.cabal || die "sed failed"
+}
