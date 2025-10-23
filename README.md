@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1345](https://img.shields.io/badge/ebuild-1345-orange.svg)](https://img.shields.io/badge/ebuild-1345-orange.svg)
+[![Number of ebuilds: 1346](https://img.shields.io/badge/ebuild-1346-orange.svg)](https://img.shields.io/badge/ebuild-1346-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1202,6 +1202,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[gibberish-detector](https://github.com/domanchi/gibberish-detector) | Train a model, and detect gibberish strings with it
 *   dev-util/[gh](https://github.com/cli/cli) | The GitHub CLI
 *   dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | GitLab Runner
+*   dev-util/[hadolint](https://github.com/hadolint/hadolint) | Dockerfile linter, validate inline bash
 *   dev-util/[hadolint-bin](https://github.com/hadolint/hadolint) | Dockerfile linter, validate inline bash
 *   dev-util/[hotspot](https://github.com/KDAB/hotspot) | Linux perf GUI for performance analysis
 *   dev-util/[insomnia-bin](https://insomnia.rest) | HTTP and GraphQL client for developers

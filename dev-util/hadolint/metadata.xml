@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A smarter Dockerfile linter that helps to build best practice Docker
+	images. The linter parses the Dockerfile into an AST and performs
+	rules on top of the AST. It stands on the shoulders of
+	<pkg>dev-util/shellcheck</pkg> to lint the Bash code
+	inside RUN instructions.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">hadolint</remote-id>
+		<remote-id type="github">hadolint/hadolint</remote-id>
+	</upstream>
+</pkgmetadata>

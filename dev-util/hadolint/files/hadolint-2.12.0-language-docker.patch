@@ -1,0 +1,14 @@
+From https://github.com/hadolint/hadolint/pull/902
+From https://github.com/hadolint/hadolint/commit/8c0b7e04a1523f4fdae7252831ff26cbc3282fea
+--- a/src/Hadolint/Rule/DL3011.hs
++++ b/src/Hadolint/Rule/DL3011.hs
+@@ -10,7 +10,7 @@
+     severity = DLErrorC
+     message = "Valid UNIX ports range from 0 to 65535"
+     check (Expose (Ports ports)) =
+-      and [p <= 65535 | Port p _ <- ports]
+-        && and [l <= 65535 && m <= 65535 | PortRange l m _ <- ports]
++      and [p <= 65535 | PortSpec (Port p _) <- ports]
++        && and [l <= 65535 && m <= 65535 | PortRangeSpec (PortRange (Port l _) (Port m  _)) <- ports]
+     check _ = True
+ {-# INLINEABLE rule #-}
