@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1334](https://img.shields.io/badge/ebuild-1334-orange.svg)](https://img.shields.io/badge/ebuild-1334-orange.svg)
+[![Number of ebuilds: 1335](https://img.shields.io/badge/ebuild-1335-orange.svg)](https://img.shields.io/badge/ebuild-1335-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -246,6 +246,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[binary-parser](https://github.com/nikita-volkov/binary-parser) | A highly-efficient but limited parser API for bytestrings
 *   dev-haskell/[bytestring-strict-builder](https://github.com/nikita-volkov/bytestring-strict-builder) | An efficient strict bytestring builder
 *   dev-haskell/[bytestring-tree-builder](https://github.com/nikita-volkov/bytestring-tree-builder) | A ByteString builder implementation based on the binary tree
+*   dev-haskell/[cabal-syntax](https://github.com/haskell/cabal) | A library for working with .cabal files
 *   dev-haskell/[cache](https://github.com/hverr/haskell-cache) | An in-memory key/value store with expiration support
 *   dev-haskell/[chasingbottoms](https://hackage.haskell.org/package/ChasingBottoms) | For testing partial and infinite values
 *   dev-haskell/[cipher-aes128](https://github.com/TomMD/cipher-aes128) | AES and common modes using AES-NI when available
