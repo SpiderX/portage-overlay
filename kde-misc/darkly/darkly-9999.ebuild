@@ -26,8 +26,7 @@ RDEPEND="dev-qt/qtbase:6[dbus,gui,widgets]
 	kde-frameworks/kiconthemes:6
 	kde-frameworks/kwindowsystem:6
 	kde-plasma/kdecoration:6
-	qt5? (
-		dev-qt/qtcore:5
+	qt5? ( dev-qt/qtcore:5
 		dev-qt/qtgui:5[dbus]
 		dev-qt/qtwidgets:5
 		dev-qt/qtdeclarative:5
@@ -39,8 +38,7 @@ RDEPEND="dev-qt/qtbase:6[dbus,gui,widgets]
 		kde-frameworks/ki18n:5
 		kde-frameworks/kirigami:5
 		kde-frameworks/kiconthemes:5
-		kde-frameworks/kwindowsystem:5
-	)"
+		kde-frameworks/kwindowsystem:5 )"
 DEPEND="${RDEPEND}"
 BDEPEND="kde-frameworks/kcmutils:6
 	qt5? ( kde-frameworks/kcmutils:5 )"
