@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This started out as a simple project to parse and display time
+	according to RFC 3339, but with time gained ability to convert
+	to and from other RFCs as well.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">timerep</remote-id>
+		<remote-id type="github">HugoDaniel/timerep</remote-id>
+	</upstream>
+</pkgmetadata>
