@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1343](https://img.shields.io/badge/ebuild-1343-orange.svg)](https://img.shields.io/badge/ebuild-1343-orange.svg)
+[![Number of ebuilds: 1344](https://img.shields.io/badge/ebuild-1344-orange.svg)](https://img.shields.io/badge/ebuild-1344-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -335,6 +335,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[scrypt](https://github.com/informatikr/scrypt) | Stronger password hashing via sequential memory-hard functions
 *   dev-haskell/[selective](https://github.com/snowleopard/selective) | Selective applicative functors
 *   dev-haskell/[semver](https://github.com/brendanhay/semver) | Representation, manipulation, and serialisation of Semantic Versions
+*   dev-haskell/[spdx](https://github.com/phadej/spdx) | SPDX license expression language Representation, manipulation, and serialisation of Semantic Versions
 *   dev-haskell/[strict-list](https://github.com/nikita-volkov/strict-list) | Strict linked list
 *   dev-haskell/[swagger2](https://github.com/GetShopTV/swagger2) | Swagger 2.0 data model
 *   dev-haskell/[tasty-hspec](https://github.com/mitchellwrosen/tasty-hspec) | Hspec support for the Tasty test framework
