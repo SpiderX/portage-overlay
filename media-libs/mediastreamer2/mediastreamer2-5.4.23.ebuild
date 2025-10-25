@@ -36,7 +36,7 @@ RDEPEND="net-libs/bctoolbox[test?]
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio-daemon )
+	pulseaudio? ( media-libs/libpulse )
 	qrcode? ( media-libs/zxing-cpp )
 	speex? ( media-libs/speex
 		media-libs/speexdsp )
