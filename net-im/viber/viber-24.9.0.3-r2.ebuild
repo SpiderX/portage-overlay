@@ -85,9 +85,8 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-wm[${MULTILIB_USEDEP}]
 	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )
 	pulseaudio? (
-		media-plugins/gst-plugins-pulse[${MULTILIB_USEDEP}]
-		|| ( media-sound/pulseaudio-daemon[${MULTILIB_USEDEP}]
-			media-video/pipewire[sound-server,${MULTILIB_USEDEP}] ) )
+		media-libs/libpulse[${MULTILIB_USEDEP}]
+		media-plugins/gst-plugins-pulse[${MULTILIB_USEDEP}] )
 	|| ( media-video/ffmpeg-compat:4[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}]
 		media-video/ffmpeg:0/56.58.58[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}] )
 	|| ( sys-apps/systemd[${MULTILIB_USEDEP}] sys-apps/systemd-utils[udev,${MULTILIB_USEDEP}] )"
