@@ -20,7 +20,7 @@ RDEPEND="dev-libs/openssl:0=
 	alsa? ( media-libs/alsa-lib )
 	mpris-dbus? ( sys-apps/dbus )
 	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-sound/pulseaudio-daemon )"
+	pulseaudio? ( media-libs/libpulse )"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( {CHANGELOG,README}.md )
