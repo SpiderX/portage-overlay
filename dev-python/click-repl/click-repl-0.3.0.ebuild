@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -15,6 +15,7 @@ SRC_URI="https://github.com/click-contrib/${PN}/archive/${PV}.tar.gz -> ${P}.gh.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test" # https://github.com/click-contrib/click-repl/issues/128
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/prompt-toolkit[${PYTHON_USEDEP}]"
