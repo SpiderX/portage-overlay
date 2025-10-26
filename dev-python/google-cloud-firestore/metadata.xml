@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Cloud Firestore API is a fully-managed NoSQL document database for mobile,
+	web, and server development from Firebase and Google Cloud Platform.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">googleapis/python-firestore</remote-id>
+		<remote-id type="pypi">google-cloud-firestore</remote-id>
+	</upstream>
+</pkgmetadata>
