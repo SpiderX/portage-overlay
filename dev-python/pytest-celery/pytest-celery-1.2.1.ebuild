@@ -6,14 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature
 
 DESCRIPTION="A shim pytest plugin to enable celery.contrib.pytest"
 HOMEPAGE="https://github.com/celery/pytest-celery"
-EGIT_REPO_URI="https://github.com/celery/${PN}.git"
+SRC_URI="https://github.com/celery/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/celery[${PYTHON_USEDEP}]
 	dev-python/docker[${PYTHON_USEDEP}]
