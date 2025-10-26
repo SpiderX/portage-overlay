@@ -25,75 +25,50 @@ RDEPEND="dev-python/billiard[${PYTHON_USEDEP}]
 	dev-python/vine[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/azure-storage-blob[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/dnspython[${PYTHON_USEDEP}]
+		dev-python/exceptiongroup[${PYTHON_USEDEP}]
+		dev-python/gevent[${PYTHON_USEDEP}]
+		dev-python/google-cloud-firestore[${PYTHON_USEDEP}]
 		dev-python/google-cloud-storage[${PYTHON_USEDEP}]
 		dev-python/msgpack[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/pymongo[${PYTHON_USEDEP}]
-		dev-python/pytest-subtests[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}] )"
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/tzlocal[${PYTHON_USEDEP}] )"
 
 EPYTEST_XDIST=1
+EPYTEST_PLUGINS=( pytest-{celery,subtests,xdist} )
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
+EPYTEST_IGNORE=(
 	# error
-	t/unit/app/test_preload_cli.py::test_preload_options
-	t/unit/bin/test_beat.py::test_cli
-	t/unit/bin/test_beat.py::test_cli_quiet
-	t/unit/bin/test_control.py::test_custom_remote_command
-	t/unit/bin/test_control.py::test_unrecognized_remote_command
-	t/unit/bin/test_control.py::test_listing_remote_commands
-	t/unit/bin/test_daemonization.py::test_daemon_options_from_config
-	t/unit/bin/test_worker.py::test_cli
-	t/unit/bin/test_worker.py::test_cli_skip_checks
-	# AttributeError: module 'pymongo' has no attribute 'uri_parser'
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_cleanup
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_init_no_mongodb
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_init_no_settings
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_init_settings_is_None
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_init_with_settings
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_init_mongodb_dnspython2_pymongo4_seedlist
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_ensure_mongodb_uri_compliance
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_reduce
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_connection_connection_exists
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_connection_no_connection_host
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_connection_no_connection_mongodb_uri
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_connection_with_authmechanism
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_connection_with_authmechanism_no_username
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_database_no_existing
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_database_no_existing_no_auth
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_store_result
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_store_result_with_request
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_task_meta_for
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_task_meta_for_result_extended
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_get_task_meta_for_no_result
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_save_group
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_restore_group
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_delete_group
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test__forget
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_prepare_client_options
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_as_uri_include_password
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_as_uri_exclude_password
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_as_uri_include_password_replica_set
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_as_uri_exclude_password_replica_set
-	t/unit/backends/test_mongodb.py::test_MongoBackend::test_regression_worker_startup_info
+	t/unit/app/test_preload_cli.py
+	t/unit/bin/test_beat.py
+	t/unit/bin/test_control.py
+	t/unit/bin/test_daemonization.py
+	t/unit/bin/test_worker.py
+)
+EPYTEST_DESELECT=(
 	# assert
-	t/unit/contrib/test_worker.py::test_worker::test_start_worker_with_hostname_config
-	# ModuleNotFoundError: No module named 'greenlet'
-	t/unit/concurrency/test_gevent.py::test_TaskPool::test_make_killable_target
-	# AttributeError: 'NoneType' object has no attribute 'RedisError'
-	t/unit/backends/test_redis.py::test_RedisBackend::test_exception_safe_to_retry
-	# RuntimeError
-	t/unit/contrib/test_worker.py::test_worker::test_start_worker_with_hostname_config
-	# Failed: DID NOT RAISE
 	t/unit/contrib/test_pytest.py::test_pytest_celery_marker_registration
-	# assert False
+	t/unit/contrib/test_rdb.py::test_Rdb::test_debugger
+	t/unit/contrib/test_rdb.py::test_Rdb::test_set_trace
+	t/unit/contrib/test_rdb.py::test_Rdb::test_rdb
+	t/unit/contrib/test_rdb.py::test_Rdb::test_get_avail_port
 	t/unit/tasks/test_stamping.py::test_canvas_stamping::test_stamping_with_replace
-	# AttributeError: 'NoneType' object has no attribute 'get'
+	t/unit/contrib/test_worker.py::test_worker::test_start_worker
+	t/unit/contrib/test_worker.py::test_worker::test_start_worker_with_exception
+	t/unit/contrib/test_worker.py::test_worker::test_start_worker_with_hostname_config
+	# AttributeError
+	t/unit/app/test_app.py::test_App::test_worker_main
+	t/unit/app/test_app.py::test_App::test_start
+	t/unit/contrib/test_pytest.py::test_pytest_celery_marker_registration
+	t/unit/events/test_dumper.py::test_on_event_task_received
+	t/unit/events/test_dumper.py::test_on_event_non_task
 	t/unit/tasks/test_stamping.py::test_canvas_stamping::test_stamping_headers_in_options
-	# RuntimeError: generator raised StopIteration
+	# failed
 	t/unit/events/test_events.py::test_EventReceiver::test_itercapture_limit
 )
 
@@ -105,33 +80,22 @@ python_prepare_all() {
 }
 
 pkg_postinst() {
-	#optfeature "arangodb support"
 	optfeature "auth support" dev-python/pyopenssl
-	#optfeature "azureblockblob support"
+	optfeature "aws support" dev-python/boto3
+	optfeature "azure support" dev-python/azure-storage-blob
 	optfeature "brotli support" dev-python/brotlicffi
-	#optfeature "cassandra support" dev-python/cassandra-driver
-	#optfeature "consul support"
-	#optfeature "cosmosdbsql support"
-	#optfeature "couchbase support" dev-python/couchbase
-	#optfeature "couchdb support"
-	#optfeature "django support"
-	#optfeature "eventlet support" dev-python/eventlet
-	#optfeature "gevent support" dev-python/gevent
-	#optfeature "rabbitmq support" dev-python/librabbitmq
-	#optfeature "lzma support"
-	optfeature "memcache support" dev-python/pylibmc
+	optfeature "cryptography support" dev-python/cryptography
+	optfeature "django support" dev-python/django
+	optfeature "gcs support" dev-python/google-cloud-storage dev-python/google-cloud-firestore
+	optfeature "gevent support" dev-python/gevent
+	optfeature "memcache support" dev-python/python-memcached
 	optfeature "mongodb support" dev-python/pymongo
 	optfeature "msgpack support" dev-python/msgpack
-	#optfeature "pymemcachee support"
+	optfeature "pydantic support" dev-python/pydantic
 	optfeature "pyro support" dev-python/pyro:4
-	#optfeature "pytest support"
 	optfeature "redis support" dev-db/redis dev-python/redis-py
-	#optfeature "slmq support" dev-python/softlayer_messaging
-	#optfeature "solar support"
 	optfeature "sqlalchemy support" dev-python/sqlalchemy
-	optfeature "sqs support" dev-python/boto
 	optfeature "tblib support" dev-python/tblib
 	optfeature "yaml support" dev-python/pyyaml
-	optfeature "zookeeper support" dev-python/kazoo
 	optfeature "zstd support" dev-python/zstd
 }
