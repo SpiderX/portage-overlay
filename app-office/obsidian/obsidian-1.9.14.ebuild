@@ -50,6 +50,18 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libayatana-appindicator )"
 
+QA_PREBUILT="opt/Obsidian/chrome_crashpad_handler
+	opt/Obsidian/libEGL.so
+	opt/Obsidian/libGLESv2.so
+	opt/Obsidian/libffmpeg.so
+	opt/Obsidian/libvk_swiftshader.so
+	opt/Obsidian/libvulkan.so.1
+	opt/Obsidian/obsidian
+	opt/Obsidian/resources/app.asar.unpacked/node_modules/btime/binding.node
+	opt/Obsidian/resources/app.asar.unpacked/node_modules/btime/build/Release/binding.node
+	opt/Obsidian/resources/app.asar.unpacked/node_modules/get-fonts/binding.node
+	opt/Obsidian/resources/app.asar.unpacked/node_modules/get-fonts/build/Release/binding.node"
+
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
 }
