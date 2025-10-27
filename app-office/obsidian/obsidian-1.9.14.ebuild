@@ -18,7 +18,7 @@ S="${WORKDIR}"
 LICENSE="Obsidian"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+abi_x86_64 suid"
+IUSE="+abi_x86_64 appindicator suid wayland"
 RESTRICT="bindist mirror splitdebug"
 
 RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
@@ -27,8 +27,8 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/libffi:0[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	dev-libs/libpcre2:0[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
+	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
 	media-libs/mesa:0[vulkan,${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
@@ -47,7 +47,8 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:0[${MULTILIB_USEDEP}]
 	x11-libs/libxkbcommon:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	appindicator? ( dev-libs/libayatana-appindicator )"
 
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
@@ -64,6 +65,12 @@ src_prepare() {
 
 	if ! use suid ; then
 		rm opt/Obsidian/chrome-sandbox || die "rm failed"
+	fi
+
+	if use wayland ; then
+		sed -i '/Exec/s/%U/%U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland/' \
+			usr/share/applications/obsidian.desktop \
+			|| die "sed failed for wayland"
 	fi
 }
 
@@ -86,6 +93,8 @@ src_install() {
 	use suid && fperms u+s,+x /opt/Obsidian/chrome-sandbox
 
 	dosym ../Obsidian/obsidian opt/bin/obsidian
+	use appindicator && dosym ../../usr/"$(get_libdir)"/libayatana-appindicator3.so \
+		/opt/Obsidian/libappindicator3.so
 
 	pax-mark -m "${ED}"/opt/Obsidian/obsidian
 }

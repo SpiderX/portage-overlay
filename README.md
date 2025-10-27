@@ -126,7 +126,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-editors/[marktext](https://github.com/marktext/marktext) | A simple and elegant open-source markdown editor
 *   app-editors/[notes](https://github.com/nuttyartist/notes) | Note taking application, write down your thoughts
 *   app-editors/[NotepadNext](https://github.com/dail8859/NotepadNext) | A cross-platform reimplementation of Notepad++
-*   app-editors/[obsidian](https://obsidian.md/) | A knowledge base of plain text Markdown files
 *   app-editors/[typora](https://typora.io) | A minimal markdown editor and reader
 *   app-emulation/[looking-glass](https://looking-glass.io) | A low latency KVM FrameRelay implementation for guests with VGA PCI Passthrough
 *   app-emulation/[qio](https://github.com/SpiderX/qio) | QEMU Init OpenRC
@@ -193,6 +192,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[up](https://github.com/akavel/up) | Tool for writing Linux pipes with instant live preview
 *   app-misc/[xsv](https://github.com/BurntSushi/xsv) | A fast CSV command line toolkit
 *   app-misc/[xq](https://github.com/sibprogrammer/xq) | Command-line JSON processor for binary data
+*   app-office/[obsidian](https://obsidian.md/) | A knowledge base of plain text Markdown files
 *   app-office/[tradingview](https://www.tradingview.com/desktop/) | A charting platform for traders and investors
 *   app-office/[webull-desktop](https://www.webull.com/introduce/desktop-native) | Invest in stocks, ETFs, and options with Webull Financial
 *   app-shells/[fpp](https://github.com/facebook/pathpicker) | Command line tool to select files out of bash output
