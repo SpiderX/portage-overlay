@@ -96,7 +96,7 @@ src_prepare() {
 	fi
 
 	if use wayland ; then
-		sed -i  -e '/Exec/s/%U/%U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland' \
+		sed -i  -e '/Exec/s/%U/%U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland/' \
 			usr/share/applications/slack.desktop \
 			|| die "sed failed for wayland"
 	fi
