@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This module does not provide a WebSocket server or client, but is made
+	for using in http servers or clients to provide WebSocket support.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpan">Protocol-WebSocket</remote-id>
+		<remote-id type="cpan-module">Protocol::WebSocket</remote-id>
+		<remote-id type="github">vti/protocol-websocket</remote-id>
+	</upstream>
+</pkgmetadata>
