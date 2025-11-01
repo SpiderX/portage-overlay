@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1350](https://img.shields.io/badge/ebuild-1350-orange.svg)](https://img.shields.io/badge/ebuild-1350-orange.svg)
+[![Number of ebuilds: 1351](https://img.shields.io/badge/ebuild-1351-orange.svg)](https://img.shields.io/badge/ebuild-1351-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -151,6 +151,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[jshon](http://kmkeen.com/jshon/) | JSON parser designed for maximum convenience within the shell
 *   app-misc/[jsqry-cli2-bin](https://github.com/jsqry/jsqry-cli2) | CLI tool (similar to jq) to query JSON using sane DSL
 *   app-misc/[kando-bin](https://github.com/kando-menu/kando) | A pie menu for the desktop
+*   app-misc/[mime-types](https://pagure.io/mailcap) | Provides /etc/mime.types file
 *   app-misc/[mop](https://github.com/mop-tracker/mop) | Stock market tracker for hackers
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/pet.svg?header=)](https://repology.org/project/pet/versions) app-misc/[pet](https://github.com/knqyf263/pet) | Simple command-line snippet manager
 *   app-misc/[tmux-autoreload](https://github.com/b0o/tmux-autoreload) | Automatically reload your tmux config file on change
