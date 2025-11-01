@@ -21,7 +21,7 @@ commitizen:
     schema_pattern: "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>\
       acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|\
       forensics|metrics|misc|office|shells|text)|dev-(build|cpp|db|haskell|libs|lisp|ml|\
-      php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
+      perl|php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
       net-(analyzer|dns|firewall|ftp|im|libs|mail|misc|p2p|voip|vpn)|\
       sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|plugins|\
       servers)|x11-misc)\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
@@ -95,6 +95,7 @@ commitizen:
           dev-libs: "various miscellaneous programming libraries"
           dev-lisp: "libraries and utilities relevant to Lisp language"
           dev-ml: "libraries and utilities relevant to the ML language"
+          dev-perl: "libraries and utilities relevant to the Perl language"
           dev-php: "libraries and utilities relevant to the PHP language"
           dev-python: "python modules, extensions and bindings"
           dev-util: "various miscellaneous development utilities"
@@ -153,6 +154,7 @@ commitizen:
           - dev-libs
           - dev-lisp
           - dev-ml
+          - dev-perl
           - dev-php
           - dev-python
           - dev-util
