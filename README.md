@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1351](https://img.shields.io/badge/ebuild-1351-orange.svg)](https://img.shields.io/badge/ebuild-1351-orange.svg)
+[![Number of ebuilds: 1352](https://img.shields.io/badge/ebuild-1352-orange.svg)](https://img.shields.io/badge/ebuild-1352-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1427,6 +1427,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   www-plugins/[chrome-token-signing](https://github.com/open-eid/chrome-token-signing) | Native client and extension for signing with your eID on the web
 *   www-plugins/[eusw](https://iit.com.ua) | IIT End User CA-1 browser extension
 *   www-plugins/[vdhcoapp-bin](https://github.com/aclap-dev/vdhcoapp) | Companion application for Video DownloadHelper browser add-on
+*   www-servers/[angie](https://github.com/webserver-llc/angie) | Efficient, powerful and scalable reverse proxy and web server
 *   www-servers/[gitlab-workhorse](https://gitlab.com/gitlab-org/gitlab-workhorse) | GitLab reverse proxy
 *   www-servers/[imgproxy](https://github.com/imgproxy/imgproxy) | Server for resizing and converting remote images
 *   x11-libs/[libvdpau-va-gl](https://github.com/i-rinat/libvdpau-va-gl) | VDPAU driver with OpenGL/VAAPI backend
