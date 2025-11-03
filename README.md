@@ -1321,7 +1321,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-firewall/[xt_dns](https://github.com/oskar456/xt_dns) | Netfilter extension to match various DNS atributes
 *   net-firewall/[xt_anat](https://forum.nag.ru/index.php?/topic/195398-anat-advanced-asymmetric-cg-nat-xt_anat-module-yadra-dlya-linux) | Assimetric NAT module for Linux xtables
 *   net-firewall/[xt_nat](https://github.com/gonarh/xt_NAT_with_netflow_v9) | Full Cone NAT module for Linux iptables
-*   net-fs/[mc](https://github.com/minio/mc) | Minio client provides alternatives for ls, cat on cloud storage and filesystems
 *   net-ftp/[weex](https://sourceforge.net/projects/weex/) | A non-interactive FTP client for updating web pages
 *   net-im/[communi-desktop](https://github.com/communi/communi-desktop) | A cross-platform IRC framework written with Qt
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/gitter.svg?header=)](https://repology.org/project/gitter/versions) net-im/[gitter-bin](https://gitter.im) | Chat and network platform
