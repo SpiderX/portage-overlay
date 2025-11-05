@@ -87,7 +87,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[saw](https://github.com/TylerBrock/saw) | Fast, multi-purpose tool for AWS CloudWatch Logs
 *   app-admin/[semaphore-bin](https://github.com/ansible-semaphore/semaphore) | Modern UI for Ansible
 *   app-admin/[sinker](https://github.com/plexsystems/sinker) | Sync images from one container registry to another
-*   app-admin/[sops](https://github.com/mozilla/sops) | Simple and flexible tool for managing secrets
 *   app-admin/[spotinfo](https://github.com/alexei-led/spotinfo) | Exploring AWS EC2 Spot inventory
 *   app-admin/[terraform-provider-proxmox](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) | Terraform Provider for Proxmox
 *   app-admin/[terraform-provider-vcd](https://registry.terraform.io/providers/vmware/vcd/latest/docs) | Terraform VMware vCloud Director provider
@@ -115,6 +114,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-crypt/[labca](https://github.com/hakwerk/labca) | A private Certificate Authority for internal (lab) use
 *   app-crypt/[qesteidutil](https://github.com/open-eid/qesteidutil) | Estonian ID card management desktop utility
 *   app-crypt/[rolesanywhere-credential-helper](https://github.com/aws/rolesanywhere-credential-helper) | AWS IAM Roles Anywhere Credential Helper
+*   app-crypt/[sops](https://github.com/mozilla/sops) | Simple and flexible tool for managing secrets
 *   app-crypt/[step-cli](https://github.com/smallstep/cli) | A zero trust swiss army knife for working with X509
 *   app-crypt/[step-ca](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
 *   app-crypt/[step-kms-plugin](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
