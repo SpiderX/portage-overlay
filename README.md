@@ -14,16 +14,11 @@
 ## How to use this overlay
 
 For automatic install, you must have [`app-eselect/eselect-repository`](https://packages.gentoo.org/packages/app-eselect/eselect-repository)
-or [`app-portage/layman`](https://packages.gentoo.org/packages/app-portage/layman) installed on your system for this to work.
+installed on your system for this to work.
 
 ### `eselect-repository`
 ```console
 eselect repository enable nest
-```
-
-### `layman`
-```console
-layman -fa nest
 ```
 
 For manual install, through [local overlay](https://wiki.gentoo.org/wiki/Creating_an_ebuild_repository), you should add this in `/etc/portage/repos.conf/nest.conf`:
@@ -32,7 +27,7 @@ For manual install, through [local overlay](https://wiki.gentoo.org/wiki/Creatin
 [nest]
 location = /var/db/repos/nest
 sync-type = git
-sync-uri = https://github.com/gentoo-mirror/nest.git
+sync-uri = https://github.com/SpiderX/portage-overlay.git
 priority=9999
 ```
 
