@@ -18,7 +18,7 @@ SLOT="0"
 RDEPEND="!dev-python/bc-detect-secrets[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/ahocorasick[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/pyahocorasick[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		dev-python/unidiff[${PYTHON_USEDEP}]
 		dev-util/gibberish-detector[${PYTHON_USEDEP}] )"
