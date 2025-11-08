@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -15,15 +15,14 @@ SRC_URI="https://github.com/dabeaz/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # fails
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="test? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}/${PN}"-1.6-py312.patch
+	"${FILESDIR}/${PN}"-1.6-py313.patch
+	"${FILESDIR}/${PN}"-1.6-tests.patch )
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-python_prepare_all() {
-	# Remove test requires network
-	rm tests/test_network.py || die "rm failed"
-
-	distutils-r1_python_prepare_all
-}

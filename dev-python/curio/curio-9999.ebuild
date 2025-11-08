@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
@@ -14,13 +14,8 @@ EGIT_REPO_URI="https://github.com/dabeaz/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
-RESTRICT="test" # fails
+RESTRICT="test"
+PROPERTIES="test_network"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-python_prepare_all() {
-	# Remove test requires network
-	rm tests/test_network.py || die "rm failed"
-
-	distutils-r1_python_prepare_all
-}
