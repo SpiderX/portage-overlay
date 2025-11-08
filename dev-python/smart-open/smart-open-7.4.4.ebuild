@@ -23,13 +23,17 @@ KEYWORDS="~amd64"
 RDEPEND="dev-python/azure-core[${PYTHON_USEDEP}]
 	dev-python/azure-common[${PYTHON_USEDEP}]
 	dev-python/azure-storage-blob[${PYTHON_USEDEP}]
+	dev-python/backports-zstd[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/google-cloud-storage[${PYTHON_USEDEP}]
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/wrapt[${PYTHON_USEDEP}]
-	dev-python/zstandard[${PYTHON_USEDEP}]"
+	dev-python/wrapt[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}] )"
 
+EPYTEST_XDIST=1
+EPYTEST_PLUGINS=( pytest-timeout )
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=( integration-tests ci_helpers )
