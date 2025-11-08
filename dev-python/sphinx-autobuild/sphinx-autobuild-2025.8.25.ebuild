@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -14,7 +14,6 @@ HOMEPAGE="https://github.com/sphinx-doc/sphinx-autobuild"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test" # no docs
 
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
@@ -24,4 +23,7 @@ RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/websockets[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/httpx[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=( tests/test_application.py )
