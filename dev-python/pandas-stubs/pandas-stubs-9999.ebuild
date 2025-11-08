@@ -4,13 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-EGIT_REPO_URI="https://github.com/pandas-dev/${PN}.git"
-PYTHON_COMPAT=( python3_{10..13} )
+
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Type annotations for pandas"
 HOMEPAGE="https://github.com/pandas-dev/pandas-stubs"
+EGIT_REPO_URI="https://github.com/pandas-dev/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -30,7 +31,6 @@ BDEPEND="test? ( dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/xarray[${PYTHON_USEDEP}]
 		dev-python/xlsxwriter[${PYTHON_USEDEP}] )"
 
-#EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
