@@ -789,7 +789,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[twig](https://github.com/twigphp/Twig) | PHP templating engine with syntax similar to Django
 *   dev-php/[webmozart-assert](https://github.com/webmozarts/assert) | Webmozart Assert
 *   dev-php/[zetacomponents-UnitTest](https://github.com/zetacomponents/UnitTest) | Unit tests for any Zeta component
-*   dev-python/[MarkupPy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
 *   dev-python/[aardwolf](https://github.com/skelsec/aardwolf) | Asynchronous RDP client for Python
 *   dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory
 *   dev-python/[advanced-alchemy](https://github.com/litestar-org/advanced-alchemy) | Ready-to-go SQLAlchemy concoctions
@@ -985,6 +984,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[llvmlite](https://github.com/numba/llvmlite) | A lightweight wrapper around basic LLVM functionality
 *   dev-python/[lsassy](https://github.com/login-securite/lsassy) | Python library to extract credentials from lsass remotely
 *   dev-python/[markdown2](https://github.com/trentm/python-markdown2) | A fast and complete Python implementation of Markdown
+*   dev-python/[markuppy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
 *   dev-python/[masky](https://pypi.org/project/masky) | Remotely dump domain user credentials via an ADCS
 *   dev-python/[mbedtls](https://github.com/Synss/python-mbedtls) | Cryptographic library with an mbed TLS back end
 *   dev-python/[minidump](https://github.com/skelsec/minidump) | Python library to parse Windows minidump file format
