@@ -967,7 +967,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[igraph](https://github.com/igraph/python-igraph) | Python interface for igraph
 *   dev-python/[impacket](https://github.com/fortra/impacket) | Collection of Python classes for working with network protocols
 *   dev-python/[itypes](https://github.com/tomchristie/itypes) | Simple immutable types for python
-*   dev-python/[jdatetime](https://github.com/slashmili/python-jalali) | Jalali implementation of Python's datetime module
+*   dev-python/[jdatetime](https://github.com/slashmili/jdatetime) | Jalali implementation of Python's datetime module
 *   dev-python/[jalali-core](https://github.com/slashmili/jalali-core) | Gregorian to Jalali and inverse date convertor
 *   dev-python/[jiter](https://github.com/pydantic/jiter) | Fast iterable JSON parser
 *   dev-python/[jproperties](https://github.com/Tblue/python-jproperties) | Java Property file parser and writer for Python

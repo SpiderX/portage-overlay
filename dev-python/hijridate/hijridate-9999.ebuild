@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/mhalshehri/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Hijri-Gregorian date converter"
 HOMEPAGE="https://github.com/mhalshehri/hijri-converter"
+EGIT_REPO_URI="https://github.com/mhalshehri/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
