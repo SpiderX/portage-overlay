@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1349](https://img.shields.io/badge/ebuild-1349-orange.svg)](https://img.shields.io/badge/ebuild-1349-orange.svg)
+[![Number of ebuilds: 1348](https://img.shields.io/badge/ebuild-1348-orange.svg)](https://img.shields.io/badge/ebuild-1348-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -928,7 +928,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[first](https://github.com/hynek/first) | Return the first true value of an iterable
 *   dev-python/[fleep](https://github.com/floyernick/fleep-py) | File format determination library for Python
 *   dev-python/[flup](https://www.saddi.com/software/flup/) | Random assortment of WSGI servers
-*   dev-python/[forbiddenfruit](https://github.com/clarete/forbiddenfruit) | Patch python built-in objects
 *   dev-python/[gensim](https://github.com/piskvorky/gensim) | Topic Modelling for Humans
 *   dev-python/[git-url-parse](https://github.com/coala/git-url-parse) | A simple GIT URL parser
 *   dev-python/[gevent](https://github.com/gevent/gevent) | Coroutine-based concurrency library for Python
