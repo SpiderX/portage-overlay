@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/piskvorky/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library to parse, validate and create SPDX documents"
 HOMEPAGE="https://github.com/spdx/tools-python"
+EGIT_REPO_URI="https://github.com/piskvorky/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
