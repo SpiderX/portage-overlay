@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/mahmoud/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Straightforward CLI parsing and dispatching microframework"
 HOMEPAGE="https://github.com/mahmoud/face"
+EGIT_REPO_URI="https://github.com/mahmoud/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
