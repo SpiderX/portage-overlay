@@ -4,17 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t )
 
-inherit distutils-r1
-
-MY_PN="${PN}-python"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python implementation of the package url spec"
 HOMEPAGE="https://github.com/package-url/packageurl-python"
-SRC_URI="https://github.com/package-url/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"

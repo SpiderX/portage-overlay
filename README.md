@@ -1030,7 +1030,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[oracledb](https://github.com/oracle/python-oracledb) | Python interface to Oracle Database
 *   dev-python/[oscrypto](https://github.com/wbond/oscrypto) | Kerberos manipulation library
 *   dev-python/[oyaml](https://github.com/wimglenn/oyaml) | Ordered YAML
-*   dev-python/[packageurl](https://github.com/package-url/packageurl-python) | Python implementation of the package url spec
+*   dev-python/[packageurl-python](https://github.com/package-url/packageurl-python) | Python implementation of the package url spec
 *   dev-python/[pandas-stubs](https://github.com/pandas-dev/pandas-stubs) | Type annotations for pandas
 *   dev-python/[parameterized](https://github.com/wolever/parameterized) | Parameterized testing with any Python test framework
 *   dev-python/[parsel](https://github.com/scrapy/parsel) | Utility to extract data from XML/HTML documents using XPath or CSS selectors
