@@ -41,8 +41,8 @@ BDEPEND="test? ( dev-python/datadiff[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
 		dev-python/pytest-pythonpath[${PYTHON_USEDEP}]
-		dev-python/python-user-agents[${PYTHON_USEDEP}]
-		dev-python/swagger-spec-validator[${PYTHON_USEDEP}] )"
+		dev-python/swagger-spec-validator[${PYTHON_USEDEP}]
+		dev-python/user-agents[${PYTHON_USEDEP}] )"
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
