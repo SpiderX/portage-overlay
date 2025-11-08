@@ -1,28 +1,26 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
-EGIT_REPO_URI="https://github.com/rpkilby/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_REQ_USE="sqlite(+)"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A reusable Django model field for storing ad-hoc JSON data"
 HOMEPAGE="https://github.com/rpkilby/jsonfield"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/rpkilby/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
-BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
+
+distutils_enable_tests pytest
 
 python_test() {
+	local -x PYTHONPATH=src
 	"${PYTHON}" manage.py test -v2 || die "tests failed with ${EPYTHON}"
 }
