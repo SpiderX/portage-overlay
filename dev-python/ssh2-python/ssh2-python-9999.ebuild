@@ -18,7 +18,7 @@ SLOT="0"
 
 RDEPEND="net-libs/libssh2
 	dev-libs/openssl:0=
-	sys-libs/zlib:0="
+	virtual/zlib:0="
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 	test? ( dev-python/jinja2[${PYTHON_USEDEP}] )"
 
