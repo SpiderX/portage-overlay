@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/xmlrunner/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="unittest-based test runner with Ant/JUnit like XML reporting"
 HOMEPAGE="https://github.com/xmlrunner/unittest-xml-reporting"
+EGIT_REPO_URI="https://github.com/xmlrunner/${PN}.git"
 
 LICENSE="BSD-2"
 SLOT="0"
