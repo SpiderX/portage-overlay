@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -20,7 +20,7 @@ RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="dev-python/license-expression[${PYTHON_USEDEP}]
-	dev-python/packageurl[${PYTHON_USEDEP}]
+	dev-python/packageurl-python[${PYTHON_USEDEP}]
 	<dev-python/serializable-2[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]"
 BDEPEND="test? ( app-text/xmldiff[${PYTHON_USEDEP}]
