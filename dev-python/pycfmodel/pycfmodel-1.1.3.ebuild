@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -19,19 +19,18 @@ KEYWORDS="~amd64"
 RDEPEND="dev-python/pydantic[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/httpx[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
+# https://github.com/Skyscanner/pycfmodel/issues/79
+EPYTEST_IGNORE=( tests/test_constants.py )
+
 python_prepare_all() {
-	# don't install tests
-	sed -i '/exclude/s/ts/ts", "tests.*/' setup.py \
-		|| die "sed failed for setup.cfg"
 	# adjust pydantic version
 	sed -i '/errors.pydantic.dev/s|2.7|2.11|' tests/test_types.py \
 		tests/resources/test_s3_bucket.py \
 		tests/resources/test_opensearch_domain.py \
 		tests/resources/test_es_domain.py || die "sed failed for tests"
-	# remove failed test
-	rm tests/test_constants.py || die "rm failed"
 
 	distutils-r1_python_prepare_all
 }
