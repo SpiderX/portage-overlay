@@ -793,7 +793,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory
 *   dev-python/[advanced-alchemy](https://github.com/litestar-org/advanced-alchemy) | Ready-to-go SQLAlchemy concoctions
 *   dev-python/[aesedb](https://github.com/skelsec/aesedb) | NTDS parser toolkit
-*   dev-python/[ahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
 *   dev-python/[aiomultiprocess](https://github.com/omnilib/aiomultiprocess) | asyncio version of the standard multiprocessing module
 *   dev-python/[aiosmb](https://github.com/skelsec/aiosmb) | Asynchronous SMB protocol implementation
 *   dev-python/[aiowinreg](https://github.com/skelsec/aiowinreg) | Windows registry file reader
@@ -1047,6 +1046,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[purl](https://github.com/codeinthehole/purl) | Simple Python URL class
 *   dev-python/[pwdlib](https://github.com/frankie567/pwdlib) | Modern password hashing for Python
 *   dev-python/[py3dns](https://launchpad.net/py3dns) | Python 3 DNS library
+*   dev-python/[pyahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
 *   dev-python/[pybeam](https://github.com/matwey/pybeam) | Python module to parse Erlang BEAM files
 *   dev-python/[pycep](https://github.com/gruebel/pycep) | A Python based Bicep parser
 *   dev-python/[pycfmodel](https://github.com/Skyscanner/pycfmodel) | A python model for Cloud Formation scripts
