@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-EGIT_REPO_URI="https://github.com/jaraco/${PN}.git"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Backport of configparser from Python 3"
 HOMEPAGE="https://github.com/jaraco/configparser"
+EGIT_REPO_URI="https://github.com/jaraco/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
