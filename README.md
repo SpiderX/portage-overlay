@@ -1087,7 +1087,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[pythonqt](https://mevislab.github.io/pythonqt/) | A dynamic Python binding for the Qt framework
 *   dev-python/[python-crontab](https://gitlab.com/doctormo/python-crontab/) | Crontab module for reading and writing crontab files
 *   dev-python/[python-libnmap](https://github.com/savon-noir/python-libnmap) | Python NMAP library
-*   dev-python/[python-user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
 *   dev-python/[python3-openid](https://github.com/python-social-auth/social-core) | OpenID support for modern servers and consumers
 *   dev-python/[python3-saml](https://github.com/SAML-Toolkits/python3-saml) | SAML Python3 Toolkit
 *   dev-python/[pykickstart](https://github.com/pykickstart/pykickstart) | Python library for reading and writing kickstart files
@@ -1156,6 +1155,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[unicrypto](https://github.com/skelsec/unicrypto) | Unified interface for cryptographic libraries
 *   dev-python/[unittest-xml-reporting](https://github.com/xmlrunner/unittest-xml-reporting) | unittest-based test runner with Ant/JUnit like XML reporting
 *   dev-python/[update-checker](https://github.com/bboe/update_checker) | A python module that will check for package updates
+*   dev-python/[user-agents](https://github.com/selwin/python-user-agents) | A library to identify devices by parsing user agent strings
 *   dev-python/[uuid-utils](https://github.com/aminalaee/uuid-utils) | Python bindings to Rust UUID
 *   dev-python/[validate-email](https://github.com/syrusakbary/validate_email) | Python email validation library
 *   dev-python/[validators](https://github.com/kvesteri/validators) | Python data validation library
