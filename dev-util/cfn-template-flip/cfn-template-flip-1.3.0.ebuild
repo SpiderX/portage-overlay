@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -26,14 +26,13 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# TypeError: load() missing 1 required positional argument: 'Loader'
-	tests/test_yaml_patching.py::test_yaml_no_ordered_dict
-)
-
 python_prepare_all() {
 	# disable coverage
 	sed -i '/addopts/d' tox.ini || die "sed failed for tox.ini"
+
+	# add missing loader
+	sed -i '/yaml.load(/s|string|string, Loader=yaml.SafeLoader|' \
+		tests/test_yaml_patching.py || die "sed failed for test_yaml_patching.py"
 
 	distutils-r1_python_prepare_all
 }
