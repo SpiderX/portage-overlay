@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs
+inherit check-reqs edo
 
 DESCRIPTION="Data files for NLTK"
 HOMEPAGE="https://www.nltk.org/nltk_data/"
@@ -163,8 +163,8 @@ unpack_data() {
 		local cat="${data%/*}"
 		local pkg="${data#*/}"
 
-		mkdir -p "${S}/${cat}" || die
-		cd "${S}/${cat}" || die
+		edo mkdir -p "${S}/${cat}"
+		edo cd "${S}/${cat}"
 		unpack "nltk-${pkg}-${PV}.zip"
 	done
 }
@@ -187,7 +187,7 @@ install_zips() {
 
 src_install() {
 	dodir /usr/share/nltk_data
-	mv ./* "${ED}/usr/share/nltk_data" || die
+	edo mv ./* "${ED}/usr/share/nltk_data"
 
 	install_zips "${PACKAGES_ZIP[@]}"
 }
