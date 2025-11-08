@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
-EGIT_REPO_URI="https://github.com/pydanny/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A cached-property for decorating methods in classes"
 HOMEPAGE="https://github.com/pydanny/cached-property"
+EGIT_REPO_URI="https://github.com/pydanny/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
