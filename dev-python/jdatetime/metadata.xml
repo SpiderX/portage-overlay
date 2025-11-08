@@ -14,7 +14,7 @@
 	Jalali calendar binding for Python based on Python's datetime module
 	</longdescription>
 	<upstream>
-		<remote-id type="github">slashmili/python-jalali</remote-id>
+		<remote-id type="github">slashmili/jdatetime</remote-id>
 		<remote-id type="pypi">jdatetime</remote-id>
 	</upstream>
 </pkgmetadata>
