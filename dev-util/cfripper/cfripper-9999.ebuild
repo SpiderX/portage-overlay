@@ -35,11 +35,5 @@ RDEPEND="dev-python/annotated-types[${PYTHON_USEDEP}]
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/moto[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-EPYTEST_IGNORE=(
-	# ModuleNotFoundError: No module named 'pluggy.manager'
-	tests/config/test_pluggy.py
-	# assert error
-	tests/rules/test_WildcardResourceRule.py
-)
