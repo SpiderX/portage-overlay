@@ -872,7 +872,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[diagrams](https://github.com/mingrammer/diagrams) | Diagram as Code for prototyping cloud system architectures
 *   dev-python/[dishka](https://github.com/reagento/dishka) | Cute DI framework with scopes and agreeable API
 *   dev-python/[decli](https://github.com/Woile/decli) | Minimal declarative cli tool
-*   dev-python/[deep_merge](https://github.com/halfak/deep_merge) | A simple utility for merging python dictionaries
+*   dev-python/[deep-merge](https://github.com/halfak/deep_merge) | A simple utility for merging python dictionaries
 *   dev-python/[deprecation-alias](https://github.com/domdfcoding/deprecation-alias) | A wrapper around 'deprecation' providing support for deprecated aliases
 *   dev-python/[dist-meta](https://github.com/repo-helper/dist-meta) | Parse and create Python distribution metadata
 *   dev-python/[dj-rest-auth](https://github.com/iMerica/dj-rest-auth) | Authentication and Registration in Django Rest Framework
