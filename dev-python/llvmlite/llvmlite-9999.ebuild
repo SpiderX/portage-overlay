@@ -20,8 +20,8 @@ SLOT="0"
 RDEPEND="dev-libs/libffi:=
 	dev-libs/icu:=
 	dev-libs/libxml2:2
-	sys-libs/zlib:=
 	sys-libs/ncurses:=[tinfo]
+	virtual/zlib:=
 	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}= llvm-core/llvm:${LLVM_SLOT}=')"
 
 PATCHES=( # https://github.com/numba/llvmlite/pull/1042
