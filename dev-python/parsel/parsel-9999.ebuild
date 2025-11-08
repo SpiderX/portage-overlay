@@ -4,13 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/scrapy/${PN}.git"
-
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Utility to extract data from XML/HTML documents using XPath or CSS selectors"
 HOMEPAGE="https://github.com/scrapy/parsel"
+EGIT_REPO_URI="https://github.com/scrapy/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
