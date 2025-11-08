@@ -24,7 +24,7 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/joblib[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/nltk-data
+BDEPEND="test? ( dev-python/nltkdata
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyparsing[${PYTHON_USEDEP}]
@@ -32,6 +32,6 @@ BDEPEND="test? ( dev-python/nltk-data
 		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/twython[${PYTHON_USEDEP}] )"
-PDEPEND="dev-python/nltk-data"
+PDEPEND="dev-python/nltkdata"
 
 distutils_enable_tests pytest

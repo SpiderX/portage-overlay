@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
 inherit distutils-r1 git-r3
@@ -23,7 +23,7 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/joblib[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/nltk-data
+BDEPEND="test? ( dev-python/nltkdata
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyparsing[${PYTHON_USEDEP}]
@@ -31,6 +31,6 @@ BDEPEND="test? ( dev-python/nltk-data
 		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/twython[${PYTHON_USEDEP}] )"
-PDEPEND="dev-python/nltk-data"
+PDEPEND="dev-python/nltkdata"
 
 distutils_enable_tests pytest

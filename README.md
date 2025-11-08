@@ -1013,7 +1013,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[netapp-ontap](https://devnet.netapp.com/restapi.php) | A library for working with ONTAP's REST APIs simply in Python
 *   dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
 *   dev-python/[nltk](https://github.com/nltk/nltk) | Natural Language Toolkit
-*   dev-python/[nltk-data](https://www.nltk.org/nltk_data/) | Data files for NLTK
+*   dev-python/[nltkdata](https://www.nltk.org/nltk_data/) | Data files for NLTK
 *   dev-python/[nmslib](https://github.com/nmslib/nmslib) | Non-Metric Space Library
 *   dev-python/[oci](https://github.com/oracle/oci-python-sdk) | Oracle Cloud Infrastructure Python SDK
 *   dev-python/[onetimepass](https://github.com/tadeck/onetimepass) | One-time password library for HOTP and TOTP passwords
