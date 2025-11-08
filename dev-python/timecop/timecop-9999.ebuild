@@ -4,13 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
-EGIT_REPO_URI="https://github.com/bluekelp/pytimecop.git"
-
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A port of TimeCop Ruby Gem for Python"
 HOMEPAGE="https://github.com/bluekelp/pytimecop"
+EGIT_REPO_URI="https://github.com/bluekelp/pytimecop.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
