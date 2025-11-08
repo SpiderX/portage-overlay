@@ -20,7 +20,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/astor[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/gensim[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/nltk[${PYTHON_USEDEP}]')
-	dev-python/nltk-data"
+	dev-python/nltkdata"
 BDEPEND="${RDEPEND}"
 
 src_prepare() {

@@ -4,12 +4,12 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-EGIT_REPO_URI="https://github.com/platisd/duplicate-code-detection-tool.git"
 
 inherit git-r3 python-single-r1
 
 DESCRIPTION="A tool to detect similarities between files within a repository"
 HOMEPAGE="https://github.com/platisd/duplicate-code-detection-tool"
+EGIT_REPO_URI="https://github.com/platisd/duplicate-code-detection-tool.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,7 +19,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/astor[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/gensim[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/nltk[${PYTHON_USEDEP}]')
-	dev-python/nltk-data"
+	dev-python/nltkdata"
 BDEPEND="${RDEPEND}"
 
 src_prepare() {
