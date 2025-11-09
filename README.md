@@ -1049,7 +1049,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[py3dns](https://launchpad.net/py3dns) | Python 3 DNS library
 *   dev-python/[pyahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
 *   dev-python/[pybeam](https://github.com/matwey/pybeam) | Python module to parse Erlang BEAM files
-*   dev-python/[pycep](https://github.com/gruebel/pycep) | A Python based Bicep parser
+*   dev-python/[pycep-parser](https://github.com/gruebel/pycep) | A Python based Bicep parser
 *   dev-python/[pycfmodel](https://github.com/Skyscanner/pycfmodel) | A python model for Cloud Formation scripts
 *   dev-python/[pydantic-extra-types](https://github.com/pydantic/pydantic-extra-types) | Extra Pydantic types
 *   dev-python/[pydantic-settings](https://github.com/pydantic/pydantic-settings) | Settings management using pydantic
