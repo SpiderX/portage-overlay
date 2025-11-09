@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/madpah/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Serialize and deserialize Python objects to and from JSON and XML"
 HOMEPAGE="https://github.com/madpah/serializable"
+EGIT_REPO_URI="https://github.com/madpah/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
