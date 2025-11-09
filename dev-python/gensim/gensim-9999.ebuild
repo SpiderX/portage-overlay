@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 edo git-r3 optfeature
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="Topic Modelling for Humans"
 HOMEPAGE="https://github.com/piskvorky/gensim"
