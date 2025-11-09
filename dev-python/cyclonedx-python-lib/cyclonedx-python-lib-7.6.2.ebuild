@@ -21,7 +21,7 @@ PROPERTIES="test_network"
 
 RDEPEND="dev-python/license-expression[${PYTHON_USEDEP}]
 	dev-python/packageurl-python[${PYTHON_USEDEP}]
-	<dev-python/serializable-2[${PYTHON_USEDEP}]
+	<dev-python/py-serializable-2[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]"
 BDEPEND="test? ( app-text/xmldiff[${PYTHON_USEDEP}]
 		dev-python/ddt[${PYTHON_USEDEP}]

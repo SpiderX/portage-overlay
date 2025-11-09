@@ -1045,6 +1045,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[promise](https://github.com/syrusakbary/promise) | Ultra-performant Promise implementation in Python
 *   dev-python/[purl](https://github.com/codeinthehole/purl) | Simple Python URL class
 *   dev-python/[pwdlib](https://github.com/frankie567/pwdlib) | Modern password hashing for Python
+*   dev-python/[py-serializable](https://github.com/madpah/serializable) | Serialize and deserialize Python objects to and from JSON and XML
 *   dev-python/[py3dns](https://launchpad.net/py3dns) | Python 3 DNS library
 *   dev-python/[pyahocorasick](https://github.com/WojciechMula/pyahocorasick) | Python module implementing Aho-Corasick algorithm
 *   dev-python/[pybeam](https://github.com/matwey/pybeam) | Python module to parse Erlang BEAM files
@@ -1112,7 +1113,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[selinux](https://github.com/pycontribs/selinux) | Pure-python selinux shim module for use in virtualenvs
 *   dev-python/[sentinels](https://github.com/vmalloc/sentinels) | Various objects to denote special meanings in python
 *   dev-python/[sentry-sdk](https://github.com/getsentry/sentry-python) | The official Python SDK for Sentry.io
-*   dev-python/[serializable](https://github.com/madpah/serializable) | Serialize and deserialize Python objects to and from JSON and XML
 *   dev-python/[shippinglabel](https://github.com/domdfcoding/shippinglabel) | Utilities for handling packages
 *   dev-python/[shippinglabel-conda](https://github.com/domdfcoding/shippinglabel-conda) | Shippinglabel extension with utilities conda packages
 *   dev-python/[shippinglabel-pypi](https://github.com/domdfcoding/shippinglabel-pypi) | Shippinglabel extension for interacting with PyPI

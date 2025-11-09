@@ -21,7 +21,7 @@ PROPERTIES="test_network"
 RDEPEND="dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/license-expression[${PYTHON_USEDEP}]
 	dev-python/packageurl-python[${PYTHON_USEDEP}]
-	dev-python/serializable[${PYTHON_USEDEP}]
+	dev-python/py-serializable[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/ddt[${PYTHON_USEDEP}] )"
 
