@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 optfeature
 
@@ -35,17 +35,12 @@ RDEPEND="dev-python/anyio[${PYTHON_USEDEP}]
 BDEPEND="test? ( dev-python/dirty-equals[${PYTHON_USEDEP}]
 		dev-python/inline-snapshot[${PYTHON_USEDEP}]
 		dev-python/nest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/respx[${PYTHON_USEDEP}]
 		dev-python/rich[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# AssertionError
-	tests/test_client.py::TestAsyncOpenAI::test_copy_build_request
-	tests/test_client.py::TestOpenAI::test_copy_build_request
-)
 EPYTEST_IGNORE=(
 	# requires npm mock server
 	tests/api_resources
