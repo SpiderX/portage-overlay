@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="Python interface for igraph"
 HOMEPAGE="https://github.com/igraph/python-igraph"
@@ -15,9 +15,8 @@ EGIT_REPO_URI="https://github.com/igraph/python-igraph.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
 
-RDEPEND="dev-libs/igraph
+RDEPEND=">=dev-libs/igraph-0.10.15:0=
 	dev-python/texttable[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/cairocffi[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -27,10 +26,14 @@ BDEPEND="test? ( dev-python/cairocffi[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/plotly[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}] )"
-#dev-python/graph-tool no python3_13
 
+EPYTEST_PLUGINS=( pytest-timeout )
 distutils_enable_tests pytest
 
-python_compile() {
-	distutils-r1_python_compile --use-pkg-config
+export IGRAPH_USE_PKG_CONFIG=1
+
+pkg_postinst() {
+	optfeature "plotting with Cairo" dev-python/cairocffi
+	optfeature "plotting with Matplotlib" dev-python/matplotlib
+	optfeature "plotting with Plotly" dev-python/plotly
 }
