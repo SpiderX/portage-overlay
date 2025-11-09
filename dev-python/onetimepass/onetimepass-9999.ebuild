@@ -4,17 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
-EGIT_REPO_URI="https://github.com/tadeck/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="One-time password library for HOTP and TOTP passwords"
 HOMEPAGE="https://github.com/tadeck/onetimepass"
+EGIT_REPO_URI="https://github.com/tadeck/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
