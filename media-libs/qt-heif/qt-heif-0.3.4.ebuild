@@ -3,14 +3,18 @@
 
 EAPI=8
 
-inherit cmake edo git-r3
+MY_PN="${PN}-image-plugin"
+
+inherit cmake edo
 
 DESCRIPTION="Qt plugin for HEIF images"
 HOMEPAGE="https://github.com/jakar/qt-heif-image-plugin"
-EGIT_REPO_URI="https://github.com/jakar/qt-heif-image-plugin.git"
+SRC_URI="https://github.com/jakar/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-3+"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtbase:6[gui]
 	media-libs/libheif:="
