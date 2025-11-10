@@ -1,20 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/sqshq/${PN}.git"
+EAPI=8
 
 inherit git-r3 go-module
 
 DESCRIPTION="Visualization for any shell command"
 HOMEPAGE="https://github.com/sqshq/sampler"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/sqshq/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 DEPEND="media-libs/alsa-lib"
 RDEPEND="${DEPEND}"
@@ -27,11 +23,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build || die "build failed"
+	ego build
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
