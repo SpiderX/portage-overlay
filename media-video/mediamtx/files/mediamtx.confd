@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/mediamtx
+
+# Various options.
+MEDIAMTX_OPTS="/etc/mediamtx/mediamtx.yml"

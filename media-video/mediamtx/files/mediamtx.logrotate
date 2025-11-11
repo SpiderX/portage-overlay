@@ -1,0 +1,6 @@
+"/var/log/mediamtx/mediamtx.log" {
+	rotate 10
+	daily
+	compress
+	missingok
+}

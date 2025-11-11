@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="MediaMTX media server and streaming proxy"
+description="SRT / WebRTC / RTSP / RTMP / LL-HLS / MPEG-TS / RTP media server"
+command="/usr/bin/mediamtx"
+command_args="${MEDIAMTX_OPTS}"
+command_user="${MEDIAMTX_USER:-mediamtx}:${MEDIAMTX_GROUP:-mediamtx}"
+start_stop_daemon_args="-q --chdir ${MEDIAMTX_PATH:-/var/lib/mediamtx}
+	--stdout /var/log/mediamtx/${RC_SVCNAME}.log
+	--stderr /var/log/mediamtx/${RC_SVCNAME}.log"
+
+depend() {
+	need net
+}
