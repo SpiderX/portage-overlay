@@ -1,20 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-WANT_AUTOCONF="2.5"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+WANT_AUTOCONF="2.69"
 
 inherit autotools bash-completion-r1 findlib git-r3 systemd tmpfiles
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios"
 HOMEPAGE="https://github.com/savonet/liquidsoap"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="alsa ao camlimages debug dssi faad fdk ffmpeg flac frei0r gd graphics \
 	gstreamer inotify jack json ladspa lame lastfm libsamplerate lilv lo \
 	mad magic memtrace memusage +ocamlopt ogg osc opus oss portaudio \

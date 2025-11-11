@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-WANT_AUTOCONF="2.5"
+WANT_AUTOCONF="2.69"
 
 inherit autotools bash-completion-r1 findlib systemd tmpfiles
 
