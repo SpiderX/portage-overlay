@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit systemd
 
 MY_P="unofficial-v${PV}"
 
@@ -26,11 +28,10 @@ FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
 	[httpdebug]="DWANT_HTTPHUMAN"
 )
 
-inherit systemd
-
 DESCRIPTION="High-performance bittorrent tracker"
 HOMEPAGE="https://github.com/flygoast/opentracker http://erdgeist.org/arts/software/opentracker/"
 SRC_URI="https://github.com/flygoast/opentracker/archive/${MY_P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="BEER-WARE"
 SLOT="0"
@@ -44,15 +45,14 @@ REQUIRED_USE="blacklist? ( !whitelist )
 
 RDEPEND="acct-user/opentracker
 	dev-libs/libowfat
-	gzip? ( sys-libs/zlib )"
-
-S="${WORKDIR}/${PN}-${MY_P}"
+	gzip? ( virtual/zlib:= )"
 
 src_prepare() {
 	default
 
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES, and comment all of them
-	# Define PREFIX, BINDIR and path to libowfat; remove lpthread, lz and O3 flag, owfat target, stripping; create dirs on install
+	# Define PREFIX, BINDIR and path to libowfat; remove lpthread,
+	# lz and O3 flag, owfat target, stripping; create dirs on install
 	sed -i \
 		-e "s|FEATURES|FEATURES_INTERNAL|g" \
 		-e "s|^FEATURES_INTERNAL|#FEATURES_INTERNAL|g" \
@@ -76,7 +76,7 @@ src_prepare() {
 	sed -i "$(usex gzip /LDFLAGS+/s/$/-lz/ '')" Makefile || die "sed for lz in LDFLAGS failed"
 
 	# Debug build: build opentracker.debug but target as opentracker, and don't build opentracker
-	if use debug; then
+	if use debug ; then
 		sed -i \
 			-e "/D_DEBUG_HTTPERROR/s|^#*||g" \
 			-e "s|all: \$(BINARY)|all:|g" \

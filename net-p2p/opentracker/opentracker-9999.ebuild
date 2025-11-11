@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/flygoast/${PN}.git"
-
-MY_P="unofficial-v${PV}"
+inherit git-r3 systemd
 
 declare -A FLAGS
 FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
@@ -28,15 +26,12 @@ FLAGS=( [blacklist]="DWANT_ACCESSLIST_BLACK"
 	[httpdebug]="DWANT_HTTPHUMAN"
 )
 
-inherit git-r3 systemd
-
 DESCRIPTION="High-performance bittorrent tracker"
 HOMEPAGE="https://github.com/flygoast/opentracker http://erdgeist.org/arts/software/opentracker/"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/flygoast/${PN}.git"
 
 LICENSE="BEER-WARE"
 SLOT="0"
-KEYWORDS=""
 IUSE="blacklist debug +gzip gzip-always httpdebug ip-from-query ip-from-proxy ipv6 +fullscrapes fullscrapes-modest live-sync live-sync-unicast log-networks-full log-numwant persistence restrict-stats spot-woodpeckers syslog whitelist"
 REQUIRED_USE="blacklist? ( !whitelist )
 	gzip-always? ( gzip )
@@ -46,13 +41,14 @@ REQUIRED_USE="blacklist? ( !whitelist )
 
 RDEPEND="acct-user/opentracker
 	dev-libs/libowfat
-	gzip? ( sys-libs/zlib )"
+	gzip? ( virtual/zlib:= )"
 
 src_prepare() {
 	default
 
 	# Fix use of FEATURES, so it's not mixed up with portage's FEATURES, and comment all of them
-	# Define PREFIX, BINDIR and path to libowfat; remove lpthread, lz and O3 flag, owfat target, stripping; create dirs on install
+	# Define PREFIX, BINDIR and path to libowfat; remove lpthread,
+	# lz and O3 flag, owfat target, stripping; create dirs on install
 	sed -i \
 		-e "s|FEATURES|FEATURES_INTERNAL|g" \
 		-e "s|^FEATURES_INTERNAL|#FEATURES_INTERNAL|g" \
@@ -76,7 +72,7 @@ src_prepare() {
 	sed -i "$(usex gzip /LDFLAGS+/s/$/-lz/ '')" Makefile || die "sed for lz in LDFLAGS failed"
 
 	# Debug build: build opentracker.debug but target as opentracker, and don't build opentracker
-	if use debug; then
+	if use debug ; then
 		sed -i \
 			-e "/D_DEBUG_HTTPERROR/s|^#*||g" \
 			-e "s|all: \$(BINARY)|all:|g" \
