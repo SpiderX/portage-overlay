@@ -1,24 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit linux-info
 
 CLIENT_URI="https://virtualhere.com/sites/default/files/usbclient/vh_arch_"
 SERVER_URI="https://virtualhere.com/sites/default/files/usbserver/vh_arch_"
-
-inherit linux-info
 
 DESCRIPTION="Share USB devices over the network"
 HOMEPAGE="https://virtualhere.com"
 SRC_URI="client? (
 		amd64? ( ${CLIENT_URI/_arch_/clientx86_64} )
 		arm?   ( ${CLIENT_URI/_arch_/clientarmhf} )
+		arm64?   ( ${CLIENT_URI/_arch_/clientarm64} )
 		x86?   ( ${CLIENT_URI/_arch_/clienti386} )
 	)
 	gui? (
 		amd64? ( ${CLIENT_URI/_arch_/uit64} )
-		arm?   ( ${CLIENT_URI/_arch_/uitarm7} )
-		x86?   ( ${CLIENT_URI/_arch_/uit32} )
+		arm64?   ( ${CLIENT_URI/_arch_/uitarm64} )
 	)
 	server? (
 		amd64? ( ${SERVER_URI/_arch_/usbdx86_64} )
@@ -27,6 +27,8 @@ SRC_URI="client? (
 		mips?  ( ${SERVER_URI/_arch_/usbdmips} )
 		x86?   ( ${SERVER_URI/_arch_/usbdi386} )
 	)"
+S="${WORKDIR}"
+
 LICENSE="openssl no-source-code"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
@@ -34,10 +36,9 @@ IUSE="client gui +server"
 REQUIRED_USE="|| ( client gui server )"
 RESTRICT="mirror"
 
-RDEPEND="acct-user/vhusb"
+RDEPEND="acct-group/vhusb
+	acct-user/vhusb"
 DEPEND="virtual/linux-sources"
-
-S="${WORKDIR}"
 
 QA_PREBUILT="/opt/vhusb/vhclient
 	/opt/vhusb/vhuit
