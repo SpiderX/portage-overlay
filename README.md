@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1347](https://img.shields.io/badge/ebuild-1347-orange.svg)](https://img.shields.io/badge/ebuild-1347-orange.svg)
+[![Number of ebuilds: 1346](https://img.shields.io/badge/ebuild-1346-orange.svg)](https://img.shields.io/badge/ebuild-1346-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1290,7 +1290,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-radio/[liquidsoap](https://github.com/savonet/liquidsoap) | A swiss-army knife for multimedia streaming, used for netradios
 *   media-video/[kooha](https://github.com/SeaDve/Kooha) | GTK4 screen recorder for Wayland
 *   media-video/[qwinff](https://github.com/qwinff/qwinff) | Qt GUI Frontend for FFmpeg
-*   media-video/[rtsp-simple-server](https://github.com/aler9/rtsp-simple-server) | RTSP server and RTSP proxy to read, publish and proxy media stream
 *   net-analyzer/[dnsdiag](https://github.com/farrokhi/dnsdiag) | DNS Measurement, Troubleshooting and Security Auditing Toolset
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/goaccess.svg?header=)](https://repology.org/project/goaccess/versions) net-analyzer/[goaccess](https://goaccess.io) | A real-time web log analyzer and interactive viewer in a terminal
 *   net-analyzer/[gping](https://github.com/orf/gping) | Ping, but with a graph
