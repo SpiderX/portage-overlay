@@ -1,30 +1,22 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-ECVS_SERVER="weex.cvs.sourceforge.net:/cvsroot/weex"
-ECVS_MODULE="weex"
-ECVS_TOPDIR="${DISTDIR}/cvs-src/${ECVS_MODULE}"
-
-inherit autotools cvs
+inherit autotools edo git-r3
 
 DESCRIPTION="A non-interactive FTP client for updating web pages"
 HOMEPAGE="https://sourceforge.net/projects/weex/"
-SRC_URI=""
+EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code-git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="nls"
+IUSE="debug nls"
 
-RDEPEND="sys-libs/ncurses:0=[tinfo]
-	sys-libs/readline:0=
+RDEPEND="dev-libs/openssl:0=
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
-
-S=${WORKDIR}/${ECVS_MODULE}
 
 PATCHES=( "${FILESDIR}"/"${P}"-configure.in.patch
 	"${FILESDIR}"/"${PN}"-2.8.2-Makefile.am.patch
@@ -32,14 +24,11 @@ PATCHES=( "${FILESDIR}"/"${P}"-configure.in.patch
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die "rename failed"
 	eautoreconf
-	cp /usr/share/gettext/po/Makevars.template \
-	"${S}"/po/Makevars || die "cp Makevars failed"
-	cp -f "${FILESDIR}"/strlib.{c,h} "${S}"/src \
-	|| die "cp strlib failed"
+	edo cp /usr/share/gettext/po/Makevars.template \
+		po/Makevars
 }
 
 src_configure() {
-	econf "$(use_enable nls)"
+	econf "$(use_enable debug)" "$(use_enable nls)"
 }

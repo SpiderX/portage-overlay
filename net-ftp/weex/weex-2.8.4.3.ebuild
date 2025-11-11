@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools
+inherit autotools edo
 
 DESCRIPTION="A non-interactive FTP client for updating web pages"
 HOMEPAGE="https://sourceforge.net/projects/weex/"
-SRC_URI="mirror://debian/pool/main/w/${PN}/${P//-/_}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P/-/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,10 +26,10 @@ PATCHES=( "${FILESDIR}"/"${PN}"-2.8.3-configure.in.patch
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die "rename failed"
+
 	eautoreconf
-	cp /usr/share/gettext/po/Makevars.template \
-	"${S}"/po/Makevars || die "cp failed"
+	edo cp /usr/share/gettext/po/Makevars.template \
+		po/Makevars
 }
 
 src_configure() {

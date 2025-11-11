@@ -1,20 +1,20 @@
---- ../configure.in	2014-09-19 21:34:27 UTC
-+++ ../configure.in
-@@ -24,8 +25,8 @@ AC_PROG_CC
+--- ../configure.in	2025-11-11 10:37:15.759505450 +0200
++++ ../configure.in	2025-11-11 10:41:30.340977827 +0200
+@@ -24,8 +24,8 @@
  AC_PROG_INSTALL
  
  dnl for gettext
 -AM_GNU_GETTEXT
--AC_CHECK_FUNC(gettext, , AC_CHECK_LIB(intl, gettext))
+-AC_CHECK_FUNC(gettext,,AC_CHECK_LIB(intl, gettext))
 +AM_GNU_GETTEXT_VERSION([0.20])
 +AM_GNU_GETTEXT([external])
  localedir='${prefix}/share/locale'
  AC_SUBST(localedir)
  
-@@ -64,5 +64,5 @@
+@@ -79,5 +79,5 @@
  fi     
        
  
--AC_OUTPUT(Makefile intl/Makefile src/Makefile po/Makefile.in \
+-AC_OUTPUT(Makefile intl/Makefile intl/po2tbl.sed src/Makefile po/Makefile.in \
 +AC_OUTPUT(Makefile src/Makefile po/Makefile.in \
- debian/Makefile doc/Makefile man/Makefile weex.spec)
+ debian/Makefile doc/Makefile man/Makefile)
