@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+EAPI=8
 
 inherit desktop git-r3 qmake-utils optfeature virtualx
 
 DESCRIPTION="Qt GUI Frontend for FFmpeg"
 HOMEPAGE="https://github.com/qwinff/qwinff"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="libnotify"
 
 DEPEND="dev-qt/qtcore:5
