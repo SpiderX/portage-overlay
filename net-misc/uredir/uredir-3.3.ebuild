@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd tmpfiles
 
@@ -12,9 +12,9 @@ SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.gz
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="acct-user/uredir
+RDEPEND="acct-group/uredir
+	acct-user/uredir
 	dev-libs/libuev"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
