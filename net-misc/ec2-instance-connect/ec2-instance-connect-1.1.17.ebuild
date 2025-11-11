@@ -1,24 +1,24 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd
 
 DESCRIPTION="AWS EC2 Instance Connect Configuration"
 HOMEPAGE="https://github.com/aws/aws-ec2-instance-connect-config"
 SRC_URI="https://github.com/aws/aws-${PN}-config/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/aws-${PN}-config-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="acct-user/ec2-instance-connect
+RDEPEND="acct-group/ec2-instance-connect
+	acct-user/ec2-instance-connect
 	dev-libs/openssl:0=
 	net-misc/curl
 	net-misc/openssh"
-
-S="${WORKDIR}/aws-${PN}-config-${PV}"
 
 src_prepare() {
 	default
