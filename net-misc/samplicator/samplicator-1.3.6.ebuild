@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd
 
@@ -12,9 +12,9 @@ SRC_URI="https://github.com/sleinen/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="Artistic GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="acct-user/samplicator"
+RDEPEND="acct-group/samplicator
+	acct-user/samplicator"
 
 src_install() {
 	default
