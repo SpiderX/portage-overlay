@@ -1,15 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
+EAPI=8
 
 inherit autotools git-r3 systemd tmpfiles
 
 DESCRIPTION="TCP port redirector"
 HOMEPAGE="https://github.com/troglobit/redir"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
