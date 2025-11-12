@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/aws/s2n-tls"
 EGIT_REPO_URI="https://github.com/aws/${PN}.git"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="1"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

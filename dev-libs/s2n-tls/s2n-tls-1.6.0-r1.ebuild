@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/aws/s2n-tls"
 SRC_URI="https://github.com/aws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="1"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
