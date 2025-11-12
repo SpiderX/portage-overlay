@@ -67,14 +67,26 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-RDEPEND="dev-libs/aws-crt-cpp:=
-	sys-libs/zlib:=
+RDEPEND="dev-cpp/aws-crt-cpp:=
+	dev-libs/aws-c-auth:=
+	dev-libs/aws-c-cal:=
+	dev-libs/aws-c-common:=
+	dev-libs/aws-c-compression:=
+	dev-libs/aws-c-event-stream:=
+	dev-libs/aws-c-http:=
+	dev-libs/aws-c-io:=
+	dev-libs/aws-c-mqtt:=
+	dev-libs/aws-c-s3:=
+	dev-libs/aws-c-sdkutils:=
+	dev-libs/aws-checksums:=
+	virtual/zlib:=
 	curl? ( net-misc/curl:= )
 	speech? ( media-libs/libpulse )
 	ssl? ( dev-libs/openssl:= )
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="dev-libs/aws-c-common
+	virtual/pkgconfig"
 
 DOCS=( {CHANGELOG,README}.md )
 
