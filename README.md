@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1358](https://img.shields.io/badge/ebuild-1358-orange.svg)](https://img.shields.io/badge/ebuild-1358-orange.svg)
+[![Number of ebuilds: 1360](https://img.shields.io/badge/ebuild-1360-orange.svg)](https://img.shields.io/badge/ebuild-1360-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -197,6 +197,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-text/[confget](https://devel.ringlet.net/textproc/confget/) | Read variables from INI-style configuration files
 *   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
 *   dev-build/[qtilitools](https://github.com/qtilities/qtilitools) | Scripts/commands used in the Qtilities organization
+*   dev-cpp/[aws-crt-cpp](https://github.com/awslabs/aws-crt-cpp) | AWS SDK Core CRT package
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[commoncpp2](http://www.gnu.org/software/commoncpp/) | GNU Common C++ 2
 *   dev-cpp/[jsoncpp](https://github.com/open-source-parsers/jsoncpp) | CMake files for C++ JSON reader and writer
@@ -360,7 +361,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[aws-c-auth](https://github.com/awslabs/aws-c-auth) | AWS client-side authentication
 *   dev-libs/[aws-c-cal](https://github.com/awslabs/aws-c-cal) | AWS Crypto Abstraction Layer
 *   dev-libs/[aws-c-common](https://github.com/awslabs/aws-c-common) | Core AWS SDK package
-*   dev-libs/[aws-c-compression](https://github.com/awslabs/aws-c-common) | AWS C Compression
+*   dev-libs/[aws-c-compression](https://github.com/awslabs/aws-c-compression) | AWS C Compression
 *   dev-libs/[aws-c-event-stream](https://github.com/awslabs/aws-c-event-stream) | C99 implementation of the eventstream content-type
 *   dev-libs/[aws-c-http](https://github.com/awslabs/aws-c-http) | HTTP C99 implementation
 *   dev-libs/[aws-c-io](https://github.com/awslabs/aws-c-io) | AWS SDK module for IO and TLS
@@ -368,7 +369,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[aws-c-s3](https://github.com/awslabs/aws-c-s3) | AWS SDK S3 implementation
 *   dev-libs/[aws-c-sdkutils](https://github.com/awslabs/aws-c-sdkutils) | AWS SDK Utilities
 *   dev-libs/[aws-checksums](https://github.com/awslabs/aws-checksums) | Cross-Platform HW accelerated CRC32c and CRC32
-*   dev-libs/[aws-crt-cpp](https://github.com/awslabs/aws-crt-cpp) | AWS SDK Core CRT package
 *   dev-libs/[aws-sdk-cpp](https://github.com/aws/aws-sdk-cpp) | AWS SDK for C++
 *   dev-libs/[belcard](https://gitlab.linphone.org/BC/public/belcard) | VCard standard format manipulation library
 *   dev-libs/[belle-sip](https://gitlab.linphone.org/BC/public/belle-sip) | SIP (RFC3261) implementation
@@ -1429,4 +1429,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
-* dev-libs/[aws-c-compression](https://github.com/awslabs/aws-c-compression) | AWS C Compression
