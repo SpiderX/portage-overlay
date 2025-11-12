@@ -10,7 +10,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="A library for diffs of python data structures"
 HOMEPAGE="https://sourceforge.net/projects/datadiff/"
-5EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
+EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 
 LICENSE="Apache-2.0"
 SLOT="0"
