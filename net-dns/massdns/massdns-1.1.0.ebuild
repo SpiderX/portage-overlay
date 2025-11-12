@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit cmake edo
 
 DESCRIPTION="A high-performance DNS stub resolver"
 HOMEPAGE="https://github.com/blechschmidt/massdns"
@@ -12,28 +12,28 @@ SRC_URI="https://github.com/blechschmidt/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE="ipv6 test"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 BDEPEND="test? ( app-misc/jq )"
 
 src_prepare() {
-	default
+	! use ipv6 && edo rm -rf tests/single-lookup-A-ipv6-resolver
 
-	sed -i '/$(CC) $(CFLAGS) -O3/s/ -O3//' Makefile \
-		|| die "sed faild for Makefile"
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)"
+	cmake_src_prepare
 }
 
 src_test() {
-	./tests/run-tests.sh || die "tests failed"
+	# mimic expected layout
+	edo mkdir bin
+	edo ln -s ../../massdns-1.1.0_build/bin/massdns bin/
+	edo tests/run-tests.sh
 }
 
 src_install() {
 	einstalldocs
-	dobin bin/massdns
+
+	dobin "${S}"_build/bin/massdns
 	dodoc -r lists
 }
