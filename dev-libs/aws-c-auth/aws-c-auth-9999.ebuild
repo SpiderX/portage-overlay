@@ -10,19 +10,16 @@ HOMEPAGE="https://github.com/awslabs/aws-c-auth"
 EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/1"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="dev-libs/aws-c-cal:=
-	dev-libs/aws-c-common:=
-	dev-libs/aws-c-compression:=
 	dev-libs/aws-c-http:=
-	dev-libs/aws-c-io:=
-	dev-libs/aws-c-sdkutils:=
-	dev-libs/s2n-tls:="
+	dev-libs/aws-c-sdkutils:="
 DEPEND="${RDEPEND}"
+BDEPEND="dev-libs/aws-c-common"
 
 src_configure() {
 	local mycmakeargs=(
