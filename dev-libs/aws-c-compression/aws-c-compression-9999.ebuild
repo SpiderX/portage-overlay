@@ -6,16 +6,17 @@ EAPI=8
 inherit cmake git-r3
 
 DESCRIPTION="AWS C Compression"
-HOMEPAGE="https://github.com/awslabs/aws-c-common"
+HOMEPAGE="https://github.com/awslabs/aws-c-compression"
 EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/1"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/aws-c-common:="
 DEPEND="${RDEPEND}"
+BDEPEND="dev-libs/aws-c-common"
 
 src_configure() {
 	local mycmakeargs=(

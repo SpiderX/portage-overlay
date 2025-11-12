@@ -6,17 +6,18 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="AWS C Compression"
-HOMEPAGE="https://github.com/awslabs/aws-c-common"
+HOMEPAGE="https://github.com/awslabs/aws-c-compression"
 SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/aws-c-common:="
 DEPEND="${RDEPEND}"
+BDEPEND="dev-libs/aws-c-common"
 
 src_configure() {
 	local mycmakeargs=(
