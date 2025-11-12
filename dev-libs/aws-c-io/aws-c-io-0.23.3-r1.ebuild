@@ -20,6 +20,7 @@ RDEPEND="dev-libs/aws-c-cal:=
 	dev-libs/aws-c-common:=
 	dev-libs/s2n-tls:="
 DEPEND="${RDEPEND}"
+BDEPEND="dev-libs/aws-c-common"
 
 src_prepare() {
 	! use ipv6 && eapply "${FILESDIR}/${PN}"-0.20.1-test-no-ipv6.patch
