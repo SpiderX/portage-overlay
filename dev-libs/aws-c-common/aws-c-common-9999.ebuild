@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/awslabs/aws-c-common"
 EGIT_REPO_URI="https://github.com/awslabs/${PN}.git"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/1"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
