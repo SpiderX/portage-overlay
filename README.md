@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1350](https://img.shields.io/badge/ebuild-1350-orange.svg)](https://img.shields.io/badge/ebuild-1350-orange.svg)
+[![Number of ebuilds: 1351](https://img.shields.io/badge/ebuild-1351-orange.svg)](https://img.shields.io/badge/ebuild-1351-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1429,3 +1429,4 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
+* dev-libs/[aws-c-compression](https://github.com/awslabs/aws-c-compression) | AWS C Compression
