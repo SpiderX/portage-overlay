@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd tmpfiles
 
@@ -10,18 +10,19 @@ MY_P="${PN}.v.${PV}"
 DESCRIPTION="A simple dynamic DNS client"
 HOMEPAGE="https://sourceforge.net/projects/inadyn-mt/"
 SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug sound"
 
-RDEPEND="acct-user/inadyn"
 DEPEND="sound? ( media-libs/libao )"
+RDEPEND="acct-group/inadyn
+	acct-user/inadyn
+	${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
-DOCS=( ChangeLog NEWS README NOTICE AUTHORS )
+DOCS=( ChangeLog README )
 
 src_configure() {
 	econf "$(use_enable debug)" "$(use_enable sound)"
