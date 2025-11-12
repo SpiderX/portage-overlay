@@ -16,9 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test" # fails
 
-RDEPEND="dev-libs/aws-sdk-cpp:=[dynamodb,iam,sts]
+RDEPEND=">=dev-cpp/aws-sdk-cpp-1.11.688-r1:=[dynamodb,iam,sts]
 	sys-libs/readline:=
-	sys-libs/zlib:="
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/bison
 	sys-devel/flex"
