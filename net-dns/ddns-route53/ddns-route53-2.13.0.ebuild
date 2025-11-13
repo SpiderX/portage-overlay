@@ -3,24 +3,20 @@
 
 EAPI=8
 
-inherit git-r3 go-module systemd
+inherit go-module systemd
 
 DESCRIPTION="Dynamic DNS for Amazon Route 53 on a time-based schedule"
 HOMEPAGE="https://github.com/crazy-max/ddns-route53"
-EGIT_REPO_URI="https://github.com/crazy-max/${PN}.git"
+SRC_URI="https://github.com/crazy-max/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/ddnsr53
 	acct-user/ddnsr53"
 
 DOCS=( {CHANGELOG,README}.md )
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
 
 src_compile() {
 	LDFLAGS="-X main.version=${PV}"
