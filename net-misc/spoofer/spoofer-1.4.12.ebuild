@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools desktop systemd tmpfiles
+inherit autotools desktop flag-o-matic systemd tmpfiles
 
 DESCRIPTION="A tool to assess of deployment of source address validation"
 HOMEPAGE="https://www.caida.org/projects/spoofer/"
@@ -17,24 +17,28 @@ IUSE="qt5"
 CDEPEND="dev-libs/openssl:0=
 	dev-libs/protobuf-c:=
 	net-libs/libpcap
-	qt5? (
-		dev-qt/qtcore:5
+	qt5? (  dev-qt/qtcore:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)"
+		dev-qt/qtwidgets:5 )"
 RDEPEND="${CDEPEND}
+	acct-group/spoofer
 	acct-user/spoofer
 	net-analyzer/traceroute"
 DEPEND="${CDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-# Unable to stop binaries stripping :(
 QA_PRESTRIPPED="usr/bin/spoofer-\\(cli\\|gui\\|scheduler\\)"
 
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# error adding symbols: DSO missing from command line
+	append-ldflags -Wl,--copy-dt-needed-entries
+	econf --disable-development
 }
 
 src_install() {
