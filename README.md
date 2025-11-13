@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1359](https://img.shields.io/badge/ebuild-1359-orange.svg)](https://img.shields.io/badge/ebuild-1359-orange.svg)
+[![Number of ebuilds: 1358](https://img.shields.io/badge/ebuild-1358-orange.svg)](https://img.shields.io/badge/ebuild-1358-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -114,6 +114,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-crypt/[step-ca](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
 *   app-crypt/[step-kms-plugin](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
 *   app-crypt/[totp](https://github.com/arcanericky/totp) | Time-Based One-Time Password Code Generator
+*   app-crypt/[transcrypt](https://github.com/elasticdog/transcrypt) | Transparently encrypt files within a git repository
 *   app-crypt/[web-eid](https://github.com/web-eid/web-eid-app) | Digital signing and authentication operations with electronic ID
 *   app-editors/[qedit](http://hugo.pereira.free.fr/software/index.php) | Qt-based multi-purpose text editor
 *   app-editors/[lite](https://github.com/rxi/lite) | A lightweight text editor written in Lua
@@ -1224,7 +1225,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-vcs/[mercurial-extension_utils](https://foss.heptapod.net/mercurial/mercurial-extension_utils) | Mercurial Extension Utils
 *   dev-vcs/[mercurial_keyring](https://foss.heptapod.net/mercurial/mercurial_keyring) | Mercurial Keyring Extension
 *   dev-vcs/[pre-commit](https://github.com/pre-commit/pre-commit) | A framework for multi-language pre-commit hooks
-*   dev-vcs/[transcrypt](https://github.com/elasticdog/transcrypt) | Transparently encrypt files within a git repository
 *   kde-misc/[applet-latte-separator](https://github.com/psifidotos/applet-latte-separator) | Plasma 5 applet that acts as a separator between applets
 *   kde-misc/[applet-latte-spacer](https://github.com/psifidotos/applet-latte-spacer) | Plasma 5 applet that acts as a spacer between applets
 *   kde-misc/[applet-window-buttons6](https://github.com/moodyhunter/applet-window-buttons6) | Plasma 6 applet in order to show window buttons in your panels
