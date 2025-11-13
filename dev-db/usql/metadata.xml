@@ -19,11 +19,17 @@
 		<flag name="avatica">Enable support for Apache Avatica</flag>
 		<flag name="bigquery">Enable support for Google BigQuery</flag>
 		<flag name="cassandra">Enable support for Cassandra</flag>
+		<flag name="chai">Enable support for ChaiSQL</flag>
 		<flag name="clickhouse">Enable support for ClickHouse</flag>
 		<flag name="cosmos">Enable support for Azure Cosmos</flag>
 		<flag name="couchbase">Enable support for Couchbase</flag>
 		<flag name="csvq">Enable support for CSVQ</flag>
-		<flag name="genji">Enable support for Genji</flag>
+		<flag name="databend">Enable support for Databend</flag>
+		<flag name="databricks">Enable support for Databricks</flag>
+		<flag name="duckdb">Enable support for DuckDB</flag>
+		<flag name="dynamodb">Enable support for DynamoDB</flag>
+		<flag name="exasol">Enable support for Exasol</flag>
+		<flag name="flightsql">Enable support for FlightSQL</flag>
 		<flag name="h2">Enable support for Apache H2</flag>
 		<flag name="hdb">Enable support for SAP HANA</flag>
 		<flag name="hive">Enable support for Apache Hive</flag>
@@ -33,12 +39,17 @@
 		<flag name="netezza">Enable support for IBM Netezza</flag>
 		<flag name="presto">Enable support for Presto</flag>
 		<flag name="ql">Enable support for Cznic QL</flag>
+		<flag name="ramsql">Enable support for RamSQL</flag>
+		<flag name="sapase">Enable support for SAP ASE</flag>
+		<flag name="saphana">Enable support for SAP HANA</flag>
 		<flag name="snowflake">Enable support for Snowflake</flag>
 		<flag name="spanner">Enable support for Google Spanner</flag>
+		<flag name="tablestore">Enable support for Alibaba Tablestore</flag>
 		<flag name="tds">Enable support for SAP ASE</flag>
 		<flag name="trino">Enable support for Trino</flag>
 		<flag name="vertica">Enable support for Vertica</flag>
 		<flag name="voltdb">Enable support for VoltDB</flag>
+		<flag name="ydb">Enable support for YDB</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">xo/usql</remote-id>
