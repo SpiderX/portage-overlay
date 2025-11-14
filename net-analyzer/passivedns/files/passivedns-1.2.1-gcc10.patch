@@ -1,0 +1,22 @@
+From 8b485bbb8f316c129ee673abaf34fe221149acc7 Mon Sep 17 00:00:00 2001
+From: edward <edwardfjellskaal@gmail.com>
+Date: Fri, 18 Sep 2020 12:14:20 +0200
+Subject: [PATCH] Added patch for GCC-10 by acoul
+
+---
+ src/dns.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/dns.c b/src/dns.c
+index dff46ae..f3c34cd 100644
+--- a/src/dns.c
++++ b/src/dns.c
+@@ -35,7 +35,7 @@
+ #include <jansson.h>
+ #endif /* HAVE_JSON */
+ 
+-globalconfig config;
++extern globalconfig config;
+ 
+ /* The 12th Carol number and 7th Carol prime, 16769023, is also a Carol emirp */
+ //#define DBUCKET_SIZE     16769023
