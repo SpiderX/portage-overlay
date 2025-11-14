@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit bash-completion-r1 cmake
 
@@ -10,13 +10,13 @@ HOMEPAGE="https://github.com/jackyf/cupt"
 SRC_URI="https://github.com/jackyf/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="dev-libs/boost:0=
 	dev-libs/libgcrypt:0=
-	>=net-misc/curl-7.72.0[gnutls]"
+	net-misc/curl[gnutls]"
 DEPEND="${RDEPEND}
 	sys-libs/readline:0="
 BDEPEND="dev-util/debhelper
@@ -24,10 +24,10 @@ BDEPEND="dev-util/debhelper
 	doc? ( app-text/doxygen )"
 
 src_prepare() {
-	# Don't link against Debian libcurl
+	# don't link against Debian libcurl
 	sed -i '/target_link_libraries/s/-gnutls//' cpp/downloadmethods/CMakeLists.txt \
 		|| die "sed failed for cpp/downloadmethods/CMakeLists.txt"
-	# Respect multilib paths
+	# respect multilib paths
 	sed -i '/install(TARGETS/s/lib)/lib64)/' cpp/lib/CMakeLists.txt \
 		|| die "sed failed for cpp/lib/CMakeLists.txt"
 
