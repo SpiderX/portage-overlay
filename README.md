@@ -1395,7 +1395,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   sys-auth/[fprintd](https://gitlab.freedesktop.org/libfprint/fprintd) | D-Bus service to access fingerprint readers
 *   sys-auth/[libfprint-tod](https://gitlab.freedesktop.org/3v1n0/libfprint/-/tree/tod/) | libfprint for Touch OEM Drivers
 *   sys-auth/[libfprint-tod-goodix](https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix) | Goodix driver module for libfprint-2 Touch OEM Driver
-*   sys-cluster/[minishift-bin](https://github.com/minishift/minishift) | Single Node OpenShift Cluster
 *   sys-fs/[adhocify](https://github.com/quitesimpleorg/adhocify) | Tool which monitors for inotify events and executes script
 *   sys-fs/[duf](https://github.com/muesli/duf) | Disk Usage/Free Utility
 *   sys-fs/[xfs_undelete](https://github.com/ianka/xfs_undelete) | An undelete tool for the XFS filesystem
