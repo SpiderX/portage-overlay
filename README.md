@@ -1177,7 +1177,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[bcunit](https://gitlab.linphone.org/BC/public/bcunit) | BC Unit Test Framework
 *   dev-util/[beekeeper-studio-bin](https://www.beekeeperstudio.io) | SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 *   dev-util/[build2](https://build2.org) | Cross-platform toolchain for building and packaging C++ code
-*   dev-util/[cfn-format](https://github.com/awslabs/aws-cloudformation-template-formatter) | AWS CloudFormation Template Formatter
 *   dev-util/[cfn-guard](https://github.com/aws-cloudformation/cloudformation-guard) | AWS CloudFormation Guard
 *   dev-util/[cfn-template-flip](https://github.com/awslabs/aws-cfn-template-flip) | AWS CloudFormation Template Flip
 *   dev-util/[cfripper](https://github.com/Skyscanner/cfripper) | Analysing CloudFormation templates for security compliance
