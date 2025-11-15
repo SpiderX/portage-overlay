@@ -4,14 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYPI_PN="${PN//-/.}"
-PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11,12,14} )
 
-inherit distutils-r1 optfeature pypi
+inherit distutils-r1 optfeature
 
 DESCRIPTION="The official command-line client for RIPE Atlas"
 HOMEPAGE="https://github.com/RIPE-NCC/ripe-atlas-tools"
+SRC_URI="https://github.com/RIPE-NCC/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -27,25 +26,14 @@ RDEPEND="dev-python/ipy[${PYTHON_USEDEP}]
 	dev-python/ripe-atlas-cousteau[${PYTHON_USEDEP}]
 	dev-python/ripe-atlas-sagan[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	dev-python/tzlocal[${PYTHON_USEDEP}]"
+	dev-python/tzlocal[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 DOCS=( {CHANGES,README}.rst )
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
-
-EPYTEST_DESELECT=(
-	# no docs
-	tests/test_docs.py::DocTest::test_text_documentation
-	# format is deprecated
-	tests/test_docs.py::DocTest::test_html_documentation
-	# assertion error
-	tests/renderers/test_traceroute_aspath.py::TestTracerouteASPathRenderer::test_arg_radius
-	tests/renderers/test_traceroute_aspath.py::TestTracerouteASPathRenderer::test_basic
-	# assertion error
-	tests/commands/test_measure.py::TestMeasureCommand::test_add_arguments
-)
 
 python_prepare_all() {
 	sed -i  -e '/namespace_packages/d' \
