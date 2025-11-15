@@ -1,0 +1,5 @@
+# Config file for /etc/user/init.d/spotifyd
+
+# Various options.
+# run `spotifyd --help` for valid cmdline options
+SPOTIFYD_OPTS="--no-daemon --config-path ~/.config/spotifyd/spotifyd.conf"

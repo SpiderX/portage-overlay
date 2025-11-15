@@ -5,6 +5,8 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.85.0"
+
 inherit cargo git-r3 systemd
 
 DESCRIPTION="A spotify daemon"
@@ -13,12 +15,12 @@ EGIT_REPO_URI="https://github.com/Spotifyd/${PN}.git"
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 GPL-3 ISC LGPL-3 MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-IUSE="+alsa mpris-dbus portaudio pulseaudio rodio"
+IUSE="+alsa dbus portaudio pulseaudio rodio"
 REQUIRED_USE="|| ( alsa portaudio pulseaudio rodio ) rodio? ( alsa )"
 
 RDEPEND="dev-libs/openssl:0=
 	alsa? ( media-libs/alsa-lib )
-	mpris-dbus? ( sys-apps/dbus )
+	dbus? ( sys-apps/dbus )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )"
 BDEPEND="virtual/pkgconfig"
@@ -36,7 +38,7 @@ src_configure() {
 	local myfeatures
 	myfeatures=(
 		$(usex alsa alsa_backend '')
-		$(usex mpris-dbus "dbus_mpris" '')
+		$(usex dbus "dbus_mpris" '')
 		$(usex portaudio portaudio_backend '')
 		$(usex pulseaudio pulseaudio_backend '')
 		$(usex rodio rodio_backend '')
@@ -51,6 +53,16 @@ src_install() {
 	newconfd "${FILESDIR}"/spotifyd.confd spotifyd
 	insinto /etc
 	doins contrib/spotifyd.conf
+
+	exeinto /etc/user/init.d
+	newexe "${FILESDIR}"/spotifyd.initd-user spotifyd
+	insinto /etc/user/conf.d
+	newins "${FILESDIR}"/spotifyd.confd-user spotifyd
+
+	if use dbus ; then
+		insinto /etc/dbus-1/system.d
+		newins "${FILESDIR}"/spotifyd.dbus spotifyd.conf
+	fi
 
 	cargo_src_install
 }

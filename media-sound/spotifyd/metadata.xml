@@ -17,7 +17,6 @@
 	from the official clients.
 	</longdescription>
 	<use>
-		<flag name="mpris-dbus">Enable the mpris plugin, to read data via dbus for mpris</flag>
 		<flag name="rodio">Enable rodio backend</flag>
 	</use>
 	<upstream>

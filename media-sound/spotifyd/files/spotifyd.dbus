@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
+<busconfig>
+  <!-- Only this group can own the spotifyd interfaces -->
+  <policy group="users">
+    <allow own_prefix="rs.spotifyd"/>
+    <allow own_prefix="org.mpris.MediaPlayer2.spotifyd"/>
+  </policy>
+
+  <!-- Allow this group to invoke methods on these two interfaces -->
+  <policy group="users">
+    <allow send_destination_prefix="rs.spotifyd"/>
+    <allow send_destination_prefix="org.mpris.MediaPlayer2.spotifyd"/>
+  </policy>
+</busconfig>
