@@ -1371,7 +1371,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-voip/[twinkle](https://github.com/LubosD/twinkle) | Softphone for voice over IP and IM communication using SIP
 *   net-vpn/[awsvpnclient](https://aws.amazon.com/vpn/) | AWS VPN Client
 *   net-vpn/[cloudflared](https://github.com/cloudflare/cloudflared) | Argo Tunnel client
-*   net-vpn/[innernet-bin](https://github.com/tonarino/innernet) | WireGuard based private network system
+*   net-vpn/[innernet](https://github.com/tonarino/innernet) | A private network system that uses WireGuard
 *   net-vpn/[forticlient](https://www.fortinet.com/products/endpoint-security/forticlient) | Fortinet VPN client
 *   net-vpn/[openiked](https://github.com/openiked/openiked-portable) | Internet Key Exchange version 2 (IKEv2) daemon
 *   net-vpn/[openvpn-aws](https://openvpn.net) | Patched OpenVPN with SAML support for AWS Client VPN
