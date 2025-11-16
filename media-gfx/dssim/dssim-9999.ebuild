@@ -17,7 +17,7 @@ QA_FLAGS_IGNORED="usr/bin/dssim"
 
 src_unpack() {
 	git-r3_src_unpack
-	cargo_src_unpack
+	cargo_live_src_unpack
 }
 
 src_install() {
