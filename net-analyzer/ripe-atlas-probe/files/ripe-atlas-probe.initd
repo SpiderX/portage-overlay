@@ -1,8 +1,8 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-command=/opt/atlas/bin/ATLAS
+command=/usr/sbin/ripe-atlas
 command_background="yes"
 description="RIPE Atlas probe"
 name="RIPE Atlas probe"
@@ -10,13 +10,4 @@ pidfile=/run/ripe-atlas/ripe-atlas-probe.pid
 
 depend() {
 	need net
-}
-
-stop() {
-	ebegin "Stopping RIPE Atlas probe"
-	start-stop-daemon --stop --quiet --pidfile "${pidfile}"
-	for file in /var/lib/ripe-atlas/run/* ; do pkill -F "$file" ; done
-	pgrep -a ssh | grep ripe-atlas | cut -d' ' -f1 | xargs kill
-	rm -f "${pidfile}"
-	eend $?
 }

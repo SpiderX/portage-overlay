@@ -6,7 +6,7 @@ User=ripe-atlas
 Group=nogroup
 Environment=HOME=/var/lib/ripe-atlas
 WorkingDirectory=/var/lib/ripe-atlas
-ExecStart=/opt/atlas/bin/ATLAS
+ExecStart=/usr/sbin/ripe-atlas
 Restart=always
 TimeoutStopSec=60
 [Install]
