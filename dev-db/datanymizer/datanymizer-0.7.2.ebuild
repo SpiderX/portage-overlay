@@ -3,7 +3,8 @@
 
 EAPI=8
 
-CRATES="ahash@0.7.8
+CRATES="addr2line@0.24.2
+	adler2@2.0.0
 	aho-corasick@0.7.20
 	aho-corasick@1.0.2
 	android-tzdata@0.1.1
@@ -14,10 +15,12 @@ CRATES="ahash@0.7.8
 	anstyle-wincon@3.0.4
 	anstyle@1.0.8
 	anyhow@1.0.71
+	arraydeque@0.5.1
 	async-trait@0.1.68
 	autocfg@1.1.0
-	base64@0.13.1
+	backtrace@0.3.74
 	base64@0.21.2
+	base64@0.22.1
 	bcrypt@0.14.0
 	bitflags@1.3.2
 	bitflags@2.4.1
@@ -38,44 +41,54 @@ CRATES="ahash@0.7.8
 	clap_derive@4.5.13
 	clap_lex@0.7.2
 	colorchoice@1.0.2
-	config@0.13.3
+	config@0.15.11
 	console@0.15.7
+	const-random-macro@0.1.16
+	const-random@0.1.18
+	convert_case@0.6.0
 	core-foundation-sys@0.8.4
 	core-foundation@0.9.3
 	cpufeatures@0.2.8
+	crunchy@0.2.3
 	crypto-common@0.1.6
-	csv-core@0.1.10
-	csv@1.2.2
 	deunicode@0.4.5
 	deunicode@1.4.2
 	digest@0.10.7
-	dlv-list@0.3.0
+	displaydoc@0.2.5
+	dlv-list@0.5.2
 	encode_unicode@0.3.6
+	encoding_rs@0.8.35
 	env_logger@0.10.0
-	errno-dragonfly@0.1.2
-	errno@0.3.1
+	equivalent@1.0.2
+	errno@0.3.11
 	fake@2.6.1
 	fallible-iterator@0.2.0
-	fastrand@1.9.0
+	fastrand@2.3.0
 	fnv@1.0.7
+	foldhash@0.1.5
 	foreign-types-shared@0.1.1
 	foreign-types@0.3.2
-	form_urlencoded@1.2.0
-	futures-channel@0.3.28
-	futures-core@0.3.28
+	form_urlencoded@1.2.1
+	futures-channel@0.3.31
+	futures-core@0.3.31
 	futures-executor@0.3.28
-	futures-io@0.3.28
-	futures-macro@0.3.28
-	futures-sink@0.3.28
-	futures-task@0.3.28
-	futures-util@0.3.28
+	futures-io@0.3.31
+	futures-macro@0.3.31
+	futures-sink@0.3.31
+	futures-task@0.3.31
+	futures-util@0.3.31
 	futures@0.3.28
 	generic-array@0.14.7
 	getrandom@0.1.16
 	getrandom@0.2.10
+	getrandom@0.3.2
+	gimli@0.31.1
 	globset@0.4.10
 	globwalk@0.8.1
 	hashbrown@0.12.3
+	hashbrown@0.14.5
+	hashbrown@0.15.2
+	hashlink@0.10.0
 	heck@0.5.0
 	hermit-abi@0.3.3
 	hmac@0.12.1
@@ -83,12 +96,23 @@ CRATES="ahash@0.7.8
 	humantime@2.1.0
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.58
-	idna@0.4.0
+	icu_collections@1.5.0
+	icu_locid@1.5.0
+	icu_locid_transform@1.5.0
+	icu_locid_transform_data@1.5.1
+	icu_normalizer@1.5.0
+	icu_normalizer_data@1.5.1
+	icu_properties@1.5.1
+	icu_properties_data@1.5.1
+	icu_provider@1.5.0
+	icu_provider_macros@1.5.0
+	idna@1.0.3
+	idna_adapter@1.2.0
 	ignore@0.4.20
 	indexmap@1.9.3
-	indicatif@0.17.5
+	indexmap@2.9.0
+	indicatif@0.17.11
 	inout@0.1.3
-	instant@0.1.12
 	io-lifetimes@1.0.11
 	is-terminal@0.4.7
 	is_terminal_polyfill@1.70.1
@@ -97,31 +121,32 @@ CRATES="ahash@0.7.8
 	json5@0.4.1
 	jsonpath_lib@0.3.0
 	lazy_static@1.4.0
-	libc@0.2.158
+	libc@0.2.171
 	libm@0.2.8
-	linked-hash-map@0.5.6
 	linux-raw-sys@0.3.8
+	linux-raw-sys@0.4.15
+	litemap@0.7.5
 	lock_api@0.4.10
 	log@0.4.19
 	md-5@0.10.5
 	memchr@2.5.0
-	minimal-lexical@0.2.1
-	mio@0.8.11
-	native-tls@0.2.11
-	nom@7.1.3
+	miniz_oxide@0.8.8
+	mio@1.0.3
+	native-tls@0.2.14
 	num-traits@0.2.17
 	number_prefix@0.4.0
+	object@0.36.7
 	once_cell@1.18.0
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
-	openssl-sys@0.9.103
-	openssl@0.10.66
-	ordered-multimap@0.4.3
+	openssl-sys@0.9.107
+	openssl@0.10.72
+	ordered-multimap@0.7.3
 	parking_lot@0.12.1
 	parking_lot_core@0.9.8
 	parse-zoneinfo@0.3.0
 	pathdiff@0.2.1
-	percent-encoding@2.3.0
+	percent-encoding@2.3.1
 	pest@2.7.5
 	pest_derive@2.7.5
 	pest_generator@2.7.5
@@ -130,32 +155,39 @@ CRATES="ahash@0.7.8
 	phf_codegen@0.11.1
 	phf_generator@0.11.1
 	phf_shared@0.11.1
-	pin-project-lite@0.2.9
+	pin-project-lite@0.2.16
 	pin-utils@0.1.0
 	pkg-config@0.3.27
 	portable-atomic@1.3.3
 	postgres-native-tls@0.5.0
-	postgres-protocol@0.6.5
-	postgres-types@0.2.5
-	postgres@0.19.5
+	postgres-protocol@0.6.8
+	postgres-types@0.2.9
+	postgres@0.19.10
 	ppv-lite86@0.2.17
 	proc-macro2@1.0.86
-	quote@1.0.28
+	quote@1.0.40
+	r-efi@5.2.0
 	rand@0.7.3
 	rand@0.8.5
+	rand@0.9.0
 	rand_chacha@0.2.2
 	rand_chacha@0.3.1
+	rand_chacha@0.9.0
 	rand_core@0.5.1
 	rand_core@0.6.4
+	rand_core@0.9.3
 	rand_hc@0.2.0
 	rand_pcg@0.2.1
 	random_color@0.6.1
 	redox_syscall@0.3.5
+	redox_syscall@0.5.11
 	regex-syntax@0.7.2
 	regex@1.8.4
-	ron@0.7.1
-	rust-ini@0.18.0
+	ron@0.8.1
+	rust-ini@0.21.1
+	rustc-demangle@0.1.24
 	rustix@0.37.25
+	rustix@0.38.44
 	ryu@1.0.13
 	same-file@1.0.6
 	schannel@0.1.21
@@ -165,34 +197,41 @@ CRATES="ahash@0.7.8
 	serde@1.0.164
 	serde_derive@1.0.164
 	serde_json@1.0.97
+	serde_spanned@0.6.8
 	serde_yaml@0.9.21
 	sha2@0.10.7
 	siphasher@0.3.10
 	slab@0.4.8
 	slug@0.1.4
-	smallvec@1.10.0
-	socket2@0.4.9
-	socket2@0.5.3
+	smallvec@1.15.0
+	socket2@0.5.9
 	solvent@0.8.3
+	stable_deref_trait@1.2.0
 	stringprep@0.1.2
 	strsim@0.11.1
 	subtle@2.5.0
-	syn@2.0.18
-	tempfile@3.6.0
+	syn@2.0.87
+	synstructure@0.13.1
+	tempfile@3.10.1
 	tera@1.19.1
 	termcolor@1.2.0
 	thiserror-impl@1.0.40
 	thiserror@1.0.40
 	thread_local@1.1.7
+	tiny-keccak@2.0.2
+	tinystr@0.7.6
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
 	tokio-native-tls@0.3.1
-	tokio-postgres@0.7.8
+	tokio-postgres@0.7.13
 	tokio-util@0.7.8
-	tokio@1.28.2
-	toml@0.5.11
+	tokio@1.44.2
+	toml@0.8.20
+	toml_datetime@0.6.8
+	toml_edit@0.22.24
 	tracing-core@0.1.31
 	tracing@0.1.37
+	trim-in-place@0.1.7
 	typenum@1.16.0
 	ucd-trie@0.1.5
 	unic-char-property@0.9.0
@@ -206,21 +245,29 @@ CRATES="ahash@0.7.8
 	unicode-normalization@0.1.22
 	unicode-segmentation@1.10.1
 	unicode-width@0.1.10
+	unicode-width@0.2.0
 	unidecode@0.3.0
 	unsafe-libyaml@0.2.10
-	url@2.4.0
+	url@2.5.4
+	utf16_iter@1.0.5
+	utf8_iter@1.0.4
 	utf8parse@0.2.2
 	uuid@1.3.4
 	vcpkg@0.2.15
 	version_check@0.9.4
 	walkdir@2.3.3
 	wasi@0.11.0+wasi-snapshot-preview1
+	wasi@0.14.2+wasi-0.2.4
 	wasi@0.9.0+wasi-snapshot-preview1
+	wasite@0.1.0
 	wasm-bindgen-backend@0.2.89
 	wasm-bindgen-macro-support@0.2.89
 	wasm-bindgen-macro@0.2.89
 	wasm-bindgen-shared@0.2.89
 	wasm-bindgen@0.2.89
+	web-sys@0.3.66
+	web-time@1.1.0
+	whoami@1.6.0
 	wildmatch@2.1.1
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.5
@@ -256,8 +303,20 @@ CRATES="ahash@0.7.8
 	windows_x86_64_msvc@0.42.2
 	windows_x86_64_msvc@0.48.0
 	windows_x86_64_msvc@0.52.6
-	yaml-rust@0.4.5
-	zeroize@1.6.0"
+	winnow@0.7.6
+	wit-bindgen-rt@0.39.0
+	write16@1.0.0
+	writeable@0.5.5
+	yaml-rust2@0.10.1
+	yoke-derive@0.7.5
+	yoke@0.7.5
+	zerocopy-derive@0.8.24
+	zerocopy@0.8.24
+	zerofrom-derive@0.1.6
+	zerofrom@0.1.6
+	zeroize@1.6.0
+	zerovec-derive@0.10.3
+	zerovec@0.10.4"
 
 inherit cargo
 
