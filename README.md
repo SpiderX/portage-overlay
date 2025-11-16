@@ -1194,7 +1194,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[dropwatch](https://github.com/nhorman/dropwatch) | Monitor for dropped network packets
 *   dev-util/[dtm](https://github.com/dtm-labs/dtm) | Distributed transaction framework
 *   dev-util/[duplicate-code-detection-tool](https://github.com/platisd/duplicate-code-detection-tool) | A tool to detect similarities between files within a repository
-*   dev-util/[fossa-cli](https://github.com/fossas/fossa-cli) | License and vulnerability analysis
 *   dev-util/[gibberish-detector](https://github.com/domanchi/gibberish-detector) | Train a model, and detect gibberish strings with it
 *   dev-util/[gh](https://github.com/cli/cli) | The GitHub CLI
 *   dev-util/[gitlab-runner](https://gitlab.com/gitlab-org/gitlab-runner) | GitLab Runner
