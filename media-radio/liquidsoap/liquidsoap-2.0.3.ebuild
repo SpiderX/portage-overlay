@@ -38,7 +38,7 @@ RDEPEND="acct-user/liquidsoap
 	ffmpeg? ( <dev-ml/ocaml-ffmpeg-1.1.2:=[ocamlopt?] )
 	flac? ( dev-ml/ocaml-flac:=[ocamlopt?,ogg?] )
 	frei0r? ( dev-ml/ocaml-frei0r:=[ocamlopt?] )
-	gd? ( dev-ml/gd4o:=[ocamlopt?]
+	gd? ( dev-ml/ocaml-gd:=[ocamlopt?]
 		media-fonts/dejavu )
 	graphics? ( dev-ml/graphics[ocamlopt?]
 		media-fonts/dejavu )
