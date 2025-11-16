@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
-
-inherit findlib git-r3
+inherit edo findlib git-r3
 
 DESCRIPTION="OCaml bindings to Gavl video manipulation library"
 HOMEPAGE="https://github.com/savonet/ocaml-gavl"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
 
 RDEPEND="media-libs/gavl"
 
@@ -22,7 +19,7 @@ DOCS=( CHANGES README )
 src_prepare() {
 	default
 
-	./bootstrap || die "bootstrap failed"
+	edo ./bootstrap
 }
 
 src_configure() {
