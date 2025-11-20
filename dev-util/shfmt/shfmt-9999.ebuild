@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/mvdan/sh.git"
 
 inherit edo git-r3 go-module
 
 DESCRIPTION="A shell parser, formatter, and interpreter with bash support"
 HOMEPAGE="https://github.com/mvdan/sh"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/mvdan/sh.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 IUSE="+man"
 
 BDEPEND="man? ( app-text/scdoc )"
@@ -30,9 +27,7 @@ src_compile() {
 
 	ego build -ldflags "${LDFLAGS}" ./cmd/shfmt
 
-	if use man ; then
-		edo scdoc < cmd/shfmt/shfmt.1.scd > shfmt.1
-	fi
+	use man && edo scdoc < cmd/shfmt/shfmt.1.scd > shfmt.1
 }
 
 src_test() {
