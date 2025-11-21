@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/Skycoder42/${PN}.git"
 
 inherit git-r3 qmake-utils virtualx
 
 DESCRIPTION="An apng image plugin for Qt to support animated PNGs"
 HOMEPAGE="https://github.com/Skycoder42/QtApng"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/Skycoder42/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
