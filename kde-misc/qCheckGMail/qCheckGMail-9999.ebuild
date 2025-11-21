@@ -1,15 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/mhogomchungu/${PN}.git"
 
 inherit cmake git-r3 xdg
 
 DESCRIPTION="qCheckGmail is a Qt/C++ multiple gmail account checker"
 HOMEPAGE="https://github.com/mhogomchungu/qCheckGMail"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/mhogomchungu/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
