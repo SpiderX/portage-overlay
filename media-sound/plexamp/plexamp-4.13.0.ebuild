@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils xdg
+inherit chromium-2 desktop edo multilib-build pax-utils xdg
 
 MY_P="${PN^}-${PV}"
 
@@ -36,7 +36,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
@@ -54,7 +53,8 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
 QA_FLAGS_IGNORED="opt/plexamp/resources/app.asar.unpacked/node_modules/electron-media-service/build/Release/electron_media_service.node
 	opt/plexamp/resources/treble/libbassmix.so
@@ -102,30 +102,27 @@ QA_PREBUILT="opt/plexamp/resources/treble/libbassmix.so
 	opt/plexamp/usr/lib/libXss.so.1"
 
 src_unpack() {
-	cp "${DISTDIR}"/"${MY_P}".AppImage . || die "cp failed"
-	chmod +x "${MY_P}".AppImage || die "chmod failed"
-	./"${MY_P}".AppImage --appimage-extract || die "AppImage extract failed"
+	edo cp "${DISTDIR}"/"${MY_P}".AppImage .
+	edo chmod +x "${MY_P}".AppImage
+	edo ./"${MY_P}".AppImage --appimage-extract
 }
 
 src_prepare() {
 	default
-	pushd squashfs-root/locales || die "pushd failed"
+	edo pushd squashfs-root/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
-	rm -rf squashfs-root/LICENSE{.electron.txt,S.chromium.html} \
-		|| die "rm licenses failed"
+	edo rm -rf squashfs-root/LICENSE{.electron.txt,S.chromium.html}
 
 	sed -i '/Exec/s/AppRun/plexamp/' squashfs-root/plexamp.desktop \
 		|| die "sed failed for plexamp.desktop"
 
-	if ! use suid ; then
-		rm squashfs-root/chrome-sandbox || die "rm failed"
-	fi
+	! use suid && edo rm squashfs-root/chrome-sandbox
 
 	if ! use seccomp ; then
 		sed -i '/Exec/s/plexamp/plexamp --disable-seccomp-filter-sandbox/' \
-		squashfs-root/plexamp.desktop || die "sed failed with seccomp"
+			squashfs-root/plexamp.desktop || die "sed failed with seccomp"
 	fi
 }
 
