@@ -20,7 +20,7 @@ IUSE="cgi test"
 REQUIRED_USE="test? ( cgi )"
 RESTRICT="!test? ( test )"
 
-DEPEND="sys-libs/zlib:0="
+DEPEND="virtual/zlib:0="
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-lang/php:*[cgi?] )" # skipped 7
 
