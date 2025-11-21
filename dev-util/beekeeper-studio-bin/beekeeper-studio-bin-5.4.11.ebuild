@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr
 	sk sl sr sv sw ta te th tr uk vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils unpacker xdg
+inherit chromium-2 desktop edo multilib-build pax-utils unpacker xdg
 
 MY_PN="${PN/-bin/}"
 
@@ -34,7 +34,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	x11-libs/libdrm[${MULTILIB_USEDEP}]
@@ -51,7 +50,8 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr[${MULTILIB_USEDEP}]
 	x11-libs/libXtst[${MULTILIB_USEDEP}]
-	x11-libs/pango[${MULTILIB_USEDEP}]"
+	x11-libs/pango[${MULTILIB_USEDEP}]
+	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
@@ -59,18 +59,16 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	pushd opt/"Beekeeper Studio"/locales || die "pushd failed"
+	edo pushd opt/"Beekeeper Studio"/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
 	sed -i  -e '/Exec/s|Beekeeper Studio|beekeeper-studio|' \
 		-e '/MimeType/s|application/vnd.sqlite3;||2g' \
 		usr/share/applications/beekeeper-studio.desktop \
 		|| die "sed failed for arctype.desktop"
 
-	if ! use suid ; then
-		rm opt/"Beekeeper Studio"/chrome-sandbox || die "rm failed"
-	fi
+	! use suid && edo rm opt/"Beekeeper Studio"/chrome-sandbox
 }
 
 src_install() {
