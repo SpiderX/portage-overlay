@@ -23,7 +23,7 @@ RDEPEND="dev-python/celery[${PYTHON_USEDEP}]
 	dev-python/tzdata[${PYTHON_USEDEP}]"
 BDEPEND="test? ( sci-astronomy/pyephem[${PYTHON_USEDEP}] )"
 
-EPYTEST_TIMEOUT=1
+: "${EPYTEST_TIMEOUT:=60}"
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
