@@ -15,7 +15,8 @@ HOMEPAGE="https://www.dvratil.cz/2018/05/plasma-pass/ https://invent.kde.org/pla
 LICENSE="LGPL-2.1+"
 SLOT="6"
 
-DEPEND="app-crypt/gpgme:=[cxx,qt6]
+DEPEND="dev-cpp/gpgmepp:=
+	dev-libs/qgpgme:=
 	dev-qt/qt5compat:6[qml]
 	dev-qt/qtbase:6[concurrent,dbus,gui]
 	dev-qt/qtdeclarative:6
