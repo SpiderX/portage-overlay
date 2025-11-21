@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
-EGIT_REPO_URI="https://github.com/pixelb/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A utility for manipulating ini files"
 HOMEPAGE="https://github.com/pixelb/crudini"
+EGIT_REPO_URI="https://github.com/pixelb/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
