@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils xdg
+inherit chromium-2 desktop edo multilib-build pax-utils xdg
 
 DESCRIPTION="Build, test, and document your APIs faster"
 HOMEPAGE="https://www.postman.com"
@@ -33,7 +33,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	x11-libs/libdrm:0[${MULTILIB_USEDEP}]
@@ -47,7 +46,8 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:0[${MULTILIB_USEDEP}]
 	x11-libs/libxkbcommon:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
@@ -55,13 +55,11 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	pushd locales || die "pushd failed"
+	edo pushd locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
-	if ! use suid ; then
-		rm chrome-sandbox || die "rm failed"
-	fi
+	! use suid && edo rm chrome-sandbox
 }
 
 src_install() {
