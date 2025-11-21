@@ -1,21 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
-EGIT_REPO_URI="https://gitlab.com/gitlab-org/${PN}.git"
+USE_RUBY="ruby31"
 
 inherit git-r3 go-module ruby-single systemd tmpfiles
 
 DESCRIPTION="Git RPC service for handling GitLab git calls"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitaly"
-SRC_URI=""
+EGIT_REPO_URI="https://gitlab.com/gitlab-org/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 RESTRICT="mirror test"
 
 RDEPEND="${RUBY_DEPS}

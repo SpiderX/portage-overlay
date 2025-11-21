@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby31"
 
 inherit go-module ruby-single systemd tmpfiles
 
@@ -13,11 +13,11 @@ DESCRIPTION="Git RPC service for handling GitLab git calls"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitaly"
 SRC_URI="https://gitlab.com/gitlab-org/${PN}/-/archive/v${PV}/${MY_P}.tar.bz2
 	https://files.icw.tools/distfiles/gitaly/${P}-deps.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 RESTRICT="mirror test"
 
 RDEPEND="${RUBY_DEPS}
@@ -35,8 +35,6 @@ DEPEND="dev-libs/gmp:=
 BDEPEND="dev-ruby/bundler:2
 	dev-build/cmake
 	virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( {CHANGELOG,README}.md )
 
