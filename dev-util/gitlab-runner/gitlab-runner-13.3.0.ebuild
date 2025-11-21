@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,8 +13,9 @@ NS="gitlab.com/gitlab-org/gitlab-runner/common"
 
 DESCRIPTION="GitLab Runner"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-runner"
-SRC_URI="https://gitlab.com/gitlab-org/${PN}/-/archive/v${PV}/${MY_P}.tar.gz
+SRC_URI="https://gitlab.com/gitlab-org/${PN}/-/archive/v${PV}/${MY_P}.tar.bz2
 	docker? ( amd64? ( ${BASE_URI/_arch_/x86_64} ) )"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,8 +25,6 @@ RESTRICT="mirror"
 
 RDEPEND="acct-user/gitlab-runner
 	docker? ( app-containers/docker )"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( {CHANGELOG,README}.md )
 
