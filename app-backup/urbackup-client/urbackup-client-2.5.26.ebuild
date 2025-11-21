@@ -25,7 +25,7 @@ RDEPEND="acct-group/urbackup
 	dev-db/sqlite:3
 	dev-libs/crypto++:0=
 	dev-libs/icu:0=
-	sys-libs/zlib:0=
+	virtual/zlib:0=
 	X? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
