@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/uroni/urbackup_backend.git"
-
 inherit autotools git-r3 readme.gentoo-r1 systemd
 
 DESCRIPTION="Client Server backup system"
 HOMEPAGE="https://www.urbackup.org/"
+EGIT_REPO_URI="https://github.com/uroni/urbackup_backend.git"
 
 LICENSE="AGPL-3+"
 SLOT="0"
@@ -23,7 +22,7 @@ RDEPEND="acct-user/urbackup
 	crypt? ( dev-libs/crypto++:0= )
 	curl? ( net-misc/curl )
 	fuse? ( sys-fs/fuse:0 )
-	zlib? ( sys-libs/zlib:0= )"
+	zlib? ( virtual/zlib:0= )"
 
 DOC_CONTENTS="You may need to open the following ports in firewall:\\n
 55413/tcp, 55414/tcp, 55415/tcp, 35623/udp

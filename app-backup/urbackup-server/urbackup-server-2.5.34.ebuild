@@ -23,7 +23,7 @@ RDEPEND="acct-user/urbackup
 	crypt? ( dev-libs/crypto++:0= )
 	curl? ( net-misc/curl )
 	fuse? ( sys-fs/fuse:0 )
-	zlib? ( sys-libs/zlib:0= )"
+	zlib? ( virtual/zlib:0= )"
 
 DOC_CONTENTS="You may need to open the following ports in firewall:\\n
 55413/tcp, 55414/tcp, 55415/tcp, 35623/udp
