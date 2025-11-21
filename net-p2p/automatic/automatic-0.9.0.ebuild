@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ COMMIT="6301c30"
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
 SRC_URI="https://github.com/1100101/Automatic/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,8 +25,6 @@ RDEPEND="acct-group/automatic
 	net-misc/curl"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${P^}"
 
 # wrt #836740
 PATCHES=( "${FILESDIR}"/"${P}"-util_test-header.patch )
