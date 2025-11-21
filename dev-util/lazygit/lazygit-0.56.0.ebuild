@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,7 @@ COMMIT="7be25a1"
 
 DESCRIPTION="Simple terminal UI for git commands"
 HOMEPAGE="https://github.com/jesseduffield/lazygit"
-SRC_URI="https://github.com/jesseduffield/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_SUM_SRC_URI}"
+SRC_URI="https://github.com/jesseduffield/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
