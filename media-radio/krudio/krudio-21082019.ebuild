@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ COMMIT="a45ad15680dd44a1dfd2ebae336d6f085d5f2651"
 DESCRIPTION="Radio tray for linux on QT"
 HOMEPAGE="https://github.com/alexyalinc/krudio"
 SRC_URI="https://github.com/alexyalinc/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,14 +25,12 @@ DEPEND="dev-qt/qtcore:5
 RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-meta:1.0[aac,http,mp3,mpeg,ogg,vorbis]"
 
-S="${WORKDIR}/${PN}-${COMMIT}"
-
 DOCS=( README.md )
 
 src_prepare() {
 	default
 
-	# Remove qmake and create paths for symlinks
+	# remove qmake and create paths for symlinks
 	sed -i \
 		-e '/qmake/d' \
 		-e '/mkdir/a\\tmkdir -p $(datadir)/icons/hicolor/16x16/status' \
@@ -40,7 +39,7 @@ src_prepare() {
 		-e '/mkdir/a\\tmkdir -p $(datadir)/icons/hicolor/48x48/apps/'  \
 		Makefile || die "sed for Makefile"
 
-	# Fix desktop file
+	# fix desktop file
 	sed -i \
 		-e '/Terminal/s/.$//' \
 		-e '/Name/s/.$//' \
