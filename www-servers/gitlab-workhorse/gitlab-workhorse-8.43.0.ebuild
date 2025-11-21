@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -859,9 +859,10 @@ go-module_set_globals
 
 DESCRIPTION="GitLab reverse proxy"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-workhorse"
-SRC_URI="https://gitlab.com/gitlab-org/${PN}/-/archive/v${PV}/${MY_P}.tar.gz
-	https://gitlab.com/gitlab-org/gitlab-test/-/archive/v1.1.1/gitlab-test-v1.1.1.tar.gz
+SRC_URI="https://gitlab.com/gitlab-org/${PN}/-/archive/v${PV}/${MY_P}.tar.bz2
+	https://gitlab.com/gitlab-org/gitlab-test/-/archive/v1.1.1/gitlab-test-v1.1.1.tar.bz2
 	${EGO_SUM_SRC_URI}"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -869,10 +870,9 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test mirror" # fails
 
-RDEPEND="acct-user/gitlab-workhorse
+RDEPEND="acct-group/gitlab-workhorse
+	acct-user/gitlab-workhorse
 	media-libs/exiftool"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG README.md )
 

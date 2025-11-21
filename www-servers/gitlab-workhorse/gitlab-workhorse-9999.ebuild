@@ -1,24 +1,23 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://gitlab.com/gitlab-org/${PN}.git"
 EGIT_SUBMODULES=()
 
 inherit git-r3 go-module systemd tmpfiles
 
 DESCRIPTION="GitLab reverse proxy"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-workhorse"
-SRC_URI=""
+EGIT_REPO_URI="https://gitlab.com/gitlab-org/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test ) mirror"
 
-RDEPEND="acct-user/gitlab-workhorse
+RDEPEND="acct-group/gitlab-workhorse
+	acct-user/gitlab-workhorse
 	media-libs/exiftool"
 
 DOCS=( CHANGELOG README.md )
