@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/alfredopalhares/${PN}.git"
 
 inherit git-r3 readme.gentoo-r1 tmpfiles
 
 DESCRIPTION="Updates DNS settings are pushed by the OpenVPN server"
 HOMEPAGE="https://github.com/alfredopalhares/openvpn-update-resolv-conf"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/alfredopalhares/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="net-dns/openresolv
 	net-vpn/openvpn"
