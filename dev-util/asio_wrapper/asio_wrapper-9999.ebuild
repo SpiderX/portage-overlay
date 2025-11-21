@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/compwizk/${PN}.git"
 
 inherit cmake git-r3
 
 DESCRIPTION="ASIO standalone CMake installer"
 HOMEPAGE="https://github.com/compwizk/asio_wrapper"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/compwizk/${PN}.git"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS=""
 
 BDEPEND="dev-cpp/asio"
 
