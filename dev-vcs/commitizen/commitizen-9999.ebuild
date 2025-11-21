@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
@@ -27,14 +27,12 @@ RDEPEND="dev-python/argcomplete[${PYTHON_USEDEP}]
 	dev-python/tomlkit[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-vcs/git
-	test? ( dev-python/deprecated[${PYTHON_USEDEP}]
-		dev-python/pytest-freezer[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-regressions[${PYTHON_USEDEP}] )"
+	test? ( dev-python/deprecated[${PYTHON_USEDEP}] )"
 
 DOCS="CHANGELOG.md docs/*.md"
 
 EPYTEST_XDIST=1
+EPYTEST_PLUGINS=( pytest-{freezer,mock,regressions} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
