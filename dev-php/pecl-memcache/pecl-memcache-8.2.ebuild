@@ -17,7 +17,7 @@ IUSE="+session test"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-DEPEND="sys-libs/zlib:="
+DEPEND="virtual/zlib:0="
 BDEPEND="test? ( net-misc/memcached )"
 
 src_prepare() {
