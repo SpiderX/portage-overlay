@@ -28,6 +28,8 @@ RDEPEND="dev-qt/qtbase:6[gui,network,widgets]
 	dev-qt/qt5compat:6"
 BDEPEND="dev-qt/qttools:6"
 
+PATCHES=( "${FILESDIR}/${PN}"-0.12-gcc15.patch )
+
 src_prepare() {
 	default
 
