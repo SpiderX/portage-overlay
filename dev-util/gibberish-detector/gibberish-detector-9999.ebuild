@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
-EGIT_REPO_URI="https://github.com/domanchi/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Train a model, and detect gibberish strings with it"
 HOMEPAGE="https://github.com/domanchi/gibberish-detector"
+EGIT_REPO_URI="https://github.com/domanchi/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
