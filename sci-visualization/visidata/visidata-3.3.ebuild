@@ -7,31 +7,19 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Terminal spreadsheet multitool for discovering and arranging data"
 HOMEPAGE="https://github.com/saulpw/visidata"
-EGIT_REPO_URI="https://github.com/saulpw/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-RESTRICT="test"
-PROPERTIES="test_network"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/standard-mailcap[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/h5py[${PYTHON_USEDEP}]
-		dev-python/odfpy[${PYTHON_USEDEP}]
-		dev-python/openpyxl[${PYTHON_USEDEP}]
-		dev-python/pandas[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
-
-python_test() {
-	epytest -v visidata/tests/
-	dev/test.sh || die "test failed"
-}
 
 pkg_postinst() {
 	optfeature "integration with yaml" dev-python/pyyaml
