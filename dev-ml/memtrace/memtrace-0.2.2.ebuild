@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit dune
+inherit dune edo
 
 DESCRIPTION="Streaming client for OCaml's Memprof"
 HOMEPAGE="https://github.com/janestreet/memtrace"
@@ -17,5 +17,5 @@ IUSE="+ocamlopt"
 src_prepare() {
 	default
 
-	rm LICENSE.md || die "rm failed"
+	edo rm LICENSE.md
 }
