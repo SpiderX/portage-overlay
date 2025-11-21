@@ -18,7 +18,7 @@ PROPERTIES="test_network"
 
 RDEPEND="dev-cpp/belr
 	net-libs/bctoolbox[test?]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
