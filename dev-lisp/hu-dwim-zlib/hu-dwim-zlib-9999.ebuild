@@ -20,7 +20,7 @@ RDEPEND="dev-lisp/alexandria
 	dev-lisp/hu-dwim-def
 	dev-lisp/hu-dwim-syntax-sugar"
 DEPEND="${RDEPEND}
-	sys-libs/zlib:="
+	virtual/zlib:0="
 BDEPEND="test? ( dev-lisp/asdf
 		dev-lisp/hu-dwim-stefil )"
 
