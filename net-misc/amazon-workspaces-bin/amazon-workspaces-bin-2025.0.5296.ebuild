@@ -12,7 +12,7 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Amazon Workspace Client"
 HOMEPAGE="https://clients.amazonworkspaces.com"
-SRC_URI="https://d3nt0h4h6pmmc4.cloudfront.net/new_workspacesclient_focal_amd64.deb
+SRC_URI="https://d3nt0h4h6pmmc4.cloudfront.net/new_workspacesclient_jammy_amd64.deb
 	-> workspacesclient-${PV}_amd64.deb"
 S="${WORKDIR}"
 
@@ -30,7 +30,6 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/fribidi
-	dev-libs/hiredis:0=
 	dev-libs/hyphen
 	dev-libs/icu:0=
 	dev-libs/libffi:0=
@@ -42,7 +41,6 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	dev-libs/wayland
-	media-gfx/graphicsmagick:0=[q16]
 	media-gfx/graphite2
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
@@ -64,11 +62,10 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	net-dns/libidn2:0=
 	net-libs/libpsl
 	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:4
+	net-libs/webkit-gtk:4.1
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/libseccomp
-	sys-libs/zlib:0=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
@@ -88,11 +85,11 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	x11-libs/pango
 	x11-libs/pixman
 	x11-libs/libvdpau
-	virtual/krb5"
+	virtual/krb5
+	virtual/zlib:0="
 BDEPEND="dev-util/patchelf"
 
 QA_PREBUILT="usr/bin/workspacesclient
-	usr/lib/x86_64-linux-gnu/pcoip-client/vchan_plugins/libvchan-plugin-clipboard.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/dcvclientbin
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jpeg.so
@@ -135,6 +132,7 @@ QA_PREBUILT="usr/bin/workspacesclient
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libepoxy.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libexpat.so.1
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libffi.so.8
+	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libfido2.so.1
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libfontconfig.so.1
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libfreetype.so.6
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libfribidi.so.0
@@ -190,48 +188,7 @@ QA_PREBUILT="usr/bin/workspacesclient
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/sasl2/libotp.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/sasl2/libplain.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/sasl2/libsasldb.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/sasl2/libscram.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/createdump
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavcodec.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavcodec.so.60
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavcodec.so.60.31.102
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavdevice.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavdevice.so.60
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavdevice.so.60.3.100
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavfilter.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavfilter.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavfilter.so.9
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavfilter.so.9.12.100
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavformat.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavformat.so.60
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavformat.so.60.16.100
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavutil.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavutil.so.58
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libavutil.so.58.29.100
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libclrgc.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libclrjit.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libcoreclr.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libcoreclrtraceptprovider.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libhostfxr.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libhostpolicy.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libmscordaccore.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libmscordbi.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libpcoip_core.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libPcoipCoreWrapper.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libswresample.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libswresample.so.4
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libswresample.so.4.12.100
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libswscale.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libswscale.so.7
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libswscale.so.7.5.100
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libSystem.Globalization.Native.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libSystem.IO.Compression.Native.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libSystem.Native.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libSystem.Net.Security.Native.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libSystem.Security.Cryptography.Native.OpenSsl.so
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libwolfssl.so.35
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/libwolfssl.so.35.2.1
-	usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/workspacesclient"
+	usr/lib/x86_64-linux-gnu/workspacesclient/dcv/sasl2/libscram.so"
 
 src_prepare() {
 	default
@@ -242,10 +199,9 @@ src_prepare() {
 	plocale_for_each_disabled_locale my_rm_loc
 
 	rm -rf usr/share/doc || die "remove license"
-	rm -rf usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/Licenses || die "remove PCoIP license"
-	patchelf --replace-needed libicuuc.so.66 libicuuc.so.76 \
+	patchelf --replace-needed libicuuc.so.70 libicuuc.so.76 \
 		usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libharfbuzz-icu.so.0 \
-		|| die "patchelf replace failed for libicuuc.so"
+		|| die "patchelf failed for libicuuc.so"
 	# x11-libs/pango disables libthai
 	patchelf --remove-needed libthai.so.0 usr/lib/x86_64-linux-gnu/workspacesclient/dcv/libpango-1.0.so.0 \
 		|| die "patchelf remove failed for libthai.so.0"
@@ -253,21 +209,12 @@ src_prepare() {
 
 src_install() {
 	insinto /
-	doins -r usr/
+	doins -r .
 	fperms +x /usr/bin/workspacesclient \
 		/usr/lib/x86_64-linux-gnu/workspacesclient/dcv/dcvclient{,bin} \
 		/usr/lib/x86_64-linux-gnu/workspacesclient/dcv/gdk-pixbuf-query-loaders \
 		/usr/lib/x86_64-linux-gnu/workspacesclient/dcv/gst-plugin-scanner \
-		/usr/lib/x86_64-linux-gnu/workspacesclient/dcv/gtk-query-immodules-3.0 \
-		/usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/createdump \
-		/usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/workspacesclient
-	fperms -R +x /usr/lib/x86_64-linux-gnu/workspacesclient/pcoip
-	fperms -R 0644 /usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/Assets
-	fperms 0644 /usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/{appsettings,workspacesclient.deps,workspacesclient.runtimeconfig}.json \
-		/usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/WorkSpacesClient.Binding.Gtk.PCoIP.{dll,pdb} \
-		/usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/WorkSpacesClient.Common.{dll,pdb} \
-		/usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/WorkSpacesClient.Common.Protocol.{dll,pdb} \
-		/usr/lib/x86_64-linux-gnu/workspacesclient/pcoip/workspacesclient.{dll,pdb}
+		/usr/lib/x86_64-linux-gnu/workspacesclient/dcv/gtk-query-immodules-3.0
 
 	dosym ../lib/x86_64-linux-gnu/workspacesclient/dcv/dcvclient \
 		/usr/bin/dcvclient
