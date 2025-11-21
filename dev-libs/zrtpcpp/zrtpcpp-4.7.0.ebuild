@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,10 +8,11 @@ inherit cmake
 DESCRIPTION="VCard standard format manipulation library"
 HOMEPAGE="https://github.com/wernerd/ZRTPCPP"
 SRC_URI="https://github.com/wernerd/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P^^}"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="axo +ccrtp core empty sdes sqlite sqlcipher tivi"
 REQUIRED_USE="^^ ( ccrtp core tivi )
 	empty? ( !sqlite !sqlcipher )
@@ -23,8 +24,6 @@ RDEPEND="dev-libs/ccrtp
 	sqlcipher? ( dev-db/sqlcipher )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${P^^}"
 
 PATCHES=( "${FILESDIR}/${P}"-wrapper.patch
 	"${FILESDIR}/${P}"-CMakeLists.patch )
