@@ -6,13 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/facebookresearch/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake distutils-r1 git-r3
 
 DESCRIPTION="Library for fast text representation and classification"
 HOMEPAGE="https://github.com/facebookresearch/fastText"
+EGIT_REPO_URI="https://github.com/facebookresearch/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
