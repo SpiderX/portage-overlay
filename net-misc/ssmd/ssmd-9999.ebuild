@@ -1,25 +1,23 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://git.stg.codes/${PN}.git"
 
 inherit git-r3 systemd toolchain-funcs
 
 DESCRIPTION="SNMP Switch Management Daemon"
 HOMEPAGE="https://stg.codes/projects/ssmd"
-SRC_URI=""
+EGIT_REPO_URI="https://git.stg.codes/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug"
 
 DEPEND="dev-libs/boost:0=
 	dev-libs/openssl:0=
 	net-misc/curl"
 RDEPEND="${DEPEND}
+	acct-group/ssmd
 	acct-user/ssmd"
 
 src_compile() {
