@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils unpacker xdg
+inherit chromium-2 desktop edo multilib-build pax-utils unpacker xdg
 
 MY_PN="${PN/-bin/}"
 
@@ -35,7 +35,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
@@ -53,17 +52,16 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr[${MULTILIB_USEDEP}]
 	x11-libs/libXrender[${MULTILIB_USEDEP}]
 	x11-libs/libXtst[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
 src_prepare() {
 	default
-	pushd opt/DbGate/locales || die "pushd failed"
+	edo pushd opt/DbGate/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
-	if ! use suid ; then
-		rm opt/DbGate/chrome-sandbox || die "rm failed"
-	fi
+	! use suid && edo rm opt/DbGate/chrome-sandbox
 }
 
 src_install() {
