@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit git-r3 toolchain-funcs
+inherit edo git-r3 toolchain-funcs
 
 DESCRIPTION="A tool for measuring perceived differences between images"
 HOMEPAGE="https://github.com/google/butteraugli"
@@ -14,10 +14,10 @@ SLOT="0"
 
 RDEPEND="media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	sys-libs/zlib:="
+	virtual/zlib:0="
 
 src_compile() {
-	cd butteraugli || die "faild to change dir"
+	edo cd butteraugli
 	emake CXX="$(tc-getCXX)"
 }
 

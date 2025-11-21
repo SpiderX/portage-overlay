@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit edo toolchain-funcs
 
 COMMIT="71b18b636b9c7d1ae0c1d3730b85b3c127eb4511"
 
@@ -18,10 +18,10 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	sys-libs/zlib:="
+	virtual/zlib:0="
 
 src_compile() {
-	cd butteraugli || die "faild to change dir"
+	edo cd butteraugli
 	emake CXX="$(tc-getCXX)"
 }
 
