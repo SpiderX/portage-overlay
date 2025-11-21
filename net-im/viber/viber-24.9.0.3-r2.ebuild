@@ -57,7 +57,6 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/mtdev
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	sys-process/numactl[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
@@ -83,6 +82,7 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-keysyms[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-renderutil[${MULTILIB_USEDEP}]
 	x11-libs/xcb-util-wm[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	apulse? ( media-sound/apulse[${MULTILIB_USEDEP}] )
 	pulseaudio? (
 		media-libs/libpulse[${MULTILIB_USEDEP}]
