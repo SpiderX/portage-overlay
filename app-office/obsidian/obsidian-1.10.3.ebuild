@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils unpacker xdg
+inherit chromium-2 desktop edo multilib-build pax-utils unpacker xdg
 
 DESCRIPTION="A knowledge base of plain text Markdown files"
 HOMEPAGE="https://obsidian.md/"
@@ -33,7 +33,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	x11-libs/libdrm:0[${MULTILIB_USEDEP}]
@@ -48,6 +47,7 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libxkbcommon:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	virtual/zlib:0[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libayatana-appindicator )"
 
 QA_PREBUILT="opt/Obsidian/chrome_crashpad_handler
@@ -68,16 +68,13 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	pushd opt/Obsidian/locales || die "pushd failed"
+	edo pushd opt/Obsidian/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
-	rm opt/Obsidian/LICENSE{.electron.txt,S.chromium.html} \
-		|| die "rm licenses failed"
+	edo rm opt/Obsidian/LICENSE{.electron.txt,S.chromium.html}
 
-	if ! use suid ; then
-		rm opt/Obsidian/chrome-sandbox || die "rm failed"
-	fi
+	! use suid && edo rm opt/Obsidian/chrome-sandbox
 
 	if use wayland ; then
 		sed -i '/Exec/s/%U/%U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland/' \
