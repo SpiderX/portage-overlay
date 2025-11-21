@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,14 +16,14 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	|| ( sys-apps/firejail sys-apps/firejail-lts )"
+	sys-apps/firejail"
 RDEPEND="${DEPEND}
 	x11-terms/xterm"
 
 src_prepare() {
 	default
 
-	# Don't install license and compressed mans
+	# don't install license and compressed mans
 	sed -i  -e '/install -c -m 0644 COPYING \$(DESTDIR)\/\$(DOCDIR)\/\./d' \
 		-e '/install -c -m 0644/s/.gz//' \
 		-e '/gzip/d' \
