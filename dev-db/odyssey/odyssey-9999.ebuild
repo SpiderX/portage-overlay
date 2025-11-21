@@ -23,7 +23,7 @@ RDEPEND="acct-user/odyssey
 	dev-db/postgresql:=
 	dev-libs/openssl:0=
 	net-nds/openldap:0=
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( virtual/zlib:0= )
 	zstd? ( app-arch/zstd:0= )
 	sys-libs/pam"
 DEPEND="${RDEPEND}"
