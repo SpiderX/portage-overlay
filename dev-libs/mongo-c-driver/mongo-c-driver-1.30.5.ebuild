@@ -24,7 +24,7 @@ RDEPEND=">=dev-libs/libbson-${PV}[static-libs?]
 	sasl? ( dev-libs/cyrus-sasl:2 )
 	snappy? ( app-arch/snappy:0= )
 	ssl? ( dev-libs/openssl:= )
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( virtual/zlib:0= )
 	zstd? ( app-arch/zstd:0= )"
 BDEPEND="virtual/pkgconfig
 	test? ( $(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
