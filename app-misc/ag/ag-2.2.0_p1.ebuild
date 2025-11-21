@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="app-arch/xz-utils
 	dev-libs/libpcre:3[jit]
-	sys-libs/zlib:0="
+	virtual/zlib:0="
 BDEPEND="virtual/pkgconfig
 	test? ( dev-util/cram )"
 
