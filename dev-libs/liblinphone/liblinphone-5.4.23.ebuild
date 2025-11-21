@@ -32,10 +32,10 @@ RDEPEND="dev-cpp/belr
 	net-libs/bctoolbox[test?]
 	net-libs/ortp
 	media-libs/mediastreamer2[zrtp,srtp,jpeg]
-	sys-libs/zlib:0
 	virtual/libiconv
 	virtual/libintl
 	virtual/libudev
+	virtual/zlib:0=
 	ldap? ( net-nds/openldap:0= )
 	qrcode? ( media-libs/zxing-cpp:0= )
 	tools? ( ${PYTHON_DEPS}
