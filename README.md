@@ -1414,7 +1414,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/libinput-gestures.svg?header=)](https://repology.org/project/libinput-gestures/versions) x11-misc/[libinput-gestures](https://github.com/bulletmark/libinput-gestures) | Actions gestures on your touchpad using libinput
 *   x11-misc/[logkeys](https://github.com/kernc/logkeys) | A Linux keylogger
 *   x11-misc/[touchegg](https://github.com/JoseExposito/touchegg) | Linux multi-touch gesture recognizer
-*   x11-misc/[RazerGenie](https://github.com/z3ntu/RazerGenie) | Razer devices configurator
 *   x11-themes/[Vimix-cursors](https://github.com/vinceliuice/Vimix-cursors) | Vimix-cursors for linux desktop
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
