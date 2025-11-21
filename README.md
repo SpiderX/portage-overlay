@@ -1236,7 +1236,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[kde-translator-widget](https://github.com/y4my4my4m/kde-translator-widget) | KDE Translator Widget
 *   kde-misc/[kwin-effects-sliding-notifications](https://github.com/zzag/kwin-effects-sliding-notifications) | Sliding animation for notification windows
 *   kde-misc/[latte-indicator-dashtopanel](https://github.com/psifidotos/latte-indicator-dashtopanel) | Dash To Panel indicator for Latte Dock
-*   kde-misc/[latte-indicator-unity](https://github.com/psifidotos/latte-indicator-unity) | Unity style indicator for Latte Dock
 *   kde-misc/[latte-indicator-win10](https://github.com/psifidotos/latte-indicator-win10) | Windows 10 style indicator for Latte Dock
 *   kde-misc/[latte-indicator-win7](https://github.com/psifidotos/latte-indicator-win7) | Windows 7 style indicator for Latte Dock
 *   kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
