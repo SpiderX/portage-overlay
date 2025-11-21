@@ -3,12 +3,11 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-
 inherit git-r3
 
 DESCRIPTION="Reliable PostgreSQL Backup & Restore"
 HOMEPAGE="https://pgbackrest.org https://github.com/pgbackrest/pgbackrest"
+EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,7 +17,7 @@ DEPEND="app-arch/lz4:=
 	dev-lang/perl:0=
 	dev-libs/libxml2:2
 	dev-libs/openssl:0=
-	sys-libs/zlib:="
+	virtual/zlib:0="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 

@@ -17,7 +17,7 @@ DEPEND="app-arch/lz4:=
 	dev-lang/perl:0=
 	dev-libs/libxml2:2
 	dev-libs/openssl:0=
-	sys-libs/zlib:="
+	virtual/zlib:0="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
