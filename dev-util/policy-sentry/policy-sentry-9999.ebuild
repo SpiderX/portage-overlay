@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-EGIT_REPO_URI="https://github.com/salesforce/${PN}.git"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="AWS IAM Least Privilege Policy Generator"
 HOMEPAGE="https://github.com/salesforce/policy_sentry"
+EGIT_REPO_URI="https://github.com/salesforce/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
