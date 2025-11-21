@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2086
@@ -25,23 +25,25 @@ inherit toolchain-funcs unpacker user-info
 
 DESCRIPTION="Customer accounting system, services and statistics collection management"
 HOMEPAGE="https://topola.unity.net"
-LICENSE="all-rights-reserved"
-
 SRC_URI="base? ( ${TOPOLA_BASE_URI} )
 	unlicensed-bin? ( http://topola.unity.net/files/bin_unl/${TOPOLA_UNLICENSED_BIN_P}.bin )
 	licensed-bin? ( http://topola.unity.net/files/bin/${TOPOLA_LICENSED_BIN_P}.bin )
 	taremote? ( ${TOPOLA_AGENT_URI} )"
+S=${WORKDIR}
+
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="elibc_glibc base unlicensed-bin licensed-bin +taremote +xinetd"
 RESTRICT="mirror"
+
 REQUIRED_USE="	|| ( taremote base )
 		elibc_glibc
 		unlicensed-bin? ( base elibc_glibc !licensed-bin )
 		licensed-bin? ( base elibc_glibc !unlicensed-bin )"
-S=${WORKDIR}
 
-RDEPEND="acct-user/topola
+RDEPEND="acct-group/topola
+	acct-user/topola
 	virtual/cron
 	elibc_glibc? ( sys-libs/glibc:2.2 )
 	xinetd? ( sys-apps/xinetd )"
@@ -50,7 +52,7 @@ QA_PREBUILT="opt/topola/bin/admin.cgi
 	opt/topola/bin/ofubase"
 
 pkg_nofetch() {
-	if use licensed-bin; then
+	if use licensed-bin ; then
 		eerror "Please go to"
 		eerror "  https://${HOMEPAGE}"
 		eerror "  and download"
@@ -72,7 +74,7 @@ my_unpack() {
 }
 
 src_unpack() {
-	# Put $A into array for further access to its elements
+	# put $A into array for further access to its elements
 	IFS=" " read -r -a MY_A <<<${A}
 	use base           && my_unpack "${TOPOLA_BASE_P}" 88
 	use unlicensed-bin && my_unpack "${TOPOLA_UNLICENSED_BIN_P}" 90
@@ -101,7 +103,7 @@ src_prepare() {
 	fi
 	if use taremote; then
 		cd "${S}"/"${TOPOLA_AGENT_P}" || die "cd to ${TOPOLA_AGENT_P} failed"
-		# Respect FLAGS, fix binary install path
+		# respect FLAGS, fix binary install path
 		eapply "${FILESDIR}"/"${PN}"-taremote-5.36.58-Makefile.patch
 		# screen variables, rename TPA_HOME to TPAHOME for hold real "home path" value
 		eapply "${FILESDIR}"/"${PN}"-taremote-5.36.58-tpafunc.patch
@@ -119,7 +121,7 @@ src_install() {
 	local MY_D
 	MY_D="${D}$(egethome topola)"
 	dodir "$(egethome topola)"
-	if use base; then
+	if use base ; then
 		cd "${S}"/"${TOPOLA_BASE_P}" \
 			|| die "cd to ${TOPOLA_BASE_P} failed"
 		# pass variables to install script
@@ -135,7 +137,7 @@ src_install() {
 			doins "${MY_D}"/docs/etc/xinetd.d/ofubase
 		fi
 	fi
-	if use unlicensed-bin; then
+	if use unlicensed-bin ; then
 		# change TPA_HOME path for further tpainst.sh execution
 		sed "s#$(egethome topola)#${MY_D}#" -i "${MY_D}"/.topola \
 			|| die "first sed execution for .topola failed"
@@ -150,7 +152,7 @@ src_install() {
 		sed "s#${D}##" -i "${MY_D}"/.topola \
 			|| die "sed second execution for .topola failed"
 	fi
-	if use licensed-bin; then
+	if use licensed-bin ; then
 		# change TPA_HOME path for further tpainst.sh execution
 		sed "s#$(egethome topola)#${MY_D}#" -i "${MY_D}"/.topola \
 			|| die "first sed execution for .topola failed"
@@ -165,7 +167,7 @@ src_install() {
 		sed "s#${D}##" -i "${MY_D}"/.topola \
 			|| die "sed second execution for .topola failed"
 	fi
-	if use taremote; then
+	if use taremote ; then
 		# change TPA_HOME path for further tpainst.sh execution
 		if use base ; then
 			sed "s#$(egethome topola)#${MY_D}#" -i "${MY_D}"/.topola \
