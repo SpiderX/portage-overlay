@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://git.stg.codes/${PN}.git"
 
 inherit cmake git-r3
 
 DESCRIPTION="Authorization tool for Stargazer Billing System written in Qt"
 HOMEPAGE="https://stg.codes"
-SRC_URI=""
+EGIT_REPO_URI="https://git.stg.codes/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug"
 
 DEPEND="dev-db/sqlite:3
@@ -23,11 +20,11 @@ DEPEND="dev-db/sqlite:3
 	dev-qt/qtgui:5"
 RDEPEND="${DEPEND}
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib:0=
 	dev-libs/expat"
 
 src_prepare() {
-	# Remove WebKit reference
+	# remove WebKit reference
 	sed -i '/find_package/s/ QtWebKit//' CMakeLists.txt \
 		|| die "sed failed"
 
@@ -35,9 +32,7 @@ src_prepare() {
 }
 
 src_configure() {
-	if use debug; then
-		CMAKE_BUILD_TYPE="Debug"
-	fi
+	use debug && CMAKE_BUILD_TYPE="Debug"
 
 	cmake_src_configure
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ MY_P="${P}-Source"
 DESCRIPTION="Authorization tool for Stargazer Billing System written in Qt"
 HOMEPAGE="https://stg.codes"
 SRC_URI="https://stg.codes/attachments/download/6/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,13 +24,11 @@ DEPEND="dev-db/sqlite:3
 	dev-qt/qtgui:5"
 RDEPEND="${DEPEND}
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib:0=
 	dev-libs/expat"
 
-S="${WORKDIR}/${MY_P}"
-
 src_prepare() {
-	# Remove WebKit reference
+	# remove WebKit reference
 	sed -i '/find_package/s/ QtWebKit//' CMakeLists.txt \
 		|| die "sed failed"
 
@@ -37,9 +36,7 @@ src_prepare() {
 }
 
 src_configure() {
-	if use debug; then
-		CMAKE_BUILD_TYPE="Debug"
-	fi
+	use debug && CMAKE_BUILD_TYPE="Debug"
 
-	cmake-src_configure
+	cmake_src_configure
 }
