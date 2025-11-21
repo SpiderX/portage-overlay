@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,7 @@ DESCRIPTION="Patched OpenVPN with SAML support for AWS Client VPN"
 HOMEPAGE="https://openvpn.net https://github.com/AnilRedshift/awsvpn-saml
 	https://github.com/samm-git/aws-vpn-client"
 SRC_URI="https://build.openvpn.net/downloads/releases/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -42,8 +43,6 @@ RDEPEND="${CDEPEND}
 BDEPEND="virtual/pkgconfig
 	dev-lang/go:0=
 	test? ( dev-util/cmocka )"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/openvpn-2.5.0-auth-pam-missing-header.patch
