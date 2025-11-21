@@ -6,7 +6,7 @@ EAPI=8
 PLOCALES="et ru"
 PLOCALE_BACKUP="ru"
 
-inherit cmake plocale
+inherit cmake edo plocale
 
 QTC_COMMIT="6a1b2817ca3bdb529ec272dc9414d64c7e996f95"
 MY_PN="DigiDoc4-Client"
@@ -35,7 +35,7 @@ RDEPEND="dev-libs/flatbuffers:=
 	dev-qt/qtsvg:6=
 	net-nds/openldap
 	sys-apps/pcsc-lite
-	sys-libs/zlib:=
+	virtual/zlib:0=
 	gnome? ( gnome-base/nautilus
 		sys-devel/gettext )"
 DEPEND="${RDEPEND}"
@@ -45,16 +45,12 @@ BDEPEND="dev-qt/qttools:6[linguist]
 src_prepare() {
 	default
 
-	rmdir common || die "rmdir failed"
-	ln -s ../qt-common-"${QTC_COMMIT}" common \
-		|| die "ln failed for common"
+	edo rmdir common
+	edo ln -s ../qt-common-"${QTC_COMMIT}" common
 
-	cp "${FILESDIR}"/TSL.qrc "${S}"/client/ \
-		|| die "cp failed for TSL.qrc"
-	cp "${DISTDIR}"/{EE,eu-lotl}.xml "${S}"/client/ \
-		|| die "cp failed for xml"
-	cp "${DISTDIR}"/config.{json,rsa,pub} "${S}"/common/ \
-		|| die "cp failed for common"
+	edo cp "${FILESDIR}"/TSL.qrc "${S}"/client/
+	edo cp "${DISTDIR}"/{EE,eu-lotl}.xml "${S}"/client/
+	edo cp "${DISTDIR}"/config.{json,rsa,pub} "${S}"/common/
 
 	my_rm_loc() {
 		rm extensions/nautilus/po/"${1}".po \
