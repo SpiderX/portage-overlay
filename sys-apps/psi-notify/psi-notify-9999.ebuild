@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/cdown/${PN}.git"
 
 inherit git-r3 linux-info systemd toolchain-funcs
 
 DESCRIPTION="Minimalistic PSI notifier using libnotify"
 HOMEPAGE="https://github.com/cdown/psi-notify"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/cdown/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND="x11-libs/libnotify"
 BDEPEND="virtual/pkgconfig"
