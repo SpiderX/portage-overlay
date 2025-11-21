@@ -6,7 +6,7 @@ EAPI=8
 EGIT_REPO_URI="https://gitlab.freedesktop.org/libfprint/fprintd.git"
 PLOCALES="af ar as ast az be bg bn_IN ca ca@valencia cs cy da de el en_GB eo es et eu fa fi fo fr fur ga gl gu he hi hr hu ia id it ja ka kk kn ko ky lt lv ml mr ms nb nl nn oc or pa pl pt_BR pt ro ru sk sl sq sr@latin sr sv ta te th tr uk vi wa zh_CN zh_HK zh_TW"
 PLOCALE_BACKUP="en"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit git-r3 meson pam plocale python-any-r1 systemd
 
