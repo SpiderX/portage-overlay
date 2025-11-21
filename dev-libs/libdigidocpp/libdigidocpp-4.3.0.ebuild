@@ -19,7 +19,8 @@ RDEPEND="dev-libs/libxml2:2
 	dev-libs/opensc:0=
 	dev-libs/xmlsec:=[openssl]
 	dev-libs/libxslt
-	sys-libs/zlib:0=[minizip]
+	virtual/minizip:0=
+	virtual/zlib:0=
 	java? ( virtual/jre:= )"
 DEPEND="${RDEPEND}
 	java? ( dev-lang/swig )"
