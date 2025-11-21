@@ -4,30 +4,23 @@
 EAPI=8
 
 DESCRIPTION="Apache C++ XML security libraries"
-HOMEPAGE="https://santuario.apache.org"
-SRC_URI="mirror://apache/santuario/c-library/${P}.tar.gz"
+HOMEPAGE="https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398783/XML-Security-C"
+SRC_URI="https://shibboleth.net/downloads/xml-security-c/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug examples nss static-libs xalan"
+IUSE="debug examples static-libs"
 
 RDEPEND="dev-libs/openssl:0=
-	dev-libs/xerces-c
-	nss? ( dev-libs/nss )
-	xalan? ( dev-libs/xalan-c )"
+	dev-libs/xerces-c"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( {CHANGELOG,NOTICE}.txt )
-
 src_configure() {
-	econf \
-		--with-openssl \
+	econf --with-openssl \
 		"$(use_enable static-libs static)" \
-		"$(use_enable debug)" \
-		"$(use_with xalan)" \
-		"$(use_with nss)"
+		"$(use_enable debug)"
 }
 
 src_install() {
@@ -36,4 +29,5 @@ src_install() {
 		docinto examples
 		dodoc xsec/samples/*.cpp
 	fi
+	find "${D}" -name '*.la' -delete || die "find failed"
 }

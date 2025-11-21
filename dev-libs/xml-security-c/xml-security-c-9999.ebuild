@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-ESVN_REPO_URI="https://svn.apache.org/repos/asf/santuario/xml-security-cpp/trunk"
 
 inherit autotools subversion
 
 DESCRIPTION="Apache C++ XML security libraries"
 HOMEPAGE="https://santuario.apache.org"
-SRC_URI=""
+ESVN_REPO_URI="https://svn.apache.org/repos/asf/santuario/xml-security-cpp/trunk"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug examples nss static-libs xalan"
 
 RDEPEND="dev-libs/openssl:0=
