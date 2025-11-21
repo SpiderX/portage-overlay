@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="archive bzip2 gpg lzma"
 
 DEPEND="sys-libs/db:=
-	sys-libs/zlib
+	virtual/zlib:0=
 	archive? ( app-arch/libarchive:0= )
 	gpg? (
 		app-crypt/gpgme:1=

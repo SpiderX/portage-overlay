@@ -3,19 +3,18 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://salsa.debian.org/brlink/${PN}.git"
-
 inherit git-r3
 
 DESCRIPTION="A tool to handle local repositories of Debian packages"
 HOMEPAGE="https://salsa.debian.org/brlink/reprepro"
+EGIT_REPO_URI="https://salsa.debian.org/brlink/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="archive bzip2 gpg lzma"
 
 DEPEND="sys-libs/db:=
-	sys-libs/zlib
+	virtual/zlib:0=
 	archive? ( app-arch/libarchive:0= )
 	gpg? (
 		app-crypt/gpgme:1=
