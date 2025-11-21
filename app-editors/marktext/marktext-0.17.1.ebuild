@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr
 	sk sl sr sv sw ta te th tr uk vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils unpacker xdg
+inherit chromium-2 desktop edo multilib-build pax-utils unpacker xdg
 
 DESCRIPTION="A simple and elegant open-source markdown editor"
 HOMEPAGE="https://github.com/marktext/marktext"
@@ -34,7 +34,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
@@ -50,7 +49,8 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libxkbcommon:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
 	x11-libs/libxshmfence:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
 QA_PRESTRIPPED="opt/MarkText/chrome_crashpad_handler
 	opt/MarkText/libvk_swiftshader.so
@@ -62,16 +62,14 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	pushd opt/MarkText/locales || die "pushd failed"
+	edo pushd opt/MarkText/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
 	rm opt/MarkText/LICENSE{,.electron.txt,S.chromium.html} \
 		|| die "rm licenses failed"
 
-	if ! use suid ; then
-		rm opt/MarkText/chrome-sandbox || die "rm failed"
-	fi
+	! use suid && edo rm opt/MarkText/chrome-sandbox
 }
 
 src_install() {
