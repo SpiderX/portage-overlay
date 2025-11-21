@@ -18,7 +18,7 @@ RDEPEND="dev-libs/xerces-c
 	dev-libs/boost:=
 	dev-cpp/libcutl
 	dev-cpp/libxsd-frontend
-	zlib? ( sys-libs/zlib:= )"
+	zlib? ( virtual/zlib:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/build2
 	dev-util/cli
