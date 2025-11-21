@@ -18,7 +18,7 @@ IUSE="debug doc gnutls ipv6 ssl static-libs"
 
 DOCS=( ChangeLog COPYING.addendum )
 
-RDEPEND="sys-libs/zlib:=
+RDEPEND="virtual/zlib:0=
 	ssl? ( !gnutls? ( dev-libs/openssl:0= )
 		gnutls? ( net-libs/gnutls
 			dev-libs/libgcrypt:0 ) )"
