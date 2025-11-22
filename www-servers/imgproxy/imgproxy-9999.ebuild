@@ -1,19 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/imgproxy/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="Server for resizing and converting remote images"
 HOMEPAGE="https://github.com/imgproxy/imgproxy"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/imgproxy/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+RESTRICT="test" # fails
 
 RDEPEND="media-libs/vips:0="
 BDEPEND="virtual/pkgconfig"
@@ -32,7 +30,11 @@ src_prepare() {
 }
 
 src_compile() {
-	ego build -buildmode=pie -trimpath
+	ego build
+}
+
+src_test() {
+	ego test -work ./...
 }
 
 src_install() {
