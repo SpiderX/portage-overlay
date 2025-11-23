@@ -3,19 +3,24 @@
 
 EAPI=8
 
-inherit git-r3 go-module
+inherit go-module
+
+EGO_SUM=(
+	"golang.org/x/sys v0.30.0"
+	"golang.org/x/sys v0.30.0/go.mod"
+	"golang.org/x/term v0.29.0"
+	"golang.org/x/term v0.29.0/go.mod"
+	)
+go-module_set_globals
 
 DESCRIPTION="The power of curl, the ease of use of httpie"
 HOMEPAGE="https://github.com/rs/curlie"
-EGIT_REPO_URI="https://github.com/rs/${PN}.git"
+SRC_URI="https://github.com/rs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${EGO_SUM_SRC_URI}"
 
 LICENSE="MIT"
 SLOT="0"
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
+KEYWORDS="~amd64 ~x86"
 
 src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
