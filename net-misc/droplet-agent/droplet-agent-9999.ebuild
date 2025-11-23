@@ -1,20 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
 
 inherit git-r3 go-module systemd
 
 DESCRIPTION="DigitalOcean Droplet Agent"
 HOMEPAGE="https://github.com/digitalocean/droplet-agent"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/digitalocean/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
-RESTRICT="test" # needs net
+RESTRICT="test"
+PROPERTIES="test_network"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -30,13 +28,12 @@ src_prepare() {
 }
 
 src_compile() {
-	LDFLAGS="-X main.version=${PV} -X main.buildDate=${PV} -s -w"
-	GOFLAGS="-v -x -mod=vendor" ego build -ldflags "${LDFLAGS}" \
-		-o droplet-agent ./cmd/agent/
+	LDFLAGS="-X main.version=${PV} -X main.buildDate=${PV}"
+	ego build -ldflags "${LDFLAGS}" -o droplet-agent ./cmd/agent/
 }
 
 src_test() {
-	GOFLAGS="-v -x -mod=vendor" ego test -work ./...
+	ego test -work ./...
 }
 
 src_install() {
