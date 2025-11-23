@@ -1,53 +1,43 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/google/${PN}.git"
-
-inherit git-r3 go-module
+inherit edo git-r3 go-module
 
 DESCRIPTION="Reverse proxy that inverts the direction of traffic"
 HOMEPAGE="https://github.com/google/inverting-proxy"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/google/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="agent server test"
 REQUIRED_USE="|| ( agent server )"
 RESTRICT="!test? ( test )"
 
 src_unpack() {
 	git-r3_src_unpack
+	edo pushd "${S}"
+	edo go mod tidy
+	edo popd
 	go-module_live_vendor
 }
 
 src_compile() {
-	if use agent ; then
-		go build -o ./bin/proxy-forwarding-agent ./agent/agent.go \
-		|| die "agent build failed"
-	fi
-	if use server ; then
-		go build -o ./bin/inverting-proxy ./server/server.go \
-		|| die "server build failed"
-	fi
+	use agent && ego build -o ./bin/proxy-forwarding-agent ./agent/agent.go
+	use server && ego build -o ./bin/inverting-proxy ./server/server.go
 	if use test ; then
-		go build -o ./bin/inverting-proxy-run-local \
-			./testing/runlocal/main.go \
-			|| die "build inverting-proxy-run-local failed"
-		go build -o ./bin/inverting-proxy-run-websockets \
-			./testing/websockets/main.go \
-			|| die "build inverting-proxy-run-websockets failed"
-		go build -o ./bin/example-websocket-server \
-			./testing/websockets/example/main.go \
-			|| die "build example-websocket-server failed"
+		ego build -o ./bin/inverting-proxy-run-local \
+			./testing/runlocal/main.go
+		ego build -o ./bin/inverting-proxy-run-websockets \
+			./testing/websockets/main.go
+		ego build -o ./bin/example-websocket-server \
+			./testing/websockets/example/main.go
 	fi
 }
 
 src_test() {
-	go test -work ./agent/{banner,metrics,sessions,utils,websockets}/... \
-		|| die "test failed"
+	ego test -work ./agent/{banner,metrics,sessions,utils,websockets}/...
 }
 
 src_install() {
