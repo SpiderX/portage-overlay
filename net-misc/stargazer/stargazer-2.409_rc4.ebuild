@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ STG_MODULES_AUTH="always-online internet-access freeradius"
 STG_MODULES_CAPTURE="ether netflow"
 STG_MODULES_CONFIG="sgconfig rpcconfig"
 STG_MODULES_OTHER="ping smux remote-script"
-STG_MODULES_STORE="files firebird mysql postgres"
+STG_MODULES_STORE="files mysql postgres"
 
 declare -A MODULES
 MODULES=( [module-auth-always-online]="authorization\\/ao:mod_ao"
@@ -23,14 +23,12 @@ MODULES=( [module-auth-always-online]="authorization\\/ao:mod_ao"
 	[module-other-smux]="other\\/smux:mod_smux"
 	[module-other-remote-script]="other\\/rscript:mod_remote_script"
 	[module-store-files]="store\\/files:store_files"
-	[module-store-firebird]="store\\/firebird:store_firebird"
 	[module-store-mysql]="store\\/mysql:store_mysql"
 	[module-store-postgres]="store\\/postgresql:store_postgresql"
 )
 
 declare -A INIT
 INIT=(	[module-store-files]="11d"
-	[module-store-firebird]="11d;s/need net/need net firebird/"
 	[module-store-mysql]="11d;s/need net/need net mysql/"
 	[module-store-postgres]="11d;s/need net/need net postgresql/"
 )
@@ -42,6 +40,7 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="Billing system for small home and office networks"
 HOMEPAGE="https://stg.net.ua"
 SRC_URI="https://stg.codes/attachments/download/11/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -54,7 +53,6 @@ DEPEND="module-config-rpcconfig? (
 		dev-libs/xmlrpc-c[abyss,cxx]
 	)
 	module-config-sgconfig? ( dev-libs/expat )
-	module-store-firebird? ( dev-db/firebird )
 	module-store-mysql? ( dev-db/mysql-connector-c:0= )
 	module-store-postgres? ( dev-db/postgresql:= )
 	sgconf? ( dev-libs/expat )
@@ -66,9 +64,7 @@ DEPEND="module-config-rpcconfig? (
 		net-dialup/freeradius
 	)"
 
-S="${WORKDIR}/${MY_P}"
-
-REQUIRED_USE="stargazer? ( ^^ ( module-store-files module-store-firebird module-store-mysql module-store-postgres ) )"
+REQUIRED_USE="stargazer? ( ^^ ( module-store-files module-store-mysql module-store-postgres ) )"
 
 PATCHES=(
 	# Correct working directory, user and group and paths
@@ -227,13 +223,6 @@ src_install() {
 			fowners -R stg:stg /var/lib/stargazer
 		fi
 
-		if use module-store-firebird ; then
-			insinto /usr/share/stargazer/db/firebird
-			doins \
-				"${S}"/projects/stargazer/inst/var/00-base-00.sql \
-				"${S}"/projects/stargazer/inst/var/00-alter-01.sql
-		fi
-
 		if use module-store-mysql ; then
 			insinto /usr/share/stargazer/db/mysql
 			doins "${S}"/projects/stargazer/inst/var/00-mysql-01.sql
@@ -265,7 +254,8 @@ src_install() {
 
 		local module
 		for module in "${!MODULES[@]}" ; do
-			use "$module" && doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/"${MODULES[$module]#*:}".conf
+			use "$module" && \
+			doins "${S}"/projects/stargazer/inst/linux/etc/stargazer/conf-available.d/"${MODULES[$module]#*:}".conf
 		done
 
 		# Create symlinks of configs for selected modules
@@ -376,18 +366,6 @@ pkg_postinst() {
 		fi
 		if use module-store-files ; then
 			einfo "* module-store-files available."
-		fi
-		if use module-store-firebird ; then
-			einfo "* module-store-firebird available.\\n"
-			einfo "You should add 'firebird' user to stg group:\\n"
-			einfo "# usermod -a -G stg firebird\\n"
-			einfo "and restart firebird:\\n"
-			einfo "# /etc/init.d/firebird restart\\n"
-			einfo "Stargazer DB schema for Firebird is here: /usr/share/stargazer/db/firebird"
-			einfo "For new setup you should execute 00-base-00.sql:\\n"
-			einfo "# fbsql -q -i /usr/share/stargazer/db/firebird/00-base-00.sql\\n"
-			einfo "For upgrade from version 2.406 you should execute 00-alter-01.sql:\\n"
-			einfo "# fbsql -i /usr/share/stargazer/db/firebird/00-alter-01.sql\\n"
 		fi
 		if use module-store-mysql ; then
 			einfo "* module-store-mysql available.\\n"

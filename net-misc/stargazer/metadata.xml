@@ -38,7 +38,6 @@
 		<flag name="module-other-remote-script">Enable build of "Remote Script" module for Stargazer. This module control rscriptd daemon over the net and makes it execute scripts in reaction to different Stargazer events.</flag>
 		<flag name="module-other-smux">Enable build of SMUX module for Stargazer. This module uses SMUX protocol to provide various information about Stargazer.</flag>
 		<flag name="module-store-files">Enable build of storage plugin for Stargazer based on plain files.</flag>
-		<flag name="module-store-firebird">Enable build of storage plugin for Stargazer, which uses Firebird database for storage.</flag>
 		<flag name="module-store-mysql">Enable build of storage plugin for Stargazer, which uses MySQL for storage.</flag>
 		<flag name="module-store-postgres">Enable build of storage plugin for Stargazer, which uses PostgreSQL for storage.</flag>
 	</use>
