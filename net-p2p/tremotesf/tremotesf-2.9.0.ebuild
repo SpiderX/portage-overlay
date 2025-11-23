@@ -3,14 +3,18 @@
 
 EAPI=8
 
-inherit cmake git-r3 xdg
+inherit cmake xdg
+
+MY_PN="tremotesf2"
 
 DESCRIPTION="A remote GUI for transmission"
 HOMEPAGE="https://github.com/equeim/tremotesf2"
-EGIT_REPO_URI="https://github.com/equeim/tremotesf2.git"
+SRC_URI="https://github.com/equeim/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
