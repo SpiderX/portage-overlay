@@ -1322,7 +1322,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[comcast](https://github.com/tylertreat/Comcast) | Network problems simulator
 *   net-misc/[curlie](https://github.com/rs/curlie) | The power of curl, the ease of use of httpie
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/dhcdrop.svg?header=)](https://repology.org/project/dhcdrop/versions) net-misc/[dhcdrop](http://www.netpatch.ru/devel/dhcdrop/) | Effectively suppresses illegal DHCP servers on the LAN
-*   net-misc/[dnsflood](https://github.com/hawell/dns-flood) | Use raw sockets to generate DNS flood attack
+*   net-misc/[dns-flood](https://github.com/hawell/dns-flood) | Use raw sockets to generate DNS flood attack
 *   net-misc/[droplet-agent](https://github.com/digitalocean/droplet-agent) | DigitalOcean Droplet Agent
 *   net-misc/[ec2-instance-connect](https://github.com/aws/aws-ec2-instance-connect-config) | AWS EC2 Instance Connect Configuration
 *   net-misc/[ec2-instance-connect-cli](https://github.com/aws/aws-ec2-instance-connect-cli) | Python client for accessing EC2 instances via EC2 Instance Connect
