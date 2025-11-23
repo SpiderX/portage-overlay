@@ -1,16 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd toolchain-funcs
+inherit edo systemd toolchain-funcs
 
-DATE="2020.03.20"
+DATE="2023.08.31"
 MY_P="v${PV/_beta/-}"
 
 DESCRIPTION="Multi-protocol VPN software"
 HOMEPAGE="https://www.softether.org"
 SRC_URI="https://www.softether-download.com/files/${PN}/${MY_P}-beta-${DATE}-tree/Source_Code/${PN}-src-${MY_P}-beta.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,12 +22,11 @@ REQUIRED_USE="|| ( bridge client cmd server )"
 RDEPEND="dev-libs/openssl:0=
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	sys-libs/zlib:0="
+	virtual/zlib:0="
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
-
 DOCS=( AUTHORS.TXT ChangeLog README )
+
 # Prohibit to modify number of threads, respect FLAGS
 PATCHES=( "${FILESDIR}"/softether-4.04-sandbox.patch
 	"${FILESDIR}"/softether-4.25-compile-flags.patch )
@@ -37,19 +37,14 @@ src_prepare() {
 	sed -i '/opt\/vpn/s|/opt|/opt/softether|' systemd/*.service \
 		|| die "sed failed for systemd files"
 
-	rm -f configure || die
-	if use amd64; then
-		cp src/makefiles/linux_64bit.mak Makefile \
-			|| die "copy Makefile for amd64 failed"
-	elif use x86; then
-		cp src/makefiles/linux_32bit.mak Makefile \
-			|| die "copy Makefile for x86 failed"
-	fi
+	edo rm -f configure
+	use amd64 && edo cp src/makefiles/linux_64bit.mak Makefile
+	use x86 && edo cp src/makefiles/linux_32bit.mak Makefile
 }
 
 src_compile() {
 	tc-export CC AR RANLIB
-	emake DEBUG="$(usex debug YES NO '' '')"
+	emake -j1 DEBUG="$(usex debug YES NO '' '')"
 }
 
 src_install() {
