@@ -49,6 +49,20 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
+QA_PREBUILT="opt/postman/resources/app/node_modules/native_modules/build/Release/keytar.node
+	opt/postman/resources/app/node_modules/native_modules/build/Release/pty.node
+	opt/postman/resources/app/node_modules/native_modules/rg
+	opt/postman/resources/app/node_modules/native_modules/prebuilds/linux-x64/node.napi1.node
+	opt/postman/resources/app/node_modules/native_modules/prebuilds/linux-x64/node.napi.node
+	opt/postman/libEGL.so
+	opt/postman/chrome_crashpad_handler
+	opt/postman/Postman
+	opt/postman/postman
+	opt/postman/libvk_swiftshader.so
+	opt/postman/libGLESv2.so
+	opt/postman/libffmpeg.so
+	opt/postman/libvulkan.so.1"
+
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
 }
@@ -72,19 +86,7 @@ src_install() {
 	fperms +x /opt/postman/chrome_crashpad_handler \
 		/opt/postman/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
 		/opt/postman/libvulkan.so.1 /opt/postman/{P,p}ostman \
-		/opt/postman/resources/app/node_modules/which/bin/node-which \
-		/opt/postman/resources/app/node_modules/uuid/bin/uuid \
-		/opt/postman/resources/app/node_modules/uglify-js/bin/uglifyjs \
-		/opt/postman/resources/app/node_modules/sshpk/bin/sshpk-{conv,sign,verify} \
-		/opt/postman/resources/app/node_modules/shelljs/bin/shjs \
-		/opt/postman/resources/app/node_modules/semver/bin/semver \
-		/opt/postman/resources/app/node_modules/resolve/bin/resolve \
-		/opt/postman/resources/app/node_modules/postman-runtime/node_modules/uuid/dist/bin/uuid \
-		/opt/postman/resources/app/node_modules/postman-collection/node_modules/uuid/dist/bin/uuid \
-		/opt/postman/resources/app/node_modules/postman-collection/node_modules/semver/bin/semver.js \
-		/opt/postman/resources/app/node_modules/mkdirp/bin/cmd.js \
-		/opt/postman/resources/app/node_modules/handlebars/bin/handlebars \
-		/opt/postman/resources/app/node_modules/rimraf/bin.js
+		/opt/postman/resources/app/node_modules/native_modules/{rg,swap_and_relaunch.sh}
 	use suid && fperms u+s,+x /opt/postman/chrome-sandbox
 	dosym ../postman/Postman opt/bin/postman
 
