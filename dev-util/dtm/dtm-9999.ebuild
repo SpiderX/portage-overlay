@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,12 +7,11 @@ inherit git-r3 go-module
 
 DESCRIPTION="Distributed transaction framework"
 HOMEPAGE="https://github.com/dtm-labs/dtm"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/dtm-labs/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-RESTRICT="test" # need lots databases
+RESTRICT="test" # needs a lot of databases
 
 DOCS=( README.md conf.sample.yml )
 
@@ -22,12 +21,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -ldflags="-X main.Version=${PV} -s -w" -trimpath \
-		|| die "build failed"
+	ego build -ldflags="-X main.Version=${PV}"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {
