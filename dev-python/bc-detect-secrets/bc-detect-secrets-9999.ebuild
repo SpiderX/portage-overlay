@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-EGIT_REPO_URI="https://github.com/bridgecrewio/${PN}.git"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3 optfeature
 
 DESCRIPTION="A fork of enterprise friendly way of detecting and preventing secrets"
 HOMEPAGE="https://github.com/bridgecrewio/detect-secrets"
+EGIT_REPO_URI="https://github.com/bridgecrewio/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
