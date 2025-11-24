@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/salesforce/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="AWS IAM Security Assessment tool"
 HOMEPAGE="https://github.com/salesforce/cloudsplaining"
+EGIT_REPO_URI="https://github.com/salesforce/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
