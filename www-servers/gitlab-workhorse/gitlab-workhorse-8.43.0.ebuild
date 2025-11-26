@@ -870,7 +870,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="test mirror" # fails
 
-RDEPEND="acct-group/gitlab-workhorse
+RDEPEND="acct-group/gitlab
 	acct-user/gitlab-workhorse
 	media-libs/exiftool"
 

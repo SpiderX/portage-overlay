@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test ) mirror"
 
-RDEPEND="acct-group/gitlab-workhorse
+RDEPEND="acct-group/gitlab
 	acct-user/gitlab-workhorse
 	media-libs/exiftool"
 
