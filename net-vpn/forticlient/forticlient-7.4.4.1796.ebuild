@@ -27,7 +27,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	sys-apps/util-linux:0[${MULTILIB_USEDEP}]
-	sys-libs/zlib:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
@@ -45,13 +44,14 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	virtual/zlib:0[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libayatana-appindicator )"
 
-QA_PREBUILT="opt/forticlient/fortitraylauncher
+QA_PREBUILT="opt/forticlient/FortiGuardAgent
+	opt/forticlient/fortitraylauncher
 	opt/forticlient/forticlient-cli
 	opt/forticlient/update
 	opt/forticlient/fctsched
-	opt/forticlient/fortivpn
 	opt/forticlient/scanunit
 	opt/forticlient/fazlogupload
 	opt/forticlient/vulscan
@@ -63,11 +63,11 @@ QA_PREBUILT="opt/forticlient/fortitraylauncher
 	opt/forticlient/libav.so
 	opt/forticlient/fmon
 	opt/forticlient/fchelper"
-QA_FLAGS_IGNORED="opt/forticlient/fortitraylauncher
+QA_FLAGS_IGNORED="opt/forticlient/FortiGuardAgent
+	opt/forticlient/fortitraylauncher
 	opt/forticlient/forticlient-cli
 	opt/forticlient/update
 	opt/forticlient/fctsched
-	opt/forticlient/fortivpn
 	opt/forticlient/scanunit
 	opt/forticlient/fazlogupload
 	opt/forticlient/vulscan
@@ -108,7 +108,8 @@ src_install() {
 		opt/forticlient/Fortitray.desktop
 
 	exeinto /opt/forticlient
-	doexe opt/forticlient/confighandler \
+	doexe opt/forticlient/FortiGuardAgent \
+		opt/forticlient/confighandler \
 		opt/forticlient/epctrl \
 		opt/forticlient/fazlogupload \
 		opt/forticlient/fchelper \
@@ -117,7 +118,6 @@ src_install() {
 		opt/forticlient/forticlient-cli \
 		opt/forticlient/fortitray \
 		opt/forticlient/fortitraylauncher \
-		opt/forticlient/fortivpn \
 		opt/forticlient/vpn \
 		opt/forticlient/libav.so \
 		opt/forticlient/libvcm.so \
@@ -151,7 +151,7 @@ src_install() {
 
 	dodir /opt/bin
 	dosym ../forticlient/gui/FortiClient opt/bin/FortiClient
-	dosym ../forticlient/fortivpn opt/bin/fortivpn
+	dosym ../forticlient/FortiGuardAgent opt/bin/FortiGuardAgent
 	dosym ../../opt/forticlient/forticlient-cli  /usr/bin/forticlient
 
 	systemd_dounit lib/systemd/system/forticlient.service
