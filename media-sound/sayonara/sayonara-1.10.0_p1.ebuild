@@ -36,7 +36,7 @@ RDEPEND="dev-qt/qtcore:5
 	media-libs/gst-plugins-good:1.0
 	media-plugins/gst-plugins-soundtouch:1.0
 	media-libs/libmtp:0=
-	sys-libs/zlib:0="
+	virtual/zlib:0="
 DEPEND="${RDEPEND}
 	dev-qt/qtsvg:5
 	test? ( dev-qt/qttest:5 )"
