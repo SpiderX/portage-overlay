@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/aws/aws-ec2-instance-connect-config.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-RDEPEND="acct-group/ec2-instance-connect
+RDEPEND="acct-group/amazon
 	acct-user/ec2-instance-connect
 	dev-libs/openssl:0=
 	net-misc/curl
