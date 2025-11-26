@@ -6,14 +6,14 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="DNS Measurement, Troubleshooting and Security Auditing Toolset"
 HOMEPAGE="https://github.com/farrokhi/dnsdiag"
-EGIT_REPO_URI="https://github.com/farrokhi/${PN}.git"
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS="~amd64"
 RESTRICT="test"
 PROPERTIES="test_network"
 
