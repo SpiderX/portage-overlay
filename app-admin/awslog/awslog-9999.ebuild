@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/jaksi/${PN}.git"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="History and changes of configuration versions of AWS resources"
 HOMEPAGE="https://github.com/jaksi/awslog"
+EGIT_REPO_URI="https://github.com/jaksi/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
