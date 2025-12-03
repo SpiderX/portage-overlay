@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit dune
 
 DESCRIPTION="OCaml bindings to fdk-aac"
 HOMEPAGE="https://github.com/savonet/ocaml-fdkaac"
-SRC_URI="https://github.com/savonet/${PN}/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
