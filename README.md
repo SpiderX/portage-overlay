@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1348](https://img.shields.io/badge/ebuild-1348-orange.svg)](https://img.shields.io/badge/ebuild-1348-orange.svg)
+[![Number of ebuilds: 1349](https://img.shields.io/badge/ebuild-1349-orange.svg)](https://img.shields.io/badge/ebuild-1349-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1177,6 +1177,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[aws-config-rdklib](https://github.com/awslabs/aws-config-rdklib) | Rule Development Kit Library for AWS Config
 *   dev-util/[bcunit](https://gitlab.linphone.org/BC/public/bcunit) | BC Unit Test Framework
 *   dev-util/[beekeeper-studio-bin](https://www.beekeeperstudio.io) | SQL client for MySQL, Postgres, SQLite, SQL Server, and more
+*   dev-util/[binaryen](https://github.com/WebAssembly/binaryen) | Optimizer and compiler/toolchain library for WebAssembly
 *   dev-util/[build2](https://build2.org) | Cross-platform toolchain for building and packaging C++ code
 *   dev-util/[cfn-guard](https://github.com/aws-cloudformation/cloudformation-guard) | AWS CloudFormation Guard
 *   dev-util/[cfn-template-flip](https://github.com/awslabs/aws-cfn-template-flip) | AWS CloudFormation Template Flip
