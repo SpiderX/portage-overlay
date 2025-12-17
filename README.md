@@ -586,7 +586,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[eqaf](https://github.com/mirage/eqaf) | Constant-time equal function on string
 *   dev-ml/[ethernet](https://github.com/mirage/ethernet) | OCaml Ethernet (IEEE 802.3) layer, used in MirageOS
 *   dev-ml/[ezjsonm](https://github.com/mirage/ezjsonm) | An easy interface on top of the Jsonm library
-*   dev-ml/[ocaml-faad](https://github.com/savonet/ocaml-faad) | OCaml bindings to faad2
+*   dev-ml/[faad](https://github.com/savonet/ocaml-faad) | OCaml bindings to faad2
 *   dev-ml/[ocaml-fdkaac](https://github.com/savonet/ocaml-fdkaac) | OCaml bindings to fdk-aac
 *   dev-ml/[ocaml-ffmpeg](https://github.com/savonet/ocaml-ffmpeg) | OCaml bindings to ffmpeg
 *   dev-ml/[ocaml-flac](https://github.com/savonet/ocaml-flac) | OCaml bindings to flac

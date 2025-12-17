@@ -3,16 +3,18 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="faad"
+inherit dune
 
-inherit dune git-r3
+MY_PN="ocaml-${PN}"
 
 DESCRIPTION="OCaml bindings to faad2"
 HOMEPAGE="https://github.com/savonet/ocaml-faad"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+SRC_URI="https://github.com/savonet/${MY_PN}/archive/v${PV}/${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="media-libs/faad2"
