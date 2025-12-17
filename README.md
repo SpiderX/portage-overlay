@@ -686,6 +686,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[tsdl-ttf](https://github.com/sanette/tsdl-ttf) | OCaml SDL2_ttf bindings to go with Tsdl
 *   dev-ml/[tsort](https://github.com/dmbaturin/ocaml-tsort) | Easy to use and user-friendly topological sort module for OCaml
 *   dev-ml/[tyxml](https://github.com/ocsigen/tyxml) | A library for building correct HTML and SVG documents
+*   dev-ml/[unix-errno](https://github.com/xapi-project/ocaml-unix-errno) | Unix errno types, maps, and support for OCaml
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
 *   dev-perl/[SCGI]() | SCGI interface module
