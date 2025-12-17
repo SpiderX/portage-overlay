@@ -1,17 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DUNE_PKG_NAME="mem_usage"
-
-inherit dune
+inherit dune git-r3
 
 DESCRIPTION="Cross-platform memory usage information"
 HOMEPAGE="https://github.com/savonet/ocaml-mem_usage"
-SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/savonet/ocaml-mem_usage.git"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"

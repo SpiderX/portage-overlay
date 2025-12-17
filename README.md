@@ -624,7 +624,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[magic-mime](https://github.com/mirage/ocaml-magic-mime) | Map filenames to common MIME types
 *   dev-ml/[md2mld](https://github.com/mseri/md2mld) | Little cli to convert md files into mld files
 *   dev-ml/[mdx](https://github.com/realworldocaml/mdx) | Execute code blocks inside your documentation
-*   dev-ml/[ocaml-mem_usage](https://github.com/savonet/ocaml-mem_usage) | Cross-platform memory usage information
+*   dev-ml/[mem_usage](https://github.com/savonet/ocaml-mem_usage) | Cross-platform memory usage information
 *   dev-ml/[ocaml-mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
 *   dev-ml/[ocaml-ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[ocaml-opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
