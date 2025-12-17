@@ -3,18 +3,16 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="alsa"
-
 inherit dune git-r3
 
 DESCRIPTION="OCaml bindings to alsa-lib"
 HOMEPAGE="https://github.com/savonet/ocaml-alsa"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+EGIT_REPO_URI="https://github.com/savonet/ocaml-alsa.git"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
 RDEPEND="media-libs/alsa-lib"
-BDEPEND="dev-ml/dune-configurator:=
+BDEPEND="dev-ml/dune-configurator
 	virtual/pkgconfig"

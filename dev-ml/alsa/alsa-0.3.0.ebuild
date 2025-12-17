@@ -3,13 +3,14 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="alsa"
-
 inherit dune
+
+MY_PN="ocaml-${PN}"
 
 DESCRIPTION="OCaml bindings to alsa-lib"
 HOMEPAGE="https://github.com/savonet/ocaml-alsa"
-SRC_URI="https://github.com/savonet/${PN}/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/savonet/${MY_PN}/archive/${PV}/${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
@@ -17,5 +18,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="media-libs/alsa-lib"
-BDEPEND="dev-ml/dune-configurator:=
+BDEPEND="dev-ml/dune-configurator
 	virtual/pkgconfig"
