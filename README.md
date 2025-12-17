@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1398](https://img.shields.io/badge/ebuild-1398-orange.svg)](https://img.shields.io/badge/ebuild-1398-orange.svg)
+[![Number of ebuilds: 1399](https://img.shields.io/badge/ebuild-1399-orange.svg)](https://img.shields.io/badge/ebuild-1399-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -622,6 +622,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[mad](https://github.com/savonet/ocaml-mad) | OCaml bindings to libmad
 *   dev-ml/[magic](https://github.com/Chris00/ocaml-magic) | OCaml bindings to libmagic
 *   dev-ml/[magic-mime](https://github.com/mirage/ocaml-magic-mime) | Map filenames to common MIME types
+*   dev-ml/[md2mld](https://github.com/mseri/md2mld) | Little cli to convert md files into mld files
 *   dev-ml/[ocaml-mem_usage](https://github.com/savonet/ocaml-mem_usage) | Cross-platform memory usage information
 *   dev-ml/[ocaml-mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
 *   dev-ml/[ocaml-ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
