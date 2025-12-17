@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package provides the types and bindings to POSIX sockets APIs.
+	This package provides the types and bindings to the various POSIX APIs.
 	Package consists of a low-level APIs to be used with ocaml-ctypes
 	and high-level APIs that can be used in OCaml projects.
 	</longdescription>
