@@ -641,7 +641,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[mirage-unix](https://github.com/mirage/mirage-unix) | Unix core platform libraries for MirageOS
 *   dev-ml/[mirage-vnetif](https://github.com/mirage/mirage-vnetif) | Virtual network interface and software bridge for Mirage
 *   dev-ml/[mirage-xen](https://github.com/mirage/mirage-xen) | Xen core platform libraries for MirageOS
-*   dev-ml/[ocaml-mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
+*   dev-ml/[mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
 *   dev-ml/[ocaml-ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[ocaml-opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
 *   dev-ml/[ocaml-portaudio](https://github.com/savonet/ocaml-portaudio) | OCaml bindings to portaudio
