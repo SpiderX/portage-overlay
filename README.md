@@ -619,7 +619,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[lwt-dllist](https://github.com/mirage/lwt-dllist) | Mutable doubly-linked list with Lwt iterators
 *   dev-ml/[lwt_log](https://github.com/ocsigen/lwt_log) | Lwt-friendly logger
 *   dev-ml/[lwt_ssl](https://github.com/ocsigen/lwt_ssl) | OpenSSL binding with concurrent I/O
-*   dev-ml/[ocaml-mad](https://github.com/savonet/ocaml-mad) | OCaml bindings to libmad
+*   dev-ml/[mad](https://github.com/savonet/ocaml-mad) | OCaml bindings to libmad
 *   dev-ml/[ocaml-magic](https://github.com/Chris00/ocaml-magic) | OCaml bindings to libmagic
 *   dev-ml/[ocaml-mem_usage](https://github.com/savonet/ocaml-mem_usage) | Cross-platform memory usage information
 *   dev-ml/[ocaml-mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
