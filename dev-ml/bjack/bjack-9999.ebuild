@@ -3,13 +3,11 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="bjack"
-
 inherit dune git-r3
 
 DESCRIPTION="OCaml blocking JACK API"
 HOMEPAGE="https://github.com/savonet/ocaml-bjack"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+EGIT_REPO_URI="https://github.com/savonet/ocaml-bjack.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
@@ -17,5 +15,5 @@ IUSE="+ocamlopt"
 
 RDEPEND="media-libs/libsamplerate
 	virtual/jack"
-BDEPEND="dev-ml/dune-configurator:0=
+BDEPEND="dev-ml/dune-configurator
 	virtual/pkgconfig"
