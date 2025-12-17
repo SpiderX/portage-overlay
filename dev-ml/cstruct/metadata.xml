@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Cstruct is a library and syntax extension to make it easier to access
+	C-like structures directly from OCaml. It supports both reading and
+	writing to these structures, and they are accessed via the Bigarray module.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mirage/ocaml-cstruct</remote-id>
+	</upstream>
+</pkgmetadata>
