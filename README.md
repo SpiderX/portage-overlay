@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1378](https://img.shields.io/badge/ebuild-1378-orange.svg)](https://img.shields.io/badge/ebuild-1378-orange.svg)
+[![Number of ebuilds: 1379](https://img.shields.io/badge/ebuild-1379-orange.svg)](https://img.shields.io/badge/ebuild-1379-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -593,6 +593,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[frei0r](https://github.com/savonet/ocaml-frei0r) | OCaml bindings to frei0r plugins
 *   dev-ml/[gavl](https://github.com/savonet/ocaml-gavl) | OCaml bindings to Gavl video manipulation library
 *   dev-ml/[gd](https://github.com/savonet/ocaml-gd) | OCaml interface to the GD graphics library
+*   dev-ml/[gmap](https://github.com/hannesm/gmap) | Heterogenous maps over a GADT
 *   dev-ml/[ocaml-gstreamer](https://github.com/savonet/ocaml-gstreamer) | OCaml bindings to gstreamer
 *   dev-ml/[ocaml-inotify](https://github.com/whitequark/ocaml-inotify) | OCaml bindings for inotify
 *   dev-ml/[ocaml-ladspa](https://github.com/savonet/ocaml-ladspa) | OCaml bindings to LADSPA plugins
