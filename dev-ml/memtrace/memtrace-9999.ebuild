@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dune edo git-r3
+inherit dune git-r3
 
 DESCRIPTION="Streaming client for OCaml's Memprof"
 HOMEPAGE="https://github.com/janestreet/memtrace"
@@ -12,9 +12,3 @@ EGIT_REPO_URI="https://github.com/janestreet/${PN}.git"
 LICENSE="MIT"
 SLOT="0/${PV}"
 IUSE="+ocamlopt"
-
-src_prepare() {
-	default
-
-	edo rm LICENSE.md
-}

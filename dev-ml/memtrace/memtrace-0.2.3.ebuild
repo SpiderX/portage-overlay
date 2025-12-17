@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dune edo
+inherit dune
 
 DESCRIPTION="Streaming client for OCaml's Memprof"
 HOMEPAGE="https://github.com/janestreet/memtrace"
@@ -13,9 +13,3 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
-
-src_prepare() {
-	default
-
-	edo rm LICENSE.md
-}
