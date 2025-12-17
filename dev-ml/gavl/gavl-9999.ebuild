@@ -3,18 +3,16 @@
 
 EAPI=8
 
-inherit edo findlib
+EGIT_SUBMODULES=()
 
-COMMIT="a6ab72d2ef64978b64e90b93fca386c4ad5bb874"
+inherit edo findlib git-r3
 
 DESCRIPTION="OCaml bindings to Gavl video manipulation library"
 HOMEPAGE="https://github.com/savonet/ocaml-gavl"
-SRC_URI="https://github.com/savonet/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
+EGIT_REPO_URI="https://github.com/savonet/ocaml-gavl.git"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-libs/gavl"
 
