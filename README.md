@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1417](https://img.shields.io/badge/ebuild-1417-orange.svg)](https://img.shields.io/badge/ebuild-1417-orange.svg)
+[![Number of ebuilds: 1418](https://img.shields.io/badge/ebuild-1418-orange.svg)](https://img.shields.io/badge/ebuild-1418-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -642,6 +642,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[mirage-vnetif](https://github.com/mirage/mirage-vnetif) | Virtual network interface and software bridge for Mirage
 *   dev-ml/[mirage-xen](https://github.com/mirage/mirage-xen) | Xen core platform libraries for MirageOS
 *   dev-ml/[mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
+*   dev-ml/[multicore-bench](https://github.com/ocaml-multicore/multicore-bench) | Framework for writing multicore benchmark executables
 *   dev-ml/[monolith](https://gitlab.inria.fr/fpottier/monolith) | A framework for strong random testing of OCaml libraries
 *   dev-ml/[ocaml-ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[ocaml-opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
