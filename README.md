@@ -652,7 +652,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[omd](https://github.com/ocaml-community/omd) | A Markdown frontend in pure OCaml
 *   dev-ml/[opam-monorepo](https://github.com/tarides/opam-monorepo) | Assemble and manage fully vendored Dune repositories
 *   dev-ml/[optint](https://github.com/mirage/optint) | Efficient integer types on 64-bit architectures
-*   dev-ml/[ocaml-opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
+*   dev-ml/[opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
 *   dev-ml/[ocaml-portaudio](https://github.com/savonet/ocaml-portaudio) | OCaml bindings to portaudio
 *   dev-ml/[ocaml-posix](https://github.com/savonet/ocaml-posix) | OCaml bindings for posix sockets
 *   dev-ml/[ocaml-pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
