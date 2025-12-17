@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1435](https://img.shields.io/badge/ebuild-1435-orange.svg)](https://img.shields.io/badge/ebuild-1435-orange.svg)
+[![Number of ebuilds: 1434](https://img.shields.io/badge/ebuild-1434-orange.svg)](https://img.shields.io/badge/ebuild-1434-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -677,6 +677,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[ocaml-vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
 *   dev-ml/[ocaml-xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
 *   dev-ml/[shared-memory-ring](https://github.com/mirage/shared-memory-ring) | Xen-style shared memory rings
+*   dev-ml/[shine](https://github.com/savonet/ocaml-shine) | OCaml bindings to libshine
 *   dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
