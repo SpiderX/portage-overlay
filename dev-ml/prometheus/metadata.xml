@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package contains a monitoring service can be configured to collect
+	data regularly. The data can be graphed to help understand the performance
+	of the service over time, or to help debug problems quickly. It can also
+	be used to send alerts if a service is down or behaving poorly.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mirage/prometheus</remote-id>
+	</upstream>
+</pkgmetadata>
