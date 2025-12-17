@@ -666,7 +666,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[randomconv](https://github.com/hannesm/randomconv) | Convert random byte vectors to numbers
 *   dev-ml/[samplerate](https://github.com/savonet/ocaml-samplerate) | OCaml bindings to libsamplerate
 *   dev-ml/[saturn](https://github.com/ocaml-multicore/saturn) | Parallelism-Safe Data Structures for Multicore OCaml
-*   dev-ml/[ocaml-syslog](https://github.com/geneanet/ocaml-syslog) | OCaml syslog client functions
 *   dev-ml/[ocaml-taglib](https://github.com/savonet/ocaml-taglib) | OCaml bindings to taglib
 *   dev-ml/[ocaml-theora](https://github.com/savonet/ocaml-theora) | OCaml bindings to libtheora
 *   dev-ml/[ocaml-unix-errno](https://github.com/xapi-project/ocaml-unix-errno) | Unix errno types, maps, and support for OCaml
@@ -678,6 +677,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[speex](https://github.com/savonet/ocaml-speex) | OCaml bindings to speex
 *   dev-ml/[sqlite3](https://github.com/mmottl/sqlite3-ocaml) | SQLite3 bindings for OCaml
 *   dev-ml/[srt](https://github.com/savonet/ocaml-srt) | OCaml bindings for Secure, Reliable, Transport protocol library
+*   dev-ml/[syslog](https://github.com/geneanet/ocaml-syslog) | OCaml syslog client functions
 *   dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
@@ -1507,4 +1507,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
-
