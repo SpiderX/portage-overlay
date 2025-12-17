@@ -579,7 +579,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[dscheck](https://github.com/ocaml-multicore/dscheck) | Experimental model checker for testing concurrent algorithms
 *   dev-ml/[dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
 *   dev-ml/[dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
-*   dev-ml/[ocaml-duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
+*   dev-ml/[duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
 *   dev-ml/[ocaml-faad](https://github.com/savonet/ocaml-faad) | OCaml bindings to faad2
 *   dev-ml/[ocaml-fdkaac](https://github.com/savonet/ocaml-fdkaac) | OCaml bindings to fdk-aac
 *   dev-ml/[ocaml-ffmpeg](https://github.com/savonet/ocaml-ffmpeg) | OCaml bindings to ffmpeg

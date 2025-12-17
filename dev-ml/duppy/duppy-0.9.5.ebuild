@@ -3,17 +3,19 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="duppy"
+inherit dune
 
-inherit dune git-r3
+MY_PN="ocaml-${PN}"
 
 DESCRIPTION="OCaml advanced scheduler"
 HOMEPAGE="https://github.com/savonet/ocaml-duppy"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+SRC_URI="https://github.com/savonet/${MY_PN}/archive/v${PV}/${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt ssl"
 
-RDEPEND="dev-ml/re:0=
-	ssl? ( dev-ml/ocaml-ssl:= )"
+RDEPEND="dev-ml/re:0=[ocamlopt?]
+	ssl? ( dev-ml/ocaml-ssl:0=[ocamlopt?] )"
