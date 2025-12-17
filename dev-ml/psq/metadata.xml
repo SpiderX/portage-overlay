@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This library provides a functional priority search queue for OCaml.
+	This structure behaves both as a finite map, containing bindings k -> p,
+	and a priority queue over p. It provides efficient access along more
+	than one axis: to any binding by k, and to the binding(s) with the least p.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pqwy/psq</remote-id>
+	</upstream>
+</pkgmetadata>
