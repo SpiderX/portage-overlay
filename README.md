@@ -594,7 +594,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[gavl](https://github.com/savonet/ocaml-gavl) | OCaml bindings to Gavl video manipulation library
 *   dev-ml/[gd](https://github.com/savonet/ocaml-gd) | OCaml interface to the GD graphics library
 *   dev-ml/[gmap](https://github.com/hannesm/gmap) | Heterogenous maps over a GADT
-*   dev-ml/[ocaml-gstreamer](https://github.com/savonet/ocaml-gstreamer) | OCaml bindings to gstreamer
+*   dev-ml/[gstreamer](https://github.com/savonet/ocaml-gstreamer) | OCaml bindings to gstreamer
 *   dev-ml/[ocaml-inotify](https://github.com/whitequark/ocaml-inotify) | OCaml bindings for inotify
 *   dev-ml/[ocaml-ladspa](https://github.com/savonet/ocaml-ladspa) | OCaml bindings to LADSPA plugins
 *   dev-ml/[ocaml-lame](https://github.com/savonet/ocaml-lame) | OCaml bindings to lame
