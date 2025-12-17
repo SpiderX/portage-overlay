@@ -1,0 +1,30 @@
+From 7b11831d7bbda6804c3efda3ac469eb3b198ec96 Mon Sep 17 00:00:00 2001
+From: Patrick Ferris <patrick@sirref.org>
+Date: Sat, 26 Oct 2024 16:50:37 +0100
+Subject: [PATCH] Prepare for 5.2 AST bump
+
+---
+ ppx/tyxml_ppx.ml | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ppx/tyxml_ppx.ml b/ppx/tyxml_ppx.ml
+index 5319c1236..51cc450af 100644
+--- a/ppx/tyxml_ppx.ml
++++ b/ppx/tyxml_ppx.ml
+@@ -378,12 +378,12 @@ let markup_cases ~lang ~modname cases =
+ let rec markup_function ~lang ~modname e =
+   let loc = e.pexp_loc in
+   match e.pexp_desc with
+-  | Pexp_fun (label,def,pat,content) ->
++  | Pexp_function (params, constraint_, (Pfunction_body content)) ->
+     let content = markup_function ~lang ~modname content in
+-    {e with pexp_desc = Pexp_fun (label,def,pat,content)}
+-  | Pexp_function cases ->
++    {e with pexp_desc = Pexp_function (params, constraint_, (Pfunction_body content))}
++  | Pexp_function (params, constraint_, (Pfunction_cases (cases, loc, attr))) ->
+     let cases = markup_cases ~lang ~modname cases in
+-    {e with pexp_desc = Pexp_function cases}
++    {e with pexp_desc = Pexp_function (params, constraint_, (Pfunction_cases (cases, loc, attr)))}
+   | _ ->
+     markup_to_expr_with_implementation lang modname loc @@
+     application_to_list e
