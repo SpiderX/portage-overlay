@@ -3,18 +3,15 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="fdkaac"
-
-inherit dune
+inherit dune git-r3
 
 DESCRIPTION="OCaml bindings to fdk-aac"
 HOMEPAGE="https://github.com/savonet/ocaml-fdkaac"
-SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/savonet/ocaml-fdkaac.git"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
-RDEPEND="media-libs/fdk-aac:="
-BDEPEND="dev-ml/dune-configurator:0="
+RDEPEND="media-libs/fdk-aac:0="
+BDEPEND="dev-ml/dune-configurator"
