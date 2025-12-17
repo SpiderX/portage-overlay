@@ -1,0 +1,14 @@
+--- ../README.md	2025-12-10 23:48:20.846925270 +0200
++++ ../README.md	2025-12-10 23:48:45.233354930 +0200
+@@ -1660,9 +1660,9 @@
+ 
+ ```ocaml
+ # let x = Loc.make 0
+-val x : int Loc.t = <abstr>
++val x : int Loc.t = Loc.Loc {Kcas.Loc.state = <poly>; id = <poly>}
+ # let y = Loc.make 0
+-val y : int Loc.t = <abstr>
++val y : int Loc.t = Loc.Loc {Kcas.Loc.state = <poly>; id = <poly>}
+ ```
+ 
+ and spawn a domain
