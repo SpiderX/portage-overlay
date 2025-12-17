@@ -598,7 +598,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[happy-eyeballs](https://github.com/robur-coop/happy-eyeballs) | Connecting to a remote host via IP version 4 or 6
 *   dev-ml/[hex](https://github.com/mirage/ocaml-hex) | Library providing hexadecimal converters
 *   dev-ml/[hxd](https://github.com/dinosaure/hxd) | Hexdump in OCaml
-*   dev-ml/[ocaml-inotify](https://github.com/whitequark/ocaml-inotify) | OCaml bindings for inotify
+*   dev-ml/[inotify](https://github.com/whitequark/ocaml-inotify) | OCaml bindings for inotify
 *   dev-ml/[ocaml-ladspa](https://github.com/savonet/ocaml-ladspa) | OCaml bindings to LADSPA plugins
 *   dev-ml/[ocaml-lame](https://github.com/savonet/ocaml-lame) | OCaml bindings to lame
 *   dev-ml/[ocaml-lastfm](https://github.com/savonet/ocaml-lastfm) | OCaml interface for Lastfm
