@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a collection of concurrent-safe data structures
+	for OCaml 5. It aims to provide an industrial-strength, well-tested
+	(and possibly model-checked and verified in the future), well documented,
+	and maintained concurrent-safe data structure library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ocaml-multicore/saturn</remote-id>
+	</upstream>
+</pkgmetadata>

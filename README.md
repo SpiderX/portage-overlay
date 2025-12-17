@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1433](https://img.shields.io/badge/ebuild-1433-orange.svg)](https://img.shields.io/badge/ebuild-1433-orange.svg)
+[![Number of ebuilds: 1434](https://img.shields.io/badge/ebuild-1434-orange.svg)](https://img.shields.io/badge/ebuild-1434-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -665,6 +665,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
 *   dev-ml/[randomconv](https://github.com/hannesm/randomconv) | Convert random byte vectors to numbers
 *   dev-ml/[samplerate](https://github.com/savonet/ocaml-samplerate) | OCaml bindings to libsamplerate
+*   dev-ml/[saturn](https://github.com/ocaml-multicore/saturn) | Parallelism-Safe Data Structures for Multicore OCaml
 *   dev-ml/[ocaml-shine](https://github.com/savonet/ocaml-shine) | OCaml bindings to libshine
 *   dev-ml/[ocaml-soundtouch](https://github.com/savonet/ocaml-soundtouch) | OCaml bindings to libsoundtouch
 *   dev-ml/[ocaml-speex](https://github.com/savonet/ocaml-speex) | OCaml bindings to speex
