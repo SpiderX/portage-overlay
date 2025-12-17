@@ -1,0 +1,33 @@
+From a4d62f467e257196a5192da2184bd021dfd948b7 Mon Sep 17 00:00:00 2001
+From: Florian Angeletti <florian.angeletti@inria.fr>
+Date: Wed, 30 Jul 2025 10:48:28 +0200
+Subject: [PATCH] add support for OCaml 5.4
+
+---
+ src/notty.ml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/notty.ml b/src/notty.ml
+index 7385083..0e664b8 100644
+--- a/src/notty.ml
++++ b/src/notty.ml
+@@ -383,7 +383,10 @@ module I = struct
+ 
+     let create () =
+       let img, line, attr = ref empty, ref empty, ref [] in
++      (* get the out_width field from the default out_functions *)
++      let default = pp_get_formatter_out_functions std_formatter () in
+       let fmt = formatter_of_out_functions {
++          default with
+           out_flush = (fun () ->
+             img := !img <-> !line; line := empty; attr := [])
+         ; out_newline = (fun () ->
+@@ -393,7 +396,7 @@ module I = struct
+         (* Not entirely clear; either or both could be void: *)
+         ; out_spaces = (fun w -> line := !line <|> char (top_a attr) ' ' w 1)
+         ; out_indent = (fun w -> line := !line <|> char (top_a attr) ' ' w 1)
+-      } in
++      }[@warning "-23"] in
+       pp_set_formatter_stag_functions fmt {
+         (pp_get_formatter_stag_functions fmt ()) with
+             mark_open_stag =
