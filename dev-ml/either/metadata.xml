@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Projects that want to use the Either module defined in OCaml 4.12.0
+	while staying compatible with older versions of OCaml should use this
+	library instead. On OCaml versions 4.12 and above, this library defines
+	an alias Either to the standard library's definition of the module.
+	Otherwise, it provides an equivalent definition of Either.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mirage/either</remote-id>
+	</upstream>
+</pkgmetadata>

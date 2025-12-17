@@ -581,6 +581,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
 *   dev-ml/[duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
 *   dev-ml/[eio](https://github.com/ocaml-multicore/eio) | Effects-Based Parallel IO for OCaml
+*   dev-ml/[either](https://github.com/mirage/either) | Compatibility module for Either in OCaml 4.12
 *   dev-ml/[ocaml-faad](https://github.com/savonet/ocaml-faad) | OCaml bindings to faad2
 *   dev-ml/[ocaml-fdkaac](https://github.com/savonet/ocaml-fdkaac) | OCaml bindings to fdk-aac
 *   dev-ml/[ocaml-ffmpeg](https://github.com/savonet/ocaml-ffmpeg) | OCaml bindings to ffmpeg
