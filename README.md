@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1409](https://img.shields.io/badge/ebuild-1409-orange.svg)](https://img.shields.io/badge/ebuild-1409-orange.svg)
+[![Number of ebuilds: 1410](https://img.shields.io/badge/ebuild-1410-orange.svg)](https://img.shields.io/badge/ebuild-1410-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -634,6 +634,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[mirage-flow](https://github.com/mirage/mirage-flow) | Flow implementations and combinators for MirageOS
 *   dev-ml/[mirage-kv](https://github.com/mirage/mirage-kv) | MirageOS signatures for key/value devices
 *   dev-ml/[mirage-mtime](https://github.com/mirage/mirage-mtime) | Monotonic time for MirageOS
+*   dev-ml/[mirage-net](https://github.com/mirage/mirage-net) | Network signatures for MirageOS
 *   dev-ml/[ocaml-mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
 *   dev-ml/[ocaml-ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[ocaml-opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
@@ -1480,4 +1481,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
-
