@@ -567,7 +567,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[conduit](https://github.com/mirage/ocaml-conduit) | A network connection establishment library
 *   dev-ml/[containers](https://github.com/c-cube/ocaml-containers) | Standard library extension and interfaces to various libraries
 *   dev-ml/[crowbar](https://github.com/stedolan/crowbar) | Property fuzzing for OCaml
-*   dev-ml/[ocaml-cry](https://github.com/savonet/ocaml-cry) | OCaml native module for icecast/shoutcast source protocols
+*   dev-ml/[cry](https://github.com/savonet/ocaml-cry) | OCaml native module for icecast/shoutcast source protocols
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
 *   dev-ml/[ocaml-dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
 *   dev-ml/[ocaml-duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
