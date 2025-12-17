@@ -662,7 +662,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[posix-socket](https://github.com/savonet/ocaml-posix) | OCaml bindings for posix sockets
 *   dev-ml/[prometheus](https://github.com/mirage/prometheus) | OCaml library for reporting metrics to a Prometheus server
 *   dev-ml/[psq](https://github.com/pqwy/psq) | Functional Priority Search Queues for OCaml
-*   dev-ml/[ocaml-pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
+*   dev-ml/[pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
 *   dev-ml/[ocaml-samplerate](https://github.com/savonet/ocaml-samplerate) | OCaml bindings to libsamplerate
 *   dev-ml/[ocaml-shine](https://github.com/savonet/ocaml-shine) | OCaml bindings to libshine
 *   dev-ml/[ocaml-soundtouch](https://github.com/savonet/ocaml-soundtouch) | OCaml bindings to libsoundtouch
