@@ -610,7 +610,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[kcas](https://github.com/ocaml-multicore/kcas) | Software Transactional Memory for OCaml
 *   dev-ml/[kdf](https://github.com/robur-coop/kdf) | Key deriving functions in OCaml
 *   dev-ml/[lablgtk](https://github.com/garrigue/lablgtk) | OCaml bindings to GTK-3
-*   dev-ml/[ocaml-ladspa](https://github.com/savonet/ocaml-ladspa) | OCaml bindings to LADSPA plugins
+*   dev-ml/[ladspa](https://github.com/savonet/ocaml-ladspa) | OCaml bindings to LADSPA plugins
 *   dev-ml/[ocaml-lame](https://github.com/savonet/ocaml-lame) | OCaml bindings to lame
 *   dev-ml/[ocaml-lastfm](https://github.com/savonet/ocaml-lastfm) | OCaml interface for Lastfm
 *   dev-ml/[ocaml-lilv](https://github.com/savonet/ocaml-lilv) | OCaml bindings to lilv
