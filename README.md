@@ -556,6 +556,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[asetmap](https://github.com/dbuenzli/asetmap) | Alternative, compatible, OCaml standard library Sets and Maps
 *   dev-ml/[asn1-combinators](https://github.com/mirleft/ocaml-asn1-combinators) | Embed typed ASN.1 grammars in OCaml
 *   dev-ml/[async_ssl](https://github.com/janestreet/memtrace) | Streaming client for OCaml's Memprof
+*   dev-ml/[backoff](https://github.com/ocaml-multicore/backoff) | Exponential backoff mechanism for OCaml
 *   dev-ml/[ocaml-bjack](https://github.com/savonet/ocaml-bjack) | OCaml blocking JACK API
 *   dev-ml/[ocaml-cry](https://github.com/savonet/ocaml-cry) | OCaml native module for icecast/shoutcast source protocols
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
