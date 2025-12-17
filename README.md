@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1350](https://img.shields.io/badge/ebuild-1350-orange.svg)](https://img.shields.io/badge/ebuild-1350-orange.svg)
+[![Number of ebuilds: 1351](https://img.shields.io/badge/ebuild-1351-orange.svg)](https://img.shields.io/badge/ebuild-1351-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -552,6 +552,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[memtrace](https://github.com/janestreet/memtrace) | Streaming client for OCaml's Memprof
 *   dev-ml/[alsa](https://github.com/savonet/ocaml-alsa) | OCaml bindings to alsa-lib
 *   dev-ml/[ao](https://github.com/savonet/ocaml-ao) | OCaml bindings to libao
+*   dev-ml/[arp](https://github.com/mirage/arp) | Address Resolution Protocol purely in OCaml
 *   dev-ml/[ocaml-bjack](https://github.com/savonet/ocaml-bjack) | OCaml blocking JACK API
 *   dev-ml/[ocaml-cry](https://github.com/savonet/ocaml-cry) | OCaml native module for icecast/shoutcast source protocols
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
