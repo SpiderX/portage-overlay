@@ -14,7 +14,7 @@ SLOT="0/${PV}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="dev-ml/topkg:="
+BDEPEND="dev-ml/topkg"
 
 src_compile() {
 	edo ocaml pkg/pkg.ml build --tests "$(usex test 'true' 'false')"
