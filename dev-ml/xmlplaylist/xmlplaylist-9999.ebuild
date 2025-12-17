@@ -1,19 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DUNE_PKG_NAME="xmlplaylist"
-
-inherit dune
+inherit dune git-r3
 
 DESCRIPTION="OCaml module to parse various RSS playlist formats"
 HOMEPAGE="https://github.com/savonet/ocaml-xmlplaylist"
-SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/savonet/ocaml-xmlplaylist.git"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
-RDEPEND="dev-ml/xmlm:="
+RDEPEND="dev-ml/xmlm:0="

@@ -692,10 +692,11 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[vchan](https://github.com/mirage/ocaml-vchan) | Xen Vchan implementation
 *   dev-ml/[vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
 *   dev-ml/[x509](https://github.com/mirleft/ocaml-x509) | X509 handling in OCaml
-*   dev-ml/[xenstore](https://github.com/mirage/ocaml-xenstore) | Xenstore protocol in pure OCam
+*   dev-ml/[xenstore](https://github.com/mirage/ocaml-xenstore) | Xenstore protocol in pure OCaml
 *   dev-ml/[xenstore-clients](https://github.com/xapi-project/ocaml-xenstore-clients) | Unix client tools for accessing xenstore
 *   dev-ml/[xiph](https://github.com/savonet/ocaml-xiph) | OCaml bindings for flac, ogg, opus, speex, theora, vorbis
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
+*   dev-ml/[xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
 *   dev-perl/[SCGI]() | SCGI interface module
 *   dev-php/[amphp-amp](https://github.com/amphp/amp) | A non-blocking concurrency framework for PHP applications
