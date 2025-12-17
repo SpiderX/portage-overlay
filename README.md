@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1434](https://img.shields.io/badge/ebuild-1434-orange.svg)](https://img.shields.io/badge/ebuild-1434-orange.svg)
+[![Number of ebuilds: 1435](https://img.shields.io/badge/ebuild-1435-orange.svg)](https://img.shields.io/badge/ebuild-1435-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -677,6 +677,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[shine](https://github.com/savonet/ocaml-shine) | OCaml bindings to libshine
 *   dev-ml/[soundtouch](https://github.com/savonet/ocaml-soundtouch) | OCaml bindings to libsoundtouch
 *   dev-ml/[speex](https://github.com/savonet/ocaml-speex) | OCaml bindings to speex
+*   dev-ml/[sqlite3](https://github.com/mmottl/sqlite3-ocaml) | SQLite3 bindings for OCaml
 *   dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
