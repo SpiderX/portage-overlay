@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1374](https://img.shields.io/badge/ebuild-1374-orange.svg)](https://img.shields.io/badge/ebuild-1374-orange.svg)
+[![Number of ebuilds: 1375](https://img.shields.io/badge/ebuild-1375-orange.svg)](https://img.shields.io/badge/ebuild-1375-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -582,6 +582,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
 *   dev-ml/[eio](https://github.com/ocaml-multicore/eio) | Effects-Based Parallel IO for OCaml
 *   dev-ml/[either](https://github.com/mirage/either) | Compatibility module for Either in OCaml 4.12
+*   dev-ml/[emile](https://github.com/mirage/emile) | Parser of email address in OCaml
 *   dev-ml/[ocaml-faad](https://github.com/savonet/ocaml-faad) | OCaml bindings to faad2
 *   dev-ml/[ocaml-fdkaac](https://github.com/savonet/ocaml-fdkaac) | OCaml bindings to fdk-aac
 *   dev-ml/[ocaml-ffmpeg](https://github.com/savonet/ocaml-ffmpeg) | OCaml bindings to ffmpeg
