@@ -3,18 +3,16 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="ao"
-
 inherit dune git-r3
 
 DESCRIPTION="OCaml bindings to libao"
 HOMEPAGE="https://github.com/savonet/ocaml-ao"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+EGIT_REPO_URI="https://github.com/savonet/ocaml-ao.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
 RDEPEND="media-libs/libao"
-BDEPEND="dev-ml/dune-configurator:0=
+BDEPEND="dev-ml/dune-configurator
 	virtual/pkgconfig"

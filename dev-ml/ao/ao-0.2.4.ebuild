@@ -3,13 +3,14 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="ao"
-
 inherit dune
+
+MY_PN="ocaml-${PN}"
 
 DESCRIPTION="OCaml bindings to libao"
 HOMEPAGE="https://github.com/savonet/ocaml-ao"
-SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/savonet/${MY_PN}/archive/v${PV}/${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
@@ -17,5 +18,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="media-libs/libao"
-BDEPEND="dev-ml/dune-configurator:0=
+BDEPEND="dev-ml/dune-configurator
 	virtual/pkgconfig"
