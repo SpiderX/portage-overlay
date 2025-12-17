@@ -1,0 +1,10 @@
+--- ../test/test.ml	2025-12-16 01:52:16.066259642 +0200
++++ ../test/test.ml	2025-12-16 01:52:30.660459783 +0200
+@@ -23,7 +23,6 @@
+   "tcp_options"    , Test_tcp_options.suite ;
+   "mtu+tcp"        , Test_mtus.suite        ;
+   "rfc5961"        , Test_rfc5961.suite     ;
+-  "socket"         , Test_socket.suite      ;
+   "connect"        , Test_connect.suite     ;
+   "connect_ipv6"   , Test_connect_ipv6.suite     ;
+   "deadlock"       , Test_deadlock.suite    ;
