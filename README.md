@@ -657,7 +657,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[oseq](https://github.com/c-cube/oseq) | Purely functional iterators compatible with standard seq
 *   dev-ml/[pcap-format](https://github.com/mirage/ocaml-pcap) | OCaml code for generating and analysing pcap files
 *   dev-ml/[pecu](https://github.com/mirage/pecu) | Implementation of quoted-printable encoder/decoder from RFC2045
-*   dev-ml/[ocaml-portaudio](https://github.com/savonet/ocaml-portaudio) | OCaml bindings to portaudio
+*   dev-ml/[portaudio](https://github.com/savonet/ocaml-portaudio) | OCaml bindings to portaudio
 *   dev-ml/[ocaml-posix](https://github.com/savonet/ocaml-posix) | OCaml bindings for posix sockets
 *   dev-ml/[ocaml-pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
 *   dev-ml/[ocaml-samplerate](https://github.com/savonet/ocaml-samplerate) | OCaml bindings to libsamplerate
