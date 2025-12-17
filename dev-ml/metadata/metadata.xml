@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A pure OCaml library to read metadata from various formats, like:
+	audio formats: ID3v1 and ID3v2 (for mp3), ogg/vorbis, ogg/opus, flac and wav
+	image formats: jpeg and png
+	video formats: mp4 and avi
+	</longdescription>
+	<upstream>
+		<remote-id type="github">savonet/ocaml-metadata</remote-id>
+	</upstream>
+</pkgmetadata>
