@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This library provides a reimplementation of the native C functions in JavaScript.
+	It makes extensive use of peterolson/BigInteger.js as a shim for browser BigInt
+	functionality and also for the implementations of many numerical algorithms.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">janestreet/zarith_stubs_js</remote-id>
+	</upstream>
+</pkgmetadata>

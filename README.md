@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1452](https://img.shields.io/badge/ebuild-1452-orange.svg)](https://img.shields.io/badge/ebuild-1452-orange.svg)
+[![Number of ebuilds: 1453](https://img.shields.io/badge/ebuild-1453-orange.svg)](https://img.shields.io/badge/ebuild-1453-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -698,6 +698,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-ml/[xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
 *   dev-ml/[yaml](https://github.com/avsm/ocaml-yaml) | OCaml interface to the YAML 1.1 spec
+*   dev-ml/[zarith_stubs_js](https://github.com/janestreet/zarith_stubs_js) | Javascripts stubs for the Zarith library
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
 *   dev-perl/[SCGI]() | SCGI interface module
 *   dev-php/[amphp-amp](https://github.com/amphp/amp) | A non-blocking concurrency framework for PHP applications
