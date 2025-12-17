@@ -1,0 +1,63 @@
+From: Stephane Glondu <steph@glondu.net>
+Date: Fri, 9 Aug 2024 16:24:37 +0200
+Subject: Compile stubs with -fPIC to fix linking error
+
+---
+ jpeg/dune | 2 +-
+ png/dune  | 2 +-
+ tiff/dune | 2 +-
+ xpm/dune  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/jpeg/dune b/jpeg/dune
+index 5187f9e..73a2462 100644
+--- a/jpeg/dune
++++ b/jpeg/dune
+@@ -7,7 +7,7 @@
+  (foreign_stubs
+    (language c)
+    (names jpegread jpegwrite)
+-   (flags
++   (flags -fPIC
+      (:include ../config/jpeg_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/jpeg_c_library_flags.sexp)))
+diff --git a/png/dune b/png/dune
+index 9b72084..13677a1 100644
+--- a/png/dune
++++ b/png/dune
+@@ -8,7 +8,7 @@
+  (foreign_stubs
+    (language c)
+    (names pngread pngwrite)
+-   (flags
++   (flags -fPIC
+      (:include ../config/png_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/png_c_library_flags.sexp)))
+diff --git a/tiff/dune b/tiff/dune
+index 91073f7..d07ea03 100644
+--- a/tiff/dune
++++ b/tiff/dune
+@@ -7,7 +7,7 @@
+  (foreign_stubs
+    (language c)
+    (names tiffwrite tiffread)
+-   (flags
++   (flags -fPIC
+      (:include ../config/tiff_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/tiff_c_library_flags.sexp)))
+diff --git a/xpm/dune b/xpm/dune
+index a6805de..f05f71a 100644
+--- a/xpm/dune
++++ b/xpm/dune
+@@ -8,7 +8,7 @@
+  (foreign_stubs
+    (language c)
+    (names xpmread xpmwrite)
+-   (flags
++   (flags -fPIC
+      (:include ../config/xpm_c_flags.sexp)))
+  (c_library_flags     
+   (:include ../config/xpm_c_library_flags.sexp)))

@@ -1,0 +1,21 @@
+From: Stephane Glondu <steph@glondu.net>
+Date: Tue, 17 Sep 2024 03:55:47 +0200
+Subject: Fix build with base >= 0.17.0
+
+Bug-Debian: https://bugs.debian.org/1081706
+---
+ config/xConfigurator.ml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config/xConfigurator.ml b/config/xConfigurator.ml
+index 766a35c..426b91e 100644
+--- a/config/xConfigurator.ml
++++ b/config/xConfigurator.ml
+@@ -1,5 +1,7 @@
+ open Base
+ 
++module Caml = Stdlib
++
+ external (&) : ('a -> 'b) -> 'a -> 'b = "%apply"
+ (** Haskell's [($)]. *)
+ 

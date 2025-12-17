@@ -1,0 +1,107 @@
+From c3898f58d14af54d04d9cbc576bc5b1be7d98f6d Mon Sep 17 00:00:00 2001
+From: Jun Furuse <jun.furuse@dailambda.jp>
+Date: Sat, 9 Dec 2023 20:16:04 +0900
+Subject: [PATCH] Adds :standard to C flags
+
+---
+ exif/dune     | 1 +
+ freetype/dune | 1 +
+ gif/dune      | 2 ++
+ jpeg/dune     | 1 +
+ png/dune      | 1 +
+ tiff/dune     | 1 +
+ xpm/dune      | 1 +
+ 7 files changed, 8 insertions(+)
+
+diff --git a/exif/dune b/exif/dune
+index 7694079..c773e07 100644
+--- a/exif/dune
++++ b/exif/dune
+@@ -9,6 +9,7 @@
+    (language c)
+    (names exif_c)
+    (flags
++     :standard
+      (:include ../config/exif_c_flags.sexp)))
+  (c_library_flags
+    (:include ../config/exif_c_library_flags.sexp)))
+diff --git a/freetype/dune b/freetype/dune
+index 5953a2c..32e34f5 100644
+--- a/freetype/dune
++++ b/freetype/dune
+@@ -7,6 +7,7 @@
+    (language c)
+    (names ftintf)
+    (flags
++     :standard
+      (:include ../config/freetype_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/freetype_c_library_flags.sexp)))
+diff --git a/gif/dune b/gif/dune
+index aa2170f..da84d28 100644
+--- a/gif/dune
++++ b/gif/dune
+@@ -1,3 +1,4 @@
++
+ (library
+  (name camlimages_gif)
+  (public_name camlimages.gif)
+@@ -8,6 +9,7 @@
+    (language c)
+    (names gifread gifwrite)
+    (flags
++     :standard
+      (:include ../config/gif_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/gif_c_library_flags.sexp)))
+diff --git a/jpeg/dune b/jpeg/dune
+index 5187f9e..2063ce3 100644
+--- a/jpeg/dune
++++ b/jpeg/dune
+@@ -8,6 +8,7 @@
+    (language c)
+    (names jpegread jpegwrite)
+    (flags
++     :standard
+      (:include ../config/jpeg_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/jpeg_c_library_flags.sexp)))
+diff --git a/png/dune b/png/dune
+index 9b72084..fde03c0 100644
+--- a/png/dune
++++ b/png/dune
+@@ -9,6 +9,7 @@
+    (language c)
+    (names pngread pngwrite)
+    (flags
++     :standard
+      (:include ../config/png_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/png_c_library_flags.sexp)))
+diff --git a/tiff/dune b/tiff/dune
+index 91073f7..b296850 100644
+--- a/tiff/dune
++++ b/tiff/dune
+@@ -8,6 +8,7 @@
+    (language c)
+    (names tiffwrite tiffread)
+    (flags
++     :standard
+      (:include ../config/tiff_c_flags.sexp)))
+  (c_library_flags
+   (:include ../config/tiff_c_library_flags.sexp)))
+diff --git a/xpm/dune b/xpm/dune
+index a6805de..fad9995 100644
+--- a/xpm/dune
++++ b/xpm/dune
+@@ -9,6 +9,7 @@
+    (language c)
+    (names xpmread xpmwrite)
+    (flags
++     :standard
+      (:include ../config/xpm_c_flags.sexp)))
+  (c_library_flags     
+   (:include ../config/xpm_c_library_flags.sexp)))
+-- 
+GitLab
+

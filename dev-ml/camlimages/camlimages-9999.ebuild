@@ -1,34 +1,41 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/camlspotter/${PN}.git"
 
 inherit dune git-r3
 
 DESCRIPTION="An image manipulation library for ocaml"
 HOMEPAGE="https://gitlab.com/camlspotter/camlimages"
-SRC_URI=""
+EGIT_REPO_URI="https://gitlab.com/camlspotter/${PN}.git"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS=""
-IUSE="exif gif gtk jpeg +ocamlopt png postscript tiff truetype X xpm"
+IUSE="exif gif gtk jpeg +ocamlopt png postscript tiff truetype webp X xpm"
+REQUIRED_USE="webp"
 
-RDEPEND="exif? ( media-libs/libexif )
+RDEPEND="dev-ml/graphics:0=[ocamlopt?]
+	dev-ml/lablgtk:2=[ocamlopt?]
+	virtual/zlib:0=
+	exif? ( media-libs/libexif )
 	gif? ( media-libs/giflib:0= )
-	gtk? ( dev-ml/lablgtk:2= )
-	jpeg? ( virtual/jpeg:= )
-	tiff? ( media-libs/tiff )
-	png? ( media-libs/libpng:= )
-	postscript? ( app-text/ghostscript-gpl )
+	jpeg? ( media-libs/libjpeg-turbo:0= )
+	tiff? ( media-libs/tiff:0= )
+	png? ( media-libs/libpng:0= )
+	postscript? ( app-text/ghostscript-gpl:0= )
 	truetype? ( media-libs/freetype:2 )
+	webp? ( media-libs/libwebp:0= )
 	xpm? ( x11-libs/libXpm )
-	X? ( x11-apps/rgb )
-	sys-libs/zlib:="
+	X? ( x11-apps/rgb )"
 DEPEND="${RDEPEND}
 	dev-ml/stdio:="
-BDEPEND="dev-ml/cppo:0=
-	dev-ml/dune-configurator:=
+BDEPEND="dev-ml/cppo
+	dev-ml/dune-configurator
 	virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	sed -i "/   (flags/s|$| -fPIC|" {jpeg,png,tiff,webp,xpm}/dune \
+		|| die "sed failed for fPIC"
+}
