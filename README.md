@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1365](https://img.shields.io/badge/ebuild-1365-orange.svg)](https://img.shields.io/badge/ebuild-1365-orange.svg)
+[![Number of ebuilds: 1366](https://img.shields.io/badge/ebuild-1366-orange.svg)](https://img.shields.io/badge/ebuild-1366-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -569,6 +569,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[crowbar](https://github.com/stedolan/crowbar) | Property fuzzing for OCaml
 *   dev-ml/[cry](https://github.com/savonet/ocaml-cry) | OCaml native module for icecast/shoutcast source protocols
 *   dev-ml/[cstruct](https://github.com/mirage/ocaml-cstruct) | Access C-like structures directly from OCaml
+*   dev-ml/[data-encoding](https://gitlab.com/nomadic-labs/data-encoding) | Type-safe encoding to and decoding from JSON
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
 *   dev-ml/[ocaml-dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
 *   dev-ml/[ocaml-duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler

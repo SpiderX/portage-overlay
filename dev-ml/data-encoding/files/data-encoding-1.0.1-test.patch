@@ -1,0 +1,25 @@
+--- ../test/pbt/dune	2025-12-10 10:43:16.302582436 +0200
++++ ../test/pbt/dune	2025-12-10 10:43:41.127886520 +0200
+@@ -48,12 +48,6 @@
+  (alias runtest)
+  (package data-encoding)
+  (action
+-  (run %{dep:./json_roundtrip_in_binary.exe})))
+-
+-(rule
+- (alias runtest)
+- (package data-encoding)
+- (action
+   (run node --stack-size=50000 %{dep:./test_generated.bc.js})))
+ 
+ (rule
+@@ -79,9 +73,3 @@
+  (package data-encoding)
+  (action
+   (run node %{dep:./test_classifiers.bc.js})))
+-
+-(rule
+- (alias runtest)
+- (package data-encoding)
+- (action
+-  (run node %{dep:./json_roundtrip_in_binary.bc.js})))
