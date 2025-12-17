@@ -590,7 +590,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[fdkaac](https://github.com/savonet/ocaml-fdkaac) | OCaml bindings to fdk-aac
 *   dev-ml/[ffmpeg](https://github.com/savonet/ocaml-ffmpeg) | OCaml bindings to ffmpeg
 *   dev-ml/[flac](https://github.com/savonet/ocaml-flac) | OCaml bindings to flac
-*   dev-ml/[ocaml-frei0r](https://github.com/savonet/ocaml-frei0r) | OCaml bindings to frei0r plugins
+*   dev-ml/[frei0r](https://github.com/savonet/ocaml-frei0r) | OCaml bindings to frei0r plugins
 *   dev-ml/[ocaml-gavl](https://github.com/savonet/ocaml-gavl) | OCaml bindings to Gavl video manipulation library
 *   dev-ml/[ocaml-gd](https://github.com/savonet/ocaml-gd) | OCaml interface to the GD graphics library
 *   dev-ml/[ocaml-gstreamer](https://github.com/savonet/ocaml-gstreamer) | OCaml bindings to gstreamer

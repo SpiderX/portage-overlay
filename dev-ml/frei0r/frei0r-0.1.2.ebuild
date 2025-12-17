@@ -1,22 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DUNE_PKG_NAME="frei0r"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+inherit dune
 
-inherit dune git-r3
+MY_PN="ocaml-${PN}"
 
 DESCRIPTION="OCaml bindings to frei0r plugins"
 HOMEPAGE="https://github.com/savonet/ocaml-frei0r"
-SRC_URI=""
+SRC_URI="https://github.com/savonet/${MY_PN}/archive/v${PV}/${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="media-plugins/frei0r-plugins"
-BDEPEND="dev-ml/dune-configurator:0=
+BDEPEND="dev-ml/dune-configurator
 	virtual/pkgconfig"
