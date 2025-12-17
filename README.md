@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1358](https://img.shields.io/badge/ebuild-1358-orange.svg)](https://img.shields.io/badge/ebuild-1358-orange.svg)
+[![Number of ebuilds: 1359](https://img.shields.io/badge/ebuild-1359-orange.svg)](https://img.shields.io/badge/ebuild-1359-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -562,6 +562,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[bjack](https://github.com/savonet/ocaml-bjack) | OCaml blocking JACK API
 *   dev-ml/[ca-certs](https://github.com/mirage/ca-certs) | Detect root CA certificates from the operating system
 *   dev-ml/[ca-certs-nss](https://github.com/mirage/ca-certs-nss) | X.509 trust anchors extracted from Mozilla's NSS
+*   dev-ml/[calendar](https://github.com/ocaml-community/calendar) | Ocaml library to handle dates and time
 *   dev-ml/[ocaml-cry](https://github.com/savonet/ocaml-cry) | OCaml native module for icecast/shoutcast source protocols
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
 *   dev-ml/[ocaml-dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
