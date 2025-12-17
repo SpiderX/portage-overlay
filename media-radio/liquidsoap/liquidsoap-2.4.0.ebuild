@@ -6,14 +6,15 @@ EAPI=8
 DUNE_PKG_NAME="liquidsoap liquidsoap-lang liquidsoap-js liquidsoap-mode
 	prometheus-liquidsoap sdl-liquidsoap tls-liquidsoap"
 
-inherit bash-completion-r1 dune git-r3 systemd tmpfiles
+inherit bash-completion-r1 dune systemd tmpfiles
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios"
 HOMEPAGE="https://github.com/savonet/liquidsoap"
-EGIT_REPO_URI="https://github.com/savonet/${PN}.git"
+SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="alsa ao camlimages ctypes dssi faad fdk ffmpeg frei0r gd graphics inotify
 	irc jack jemalloc ladspa lame libsamplerate lilv lo mad memtrace +ocamlopt
 	osc portaudio posix pulseaudio shine soundtouch sqlite srt ssl yaml"
