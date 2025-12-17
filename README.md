@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1372](https://img.shields.io/badge/ebuild-1372-orange.svg)](https://img.shields.io/badge/ebuild-1372-orange.svg)
+[![Number of ebuilds: 1373](https://img.shields.io/badge/ebuild-1373-orange.svg)](https://img.shields.io/badge/ebuild-1373-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -576,6 +576,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[domain-local-timeout](https://github.com/ocaml-multicore/domain-local-timeout) | A scheduler independent timeout mechanism
 *   dev-ml/[domain-name](https://github.com/hannesm/domain-name) | RFC 1035 Internet domain names
 *   dev-ml/[domain_shims](https://gitlab.com/gasche/domain-shims) | Domain module for OCaml 4
+*   dev-ml/[dscheck](https://github.com/ocaml-multicore/dscheck) | Experimental model checker for testing concurrent algorithms
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
 *   dev-ml/[ocaml-dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
 *   dev-ml/[ocaml-duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler

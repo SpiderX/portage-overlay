@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This library provides an experimental model checker for testing
+	concurrent programs. DSCheck explores interleavings of a user-provided
+	program and helps ensure that its invariants are maintained regardless
+	of scheduling decisions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ocaml-multicore/dscheck</remote-id>
+	</upstream>
+</pkgmetadata>
