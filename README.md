@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1427](https://img.shields.io/badge/ebuild-1427-orange.svg)](https://img.shields.io/badge/ebuild-1427-orange.svg)
+[![Number of ebuilds: 1428](https://img.shields.io/badge/ebuild-1428-orange.svg)](https://img.shields.io/badge/ebuild-1428-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -655,6 +655,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
 *   dev-ml/[osc](https://github.com/johnelse/ocaml-osc) | Pure OCaml implementation of the Open Sound Control protocol
 *   dev-ml/[oseq](https://github.com/c-cube/oseq) | Purely functional iterators compatible with standard seq
+*   dev-ml/[pcap-format](https://github.com/mirage/ocaml-pcap) | OCaml code for generating and analysing pcap files
 *   dev-ml/[ocaml-portaudio](https://github.com/savonet/ocaml-portaudio) | OCaml bindings to portaudio
 *   dev-ml/[ocaml-posix](https://github.com/savonet/ocaml-posix) | OCaml bindings for posix sockets
 *   dev-ml/[ocaml-pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
