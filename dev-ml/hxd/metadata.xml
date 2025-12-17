@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a little program to output a hexdump of
+	a // or a binary file. The main difference with <pkg>dev-util/xxd</pkg>
+	is to color outputs to be more fancy to read. Then, it provides a way
+	to generate a Caml code which is a dump of inputs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dinosaure/hxd</remote-id>
+	</upstream>
+</pkgmetadata>
