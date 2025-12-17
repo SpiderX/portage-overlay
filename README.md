@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1394](https://img.shields.io/badge/ebuild-1394-orange.svg)](https://img.shields.io/badge/ebuild-1394-orange.svg)
+[![Number of ebuilds: 1395](https://img.shields.io/badge/ebuild-1395-orange.svg)](https://img.shields.io/badge/ebuild-1395-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -616,6 +616,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[lilv](https://github.com/savonet/ocaml-lilv) | OCaml bindings to lilv
 *   dev-ml/[lo](https://github.com/savonet/ocaml-lo) | OCaml bindings to liblo
 *   dev-ml/[lru](https://github.com/pqwy/lru) | Scalable LRU caches for OCaml
+*   dev-ml/[lwt-dllist](https://github.com/mirage/lwt-dllist) | Mutable doubly-linked list with Lwt iterators
 *   dev-ml/[ocaml-mad](https://github.com/savonet/ocaml-mad) | OCaml bindings to libmad
 *   dev-ml/[ocaml-magic](https://github.com/Chris00/ocaml-magic) | OCaml bindings to libmagic
 *   dev-ml/[ocaml-mem_usage](https://github.com/savonet/ocaml-mem_usage) | Cross-platform memory usage information
