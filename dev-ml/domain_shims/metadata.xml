@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Domain is a new module of the OCaml 5 standard library that exposes
+	the Multicore OCaml runtime's ability to run OCaml computations in
+	parallel. This package provide a possibility to run code that was
+	written for OCaml 5 using the Domain module under OCaml 4.
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">gasche/domain-shims</remote-id>
+	</upstream>
+</pkgmetadata>
