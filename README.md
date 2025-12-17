@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1412](https://img.shields.io/badge/ebuild-1412-orange.svg)](https://img.shields.io/badge/ebuild-1412-orange.svg)
+[![Number of ebuilds: 1413](https://img.shields.io/badge/ebuild-1413-orange.svg)](https://img.shields.io/badge/ebuild-1413-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -637,6 +637,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[mirage-net](https://github.com/mirage/mirage-net) | Network signatures for MirageOS
 *   dev-ml/[mirage-ptime](https://github.com/mirage/mirage-ptime) | POSIX time functions for MirageOS
 *   dev-ml/[mirage-sleep](https://github.com/mirage/mirage-sleep) | Sleep operation for MirageOS
+*   dev-ml/[mirage-time](https://github.com/mirage/mirage-time) | Time signatures for MirageOS
 *   dev-ml/[ocaml-mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
 *   dev-ml/[ocaml-ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[ocaml-opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
