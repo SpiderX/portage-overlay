@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1385](https://img.shields.io/badge/ebuild-1385-orange.svg)](https://img.shields.io/badge/ebuild-1385-orange.svg)
+[![Number of ebuilds: 1386](https://img.shields.io/badge/ebuild-1386-orange.svg)](https://img.shields.io/badge/ebuild-1386-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -602,6 +602,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[io-page](https://github.com/mirage/io-page) | IO memory page library for Mirage backends
 *   dev-ml/[iomux](https://github.com/ocaml-multicore/ocaml-iomux) | OCaml bindings for IO multiplexers
 *   dev-ml/[ipaddr](https://github.com/mirage/ocaml-ipaddr) | A library for manipulation of IP (and MAC) address representations
+*   dev-ml/[irc-client](https://github.com/johnelse/ocaml-irc-client) | Pure OCaml implementation of the Open Sound Control protocol
 *   dev-ml/[ocaml-ladspa](https://github.com/savonet/ocaml-ladspa) | OCaml bindings to LADSPA plugins
 *   dev-ml/[ocaml-lame](https://github.com/savonet/ocaml-lame) | OCaml bindings to lame
 *   dev-ml/[ocaml-lastfm](https://github.com/savonet/ocaml-lastfm) | OCaml interface for Lastfm
