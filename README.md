@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1437](https://img.shields.io/badge/ebuild-1437-orange.svg)](https://img.shields.io/badge/ebuild-1437-orange.svg)
+[![Number of ebuilds: 1438](https://img.shields.io/badge/ebuild-1438-orange.svg)](https://img.shields.io/badge/ebuild-1438-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -680,6 +680,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[tcpip](https://github.com/mirage/mirage-tcpip) | OCaml TCP/IP networking stack, used in MirageOS
 *   dev-ml/[theora](https://github.com/savonet/ocaml-theora) | OCaml bindings to libtheora
 *   dev-ml/[thread-table](https://github.com/ocaml-multicore/thread-table) | A lock-free thread-safe integer keyed hash table
+*   dev-ml/[tls](https://github.com/mirleft/ocaml-tls) | Transport Layer Security purely in OCaml
 *   dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
