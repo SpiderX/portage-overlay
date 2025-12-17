@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1354](https://img.shields.io/badge/ebuild-1354-orange.svg)](https://img.shields.io/badge/ebuild-1354-orange.svg)
+[![Number of ebuilds: 1355](https://img.shields.io/badge/ebuild-1355-orange.svg)](https://img.shields.io/badge/ebuild-1355-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -557,6 +557,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[asn1-combinators](https://github.com/mirleft/ocaml-asn1-combinators) | Embed typed ASN.1 grammars in OCaml
 *   dev-ml/[async_ssl](https://github.com/janestreet/memtrace) | Streaming client for OCaml's Memprof
 *   dev-ml/[backoff](https://github.com/ocaml-multicore/backoff) | Exponential backoff mechanism for OCaml
+*   dev-ml/[bechamel](https://github.com/mirage/bechamel) | Agnostic benchmark in OCaml
 *   dev-ml/[ocaml-bjack](https://github.com/savonet/ocaml-bjack) | OCaml blocking JACK API
 *   dev-ml/[ocaml-cry](https://github.com/savonet/ocaml-cry) | OCaml native module for icecast/shoutcast source protocols
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
