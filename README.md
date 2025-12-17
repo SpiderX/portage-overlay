@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1370](https://img.shields.io/badge/ebuild-1370-orange.svg)](https://img.shields.io/badge/ebuild-1370-orange.svg)
+[![Number of ebuilds: 1371](https://img.shields.io/badge/ebuild-1371-orange.svg)](https://img.shields.io/badge/ebuild-1371-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -574,6 +574,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[dns](https://github.com/mirage/dns) | OCaml implementation of the DNS protocol
 *   dev-ml/[domain-local-await](https://github.com/ocaml-multicore/domain-local-await) | Scheduler independent blocking
 *   dev-ml/[domain-local-timeout](https://github.com/ocaml-multicore/domain-local-timeout) | A scheduler independent timeout mechanism
+*   dev-ml/[domain-name](https://github.com/hannesm/domain-name) | RFC 1035 Internet domain names
 *   dev-ml/[ocaml-dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
 *   dev-ml/[ocaml-dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
 *   dev-ml/[ocaml-duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
