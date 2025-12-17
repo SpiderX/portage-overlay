@@ -690,6 +690,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[uri](https://github.com/mirage/ocaml-uri) | An RFC3986 URI/URL parsing library
 *   dev-ml/[uring](https://github.com/ocaml-multicore/ocaml-uring) | Bindings to io_uring for OCaml
 *   dev-ml/[vchan](https://github.com/mirage/ocaml-vchan) | Xen Vchan implementation
+*   dev-ml/[vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
 *   dev-perl/[SCGI]() | SCGI interface module
