@@ -1,0 +1,22 @@
+From 0b43bdf113c7e2c27d55c6a5f81f2fa4b30b5454 Mon Sep 17 00:00:00 2001
+From: Romain Beauxis <toots@rastageeks.org>
+Date: Wed, 24 Jul 2024 08:38:19 -0500
+Subject: [PATCH] Fix warning.
+
+---
+ src/lo_stubs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lo_stubs.c b/src/lo_stubs.c
+index b7d6a24..cc1b3da 100644
+--- a/src/lo_stubs.c
++++ b/src/lo_stubs.c
+@@ -67,7 +67,7 @@ CAMLprim value caml_lo_message_new(value unit) {
+ 
+   m = lo_message_new();
+   ans = caml_alloc_custom(&message_ops, sizeof(lo_message), 0, 1);
+-  Address_val(ans) = m;
++  Message_val(ans) = m;
+ 
+   CAMLreturn(ans);
+ }

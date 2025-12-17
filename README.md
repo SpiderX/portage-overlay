@@ -614,7 +614,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[lame](https://github.com/savonet/ocaml-lame) | OCaml bindings to lame
 *   dev-ml/[lastfm](https://github.com/savonet/ocaml-lastfm) | OCaml interface for Lastfm
 *   dev-ml/[lilv](https://github.com/savonet/ocaml-lilv) | OCaml bindings to lilv
-*   dev-ml/[ocaml-lo](https://github.com/savonet/ocaml-lo) | OCaml bindings to liblo
+*   dev-ml/[lo](https://github.com/savonet/ocaml-lo) | OCaml bindings to liblo
 *   dev-ml/[ocaml-mad](https://github.com/savonet/ocaml-mad) | OCaml bindings to libmad
 *   dev-ml/[ocaml-magic](https://github.com/Chris00/ocaml-magic) | OCaml bindings to libmagic
 *   dev-ml/[ocaml-mem_usage](https://github.com/savonet/ocaml-mem_usage) | Cross-platform memory usage information
