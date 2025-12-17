@@ -5,7 +5,7 @@ EAPI=8
 
 inherit dune
 
-DESCRIPTION="Xenstore protocol in pure OCam"
+DESCRIPTION="Xenstore protocol in pure OCaml"
 HOMEPAGE="https://github.com/mirage/ocaml-xenstore"
 SRC_URI="https://github.com/mirage/ocaml-${PN}/releases/download/${PV}/${P}.tbz"
 

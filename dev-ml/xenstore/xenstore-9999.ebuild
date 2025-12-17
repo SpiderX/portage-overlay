@@ -5,7 +5,7 @@ EAPI=8
 
 inherit dune git-r3
 
-DESCRIPTION="Xenstore protocol in pure OCam"
+DESCRIPTION="Xenstore protocol in pure OCaml"
 HOMEPAGE="https://github.com/mirage/ocaml-xenstore"
 EGIT_REPO_URI="https://github.com/mirage/ocaml-xenstore.git"
 
