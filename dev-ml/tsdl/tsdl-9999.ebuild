@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo opam git-r3
+inherit edo git-r3 opam virtualx
 
 DESCRIPTION="Thin bindings to SDL for OCaml"
 HOMEPAGE="https://github.com/dbuenzli/tsdl"
@@ -14,14 +14,14 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/ocaml-ctypes:=[ocamlopt?]
+RDEPEND="dev-ml/ocaml-ctypes:0=[ocamlopt?]
 	media-libs/libsdl2"
-BDEPEND="dev-ml/topkg:="
+BDEPEND="dev-ml/topkg"
 
 src_compile() {
 	edo ocaml pkg/pkg.ml build --tests "$(usex test 'true' 'false')"
 }
 
 src_test() {
-	edo ocaml pkg/pkg.ml test
+	virtx ocaml pkg/pkg.ml test
 }
