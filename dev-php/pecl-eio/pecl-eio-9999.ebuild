@@ -6,12 +6,13 @@ EAPI=8
 PHP_EXT_NAME="eio"
 PHP_EXT_ECONF_ARGS="--with-eio"
 PHP_EXT_S="${WORKDIR}/${P}"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit git-r3 php-ext-pecl-r3
 
+unset SRC_URI
+
 DESCRIPTION="PHP wrapper for libeio library"
-SRC_URI=""
 EGIT_REPO_URI="https://github.com/rosmanov/pecl-eio.git"
 S="${PHP_EXT_S}"
 
