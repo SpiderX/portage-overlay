@@ -3,9 +3,9 @@
 
 EAPI=8
 
-CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr
+CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr
 	gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru
-	sk sl sr sv sw ta te th tr uk vi zh-CN zh-TW"
+	sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
 inherit chromium-2 desktop edo multilib-build pax-utils unpacker xdg
@@ -53,6 +53,29 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango[${MULTILIB_USEDEP}]
 	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
+QA_PREBUILT="opt/beekeeper-studio/beekeeper-studio-bin
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/sqlanywhere/build/Release/sqlanywhere.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/build/Release/sshcrypto.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/os-dns-native/build/Release/os_dns_native.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/sqlite3/build/Release/node_sqlite3.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/kerberos/build/Release/kerberos.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/cpu-features/build/Release/cpufeatures.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/mongodb-client-encryption/build/Release/mongocrypt.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/oracledb/build/Release/oracledb-6.7.2-linux-arm64.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/oracledb/build/Release/oracledb-6.7.2-linux-x64.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/@duckdb/node-bindings/node_modules/@duckdb/node-bindings-linux-x64/duckdb.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/@duckdb/node-bindings/node_modules/@duckdb/node-bindings-linux-x64/libduckdb.so
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/@libsql/linux-x64-gnu/index.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/@libsql/linux-x64-musl/index.node
+	opt/beekeeper-studio/resources/app.asar.unpacked/node_modules/@mongodb-js/devtools-connect/node_modules/kerberos/build/Release/kerberos.node
+	opt/beekeeper-studio/libEGL.so
+	opt/beekeeper-studio/chrome_crashpad_handler
+	opt/beekeeper-studio/libvk_swiftshader.so
+	opt/beekeeper-studio/libGLESv2.so
+	opt/beekeeper-studio/libffmpeg.so
+	opt/beekeeper-studio/libvulkan.so.1"
+
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
 }
@@ -83,11 +106,7 @@ src_install() {
 	doins usr/share/mime/packages/beekeeper-studio.xml
 
 	insinto /opt/beekeeper-studio
-	doins -r opt/"Beekeeper Studio"/.
-	fperms -R +x /opt/beekeeper-studio/beekeeper-studio{,-bin} \
-		/opt/beekeeper-studio/chrome_crashpad_handler \
-		/opt/beekeeper-studio/lib{EGL,GLESv2,ffmpeg,vk_swiftshader}.so \
-		/opt/beekeeper-studio/libvulkan.so.1 /opt/beekeeper-studio/swiftshader
+	edo cp -a opt/"Beekeeper Studio"/. "${ED}"/opt/beekeeper-studio
 	use suid && fperms u+s,+x /opt/beekeeper-studio/chrome-sandbox
 
 	dosym ../beekeeper-studio/beekeeper-studio-bin opt/bin/beekeeper-studio
