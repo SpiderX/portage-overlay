@@ -5,14 +5,15 @@ EAPI=8
 
 PHP_EXT_NAME="spx"
 PHP_EXT_NEEDED_USE="zlib,-threads"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit git-r3 php-ext-source-r3
+
+unset SRC_URI
 
 DESCRIPTION="A PHP wrapper fo the scrypt hashing algorithm"
 HOMEPAGE="https://github.com/NoiseByNorthwest/php-spx"
 EGIT_REPO_URI="https://github.com/NoiseByNorthwest/php-spx.git"
-SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"

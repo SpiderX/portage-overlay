@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 PHP_EXT_NAME="spx"
 PHP_EXT_NEEDED_USE="zlib,-threads"
 PHP_EXT_S="${WORKDIR}/${MY_P}"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-source-r3
 
