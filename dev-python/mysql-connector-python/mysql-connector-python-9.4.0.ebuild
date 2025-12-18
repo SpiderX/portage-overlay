@@ -24,7 +24,7 @@ RDEPEND="dev-db/mysql-connector-c:=
 	dev-python/dnspython[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-db/mysql[server(+)]
 		dev-python/cryptography[${PYTHON_USEDEP}]
-		=dev-python/fido2-1.1.2[${PYTHON_USEDEP}]
+		~dev-python/fido2-1.1.2[${PYTHON_USEDEP}]
 		dev-python/gssapi[${PYTHON_USEDEP}]
 		dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 		dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
