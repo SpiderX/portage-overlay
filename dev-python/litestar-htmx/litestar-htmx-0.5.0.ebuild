@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/litestar-org/litestar-htmx"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 BDEPEND="test? ( dev-python/litestar[${PYTHON_USEDEP}] )"
 
