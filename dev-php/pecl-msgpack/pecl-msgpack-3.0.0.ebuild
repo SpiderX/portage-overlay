@@ -4,7 +4,7 @@
 EAPI=8
 
 PHP_EXT_NAME="msgpack"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-pecl-r3
 
