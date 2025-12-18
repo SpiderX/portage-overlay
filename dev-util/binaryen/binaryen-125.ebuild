@@ -11,7 +11,7 @@ MY_PV="version_${PV}"
 
 DESCRIPTION="Optimizer and compiler/toolchain library for WebAssembly"
 HOMEPAGE="https://github.com/WebAssembly/binaryen"
-SRC_URI="https://github.com/WebAssembly/${PN}/archive/version_${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/WebAssembly/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="Apache-2.0"
