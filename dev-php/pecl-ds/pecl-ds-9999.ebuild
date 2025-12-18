@@ -5,12 +5,13 @@ EAPI=8
 
 PHP_EXT_NAME="ds"
 PHP_EXT_S="${WORKDIR}/${P}"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit git-r3 php-ext-pecl-r3
 
+unset SRC_URI
+
 DESCRIPTION="Native Data Structures for PHP"
-SRC_URI=""
 EGIT_REPO_URI="https://github.com/php-ds/ext-ds.git"
 S="${PHP_EXT_S}"
 
