@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1453](https://img.shields.io/badge/ebuild-1453-orange.svg)](https://img.shields.io/badge/ebuild-1453-orange.svg)
+[![Number of ebuilds: 1454](https://img.shields.io/badge/ebuild-1454-orange.svg)](https://img.shields.io/badge/ebuild-1454-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -648,6 +648,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[multicoretests](https://github.com/ocaml-multicore/multicoretests) | Various utility functions for property-based testing
 *   dev-ml/[notty](https://github.com/pqwy/notty) | Declarative terminal graphics for OCaml
 *   dev-ml/[ocaml-version](https://github.com/ocurrent/ocaml-version) | Manipulate, parse and generate OCaml compiler version strings
+*   dev-ml/[ohex](https://github.com/robur-coop/ohex) | Hexadecimal encoding and decoding
 *   dev-ml/[ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[omd](https://github.com/ocaml-community/omd) | A Markdown frontend in pure OCaml
 *   dev-ml/[opam-monorepo](https://github.com/tarides/opam-monorepo) | Assemble and manage fully vendored Dune repositories
