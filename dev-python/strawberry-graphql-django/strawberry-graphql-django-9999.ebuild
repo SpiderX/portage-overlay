@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit distutils-r1 git-r3
 
@@ -25,7 +25,7 @@ RDEPEND="dev-python/asgiref[${PYTHON_USEDEP}]
 	dev-python/strawberry-graphql[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-db/spatialite
 		dev-python/django-choices-field[${PYTHON_USEDEP}]
-		=dev-python/django-guardian-2.4.0[${PYTHON_USEDEP}]
+		~dev-python/django-guardian-2.4.0[${PYTHON_USEDEP}]
 		dev-python/django-tree-queries[${PYTHON_USEDEP}]
 		dev-python/inline-snapshot[${PYTHON_USEDEP}]
 		dev-python/factory-boy[${PYTHON_USEDEP}]
