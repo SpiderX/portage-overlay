@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit edo python-single-r1 readme.gentoo-r1 systemd
 
