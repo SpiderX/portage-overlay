@@ -4,14 +4,15 @@
 EAPI=8
 
 PHP_EXT_NAME="memcache"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 PHP_EXT_S="${WORKDIR}/${P}"
-EGIT_REPO_URI="https://github.com/websupport-sk/${PN}.git"
 
 inherit php-ext-pecl-r3 git-r3
 
+unset SRC_URI
+
 DESCRIPTION="PHP extension for using memcached"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/websupport-sk/${PN}.git"
 S="${PHP_EXT_S}"
 
 LICENSE="PHP-3"
