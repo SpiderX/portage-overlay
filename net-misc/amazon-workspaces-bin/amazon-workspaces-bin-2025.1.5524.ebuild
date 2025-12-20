@@ -31,7 +31,7 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
 	dev-libs/fribidi
 	dev-libs/hyphen
-	dev-libs/icu:0/77=
+	dev-libs/icu:0/77
 	dev-libs/libffi:0=
 	dev-libs/libtasn1:0=
 	dev-libs/libgcrypt:0/20
