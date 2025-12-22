@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A tool that processes the most common jinja value templates in dbt model
+	files. The tool depends on tree-sitter and the tree-sitter-jinja2 library.
+	The current strategy is for this processor to be 100% certain when it can
+	accurately extract values from a given model file. Anything less than 100%
+	certainty returns an exception so that the model can be rendered with python
+	Jinja instead.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dbt-labs/dbt-extractor</remote-id>
+		<remote-id type="pypi">dbt-extractor</remote-id>
+	</upstream>
+</pkgmetadata>
