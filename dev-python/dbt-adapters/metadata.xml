@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides two major adapter types: base, defines the base
+	functionality an adapter is required to implement in order to function
+	with dbt-core. and sql, updates default implementations to work with
+	SQL-based platforms.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dbt-labs/dbt-adapters</remote-id>
+		<remote-id type="pypi">dbt-adapters</remote-id>
+	</upstream>
+</pkgmetadata>
