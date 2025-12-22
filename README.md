@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1465](https://img.shields.io/badge/ebuild-1465-orange.svg)](https://img.shields.io/badge/ebuild-1465-orange.svg)
+[![Number of ebuilds: 1466](https://img.shields.io/badge/ebuild-1466-orange.svg)](https://img.shields.io/badge/ebuild-1466-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1308,6 +1308,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[crudini](https://github.com/pixelb/crudini) | A utility for manipulating ini files
 *   dev-util/[css-html-js-minify](https://github.com/juancarlospaco/css-html-js-minify) | StandAlone Async cross-platform Minifier for the Web
 *   dev-util/[cupt](https://github.com/jackyf/cupt) | Package manager for Debian
+*   dev-util/[dbt-core](https://github.com/dbt-labs/dbt-core) | With dbt, build analytics the way engineers build applications
 *   dev-util/[desed](https://github.com/SoptikHa2/desed) | Debugger for Sed
 *   dev-util/[detect-secrets](https://github.com/Yelp/detect-secrets) | An enterprise friendly way of detecting and preventing secrets
 *   dev-util/[diff-cover](https://github.com/Bachmann1234/diff-cover) | Find diff lines that do not have test coverage
