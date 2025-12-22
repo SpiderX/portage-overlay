@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1463](https://img.shields.io/badge/ebuild-1463-orange.svg)](https://img.shields.io/badge/ebuild-1463-orange.svg)
+[![Number of ebuilds: 1464](https://img.shields.io/badge/ebuild-1464-orange.svg)](https://img.shields.io/badge/ebuild-1464-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1102,6 +1102,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[lsassy](https://github.com/login-securite/lsassy) | Python library to extract credentials from lsass remotely
 *   dev-python/[markdown2](https://github.com/trentm/python-markdown2) | A fast and complete Python implementation of Markdown
 *   dev-python/[markuppy](https://github.com/tylerbakke/MarkupPy) | An HTML/XML generator
+*   dev-python/[mashumaro](https://github.com/Fatal1ty/mashumaro) | Fast and well tested serialization library
 *   dev-python/[masky](https://pypi.org/project/masky) | Remotely dump domain user credentials via an ADCS
 *   dev-python/[mbedtls](https://github.com/Synss/python-mbedtls) | Cryptographic library with an mbed TLS back end
 *   dev-python/[minidump](https://github.com/skelsec/minidump) | Python library to parse Windows minidump file format

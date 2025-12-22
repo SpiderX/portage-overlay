@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	In Python, you often need to dump and load objects based on the schema.
+	It can be a dataclass model, a list of third-party generic classes or whatever.
+	Mashumaro not only lets you save and load things in different ways,
+	but it also does it super quick.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Fatal1ty/mashumaro</remote-id>
+		<remote-id type="pypi">mashumaro</remote-id>
+	</upstream>
+</pkgmetadata>
