@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1464](https://img.shields.io/badge/ebuild-1464-orange.svg)](https://img.shields.io/badge/ebuild-1464-orange.svg)
+[![Number of ebuilds: 1465](https://img.shields.io/badge/ebuild-1465-orange.svg)](https://img.shields.io/badge/ebuild-1465-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1236,6 +1236,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[shippinglabel-pypi](https://github.com/domdfcoding/shippinglabel-pypi) | Shippinglabel extension for interacting with PyPI
 *   dev-python/[smart-open](https://github.com/piskvorky/smart_open) | Utils for streaming large files
 *   dev-python/[sniffio](https://github.com/python-trio/sniffio) | Sniff out which async library your code is running under
+*   dev-python/[snowplow-tracker](https://github.com/snowplow/snowplow-python-tracker) | Snowplow event tracker for Python
 *   dev-python/[social-auth-core](https://github.com/python-social-auth/social-core) | Python Social Auth - Core
 *   dev-python/[social-auth-app-django](https://github.com/python-social-auth/social-app-django) | Python Social Auth - Application - Django
 *   dev-python/[sorl-thumbnail](https://github.com/jazzband/sorl-thumbnail) | Thumbnails for Django

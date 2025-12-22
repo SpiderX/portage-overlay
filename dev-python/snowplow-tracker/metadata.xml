@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Add analytics to your Python apps and Python games with the Snowplow
+	event tracker for Python. With this tracker you can collect event data
+	from your Python-based applications, games or Python web servers/frameworks.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">snowplow/snowplow-python-tracker</remote-id>
+		<remote-id type="pypi">snowplow-tracker</remote-id>
+	</upstream>
+</pkgmetadata>
