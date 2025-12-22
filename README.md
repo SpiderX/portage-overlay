@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1462](https://img.shields.io/badge/ebuild-1462-orange.svg)](https://img.shields.io/badge/ebuild-1462-orange.svg)
+[![Number of ebuilds: 1463](https://img.shields.io/badge/ebuild-1463-orange.svg)](https://img.shields.io/badge/ebuild-1463-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -982,6 +982,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dbt-postgres](https://github.com/dbt-labs/dbt-adapters) | The dbt adapter used to transform data loaded into a PostgreSQL
 *   dev-python/[dbt-protos](https://github.com/dbt-labs/proto-python-public) | Protocol Buffer bindings for dbt
 *   dev-python/[dbt-semantic-interfaces](https://github.com/dbt-labs/dbt-semantic-interfaces) | The shared semantic layer definitions that dbt-core and MetricFlow use
+*   dev-python/[dbt-tests-adapter](https://github.com/dbt-labs/dbt-adapters) | The set of reusable tests and test fixtures for dbt
 *   dev-python/[db-dtypes](https://github.com/googleapis/python-db-dtypes-pandas) | Pandas Data Types for SQL systems
 *   dev-python/[diagrams](https://github.com/mingrammer/diagrams) | Diagram as Code for prototyping cloud system architectures
 *   dev-python/[dishka](https://github.com/reagento/dishka) | Cute DI framework with scopes and agreeable API
