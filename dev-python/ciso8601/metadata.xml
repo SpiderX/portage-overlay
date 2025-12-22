@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	ciso8601 converts ISO 8601 or RFC 3339 date time strings into Python
+	datetime objects. Since it’s written as a C module, it is much faster
+	than other Python libraries.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">closeio/ciso8601</remote-id>
+		<remote-id type="pypi">ciso8601</remote-id>
+	</upstream>
+</pkgmetadata>

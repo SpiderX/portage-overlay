@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1455](https://img.shields.io/badge/ebuild-1455-orange.svg)](https://img.shields.io/badge/ebuild-1455-orange.svg)
+[![Number of ebuilds: 1456](https://img.shields.io/badge/ebuild-1456-orange.svg)](https://img.shields.io/badge/ebuild-1456-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -951,6 +951,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[chevron](https://github.com/noahmorrison/chevron) | Mustache templating language renderer
 *   dev-python/[cfgv](https://github.com/asottile/cfgv) | Validate configuration and produce human readable error messages
 *   dev-python/[circuitbreaker](https://github.com/fabfuel/circuitbreaker) | Python Circuit Breaker pattern implementation
+*   dev-python/[ciso8601](https://github.com/closeio/ciso8601) | Fast ISO8601 date time parser for Python written in C
 *   dev-python/[click-completion](https://github.com/click-contrib/click-completion) | Enhanced completion for bash, fish, zsh in Click
 *   dev-python/[click-repl](https://github.com/click-contrib/click-repl) | Subcommand REPL for click apps
 *   dev-python/[coincidence](https://github.com/python-coincidence/coincidence) | Helper functions for pytest
