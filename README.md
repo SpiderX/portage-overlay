@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1460](https://img.shields.io/badge/ebuild-1460-orange.svg)](https://img.shields.io/badge/ebuild-1460-orange.svg)
+[![Number of ebuilds: 1461](https://img.shields.io/badge/ebuild-1461-orange.svg)](https://img.shields.io/badge/ebuild-1461-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -980,6 +980,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dbt-adapters](https://github.com/dbt-labs/dbt-adapters) | The set of adapter protocols and base functionality for dbt-core
 *   dev-python/[dbt-common](https://github.com/dbt-labs/dbt-common) | The shared common utilities for dbt
 *   dev-python/[dbt-postgres](https://github.com/dbt-labs/dbt-adapters) | The dbt adapter used to transform data loaded into a PostgreSQL
+*   dev-python/[dbt-protos](https://github.com/dbt-labs/proto-python-public) | Protocol Buffer bindings for dbt
 *   dev-python/[db-dtypes](https://github.com/googleapis/python-db-dtypes-pandas) | Pandas Data Types for SQL systems
 *   dev-python/[diagrams](https://github.com/mingrammer/diagrams) | Diagram as Code for prototyping cloud system architectures
 *   dev-python/[dishka](https://github.com/reagento/dishka) | Cute DI framework with scopes and agreeable API
