@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/dbt-labs/${PN}.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-RDEPEND="<dev-python/click-8.3[${PYTHON_USEDEP}]
+RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]

@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="test" # no tests
 
-RDEPEND="<dev-python/click-8.3[${PYTHON_USEDEP}]
+RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
