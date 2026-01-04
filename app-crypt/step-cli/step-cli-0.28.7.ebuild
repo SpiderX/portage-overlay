@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -532,6 +532,7 @@ src_compile() {
 
 	ego build -ldflags "${LDFLAGS}" -o step-cli ./cmd/...
 
+	unset STEPPATH
 	local completion
 	for completion in bash fish zsh ; do
 		edo ./step-cli completion ${completion} > step-cli.${completion}
