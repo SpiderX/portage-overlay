@@ -1,15 +1,15 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 RUST_MIN_VER="1.82.0"
 
 CRATES="ahash@0.8.12
-	aho-corasick@1.1.3
+	aho-corasick@1.1.4
 	anes@0.1.6
 	anstyle@1.0.13
 	arbitrary@1.4.2
@@ -17,13 +17,13 @@ CRATES="ahash@0.8.12
 	bitvec@1.0.1
 	bumpalo@3.19.0
 	cast@0.3.0
-	cc@1.2.41
+	cc@1.2.45
 	cfg-if@1.0.4
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.49
-	clap_builder@4.5.49
+	clap@4.5.51
+	clap_builder@4.5.51
 	clap_lex@0.7.6
 	codspeed-criterion-compat-walltime@2.10.1
 	codspeed-criterion-compat@2.10.1
@@ -43,20 +43,19 @@ CRATES="ahash@0.8.12
 	hashbrown@0.16.0
 	heck@0.5.0
 	hermit-abi@0.5.2
-	indexmap@2.11.4
-	indoc@2.0.6
-	is-terminal@0.4.16
+	indexmap@2.12.0
+	indoc@2.0.7
+	is-terminal@0.4.17
 	itertools@0.10.5
 	itoa@1.0.15
 	jobserver@0.1.34
-	js-sys@0.3.81
+	js-sys@0.3.82
 	lazy_static@1.5.0
 	lexical-parse-float@1.0.6
 	lexical-parse-integer@1.0.6
 	lexical-util@1.0.7
 	libc@0.2.177
 	libfuzzer-sys@0.4.10
-	log@0.4.28
 	memchr@2.7.6
 	memoffset@0.9.1
 	num-bigint@0.4.6
@@ -69,14 +68,14 @@ CRATES="ahash@0.8.12
 	plotters-svg@0.3.7
 	plotters@0.3.7
 	portable-atomic@1.11.1
-	proc-macro2@1.0.101
-	pyo3-build-config@0.26.0
-	pyo3-ffi@0.26.0
-	pyo3-macros-backend@0.26.0
-	pyo3-macros@0.26.0
-	pyo3@0.26.0
+	proc-macro2@1.0.103
+	pyo3-build-config@0.27.1
+	pyo3-ffi@0.27.1
+	pyo3-macros-backend@0.27.1
+	pyo3-macros@0.27.1
+	pyo3@0.27.1
 	python3-dll-a@0.2.14
-	quote@1.0.41
+	quote@1.0.42
 	r-efi@5.3.0
 	radium@0.7.0
 	rayon-core@1.13.0
@@ -93,22 +92,21 @@ CRATES="ahash@0.8.12
 	serde_json@1.0.145
 	shlex@1.3.0
 	smallvec@1.15.1
-	syn@2.0.106
+	syn@2.0.109
 	tap@1.0.1
 	target-lexicon@0.13.3
 	tinytemplate@1.2.1
-	unicode-ident@1.0.19
+	unicode-ident@1.0.22
 	unindent@0.2.4
 	uuid@1.18.1
 	version_check@0.9.5
 	walkdir@2.5.0
 	wasip2@1.0.1+wasi-0.2.4
-	wasm-bindgen-backend@0.2.104
-	wasm-bindgen-macro-support@0.2.104
-	wasm-bindgen-macro@0.2.104
-	wasm-bindgen-shared@0.2.104
-	wasm-bindgen@0.2.104
-	web-sys@0.3.81
+	wasm-bindgen-macro-support@0.2.105
+	wasm-bindgen-macro@0.2.105
+	wasm-bindgen-shared@0.2.105
+	wasm-bindgen@0.2.105
+	web-sys@0.3.82
 	winapi-util@0.1.11
 	windows-link@0.2.1
 	windows-sys@0.59.0
@@ -132,8 +130,7 @@ inherit cargo distutils-r1 pypi
 DESCRIPTION="Fast iterable JSON parser"
 HOMEPAGE="https://github.com/pydantic/jiter"
 SRC_URI+="
-	${CARGO_CRATE_URIS}
-"
+	${CARGO_CRATE_URIS}"
 
 LICENSE="Apache-2.0 Boost-1.0 Apache-2.0-with-LLVM-exceptions MIT MPL-2.0 UoI-NCSA Unicode-3.0"
 SLOT="0"
