@@ -1,16 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
-EGIT_REPO_URI="https://github.com/bridgecrewio/${PN}.git"
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Static code analysis tool for infrastructure-as-code"
 HOMEPAGE="https://github.com/bridgecrewio/checkov"
+EGIT_REPO_URI="https://github.com/bridgecrewio/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -21,6 +21,7 @@ RDEPEND="dev-python/aiodns[${PYTHON_USEDEP}]
 	dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/aiomultiprocess[${PYTHON_USEDEP}]
 	dev-python/argcomplete[${PYTHON_USEDEP}]
+	dev-python/asteval[${PYTHON_USEDEP}]
 	dev-python/bc-detect-secrets[${PYTHON_USEDEP}]
 	dev-python/bc-jsonpath-ng[${PYTHON_USEDEP}]
 	dev-python/bc-python-hcl2[${PYTHON_USEDEP}]
@@ -65,6 +66,7 @@ BDEPEND="test? ( dev-python/gitpython[${PYTHON_USEDEP}]
 		dev-vcs/git )"
 
 EPYTEST_XDIST=1
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
