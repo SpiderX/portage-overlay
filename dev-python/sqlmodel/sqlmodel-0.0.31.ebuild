@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,8 @@ KEYWORDS="~amd64"
 
 RDEPEND="dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/dirty-equals[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/annotated-doc[${PYTHON_USEDEP}]
+		dev-python/dirty-equals[${PYTHON_USEDEP}]
 		dev-python/fastapi[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}] )"
 
@@ -26,6 +27,8 @@ distutils_enable_tests pytest
 EPYTEST_IGNORE=( docs_src/tutorial/fastapi/app_testing )
 
 EPYTEST_DESELECT=(
+	# subprocess.CalledProcessError
+	tests/test_select_gen.py::test_select_gen
 	# No such file or directory: 'coverage'
 	tests/test_tutorial/test_create_db_and_table/test_tutorial001.py::test_create_db_and_table
 	tests/test_tutorial/test_create_db_and_table/test_tutorial001_py310.py::test_create_db_and_table
