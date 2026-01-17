@@ -6,20 +6,23 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 optfeature
 
 DESCRIPTION="unittest-based test runner with Ant/JUnit like XML reporting"
 HOMEPAGE="https://github.com/xmlrunner/unittest-xml-reporting"
-EGIT_REPO_URI="https://github.com/xmlrunner/${PN}.git"
+SRC_URI="https://github.com/xmlrunner/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/django[${PYTHON_USEDEP}] )"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
+
+export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
 
 pkg_postinst() {
 	optfeature "integration with django" dev-python/django
