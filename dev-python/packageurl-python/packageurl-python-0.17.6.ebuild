@@ -17,8 +17,12 @@ KEYWORDS="~amd64 ~x86"
 
 distutils_enable_tests pytest
 
-python_test() {
+EPYTEST_IGNORE=(
+	spec
+)
+
+python_prepare_all() {
 	edo mkdir -p spec/tests/{types,spec}
 	edo echo '{"tests":[]}' > spec/tests/spec/specification-test.json
-	epytest --ignore=spec/
+	distutils-r1_python_prepare_all
 }
