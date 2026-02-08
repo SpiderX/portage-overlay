@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit distutils-r1 git-r3 optfeature
 
@@ -19,18 +19,17 @@ PROPERTIES="test_network"
 
 RDEPEND="dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/aws-encryption-sdk[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/avro[${PYTHON_USEDEP}]
+		dev-python/aws-encryption-sdk[${PYTHON_USEDEP}]
 		dev-python/aws-xray-sdk[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/jsonpath-ng[${PYTHON_USEDEP}]
 		dev-python/multiprocess[${PYTHON_USEDEP}]
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/pydantic-settings[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-socket[${PYTHON_USEDEP}]
 		dev-python/redis[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-{asyncio,mock,socket} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
@@ -48,14 +47,7 @@ EPYTEST_DESELECT=(
 	tests/performance/test_metrics.py::test_metrics_large_operation_and_json_serialization_sla
 )
 
-python_prepare_all() {
-	# disable intergation test
-	rm -rf tests/e2e/ \
-		tests/unit/idempotency/ \
-		tests/integration/ || die "rm failed"
-
-	distutils-r1_python_prepare_all
-}
+EPYTEST_IGNORE=( tests/{e2e,unit/idempotency,integration} )
 
 pkg_postinst() {
 	optfeature "support for parser" dev-python/pydantic
@@ -63,5 +55,6 @@ pkg_postinst() {
 	optfeature "support for tracer" dev-python/aws-xray-sdk-python
 	optfeature "support for redis" dev-python/redis
 	optfeature "support for aws-sdk" dev-python/boto3
+	optfeature "support for avro" dev-python/avro
 	optfeature "support for datamasking" dev-python/aws-encryption-sdk dev-python/jsonpath-ng
 }
