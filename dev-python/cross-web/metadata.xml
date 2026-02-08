@@ -10,12 +10,12 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Lia provides a unified interface for common web framework operations, allowing
+	Cross provides a unified interface for common web framework operations, allowing
 	to write framework-agnostic code that can be easily adapted to work with
 	FastAPI, Flask, Django, and other popular Python web frameworks.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">patrick91/lia</remote-id>
-		<remote-id type="pypi">lia-web</remote-id>
+		<remote-id type="github">usecross/cross-web</remote-id>
+		<remote-id type="pypi">cross-web</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -970,6 +970,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[cron-converter](https://github.com/Sonic0/cron-converter) | Cron string parser and scheduler for Python
 *   dev-python/[cron-descriptor](https://github.com/Salamek/cron-descriptor) | Converts cron expressions into human readable strings
 *   dev-python/[crossplane](https://github.com/nginxinc/crossplane) | Fast and reliable NGINX configuration parser
+*   dev-python/[cross-web](https://github.com/usecross/cross-web) | A library for working with web frameworks
 *   dev-python/[ctypescrypto](https://github.com/vbwagner/ctypescrypto) | File format determination library for Python
 *   dev-python/[curio](https://github.com/dabeaz/curio) | Coroutine-based library for concurrent Python systems programming
 *   dev-python/[cyclonedx-python-lib](https://github.com/CycloneDX/cyclonedx-python-lib) | Python library for generating CycloneDX SBOMs
@@ -1095,7 +1096,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[langdetect](https://github.com/Mimino666/langdetect) | Language detection library ported from Google
 *   dev-python/[lazy-model](https://github.com/BeanieODM/lazy_model) | Lazy parsing for Pydantic models
 *   dev-python/[ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump) | Active Directory information dumper via LDAP
-*   dev-python/[lia-web](https://github.com/patrick91/lia) | A library for working with web frameworks
 *   dev-python/[libvalkey](https://github.com/valkey-io/libvalkey-py) | Python wrapper for libvalkey
 *   dev-python/[litestar](https://github.com/litestar-org/litestar) | A production-ready, highly performant, extensible ASGI API Framework
 *   dev-python/[litestar-htmx](https://github.com/litestar-org/litestar-htmx) | The HTMX Plugin for Litestar
