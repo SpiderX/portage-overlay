@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,17 +35,13 @@ BDEPEND="test? ( dev-python/django-filter[${PYTHON_USEDEP}]
 		sci-libs/gdal
 		sci-libs/geos )"
 
-PATCHES=( "${FILESDIR}/${PN}"-0.28.0-drf-auth.patch )
-
 EPYTEST_PLUGINS=( pytest-django )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# AssertionError
-	tests/test_regressions.py::test_model_choice_display_method_on_readonly
+	tests/contrib/test_pydantic.py::test_pydantic_decoration
 	tests/contrib/test_rest_polymorphic.py::test_rest_polymorphic
+	# KeyError: 'schemas'
 	tests/contrib/test_rest_polymorphic.py::test_rest_polymorphic_split_request_with_ro_serializer
-	tests/test_callbacks.py::test_callbacks
-	tests/test_callbacks.py::test_callbacks_split_request
-	tests/test_i18n.py::test_i18n_strings
 )

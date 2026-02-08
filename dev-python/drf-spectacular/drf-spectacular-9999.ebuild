@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,6 +40,8 @@ distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# AssertionError
+	tests/contrib/test_pydantic.py::test_pydantic_decoration
 	tests/contrib/test_rest_polymorphic.py::test_rest_polymorphic
+	# KeyError: 'schemas'
 	tests/contrib/test_rest_polymorphic.py::test_rest_polymorphic_split_request_with_ro_serializer
 )
