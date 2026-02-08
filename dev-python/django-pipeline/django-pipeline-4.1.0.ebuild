@@ -1,13 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 edo optfeature
 
 DESCRIPTION="An asset packaging library for Django"
 HOMEPAGE="https://github.com/jazzband/django-pipeline"
@@ -29,17 +29,17 @@ distutils_enable_tests pytest
 export DJANGO_SETTINGS_MODULE='tests.settings'
 export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
 
-python_test() {
-	local -x PYTHONPATH=.
-	${PYTHON} /usr/bin/django-admin test -v2 || die "tests failed with ${EPYTHON}"
-}
-
 python_prepare_all() {
 	# do not install docs and tests
 	sed -i '/exclude/s|tests.tests|tests.*", "docs|' pyproject.toml \
 		|| die "sed failed for pyproject.toml"
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	local -x PYTHONPATH=.
+	edo django-admin test -v2
 }
 
 pkg_postinst() {
