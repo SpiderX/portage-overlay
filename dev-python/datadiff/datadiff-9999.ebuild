@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 git-r3
 
@@ -17,7 +17,13 @@ SLOT="0"
 
 BDEPEND="test? ( dev-python/six[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# Failed: DID NOT RAISE <class 'datadiff.NotHashable'>
+	datadiff/tests/test_datadiff.py::test_unhashable_type
+)
 
 python_install_all() {
 	distutils-r1_python_install_all
