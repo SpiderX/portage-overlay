@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1470](https://img.shields.io/badge/ebuild-1470-orange.svg)](https://img.shields.io/badge/ebuild-1470-orange.svg)
+[![Number of ebuilds: 1471](https://img.shields.io/badge/ebuild-1471-orange.svg)](https://img.shields.io/badge/ebuild-1471-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -950,6 +950,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[cached-property](https://github.com/pydanny/cached-property) | A cached-property for decorating methods in classes
 *   dev-python/[celery](https://github.com/celery/celery) | Asynchronous task job queue based on distributed message passing
 *   dev-python/[channels](https://github.com/django/channels) | Brings async, event-driven capabilities to Django
+*   dev-python/[chalice](https://github.com/aws/chalice) | Python Serverless Microframework for AWS
 *   dev-python/[chevron](https://github.com/noahmorrison/chevron) | Mustache templating language renderer
 *   dev-python/[cfgv](https://github.com/asottile/cfgv) | Validate configuration and produce human readable error messages
 *   dev-python/[circuitbreaker](https://github.com/fabfuel/circuitbreaker) | Python Circuit Breaker pattern implementation
