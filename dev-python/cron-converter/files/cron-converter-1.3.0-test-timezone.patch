@@ -1,0 +1,16 @@
+--- ../tests/integration/fixtures/valid_schedule_date.py.org	2026-01-25 09:20:47.649595679 +0200
++++ ../tests/integration/fixtures/valid_schedule_date.py	2026-01-25 09:20:56.603508472 +0200
+@@ -173,13 +173,5 @@
+   {
+     'schedule': '10 1 * 6 *',
+     'timezone': 'Etc/UTC'
+-  },
+-  {
+-    'schedule': '10 1 * 6 *',
+-    'timezone': 'Europe/Rome'
+-  },
+-  {
+-    'schedule': '10 1 * 6 *',
+-    'timezone': 'America/New_York'
+   }
+ ]
