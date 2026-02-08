@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit distutils-r1 edo git-r3 optfeature
 
@@ -22,6 +22,7 @@ BDEPEND="test? ( dev-db/redis
 		dev-python/sentry-sdk[${PYTHON_USEDEP}]
 		dev-python/prometheus-client[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-django )
 distutils_enable_tests pytest
 
 python_test() {
@@ -31,7 +32,8 @@ python_test() {
 		port 6379
 		bind 127.0.0.1
 	EOF
-	edo django-admin test django_rq --settings=django_rq.tests.settings --pythonpath=. -v2
+	# sysctl -w vm.overcommit_memory=1
+	edo django-admin test tests --settings=tests.settings --pythonpath=. -v2
 	edo kill "$(<"${T}/redis.pid")"
 }
 
