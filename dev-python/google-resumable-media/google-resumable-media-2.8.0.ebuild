@@ -6,14 +6,19 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+MY_PN="${PN}-python"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Utilities for Google Media Downloads and Resumable Uploads"
 HOMEPAGE="https://github.com/googleapis/google-resumable-media-python"
-EGIT_REPO_URI="https://github.com/googleapis/google-resumable-media-python.git"
+SRC_URI="https://github.com/googleapis/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="dev-python/aiohttp[${PYTHON_USEDEP}]
