@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1469](https://img.shields.io/badge/ebuild-1469-orange.svg)](https://img.shields.io/badge/ebuild-1469-orange.svg)
+[![Number of ebuilds: 1470](https://img.shields.io/badge/ebuild-1470-orange.svg)](https://img.shields.io/badge/ebuild-1470-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -920,6 +920,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[asyauth](https://github.com/skelsec/asyauth) | Unified authentication library
 *   dev-python/[asyncpg](https://github.com/MagicStack/asyncpg) | A fast PostgreSQL Database Client Library for Python/asyncio
 *   dev-python/[asysocks](https://github.com/skelsec/asysocks) | Asynchronous socks and http proxy library
+*   dev-python/[avro](https://avro.apache.org) | Avro is a serialization and RPC framework
 *   dev-python/[aws-cryptography-internal-dynamodb](https://github.com/aws/aws-cryptographic-material-providers-library) | AWS Cryptographic Internal ComAmazonawsDynamodb
 *   dev-python/[aws-cryptography-internal-kms](https://github.com/aws/aws-cryptographic-material-providers-library) | AWS Cryptographic Internal ComAmazonAwsKms
 *   dev-python/[aws-cryptography-internal-primitives](https://github.com/aws/aws-cryptographic-material-providers-library) | AWS Cryptographic Internal AwsCryptographyPrimitives
