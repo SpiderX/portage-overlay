@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -26,6 +26,8 @@ BDEPEND="test? ( dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/dishka[${PYTHON_USEDEP}]
 		dev-python/fsspec[${PYTHON_USEDEP}]
 		dev-python/google-cloud-spanner[${PYTHON_USEDEP}]
+		dev-python/minio[${PYTHON_USEDEP}]
+		dev-python/mysql-connector-python[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
 		dev-python/psycopg:0[${PYTHON_USEDEP}]
 		dev-python/oracledb[${PYTHON_USEDEP}]
