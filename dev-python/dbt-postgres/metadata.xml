@@ -15,7 +15,7 @@
 	into a PostgreSQL database.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">dbt-labs/dbt-adapters</remote-id>
-		<remote-id type="pypi">dbt-adapters</remote-id>
+		<remote-id type="github">dbt-labs/dbt-postgres</remote-id>
+		<remote-id type="pypi">dbt-postgres</remote-id>
 	</upstream>
 </pkgmetadata>
