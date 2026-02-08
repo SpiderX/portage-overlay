@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,8 +14,19 @@ HOMEPAGE="https://github.com/hbldh/bleak"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test" # no tests
 
 RDEPEND="dev-python/dbus-fast[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=( tests/integration )
+
+src_prepare() {
+	default
+
+	# remove coverage
+	sed -i  -e '/addopts/,+4d' \
+		-e '/ignore/d' pyproject.toml || die "sed failed"
+}
