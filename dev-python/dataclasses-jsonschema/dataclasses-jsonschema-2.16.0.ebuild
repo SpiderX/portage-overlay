@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -26,6 +26,9 @@ BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 		dev-python/apispec-webframeworks[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}] )"
 
+export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
@@ -36,8 +39,6 @@ EPYTEST_DESELECT=(
 )
 
 python_prepare_all() {
-	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
-
 	# remove pytest-runner
 	sed -i "/setup_requires/s/'pytest-runner', //" \
 		setup.py || die "sed failed for setup.py"
