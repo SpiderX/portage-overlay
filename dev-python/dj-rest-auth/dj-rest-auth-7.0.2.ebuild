@@ -1,11 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -24,9 +23,7 @@ BDEPEND="test? ( dev-python/django-allauth[${PYTHON_USEDEP}]
 		dev-python/djangorestframework-simplejwt[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.0.1-django-allauth-v65.patch
-	"${FILESDIR}/${PN}"-7.0.1-django-allauth-v65-reg.patch )
-
+EPYTEST_PLUGINS=( pytest-django )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
