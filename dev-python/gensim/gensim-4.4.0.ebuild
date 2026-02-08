@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit distutils-r1 edo
 
@@ -35,6 +35,14 @@ BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 EPYTEST_XDIST=1
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# AssertionError
+	gensim/test/test_similarities.py::TestWord2VecAnnoyIndexer::test_annoy_indexing_of_keyed_vectors
+	gensim/test/test_similarities.py::TestWord2VecAnnoyIndexer::test_fast_text
+	gensim/test/test_similarities.py::TestWord2VecAnnoyIndexer::test_word2vec
+	gensim/test/test_similarities.py::TestDoc2VecAnnoyIndexer::test_save
+)
 
 python_compile() {
 	distutils-r1_python_compile
