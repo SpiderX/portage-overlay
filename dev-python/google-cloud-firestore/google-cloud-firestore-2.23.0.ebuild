@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/google-api-core[grpc,${PYTHON_USEDEP}]
 	dev-python/google-auth[${PYTHON_USEDEP}]
@@ -35,6 +35,7 @@ EPYTEST_IGNORE=(
 	# google.auth.exceptions.DefaultCredentialsError
 	tests/system/test_system.py
 	tests/system/test_system_async.py
+	tests/system/test_pipeline_acceptance.py
 )
 
 python_compile() {
