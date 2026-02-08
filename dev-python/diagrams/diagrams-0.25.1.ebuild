@@ -6,14 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="Diagram as Code for prototyping cloud system architectures"
 HOMEPAGE="https://github.com/mingrammer/diagrams"
-EGIT_REPO_URI="https://github.com/mingrammer/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
+RESTRICT="test" # no tests
 
 RDEPEND="dev-python/graphviz[${PYTHON_USEDEP}]
 	dev-python/jinja2[${PYTHON_USEDEP}]"
