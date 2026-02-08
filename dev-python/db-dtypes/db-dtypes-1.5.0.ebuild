@@ -6,14 +6,14 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="Pandas Data Types for SQL systems"
 HOMEPAGE="https://github.com/googleapis/python-db-dtypes-pandas"
-EGIT_REPO_URI="https://github.com/googleapis/python-db-dtypes-pandas.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
