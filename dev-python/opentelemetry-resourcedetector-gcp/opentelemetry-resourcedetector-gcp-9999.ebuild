@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit distutils-r1 git-r3
 
@@ -27,13 +27,13 @@ distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# AssertionError
-	tests/test_detector.py::test_detects_empty_when_not_available
-	tests/test_detector.py::test_detects_empty_as_fallback
-	tests/test_detector.py::test_detects_gce
-	tests/test_detector.py::test_detects_gke
-	tests/test_detector.py::test_detects_cloud_run
-	tests/test_detector.py::test_detects_cloud_functions
-	tests/test_detector.py::test_detects_gae_standard
-	tests/test_detector.py::test_detects_gae_flex
 	tests/test_mapping.py::test_get_monitored_resource
+	tests/test_gcp_resource_detector.py::test_detects_empty_when_not_available
+	tests/test_gcp_resource_detector.py::test_detects_empty_as_fallback
+	tests/test_gcp_resource_detector.py::test_detects_gce
+	tests/test_gcp_resource_detector.py::test_detects_gke
+	tests/test_gcp_resource_detector.py::test_detects_cloud_run
+	tests/test_gcp_resource_detector.py::test_detects_cloud_functions
+	tests/test_gcp_resource_detector.py::test_detects_gae_standard
+	tests/test_gcp_resource_detector.py::test_detects_gae_flex
 )
