@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit distutils-r1 git-r3 optfeature
 
@@ -25,6 +25,7 @@ BDEPEND="test? ( dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/botocore[${PYTHON_USEDEP}]
 		dev-python/python-memcached[${PYTHON_USEDEP}]
 		dev-python/redis[${PYTHON_USEDEP}]
+		dev-python/tzlocal[${PYTHON_USEDEP}]
 		dev-python/urllib3[${PYTHON_USEDEP}] )"
 
 EPYTEST_PLUGINS=( pytest-{celery,docker-tools} )
