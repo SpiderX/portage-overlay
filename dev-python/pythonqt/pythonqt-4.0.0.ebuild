@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit edo qmake-utils python-single-r1 virtualx
 
@@ -60,12 +60,12 @@ src_configure() {
 		PREFIX="${EPREFIX}"/usr
 	if use test ; then
 		# create empty dir to pass check in common.prf
-		edo mkdir generated_cpp_69
+		edo mkdir generated_cpp_610
 		edo pushd tests
 		eqmake6 PYTHON_DIR="/usr" PYTHON_VERSION="${EPYTHON/python}" \
 			CONFIG+="$(usex debug debug release '' '')"
 		edo popd
-		edo rmdir generated_cpp_69
+		edo rmdir generated_cpp_610
 	fi
 }
 
