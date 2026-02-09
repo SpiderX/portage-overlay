@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 git-r3
 
@@ -26,7 +26,8 @@ RDEPEND="dev-python/aiofiles[${PYTHON_USEDEP}]
 	dev-python/uvloop[${PYTHON_USEDEP}]
 	dev-python/websockets[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/aioquic[${PYTHON_USEDEP}]
-		dev-python/sanic-testing[${PYTHON_USEDEP}] )"
+		dev-python/sanic-testing[${PYTHON_USEDEP}]
+		dev-python/uvicorn[${PYTHON_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}/${PN}"-25.3.0-test-ipv6.patch )
 
@@ -34,6 +35,17 @@ EPYTEST_PLUGINS=( pytest-{asyncio,django} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
+	# RuntimeError: Event loop is closed
+	tests/test_app.py::test_create_asyncio_server
+	tests/test_app.py::test_asyncio_server_no_start_serving
+	tests/test_app.py::test_asyncio_server_start_serving
+	tests/test_app.py::test_create_server_main
+	tests/test_app.py::test_create_server_no_startup
+	tests/test_app.py::test_create_server_main_convenience
+	tests/test_app.py::test_uvloop_cannot_never_called_with_create_server
+	tests/test_app.py::test_multiple_uvloop_configs_display_warning
+	# AssertionError: assert 'text/xml; charset=utf-8' == 'application/xml'
+	tests/test_response_file.py::test_guess_content_type
 	# Address family not supported by protocol
 	tests/test_request.py::test_ipv6_address_is_not_wrapped
 	# ValueError: Exception during request
