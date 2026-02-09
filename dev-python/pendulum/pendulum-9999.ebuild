@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=maturin
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit cargo distutils-r1 git-r3
 
@@ -18,10 +18,12 @@ SLOT="0"
 
 RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/tzdata[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/time-machine[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/pytz[${PYTHON_USEDEP}]
+		dev-python/time-machine[${PYTHON_USEDEP}] )"
 
-QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/pendulum/_pendulum.cpython-313-x86_64-linux-gnu.so"
+QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/pendulum/_pendulum.cpython-.*-x86_64-linux-gnu.so"
 
+EPYTEST_PLUGINS=( pytest-benchmark )
 distutils_enable_tests pytest
 
 src_unpack() {
