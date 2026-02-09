@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=maturin
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 CRATES="actix-codec@0.5.2
 	actix-http@3.11.0
@@ -225,11 +225,11 @@ CRATES="actix-codec@0.5.2
 	ppv-lite86@0.2.21
 	proc-macro2@1.0.95
 	psm@0.1.26
-	pyo3-build-config@0.23.5
-	pyo3-ffi@0.23.5
-	pyo3-macros-backend@0.23.5
-	pyo3-macros@0.23.5
-	pyo3@0.23.5
+	pyo3-build-config@0.27.0
+	pyo3-ffi@0.27.0
+	pyo3-macros-backend@0.27.0
+	pyo3-macros@0.27.0
+	pyo3@0.27.0
 	quick-xml@0.32.0
 	quote@1.0.40
 	r-efi@5.2.0
@@ -290,7 +290,7 @@ CRATES="actix-codec@0.5.2
 	syn@2.0.101
 	synstructure@0.13.2
 	syntect@5.2.0
-	target-lexicon@0.12.16
+	target-lexicon@0.13.3
 	tempfile@3.20.0
 	tera@1.20.0
 	terminal_size@0.4.2
@@ -400,6 +400,7 @@ KEYWORDS="~amd64"
 
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/minijinja/_lowlevel.abi3.so"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_prepare() {
