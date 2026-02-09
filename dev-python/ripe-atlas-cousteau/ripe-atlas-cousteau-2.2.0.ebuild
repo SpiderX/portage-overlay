@@ -1,12 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYPI_PN="${PN//-/.}"
-PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -27,12 +25,9 @@ BDEPEND="test? ( dev-python/jsonschema[${PYTHON_USEDEP}] )"
 DOCS=( {CHANGES,README}.rst )
 
 distutils_enable_sphinx docs
-distutils_enable_tests pytest
 
-python_install_all() {
-	distutils-r1_python_install_all
-	rm -rf "ripe/__pycache__" "ripe/atlas/__pycache__" || die
-}
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
 
 pkg_postinst() {
 	optfeature "fast json processing" dev-python/ujson
