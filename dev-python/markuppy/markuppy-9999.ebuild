@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 git-r3
 
@@ -15,4 +15,5 @@ EGIT_REPO_URI="https://github.com/tylerbakke/MarkupPy.git"
 LICENSE="MIT"
 SLOT="0"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
