@@ -1,16 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
-EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
+PYTHON_COMPAT=( python3_{12,13} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="VMware vCloud Director Python SDK"
 HOMEPAGE="https://github.com/vmware/pyvcloud"
+EGIT_REPO_URI="https://github.com/vmware/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -30,9 +30,9 @@ BDEPEND="test? ( dev-python/pygments[${PYTHON_USEDEP}]
 distutils_enable_tests unittest
 
 python_test() {
-	pushd tests || die "pushd failed"
-	./run-tests.sh "${PYTHON}" -m unittest discover -v test || die "tests failed with ${EPYTHON}"
-	popd || die "popd failed"
+	edo pushd tests
+	edo ./run-tests.sh "${PYTHON}" -m unittest discover -v test
+	edo popd
 }
 
 python_install_all() {

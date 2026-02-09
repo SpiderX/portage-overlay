@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
-inherit distutils-r1
+inherit distutils-r1 edo
 
 DESCRIPTION="VMware vCloud Director Python SDK"
 HOMEPAGE="https://github.com/vmware/pyvcloud"
@@ -39,14 +39,14 @@ python_prepare_all() {
 }
 
 python_test() {
-	pushd tests || die "pushd failed"
-	./run-tests.sh "${PYTHON}" -m unittest discover -v test || die "tests failed with ${EPYTHON}"
-	popd || die "popd failed"
+	edo pushd tests
+	edo ./run-tests.sh "${PYTHON}" -m unittest discover -v test
+	edo popd
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
-	# Don't install license
+	# don't install license
 	find "${ED}" -type f -name "open_source_license_pyvCloud_20.0.0_GA.txt" -exec rm -rv {} + \
 		|| die "test removing failed"
 }
