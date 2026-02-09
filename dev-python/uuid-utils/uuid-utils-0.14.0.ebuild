@@ -1,18 +1,19 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=maturin
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12,13} )
 
-CRATES="atomic@0.6.0
+CRATES="ahash@0.8.12
+	atomic@0.6.1
 	autocfg@1.1.0
 	bitflags@2.5.0
 	block-buffer@0.10.4
 	bumpalo@3.19.0
-	bytemuck@1.16.1
+	bytemuck@1.23.2
 	cc@1.0.83
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
@@ -29,29 +30,29 @@ CRATES="atomic@0.6.0
 	md-5@0.10.6
 	memoffset@0.9.0
 	nix@0.29.0
-	once_cell@1.18.0
+	once_cell@1.21.3
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
 	proc-macro2@1.0.86
-	pyo3-build-config@0.25.1
-	pyo3-ffi@0.25.1
-	pyo3-macros-backend@0.25.1
-	pyo3-macros@0.25.1
-	pyo3@0.25.1
+	pyo3-build-config@0.27.2
+	pyo3-ffi@0.27.2
+	pyo3-macros-backend@0.27.2
+	pyo3-macros@0.27.2
+	pyo3@0.27.2
 	python3-dll-a@0.2.13
 	quote@1.0.36
 	r-efi@5.2.0
-	rand@0.9.1
+	rand@0.9.2
 	rand_chacha@0.9.0
 	rand_core@0.9.3
-	rustversion@1.0.21
-	sha1_smol@1.0.0
+	rustversion@1.0.22
+	sha1_smol@1.0.1
 	syn@2.0.68
 	target-lexicon@0.13.2
-	typenum@1.17.0
+	typenum@1.18.0
 	unicode-ident@1.0.12
 	unindent@0.2.3
-	uuid@1.17.0
+	uuid@1.19.0
 	version_check@0.9.4
 	wasi@0.14.2+wasi-0.2.4
 	wasm-bindgen-backend@0.2.100
@@ -62,7 +63,9 @@ CRATES="atomic@0.6.0
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
-	wit-bindgen-rt@0.39.0"
+	wit-bindgen-rt@0.39.0
+	zerocopy-derive@0.8.26
+	zerocopy@0.8.26"
 
 inherit cargo distutils-r1 pypi
 
@@ -78,4 +81,10 @@ KEYWORDS="~amd64"
 
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/uuid_utils/_uuid_utils.abi3.so"
 
+EPYTEST_PLUGINS=( pytest-{benchmark,codspeed} )
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# assert 113826483071490 == 1616943758837
+	tests/test_uuid.py::test_getnode
+)
