@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit distutils-r1 optfeature
 
@@ -17,15 +17,16 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/graphql-core[${PYTHON_USEDEP}]
-	dev-python/lia-web[${PYTHON_USEDEP}]
+RDEPEND="dev-python/cross-web[${PYTHON_USEDEP}]
+	dev-python/graphql-core[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/channels[${PYTHON_USEDEP}]
-		dev-python/inline-snapshot[${PYTHON_USEDEP}]
+		dev-python/email-validator[${PYTHON_USEDEP}]
 		dev-python/libcst[${PYTHON_USEDEP}]
+		dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 		dev-python/pyinstrument[${PYTHON_USEDEP}]
 		dev-python/quart[${PYTHON_USEDEP}]
 		dev-python/sanic[${PYTHON_USEDEP}]
@@ -35,7 +36,7 @@ BDEPEND="test? ( dev-python/aiohttp[${PYTHON_USEDEP}]
 
 export DJANGO_SETTINGS_MODULE='tests.django.django_settings'
 
-EPYTEST_PLUGINS=( pytest-{asyncio,codspeed,django,emoji,mock,snapshot} )
+EPYTEST_PLUGINS=( inline-snapshot pytest-{asyncio,codspeed,django,emoji,mock,snapshot} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
@@ -44,6 +45,8 @@ EPYTEST_DESELECT=(
 	# AssertionError
 	tests/http/incremental/test_multipart_subscription.py::test_multipart_subscription
 )
+
+EPYTEST_IGNORE=( tests/benchmarks )
 
 pkg_postinst() {
 	optfeature "integration with aiohttp" dev-python/aiohttp
