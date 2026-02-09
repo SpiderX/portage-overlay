@@ -1,0 +1,11 @@
+--- ../tests/test_connect.py	2026-01-27 16:13:17.938601049 +0200
++++ ../tests/test_connect.py	2026-01-27 16:13:36.826951252 +0200
+@@ -132,7 +132,7 @@
+ 
+     @tests.VCRTestBase.my_vcr.use_cassette('http_proxy.yaml',
+                       cassette_library_dir=tests.fixtures_path,
+-                      record_mode='once')
++                      record_mode='new_episodes')
+     def test_http_proxy(self):
+         conn = connect.SoapStubAdapter(
+             'vcenter.test',
