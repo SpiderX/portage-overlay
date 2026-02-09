@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
 inherit distutils-r1 optfeature
 
@@ -38,7 +38,9 @@ BDEPEND="test? ( app-arch/brotli[python,${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		dev-python/rq[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		dev-python/starlette[${PYTHON_USEDEP}] )"
+		dev-python/starlette[${PYTHON_USEDEP}]
+		sci-libs/gdal[python,${PYTHON_USEDEP}] )"
+# $(python_gen_any_dep 'sci-libs/gdal[python,${PYTHON_USEDEP}]') )"
 
 DOCS=( {CHANGELOG,MIGRATION_GUIDE,README}.md )
 
@@ -56,7 +58,7 @@ EPYTEST_DESELECT=(
 	tests/test_utils.py::test_datetime_from_isoformat_with_py_36_or_lower
 	tests/test_utils.py::test_default_release
 )
-EPYTEST_IGNORE=( tests/integrations )
+EPYTEST_IGNORE=( tests/{integrations,test_shadowed_module.py} )
 
 src_prepare() {
 	default
