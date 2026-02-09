@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 git-r3
 
@@ -22,6 +22,7 @@ RDEPEND="|| ( dev-python/pycryptodome[${PYTHON_USEDEP}]
 		${CDEPEND} )"
 BDEPEND="test? ( ${CDEPEND} )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -29,10 +30,6 @@ python_prepare_all() {
 	sed -i 's/Cryptodome/Crypto/' unicrypto/__init__.py \
 		unicrypto/backends/pycryptodomex/{AES,DES,RC4,TDES}.py \
 		tests/trace || die "sed failed for cryptodomex"
-
-	# don't install tests
-	sed -i '/find_packages/s/)/exclude=["tests*"])/' setup.py \
-		|| die "sed failed for setup.py"
 
 	distutils-r1_python_prepare_all
 }
