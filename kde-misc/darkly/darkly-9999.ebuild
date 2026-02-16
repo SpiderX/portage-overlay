@@ -3,11 +3,22 @@
 
 EAPI=8
 
-inherit ecm git-r3
+inherit ecm
+
+MY_PN=${PN^}
+MY_P=${P^}
 
 DESCRIPTION="A modern style for qt applications"
 HOMEPAGE="https://github.com/Bali10050/Darkly"
-EGIT_REPO_URI="https://github.com/Bali10050/${PN^}.git"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/Bali10050/Darkly.git"
+else
+	SRC_URI="https://github.com/Bali10050/Darkly/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${MY_P}"
+fi
 
 LICENSE="GPL-2"
 SLOT="6"
