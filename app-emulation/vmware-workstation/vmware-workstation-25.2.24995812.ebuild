@@ -1,28 +1,28 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit desktop pam python-any-r1 readme.gentoo-r1 systemd xdg
+inherit desktop edo pam python-any-r1 readme.gentoo-r1 systemd xdg
 
-PV_BUILD=$(ver_cut 4)
+PV_BUILD=$(ver_cut 3)
 MY_PN="VMware-Workstation-Full"
-MY_PV=$(ver_cut 1-3)
+MY_PV="$(ver_cut 1)H$(ver_cut 2)"
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 MY_ED="$ED"
 
 VMWARE_FUSION_VER="13.6.3/24585314"
 SYSTEMD_UNITS_TAG="gentoo-02"
-UNLOCKER_VERSION="3.0.5"
+UNLOCKER_VERSION="3.1.3"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
 HOMEPAGE="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion"
 SRC_URI="${MY_P}.x86_64.bundle
-	macos-guests? ( https://github.com/paolo-projects/unlocker/archive/${UNLOCKER_VERSION}.tar.gz ->
+	macos-guests? ( https://github.com/BDisp/unlocker/archive/${UNLOCKER_VERSION}.tar.gz ->
 			unlocker-${UNLOCKER_VERSION}.tar.gz
-			com.vmware.fusion-${PV}.zip.tar )
+			https://packages-prod.broadcom.com/tools/frozen/darwin/darwin.iso )
 	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz ->
 			vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
 S="${WORKDIR}"/extracted
@@ -73,6 +73,8 @@ QA_SONAME="opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_dbm.cpy
 	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_gdbm.cpython-310-x86_64-linux-gnu.so
 	opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/readline.cpython-310-x86_64-linux-gnu.so"
 
+QA_TEXTRELS="opt/vmware/lib/vmware/bin/vmware-vmx*"
+
 IUSE_VMWARE_GUESTS="darwin linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista"
 for guest in ${IUSE_VMWARE_GUESTS}; do IUSE+=" vmware-tools-${guest}" ; done
 
@@ -85,24 +87,21 @@ pkg_nofetch() {
 src_unpack() {
 	for AFILE in ${A}; do
 		if [ "${AFILE##*.}" == "bundle" ]; then
-			cp "${DISTDIR}/${AFILE}" "${WORKDIR}"
+			edo cp "${DISTDIR}/${AFILE}" "${WORKDIR}"
 		else
 			unpack "${AFILE}"
 		fi
 	done
 
-	sh "${MY_P}".x86_64.bundle --console --required --eulas-agreed -x extracted \
-		|| die "bundle extract failed"
+	edo sh "${MY_P}".x86_64.bundle --console --required --eulas-agreed -x extracted
 
-	if ! use vix; then
-		rm -r extracted/vmware-vix-core extracted/vmware-vix-lib-Workstation* \
-			|| die "removing vix failed"
+	if ! use vix ; then
+		edo rm -r extracted/vmware-vix-core extracted/vmware-vix-lib-Workstation*
 	fi
 
 	if use vmware-tools-darwin ; then
-		unzip -j -d extracted/vmware-tools-darwin/ com.vmware.fusion.zip \
-			"payload/VMware Fusion.app/Contents/Library/isoimages/x86_x64/darwin.iso" \
-			|| die "unzip for darwin.iso failed"
+		edo mkdir extracted/vmware-tools-darwin
+		edo cp "${DISTDIR}/darwin.iso" extracted/vmware-tools-darwin
 	fi
 }
 
@@ -110,16 +109,13 @@ src_prepare() {
 	default
 
 	# 459566
-	mkdir vmware-network-editor/lib/lib \
-		|| die "mkdir for /opt/vmware/bin/vmware failed"
-	mv vmware-network-editor/lib/libvmware-netcfg.so \
-		vmware-network-editor/lib/lib/ \
-		|| die "moving libvmware-netcfg.so failed"
+	edo mkdir vmware-network-editor/lib/lib
+	edo mv vmware-network-editor/lib/libvmware-netcfg.so \
+		vmware-network-editor/lib/lib/
 
-	rm -f vmware-installer/bin/configure-initscript.sh \
-		|| die "removing configure-initscript.sh failed"
+	edo rm -f vmware-installer/bin/configure-initscript.sh
 
-	chrpath -d vmware-ovftool/libcurl.so.4 || die "chrpath failed"
+	edo chrpath -d vmware-ovftool/libcurl.so.4
 
 	if use macos-guests ; then
 		sed -i  -e "s#vmx_path = '/usr#vmx_path = '${MY_ED}/opt/vmware#" \
@@ -162,10 +158,10 @@ src_install() {
 		vmware-vprobe/lib/. \
 		vmware-workstation/lib/. \
 		vmware-vmx/roms
-	rm -rf "${ED}"/opt/vmware/lib/vmware/lib{nfc-types,soclient,vim-types}.so \
+	edo rm -rf "${ED}"/opt/vmware/lib/vmware/lib{nfc-types,soclient,vim-types}.so \
 		"${ED}"/opt/vmware/lib/vmware/libvm{acore,omi,ware-hostd,ware-wssc-adminTool}.so \
 		"${ED}"/opt/vmware/lib/vmware/diskLibWrapper.so \
-		|| die "removing libraries failed"
+		"${ED}"/opt/vmware/lib/vmware/lib/libstdc++.so.6
 
 	# Install the installer
 	insinto /opt/vmware/lib/vmware-installer/"${vmware_installer_version}"
@@ -350,7 +346,7 @@ src_install() {
 		acceptOVFEULA = "yes"
 	EOF
 
-	if use vix; then
+	if use vix ; then
 		cat >> "${ED}"/etc/vmware/config <<-EOF
 			vix.libdir = "/opt/vmware/lib/vmware-vix"
 			vix.config.version = "1"
