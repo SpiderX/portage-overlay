@@ -1,19 +1,19 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit linux-mod-r1 udev
 
-COMMIT="7bab658ccb4ba783b984e800a30925eea46448ff"
+COMMIT="5c80f597017882f76e9c7ffd48a292a4b7c860fe"
 
 DESCRIPTION="VMware kernel modules"
-HOMEPAGE="https://github.com/bytium/vm-host-modules"
-SRC_URI="https://github.com/bytium/vm-host-modules/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
-S="${WORKDIR}/vm-host-modules-${COMMIT}"
+HOMEPAGE="https://github.com/philipl/vm-host-modules"
+SRC_URI="https://github.com/philipl/vmware-host-modules/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
+S="${WORKDIR}/vmware-host-modules-${COMMIT}"
 
 LICENSE="GPL-2"
-SLOT="${PV%.*}"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/vmware"
