@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1472](https://img.shields.io/badge/ebuild-1472-orange.svg)](https://img.shields.io/badge/ebuild-1472-orange.svg)
+[![Number of ebuilds: 1473](https://img.shields.io/badge/ebuild-1473-orange.svg)](https://img.shields.io/badge/ebuild-1473-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -62,6 +62,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[docker-pretty-ps](https://github.com/politeauthority/docker-pretty-ps) | docker ps in colored and long output
 *   app-admin/[doctl](https://github.com/digitalocean/doctl) | A command line tool for DigitalOcean services
 *   app-admin/[ebs-autoresize](https://github.com/mpostument/ebs-autoresize) | Automatically resize EBS
+*   app-admin/[eks-node-viewer](https://github.com/awslabs/eks-node-viewer) | EKS Node Viewer
 *   app-admin/[fselect](https://github.com/jhspetersson/fselect) | Find files with SQL-like queries
 *   app-admin/[glaball](https://github.com/flant/glaball) | Gitlab bulk administration tool
 *   app-admin/[grex](https://github.com/pemistahl/grex) | A CLI tool for generating regular expressions
