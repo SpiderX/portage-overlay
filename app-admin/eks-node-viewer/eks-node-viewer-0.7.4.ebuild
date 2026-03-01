@@ -5,6 +5,7 @@ EAPI=8
 
 inherit go-module
 
+COMMIT="798f9ba"
 EGO_SUM=(
 	"github.com/Pallinder/go-randomdata v1.2.0"
 	"github.com/Pallinder/go-randomdata v1.2.0/go.mod"
@@ -314,7 +315,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 src_compile() {
-	LDFLAGS="-w -X main.version=${PV} -X main.builtBy=Makefile=portage"
+	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
+	LDFLAGS="-w -X main.version=${PV} -X main.builtBy=portage
+	-X main.commit=${COMMIT} -X \"main.date=${DATE}\""
 	ego build -buildmode=pie -ldflags "${LDFLAGS}" ./cmd/eks-node-viewer
 }
 

@@ -18,7 +18,9 @@ src_unpack() {
 }
 
 src_compile() {
-	LDFLAGS="-w -X main.version=${PV} -X main.builtBy=Makefile=portage"
+	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
+	LDFLAGS="-w -X main.version=${PV} -X main.builtBy=portage
+	-X main.commit=${COMMIT} -X \"main.date=${DATE}\""
 	ego build -buildmode=pie -ldflags "${LDFLAGS}" ./cmd/eks-node-viewer
 }
 
