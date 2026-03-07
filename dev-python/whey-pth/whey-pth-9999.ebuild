@@ -17,7 +17,7 @@ SLOT="0"
 
 RDEPEND="dev-python/dom-toml[${PYTHON_USEDEP}]
 	dev-python/whey[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/coincidence[${PYTHON_USEDEP}]
-		dev-python/domdf-python-tools[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/domdf-python-tools[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( coincidence pytest-{datadir,regressions} )
 distutils_enable_tests pytest
