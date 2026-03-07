@@ -32,12 +32,12 @@ RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	${CDEPEND}"
 BDEPEND="${CDEPEND}
-	test? ( dev-python/coincidence[${PYTHON_USEDEP}]
-		dev-python/dulwich[${PYTHON_USEDEP}]
+	test? ( dev-python/dulwich[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pyproject-examples[${PYTHON_USEDEP}]
 		dev-python/southwark[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( coincidence pytest-datadir )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
