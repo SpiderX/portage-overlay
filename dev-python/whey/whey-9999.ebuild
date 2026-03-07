@@ -28,13 +28,13 @@ RDEPEND="dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/shippinglabel[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/hatch-requirements-txt[${PYTHON_USEDEP}]
-	test? ( dev-python/coincidence[${PYTHON_USEDEP}]
-		dev-python/editables[${PYTHON_USEDEP}]
+	test? ( dev-python/editables[${PYTHON_USEDEP}]
 		dev-python/pyproject-examples[${PYTHON_USEDEP}]
 		dev-python/re-assert[${PYTHON_USEDEP}]
 		dev-python/whey-conda[${PYTHON_USEDEP}]
 		dev-python/whey-pth[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=( coincidence pytest-datadir )
 distutils_enable_tests pytest
 
 pkg_postinst() {
