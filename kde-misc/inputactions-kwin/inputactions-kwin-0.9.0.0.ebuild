@@ -3,31 +3,33 @@
 
 EAPI=8
 
-inherit cmake git-r3 readme.gentoo-r1 udev
+inherit cmake edo readme.gentoo-r1 udev
 
-DESCRIPTION="Mouse and touchpad gestures for Hyprland, Plasma 6 Wayland"
-HOMEPAGE="https://github.com/taj-ny/InputActions"
-EGIT_REPO_URI="https://github.com/taj-ny/${PN}.git"
+COMMIT="4707a9eab86a686e0c793d0d9510d5d1ac8cb5e1"
+
+DESCRIPTION="Mouse and touchpad gestures for Plasma 6 Wayland"
+HOMEPAGE="https://github.com/InputActions/kwin"
+SRC_URI="https://github.com/InputActions/libevdev-cpp/archive/${COMMIT}.tar.gz -> ${P}-lib.tar.gz
+	https://github.com/InputActions/core/archive/v$(ver_cut 1-3).tar.gz -> ${P}-core.tar.gz
+	https://github.com/InputActions/kwin/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/kwin-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="kde hyprland test udev"
+KEYWORDS="~amd64"
+IUSE="ctl kde test udev"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/yaml-cpp:=
 	dev-libs/libevdev
+	dev-qt/qtbase:6[dbus,widgets]
+	kde-frameworks/kcmutils:6
+	kde-frameworks/kconfigwidgets:6
+	kde-frameworks/kguiaddons:6
+	kde-frameworks/ki18n:6
+	kde-plasma/kwin:6
 	x11-libs/libxkbcommon
-	hyprland? ( dev-libs/libinput:=
-		gui-wm/hyprland
-		x11-libs/libdrm
-		x11-libs/pango
-		x11-libs/pixman )
-	kde? ( dev-qt/qtbase:6[dbus,widgets]
-		kde-frameworks/kcmutils:6
-		kde-frameworks/kconfigwidgets:6
-		kde-frameworks/kguiaddons:6
-		kde-frameworks/ki18n:6
-		kde-plasma/kwin:6 )"
+	ctl? ( kde-misc/inputactions-ctl )"
 BDEPEND="kde-frameworks/extra-cmake-modules
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest:= )"
@@ -41,11 +43,18 @@ Configuration reloads automatically when the file is modified, for manual reload
 qdbus6 org.inputactions / reloadConfig\\n
 More info at https://wiki.inputactions.org/main/\\n\\n"
 
+src_prepare() {
+	edo rmdir ../core-"$(ver_cut 1-3)"/lib/libevdev-cpp
+	edo ln -s ../../libevdev-cpp-"${COMMIT}" ../core-"$(ver_cut 1-3)"/lib/libevdev-cpp
+	edo rmdir lib/core
+	edo ln -s ../../core-"$(ver_cut 1-3)" lib/core
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS="$(usex test)"
-		-DINPUTACTIONS_BUILD_HYPRLAND="$(usex hyprland)"
-		-DINPUTACTIONS_BUILD_KWIN="$(usex kde)"
 	)
 	cmake_src_configure
 }

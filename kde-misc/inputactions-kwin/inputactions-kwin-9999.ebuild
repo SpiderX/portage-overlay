@@ -3,32 +3,27 @@
 
 EAPI=8
 
-inherit cmake readme.gentoo-r1 udev
+inherit cmake edo git-r3 readme.gentoo-r1 udev
 
-DESCRIPTION="Mouse and touchpad gestures for Hyprland, Plasma 6 Wayland"
-HOMEPAGE="https://github.com/taj-ny/InputActions"
-SRC_URI="https://github.com/taj-ny/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Mouse and touchpad gestures for Plasma 6 Wayland"
+HOMEPAGE="https://github.com/InputActions/kwin"
+EGIT_REPO_URI="https://github.com/InputActions/kwin.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="kde hyprland test udev"
+IUSE="ctl kde test udev"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/yaml-cpp:=
 	dev-libs/libevdev
+	dev-qt/qtbase:6[dbus,widgets]
+	kde-frameworks/kcmutils:6
+	kde-frameworks/kconfigwidgets:6
+	kde-frameworks/kguiaddons:6
+	kde-frameworks/ki18n:6
+	kde-plasma/kwin:6
 	x11-libs/libxkbcommon
-	hyprland? ( dev-libs/libinput:=
-		gui-wm/hyprland
-		x11-libs/libdrm
-		x11-libs/pango
-		x11-libs/pixman )
-	kde? ( dev-qt/qtbase:6[dbus,widgets]
-		kde-frameworks/kcmutils:6
-		kde-frameworks/kconfigwidgets:6
-		kde-frameworks/kguiaddons:6
-		kde-frameworks/ki18n:6
-		kde-plasma/kwin:6 )"
+	ctl? ( kde-misc/inputactions-ctl )"
 BDEPEND="kde-frameworks/extra-cmake-modules
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest:= )"
@@ -45,8 +40,6 @@ More info at https://wiki.inputactions.org/main/\\n\\n"
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS="$(usex test)"
-		-DINPUTACTIONS_BUILD_HYPRLAND="$(usex hyprland)"
-		-DINPUTACTIONS_BUILD_KWIN="$(usex kde)"
 	)
 	cmake_src_configure
 }

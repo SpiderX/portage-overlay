@@ -10,14 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	Input handler that executes user-defined actions implemented as a KWin
-	plugin that executes global or application-specific touchpad gestures
-	on Wayland.
+	This package provides the control tool for managing InputActions
+	(<pkg>kde-misc/inputactions-kwin</pkg>).
 	</longdescription>
-	<use>
-		<flag name="hyprland">Install VMware Tools for Windows (after 2000, before Vista) guests</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">taj-ny/InputActions</remote-id>
+		<remote-id type="github">InputActions/ctl</remote-id>
 	</upstream>
 </pkgmetadata>
