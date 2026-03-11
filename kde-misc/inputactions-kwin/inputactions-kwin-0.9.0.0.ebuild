@@ -17,7 +17,7 @@ S="${WORKDIR}/kwin-${PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ctl kde test udev"
+IUSE="ctl test udev"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/yaml-cpp:=

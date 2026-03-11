@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake edo git-r3 readme.gentoo-r1 udev
+inherit cmake git-r3 readme.gentoo-r1 udev
 
 DESCRIPTION="Mouse and touchpad gestures for Plasma 6 Wayland"
 HOMEPAGE="https://github.com/InputActions/kwin"
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/InputActions/kwin.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="ctl kde test udev"
+IUSE="ctl test udev"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/yaml-cpp:=
