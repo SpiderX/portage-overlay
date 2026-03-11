@@ -1,30 +1,28 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/alexei-led/${PN}.git"
-
-inherit git-r3 go-module
+inherit edo git-r3 go-module
 
 DESCRIPTION="Exploring AWS EC2 Spot inventory"
 HOMEPAGE="https://github.com/alexei-led/spotinfo"
+EGIT_REPO_URI="https://github.com/alexei-led/${PN}.git"
 
 LICENSE="Apache-2.0 BSD-2 MIT"
 SLOT="0"
 IUSE="embed-data-files"
-RESTRICT="test" #fail on pricingLazyLoad
 
 src_unpack() {
 	git-r3_src_unpack
 	go-module_live_vendor
 
-	mkdir public/spot/data || die "mkdir failed"
+	edo mkdir -p public/spot/data
 	if use embed-data-files ; then
-		wget https://spot-bid-advisor.s3.amazonaws.com/spot-advisor-data.json -O \
-			public/spot/data/spot-advisor-data.json || die "wget failed for spot-advisor-data.json"
-		wget http://spot-price.s3.amazonaws.com/spot.js -O \
-			public/spot/data/spot-price-data.json || die "wget failed for spot-price-data.json"
+		edo wget https://spot-bid-advisor.s3.amazonaws.com/spot-advisor-data.json -O \
+			public/spot/data/spot-advisor-data.json
+		edo wget http://spot-price.s3.amazonaws.com/spot.js -O \
+			public/spot/data/spot-price-data.json
 	fi
 }
 
@@ -45,10 +43,11 @@ src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
 	LDFLAGS="-w -X main.Version=${PV}
 	-X main.GitCommit=${COMMIT}
+	-X main.GitHubRelease=v${PV}
 	-X main.GitBranch=master
 	-X \"main.BuildDate=${DATE}\""
 
-	ego build -buildmode=pie -ldflags "${LDFLAGS}" -o spotinfo ./cmd/main.go
+	ego build -ldflags "${LDFLAGS}" -o spotinfo ./cmd/spotinfo
 }
 
 src_test() {
