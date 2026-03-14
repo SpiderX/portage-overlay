@@ -10,11 +10,12 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	awsls supports listing of over 200 types of resources across
-	76 different AWS services. The goal is to code-generate a list
-	function for every AWS resource
+	This package provides a tool for visualizing dynamic node usage within a EKS cluster.
+	It was originally developed as an internal tool at AWS for demonstrating consolidation
+	with Karpenter. It displays the scheduled pod resource requests vs the allocatable
+	capacity on the node. It does not look at the actual pod resource usage.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">jckuester/awsls</remote-id>
+		<remote-id type="github">awslabs/eks-node-viewer</remote-id>
 	</upstream>
 </pkgmetadata>
