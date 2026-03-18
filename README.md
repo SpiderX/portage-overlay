@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1475](https://img.shields.io/badge/ebuild-1475-orange.svg)](https://img.shields.io/badge/ebuild-1475-orange.svg)
+[![Number of ebuilds: 1476](https://img.shields.io/badge/ebuild-1476-orange.svg)](https://img.shields.io/badge/ebuild-1476-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -226,6 +226,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-db/[pg_cron](https://github.com/citusdata/pg_cron) | Run periodic jobs in PostgreSQL
 *   dev-db/[pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) | Manually force decisions in execution plans of PostgreSQL
 *   dev-db/[odyssey](https://github.com/yandex/odyssey) | Scalable PostgreSQL connection pooler
+*   dev-db/[pgaudit](https://github.com/pgaudit/pgaudit) | PostgreSQL Audit Extension
 *   dev-db/[pg-safeupdate](https://github.com/eradman/pg-safeupdate) | PostgreSQL extension that requires criteria for UPDATE and DELETE
 *   dev-db/[pg_profile](https://github.com/zubkov-andrei/pg_profile) | Postgres historic performance reports
 *   dev-db/[pg_repack](https://github.com/reorg/pg_repack) | PostgreSQL extension for data reorganization
