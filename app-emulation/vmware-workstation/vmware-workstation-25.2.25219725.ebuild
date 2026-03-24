@@ -9,20 +9,32 @@ inherit desktop edo pam python-any-r1 readme.gentoo-r1 systemd xdg
 
 PV_BUILD=$(ver_cut 3)
 MY_PN="VMware-Workstation-Full"
-MY_PV="$(ver_cut 1)H$(ver_cut 2)"
-MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
+MY_PV="$(ver_cut 1).0.1"
+MY_P="${MY_PN}-$(ver_cut 1)H$(ver_cut 2)u1-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="13.6.3/24585314"
+VMWARE_FUSION_VER="25.0.1/25219963"
+VMWARE_TOOLS_VER="13.0.10/25056151"
 SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.1.3"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
 HOMEPAGE="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion"
-SRC_URI="${MY_P}.x86_64.bundle
+SRC_URI="
+	https://archive.org/download/${MY_P}.x86_64/${MY_P}.x86_64.bundle
+	vmware-tools-freebsd? ( https://packages-prod.broadcom.com/tools/frozen/freebsd/freebsd.iso )
+	vmware-tools-linux? ( https://packages-prod.broadcom.com/tools/frozen/linux/linux.iso )
+	vmware-tools-linuxPreGlibc25? ( https://packages-prod.broadcom.com/tools/frozen/linux/linuxPreGlibc25.iso )
+	vmware-tools-netware? ( https://packages-prod.broadcom.com/tools/frozen/netware/netware.iso )
+	vmware-tools-solaris? ( https://packages-prod.broadcom.com/tools/frozen/solaris/solaris.iso )
+	vmware-tools-winPre2k? ( https://packages-prod.broadcom.com/tools/frozen/windows/winPre2k.iso )
+	vmware-tools-winPreVista? ( https://packages-prod.broadcom.com/tools/frozen/windows/winPreVista.iso )
+	vmware-tools-winVista? ( https://packages-prod.broadcom.com/tools/frozen/windows/WindowsToolsVista/SP2/windows.iso -> winVista.iso )
+	vmware-tools-windows-x86? ( https://packages-prod.broadcom.com/tools/releases/12.4.5/windows/VMware-tools-windows-12.4.5-23787635.iso -> windows-x86.iso )
 	macos-guests? ( https://github.com/BDisp/unlocker/archive/${UNLOCKER_VERSION}.tar.gz ->
 			unlocker-${UNLOCKER_VERSION}.tar.gz
-			https://packages-prod.broadcom.com/tools/frozen/darwin/darwin.iso )
+			https://packages-prod.broadcom.com/tools/frozen/darwin/darwin.iso
+			https://packages-prod.broadcom.com/tools/frozen/darwin/darwinPre15.iso )
 	systemd? ( https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz ->
 			vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz )"
 S="${WORKDIR}"/extracted
@@ -31,8 +43,9 @@ LICENSE="GPL-2 GPL-3 MIT-with-advertising vmware"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="macos-guests +modules ovftool systemd vix"
-REQUIRED_USE="vmware-tools-darwin? ( macos-guests )"
-RESTRICT="mirror preserve-libs strip"
+REQUIRED_USE="vmware-tools-darwin? ( macos-guests )
+	vmware-tools-darwinPre15? ( macos-guests )"
+RESTRICT="preserve-libs strip"
 
 RDEPEND="app-arch/unzip
 	dev-db/sqlite:3
@@ -40,6 +53,7 @@ RDEPEND="app-arch/unzip
 	dev-libs/gmp:0
 	dev-libs/icu:=
 	dev-libs/json-c:=
+	dev-libs/libxml2-compat
 	dev-libs/nettle:0
 	gnome-base/dconf
 	media-gfx/graphite2
@@ -75,7 +89,7 @@ QA_SONAME="opt/vmware/lib/vmware-installer/3.1.0/python/lib/lib-dynload/_dbm.cpy
 
 QA_TEXTRELS="opt/vmware/lib/vmware/bin/vmware-vmx*"
 
-IUSE_VMWARE_GUESTS="darwin linux linuxPreGlibc25 netware solaris windows winPre2k winPreVista"
+IUSE_VMWARE_GUESTS="darwin darwinPre15 freebsd linux linuxPreGlibc25 netware solaris windows windows-x86 winPre2k winPreVista winVista"
 for guest in ${IUSE_VMWARE_GUESTS}; do IUSE+=" vmware-tools-${guest}" ; done
 
 pkg_nofetch() {
@@ -99,10 +113,15 @@ src_unpack() {
 		edo rm -r extracted/vmware-vix-core extracted/vmware-vix-lib-Workstation*
 	fi
 
-	if use vmware-tools-darwin ; then
-		edo mkdir extracted/vmware-tools-darwin
-		edo cp "${DISTDIR}/darwin.iso" extracted/vmware-tools-darwin
-	fi
+	for guest in ${IUSE_VMWARE_GUESTS} ; do
+		if [[ "$guest" == "windows" ]]; then
+			continue
+		fi
+		if use vmware-tools-"${guest}" ; then
+			edo mkdir extracted/vmware-tools-"${guest}"
+			edo cp "${DISTDIR}/"${guest}".iso" extracted/vmware-tools-"${guest}"
+		fi
+	done
 }
 
 src_prepare() {
@@ -165,7 +184,7 @@ src_install() {
 
 	# Install the installer
 	insinto /opt/vmware/lib/vmware-installer/"${vmware_installer_version}"
-	doins -r vmware-installer/{cdsHelper,vmis,vmis-launcher,vmware-cds-helper,vmware-installer,vmware-installer.py,python}
+	doins -r vmware-installer/{cdsHelper,python,sopython,vmis,vmis-launcher,vmware-cds-helper,vmware-installer,vmware-installer.py}
 	chrpath -k -r '/../lib:$ORIGIN/../lib' \
 		"${ED}"/opt/vmware/lib/vmware-installer/"${vmware_installer_version}"/python/lib/lib-dynload/*.so >/dev/null \
 		|| die "chrpath for lib-dynload failed"
@@ -397,14 +416,10 @@ src_install() {
 				sqlite3 "${dbfile}" "CREATE TABLE components(id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL, buildNumber INTEGER NOT NULL, component_core_id INTEGER NOT NULL, longName VARCHAR NOT NULL, description VARCHAR, type INTEGER NOT NULL);" \
 					|| die "sqlite3 for create table components failed"
 			fi
-			local manifest
-			manifest="vmware-tools-${guest}/manifest.xml"
-			if [ -e "${manifest}" ] ; then
-				local version
-				version="$(grep -oPm1 '(?<=<version>)[^<]+' "${manifest}")"
+			if [ ${guest} != "darwin" ] && [ ${guest} != "darwinPre15" ] ; then
 				sqlite3 "${dbfile}" \
 					"INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) \
-					VALUES('vmware-tools-$guest','$version','${PV_BUILD}',1,'$guest','$guest',1);" \
+					VALUES('vmware-tools-$guest','${VMWARE_TOOLS_VER%/*}','${VMWARE_TOOLS_VER#*/}',1,'$guest','$guest',1);" \
 					|| die "sqlite3 for insert table components failed"
 			else
 				sqlite3 "${dbfile}" \
