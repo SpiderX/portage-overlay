@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,6 +53,7 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	media-libs/libwebp:=[${MULTILIB_USEDEP}]
 	media-libs/opus[${MULTILIB_USEDEP}]
 	media-libs/tiff-compat:4[${MULTILIB_USEDEP}]
+	media-libs/xvid[${MULTILIB_USEDEP}]
 	media-sound/wavpack[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
