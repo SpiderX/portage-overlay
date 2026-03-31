@@ -49,10 +49,10 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	media-libs/libmng:=[${MULTILIB_USEDEP}]
 	media-libs/libopenmpt[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
-	media-libs/libtheora-compat:=[${MULTILIB_USEDEP}]
+	media-libs/libtheora:=[${MULTILIB_USEDEP}]
 	media-libs/libwebp:=[${MULTILIB_USEDEP}]
 	media-libs/opus[${MULTILIB_USEDEP}]
-	media-libs/tiff-compat:4[${MULTILIB_USEDEP}]
+	media-libs/tiff:0=[jbig,${MULTILIB_USEDEP}]
 	media-libs/xvid[${MULTILIB_USEDEP}]
 	media-sound/wavpack[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
@@ -88,8 +88,8 @@ RDEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 	pulseaudio? (
 		media-libs/libpulse[${MULTILIB_USEDEP}]
 		media-plugins/gst-plugins-pulse[${MULTILIB_USEDEP}] )
-	|| ( media-video/ffmpeg-compat:4[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}]
-		media-video/ffmpeg:0/56.58.58[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}] )
+	|| ( media-video/ffmpeg-compat:7[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}]
+		media-video/ffmpeg:0/59.61.61[bluray,gsm,libsoxr,opencl,theora,twolame,vdpau,zvbi,${MULTILIB_USEDEP}] )
 	|| ( sys-apps/systemd[${MULTILIB_USEDEP}] sys-apps/systemd-utils[udev,${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="opt/viber/Viber
