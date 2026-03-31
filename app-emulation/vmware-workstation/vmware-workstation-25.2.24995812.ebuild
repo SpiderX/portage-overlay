@@ -41,6 +41,7 @@ RDEPEND="app-arch/unzip
 	dev-libs/icu:=
 	dev-libs/json-c:=
 	dev-libs/nettle:0
+	dev-libs/libxml2-compat:2
 	gnome-base/dconf
 	media-gfx/graphite2
 	media-libs/alsa-lib
