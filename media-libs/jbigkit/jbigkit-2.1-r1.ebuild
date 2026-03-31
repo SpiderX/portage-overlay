@@ -44,6 +44,7 @@ multilib_src_install() {
 	doheader libjbig/*.h
 	dolib.so libjbig/libjbig{,85}"$(get_libname)"
 	dosym libjbig"$(get_libname)" /usr/lib64/libjbig"$(get_libname)".0
+	dosym libjbig"$(get_libname)" /usr/lib64/libjbig"$(get_libname)"."${PV}"
 	dosym libjbig85"$(get_libname)" /usr/lib64/libjbig85"$(get_libname)".0
 	use static-libs && dolib.a libjbig/libjbig{,85}.a
 }
