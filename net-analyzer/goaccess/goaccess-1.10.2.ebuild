@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2207
@@ -14,7 +14,7 @@ SRC_URI="https://tar.goaccess.io/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug geoip geoipv2 getline ssl unicode"
+IUSE="debug geoip geoipv2 getline ssl unicode zlib"
 REQUIRED_USE="geoipv2? ( geoip )"
 
 RDEPEND="acct-group/goaccess
@@ -24,7 +24,8 @@ RDEPEND="acct-group/goaccess
 		!geoipv2? ( dev-libs/geoip )
 		geoipv2? ( dev-libs/libmaxminddb:0= )
 	)
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? ( dev-libs/openssl:0= )
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -47,6 +48,7 @@ src_configure() {
 		$(use_enable unicode utf8)
 		$(use_with getline)
 		$(use_with ssl openssl)
+		$(use_with ssl zlib)
 	)
 	econf "${myeconfargs[@]}"
 }

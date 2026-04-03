@@ -1,20 +1,19 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2207
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/allinurl/${PN}.git"
-
 inherit autotools git-r3 optfeature systemd tmpfiles
 
 DESCRIPTION="A real-time web log analyzer and interactive viewer in a terminal"
 HOMEPAGE="https://goaccess.io"
+EGIT_REPO_URI="https://github.com/allinurl/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="debug geoip geoipv2 getline ssl unicode"
+IUSE="debug geoip geoipv2 getline ssl unicode zlib"
 REQUIRED_USE="geoipv2? ( geoip )"
 
 RDEPEND="acct-group/goaccess
@@ -24,7 +23,8 @@ RDEPEND="acct-group/goaccess
 		!geoipv2? ( dev-libs/geoip )
 		geoipv2? ( dev-libs/libmaxminddb:0= )
 	)
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? ( dev-libs/openssl:0= )
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -49,6 +49,7 @@ src_configure() {
 		$(use_enable unicode utf8)
 		$(use_with getline)
 		$(use_with ssl openssl)
+		$(use_with ssl zlib)
 	)
 	econf "${myeconfargs[@]}"
 }
