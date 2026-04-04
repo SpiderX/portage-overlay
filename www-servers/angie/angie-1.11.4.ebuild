@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2016
@@ -7,7 +7,7 @@ EAPI=8
 
 AUTOTOOLS_AUTO_DEPEND="no"
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 SSL_DEPS_SKIP=1
 
 inherit autotools edo multiprocessing python-any-r1 ssl-cert toolchain-funcs perl-module systemd
@@ -96,6 +96,7 @@ BDEPEND="test? ( dev-lang/perl
 		dev-perl/Test-Deep
 		dev-perl/Test-Most
 		dev-perl/TimeDate
+		media-libs/gd[webp]
 		media-video/ffmpeg[x264]
 		net-dns/bind
 		net-dns/dnsmasq
@@ -134,8 +135,14 @@ src_prepare() {
 		fi
 	done
 
+	# remove failed tests
+	edo rm tests/{stream_ssl_ocsp,userid}.t
 	# remove tests require ipv6
-	use ipv6 || eapply "${FILESDIR}/${PN}"-1.10.2-tests-no-ipv6.patch
+	if ! use ipv6 ; then
+		eapply "${FILESDIR}/${PN}"-1.11.4-tests-no-ipv6.patch
+		edo rm tests/{http_resolver_aaaa,stream_access}.t
+		edo rm tests/{geo,proxy_protocol,stream_geo,stream_proxy_protocol,upstream_ip_hash}_ipv6.t
+	fi
 	# decrease path to unix socket api.sock
 	sed -i '/"angie-/s|ngie-test|-|' tests/lib/Test/Nginx.pm \
 		|| die "sed failed for Nginx.pm"

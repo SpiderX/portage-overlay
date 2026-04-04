@@ -1,0 +1,644 @@
+--- ../tests/upstream_service.t	2026-04-04 18:18:32.879522160 +0300
++++ ../tests/upstream_service.t	2026-04-04 18:21:58.640646929 +0300
+@@ -27,14 +27,6 @@
+ 
+ my $t = Test::Nginx->new()->has(qw/http proxy upstream_zone/);
+ 
+-$t->skip_errors_check('crit',
+-	qr/connect\(\) to \[fe80::1\]:\d{4,} failed/,
+-	qr/connect\(\) to \[fe80::2\]:\d{4,} failed/
+-);
+-
+-$t->skip_errors_check('crit', "Can't assign requested address")
+-	if $^O eq 'freebsd';
+-
+ $t->write_file_expand('nginx.conf', <<'EOF');
+ 
+ %%TEST_GLOBALS%%
+@@ -103,7 +95,7 @@
+ $t->waitforfile($t->testdir . '/' . port(8982));
+ port(8982, socket => 1)->close();
+ 
+-$t->try_run('no service in upstream server')->plan(38);
++$t->try_run('no service in upstream server')->plan(34);
+ 
+ ###############################################################################
+ 
+@@ -136,16 +128,6 @@
+ like($r, qr/127.0.0.201:$p0/, 'A A 1');
+ like($r, qr/127.0.0.202:$p0/, 'A A 2');
+ 
+-# 1 A removed, 2 AAAA added
+-
+-update_name({A => '127.0.0.201', AAAA => 'fe80::1 fe80::2',
+-	SRV => "1 5 $p0 example.net"});
+-$r = http_get('/');
+-is(@n = $r =~ /:$p0/g, 3, 'A AAAA AAAA responses');
+-like($r, qr/127.0.0.201:$p0/, 'A AAAA AAAA 1');
+-like($r, qr/\[fe80::1\]:$p0/, 'A AAAA AAAA 2');
+-like($r, qr/\[fe80::1\]:$p0/, 'A AAAA AAAA 3');
+-
+ # all records removed
+ 
+ update_name({SRV => "1 5 $p0 example.net"});
+--- ../tests/access.t	2026-04-04 18:41:38.250257902 +0300
++++ ../tests/access.t	2026-04-04 18:42:45.682843571 +0300
+@@ -45,10 +45,6 @@
+             proxy_pass http://127.0.0.1:8081/;
+         }
+ 
+-        location /inet6/ {
+-            proxy_pass http://[::1]:%%PORT_8081%%/;
+-        }
+-
+         location /unix/ {
+             proxy_pass http://unix:%%TESTDIR%%/unix.sock:/;
+         }
+@@ -57,7 +53,6 @@
+ 
+     server {
+         listen       127.0.0.1:8081;
+-        listen       [::1]:%%PORT_8081%%;
+         listen       unix:%%TESTDIR%%/unix.sock;
+ 
+         location /allow_all {
+@@ -80,7 +75,7 @@
+ 
+ EOF
+ 
+-$t->try_run('no inet6 support')->plan(12);
++$t->try_run('no inet6 support')->plan(8);
+ 
+ ###############################################################################
+ 
+@@ -91,13 +86,6 @@
+ like(http_get('/inet/deny_all'), qr/403 Forbidden/, 'inet deny all');
+ like(http_get('/inet/deny_unix'), qr/404 Not Found/, 'inet deny unix');
+ 
+-# tests with inet6 socket
+-
+-like(http_get('/inet6/allow_all'), qr/404 Not Found/, 'inet6 allow all');
+-like(http_get('/inet6/allow_unix'), qr/404 Not Found/, 'inet6 allow unix');
+-like(http_get('/inet6/deny_all'), qr/403 Forbidden/, 'inet6 deny all');
+-like(http_get('/inet6/deny_unix'), qr/404 Not Found/, 'inet6 deny unix');
+-
+ # tests with unix socket
+ 
+ like(http_get('/unix/allow_all'), qr/404 Not Found/, 'unix allow all');
+--- ../tests/http_listen.t	2026-04-04 19:20:06.997893598 +0300
++++ ../tests/http_listen.t	2026-04-04 19:20:45.355977601 +0300
+@@ -39,7 +39,6 @@
+     server {
+         listen       127.0.0.1:8080;
+         listen       127.0.0.1:%%PORT_8182%%-%%PORT_8183%%;
+-        listen       [::1]:%%PORT_8182%%-%%PORT_8183%%;
+         server_name  localhost;
+ 
+         location / {
+@@ -56,8 +55,6 @@
+     server {
+         listen       127.0.0.1:8181;
+         listen       127.0.0.1:8184;
+-        listen       [::1]:%%PORT_8181%%;
+-        listen       [::1]:%%PORT_8184%%;
+         server_name  localhost;
+     }
+ }
+@@ -71,7 +68,7 @@
+ plan(skip_all => 'no requested ranges')
+ 	if "$p2$p3" ne "81828183";
+ 
+-$t->try_run('no inet6 support')->plan(9);
++$t->try_run('no inet6 support')->plan(5);
+ 
+ ###############################################################################
+ 
+@@ -81,9 +78,4 @@
+ like(http_get("/?b=127.0.0.1:$p3"), qr/127.0.0.1:$p3/, 'range 2');
+ unlike(http_get("/?b=127.0.0.1:$p4"), qr/127.0.0.1:$p4/, 'out of range 2');
+ 
+-unlike(http_get("/?b=[::1]:$p1"), qr/::1:$p1/, 'inet6 out of range 1');
+-like(http_get("/?b=[::1]:$p2"), qr/::1:$p2/, 'inet6 range 1');
+-like(http_get("/?b=[::1]:$p3"), qr/::1:$p3/, 'inet6 range 2');
+-unlike(http_get("/?b=[::1]:$p4"), qr/::1:$p4/, 'inet6 out of range 2');
+-
+ ###############################################################################
+--- ../tests/http_resolver_ipv4.t	2026-04-04 20:08:34.051910315 +0300
++++ ../tests/http_resolver_ipv4.t	2026-04-04 20:10:10.616796397 +0300
+@@ -44,25 +44,15 @@
+         add_header X-Addr $upstream_addr always;
+         proxy_next_upstream http_403;
+ 
+-        location / {
+-            proxy_pass  http://$arg_h:%%PORT_8081%%/;
+-            resolver  127.0.0.1:%%PORT_8980_UDP%% ipv4=on ipv6=on;
+-        }
+-
+         location /ipv4 {
+             proxy_pass  http://$arg_h:%%PORT_8081%%/;
+             resolver  127.0.0.1:%%PORT_8980_UDP%% ipv4=on ipv6=off;
+         }
+ 
+-        location /ipv6 {
+-            proxy_pass  http://$arg_h:%%PORT_8081%%/;
+-            resolver  127.0.0.1:%%PORT_8980_UDP%% ipv4=off ipv6=on;
+-        }
+     }
+ 
+     server {
+         listen       127.0.0.1:8081;
+-        listen       [::1]:%%PORT_8081%%;
+         server_name  localhost;
+ 
+         location / {
+@@ -73,7 +63,7 @@
+ 
+ EOF
+ 
+-$t->try_run('no inet6 support')->plan(3);
++$t->try_run('no inet6 support')->plan(1);
+ 
+ $t->run_daemon(\&dns_daemon, port(8980), $t);
+ $t->waitforfile($t->testdir . '/' . port(8980));
+@@ -82,9 +72,7 @@
+ 
+ my $p1 = port(8081);
+ 
+-is(get('/'), "127.0.0.1:$p1, [::1]:$p1", 'ipv4 ipv6');
+ is(get('/ipv4'), "127.0.0.1:$p1", 'ipv4 only');
+-is(get('/ipv6'), "[::1]:$p1", 'ipv6 only');
+ 
+ ###############################################################################
+ 
+@@ -133,9 +121,6 @@
+ 		if ($type == A) {
+ 			push @rdata, rd_addr($ttl, '127.0.0.1');
+ 		}
+-		if ($type == AAAA) {
+-			push @rdata, rd_addr6($ttl, "::1");
+-		}
+ 	}
+ 
+ 	$len = @name;
+--- ../tests/proxy_h3_ssl_name.t	2026-04-04 20:48:10.869530313 +0300
++++ ../tests/proxy_h3_ssl_name.t	2026-04-04 20:49:32.960577181 +0300
+@@ -114,7 +114,6 @@
+ 
+     server {
+         listen 127.0.0.1:%%PORT_8999_UDP%% quic;
+-        listen [::1]:%%PORT_8999_UDP%% quic;
+         server_name 1.example.com;
+ 
+         ssl_certificate localhost.crt;
+@@ -146,7 +145,7 @@
+ 
+ $t->write_file('index.html', '');
+ 
+-$t->try_run('no inet6 support')->plan(9);
++$t->try_run('no inet6 support')->plan(8);
+ 
+ ###############################################################################
+ 
+@@ -160,6 +159,5 @@
+ 
+ like(http_get('/port'), qr/200 OK.*x-name: backend,/ms, 'no port in name');
+ like(http_get('/ip'), qr/200 OK.*x-name: ,/ms, 'no ip');
+-like(http_get('/ip6'), qr/200 OK.*x-name: ,/ms, 'no ipv6');
+ 
+ ###############################################################################
+--- ../tests/proxy_implicit.t	2026-04-04 20:57:09.452695991 +0300
++++ ../tests/proxy_implicit.t	2026-04-04 20:58:33.565119009 +0300
+@@ -43,7 +43,6 @@
+ 
+     server {
+         listen       127.0.0.1:8080;
+-        listen       [::1]:%%PORT_8080%%;
+         server_name  localhost;
+ 
+         location / {
+--- ../tests/proxy_ssl_name.t	2026-04-04 21:08:09.322133877 +0300
++++ ../tests/proxy_ssl_name.t	2026-04-04 21:09:52.463089360 +0300
+@@ -102,7 +102,6 @@
+ 
+     server {
+         listen 127.0.0.1:8081 ssl;
+-        listen [::1]:%%PORT_8081%% ssl;
+         server_name 1.example.com;
+ 
+         ssl_certificate localhost.crt;
+@@ -134,7 +133,7 @@
+ 
+ $t->write_file('index.html', '');
+ 
+-$t->try_run('no inet6 support')->plan(9);
++$t->try_run('no inet6 support')->plan(8);
+ 
+ ###############################################################################
+ 
+@@ -148,6 +147,5 @@
+ 
+ like(http_get('/port'), qr/200 OK.*X-Name: backend,/ms, 'no port in name');
+ like(http_get('/ip'), qr/200 OK.*X-Name: ,/ms, 'no ip');
+-like(http_get('/ip6'), qr/200 OK.*X-Name: ,/ms, 'no ipv6');
+ 
+ ###############################################################################
+--- ../tests/upstream_resolve.t	2026-04-04 21:44:45.036891202 +0300
++++ ../tests/upstream_resolve.t	2026-04-04 21:50:29.624427469 +0300
+@@ -28,14 +28,6 @@
+ 
+ my $t = Test::Nginx->new()->has(qw/http proxy upstream_zone/);
+ 
+-$t->skip_errors_check('crit',
+-	qr/connect\(\) to \[fe80::1\]:\d{4,} failed/,
+-	qr/connect\(\) to \[fe80::2\]:\d{4,} failed/
+-);
+-
+-$t->skip_errors_check('crit', "Can't assign requested address")
+-	if $^O eq 'freebsd';
+-
+ $t->write_file_expand('nginx.conf', <<'EOF');
+ 
+ %%TEST_GLOBALS%%
+@@ -60,7 +52,6 @@
+ 
+     server {
+         listen       127.0.0.1:8080;
+-        listen       [::1]:%%PORT_8080%%;
+         server_name  localhost;
+ 
+         location / {
+@@ -87,7 +78,7 @@
+ 
+ $t->run_daemon(\&dns_daemon, $t);
+ $t->waitforfile($t->testdir . '/' . port(8982));
+-$t->try_run('no resolve in upstream server')->plan(18);
++$t->try_run('no resolve in upstream server')->plan(14);
+ 
+ ###############################################################################
+ 
+@@ -114,15 +105,6 @@
+ like($r, qr/127.0.0.201:$p0/, 'A A 1');
+ like($r, qr/127.0.0.202:$p0/, 'A A 2');
+ 
+-# 1 A removed, 2 AAAA added
+-
+-update_name({A => '127.0.0.201', AAAA => 'fe80::1 fe80::2'});
+-$r = http_get('/');
+-is(@n = $r =~ /:$p0/g, 3, 'A AAAA AAAA responses');
+-like($r, qr/127.0.0.201:$p0/, 'A AAAA AAAA 1');
+-like($r, qr/\[fe80::1\]:$p0/, 'A AAAA AAAA 2');
+-like($r, qr/\[fe80::1\]:$p0/, 'A AAAA AAAA 3');
+-
+ # all records removed
+ 
+ update_name();
+--- ../tests/stream_upstream_resolve.t	2026-04-04 21:51:57.086200735 +0300
++++ ../tests/stream_upstream_resolve.t	2026-04-04 21:53:35.932479936 +0300
+@@ -29,14 +29,6 @@
+ 
+ my $t = Test::Nginx->new()->has(qw/stream stream_upstream_zone/);
+ 
+-$t->skip_errors_check('crit',
+-	qr/connect\(\) to \[fe80::1\]:\d{4,} failed/,
+-	qr/connect\(\) to \[fe80::2\]:\d{4,} failed/
+-);
+-
+-$t->skip_errors_check('crit', "Can't assign requested address")
+-	if $^O eq 'freebsd';
+-
+ $t->write_file_expand('nginx.conf', <<'EOF');
+ 
+ %%TEST_GLOBALS%%
+@@ -76,7 +68,7 @@
+ 
+ $t->run_daemon(\&dns_daemon, port(8983), $t);
+ $t->waitforfile($t->testdir . '/' . port(8983));
+-$t->try_run('no resolve in upstream server')->plan(11);
++$t->try_run('no resolve in upstream server')->plan(8);
+ 
+ ###############################################################################
+ 
+@@ -95,11 +87,6 @@
+ update_name({A => '127.0.0.201 127.0.0.202'});
+ stream('127.0.0.1:' . port(8082))->read();
+ 
+-# 1 A removed, 2 AAAA added
+-
+-update_name({A => '127.0.0.201', AAAA => 'fe80::1 fe80::2'});
+-stream('127.0.0.1:' . port(8082))->read();
+-
+ # all records removed
+ 
+ update_name();
+@@ -139,13 +126,6 @@
+ like($line, qr/127.0.0.201:$p0/, 'log - A A 1');
+ like($line, qr/127.0.0.202:$p0/, 'log - A A 2');
+ 
+-# 1 A removed, 2 AAAA added
+-
+-$line = $f->getline();
+-like($line, qr/127.0.0.201:$p0/, 'log - A AAAA AAAA 1');
+-like($line, qr/\[fe80::1\]:$p0/, 'log - A AAAA AAAA 2');
+-like($line, qr/\[fe80::2\]:$p0/, 'log - A AAAA AAAA 3');
+-
+ # all records removed
+ 
+ like($f->getline(), qr/^u$/, 'log - empty response');
+--- ../tests/stream_upstream_service.t	2026-04-04 22:04:51.616492191 +0300
++++ ../tests/stream_upstream_service.t	2026-04-04 22:09:35.550328237 +0300
+@@ -28,14 +28,6 @@
+ 
+ my $t = Test::Nginx->new()->has(qw/stream stream_upstream_zone/);
+ 
+-$t->skip_errors_check('crit',
+-	qr/connect\(\) to \[fe80::1\]:\d{4,} failed/,
+-	qr/connect\(\) to \[fe80::2\]:\d{4,} failed/
+-);
+-
+-$t->skip_errors_check('crit', "Can't assign requested address")
+-	if $^O eq 'freebsd';
+-
+ $t->write_file_expand('nginx.conf', <<'EOF');
+ 
+ %%TEST_GLOBALS%%
+@@ -109,7 +101,7 @@
+ $t->waitforfile($t->testdir . '/' . port(8982));
+ port(8982, socket => 1)->close();
+ 
+-$t->try_run('no resolve in upstream server')->plan(21);
++$t->try_run('no resolve in upstream server')->plan(18);
+ 
+ ###############################################################################
+ 
+@@ -132,12 +124,6 @@
+ update_name({A => '127.0.0.201 127.0.0.202', SRV => "1 5 $p0 example.net"});
+ stream('127.0.0.1:' . port(8081))->read();
+ 
+-# 1 A removed, 2 AAAA added
+-
+-update_name({A => '127.0.0.201', AAAA => 'fe80::1 fe80::2',
+-	SRV => "1 5 $p0 example.net"});
+-stream('127.0.0.1:' . port(8081))->read();
+-
+ # all records removed
+ 
+ update_name({SRV => "1 5 $p0 example.net"});
+@@ -228,13 +214,6 @@
+ like($line, qr/127.0.0.201:$p0/, 'log - A A 1');
+ like($line, qr/127.0.0.202:$p0/, 'log - A A 2');
+ 
+-# 1 A removed, 2 AAAA added
+-
+-$line = $f->getline();
+-like($line, qr/127.0.0.201:$p0/, 'log - A AAAA AAAA 1');
+-like($line, qr/\[fe80::1\]:$p0/, 'log - A AAAA AAAA 2');
+-like($line, qr/\[fe80::2\]:$p0/, 'log - A AAAA AAAA 3');
+-
+ # all records removed
+ 
+ like($f->getline(), qr/^u$/, 'log - empty response');
+--- ../tests/stream_variables.t	2026-04-04 22:17:57.184751279 +0300
++++ ../tests/stream_variables.t	2026-04-04 22:24:59.874959660 +0300
+@@ -46,24 +46,20 @@
+ 
+     server {
+         listen  127.0.0.1:8081;
+-        listen  [::1]:%%PORT_8081%%;
+         return  $remote_addr:$remote_port:$server_addr:$server_port;
+     }
+ 
+     server {
+         listen  127.0.0.1:8082;
+-        proxy_pass  [::1]:%%PORT_8081%%;
+     }
+ 
+     server {
+         listen  127.0.0.1:8083;
+-        listen  [::1]:%%PORT_8083%%;
+         return  $binary_remote_addr;
+     }
+ 
+     server {
+         listen  127.0.0.1:8084;
+-        proxy_pass  [::1]:%%PORT_8083%%;
+     }
+ 
+     server {
+@@ -80,7 +76,7 @@
+ 
+ EOF
+ 
+-$t->try_run('no inet6 support')->plan(8);
++$t->try_run('no inet6 support')->plan(6);
+ 
+ ###############################################################################
+ 
+@@ -93,15 +89,9 @@
+ my $lport = $s->sockport();
+ is($s->read(), "127.0.0.1:$lport:127.0.0.1:$dport", 'addr');
+ 
+-my $data = stream('127.0.0.1:' . port(8082))->read();
+-like($data, qr/^::1:\d+:::1:\d+$/, 'addr ipv6');
+-
+-$data = stream('127.0.0.1:' . port(8083))->read();
++my $data = stream('127.0.0.1:' . port(8083))->read();
+ is(unpack("H*", $data), '7f000001', 'binary addr');
+ 
+-$data = stream('127.0.0.1:' . port(8084))->read();
+-is(unpack("H*", $data), '0' x 31 . '1', 'binary addr ipv6');
+-
+ $data = stream('127.0.0.1:' . port(8085))->read();
+ like($data, qr#^\d+.\d+![-+\w/: ]+![-+\dT:]+$#, 'time');
+ 
+--- ../tests/debug_connection.t	2026-04-04 22:40:19.244307685 +0300
++++ ../tests/debug_connection.t	2026-04-04 22:43:06.089603704 +0300
+@@ -41,18 +41,17 @@
+ 
+     server {
+         listen       127.0.0.1:8080;
+-        listen       [::1]:%%PORT_8080%%;
+         server_name  localhost;
+ 
+         location /debug {
+-            proxy_pass http://[::1]:%%PORT_8080%%/;
++            proxy_pass http://127.0.0.1:%%PORT_8080%%/;
+         }
+     }
+ }
+ 
+ EOF
+ 
+-$t->try_run('no inet6 support')->plan(5);
++$t->try_run('no inet6 support')->plan(3);
+ 
+ ###############################################################################
+ 
+@@ -65,8 +64,6 @@
+ http_get('/debug');
+ 
+ select undef, undef, undef, 0.1;
+-like($t->read_file('debug1.log'), qr/\[debug\]/, 'debug_connection file 1');
+-like($t->read_file('debug2.log'), qr/\[debug\]/, 'debug_connection file 2');
+ is($t->read_file('debug1.log'), $t->read_file('debug2.log'),
+ 	'debug_connection file1 file2 match');
+ 
+--- ../tests/debug_connection_syslog.t	2026-04-04 22:44:04.730224483 +0300
++++ ../tests/debug_connection_syslog.t	2026-04-04 22:49:03.016390110 +0300
+@@ -43,18 +43,17 @@
+ 
+     server {
+         listen       127.0.0.1:8080;
+-        listen       [::1]:%%PORT_8080%%;
+         server_name  localhost;
+ 
+         location /debug {
+-            proxy_pass http://[::1]:%%PORT_8080%%/;
++            proxy_pass http://127.0.0.1:%%PORT_8080%%/;
+         }
+     }
+ }
+ 
+ EOF
+ 
+-$t->try_run('no inet6 support')->plan(5);
++$t->try_run('no inet6 support')->plan(1);
+ 
+ ###############################################################################
+ 
+@@ -67,12 +66,8 @@
+ } port(8981), port(8982);
+ 
+ is(get_syslog('/', $s1), '', 'no debug_connection syslog 1');
+-is(get_syslog('/', $s2), '', 'no debug_connection syslog 2');
+ 
+ my @msgs = get_syslog('/debug', $s1, $s2);
+-like($msgs[0], qr/\[debug\]/, 'debug_connection syslog 1');
+-like($msgs[1], qr/\[debug\]/, 'debug_connection syslog 2');
+-is($msgs[0], $msgs[1], 'debug_connection syslog1 syslog2 match');
+ 
+ ###############################################################################
+ 
+--- ../tests/stream_realip.t	2026-04-04 23:21:25.156304452 +0300
++++ ../tests/stream_realip.t	2026-04-04 23:29:31.625173275 +0300
+@@ -52,39 +52,33 @@
+ 
+     server {
+         listen      127.0.0.1:8086 proxy_protocol;
+-        listen      [::1]:%%PORT_8086%% proxy_protocol;
+         return      "$remote_addr:$remote_port:
+                      $realip_remote_addr:$realip_remote_port";
+ 
+-        set_real_ip_from ::1;
+         set_real_ip_from 127.0.0.2;
+     }
+ 
+     server {
+         listen      127.0.0.1:8087;
+-        proxy_pass  [::1]:%%PORT_8086%%;
+     }
+ 
+     server {
+         listen      127.0.0.1:8088 proxy_protocol;
+-        listen      [::1]:%%PORT_8088%% proxy_protocol;
+         return      "$remote_addr:$remote_port:
+                      $realip_remote_addr:$realip_remote_port";
+ 
+         set_real_ip_from 127.0.0.1;
+-        set_real_ip_from ::2;
+     }
+ 
+     server {
+         listen      127.0.0.1:8089;
+-        proxy_pass  [::1]:%%PORT_8088%%;
+     }
+ }
+ 
+ EOF
+ 
+ $t->run_daemon(\&stream_daemon);
+-$t->try_run('no inet6 support')->plan(8);
++$t->try_run('no inet6 support')->plan(5);
+ $t->waitforsocket('127.0.0.1:' . port(8081));
+ 
+ ###############################################################################
+@@ -97,18 +91,9 @@
+ is(pp_get(8085, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}close"),
+ 	'close', 'server payload');
+ 
+-like(pp_get(8086, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+-	qr/^(\Q127.0.0.1:\E\d+):\s+\1$/, 'server ipv6 realip - no match');
+-
+-like(pp_get(8087, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+-	qr/\Q192.0.2.1:1234:\E\s+\Q::1:\E\d+/, 'server ipv6 realip');
+-
+ like(pp_get(8088, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+ 	qr/\Q192.0.2.1:1234:\E\s+\Q127.0.0.1:\E\d+/, 'server ipv4 realip');
+ 
+-like(pp_get(8089, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+-	qr/^(::1:\d+):\s+\1$/, 'server ipv4 realip - no match');
+-
+ like(pp_get(8088, "PROXY UNKNOWN TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+ 	qr/^(\Q127.0.0.1:\E\d+):\s+\1$/, 'server unknown');
+ 
+--- ../tests/stream_ssl_realip.t	2026-04-04 23:33:44.355989495 +0300
++++ ../tests/stream_ssl_realip.t	2026-04-04 23:35:34.996065788 +0300
+@@ -49,32 +49,26 @@
+ 
+     server {
+         listen      127.0.0.1:8086 proxy_protocol ssl;
+-        listen      [::1]:%%PORT_8086%% proxy_protocol ssl;
+         return      "$remote_addr:$remote_port:
+                      $realip_remote_addr:$realip_remote_port";
+ 
+-        set_real_ip_from ::1;
+         set_real_ip_from 127.0.0.2;
+     }
+ 
+     server {
+         listen      127.0.0.1:8087;
+-        proxy_pass  [::1]:%%PORT_8086%%;
+     }
+ 
+     server {
+         listen      127.0.0.1:8088 proxy_protocol ssl;
+-        listen      [::1]:%%PORT_8088%% proxy_protocol ssl;
+         return      "$remote_addr:$remote_port:
+                      $realip_remote_addr:$realip_remote_port";
+ 
+         set_real_ip_from 127.0.0.1;
+-        set_real_ip_from ::2;
+     }
+ 
+     server {
+         listen      127.0.0.1:8089;
+-        proxy_pass  [::1]:%%PORT_8088%%;
+     }
+ }
+ 
+@@ -98,25 +92,16 @@
+ 		or die "Can't create certificate for $name: $!\n";
+ }
+ 
+-$t->try_run('no inet6 support')->plan(6);
++$t->try_run('no inet6 support')->plan(3);
+ 
+ ###############################################################################
+ 
+ is(pp_get(8083, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+ 	'192.0.2.1:1234', 'server');
+ 
+-like(pp_get(8086, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+-	qr/^(\Q127.0.0.1:\E\d+):\s+\1$/, 'server ipv6 realip - no match');
+-
+-like(pp_get(8087, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+-	qr/\Q192.0.2.1:1234:\E\s+\Q::1:\E\d+/, 'server ipv6 realip');
+-
+ like(pp_get(8088, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+ 	qr/\Q192.0.2.1:1234:\E\s+\Q127.0.0.1:\E\d+/, 'server ipv4 realip');
+ 
+-like(pp_get(8089, "PROXY TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+-	qr/^(::1:\d+):\s+\1$/, 'server ipv4 realip - no match');
+-
+ like(pp_get(8088, "PROXY UNKNOWN TCP4 192.0.2.1 192.0.2.2 1234 5678${CRLF}"),
+ 	qr/^(\Q127.0.0.1:\E\d+):\s+\1$/, 'server unknown');
+ 
