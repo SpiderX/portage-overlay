@@ -20,8 +20,7 @@ UNLOCKER_VERSION="3.1.3"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead"
 HOMEPAGE="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion"
-SRC_URI="
-	https://archive.org/download/${MY_P}.x86_64/${MY_P}.x86_64.bundle
+SRC_URI="https://archive.org/download/${MY_P}.x86_64/${MY_P}.x86_64.bundle
 	vmware-tools-freebsd? ( https://packages-prod.broadcom.com/tools/frozen/freebsd/freebsd.iso )
 	vmware-tools-linux? ( https://packages-prod.broadcom.com/tools/frozen/linux/linux.iso )
 	vmware-tools-linuxPreGlibc25? ( https://packages-prod.broadcom.com/tools/frozen/linux/linuxPreGlibc25.iso )
@@ -29,8 +28,12 @@ SRC_URI="
 	vmware-tools-solaris? ( https://packages-prod.broadcom.com/tools/frozen/solaris/solaris.iso )
 	vmware-tools-winPre2k? ( https://packages-prod.broadcom.com/tools/frozen/windows/winPre2k.iso )
 	vmware-tools-winPreVista? ( https://packages-prod.broadcom.com/tools/frozen/windows/winPreVista.iso )
-	vmware-tools-winVista? ( https://packages-prod.broadcom.com/tools/frozen/windows/WindowsToolsVista/SP2/windows.iso -> winVista.iso )
-	vmware-tools-windows-x86? ( https://packages-prod.broadcom.com/tools/releases/12.4.5/windows/VMware-tools-windows-12.4.5-23787635.iso -> windows-x86.iso )
+	vmware-tools-winVista? (
+		https://packages-prod.broadcom.com/tools/frozen/windows/WindowsToolsVista/SP2/windows.iso
+		-> winVista.iso )
+	vmware-tools-windows-x86? (
+		https://packages-prod.broadcom.com/tools/releases/12.4.5/windows/VMware-tools-windows-12.4.5-23787635.iso
+		-> windows-x86.iso )
 	macos-guests? ( https://github.com/BDisp/unlocker/archive/${UNLOCKER_VERSION}.tar.gz ->
 			unlocker-${UNLOCKER_VERSION}.tar.gz
 			https://packages-prod.broadcom.com/tools/frozen/darwin/darwin.iso
@@ -99,7 +102,7 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	for AFILE in ${A}; do
+	for AFILE in ${A} ; do
 		if [ "${AFILE##*.}" == "bundle" ]; then
 			edo cp "${DISTDIR}/${AFILE}" "${WORKDIR}"
 		else
