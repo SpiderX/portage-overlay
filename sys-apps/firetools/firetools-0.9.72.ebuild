@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit qmake-utils toolchain-funcs
 
 DESCRIPTION="Graphical user interface of Firajail security sandbox"
 HOMEPAGE="https://firejail.wordpress.com https://github.com/netblue30/firetools"
@@ -28,6 +28,10 @@ src_prepare() {
 		-e '/install -c -m 0644/s/.gz//' \
 		-e '/gzip/d' \
 		Makefile.in || die "sed failed for Makefile.in"
+}
+
+src_configure() {
+	econf --with-qmake="$(qt5_get_bindir)"/qmake
 }
 
 src_compile() {
