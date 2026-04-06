@@ -11,6 +11,8 @@ EGIT_REPO_URI="https://github.com/smallstep/certificates.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="acct-group/step
 	acct-user/step
