@@ -11,12 +11,12 @@ EGIT_REPO_URI="https://github.com/smallstep/cli.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+client"
-RESTRICT="test"
-PROPERTIES="test_network"
+IUSE="+client test"
+RESTRICT="test" # 1 test fails
 
 RDEPEND="acct-group/step
 	acct-user/step"
+BDEPEND="test? ( dev-go/gotestsum )"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -44,7 +44,7 @@ src_compile() {
 }
 
 src_test() {
-	ego test -work ./...
+	edo gotestsum ./...
 }
 
 src_install() {
