@@ -396,7 +396,7 @@ src_install() {
 	newinitd "${FILESDIR}"/vmware-net.initd vmware-net
 	newinitd "${FILESDIR}"/vmware-usb.initd vmware-usb
 	use systemd && systemd_dounit "${WORKDIR}"/systemd-vmware-"${SYSTEMD_UNITS_TAG}"/vmware-{authentication,usb,vmblock,vmci,vmmon,vmnet,vmsock}.service \
-			vmware.target
+			"${WORKDIR}"/systemd-vmware-"${SYSTEMD_UNITS_TAG}"/vmware.target
 
 	# Enable macOS guests support
 	if use macos-guests ; then
