@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,10 +21,10 @@ RDEPEND="dev-haskell/parsers:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck:=[profile?]
-		dev-haskell/test-framework:=[profile?]
-		dev-haskell/test-framework-quickcheck2:=[profile?]
-		dev-haskell/type-hint:=[profile?] )"
+	test? ( dev-haskell/quickcheck
+		dev-haskell/test-framework
+		dev-haskell/test-framework-quickcheck2
+		dev-haskell/type-hint )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
