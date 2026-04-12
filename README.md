@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1491](https://img.shields.io/badge/ebuild-1491-orange.svg)](https://img.shields.io/badge/ebuild-1491-orange.svg)
+[![Number of ebuilds: 1492](https://img.shields.io/badge/ebuild-1492-orange.svg)](https://img.shields.io/badge/ebuild-1492-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -305,6 +305,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[hspec-wai-json](https://github.com/hspec/hspec-wai) | Testing JSON APIs with hspec-wai
 *   dev-haskell/[htf](https://github.com/skogsbaer/HTF) | The Haskell Test Framework
 *   dev-haskell/[http2](https://github.com/kazu-yamamoto/http2) | HTTP/2 library
+*   dev-haskell/[hxt](https://github.com/UweSchmidt/hxt) | A collection of tools for processing XML with Haskell
 *   dev-haskell/[ilist](https://github.com/brandonhamilton/ilist) | Index-related functions for lists
 *   dev-haskell/[indexed-profunctors](https://github.com/well-typed/optics) | Utilities for indexed profunctors
 *   dev-haskell/[ini](https://github.com/andreasabel/ini) | Configuration files in the INI format
