@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1499](https://img.shields.io/badge/ebuild-1499-orange.svg)](https://img.shields.io/badge/ebuild-1499-orange.svg)
+[![Number of ebuilds: 1500](https://img.shields.io/badge/ebuild-1500-orange.svg)](https://img.shields.io/badge/ebuild-1500-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -328,6 +328,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[loch-th](https://github.com/liskin/loch-th) | Support for precise error locations in source files
 *   dev-haskell/[mime-mail](https://github.com/snoyberg/mime-mail) | Compose MIME email messages
 *   dev-haskell/[modern-uri](https://github.com/mrkkrp/modern-uri) | Modern library for working with URIs
+*   dev-haskell/[monadrandom](https://github.com/byorgey/MonadRandom) | Random-number generation monad
 *   dev-haskell/[monad-time](https://github.com/scrive/monad-time) | Type class for monads which carry the notion of the current time
 *   dev-haskell/[monoid-subclasses](https://github.com/blamario/monoid-subclasses) | Subclasses of Monoid
 *   dev-haskell/[network-byte-order](https://github.com/kazu-yamamoto/network-byte-order) | Network byte order utilities
