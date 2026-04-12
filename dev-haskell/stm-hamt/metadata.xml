@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a low-level data-structure, which can be used to
+	implement higher-level interfaces like hash-map and hash-set.
+	Such implementations are presented by the stm-containers.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">stm-hamt</remote-id>
+		<remote-id type="github">nikita-volkov/stm-hamt</remote-id>
+	</upstream>
+</pkgmetadata>
