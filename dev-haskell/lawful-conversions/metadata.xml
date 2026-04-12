@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Lawful typeclasses capturing three patterns of bidirectional mapping and forming
+	a layered hierarchy with an ascending strictness of laws.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">lawful-conversions</remote-id>
+		<remote-id type="github">nikita-volkov/lawful-conversions</remote-id>
+	</upstream>
+</pkgmetadata>
