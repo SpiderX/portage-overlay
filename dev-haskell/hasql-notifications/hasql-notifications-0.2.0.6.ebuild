@@ -1,11 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+POSTGRES_COMPAT=( {14..18} )
+POSTGRES_USEDEP="server"
 
-inherit haskell-cabal
+inherit edo haskell-cabal postgres
 
 DESCRIPTION="PostgreSQL Asynchronous notification"
 HOMEPAGE="https://github.com/diogob/hasql-notifications"
@@ -21,9 +23,18 @@ RDEPEND="dev-haskell/hasql:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-db/postgresql:*
-		dev-haskell/hspec:=[profile?]
-		dev-haskell/quickcheck:=[profile?] )"
+	test? ( ${POSTGRES_DEP}
+		dev-haskell/hspec
+		dev-haskell/quickcheck )"
+
+CABAL_CHDEPS=(
+	'hasql-pool >= 0.4 && < 0.11' 'hasql-pool >= 0.4 && < 1.2'
+)
+
+pkg_setup() {
+	haskell-cabal_pkg_setup
+	postgres_pkg_setup
+}
 
 src_prepare() {
 	haskell-cabal_src_prepare
@@ -34,13 +45,11 @@ src_test() {
 	local db="${T}/pgsql"
 	local POSTGRES_DB="hasql_notifications_test" POSTGRES_USER="postgres"
 
-	initdb -U postgres -D "${db}" || die "initdb failed"
-	pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'" \
-		|| die "pg_ctl for start failed"
-	createdb -h "${T}" -U postgres hasql_notifications_test \
-		|| die "createdb failed"
+	edo initdb -U postgres -D "${db}"
+	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
+	edo createdb -h "${T}" -U postgres hasql_notifications_test
 
 	haskell-cabal_src_test
 
-	pg_ctl -w -D "${db}" stop || die "pg_ctl for stop failed"
+	edo pg_ctl -w -D "${db}" stop
 }
