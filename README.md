@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1504](https://img.shields.io/badge/ebuild-1504-orange.svg)](https://img.shields.io/badge/ebuild-1504-orange.svg)
+[![Number of ebuilds: 1505](https://img.shields.io/badge/ebuild-1505-orange.svg)](https://img.shields.io/badge/ebuild-1505-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -354,6 +354,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[pretty-simple](https://github.com/cdepillabout/pretty-simple) | Haskell data types that have a Show instance
 *   dev-haskell/[prettyclass](https://hackage.haskell.org/package/prettyclass) | Pretty printing class similar to Show
 *   dev-haskell/[primitive-extras](https://github.com/nikita-volkov/primitive-extras) | Extras for the primitive library
+*   dev-haskell/[primitive-unlifted](https://github.com/haskell-primitive/primitive-unlifted) | Primitive GHC types with unlifted types inside
 *   dev-haskell/[protolude](https://github.com/sdiehl/protolude) | A sensible starting Prelude template
 *   dev-haskell/[ptr](https://github.com/nikita-volkov/ptr) | Abstractions for operations on pointers
 *   dev-haskell/[ranged-sets](https://github.com/PaulJohnson/Ranged-sets) | Ranged sets for Haskell
