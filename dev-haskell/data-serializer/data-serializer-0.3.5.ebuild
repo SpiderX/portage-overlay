@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,8 +22,8 @@ RDEPEND="dev-haskell/cereal:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+	test? ( dev-haskell/tasty
+		dev-haskell/tasty-quickcheck )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
