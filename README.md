@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1494](https://img.shields.io/badge/ebuild-1494-orange.svg)](https://img.shields.io/badge/ebuild-1494-orange.svg)
+[![Number of ebuilds: 1495](https://img.shields.io/badge/ebuild-1495-orange.svg)](https://img.shields.io/badge/ebuild-1495-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -308,6 +308,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[hxt](https://github.com/UweSchmidt/hxt) | A collection of tools for processing XML with Haskell
 *   dev-haskell/[hxt-charproperties](https://github.com/UweSchmidt/hxt) | Character properties and classes for XML and Unicode
 *   dev-haskell/[hxt-regex-xmlschema](https://github.com/UweSchmidt/hxt) | A regular expression library for W3C XML Schema regular expressions
+*   dev-haskell/[hxt-unicode](https://github.com/UweSchmidt/hxt) | Unicode en-/decoding functions for utf8, iso-latin-* and other encodings
 *   dev-haskell/[ilist](https://github.com/brandonhamilton/ilist) | Index-related functions for lists
 *   dev-haskell/[indexed-profunctors](https://github.com/well-typed/optics) | Utilities for indexed profunctors
 *   dev-haskell/[ini](https://github.com/andreasabel/ini) | Configuration files in the INI format

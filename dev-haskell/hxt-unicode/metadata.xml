@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Unicode encoding and decoding functions for utf8, iso-latin-* and somes
+	other encodings, used in the Haskell XML Toolbox. ISO Latin 1 - 16, utf8,
+	utf16, ASCII are supported.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">hxt-unicode</remote-id>
+		<remote-id type="github">UweSchmidt/hxt</remote-id>
+	</upstream>
+</pkgmetadata>
