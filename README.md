@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1512](https://img.shields.io/badge/ebuild-1512-orange.svg)](https://img.shields.io/badge/ebuild-1512-orange.svg)
+[![Number of ebuilds: 1513](https://img.shields.io/badge/ebuild-1513-orange.svg)](https://img.shields.io/badge/ebuild-1513-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -389,6 +389,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[timerep](https://github.com/HugoDaniel/timerep) | Parse and display time according to some RFCs
 *   dev-haskell/[time-manager](https://github.com/yesodweb/wai) | Scalable timer
 *   dev-haskell/[tmp-postgres](https://github.com/jfischoff/tmp-postgres) | Create temporary postgres instances
+*   dev-haskell/[tuple](https://github.com/augustss/tuple) | Various functions on tuples
 *   dev-haskell/[tz](https://github.com/ysangkok/haskell-tz) | Efficient time zone handling
 *   dev-haskell/[tzdata](https://github.com/ysangkok/haskell-tzdata) | Distribution of the standard time zone database
 *   dev-haskell/[type-hint](https://github.com/mvv/type-hint) | Haskell library for helping type inference by using proxy values
