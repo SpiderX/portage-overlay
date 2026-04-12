@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,9 +20,9 @@ RDEPEND="dev-haskell/haskell-src-exts:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hunit:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-hunit:=[profile?] )"
+	test? ( dev-haskell/hunit
+		dev-haskell/tasty
+		dev-haskell/tasty-hunit )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
