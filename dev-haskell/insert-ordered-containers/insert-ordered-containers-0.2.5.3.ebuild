@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,15 +21,15 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/optics-core:=[profile?]
 	dev-haskell/optics-extra:=[profile?]
 	dev-haskell/semigroupoids:=[profile?]
-	dev-haskell/text:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/base-compat:=[profile?]
-		dev-haskell/quickcheck:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+	test? ( dev-haskell/base-compat
+		dev-haskell/quickcheck
+		dev-haskell/tasty
+		dev-haskell/tasty-quickcheck
+		dev-haskell/text )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
