@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,20 +16,24 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/hashable:=[profile?]
 	dev-haskell/primitive:=[profile?]
+	dev-haskell/profunctors:=[profile?]
+	dev-haskell/quickcheck:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
 	dev-haskell/vector:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck:=[profile?]
-		dev-haskell/quickcheck-instances:=[profile?]
-		dev-haskell/rebase:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+	test? ( dev-haskell/quickcheck-instances
+		dev-haskell/rebase
+		dev-haskell/tasty
+		dev-haskell/tasty-quickcheck )"
+
+CABAL_CHDEPS=(
+	'quickcheck-instances >=0.3.32 && <0.5' 'quickcheck-instances >=0.3.29.1 && <0.5'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/license-file/d' isomorphism-class.cabal || die "sed failed"
 }
