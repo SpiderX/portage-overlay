@@ -1,11 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+POSTGRES_COMPAT=( {14..18} )
+POSTGRES_USEDEP="server"
 
-inherit haskell-cabal
+inherit edo haskell-cabal postgres
 
 DESCRIPTION="Dynamic statements for Hasql"
 HOMEPAGE="https://github.com/nikita-volkov/hasql-dynamic-statements"
@@ -20,14 +22,18 @@ RDEPEND="dev-haskell/hasql:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-db/postgresql:*
-		dev-haskell/rerebase:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-hunit:=[profile?] )"
+	test? ( ${POSTGRES_DEP}
+		dev-haskell/rerebase
+		dev-haskell/tasty
+		dev-haskell/tasty-hunit )"
+
+pkg_setup() {
+	haskell-cabal_pkg_setup
+	postgres_pkg_setup
+}
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/license-file/d' hasql-dynamic-statements.cabal \
 		|| die "sed failed"
 }
@@ -37,11 +43,10 @@ src_test() {
 	local POSTGRES_DB="postgres" POSTGRES_USER="postgres" \
 		POSTGRES_PASSWORD="postgres"
 
-	initdb -U postgres -D "${db}" || die "initdb failed"
-	pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'" \
-		|| die "pg_ctl for start failed"
+	edo initdb -U postgres -D "${db}"
+	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
 
 	haskell-cabal_src_test
 
-	pg_ctl -w -D "${db}" stop || die "pg_ctl for stop failed"
+	edo pg_ctl -w -D "${db}" stop
 }
