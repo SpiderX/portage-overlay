@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1487](https://img.shields.io/badge/ebuild-1487-orange.svg)](https://img.shields.io/badge/ebuild-1487-orange.svg)
+[![Number of ebuilds: 1488](https://img.shields.io/badge/ebuild-1488-orange.svg)](https://img.shields.io/badge/ebuild-1488-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -299,6 +299,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[hspec-discover](https://github.com/hspec/hspec) | Automatically discover and run Hspec tests
 *   dev-haskell/[hspec-expectations](https://github.com/hspec/hspec-expectations) | Catchy combinators for HUnit
 *   dev-haskell/[hspec-expectations-lifted](https://github.com/hspec/hspec-expectations-lifted) | A version of hspec-expectations generalized to MonadIO
+*   dev-haskell/[hspec-golden](https://github.com/stackbuilders/hspec-golden) | Golden tests for hspec
 *   dev-haskell/[hspec-wai-json](https://github.com/hspec/hspec-wai) | Testing JSON APIs with hspec-wai
 *   dev-haskell/[http2](https://github.com/kazu-yamamoto/http2) | HTTP/2 library
 *   dev-haskell/[ilist](https://github.com/brandonhamilton/ilist) | Index-related functions for lists

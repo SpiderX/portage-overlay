@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Golden tests store the expected output in a separated file. Each time a
+	golden test is executed the output of the subject under test (SUT)
+	is compared with the expected output. If the output of the SUT changes
+	then the test will fail until the expected output is updated.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">hspec-golden</remote-id>
+		<remote-id type="github">stackbuilders/hspec-golden</remote-id>
+	</upstream>
+</pkgmetadata>
