@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,10 +17,9 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck:=[profile?] )"
+	test? ( dev-haskell/quickcheck )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/license-file/d' selective.cabal || die "sed failed"
 }
