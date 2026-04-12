@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This library is intended to be used for decoding and encoding
-	Swagger 2.0 API specifications as well as manipulating them.
+	This package provides a library is intended to be used for decoding and
+	encoding Swagger 2.0 API specifications as well as manipulating them.
 	</longdescription>
 	<upstream>
 		<remote-id type="hackage">swagger2</remote-id>
