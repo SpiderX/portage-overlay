@@ -1,11 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+POSTGRES_COMPAT=( {14..18} )
+POSTGRES_USEDEP="server"
 
-inherit haskell-cabal
+inherit edo haskell-cabal postgres
 
 DESCRIPTION="Encoders and decoders for the PostgreSQL's binary format"
 HOMEPAGE="https://github.com/nikita-volkov/postgresql-binary"
@@ -26,21 +28,22 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/postgresql-libpq:=[profile?]
-		dev-haskell/quickcheck:=[profile?]
-		dev-haskell/quickcheck-instances:=[profile?]
-		dev-haskell/rerebase:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-hunit:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+	test? ( ${POSTGRES_DEP}
+		dev-haskell/postgresql-libpq
+		dev-haskell/quickcheck
+		dev-haskell/quickcheck-instances
+		dev-haskell/rerebase
+		dev-haskell/tasty
+		dev-haskell/tasty-hunit
+		dev-haskell/tasty-quickcheck )"
 
-CABAL_CHDEPS=(
-	'rerebase >=1.20.1.1 && <2' 'rerebase >=1.18.1.1 && <2'
-)
+pkg_setup() {
+	haskell-cabal_pkg_setup
+	postgres_pkg_setup
+}
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/license-file/,+1d' postgresql-binary.cabal || die "sed failed"
 }
 
@@ -48,11 +51,10 @@ src_test() {
 	local db="${T}/pgsql"
 	local POSTGRES_DB="postgres" POSTGRES_USER="postgres"
 
-	initdb -U postgres -D "${db}" || die "initdb failed"
-	pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'" \
-		|| die "pg_ctl for start failed"
+	edo initdb -U postgres -D "${db}"
+	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
 
 	haskell-cabal_src_test
 
-	pg_ctl -w -D "${db}" stop || die "pg_ctl for stop failed"
+	edo pg_ctl -w -D "${db}" stop
 }
