@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,10 @@ RDEPEND="dev-haskell/bifunctors:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:="
+
+CABAL_CHDEPS=(
+	'semigroupoids >=6 && <7' 'semigroupoids >=5 && <7'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
