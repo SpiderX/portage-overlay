@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+CABAL_HACKAGE_REVISION=8
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 
 inherit haskell-cabal
@@ -14,8 +15,9 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/hspec:=[profile?]
-	dev-haskell/hspec-core:=[profile?]
+RDEPEND=">=dev-haskell/hspec-2.11.0:=[profile?]
+	>=dev-haskell/hspec-api-2.11.0:=[profile?]
+	>=dev-haskell/hspec-core-2.11.0:=[profile?]
 	dev-haskell/quickcheck:=[profile?]
 	dev-haskell/tasty:=[profile?]
 	dev-haskell/tasty-quickcheck:=[profile?]
