@@ -12,5 +12,5 @@ EGIT_REPO_URI="https://github.com/kraxarn/${PN}.git"
 LICENSE="GPL-3"
 SLOT="0"
 
-RDEPEND="dev-qt/qtbase:6[dbus,network,widgets]
+RDEPEND="dev-qt/qtbase:6[dbus,gui,network,widgets]
 	dev-qt/qtsvg:6"
