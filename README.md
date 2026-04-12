@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1478](https://img.shields.io/badge/ebuild-1478-orange.svg)](https://img.shields.io/badge/ebuild-1478-orange.svg)
+[![Number of ebuilds: 1479](https://img.shields.io/badge/ebuild-1479-orange.svg)](https://img.shields.io/badge/ebuild-1479-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -270,6 +270,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[data-endian](https://github.com/mvv/data-endian) | Endian-sensitive data
 *   dev-haskell/[data-serializer](https://github.com/mvv/data-serializer) | Common API for Haskell serialization libraries
 *   dev-haskell/[data-sketches](https://github.com/iand675/datasketches-haskell) | Stochastic streaming algorithms for approximate computation
+*   dev-haskell/[data-sketches-core](https://github.com/iand675/datasketches-haskell) | Stochastic streaming algorithms for approximate computation
 *   dev-haskell/[data-textual](https://github.com/mvv/data-textual) | Human-friendly textual representations for Haskell
 *   dev-haskell/[deepseq](https://github.com/haskell/deepseq) | Deep evaluation of data structures
 *   dev-haskell/[deferred-folds](https://github.com/nikita-volkov/deferred-folds) | Abstractions over deferred folds
