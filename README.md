@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1508](https://img.shields.io/badge/ebuild-1508-orange.svg)](https://img.shields.io/badge/ebuild-1508-orange.svg)
+[![Number of ebuilds: 1509](https://img.shields.io/badge/ebuild-1509-orange.svg)](https://img.shields.io/badge/ebuild-1509-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -372,6 +372,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[stm-hamt](https://github.com/nikita-volkov/stm-hamt) | STM-specialised Hash Array Mapped Trie
 *   dev-haskell/[strict-list](https://github.com/nikita-volkov/strict-list) | Strict linked list
 *   dev-haskell/[swagger2](https://github.com/GetShopTV/swagger2) | Swagger 2.0 data model
+*   dev-haskell/[tasty-discover](https://github.com/haskell-works/tasty-discover) | Test discovery for the tasty framework
 *   dev-haskell/[tasty-hspec](https://github.com/mitchellwrosen/tasty-hspec) | Hspec support for the Tasty test framework
 *   dev-haskell/[template-haskell-compat-v0208](https://github.com/nikita-volkov/template-haskell-compat-v0208) | Backward-compatibility layer for Template Haskell newer than 2.8
 *   dev-haskell/[text-builder](https://github.com/nikita-volkov/text-builder) | Efficient strict text builder

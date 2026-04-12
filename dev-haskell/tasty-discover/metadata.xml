@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides an Automatic test discovery and runner for
+	the tasty framework. Prefix your test case names and tasty-discover
+	will discover, collect and run them.
+	as a tasty TestTree.
+	</longdescription>
+	<use>
+		<flag name="executable">Build the tasty-discover executable</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">tasty-discover</remote-id>
+		<remote-id type="github">haskell-works/tasty-discover</remote-id>
+	</upstream>
+</pkgmetadata>
