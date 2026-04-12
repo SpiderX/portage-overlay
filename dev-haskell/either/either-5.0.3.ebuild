@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,12 +21,11 @@ RDEPEND="dev-haskell/bifunctors:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck:=
-		dev-haskell/test-framework:=
-		dev-haskell/test-framework-quickcheck2:= )"
+	test? ( dev-haskell/tasty
+		dev-haskell/tasty-quickcheck
+		dev-haskell/quickcheck )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/license-file/d' either.cabal || die "sed failed"
 }
