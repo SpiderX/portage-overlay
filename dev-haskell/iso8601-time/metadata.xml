@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a conversion functions between Haskell time types
+	and the ISO 8601 format, which is often used for printing times.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">iso8601-time</remote-id>
+		<remote-id type="github">nh2/iso8601-time</remote-id>
+	</upstream>
+</pkgmetadata>
