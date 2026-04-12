@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+CABAL_FEATURES="lib profile haddock hoogle hscolour"
 
 inherit haskell-cabal
 
@@ -13,21 +13,16 @@ HOMEPAGE="https://github.com/cdepillabout/pretty-simple"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="buildexample buildexe"
+IUSE="buildexample +buildexe"
 
-RDEPEND=">=dev-haskell/prettyprinter-1.7.1:=[profile?]
-	>=dev-haskell/prettyprinter-ansi-terminal-1.1.3:=[profile?]
+RDEPEND="dev-haskell/prettyprinter:=[profile?]
+	dev-haskell/prettyprinter-ansi-terminal:=[profile?]
+	dev-haskell/text:=[profile?]
 	dev-lang/ghc:=
 	buildexample? ( dev-haskell/aeson:=[profile?] )
 	buildexe? ( dev-haskell/optparse-applicative:=[profile?] )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	dev-haskell/cabal-doctest:=
-	test? ( dev-haskell/doctest:=[profile?]
-		dev-haskell/glob:=[profile?]
-		dev-haskell/quickcheck:=[profile?] )"
-
-GHC_BOOTSTRAP_PACKAGES=( cabal-doctest )
+BDEPEND="dev-haskell/cabal:="
 
 src_prepare() {
 	haskell-cabal_src_prepare
