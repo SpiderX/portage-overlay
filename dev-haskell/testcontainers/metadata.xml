@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a Haskell library that provides a friendly API
+	to run Docker containers. It is designed to create a runtime environment
+	to use during your integration tests.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">testcontainers</remote-id>
+		<remote-id type="github">testcontainers/testcontainers-hs</remote-id>
+	</upstream>
+</pkgmetadata>
