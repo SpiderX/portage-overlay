@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Cpphs is a re-implementation of the C pre-processor that is both more
+	compatible with Haskell, and itself written in Haskell so that it can
+	be distributed with compilers.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">cpphs</remote-id>
+		<remote-id type="github">haskell-pkg-janitors/cpphs</remote-id>
+	</upstream>
+</pkgmetadata>

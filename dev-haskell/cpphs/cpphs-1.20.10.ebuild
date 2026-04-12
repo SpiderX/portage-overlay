@@ -1,0 +1,25 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CABAL_FEATURES="lib profile haddock hoogle hscolour"
+
+inherit haskell-cabal
+
+DESCRIPTION="A liberalised re-implementation of cpp, the C pre-processor"
+HOMEPAGE="https://github.com/haskell-pkg-janitors/cpphs"
+
+LICENSE="LGPL-2.1"
+SLOT="0/${PV}"
+KEYWORDS="~amd64 ~x86"
+
+RDEPEND="dev-haskell/polyparse:=[profile?]
+	dev-lang/ghc:="
+DEPEND="${RDEPEND}"
+BDEPEND="dev-haskell/cabal:="
+
+src_prepare() {
+	haskell-cabal_src_prepare
+	sed -i '/license-file/d' cpphs.cabal || die "sed failed"
+}
