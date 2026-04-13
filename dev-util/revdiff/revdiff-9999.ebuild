@@ -23,7 +23,7 @@ src_unpack() {
 src_compile() {
 	COMMIT="$(git rev-parse --short=7 HEAD)"
 	DATE="$(date -u '+%Y%m%dT%H%M%S')"
-	LDFLAGS="-w -X main.revision=master-${COMMIT}-${DATE}"
+	LDFLAGS="-w -X \"main.revision=${PV} (master-${COMMIT}-${DATE})\""
 
 	GOFLAGS="-v -x -mod=vendor" \
 		ego build -ldflags "${LDFLAGS}" -o revdiff ./app
