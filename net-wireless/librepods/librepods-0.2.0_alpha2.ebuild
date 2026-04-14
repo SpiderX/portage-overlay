@@ -3,15 +3,18 @@
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake
+
+MY_PV="$(ver_rs 3 - 4 .)"
 
 DESCRIPTION="AirPods libreated from Apple's ecosystem"
 HOMEPAGE="https://github.com/kavishdevar/librepods"
-EGIT_REPO_URI="https://github.com/kavishdevar/${PN}.git"
-S="${WORKDIR}/${P}/linux"
+SRC_URI="https://github.com/kavishdevar/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}/linux"
 
 LICENSE="AGPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtbase:6[dbus,widgets]
 	dev-qt/qtconnectivity:6[bluetooth]
