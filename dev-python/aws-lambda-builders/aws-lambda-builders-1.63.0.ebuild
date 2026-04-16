@@ -14,10 +14,12 @@ SRC_URI="https://github.com/aws/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 BDEPEND="test? ( dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/pyelftools[${PYTHON_USEDEP}] )"
+		dev-python/pip[${PYTHON_USEDEP}]
+		dev-python/pyelftools[${PYTHON_USEDEP}]
+		dev-python/uv )"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

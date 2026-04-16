@@ -16,7 +16,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 BDEPEND="test? ( dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/pyelftools[${PYTHON_USEDEP}] )"
+		dev-python/pip[${PYTHON_USEDEP}]
+		dev-python/pyelftools[${PYTHON_USEDEP}]
+		dev-python/uv )"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
