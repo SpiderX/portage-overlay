@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} python3_{13,14}t )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="Java Property file parser and writer for Python"
 HOMEPAGE="https://github.com/Tblue/python-jproperties"
@@ -22,5 +22,5 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	default
-	rm pytest.ini || die "rm failed"
+	edo rm pytest.ini
 }
