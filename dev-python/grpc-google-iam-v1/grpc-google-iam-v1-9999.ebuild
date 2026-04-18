@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="Python Client for Cloud Identity and Access Management"
 HOMEPAGE="https://github.com/googleapis/google-cloud-python"
@@ -24,15 +24,15 @@ distutils_enable_tests pytest
 
 python_compile() {
 	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
+	edo find "${BUILD_DIR}" -name '*.pth' -delete
 }
 
 src_test() {
-	rm -r google || die "rm failed"
+	edo rm -r google
 	distutils-r1_src_test
 }
 
 python_test() {
 	distutils_write_namespace google
-	epytest -v tests || die "tests failed with ${EPYTHON}"
+	epytest -v tests
 }
