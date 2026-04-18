@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -33,6 +33,7 @@ BDEPEND="test? ( dev-python/google-cloud-iam[${PYTHON_USEDEP}]
 		dev-python/google-cloud-testutils[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile() {
