@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit cmake edo python-any-r1
 
@@ -21,6 +21,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-cpp/gtest
+		net-libs/nodejs
 		$(python_gen_any_dep 'dev-python/filecheck[${PYTHON_USEDEP}]
 			dev-python/lit[${PYTHON_USEDEP}]') )"
 
@@ -28,16 +29,6 @@ PATCHES=( "${FILESDIR}/${PN}"-125-test-CMakeLists.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	# no v8
-	edo rm -rf test/lit/d8
-	# filecheck: no such file or directory: '%s'
-	edo rm -rf test/lit/help
-	edo rm test/lit/fuzz-types.test
-
-	cmake_src_prepare
 }
 
 src_configure() {
