@@ -1,13 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3 go-module shell-completion
+inherit git-r3 go-module optfeature shell-completion
 
 DESCRIPTION="A vault for securely storing and accessing AWS credentials"
-HOMEPAGE="https://github.com/99designs/aws-vault"
-EGIT_REPO_URI="https://github.com/99designs/${PN}.git"
+HOMEPAGE="https://github.com/ByteNess/aws-vault"
+EGIT_REPO_URI="https://github.com/ByteNess/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,8 +20,7 @@ src_unpack() {
 }
 
 src_compile() {
-	ego build -ldflags="-X main.Version=${PV} -s -w" -trimpath \
-		-o ./bin/"${PN}"
+	ego build -ldflags="-X main.Version=${PV}" -o aws-vault
 }
 
 src_test() {
@@ -30,7 +29,7 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	dobin bin/aws-vault
+	dobin aws-vault
 
 	newinitd "${FILESDIR}"/aws-vault.initd aws-vault
 	newconfd "${FILESDIR}"/aws-vault.confd aws-vault
@@ -42,9 +41,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! has_version app-admin/pass && ! has_version kde-apps/kwalletmanager \
-		&& ! has_version gnome-base/gnome-keyring ; then
-		einfo "You should consider to install app-admin/pass, gnome-base/gnome-keyring"
-		einfo "or kde-apps/kwalletmanager to be able to use them as backends"
-	fi
+	optfeature "storing passwords via Secret Service API provider" virtual/secret-service
+	optfeature "storing passwords via passwordstore" app-admin/pass
 }

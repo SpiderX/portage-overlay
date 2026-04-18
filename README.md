@@ -49,7 +49,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[awsume](https://github.com/trek10inc/awsume) | A utility for easily assuming AWS IAM roles from command line
 *   app-admin/[awsume-console-plugin](https://github.com/trek10inc/awsume-console-plugin) | Use assumed role to open AWS console in default browser
 *   app-admin/[awstaghelper](https://github.com/mpostument/awstaghelper) | AWS bulk tagging tool
-*   app-admin/[aws-vault](https://github.com/99designs/aws-vault) | A vault for securely storing and accessing AWS credentials
+*   app-admin/[aws-vault](https://github.com/ByteNess/aws-vault) | A vault for securely storing and accessing AWS credentials
 *   app-admin/[azcopy](https://github.com/Azure/azure-storage-azcopy) | A command-line utility to manage Azure Storage accounts
 *   app-admin/[cfn-policy-validator](https://github.com/awslabs/aws-cloudformation-iam-policy-validator) | IAM Policy Validator for AWS CloudFormation
 *   app-admin/[cli53](https://github.com/barnybug/cli53) | Command line tool for Amazon Route 53

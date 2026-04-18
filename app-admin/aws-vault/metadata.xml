@@ -17,6 +17,6 @@
 	tools, and is aware of your profiles and configuration in ~/.aws/config.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">99designs/aws-vault</remote-id>
+		<remote-id type="github">ByteNess/aws-vault</remote-id>
 	</upstream>
 </pkgmetadata>
