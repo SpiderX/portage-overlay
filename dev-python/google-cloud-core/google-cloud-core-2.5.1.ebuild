@@ -6,15 +6,10 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 optfeature
-
-MY_PN="${PN//google/python}"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 edo optfeature pypi
 
 DESCRIPTION="Google Cloud API client core library"
-HOMEPAGE="https://github.com/googleapis/python-cloud-core"
-SRC_URI="https://github.com/googleapis/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
-S="${WORKDIR}/${MY_P}"
+HOMEPAGE="https://github.com/googleapis/google-cloud-python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -29,17 +24,17 @@ distutils_enable_tests pytest
 
 python_compile() {
 	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
+	edo find "${BUILD_DIR}" -name '*.pth' -delete
 }
 
 src_test() {
-	rm -r google || die "rm failed"
+	edo rm -r google
 	distutils-r1_src_test
 }
 
 python_test() {
 	distutils_write_namespace google
-	epytest -v tests || die "tests failed with ${EPYTHON}"
+	epytest -v tests
 }
 
 pkg_postinst() {
