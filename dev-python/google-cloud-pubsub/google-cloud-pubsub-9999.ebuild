@@ -4,13 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="Google Cloud Pub/Sub API client library"
-HOMEPAGE="https://github.com/googleapis/python-pubsub"
-EGIT_REPO_URI="https://github.com/googleapis/python-pubsub.git"
+HOMEPAGE="https://github.com/googleapis/google-cloud-python"
+EGIT_REPO_URI="https://github.com/googleapis/google-cloud-python.git"
+S="${WORKDIR}/${P}/packages/${PN}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -24,22 +25,21 @@ RDEPEND="dev-python/google-api-core[${PYTHON_USEDEP}]
 	dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
 	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/proto-plus[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/flaky[${PYTHON_USEDEP}] )"
 
-EPYTEST_PLUGINS=( pytest-asyncio )
+EPYTEST_PLUGINS=( flaky pytest-asyncio )
 distutils_enable_tests pytest
 
 python_compile() {
 	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
+	edo find "${BUILD_DIR}" -name '*.pth' -delete
 }
 
 src_test() {
-	rm -r google || die "rm failed"
+	edo rm -r google
 	distutils-r1_src_test
 }
 
 python_test() {
 	distutils_write_namespace google
-	epytest -v tests || die "tests failed with ${EPYTHON}"
+	epytest -v tests
 }

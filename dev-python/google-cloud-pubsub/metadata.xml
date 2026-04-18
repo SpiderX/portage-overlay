@@ -14,7 +14,7 @@
 	that allows to send and receive messages between independent applications
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/python-pubsub</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">google-cloud-pubsub</remote-id>
 	</upstream>
 </pkgmetadata>
