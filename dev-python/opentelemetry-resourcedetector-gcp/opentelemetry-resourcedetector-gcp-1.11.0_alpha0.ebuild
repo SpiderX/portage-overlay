@@ -4,9 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 edo pypi
 
 DESCRIPTION="OpenTelemetry Google Cloud Resource Detector"
 HOMEPAGE="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python"
@@ -39,5 +39,5 @@ EPYTEST_DESELECT=(
 
 python_install_all() {
 	distutils-r1_python_install_all
-	find "${ED}" -type f -name "py.typed" -exec rm -rv {} + || die "py.typed removing failed"
+	edo find "${ED}" -type f -name "py.typed" -exec rm -rv {} +
 }
