@@ -1097,7 +1097,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-cloud-bigquery](https://github.com/googleapis/python-bigquery) | Google Cloud BigQuery API client library
 *   dev-python/[google-cloud-bigquery-storage](https://github.com/googleapis/google-cloud-python) | Google Cloud Bigquery Storage API client library
 *   dev-python/[google-cloud-iam](https://github.com/googleapis/python-iam) | Google Cloud IAM API client library
-*   dev-python/[google-cloud-core](https://github.com/googleapis/python-cloud-core) | Google Cloud API client core library
+*   dev-python/[google-cloud-core](https://github.com/googleapis/google-cloud-python) | Google Cloud API client core library
 *   dev-python/[google-cloud-datacatalog](https://github.com/googleapis/google-cloud-python) | Google Cloud Datacatalog API client library
 *   dev-python/[google-cloud-firestore](https://github.com/googleapis/python-firestore) | Google Cloud Firestore API client library
 *   dev-python/[google-cloud-kms](https://github.com/googleapis/google-cloud-python) | Python Client for Google Cloud Key Management Service
