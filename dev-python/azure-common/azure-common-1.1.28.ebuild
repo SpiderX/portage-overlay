@@ -21,3 +21,6 @@ RESTRICT="test" # no tests
 BDEPEND="app-arch/unzip"
 
 DOCS=( {CHANGELOG,README}.md )
+
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest

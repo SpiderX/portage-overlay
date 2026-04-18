@@ -18,4 +18,5 @@ SLOT="0"
 
 DOCS=( {CHANGELOG,README}.md )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
