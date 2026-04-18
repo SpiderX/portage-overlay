@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12,13} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="CLI tool to manage Serverless applications using AWS SAM"
 HOMEPAGE="https://github.com/aws/aws-sam-cli"
@@ -15,11 +15,12 @@ EGIT_REPO_URI="https://github.com/aws/${PN}.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
-RESTRICT="test"
+RESTRICT="test" # needs a lot from boto3-stubs
 
 RDEPEND="dev-python/aws-lambda-builders[${PYTHON_USEDEP}]
 	dev-python/aws-sam-translator[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
+	dev-python/boto3-stubs[${PYTHON_USEDEP}]
 	dev-python/chevron[${PYTHON_USEDEP}]
 	dev-python/cfn-lint[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
@@ -29,26 +30,33 @@ RDEPEND="dev-python/aws-lambda-builders[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/python-dotenv[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/tomlkit[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]
+	dev-python/tzlocal[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]
 	dev-util/cookiecutter[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/filelock[${PYTHON_USEDEP}]
-		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/psutil[${PYTHON_USEDEP}]
-		dev-python/pytest-forked[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
+		dev-python/psutil[${PYTHON_USEDEP}] )"
 
 QA_PREBUILT="usr/lib/python.*/site-packages/samcli/local/rapid/aws-lambda-rie-.*"
 
+EPYTEST_XDIST=1
+EPYTEST_PLUGINS=( flaky pytest-{forked,timeout} )
 distutils_enable_tests pytest
 
+src_prepare() {
+	default
+
+	edo rm -rf installer
+}
+
 python_test() {
-	AWS_DEFAULT_REGION=us-east-1 py.test -v || die "tests failed with ${EPYTHON}"
+	AWS_DEFAULT_REGION=us-east-1 epytest -v tests/unit
 }
