@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 git-r3 optfeature
 
@@ -24,6 +24,7 @@ RDEPEND="dev-python/azure-core[${PYTHON_USEDEP}]
 
 DOCS=( {CHANGELOG,README}.md )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 pkg_postinst() {
