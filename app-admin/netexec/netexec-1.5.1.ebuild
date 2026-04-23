@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -26,6 +26,7 @@ RDEPEND="dev-python/aardwolf[${PYTHON_USEDEP}]
 	dev-python/asyauth[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/bloodhound[${PYTHON_USEDEP}]
+	dev-python/certipy-ad[${PYTHON_USEDEP}]
 	dev-python/dploot[${PYTHON_USEDEP}]
 	dev-python/dsinternals[${PYTHON_USEDEP}]
 	dev-python/impacket[${PYTHON_USEDEP}]
@@ -37,6 +38,7 @@ RDEPEND="dev-python/aardwolf[${PYTHON_USEDEP}]
 	dev-python/neo4j[${PYTHON_USEDEP}]
 	dev-python/oscrypto[${PYTHON_USEDEP}]
 	dev-python/paramiko[${PYTHON_USEDEP}]
+	dev-python/pefile[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pylnk3[${PYTHON_USEDEP}]
 	dev-python/pynfsclient[${PYTHON_USEDEP}]
@@ -52,6 +54,7 @@ RDEPEND="dev-python/aardwolf[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/poetry-dynamic-versioning[${PYTHON_USEDEP}]"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {
