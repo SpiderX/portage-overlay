@@ -27,6 +27,7 @@ BDEPEND="dev-python/tomlkit[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
 EPYTEST_XDIST=1
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(
