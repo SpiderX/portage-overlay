@@ -21,6 +21,7 @@ RDEPEND="dev-python/bitstruct[${PYTHON_USEDEP}]
 BDEPEND="test? ( dev-python/diskcache[${PYTHON_USEDEP}]
 		dev-python/prompt-toolkit[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
