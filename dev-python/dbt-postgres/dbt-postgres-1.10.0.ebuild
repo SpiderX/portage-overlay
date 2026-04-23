@@ -1,12 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{12..13} )
+POSTGRES_COMPAT=( {14..18} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 edo pypi
+inherit distutils-r1 edo postgres pypi
 
 DESCRIPTION="The dbt adapter used to transform data loaded into a PostgreSQL"
 HOMEPAGE="https://github.com/dbt-labs/dbt-adapters"
@@ -21,7 +22,7 @@ RDEPEND="dev-python/agate[${PYTHON_USEDEP}]
 	dev-python/dbt-adapters[${PYTHON_USEDEP}]
 	dev-python/dbt-common[${PYTHON_USEDEP}]
 	dev-python/psycopg:2[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-db/postgresql:*
+BDEPEND="test? ( ${POSTGRES_DEP}
 		dev-vcs/git
 		dev-python/dbt-tests-adapter[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}] )"
