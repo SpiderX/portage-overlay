@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+EPYTEST_PLUGIN_AUTOLOAD=1
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -23,7 +24,7 @@ BDEPEND="test? ( dev-python/aspectlib[${PYTHON_USEDEP}]
 		dev-python/pygal[${PYTHON_USEDEP}]
 		dev-python/pygaljs[${PYTHON_USEDEP}] )"
 
-EPYTEST_XDIST=1
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
