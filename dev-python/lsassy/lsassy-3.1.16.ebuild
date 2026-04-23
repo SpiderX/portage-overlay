@@ -30,3 +30,11 @@ EPYTEST_DESELECT=(
 	tests/test_lsassy.py::TestExecMethods
 	tests/test_lsassy.py::TestDumpMethods
 )
+
+src_prepare() {
+	default
+
+	# add missed new method to test
+	sed -i '/nanodump_ssp_embedded",/a\\                "nativedump_embedded",' \
+		tests/test_lsassy.py || die "sed failed for test_lsassy.py"
+}
