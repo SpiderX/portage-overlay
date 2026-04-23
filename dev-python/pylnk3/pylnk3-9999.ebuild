@@ -15,4 +15,5 @@ EGIT_REPO_URI="https://github.com/strayge/pylnk.git"
 LICENSE="LGPL-3+"
 SLOT="0"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
