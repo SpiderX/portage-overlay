@@ -21,4 +21,5 @@ BDEPEND="test? ( dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/httmock[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
