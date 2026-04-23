@@ -16,4 +16,5 @@ EGIT_REPO_URI="https://github.com/manicmaniac/${PN}.git"
 LICENSE="MIT"
 SLOT="0"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
