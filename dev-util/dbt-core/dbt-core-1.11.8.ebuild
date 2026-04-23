@@ -4,9 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{12,13} )
+POSTGRES_COMPAT=( {14..18} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 postgres pypi
 
 DESCRIPTION="With dbt, build analytics the way engineers build applications"
 HOMEPAGE="https://github.com/dbt-labs/dbt-core"
@@ -39,7 +40,7 @@ RDEPEND="dev-python/agate[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]
 	dev-util/dbt-extractor[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-db/postgresql:*
+BDEPEND="test? ( ${POSTGRES_DEP}
 		dev-python/dbt-postgres[${PYTHON_USEDEP}] )"
 
 EPYTEST_PLUGINS=( pytest-mock )

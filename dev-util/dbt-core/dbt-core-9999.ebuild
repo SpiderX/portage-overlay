@@ -1,12 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{12..13} )
+POSTGRES_COMPAT=( {14..18} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 edo git-r3
+inherit distutils-r1 edo git-r3 postgres
 
 DESCRIPTION="With dbt, build analytics the way engineers build applications"
 HOMEPAGE="https://github.com/dbt-labs/dbt-core"
@@ -38,7 +39,7 @@ RDEPEND="dev-python/agate[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]
 	dev-util/dbt-extractor[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-db/postgresql:*
+BDEPEND="test? ( ${POSTGRES_DEP}
 		dev-python/dbt-postgres[${PYTHON_USEDEP}] )"
 
 EPYTEST_PLUGINS=( pytest-mock )
