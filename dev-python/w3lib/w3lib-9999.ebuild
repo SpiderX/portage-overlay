@@ -15,4 +15,5 @@ EGIT_REPO_URI="https://github.com/scrapy/${PN}.git"
 LICENSE="BSD"
 SLOT="0"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
