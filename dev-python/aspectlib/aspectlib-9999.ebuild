@@ -19,4 +19,5 @@ RDEPEND="dev-python/fields[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/process-tests[${PYTHON_USEDEP}]
 		dev-python/tornado[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
