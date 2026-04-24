@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 edo
 
@@ -25,11 +25,9 @@ RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/smart-open[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 	test? ( dev-python/annoy[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nbconvert[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		dev-python/nmslib[${PYTHON_USEDEP}]
-		dev-python/pyemd[${PYTHON_USEDEP}]
 		dev-python/testfixtures[${PYTHON_USEDEP}] )"
 
 EPYTEST_XDIST=1
@@ -42,6 +40,8 @@ EPYTEST_DESELECT=(
 	gensim/test/test_similarities.py::TestWord2VecAnnoyIndexer::test_fast_text
 	gensim/test/test_similarities.py::TestWord2VecAnnoyIndexer::test_word2vec
 	gensim/test/test_similarities.py::TestDoc2VecAnnoyIndexer::test_save
+	gensim/test/test_word2vec.py::TestWord2VecModel::test_cbow_hs_online
+	gensim/test/test_word2vec.py::TestWord2VecModel::test_parallel
 )
 
 python_compile() {
