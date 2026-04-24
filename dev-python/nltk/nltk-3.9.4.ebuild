@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
 inherit distutils-r1
@@ -17,6 +17,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="tk"
+REQUIRED_USE="test? ( tk )"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -28,10 +29,10 @@ BDEPEND="test? ( dev-python/nltkdata
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyparsing[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/twython[${PYTHON_USEDEP}] )"
 PDEPEND="dev-python/nltkdata"
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
