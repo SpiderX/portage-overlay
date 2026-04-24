@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 git-r3
 
@@ -18,12 +18,12 @@ SLOT="0"
 RDEPEND="dev-python/azure-core[${PYTHON_USEDEP}]
 	dev-python/azure-common[${PYTHON_USEDEP}]
 	dev-python/azure-storage-blob[${PYTHON_USEDEP}]
-	dev-python/backports-zstd[${PYTHON_USEDEP}]
 	dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/google-cloud-storage[${PYTHON_USEDEP}]
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/wrapt[${PYTHON_USEDEP}]"
+	dev-python/wrapt[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/backports-zstd[${PYTHON_USEDEP}]' python3_{12,13} )"
 BDEPEND="test? ( dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}] )"
 
