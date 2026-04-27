@@ -1,0 +1,15 @@
+[Unit]
+Description=Weblist file browser
+After=network-online.target
+
+[Service]
+Type=simple
+User=weblist
+Group=weblist
+ExecStart=/usr/bin/weblist -l :8080 -r /var/lib/weblist
+WorkingDirectory=/var/lib/weblist
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

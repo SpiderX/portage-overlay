@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/weblist"
+command_args="${WEBLIST_OPTS}"
+command_background="yes"
+command_user="${USER:-weblist}:${GROUP:-weblist}"
+description="web file browser"
+name="weblist"
+pidfile="/run/${RC_SVCNAME}.pid"
+start_stop_daemon_args="-q
+	--stdout /var/log/weblist/${RC_SVCNAME}.log
+	--stderr /var/log/weblist/${RC_SVCNAME}.log"
+
+depend() {
+	need net
+}

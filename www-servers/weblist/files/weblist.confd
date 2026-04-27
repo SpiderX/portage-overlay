@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/weblist
+
+# extra options (run weblist --help for a list of supported options)
+WEBLIST_OPTS="-l :8080 -r /var/lib/weblist"
