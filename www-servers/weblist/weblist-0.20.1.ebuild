@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="acct-group/weblist
 	acct-user/weblist"
+BDEPEND=">=dev-lang/go-1.26.1:="
 
 src_compile() {
 	DATE="$(date -u '+%Y%m%dT%H%M%S')"

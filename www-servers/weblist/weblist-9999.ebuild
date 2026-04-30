@@ -16,6 +16,7 @@ SLOT="0"
 
 RDEPEND="acct-group/weblist
 	acct-user/weblist"
+BDEPEND=">=dev-lang/go-1.26.1:="
 
 src_unpack() {
 	git-r3_src_unpack
