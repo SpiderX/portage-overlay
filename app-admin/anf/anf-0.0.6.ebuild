@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="app-arch/p7zip"
+BDEPEND="|| ( app-arch/7zip app-arch/p7zip )"
 
 DOCS=( doc_anf_ru.txt )
 
