@@ -19,6 +19,7 @@ RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/django[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests unittest
 
 pkg_postinst() {

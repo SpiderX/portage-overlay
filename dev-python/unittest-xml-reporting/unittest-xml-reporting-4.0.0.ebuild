@@ -20,6 +20,7 @@ RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/django[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
