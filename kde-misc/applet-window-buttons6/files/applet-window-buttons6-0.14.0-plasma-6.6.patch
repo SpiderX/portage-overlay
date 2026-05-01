@@ -1,0 +1,229 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fd502c9..a9357dd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+ project(applet_windowbuttons)
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 20)
+ set(VERSION 0.12.0)
+ set(AUTHOR "Michail Vourlakos")
+ set(EMAIL "mvourlakos@gmail.com")
+diff --git a/libappletdecoration/decorationsmodel.cpp b/libappletdecoration/decorationsmodel.cpp
+index 20c1797..626da15 100644
+--- a/libappletdecoration/decorationsmodel.cpp
++++ b/libappletdecoration/decorationsmodel.cpp
+@@ -28,6 +28,7 @@ Q_LOGGING_CATEGORY(decorations_model, "DecorationsModel");
+ static const QString s_defaultPlugin = QStringLiteral("org.kde.breeze");
+ static const QString s_defaultTheme;
+ static const QString s_auroraePlugin = QStringLiteral("org.kde.kwin.aurorae");
++static const QString s_auroraePluginV2 = QStringLiteral("org.kde.kwin.aurorae.v2");
+ static const QString s_auroraeSvgTheme = QStringLiteral("__aurorae__svg__");
+ 
+ static const QString s_kwinrc = QStringLiteral("kwinrc");
+@@ -178,7 +179,7 @@ void DecorationsModel::init()
+                 data.themeName = t.themeName();
+                 data.visibleName = t.visibleName();
+ 
+-                if (data.pluginName == s_auroraePlugin && data.themeName.startsWith(s_auroraeSvgTheme))
++                if ((data.pluginName == s_auroraePlugin || data.pluginName == s_auroraePluginV2) && data.themeName.startsWith(s_auroraeSvgTheme))
+                     data.isAuroraeTheme = true;
+ 
+                 qCInfo(decorations_model) << "Adding theme" << data.visibleName << "from" << data.pluginName;
+diff --git a/package/contents/ui/config/ColorsComboBox.qml b/package/contents/ui/config/ColorsComboBox.qml
+index d224708..eb3aa67 100644
+--- a/package/contents/ui/config/ColorsComboBox.qml
++++ b/package/contents/ui/config/ColorsComboBox.qml
+@@ -13,6 +13,46 @@ import QtQuick.Layouts
+ ComboBox {
+     id: combobox
+ 
++    function fileAt(row) {
++        if (row < 0)
++            return "";
++
++        return combobox.model.data(combobox.model.index(row, 0), Qt.UserRole + 4);
++    }
++
++    function backgroundColorAt(row) {
++        if (row < 0)
++            return "transparent";
++
++        return combobox.model.data(combobox.model.index(row, 0), Qt.UserRole + 5);
++    }
++
++    function textColorAt(row) {
++        if (row < 0)
++            return palette.text;
++
++        return combobox.model.data(combobox.model.index(row, 0), Qt.UserRole + 6);
++    }
++
++    function displayAt(row) {
++        if (row < 0)
++            return "";
++
++        return combobox.model.data(combobox.model.index(row, 0), Qt.DisplayRole);
++    }
++
++    function applySelection(row) {
++        if (row < 0)
++            return;
++
++        selectedScheme = combobox.fileAt(row);
++    }
++
++    onActivated: {
++        combobox.applySelection(combobox.currentIndex);
++    }
++    displayText: combobox.displayAt(combobox.currentIndex)
++
+     Connections {
+         function onClosed() {
+             root.forceActiveFocus();
+@@ -24,10 +64,12 @@ ComboBox {
+     delegate: MouseArea {
+         width: combobox.width
+         height: combobox.height
++        implicitHeight: combobox.height
++        implicitWidth: combobox.width
+         hoverEnabled: true
+         onClicked: {
+             combobox.currentIndex = index;
+-            selectedScheme = model.file;
++            combobox.applySelection(index);
+             combobox.popup.close();
+         }
+ 
+@@ -56,12 +98,12 @@ ComboBox {
+                     Layout.leftMargin: 2
+                     width: 1.25 * label.height
+                     height: label.height
+-                    opacity: ((file == "kdeglobals") || (file == "_plasmatheme_")) ? 0 : 1
++                    opacity: ((combobox.fileAt(index) == "kdeglobals") || (combobox.fileAt(index) == "_plasmatheme_")) ? 0 : 1
+ 
+                     Rectangle {
+                         width: height
+                         height: 0.75 * label.height
+-                        color: backgroundColor
++                        color: combobox.backgroundColorAt(index)
+                         border.width: 1
+                         border.color: containsMouse || (combobox.currentIndex === index) ? palette.highlightedText : palette.text
+ 
+@@ -70,7 +112,7 @@ ComboBox {
+                             anchors.verticalCenter: parent.bottom
+                             width: parent.width
+                             height: parent.height
+-                            color: textColor
++                            color: combobox.textColorAt(index)
+                             border.width: parent.border.width
+                             border.color: parent.border.color
+                         }
+@@ -82,7 +124,7 @@ ComboBox {
+                 Label {
+                     id: label
+ 
+-                    text: display
++                    text: combobox.displayAt(index)
+                     color: containsMouse ? palette.highlightedText : palette.text
+                 }
+ 
+diff --git a/package/contents/ui/config/DecorationsComboBox.qml b/package/contents/ui/config/DecorationsComboBox.qml
+index 1cd3f8a..0a1a7eb 100644
+--- a/package/contents/ui/config/DecorationsComboBox.qml
++++ b/package/contents/ui/config/DecorationsComboBox.qml
+@@ -17,18 +17,59 @@ ComboBox {
+     model: sortedDecorations
+     textRole: "display"
+     valueRole: "plugin"
+-    onActivated: {
+-        var index = combobox.currentIndex;
+-        if (index === -1)
+-            return ;
++    function displayAt(row) {
++        if (row < 0)
++            return "";
++
++        return sortedDecorations.data(sortedDecorations.index(row, 0), Qt.DisplayRole);
++    }
++
++    displayText: combobox.displayAt(combobox.currentIndex)
++    function applySelection(row) {
++        if (row < 0)
++            return;
++
++        const modelIndex = sortedDecorations.index(row, 0);
++        const pluginRole = Qt.UserRole + 4;
++        const themeRole = Qt.UserRole + 5;
+ 
+-        console.log(currentTheme, combobox.currentText, combobox.currentValue);
+         root.useCurrent = false;
+-        root.selectedPlugin = combobox.currentValue;
+-        root.selectedTheme = combobox.currentText;
++        root.selectedPlugin = sortedDecorations.data(modelIndex, pluginRole);
++        root.selectedTheme = sortedDecorations.data(modelIndex, themeRole);
++    }
++
++    function syncCurrentIndexFromSelection() {
++        const pluginRole = Qt.UserRole + 4;
++        const themeRole = Qt.UserRole + 5;
++
++        for (let row = 0; row < sortedDecorations.rowCount(); ++row) {
++            const modelIndex = sortedDecorations.index(row, 0);
++            if (sortedDecorations.data(modelIndex, pluginRole) === root.currentPlugin &&
++                    sortedDecorations.data(modelIndex, themeRole) === root.currentTheme) {
++                combobox.currentIndex = row;
++                return;
++            }
++        }
++
++        combobox.currentIndex = -1;
++    }
++
++    onActivated: {
++        combobox.applySelection(combobox.currentIndex);
+     }
+     Component.onCompleted: {
+-        combobox.currentIndex = combobox.find(root.currentTheme);
++        combobox.syncCurrentIndexFromSelection();
++    }
++    Connections {
++        function onCurrentThemeChanged() {
++            combobox.syncCurrentIndexFromSelection();
++        }
++
++        function onCurrentPluginChanged() {
++            combobox.syncCurrentIndexFromSelection();
++        }
++
++        target: root
+     }
+ 
+     Connections {
+@@ -42,12 +83,12 @@ ComboBox {
+     delegate: MouseArea {
+         height: combobox.height
+         width: combobox.width
++        implicitHeight: combobox.height
++        implicitWidth: combobox.width
+         hoverEnabled: true
+         onClicked: {
+             combobox.currentIndex = index;
+-            root.useCurrent = false;
+-            root.selectedPlugin = plugin;
+-            root.selectedTheme = theme;
++            combobox.applySelection(index);
+             combobox.popup.close();
+         }
+ 
+@@ -73,7 +114,7 @@ ComboBox {
+                 anchors.left: parent.left
+                 anchors.leftMargin: Kirigami.Units.smallSpacing
+                 anchors.verticalCenter: parent.verticalCenter
+-                text: display
++                text: combobox.displayAt(index)
+                 color: containsMouse ? palette.highlightedText : palette.text
+             }
+ 

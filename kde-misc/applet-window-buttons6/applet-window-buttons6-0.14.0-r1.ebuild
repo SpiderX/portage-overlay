@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,5 +22,7 @@ RDEPEND="dev-qt/qtbase:6[gui,widgets]
 	kde-frameworks/kpackage:6
 	kde-frameworks/ksvg:6
 	kde-plasma/plasma-workspace:6"
+
+PATCHES=( "${FILESDIR}/${PN}"-0.14.0-plasma-6.6.patch )
 
 DOCS=( {CHANGELOG,README}.md )
