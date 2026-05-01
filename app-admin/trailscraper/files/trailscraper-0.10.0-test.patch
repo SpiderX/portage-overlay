@@ -1,0 +1,21 @@
+From 6d8a57fe5c6d421dace7a6ddf49fc4c4b4f72e25 Mon Sep 17 00:00:00 2001
+From: Florian Sellmayr <florian.sellmayr@gmail.com>
+Date: Mon, 6 Apr 2026 15:34:18 +0200
+Subject: [PATCH] Fix test - exit code is 2 for all help messages in more
+ recent click versions
+
+---
+ tests/integration/cli_help_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/integration/cli_help_test.py b/tests/integration/cli_help_test.py
+index 6428f7b9..c4c4bd79 100644
+--- a/tests/integration/cli_help_test.py
++++ b/tests/integration/cli_help_test.py
+@@ -6,5 +6,5 @@
+ def test_should_output_help_message_by_default():
+     runner = CliRunner()
+     result = runner.invoke(cli.root_group)
+-    assert result.exit_code == 0
++    assert result.exit_code == 2
+     assert 'Usage:' in result.output

@@ -1,0 +1,14 @@
+--- ../trailscraper/boto_service_definitions.py	2026-05-02 01:06:09.099201150 +0300
++++ ../trailscraper/boto_service_definitions.py	2026-05-02 01:06:23.060342113 +0300
+@@ -17,9 +17,8 @@
+     all_versions = [entry.name for entry in servicepath.iterdir()]
+     all_versions.sort()
+     most_recent_version = all_versions[-1]
+-    b = servicepath.joinpath(most_recent_version).joinpath('service-2.json.gz').read_bytes()
+-    decompressed = gzip.decompress(b)
+-    service_definition = json.loads(decompressed)
++    b = servicepath.joinpath(most_recent_version).joinpath('service-2.json').read_bytes()
++    service_definition = json.loads(b)
+     return service_definition
+ 
+ 
