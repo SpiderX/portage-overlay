@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 CRATES="aho-corasick@1.1.4
 	anes@0.1.6
 	anstream@0.6.21
@@ -191,6 +191,7 @@ DOCS=( {README,RELEASE_NOTES}.md )
 QA_FLAGS_IGNORED="usr/bin/grex
 	usr/lib/python.*/site-packages/grex/grex.cpython-.*-x86_64-linux-gnu.so"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_configure() {
