@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 edo optfeature
 
 DESCRIPTION="An enterprise friendly way of detecting and preventing secrets"
 HOMEPAGE="https://github.com/Yelp/detect-secrets"
@@ -25,6 +25,7 @@ BDEPEND="test? ( dev-vcs/git
 		dev-python/unidiff[${PYTHON_USEDEP}]
 		dev-util/gibberish-detector[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
@@ -48,9 +49,9 @@ EPYTEST_DESELECT=(
 
 python_prepare_all() {
 	if use test ; then
-		git init > /dev/null || die "git init failed"
-		git config --global user.email "${PN}@gentoo.org" || die "git config failed"
-		git config --global user.name "${PN}" || die "git config failed"
+		edo git init > /dev/null
+		edo git config user.email "${PN}@gentoo.org"
+		edo git config user.name "${PN}"
 	fi
 	distutils-r1_python_prepare_all
 }
