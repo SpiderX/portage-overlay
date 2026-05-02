@@ -1,11 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+POSTGRES_COMPAT=( {14..18} )
+POSTGRES_USEDEP="server"
 
-inherit haskell-cabal
+inherit haskell-cabal postgres
 
 COMMIT="7f2467a6d6d5f6db7eed59919a6773fe006cf22b"
 
@@ -20,7 +22,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # https://github.com/jfischoff/tmp-postgres/issues/283
 
-RDEPEND="dev-db/postgresql:*[server]
+RDEPEND="${POSTGRES_DEP}
 	dev-haskell/async:=[profile?]
 	dev-haskell/base64-bytestring:=[profile?]
 	dev-haskell/cryptohash-sha1:=[profile?]
