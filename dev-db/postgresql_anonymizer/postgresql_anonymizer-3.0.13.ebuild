@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -106,10 +106,9 @@ CRATES="addr2line@0.24.2
 	half@1.8.3
 	half@2.6.0
 	hashbrown@0.15.4
+	hashbrown@0.16.0
 	heck@0.5.0
-	hermit-abi@0.5.2
 	hmac@0.12.1
-	home@0.5.11
 	http@1.3.1
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.63
@@ -126,9 +125,8 @@ CRATES="addr2line@0.24.2
 	image@0.25.6
 	imgref@1.11.0
 	indenter@0.3.3
-	indexmap@2.10.0
+	indexmap@2.12.0
 	interpolate_name@0.2.4
-	is-terminal@0.4.16
 	is_ci@1.2.0
 	itertools@0.12.1
 	itertools@0.13.0
@@ -173,13 +171,13 @@ CRATES="addr2line@0.24.2
 	pathsearch@0.2.0
 	percent-encoding@2.3.1
 	petgraph@0.8.2
-	pgrx-bindgen@0.16.0
-	pgrx-macros@0.16.0
-	pgrx-pg-config@0.16.0
-	pgrx-pg-sys@0.16.0
-	pgrx-sql-entity-graph@0.16.0
-	pgrx-tests@0.16.0
-	pgrx@0.16.0
+	pgrx-bindgen@0.16.1
+	pgrx-macros@0.16.1
+	pgrx-pg-config@0.16.1
+	pgrx-pg-sys@0.16.1
+	pgrx-sql-entity-graph@0.16.1
+	pgrx-tests@0.16.1
+	pgrx@0.16.1
 	phf@0.11.3
 	phf_shared@0.11.3
 	pin-project-lite@0.2.16
@@ -225,16 +223,17 @@ CRATES="addr2line@0.24.2
 	rustix@1.0.7
 	rustversion@1.0.21
 	rusty-fork@0.3.0
-	ryu@1.0.20
 	same-file@1.0.6
 	scopeguard@1.2.0
 	seahash@4.1.0
 	semver@1.0.26
-	serde@1.0.219
+	serde@1.0.228
 	serde_cbor@0.11.2
-	serde_derive@1.0.219
-	serde_json@1.0.140
+	serde_core@1.0.228
+	serde_derive@1.0.228
+	serde_json@1.0.148
 	serde_spanned@0.6.9
+	serde_spanned@1.0.3
 	sha1_smol@1.0.1
 	sha2@0.10.9
 	shlex@1.3.0
@@ -244,11 +243,9 @@ CRATES="addr2line@0.24.2
 	slab@0.4.10
 	smallvec@1.15.1
 	socket2@0.5.10
-	sptr@0.3.2
 	stable_deref_trait@1.2.0
 	stringprep@0.1.5
 	subtle@2.6.1
-	supports-color@2.1.0
 	supports-color@3.0.2
 	syn@2.0.104
 	synstructure@0.13.2
@@ -272,9 +269,13 @@ CRATES="addr2line@0.24.2
 	tokio-util@0.7.15
 	tokio@1.45.1
 	toml@0.8.23
+	toml@0.9.8
 	toml_datetime@0.6.11
+	toml_datetime@0.7.3
 	toml_edit@0.22.27
+	toml_parser@1.0.4
 	toml_write@0.1.2
+	toml_writer@1.0.4
 	typenum@1.18.0
 	unarray@0.1.4
 	unescape@0.1.0
@@ -340,7 +341,7 @@ CRATES="addr2line@0.24.2
 	windows_x86_64_gnullvm@0.53.0
 	windows_x86_64_msvc@0.52.6
 	windows_x86_64_msvc@0.53.0
-	winnow@0.7.11
+	winnow@0.7.13
 	wit-bindgen-rt@0.39.0
 	writeable@0.6.1
 	wyz@0.5.1
@@ -353,12 +354,13 @@ CRATES="addr2line@0.24.2
 	zerotrie@0.2.2
 	zerovec-derive@0.11.1
 	zerovec@0.11.2
+	zmij@1.0.0
 	zune-core@0.4.12
 	zune-inflate@0.2.54
 	zune-jpeg@0.4.18"
 RUST_MIN_VER="1.82.0"
 RUST_REQ_USE="rustfmt"
-LLVM_COMPAT=( {15..20} )
+LLVM_COMPAT=( {16..22} )
 POSTGRES_COMPAT=( {14..18} )
 POSTGRES_USEDEP="server"
 
@@ -376,7 +378,7 @@ REQUIRED_USE="${POSTGRES_REQ_USE} ${LLVM_REQUIRED_USE}"
 RESTRICT="test" # installs extension outside of sandbox
 
 RDEPEND="${POSTGRES_DEP}"
-BDEPEND="=dev-util/cargo-pgrx-0.16.0*
+BDEPEND="=dev-util/cargo-pgrx-0.16.1*
 	virtual/pkgconfig
 	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}')"
 

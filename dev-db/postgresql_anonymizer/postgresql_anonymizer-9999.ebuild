@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 RUST_MIN_VER="1.82.0"
 RUST_REQ_USE="rustfmt"
-LLVM_COMPAT=( {15..20} )
+LLVM_COMPAT=( {16..22} )
 POSTGRES_COMPAT=( {14..18} )
 POSTGRES_USEDEP="server"
 
@@ -21,7 +21,7 @@ REQUIRED_USE="${POSTGRES_REQ_USE} ${LLVM_REQUIRED_USE}"
 RESTRICT="test" # installs extension outside of sandbox
 
 RDEPEND="${POSTGRES_DEP}"
-BDEPEND=">=dev-util/cargo-pgrx-0.16.0
+BDEPEND=">=dev-util/cargo-pgrx-0.16.1
 	virtual/pkgconfig
 	$(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}')"
 
