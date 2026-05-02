@@ -1395,7 +1395,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[applet-latte-separator](https://github.com/psifidotos/applet-latte-separator) | Plasma 5 applet that acts as a separator between applets
 *   kde-misc/[applet-latte-spacer](https://github.com/psifidotos/applet-latte-spacer) | Plasma 5 applet that acts as a spacer between applets
 *   kde-misc/[applet-window-buttons6](https://github.com/moodyhunter/applet-window-buttons6) | Plasma 6 applet in order to show window buttons in your panels
-*   kde-misc/[applet-window-title](https://github.com/psifidotos/applet-window-title) | Plasma 5 applet shows window title and icon in your panels
 *   kde-misc/[applet-window-title6](https://github.com/moodyhunter/applet-window-title6) | Plasma 6 applet shows window title and icon in your panels
 *   kde-misc/[chatai](https://github.com/DenysMb/ChatAI-Plasmoid) | Chatbots as Plasmoid for KDE Plasma
 *   kde-misc/[cpu-power-monitor](https://github.com/kphanipavan/cpu-power-monitor) | KDE Plasma widget to monitor the CPU power consumption
