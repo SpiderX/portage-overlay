@@ -21,4 +21,5 @@ RDEPEND="dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/schema[${PYTHON_USEDEP}]"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
