@@ -1,0 +1,42 @@
+--- /dev/null	2026-05-01 23:29:09.065906317 +0300
++++ ../src/lxqt_wallet_external.h	2026-05-02 23:57:16.865506071 +0300
+@@ -0,0 +1,17 @@
++#pragma once
++
++#include <QtGlobal>
++
++/*
++ * lxqt_wallet.h incorrectly uses Q_DECL_EXPORT in its public consumer header.
++ * With toolchains using protected visibility, this makes qCheckGMail emit
++ * protected undefined references, which GNU ld refuses to resolve from the
++ * external shared library.
++ *
++ * For consumers, these declarations must not be export/protected declarations.
++ */
++#pragma push_macro("Q_DECL_EXPORT")
++#undef Q_DECL_EXPORT
++#define Q_DECL_EXPORT Q_DECL_IMPORT
++#include <lxqt_wallet.h>
++#pragma pop_macro("Q_DECL_EXPORT")
+--- ../src/util.hpp	2026-05-02 23:57:28.050242554 +0300
++++ ../src/util.hpp	2026-05-02 23:57:42.072699489 +0300
+@@ -39,7 +39,7 @@
+ #include <QEventLoop>
+ #include <QProcess>
+ 
+-#include "lxqt_wallet.h"
++#include "lxqt_wallet_external.h"
+ 
+ static inline std::ostream& operator<<( std::ostream& cout,const QString& s )
+ {
+--- ../src/walletmanager.h	2026-05-02 23:57:31.554168826 +0300
++++ ../src/walletmanager.h	2026-05-02 23:57:47.451031404 +0300
+@@ -41,7 +41,7 @@
+ #include "configurationoptionsdialog.h"
+ #include "gmailauthorization.h"
+ 
+-#include "lxqt_wallet.h"
++#include "lxqt_wallet_external.h"
+ #include "settings.h"
+ 
+ namespace Ui {

@@ -5,14 +5,15 @@ EAPI=8
 
 PLOCALES="de es fr gr nl"
 
-inherit cmake git-r3 plocale xdg
+inherit cmake plocale xdg
 
 DESCRIPTION="qCheckGmail is a Qt/C++ multiple gmail account checker"
 HOMEPAGE="https://github.com/butonche/qCheckGMail"
-EGIT_REPO_URI="https://github.com/butonche/${PN}.git"
+SRC_URI="https://github.com/butonche/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="app-crypt/lxqt-wallet
 	dev-qt/qtbase:6[dbus,network,widgets]

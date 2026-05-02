@@ -14,11 +14,7 @@
 	It can be build as a KDE tray application(default) or
 	a stand alone Qt tray application.
 	</longdescription>
-	<use>
-		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
-		<flag name="libsecret">Support locking of keyring via <pkg>app-crypt/libsecret</pkg></flag>
-	</use>
 	<upstream>
-		<remote-id type="github">IJHack/qtpass</remote-id>
+		<remote-id type="github">butonche/qCheckGMail</remote-id>
 	</upstream>
 </pkgmetadata>
