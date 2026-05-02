@@ -14,19 +14,21 @@ EGIT_REPO_URI="https://github.com/Skyscanner/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-python/pydantic[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/httpx[${PYTHON_USEDEP}] )"
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? ( dev-python/httpx[${PYTHON_USEDEP}] )"
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( pytest-repeat )
 distutils_enable_tests pytest
 
-# https://github.com/Skyscanner/pycfmodel/issues/79
-EPYTEST_IGNORE=( tests/test_constants.py )
+EPYTEST_DESELECT=( tests/test_constants.py::test_cloudformation_actions )
 
 python_prepare_all() {
 	# adjust pydantic version
-	sed -i '/errors.pydantic.dev/s|2.7|2.11|' tests/test_types.py \
+	sed -i '/errors.pydantic.dev/s|2.7|2.12|' tests/test_types.py \
 		tests/resources/test_s3_bucket.py \
 		tests/resources/test_opensearch_domain.py \
 		tests/resources/test_es_domain.py || die "sed failed for tests"
