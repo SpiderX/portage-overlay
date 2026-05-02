@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1
+inherit distutils-r1 edo
 
 DESCRIPTION="CLI for SQL Server Database"
 HOMEPAGE="https://github.com/dbcli/mssql-cli"
@@ -29,8 +29,6 @@ RDEPEND="dev-python/applicationinsights[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
-distutils_enable_tests pytest
-
 QA_PREBUILT="usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.Native.so
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.Security.Cryptography.Native.OpenSsl.so
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/System.Net.Http.Native.so
@@ -52,13 +50,16 @@ QA_FLAGS_IGNORED="usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bi
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/libmscordbi.so
 	usr/lib*/python3.*/site-packages/mssqlcli/mssqltoolsservice/bin/createdump"
 
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
 src_unpack() {
 	default
 
-	mkdir "${S}"/mssqlcli/mssqltoolsservice/bin || die "mkdir failed"
-	pushd "${S}"/mssqlcli/mssqltoolsservice/bin || die "pushd failed"
+	edo mkdir "${S}"/mssqlcli/mssqltoolsservice/bin
+	edo pushd "${S}"/mssqlcli/mssqltoolsservice/bin
 	unpack ../../../sqltoolsservice/manylinux1/Microsoft.SqlTools.ServiceLayer-rhel-x64-netcoreapp2.2.tar.gz
-	popd || die "popd failed"
+	edo popd
 }
 
 src_prepare() {
@@ -74,20 +75,14 @@ src_prepare() {
 		setup.py || die "sed failed for setup.py"
 
 	# Fix relative import for utility.py
-	echo "import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))" \
-		> tests/__init__.py || die "echo failed"
+	edo echo "import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))" \
+		> tests/__init__.py
 	# Remove test that require network
-	rm tests/test_mssqlcliclient.py || die "rm failed for test_mssqlcliclient.py"
-	rm tests/test_globalization.py || die "rm failed for test_globalization.py"
-	rm tests/test_interactive_mode.py || die "rm failed for test_interactive_mode.py"
-	rm tests/test_noninteractive_mode.py || die "rm failed for test_noninteractive_mode.py"
-	rm tests/test_special.py || die "rm failed for test_special.py"
+	edo rm tests/test_{interactive_mode,globalization,noninteractive_mode,mssqlcliclient,special}.py
 	# Remove broken tests
-	rm tests/test_smart_completion_multiple_schemata.py \
-		|| die "rm failed for test_smart_completion_multiple_schemata.py"
-	rm tests/test_smart_completion_public_schema_only.py \
-		|| die "rm failed for test_smart_completion_public_schema_only.py"
-	rm tests/test_main.py || die "rm failed for test_main.py"
+	edo rm tests/test_smart_completion_multiple_schemata.py \
+		tests/test_smart_completion_public_schema_only.py \
+		tests/test_main.py
 	# Disable broken tests
 	sed -i  -e '/test_distinct_and_order_by_suggestions_with_alias_given/i\    @unittest.skip("disable")' \
 		-e '/test_distinct_and_order_by_suggestions_with_aliases/i\    @unittest.skip("disable")' \
