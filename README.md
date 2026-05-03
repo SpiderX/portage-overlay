@@ -1440,7 +1440,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-libs/[mediastreamer2](https://gitlab.linphone.org/BC/public/mediastreamer2) | Mediastreaming library for telephony application
 *   media-libs/[qt-heif](https://github.com/jakar/qt-heif-image-plugin) | Qt plugin for HEIF images
 *   media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library
-*   media-libs/[QtApng](https://github.com/Skycoder42/QtApng) | An apng image plugin for Qt to support animated PNGs
+*   media-libs/[QtApng](https://github.com/jurplel/QtApng) | An apng image plugin for Qt to support animated PNGs
 *   media-sound/[cider](https://cider.sh) | A new cross-platform Apple Music experience based on Electron
 *   media-sound/[cozy](https://github.com/geigi/cozy) | Modern audiobook player
 *   media-sound/[finetune](https://flavio.tordini.org/finetune) | Automatic music tagger
