@@ -1,16 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit ecm linux-info tmpfiles
 
-COMMIT="8a3eae097a9770a8c3c6e5e81a9d45413ef2463a"
-
 DESCRIPTION="KDE Plasma widget to monitor the CPU power consumption"
 HOMEPAGE="https://github.com/kphanipavan/cpu-power-monitor"
-SRC_URI="https://github.com/kphanipavan/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
+SRC_URI="https://github.com/kphanipavan/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="6"
