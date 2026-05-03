@@ -1408,6 +1408,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[lightly](https://github.com/xuzhao9/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[lyrics-on-panel](https://github.com/KangweiZhu/plasmusic-toolbar) | Lyrics for currently playing song in Plasma 6
 *   kde-misc/[kde-mymemory-translator](https://github.com/zayronxio/Kde.mymemory.translator) | Plasmoid for translation using the mymemory translated api
+*   kde-misc/[kwin-sliding-notifications](https://github.com/RussH/kwin-sliding-notifications) | Plasma 6 Sliding animation for notification windows
 *   kde-misc/[paneltransparencybutton](https://github.com/TheEssem/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
 *   kde-misc/[plasma-6-power-usage-widget](https://github.com/magillos/Plasma-6-power-usage-widget) | Plasma 6 compatibile widget showing power usage
 *   kde-misc/[plasma-applet-ambientnoise](https://github.com//plasma-applet-ambientnoise) | Plasma widget for play ambient noise
