@@ -1404,7 +1404,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[inputactions-kwin](https://github.com/InputActions/kwin) | Mouse and touchpad gestures for Plasma 6 Wayland
 *   kde-misc/[qCheckGMail](https://github.com/butonche/qCheckGMail) | qCheckGmail is a Qt/C++ multiple gmail account checker
 *   kde-misc/[kde-translator-widget](https://github.com/y4my4my4m/kde-translator-widget) | KDE Translator Widget
-*   kde-misc/[kwin-effects-sliding-notifications](https://github.com/zzag/kwin-effects-sliding-notifications) | Sliding animation for notification windows
 *   kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[lightly](https://github.com/xuzhao9/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[lyrics-on-panel](https://github.com/KangweiZhu/plasmusic-toolbar) | Lyrics for currently playing song in Plasma 6
