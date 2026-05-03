@@ -15,7 +15,6 @@
 	to change, so expect bugs.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Luwx/Lightly</remote-id>
 		<remote-id type="github">xuzhao9/Lightly</remote-id>
 	</upstream>
 </pkgmetadata>

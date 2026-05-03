@@ -3,14 +3,18 @@
 
 EAPI=8
 
-inherit ecm git-r3
+inherit ecm
+
+COMMIT="459d7d1c65883e224f6bc384613b240515e67727"
 
 DESCRIPTION="KDE theme style with aim to be visually modern and minimalistic"
 HOMEPAGE="https://github.com/xuzhao9/Lightly"
-EGIT_REPO_URI="https://github.com/xuzhao9/${PN^}.git"
+SRC_URI="https://github.com/xuzhao9/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN^}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="6"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-qt/qtbase:6[dbus,gui,widgets]
 	dev-qt/qtdeclarative:6
