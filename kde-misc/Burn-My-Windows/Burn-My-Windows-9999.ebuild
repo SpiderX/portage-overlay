@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PLOCALES="ar az cs da de eo es fa fi fr he hi hu id it ja ko lt nb_NO nl pl pt_BR pt ro ru sk sv tr uk zh_Hans"
-PLOCALE_BACKUP="en"
+PLOCALES="ar az cs da de el eo es et fa fi fr he hi hu id it ja kab ko lt nb_NO nl ota pl pt_BR pt ro ru sk sv ta tr uk zh_Hans zh_Hant"
+PLOCALE_BACKUP="uk"
 
 inherit ecm edo git-r3 plocale
 
