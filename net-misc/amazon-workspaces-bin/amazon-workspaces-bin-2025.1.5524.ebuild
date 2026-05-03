@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
 	dev-libs/fribidi
 	dev-libs/hyphen
-	dev-libs/icu:0/77
+	dev-libs/icu:0/78
 	dev-libs/libffi:0=
 	dev-libs/libtasn1:0=
 	dev-libs/libgcrypt:0/20
@@ -203,7 +203,7 @@ src_prepare() {
 	plocale_for_each_disabled_locale my_rm_loc
 
 	edo rm -rf usr/share/doc
-	edo patchelf --replace-needed libicuuc.so.70 libicuuc.so.77 \
+	edo patchelf --replace-needed libicuuc.so.70 libicuuc.so.78 \
 		usr/lib/x86_64-linux-gnu/workspacesclient/libharfbuzz-icu.so.0
 	# x11-libs/pango disables libthai
 	edo patchelf --remove-needed libthai.so.0 usr/lib/x86_64-linux-gnu/workspacesclient/libpango-1.0.so.0
