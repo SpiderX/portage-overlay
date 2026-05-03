@@ -16,6 +16,6 @@
 	and other types.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Skycoder42/QtApng</remote-id>
+		<remote-id type="github">jurplel/QtApng</remote-id>
 	</upstream>
 </pkgmetadata>

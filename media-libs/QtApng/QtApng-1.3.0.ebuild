@@ -3,14 +3,15 @@
 
 EAPI=8
 
-inherit cmake git-r3 readme.gentoo-r1 virtualx
+inherit cmake readme.gentoo-r1 virtualx
 
 DESCRIPTION="An apng image plugin for Qt to support animated PNGs"
 HOMEPAGE="https://github.com/jurplel/QtApng"
-EGIT_REPO_URI="https://github.com/jurplel/${PN}.git"
+SRC_URI="https://github.com/jurplel/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test" # 4 tests fail
 
