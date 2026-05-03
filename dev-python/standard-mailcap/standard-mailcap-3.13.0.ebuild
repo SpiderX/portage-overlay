@@ -16,4 +16,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # no files
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

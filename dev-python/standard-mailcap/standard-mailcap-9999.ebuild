@@ -17,4 +17,5 @@ LICENSE="PSF-2"
 SLOT="0"
 RESTRICT="test"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
