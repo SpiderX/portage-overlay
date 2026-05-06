@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build optfeature pax-utils unpacker xdg
+inherit chromium-2 desktop edo multilib-build optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://slack.com"
@@ -65,9 +65,9 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	pushd usr/lib/slack/locales || die "pushd failed"
+	edo pushd usr/lib/slack/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
 	# remove hardcoded path, logging noise (wrt 694058, 711494)
 	sed -i  -e '/Icon/s|/usr/share/pixmaps/slack.png|slack|' \
@@ -75,9 +75,8 @@ src_prepare() {
 		usr/share/applications/slack.desktop \
 		|| die "sed failed in Icon for slack.desktop"
 
-	rm usr/lib/slack/LICENSE{,S-linux.json} \
-		usr/lib/slack/resources/LICENSES.chromium.html \
-		|| die "rm licenses failed"
+	edo rm usr/lib/slack/LICENSE{,S-linux.json} \
+		usr/lib/slack/resources/LICENSES.chromium.html
 
 	if use appindicator ; then
 		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
@@ -85,9 +84,7 @@ src_prepare() {
 			|| die "sed failed for appindicator"
 	fi
 
-	if ! use suid ; then
-		rm usr/lib/slack/chrome-sandbox || die "rm failed"
-	fi
+	use suid || edo rm usr/lib/slack/chrome-sandbox
 
 	if ! use seccomp ; then
 		sed -i '/Exec/s/%U/%U --disable-seccomp-filter-sandbox/' \
@@ -108,7 +105,7 @@ src_install() {
 	domenu usr/share/applications/slack.desktop
 
 	insinto /opt # wrt 720134
-	cp -a usr/lib/slack "${ED}"/opt || die "cp failed"
+	edo cp -a usr/lib/slack "${ED}"/opt
 
 	use suid && fperms u+s /opt/slack/chrome-sandbox # wrt 713094
 
