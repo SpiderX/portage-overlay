@@ -10,9 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	This package contains an OCaml library to parse and generate the YAML
-	file format. It is intended to interoperable with the Ezjsonm JSON
-	handling library, if the simple common subset of Yaml is used.
+	This package provides an OCaml library to parse and generate
+	the YAML file format.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">avsm/ocaml-yaml</remote-id>
