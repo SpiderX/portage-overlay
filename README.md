@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1529](https://img.shields.io/badge/ebuild-1529-orange.svg)](https://img.shields.io/badge/ebuild-1529-orange.svg)
+[![Number of ebuilds: 1530](https://img.shields.io/badge/ebuild-1530-orange.svg)](https://img.shields.io/badge/ebuild-1530-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -614,6 +614,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[carton](https://github.com/robur-coop/carton) | Implementation of PACKv2 file in OCaml
 *   dev-ml/[checkseum](https://github.com/mirage/checkseum) | Adler-32, CRC32 and CRC32-C implementation in C and OCaml
+*   dev-ml/[chrome-trace](https://github.com/ocaml/dune) | Chrome trace event generation library
 *   dev-ml/[cohttp](https://github.com/mirage/ocaml-cohttp) | OCaml library for HTTP clients and servers
 *   dev-ml/[conduit](https://github.com/mirage/ocaml-conduit) | A network connection establishment library
 *   dev-ml/[containers](https://github.com/c-cube/ocaml-containers) | Standard library extension and interfaces to various libraries
