@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1558](https://img.shields.io/badge/ebuild-1558-orange.svg)](https://img.shields.io/badge/ebuild-1558-orange.svg)
+[![Number of ebuilds: 1559](https://img.shields.io/badge/ebuild-1559-orange.svg)](https://img.shields.io/badge/ebuild-1559-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -704,6 +704,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[merlin](https://github.com/ocaml/merlin) | Context sensitive completion for OCaml in Vim and Emacs
 *   dev-ml/[metadata](https://github.com/savonet/ocaml-metadata) | Read metadata from various file formats
 *   dev-ml/[metrics](https://github.com/mirage/metrics) | Infrastructure to collect metrics from OCaml applications
+*   dev-ml/[mimic](https://github.com/dinosaure/mimic) | A simple protocol dispatcher
 *   dev-ml/[miou](https://github.com/robur-coop/miou) | Composable concurrency primitives for OCaml
 *   dev-ml/[mirage](https://github.com/mirage/mirage) | The MirageOS library operating system
 *   dev-ml/[mirage-channel](https://github.com/mirage/mirage-channel) | Buffered channels for MirageOS FLOW types
