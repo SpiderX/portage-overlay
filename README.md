@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1553](https://img.shields.io/badge/ebuild-1553-orange.svg)](https://img.shields.io/badge/ebuild-1553-orange.svg)
+[![Number of ebuilds: 1554](https://img.shields.io/badge/ebuild-1554-orange.svg)](https://img.shields.io/badge/ebuild-1554-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -679,6 +679,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[iter](https://github.com/c-cube/iter) | Simple iterator abstract datatype
 *   dev-ml/[jemalloc](https://github.com/ahrefs/ocaml-jemalloc) | Bindings to jemalloc mallctl api
 *   dev-ml/[js_of_ocaml](https://github.com/ocsigen/js_of_ocaml) | Compiler from OCaml bytecode to JavaScript
+*   dev-ml/[jsonrpc](https://github.com/ocaml/ocaml-lsp) | Jsonrpc protocol implementation
 *   dev-ml/[junit](https://github.com/Khady/ocaml-junit) | OCaml package to produce JUnit xml reports
 *   dev-ml/[kcas](https://github.com/ocaml-multicore/kcas) | Software Transactional Memory for OCaml
 *   dev-ml/[kdf](https://github.com/robur-coop/kdf) | Key deriving functions in OCaml
