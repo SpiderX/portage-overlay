@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1526](https://img.shields.io/badge/ebuild-1526-orange.svg)](https://img.shields.io/badge/ebuild-1526-orange.svg)
+[![Number of ebuilds: 1527](https://img.shields.io/badge/ebuild-1527-orange.svg)](https://img.shields.io/badge/ebuild-1527-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -609,6 +609,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[bstr](https://github.com/robur-coop/bstr) | A synthetic library for bigstrings
 *   dev-ml/[ca-certs](https://github.com/mirage/ca-certs) | Detect root CA certificates from the operating system
 *   dev-ml/[ca-certs-nss](https://github.com/mirage/ca-certs-nss) | X.509 trust anchors extracted from Mozilla's NSS
+*   dev-ml/[cachet](https://github.com/robur-coop/cachet) | A simple cache system for mmap in OCaml
 *   dev-ml/[calendar](https://github.com/ocaml-community/calendar) | Ocaml library to handle dates and time
 *   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
 *   dev-ml/[cohttp](https://github.com/mirage/ocaml-cohttp) | OCaml library for HTTP clients and servers
