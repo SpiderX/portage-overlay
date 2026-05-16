@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1568](https://img.shields.io/badge/ebuild-1568-orange.svg)](https://img.shields.io/badge/ebuild-1568-orange.svg)
+[![Number of ebuilds: 1569](https://img.shields.io/badge/ebuild-1569-orange.svg)](https://img.shields.io/badge/ebuild-1569-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -738,6 +738,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[omd](https://github.com/ocaml-community/omd) | A Markdown frontend in pure OCaml
 *   dev-ml/[opam-monorepo](https://github.com/tarides/opam-monorepo) | Assemble and manage fully vendored Dune repositories
+*   dev-ml/[opentelemetry](https://github.com/ocaml-tracing/ocaml-opentelemetry) | Instrumentation and serialization for opentelemetry
 *   dev-ml/[optint](https://github.com/mirage/optint) | Efficient integer types on 64-bit architectures
 *   dev-ml/[opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
 *   dev-ml/[osc](https://github.com/johnelse/ocaml-osc) | Pure OCaml implementation of the Open Sound Control protocol
