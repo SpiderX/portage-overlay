@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1563](https://img.shields.io/badge/ebuild-1563-orange.svg)](https://img.shields.io/badge/ebuild-1563-orange.svg)
+[![Number of ebuilds: 1564](https://img.shields.io/badge/ebuild-1564-orange.svg)](https://img.shields.io/badge/ebuild-1564-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -730,6 +730,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[notty](https://github.com/pqwy/notty) | Declarative terminal graphics for OCaml
 *   dev-ml/[obackward](https://github.com/semgrep/obackward) | OCaml bindings to backward-cpp
 *   dev-ml/[ocaml-version](https://github.com/ocurrent/ocaml-version) | Manipulate, parse and generate OCaml compiler version strings
+*   dev-ml/[ocamlc-loc](https://github.com/ocaml/dune) | Parse ocaml compiler output into structured form
 *   dev-ml/[ohex](https://github.com/robur-coop/ohex) | Hexadecimal encoding and decoding
 *   dev-ml/[ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[omd](https://github.com/ocaml-community/omd) | A Markdown frontend in pure OCaml
