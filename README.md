@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1580](https://img.shields.io/badge/ebuild-1580-orange.svg)](https://img.shields.io/badge/ebuild-1580-orange.svg)
+[![Number of ebuilds: 1581](https://img.shields.io/badge/ebuild-1581-orange.svg)](https://img.shields.io/badge/ebuild-1581-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -775,6 +775,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[srt](https://github.com/savonet/ocaml-srt) | OCaml bindings for Secure, Reliable, Transport protocol library
 *   dev-ml/[syslog](https://github.com/geneanet/ocaml-syslog) | OCaml syslog client functions
 *   dev-ml/[taglib](https://github.com/savonet/ocaml-taglib) | OCaml bindings to taglib
+*   dev-ml/[tar](https://github.com/mirage/ocaml-tar) | Pure OCaml library to read and write tar files
 *   dev-ml/[tcpip](https://github.com/mirage/mirage-tcpip) | OCaml TCP/IP networking stack, used in MirageOS
 *   dev-ml/[theora](https://github.com/savonet/ocaml-theora) | OCaml bindings to libtheora
 *   dev-ml/[thread-table](https://github.com/ocaml-multicore/thread-table) | A lock-free thread-safe integer keyed hash table

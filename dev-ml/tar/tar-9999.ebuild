@@ -1,0 +1,31 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DUNE_PKG_NAME="tar tar-eio tar-mirage tar-unix"
+
+inherit dune git-r3
+
+DESCRIPTION="Pure OCaml library to read and write tar files"
+HOMEPAGE="https://github.com/mirage/ocaml-tar"
+EGIT_REPO_URI="https://github.com/mirage/ocaml-tar.git"
+
+LICENSE="ISC"
+SLOT="0/${PV}"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
+
+RDEPEND=">=dev-lang/ocaml-5:0=[ocamlopt?]
+	dev-ml/cstruct:0=[ocamlopt?]
+	dev-ml/decompress:0=[ocamlopt?]
+	dev-ml/eio:0=[ocamlopt?]
+	dev-ml/lwt:0=[ocamlopt?]
+	dev-ml/mirage-block:0=[ocamlopt?]
+	dev-ml/mirage-kv:0=[ocamlopt?]
+	dev-ml/mirage-ptime:0=[ocamlopt?]
+	dev-ml/optint:0=[ocamlopt?]
+	dev-ml/ptime:0="
+BDEPEND="test? ( dev-ml/alcotest
+		dev-ml/alcotest-lwt
+		dev-ml/mirage-block-unix )"
