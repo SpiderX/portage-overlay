@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,5 +28,12 @@ BDEPEND="test? ( dev-ml/alcotest
 		dev-ml/multicoretests
 		dev-ml/qcheck )"
 
-# fix mdx mismatch in READMEs and comments
-PATCHES=( "${FILESDIR}/${PN}"-0.7.0-test-mdx.patch )
+src_prepare() {
+	default
+
+	has_version "<dev-lang/ocaml-5" && eapply "${FILESDIR}/${PN}"-0.7.0-test-mdx.patch
+}
+
+src_compilte() {
+	dune-compile ${DUNE_PKG_NAME}
+}
