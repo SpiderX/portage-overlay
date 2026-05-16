@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ RDEPEND="dev-ml/astring:0=
 	dev-ml/ca-certs-nss:0=[ocamlopt?]
 	dev-ml/core:0=[ocamlopt?]
 	dev-ml/cstruct:0=[ocamlopt?]
-	dev-ml/dns:0=[ocamlopt?]
+	dev-ml/dns-client:0=[ocamlopt?]
 	dev-ml/ipaddr:0=[ocamlopt?]
 	dev-ml/logs:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
