@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1549](https://img.shields.io/badge/ebuild-1549-orange.svg)](https://img.shields.io/badge/ebuild-1549-orange.svg)
+[![Number of ebuilds: 1550](https://img.shields.io/badge/ebuild-1550-orange.svg)](https://img.shields.io/badge/ebuild-1550-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -662,6 +662,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[gavl](https://github.com/savonet/ocaml-gavl) | OCaml bindings to Gavl video manipulation library
 *   dev-ml/[gd](https://github.com/savonet/ocaml-gd) | OCaml interface to the GD graphics library
 *   dev-ml/[git](https://github.com/mirage/ocaml-git) | Pure OCaml Git format and protocol
+*   dev-ml/[gluten](https://github.com/anmonteiro/gluten) | Reusable runtime library for network protocols
 *   dev-ml/[gmap](https://github.com/hannesm/gmap) | Heterogenous maps over a GADT
 *   dev-ml/[gstreamer](https://github.com/savonet/ocaml-gstreamer) | OCaml bindings to gstreamer
 *   dev-ml/[happy-eyeballs](https://github.com/robur-coop/happy-eyeballs) | Connecting to a remote host via IP version 4 or 6
