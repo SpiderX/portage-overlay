@@ -18,13 +18,13 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-ml/angstrom:0=[ocamlopt?]
+	dev-ml/core_bench:0=[ocamlopt?]
+	dev-ml/core_unix:0=[ocamlopt?]
 	dev-ml/re:0=[ocamlopt?]
 	dev-ml/sexplib0:0=[ocamlopt?]
 	dev-ml/stringext:0=[ocamlopt?]
 	dev-ml/textutils:0=[ocamlopt?]"
-BDEPEND="test? ( dev-ml/core_bench
-		dev-ml/core_unix
-		dev-ml/crowbar
+BDEPEND="test? ( dev-ml/crowbar
 		dev-ml/ounit2
 		dev-ml/ppx_sexp_conv )"
 
