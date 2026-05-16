@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1524](https://img.shields.io/badge/ebuild-1524-orange.svg)](https://img.shields.io/badge/ebuild-1524-orange.svg)
+[![Number of ebuilds: 1525](https://img.shields.io/badge/ebuild-1525-orange.svg)](https://img.shields.io/badge/ebuild-1525-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -604,6 +604,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[backoff](https://github.com/ocaml-multicore/backoff) | Exponential backoff mechanism for OCaml
 *   dev-ml/[bechamel](https://github.com/mirage/bechamel) | Agnostic benchmark in OCaml
 *   dev-ml/[bheap](https://github.com/backtracking/bheap) | OCaml binary heap implementation
+*   dev-ml/[bisect_ppx](https://github.com/aantron/bisect_ppx) | Code coverage for OCaml and ReScript
 *   dev-ml/[bjack](https://github.com/savonet/ocaml-bjack) | OCaml blocking JACK API
 *   dev-ml/[ca-certs](https://github.com/mirage/ca-certs) | Detect root CA certificates from the operating system
 *   dev-ml/[ca-certs-nss](https://github.com/mirage/ca-certs-nss) | X.509 trust anchors extracted from Mozilla's NSS
