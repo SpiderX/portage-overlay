@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1590](https://img.shields.io/badge/ebuild-1590-orange.svg)](https://img.shields.io/badge/ebuild-1590-orange.svg)
+[![Number of ebuilds: 1591](https://img.shields.io/badge/ebuild-1591-orange.svg)](https://img.shields.io/badge/ebuild-1591-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -805,6 +805,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[xmlm](https://github.com/dbuenzli/xmlm) | Ocaml XML manipulation module
 *   dev-ml/[xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
 *   dev-ml/[yaml](https://github.com/avsm/ocaml-yaml) | OCaml interface to the YAML 1.1 spec
+*   dev-ml/[yamlx](https://github.com/mjambon/yamlx) | Pure-OCaml YAML 1.2 & 1.1 Library
 *   dev-ml/[zarith_stubs_js](https://github.com/janestreet/zarith_stubs_js) | Javascripts stubs for the Zarith library
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
 *   dev-perl/[SCGI]() | SCGI interface module
