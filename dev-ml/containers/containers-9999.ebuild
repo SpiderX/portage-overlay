@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,12 +16,12 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/either:0=[ocamlopt?]
-	dev-ml/qcheck:0=[ocamlopt?]"
+RDEPEND="dev-ml/either:0=[ocamlopt?]"
 BDEPEND="dev-ml/dune-configurator
 	test? ( dev-ml/csexp
 		dev-ml/gen
 		dev-ml/iter
 		dev-ml/mdx
+		>=dev-ml/qcheck-0.91
 		dev-ml/yojson
 		dev-ml/uutf )"
