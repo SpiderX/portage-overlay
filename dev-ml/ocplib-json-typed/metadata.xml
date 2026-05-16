@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This library is a collection of type-aware JSON utilities for OCaml.
+	The type of JSON documents handled by this library is directly
+	compatible with ezjsonm, but converters are provided for yojson users,
+	and an advanced functorial interface allows you to use any JSON representation.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">OCamlPro/ocplib-json-typed</remote-id>
+	</upstream>
+</pkgmetadata>
