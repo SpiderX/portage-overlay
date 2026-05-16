@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1536](https://img.shields.io/badge/ebuild-1536-orange.svg)](https://img.shields.io/badge/ebuild-1536-orange.svg)
+[![Number of ebuilds: 1537](https://img.shields.io/badge/ebuild-1537-orange.svg)](https://img.shields.io/badge/ebuild-1537-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -637,6 +637,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[dscheck](https://github.com/ocaml-multicore/dscheck) | Experimental model checker for testing concurrent algorithms
 *   dev-ml/[dssi](https://github.com/savonet/ocaml-dssi) | OCaml bindings to dssi
 *   dev-ml/[dtools](https://github.com/savonet/ocaml-dtools) | OCaml daemon tools library
+*   dev-ml/[duff](https://github.com/mirage/duff) | Pure OCaml implementation of libXdiff
 *   dev-ml/[duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
 *   dev-ml/[eio](https://github.com/ocaml-multicore/eio) | Effects-Based Parallel IO for OCaml
 *   dev-ml/[either](https://github.com/mirage/either) | Compatibility module for Either in OCaml 4.12
