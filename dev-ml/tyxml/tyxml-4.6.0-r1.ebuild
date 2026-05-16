@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,4 +25,9 @@ RDEPEND="dev-ml/markup:0=[ocamlopt?]
 BDEPEND="test? ( dev-ml/alcotest
 		dev-ml/reason )"
 
-PATCHES=( "${FILESDIR}/${PN}"-4.6.0-ocaml5.2.patch )
+src_prepare() {
+	default
+
+	has_version "=dev-ml/ppxlib-0.36*" && \
+		eapply "${FILESDIR}/${PN}"-4.6.0-ocaml5.2.patch
+}
