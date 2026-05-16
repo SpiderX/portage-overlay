@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1522](https://img.shields.io/badge/ebuild-1522-orange.svg)](https://img.shields.io/badge/ebuild-1522-orange.svg)
+[![Number of ebuilds: 1523](https://img.shields.io/badge/ebuild-1523-orange.svg)](https://img.shields.io/badge/ebuild-1523-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -592,8 +592,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[afl-persistent](https://github.com/stedolan/ocaml-afl-persistent) | Persistent-mode afl-fuzz for ocaml OCaml
 *   dev-ml/[alcotest-lwt](https://github.com/ahrefs/atd) | Static types for JSON APIs
 *   dev-ml/[ambient-context](https://github.com/ocaml-tracing/ambient-context) | Abstraction over thread- and continuation-local storage mechanisms
-*   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
-*   dev-ml/[cohttp](https://github.com/mirage/ocaml-cohttp) | OCaml library for HTTP clients and servers
 *   dev-ml/[memtrace](https://github.com/janestreet/memtrace) | Streaming client for OCaml's Memprof
 *   dev-ml/[alsa](https://github.com/savonet/ocaml-alsa) | OCaml bindings to alsa-lib
 *   dev-ml/[ao](https://github.com/savonet/ocaml-ao) | OCaml bindings to libao
@@ -601,6 +599,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[asetmap](https://github.com/dbuenzli/asetmap) | Alternative, compatible, OCaml standard library Sets and Maps
 *   dev-ml/[asn1-combinators](https://github.com/mirleft/ocaml-asn1-combinators) | Embed typed ASN.1 grammars in OCaml
 *   dev-ml/[async_ssl](https://github.com/janestreet/memtrace) | Streaming client for OCaml's Memprof
+*   dev-ml/[atd](https://github.com/ahrefs/atd) | Static types for JSON APIs
 *   dev-ml/[backoff](https://github.com/ocaml-multicore/backoff) | Exponential backoff mechanism for OCaml
 *   dev-ml/[bechamel](https://github.com/mirage/bechamel) | Agnostic benchmark in OCaml
 *   dev-ml/[bheap](https://github.com/backtracking/bheap) | OCaml binary heap implementation
@@ -608,6 +607,8 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[ca-certs](https://github.com/mirage/ca-certs) | Detect root CA certificates from the operating system
 *   dev-ml/[ca-certs-nss](https://github.com/mirage/ca-certs-nss) | X.509 trust anchors extracted from Mozilla's NSS
 *   dev-ml/[calendar](https://github.com/ocaml-community/calendar) | Ocaml library to handle dates and time
+*   dev-ml/[camlimages](https://gitlab.com/camlspotter/camlimages) | An image manipulation library for ocaml
+*   dev-ml/[cohttp](https://github.com/mirage/ocaml-cohttp) | OCaml library for HTTP clients and servers
 *   dev-ml/[conduit](https://github.com/mirage/ocaml-conduit) | A network connection establishment library
 *   dev-ml/[containers](https://github.com/c-cube/ocaml-containers) | Standard library extension and interfaces to various libraries
 *   dev-ml/[crowbar](https://github.com/stedolan/crowbar) | Property fuzzing for OCaml
