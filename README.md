@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1546](https://img.shields.io/badge/ebuild-1546-orange.svg)](https://img.shields.io/badge/ebuild-1546-orange.svg)
+[![Number of ebuilds: 1547](https://img.shields.io/badge/ebuild-1547-orange.svg)](https://img.shields.io/badge/ebuild-1547-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -655,6 +655,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[faraday](https://github.com/inhabitedtype/faraday) | Serialization library built for speed and memory efficiency
 *   dev-ml/[fdkaac](https://github.com/savonet/ocaml-fdkaac) | OCaml bindings to fdk-aac
 *   dev-ml/[ffmpeg](https://github.com/savonet/ocaml-ffmpeg) | OCaml bindings to ffmpeg
+*   dev-ml/[fiber](https://github.com/ocaml-dune/fiber) | Dune's monadic structured concurrency library
 *   dev-ml/[flac](https://github.com/savonet/ocaml-flac) | OCaml bindings to flac
 *   dev-ml/[frei0r](https://github.com/savonet/ocaml-frei0r) | OCaml bindings to frei0r plugins
 *   dev-ml/[gavl](https://github.com/savonet/ocaml-gavl) | OCaml bindings to Gavl video manipulation library

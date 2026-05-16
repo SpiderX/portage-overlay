@@ -1,0 +1,41 @@
+From 32679941afd159284ff3493fde4d25f3ca805f4d Mon Sep 17 00:00:00 2001
+From: Ali Caglayan <alizter@gmail.com>
+Date: Thu, 30 Nov 2023 10:02:53 -0800
+Subject: [PATCH] make memory test OCaml version independent (#29)
+
+This modifies the output so that the actual live words values are only
+printed on an unexpected decrease. The values have changed in OCaml 5.1
+meaning that this test would fail for the wrong reasons.
+
+Signed-off-by: Ali Caglayan <alizter@gmail.com>
+---
+ fiber/test/fiber_tests.ml | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/fiber/test/fiber_tests.ml b/fiber/test/fiber_tests.ml
+index a002bf4..2a96b77 100644
+--- a/fiber/test/fiber_tests.ml
++++ b/fiber/test/fiber_tests.ml
+@@ -669,15 +669,18 @@ let%expect_test "Stream.parallel_iter doesn't leak" =
+   in
+   let test ~pred ~iter_function =
+     let results = List.map data_points ~f:(test ~iter_function) in
+-    Dyn.(list int) results |> print_dyn;
+-    assert (pair_wise_check results ~f:pred)
++    if pair_wise_check results ~f:pred then
++      print_endline "[PASS] memory usage is as expected"
++    else (
++      print_endline "[FAIL] memory usage is not as expected";
++      Dyn.(list int) results |> print_dyn)
+   in
+   (* Check that the number of live words keeps on increasing because we are
+      leaking memory: *)
+   test ~pred:( < ) ~iter_function:naive_stream_parallel_iter;
+-  [%expect {| [ 52; 115; 745; 7045 ] |}];
++  [%expect {| [PASS] memory usage is as expected |}];
+   test ~pred:( = ) ~iter_function:Fiber.Stream.In.parallel_iter;
+-  [%expect {| [ 43; 43; 43; 43 ] |}]
++  [%expect {| [PASS] memory usage is as expected |}]
+ 
+ let sorted_failures v =
+   Result.map_error v
