@@ -9,7 +9,7 @@ inherit cmake edo git-r3 python-any-r1
 
 DESCRIPTION="Optimizer and compiler/toolchain library for WebAssembly"
 HOMEPAGE="https://github.com/WebAssembly/binaryen"
-EGIT_REPO_URI="https://github.com/WebAssembly//${PN}.git"
+EGIT_REPO_URI="https://github.com/WebAssembly/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
