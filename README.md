@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1585](https://img.shields.io/badge/ebuild-1585-orange.svg)](https://img.shields.io/badge/ebuild-1585-orange.svg)
+[![Number of ebuilds: 1586](https://img.shields.io/badge/ebuild-1586-orange.svg)](https://img.shields.io/badge/ebuild-1586-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -783,6 +783,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[thread-local-storage](https://github.com/c-cube/thread-local-storage) | Efficient thread local storage for OCaml
 *   dev-ml/[thread-table](https://github.com/ocaml-multicore/thread-table) | A lock-free thread-safe integer keyed hash table
 *   dev-ml/[timedesc](https://github.com/daypack-dev/timere) | OCaml date time handling and reasoning suite
+*   dev-ml/[tiny_httpd](https://github.com/c-cube/tiny_httpd) | Minimal HTTP server using good old threads
 *   dev-ml/[tls](https://github.com/mirleft/ocaml-tls) | Transport Layer Security purely in OCaml
 *   dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
 *   dev-ml/[tsdl-image](https://github.com/sanette/tsdl-image) | OCaml SDL2_image bindings to go with Tsdl
