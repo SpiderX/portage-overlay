@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides an implementation of the PACKv2 file in OCaml.
+	PACKv2 file is used by Git to store Git objects. Carton is more
+	abstracted when it can store any objects.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">robur-coop/carton</remote-id>
+	</upstream>
+</pkgmetadata>
