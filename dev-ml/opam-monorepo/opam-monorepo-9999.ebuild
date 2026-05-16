@@ -3,21 +3,19 @@
 
 EAPI=8
 
-inherit dune edo
+inherit dune edo git-r3
 
 DESCRIPTION="Assemble and manage fully vendored Dune repositories"
 HOMEPAGE="https://github.com/tarides/opam-monorepo"
-SRC_URI="https://github.com/tarides/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/tarides/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="test" # need proper setup
 
 RDEPEND="dev-ml/opam:0=[ocamlopt?]"
-BDEPEND="virtual/pkgconfig
-	test? ( dev-vcs/git )"
+BDEPEND="virtual/pkgconfig"
 
 src_test() {
 	edo git init > /dev/null
