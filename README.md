@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1545](https://img.shields.io/badge/ebuild-1545-orange.svg)](https://img.shields.io/badge/ebuild-1545-orange.svg)
+[![Number of ebuilds: 1546](https://img.shields.io/badge/ebuild-1546-orange.svg)](https://img.shields.io/badge/ebuild-1546-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -652,6 +652,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[ezcurl](https://github.com/c-cube/ezcurl) | A simple wrapper around OCurl
 *   dev-ml/[ezjsonm](https://github.com/mirage/ezjsonm) | An easy interface on top of the Jsonm library
 *   dev-ml/[faad](https://github.com/savonet/ocaml-faad) | OCaml bindings to faad2
+*   dev-ml/[faraday](https://github.com/inhabitedtype/faraday) | Serialization library built for speed and memory efficiency
 *   dev-ml/[fdkaac](https://github.com/savonet/ocaml-fdkaac) | OCaml bindings to fdk-aac
 *   dev-ml/[ffmpeg](https://github.com/savonet/ocaml-ffmpeg) | OCaml bindings to ffmpeg
 *   dev-ml/[flac](https://github.com/savonet/ocaml-flac) | OCaml bindings to flac
