@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1587](https://img.shields.io/badge/ebuild-1587-orange.svg)](https://img.shields.io/badge/ebuild-1587-orange.svg)
+[![Number of ebuilds: 1588](https://img.shields.io/badge/ebuild-1588-orange.svg)](https://img.shields.io/badge/ebuild-1588-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -796,6 +796,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[vchan](https://github.com/mirage/ocaml-vchan) | Xen Vchan implementation
 *   dev-ml/[visitors-cleanroom](https://github.com/semgrep/semgrep-ocaml-visitors) | A implementation of OCaml's visitors
 *   dev-ml/[vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
+*   dev-ml/[windtrap](https://github.com/robur-coop/ohex) | Hexadecimal encoding and decoding
 *   dev-ml/[x509](https://github.com/mirleft/ocaml-x509) | X509 handling in OCaml
 *   dev-ml/[xenstore](https://github.com/mirage/ocaml-xenstore) | Xenstore protocol in pure OCaml
 *   dev-ml/[xenstore-clients](https://github.com/xapi-project/ocaml-xenstore-clients) | Unix client tools for accessing xenstore

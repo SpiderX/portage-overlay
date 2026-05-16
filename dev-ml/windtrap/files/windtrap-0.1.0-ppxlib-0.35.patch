@@ -1,0 +1,25 @@
+--- ../ppx/coverage/instrument.ml
++++ ../ppx/coverage/instrument.ml
+@@ -491,18 +491,10 @@
+           | Pexp_fun (arg_label, default, pattern, body) ->
+               let body = instrument_expression state body in
+               Pexp_fun (arg_label, default, pattern, body)
+-          | Pexp_function (params, constraint_, body) -> begin
+-              match body with
+-              | Pfunction_body body ->
+-                  let body = instrument_expression state body in
+-                  Pexp_function (params, constraint_, Pfunction_body body)
+-              | Pfunction_cases (cases, loc, attrs) ->
+-                  let cases =
+-                    List.map cases ~f:(fun case ->
+-                        { case with pc_rhs = instrument_expression state case.pc_rhs })
+-                  in
+-                  Pexp_function (params, constraint_, Pfunction_cases (cases, loc, attrs))
+-            end
++          | Pexp_function cases ->
++              let cases =
++                List.map cases ~f:(fun case ->
++                    { case with pc_rhs = instrument_expression state case.pc_rhs })
++              in
++              Pexp_function cases
+           | desc -> desc
