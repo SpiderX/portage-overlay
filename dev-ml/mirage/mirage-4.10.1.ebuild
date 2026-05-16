@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ PROPERTIES="test_network"
 
 RDEPEND="dev-ml/astring:0=
 	dev-ml/bos:0=
-	>=dev-ml/cmdliner-2.0.0:0=[ocamlopt?]
+	dev-ml/cmdliner:0=[ocamlopt?]
 	dev-ml/emile:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
 	dev-ml/fpath:0=
