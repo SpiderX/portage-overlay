@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1575](https://img.shields.io/badge/ebuild-1575-orange.svg)](https://img.shields.io/badge/ebuild-1575-orange.svg)
+[![Number of ebuilds: 1576](https://img.shields.io/badge/ebuild-1576-orange.svg)](https://img.shields.io/badge/ebuild-1576-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -756,6 +756,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[prometheus](https://github.com/mirage/prometheus) | OCaml library for reporting metrics to a Prometheus server
 *   dev-ml/[protoc](https://github.com/mransan/ocaml-protoc) | A Protobuf Compiler for OCaml
 *   dev-ml/[psq](https://github.com/pqwy/psq) | Functional Priority Search Queues for OCaml
+*   dev-ml/[py](https://github.com/zshipko/ocaml-py) | Python bindings for OCaml
 *   dev-ml/[pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
 *   dev-ml/[randomconv](https://github.com/hannesm/randomconv) | Convert random byte vectors to numbers
 *   dev-ml/[samplerate](https://github.com/savonet/ocaml-samplerate) | OCaml bindings to libsamplerate
