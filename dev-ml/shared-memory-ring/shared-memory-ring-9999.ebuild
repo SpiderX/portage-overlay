@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,10 @@ EGIT_REPO_URI="https://github.com/mirage/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
 RESTRICT="test" # dev-ml/ounit2 doesn't have ounit
 
 RDEPEND="dev-ml/cstruct:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
 	dev-ml/lwt-dllist:0=[ocamlopt?]"
+BDEPEND="test? ( dev-ml/ounit2 )"
