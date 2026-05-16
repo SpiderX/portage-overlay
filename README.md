@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1560](https://img.shields.io/badge/ebuild-1560-orange.svg)](https://img.shields.io/badge/ebuild-1560-orange.svg)
+[![Number of ebuilds: 1561](https://img.shields.io/badge/ebuild-1561-orange.svg)](https://img.shields.io/badge/ebuild-1561-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -708,6 +708,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[miou](https://github.com/robur-coop/miou) | Composable concurrency primitives for OCaml
 *   dev-ml/[mirage](https://github.com/mirage/mirage) | The MirageOS library operating system
 *   dev-ml/[mirage-block](https://github.com/mirage/mirage-block) | Block implementations for mirage
+*   dev-ml/[mirage-block-unix](https://github.com/mirage/mirage-block-unix) | Unix implementation of the Mirage_types.BLOCK interface
 *   dev-ml/[mirage-channel](https://github.com/mirage/mirage-channel) | Buffered channels for MirageOS FLOW types
 *   dev-ml/[mirage-crypto](https://github.com/mirage/mirage-crypto) | Simple symmetric cryptography for the modern age
 *   dev-ml/[mirage-flow](https://github.com/mirage/mirage-flow) | Flow implementations and combinators for MirageOS
