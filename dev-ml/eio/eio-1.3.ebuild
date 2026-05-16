@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="ipv6 +ocamlopt test"
-RESTRICT="test" # fails
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/ocaml-5.2.0:0=
 	dev-ml/bigstringaf[ocamlopt?]
@@ -43,9 +43,12 @@ BDEPEND="dev-ml/dune-configurator
 src_prepare() {
 	default
 
+	# mdx expects /usr/share/doc/kcas-0.7.0/kcas/{CHANGES,LICENSE,README}.md,
+	# but portage installs them as {CHANGES,LICENSE,README}.md.bz2
+	sed -i '/enabled_if/s|(<> %{os_type} "Win32")|false|' dune \
+		|| die "sed failed for dune"
 	# remove tests fail in portage sandbox
 	edo rm lib_eio_{linux/tests,posix/test}/spawn.md
-	edo rm -rf {bench,stress}
 
 	! use ipv6 && eapply "${FILESDIR}/${PN}"-0.11-test-ipv6.patch
 }
