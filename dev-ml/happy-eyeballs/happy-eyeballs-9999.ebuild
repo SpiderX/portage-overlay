@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# happy-eyeballs-lwt needs dns, which needs happy-eyeballs-lwt
-DUNE_PKG_NAME="happy-eyeballs happy-eyeballs-miou-unix happy-eyeballs-mirage"
+DUNE_PKG_NAME="happy-eyeballs happy-eyeballs-lwt happy-eyeballs-miou-unix
+	happy-eyeballs-mirage"
 
 inherit dune git-r3
 
@@ -17,6 +17,7 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/cmdliner:0=[ocamlopt?]
+	dev-ml/dns:0=[ocamlopt?]
 	dev-ml/domain-name:0=[ocamlopt?]
 	dev-ml/duration:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
