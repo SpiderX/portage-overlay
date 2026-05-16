@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,8 +32,8 @@ RDEPEND="dev-ml/bigstringaf[ocamlopt?]
 	dev-ml/uri[ocamlopt?]
 	dev-ml/zarith[ocamlopt?]
 	dev-ml/zarith_stubs_js:0=[ocamlopt?]"
-BDEPEND="test? ( dev-ml/alcotest
-		dev-ml/crowbar
-		dev-ml/md2mld )"
+BDEPEND="dev-ml/md2mld
+	test? ( dev-ml/alcotest
+		dev-ml/crowbar )"
 
 PATCHES=( "${FILESDIR}/${PN}"-1.0.1-test.patch )
