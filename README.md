@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1561](https://img.shields.io/badge/ebuild-1561-orange.svg)](https://img.shields.io/badge/ebuild-1561-orange.svg)
+[![Number of ebuilds: 1562](https://img.shields.io/badge/ebuild-1562-orange.svg)](https://img.shields.io/badge/ebuild-1562-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -723,6 +723,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[mirage-xen](https://github.com/mirage/mirage-xen) | Xen core platform libraries for MirageOS
 *   dev-ml/[mm](https://github.com/savonet/ocaml-mm) | OCaml multimedia library
 *   dev-ml/[monolith](https://gitlab.inria.fr/fpottier/monolith) | A framework for strong random testing of OCaml libraries
+*   dev-ml/[mosaic](https://github.com/invariant-hq/mosaic) | Terminal user interfaces for OCaml
 *   dev-ml/[multicore-bench](https://github.com/ocaml-multicore/multicore-bench) | Framework for writing multicore benchmark executables
 *   dev-ml/[multicore-magic](https://github.com/ocaml-multicore/multicore-magic) | Low-level multicore utilities for OCaml
 *   dev-ml/[multicoretests](https://github.com/ocaml-multicore/multicoretests) | Various utility functions for property-based testing
