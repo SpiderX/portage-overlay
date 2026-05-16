@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1569](https://img.shields.io/badge/ebuild-1569-orange.svg)](https://img.shields.io/badge/ebuild-1569-orange.svg)
+[![Number of ebuilds: 1570](https://img.shields.io/badge/ebuild-1570-orange.svg)](https://img.shields.io/badge/ebuild-1570-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -743,6 +743,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[opus](https://github.com/savonet/ocaml-opus) | OCaml bindings to opus
 *   dev-ml/[osc](https://github.com/johnelse/ocaml-osc) | Pure OCaml implementation of the Open Sound Control protocol
 *   dev-ml/[oseq](https://github.com/c-cube/oseq) | Purely functional iterators compatible with standard seq
+*   dev-ml/[paf](https://github.com/dinosaure/paf-le-chien) | Port of HTTP/AF & H2 with Mirage and mimic
 *   dev-ml/[pcap-format](https://github.com/mirage/ocaml-pcap) | OCaml code for generating and analysing pcap files
 *   dev-ml/[pecu](https://github.com/mirage/pecu) | Implementation of quoted-printable encoder/decoder from RFC2045
 *   dev-ml/[portaudio](https://github.com/savonet/ocaml-portaudio) | OCaml bindings to portaudio

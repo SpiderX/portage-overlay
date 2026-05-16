@@ -1,0 +1,15 @@
+--- ../test/test_alpn.ml	2026-05-16 18:16:54.967209574 +0300
++++ ../test/test_alpn.ml	2026-05-16 18:17:34.106194617 +0300
+@@ -25,10 +25,10 @@
+ module P = Paf_mirage.Make (Tcpip_stack_socket.V4V6.TCP)
+ 
+ let unix_stack () =
+-  Tcpip_stack_socket.V4V6.UDP.connect ~ipv4_only:false ~ipv6_only:false
++  Tcpip_stack_socket.V4V6.UDP.connect ~ipv4_only:true ~ipv6_only:false
+     Ipaddr.V4.Prefix.global None
+   >>= fun udpv4 ->
+-  Tcpip_stack_socket.V4V6.TCP.connect ~ipv4_only:false ~ipv6_only:false
++  Tcpip_stack_socket.V4V6.TCP.connect ~ipv4_only:true ~ipv6_only:false
+     Ipaddr.V4.Prefix.global None
+   >>= fun tcpv4 -> Tcpip_stack_socket.V4V6.connect udpv4 tcpv4
+ 
