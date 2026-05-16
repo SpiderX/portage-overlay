@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1577](https://img.shields.io/badge/ebuild-1577-orange.svg)](https://img.shields.io/badge/ebuild-1577-orange.svg)
+[![Number of ebuilds: 1578](https://img.shields.io/badge/ebuild-1578-orange.svg)](https://img.shields.io/badge/ebuild-1578-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -759,6 +759,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[pulseaudio](https://github.com/savonet/ocaml-pulseaudio) | OCaml bindings to pulseaudio
 *   dev-ml/[py](https://github.com/zshipko/ocaml-py) | Python bindings for OCaml
 *   dev-ml/[pyro-caml](https://github.com/semgrep/pyro-caml) | A statistical continuous profiler for OCaml
+*   dev-ml/[python-str-repr](https://github.com/reynir/python-str-repr) | Python string escaping for OCaml
 *   dev-ml/[randomconv](https://github.com/hannesm/randomconv) | Convert random byte vectors to numbers
 *   dev-ml/[samplerate](https://github.com/savonet/ocaml-samplerate) | OCaml bindings to libsamplerate
 *   dev-ml/[saturn](https://github.com/ocaml-multicore/saturn) | Parallelism-Safe Data Structures for Multicore OCaml
