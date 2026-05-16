@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1542](https://img.shields.io/badge/ebuild-1542-orange.svg)](https://img.shields.io/badge/ebuild-1542-orange.svg)
+[![Number of ebuilds: 1543](https://img.shields.io/badge/ebuild-1543-orange.svg)](https://img.shields.io/badge/ebuild-1543-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -630,6 +630,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[dns-cli](https://github.com/mirage/ocaml-dns) | OCaml implementation of the DNS protocol
 *   dev-ml/[dns-client](https://github.com/mirage/ocaml-dns) | OCaml implementation of the DNS protocol
 *   dev-ml/[dns-stub](https://github.com/mirage/ocaml-dns) | OCaml implementation of the DNS protocol
+*   dev-ml/[dune-rpc](https://github.com/ocaml/dune) | Communicate with dune using rpc
 *   dev-ml/[domain-local-await](https://github.com/ocaml-multicore/domain-local-await) | Scheduler independent blocking
 *   dev-ml/[domain-local-timeout](https://github.com/ocaml-multicore/domain-local-timeout) | A scheduler independent timeout mechanism
 *   dev-ml/[domain-name](https://github.com/hannesm/domain-name) | RFC 1035 Internet domain names
