@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1543](https://img.shields.io/badge/ebuild-1543-orange.svg)](https://img.shields.io/badge/ebuild-1543-orange.svg)
+[![Number of ebuilds: 1544](https://img.shields.io/badge/ebuild-1544-orange.svg)](https://img.shields.io/badge/ebuild-1544-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -645,6 +645,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[duppy](https://github.com/savonet/ocaml-duppy) | OCaml advanced scheduler
 *   dev-ml/[eio](https://github.com/ocaml-multicore/eio) | Effects-Based Parallel IO for OCaml
 *   dev-ml/[either](https://github.com/mirage/either) | Compatibility module for Either in OCaml 4.12
+*   dev-ml/[encore](https://github.com/mirage/encore) | Library to generate encoder/decoder which ensure isomorphism
 *   dev-ml/[emile](https://github.com/mirage/emile) | Parser of email address in OCaml
 *   dev-ml/[eqaf](https://github.com/mirage/eqaf) | Constant-time equal function on string
 *   dev-ml/[ethernet](https://github.com/mirage/ethernet) | OCaml Ethernet (IEEE 802.3) layer, used in MirageOS
