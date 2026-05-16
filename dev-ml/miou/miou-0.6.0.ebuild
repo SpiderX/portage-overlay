@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,7 @@ RDEPEND=">=dev-lang/ocaml-5.0.0:0=[ocamlopt?]"
 BDEPEND="dev-ml/dune-configurator
 	test? ( dev-ml/digestif
 		dev-ml/dns
+		dev-ml/dns-client
 		dev-ml/dscheck
 		dev-ml/happy-eyeballs
 		dev-ml/hxd
