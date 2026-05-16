@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1565](https://img.shields.io/badge/ebuild-1565-orange.svg)](https://img.shields.io/badge/ebuild-1565-orange.svg)
+[![Number of ebuilds: 1566](https://img.shields.io/badge/ebuild-1566-orange.svg)](https://img.shields.io/badge/ebuild-1566-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -732,6 +732,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[ocaml-version](https://github.com/ocurrent/ocaml-version) | Manipulate, parse and generate OCaml compiler version strings
 *   dev-ml/[ocamlc-loc](https://github.com/ocaml/dune) | Parse ocaml compiler output into structured form
 *   dev-ml/[ocamlformat](https://github.com/ocaml-ppx/ocamlformat) | Auto-formatter for OCaml code
+*   dev-ml/[ocolor](https://github.com/marc-chevalier/ocolor) | Print with style in your terminal
 *   dev-ml/[ohex](https://github.com/robur-coop/ohex) | Hexadecimal encoding and decoding
 *   dev-ml/[ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
 *   dev-ml/[omd](https://github.com/ocaml-community/omd) | A Markdown frontend in pure OCaml
