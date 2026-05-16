@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+# mirage-crypto-rng-mkernel needs mkernel
 DUNE_PKG_NAME="mirage-crypto mirage-crypto-ec mirage-crypto-pk
 	mirage-crypto-rng mirage-crypto-rng-mirage mirage-crypto-rng-miou-unix"
 
@@ -41,3 +42,11 @@ BDEPEND="dev-ml/dune-configurator
 		dev-ml/ppx_deriving_yojson
 		dev-ml/randomconv
 		dev-ml/yojson )"
+
+src_compile() {
+	dune-compile ${DUNE_PKG_NAME}
+}
+
+src_test() {
+	dune-test ${DUNE_PKG_NAME}
+}
