@@ -733,6 +733,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[ocamlc-loc](https://github.com/ocaml/dune) | Parse ocaml compiler output into structured form
 *   dev-ml/[ocamlformat](https://github.com/ocaml-ppx/ocamlformat) | Auto-formatter for OCaml code
 *   dev-ml/[ocolor](https://github.com/marc-chevalier/ocolor) | Print with style in your terminal
+*   dev-ml/[ocp-indent](https://github.com/OCamlPro/ocp-indent) | Indentation tool for OCaml
 *   dev-ml/[ocplib-json-typed](https://github.com/OCamlPro/ocplib-json-typed) | Libraries for reliable manipulation JSON objects
 *   dev-ml/[ohex](https://github.com/robur-coop/ohex) | Hexadecimal encoding and decoding
 *   dev-ml/[ogg](https://github.com/savonet/ocaml-ogg) | OCaml bindings to libogg
@@ -765,10 +766,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[samplerate](https://github.com/savonet/ocaml-samplerate) | OCaml bindings to libsamplerate
 *   dev-ml/[sarif](https://github.com/gborough/sarif) | Static Analysis Results Interchange Format (SARIF) For OCaml
 *   dev-ml/[saturn](https://github.com/ocaml-multicore/saturn) | Parallelism-Safe Data Structures for Multicore OCaml
-*   dev-ml/[ocaml-unix-errno](https://github.com/xapi-project/ocaml-unix-errno) | Unix errno types, maps, and support for OCaml
-*   dev-ml/[ocaml-vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
-*   dev-ml/[ocaml-xmlplaylist](https://github.com/savonet/ocaml-xmlplaylist) | OCaml module to parse various RSS playlist formats
-*   dev-ml/[ocp-indent](https://github.com/OCamlPro/ocp-indent) | Indentation tool for OCaml
+*   dev-ml/[semver](https://github.com/rgrinberg/ocaml-semver) | Semantic Versioning module for OCaml
 *   dev-ml/[shared-memory-ring](https://github.com/mirage/shared-memory-ring) | Xen-style shared memory rings
 *   dev-ml/[shine](https://github.com/savonet/ocaml-shine) | OCaml bindings to libshine
 *   dev-ml/[soundtouch](https://github.com/savonet/ocaml-soundtouch) | OCaml bindings to libsoundtouch

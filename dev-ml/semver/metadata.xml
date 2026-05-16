@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a lightweight library for parsing, comparing,
+	and manipulating version identifiers in 3 parts such as "1.2.3".
+	</longdescription>
+	<upstream>
+		<remote-id type="github">rgrinberg/ocaml-semver</remote-id>
+	</upstream>
+</pkgmetadata>
