@@ -1,0 +1,13 @@
+--- ../eio/tests/dune	2026-05-09 15:28:59.188009124 +0300
++++ ../eio/tests/dune	2026-05-09 15:29:09.948185770 +0300
+@@ -9,9 +9,7 @@
+     server.key
+     server-ec.pem
+     server-ec.key
+-    (package tls-eio)
+-    (package mirage-crypto-rng)
+-    (package eio_main)))
++    (package tls-eio)))
+ 
+ ; "dune runtest" just does a quick run with random inputs.
+ ;

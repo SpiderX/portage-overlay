@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ LICENSE="BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
-RESTRICT="test" # fails
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/ocaml-5.0.0:0=[ocamlopt?]
 	dev-ml/cmdliner:0=[ocamlopt?]
@@ -44,6 +44,14 @@ BDEPEND="test? ( dev-ml/alcotest
 		dev-ml/randomconv
 		dev-ml/rresult )"
 
+# mdx expects /usr/share/doc/mirage-crypto-2.1.0/mirage-crypto/{CHANGES,LICENSE,README}.md,
+# but portage installs them as {CHANGES,LICENSE,README}.md.bz2
+PATCHES=( "${FILESDIR}/${PN}"-2.0.4-tests-mdx.patch )
+
 src_compile() {
 	dune-compile ${DUNE_PKG_NAME}
+}
+
+src_test() {
+	dune-test ${DUNE_PKG_NAME}
 }
