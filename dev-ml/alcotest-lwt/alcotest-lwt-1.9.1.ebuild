@@ -18,7 +18,8 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/cmdliner:0=[ocamlopt?]
+RDEPEND=">=dev-ml/alcotest-1.9.0:0=[ocamlopt?]
+	dev-ml/cmdliner:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
 	dev-ml/logs:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]"
