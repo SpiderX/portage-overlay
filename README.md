@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1592](https://img.shields.io/badge/ebuild-1592-orange.svg)](https://img.shields.io/badge/ebuild-1592-orange.svg)
+[![Number of ebuilds: 1593](https://img.shields.io/badge/ebuild-1593-orange.svg)](https://img.shields.io/badge/ebuild-1593-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -590,7 +590,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[zs3](https://github.com/xach/zs3) | Common Lisp library for working with Amazon's S3
 *   dev-lua/[lyaml](https://github.com/gvvaughan/lyaml) | LibYAML binding for Lua
 *   dev-ml/[afl-persistent](https://github.com/stedolan/ocaml-afl-persistent) | Persistent-mode afl-fuzz for ocaml OCaml
-*   dev-ml/[alcotest-lwt](https://github.com/ahrefs/atd) | Static types for JSON APIs
+*   dev-ml/[alcotest-lwt](https://github.com/mirage/alcotest) | A lightweight and colourful test framework
 *   dev-ml/[ambient-context](https://github.com/ocaml-tracing/ambient-context) | Abstraction over thread- and continuation-local storage mechanisms
 *   dev-ml/[memtrace](https://github.com/janestreet/memtrace) | Streaming client for OCaml's Memprof
 *   dev-ml/[alsa](https://github.com/savonet/ocaml-alsa) | OCaml bindings to alsa-lib
@@ -785,6 +785,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[timedesc](https://github.com/daypack-dev/timere) | OCaml date time handling and reasoning suite
 *   dev-ml/[tiny_httpd](https://github.com/c-cube/tiny_httpd) | Minimal HTTP server using good old threads
 *   dev-ml/[tls](https://github.com/mirleft/ocaml-tls) | Transport Layer Security purely in OCaml
+*   dev-ml/[tree-sitter](https://github.com/semgrep/ocaml-tree-sitter-core) | OCaml code generator and runtime library for tree-sitter
 *   dev-ml/[tsdl](https://github.com/dbuenzli/tsdl) | Thin bindings to SDL for OCaml
 *   dev-ml/[tsdl-image](https://github.com/sanette/tsdl-image) | OCaml SDL2_image bindings to go with Tsdl
 *   dev-ml/[tsdl-ttf](https://github.com/sanette/tsdl-ttf) | OCaml SDL2_ttf bindings to go with Tsdl
