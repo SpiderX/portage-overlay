@@ -17,7 +17,8 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="test" # needs windtrap, which needs ppxlib-0.37
 
-RDEPEND=">=dev-lang/ocaml-5.1:0=[ocamlopt?]
+RDEPEND="!dev-ml/tree-sitter
+	>=dev-lang/ocaml-5.1:0=[ocamlopt?]
 	dev-ml/cmarkit:0=[ocamlopt?]
 	dev-ml/eio:0=[ocamlopt?]"
 
