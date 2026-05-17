@@ -5,9 +5,12 @@ EAPI=8
 
 inherit cmake
 
+COMMIT="edb89f4c1cb0bd876d75fd8b8647cba22574323a"
+
 DESCRIPTION="Color picker and contrast checker"
 HOMEPAGE="https://github.com/qtilities/colorpick"
-SRC_URI="https://github.com/qtilities/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/qtilities/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
