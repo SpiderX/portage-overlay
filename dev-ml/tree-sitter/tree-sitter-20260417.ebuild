@@ -18,7 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
-RDEPEND="dev-ml/ANSITerminal:0=[ocamlopt?]
+RDEPEND="!dev-ml/mosaic
+	dev-ml/ANSITerminal:0=[ocamlopt?]
 	dev-ml/alcotest:0=[ocamlopt?]
 	dev-ml/atd:0=[ocamlopt?]
 	dev-ml/cmdliner:0=[ocamlopt?]

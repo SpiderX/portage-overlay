@@ -13,7 +13,8 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
-RDEPEND="dev-ml/ANSITerminal:0=[ocamlopt?]
+RDEPEND="!dev-ml/mosaic
+	dev-ml/ANSITerminal:0=[ocamlopt?]
 	dev-ml/alcotest:0=[ocamlopt?]
 	dev-ml/atd:0=[ocamlopt?]
 	dev-ml/cmdliner:0=[ocamlopt?]
