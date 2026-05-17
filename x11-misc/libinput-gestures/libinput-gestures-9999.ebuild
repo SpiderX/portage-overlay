@@ -1,15 +1,15 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} python3_{13..14}t )
-EGIT_REPO_URI="https://github.com/bulletmark/${PN}.git"
+PYTHON_COMPAT=( python3_{12..15} python3_{13..14}t )
 
 inherit git-r3 python-single-r1 xdg
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
 HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
+EGIT_REPO_URI="https://github.com/bulletmark/${PN}.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
