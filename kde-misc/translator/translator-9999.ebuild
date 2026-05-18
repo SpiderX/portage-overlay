@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm git-r3
 
 DESCRIPTION="Translator - KDE Plasma 6 Widget"
