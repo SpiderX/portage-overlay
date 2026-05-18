@@ -1,17 +1,18 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
-EGIT_SUBMODULES=( "OSS/cli/src/semgrep/semgrep_interfaces" )
+EGIT_SUBMODULES=()
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="Lightweight static analysis for many languages"
 HOMEPAGE="https://github.com/semgrep/semgrep"
 EGIT_REPO_URI="https://github.com/semgrep/${PN}.git"
+S="${WORKDIR}/${P}/cli"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -23,41 +24,47 @@ RDEPEND="dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-option-group[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/defusedxml[${PYTHON_USEDEP}]
 	dev-python/exceptiongroup[${PYTHON_USEDEP}]
 	dev-python/glom[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
+	dev-python/mcp[${PYTHON_USEDEP}]
+	dev-python/opentelemetry-api[${PYTHON_USEDEP}]
+	dev-python/opentelemetry-instrumentation-requests[${PYTHON_USEDEP}]
+	dev-python/opentelemetry-instrumentation-threading[${PYTHON_USEDEP}]
+	dev-python/opentelemetry-exporter-otlp-proto-http[${PYTHON_USEDEP}]
+	dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/peewee[${PYTHON_USEDEP}]
+	dev-python/pyjwt[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
+	dev-python/ruamel-yaml-clib[${PYTHON_USEDEP}]
+	dev-python/semantic-version[${PYTHON_USEDEP}]
 	dev-python/tomli[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
-	dev-python/wcmatch[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
-	test? ( dev-python/appdirs[${PYTHON_USEDEP}]
-		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/requests-mock[${PYTHON_USEDEP}]
-		dev-python/snapshottest[${PYTHON_USEDEP}] )"
+	dev-python/wcmatch[${PYTHON_USEDEP}]
+	dev-util/semgrep-core"
+BDEPEND="test? ( dev-python/appdirs[${PYTHON_USEDEP}] )"
+
+PATCHES=( "${FILESDIR}/${PN}"-1.163.0-tests.patch )
 
 EPYTEST_XDIST=1
+EPYTEST_PLUGINS=( freezegun pytest-{asyncio,mock,snapshot} requests-mock )
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# assertion error
-	cli/tests/default/unit/test_clean_project_url.py::test_get_project_url
-	cli/tests/default/unit/test_metric_manager.py::test_rules_hash
-	cli/tests/default/unit/test_metric_manager.py::test_configs_hash
-)
+EPYTEST_IGNORE=( tests/default/e2e
+		tests/default/e2e-other
+		tests/default/e2e-pysemgrep )
 
-EPYTEST_IGNORE=(
-	# run only unit tests
-	cli/tests/default/e2e
-	cli/tests/default/e2e-other
-	cli/tests/default/e2e-pysemgrep
-	cli/tests/performance
-	cli/tests/qa
-)
+src_prepare() {
+	default
+
+	if use test ; then
+		edo git init > /dev/null
+		edo git config user.email "you@example.com"
+		edo git config user.name "Your Name"
+		edo git remote add origin https://github.com/semgrep/semgrep
+	fi
+}
