@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+KFMIN=6.25.0
 PLOCALES="nl uk"
 PLOCALE_BACKUP="en"
 EGIT_REPO_URI="https://github.com/popov895/${PN}.git"
