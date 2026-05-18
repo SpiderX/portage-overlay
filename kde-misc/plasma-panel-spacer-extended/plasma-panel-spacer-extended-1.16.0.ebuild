@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm
 
 DESCRIPTION="Spacer with Mouse gestures for the KDE Plasma Panel"
