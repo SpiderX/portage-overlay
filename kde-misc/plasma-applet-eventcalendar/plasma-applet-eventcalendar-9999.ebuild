@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KFMIN=6.25.0
 PYTHON_COMPAT=( python3_{12..14} )
 
 inherit ecm git-r3 optfeature python-single-r1
