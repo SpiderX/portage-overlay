@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm optfeature readme.gentoo-r1
 
 COMMIT="99b5016f5ef3f74b7ca203206ed79944efda1df6"

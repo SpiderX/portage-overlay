@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm git-r3 optfeature readme.gentoo-r1
 
 DESCRIPTION="Plasma 6 Sliding animation for notification windows"
