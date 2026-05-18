@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1591](https://img.shields.io/badge/ebuild-1591-orange.svg)](https://img.shields.io/badge/ebuild-1591-orange.svg)
+[![Number of ebuilds: 1592](https://img.shields.io/badge/ebuild-1592-orange.svg)](https://img.shields.io/badge/ebuild-1592-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1218,6 +1218,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[mashumaro](https://github.com/Fatal1ty/mashumaro) | Fast and well tested serialization library
 *   dev-python/[masky](https://pypi.org/project/masky) | Remotely dump domain user credentials via an ADCS
 *   dev-python/[mbedtls](https://github.com/Synss/python-mbedtls) | Cryptographic library with an mbed TLS back end
+*   dev-python/[mcp](https://github.com/modelcontextprotocol/python-sdk) | Python SDK for Model Context Protocol
 *   dev-python/[minidump](https://github.com/skelsec/minidump) | Python library to parse Windows minidump file format
 *   dev-python/[minikerberos](https://github.com/skelsec/minikerberos) | Kerberos manipulation library
 *   dev-python/[minijinja](https://github.com/mitsuhiko/minijinja) | Powerful template engine for Rust with minimal dependencies
