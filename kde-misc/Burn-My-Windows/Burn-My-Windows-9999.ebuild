@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KFMIN=6.25.0
 PLOCALES="ar az cs da de el eo es et fa fi fr he hi hu id it ja kab ko lt nb_NO nl ota pl pt_BR pt ro ru sk sv ta tr uk zh_Hans zh_Hant"
 PLOCALE_BACKUP="uk"
 
