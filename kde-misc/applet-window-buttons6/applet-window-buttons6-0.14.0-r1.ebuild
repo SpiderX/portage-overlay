@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm
 
 DESCRIPTION="Plasma 6 applet in order to show window buttons in your panels"

@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm git-r3
 
 DESCRIPTION="Plasma 6 applet in order to show window buttons in your panels"
