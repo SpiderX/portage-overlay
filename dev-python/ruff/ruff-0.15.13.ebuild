@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit pypi python-r1
 
@@ -15,13 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-util/ruff
+RDEPEND="~dev-util/ruff-${PV}
 	${PYTHON_DEPS}"
 
 my_install() {
 	python_moduleinto ruff
-	python_domodule python/ruff/__main__.py
-	python_domodule python/ruff/__init__.py
+	python_domodule python/ruff/__{init,main}__.py
+	python_domodule python/ruff/_find_ruff.py
 }
 
 src_install() {

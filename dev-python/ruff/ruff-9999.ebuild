@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit git-r3 python-r1
 
@@ -20,8 +20,8 @@ RDEPEND="dev-util/ruff
 
 my_install() {
 	python_moduleinto ruff
-	python_domodule python/ruff/__main__.py
-	python_domodule python/ruff/__init__.py
+	python_domodule python/ruff/__{init,main}__.py
+	python_domodule python/ruff/_find_ruff.py
 }
 
 src_install() {
