@@ -1,14 +1,16 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+KFMIN=6.25.0
 
 inherit ecm
 
 COMMIT="0340401f8408c8b927b436438c775d9ab7661584"
 
-DESCRIPTION="Plasma 5 applet that acts as a separator between applets"
-HOMEPAGE="https://github.com/doncsugar/applet-latte-separator/tree/plasma6"
+DESCRIPTION="Plasma applet that acts as a separator between applets"
+HOMEPAGE="https://github.com/doncsugar/applet-latte-separator"
 SRC_URI="https://github.com/doncsugar/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 

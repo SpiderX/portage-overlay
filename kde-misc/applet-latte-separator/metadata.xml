@@ -15,6 +15,6 @@
 	but it can also support Plasma panels.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">psifidotos/applet-latte-separator</remote-id>
+		<remote-id type="github">doncsugar/applet-latte-separator</remote-id>
 	</upstream>
 </pkgmetadata>

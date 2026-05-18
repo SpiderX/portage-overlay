@@ -1459,7 +1459,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-vcs/[mercurial-extension_utils](https://foss.heptapod.net/mercurial/mercurial-extension_utils) | Mercurial Extension Utils
 *   dev-vcs/[mercurial_keyring](https://foss.heptapod.net/mercurial/mercurial_keyring) | Mercurial Keyring Extension
 *   dev-vcs/[pre-commit](https://github.com/pre-commit/pre-commit) | A framework for multi-language pre-commit hooks
-*   kde-misc/[applet-latte-separator](https://github.com/psifidotos/applet-latte-separator) | Plasma 5 applet that acts as a separator between applets
+*   kde-misc/[applet-latte-separator](https://github.com/doncsugar/applet-latte-separator) | Plasma applet that acts as a separator between applets
 *   kde-misc/[applet-latte-spacer](https://github.com/psifidotos/applet-latte-spacer) | Plasma 5 applet that acts as a spacer between applets
 *   kde-misc/[applet-window-buttons6](https://github.com/moodyhunter/applet-window-buttons6) | Plasma 6 applet in order to show window buttons in your panels
 *   kde-misc/[applet-window-title6](https://github.com/moodyhunter/applet-window-title6) | Plasma 6 applet shows window title and icon in your panels
