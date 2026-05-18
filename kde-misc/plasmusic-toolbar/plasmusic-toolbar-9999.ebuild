@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm git-r3
 
 DESCRIPTION="Currently playing song and playback controls in Plasma 6"
