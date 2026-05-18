@@ -1,0 +1,27 @@
+--- ../atdgen/test/spec_js/dune	2026-05-19 00:43:04.226906922 +0300
++++ ../atdgen/test/spec_js/dune	2026-05-19 00:43:42.887942992 +0300
+@@ -23,11 +23,6 @@
+  (modules test_j)
+  (libraries spec_js atdgen-runtime yojson))
+ 
+-(executable
+- (name test_mel)
+- (modules test_mel)
+- (libraries spec_js atdgen-codec-runtime yojson))
+-
+ (rule
+  (targets spec_j.json)
+  (action (with-stdout-to %{targets} (run ./test_j.exe))))
+@@ -36,12 +31,3 @@
+  (alias runtest)
+  (package atdgen)
+  (action (diff spec_j.expected.json spec_j.json)))
+-
+-(rule
+- (targets spec_mel.json)
+- (action (with-stdout-to %{targets} (run ./test_mel.exe))))
+-
+-(rule
+- (alias runtest)
+- (package atdgen)
+- (action (diff spec_mel.expected.json spec_mel.json)))

@@ -42,15 +42,27 @@ BDEPEND="${PYTHON_DEPS}
 			dev-python/mypy[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]') )"
 
+PATCHES=( "${FILESDIR}/${PN}"-4.2.0-tests-melange.patch )
+
 python_check_deps() {
-	python_has_version "dev-python/flake8[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/mypy[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	if use test ; then
+		python_has_version "dev-python/flake8[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/mypy[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	fi
 }
 
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
 	python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+
+	# disable not supported test
+	sed -i 's/(alias runtest)/(alias disabled-runtest)/g' atdgen/test/melange/dune \
+		|| die "sed failed for melange"
 }
 
 src_compile() {
