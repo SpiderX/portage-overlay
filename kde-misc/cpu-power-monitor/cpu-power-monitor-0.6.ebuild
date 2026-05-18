@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm linux-info tmpfiles
 
 DESCRIPTION="KDE Plasma widget to monitor the CPU power consumption"
