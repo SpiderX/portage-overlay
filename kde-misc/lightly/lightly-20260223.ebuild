@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm
 
 COMMIT="459d7d1c65883e224f6bc384613b240515e67727"
