@@ -1,8 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+KFMIN=6.18.0
+QTMIN=6.8.1
 KDE_ORG_COMMIT="394ef5e06c21a706cab9a2c34b6d81460aa74d07"
 PLOCALES="ar ast az bg ca ca@valencia cs da de el en_GB eo es et eu fi fr gl he hi hu ia it ja ka ko lt lv nl nn pa pl pt pt_BR ro ru sa sk sl sv ta tr uk vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
@@ -24,11 +26,12 @@ DEPEND="dev-cpp/gpgmepp:=
 	kde-frameworks/ki18n:6
 	kde-frameworks/kio:6
 	kde-frameworks/kitemmodels:6
-	kde-plasma/libplasma:6
+	kde-plasma/libplasma:6=
 	kde-plasma/plasma5support:6
 	sys-auth/oath-toolkit"
 RDEPEND="${DEPEND}
 	kde-frameworks/kirigami:6"
+BDEPEND="kde-frameworks/kpackage:6"
 
 src_prepare() {
 	my_rm_loc() {
