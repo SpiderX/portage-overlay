@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1593](https://img.shields.io/badge/ebuild-1593-orange.svg)](https://img.shields.io/badge/ebuild-1593-orange.svg)
+[![Number of ebuilds: 1591](https://img.shields.io/badge/ebuild-1591-orange.svg)](https://img.shields.io/badge/ebuild-1591-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1472,14 +1472,13 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[kde-translator-widget](https://github.com/y4my4my4m/kde-translator-widget) | KDE Translator Widget
 *   kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[lightly](https://github.com/xuzhao9/Lightly) | KDE theme style with aim to be visually modern and minimalistic
-*   kde-misc/[lyrics-on-panel](https://github.com/KangweiZhu/plasmusic-toolbar) | Lyrics for currently playing song in Plasma 6
+*   kde-misc/[lyrics-on-panel](https://github.com/KangweiZhu/lyrics-on-panel) | Lyrics for currently playing song in Plasma 6
 *   kde-misc/[kde-mymemory-translator](https://github.com/zayronxio/Kde.mymemory.translator) | Plasmoid for translation using the mymemory translated api
 *   kde-misc/[kwin-sliding-notifications](https://github.com/RussH/kwin-sliding-notifications) | Plasma 6 Sliding animation for notification windows
 *   kde-misc/[paneltransparencybutton](https://github.com/TheEssem/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
 *   kde-misc/[plasma-6-power-usage-widget](https://github.com/magillos/Plasma-6-power-usage-widget) | Plasma 6 compatibile widget showing power usage
 *   kde-misc/[plasma-applet-ambientnoise](https://github.com//plasma-applet-ambientnoise) | Plasma widget for play ambient noise
 *   kde-misc/[plasma-applet-eventcalendar](https://github.com/ALikesToCode/plasma-applet-eventcalendar) | Plasmoid for a calendar and agenda with weather
-*   kde-misc/[plasma-applet-favoriteFolders](https://github.com/enky-marte/plasma-applet-favoriteFolders) | Plasma 5 widget for quick access to favorite folders
 *   kde-misc/[plasma-applet-grammarly](https://github.com/kevinbburns/com.kevinbburns.grammarly) | KDE Plasma6 Panel Widget for a Webview to Grammarly Editor
 *   kde-misc/[plasma-panel-spacer-extended](https://github.com/luisbocanegra/plasma-panel-spacer-extended) | Spacer with Mouse gestures for the KDE Plasma Panel
 *   kde-misc/[plasma-pass](https://www.dvratil.cz/2018/05/plasma-pass/) | Plasma applet to access password from pass

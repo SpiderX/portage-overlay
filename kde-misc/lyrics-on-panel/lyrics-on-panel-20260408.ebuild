@@ -1,14 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm
 
-COMMIT="55f00e3852de93f16e34b1f4d0d6d5db407d3f07"
+COMMIT="c896a8dc0c17bfdccfb363f3b8daddcb1d5bc09a"
 
 DESCRIPTION="Lyrics for currently playing song in Plasma 6"
-HOMEPAGE="https://github.com/KangweiZhu/plasmusic-toolbar"
+HOMEPAGE="https://github.com/KangweiZhu/lyrics-on-panel"
 SRC_URI="https://github.com/KangweiZhu/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 

@@ -1,12 +1,14 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+KFMIN=6.25.0
+
 inherit ecm git-r3
 
 DESCRIPTION="Lyrics for currently playing song in Plasma 6"
-HOMEPAGE="https://github.com/KangweiZhu/plasmusic-toolbar"
+HOMEPAGE="https://github.com/KangweiZhu/lyrics-on-panel"
 EGIT_REPO_URI="https://github.com/KangweiZhu/${PN}.git"
 
 LICENSE="GPL-3"
