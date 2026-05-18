@@ -19,6 +19,8 @@ RDEPEND="dev-python/black[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/ruff[${PYTHON_USEDEP}]"
 
+EPYTEST_PLUGINS=( pytest-examples )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
