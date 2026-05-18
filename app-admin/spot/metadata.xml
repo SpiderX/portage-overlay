@@ -10,11 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	TUI for reviewing diffs, files, and documents with inline annotations.
-	Outputs structured annotations to stdout on quit, making it easy to pipe
-	results into AI agents, scripts, or other tools.
+	This package provides a user-friendly and efficient tool for the
+	effortless deployment and configuration of resources on remote machines.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">umputun/revdiff</remote-id>
+		<remote-id type="github">umputun/spot</remote-id>
 	</upstream>
 </pkgmetadata>
