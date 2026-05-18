@@ -1,7 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+KFMIN=6.25.0
 
 inherit ecm
 
@@ -16,8 +18,7 @@ LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="!kde-misc/applet-window-title:5
-	kde-frameworks/kdeclarative:6
+RDEPEND="kde-frameworks/kdeclarative:6
 	kde-frameworks/kirigami:6
 	kde-plasma/plasma-workspace:6"
 
