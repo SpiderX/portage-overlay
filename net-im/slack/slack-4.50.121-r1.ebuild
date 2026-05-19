@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop edo multilib-build optfeature pax-utils unpacker xdg
+inherit chromium-2 desktop multilib-build optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://slack.com"
@@ -65,9 +65,9 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	edo pushd usr/lib/slack/locales
+	pushd usr/lib/slack/locales || die "pushd failed"
 	chromium_remove_language_paks
-	edo popd
+	popd || die "popd failed"
 
 	# remove hardcoded path, logging noise (wrt 694058, 711494)
 	sed -i  -e '/Icon/s|/usr/share/pixmaps/slack.png|slack|' \
@@ -75,8 +75,9 @@ src_prepare() {
 		usr/share/applications/slack.desktop \
 		|| die "sed failed in Icon for slack.desktop"
 
-	edo rm usr/lib/slack/LICENSE{,S-linux.json} \
-		usr/lib/slack/resources/LICENSES.chromium.html
+	rm usr/lib/slack/LICENSE{,S-linux.json} \
+		usr/lib/slack/resources/LICENSES.chromium.html \
+		|| die "rm licenses failed"
 
 	if use appindicator ; then
 		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
@@ -84,7 +85,9 @@ src_prepare() {
 			|| die "sed failed for appindicator"
 	fi
 
-	use suid || edo rm usr/lib/slack/chrome-sandbox
+	if ! use suid ; then
+		rm usr/lib/slack/chrome-sandbox || die "rm failed"
+	fi
 
 	if ! use seccomp ; then
 		sed -i '/Exec/s/%U/%U --disable-seccomp-filter-sandbox/' \
@@ -105,7 +108,7 @@ src_install() {
 	domenu usr/share/applications/slack.desktop
 
 	insinto /opt # wrt 720134
-	edo cp -a usr/lib/slack "${ED}"/opt
+	cp -a usr/lib/slack "${ED}"/opt || die "cp failed"
 
 	use suid && fperms u+s /opt/slack/chrome-sandbox # wrt 713094
 
