@@ -9,7 +9,7 @@ POSTGRES_USEDEP="server"
 inherit edo git-r3 go-module postgres readme.gentoo-r1
 
 DESCRIPTION="Terraform PostgreSQL provider"
-HOMEPAGE="https://registry.terraform.io/providers/bpg/proxmox/latest/docs"
+HOMEPAGE="https://github.com/cyrilgdn/terraform-provider-postgresql"
 EGIT_REPO_URI="https://github.com/cyrilgdn/${PN}.git"
 
 LICENSE="MPL-2.0"

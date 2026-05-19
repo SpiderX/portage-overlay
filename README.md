@@ -85,7 +85,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[sinker](https://github.com/plexsystems/sinker) | Sync images from one container registry to another
 *   app-admin/[spot](https://github.com/umputun/spot) | Deployment and configuration of resources on remote machines
 *   app-admin/[spotinfo](https://github.com/alexei-led/spotinfo) | Exploring AWS EC2 Spot inventory
-*   app-admin/[terraform-provider-postgresql](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) | Terraform PostgreSQL provider
+*   app-admin/[terraform-provider-postgresql](https://github.com/cyrilgdn/terraform-provider-postgresql) | Terraform PostgreSQL provider
 *   app-admin/[terraform-provider-proxmox](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) | Terraform Provider for Proxmox
 *   app-admin/[terraform-provider-vcd](https://registry.terraform.io/providers/vmware/vcd/latest/docs) | Terraform VMware vCloud Director provider
 *   app-admin/[topngx](https://github.com/gsquire/topngx) | A top for NGINX

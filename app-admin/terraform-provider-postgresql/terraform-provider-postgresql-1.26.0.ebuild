@@ -2155,7 +2155,7 @@ EGO_SUM=(
 go-module_set_globals
 
 DESCRIPTION="Terraform PostgreSQL provider"
-HOMEPAGE="https://registry.terraform.io/providers/bpg/proxmox/latest/docs"
+HOMEPAGE="https://github.com/cyrilgdn/terraform-provider-postgresql"
 SRC_URI="https://github.com/cyrilgdn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
