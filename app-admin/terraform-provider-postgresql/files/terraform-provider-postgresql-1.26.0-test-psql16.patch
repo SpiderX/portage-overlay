@@ -1,0 +1,22 @@
+--- ../postgresql/helpers.go	2026-05-19 20:38:09.149757849 +0300
++++ ../postgresql/helpers.go	2026-05-19 20:38:48.704660926 +0300
+@@ -251,7 +251,7 @@
+ // see: https://www.postgresql.org/docs/current/sql-grant.html
+ var allowedPrivileges = map[string][]string{
+ 	"database":             {"ALL", "CREATE", "CONNECT", "TEMPORARY"},
+-	"table":                {"ALL", "SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE", "REFERENCES", "TRIGGER"},
++	"table":                {"ALL", "SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE", "REFERENCES", "TRIGGER", "MAINTAIN"},
+ 	"sequence":             {"ALL", "USAGE", "SELECT", "UPDATE"},
+ 	"schema":               {"ALL", "CREATE", "USAGE"},
+ 	"function":             {"ALL", "EXECUTE"},
+--- ../postgresql/helpers_test.go	2026-05-19 20:41:13.579508838 +0300
++++ ../postgresql/helpers_test.go	2026-05-19 20:41:29.423040750 +0300
+@@ -71,7 +71,7 @@
+ 		},
+ 		{
+ 			buildResourceData("table", t),
+-			buildPrivilegesSet("SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE", "REFERENCES", "TRIGGER"),
++			buildPrivilegesSet("SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE", "REFERENCES", "TRIGGER", "MAINTAIN"),
+ 			buildPrivilegesSet("ALL"),
+ 			true,
+ 		},
