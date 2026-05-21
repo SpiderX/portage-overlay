@@ -127,7 +127,7 @@ RDEPEND=">=dev-lang/ocaml-5.3.0:0=[flambda,ocamlopt?]
 	dev-ml/timedesc:0=[ocamlopt?]
 	dev-ml/tls:0=[ocamlopt?]
 	dev-ml/tree-sitter:0=[ocamlopt?]
-	~dev-ml/uri-4.4.0-r2:0=[ocamlopt?]
+	~dev-ml/uri-4.4.0:0=[ocamlopt?]
 	dev-ml/uring:0=[ocamlopt?]
 	>=dev-ml/uuidm-0.9.10:0=[ocamlopt?]
 	>=dev-ml/uucp-17.0.0:0=
