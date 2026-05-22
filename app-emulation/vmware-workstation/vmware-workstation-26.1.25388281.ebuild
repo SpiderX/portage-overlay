@@ -9,12 +9,12 @@ inherit desktop edo pam python-any-r1 readme.gentoo-r1 systemd xdg
 
 PV_BUILD=$(ver_cut 3)
 MY_PN="VMware-Workstation-Full"
-MY_PV="$(ver_cut 1).0.1"
-MY_P="${MY_PN}-$(ver_cut 1)H$(ver_cut 2)u1-${PV_BUILD}"
+MY_PV="$(ver_cut 1).0.0"
+MY_P="${MY_PN}-$(ver_cut 1)H$(ver_cut 2)-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="25.0.1/25219963"
-VMWARE_TOOLS_VER="13.0.10/25056151"
+VMWARE_FUSION_VER="26.0.0/25388279"
+VMWARE_TOOLS_VER="13.1.0/25218885"
 SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.1.3"
 
@@ -56,7 +56,6 @@ RDEPEND="app-arch/unzip
 	dev-libs/gmp:0
 	dev-libs/icu:=
 	dev-libs/json-c:=
-	dev-libs/libxml2-compat:2
 	dev-libs/nettle:0
 	gnome-base/dconf
 	media-gfx/graphite2
@@ -168,14 +167,13 @@ src_install() {
 		vmware-vmx/bin/vmware-{collect-host-support-info,gksu,modconfig,networks,ping} \
 		vmware-workstation/bin/{vmss2core,vmware,vmware-tray,vmware-vdiskmanager} \
 		vmware-vprobe/bin/vmware-vprobe \
-		vmware-player-app/bin/vmware-license-{check,enter}.sh \
 		vmware-usbarbitrator/bin/vmware-usbarbitrator
 	dosbin vmware-vmx/sbin/{vmware-authd,vmware-authdlauncher}
 
 	# Install the libraries
 	insinto /opt/vmware/lib/vmware
 	doins -r vmware-network-editor/lib/. \
-		vmware-player-app/lib/. \
+		vmware-other-apps/lib/. \
 		vmware-vmx/lib/. \
 		vmware-vprobe/lib/. \
 		vmware-workstation/lib/. \
@@ -211,40 +209,37 @@ src_install() {
 
 	# Install vmware-player ancillaries
 	insinto /usr/share/metainfo
-	doins vmware-player-app/share/appdata/vmware-player.appdata.xml
-	domenu vmware-player-app/share/applications/vmware-player.desktop
 	for size in 16 22 24 32 48 256 ; do
-		doicon -s "${size}" vmware-player-app/share/icons/hicolor/"${size}x${size}"/apps/vmware-player.png
+		doicon -s "${size}" vmware-other-apps/share/icons/hicolor/"${size}x${size}"/apps/vmware-player.png
 		if [ "${size}" == "16" ] || [ "$size" == "32" ] ; then
 			doicon -s "${size}" -c mimetypes \
-				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
+				vmware-other-apps/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
 			doicon -s "${size}" -c mimetypes \
-				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,team}.png
+				vmware-other-apps/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,team}.png
 			doicon -s "${size}" -c mimetypes \
-				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm-legacy,vm}.png
+				vmware-other-apps/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm-legacy,vm}.png
 		fi
 		if [ "${size}" == "22" ] || [ "$size" == "24" ] ; then
 			doicon -s "${size}" -c mimetypes \
-				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
+				vmware-other-apps/share/icons/hicolor/"${size}x${size}"/mimetypes/application-certificate.png
 			doicon -s "${size}" -c mimetypes \
-				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm}.png
+				vmware-other-apps/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vm}.png
 		fi
 		if [ "${size}" == "48" ] ; then
 			doicon -s "${size}" -c mimetypes \
-				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.png
+				vmware-other-apps/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.png
 			doicon -s "${size}" -c mimetypes \
-				vmware-player-app/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vmdisk,vmfoundry,vm-legacy,vm}.png
+				vmware-other-apps/share/icons/hicolor/"${size}x${size}"/mimetypes/application-x-vmware-{vm-clone,vmdisk,vmfoundry,vm-legacy,vm}.png
 		fi
 	done
-	doicon -s scalable -c mimetypes vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-certificate.svg
+	doicon -s scalable -c mimetypes vmware-other-apps/share/icons/hicolor/scalable/mimetypes/application-certificate.svg
 	doicon -s scalable -c mimetypes \
-		vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.svg
+		vmware-other-apps/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{easter-egg,snapshot,team}.svg
 	doicon -s scalable -c mimetypes \
-		vmware-player-app/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{vm-clone,vmfoundry,vm-legacy,vm}.svg
+		vmware-other-apps/share/icons/hicolor/scalable/mimetypes/application-x-vmware-{vm-clone,vmfoundry,vm-legacy,vm}.svg
 	dosym ../icons/hicolor/256x256/apps/vmware-player.png \
 		/usr/share/pixmaps/vmware-player.png
 	insinto usr/share/mime/packages
-	doins vmware-player-app/share/mime/packages/vmware-player.xml
 
 	# Install vmware-network-editor ancillaries
 	domenu vmware-network-editor-ui/share/applications/vmware-netcfg.desktop
@@ -379,10 +374,6 @@ src_install() {
 	sed -i  -e "s:@@LIBCONF_DIR@@:${EPREFIX}/opt/vmware/lib/vmware/libconf:g" \
 		"${ED}"/opt/vmware/lib/vmware/libconf/etc/gtk-3.0/gdk-pixbuf.loaders \
 		|| die "sed for gdk-pixbuf.loaders failed"
-	sed -i  -e "s:@@BINARY@@:${EPREFIX}/opt/vmware/bin/vmplayer:g" \
-		-e "/^Encoding/d" \
-		"${ED}"/usr/share/applications/vmware-player.desktop \
-		|| die "sed for vmware-player.desktop failed"
 	sed -i  -e "s:@@BINARY@@:${EPREFIX}/opt/vmware/bin/vmware:g" \
 		-e "/^Encoding/d" \
 		"${ED}"/usr/share/applications/vmware-workstation.desktop \
