@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1600](https://img.shields.io/badge/ebuild-1600-orange.svg)](https://img.shields.io/badge/ebuild-1600-orange.svg)
+[![Number of ebuilds: 1601](https://img.shields.io/badge/ebuild-1601-orange.svg)](https://img.shields.io/badge/ebuild-1601-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1458,6 +1458,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[tflint-ruleset-elements-of-style](https://github.com/tfctl/tflint-ruleset-elements-of-style) | TFLint Ruleset: Elements of Style
 *   dev-util/[tflint-ruleset-myklst](https://github.com/myklst/tflint-ruleset-myklst) | TFLint Ruleset for ST Terraform Standrds
 *   dev-util/[tflint-ruleset-terraform](https://github.com/terraform-linters/tflint-ruleset-terraform) | TFLint Ruleset for Terraform Language
+*   dev-util/[tflint-ruleset-terraform-style](https://github.com/Heldroe/tflint-ruleset-terraform-style) | TFLint Ruleset for Terraform coding style
 *   dev-util/[tflint-ruleset-sort](https://github.com/thespags/tflint-ruleset-sort) | TFLint Ruleset Sort
 *   dev-util/[tickgit](https://github.com/augmentable-dev/tickgit) | Manage your repository's TODOs as config in your codebase
 *   dev-util/[xxd](https://github.com/vim/vim) | Hexdump utility from vim
