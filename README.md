@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1597](https://img.shields.io/badge/ebuild-1597-orange.svg)](https://img.shields.io/badge/ebuild-1597-orange.svg)
+[![Number of ebuilds: 1598](https://img.shields.io/badge/ebuild-1598-orange.svg)](https://img.shields.io/badge/ebuild-1598-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1454,6 +1454,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[swapusage](https://github.com/hhoffstaette/swapusage) | Amount of swapped memory for running processes
 *   dev-util/[taskcat](https://github.com/aws-ia/taskcat) | An OpenSource Cloudformation Deployment Framework
 *   dev-util/[tflint](https://github.com/terraform-linters/tflint) | A Pluggable Terraform Linter
+*   dev-util/[tflint-ruleset-dave-says](https://github.com/skwashd/tflint-ruleset-dave-says) | TFLint plugin to make sure you follow the rules
 *   dev-util/[tflint-ruleset-terraform](https://github.com/terraform-linters/tflint-ruleset-terraform) | TFLint Ruleset for Terraform Language
 *   dev-util/[tflint-ruleset-sort](https://github.com/thespags/tflint-ruleset-sort) | TFLint Ruleset Sort
 *   dev-util/[tickgit](https://github.com/augmentable-dev/tickgit) | Manage your repository's TODOs as config in your codebase
