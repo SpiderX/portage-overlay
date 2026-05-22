@@ -17,6 +17,11 @@ BDEPEND=">=dev-lang/go-1.26.1:="
 DOC_CONTENTS="You should create a symlink to tflint-ruleset-sort\\n
 in ~/.tflint.d/plugins or define another path to plugins\\n"
 
+src_unpack() {
+	git-r3_src_unpack
+	go-module_live_vendor
+}
+
 src_compile() {
 	ego build
 }
