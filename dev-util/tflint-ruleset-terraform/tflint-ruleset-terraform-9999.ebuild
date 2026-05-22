@@ -16,9 +16,8 @@ PROPERTIES="test_network"
 
 BDEPEND=">=dev-lang/go-1.25.5:="
 
-DOC_CONTENTS="You should create a symlink to\\n
-/usr/share/tflint-ruleset/tflint-ruleset-terraform\\n
-in ~/.tflint.d/plugins\\n"
+DOC_CONTENTS="You should create a symlink to tflint-ruleset-terraform\\n
+in ~/.tflint.d/plugins or define another path to plugins\\n"
 
 src_unpack() {
 	git-r3_src_unpack
@@ -35,7 +34,7 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	exeinto usr/share/tflint-ruleset
+	exeinto usr/share/tflint-ruleset/github.com/terraform-linters/"${PN}"/"${PV}"
 	doexe tflint-ruleset-terraform
 	readme.gentoo_create_doc
 }
