@@ -1,0 +1,40 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit git-r3 go-module readme.gentoo-r1
+
+DESCRIPTION="TFLint Ruleset for ST Terraform Standrds"
+HOMEPAGE="https://github.com/myklst/tflint-ruleset-myklst"
+EGIT_REPO_URI="https://github.com/myklst/${PN}.git"
+
+LICENSE="BSD"
+SLOT="0"
+
+DOC_CONTENTS="You should create a symlink to tflint-ruleset-myklst\\n
+in ~/.tflint.d/plugins or define another path to plugins\\n"
+
+src_unpack() {
+	git-r3_src_unpack
+	go-module_live_vendor
+}
+
+src_compile() {
+	ego build
+}
+
+src_test() {
+	ego test ./...
+}
+
+src_install() {
+	einstalldocs
+	exeinto usr/share/tflint-ruleset/github.com/myklst/"${PN}"/"${PV}"
+	doexe tflint-ruleset-myklst
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
+}
