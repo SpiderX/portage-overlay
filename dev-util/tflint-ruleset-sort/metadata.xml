@@ -10,10 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	TFLint ruleset plugin for Terraform Language.
-	This ruleset focus on possible errors and best practices about Terraform Language.
+	TFLint ruleset plugin that enforces consistent Terraform formatting —
+	sorting, spacing, and structural conventions.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">terraform-linters/tflint-ruleset-terraform</remote-id>
+		<remote-id type="github">thespags/tflint-ruleset-sort</remote-id>
 	</upstream>
 </pkgmetadata>
