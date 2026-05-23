@@ -5,10 +5,10 @@ EAPI=8
 
 inherit linux-mod-r1 udev
 
-COMMIT="5c80f597017882f76e9c7ffd48a292a4b7c860fe"
+COMMIT="445dd811f354405e40ab59edc3c531c0535a5b83"
 
 DESCRIPTION="VMware kernel modules"
-HOMEPAGE="https://github.com/philipl/vm-host-modules"
+HOMEPAGE="https://github.com/philipl/vmware-host-modules"
 SRC_URI="https://github.com/philipl/vmware-host-modules/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
 S="${WORKDIR}/vmware-host-modules-${COMMIT}"
 

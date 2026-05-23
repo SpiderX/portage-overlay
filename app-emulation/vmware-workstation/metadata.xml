@@ -18,8 +18,8 @@
 		<flag name="modules">Install <pkg>app-emulation/vmware-modules</pkg> in order to run VMs locally</flag>
 		<flag name="ovftool">Install Open Virtualization Format tool</flag>
 		<flag name="vix">Install VIX API to automate virtual machine operations</flag>
-		<flag name="vmware-tools-darwin">Install VMware Tools for OS X (10.15 and later) guests</flag>
-		<flag name="vmware-tools-darwinPre15">Install VMware Tools for OS X (before 10.15) guests</flag>
+		<flag name="vmware-tools-darwin">Install VMware Tools for MacOS (10.11 El Captain and later) guests</flag>
+		<flag name="vmware-tools-darwinPre15">Install VMware Tools for MacOS (before 10.10 Yosemite) guests</flag>
 		<flag name="vmware-tools-freebsd">Install VMware Tools for FreeBSD guests</flag>
 		<flag name="vmware-tools-linux">Install VMware Tools for Linux guests</flag>
 		<flag name="vmware-tools-linuxPreGlibc25">Install VMware Tools for Linux (glibc older than 2.5) guests</flag>
@@ -27,8 +27,8 @@
 		<flag name="vmware-tools-solaris">Install VMware Tools for Solaris guests</flag>
 		<flag name="vmware-tools-windows">Install VMware Tools for Windows (7 and later, 64-bit) guests</flag>
 		<flag name="vmware-tools-windows-x86">Install VMware Tools for Windows (7 and later, 32-bit) guests</flag>
-		<flag name="vmware-tools-winPre2k">Install VMware Tools for Windows (before 2000) guests</flag>
-		<flag name="vmware-tools-winPreVista">Install VMware Tools for Windows (after 2000, before Vista) guests</flag>
+		<flag name="vmware-tools-winPre2k">Install VMware Tools for Windows (95/98/ME) guests</flag>
+		<flag name="vmware-tools-winPreVista">Install VMware Tools for Windows (NT4/2000/XP) guests</flag>
 		<flag name="vmware-tools-winVista">Install VMware Tools for Windows (Vista and Server 2008) guests</flag>
 	</use>
 </pkgmetadata>
