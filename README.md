@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1601](https://img.shields.io/badge/ebuild-1601-orange.svg)](https://img.shields.io/badge/ebuild-1601-orange.svg)
+[![Number of ebuilds: 1602](https://img.shields.io/badge/ebuild-1602-orange.svg)](https://img.shields.io/badge/ebuild-1602-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1421,6 +1421,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[cli](https://www.codesynthesis.com/projects/cli/) | Command Line Interface compiler for C++
 *   dev-util/[cloud-utils](https://github.com/canonical/cloud-utils) | Utilities for interacting with a cloud
 *   dev-util/[cloudsplaining](https://github.com/salesforce/cloudsplaining) | AWS IAM Security Assessment tool
+*   dev-util/[codex](https://github.com/openai/codex) | Lightweight coding agent that runs in your terminal
 *   dev-util/[config-file-validator](https://github.com/Boeing/config-file-validator) | Cross Platform tool to validate configuration files
 *   dev-util/[crudini](https://github.com/pixelb/crudini) | A utility for manipulating ini files
 *   dev-util/[css-html-js-minify](https://github.com/juancarlospaco/css-html-js-minify) | StandAlone Async cross-platform Minifier for the Web
