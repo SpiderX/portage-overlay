@@ -34,9 +34,9 @@ RDEPEND="${POSTGRES_DEP}
 	dev-haskell/temporary:=[profile?]
 	dev-lang/ghc:="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hspec:=[profile?]
-		dev-haskell/network:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hspec
+		dev-haskell/network )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
