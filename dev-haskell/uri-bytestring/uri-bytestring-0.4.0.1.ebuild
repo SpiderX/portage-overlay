@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,14 +19,14 @@ RDEPEND="dev-haskell/attoparsec:=[profile?]
 	dev-haskell/blaze-builder:=[profile?]
 	dev-haskell/th-lift-instances:=[profile?]
 	dev-lang/ghc:="
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/base-compat:=[profile?]
-		dev-haskell/hedgehog:=[profile?]
-		dev-haskell/hunit:=[profile?]
-		dev-haskell/safe:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-hedgehog:=[profile?]
-		dev-haskell/tasty-hunit:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/base-compat
+		dev-haskell/hedgehog
+		dev-haskell/hunit
+		dev-haskell/safe
+		dev-haskell/tasty
+		dev-haskell/tasty-hedgehog
+		dev-haskell/tasty-hunit )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
