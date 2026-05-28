@@ -51,8 +51,6 @@ src_test() {
 
 	edo initdb -U postgres -D "${db}"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
-
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }
