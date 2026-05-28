@@ -4,8 +4,9 @@
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
+POSTGRES_COMPAT=( {14..18} )
 
-inherit haskell-cabal
+inherit haskell-cabal postgres
 
 DESCRIPTION="A low-level binding to libpq to configure based provider"
 HOMEPAGE="https://github.com/haskellari/postgresql-libpq"
@@ -16,8 +17,13 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-lang/ghc:="
 DEPEND="${RDEPEND}
-	dev-db/postgresql:*"
-BDEPEND="dev-haskell/cabal:="
+	${POSTGRES_DEP}"
+BDEPEND="dev-haskell/cabal"
+
+pkg_setup() {
+	haskell-cabal_pkg_setup
+	postgres_pkg_setup
+}
 
 src_prepare() {
 	haskell-cabal_src_prepare
