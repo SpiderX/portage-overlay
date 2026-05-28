@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,10 +17,10 @@ IUSE="test"
 
 RDEPEND="dev-haskell/network:=[profile?]
 	dev-lang/ghc:="
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/async:=[profile?]
-		dev-haskell/hspec:=[profile?]
-		dev-haskell/stm:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/async
+		dev-haskell/hspec
+		dev-haskell/stm )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
