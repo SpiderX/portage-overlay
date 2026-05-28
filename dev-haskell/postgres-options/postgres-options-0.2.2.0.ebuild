@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,8 +19,8 @@ RDEPEND="dev-haskell/generic-monoid:=[profile?]
 	dev-haskell/split:=[profile?]
 	dev-haskell/uri-bytestring:=[profile?]
 	dev-lang/ghc:="
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hspec:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hspec )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
