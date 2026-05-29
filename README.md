@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1602](https://img.shields.io/badge/ebuild-1602-orange.svg)](https://img.shields.io/badge/ebuild-1602-orange.svg)
+[![Number of ebuilds: 1603](https://img.shields.io/badge/ebuild-1603-orange.svg)](https://img.shields.io/badge/ebuild-1603-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -75,6 +75,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[netexec](https://github.com/Pennyw0rth/NetExec) | The Network Execution Tool
 *   app-admin/[ngxtop-ce](https://github.com/ngxtop/ngxtop) | real-time metrics for nginx server (and others)
 *   app-admin/[netutils-linux](https://github.com/strizhechenko/netutils-linux) | Suite of network stack performance tunning utilities
+*   app-admin/[oras](https://github.com/oras-project/oras) | A CLI to push and pull files from any OCI registry
 *   app-admin/[profile-cleaner](https://github.com/graysky2/profile-cleaner) | Vacuum and reindex browser sqlite databases
 *   app-admin/[rain](https://github.com/aws-cloudformation/rain) | A development workflow tool for working with AWS CloudFormation
 *   app-admin/[reach](https://github.com/luhring/reach) | A static network verification tool for AWS
