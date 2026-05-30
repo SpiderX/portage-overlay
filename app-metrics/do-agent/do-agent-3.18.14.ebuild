@@ -1,9 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit go-module systemd
+
+COMMIT="0dfcad2"
 
 DESCRIPTION="DigitalOcean Agent for Enhanced Droplet Graphs"
 HOMEPAGE="https://github.com/digitalocean/do-agent"
@@ -14,15 +16,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_compile() {
-	LDFLAGS="-X main.version=${PV} -X main.revision=${PV}
-		-X main.buildDate=${PV} -w -extldflags -static"
+	DATE="$(date -u)"
+	LDFLAGS="-w -X main.version=${PV} -X main.revision=${COMMIT}
+		-X \"main.buildDate=${DATE}\""
 	GOFLAGS="-v -x -mod=vendor" \
-		go build -ldflags "${LDFLAGS}" ./cmd/do-agent/... || die "build failed"
+		ego build -ldflags "${LDFLAGS}" ./cmd/do-agent/...
 }
 
 src_test() {
-	GOFLAGS="-v -x -mod=vendor" \
-		go test -work ./... || die "test failed"
+	GOFLAGS="-v -x -mod=vendor" ego test -work ./...
 }
 
 src_install() {
