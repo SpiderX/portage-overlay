@@ -3,14 +3,17 @@
 
 EAPI=8
 
-inherit git-r3 go-module systemd tmpfiles
+inherit go-module systemd tmpfiles
+
+COMMIT="4454fb1af28b47947f59e522d5ed874d27dcc621"
 
 DESCRIPTION="Amazon AWS Opentelemetry Collector"
 HOMEPAGE="https://github.com/aws-observability/aws-otel-collector"
-EGIT_REPO_URI="https://github.com/aws-observability/${PN}.git"
+SRC_URI="https://github.com/aws-observability/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="acct-group/amazon
 	acct-group/aoc
@@ -18,12 +21,7 @@ RDEPEND="acct-group/amazon
 	acct-user/aoc"
 BDEPEND=">=dev-lang/go-1.26.2"
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
 src_compile() {
-	COMMIT="$(git rev-parse HEAD)"
 	DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 	LDFLAGS="-w -X github.com/aws-observability/aws-otel-collector/tools/version.Date=${DATE} \
 		-X github.com/aws-observability/aws-otel-collector/tools/version.GitHash=${COMMIT} \

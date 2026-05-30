@@ -17,9 +17,6 @@
 	ECS and EKS. It enables users to send telemetry data to AWS CloudWatch
 	Metrics, Traces and Logs backends as well as the other supported backends.
 	</longdescription>
-	<use>
-		<flag name="cwagent">Compatibility with CloudWatch agent</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">aws-observability/aws-otel-collector</remote-id>
 	</upstream>
