@@ -1,14 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/jckuester/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="A list command for AWS resources"
 HOMEPAGE="https://github.com/jckuester/awsls"
+EGIT_REPO_URI="https://github.com/jckuester/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
