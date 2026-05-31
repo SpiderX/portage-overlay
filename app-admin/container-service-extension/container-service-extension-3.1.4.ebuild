@@ -4,9 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1
+inherit distutils-r1 edo
 
 DESCRIPTION="Container Service Extension for vCloud Director"
 HOMEPAGE="https://github.com/vmware/container-service-extension"
@@ -37,8 +37,7 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# pbr is unable to detect version
-	echo -e "Name: ${PN}\nVersion: ${PV}" > PKG-INFO \
-		|| die "echo failed for PKG-INFO"
+	edo echo -e "Name: ${PN}\nVersion: ${PV}" > PKG-INFO
 
 	# Don't install license and notice
 	sed -i '/data_files/,+2d' setup.py \
