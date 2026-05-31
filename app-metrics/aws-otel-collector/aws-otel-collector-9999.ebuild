@@ -25,7 +25,7 @@ src_unpack() {
 src_compile() {
 	COMMIT="$(git rev-parse HEAD)"
 	DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-	LDFLAGS="-w -X github.com/aws-observability/aws-otel-collector/tools/version.Date=${DATE} \
+	LDFLAGS="-w -X \"github.com/aws-observability/aws-otel-collector/tools/version.Date=${DATE}\" \
 		-X github.com/aws-observability/aws-otel-collector/tools/version.GitHash=${COMMIT} \
 		-X github.com/aws-observability/aws-otel-collector/tools/version.Version=${PV}"
 	GOFLAGS="-v -x -mod=vendor" ego build -ldflags="${LDFLAGS}" \
