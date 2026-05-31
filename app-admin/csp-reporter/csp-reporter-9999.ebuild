@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 edo git-r3
 
 DESCRIPTION="Content Security Policy logs parser"
 HOMEPAGE="https://github.com/yandex/csp-reporter"
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 python_prepare_all() {
 	# remove extension
 	sed -i '/scripts/s|.py||' setup.py || die "sed failed for setup.py"
-	mv csp-reporter{.py,} || die "mv failed for csp-reporter.py"
+	edo mv csp-reporter{.py,}
 
 	distutils-r1_python_prepare_all
 }
