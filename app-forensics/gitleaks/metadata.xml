@@ -15,6 +15,6 @@
 	regex/entropy checks
 	</longdescription>
 	<upstream>
-		<remote-id type="github">zricethezav/gitleaks</remote-id>
+		<remote-id type="github">gitleaks/gitleaks</remote-id>
 	</upstream>
 </pkgmetadata>

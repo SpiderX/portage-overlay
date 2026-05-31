@@ -3,19 +3,16 @@
 
 EAPI=8
 
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="Auditing git repository for secrets and keys"
-HOMEPAGE="https://github.com/gitleaks/gitleaks"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+HOMEPAGE="https://github.com/zricethezav/gitleaks"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-deps.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
+KEYWORDS="~amd64 ~x86"
 
 src_compile() {
 	ego build -ldflags "-X=github.com/zricethezav/gitleaks/v8/version.Version=${PV}"

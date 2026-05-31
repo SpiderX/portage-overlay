@@ -132,7 +132,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-emulation/[vmware-modules](https://github.com/philipl/vmware-host-modules) | VMware kernel modules
 *   app-emulation/[vmware-vmrc](https://docs.vmware.com/en/VMware-Remote-Console/index.html) | VMware Remote Console
 *   app-emulation/[vmware-workstation](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion) | Emulate a complete PC without the performance overhead
-*   app-forensics/[gitleaks](https://github.com/zricethezav/gitleaks) | Auditing git repository for secrets and keys
+*   app-forensics/[gitleaks](https://github.com/gitleaks/gitleaks) | Auditing git repository for secrets and keys
 *   app-forensics/[kerbrute](https://github.com/ropnop/kerbrute) | A tool to perform Kerberos pre-auth bruteforcing
 *   app-forensics/[whispers](https://github.com/adeptex/whispers) | Identify hardcoded secrets in static structured text
 *   app-metrics/[amazon-cloudwatch-agent](https://github.com/aws/amazon-cloudwatch-agent) | Amazon Cloudwatch Agent
