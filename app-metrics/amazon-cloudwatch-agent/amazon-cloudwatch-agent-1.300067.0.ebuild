@@ -3,14 +3,16 @@
 
 EAPI=8
 
-inherit edo git-r3 go-module readme.gentoo-r1 systemd tmpfiles
+inherit edo go-module readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="Amazon Cloudwatch Agent"
 HOMEPAGE="https://github.com/aws/amazon-cloudwatch-agent"
-EGIT_REPO_URI="https://github.com/aws/${PN}.git"
+SRC_URI="https://github.com/aws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="acct-group/amazon
 	acct-group/cwagent
@@ -25,11 +27,6 @@ DOC_CONTENTS="For new configuration run:
 This will create config.json, move it into config directory:
 mv /opt/aws/amazon-cloudwatch-agent/bin/config.json \
 /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json"
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
 
 src_prepare() {
 	default
