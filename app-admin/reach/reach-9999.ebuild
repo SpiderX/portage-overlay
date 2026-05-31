@@ -1,18 +1,18 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/luhring/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="A static network verification tool for AWS"
 HOMEPAGE="https://github.com/luhring/reach"
+EGIT_REPO_URI="https://github.com/luhring/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test" # wrong exit code
+
+PATCHES=( "${FILESDIR}/${PN}"-0.2.0-protocol.patch )
 
 src_unpack() {
 	git-r3_src_unpack
@@ -20,11 +20,11 @@ src_unpack() {
 }
 
 src_compile() {
-	go build -o ./bin/"${PN}" || die "build failed"
+	ego build -o ./bin/"${PN}"
 }
 
 src_test() {
-	go test -work ./... || die "test failed"
+	ego test -work ./...
 }
 
 src_install() {

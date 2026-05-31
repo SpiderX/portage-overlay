@@ -1,0 +1,19 @@
+--- ../reach/protocol_content.go	2026-06-01 00:59:52.878098008 +0300
++++ ../reach/protocol_content.go	2026-06-01 01:01:31.035646085 +0300
+@@ -3,6 +3,7 @@
+ import (
+ 	"fmt"
+ 	"log"
++	"strconv"
+ 	"strings"
+ 
+ 	"github.com/luhring/reach/reach/set"
+@@ -249,7 +250,7 @@
+ 	case ProtocolICMPv6:
+ 		return ProtocolNameICMPv6
+ 	default:
+-		return string(pc.Protocol)
++		return strconv.Itoa(int(pc.Protocol))
+ 	}
+ }
+ 
