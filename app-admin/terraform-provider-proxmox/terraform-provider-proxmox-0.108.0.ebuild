@@ -3,14 +3,16 @@
 
 EAPI=8
 
-inherit git-r3 go-module readme.gentoo-r1
+inherit go-module readme.gentoo-r1
 
 DESCRIPTION="Terraform Provider for Proxmox"
 HOMEPAGE="https://github.com/bpg/terraform-provider-proxmox"
-EGIT_REPO_URI="https://github.com/bpg/${PN}.git"
+SRC_URI="https://github.com/bpg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-deps.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="|| ( app-admin/terraform app-admin/opentofu )"
 
@@ -19,11 +21,6 @@ DOCS=( {CHANGELOG,README}.md )
 DOC_CONTENTS="You should create a symlink to\\n
 /usr/share/terraform-provider-proxmox/terraform-provider-proxmox\\n
 in ~/.terraform.d/plugins or ~/.opentofu.d/plugins\\n"
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
 
 src_compile() {
 	ego build

@@ -87,7 +87,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[spot](https://github.com/umputun/spot) | Deployment and configuration of resources on remote machines
 *   app-admin/[spotinfo](https://github.com/alexei-led/spotinfo) | Exploring AWS EC2 Spot inventory
 *   app-admin/[terraform-provider-postgresql](https://github.com/cyrilgdn/terraform-provider-postgresql) | Terraform PostgreSQL provider
-*   app-admin/[terraform-provider-proxmox](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) | Terraform Provider for Proxmox
+*   app-admin/[terraform-provider-proxmox](https://github.com/bpg/terraform-provider-proxmox) | Terraform Provider for Proxmox
 *   app-admin/[terraform-provider-vcd](https://registry.terraform.io/providers/vmware/vcd/latest/docs) | Terraform VMware vCloud Director provider
 *   app-admin/[topngx](https://github.com/gsquire/topngx) | A top for NGINX
 *   app-admin/[trailscraper](https://github.com/flosell/trailscraper) | Command-line tool to get information out of AWS CloudTrail
