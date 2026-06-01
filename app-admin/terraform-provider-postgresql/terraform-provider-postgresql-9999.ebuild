@@ -24,7 +24,7 @@ BDEPEND="test? ( ${POSTGRES_DEP}
 		dev-db/dummy_seclabel )"
 
 DOC_CONTENTS="You should create a symlink to\\n
-/usr/share/terraform-provider-proxmox/terraform-provider-proxmox\\n
+/usr/share/terraform-provider/terraform-provider-proxmox\\n
 in ~/.terraform.d/plugins or ~/.opentofu.d/plugins\\n"
 
 src_unpack() {
@@ -64,7 +64,7 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	exeinto usr/share/terraform-provider-postgresql
+	exeinto /usr/share/terraform-provider
 	doexe terraform-provider-postgresql
 	readme.gentoo_create_doc
 }
