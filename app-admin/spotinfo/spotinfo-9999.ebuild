@@ -34,18 +34,15 @@ src_prepare() {
 			-e "s/);//g" \
 			public/spot/data/spot-price-data.json || die "sed failed"
 	else
-		touch public/spot/data/spot-{advisor,price}-data.json \
-			|| die "touch failed"
+		edo touch public/spot/data/spot-{advisor,price}-data.json
 	fi
 }
 
 src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
-	LDFLAGS="-w -X main.Version=${PV}
-	-X main.GitCommit=${COMMIT}
-	-X main.GitHubRelease=v${PV}
-	-X main.GitBranch=master
-	-X \"main.BuildDate=${DATE}\""
+	LDFLAGS="-w -X main.Version=${PV} -X main.GitCommit=${COMMIT}
+		-X main.GitHubRelease=v${PV} -X main.GitBranch=master
+		-X \"main.BuildDate=${DATE}\""
 
 	ego build -ldflags "${LDFLAGS}" -o spotinfo ./cmd/spotinfo
 }
