@@ -17,7 +17,7 @@ RDEPEND="|| ( app-admin/terraform app-admin/opentofu )"
 DOCS=( {CHANGELOG,README}.md )
 
 DOC_CONTENTS="You should create a symlink to\\n
-/usr/share/terraform-provider-proxmox/terraform-provider-proxmox\\n
+/usr/share/terraform-provider/terraform-provider-proxmox\\n
 in ~/.terraform.d/plugins or ~/.opentofu.d/plugins\\n"
 
 src_unpack() {
@@ -31,7 +31,7 @@ src_compile() {
 
 src_install() {
 	einstalldocs
-	exeinto usr/share/terraform-provider-proxmox
+	exeinto /usr/share/terraform-provider
 	doexe terraform-provider-proxmox
 	readme.gentoo_create_doc
 }
