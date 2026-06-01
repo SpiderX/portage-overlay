@@ -48,7 +48,7 @@ BDEPEND="test? ( dev-python/filelock[${PYTHON_USEDEP}]
 QA_PREBUILT="usr/lib/python.*/site-packages/samcli/local/rapid/aws-lambda-rie-.*"
 
 EPYTEST_XDIST=1
-EPYTEST_PLUGINS=( flaky pytest-{forked,timeout} )
+EPYTEST_PLUGINS=( pytest-{forked,timeout} )
 distutils_enable_tests pytest
 
 src_prepare() {
