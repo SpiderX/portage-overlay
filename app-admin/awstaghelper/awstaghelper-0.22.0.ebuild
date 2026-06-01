@@ -3,19 +3,16 @@
 
 EAPI=8
 
-inherit git-r3 go-module
+inherit go-module
 
 DESCRIPTION="AWS bulk tagging tool"
 HOMEPAGE="https://github.com/mpostument/awstaghelper"
-EGIT_REPO_URI="https://github.com/mpostument/${PN}.git"
+SRC_URI="https://github.com/mpostument/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
+KEYWORDS="~amd64 ~x86"
 
 src_compile() {
 	ego build
