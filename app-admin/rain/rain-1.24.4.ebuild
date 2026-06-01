@@ -3,21 +3,18 @@
 
 EAPI=8
 
-inherit edo git-r3 go-module shell-completion
+inherit edo go-module shell-completion
 
 DESCRIPTION="A development workflow tool for working with AWS CloudFormation"
 HOMEPAGE="https://github.com/aws-cloudformation/rain"
-EGIT_REPO_URI="https://github.com/aws-cloudformation/${PN}.git"
+SRC_URI="https://github.com/aws-cloudformation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND=">=dev-lang/go-1.26.2"
-
-src_unpack() {
-	git-r3_src_unpack
-	go-module_live_vendor
-}
 
 src_compile() {
 	ego build ./cmd/rain
