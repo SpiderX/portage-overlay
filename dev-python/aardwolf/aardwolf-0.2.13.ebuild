@@ -17,14 +17,14 @@ CRATES="autocfg@1.5.0
 	once_cell@1.21.3
 	portable-atomic@1.11.1
 	proc-macro2@1.0.95
-	pyo3-build-config@0.23.5
-	pyo3-ffi@0.23.5
-	pyo3-macros-backend@0.23.5
-	pyo3-macros@0.23.5
-	pyo3@0.23.5
+	pyo3-build-config@0.27.2
+	pyo3-ffi@0.27.2
+	pyo3-macros-backend@0.27.2
+	pyo3-macros@0.27.2
+	pyo3@0.27.2
 	quote@1.0.40
 	syn@2.0.104
-	target-lexicon@0.12.16
+	target-lexicon@0.13.4
 	unicode-ident@1.0.18
 	unindent@0.2.4"
 
@@ -54,3 +54,10 @@ RDEPEND="dev-python/arc4[${PYTHON_USEDEP}]
 BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]"
 
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/librlers.cpython-.*-x86_64-linux-gnu.so"
+
+src_prepare() {
+	default
+
+	sed -i '/pyo3/s|0.23.5|0.27.2|' aardwolf/utils/rlers/Cargo.toml \
+		|| die "sed failed for Cargo.toml"
+}
