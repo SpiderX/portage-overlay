@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/koenbollen/${PN}.git"
 
 inherit git-r3 go-module
 
 DESCRIPTION="A tool for working with structured JSON logging"
 HOMEPAGE="https://github.com/koenbollen/jl"
+EGIT_REPO_URI="https://github.com/koenbollen/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0"
