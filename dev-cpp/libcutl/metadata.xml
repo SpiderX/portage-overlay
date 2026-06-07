@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>mailto:libcutl-users@codesynthesis.com</bugs-to>
+		<remote-id type="github">codesynthesis-com/odb</remote-id>
 	</upstream>
 </pkgmetadata>
