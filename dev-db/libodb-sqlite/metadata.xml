@@ -10,12 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	ODB is an open-source, cross-platform, and cross-database
-	object-relational mapping (ORM) system for C++. It allows you
-	to persist C++ objects to a relational database without having
-	to deal with tables, columns, or SQL and without manually
-	writing any mapping code. ODB supports MySQL, SQLite,
-	PostgreSQL, Oracle, and Microsoft SQL Server relational
-	databases as well as C++98/03 and C++11 language standards.
+	This package provides SQLite driver for ODB,
+	object-relational mapping (ORM) system for C++.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">codesynthesis-com/odb</remote-id>
+	</upstream>
 </pkgmetadata>
