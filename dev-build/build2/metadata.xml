@@ -10,10 +10,13 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-	build2 is an open source (MIT), cross-platform build toolchain
-	for developing and packaging C and C++ code. It is a hierarchy
-	of tools that includes the build system, package dependency
-	manager (for package consumption), and project dependency
-	manager (for project development). Key features:
+	build2 is a cross-platform build toolchain that provides sufficient
+	depth and flexibility to develop and package complex C/C++ projects.
 	</longdescription>
+	<use>
+		<flag name="libpkgconf">Enable looking up packages via <pkg>dev-util/pkgconf</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">build2/build2</remote-id>
+	</upstream>
 </pkgmetadata>

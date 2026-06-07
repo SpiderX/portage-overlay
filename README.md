@@ -201,6 +201,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-shells/[tlog](https://github.com/Scribery/tlog) | Terminal I/O logger
 *   app-text/[confget](https://devel.ringlet.net/textproc/confget/) | Read variables from INI-style configuration files
 *   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
+*   dev-build/[build2](https://build2.org) | Cross-platform toolchain for building and packaging C++ code
 *   dev-build/[qtilitools](https://github.com/qtilities/qtilitools) | Scripts/commands used in the Qtilities organization
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[commoncpp2](http://www.gnu.org/software/commoncpp/) | GNU Common C++ 2
@@ -1402,7 +1403,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[bcunit](https://gitlab.linphone.org/BC/public/bcunit) | BC Unit Test Framework
 *   dev-util/[beekeeper-studio-bin](https://www.beekeeperstudio.io) | SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 *   dev-util/[binaryen](https://github.com/WebAssembly/binaryen) | Optimizer and compiler/toolchain library for WebAssembly
-*   dev-util/[build2](https://build2.org) | Cross-platform toolchain for building and packaging C++ code
 *   dev-util/[cfn-guard](https://github.com/aws-cloudformation/cloudformation-guard) | AWS CloudFormation Guard
 *   dev-util/[cfn-template-flip](https://github.com/awslabs/aws-cfn-template-flip) | AWS CloudFormation Template Flip
 *   dev-util/[cfripper](https://github.com/Skyscanner/cfripper) | Analysing CloudFormation templates for security compliance

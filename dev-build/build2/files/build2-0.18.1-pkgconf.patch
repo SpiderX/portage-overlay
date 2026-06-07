@@ -1,0 +1,18 @@
+--- ../build2/libbuild2/cc/pkgconfig.cxx	2026-06-07 12:06:23.537183278 +0300
++++ ../build2/libbuild2/cc/pkgconfig.cxx	2026-06-07 12:06:54.433776515 +0300
+@@ -627,8 +627,13 @@
+         };
+ 
+         if (!binless && self.empty ())
+-          fail << "library expected in '" << lflags () << "'" <<
+-            info << "while parsing pkg-config --libs " << pc.path;
++        {
++          if (pc.libs (la).empty ())
++            binless = true;
++          else
++            fail << "library expected in '" << lflags () << "'" <<
++              info << "while parsing pkg-config --libs " << pc.path;
++        }
+ 
+         // Resolve -lfoo into the library file path using our import installed
+         // machinery (i.e., we are going to call search_library() that will
