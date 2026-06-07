@@ -3,15 +3,14 @@
 
 EAPI=8
 
-inherit cmake edo
+inherit cmake edo git-r3
 
 DESCRIPTION="CMake files for C++ JSON reader and writer"
 HOMEPAGE="https://github.com/open-source-parsers/jsoncpp"
-SRC_URI="https://github.com/open-source-parsers/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/open-source-parsers/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
