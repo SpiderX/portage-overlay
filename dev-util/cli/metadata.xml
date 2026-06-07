@@ -17,5 +17,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>mailto:cli-users@codesynthesis.com</bugs-to>
+		<remote-id type="github">codesynthesis-com/cli</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -3,14 +3,15 @@
 
 EAPI=8
 
-inherit edo git-r3 multiprocessing toolchain-funcs
+inherit edo multiprocessing toolchain-funcs
 
 DESCRIPTION="Command Line Interface compiler for C++"
 HOMEPAGE="https://www.codesynthesis.com/projects/cli/"
-EGIT_REPO_URI="https://github.com/codesynthesis-com/${PN}.git"
+SRC_URI="https://github.com/codesynthesis-com/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 RESTRICT="test"
 
