@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libpkgconf test"
+IUSE="+libpkgconf test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3"
