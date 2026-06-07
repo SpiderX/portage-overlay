@@ -1,0 +1,15 @@
+--- ../libstudxml/parser.hxx	2026-06-07 13:58:33.988585883 +0300
++++ ../libstudxml/parser.hxx	2026-06-07 13:59:46.184975841 +0300
+@@ -14,11 +14,7 @@
+ 
+ #include <libstudxml/details/config.hxx>
+ 
+-#ifndef LIBSTUDXML_EXTERNAL_EXPAT
+-#  include <libstudxml/details/expat/expat.h>
+-#else
+-#  include <expat.h>
+-#endif
++#include <expat.h>
+ 
+ // We only support UTF-8 Expat.
+ //

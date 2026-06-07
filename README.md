@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1575](https://img.shields.io/badge/ebuild-1575-orange.svg)](https://img.shields.io/badge/ebuild-1575-orange.svg)
+[![Number of ebuilds: 1576](https://img.shields.io/badge/ebuild-1576-orange.svg)](https://img.shields.io/badge/ebuild-1576-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -419,6 +419,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[liblinphone](https://gitlab.linphone.org/BC/public/liblinphone) | SIP library supporting voice/video calls and text messaging
 *   dev-libs/[libmongocrypt](https://github.com/mongodb/libmongocrypt) | C library for Client Side and Queryable Encryption in MongoDB
 *   dev-libs/[libopenrazer](https://github.com/z3ntu/libopenrazer) | Qt wrapper around the D-Bus API from OpenRazer
+*   dev-libs/[libstudxml](https://codesynthesis.com/projects/libstudxml/) | Streaming XML pull parser and streaming XML serializer
 *   dev-libs/[libthai](https://github.com/tlwg/libthai) | A a set of Thai language support routines
 *   dev-libs/[lime](https://gitlab.linphone.org/BC/public/lime) | C++ library implementing Open Whisper System Signal protocol
 *   dev-libs/[modest](https://github.com/lexborisov/modest) | Fast HTML renderer
