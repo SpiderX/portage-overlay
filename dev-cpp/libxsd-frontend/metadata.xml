@@ -15,5 +15,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>mailto:libxsd-frontend-users@codesynthesis.com</bugs-to>
+		<remote-id type="github">codesynthesis-com/libxsd-frontend</remote-id>
 	</upstream>
 </pkgmetadata>
