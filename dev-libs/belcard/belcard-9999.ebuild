@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake edo git-r3
 
 DESCRIPTION="VCard standard format manipulation library"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/belcard"
@@ -14,8 +14,8 @@ SLOT="0"
 IUSE="test tools"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-cpp/belr
-	net-libs/bctoolbox[test?]"
+RDEPEND="dev-cpp/belr:=
+	net-libs/bctoolbox:=[test?]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -28,8 +28,6 @@ src_configure() {
 }
 
 src_test() {
-	"${S}"_build/tester/belcard-tester \
-		--resource-dir "${S}"/tester/ \
-		|| die "tests failed"
+	edo "${S}"_build/tester/belcard-tester --resource-dir "${S}"/tester/
 	cmake_src_test
 }
