@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,33 +19,33 @@ REQUIRED_USE="zrtp? ( srtp )
 	|| ( alsa portaudio pulseaudio )
 	|| ( opengl v4l )"
 
-RDEPEND="net-libs/bctoolbox[test?]
-	net-libs/ortp
-	alsa? ( media-libs/alsa-lib )
+RDEPEND="net-libs/bctoolbox:=[test?]
+	net-libs/ortp:=
+	alsa? ( media-libs/alsa-lib:= )
 	av1? ( || ( media-libs/dav1d
 		media-libs/libaom ) )
-	bv16? ( media-libs/bv16-floatingpoint )
-	g726? ( media-libs/spandsp )
-	g729? ( media-libs/bcg729 )
-	gsm? ( media-sound/gsm )
-	jpeg? ( media-libs/libjpeg-turbo )
-	matroska? ( media-libs/bcmatroska2 )
-	opengl? ( media-libs/glew:0
-		x11-libs/libX11
-		virtual/opengl )
-	opus? ( media-libs/opus )
-	pcap? ( net-libs/libpcap )
-	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-libs/libpulse )
-	qrcode? ( media-libs/zxing-cpp )
-	speex? ( media-libs/speex
-		media-libs/speexdsp )
-	srtp? ( net-libs/libsrtp:2 )
-	theora? ( media-libs/libtheora )
-	v4l? ( media-libs/libv4l )
+	bv16? ( media-libs/bv16-floatingpoint:= )
+	g726? ( media-libs/spandsp:= )
+	g729? ( media-libs/bcg729:= )
+	gsm? ( media-sound/gsm:= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
+	matroska? ( media-libs/bcmatroska2:= )
+	opengl? ( media-libs/glew:0=
+		x11-libs/libX11:=
+		virtual/opengl:= )
+	opus? ( media-libs/opus:= )
+	pcap? ( net-libs/libpcap:= )
+	portaudio? ( media-libs/portaudio:= )
+	pulseaudio? ( media-libs/libpulse:= )
+	qrcode? ( media-libs/zxing-cpp:= )
+	speex? ( media-libs/speex:=
+		media-libs/speexdsp:= )
+	srtp? ( net-libs/libsrtp:2= )
+	theora? ( media-libs/libtheora:= )
+	v4l? ( media-libs/libv4l:= )
 	vpx? ( media-libs/libvpx:= )
-	yuv? ( media-libs/libyuv )
-	zrtp? ( net-libs/bzrtp[sqlite] )"
+	yuv? ( media-libs/libyuv:= )
+	zrtp? ( net-libs/bzrtp:=[sqlite] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/doxygen )"
