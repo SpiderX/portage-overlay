@@ -1,6 +1,8 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# shellcheck disable=SC1083
+
 EAPI=8
 
 inherit edo multiprocessing toolchain-funcs
