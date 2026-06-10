@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 EGIT_SUBMODULES=()
 
-inherit cmake desktop xdg
+inherit cmake desktop edo xdg
 
 DESCRIPTION="A free VoIP and video softphone based on the SIP protocol"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/linphone-desktop"
@@ -16,18 +16,18 @@ SLOT="0"
 IUSE="ldap qrcode"
 RESTRICT="test" # no tests
 
-RDEPEND="dev-libs/belcard
+RDEPEND="dev-libs/belcard:=
 	dev-libs/jsoncpp:0=
-	dev-libs/liblinphone
+	dev-libs/liblinphone:=
 	dev-libs/qtkeychain:=
-	dev-qt/qtbase:6[concurrent,dbus,widgets]
-	dev-qt/qtdeclarative:6[opengl]
-	dev-qt/qtmultimedia:6
-	dev-qt/qtnetworkauth:6
-	dev-qt/qtsvg:6
-	media-libs/mediastreamer2[zrtp,jpeg]
-	net-libs/bctoolbox
-	net-libs/ortp
+	dev-qt/qtbase:6=[concurrent,dbus,widgets]
+	dev-qt/qtdeclarative:6=[opengl]
+	dev-qt/qtmultimedia:6=
+	dev-qt/qtnetworkauth:6=
+	dev-qt/qtsvg:6=
+	media-libs/mediastreamer2:=[zrtp,jpeg]
+	net-libs/bctoolbox:=
+	net-libs/ortp:=
 	ldap? ( net-nds/openldap:0= )
 	qrcode? ( media-libs/zxing-cpp:0= )"
 DEPEND="${RDEPEND}"
@@ -81,7 +81,7 @@ src_configure() {
 }
 
 src_install() {
-	chrpath -d "${S}"_build/bin/linphone || die "chrpath failed for linphone"
+	edo chrpath -d "${S}"_build/bin/linphone
 
 	einstalldocs
 	dobin "${S}"_build/bin/linphone
