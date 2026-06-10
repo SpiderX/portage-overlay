@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit cmake flag-o-matic git-r3 python-r1
+inherit cmake edo flag-o-matic git-r3 python-r1
 
 DESCRIPTION="SIP library supporting voice/video calls and text messaging"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/liblinphone"
@@ -18,23 +18,23 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 PROPERTIES="test_network"
 
-RDEPEND="dev-cpp/belr
-	dev-cpp/jsoncpp
-	dev-cpp/xsd
-	dev-db/sqlite:3
-	<dev-db/soci-4.1
-	dev-libs/belcard
-	dev-libs/belle-sip[test?]
+RDEPEND="dev-cpp/belr:=
+	dev-cpp/jsoncpp:=
+	dev-cpp/xsd:=
+	dev-db/sqlite:3=
+	<dev-db/soci-4.1:=
+	dev-libs/belcard:=
+	dev-libs/belle-sip:=[test?]
 	dev-libs/jsoncpp:0=
-	dev-libs/libxml2:2
-	dev-libs/lime
-	dev-libs/xerces-c
-	net-libs/bctoolbox[test?]
-	net-libs/ortp
-	media-libs/mediastreamer2[zrtp,srtp,jpeg]
-	virtual/libiconv
-	virtual/libintl
-	virtual/libudev
+	dev-libs/libxml2:2=
+	dev-libs/lime:=
+	dev-libs/xerces-c:=
+	net-libs/bctoolbox:=[test?]
+	net-libs/ortp:=
+	media-libs/mediastreamer2:=[zrtp,srtp,jpeg]
+	virtual/libiconv:=
+	virtual/libintl:=
+	virtual/libudev:0=
 	virtual/zlib:0=
 	ldap? ( net-nds/openldap:0= )
 	qrcode? ( media-libs/zxing-cpp:0= )
@@ -55,7 +55,7 @@ src_prepare() {
 	sed -i '/json\/json.h/s|<|<jsoncpp/|' include/linphone/flexi-api-client.h \
 		src/account_creator/flexi-api-client.cpp \
 		src/account-manager-services/account-manager-services{,-request}.h \
-		tester/{account_creator_flexiapi_,flexiapiclient-,remote-provisioning-}tester.cpp \
+		tester/{flexiapiclient-,remote-provisioning-}tester.cpp \
 		|| die "sed failed for json"
 	sed -i '/#include "json\/json.h"/s|"json/json.h"|<jsoncpp/json/json.h>|' src/http/http-client.h \
 		src/core/core.cpp \
@@ -84,9 +84,8 @@ src_configure() {
 }
 
 src_test() {
-	"${S}"_build/tester/liblinphone-tester \
-		--resource-dir "${S}"/tester/ \
-		|| die "tests failed"
+	edo "${S}"_build/tester/liblinphone-tester \
+		--resource-dir "${S}"/tester/
 	cmake_src_test
 }
 
