@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake edo git-r3
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/ortp"
@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="debug doc ntp-timestamp minimal test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="net-libs/bctoolbox[test?]"
+RDEPEND="net-libs/bctoolbox:=[test?]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/doxygen )"
@@ -32,6 +32,6 @@ src_configure() {
 }
 
 src_test() {
-	"${S}"_build/tester/ortp-tester || die "tests failed"
+	edo "${S}"_build/tester/ortp-tester
 	cmake_src_test
 }
