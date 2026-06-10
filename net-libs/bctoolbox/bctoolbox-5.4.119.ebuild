@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake edo
 
 DESCRIPTION="Utilities library used by Belledonne Communications softwares"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/bctoolbox"
@@ -37,6 +37,6 @@ src_configure() {
 }
 
 src_test() {
-	"${S}"_build/tester/bctoolbox-tester || die "tests failed"
+	edo "${S}"_build/tester/bctoolbox-tester
 	cmake_src_test
 }
