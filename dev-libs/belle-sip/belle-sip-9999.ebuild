@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake edo git-r3
 
 DESCRIPTION="SIP (RFC3261) implementation"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/belle-sip"
@@ -15,13 +15,13 @@ IUSE="test zeroconf"
 RESTRICT="test" # tester doesn't see sip grammar
 PROPERTIES="test_network"
 
-RDEPEND="dev-cpp/belr
-	net-libs/bctoolbox[test?]
+RDEPEND="dev-cpp/belr:=
+	net-libs/bctoolbox:=[test?]
 	virtual/zlib:=
-	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )"
+	zeroconf? ( net-dns/avahi:=[mdnsresponder-compat] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	test? ( dev-cpp/cpp-httplib:0= )"
+	test? ( dev-cpp/cpp-httplib )"
 
 PATCHES=( "${FILESDIR}/${PN}"-5.4.23-CMakeLists.txt.patch )
 
@@ -39,17 +39,15 @@ src_configure() {
 		-DENABLE_STRICT=NO
 		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
-
 	cmake_src_configure
 }
 
 src_test() {
 	# no cmake_src_test since it supports in source build only
 	# disable test suits with failing tests
-	"${S}"_build/tester/belle-sip-tester \
+	edo "${S}"_build/tester/belle-sip-tester \
 		--resource-dir "${S}"/tester/ \
 		--exclude-suite "SIP URI" --exclude-suite "FAST SIP URI" \
 		--exclude-suite "Resolver" --exclude-suite "Register" \
-		--exclude-suite "Dialog" --exclude-suite "HTTP stack" \
-		|| die "tests failed"
+		--exclude-suite "Dialog" --exclude-suite "HTTP stack"
 }
