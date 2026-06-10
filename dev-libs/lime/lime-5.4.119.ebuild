@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake edo
 
 DESCRIPTION="C++ library implementing Open Whisper System Signal protocol"
 HOMEPAGE="https://gitlab.linphone.org/BC/public/lime"
@@ -13,14 +13,15 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
-RESTRICT="test" # needs server on nodejs
+RESTRICT="test" # fails
 
-RDEPEND="<dev-db/soci-4.1[sqlite]
-	net-libs/bctoolbox[test?]"
+RDEPEND="<dev-db/soci-4.1:=[sqlite]
+	net-libs/bctoolbox:=[test?]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/doxygen )
-	test? ( dev-libs/belle-sip )"
+	test? ( dev-libs/belle-sip
+		net-libs/nodejs[npm] )"
 
 src_configure() {
 	local mycmakeargs=(
@@ -29,4 +30,12 @@ src_configure() {
 		-DENABLE_UNIT_TESTS="$(usex test)"
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	edo cd "${S}"/tester/server/nodejs/
+	edo npm install
+	edo nohup "${S}"/tester/server/nodejs/localServerStart.sh &
+	edo "${S}"_build/tester/lime-tester --resource-dir "${S}"/tester/
+	cmake_src_test
 }
