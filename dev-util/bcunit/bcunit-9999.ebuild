@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,5 @@ src_configure() {
 		-DENABLE_BCUNIT_MEMTRACE="$(usex debug)"
 		-DENABLE_BCUNIT_TEST="$(usex test)"
 	)
-
 	cmake_src_configure
 }
