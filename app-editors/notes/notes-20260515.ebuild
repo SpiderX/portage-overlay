@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake edo
 
-COMMIT="f1dd087bed99f31faa0989325f1c7732e3ea3f98"
+COMMIT="5d2bbffa4ca9b2698afe54593b94490703801c6c"
 QSU_COMMIT="14c1bef71d26c915eeaa05c988c55bdad98e1d75"
 QAS_COMMIT="efdb2e5a25e5646390f8658e3321f6e9a4c3561a"
 QMD_COMMIT="c6420c537e219a7b7685f2bbe5e0862af631d91c"
@@ -22,8 +22,8 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-qt/qtbase:6[concurrent,gui,network,sql,widgets]
-	dev-qt/qtdeclarative:6"
+RDEPEND="dev-qt/qtbase:6=[concurrent,gui,network,sql,widgets]
+	dev-qt/qtdeclarative:6="
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/"${PN}"-2.3.1-license.patch )

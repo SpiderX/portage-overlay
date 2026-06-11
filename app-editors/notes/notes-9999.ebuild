@@ -12,8 +12,8 @@ EGIT_REPO_URI="https://github.com/nuttyartist/${PN}.git"
 LICENSE="MPL-2.0"
 SLOT="0"
 
-RDEPEND="dev-qt/qtbase:6[concurrent,gui,network,sql,widgets]
-	dev-qt/qtdeclarative:6"
+RDEPEND="dev-qt/qtbase:6=[concurrent,gui,network,sql,widgets]
+	dev-qt/qtdeclarative:6="
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/"${PN}"-2.3.1-license.patch )
