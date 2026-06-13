@@ -1,0 +1,23 @@
+--- ../crates/c-api/tests/CMakeLists.txt	2026-06-13 15:27:46.310620550 +0300
++++ ../crates/c-api/tests/CMakeLists.txt	2026-06-13 15:28:25.542953126 +0300
+@@ -1,18 +1,10 @@
+-include(FetchContent)
+-FetchContent_Declare(
+-  googletest
+-  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+-)
+-# For Windows: Prevent overriding the parent project's compiler/linker settings
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-FetchContent_MakeAvailable(googletest)
+-
++find_package(GTest REQUIRED)
+ include(GoogleTest)
+ 
+ function(add_capi_test name)
+   cmake_parse_arguments(PARSE_ARGV 1 arg "" "" "FILES")
+   add_executable(test-${name} ${arg_FILES})
+-  target_link_libraries(test-${name} PRIVATE wasmtime-cpp gtest_main)
++  target_link_libraries(test-${name} PRIVATE wasmtime-cpp GTest::gtest_main)
+   gtest_discover_tests(test-${name}
+     # GitHub Actions on Windows is pretty slow, let's give it lots more time
+     # than the default 5 seconds.
