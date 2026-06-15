@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1582](https://img.shields.io/badge/ebuild-1582-orange.svg)](https://img.shields.io/badge/ebuild-1582-orange.svg)
+[![Number of ebuilds: 1583](https://img.shields.io/badge/ebuild-1583-orange.svg)](https://img.shields.io/badge/ebuild-1583-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1570,6 +1570,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[ec2-instance-connect-cli](https://github.com/aws/aws-ec2-instance-connect-cli) | Python client for accessing EC2 instances via EC2 Instance Connect
 *   [![Gentoo Bug](https://img.shields.io/badge/Bug-536148-red.svg)](https://bugs.gentoo.org/show_bug.cgi?id=536148) net-misc/[fiche](https://github.com/solusipse/fiche) | Command line pastebin server
 *   net-misc/[inverting-proxy](https://github.com/google/inverting-proxy) | Reverse proxy that inverts the direction of traffic
+*   net-misc/[ipinfo](https://github.com/ipinfo/cli) | Look up IP details in bulk or one-by-one
 *   net-misc/[kafkactl](https://github.com/deviceinsight/kafkactl) | A command-line interface for interaction with Apache Kafka
 *   net-misc/[kcat](https://github.com/edenhill/kcat) | Generic command line non-JVM Apache Kafka producer and consumer
 *   net-misc/[kcl](https://github.com/twmb/kcl) | Your one stop shop to do anything with Kafka
@@ -1661,4 +1662,3 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
-
