@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1578](https://img.shields.io/badge/ebuild-1578-orange.svg)](https://img.shields.io/badge/ebuild-1578-orange.svg)
+[![Number of ebuilds: 1579](https://img.shields.io/badge/ebuild-1579-orange.svg)](https://img.shields.io/badge/ebuild-1579-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1432,6 +1432,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[insomnia-bin](https://insomnia.rest) | HTTP and GraphQL client for developers
 *   dev-util/[jwt_tool](https://github.com/ticarpi/jwt_tool) | A toolkit for testing, tweaking and cracking JSON Web Tokens
 *   dev-util/[lazygit](https://github.com/jesseduffield/lazygit) | Simple terminal UI for git commands
+*   dev-util/[mmdbctl](https://github.com/ipinfo/mmdbctl) | An MMDB file management CLI
 *   dev-util/[ovftool](https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool) | VMware Open Virtualization Format tool
 *   dev-util/[policy-sentry](https://github.com/salesforce/policy_sentry) | AWS IAM Least Privilege Policy Generator
 *   dev-util/[postman](https://www.postman.com) | Build, test, and document your APIs faster

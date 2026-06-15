@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	mmdbctl is an MMDB file management CLI with the following features:
+	read data for IPs in an MMDB file, import data in non-MMDB format into MMDB,
+	export data from MMDB format into non-MMDB format, see the difference between
+	two MMDB files, print the metadata of an MMDB file, check that an MMDB file
+	is not corrupted or invalid.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ipinfo/mmdbctl</remote-id>
+	</upstream>
+</pkgmetadata>
