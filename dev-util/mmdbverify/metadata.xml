@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This utility verifies that a MaxMind DB file is valid by checking:
+	Search tree - Validates the tree structure used for IP lookups
+	Data section - Ensures all data is properly formatted and accessible
+	Metadata - Verifies metadata is well-formed and contains expected fields
+	</longdescription>
+	<upstream>
+		<remote-id type="github">maxmind/mmdbverify</remote-id>
+	</upstream>
+</pkgmetadata>
