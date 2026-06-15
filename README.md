@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1581](https://img.shields.io/badge/ebuild-1581-orange.svg)](https://img.shields.io/badge/ebuild-1581-orange.svg)
+[![Number of ebuilds: 1582](https://img.shields.io/badge/ebuild-1582-orange.svg)](https://img.shields.io/badge/ebuild-1582-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1432,6 +1432,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[insomnia-bin](https://insomnia.rest) | HTTP and GraphQL client for developers
 *   dev-util/[jwt_tool](https://github.com/ticarpi/jwt_tool) | A toolkit for testing, tweaking and cracking JSON Web Tokens
 *   dev-util/[lazygit](https://github.com/jesseduffield/lazygit) | Simple terminal UI for git commands
+*   dev-util/[mmdbconvert](https://github.com/maxmind/mmdbconvert) | A command-line tool to merge multiple MaxMind MMDB databases
 *   dev-util/[mmdbctl](https://github.com/ipinfo/mmdbctl) | An MMDB file management CLI
 *   dev-util/[mmdbinspect](https://github.com/maxmind/mmdbinspect) | Look up records for one or more IPs/networks in one or more .mmdb databases
 *   dev-util/[mmdbverify](https://github.com/maxmind/mmdbverify) | Verifier for the MaxMind DB format
@@ -1660,3 +1661,4 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
+
