@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools systemd
 MY_P="rpc.${PN}-${PV}"
 
 DESCRIPTION="Client-server linux performance statistics"
-HOMEPAGE="http://rstatd.sourceforge.net/"
+HOMEPAGE="https://rstatd.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

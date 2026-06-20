@@ -1605,7 +1605,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[openvpn-update-resolv-conf](https://github.com/alfredopalhares/openvpn-update-resolv-conf) | Updates DNS settings are pushed by the OpenVPN server
 *   net-misc/[postgrest](https://github.com/PostgREST/postgrest) | REST API for any Postgres database
 *   net-misc/[redir](https://github.com/troglobit/redir) | TCP port redirector
-*   net-misc/[rstatd](http://rstatd.sourceforge.net/) | Client-server linux performance statistics
+*   net-misc/[rstatd](https://rstatd.sourceforge.net/) | Client-server linux performance statistics
 *   net-misc/[s5cmd](https://github.com/peak/s5cmd) | Parallel S3 and local filesystem execution tool
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/samplicator.svg?header=)](https://repology.org/project/samplicator/versions) net-misc/[samplicator](https://github.com/sleinen/samplicator) | UDP packets forwarder and duplicator
 *   net-misc/[slowhttptest](https://github.com/shekyan/slowhttptest) | Application Layer DoS attack simulator
