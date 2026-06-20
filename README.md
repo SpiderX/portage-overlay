@@ -1462,7 +1462,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[semgrep-core](https://github.com/semgrep/semgrep) | Code scanning at ludicrous speed
 *   dev-util/[shfmt](https://github.com/mvdan/sh) | A shell parser, formatter, and interpreter with bash support
 *   dev-util/[sqlfluff](https://github.com/sqlfluff/sqlfluff) | A SQL linter and auto-formatter
-*   dev-util/[swapusage](https://github.com/hhoffstaette/swapusage) | Amount of swapped memory for running processes
+*   dev-util/[swapusage](https://codeberg.org/hhoffstaette/swapusage) | Amount of swapped memory for running processes
 *   dev-util/[taskcat](https://github.com/aws-ia/taskcat) | An OpenSource Cloudformation Deployment Framework
 *   dev-util/[tflint](https://github.com/terraform-linters/tflint) | A Pluggable Terraform Linter
 *   dev-util/[tflint-ruleset-dave-says](https://github.com/skwashd/tflint-ruleset-dave-says) | TFLint plugin to make sure you follow the rules
