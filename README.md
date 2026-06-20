@@ -572,10 +572,10 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[rfc2109](https://gitlab.common-lisp.net/rfc2109/rfc2109) | Common Lisp RFC2109 compliant cookies
 *   dev-lisp/[rfc2388](https://github.com/jdz/rfc2388) | An implementation of RFC 2388 in Common Lisp
 *   dev-lisp/[rfc2388-binary](https://gitlab.common-lisp.net/ucw/rfc2388-binary) | Parsing multipart/form-data data streams library
-*   dev-lisp/[rt](http://www.cliki.net/rt) | Common Lisp regression tester from MIT
+*   dev-lisp/[rt](https://www.cliki.net/rt) | Common Lisp regression tester from MIT
 *   dev-lisp/[salza2](https://github.com/xach/salza2) | Compressed data in the ZLIB, DEFLATE, or GZIP data formats
 *   dev-lisp/[slime](https://github.com/slime/slime) | The Superior Lisp Interaction Mode for Emacs
-*   dev-lisp/[split-sequence](http://www.cliki.net/split-sequence) | Functions to partition a Common Lisp sequence
+*   dev-lisp/[split-sequence](https://www.cliki.net/split-sequence) | Functions to partition a Common Lisp sequence
 *   dev-lisp/[swap-bytes](https://github.com/sionescu/swap-bytes) | Efficient endianness conversion for SBCL
 *   dev-lisp/[symbol-munger](https://github.com/AccelerationNet/symbol-munger) | A common lisp library to to help convert between various formats
 *   dev-lisp/[system-locale](https://github.com/Shinmera/system-locale) | A library to retrieve the system's configured locale and language

@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit common-lisp-3 git-r3
+inherit common-lisp-3 edo git-r3
 
 DESCRIPTION="Functions to partition a Common Lisp sequence"
-HOMEPAGE="http://www.cliki.net/split-sequence"
+HOMEPAGE="https://www.cliki.net/split-sequence"
 EGIT_REPO_URI="https://github.com/sharplispers/${PN}.git"
 
 LICENSE="MIT"
@@ -21,8 +21,7 @@ src_test() {
 	local -x CL_SOURCE_REGISTRY="${S}:${CLSYSTEMROOT}"
 	common-lisp-export-impl-args "$(common-lisp-find-lisp-impl)"
 
-	${CL_BINARY} "${CL_EVAL}" "(asdf:test-system :split-sequence)" \
-		|| die "test failed"
+	edo ${CL_BINARY} "${CL_EVAL}" "(asdf:test-system :split-sequence)"
 }
 
 src_install() {
