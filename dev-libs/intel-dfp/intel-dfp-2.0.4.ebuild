@@ -10,7 +10,7 @@ MY_PV="$(ver_cut 1)$(ver_cut 2)U$(ver_cut 3-)"
 MY_P="${MY_PN}${MY_PV}"
 
 DESCRIPTION="Library routines related to building,parsing and iterating BSON documents"
-HOMEPAGE="https://www.intel.com/content/www/us/en/developer/articles/tool/intel-decimal-floating-point-math-library.html"
+HOMEPAGE="https://www.intel.com/content/www/us/en/developer/overview.html"
 SRC_URI="http://www.netlib.org/misc/intel/${MY_P}.tar.gz"
 S="${WORKDIR}"
 
