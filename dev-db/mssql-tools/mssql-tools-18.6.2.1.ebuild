@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit pax-utils unpacker
 BASE_URI="packages.microsoft.com/debian/12/prod/pool/main/m"
 
 DESCRIPTION="Microsoft SQL Server Tools for Linux"
-HOMEPAGE="https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools"
+HOMEPAGE="https://learn.microsoft.com/en-us/sql/tools/overview-sql-tools?view=sql-server-ver17"
 SRC_URI="amd64? ( https://${BASE_URI}/${PN}${PV%%.*}/${PN}${PV%%.*}_${PV}-1_amd64.deb )
 	arm64? ( https://${BASE_URI}/${PN}${PV%%.*}/${PN}${PV%%.*}_${PV}-1_arm64.deb )"
 S="${WORKDIR}"
