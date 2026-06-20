@@ -539,7 +539,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[idna](https://github.com/antifuchs/idna) | Common Lisp IDNA encding / decoding functions
 *   dev-lisp/[ieee-floats](https://github.com/marijnh/ieee-floats) | Flexible bivalent streams for Common Lisp
 *   dev-lisp/[iolib](https://github.com/sionescu/iolib) | Common Lisp I/O library
-*   dev-lisp/[ironclad](http://www.cliki.net/ironclad) | A cryptographic toolkit written in Common Lisp
+*   dev-lisp/[ironclad](https://www.cliki.net/ironclad) | A cryptographic toolkit written in Common Lisp
 *   dev-lisp/[iterate](https://gitlab.common-lisp.net/iterate/iterate) | A common lisp ITERATE macro library
 *   dev-lisp/[kmrcl](https://tracker.debian.org/pkg/cl-kmrcl) | General Utilities for Common Lisp Programs
 *   dev-lisp/[language-codes](https://github.com/Shinmera/language-codes) | A simple library mapping ISO language codes to language names

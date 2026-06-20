@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit common-lisp-3 git-r3
 
 DESCRIPTION="A cryptographic toolkit written in Common Lisp"
-HOMEPAGE="http://www.cliki.net/ironclad"
+HOMEPAGE="https://www.cliki.net/ironclad"
 EGIT_REPO_URI="https://github.com/sharplispers/${PN}.git"
 
 LICENSE="BSD"
