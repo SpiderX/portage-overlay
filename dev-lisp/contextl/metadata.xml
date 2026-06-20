@@ -15,6 +15,6 @@
 	explicitly supports COP.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">pcostanza/contextl</remote-id>
+		<remote-id type="codeberg">pcostanza/contextl</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -496,7 +496,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[collectors](https://github.com/AccelerationNet/collectors) | A Common lisp library providing collector macros
 *   dev-lisp/[colorize](https://github.com/kingcons/colorize) | A Syntax Highlighting library
 *   dev-lisp/[command-line-arguments](https://github.com/fare/command-line-arguments) | Trivial command-line argument parsing library for Common Lisp
-*   dev-lisp/[contextl](https://github.com/pcostanza/contextl) | CLOS extension for Context-oriented Programming
+*   dev-lisp/[contextl](https://codeberg.org/pcostanza/contextl) | CLOS extension for Context-oriented Programming
 *   dev-lisp/[cxml](https://github.com/sharplispers/cxml) | An XML parser written in Common Lisp
 *   dev-lisp/[data-table](https://github.com/AccelerationNet/data-table) | A Common Lisp data structure representing tabular data
 *   dev-lisp/[documentation-utils](https://github.com/Shinmera/documentation-utils) | A few simple tools to help you with documenting your library
