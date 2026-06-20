@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1586](https://img.shields.io/badge/ebuild-1586-orange.svg)](https://img.shields.io/badge/ebuild-1586-orange.svg)
+[![Number of ebuilds: 1587](https://img.shields.io/badge/ebuild-1587-orange.svg)](https://img.shields.io/badge/ebuild-1587-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -425,6 +425,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[libstudxml](https://codesynthesis.com/projects/libstudxml/) | Streaming XML pull parser and streaming XML serializer
 *   dev-libs/[libthai](https://github.com/tlwg/libthai) | A a set of Thai language support routines
 *   dev-libs/[lime](https://gitlab.linphone.org/BC/public/lime) | C++ library implementing Open Whisper System Signal protocol
+*   dev-libs/[njs](https://github.com/nginx/njs) | NGINX JavaScript
 *   dev-libs/[modest](https://github.com/lexborisov/modest) | Fast HTML renderer
 *   dev-libs/[mongo-c-driver](https://github.com/mongodb/mongo-c-driver) | Client library written in C for MongoDB
 *   dev-libs/[rustc-demangle](https://github.com/rust-lang/rustc-demangle) | Library for Rust symbol demangling

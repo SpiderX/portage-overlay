@@ -1,0 +1,10 @@
+--- ../auto/options	2026-06-16 19:42:46.967794371 +0300
++++ ../auto/options	2026-06-16 19:43:12.122348706 +0300
+@@ -68,6 +68,7 @@
+             . auto/help
+             exit 0
+         ;;
++        --build=*|--host=*|--infodir=*|--datadir=*|--libdir=*|--localstatedir=*|--mandir=*|--prefix=*|--sysconfdir=*|--no-debug|--debug=*|--openssl|--libxml2|--zlib) : ;;
+ 
+         *)
+             echo
