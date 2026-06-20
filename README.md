@@ -149,7 +149,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[gron](https://github.com/tomnomnom/gron) | Make JSON greppable
 *   app-misc/[hq](https://github.com/coderobe/hq) | A HTML processor inspired by jq
 *   app-misc/[htmlq](https://github.com/mgdm/htmlq) | Like jq, but for HTML
-*   app-misc/[jshon](http://kmkeen.com/jshon/) | JSON parser designed for maximum convenience within the shell
+*   app-misc/[jshon](https://github.com/keenerd/jshon) | JSON parser designed for maximum convenience within the shell
 *   app-misc/[jsqry-cli2-bin](https://github.com/jsqry/jsqry-cli2) | CLI tool (similar to jq) to query JSON using sane DSL
 *   app-misc/[kando-bin](https://github.com/kando-menu/kando) | A pie menu for the desktop
 *   app-misc/[mime-types](https://pagure.io/mailcap) | Provides /etc/mime.types file
