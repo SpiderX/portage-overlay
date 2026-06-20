@@ -1,0 +1,18 @@
+--- ../java/org/apache/juli/logging/LogFactory.java	2026-06-18 11:40:53.686155770 +0300
++++ ../java/org/apache/juli/logging/LogFactory.java	2026-06-18 11:41:17.710367450 +0300
+@@ -21,7 +21,6 @@
+ import java.util.ServiceLoader;
+ import java.util.logging.LogManager;
+ 
+-import aQute.bnd.annotation.spi.ServiceConsumer;
+ 
+ /**
+  * This is a modified LogFactory that uses a simple {@link ServiceLoader} based discovery mechanism with a default of
+@@ -54,7 +53,6 @@
+  * @author Costin Manolache
+  * @author Richard A. Sitze
+  */
+-@ServiceConsumer(value = Log.class)
+ public class LogFactory {
+ 
+     private static final LogFactory singleton = new LogFactory();
