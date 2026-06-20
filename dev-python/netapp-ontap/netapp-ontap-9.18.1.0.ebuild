@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="A library for working with ONTAP's REST APIs simply in Python"
-HOMEPAGE="https://devnet.netapp.com/restapi.php"
+HOMEPAGE="https://www.netapp.com/developer/"
 
 LICENSE="BSD"
 SLOT="0"

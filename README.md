@@ -1252,7 +1252,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[mysql-connector-python](https://github.com/mysql/mysql-connector-python) | Python client library for MariaDB/MySQL
 *   dev-python/[neo4j](https://github.com/neo4j/neo4j-python-driver) | Neo4j Bolt driver for Python
 *   dev-python/[netaddr](https://github.com/drkjam/netaddr) | Network address representation and manipulation library
-*   dev-python/[netapp-ontap](https://devnet.netapp.com/restapi.php) | A library for working with ONTAP's REST APIs simply in Python
+*   dev-python/[netapp-ontap](https://www.netapp.com/developer/) | A library for working with ONTAP's REST APIs simply in Python
 *   dev-python/[ncclient](https://github.com/ncclient/ncclient) | Python library for NETCONF clients
 *   dev-python/[nltk](https://github.com/nltk/nltk) | Natural Language Toolkit
 *   dev-python/[nltkdata](https://www.nltk.org/nltk_data/) | Data files for NLTK
