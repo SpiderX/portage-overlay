@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Core interfaces and support classes from Apache Tomcat.
+	Provides the org.apache.tomcat classes used by Tomcat components and
+	Tomcat-based applications to implement container services.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">apache/tomcat</remote-id>
+	</upstream>
+</pkgmetadata>
