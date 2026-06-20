@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1591](https://img.shields.io/badge/ebuild-1591-orange.svg)](https://img.shields.io/badge/ebuild-1591-orange.svg)
+[![Number of ebuilds: 1592](https://img.shields.io/badge/ebuild-1592-orange.svg)](https://img.shields.io/badge/ebuild-1592-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -410,6 +410,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-java/[jetty-http](https://github.com/jetty/jetty.project) | HTTP implementation library for Eclipse Jetty
 *   dev-java/[jetty-io](https://github.com/jetty/jetty.project) | Non-blocking I/O library for Eclipse Jetty
 *   dev-java/[jetty-jmx](https://github.com/jetty/jetty.project) | JMX integration library for Eclipse Jetty
+*   dev-java/[jetty-server](https://github.com/jetty/jetty.project) | HTTP server implementation for Eclipse Jetty
 *   dev-libs/[belcard](https://gitlab.linphone.org/BC/public/belcard) | VCard standard format manipulation library
 *   dev-libs/[belle-sip](https://gitlab.linphone.org/BC/public/belle-sip) | SIP (RFC3261) implementation
 *   dev-libs/[ccrtp](https://www.gnu.org/software/ccrtp/) | GNU ccRTP - Implementation of the IETF real-time transport protocol
