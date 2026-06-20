@@ -1611,7 +1611,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[sping](https://github.com/benjojo/sping) | Split ping, shows direction the loss or latency is on
 *   net-misc/[spoofer](https://www.caida.org/projects/spoofer/) | A tool to assess of deployment of source address validation
 *   net-misc/[ssmd](https://stg.codes/projects/ssmd) | SNMP Switch Management Daemon
-*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/stargazer.svg?header=)](https://repology.org/project/stargazer/versions) net-misc/[stargazer](https://stg.net.ua) | Billing system for small home and office networks
+*   net-misc/[stargazer](https://stg.net.ua) | Billing system for small home and office networks
 *   net-misc/[topola](https://topola.unity.net) | Customer accounting system, services and statistics collection management
 *   net-misc/[uredir](https://github.com/troglobit/uredir) | UDP port redirector
 *   net-misc/[virtualhere-usb](https://virtualhere.com) | Share USB devices over the network
