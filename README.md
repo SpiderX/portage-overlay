@@ -1524,7 +1524,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-libs/[bcmatroska2](https://gitlab.linphone.org/BC/public/bcmatroska2) | Matroska media container support
 *   media-libs/[bv16-floatingpoint](https://gitlab.linphone.org/BC/public/external/bv16-floatingpoint) | BroadVoice 16 kbs codec
 *   media-libs/[libqpsd](https://github.com/roniemartinez/libqpsd) | PSD & PSB Plugin for Qt/C++
-*   media-libs/[jbigkit](http://www.cl.cam.ac.uk/~mgk25/jbigkit/) | data compression algorithm for bi-level high-resolution images
+*   media-libs/[jbigkit](https://www.cl.cam.ac.uk/~mgk25/jbigkit/) | data compression algorithm for bi-level high-resolution images
 *   media-libs/[mediastreamer2](https://gitlab.linphone.org/BC/public/mediastreamer2) | Mediastreaming library for telephony application
 *   media-libs/[qt-heif](https://github.com/jakar/qt-heif-image-plugin) | Qt plugin for HEIF images
 *   media-libs/[shine](https://github.com/toots/shine) | Fixed-point mp3 encoding library

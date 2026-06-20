@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="data compression algorithm for bi-level high-resolution images"
-HOMEPAGE="http://www.cl.cam.ac.uk/~mgk25/jbigkit/"
-SRC_URI="http://www.cl.cam.ac.uk/~mgk25/download/${P}.tar.gz"
+HOMEPAGE="https://www.cl.cam.ac.uk/~mgk25/jbigkit/"
+SRC_URI="https://www.cl.cam.ac.uk/~mgk25/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}" # Since we install unversioned libraries, use ${PV} subslots.
