@@ -10,7 +10,7 @@ PLOCALE_BACKUP="en"
 inherit ecm git-r3 plocale
 
 DESCRIPTION="Plasma widget for play ambient noise"
-HOMEPAGE="https://github.com//plasma-applet-ambientnoise"
+HOMEPAGE="https://github.com/m-pili/plasma-applet-ambientnoise"
 EGIT_REPO_URI="https://github.com/m-pilia/${PN}.git"
 
 LICENSE="GPL-3"
