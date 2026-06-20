@@ -1,0 +1,11 @@
+--- ../auto/options	2026-06-11 17:16:05.500470146 +0300
++++ ../auto/options	2026-06-11 17:16:21.527532988 +0300
+@@ -143,7 +143,7 @@
+             . auto/help
+             exit 0
+         ;;
+-
++        --build=*|--host=*|--infodir=*|--datadir=*|--sysconfdir=*|ipv6|regex|pcre|--no-openssl|--no-zlib|--no-zstd|--no-brotli|--no-njs|--no-otel|--no-debug|--no-perl) : ;;
+         *)
+             $echo
+             $echo $0: error: invalid option \"$nxt_option\".

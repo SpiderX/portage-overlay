@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	FreeUnit is a dynamic web and application server, designed to run
+	applications in multiple languages. It is lightweight, polyglot, and
+	dynamically configured via API. The design of the server allows
+	reconfiguration of specific application parameters as needed by the
+	engineering or operations.
+	</longdescription>
+	<use>
+		<flag name="go">Support for Go</flag>
+		<flag name="njs">Support for NGINX JavaScript</flag>
+		<flag name="nodejs">Support for NodeJS</flag>
+		<flag name="otlp">Support for OpenTelemetry</flag>
+		<flag name="php8-3">Support for PHP 8.3</flag>
+		<flag name="php8-4">Support for PHP 8.4</flag>
+		<flag name="php8-5">Support for PHP 8.5</flag>
+		<flag name="regex">Enable regex support</flag>
+		<flag name="tools">Install command-line tools</flag>
+		<flag name="wasm">Support for WebAssembly</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">freeunitorg/freeunit</remote-id>
+	</upstream>
+</pkgmetadata>

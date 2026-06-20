@@ -1,0 +1,8 @@
+/var/log/freeunit/*.log {
+	missingok
+	delaycompress
+	sharedscripts
+	postrotate
+		test -r /run/freeunit/freeunit.pid && kill -USR1 `cat /run/freeunit/freeunit.pid`
+	endscript
+}

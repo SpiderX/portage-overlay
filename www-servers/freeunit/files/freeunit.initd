@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/unitd"
+command_args="${FREEUNIT_OPTS}"
+description="Dynamic web and application server"
+start_stop_daemon_args=${FREEUNIT_SSDARGS:-"--wait 1000"}
+pidfile=${FREEUNIT_PIDFILE:-/run/freeunit.pid}
+user=${FREEUNIT_USER:-freeunit}
+group=${FREEUNIT_GROUP:-freeunit}
+retry=${FREEUNIT_TERMTIMEOUT:-"TERM/60/KILL/5"}
+
+depend() {
+	need net
+	use dns logger netmount
+}
