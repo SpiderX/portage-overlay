@@ -1454,7 +1454,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[mmdbctl](https://github.com/ipinfo/mmdbctl) | An MMDB file management CLI
 *   dev-util/[mmdbinspect](https://github.com/maxmind/mmdbinspect) | Look up records for one or more IPs/networks in one or more .mmdb databases
 *   dev-util/[mmdbverify](https://github.com/maxmind/mmdbverify) | Verifier for the MaxMind DB format
-*   dev-util/[ovftool](https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool) | VMware Open Virtualization Format tool
+*   dev-util/[ovftool](https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool/latest) | VMware Open Virtualization Format tool
 *   dev-util/[policy-sentry](https://github.com/salesforce/policy_sentry) | AWS IAM Least Privilege Policy Generator
 *   dev-util/[postman](https://www.postman.com) | Build, test, and document your APIs faster
 *   dev-util/[revdiff](https://github.com/umputun/revdiff) | TUI for reviewing diffs, files, and documents with inline annotations

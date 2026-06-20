@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_PV="$(ver_rs 3 -)"
 MY_P="VMware-${PN}-${MY_PV}-lin.x86_64.zip"
 
 DESCRIPTION="VMware Open Virtualization Format tool"
-HOMEPAGE="https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool"
+HOMEPAGE="https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool/latest"
 SRC_URI="${MY_P}"
 S="${WORKDIR}/${PN}"
 
@@ -28,9 +28,6 @@ QA_PREBUILT="opt/vmware-ovftool/libcares.so.2
 	opt/vmware-ovftool/libcurl.so.4
 	opt/vmware-ovftool/libexpat.so
 	opt/vmware-ovftool/libgcc_s.so.1
-	opt/vmware-ovftool/libgoogleurl.so.59
-	opt/vmware-ovftool/libicudata.so.60
-	opt/vmware-ovftool/libicuuc.so.60
 	opt/vmware-ovftool/libssl.so.3
 	opt/vmware-ovftool/libssoclient.so
 	opt/vmware-ovftool/libstdc++.so.6
@@ -60,7 +57,7 @@ src_install() {
 
 	insinto /opt/vmware-ovftool
 	exeinto /opt/vmware-ovftool
-	doins -r certs/ env/ schemas/ manifest.xml icudt44l.dat
+	doins -r certs/ env/ schemas/ icudt44l.dat
 	doexe lib* ovftool ovftool.bin
 
 	dosym ../vmware-ovftool/ovftool opt/bin/ovftool
