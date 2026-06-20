@@ -281,7 +281,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[deferred-folds](https://github.com/nikita-volkov/deferred-folds) | Abstractions over deferred folds
 *   dev-haskell/[drbg](https://github.com/TomMD/DRBG) | Deterministic random bit generator (aka PRNG)
 *   dev-haskell/[either](https://github.com/ekmett/either) | An either monad transformer
-*   dev-haskell/[expiring-cache-map](https://github.com/elblake/expiring-cache-map) | General purpose simple caching
+*   dev-haskell/[expiring-cache-map](https://codeberg.org/elblake/expiring-cache-map) | General purpose simple caching
 *   dev-haskell/[filelock](https://github.com/haskell-pkg-janitors/filelock) | Portable interface to file locking
 *   dev-haskell/[focus](https://github.com/nikita-volkov/focus) | Manipulating elements of container data structures
 *   dev-haskell/[fuzzyset](https://github.com/laserpants/fuzzyset-haskell) | A fuzzy string set implementation in Haskell
@@ -1500,7 +1500,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[kwin-sliding-notifications](https://github.com/RussH/kwin-sliding-notifications) | Plasma 6 Sliding animation for notification windows
 *   kde-misc/[paneltransparencybutton](https://github.com/TheEssem/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
 *   kde-misc/[plasma-6-power-usage-widget](https://github.com/magillos/Plasma-6-power-usage-widget) | Plasma 6 compatibile widget showing power usage
-*   kde-misc/[plasma-applet-ambientnoise](https://github.com//plasma-applet-ambientnoise) | Plasma widget for play ambient noise
+*   kde-misc/[plasma-applet-ambientnoise](https://github.com/m-pili/plasma-applet-ambientnoise) | Plasma widget for play ambient noise
 *   kde-misc/[plasma-applet-eventcalendar](https://github.com/ALikesToCode/plasma-applet-eventcalendar) | Plasmoid for a calendar and agenda with weather
 *   kde-misc/[plasma-applet-grammarly](https://github.com/kevinbburns/com.kevinbburns.grammarly) | KDE Plasma6 Panel Widget for a Webview to Grammarly Editor
 *   kde-misc/[plasma-panel-spacer-extended](https://github.com/luisbocanegra/plasma-panel-spacer-extended) | Spacer with Mouse gestures for the KDE Plasma Panel
