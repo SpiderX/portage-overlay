@@ -1594,7 +1594,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[lychee](https://github.com/lycheeverse/lychee) | Fast, async, stream-based link checker
 *   net-misc/[mpssh](https://github.com/ndenev/mpssh) | Mass parallel ssh
 *   net-misc/[ngrok-bin](https://ngrok.com/) | Secure introspected tunnels to localhost
-*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/pingu.svg?header=)](https://repology.org/project/pingu/versions) net-misc/[pingu](https://github.com/ncopa/pingu) | Policy routing daemon with failover and load-balancing
+*   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/pingu-routng-daemon.svg?header=)](https://repology.org/project/pingu-routng-daemon/versions) net-misc/[pingu](https://github.com/ncopa/pingu) | Policy routing daemon with failover and load-balancing
 *   net-misc/[qfreerdp](https://github.com/zrax/qfreerdp) | Qt launcher GUI for XFreeRDP
 *   net-misc/[qia](https://stg.codes) | Authorization tool for Stargazer Billing System written in Qt
 *   net-misc/[msd](https://github.com/rozhuk-im/msd) | Program for IP TV streaming on the network via HTTP
