@@ -1,0 +1,10 @@
+--- ../java/org/apache/el/ExpressionFactoryImpl.java	2026-06-19 01:26:32.033244288 +0300
++++ ../java/org/apache/el/ExpressionFactoryImpl.java	2026-06-19 01:26:45.698806668 +0300
+@@ -34,7 +34,6 @@
+  *
+  * @author Jacob Hookom [jacob@hookom.net]
+  */
+-@aQute.bnd.annotation.spi.ServiceProvider(value = ExpressionFactory.class)
+ public class ExpressionFactoryImpl extends ExpressionFactory {
+ 
+     static {
