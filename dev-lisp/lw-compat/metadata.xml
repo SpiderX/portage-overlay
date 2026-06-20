@@ -14,6 +14,6 @@
 	library, ported to other Common Lisp implementations.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">pcostanza/lw-compat</remote-id>
+		<remote-id type="codeberg">pcostanza/lw-compat</remote-id>
 	</upstream>
 </pkgmetadata>

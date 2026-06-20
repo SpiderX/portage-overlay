@@ -548,7 +548,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-lisp/[lml2](https://tracker.debian.org/pkg/cl-lml2) | Lisp Markup Language
 *   dev-lisp/[local-time](https://github.com/dlowe-net/local-time) | Time manipulation library for Common Lisp
 *   dev-lisp/[lparallel](https://github.com/lmj/lparallel) | Parallelism for Common Lisp
-*   dev-lisp/[lw-compat](https://github.com/pcostanza/lw-compat) | A few utility functions from the LispWorks library
+*   dev-lisp/[lw-compat](https://codeberg.org/pcostanza/lw-compat) | A few utility functions from the LispWorks library
 *   dev-lisp/[md5](https://github.com/pmai/md5) | Common Lisp implementation of the MD5 Message-Digest Algorithm
 *   dev-lisp/[metabang-bind](https://github.com/hraban/metabang-bind) | Cacro that generalizes multiple-value-bind
 *   dev-lisp/[metacopy](https://github.com/hraban/metacopy) | Flexible Common Lisp shallow/deep copy mechanism
