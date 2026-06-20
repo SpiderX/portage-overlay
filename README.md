@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1602](https://img.shields.io/badge/ebuild-1602-orange.svg)](https://img.shields.io/badge/ebuild-1602-orange.svg)
+[![Number of ebuilds: 1603](https://img.shields.io/badge/ebuild-1603-orange.svg)](https://img.shields.io/badge/ebuild-1603-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -421,6 +421,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-java/[tomcat-juli](https://tomcat.apache.org/) | Apache Tomcat JULI logging implementation
 *   dev-java/[tomcat-servlet-api](https://tomcat.apache.org/) | Apache Tomcat Servlet API
 *   dev-java/[tomcat-util](https://tomcat.apache.org/) | Apache Tomcat utility library
+*   dev-java/[tomcat-util-scan](https://tomcat.apache.org/) | Apache Tomcat scanning utilities
 *   dev-libs/[belcard](https://gitlab.linphone.org/BC/public/belcard) | VCard standard format manipulation library
 *   dev-libs/[belle-sip](https://gitlab.linphone.org/BC/public/belle-sip) | SIP (RFC3261) implementation
 *   dev-libs/[ccrtp](https://www.gnu.org/software/ccrtp/) | GNU ccRTP - Implementation of the IETF real-time transport protocol
