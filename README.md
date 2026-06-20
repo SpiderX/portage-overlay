@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1585](https://img.shields.io/badge/ebuild-1585-orange.svg)](https://img.shields.io/badge/ebuild-1585-orange.svg)
+[![Number of ebuilds: 1586](https://img.shields.io/badge/ebuild-1586-orange.svg)](https://img.shields.io/badge/ebuild-1586-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/2323/badge)](https://bestpractices.coreinfrastructure.org/en/projects/2323)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -92,6 +92,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[topngx](https://github.com/gsquire/topngx) | A top for NGINX
 *   app-admin/[trailscraper](https://github.com/flosell/trailscraper) | Command-line tool to get information out of AWS CloudTrail
 *   app-admin/[tztail](https://github.com/thecasualcoder/tztail) | A log view in various timezones
+*   app-admin/[unitctl-bin](https://github.com/freeunitorg/freeunit) | FreeUnit CLI
 *   app-admin/[userdbadm](https://nasauber.de/opensource/userdbadm/) | Tool to manage (PAM) userdb files with crypted passwords
 *   app-admin/[uwsgitop](https://github.com/xrmx/uwsgitop) | uWSGI stats viewer
 *   app-admin/[vault-backend-migrator](https://github.com/adamdecaf/vault-backend-migrator) | Tool to migrate data across vault clusters
