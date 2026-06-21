@@ -46,7 +46,7 @@ jobs:
         with:
           args: >-
             -v -m 1 --require-https
-            --exclude 'https://(github.com/SpiderX|www.codacy.com)/*'
+            --exclude 'https://(github.com/SpiderX|www.codacy.com|www.intel.com|www.gnu.org|www.netapp.com|www.nuttcp.net)/*'
             -n ${{ steps.condition.outputs.value }}
           fail: true
         env:
