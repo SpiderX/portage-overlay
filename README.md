@@ -427,7 +427,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[ucommon](https://www.gnu.org/software/commoncpp/) | A class framework that was specifically designed for telephony applications
 *   dev-libs/[dstu-engine](https://github.com/dstucrypt/dstu-engine) | OpenSSL engine for DSTU 4145
 *   dev-libs/[fastText](https://github.com/facebookresearch/fastText) | Library for fast text representation and classification
-*   dev-libs/[intel-dfp](https://www.intel.com/content/www/us/en/developer/overview.html) | Library routines related to building,parsing and iterating BSON documents
+*   dev-libs/[intel-dfp](https://www.intel.com/content/www/us/en/developer/articles/tool/intel-decimal-floating-point-math-library.html) | Library routines related to building,parsing and iterating BSON documents
 *   dev-libs/[libbson](https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson) | Library routines related to building,parsing and iterating BSON documents
 *   dev-libs/[libcommuni](https://communi.github.io) | A cross-platform IRC framework written with Qt
 *   dev-libs/[libdatrie](https://github.com/tlwg/libdatrie) | Double-Array Trie Library
@@ -1682,3 +1682,4 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
+
