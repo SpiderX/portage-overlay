@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=""
-RUST_MIN_VER="1.91.1"
+RUST_MIN_VER="1.94.0"
 
 declare -A GIT_CRATES=(
 	[crossterm]='https://github.com/nornagon/crossterm;87db8bfa6dc99427fd3b071681b07fc31c6ce995;crossterm-%commit%'
@@ -21,17 +21,20 @@ declare -A GIT_CRATES=(
 	[webrtc-sys]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/webrtc-sys'
 )
 
-inherit cargo edo shell-completion
+inherit cargo check-reqs edo toolchain-funcs shell-completion
 
-RUSTY_V8_PV="147.4.0"
+CHECKREQS_MEMORY="12G"
+CHECKREQS_DISK_BUILD="10G"
+RUSTY_V8_PV="149.2.0"
 
 DESCRIPTION="Lightweight coding agent that runs in your terminal"
 HOMEPAGE="https://github.com/openai/codex"
 SRC_URI="https://github.com/openai/${PN}/archive/rust-v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-crates.tar.xz
 	https://github.com/denoland/rusty_v8/releases/download/v${RUSTY_V8_PV}/librusty_v8_release_x86_64-unknown-linux-gnu.a.gz
+		-> librusty_v8_${RUSTY_V8_PV}_x86_64-unknown-linux-gnu.a.gz
 	${CARGO_CRATE_URIS}"
-S="${WORKDIR}/${PN}-rust-v${PV}"
+S="${WORKDIR}/${PN}-rust-v${PV}/${PN}-rs"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0
 	CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0 Unicode-3.0 ZLIB"
@@ -39,40 +42,54 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="tui"
 
-RDEPEND="sys-apps/bubblewrap"
+DEPEND="app-arch/xz-utils:=
+	dev-libs/openssl:0=
+	virtual/zlib:0="
+RDEPEND="${DEPEND}
+	sys-apps/bubblewrap"
+BDEPEND="virtual/pkgconfig"
+
+pkg_setup() {
+	check-reqs_pkg_setup
+	rust_pkg_setup
+}
 
 src_prepare() {
 	default
 
-	sed -i  -e "/crossterm =/s|git = \"https://github.com/nornagon/crossterm\", rev = \"|path = \"${WORKDIR}/crossterm-|" \
-		-e "/ratatui =/s|git = \"https://github.com/nornagon/ratatui\", rev = \"|path = \"${WORKDIR}/ratatui-|" \
-		-e "/tokio-tungstenite =/s|git = \"https://github.com/openai-oss-forks/tokio-tungstenite\", rev = \"|path = \"${WORKDIR}/tokio-tungstenite-|" \
-		-e "/tungstenite =/s|git = \"https://github.com/openai-oss-forks/tungstenite-rs\", rev = \"|path = \"${WORKDIR}/tungstenite-rs-|g" \
-		codex-rs/Cargo.toml || die "sed failed for Cargo.toml"
+	for dep in 'crossterm:nornagon/crossterm' 'ratatui:nornagon/ratatui' \
+		'tokio-tungstenite:openai-oss-forks/tokio-tungstenite' \
+		'tungstenite:openai-oss-forks/tungstenite-rs'
+	do
+		sed -i -e "/${dep%%:*} =/s|git = \"https://github.com/${dep#*:}\", rev = \"|path = \"${WORKDIR}/${dep##*/}-|" \
+			Cargo.toml || die "sed failed for Cargo.toml"
+	done
 }
 
 src_compile() {
-	export RUSTY_V8_ARCHIVE="${DISTDIR}"/librusty_v8_release_x86_64-unknown-linux-gnu.a.gz
-	cargo_src_compile --manifest-path codex-rs/cli/Cargo.toml
-	use tui && cargo_src_compile --manifest-path codex-rs/tui/Cargo.toml --bin codex-tui
+	tc-is-lto || export CARGO_PROFILE_RELEASE_LTO=false
+	export RUSTY_V8_ARCHIVE="${DISTDIR}"/librusty_v8_"${RUSTY_V8_PV}"_x86_64-unknown-linux-gnu.a.gz
+	cargo_src_compile --package codex-cli
+	use tui && cargo_src_compile --package codex-tui --bin codex-tui
 
 	local completion
 	for completion in bash fish zsh ; do
-		edo codex-rs/target/release/codex completion ${completion} > codex.${completion}
+		edo target/release/codex completion ${completion} > codex.${completion}
 	done
 }
 
 src_test() {
+	# requires working bubblewrap user namespaces; fails under portage sandbox
 	local CARGO_SKIP_TESTS=( sandbox_with_network_proxy_blocks_direct_loopback_access )
 
 	# codex-tui doesn't have tests
-	cargo_src_test --manifest-path codex-rs/cli/Cargo.toml
+	cargo_src_test --package codex-cli
 }
 
 src_install() {
 	einstalldocs
-	cargo_src_install --path codex-rs/cli
-	use tui && cargo_src_install --path codex-rs/tui --bin codex-tui
+	cargo_src_install --path cli
+	use tui && cargo_src_install --path tui --bin codex-tui
 
 	newbashcomp codex.bash codex
 	newfishcomp codex.fish codex
