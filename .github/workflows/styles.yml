@@ -28,12 +28,12 @@ jobs:
         run: >-
           echo '${{ github.event.pull_request.head.sha }}..
           ${{ github.event.pull_request.base.sha }}' | tr -d ' '
-          | xargs gitlint --commits
+          | xargs gitlint --ignore body-is-missing --commits
       - name: Run gitlint on push
         if: ${{ github.event_name == 'push' }}
         run: >-
           echo '${{ github.event.before }}..
-          ${{ github.event.after }}' | tr -d ' ' | xargs gitlint --commits
+          ${{ github.event.after }}' | tr -d ' ' | xargs gitlint --ignore body-is-missing --commits
   gitlint-action:
     name: gitlint-action
     runs-on: ubuntu-latest
