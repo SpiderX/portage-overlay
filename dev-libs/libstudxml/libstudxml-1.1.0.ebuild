@@ -64,5 +64,5 @@ src_install() {
 		emake "${myconfigargs[@]}" install
 
 	edo mkdir -p "${ED}"/usr/share/doc/"${PF}"/html
-	edo mv -f "${ED}"/usr/share/doc/"${PF}"/{*.{xhtml,css},html}
+	edo mv -f "${ED}"/usr/share/doc/"${PF}"/{*.{css,xhtml},html}
 }

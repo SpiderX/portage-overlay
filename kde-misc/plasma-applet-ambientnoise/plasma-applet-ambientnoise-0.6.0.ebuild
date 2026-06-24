@@ -1,8 +1,6 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# shellcheck disable=SC2329
-
 EAPI=8
 
 KFMIN=6.25.0
