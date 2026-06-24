@@ -4,10 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 edo git-r3 optfeature
 
 DESCRIPTION="Terminal spreadsheet multitool for discovering and arranging data"
 HOMEPAGE="https://github.com/saulpw/visidata"
@@ -31,7 +31,7 @@ distutils_enable_tests pytest
 
 python_test() {
 	epytest -v visidata/tests/
-	dev/test.sh || die "test failed"
+	edo dev/test.sh
 }
 
 pkg_postinst() {

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature pypi
@@ -21,6 +21,11 @@ RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	 # test requires fixtures omitted from the PyPI source distribution
+	visidata/tests/test_path.py::TestVisidataPath::test_withName
+)
 
 pkg_postinst() {
 	optfeature "integration with yaml" dev-python/pyyaml
