@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1604](https://img.shields.io/badge/ebuild-1604-orange.svg)](https://img.shields.io/badge/ebuild-1604-orange.svg)
+[![Number of ebuilds: 1603](https://img.shields.io/badge/ebuild-1603-orange.svg)](https://img.shields.io/badge/ebuild-1603-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1637,7 +1637,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   sys-apps/[direnv](https://github.com/direnv/direnv) | Environment variable manager for shell
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/ethq.svg?header=)](https://repology.org/project/ethq/versions) sys-apps/[ethq](https://github.com/isc-projects/ethq) | Ethernet NIC Queue stats viewer
 *   sys-apps/[evhz](https://git.sr.ht/~iank/evhz) | Mouse refresh rate under evdev
-*   sys-apps/[firetools](https://firejail.wordpress.com) | Graphical user interface of Firajail security sandbox
 *   sys-apps/[jless](https://github.com/PaulJuliusMartinez/jless) | Command-line JSON viewer
 *   sys-apps/[nocache](https://github.com/Feh/nocache) | Minimize caching effects for applications
 *   sys-apps/[psi-notify](https://github.com/cdown/psi-notify) | Minimalistic PSI notifier using libnotify
