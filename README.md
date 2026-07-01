@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1601](https://img.shields.io/badge/ebuild-1601-orange.svg)](https://img.shields.io/badge/ebuild-1601-orange.svg)
+[![Number of ebuilds: 1599](https://img.shields.io/badge/ebuild-1599-orange.svg)](https://img.shields.io/badge/ebuild-1599-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -120,7 +120,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-crypt/[totp](https://github.com/arcanericky/totp) | Time-Based One-Time Password Code Generator
 *   app-crypt/[transcrypt](https://github.com/elasticdog/transcrypt) | Transparently encrypt files within a git repository
 *   app-crypt/[web-eid](https://github.com/web-eid/web-eid-app) | Digital signing and authentication operations with electronic ID
-*   app-editors/[qedit](http://hugo.pereira.free.fr/software/index.php) | Qt-based multi-purpose text editor
 *   app-editors/[lite](https://github.com/rxi/lite) | A lightweight text editor written in Lua
 *   app-editors/[micro](https://github.com/zyedidia/micro) | A modern and intuitive terminal-based text editor
 *   app-editors/[marktext](https://github.com/marktext/marktext) | A simple and elegant open-source markdown editor
