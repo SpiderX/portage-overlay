@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1603](https://img.shields.io/badge/ebuild-1603-orange.svg)](https://img.shields.io/badge/ebuild-1603-orange.svg)
+[![Number of ebuilds: 1602](https://img.shields.io/badge/ebuild-1602-orange.svg)](https://img.shields.io/badge/ebuild-1602-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1622,7 +1622,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo Bug](https://img.shields.io/badge/Bug-214969-red.svg)](https://bugs.gentoo.org/show_bug.cgi?id=214969) net-p2p/[opentracker](https://github.com/flygoast/opentracker) | High-performance bittorrent tracker
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/resilio-sync.svg?header=)](https://repology.org/project/resilio-sync/versions) net-p2p/[resilio-sync](https://www.resilio.com) | Resilient, fast and scalable file synchronization tool
 *   net-voip/[linphone-desktop](https://gitlab.linphone.org/BC/public/linphone-desktop) | A free VoIP and video softphone based on the SIP protocol
-*   net-voip/[twinkle](https://github.com/LubosD/twinkle) | Softphone for voice over IP and IM communication using SIP
 *   net-vpn/[awsvpnclient](https://aws.amazon.com/vpn/) | AWS VPN Client
 *   net-vpn/[cloudflared](https://github.com/cloudflare/cloudflared) | Argo Tunnel client
 *   net-vpn/[innernet](https://github.com/tonarino/innernet) | A private network system that uses WireGuard
