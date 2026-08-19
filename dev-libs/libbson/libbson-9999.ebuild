@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{13,14} )
+PYTHON_COMPAT=( python3_{13..15} )
 
 inherit cmake git-r3 python-any-r1
 
@@ -14,11 +14,15 @@ EGIT_REPO_URI="https://github.com/mongodb/mongo-c-driver.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="static-libs test"
-RESTRICT="test" # tests need exact version of libbson
+RESTRICT="test"
+PROPERTIES="test_network"
 
 BDEPEND="virtual/pkgconfig
 	test? ( $(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
 			dev-python/legacy-cgi[${PYTHON_USEDEP}]') )"
+
+# remove mongoc related tests
+PATCHES=( "${FILESDIR}/${PN}"-2.3.3-test.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

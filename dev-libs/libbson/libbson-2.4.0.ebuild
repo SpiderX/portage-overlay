@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{13,14} )
+PYTHON_COMPAT=( python3_{13..15} )
 
 inherit cmake python-any-r1
 
@@ -16,6 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs test"
+REQUIRED_USE="test? ( static-libs )"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -23,8 +24,8 @@ BDEPEND="virtual/pkgconfig
 	test? ( $(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
 			dev-python/legacy-cgi[${PYTHON_USEDEP}]') )"
 
-# remove mongoc related test
-PATCHES=( "${FILESDIR}/${PN}"-1.30.5-test.patch )
+# remove mongoc related tests
+PATCHES=( "${FILESDIR}/${PN}"-2.3.3-test.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
