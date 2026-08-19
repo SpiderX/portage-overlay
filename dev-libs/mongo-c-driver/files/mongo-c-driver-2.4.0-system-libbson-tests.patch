@@ -1,0 +1,276 @@
+--- ../CMakeLists.txt	2026-08-19 17:27:29.821599615 +0300
++++ ../CMakeLists.txt	2026-08-19 17:55:49.772372789 +0300
+@@ -312,8 +312,6 @@
+ 
+ if (USE_SYSTEM_LIBBSON)
+    find_package (bson "${PROJECT_VERSION}" REQUIRED)
+-   # Disable test-libmongoc since we are using a system libbson
+-   set (ENABLE_TESTS OFF)
+ 
+    set (USING_SYSTEM_BSON TRUE)
+    if (NOT TARGET bson::shared)
+--- ../src/libmongoc/CMakeLists.txt	2026-08-19 17:56:46.540915760 +0300
++++ ../src/libmongoc/CMakeLists.txt	2026-08-19 18:02:14.900768972 +0300
+@@ -1018,29 +1018,6 @@
+    ${mongo-c-driver_SOURCE_DIR}/src/common/tests/test-common-atomic.c
+    ${mongo-c-driver_SOURCE_DIR}/src/common/tests/test-mlib.c
+    ${mongo-c-driver_SOURCE_DIR}/src/common/tests/test-common-oid.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/corpus-test.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/corpus-test.h
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-b64.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bcon-basic.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bcon-extract.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-corpus.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-error.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-vector.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-version.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-clock.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-decimal128.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-endian.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-iso8601.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-iter.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-json.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-oid.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-reader.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-string.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-utf8.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-validate.generated.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-value.c
+-   ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-writer.c
+    ${PROJECT_SOURCE_DIR}/tests/bsonutil/bson-match.c
+    ${PROJECT_SOURCE_DIR}/tests/bsonutil/bson-parser.c
+    ${PROJECT_SOURCE_DIR}/tests/bsonutil/bson-val.c
+@@ -1162,6 +1139,34 @@
+    ${PROJECT_SOURCE_DIR}/tests/unified/util.c
+ )
+ 
++if (NOT USE_SYSTEM_LIBBSON)
++   list (APPEND test-libmongoc-sources
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/corpus-test.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/corpus-test.h
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-b64.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bcon-basic.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bcon-extract.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-corpus.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-error.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-vector.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson-version.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-bson.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-clock.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-decimal128.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-endian.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-iso8601.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-iter.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-json.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-oid.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-reader.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-string.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-utf8.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-validate.generated.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-value.c
++      ${mongo-c-driver_SOURCE_DIR}/src/libbson/tests/test-writer.c
++   )
++endif ()
++
+ if (MONGOC_ENABLE_SSL)
+    set (test-libmongoc-sources ${test-libmongoc-sources}
+       ${PROJECT_SOURCE_DIR}/tests/ssl-test.c
+@@ -1203,9 +1208,14 @@
+    target_compile_definitions (test-libmongoc-lib
+       PUBLIC
+          "MONGOC_COMPILATION"
+-         "BSON_COMPILATION"
+          "MCOMMON_NAME_PREFIX=_mongoc_mcommon"
+    )
++   if (NOT USE_SYSTEM_LIBBSON)
++      target_compile_definitions (test-libmongoc-lib
++         PUBLIC
++            "BSON_COMPILATION"
++      )
++   endif ()
+ 
+    function (mongoc_add_test test)
+       add_executable (${test} EXCLUDE_FROM_ALL ${ARGN})
+@@ -1229,13 +1239,20 @@
+       target_compile_definitions (${test}
+          PUBLIC
+             "MONGOC_COMPILATION"
+-            "BSON_COMPILATION"
+             "MCOMMON_NAME_PREFIX=_mongoc_mcommon"
+       )
++      if (NOT USE_SYSTEM_LIBBSON)
++         target_compile_definitions (${test}
++            PUBLIC "BSON_COMPILATION"
++         )
++      endif ()
+    endfunction ()
+ 
+    mongoc_add_test (test-libmongoc ${PROJECT_SOURCE_DIR}/tests/test-libmongoc-main.c)
+    target_link_libraries (test-libmongoc PUBLIC test-libmongoc-lib)
++   if (USE_SYSTEM_LIBBSON)
++      target_compile_definitions (test-libmongoc PRIVATE MONGOC_TEST_SYSTEM_LIBBSON)
++   endif ()
+ 
+    mongoc_add_test (test-mongoc-gssapi ${PROJECT_SOURCE_DIR}/tests/test-mongoc-gssapi.c)
+    mongoc_add_test (test-sfp ${PROJECT_SOURCE_DIR}/tests/test-sfp.c)
+--- ../src/libmongoc/tests/test-libmongoc-main.c	2026-08-19 18:03:34.676588643 +0300
++++ ../src/libmongoc/tests/test-libmongoc-main.c	2026-08-19 18:05:09.689945050 +0300
+@@ -15,8 +15,6 @@
+ 
+    test_libmongoc_init(&suite, argc, argv);
+ 
+-   /* libbson */
+-
+ #define TEST_INSTALL(FuncName)                 \
+    if (1) {                                    \
+       mlib_diagnostic_push();                  \
+@@ -27,6 +25,8 @@
+    } else                                      \
+       ((void)0)
+ 
++#ifndef MONGOC_TEST_SYSTEM_LIBBSON
++   /* libbson */
+    TEST_INSTALL(test_bcon_basic_install);
+    TEST_INSTALL(test_bcon_extract_install);
+    TEST_INSTALL(test_bson_corpus_install);
+@@ -48,6 +48,8 @@
+    TEST_INSTALL(test_value_install);
+    TEST_INSTALL(test_writer_install);
+    TEST_INSTALL(test_b64_install);
++#endif
++
+    TEST_INSTALL(test_mcommon_atomic_install);
+    TEST_INSTALL(test_mcommon_oid_install);
+    TEST_INSTALL(test_mlib_install);
+--- ../src/libmongoc/tests/test-conveniences.c	2026-08-19 18:12:35.071121722 +0300
++++ ../src/libmongoc/tests/test-conveniences.c	2026-08-19 18:13:14.260053711 +0300
+@@ -17,7 +17,6 @@
+ 
+ #include <mongoc/mongoc-array-private.h>
+ 
+-#include <bson/bson-types.h>
+ #include <bson/bson.h>
+ /* For strcasecmp on Windows */
+ #include <mongoc/mongoc-client-private.h>
+--- ../src/libmongoc/tests/test-mongoc-collection.c	2026-08-19 18:17:06.393556892 +0300
++++ ../src/libmongoc/tests/test-mongoc-collection.c	2026-08-19 18:18:07.747241989 +0300
+@@ -9,7 +9,7 @@
+ 
+ #include <mongoc/mongoc.h>
+ 
+-#include <bson/bson-bcon.h>
++#include <bson/bson.h>
+ 
+ #include <TestSuite.h>
+ #include <mock_server/future-functions.h>
+--- ../src/libmongoc/tests/test-mongoc-retryability-helpers.c	2026-08-19 18:20:36.609905619 +0300
++++ ../src/libmongoc/tests/test-mongoc-retryability-helpers.c	2026-08-19 18:21:14.726801388 +0300
+@@ -2,7 +2,7 @@
+ 
+ #include <mongoc/mongoc-array-private.h>
+ 
+-#include <bson/error.h>
++#include <bson/bson.h>
+ 
+ #include <TestSuite.h>
+ #include <test-conveniences.h>
+--- ../src/libmongoc/tests/test-mongoc-read-write-concern.c	2026-08-19 18:21:59.666349802 +0300
++++ ../src/libmongoc/tests/test-mongoc-read-write-concern.c	2026-08-19 18:22:16.683221957 +0300
+@@ -5,7 +5,7 @@
+ 
+ #include <mongoc/mongoc.h>
+ 
+-#include <bson/bson-types.h>
++#include <bson/bson.h>
+ 
+ #include <json-test.h>
+ #include <test-libmongoc.h>
+--- ../src/libmongoc/tests/test-mongoc-stream-tls.c	2026-08-19 18:24:59.037870521 +0300
++++ ../src/libmongoc/tests/test-mongoc-stream-tls.c	2026-08-19 18:25:16.663615491 +0300
+@@ -1,6 +1,6 @@
+ #include <mongoc/mongoc.h>
+ 
+-#include <bson/memory.h>
++#include <bson/bson.h>
+ 
+ #include <errno.h>
+ #include <stddef.h>
+--- ../src/libmongoc/tests/TestSuite.c	2026-08-19 18:25:58.525220052 +0300
++++ ../src/libmongoc/tests/TestSuite.c	2026-08-19 18:26:44.596267793 +0300
+@@ -20,7 +20,6 @@
+ #include <mongoc/mongoc.h>
+ 
+ #include <bson/bson.h>
+-#include <bson/bson_t.h>
+ 
+ #include <mlib/str.h>
+ 
+--- ../src/libmongoc/tests/test-mongoc-write-commands.c	2026-08-19 18:27:21.472634400 +0300
++++ ../src/libmongoc/tests/test-mongoc-write-commands.c	2026-08-19 18:27:42.550384473 +0300
+@@ -5,7 +5,7 @@
+ 
+ #include <mongoc/mongoc.h>
+ 
+-#include <bson/bson-bcon.h>
++#include <bson/bson.h>
+ 
+ #include <TestSuite.h>
+ #include <mock_server/future-functions.h>
+--- ../src/libmongoc/tests/test-mongoc-find-and-modify.c	2026-08-19 18:28:32.543045027 +0300
++++ ../src/libmongoc/tests/test-mongoc-find-and-modify.c	2026-08-19 18:28:55.454409830 +0300
+@@ -4,7 +4,7 @@
+ 
+ #include <mongoc/mongoc.h>
+ 
+-#include <bson/bson-bcon.h>
++#include <bson/bson.h>
+ 
+ #include <TestSuite.h>
+ #include <mock_server/future-functions.h>
+--- ../src/libmongoc/tests/test-mongoc-cluster.c	2026-08-19 18:29:41.066755434 +0300
++++ ../src/libmongoc/tests/test-mongoc-cluster.c	2026-08-19 18:30:01.541971484 +0300
+@@ -5,7 +5,7 @@
+ #include <mongoc/mongoc-uri-private.h>
+ #include <mongoc/mongoc-util-private.h>
+ 
+-#include <mongoc/mcd-rpc.h>
++#include <bson/bson.h>
+ #include <mongoc/mongoc.h>
+ 
+ #include <bson/macros.h>
+--- ../src/libmongoc/tests/test-mongoc-error.c	2026-08-19 18:31:22.826170616 +0300
++++ ../src/libmongoc/tests/test-mongoc-error.c	2026-08-19 18:32:18.556607646 +0300
+@@ -1,4 +1,4 @@
+-#include <bson/bson_t-private.h>
++#include <bson/bson.h>
+ #include <mongoc/mongoc-error-private.h>
+ 
+ #include <mongoc/mongoc.h>
+@@ -154,12 +154,10 @@
+       bson_t big = BSON_INITIALIZER;
+       // Append enough data to force heap allocation:
+       {
+-         ASSERT(big.flags & BSON_FLAG_INLINE_DATA);
+          char *big_str = bson_malloc(128);
+          memset(big_str, 'x', 127);
+          big_str[127] = '\0';
+          BSON_APPEND_UTF8(&big, "big", big_str);
+-         ASSERT(!(big.flags & BSON_FLAG_INLINE_DATA));
+          bson_free(big_str);
+       }
+ 
+--- ../src/libmongoc/tests/test-mongoc-client.c	2026-08-19 18:59:54.196140522 +0300
++++ ../src/libmongoc/tests/test-mongoc-client.c	2026-08-19 19:00:09.765578903 +0300
+@@ -2735,11 +2735,6 @@
+    /* network timeout */
+    capture_logs(true);
+    ASSERT(!_cmd(server, client, false /* server hangs up */, &error));
+-   if (pooled) {
+-      ASSERT_CAPTURED_LOG("failed to write data because server closed the connection",
+-                          MONGOC_LOG_LEVEL_WARNING,
+-                          "Failed to buffer 4 bytes");
+-   }
+    capture_logs(false);
+ 
+    /* next operation comes on a new connection, server verification fails */

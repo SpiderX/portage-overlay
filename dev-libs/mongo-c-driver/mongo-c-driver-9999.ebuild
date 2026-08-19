@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{13,14} )
+PYTHON_COMPAT=( python3_{13..15} )
 
-inherit cmake git-r3 python-any-r1
+inherit cmake edo git-r3 python-any-r1
 
 DESCRIPTION="Client library written in C for MongoDB"
 HOMEPAGE="https://github.com/mongodb/mongo-c-driver"
@@ -26,18 +26,21 @@ RDEPEND=">=dev-libs/libbson-${PV}[static-libs?]
 	zlib? ( virtual/zlib:0= )
 	zstd? ( app-arch/zstd:0= )"
 BDEPEND="virtual/pkgconfig
-	test? ( $(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
+	test? ( dev-db/mongodb
+		$(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
 			dev-python/legacy-cgi[${PYTHON_USEDEP}]') )"
+
+# adapt the libmongoc test suite for system libbson by avoiding
+# bundled/private libbson test headers and sources, disable specific assertion
+PATCHES=( "${FILESDIR}/${PN}"-2.4.0-system-libbson-tests.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
 src_prepare() {
-	# remove doc files, build test and not fail on system wide libbson
+	# remove doc files
 	sed -i  -e '/^\s*install\s*(FILES COPYING NEWS/,/^\s*)/ {d}' \
-		-e '/SET (ENABLE_TESTS OFF)/d' \
-		-e '/System libbson built without static/s|FATAL_ERROR|STATUS|' \
 		CMakeLists.txt || die "sed failed for CMakeLists.txt"
 
 	cmake_src_prepare
@@ -61,6 +64,12 @@ src_configure() {
 		-DUSE_SYSTEM_LIBBSON=ON
 	)
 	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+
+	use test && edo cmake --build "${BUILD_DIR}" --target mongo_c_driver_tests
 }
 
 src_test() {
@@ -90,6 +99,8 @@ src_test() {
 /TOPOLOGY/dns # no ipv6
 EOF
 	export MONGOC_TEST_SKIP_LIVE=on
-	../mongo-c-driver-"${PV}"_build/src/libmongoc/test-libmongoc \
-		--skip-tests "${S}"/skip-test.txt || die "test-libmongoc failed"
+	edo mongod --port 27017 --bind_ip 127.0.0.1 --nounixsocket --fork \
+		--dbpath="${T}" --logpath="${T}/mongod.log"
+	edo "${BUILD_DIR}"/src/libmongoc/test-libmongoc --skip-tests "${S}"/skip-test.txt
+	edo kill "$(<"${T}/mongod.lock")"
 }
