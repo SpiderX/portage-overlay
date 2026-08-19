@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,11 @@ IUSE="dfp static-libs test"
 REQUIRED_USE="test? ( static-libs )"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-libs/libbson-1.30.3
+DEPEND=">=dev-libs/libbson-2
 	dev-libs/openssl:=
 	dfp? ( dev-libs/intel-dfp )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}/${PN}"-1.15.1-static-libs.patch )
 
 DOCS=( {CHANGELOG,README}.md )
 
