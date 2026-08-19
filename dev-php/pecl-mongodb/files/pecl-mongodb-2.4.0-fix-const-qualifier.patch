@@ -1,0 +1,11 @@
+--- ../src/phongo_util.c	2026-08-19 19:59:06.714673902 +0300
++++ ../src/phongo_util.c	2026-08-19 19:59:26.359224737 +0300
+@@ -94,7 +94,7 @@
+ /* Splits a namespace name into the database and collection names, allocated with estrdup. */
+ bool phongo_split_namespace(const char* namespace, char** dbname, char** cname)
+ {
+-	char* dot = strchr(namespace, '.');
++	const char* dot = strchr(namespace, '.');
+ 
+ 	if (!dot) {
+ 		return false;
