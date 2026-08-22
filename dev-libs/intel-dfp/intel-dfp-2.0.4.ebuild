@@ -37,6 +37,7 @@ src_prepare() {
 }
 
 src_compile() {
+	# CC must match exact values in makefile.iml_head
 	emake -C LIBRARY OS_TYPE=LINUX CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0
 	use test && emake -C TESTS OS_TYPE=LINUX CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0
 }
@@ -49,6 +50,6 @@ src_install() {
 	einstalldocs
 	insinto /usr/include
 	doins -r LIBRARY/src/*.h
-	exeinto /usr/"$(get_libdir)"
-	doexe LIBRARY/libbid.a
+	insinto /usr/"$(get_libdir)"
+	doins LIBRARY/libbid.a
 }
