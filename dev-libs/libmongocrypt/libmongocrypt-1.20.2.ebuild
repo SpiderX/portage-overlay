@@ -16,11 +16,13 @@ IUSE="dfp static-libs test"
 REQUIRED_USE="test? ( static-libs )"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-libs/libbson-2
+DEPEND=">=dev-libs/libbson-2[static-libs?]
 	dev-libs/openssl:=
 	dfp? ( dev-libs/intel-dfp )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${PN}"-1.20.2-static-libs.patch )
 
 DOCS=( {CHANGELOG,README}.md )
 

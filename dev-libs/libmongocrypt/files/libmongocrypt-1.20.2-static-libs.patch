@@ -1,0 +1,255 @@
+--- ../cmake/ImportBSON.cmake	2026-08-21 09:56:09.714097434 +0300
++++ ../cmake/ImportBSON.cmake	2026-08-21 10:00:06.788250399 +0300
+@@ -74,18 +74,27 @@
+    if (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" AND USE_SHARED_LIBBSON AND NOT ENABLE_ONLINE_TESTS)
+       message (STATUS "NOTE: Using system-wide libbson library. This is intended only for package maintainers.")
+       find_library (_MONGOCRYPT_SYSTEM_LIBBSON_SHARED "${CMAKE_SHARED_LIBRARY_PREFIX}bson2${CMAKE_SHARED_LIBRARY_SUFFIX}")
+-      find_library (_MONGOCRYPT_SYSTEM_LIBBSON_STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson2${CMAKE_STATIC_LIBRARY_SUFFIX}")
+       find_package (bson 2.0 REQUIRED)
+       get_target_property (_BSON_SHARED_INCL_DIR_PROP bson::shared INTERFACE_INCLUDE_DIRECTORIES)
+       set (_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR "${_BSON_SHARED_INCL_DIR_PROP}" CACHE FILEPATH "Internal use only")
++
+       add_library (bson_shared SHARED IMPORTED)
+-      add_library (bson_static STATIC IMPORTED)
+-      set_target_properties (bson_shared bson_static PROPERTIES
++      set_target_properties (bson_shared PROPERTIES
+          IMPORTED_CONFIGURATIONS "Release"
+          INTERFACE_INCLUDE_DIRECTORIES "${_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR}"
+-         )
++      )
+       set_property (TARGET bson_shared PROPERTY IMPORTED_LOCATION "${_MONGOCRYPT_SYSTEM_LIBBSON_SHARED}")
+-      set_property (TARGET bson_static PROPERTY IMPORTED_LOCATION "${_MONGOCRYPT_SYSTEM_LIBBSON_STATIC}")
++
++      if (ENABLE_STATIC)
++         find_library (_MONGOCRYPT_SYSTEM_LIBBSON_STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson2${CMAKE_STATIC_LIBRARY_SUFFIX}" REQUIRED)
++         add_library (bson_static STATIC IMPORTED)
++         set_target_properties (bson_static PROPERTIES
++            IMPORTED_CONFIGURATIONS "Release"
++            INTERFACE_INCLUDE_DIRECTORIES "${_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR}"
++         )
++         set_property (TARGET bson_static PROPERTY IMPORTED_LOCATION "${_MONGOCRYPT_SYSTEM_LIBBSON_STATIC}")
++      endif ()
++
+       set_property (
+          CACHE _MONGOCRYPT_SYSTEM_LIBBSON_SHARED
+                _MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR
+@@ -152,15 +161,25 @@
+ 
+ # Define interface targets to be used to control the libbson used at both build and import time.
+ # Refer to mongocrypt-config.cmake to see how these targets are used by consumers
+-add_library (_mongocrypt-libbson_for_static INTERFACE)
+ add_library (_mongocrypt-libbson_for_shared INTERFACE)
+-add_library (_mongocrypt::libbson_for_static ALIAS _mongocrypt-libbson_for_static)
+ add_library (_mongocrypt::libbson_for_shared ALIAS _mongocrypt-libbson_for_shared)
++
++if (ENABLE_STATIC)
++   add_library (_mongocrypt-libbson_for_static INTERFACE)
++   add_library (_mongocrypt::libbson_for_static ALIAS _mongocrypt-libbson_for_static)
++endif ()
++
+ install (
+-   TARGETS _mongocrypt-libbson_for_static _mongocrypt-libbson_for_shared
++   TARGETS _mongocrypt-libbson_for_shared
+    EXPORT mongocrypt_targets
+ )
+ 
++if (ENABLE_STATIC)
++   install (
++      TARGETS _mongocrypt-libbson_for_static
++      EXPORT mongocrypt_targets
++   )
++endif ()
+ # Link to the requested libbson, only exporting that usage for the local build tree.
+ # The mongocrypt-config file will later add the appropriate link library for downstream
+ # users during find_package()
+@@ -169,8 +188,10 @@
+ else ()
+    target_link_libraries (_mongocrypt-libbson_for_shared INTERFACE $<BUILD_INTERFACE:bson_static>)
+ endif ()
+-# libbson_for_static always links to the static libbson:
+-target_link_libraries (_mongocrypt-libbson_for_static INTERFACE $<BUILD_INTERFACE:bson_static>)
++
++if (ENABLE_STATIC)
++   target_link_libraries (_mongocrypt-libbson_for_static INTERFACE $<BUILD_INTERFACE:bson_static>)
++endif ()
+ 
+ if (TARGET mongoc_static)
+    # And an alias to the mongoc target for use in some test cases
+--- ../CMakeLists.txt	2026-08-21 10:01:35.429252339 +0300
++++ ../CMakeLists.txt	2026-08-21 10:25:13.061706897 +0300
+@@ -294,40 +294,42 @@
+ 
+ generate_export_header (mongocrypt EXPORT_FILE_NAME src/mongocrypt-export.h BASE_NAME mongocrypt )
+ 
+-add_library (mongocrypt_static STATIC ${MONGOCRYPT_SOURCES})
+-# Checking CMAKE_C_FLAGS for -fPIC is not a foolproof way of checking whether
+-# -fPIC was set as a compiler flag. However, users were instructed before to
+-# pass -fPIC through CMAKE_C_FLAGS. This will prevent redundant output in
+-# the common case that users are setting -DCMAKE_C_FLAGS='-fPIC'
+-string (FIND "${CMAKE_C_FLAGS}" "-fPIC" FPIC_LOCATION)
+-if (NOT WIN32 AND ENABLE_PIC AND "${FPIC_LOCATION}" EQUAL "-1")
+-   set_property (TARGET mongocrypt_static PROPERTY POSITION_INDEPENDENT_CODE TRUE)
+-   message ("Adding -fPIC to compilation of mongocrypt_static components")
+-endif ()
+-target_include_directories (
+-   mongocrypt_static
+-   PRIVATE
+-      "${CMAKE_CURRENT_SOURCE_DIR}/kms-message/src"
+-      "${CMAKE_CURRENT_SOURCE_DIR}/src"
+-   PUBLIC
+-      "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>"
++if (ENABLE_STATIC)
++   add_library (mongocrypt_static STATIC ${MONGOCRYPT_SOURCES})
++   # Checking CMAKE_C_FLAGS for -fPIC is not a foolproof way of checking whether
++   # -fPIC was set as a compiler flag. However, users were instructed before to
++   # pass -fPIC through CMAKE_C_FLAGS. This will prevent redundant output in
++   # the common case that users are setting -DCMAKE_C_FLAGS='-fPIC'
++   string (FIND "${CMAKE_C_FLAGS}" "-fPIC" FPIC_LOCATION)
++   if (NOT WIN32 AND ENABLE_PIC AND "${FPIC_LOCATION}" EQUAL "-1")
++      set_property (TARGET mongocrypt_static PROPERTY POSITION_INDEPENDENT_CODE TRUE)
++      message ("Adding -fPIC to compilation of mongocrypt_static components")
++   endif ()
++   target_include_directories (
++      mongocrypt_static
++      PRIVATE
++         "${CMAKE_CURRENT_SOURCE_DIR}/kms-message/src"
++         "${CMAKE_CURRENT_SOURCE_DIR}/src"
++      PUBLIC
++         "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>"
+    )
+-target_compile_definitions (
+-   mongocrypt_static
+-   PUBLIC
+-      MONGOCRYPT_STATIC_DEFINE
+-      KMS_MSG_STATIC
++   target_compile_definitions (
++      mongocrypt_static
++      PUBLIC
++         MONGOCRYPT_STATIC_DEFINE
++         KMS_MSG_STATIC
+    )
+-target_link_libraries (
+-   mongocrypt_static
+-   PRIVATE
+-      _mongocrypt::libbson_for_static
+-      kms_message_static
+-      $<BUILD_INTERFACE:mongo::mc-mlib>
+-   PUBLIC
+-      mongocrypt::platform
+-      ${maybe_dfp_library}
++   target_link_libraries (
++      mongocrypt_static
++      PRIVATE
++         _mongocrypt::libbson_for_static
++         kms_message_static
++         $<BUILD_INTERFACE:mongo::mc-mlib>
++      PUBLIC
++         mongocrypt::platform
++         ${maybe_dfp_library}
+    )
++endif ()
+ set (PKG_CONFIG_STATIC_LIBS "\${prefix}/${CMAKE_INSTALL_LIBDIR}/libmongocrypt-static.a")
+ set (PKG_CONFIG_STATIC_LIBS "${PKG_CONFIG_STATIC_LIBS} ${CMAKE_THREAD_LIBS_INIT}")
+ if (CMAKE_DL_LIBS)
+@@ -351,15 +353,21 @@
+ 
+ if (MONGOCRYPT_CRYPTO STREQUAL CommonCrypto)
+    target_link_libraries (mongocrypt PRIVATE "-framework CoreFoundation -framework Security")
+-   target_link_libraries (mongocrypt_static PRIVATE "-framework CoreFoundation -framework Security")
++   if (ENABLE_STATIC)
++      target_link_libraries (mongocrypt_static PRIVATE "-framework CoreFoundation -framework Security")
++   endif ()
+    set (PKG_CONFIG_STATIC_LIBS "${PKG_CONFIG_STATIC_LIBS} -framework CoreFoundation -framework Security")
+ elseif (MONGOCRYPT_CRYPTO STREQUAL CNG)
+    target_link_libraries (mongocrypt PRIVATE "bcrypt")
+-   target_link_libraries (mongocrypt_static PRIVATE "bcrypt")
++   if (ENABLE_STATIC)
++      target_link_libraries (mongocrypt_static PRIVATE "bcrypt")
++   endif ()
+    set (PKG_CONFIG_STATIC_LIBS "${PKG_CONFIG_STATIC_LIBS} -lbcrypt")
+ elseif (MONGOCRYPT_CRYPTO STREQUAL OpenSSL)
+    target_link_libraries (mongocrypt PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+-   target_link_libraries (mongocrypt_static PRIVATE OpenSSL::SSL OpenSSL::Crypto)
++   if (ENABLE_STATIC)
++      target_link_libraries (mongocrypt_static PRIVATE OpenSSL::SSL OpenSSL::Crypto)
++   endif ()
+    set (PKG_CONFIG_STATIC_LIBS "${PKG_CONFIG_STATIC_LIBS} -lssl -lcrypto")
+ endif ()
+ 
+@@ -382,13 +390,15 @@
+    OUTPUT_NAME "mongocrypt"
+ )
+ 
+-set_target_properties (mongocrypt_static PROPERTIES
+-   SOVERSION 0
+-   VERSION "0.0.0"
+-   OUTPUT_NAME "mongocrypt-static"
+-)
++if (ENABLE_STATIC)
++   set_target_properties (mongocrypt_static PROPERTIES
++      SOVERSION 0
++      VERSION "0.0.0"
++      OUTPUT_NAME "mongocrypt-static"
++   )
++endif ()
+ 
+-if (BUILD_TESTING)
++if (BUILD_TESTING AND ENABLE_STATIC)
+    # Use C++ in the testing DLL to ensure we can load a library with the C++ runtime
+    enable_language (CXX)
+    add_library (test-dll MODULE test/test-dll.cpp)
+@@ -499,7 +509,7 @@
+    test/test-unicode-fold.c
+    )
+ 
+-if (BUILD_TESTING)
++if (BUILD_TESTING AND ENABLE_STATIC)
+ 
+ # Define test-mongocrypt
+ add_executable (test-mongocrypt ${TEST_MONGOCRYPT_SOURCES})
+@@ -553,7 +563,7 @@
+ 
+ endif () # BUILD_TESTING
+ 
+-if ("cxx_std_20" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
++if (ENABLE_STATIC AND "cxx_std_20" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
+    add_executable (csfle-markup src/csfle-markup.cpp)
+    target_link_libraries (csfle-markup PRIVATE mongocrypt_static _mongocrypt::libbson_for_static mongo::mc-mlib)
+    target_compile_features (csfle-markup PRIVATE cxx_std_20)
+@@ -571,20 +581,26 @@
+       WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+ 
+-   # Define example-state-machine-static
+-   add_executable (example-state-machine-static test/example-state-machine.c)
+-   target_link_libraries (example-state-machine-static PRIVATE mongocrypt_static _mongocrypt::libbson_for_static)
+-   target_include_directories (example-state-machine-static PRIVATE ./src)
+-   add_test (
+-      NAME example-state-machine-static
+-      COMMAND example-state-machine-static
+-      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+-   )
++   if (ENABLE_STATIC)
++      # Define example-state-machine-static
++      add_executable (example-state-machine-static test/example-state-machine.c)
++      target_link_libraries (example-state-machine-static PRIVATE mongocrypt_static _mongocrypt::libbson_for_static)
++      target_include_directories (example-state-machine-static PRIVATE ./src)
++      add_test (
++         NAME example-state-machine-static
++         COMMAND example-state-machine-static
++         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
++      )
++   endif ()
+ 
+    if (ENABLE_ONLINE_TESTS)
+       message ("compiling utilities")
+       add_executable (csfle test/util/csfle.c test/util/util.c)
+-      target_link_libraries (csfle PRIVATE mongocrypt_static)
++      if (ENABLE_STATIC)
++         target_link_libraries (csfle PRIVATE mongocrypt_static)
++      else ()
++         target_link_libraries (csfle PRIVATE mongocrypt)
++      endif ()
+       target_include_directories (csfle PRIVATE ${CMAKE_BINARY_DIR}/src)
+       target_include_directories (csfle PRIVATE ./src)
+       target_include_directories (csfle PRIVATE ./kms-message/src)
