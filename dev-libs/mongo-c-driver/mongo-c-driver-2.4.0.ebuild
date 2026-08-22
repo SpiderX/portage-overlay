@@ -19,8 +19,8 @@ REQUIRED_USE="aws? ( ssl ) test? ( static-libs )"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/libbson-${PV}[static-libs?]
-	>=dev-libs/libmongocrypt-1.15.1
-	dev-libs/libutf8proc[static-libs?]
+	>=dev-libs/libmongocrypt-1.20.0[static-libs?]
+	dev-libs/libutf8proc:0=
 	sasl? ( dev-libs/cyrus-sasl:2 )
 	snappy? ( app-arch/snappy:0= )
 	ssl? ( dev-libs/openssl:= )
@@ -31,9 +31,9 @@ BDEPEND="virtual/pkgconfig
 		$(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]
 			dev-python/legacy-cgi[${PYTHON_USEDEP}]') )"
 
-# adapt the libmongoc test suite for system libbson by avoiding
-# bundled/private libbson test headers and sources, disable specific assertion
-PATCHES=( "${FILESDIR}/${PN}"-2.4.0-system-libbson-tests.patch )
+# support shared-only system libbson, adapt libmongoc test suite for system libbson
+# by avoiding bundled/private libbson test headers and sources, disable specific assertion
+PATCHES=( "${FILESDIR}/${PN}"-2.4.0-system-libbson.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
