@@ -1,0 +1,89 @@
+Terms of Service
+Last updated: Nov 07, 2024
+
+This End-User License Agreement ("EULA") is a legal agreement between you (the "Customer", the "End User", or the "Licensee"), either as an individual or, if purchased or otherwise acquired by or for an entity, as an entity, and CacheWerk, Inc. ("CacheWerk", "we", "us", "our", or the "Licensor"). Read the EULA carefully before completing the installation process and/or using our Relay and its related software components (the "Software").
+
+CACHEWERK PROVIDES THE SOFTWARE SOLELY ON THE TERMS AND CONDITIONS SET FORTH IN THIS EULA AND ON THE CONDITION THAT YOU ACCEPT AND COMPLY WITH THEM. BY USING THE SOFTWARE, YOU (A) ACCEPT THIS EULA AND AGREE THAT YOU ARE LEGALLY BOUND BY ITS TERMS AND CONDITIONS; AND (B) REPRESENT AND WARRANT THAT: (I) YOU ARE OF LEGAL AGE TO ENTER INTO A BINDING EULA; AND (II) IF THE LICENSEE IS A CORPORATION, GOVERNMENTAL ORGANIZATION, OR OTHER LEGAL ENTITY, YOU HAVE THE RIGHT, POWER, AND AUTHORITY TO ENTER INTO THIS EULA ON BEHALF OF THE LICENSEE AND BIND THE LICENSEE TO ITS TERMS AND CONDITIONS. IF THE LICENSEE DOES NOT AGREE TO THE TERMS AND CONDITIONS OF THIS EULA, CACHEWERK WILL NOT AND DOES NOT LICENSE THE SOFTWARE TO THE LICENSEE AND THE LICENSEE MUST NOT DOWNLOAD OR INSTALL THE SOFTWARE.
+
+NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS EULA OR THE LICENSEE'S ACCEPTANCE OF THE TERMS AND CONDITIONS OF THIS EULA, NO LICENSE IS GRANTED (WHETHER EXPRESSLY, BY IMPLICATION OR OTHERWISE) UNDER THIS EULA, AND THIS EULA EXPRESSLY EXCLUDES ANY RIGHT CONCERNING ANY SOFTWARE THAT THE LICENSEE DID NOT ACQUIRE LAWFULLY OR THAT IS NOT A LEGITIMATE, AUTHORIZED COPY OF THE SOFTWARE. To install and use an authorized copy of the Software, you will need a unique Source URL issued by CACHEWERK. If your unique Source URL is published with or without your fault, CacheWerk reserves the right to terminate your access to the Software without notice.
+
+1. License Grant and Scope
+1.1 License
+Subject to the terms of this Agreement and provided that you comply with the restrictions set forth below, CacheWerk hereby grants and you hereby accept a Pro License, an Enterprise License, or an Appliance License, as applicable:
+
+Standard License: a worldwide, non-exclusive, non-transferable license to reproduce and use the Software during the Term on a physical or virtual machine, which is in your possession or control;
+
+Enterprise License: a worldwide, non-exclusive, non-transferable license to reproduce and use the Software and the features specifically applicable to the Enterprise License version of the Software, during the Term on a physical or virtual machine, which is in your possession or control; and
+
+Appliance License: a worldwide, non-exclusive, non-transferable license to (i) reproduce and use the Software, during the Term on a physical or virtual machine, which is in your possession or control and (ii) distribute the Software in any applications, frameworks, or elements that you have developed using the Software.
+
+1.2 Restrictions
+1.2.1 General Restrictions
+The Software and its related materials are CacheWerk’s confidential information. You shall not directly or indirectly: (a) reverse engineer, decompile, disassemble, or otherwise attempt to reverse engineer the Software or attempt to reconstruct or discover any source code, underlying ideas, algorithms, file formats or programming interfaces of the Software by any means whatsoever; (b) distribute, sell, sublicense, rent, lease or use the Software for time sharing, hosting, service provider or like purposes, except as expressly permitted under this EULA; (c) redistribute the Software, other than by including the Software or a portion thereof within your own product, which must have substantially different functionality than the Software and must not allow any third party to use the Software, or any portions thereof, for software development or application development purposes; (d) redistribute the Software as part of a product, appliance or virtual server, unless otherwise permitted by this EULA; (e) redistribute the Software on any server which is not in your possession or under your control; (f) remove any product identification, proprietary, copyright or other notices contained in the Software; (g) modify any part of the Software, create a derivative work of any part of the Software or incorporate the Software, unless otherwise permitted by this EULA; (h) publicly disseminate performance information or analysis (including, without limitation, benchmarks) from any source relating to the Software; (i) utilize any equipment, device, software, or other means designed to circumvent or remove any form of Source URL or copy protection used by CacheWerk in connection with the Software, or use the Software together with any authorization code, Source URL, serial number, or other copy protection device not supplied by CacheWerk; (j) use the Software to develop a product which is competitive with any CacheWerk’s product offerings; or (k) use unauthorized Source URLs or keycode(s) or distribute or publish Source URLs or keycode(s), except as may be expressly permitted by CacheWerk in writing. UNDER NO CIRCUMSTANCES MAY YOU USE THE SOFTWARE AS PART OF A PRODUCT OR SERVICE THAT PROVIDES SIMILAR FUNCTIONALITY COMPARED TO CACHEWERK’S SOFTWARE.
+
+1.2.2 Specific Restrictions
+Standard License: you shall not (i) use the Software as part of your service offerings, such as virtual servers, appliance, or any form of hosting or (ii) trick, modify, or change the Software, including the Software's source code;
+
+Enterprise License: you shall not (i) use the Software as part of your service offerings, such as virtual servers, appliance, or any form of hosting or (ii) trick, modify, or change the Software, including the Software's source code; and
+
+Appliance License: you shall not trick, modify, or change the Software, including the Software's source code.
+
+1.3 Archive Copies
+You may make a reasonable amount of copies of the Software for archival purposes.
+
+1.4 Electronic Delivery
+The Software will be delivered by electronic means unless otherwise specified on the applicable invoice or at the time of purchase.
+
+1.5 Updates
+Upon delivery to you, any new versions, updates, or upgrades of the Software will constitute an element of the Software and will thereafter be subject to this EULA.
+
+2. Ownership
+Notwithstanding anything to the contrary contained herein, except for the limited license rights expressly provided herein, CacheWerk retains all rights, title and interest (including, without limitation, all patent, copyright, trademark, trade secret and other intellectual property rights) in and to the Software and all copies, modifications and derivative works thereof (including any changes which incorporate any of your ideas, feedback or suggestions). You acknowledge and agree that you are obtaining only a limited license right to the Software, and that irrespective of any use of the words "purchase", "sale" or like terms hereunder, no ownership rights are being conveyed to you under this EULA or otherwise.
+
+3. Fees and Payment
+The Software license fees will be due and payable in full as set forth in the applicable invoice or at the time of purchase. If the Software does not function properly within two weeks of purchase, please contact us within those two weeks for a refund. You shall be responsible for all taxes, withholdings, duties and levies arising from the order (excluding taxes based on the net income of CacheWerk).
+
+4. Support, Maintenance and Services
+Support and maintenance services may be provided, for example as set out in your invoice and/or as set forth on our website accessible at relay.so.
+
+5. Term and Termination
+This EULA is effective until terminated by you or CacheWerk. Your rights under this EULA will terminate automatically if you fail to comply with any of its terms or conditions.
+
+6. Disclaimer of Warranties
+The Software is provided "as is" and "as available." You expressly acknowledge and agree that use of the Software is at your sole risk. To the maximum extent permitted by applicable law, CACHEWERK MAKES NO WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS OR ANY IMPLIED WARRANTY ARISING FROM STATUTE, COURSE OF DEALING, COURSE OF PERFORMANCE, OR USAGE OF TRADE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, CACHEWERK HAS NO OBLIGATION TO INDEMNIFY, DEFEND, OR HOLD HARMLESS YOU, INCLUDING WITHOUT LIMITATION AGAINST CLAIMS RELATED TO PRODUCT LIABILITY OR INFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS. Without limiting the generality of the foregoing, CacheWerk does not warrant that the Software will perform without error or that it will run without immaterial interruption. In addition, CacheWerk gives no warranty regarding, and will have no responsibility or liability for, any loss arising out of: (a) a modification of the Software made by anyone other than CacheWerk; (b) use of the Software in a way CacheWerk has described as unsuitable, incorrect, or inappropriate, or (c) use of the Software in combination with any operating system CacheWerk has not authorized or described as suitable in writing.
+
+7. Limitation of Liability
+7.1
+TO THE EXTENT NOT PROHIBITED BY APPLICABLE LAW, IN NO EVENT SHALL CACHEWERK BE LIABLE FOR PERSONAL INJURY OR ANY INCIDENTAL, SPECIAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, LOSS OF DATA, BUSINESS INTERRUPTION, OR ANY OTHER COMMERCIAL DAMAGES OR LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE SOFTWARE, HOWEVER CAUSED, REGARDLESS OF THE THEORY OF LIABILITY (CONTRACT, TORT, OR OTHERWISE) AND EVEN IF CACHEWERK HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. In no event shall CacheWerk’s total liability to you for all damages (other than as may be required by applicable law in cases involving personal injury) exceed the amount of fees actually paid to CacheWerk by you for the Software.
+
+7.2
+Without limiting the generality of Section 7.1, you acknowledge and agree that:
+
+when using Relay, you will consider the data stored in your Redis server to be ephemeral; and
+
+if there is no or weak connection between Relay and your Redis server, the data stored with Relay may become stale. In rare situations, the lack of or weak connection may cause applications to use stale cache data and/or write the stale cache data to the database, thereby overwriting the more recent data. It is your responsibility to ensure that Relay stays connected to your Redis server.
+
+8. Consent to the Use of Data
+You agree that CacheWerk and its affiliates may collect and use technical data and related information that is gathered to facilitate the provision of the Software, software updates, product support, and other services to you (if any) related to the Software. For example, via an API endpoint, the Software’s API may communicate with an end user’s server(s), wherein CacheWerk’s server(s) may request for technical data and/or related information and may receive a response from the Software’s API. CacheWerk may use this information, as long as it is in a form that does not personally identify you, to improve CacheWerk’s products or to provide services or technologies to you. With respect to personally identifiable information, please review CacheWerk’s Privacy Policy.
+
+9. Audit
+We or a certified auditor acting on our behalf, may, upon its reasonable request and at its expense, audit you with respect to the use of the Software. Such audit may be conducted by mail, electronic means or through an in-person visit to your place of business. Any such in-person audit shall be conducted during regular business hours at your facilities and shall not unreasonably interfere with your business activities. We shall not remove, copy, or redistribute any electronic material during the course of an audit. If an audit reveals that you are using the Software in a way that is in material violation of this EULA, then you shall pay our reasonable costs of conducting the audit. In the case of a material violation, you agree to pay us any amounts owing that are attributable to the unauthorized use. In addition, we reserve the right, at our sole option, to terminate the licenses for the Software.
+
+10. Third Party Software
+Examples included in Software may provide links to third party libraries or code (collectively "Third Party Software") to implement various functions. Third Party Software does not form any part of the Software. In some cases, access to Third Party Software may be included along with the Software delivery as a convenience for demonstration purposes. Such source code and libraries may be included in the "…/examples" source tree delivered with the Software and do not form any part of the Software. You shall not use, distribute, reproduce, or otherwise commercially exploit any Third Party Software unless you have obtained applicable license(s) from the Third Party Software’s owner(s).
+
+11. Miscellaneous
+11.1 Governing Law
+This EULA is governed by the laws of the province of British Columbia and Canada without regard to conflicts of laws provisions thereof, and without regard to the United Nations Convention on the International Sale of Goods or the Uniform Computer Information Transactions Act, as currently enacted by any jurisdiction or as may be codified or amended from time to time by any jurisdiction. The jurisdiction and venue for actions related to the subject matter hereof shall be the province of British Columbia and Canada federal courts located in Vancouver, BC, and both parties hereby submit to the personal jurisdiction of such courts.
+
+11.2 Amendment
+CacheWerk may amend this EULA from time to time. If CacheWerk makes any substantial changes, CacheWerk will notify you by sending an email to your account’s email address.
+
+11.3 Assignment
+You may not assign this Agreement or any of its rights under this Agreement without the prior written consent of CacheWerk and any attempted assignment without such consent shall be void.
+
+11.4 Export Compliance
+You agree to comply with all applicable laws and regulations, including laws, regulations, orders or other restrictions on export, re-export or redistribution of software.
+
+11.5 Indemnification
+You agree to defend, indemnify, and hold harmless CacheWerk from and against any lawsuits, claims, losses, damages, fines and expenses (including attorneys' fees and costs) arising out of your use of the Software or breach of this Agreement.
