@@ -1,0 +1,17 @@
+--- ../tests/EmailValidator/Validation/Extra/SpoofCheckValidationTest.php	2026-07-07 12:40:45.299903138 +0300
++++ ../tests/EmailValidator/Validation/Extra/SpoofCheckValidationTest.php	2026-07-07 12:41:19.613258614 +0300
+@@ -5,12 +5,11 @@
+ use Egulias\EmailValidator\EmailLexer;
+ use Egulias\EmailValidator\Validation\Extra\SpoofCheckValidation;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class SpoofCheckValidationTest extends TestCase
+ {
+-    /**
+-     * @dataProvider validUTF8EmailsProvider
+-     */
++    #[DataProvider('validUTF8EmailsProvider')]
+     public function testUTF8EmailAreValid($email)
+     {
+         $validation = new SpoofCheckValidation();

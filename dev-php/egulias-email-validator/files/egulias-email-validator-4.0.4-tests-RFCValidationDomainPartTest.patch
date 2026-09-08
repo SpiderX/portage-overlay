@@ -1,0 +1,75 @@
+--- ../tests/EmailValidator/Validation/RFCValidationDomainPartTest.php	2026-07-07 12:44:06.135209631 +0300
++++ ../tests/EmailValidator/Validation/RFCValidationDomainPartTest.php	2026-07-07 12:47:06.628475279 +0300
+@@ -3,6 +3,7 @@
+ namespace Egulias\EmailValidator\Tests\EmailValidator\Validation;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Egulias\EmailValidator\EmailLexer;
+ use Egulias\EmailValidator\Warning\TLD;
+ use Egulias\EmailValidator\Warning\Comment;
+@@ -30,7 +31,6 @@
+ use Egulias\EmailValidator\Result\Reason\ExpectingDTEXT;
+ use Egulias\EmailValidator\Result\Reason\UnOpenedComment;
+ 
+-
+ class RFCValidationDomainPartTest extends TestCase
+ {
+     /**
+@@ -54,9 +54,7 @@
+         $this->validator = null;
+     }
+ 
+-    /**
+-     * @dataProvider getValidEmails
+-     */
++    #[DataProvider('getValidEmails')]
+     public function testValidEmails($email)
+     {
+         $this->assertTrue($this->validator->isValid($email, $this->lexer));
+@@ -80,9 +78,7 @@
+         );
+     }
+ 
+-    /**
+-     * @dataProvider getInvalidEmails
+-     */
++    #[DataProvider('getInvalidEmails')]
+     public function testInvalidEmails($email)
+     {
+         $this->assertFalse($this->validator->isValid($email, $this->lexer));
+@@ -152,9 +148,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getInvalidEmailsWithErrors
+-     */
++    #[DataProvider('getInvalidEmailsWithErrors')]
+     public function testInvalidEmailsWithErrorsCheck($error, $email)
+     {
+         $this->assertFalse($this->validator->isValid($email, $this->lexer));
+@@ -186,9 +180,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getValidEmailsWithWarnings
+-     */
++    #[DataProvider('getValidEmailsWithWarnings')]
+     public function testValidEmailsWithWarningsCheck($expectedWarnings, $email)
+     {
+         $this->assertTrue($this->validator->isValid($email, $this->lexer));
+@@ -238,10 +230,8 @@
+             ['example@symƒony.com'],
+         ];
+     }
+-    
+-    /**
+-     * @dataProvider invalidUTF16Chars
+-     */
++
++    #[DataProvider('invalidUTF16Chars')]
+     public function testInvalidUTF16($email)
+     {
+         $this->markTestSkipped('Util finding a way to control this kind of chars');

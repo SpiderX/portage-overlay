@@ -1,0 +1,54 @@
+--- ../tests/EmailValidator/Validation/RFCValidationTest.php	2026-07-07 12:48:01.283133426 +0300
++++ ../tests/EmailValidator/Validation/RFCValidationTest.php	2026-07-07 12:49:30.322531650 +0300
+@@ -3,6 +3,7 @@
+ namespace Egulias\EmailValidator\Tests\EmailValidator\Validation;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Egulias\EmailValidator\EmailLexer;
+ use Egulias\EmailValidator\Warning\Comment;
+ use Egulias\EmailValidator\Warning\CFWSNearAt;
+@@ -46,9 +47,7 @@
+         $this->validator = null;
+     }
+ 
+-    /**
+-     * @dataProvider getValidEmails
+-     */
++    #[DataProvider('getValidEmails')]
+     public function testValidEmails($email)
+     {
+         $this->assertTrue($this->validator->isValid($email, $this->lexer));
+@@ -82,9 +81,7 @@
+         );
+     }
+ 
+-    /**
+-     * @dataProvider getValidEmailsWithWarnings
+-     */
++    #[DataProvider('getValidEmailsWithWarnings')]
+     public function testValidEmailsWithWarningsCheck($email, $expectedWarnings)
+     {
+         $this->assertTrue($this->validator->isValid($email, $this->lexer));
+@@ -112,9 +109,7 @@
+         $this->assertFalse($this->validator->isValid($email, $this->lexer));
+     }
+ 
+-    /**
+-     * @dataProvider getInvalidEmails
+-     */
++    #[DataProvider('getInvalidEmails')]
+     public function testInvalidEmails($email)
+     {
+         $this->assertFalse($this->validator->isValid($email, $this->lexer));
+@@ -157,9 +152,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getInvalidEmailsWithErrors
+-     */
++    #[DataProvider('getInvalidEmailsWithErrors')]
+     public function testInvalidDEmailsWithErrorsCheck($error, $email)
+     {
+         $this->assertFalse($this->validator->isValid($email, $this->lexer));

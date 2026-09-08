@@ -1,0 +1,29 @@
+--- ../tests/EmailValidator/Validation/MessageIDValidationTest.php	2026-07-07 12:52:15.421558886 +0300
++++ ../tests/EmailValidator/Validation/MessageIDValidationTest.php	2026-07-07 12:52:54.947986121 +0300
+@@ -5,13 +5,12 @@
+ use Egulias\EmailValidator\EmailLexer;
+ use Egulias\EmailValidator\Validation\MessageIDValidation;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class MessageIDValidationTest extends TestCase
+ {
+ 
+-    /**
+-     * @dataProvider validMessageIDs
+-     */
++    #[DataProvider('validMessageIDs')]
+     public function testValidMessageIDs(string $messageID)
+     {
+         $validator = new MessageIDValidation();
+@@ -28,9 +27,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidMessageIDs
+-     */
++    #[DataProvider('invalidMessageIDs')]
+     public function testInvalidMessageIDs(string $messageID)
+     {
+         $validator = new MessageIDValidation();

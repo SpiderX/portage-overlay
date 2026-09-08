@@ -1,0 +1,32 @@
+--- ../tests/EmailValidator/Validation/DNSCheckValidationTest.php	2026-07-07 12:56:10.195218189 +0300
++++ ../tests/EmailValidator/Validation/DNSCheckValidationTest.php	2026-07-07 12:57:04.703841560 +0300
+@@ -13,6 +13,7 @@
+ use Egulias\EmailValidator\Validation\DNSRecords;
+ use Egulias\EmailValidator\Warning\NoDNSMXRecord;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class DNSCheckValidationTest extends TestCase
+ {
+@@ -60,9 +61,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider validEmailsProvider
+-     */
++    #[DataProvider('validEmailsProvider')]
+     public function testValidDNS($validEmail)
+     {
+         $validation = new DNSCheckValidation();
+@@ -75,9 +74,7 @@
+         $this->assertFalse($validation->isValid("example@invalid.example.com", new EmailLexer()));
+     }
+ 
+-    /**
+-     * @dataProvider localOrReservedEmailsProvider
+-     */
++    #[DataProvider('localOrReservedEmailsProvider')]
+     public function testLocalOrReservedDomainError($localOrReservedEmails)
+     {
+         $validation = new DNSCheckValidation();

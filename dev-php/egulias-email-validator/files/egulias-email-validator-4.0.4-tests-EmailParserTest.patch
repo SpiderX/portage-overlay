@@ -1,0 +1,22 @@
+--- ../tests/EmailValidator/EmailParserTest.php	2026-07-07 12:53:23.202788155 +0300
++++ ../tests/EmailValidator/EmailParserTest.php	2026-07-07 12:53:57.364096077 +0300
+@@ -5,6 +5,7 @@
+ use Egulias\EmailValidator\EmailLexer;
+ use Egulias\EmailValidator\EmailParser;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class EmailParserTest extends TestCase
+ {
+@@ -17,9 +18,8 @@
+             ['validipv4@[127.0.0.0]', 'validipv4', '[127.0.0.0]']
+         ];
+     }
+-    /**
+-     * @dataProvider emailPartsProvider
+-     */
++
++    #[DataProvider('emailPartsProvider')]
+     public function testGetParts($email, $local, $domain)
+     {
+         $parser = new EmailParser(new EmailLexer());
