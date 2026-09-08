@@ -5,23 +5,24 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Composer/Spdx"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Tools for working with and validating SPDX licenses"
 HOMEPAGE="https://github.com/composer/spdx-licenses"
-EGIT_REPO_URI="https://github.com/composer/spdx-licenses.git"
+SRC_URI="https://github.com/composer/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="!dev-php/spdx-licenses"
 
-PATCHES=( "${FILESDIR}/${PN}"-1.5.8-res-path.patch
-	"${FILESDIR}/${PN}"-1.6.0-tests.patch )
+PATCHES=( "${FILESDIR}/${PN}"-1.5.8-res-path.patch )
 
 EPHPUNIT_BOOTSTRAP='tmp/fake/src/autoload.php'
 # exclude tests for non-existed class
 EPHPUNIT_EXCLUDE_FILTER='testDump(Licenses|Exceptions)'
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-1.6.0-tests.patch )
 composer_enable_tests phpunit
 
 src_prepare() {
@@ -30,11 +31,12 @@ src_prepare() {
 	# mimic system path for bootstrap
 	edo mkdir -p composer tmp/fake
 	edo ln -s -t composer ../res
-	# mimic system path for bootstrap
-	edo cp -a src tests tmp/fake
 }
 
 src_test() {
+	composer_prepare_tests
+	# mimic system path for bootstrap
+	edo cp -a src tests tmp/fake
 	ephpunit tmp/fake/tests
 }
 

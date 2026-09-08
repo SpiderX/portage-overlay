@@ -1,0 +1,117 @@
+--- ../tests/SpdxLicensesTest.php	2026-09-03 20:11:50.330194616 +0300
++++ ../tests/SpdxLicensesTest.php	2026-09-03 20:12:38.533571898 +0300
+@@ -12,6 +12,7 @@
+ namespace Composer\Spdx;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class SpdxLicensesTest extends TestCase
+ {
+@@ -26,33 +27,30 @@
+     }
+ 
+     /**
+-     * @dataProvider provideValidLicenses
+-     *
+      * @param string|string[] $license
+      * @return void
+      */
++    #[DataProvider('provideValidLicenses')]
+     public function testValidate($license)
+     {
+         $this->assertTrue($this->licenses->validate($license));
+     }
+ 
+     /**
+-     * @dataProvider provideInvalidLicenses
+-     *
+      * @param string|string[] $invalidLicense
+      * @return void
+      */
++    #[DataProvider('provideInvalidLicenses')]
+     public function testInvalidLicenses($invalidLicense)
+     {
+         $this->assertFalse($this->licenses->validate($invalidLicense));
+     }
+ 
+     /**
+-     * @dataProvider provideInvalidArgument
+-     *
+      * @param mixed $invalidArgument
+      * @return void
+      */
++    #[DataProvider('provideInvalidArgument')]
+     public function testInvalidArgument($invalidArgument)
+     {
+         $this->setExpectedException('InvalidArgumentException');
+@@ -75,18 +73,17 @@
+ 
+         $this->assertEquals(
+             realpath($dir),
+-            realpath(__DIR__ . '/../res'),
++            realpath(__DIR__ . '/../../../res'),
+             'Expected resources directory to be "res" (relative to project root).'
+         );
+     }
+ 
+     /**
+      * @testdox Resources files exist at expected locations.
+-     * @dataProvider provideResourceFiles
+-     *
+      * @param string $file
+      * @return void
+      */
++    #[DataProvider('provideResourceFiles')]
+     public function testResourceFilesExist($file)
+     {
+         $this->assertFileExists(
+@@ -97,11 +94,11 @@
+ 
+     /**
+      * @testdox Resources files contain valid JSON.
+-     * @dataProvider provideResourceFiles
+      *
+      * @param string $file
+      * @return void
+      */
++    #[DataProvider('provideResourceFiles')]
+     public function testResourceFilesContainJson($file)
+     {
+         $contents = file_get_contents(SpdxLicenses::getResourcesDir() . '/' . $file);
+@@ -232,7 +229,7 @@
+     /**
+      * @return array<array{SpdxLicenses::*}>
+      */
+-    public function provideResourceFiles()
++    public static function provideResourceFiles()
+     {
+         return [
+             [SpdxLicenses::LICENSES_FILE],
+@@ -243,7 +240,7 @@
+     /**
+      * @return array<int, string|string[]>
+      */
+-    public function provideValidLicenses()
++    public static function provideValidLicenses()
+     {
+         $contents = file_get_contents(SpdxLicenses::getResourcesDir() . '/' . SpdxLicenses::LICENSES_FILE);
+         if (false === $contents) {
+@@ -285,7 +282,7 @@
+     /**
+      * @return array<array{string|string[]}>
+      */
+-    public function provideInvalidLicenses()
++    public static function provideInvalidLicenses()
+     {
+         return [
+             [''],
+@@ -314,7 +311,7 @@
+     /**
+      * @return array<array<mixed>>
+      */
+-    public function provideInvalidArgument()
++    public static function provideInvalidArgument()
+     {
+         return [
+             [null],
