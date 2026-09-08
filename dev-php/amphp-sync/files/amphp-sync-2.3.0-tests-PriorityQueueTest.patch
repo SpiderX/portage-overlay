@@ -1,0 +1,26 @@
+--- ../test/PriorityQueueTest.php	2026-07-25 13:46:55.607939349 +0300
++++ ../test/PriorityQueueTest.php	2026-07-25 13:47:32.381715931 +0300
+@@ -3,10 +3,11 @@
+ namespace Amp\Sync;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class PriorityQueueTest extends TestCase
+ {
+-    public function provideTestValues(): iterable
++    public static function provideTestValues(): iterable
+     {
+         return [
+             [100, 0, 0],
+@@ -21,9 +22,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideTestValues
+-     */
++    #[DataProvider('provideTestValues')]
+     public function testOrdering(int $count, int $toRemove, $toIncrement): void
+     {
+         $priorities = \range(0, $count - 1);

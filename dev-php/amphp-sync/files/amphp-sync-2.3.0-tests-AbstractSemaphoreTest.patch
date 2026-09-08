@@ -1,0 +1,31 @@
+--- ../test/AbstractSemaphoreTest.php	2026-07-25 13:44:47.749409843 +0300
++++ ../test/AbstractSemaphoreTest.php	2026-07-25 13:45:30.946290949 +0300
+@@ -6,6 +6,7 @@
+ use Revolt\EventLoop;
+ use function Amp\async;
+ use function Amp\delay;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ abstract class AbstractSemaphoreTest extends AsyncTestCase
+ {
+@@ -94,7 +95,7 @@
+         $lock4->release();
+     }
+ 
+-    public function getSemaphoreSizes(): array
++    public static function getSemaphoreSizes(): array
+     {
+         return [
+             [5],
+@@ -105,10 +106,9 @@
+     }
+ 
+     /**
+-     * @dataProvider getSemaphoreSizes
+-     *
+      * @param int $count Number of locks to test.
+      */
++    #[DataProvider('getSemaphoreSizes')]
+     public function testAcquireFromMultipleSizeSemaphores(int $count): void
+     {
+         $this->setMinimumRuntime(0.1);

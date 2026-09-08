@@ -1,0 +1,26 @@
+--- ../test/RateLimitingSemaphoreTest.php	2026-07-25 13:48:37.471732623 +0300
++++ ../test/RateLimitingSemaphoreTest.php	2026-07-25 13:49:10.152451469 +0300
+@@ -4,10 +4,11 @@
+ 
+ use Amp\PHPUnit\AsyncTestCase;
+ use Amp\Pipeline\Pipeline;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class RateLimitingSemaphoreTest extends AsyncTestCase
+ {
+-    public function providePeriods(): iterable
++    public static function providePeriods(): iterable
+     {
+         yield 'one-lock-no-delay' => [0.1, 0, 3, 1];
+         yield 'one-lock-with-delay' => [0.1, 0.05, 3, 1];
+@@ -16,9 +17,7 @@
+         yield 'multiple-locks-long-delay' => [0.05, 0.1, 10, 3];
+     }
+ 
+-    /**
+-     * @dataProvider providePeriods
+-     */
++    #[DataProvider('providePeriods')]
+     public function testSemaphore(float $lockPeriod, float $delay, int $cycles, int $numLocks): void
+     {
+         if ($cycles < $numLocks) {

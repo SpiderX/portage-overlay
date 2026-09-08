@@ -1,0 +1,14 @@
+--- ../phpunit.xml.dist	2026-07-25 14:33:47.484947379 +0300
++++ ../phpunit.xml.dist	2026-07-25 14:36:44.905478893 +0300
+@@ -8,6 +8,11 @@
+   <testsuites>
+     <testsuite name="Amp Sync">
+       <directory>test</directory>
++      <exclude>test/AbstractKeyedMutexTest.php</exclude>
++      <exclude>test/AbstractKeyedSemaphoreTest.php</exclude>
++      <exclude>test/AbstractMutexTest.php</exclude>
++      <exclude>test/AbstractParcelTest.php</exclude>
++      <exclude>test/AbstractSemaphoreTest.php</exclude>
+     </testsuite>
+     <testsuite name="PHPT">
+       <directory suffix=".phpt">test</directory>

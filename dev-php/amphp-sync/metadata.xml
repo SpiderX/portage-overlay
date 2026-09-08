@@ -13,6 +13,10 @@
 	This package provides a PHP component with a synchronization primitives
 	such as locks and semaphores for asynchronous and concurrent programming.
 	</longdescription>
+	<use>
+		<flag name="sharedmem">Enable the shmop extension</flag>
+		<flag name="sysvipc">Enable the PHP System-V semaphore, shared memory and IPC extension</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">amphp/sync</remote-id>
 	</upstream>

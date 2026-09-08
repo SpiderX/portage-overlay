@@ -1,50 +1,31 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//amphp-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="Amp/Sync"
+PHP_REQ_USE="sharedmem?,sysvipc?"
+
+inherit composer
 
 DESCRIPTION="Non-blocking synchronization primitives for PHP"
 HOMEPAGE="https://github.com/amphp/sync"
-SRC_URI="https://github.com/amphp/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/amphp/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="test" # 5 class abstract
+IUSE="sharedmem sysvipc"
+REQUIRED_USE="test? ( sharedmem sysvipc )"
 
-RDEPEND="dev-lang/php:*
-	dev-php/amphp-amp
+RDEPEND="dev-php/amphp-amp
 	dev-php/amphp-pipeline
 	dev-php/amphp-serialization
-	dev-php/fedora-autoloader
 	dev-php/revolt-event-loop"
-BDEPEND="test? ( dev-php/composer
-		dev-php/phpunit )"
 
-src_prepare() {
-	default
-
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		src/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-}
-
-src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
-	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,test} "${S}" \
-		|| die "cp failed"
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/Amp/Sync
-	doins -r src/.
-}
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-2.3.0-tests-AbstractSemaphoreTest.patch
+	"${FILESDIR}/${PN}"-2.3.0-tests-PriorityQueueTest.patch
+	"${FILESDIR}/${PN}"-2.3.0-tests-RateLimitingSemaphoreTest.patch
+	"${FILESDIR}/${PN}"-2.3.0-tests-phpunit.xml.patch )
+composer_enable_tests phpunit
