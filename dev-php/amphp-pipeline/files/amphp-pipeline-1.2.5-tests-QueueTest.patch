@@ -1,0 +1,53 @@
+--- ../test/QueueTest.php	2026-07-25 21:44:49.264283753 +0300
++++ ../test/QueueTest.php	2026-07-25 21:46:47.822304448 +0300
+@@ -9,6 +9,8 @@
+ use Revolt\EventLoop;
+ use function Amp\async;
+ use function Amp\delay;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Depends;
+ 
+ class QueueTest extends AsyncTestCase
+ {
+@@ -65,9 +67,7 @@
+         }
+     }
+ 
+-    /**
+-     * @depends testEmit
+-     */
++    #[Depends('testEmit')]
+     public function testEmitAfterComplete(): void
+     {
+         $this->expectException(\Error::class);
+@@ -77,9 +77,7 @@
+         $this->queue->pushAsync(1)->await();
+     }
+ 
+-    /**
+-     * @depends testEmit
+-     */
++    #[Depends('testEmit')]
+     public function testEmittingNull(): void
+     {
+         $this->queue->pushAsync(null);
+@@ -552,9 +550,7 @@
+         self::assertNull($future4->await());
+     }
+ 
+-    /**
+-     * @dataProvider provideBufferSize
+-     */
++    #[DataProvider('provideBufferSize')]
+     public function testBufferSize(int $bufferSize): void
+     {
+         $source = new Queue($bufferSize);
+@@ -584,7 +580,7 @@
+         self::assertTrue($source->pushAsync('.')->isComplete());
+     }
+ 
+-    public function provideBufferSize(): iterable
++    public static function provideBufferSize(): iterable
+     {
+         yield 'buffer size 0' => [0];
+         yield 'buffer size 1' => [1];

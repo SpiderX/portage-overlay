@@ -1,0 +1,42 @@
+--- ../test/FromIterableTest.php	2026-07-25 21:49:59.028259263 +0300
++++ ../test/FromIterableTest.php	2026-07-25 21:51:06.710866401 +0300
+@@ -4,6 +4,8 @@
+ 
+ use Amp\PHPUnit\AsyncTestCase;
+ use function Amp\delay;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Depends;
+ 
+ class FromIterableTest extends AsyncTestCase
+ {
+@@ -27,9 +29,7 @@
+         self::assertEmpty($expected);
+     }
+ 
+-    /**
+-     * @dataProvider provideInvalidIteratorArguments
+-     */
++    #[DataProvider('provideInvalidIteratorArguments')]
+     public function testInvalid($arg): void
+     {
+         $this->expectException(\TypeError::class);
+@@ -37,7 +37,7 @@
+         Pipeline::fromIterable($arg);
+     }
+ 
+-    public function provideInvalidIteratorArguments(): array
++    public static function provideInvalidIteratorArguments(): array
+     {
+         return [
+             [null],
+@@ -62,9 +62,7 @@
+         self::assertSame($count, $i);
+     }
+ 
+-    /**
+-     * @depends testInterval
+-     */
++    #[Depends('testInterval')]
+     public function testSlowConsumer(): void
+     {
+         $count = 5;

@@ -1,0 +1,29 @@
+--- ../test/TakeWhileTest.php	2026-07-25 21:43:00.013617060 +0300
++++ ../test/TakeWhileTest.php	2026-07-25 21:43:49.574421556 +0300
+@@ -4,6 +4,7 @@
+ 
+ use Amp\PHPUnit\AsyncTestCase;
+ use Amp\PHPUnit\TestException;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class TakeWhileTest extends AsyncTestCase
+ {
+@@ -70,16 +71,14 @@
+         $iterator->continue();
+     }
+ 
+-    public function provideSizes(): iterable
++    public static function provideSizes(): iterable
+     {
+         foreach (\range(10, 100, 10) as $size) {
+             yield 'take-' . $size => [$size];
+         }
+     }
+ 
+-    /**
+-     * @dataProvider provideSizes
+-     */
++    #[DataProvider('provideSizes')]
+     public function testUnorderedConcurrent(int $size): void
+     {
+         // The stop marker completes the underlying queue; with multiple unordered
