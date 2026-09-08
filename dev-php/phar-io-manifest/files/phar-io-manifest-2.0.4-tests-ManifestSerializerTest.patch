@@ -1,0 +1,51 @@
+--- ../tests/ManifestSerializerTest.php	2026-08-09 15:31:02.894769084 +0300
++++ ../tests/ManifestSerializerTest.php	2026-08-09 15:33:42.459674400 +0300
+@@ -15,6 +15,7 @@
+ use function sys_get_temp_dir;
+ use function uniqid;
+ use function unlink;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Manifest\ManifestSerializer
+@@ -58,13 +59,12 @@
+  */
+ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
+     /**
+-     * @dataProvider dataProvider
+-     *
+      * @uses \PharIo\Manifest\Application
+      * @uses \PharIo\Manifest\Library
+      * @uses \PharIo\Manifest\Extension
+      * @uses \PharIo\Manifest\ExtensionElement
+      */
++    #[DataProvider('dataProvider')]
+     public function testCanSerializeToString($expected): void {
+         $manifest = ManifestLoader::fromString($expected);
+ 
+@@ -76,7 +76,7 @@
+         );
+     }
+ 
+-    public function dataProvider() {
++    public static function dataProvider() {
+         return [
+             'application' => [file_get_contents(__DIR__ . '/_fixture/phpunit-5.6.5.xml')],
+             'library'     => [file_get_contents(__DIR__ . '/_fixture/library.xml')],
+@@ -102,7 +102,7 @@
+      * @uses \PharIo\Manifest\ApplicationName
+      */
+     public function testCanHandleUnknownType(): void {
+-        $type     = $this->getMockForAbstractClass(Type::class);
++        $type     = new UnknownType();
+         $manifest = new Manifest(
+             new ApplicationName('testvendor/testname'),
+             new Version('1.0.0'),
+@@ -122,3 +122,7 @@
+         );
+     }
+ }
++
++class UnknownType extends Type
++{
++}
