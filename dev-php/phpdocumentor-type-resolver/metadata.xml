@@ -14,6 +14,9 @@
 	of Value Object for given expression and returning an FQSEN object after
 	resolving any partial Structural Element Names.
 	</longdescription>
+	<use>
+		<flag name="tokenizer">Add support for the PHP file parser</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">phpDocumentor/TypeResolver</remote-id>
 	</upstream>

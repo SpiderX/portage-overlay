@@ -1,0 +1,21 @@
+--- ../tests/unit/Types/SelfTest.php	2026-07-04 15:58:53.756031460 +0300
++++ ../tests/unit/Types/SelfTest.php	2026-07-04 15:59:31.179744668 +0300
+@@ -6,6 +6,7 @@
+ 
+ use phpDocumentor\Reflection\Fqsen;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class SelfTest extends TestCase
+ {
+@@ -22,9 +23,7 @@
+         $this->assertSame($genericTypes, $type->getGenericTypes());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(string $expectedResult, Self_ $type): void
+     {
+         $this->assertSame($expectedResult, (string) $type);

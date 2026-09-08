@@ -1,0 +1,21 @@
+--- ../tests/unit/PseudoTypes/OffsetAccessTest.php	2026-07-04 16:00:56.322831133 +0300
++++ ../tests/unit/PseudoTypes/OffsetAccessTest.php	2026-07-04 16:01:29.465007490 +0300
+@@ -8,6 +8,7 @@
+ use phpDocumentor\Reflection\Types\Mixed_;
+ use phpDocumentor\Reflection\Types\Object_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class OffsetAccessTest extends TestCase
+ {
+@@ -22,9 +23,7 @@
+         $this->assertEquals(new Mixed_(), $type->underlyingType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(string $expectedResult, OffsetAccess $type): void
+     {
+         $this->assertSame($expectedResult, (string) $type);

@@ -1,0 +1,21 @@
+--- ../tests/unit/PseudoTypes/GenericTest.php	2026-07-04 16:19:26.037903875 +0300
++++ ../tests/unit/PseudoTypes/GenericTest.php	2026-07-04 16:20:09.412991578 +0300
+@@ -10,6 +10,7 @@
+ use phpDocumentor\Reflection\Types\Object_;
+ use phpDocumentor\Reflection\Types\String_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class GenericTest extends TestCase
+ {
+@@ -23,9 +24,7 @@
+         $this->assertSame($types, $type->getTypes());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(string $expectedResult, Generic $type): void
+     {
+         $this->assertSame($expectedResult, (string) $type);

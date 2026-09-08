@@ -1,0 +1,30 @@
+--- ../tests/unit/PseudoTypes/ClassStringTest.php	2026-07-04 16:28:23.304341614 +0300
++++ ../tests/unit/PseudoTypes/ClassStringTest.php	2026-07-04 16:28:55.109099839 +0300
+@@ -18,6 +18,7 @@
+ use phpDocumentor\Reflection\Types\Object_;
+ use phpDocumentor\Reflection\Types\String_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class ClassStringTest extends TestCase
+ {
+@@ -30,9 +31,7 @@
+         $this->assertEquals(new String_(), $type->underlyingType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(ClassString $type, string $expectedString): void
+     {
+         $this->assertSame($expectedString, (string) $type);
+@@ -41,7 +40,7 @@
+     /**
+      * @return array<string, array{ClassString, string}>
+      */
+-    public function provideToStringData(): array
++    public static function provideToStringData(): array
+     {
+         return [
+             'generic class string' => [new ClassString(), 'class-string'],

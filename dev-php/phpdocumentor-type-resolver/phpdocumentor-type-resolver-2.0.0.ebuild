@@ -6,14 +6,16 @@ EAPI=9
 COMPOSER_INSTALL_PATH="phpDocumentor/Reflection"
 PHP_REQ_USE="tokenizer?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="phpDocumentor TypeResolver component"
 HOMEPAGE="https://github.com/phpDocumentor/TypeResolver"
-EGIT_REPO_URI="https://github.com/phpDocumentor/TypeResolver.git"
+SRC_URI="https://github.com/phpDocumentor/${COMPOSER_PKG/-/}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/TypeResolver-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="tokenizer"
 REQUIRED_USE="test? ( tokenizer )"
 
@@ -21,7 +23,8 @@ RDEPEND="dev-php/doctrine-deprecations
 	dev-php/phpdocumentor-reflection-common
 	dev-php/phpstan-phpdoc-parser"
 
-PATCHES=( "${FILESDIR}/${PN}"-2.0.0-ArrayShapeTest.patch
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-2.0.0-ArrayShapeTest.patch
 	"${FILESDIR}/${PN}"-2.0.0-ArrayTest.patch
 	"${FILESDIR}/${PN}"-2.0.0-CallableTest.patch
 	"${FILESDIR}/${PN}"-2.0.0-ClassStringTest.patch
@@ -41,7 +44,6 @@ PATCHES=( "${FILESDIR}/${PN}"-2.0.0-ArrayShapeTest.patch
 	"${FILESDIR}/${PN}"-2.0.0-StaticTest.patch
 	"${FILESDIR}/${PN}"-2.0.0-TraitStringTest.patch
 	"${FILESDIR}/${PN}"-2.0.0-TypeResolverTest.patch )
-
 composer_enable_tests phpunit
 
 src_prepare() {

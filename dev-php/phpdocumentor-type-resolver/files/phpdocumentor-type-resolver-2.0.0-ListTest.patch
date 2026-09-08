@@ -1,0 +1,30 @@
+--- ../tests/unit/PseudoTypes/ListTest.php	2026-07-04 16:10:20.085553737 +0300
++++ ../tests/unit/PseudoTypes/ListTest.php	2026-07-04 16:10:53.631174853 +0300
+@@ -19,6 +19,7 @@
+ use phpDocumentor\Reflection\Types\Mixed_;
+ use phpDocumentor\Reflection\Types\String_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class ListTest extends TestCase
+ {
+@@ -33,9 +34,7 @@
+         $this->assertEquals(new Array_(), $type->underlyingType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(List_ $array, string $expectedString): void
+     {
+         $this->assertSame($expectedString, (string) $array);
+@@ -44,7 +43,7 @@
+     /**
+      * @return array<string, array{List_, string}>
+      */
+-    public function provideToStringData(): array
++    public static function provideToStringData(): array
+     {
+         return [
+             'simple list' => [new List_(), 'list'],

@@ -1,0 +1,30 @@
+--- ../tests/unit/Types/ArrayTest.php	2026-07-04 16:34:41.017614306 +0300
++++ ../tests/unit/Types/ArrayTest.php	2026-07-04 16:35:15.370023141 +0300
+@@ -19,6 +19,7 @@
+ use phpDocumentor\Reflection\PseudoTypes\ObjectShape;
+ use phpDocumentor\Reflection\PseudoTypes\ObjectShapeItem;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class ArrayTest extends TestCase
+ {
+@@ -50,9 +51,7 @@
+         $this->assertSame($valueType, $type->getValueType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(Array_ $array, string $expectedString): void
+     {
+         $this->assertSame($expectedString, (string) $array);
+@@ -61,7 +60,7 @@
+     /**
+      * @return array<string, array{Array_, string}>
+      */
+-    public function provideToStringData(): array
++    public static function provideToStringData(): array
+     {
+         return [
+             'simple array' => [new Array_(), 'array'],

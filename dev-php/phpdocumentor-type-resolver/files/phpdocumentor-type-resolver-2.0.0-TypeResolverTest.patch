@@ -1,0 +1,128 @@
+--- ../tests/unit/TypeResolverTest.php	2026-07-04 15:46:45.836664887 +0300
++++ ../tests/unit/TypeResolverTest.php	2026-07-04 15:50:48.093874233 +0300
+@@ -94,6 +94,7 @@
+ use phpDocumentor\Reflection\Types\This;
+ use phpDocumentor\Reflection\Types\Void_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use RuntimeException;
+ use stdClass;
+ 
+@@ -109,9 +110,8 @@
+      * @uses         \phpDocumentor\Reflection\Types\Object_
+      *
+      * @param class-string $expectedClass
+-     *
+-     * @dataProvider provideKeywords
+      */
++    #[DataProvider('provideKeywords')]
+     public function testResolvingKeywords(string $keyword, string $expectedClass): void
+     {
+         $fixture = new TypeResolver();
+@@ -131,6 +131,7 @@
+      *
+      * @dataProvider provideFqcn
+      */
++    #[DataProvider('provideFqcn')]
+     public function testResolvingFQSENs(string $fqsen): void
+     {
+         $fixture = new TypeResolver();
+@@ -641,7 +642,7 @@
+      *
+      * @return string[][]
+      */
+-    public function provideKeywords(): array
++    public static function provideKeywords(): array
+     {
+         return [
+             ['string', String_::class],
+@@ -705,7 +706,7 @@
+      *
+      * @return string[][]
+      */
+-    public function provideFqcn(): array
++    public static function provideFqcn(): array
+     {
+         return [
+             'namespace' => ['\phpDocumentor\Reflection'],
+@@ -726,13 +727,13 @@
+     }
+ 
+     /**
+-     * @dataProvider typeProvider
+-     * @dataProvider genericsProvider
+-     * @dataProvider callableProvider
+-     * @dataProvider constExpressions
+-     * @dataProvider shapeStructures
+      * @testdox create type from $type
+      */
++    #[DataProvider('typeProvider')]
++    #[DataProvider('genericsProvider')]
++    #[DataProvider('callableProvider')]
++    #[DataProvider('constExpressions')]
++    #[DataProvider('shapeStructures')]
+     public function testTypeBuilding(string $type, Type $expected, bool $deprecation = false): void
+     {
+         $this->expectNoDeprecationWithIdentifier('https://github.com/phpDocumentor/TypeResolver/issues/184');
+@@ -747,6 +748,7 @@
+      * @dataProvider illegalLegacyFormatProvider
+      * @testdox create type from $type
+      */
++    #[DataProvider('illegalLegacyFormatProvider')]
+     public function testTypeBuildingThrowsError(string $type, Type $expected): void
+     {
+         $this->expectDeprecationWithIdentifier('https://github.com/phpDocumentor/TypeResolver/issues/184');
+@@ -760,7 +762,7 @@
+     /**
+      * @return array<array{0: string, 1: Type}>
+      */
+-    public function typeProvider(): array
++    public static function typeProvider(): array
+     {
+         return [
+             [
+@@ -918,7 +920,7 @@
+     /**
+      * @return array<array{0: string, 1: Type}>
+      */
+-    public function genericsProvider(): array
++    public static function genericsProvider(): array
+     {
+         return [
+             [
+@@ -1170,7 +1172,7 @@
+     /**
+      * @return array<array{0: string, 1: Type}>
+      */
+-    public function callableProvider(): array
++    public static function callableProvider(): array
+     {
+         return [
+             [
+@@ -1278,7 +1280,7 @@
+     /**
+      * @return array<array{0: string, 1: Type}>
+      */
+-    public function constExpressions(): array
++    public static function constExpressions(): array
+     {
+         return [
+             [
+@@ -1315,7 +1317,7 @@
+     /**
+      * @return array<array{0: string, 1: Type}>
+      */
+-    public function shapeStructures(): array
++    public static function shapeStructures(): array
+     {
+         return [
+             [
+@@ -1358,7 +1360,7 @@
+     /**
+      * @return array<array{0: string, 1: Type}>
+      */
+-    public function illegalLegacyFormatProvider(): array
++    public static function illegalLegacyFormatProvider(): array
+     {
+         return [
+             [

@@ -1,0 +1,30 @@
+--- ../tests/unit/PseudoTypes/IntegerRangeTest.php	2026-07-04 16:17:20.855169314 +0300
++++ ../tests/unit/PseudoTypes/IntegerRangeTest.php	2026-07-04 16:17:59.010047085 +0300
+@@ -15,6 +15,7 @@
+ 
+ use phpDocumentor\Reflection\Types\Integer;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class IntegerRangeTest extends TestCase
+ {
+@@ -29,9 +30,7 @@
+         $this->assertEquals(new Integer(), $type->underlyingType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(IntegerRange $type, string $expectedString): void
+     {
+         $this->assertSame($expectedString, (string) $type);
+@@ -40,7 +39,7 @@
+     /**
+      * @return array<string, array{IntegerRange, string}>
+      */
+-    public function provideToStringData(): array
++    public static function provideToStringData(): array
+     {
+         return [
+             'simple int range' => [new IntegerRange('-5', '5'), 'int<-5, 5>'],

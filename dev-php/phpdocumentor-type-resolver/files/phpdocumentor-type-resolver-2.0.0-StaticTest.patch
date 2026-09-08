@@ -1,0 +1,21 @@
+--- ../tests/unit/Types/StaticTest.php	2026-07-04 15:56:50.944752877 +0300
++++ ../tests/unit/Types/StaticTest.php	2026-07-04 15:57:28.963861400 +0300
+@@ -6,6 +6,7 @@
+ 
+ use phpDocumentor\Reflection\Fqsen;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class StaticTest extends TestCase
+ {
+@@ -22,9 +23,7 @@
+         $this->assertSame($genericTypes, $type->getGenericTypes());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(string $expectedResult, Static_ $type): void
+     {
+         $this->assertSame($expectedResult, (string) $type);

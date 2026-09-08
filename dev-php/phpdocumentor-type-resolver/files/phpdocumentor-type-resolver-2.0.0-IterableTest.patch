@@ -1,0 +1,26 @@
+--- ../tests/unit/Types/IterableTest.php	2026-07-04 16:12:17.416839515 +0300
++++ ../tests/unit/Types/IterableTest.php	2026-07-04 16:13:55.331614916 +0300
+@@ -14,12 +14,11 @@
+ namespace phpDocumentor\Reflection\Types;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class IterableTest extends TestCase
+ {
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(Iterable_ $iterable, string $expectedString): void
+     {
+         $this->assertSame($expectedString, (string) $iterable);
+@@ -28,7 +27,7 @@
+     /**
+      * @return array<string, array{Iterable_, string}>
+      */
+-    public function provideToStringData(): array
++    public static function provideToStringData(): array
+     {
+         return [
+             'simple iterable' => [new Iterable_(), 'iterable'],

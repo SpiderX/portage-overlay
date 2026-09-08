@@ -1,0 +1,30 @@
+--- ../tests/unit/PseudoTypes/NonEmptyArrayTest.php	2026-07-04 16:07:43.364251028 +0300
++++ ../tests/unit/PseudoTypes/NonEmptyArrayTest.php	2026-07-04 16:36:59.708933317 +0300
+@@ -19,6 +19,7 @@
+ use phpDocumentor\Reflection\Types\Mixed_;
+ use phpDocumentor\Reflection\Types\String_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class NonEmptyArrayTest extends TestCase
+ {
+@@ -33,9 +34,7 @@
+         $this->assertEquals(new Array_(), $type->underlyingType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(NonEmptyArray $type, string $expectedString): void
+     {
+         $this->assertSame($expectedString, (string) $type);
+@@ -44,7 +43,7 @@
+     /**
+      * @return array<string, array{NonEmptyArray, string}>
+      */
+-    public function provideToStringData(): array
++    public static function provideToStringData(): array
+     {
+         return [
+             'simple non-empty-array' => [new NonEmptyArray(), 'non-empty-array'],

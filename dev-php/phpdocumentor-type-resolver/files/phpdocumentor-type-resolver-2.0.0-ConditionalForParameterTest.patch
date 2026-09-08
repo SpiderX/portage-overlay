@@ -1,0 +1,21 @@
+--- ../tests/unit/PseudoTypes/ConditionalForParameterTest.php	2026-07-04 16:23:29.549704279 +0300
++++ ../tests/unit/PseudoTypes/ConditionalForParameterTest.php	2026-07-04 16:24:03.858750877 +0300
+@@ -9,6 +9,7 @@
+ use phpDocumentor\Reflection\Types\Mixed_;
+ use phpDocumentor\Reflection\Types\Static_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class ConditionalForParameterTest extends TestCase
+ {
+@@ -28,9 +29,7 @@
+         $this->assertEquals(new Mixed_(), $type->underlyingType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(string $expectedResult, ConditionalForParameter $type): void
+     {
+         $this->assertSame($expectedResult, (string) $type);

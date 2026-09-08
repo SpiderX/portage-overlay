@@ -1,0 +1,21 @@
+--- ../tests/unit/Types/CallableTest.php	2026-07-04 16:30:12.789680810 +0300
++++ ../tests/unit/Types/CallableTest.php	2026-07-04 16:30:42.505876014 +0300
+@@ -15,6 +15,7 @@
+ 
+ use phpDocumentor\Reflection\Fqsen;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class CallableTest extends TestCase
+ {
+@@ -54,9 +55,7 @@
+         $this->assertSame($returnType, $type->getReturnType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(string $expectedResult, Callable_ $type): void
+     {
+         $this->assertSame($expectedResult, (string) $type);

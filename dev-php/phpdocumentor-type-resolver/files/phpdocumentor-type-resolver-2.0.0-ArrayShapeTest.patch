@@ -1,0 +1,21 @@
+--- ../tests/unit/PseudoTypes/ArrayShapeTest.php	2026-07-04 16:32:11.506923081 +0300
++++ ../tests/unit/PseudoTypes/ArrayShapeTest.php	2026-07-04 16:32:38.146705792 +0300
+@@ -7,6 +7,7 @@
+ use phpDocumentor\Reflection\Types\Array_;
+ use phpDocumentor\Reflection\Types\Mixed_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class ArrayShapeTest extends TestCase
+ {
+@@ -21,9 +22,7 @@
+         $this->assertEquals(new Array_(new Mixed_(), new ArrayKey()), $arrayShape->underlyingType());
+     }
+ 
+-    /**
+-     * @dataProvider provideToStringData
+-     */
++    #[DataProvider('provideToStringData')]
+     public function testToString(string $expectedResult, ArrayShape $arrayShape): void
+     {
+         $this->assertSame($expectedResult, (string) $arrayShape);
