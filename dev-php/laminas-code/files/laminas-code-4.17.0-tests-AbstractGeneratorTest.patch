@@ -1,0 +1,39 @@
+--- ../test/Generator/AbstractGeneratorTest.php	2026-07-12 15:25:54.083351634 +0300
++++ ../test/Generator/AbstractGeneratorTest.php	2026-07-12 15:30:11.017402450 +0300
+@@ -12,13 +12,16 @@
+ #[Group('Laminas_Code_Generator_Php')]
+ class AbstractGeneratorTest extends TestCase
+ {
+-    public function testConstructor()
++    public function testConstructor(): void
+     {
+-        $generator = $this->getMockForAbstractClass(AbstractGenerator::class, [
+-            [
+-                'indentation' => 'foo',
+-            ],
+-        ]);
++        $generator = new class([
++            'indentation' => 'foo',
++        ]) extends AbstractGenerator {
++            public function generate(): string
++            {
++                return '';
++            }
++        };
+ 
+         self::assertInstanceOf(GeneratorInterface::class, $generator);
+         self::assertSame('foo', $generator->getIndentation());
+@@ -27,6 +30,12 @@
+     public function testSetOptionsThrowsExceptionOnInvalidArgument()
+     {
+         $this->expectException(InvalidArgumentException::class);
+-        $this->getMockForAbstractClass(AbstractGenerator::class, ['sss']);
++
++        new class('sss') extends AbstractGenerator {
++            public function generate(): string
++            {
++                return '';
++            }
++        };
+     }
+ }

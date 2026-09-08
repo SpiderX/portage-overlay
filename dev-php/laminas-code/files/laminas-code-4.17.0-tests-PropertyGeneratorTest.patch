@@ -1,0 +1,11 @@
+--- ../test/Generator/PropertyGeneratorTest.php	2026-07-12 15:35:54.162190088 +0300
++++ ../test/Generator/PropertyGeneratorTest.php	2026-07-12 15:37:34.906715658 +0300
+@@ -336,7 +336,7 @@
+     }
+ 
+     #[DataProvider('dataSetTypeSetValueGenerate')]
+-    public function testSetDefaultValue(string $type, mixed $value): void
++    public function testSetDefaultValue(string $type, mixed $value, string $_unused): void
+     {
+         $property = new PropertyGenerator();
+         $property->setDefaultValue($value, $type);

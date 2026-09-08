@@ -1,0 +1,11 @@
+--- ../test/Reflection/ParameterReflectionTest.php	2026-07-12 15:38:07.383968127 +0300
++++ ../test/Reflection/ParameterReflectionTest.php	2026-07-12 15:38:49.507189983 +0300
+@@ -177,7 +177,7 @@
+ 
+     #[Group('zendframework/zend-code#29')]
+     #[DataProvider('docBlockHints')]
+-    public function testGetTypeWithDocBlockOnlyTypes(string $className, string $methodName, string $parameterName): void
++    public function testGetTypeWithDocBlockOnlyTypes(string $className, string $methodName, string $parameterName, string $_unused): void
+     {
+         $reflection = new Reflection\ParameterReflection(
+             [$className, $methodName],

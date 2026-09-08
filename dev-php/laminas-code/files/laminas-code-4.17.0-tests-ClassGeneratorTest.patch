@@ -1,0 +1,20 @@
+--- ../test/Generator/ClassGeneratorTest.php	2026-07-12 15:21:55.799756480 +0300
++++ ../test/Generator/ClassGeneratorTest.php	2026-07-12 15:22:54.212090152 +0300
+@@ -1380,7 +1380,7 @@
+         ]);
+     }
+ 
+-    #[RequiresPhp('>= 8.2')]
++    #[RequiresPhp('>= 8.2.0')]
+     public function testReadonlyClassWithPromotedParameterFromReflection(): void
+     {
+         $classGenerator = ClassGenerator::fromReflection(
+@@ -1402,7 +1402,7 @@
+         self::assertEquals($expectedOutput, $classGenerator->generate());
+     }
+ 
+-    #[RequiresPhp('>= 8.2')]
++    #[RequiresPhp('>= 8.2.0')]
+     public function testDnfClass(): void
+     {
+         $classGenerator = ClassGenerator::fromReflection(

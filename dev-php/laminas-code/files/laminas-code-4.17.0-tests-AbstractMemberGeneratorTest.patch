@@ -1,0 +1,39 @@
+--- ../test/Generator/AbstractMemberGeneratorTest.php	2026-07-12 15:30:56.705162536 +0300
++++ ../test/Generator/AbstractMemberGeneratorTest.php	2026-07-12 15:35:03.894761922 +0300
+@@ -5,17 +5,21 @@
+ use Laminas\Code\Generator\AbstractMemberGenerator;
+ use Laminas\Code\Generator\DocBlockGenerator;
+ use Laminas\Code\Generator\Exception\InvalidArgumentException;
+-use PHPUnit\Framework\MockObject\MockObject;
+ use PHPUnit\Framework\TestCase;
+ use stdClass;
+ 
+ class AbstractMemberGeneratorTest extends TestCase
+ {
+-    private MockObject&AbstractMemberGenerator $fixture;
++    private AbstractMemberGenerator $fixture;
+ 
+     protected function setUp(): void
+     {
+-        $this->fixture = $this->getMockForAbstractClass(AbstractMemberGenerator::class);
++        $this->fixture = new class extends AbstractMemberGenerator {
++            public function generate(): string
++            {
++                return '';
++            }
++        };
+     }
+ 
+     public function testSetFlagsWithArray()
+@@ -27,7 +31,10 @@
+             ]
+         );
+ 
+-        self::assertSame(AbstractMemberGenerator::VISIBILITY_PUBLIC, $this->fixture->getVisibility());
++        self::assertSame(
++            AbstractMemberGenerator::VISIBILITY_PUBLIC,
++            $this->fixture->getVisibility()
++        );
+         self::assertSame(true, $this->fixture->isFinal());
+     }
+ 
