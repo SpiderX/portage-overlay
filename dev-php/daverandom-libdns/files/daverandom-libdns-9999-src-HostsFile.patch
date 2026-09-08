@@ -1,0 +1,32 @@
+--- ../src/HostsFile/HostsFile.php	2026-08-12 11:58:22.857619133 +0300
++++ ../src/HostsFile/HostsFile.php	2026-08-12 11:58:38.609212515 +0300
+@@ -4,6 +4,7 @@
+ 
+ use DaveRandom\LibDNS\Records\ResourceTypes;
+ use DaveRandom\Network\DomainName;
++use DaveRandom\Network\FormatException;
+ use DaveRandom\Network\IPAddress;
+ 
+ final class HostsFile
+@@ -22,8 +23,8 @@
+     {
+         if (!$name instanceof DomainName) {
+             try {
+-                $name = DomainName::createFromString((string)$name);
+-            } catch (\InvalidArgumentException $e) {
++                $name = DomainName::fromString((string)$name);
++            } catch (FormatException $e) {
+                 return false;
+             }
+         }
+@@ -42,8 +43,8 @@
+     {
+         if (!$name instanceof DomainName) {
+             try {
+-                $name = (string)DomainName::createFromString((string)$name);
+-            } catch (\InvalidArgumentException $e) {
++                $name = (string)DomainName::fromString((string)$name);
++            } catch (FormatException $e) {
+                 $name = null;
+             }
+         }

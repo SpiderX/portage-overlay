@@ -1,0 +1,38 @@
+--- ../tests/HostsFile/HostsFileTest.php	2026-08-12 11:46:40.564094736 +0300
++++ ../tests/HostsFile/HostsFileTest.php	2026-08-12 11:46:51.445323988 +0300
+@@ -38,7 +38,7 @@
+         $this->assertFalse($hostsFile->containsName(self::NON_EXISTENT_NAME, ResourceTypes::A));
+         $this->assertFalse($hostsFile->containsName(self::NON_EXISTENT_NAME, ResourceTypes::AAAA));
+ 
+-        $name = DomainName::createFromString(self::NON_EXISTENT_NAME);
++        $name = DomainName::fromString(self::NON_EXISTENT_NAME);
+         $this->assertFalse($hostsFile->containsName($name));
+         $this->assertFalse($hostsFile->containsName($name, ResourceTypes::A));
+         $this->assertFalse($hostsFile->containsName($name, ResourceTypes::AAAA));
+@@ -61,7 +61,7 @@
+         $this->assertTrue($hostsFile->containsName(self::IPV4_ONLY_RECORD['name'], ResourceTypes::A));
+         $this->assertFalse($hostsFile->containsName(self::IPV4_ONLY_RECORD['name'], ResourceTypes::AAAA));
+ 
+-        $name = DomainName::createFromString(self::IPV4_ONLY_RECORD['name']);
++        $name = DomainName::fromString(self::IPV4_ONLY_RECORD['name']);
+         $this->assertTrue($hostsFile->containsName($name));
+         $this->assertTrue($hostsFile->containsName($name, ResourceTypes::A));
+         $this->assertFalse($hostsFile->containsName($name, ResourceTypes::AAAA));
+@@ -75,7 +75,7 @@
+         $this->assertFalse($hostsFile->containsName(self::IPV6_ONLY_RECORD['name'], ResourceTypes::A));
+         $this->assertTrue($hostsFile->containsName(self::IPV6_ONLY_RECORD['name'], ResourceTypes::AAAA));
+ 
+-        $name = DomainName::createFromString(self::IPV6_ONLY_RECORD['name']);
++        $name = DomainName::fromString(self::IPV6_ONLY_RECORD['name']);
+         $this->assertTrue($hostsFile->containsName($name));
+         $this->assertFalse($hostsFile->containsName($name, ResourceTypes::A));
+         $this->assertTrue($hostsFile->containsName($name, ResourceTypes::AAAA));
+@@ -89,7 +89,7 @@
+         $this->assertTrue($hostsFile->containsName(self::BOTH_RECORD['name'], ResourceTypes::A));
+         $this->assertTrue($hostsFile->containsName(self::BOTH_RECORD['name'], ResourceTypes::AAAA));
+ 
+-        $name = DomainName::createFromString(self::BOTH_RECORD['name']);
++        $name = DomainName::fromString(self::BOTH_RECORD['name']);
+         $this->assertTrue($hostsFile->containsName($name));
+         $this->assertTrue($hostsFile->containsName($name, ResourceTypes::A));
+         $this->assertTrue($hostsFile->containsName($name, ResourceTypes::AAAA));

@@ -1,0 +1,20 @@
+--- ../tests/BigEndToEndTest.php	2026-08-12 11:59:47.152473323 +0300
++++ ../tests/BigEndToEndTest.php	2026-08-12 11:59:56.794958142 +0300
+@@ -26,7 +26,7 @@
+     {
+         $queryName = 'google.com';
+ 
+-        $question = new QuestionRecord(DomainName::createFromString($queryName), ResourceQTypes::A);
++        $question = new QuestionRecord(DomainName::fromString($queryName), ResourceQTypes::A);
+         $query = new Query([$question]);
+         $packet = (new Encoder)->encode($query);
+ 
+@@ -75,7 +75,7 @@
+     {
+         $queryName = 'google.com';
+ 
+-        $question = new QuestionRecord(DomainName::createFromString($queryName), ResourceQTypes::SOA);
++        $question = new QuestionRecord(DomainName::fromString($queryName), ResourceQTypes::SOA);
+         $request = new Query([$question]);
+         $requestPacket = (new Encoder)->encode($request);
+ 

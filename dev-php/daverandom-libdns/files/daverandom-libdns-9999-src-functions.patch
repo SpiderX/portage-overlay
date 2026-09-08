@@ -1,0 +1,56 @@
+--- ../src/functions.php	2026-08-12 12:07:36.358763664 +0300
++++ ../src/functions.php	2026-08-12 12:09:55.650352026 +0300
+@@ -131,7 +131,7 @@
+         $ctx->setLabelsAtOffset($offset, $result);
+     }
+ 
+-    return new DomainName($result, false);
++    return DomainName::fromString(\implode('.', $result));
+ }
+ 
+ function encode_ipv4address(EncodingContext $ctx, IPv4Address $address)
+@@ -149,7 +149,7 @@
+ {
+     $octets = $ctx->unpack('C4', 4);
+ 
+-    return new IPv4Address($octets[1], $octets[2], $octets[3], $octets[4]);
++    return IPv4Address::fromString(\implode('.', $octets));
+ }
+ 
+ function encode_ipv6address(EncodingContext $ctx, IPv6Address $address)
+@@ -171,9 +171,12 @@
+ {
+     $hextets = $ctx->unpack('n8', 16);
+ 
+-    return new IPv6Address(
+-        $hextets[1], $hextets[2], $hextets[3], $hextets[4], $hextets[5], $hextets[6], $hextets[7], $hextets[8]
+-    );
++    return IPv6Address::fromString(\implode(':', \array_map(
++        static function (int $hextet): string {
++            return \dechex($hextet);
++        },
++        $hextets
++    )));
+ }
+ 
+ function encode_character_string(EncodingContext $ctx, string $string)
+@@ -235,10 +238,10 @@
+ function ipaddress_to_ptr_name(IPAddress $address): DomainName
+ {
+     if ($address instanceof IPv4Address) {
+-        return new DomainName([
++        return DomainName::fromString(\implode('.', [
+             $address->getOctet4(), $address->getOctet3(), $address->getOctet2(), $address->getOctet1(),
+             'in-addr', 'arpa'
+-        ]);
++        ]));
+     }
+ 
+     if (!$address instanceof IPv6Address) {
+@@ -256,5 +259,5 @@
+     $labels[] = 'ip6';
+     $labels[] = 'arpa';
+ 
+-    return new DomainName($labels);
++    return DomainName::fromString(\implode('.', $labels));
+ }
