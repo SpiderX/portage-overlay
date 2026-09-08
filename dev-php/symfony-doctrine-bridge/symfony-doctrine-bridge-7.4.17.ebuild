@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Bridge/Doctrine"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Doctrine Bridge"
 HOMEPAGE="https://github.com/symfony/doctrine-bridge"
-EGIT_REPO_URI="https://github.com/symfony/doctrine-bridge.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/doctrine-event-manager
 	dev-php/doctrine-persistence
@@ -21,9 +22,7 @@ RDEPEND="dev-php/doctrine-event-manager
 	dev-php/symfony-polyfill-ctype
 	dev-php/symfony-polyfill-mbstring
 	dev-php/symfony-service-contracts"
-# test needs class from composer
-BDEPEND="test? ( dev-php/composer
-		dev-php/doctrine-collections
+BDEPEND="test? ( dev-php/doctrine-collections
 		dev-php/doctrine-data-fixtures
 		dev-php/doctrine-dbal
 		dev-php/doctrine-orm
@@ -48,15 +47,15 @@ BDEPEND="test? ( dev-php/composer
 		dev-php/symfony-var-dumper
 		dev-php/symfony-uid )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests-MiddlewareTest.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests-MiddlewareTest.patch )
 composer_enable_tests phpunit
 
-src_prepare() {
-	composer_src_prepare
-
+src_test() {
+	composer_prepare_tests
+	sed -i 's/ ignoreUndefinedTriggers="true"//' phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
 	# remove tests require classes from tests for another package
 	edo rm Tests/Form/Type/EntityTypeTest.php
+	ephpunit
 }

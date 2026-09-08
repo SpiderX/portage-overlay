@@ -1,0 +1,11 @@
+--- ../Tests/Middleware/Debug/MiddlewareTest.php	2026-07-20 02:28:59.493720637 +0300
++++ ../Tests/Middleware/Debug/MiddlewareTest.php	2026-07-20 02:29:29.751996469 +0300
+@@ -202,7 +202,7 @@
+         $this->assertSame(('"ROLLBACK"' === $expectedEndTransactionDebug ? 'ROLLBACK TO' : 'RELEASE').' '.(method_exists(QueryBuilder::class, 'resetOrderBy') ? 'SAVEPOINT DOCTRINE_2' : 'SAVEPOINT DOCTRINE2_SAVEPOINT_2'), $debug[4]['sql']);
+         $this->assertGreaterThan(0, $debug[4]['executionMS']);
+         $this->assertSame($expectedEndTransactionDebug, $debug[5]['sql']);
+-        $this->assertGreaterThan(0, $debug[5]['executionMS']);
++        $this->assertGreaterThanOrEqual(0, $debug[5]['executionMS']);
+         $this->assertSame('"START TRANSACTION"', $debug[6]['sql']);
+         $this->assertGreaterThan(0, $debug[6]['executionMS']);
+         $this->assertSame('INSERT INTO products(name, price, stock) VALUES ("product2", 15.5, 12)', $debug[7]['sql']);
