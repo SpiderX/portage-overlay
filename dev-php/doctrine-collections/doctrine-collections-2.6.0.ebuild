@@ -5,17 +5,19 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Doctrine/Common/Collections"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Doctrine Collections Abstraction Layer"
 HOMEPAGE="https://github.com/doctrine/collections"
-EGIT_REPO_URI="https://github.com/doctrine/collections.git"
+SRC_URI="https://github.com/doctrine/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/doctrine-deprecations
 	dev-php/symfony-polyfill-php84"
 
 EPHPUNIT_BOOTSTRAP='vendor/autoload.php'
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-2.6.0-tests-ClosureExpressionVisitorTest.patch )
 composer_enable_tests phpunit
