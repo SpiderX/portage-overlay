@@ -1,0 +1,10 @@
+--- ../phpunit.xml.dist	2026-07-11 23:03:05.590358871 +0300
++++ ../phpunit.xml.dist	2026-07-11 23:03:26.976843104 +0300
+@@ -15,6 +15,7 @@
+     <testsuites>
+         <testsuite name="Doctrine Cache Test Suite">
+             <directory>./tests/Doctrine/</directory>
++            <exclude>tests/Doctrine/Tests/Common/Cache/CacheTest.php</exclude>
+         </testsuite>
+     </testsuites>
+ 

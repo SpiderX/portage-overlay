@@ -1,0 +1,113 @@
+--- ../lib/Doctrine/Common/Cache/Psr6/CacheAdapter.php	2026-08-30 11:17:54.805844139 +0300
++++ ../lib/Doctrine/Common/Cache/Psr6/CacheAdapter.php	2026-08-30 11:36:53.621907371 +0300
+@@ -69,7 +69,7 @@
+      */
+     public function getItem($key): CacheItemInterface
+     {
+-        assert(self::validKey($key));
++        self::validKey($key);
+ 
+         if (isset($this->deferredItems[$key])) {
+             $this->commit();
+@@ -95,13 +95,14 @@
+     /**
+      * {@inheritDoc}
+      */
+-    public function getItems(array $keys = []): array
++    public function getItems(array $keys = []): iterable
+     {
+         if ($this->deferredItems) {
+             $this->commit();
+         }
+ 
+-        assert(self::validKeys($keys));
++        // Must remain eager: PSR-6 invalid keys have to fail at getItems().
++        self::validKeys($keys);
+ 
+         $values = $this->doFetchMultiple($keys);
+         $items  = [];
+@@ -109,24 +110,47 @@
+         if (PHP_VERSION_ID >= 80000) {
+             foreach ($keys as $key) {
+                 if (array_key_exists($key, $values)) {
+-                    $items[$key] = new TypedCacheItem($key, $values[$key], true);
++                    $item = new TypedCacheItem($key, $values[$key], true);
+                 } else {
+-                    $items[$key] = new TypedCacheItem($key, null, false);
++                    $item = new TypedCacheItem($key, null, false);
+                 }
++
++                // Do not use $items[$key]: PHP converts numeric-string keys to int.
++                $items[] = [$key, $item];
+             }
++        } else {
++            foreach ($keys as $key) {
++                if (array_key_exists($key, $values)) {
++                    $item = new CacheItem($key, $values[$key], true);
++                } else {
++                    $item = new CacheItem($key, null, false);
++                }
+ 
+-            return $items;
++                $items[] = [$key, $item];
++            }
+         }
+ 
+-        foreach ($keys as $key) {
+-            if (array_key_exists($key, $values)) {
+-                $items[$key] = new CacheItem($key, $values[$key], true);
+-            } else {
+-                $items[$key] = new CacheItem($key, null, false);
++        return new class($items) implements \IteratorAggregate, \Countable {
++            /** @var array<int, array{0: string, 1: CacheItemInterface}> */
++            private $items;
++
++            public function __construct(array $items)
++            {
++                $this->items = $items;
++            }
++
++            public function getIterator(): \Traversable
++            {
++                foreach ($this->items as [$key, $item]) {
++                    yield $key => $item;
++                }
+             }
+-        }
+ 
+-        return $items;
++            public function count(): int
++            {
++                return count($this->items);
++            }
++        };
+     }
+ 
+     /**
+@@ -134,7 +158,7 @@
+      */
+     public function hasItem($key): bool
+     {
+-        assert(self::validKey($key));
++        self::validKey($key);
+ 
+         if (isset($this->deferredItems[$key])) {
+             $this->commit();
+@@ -159,7 +183,7 @@
+      */
+     public function deleteItem($key): bool
+     {
+-        assert(self::validKey($key));
++        self::validKey($key);
+         unset($this->deferredItems[$key]);
+ 
+         return $this->cache->delete($key);
+@@ -171,7 +195,7 @@
+     public function deleteItems(array $keys): bool
+     {
+         foreach ($keys as $key) {
+-            assert(self::validKey($key));
++            self::validKey($key);
+             unset($this->deferredItems[$key]);
+         }
+ 

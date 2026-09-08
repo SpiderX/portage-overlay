@@ -1,9 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit git-r3
+COMPOSER_INSTALL_AUTOLOAD="lib/Doctrine/Common/Cache"
+COMPOSER_INSTALL_PATH=""
+COMPOSER_INSTALL_SRC="lib"
+
+inherit composer git-r3
 
 DESCRIPTION="Doctrine Cache"
 HOMEPAGE="https://github.com/doctrine/cache"
@@ -11,20 +15,16 @@ EGIT_REPO_URI="https://github.com/doctrine/cache.git"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test" # deprecated
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader"
+BDEPEND="test? ( dev-php/cache-integration-tests
+		dev-php/psr-cache
+		dev-php/symfony-cache
+		dev-php/symfony-var-exporter )"
 
-src_prepare() {
-	default
+PATCHES=( "${FILESDIR}/${PN}"-2.2.0-src-CacheAdapter.patch
+	"${FILESDIR}/${PN}"-2.2.0-tests-CacheAdapterTest.patch
+	"${FILESDIR}/${PN}"-2.2.0-tests-CacheProviderTest.patch
+	"${FILESDIR}/${PN}"-2.2.0-tests-CacheTest.patch
+	"${FILESDIR}/${PN}"-2.2.0-tests-phpunit.xml.patch )
 
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		lib/Doctrine/Common/Cache/autoload.php || die "install failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php
-	doins -r lib/.
-}
+composer_enable_tests phpunit

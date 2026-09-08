@@ -1,0 +1,24 @@
+--- ../tests/Doctrine/Tests/Common/Cache/Psr6/CacheAdapterTest.php	2026-07-11 22:33:31.418658794 +0300
++++ ../tests/Doctrine/Tests/Common/Cache/Psr6/CacheAdapterTest.php	2026-07-11 22:35:09.650164205 +0300
+@@ -42,6 +42,10 @@
+      */
+     public function testWithWrappedSymfonyCache()
+     {
++        if (! class_exists(\Symfony\Component\Cache\DoctrineProvider::class)) {
++            self::markTestSkipped('Symfony DoctrineProvider removed in Symfony 6');
++        }
++
+         $rootCache = new ArrayAdapter();
+         $wrapped   = new SymfonyDoctrineProvider($rootCache);
+ 
+@@ -151,6 +155,10 @@
+      */
+     public function testNamespacingFeatureIsPreservedWithSymfonyDoctrineProvider(): void
+     {
++        if (! class_exists(\Symfony\Component\Cache\DoctrineProvider::class)) {
++            self::markTestSkipped('Symfony DoctrineProvider removed in Symfony 6');
++        }
++
+         $wrapped = new ArrayAdapter();
+ 
+         $cacheApp1 = new SymfonyDoctrineProvider($wrapped);

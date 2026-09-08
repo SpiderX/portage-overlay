@@ -1,33 +1,33 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//doctrine-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_AUTOLOAD="lib/Doctrine/Common/Cache"
+COMPOSER_INSTALL_PATH=""
+COMPOSER_INSTALL_SRC="lib"
+
+inherit composer
 
 DESCRIPTION="Doctrine Cache"
 HOMEPAGE="https://github.com/doctrine/cache"
-SRC_URI="https://github.com/doctrine/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/doctrine/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # deprecated
+KEYWORDS="~amd64"
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader"
+BDEPEND="test? ( dev-php/cache-integration-tests
+		dev-php/psr-cache
+		dev-php/symfony-cache
+		dev-php/symfony-var-exporter )"
 
-src_prepare() {
-	default
+PATCHES=( "${FILESDIR}/${PN}"-2.2.0-src-CacheAdapter.patch )
 
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		lib/Doctrine/Common/Cache/autoload.php || die "install failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php
-	doins -r lib/.
-}
+EPHPUNIT_BOOTSTRAP='vendor/autoload.php'
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-2.2.0-tests-CacheAdapterTest.patch
+	"${FILESDIR}/${PN}"-2.2.0-tests-CacheProviderTest.patch
+	"${FILESDIR}/${PN}"-2.2.0-tests-CacheTest.patch
+	"${FILESDIR}/${PN}"-2.2.0-tests-phpunit.xml.patch )
+composer_enable_tests phpunit

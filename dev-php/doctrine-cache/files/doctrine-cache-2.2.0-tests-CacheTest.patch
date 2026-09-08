@@ -1,0 +1,58 @@
+--- ../tests/Doctrine/Tests/Common/Cache/CacheTest.php	2026-07-11 22:03:10.053839726 +0300
++++ ../tests/Doctrine/Tests/Common/Cache/CacheTest.php	2026-07-11 22:05:27.080233251 +0300
+@@ -7,6 +7,7 @@
+ use Doctrine\Common\Cache\CacheProvider;
+ use Doctrine\Tests\DoctrineTestCase;
+ use stdClass;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ use function array_keys;
+ use function array_map;
+@@ -22,9 +23,8 @@
+ {
+     /**
+      * @param mixed $value
+-     *
+-     * @dataProvider provideDataToCache
+      */
++    #[DataProvider('provideDataToCache')]
+     public function testSetContainsFetchDelete($value): void
+     {
+         $cache = $this->getCacheDriver();
+@@ -46,9 +46,8 @@
+ 
+     /**
+      * @param mixed $value
+-     *
+-     * @dataProvider provideDataToCache
+      */
++    #[DataProvider('provideDataToCache')]
+     public function testUpdateExistingEntry($value): void
+     {
+         $cache = $this->getCacheDriver();
+@@ -145,7 +144,7 @@
+     /**
+      * @return array<string, array{mixed}>
+      */
+-    public function provideDataToCache(): array
++    public static function provideDataToCache(): array
+     {
+         $obj       = new stdClass();
+         $obj->foo  = 'bar';
+@@ -213,6 +212,7 @@
+     /**
+      * @dataProvider provideCacheIds
+      */
++    #[DataProvider('provideCacheIds')]
+     public function testCanHandleSpecialCacheIds(string $id): void
+     {
+         $cache = $this->getCacheDriver();
+@@ -257,7 +257,7 @@
+      *
+      * @psalm-return list<array{string}>
+      */
+-    public function provideCacheIds(): array
++    public static function provideCacheIds(): array
+     {
+         return [
+             [':'],
