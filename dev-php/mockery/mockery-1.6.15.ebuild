@@ -7,26 +7,24 @@ COMPOSER_INSTALL_AUTOLOAD="library"
 COMPOSER_INSTALL_PATH="Mockery"
 COMPOSER_INSTALL_SRC="library/Mockery"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Flexible PHP mock object framework"
 HOMEPAGE="https://github.com/mockery/mockery"
-EGIT_REPO_URI="https://github.com/mockery/mockery.git"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/hamcrest"
-
-PATCHES=( "${FILESDIR}/${PN}"-1.6.15-tests.patch )
 
 DOCS=( {CHANGELOG,README}.md )
 
 # hangs under Portage when testing a mocked never-returning method in a forked child
 EPHPUNIT_EXCLUDE_FILTER='testItCanMockAClassWithANeverReturningTypeHintWithExit'
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-1.6.15-tests.patch )
 composer_enable_tests phpunit
-
-src_compile() { :; }
 
 src_install() {
 	composer_src_install

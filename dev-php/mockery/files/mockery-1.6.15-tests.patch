@@ -1,0 +1,37 @@
+--- ../tests/Bootstrap.php	2026-09-04 12:13:48.817460047 +0300
++++ ../tests/Bootstrap.php	2026-09-04 12:14:43.216066488 +0300
+@@ -10,7 +10,6 @@
+  * @see       https://github.com/mockery/mockery for the canonical source repository
+  */
+ 
+-use Composer\Autoload\ClassLoader;
+ use Mockery\Loader\RequireLoader;
+ 
+ /*
+@@ -47,11 +46,6 @@
+ }
+ 
+ (static function (string $rootDir): void {
+-    $classLoader = require \implode(DIRECTORY_SEPARATOR, [$rootDir, 'vendor', 'autoload.php']);
+-    if (! $classLoader instanceof ClassLoader) {
+-        throw new RuntimeException('Unable to load ' . ClassLoader::class);
+-    }
+-
+     $hamcrestPath = \implode(
+         DIRECTORY_SEPARATOR,
+         [$rootDir, 'vendor', 'hamcrest', 'hamcrest-php', 'hamcrest', 'Hamcrest.php']
+@@ -70,14 +64,6 @@
+         throw new RuntimeException('Unable to find fixture directory: ' . $fixtureDir);
+     }
+ 
+-    // Add autoloading for the fixture classes
+-    $classLoader->add('', $fixtureDir . DIRECTORY_SEPARATOR . 'Namespaced');
+-    $versions = ['PHP73', 'PHP74', 'PHP80', 'PHP81', 'PHP82', 'PHP83', 'PHP84', 'PHP85', 'PHP86'];
+-    foreach ($versions as $version) {
+-        $classLoader->addPsr4($version . '\\', $fixtureDir . DIRECTORY_SEPARATOR . $version);
+-    }
+-    // $classLoader->addPsr4('Tests\\Unit\\', $testsDir . DIRECTORY_SEPARATOR . 'Unit');
+-
+     $debug = false;
+     // If debug is enabled, set up a loader for Mockery to use for generated mock classes
+     if ($debug) {
