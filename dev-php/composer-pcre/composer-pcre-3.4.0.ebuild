@@ -5,14 +5,15 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Composer/Pcre"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="PCRE wrapping library that offers type-safe preg_ replacements"
 HOMEPAGE="https://github.com/composer/pcre"
-EGIT_REPO_URI="https://github.com/composer/pcre.git"
+SRC_URI="https://github.com/composer/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 # exclude tests rely on old warning-expectation API
 EPHPUNIT_EXCLUDE_FILTER='BadPatternTriggersWarningByDefault'
