@@ -5,17 +5,19 @@ EAPI=8
 
 COMPOSER_INSTALL_PATH="Doctrine/Deprecations"
 
-inherit composer git-r3 optfeature
+inherit composer optfeature
 
 DESCRIPTION="Doctrine Deprecations"
 HOMEPAGE="https://github.com/doctrine/deprecations"
-EGIT_REPO_URI="https://github.com/doctrine/deprecations.git"
+SRC_URI="https://github.com/doctrine/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 BDEPEND="test? ( dev-php/psr-log )"
 
+COMPOSER_TEST_FILES=( test_fixtures )
 composer_enable_tests phpunit
 
 pkg_postinst() {
