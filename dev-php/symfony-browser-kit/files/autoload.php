@@ -6,5 +6,6 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\BrowserKit\\', __DIR__)
 
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
+	'/usr/share/php/Symfony/Contracts/Deprecation/autoload.php',
 	'/usr/share/php/Symfony/Component/DomCrawler/autoload.php',
 ]);
