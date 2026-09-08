@@ -1,0 +1,85 @@
+--- ../tests/spx_custom_metadata.phpt	2026-07-19 21:46:01.835962939 +0300
++++ ../tests/spx_custom_metadata.phpt	2026-07-19 21:48:07.496254963 +0300
+@@ -3,11 +3,9 @@
+ --INI--
+ log_errors=on
+ --ENV--
+-return <<<END
+ SPX_ENABLED=1
+ SPX_AUTO_START=0
+ SPX_REPORT=full
+-END;
+ --FILE--
+ <?php
+ function foo() {
+@@ -43,9 +41,9 @@
+   "host_name": "%s",
+   "process_pid": %d,
+   "process_tid": %d,
+-  "process_pwd": "%S\/php-spx%S",
++  "process_pwd": "%a",
+   "cli": 1,
+-  "cli_command_line": "%S\/php-spx%S\/tests\/spx_custom_metadata.php",
++  "cli_command_line": "%a",
+   "http_request_uri": "n\/a",
+   "http_method": "GET",
+   "http_host": "n\/a",
+@@ -66,9 +64,9 @@
+   "host_name": "%s",
+   "process_pid": %d,
+   "process_tid": %d,
+-  "process_pwd": "%S\/php-spx%S",
++  "process_pwd": "%a",
+   "cli": 1,
+-  "cli_command_line": "%S\/php-spx%S\/tests\/spx_custom_metadata.php",
++  "cli_command_line": "%a",
+   "http_request_uri": "n\/a",
+   "http_method": "GET",
+   "http_host": "n\/a",
+@@ -89,9 +87,9 @@
+   "host_name": "%s",
+   "process_pid": %d,
+   "process_tid": %d,
+-  "process_pwd": "%S\/php-spx%S",
++  "process_pwd": "%a",
+   "cli": 1,
+-  "cli_command_line": "%S\/php-spx%S\/tests\/spx_custom_metadata.php",
++  "cli_command_line": "%a",
+   "http_request_uri": "n\/a",
+   "http_method": "GET",
+   "http_host": "n\/a",
+@@ -106,18 +104,18 @@
+     ,"zm"
+   ]
+ }
+-PHP Notice:  SPX: spx_profiler_full_report_set_custom_metadata_str(): too large $customMetadataStr string, it must not exceed 4KB in %S/php-spx%S/tests/spx_custom_metadata.php on line 18
++PHP Notice:  SPX: spx_profiler_full_report_set_custom_metadata_str(): too large $customMetadataStr string, it must not exceed 4KB in %a on line 18
+ 
+-Notice: SPX: spx_profiler_full_report_set_custom_metadata_str(): too large $customMetadataStr string, it must not exceed 4KB in %S/php-spx%S/tests/spx_custom_metadata.php on line 18
++Notice: SPX: spx_profiler_full_report_set_custom_metadata_str(): too large $customMetadataStr string, it must not exceed 4KB in %a on line 18
+ {
+   "key": "spx-full-%s",
+   "exec_ts": %d,
+   "host_name": "%s",
+   "process_pid": %d,
+   "process_tid": %d,
+-  "process_pwd": "%S\/php-spx%S",
++  "process_pwd": "%a",
+   "cli": 1,
+-  "cli_command_line": "%S\/php-spx%S\/tests\/spx_custom_metadata.php",
++  "cli_command_line": "%a",
+   "http_request_uri": "n\/a",
+   "http_method": "GET",
+   "http_host": "n\/a",
+@@ -138,9 +136,9 @@
+   "host_name": "%s",
+   "process_pid": %d,
+   "process_tid": %d,
+-  "process_pwd": "%S\/php-spx%S",
++  "process_pwd": "%a",
+   "cli": 1,
+-  "cli_command_line": "%S\/php-spx%S\/tests\/spx_custom_metadata.php",
++  "cli_command_line": "%a",
+   "http_request_uri": "n\/a",
+   "http_method": "GET",
+   "http_host": "n\/a",

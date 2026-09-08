@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,22 +21,18 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cgi test"
-REQUIRED_USE="test? ( cgi )"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="virtual/zlib:0="
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( dev-lang/php:*[cgi?] )" # skipped 7
+
+PATCHES=( "${FILESDIR}/${PN}"-0.4.22-tests.patch )
 
 src_prepare() {
-	default
-
-	# Remove Werror, respect CFLAGS
+	# remove Werror, respect CFLAGS
 	sed -i "/CFLAGS/s/-Werror -Wall -O3/$CFLAGS -Wall/" config.m4 \
 		|| die "sed failed for config.m4"
-	# remove failed tests
-	rm tests/spx_custom_metadata.phpt || die "rm failed"
 
 	php-ext-source-r3_src_prepare
 }
