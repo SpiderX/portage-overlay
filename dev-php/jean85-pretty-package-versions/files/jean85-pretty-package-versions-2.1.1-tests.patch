@@ -1,0 +1,240 @@
+--- ../tests/Unit/VersionTest.php	2026-07-14 00:39:45.496865662 +0300
++++ ../tests/Unit/VersionTest.php	2026-07-15 00:55:28.437691526 +0300
+@@ -6,6 +6,7 @@
+ 
+ use Jean85\Version;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class VersionTest extends TestCase
+ {
+@@ -22,9 +23,7 @@
+         $this->assertSame('vendor/package', $version->getPackageName());
+     }
+ 
+-    /**
+-     * @dataProvider fullVersionProvider
+-     */
++    #[DataProvider('fullVersionProvider')]
+     public function testGetFullVersion(string $prettyVersion, string $reference): void
+     {
+         $version = new Version('vendor/package', $prettyVersion, $reference);
+@@ -35,7 +34,7 @@
+     /**
+      * @return array{0: string, 1: string}[]
+      */
+-    public function fullVersionProvider(): array
++    public static function fullVersionProvider(): array
+     {
+         return [
+             self::STABLE_VERSION,
+@@ -46,49 +45,49 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider prettyVersionProvider
+-     */
+-    public function testGetPrettyVersion(Version $version, string $expectedVersion): void
++    #[DataProvider('prettyVersionProvider')]
++    public function testGetPrettyVersion(array $fixture, string $expectedVersion): void
+     {
++        $version = $this->createVersion($fixture);
++
+         $this->assertSame($expectedVersion, $version->getPrettyVersion());
+     }
+ 
+-    /**
+-     * @dataProvider prettyVersionProvider
+-     */
+-    public function testToString(Version $version, string $expectedVersion): void
++    #[DataProvider('prettyVersionProvider')]
++    public function testToString(array $fixture, string $expectedVersion): void
+     {
++        $version = $this->createVersion($fixture);
++
+         $this->assertSame($expectedVersion, (string) $version);
+     }
+ 
+     /**
+      * @return array{0: Version, 1: string}[]
+      */
+-    public function prettyVersionProvider(): array
++    public static function prettyVersionProvider(): array
+     {
+         return [
+-            [$this->createVersion(self::STABLE_VERSION), '1.1.2'],
+-            [$this->createVersion(self::STABLE_VERSION_WITH_V), 'v1.7.0'],
+-            [$this->createVersion(self::DEV_VERSION), '9999999-dev@f6e77da'],
+-            [$this->createVersion(self::PRE_RELEASE_VERSION), '7.0.0-RC1'],
+-            [$this->createVersion(self::REPLACE_VERSION), 'self.version@aaabbbc'],
++            [self::STABLE_VERSION, '1.1.2'],
++            [self::STABLE_VERSION_WITH_V, 'v1.7.0'],
++            [self::DEV_VERSION, '9999999-dev@f6e77da'],
++            [self::PRE_RELEASE_VERSION, '7.0.0-RC1'],
++            [self::REPLACE_VERSION, 'self.version@aaabbbc'],
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider versionWithShortReferenceProvider
+-     */
+-    public function testGetVersionWithShortReference(Version $version, string $expectedVersion): void
++    #[DataProvider('versionWithShortReferenceProvider')]
++    public function testGetVersionWithShortReference(array $fixture, string $expectedVersion): void
+     {
++        $version = $this->createVersion($fixture);
++
+         $this->assertSame($expectedVersion, $version->getVersionWithShortReference());
+     }
+ 
+-    /**
+-     * @dataProvider versionWithShortReferenceProvider
+-     */
+-    public function testDeprecatedGetters(Version $version): void
++    #[DataProvider('versionWithShortReferenceProvider')]
++    public function testDeprecatedGetters(array $fixture, string $_expectedVersion): void
+     {
++        $version = $this->createVersion($fixture);
++
+         $this->assertSame($version->getReference(), $version->getCommitHash());
+         $this->assertSame($version->getShortReference(), $version->getShortCommitHash());
+         $this->assertSame($version->getVersionWithShortReference(), $version->getVersionWithShortCommit());
+@@ -97,67 +96,67 @@
+     /**
+      * @return array{0: Version, 1: string}[]
+      */
+-    public function versionWithShortReferenceProvider(): array
++    public static function versionWithShortReferenceProvider(): array
+     {
+         return [
+-            [$this->createVersion(self::STABLE_VERSION), '1.1.2@51e867c'],
+-            [$this->createVersion(self::STABLE_VERSION_WITH_V), 'v1.7.0@93d39f1'],
+-            [$this->createVersion(self::PRE_RELEASE_VERSION), '7.0.0-RC1@f6e77da'],
+-            [$this->createVersion(self::DEV_VERSION), '9999999-dev@f6e77da'],
+-            [$this->createVersion(self::REPLACE_VERSION), 'self.version@aaabbbc'],
++            [self::STABLE_VERSION, '1.1.2@51e867c'],
++            [self::STABLE_VERSION_WITH_V, 'v1.7.0@93d39f1'],
++            [self::PRE_RELEASE_VERSION, '7.0.0-RC1@f6e77da'],
++            [self::DEV_VERSION, '9999999-dev@f6e77da'],
++            [self::REPLACE_VERSION, 'self.version@aaabbbc'],
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider shortVersionProvider
+-     */
+-    public function testGetShortVersion(Version $version, string $expectedVersion): void
++    #[DataProvider('shortVersionProvider')]
++    public function testGetShortVersion(array $fixture, string $expectedVersion): void
+     {
++        $version = $this->createVersion($fixture);
++
+         $this->assertSame($expectedVersion, $version->getShortVersion());
+     }
+ 
+     /**
+      * @return array{0: Version, 1: string}[]
+      */
+-    public function shortVersionProvider(): array
++    public static function shortVersionProvider(): array
+     {
+         return [
+-            [$this->createVersion(self::STABLE_VERSION), '1.1.2'],
+-            [$this->createVersion(self::STABLE_VERSION_WITH_V), 'v1.7.0'],
+-            [$this->createVersion(self::DEV_VERSION), '9999999-dev'],
+-            [$this->createVersion(self::PRE_RELEASE_VERSION), '7.0.0-RC1'],
+-            [$this->createVersion(self::REPLACE_VERSION), 'self.version'],
++            [self::STABLE_VERSION, '1.1.2'],
++            [self::STABLE_VERSION_WITH_V, 'v1.7.0'],
++            [self::DEV_VERSION, '9999999-dev'],
++            [self::PRE_RELEASE_VERSION, '7.0.0-RC1'],
++            [self::REPLACE_VERSION, 'self.version'],
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider referenceHashProvider
+-     */
+-    public function testGetReference(Version $version, string $expectedReference): void
++    #[DataProvider('referenceHashProvider')]
++    public function testGetReference(array $fixture, string $expectedReference): void
+     {
++        $version = $this->createVersion($fixture);
++
+         $this->assertSame($expectedReference, $version->getReference());
+     }
+ 
+     /**
+      * @return array{0: Version, 1: string}[]
+      */
+-    public function referenceHashProvider(): array
++    public static function referenceHashProvider(): array
+     {
+         return [
+-            [$this->createVersion(self::STABLE_VERSION), '51e867c70f0799790b3e82276875414ce13daaca'],
+-            [$this->createVersion(self::STABLE_VERSION_WITH_V), '93d39f1f7f9326d746203c7c056f300f7f126073'],
+-            [$this->createVersion(self::DEV_VERSION), 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
+-            [$this->createVersion(self::PRE_RELEASE_VERSION), 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
+-            [$this->createVersion(self::REPLACE_VERSION), 'aaabbbcccddd'],
++            [self::STABLE_VERSION, '51e867c70f0799790b3e82276875414ce13daaca'],
++            [self::STABLE_VERSION_WITH_V, '93d39f1f7f9326d746203c7c056f300f7f126073'],
++            [self::DEV_VERSION, 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
++            [self::PRE_RELEASE_VERSION, 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
++            [self::REPLACE_VERSION, 'aaabbbcccddd'],
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider shortReferenceHashProvider
+-     */
+-    public function testGetShortReference(Version $version, string $expectedHash): void
++    #[DataProvider('shortReferenceHashProvider')]
++    public function testGetShortReference(array $fixture, string $expectedReference): void
+     {
+-        $this->assertSame($expectedHash, $version->getShortReference());
++        $version = $this->createVersion($fixture);
++
++        $this->assertSame($expectedReference, $version->getShortReference());
+     }
+ 
+     public function testGetShortReferenceShouldNotTruncateMissingReference(): void
+@@ -170,13 +169,13 @@
+     /**
+      * @return array{0: Version, 1: string}[]
+      */
+-    public function shortReferenceHashProvider(): array
++    public static function shortReferenceHashProvider(): array
+     {
+         return [
+-            [$this->createVersion(self::STABLE_VERSION), '51e867c'],
+-            [$this->createVersion(self::STABLE_VERSION_WITH_V), '93d39f1'],
+-            [$this->createVersion(self::DEV_VERSION), 'f6e77da'],
+-            [$this->createVersion(self::REPLACE_VERSION), 'aaabbbc'],
++            [self::STABLE_VERSION, '51e867c'],
++            [self::STABLE_VERSION_WITH_V, '93d39f1'],
++            [self::DEV_VERSION, 'f6e77da'],
++            [self::REPLACE_VERSION, 'aaabbbc'],
+         ];
+     }
+ 
+@@ -194,9 +193,7 @@
+         $this->assertSame('{no reference}', $version->getReference());
+     }
+ 
+-    /**
+-     * @dataProvider taggedVersionProvider
+-     */
++    #[DataProvider('taggedVersionProvider')]
+     public function testRegressionDetectTaggedVersion(string $version): void
+     {
+         $version = new Version('test/package', $version, 'abcdef');
+@@ -207,7 +204,7 @@
+     /**
+      * @return array{string}[]
+      */
+-    public function taggedVersionProvider(): array
++    public static function taggedVersionProvider(): array
+     {
+         return [
+             ['7.0.0-alpha-1'],

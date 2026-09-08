@@ -1,26 +1,24 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//jean85-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="Jean85"
+PHP_REQ_USE="intl?"
+
+inherit composer
 
 DESCRIPTION="Independent wrapper to get pretty versions strings"
 HOMEPAGE="https://github.com/Jean85/pretty-package-versions"
-SRC_URI="https://github.com/Jean85/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/Jean85/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # tests require useless packages
+KEYWORDS="~amd64"
+IUSE="intl"
+REQUIRED_USE="test? ( intl )"
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader"
+RDEPEND="dev-php/composer"
 
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/Jean85
-	doins -r "${FILESDIR}"/autoload.php src/.
-}
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-2.1.1-tests.patch )
+composer_enable_tests phpunit

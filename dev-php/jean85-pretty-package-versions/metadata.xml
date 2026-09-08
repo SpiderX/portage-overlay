@@ -13,6 +13,9 @@
 	This package provides a PHP component with a small, independent wrapper
 	to get pretty versions strings of your dependencies.
 	</longdescription>
+	<use>
+		<flag name="intl">Enables the intl extension for extended internalization support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">jean85/pretty-package-versions</remote-id>
 	</upstream>
