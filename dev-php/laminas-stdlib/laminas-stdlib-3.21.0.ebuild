@@ -9,13 +9,15 @@ COMPOSER_PKG="${PN#*-}"
 COMPOSER_PN="${COMPOSER_VENDOR}/${COMPOSER_VENDOR}-${COMPOSER_PKG}"
 COMPOSER_SRC="${T}/composer/${COMPOSER_VENDOR}-${COMPOSER_PKG}"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="SPL extensions, array utilities, error handlers, and more"
 HOMEPAGE="https://github.com/laminas/laminas-stdlib"
-EGIT_REPO_URI="https://github.com/laminas/laminas-stdlib.git"
+SRC_URI="https://github.com/laminas/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 composer_enable_tests phpunit
