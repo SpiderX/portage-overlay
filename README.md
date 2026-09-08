@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1608](https://img.shields.io/badge/ebuild-1608-orange.svg)](https://img.shields.io/badge/ebuild-1608-orange.svg)
+[![Number of ebuilds: 1609](https://img.shields.io/badge/ebuild-1609-orange.svg)](https://img.shields.io/badge/ebuild-1609-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -915,6 +915,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[phpdocumentor-reflection-common](https://github.com/phpDocumentor/ReflectionCommon) | phpDocumentor ReflectionCommon component
 *   dev-php/[phpdocumentor-reflection-docblock](https://github.com/phpDocumentor/ReflectionDocBlock) | phpDocumentor ReflectionDocBlock component
 *   dev-php/[phpdocumentor-type-resolver](https://github.com/phpDocumentor/TypeResolver) | phpDocumentor TypeResolver component
+*   dev-php/[phpspec-prophecy](https://github.com/phpspec/prophecy) | Highly opinionated mocking framework for PHP
 *   dev-php/[phpstan-phpdoc-parser](https://github.com/phpstan/phpdoc-parser) | PHPDoc Parser for PHPStan
 *   dev-php/[phpunit](https://github.com/sebastianbergmann/phpunit) | The PHP Unit Testing framework
 *   dev-php/[phpunit-php-code-coverage](https://github.com/sebastianbergmann/php-code-coverage) | Library for PHP code coverage information
