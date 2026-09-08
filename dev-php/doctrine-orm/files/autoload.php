@@ -6,6 +6,7 @@ Fedora\Autoloader\Autoload::addPsr4('Doctrine\\ORM\\', __DIR__);
 
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
+	'/usr/share/php/Composer/autoload.php',
 	'/usr/share/php/Doctrine/Common/Collections/autoload.php',
 	'/usr/share/php/Doctrine/Common/EventManager/autoload.php',
 	'/usr/share/php/Doctrine/Common/Lexer/autoload.php',

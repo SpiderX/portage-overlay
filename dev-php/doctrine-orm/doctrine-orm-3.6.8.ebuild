@@ -6,14 +6,15 @@ EAPI=8
 COMPOSER_INSTALL_PATH="Doctrine/ORM"
 PHP_REQ_USE="ctype,mysql?,mssql?,postgres?,sqlite?"
 
-inherit composer edo git-r3 optfeature
+inherit composer edo optfeature
 
 DESCRIPTION="Doctrine Object Relational Mapper"
 HOMEPAGE="https://github.com/doctrine/orm"
-EGIT_REPO_URI="https://github.com/doctrine/orm.git"
+SRC_URI="https://github.com/doctrine/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="mysql mssql postgres sqlite"
 REQUIRED_USE="test? ( mysql mssql postgres sqlite )"
 
@@ -32,11 +33,13 @@ RDEPEND="dev-php/composer
 BDEPEND="test? ( dev-db/redis
 		dev-php/symfony-cache )"
 
-PATCHES=( "${FILESDIR}/${PN}"-3.6.7-tests-SingleScalarHydratorTest.patch )
-
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-3.6.7-tests-GH9230Test.patch
+	"${FILESDIR}/${PN}"-3.6.7-tests-SingleScalarHydratorTest.patch )
 composer_enable_tests phpunit
 
 src_test() {
+	composer_prepare_tests
 	edo "${EPREFIX}"/usr/sbin/redis-server - <<- EOF
 		daemonize yes
 		pidfile "${T}/redis.pid"

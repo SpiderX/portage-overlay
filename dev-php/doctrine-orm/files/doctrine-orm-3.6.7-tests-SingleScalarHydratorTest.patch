@@ -1,0 +1,20 @@
+--- ../tests/Tests/ORM/Hydration/SingleScalarHydratorTest.php	2026-07-12 02:19:58.580635906 +0300
++++ ../tests/Tests/ORM/Hydration/SingleScalarHydratorTest.php	2026-07-12 02:21:52.297698067 +0300
+@@ -132,7 +132,7 @@
+ 
+     /** @param list<array<string, mixed>> $resultSet */
+     #[DataProvider('invalidResultSetProvider')]
+-    public function testHydrateSingleScalarFromFieldMappingWithInvalidResultSet(array $resultSet): void
++    public function testHydrateSingleScalarFromFieldMappingWithInvalidResultSet(array $resultSet, mixed $_unused = null): void
+     {
+         $rsm = new ResultSetMapping();
+         $rsm->addEntityResult(CmsUser::class, 'u');
+@@ -148,7 +148,7 @@
+ 
+     /** @param list<array<string, mixed>> $resultSet */
+     #[DataProvider('invalidResultSetProvider')]
+-    public function testHydrateSingleScalarFromScalarMappingWithInvalidResultSet(array $resultSet): void
++    public function testHydrateSingleScalarFromScalarMappingWithInvalidResultSet(array $resultSet, mixed $_unused = null): void
+     {
+         $rsm = new ResultSetMapping();
+         $rsm->addScalarResult('u__id', 'id', 'string');

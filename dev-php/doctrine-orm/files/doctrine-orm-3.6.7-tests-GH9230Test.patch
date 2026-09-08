@@ -1,0 +1,11 @@
+--- ../tests/Tests/ORM/Functional/Ticket/GH9230Test.php	2026-07-12 02:23:09.446410466 +0300
++++ ../tests/Tests/ORM/Functional/Ticket/GH9230Test.php	2026-07-12 02:25:13.474234454 +0300
+@@ -85,7 +85,7 @@
+ 
+     #[DataProvider('failingValuesBeforeFix')]
+     #[DataProvider('succeedingValuesBeforeFix')]
+-    public function testIssue(string $property, $falsyValue, $truthyValue): void
++    public function testIssue(string $property, $falsyValue, $truthyValue, mixed $_unused = null): void
+     {
+         $counter1            = new GH9230Entity();
+         $counter1->$property = $falsyValue;

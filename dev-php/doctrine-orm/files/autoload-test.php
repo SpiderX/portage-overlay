@@ -8,3 +8,7 @@ Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Tests\\', 'tests/Tests');
 	'src/autoload.php',
 	'/usr/share/php/Symfony/Component/Cache/autoload.php',
 ]);
+
+\Composer\InstalledVersions::reload(
+	require __DIR__.'/installed.php'
+);
