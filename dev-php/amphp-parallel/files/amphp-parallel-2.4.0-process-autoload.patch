@@ -1,0 +1,10 @@
+--- ../src/Context/Internal/process-runner.php	2026-08-29 19:44:27.292986348 +0300
++++ ../src/Context/Internal/process-runner.php	2026-08-29 19:44:56.013559075 +0300
+@@ -25,6 +25,7 @@
+     $paths = [
+         \dirname(__DIR__, 5) . "/autoload.php",
+         \dirname(__DIR__, 3) . "/vendor/autoload.php",
++        \dirname(__DIR__, 2) . "/autoload.php",
+     ];
+ 
+     foreach ($paths as $path) {

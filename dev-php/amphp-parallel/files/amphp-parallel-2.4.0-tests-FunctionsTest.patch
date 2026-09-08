@@ -1,0 +1,57 @@
+--- ../test/Worker/FunctionsTest.php	2026-07-26 00:33:11.972829092 +0300
++++ ../test/Worker/FunctionsTest.php	2026-07-26 00:35:32.358034980 +0300
+@@ -10,6 +10,7 @@
+ use Amp\Parallel\Worker\WorkerPool;
+ use Amp\PHPUnit\AsyncTestCase;
+ use Amp\Sync\Channel;
++use PHPUnit\Framework\Attributes\Depends;
+ 
+ function nonAutoloadableFunction(): void
+ {
+@@ -27,9 +28,7 @@
+         self::assertSame(Worker\workerPool(), $pool);
+     }
+ 
+-    /**
+-     * @depends testPool
+-     */
++    #[Depends('testPool')]
+     public function testSubmit(): void
+     {
+         $pool = $this->createMock(WorkerPool::class);
+@@ -54,15 +53,13 @@
+         self::assertSame($value, Worker\submit($task)->await());
+     }
+ 
+-    /**
+-     * @depends testPool
+-     */
++    #[Depends('testPool')]
+     public function testWorker(): void
+     {
+         $pool = $this->createMock(WorkerPool::class);
+         $pool->expects(self::once())
+             ->method('getWorker')
+-            ->will(self::returnValue($this->createMock(Worker\Worker::class)));
++            ->willReturn($this->createMock(Worker\Worker::class));
+ 
+         Worker\workerPool($pool);
+ 
+@@ -80,15 +77,13 @@
+         self::assertSame(Worker\workerFactory(), $factory);
+     }
+ 
+-    /**
+-     * @depends testFactory
+-     */
++    #[Depends('testFactory')]
+     public function testCreate(): void
+     {
+         $factory = $this->createMock(WorkerFactory::class);
+         $factory->expects(self::once())
+             ->method('create')
+-            ->will(self::returnValue($this->createMock(Worker\Worker::class)));
++            ->willReturn($this->createMock(Worker\Worker::class));
+ 
+         Worker\workerFactory($factory);
+         Worker\createWorker(); // shouldn't throw
