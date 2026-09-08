@@ -5,34 +5,30 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Predis"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Flexible and feature-complete Redis client for PHP"
 HOMEPAGE="https://github.com/predis/predis"
-EGIT_REPO_URI="https://github.com/predis/predis.git"
-SRC_URI="https://github.com/SpiderX/portage-overlay/releases/download/${PN}-3.6.0/${PN}-3.6.0-patches.tar.xz"
+SRC_URI="https://github.com/predis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-patches.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/psr-http-message"
 BDEPEND="test? ( dev-db/redis
 		dev-php/relay )"
 
-PATCHES=( "${WORKDIR}/${PN}-3.6.0-patches/tests" )
-
 # ssl tests need cluster, blocking Pub/Sub integration test can hang
 # indefinitely due to timing issues
 EPHPUNIT_EXCLUDE_FILTER='testPubSubAgainstRedisServerBlocking'
 EPHPUNIT_EXCLUDE_GROUP=( cluster realm-stack realm-server sentinel ssl )
+COMPOSER_TEST_PATCHES=( "${WORKDIR}/${P}-patches/tests" )
 composer_enable_tests phpunit
 
-src_unpack() {
-	git-r3_src_unpack
-	unpack ${A}
-}
-
 src_test() {
+	composer_prepare_tests
 	edo "${EPREFIX}"/usr/sbin/redis-server - <<- EOF
 		daemonize yes
 		pidfile "${T}/redis-6379.pid"
