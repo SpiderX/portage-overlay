@@ -1,0 +1,30 @@
+--- ../tests/Common/Proxy/ProxyLogicIdentifierGetterTest.php	2026-07-01 22:47:07.685091585 +0300
++++ ../tests/Common/Proxy/ProxyLogicIdentifierGetterTest.php	2026-07-01 22:47:44.645193062 +0300
+@@ -5,6 +5,7 @@
+ use Doctrine\Common\Proxy\ProxyGenerator;
+ use Doctrine\Persistence\Mapping\ClassMetadata;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use stdClass;
+ use function class_exists;
+ 
+@@ -19,9 +20,8 @@
+     /**
+      * @param string $fieldName
+      * @param mixed  $expectedReturnedValue
+-     *
+-     * @dataProvider methodsForWhichLazyLoadingShouldBeDisabled
+      */
++    #[DataProvider('methodsForWhichLazyLoadingShouldBeDisabled')]
+     public function testNoLazyLoadingForIdentifier(ClassMetadata $metadata, $fieldName, $expectedReturnedValue)
+     {
+         $className      = $metadata->getName();
+@@ -58,7 +58,7 @@
+      *
+      * @psalm-return list<array{ClassMetadata,string,mixed}>
+      */
+-    public function methodsForWhichLazyLoadingShouldBeDisabled()
++    public static function methodsForWhichLazyLoadingShouldBeDisabled()
+     {
+         $data = [
+             [new LazyLoadableObjectClassMetadata(), 'protectedIdentifierField', 'foo'],

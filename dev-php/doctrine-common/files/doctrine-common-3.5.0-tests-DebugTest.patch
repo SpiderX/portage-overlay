@@ -1,0 +1,34 @@
+--- ../tests/Common/Util/DebugTest.php	2026-07-01 00:56:42.804348324 +0300
++++ ../tests/Common/Util/DebugTest.php	2026-07-01 00:58:06.261362799 +0300
+@@ -9,6 +9,8 @@
+ use DateTimeZone;
+ use Doctrine\Common\Util\Debug;
+ use Doctrine\Tests\DoctrineTestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\RequiresPhp;
+ use stdClass;
+ 
+ use function ob_end_clean;
+@@ -119,11 +121,9 @@
+ 
+     /**
+      * @param array<string, int> $expected
+-     *
+-     * @dataProvider provideAttributesCases
+-     *
+-     * @requires PHP < 8.1.0
+      */
++    #[RequiresPhp('< 8.1.0')]
++    #[DataProvider('provideAttributesCases')]
+     public function testExportParentAttributes(TestAsset\ParentClass $class, array $expected)
+     {
+         $actualRepresentation   = print_r($class, true);
+@@ -144,7 +144,7 @@
+     /**
+      * @psalm-return array<string, array{TestAsset\ParentClass, mixed[]}>
+      */
+-    public function provideAttributesCases()
++    public static function provideAttributesCases()
+     {
+         return [
+             'different-attributes' => [

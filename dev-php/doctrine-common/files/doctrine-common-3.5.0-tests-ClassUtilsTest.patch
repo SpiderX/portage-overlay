@@ -1,0 +1,51 @@
+--- ../tests/Common/Util/ClassUtilsTest.php	2026-07-01 01:10:35.823438221 +0300
++++ ../tests/Common/Util/ClassUtilsTest.php	2026-07-01 01:11:29.964048242 +0300
+@@ -6,6 +6,7 @@
+ 
+     use Doctrine\Common\Util\ClassUtils;
+     use Doctrine\Tests\DoctrineTestCase;
++    use PHPUnit\Framework\Attributes\DataProvider;
+ 
+     class ClassUtilsTest extends DoctrineTestCase
+     {
+@@ -23,17 +24,13 @@
+             ];
+         }
+ 
+-        /**
+-         * @dataProvider dataGetClass
+-         */
++        #[DataProvider('dataGetClass')]
+         public function testGetRealClass(string $className, string $expectedClassName): void
+         {
+             self::assertEquals($expectedClassName, ClassUtils::getRealClass($className));
+         }
+ 
+-        /**
+-         * @dataProvider dataGetClass
+-         */
++        #[DataProvider('dataGetClass')]
+         public function testGetClass(string $className, string $expectedClassName): void
+         {
+             $object = new $className();
+@@ -51,18 +48,14 @@
+             self::assertEquals('Proxies\__CG__\stdClass', ClassUtils::generateProxyClassName('stdClass', 'Proxies'));
+         }
+ 
+-        /**
+-         * @dataProvider dataGetClass
+-         */
++        #[DataProvider('dataGetClass')]
+         public function testNewReflectionClass(string $className, string $expectedClassName): void
+         {
+             $reflClass = ClassUtils::newReflectionClass($className);
+             self::assertEquals($expectedClassName, $reflClass->getName());
+         }
+ 
+-        /**
+-         * @dataProvider dataGetClass
+-         */
++        #[DataProvider('dataGetClass')]
+         public function testNewReflectionObject(string $className, string $expectedClassName): void
+         {
+             $object    = new $className();

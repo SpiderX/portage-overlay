@@ -1,0 +1,71 @@
+--- ../tests/Common/Proxy/ProxyMagicMethodsTest.php	2026-06-30 19:30:04.884555126 +0300
++++ ../tests/Common/Proxy/ProxyMagicMethodsTest.php	2026-06-30 19:33:33.496855800 +0300
+@@ -530,56 +530,56 @@
+         $metadata
+             ->expects($this->any())
+             ->method('getName')
+-            ->will($this->returnValue($className));
++            ->willReturn($className);
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('getIdentifier')
+-            ->will($this->returnValue(['id']));
++            ->willReturn(['id']);
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('getReflectionClass')
+-            ->will($this->returnValue(new ReflectionClass($className)));
++            ->willReturn(new ReflectionClass($className));
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('isIdentifier')
+-            ->will($this->returnCallback(static function ($fieldName) {
++            ->willReturnCallback(static function ($fieldName) {
+                 return $fieldName === 'id';
+-            }));
++            });
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('hasField')
+-            ->will($this->returnCallback(static function ($fieldName) {
++            ->willReturnCallback(static function ($fieldName) {
+                 return in_array($fieldName, ['id', 'publicField']);
+-            }));
++            });
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('hasAssociation')
+-            ->will($this->returnValue(false));
++            ->willReturn(false);
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('getFieldNames')
+-            ->will($this->returnValue(['id', 'publicField']));
++            ->willReturn(['id', 'publicField']);
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('getIdentifierFieldNames')
+-            ->will($this->returnValue(['id']));
++            ->willReturn(['id']);
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('getAssociationNames')
+-            ->will($this->returnValue([]));
++            ->willReturn([]);
+ 
+         $metadata
+             ->expects($this->any())
+             ->method('getTypeOfField')
+-            ->will($this->returnValue('string'));
++            ->willReturn('string');
+ 
+         $this->proxyGenerator->generateProxyClass($metadata, $this->proxyGenerator->getProxyFileName($className));
+         require_once $this->proxyGenerator->getProxyFileName($className);

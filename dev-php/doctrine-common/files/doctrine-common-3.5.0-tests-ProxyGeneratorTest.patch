@@ -1,0 +1,24 @@
+--- ../tests/Common/Proxy/ProxyGeneratorTest.php	2026-06-30 19:52:15.180305752 +0300
++++ ../tests/Common/Proxy/ProxyGeneratorTest.php	2026-06-30 19:53:46.659856841 +0300
+@@ -572,7 +572,7 @@
+         if ( ! class_exists('Doctrine\Tests\Common\ProxyProxy\__CG__\Php81EnumPublicPropertyType', false)) {
+             $metadata = $this->createClassMetadata($className, ['id']);
+ 
+-            $metadata->method('hasField')->will($this->returnValue(true));
++            $metadata->method('hasField')->willReturn(true);
+ 
+             $proxyGenerator = new ProxyGenerator(__DIR__ . '/generated', __NAMESPACE__ . 'Proxy');
+             $this->generateAndRequire($proxyGenerator, $metadata);
+@@ -649,9 +649,9 @@
+     {
+         $metadata  = $this->createMock(ClassMetadata::class);
+         $reflClass = new ReflectionClass($className);
+-        $metadata->expects($this->any())->method('getReflectionClass')->will($this->returnValue($reflClass));
+-        $metadata->expects($this->any())->method('getIdentifierFieldNames')->will($this->returnValue($ids));
+-        $metadata->expects($this->any())->method('getName')->will($this->returnValue($className));
++        $metadata->expects($this->any())->method('getReflectionClass')->willReturn($reflClass);
++        $metadata->expects($this->any())->method('getIdentifierFieldNames')->willReturn($ids);
++        $metadata->expects($this->any())->method('getName')->willReturn($className);
+ 
+         return $metadata;
+     }

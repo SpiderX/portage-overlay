@@ -1,0 +1,37 @@
+--- ../tests/Common/Proxy/ProxyLogicVoidReturnTypeTest.php	2026-07-01 19:46:01.693747583 +0300
++++ ../tests/Common/Proxy/ProxyLogicVoidReturnTypeTest.php	2026-07-01 20:05:57.858797268 +0300
+@@ -35,8 +35,9 @@
+      */
+     public function setUp() : void
+     {
+-        $this->proxyLoader                = $loader      = $this->getMockBuilder(stdClass::class)->setMethods(['load'])->getMock();
+-        $this->initializerCallbackMock    = $this->getMockBuilder(stdClass::class)->setMethods(['__invoke'])->getMock();
++
++        $this->proxyLoader                = $loader      = $this->getMockBuilder(ProxyLogicVoidReturnTypeLoaderMock::class)->onlyMethods(['load'])->getMock();
++        $this->initializerCallbackMock    = $this->getMockBuilder(ProxyLogicVoidReturnTypeCallbackMock::class)->onlyMethods(['__invoke'])->getMock();
+         $this->lazyLoadableObjectMetadata = $metadata = new LazyLoadableObjectWithVoidClassMetadata();
+ 
+         $proxyClassName = 'Doctrine\Tests\Common\ProxyProxy\__CG__\Doctrine\Tests\Common\Proxy\LazyLoadableObjectWithVoid';
+@@ -124,6 +125,20 @@
+             return;
+         }
+ 
+-        $invocationMocker->will($this->returnCallback($callbackClosure));
++        $invocationMocker->willReturnCallback($callbackClosure);
++    }
++}
++
++class ProxyLogicVoidReturnTypeLoaderMock
++{
++    public function load($proxy) : void
++    {
+     }
+ }
++
++class ProxyLogicVoidReturnTypeCallbackMock
++{
++    public function __invoke() : void
++    {
++    }
++}
+\ No newline at end of file
