@@ -1,0 +1,207 @@
+--- ../tests/VersionParserTest.php	2026-06-27 17:05:23.109598154 +0300
++++ ../tests/VersionParserTest.php	2026-06-27 17:15:35.741256141 +0300
+@@ -17,14 +17,15 @@
+ use Exception;
+ use LogicException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class VersionParserTest extends TestCase
+ {
+     /**
+-     * @dataProvider numericAliasVersions
+      * @param string $input
+      * @param string $expected
+      */
++    #[DataProvider('numericAliasVersions')]
+     public function testParseNumericAliasPrefix($input, $expected)
+     {
+         $parser = new VersionParser();
+@@ -50,10 +51,10 @@
+     }
+ 
+     /**
+-     * @dataProvider successfulNormalizedVersions
+      * @param string $input
+      * @param string $expected
+      */
++    #[DataProvider('successfulNormalizedVersions')]
+     public function testNormalizeSucceeds($input, $expected)
+     {
+         $parser = new VersionParser();
+@@ -146,10 +147,10 @@
+     }
+ 
+     /**
+-     * @dataProvider failingNormalizedVersions
+      * @param string $input
+      */
+-    public function testNormalizeFails($input)
++    #[DataProvider('failingNormalizedVersions')]
++    public function testNormalizeFails($input, $_unused = null)
+     {
+         $this->doExpectException('UnexpectedValueException');
+         $parser = new VersionParser();
+@@ -192,9 +193,9 @@
+     }
+ 
+     /**
+-     * @dataProvider failingNormalizedVersionsWithBadAlias
+      * @param string $fullInput
+      */
++    #[DataProvider('failingNormalizedVersionsWithBadAlias')]
+     public function testNormalizeFailsAndReportsAliasIssue($fullInput)
+     {
+         if (!preg_match('{^([^,\s#]+)(?:#[^ ]+)? +as +([^,\s]+)$}', $fullInput, $match)) {
+@@ -224,9 +225,9 @@
+     }
+ 
+     /**
+-     * @dataProvider failingNormalizedVersionsWithBadAliasee
+      * @param string $fullInput
+      */
++    #[DataProvider('failingNormalizedVersionsWithBadAliasee')]
+     public function testNormalizeFailsAndReportsAliaseeIssue($fullInput)
+     {
+         if (!preg_match('{^([^,\s#]+)(?:#[^ ]+)? +as +([^,\s]+)$}', $fullInput, $match)) {
+@@ -256,10 +257,10 @@
+     }
+ 
+     /**
+-     * @dataProvider successfulNormalizedBranches
+      * @param string $input
+      * @param string $expected
+      */
++    #[DataProvider('successfulNormalizedBranches')]
+     public function testNormalizeBranch($input, $expected)
+     {
+         $parser = new VersionParser();
+@@ -324,11 +325,10 @@
+     }
+ 
+     /**
+-     * @dataProvider simpleConstraints
+-     *
+      * @param string     $input
+      * @param Constraint $expected
+      */
++    #[DataProvider('simpleConstraints')]
+     public function testParseConstraintsSimple($input, $expected)
+     {
+         $parser = new VersionParser();
+@@ -377,12 +377,11 @@
+     }
+ 
+     /**
+-     * @dataProvider wildcardConstraints
+-     *
+      * @param string          $input
+      * @param Constraint|null $min
+      * @param Constraint      $max
+      */
++    #[DataProvider('wildcardConstraints')]
+     public function testParseConstraintsWildcard($input, $min, $max)
+     {
+         $parser = new VersionParser();
+@@ -419,12 +418,11 @@
+     }
+ 
+     /**
+-     * @dataProvider tildeConstraints
+-     *
+      * @param string          $input
+      * @param Constraint|null $min
+      * @param Constraint      $max
+      */
++    #[DataProvider('tildeConstraints')]
+     public function testParseTildeWildcard($input, $min, $max)
+     {
+         $parser = new VersionParser();
+@@ -466,12 +464,11 @@
+     }
+ 
+     /**
+-     * @dataProvider caretConstraints
+-     *
+      * @param string          $input
+      * @param Constraint|null $min
+      * @param Constraint      $max
+      */
++    #[DataProvider('caretConstraints')]
+     public function testParseCaretWildcard($input, $min, $max)
+     {
+         $parser = new VersionParser();
+@@ -516,12 +513,11 @@
+     }
+ 
+     /**
+-     * @dataProvider hyphenConstraints
+-     *
+      * @param string          $input
+      * @param Constraint|null $min
+      * @param Constraint      $max
+      */
++    #[DataProvider('hyphenConstraints')]
+     public function testParseHyphen($input, $min, $max)
+     {
+         $parser = new VersionParser();
+@@ -558,10 +554,10 @@
+     }
+ 
+     /**
+-     * @dataProvider constraintProvider
+      * @param string $constraint
+      * @param string $expected
+      */
++    #[DataProvider('constraintProvider')]
+     public function testParseConstraints($constraint, $expected)
+     {
+         $parser = new VersionParser();
+@@ -608,9 +604,9 @@
+     }
+ 
+     /**
+-     * @dataProvider multiConstraintProvider
+      * @param string $constraint
+      */
++    #[DataProvider('multiConstraintProvider')]
+     public function testParseConstraintsMulti($constraint)
+     {
+         $parser = new VersionParser();
+@@ -657,10 +653,9 @@
+     }
+ 
+     /**
+-     * @dataProvider multiConstraintProvider2
+-     *
+      * @param string $constraint
+      */
++    #[DataProvider('multiConstraintProvider2')]
+     public function testParseConstraintsMultiDisjunctiveHasPrioOverConjuctive($constraint)
+     {
+         $parser = new VersionParser();
+@@ -716,10 +711,9 @@
+     }
+ 
+     /**
+-     * @dataProvider failingConstraints
+-     *
+      * @param string $input
+      */
++    #[DataProvider('failingConstraints')]
+     public function testParseConstraintsFails($input)
+     {
+         $this->doExpectException('UnexpectedValueException');
+@@ -776,11 +770,10 @@
+     }
+ 
+     /**
+-     * @dataProvider stabilityProvider
+-     *
+      * @param string $expected
+      * @param string $version
+      */
++    #[DataProvider('stabilityProvider')]
+     public function testParseStability($expected, $version)
+     {
+         $this->assertSame($expected, VersionParser::parseStability($version));

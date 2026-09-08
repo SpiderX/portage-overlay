@@ -1,0 +1,52 @@
+--- ../tests/SemverTest.php	2026-06-27 17:18:46.928066621 +0300
++++ ../tests/SemverTest.php	2026-06-27 17:20:09.436933840 +0300
+@@ -12,6 +12,7 @@
+ namespace Composer\Semver;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @coversDefaultClass \Composer\Semver\Semver
+@@ -20,12 +21,12 @@
+ {
+     /**
+      * @covers ::satisfies
+-     * @dataProvider satisfiesProvider
+      *
+      * @param bool   $expected
+      * @param string $version
+      * @param string $constraint
+      */
++    #[DataProvider('satisfiesProvider')]
+     public function testSatisfies($expected, $version, $constraint)
+     {
+         $this->assertEquals($expected, Semver::satisfies($version, $constraint));
+@@ -33,12 +34,12 @@
+ 
+     /**
+      * @covers ::satisfiedBy
+-     * @dataProvider satisfiedByProvider
+      *
+      * @param string $constraint
+      * @param array<string> $versions
+      * @param array<string> $expected
+      */
++    #[DataProvider('satisfiedByProvider')]
+     public function testSatisfiedBy($constraint, $versions, $expected)
+     {
+         $this->assertEquals($expected, Semver::satisfiedBy($versions, $constraint));
+@@ -48,12 +49,12 @@
+      * @covers ::sort
+      * @covers ::rsort
+      * @covers ::usort
+-     * @dataProvider sortProvider
+      *
+      * @param array<string> $versions
+      * @param array<string> $sorted
+      * @param array<string> $rsorted
+      */
++    #[DataProvider('sortProvider')]
+     public function testSort(array $versions, array $sorted, array $rsorted)
+     {
+         $this->assertEquals($sorted, Semver::sort($versions));

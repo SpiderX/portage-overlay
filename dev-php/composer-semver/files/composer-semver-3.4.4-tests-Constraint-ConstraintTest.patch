@@ -1,0 +1,90 @@
+--- ../tests/Constraint/ConstraintTest.php	2026-06-27 17:33:13.439820090 +0300
++++ ../tests/Constraint/ConstraintTest.php	2026-06-27 17:42:24.827663643 +0300
+@@ -14,6 +14,7 @@
+ use Exception;
+ use LogicException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Composer\Semver\Intervals;
+ 
+ class ConstraintTest extends TestCase
+@@ -31,7 +32,7 @@
+      * @before
+      * @return void
+      */
+-    public function setUpTestCase()
++    protected function setUp(): void
+     {
+         $this->constraint = new Constraint('==', '1');
+         $this->versionProvide = new Constraint('==', 'dev-foo');
+@@ -169,12 +170,12 @@
+     }
+ 
+     /**
+-     * @dataProvider successfulVersionMatches
+      * @param Constraint::STR_OP_* $requireOperator
+      * @param string $requireVersion
+      * @param Constraint::STR_OP_* $provideOperator
+      * @param string $provideVersion
+      */
++    #[DataProvider('successfulVersionMatches')]
+     public function testVersionMatchSucceeds($requireOperator, $requireVersion, $provideOperator, $provideVersion)
+     {
+         $versionRequire = new Constraint($requireOperator, $requireVersion);
+@@ -346,12 +347,12 @@
+     }
+ 
+     /**
+-     * @dataProvider failingVersionMatches
+      * @param Constraint::STR_OP_* $requireOperator
+      * @param string $requireVersion
+      * @param Constraint::STR_OP_* $provideOperator
+      * @param string $provideVersion
+      */
++    #[DataProvider('failingVersionMatches')]
+     public function testVersionMatchFails($requireOperator, $requireVersion, $provideOperator, $provideVersion)
+     {
+         $versionRequire = new Constraint($requireOperator, $requireVersion);
+@@ -424,12 +425,11 @@
+     }
+ 
+     /**
+-     * @dataProvider invalidOperators
+-     *
+      * @param string $version
+      * @param Constraint::STR_OP_* $operator
+      * @param class-string<Exception> $expected
+      */
++    #[DataProvider('invalidOperators')]
+     public function testInvalidOperators($version, $operator, $expected)
+     {
+         $this->doExpectException($expected);
+@@ -450,13 +450,12 @@
+     }
+ 
+     /**
+-     * @dataProvider bounds
+-     *
+      * @param Constraint::STR_OP_* $operator
+      * @param string $normalizedVersion
+      * @param Bound  $expectedLower
+      * @param Bound  $expectedUpper
+      */
++    #[DataProvider('bounds')]
+     public function testBounds($operator, $normalizedVersion, Bound $expectedLower, Bound $expectedUpper)
+     {
+         $constraint = new Constraint($operator, $normalizedVersion);
+@@ -508,12 +507,12 @@
+     }
+ 
+     /**
+-     * @dataProvider matrix
+      * @param Constraint::STR_OP_* $requireOperator
+      * @param string $requireVersion
+      * @param Constraint::STR_OP_* $provideOperator
+      * @param string $provideVersion
+      */
++    #[DataProvider('matrix')]
+     public function testCompile($requireOperator, $requireVersion, $provideOperator, $provideVersion)
+     {
+         $require = new Constraint($requireOperator, $requireVersion);

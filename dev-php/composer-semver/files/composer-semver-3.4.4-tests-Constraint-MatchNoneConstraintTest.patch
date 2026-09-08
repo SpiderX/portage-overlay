@@ -1,0 +1,11 @@
+--- ../tests/Constraint/MatchNoneConstraintTest.php	2026-06-27 17:49:44.012631998 +0300
++++ ../tests/Constraint/MatchNoneConstraintTest.php	2026-06-27 17:49:56.830541457 +0300
+@@ -24,7 +24,7 @@
+      * @before
+      * @return void
+      */
+-    public function setUpTestCase()
++    protected function setUp(): void
+     {
+         $this->matchNoneConstraint = new MatchNoneConstraint();
+     }

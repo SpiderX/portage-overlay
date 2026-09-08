@@ -1,0 +1,35 @@
+--- ../tests/IntervalsTest.php	2026-06-27 17:43:47.755944823 +0300
++++ ../tests/IntervalsTest.php	2026-06-27 17:45:29.930039191 +0300
+@@ -12,6 +12,7 @@
+ namespace Composer\Semver;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Composer\Semver\Constraint\ConstraintInterface;
+ use Composer\Semver\Constraint\MultiConstraint;
+ use Composer\Semver\Constraint\Constraint;
+@@ -27,11 +28,11 @@
+     const COMPACT_NONE = '';
+ 
+     /**
+-     * @dataProvider compactProvider
+      * @param string $expected
+      * @param array<string> $toCompact
+      * @param bool $conjunctive
+      */
++    #[DataProvider('compactProvider')]
+     public function testCompactConstraint($expected, $toCompact, $conjunctive)
+     {
+         $parser = new VersionParser;
+@@ -193,10 +194,10 @@
+     }
+ 
+     /**
+-     * @dataProvider intervalsProvider
+      * @param array<mixed>|self::INTERVAL_* $expected
+      * @param string $constraint
+      */
++    #[DataProvider('intervalsProvider')]
+     public function testGetIntervals($expected, $constraint)
+     {
+         if (is_string($constraint)) {

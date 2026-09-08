@@ -1,0 +1,60 @@
+--- ../tests/Constraint/MultiConstraintTest.php	2026-06-27 17:21:12.507504646 +0300
++++ ../tests/Constraint/MultiConstraintTest.php	2026-06-27 17:53:41.917380570 +0300
+@@ -13,6 +13,7 @@
+ 
+ use Composer\Semver\VersionParser;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Composer\Semver\Intervals;
+ 
+ class MultiConstraintTest extends TestCase
+@@ -30,7 +31,7 @@
+      * @before
+      * @return void
+      */
+-    public function setUpTestCase()
++    protected function setUp(): void
+     {
+         $this->versionRequireStart = new Constraint('>', '1.0');
+         $this->versionRequireEnd = new Constraint('<', '1.2');
+@@ -140,13 +141,12 @@
+     }
+ 
+     /**
+-     * @dataProvider bounds
+-     *
+      * @param array<ConstraintInterface> $constraints
+      * @param bool  $conjunctive
+      * @param Bound $expectedLower
+      * @param Bound $expectedUpper
+      */
++    #[DataProvider('bounds')]
+     public function testBounds(array $constraints, $conjunctive, Bound $expectedLower, Bound $expectedUpper)
+     {
+         $constraint = new MultiConstraint($constraints, $conjunctive);
+@@ -212,12 +212,11 @@
+     }
+ 
+     /**
+-     * @dataProvider boundsIntegration
+-     *
+      * @param string $constraints
+      * @param Bound  $expectedLower
+      * @param Bound  $expectedUpper
+      */
++    #[DataProvider('boundsIntegration')]
+     public function testBoundsIntegrationWithVersionParser($constraints, Bound $expectedLower, Bound $expectedUpper)
+     {
+         $versionParser = new VersionParser();
+@@ -309,10 +308,9 @@
+     }
+ 
+     /**
+-     * @dataProvider multiConstraintOptimizations
+-     *
+      * @param string $constraints
+      */
++    #[DataProvider('multiConstraintOptimizations')]
+     public function testMultiConstraintOptimizations($constraints, ConstraintInterface $expectedConstraint)
+     {
+         // We're using the version parser here because that uses MultiConstraint::create() internally and

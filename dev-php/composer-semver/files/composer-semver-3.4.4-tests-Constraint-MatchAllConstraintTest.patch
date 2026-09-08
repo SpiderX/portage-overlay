@@ -1,0 +1,11 @@
+--- ../tests/Constraint/MatchAllConstraintTest.php	2026-06-27 17:46:43.775762304 +0300
++++ ../tests/Constraint/MatchAllConstraintTest.php	2026-06-27 17:47:55.148074793 +0300
+@@ -28,7 +28,7 @@
+      * @before
+      * @return void
+      */
+-    public function setUpTestCase()
++    protected function setUp(): void
+     {
+         $this->versionProvide = new Constraint('==', '1.1');
+         $this->matchAllConstraint = new MatchAllConstraint();

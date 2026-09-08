@@ -1,0 +1,33 @@
+--- ../tests/SubsetsTest.php	2026-06-27 17:16:40.498999107 +0300
++++ ../tests/SubsetsTest.php	2026-06-27 17:17:42.776424697 +0300
+@@ -12,16 +12,17 @@
+ namespace Composer\Semver;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Composer\Semver\Constraint\MatchNoneConstraint;
+ use Composer\Semver\Constraint\MatchAllConstraint;
+ 
+ class SubsetsTest extends TestCase
+ {
+     /**
+-     * @dataProvider subsets
+      * @param string $aStr
+      * @param string $bStr
+      */
++    #[DataProvider('subsets')]
+     public function testIsSubsetOf($aStr, $bStr)
+     {
+         $versionParser = new VersionParser;
+@@ -85,10 +86,10 @@
+     }
+ 
+     /**
+-     * @dataProvider notSubsets
+      * @param string $aStr
+      * @param string $bStr
+      */
++    #[DataProvider('notSubsets')]
+     public function testIsNotSubsetOf($aStr, $bStr)
+     {
+         $versionParser = new VersionParser;
