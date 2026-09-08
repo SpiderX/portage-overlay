@@ -1,0 +1,26 @@
+--- ../test/WeakClosureTest.php	2026-07-10 20:35:57.288259354 +0300
++++ ../test/WeakClosureTest.php	2026-07-10 20:36:50.533368953 +0300
+@@ -3,10 +3,11 @@
+ namespace Amp;
+ 
+ use Revolt\EventLoop;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class WeakClosureTest extends TestCase
+ {
+-    public function provideObjectFactories(): iterable
++    public static function provideObjectFactories(): iterable
+     {
+         yield 'binding' => [
+             fn (&$count, &$id) => new class($count, $id) {
+@@ -111,9 +112,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideObjectFactories
+-     */
++    #[DataProvider('provideObjectFactories')]
+     public function test(callable $factory): void
+     {
+         $count = 0;

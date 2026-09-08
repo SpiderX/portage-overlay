@@ -6,19 +6,19 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Amp"
 PHP_REQ_USE="pcntl?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="A non-blocking concurrency framework for PHP applications"
 HOMEPAGE="https://github.com/amphp/amp"
-EGIT_REPO_URI="https://github.com/amphp/amp.git"
+SRC_URI="https://github.com/amphp/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="pcntl"
 REQUIRED_USE="test? ( pcntl )"
 
 RDEPEND="dev-php/revolt-event-loop"
 
-PATCHES=( "${FILESDIR}/${PN}"-3.1.2-tests.patch )
-
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-3.1.2-tests.patch )
 composer_enable_tests phpunit
