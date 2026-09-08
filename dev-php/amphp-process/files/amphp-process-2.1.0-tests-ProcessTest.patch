@@ -1,0 +1,29 @@
+--- ../test/ProcessTest.php	2026-07-25 21:35:10.432414020 +0300
++++ ../test/ProcessTest.php	2026-07-25 21:36:14.490852995 +0300
+@@ -11,6 +11,7 @@
+ use function Amp\async;
+ use function Amp\ByteStream\buffer;
+ use function Amp\delay;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class ProcessTest extends AsyncTestCase
+ {
+@@ -174,16 +175,14 @@
+         $process->join();
+     }
+ 
+-    public function getProcessCounts(): array
++    public static function getProcessCounts(): array
+     {
+         return \array_map(static function (int $count): array {
+             return [$count];
+         }, \range(2, 32, 2));
+     }
+ 
+-    /**
+-     * @dataProvider getProcessCounts
+-     */
++    #[DataProvider('getProcessCounts')]
+     public function testSpawnMultipleProcesses(int $count): void
+     {
+         $processes = [];

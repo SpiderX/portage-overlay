@@ -1,0 +1,29 @@
+--- ../test/SignalNameTest.php	2026-07-25 21:31:46.888745972 +0300
++++ ../test/SignalNameTest.php	2026-07-25 21:33:54.053591778 +0300
+@@ -5,13 +5,14 @@
+ 
+ use Amp\PHPUnit\AsyncTestCase;
+ use Amp\Process;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @requires extension pcntl
+  */
+ class SignalNameTest extends AsyncTestCase
+ {
+-    public function provideSignals(): \Generator
++    public static function provideSignals(): \Generator
+     {
+         yield 'SIGHUP' => [\SIGHUP, 'SIGHUP'];
+         yield 'SIGINT' => [\SIGINT, 'SIGINT'];
+@@ -35,9 +36,7 @@
+         yield 'SIGIOT' => [\SIGIOT, 'SIGABRT']; // Alias for SIGABRT.
+     }
+ 
+-    /**
+-     * @dataProvider provideSignals
+-     */
++    #[DataProvider('provideSignals')]
+     public function testGetSignalName(int $signalNumber, string $expectedName): void
+     {
+         if (!\extension_loaded('pcntl')) {
