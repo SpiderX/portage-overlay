@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="SebastianBergmann/GlobalState"
 PHP_MIN_VER="8.3"
 PHP_REQ_USE="xml"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Snapshotting of global state"
 HOMEPAGE="https://github.com/sebastianbergmann/global-state"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/global-state.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/sebastian-object-reflector
 	dev-php/sebastian-recursion-context"
@@ -29,5 +30,10 @@ src_prepare() {
 	default
 
 	edo phpab -q -o src/autoload.php -t "${FILESDIR}"/autoload.php.tpl src
+}
+
+src_test() {
+	composer_prepare_tests
 	edo phpab -q -o tests/autoload.php -t "${FILESDIR}"/autoload-test.php.tpl tests/_fixture
+	ephpunit
 }
