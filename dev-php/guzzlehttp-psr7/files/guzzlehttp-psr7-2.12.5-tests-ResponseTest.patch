@@ -1,0 +1,124 @@
+--- ../tests/ResponseTest.php	2026-07-13 23:02:54.431846051 +0300
++++ ../tests/ResponseTest.php	2026-07-13 23:07:00.875317786 +0300
+@@ -7,6 +7,7 @@
+ use GuzzleHttp\Psr7;
+ use GuzzleHttp\Psr7\Response;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Psr\Http\Message\StreamInterface;
+ 
+ /**
+@@ -127,9 +128,7 @@
+         self::assertSame('1000', $r->getProtocolVersion());
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testConstructWithLineSeparatorsInProtocolVersion(string $lineSeparator): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -137,9 +136,7 @@
+         new Response(200, [], null, '1.1'.$lineSeparator.'X-Injected: yes');
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testWithProtocolVersionRejectsLineSeparators(string $lineSeparator): void
+     {
+         $r = new Response();
+@@ -149,9 +146,7 @@
+         $r->withProtocolVersion('1.1'.$lineSeparator.'X-Injected: yes');
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testConstructWithLineSeparatorsInReasonPhrase(string $lineSeparator): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -159,9 +154,7 @@
+         new Response(200, [], null, '1.1', 'OK'.$lineSeparator.'X-Injected: yes');
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testWithStatusRejectsLineSeparatorsInReasonPhrase(string $lineSeparator): void
+     {
+         $r = new Response();
+@@ -290,9 +283,7 @@
+         self::assertSame('bar', $r->getHeaderLine('123'));
+     }
+ 
+-    /**
+-     * @dataProvider invalidHeaderProvider
+-     */
++    #[DataProvider('invalidHeaderProvider')]
+     public function testConstructResponseInvalidHeader($header, $headerValue, $expectedMessage): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -308,9 +299,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidWithHeaderProvider
+-     */
++    #[DataProvider('invalidWithHeaderProvider')]
+     public function testWithInvalidHeader($header, $headerValue, $expectedMessage): void
+     {
+         $r = new Response();
+@@ -359,10 +348,9 @@
+     }
+ 
+     /**
+-     * @dataProvider nonIntegerStatusCodeProvider
+-     *
+      * @param mixed $invalidValues
+      */
++    #[DataProvider('nonIntegerStatusCodeProvider')]
+     public function testConstructResponseWithNonIntegerStatusCode($invalidValues): void
+     {
+         $this->expectException(\TypeError::class);
+@@ -370,10 +358,9 @@
+     }
+ 
+     /**
+-     * @dataProvider nonIntegerStatusCodeProvider
+-     *
+      * @param mixed $invalidValues
+      */
++    #[DataProvider('nonIntegerStatusCodeProvider')]
+     public function testResponseChangeStatusCodeWithNonInteger($invalidValues): void
+     {
+         $response = new Response();
+@@ -393,10 +380,9 @@
+     }
+ 
+     /**
+-     * @dataProvider invalidStatusCodeRangeProvider
+-     *
+      * @param mixed $invalidValues
+      */
++    #[DataProvider('invalidStatusCodeRangeProvider')]
+     public function testConstructResponseWithInvalidRangeStatusCode($invalidValues): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -405,10 +391,9 @@
+     }
+ 
+     /**
+-     * @dataProvider invalidStatusCodeRangeProvider
+-     *
+      * @param mixed $invalidValues
+      */
++    #[DataProvider('invalidStatusCodeRangeProvider')]
+     public function testResponseChangeStatusCodeWithWithInvalidRange($invalidValues): void
+     {
+         $response = new Response();

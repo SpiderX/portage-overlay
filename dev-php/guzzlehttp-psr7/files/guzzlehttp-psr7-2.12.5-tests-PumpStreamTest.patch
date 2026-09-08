@@ -1,0 +1,21 @@
+--- ../tests/PumpStreamTest.php	2026-07-14 00:03:17.782928689 +0300
++++ ../tests/PumpStreamTest.php	2026-07-14 00:03:45.893514200 +0300
+@@ -8,6 +8,7 @@
+ use GuzzleHttp\Psr7\LimitStream;
+ use GuzzleHttp\Psr7\PumpStream;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\RequiresPhp;
+ 
+ class PumpStreamTest extends TestCase
+ {
+@@ -80,9 +81,7 @@
+         }
+     }
+ 
+-    /**
+-     * @requires PHP < 7.4
+-     */
++    #[RequiresPhp('< 7.4.0')]
+     public function testThatConvertingStreamToStringWillTriggerErrorAndWillReturnEmptyString(): void
+     {
+         $p = Psr7\Utils::streamFor(function ($size): void {

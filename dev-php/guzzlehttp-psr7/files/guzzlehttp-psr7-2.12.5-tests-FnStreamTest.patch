@@ -1,0 +1,21 @@
+--- ../tests/FnStreamTest.php	2026-07-14 00:11:15.170605192 +0300
++++ ../tests/FnStreamTest.php	2026-07-14 00:11:51.923970579 +0300
+@@ -7,6 +7,7 @@
+ use GuzzleHttp\Psr7;
+ use GuzzleHttp\Psr7\FnStream;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\RequiresPhp;
+ 
+ /**
+  * @covers \GuzzleHttp\Psr7\FnStream
+@@ -102,9 +103,7 @@
+         unserialize($b);
+     }
+ 
+-    /**
+-     * @requires PHP < 7.4
+-     */
++    #[RequiresPhp('< 7.4.0')]
+     public function testThatConvertingStreamToStringWillTriggerErrorAndWillReturnEmptyString(): void
+     {
+         $a = new FnStream([

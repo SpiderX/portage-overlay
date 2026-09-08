@@ -1,0 +1,25 @@
+--- ../tests/StreamWrapperTest.php	2026-07-13 22:14:56.840889345 +0300
++++ ../tests/StreamWrapperTest.php	2026-07-13 22:40:40.817460018 +0300
+@@ -8,6 +8,8 @@
+ use GuzzleHttp\Psr7\StreamWrapper;
+ use GuzzleHttp\Psr7\Utils;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\PreserveGlobalState;
++use PHPUnit\Framework\Attributes\RunInSeparateProcess;
+ use Psr\Http\Message\StreamInterface;
+ 
+ /**
+@@ -100,11 +102,8 @@
+         self::assertFalse($result);
+     }
+ 
+-    /**
+-     * @runInSeparateProcess
+-     *
+-     * @preserveGlobalState disabled
+-     */
++    #[RunInSeparateProcess]
++    #[PreserveGlobalState(false)]
+     public function testGetResourceThrowsWhenFopenFails(): void
+     {
+         if (in_array('guzzle', stream_get_wrappers(), true)) {

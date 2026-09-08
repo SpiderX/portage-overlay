@@ -1,0 +1,119 @@
+--- ../tests/RequestTest.php	2026-07-13 23:10:26.585435808 +0300
++++ ../tests/RequestTest.php	2026-07-13 23:58:55.587916186 +0300
+@@ -8,6 +8,7 @@
+ use GuzzleHttp\Psr7\Request;
+ use GuzzleHttp\Psr7\Uri;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Psr\Http\Message\StreamInterface;
+ use Psr\Http\Message\UriInterface;
+ 
+@@ -96,18 +97,14 @@
+         self::assertSame($u1, $r1->getUri());
+     }
+ 
+-    /**
+-     * @dataProvider invalidMethodsProvider
+-     */
++    #[DataProvider('invalidMethodsProvider')]
+     public function testConstructWithInvalidMethods($method): void
+     {
+         $this->expectException(\TypeError::class);
+         new Request($method, '/');
+     }
+ 
+-    /**
+-     * @dataProvider invalidMethodsProvider
+-     */
++    #[DataProvider('invalidMethodsProvider')]
+     public function testWithInvalidMethods($method): void
+     {
+         $r = new Request('get', '/');
+@@ -125,9 +122,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testConstructWithLineSeparatorsInMethod(string $lineSeparator): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -135,9 +130,7 @@
+         new Request('GET'.$lineSeparator.'X-Injected: yes', '/');
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testWithMethodRejectsLineSeparators(string $lineSeparator): void
+     {
+         $r = new Request('GET', '/');
+@@ -147,9 +140,7 @@
+         $r->withMethod('GET'.$lineSeparator.'X-Injected: yes');
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testConstructWithLineSeparatorsInProtocolVersion(string $lineSeparator): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -157,9 +148,7 @@
+         new Request('GET', '/', [], null, '1.1'.$lineSeparator.'X-Injected: yes');
+     }
+ 
+-    /**
+-     * @dataProvider startLineSeparatorProvider
+-     */
++    #[DataProvider('startLineSeparatorProvider')]
+     public function testWithProtocolVersionRejectsLineSeparators(string $lineSeparator): void
+     {
+         $r = new Request('GET', '/');
+@@ -249,9 +238,7 @@
+         self::assertSame('', $r->getHeaderLine('Bar'));
+     }
+ 
+-    /**
+-     * @dataProvider provideHeadersContainingNotAllowedChars
+-     */
++    #[DataProvider('provideHeadersContainingNotAllowedChars')]
+     public function testContainsNotAllowedCharsOnHeaderField($header): void
+     {
+         $this->expectExceptionMessage(
+@@ -274,9 +261,7 @@
+         return [[' key '], ['key '], [' key'], ['key/'], ['key('], ['key\\'], [' ']];
+     }
+ 
+-    /**
+-     * @dataProvider provideHeadersContainsAllowedChar
+-     */
++    #[DataProvider('provideHeadersContainsAllowedChar')]
+     public function testContainsAllowedCharsOnHeaderField($header): void
+     {
+         $r = new Request(
+@@ -369,9 +354,7 @@
+         new Request('GET', $uri);
+     }
+ 
+-    /**
+-     * @dataProvider newlyRejectedRequestHostProvider
+-     */
++    #[DataProvider('newlyRejectedRequestHostProvider')]
+     public function testGeneratedHostHeaderRejectsNewlyInvalidUriHost(string $host): void
+     {
+         $uri = $this->createMock(UriInterface::class);
+@@ -403,9 +386,7 @@
+         self::assertSame('example.com:8080', $request->getHeaderLine('Host'));
+     }
+ 
+-    /**
+-     * @dataProvider provideHeaderValuesContainingNotAllowedChars
+-     */
++    #[DataProvider('provideHeaderValuesContainingNotAllowedChars')]
+     public function testContainsNotAllowedCharsOnHeaderValue(string $value): void
+     {
+         $this->expectException(\InvalidArgumentException::class);

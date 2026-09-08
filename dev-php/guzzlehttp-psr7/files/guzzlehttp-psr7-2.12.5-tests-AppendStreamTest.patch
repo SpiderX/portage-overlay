@@ -1,0 +1,21 @@
+--- ../tests/AppendStreamTest.php	2026-07-14 00:10:21.655115456 +0300
++++ ../tests/AppendStreamTest.php	2026-07-14 00:10:54.042607894 +0300
+@@ -7,6 +7,7 @@
+ use GuzzleHttp\Psr7;
+ use GuzzleHttp\Psr7\AppendStream;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\RequiresPhp;
+ use Psr\Http\Message\StreamInterface;
+ 
+ class AppendStreamTest extends TestCase
+@@ -205,9 +206,7 @@
+         self::assertNull($a->getSize());
+     }
+ 
+-    /**
+-     * @requires PHP < 7.4
+-     */
++    #[RequiresPhp('< 7.4.0')]
+     public function testCatchesExceptionsWhenCastingToString(): void
+     {
+         $s = $this->createMock(StreamInterface::class);

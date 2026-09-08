@@ -1,0 +1,43 @@
+--- ../tests/UriResolverTest.php	2026-07-13 21:48:49.624942752 +0300
++++ ../tests/UriResolverTest.php	2026-07-13 21:50:06.923935118 +0300
+@@ -7,6 +7,7 @@
+ use GuzzleHttp\Psr7\Uri;
+ use GuzzleHttp\Psr7\UriResolver;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Psr\Http\Message\UriInterface;
+ 
+ /**
+@@ -16,9 +17,7 @@
+ {
+     private const RFC3986_BASE = 'http://a/b/c/d;p?q';
+ 
+-    /**
+-     * @dataProvider getResolveTestCases
+-     */
++    #[DataProvider('getResolveTestCases')]
+     public function testResolveUri(string $base, string $rel, string $expectedTarget): void
+     {
+         $baseUri = new Uri($base);
+@@ -116,9 +115,7 @@
+         self::assertSame('//other.example/b?x=y#fragment', (string) $targetUri);
+     }
+ 
+-    /**
+-     * @dataProvider getResolveTestCases
+-     */
++    #[DataProvider('getResolveTestCases')]
+     public function testRelativizeUri(string $base, string $expectedRelativeReference, string $target): void
+     {
+         $baseUri = new Uri($base);
+@@ -137,9 +134,7 @@
+         );
+     }
+ 
+-    /**
+-     * @dataProvider getRelativizeTestCases
+-     */
++    #[DataProvider('getRelativizeTestCases')]
+     public function testRelativizeUriWithUniqueTests(string $base, string $target, string $expectedRelativeReference): void
+     {
+         $baseUri = new Uri($base);

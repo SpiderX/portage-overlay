@@ -1,0 +1,64 @@
+--- ../tests/UploadedFileTest.php	2026-07-13 22:02:45.394486649 +0300
++++ ../tests/UploadedFileTest.php	2026-07-13 22:04:25.954409962 +0300
+@@ -7,6 +7,7 @@
+ use GuzzleHttp\Psr7\Stream;
+ use GuzzleHttp\Psr7\UploadedFile;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use ReflectionProperty;
+ 
+ /**
+@@ -43,9 +44,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidStreams
+-     */
++    #[DataProvider('invalidStreams')]
+     public function testRaisesExceptionOnInvalidStreamOrFile($streamOrFile): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -113,9 +112,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidMovePaths
+-     */
++    #[DataProvider('invalidMovePaths')]
+     public function testMoveRaisesExceptionForInvalidPath($path): void
+     {
+         $stream = \GuzzleHttp\Psr7\Utils::streamFor('Foo bar!');
+@@ -167,18 +164,14 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider nonOkErrorStatus
+-     */
++    #[DataProvider('nonOkErrorStatus')]
+     public function testConstructorDoesNotRaiseExceptionForInvalidStreamWhenErrorStatusPresent($status): void
+     {
+         $uploadedFile = new UploadedFile('not ok', 0, $status);
+         self::assertSame($status, $uploadedFile->getError());
+     }
+ 
+-    /**
+-     * @dataProvider nonOkErrorStatus
+-     */
++    #[DataProvider('nonOkErrorStatus')]
+     public function testMoveToRaisesExceptionWhenErrorStatusPresent($status): void
+     {
+         $uploadedFile = new UploadedFile('not ok', 0, $status);
+@@ -187,9 +180,7 @@
+         $uploadedFile->moveTo(__DIR__.'/'.bin2hex(random_bytes(20)));
+     }
+ 
+-    /**
+-     * @dataProvider nonOkErrorStatus
+-     */
++    #[DataProvider('nonOkErrorStatus')]
+     public function testGetStreamRaisesExceptionWhenErrorStatusPresent($status): void
+     {
+         $uploadedFile = new UploadedFile('not ok', 0, $status);

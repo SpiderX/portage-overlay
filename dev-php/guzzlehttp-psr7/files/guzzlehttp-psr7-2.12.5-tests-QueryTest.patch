@@ -1,0 +1,34 @@
+--- ../tests/QueryTest.php	2026-07-13 23:59:39.697607116 +0300
++++ ../tests/QueryTest.php	2026-07-14 00:01:13.639411448 +0300
+@@ -6,6 +6,7 @@
+ 
+ use GuzzleHttp\Psr7;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class QueryTest extends TestCase
+ {
+@@ -50,9 +51,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider parseQueryProvider
+-     */
++    #[DataProvider('parseQueryProvider')]
+     public function testParsesQueries($input, $output): void
+     {
+         $result = Psr7\Query::parse($input);
+@@ -66,10 +65,8 @@
+         self::assertSame(['foo%20' => 'bar'], $data);
+     }
+ 
+-    /**
+-     * @dataProvider parseQueryProvider
+-     */
+-    public function testParsesAndBuildsQueries($input): void
++    #[DataProvider('parseQueryProvider')]
++    public function testParsesAndBuildsQueries($input, $output): void
+     {
+         $result = Psr7\Query::parse($input, false);
+         self::assertSame($input, Psr7\Query::build($result, false));

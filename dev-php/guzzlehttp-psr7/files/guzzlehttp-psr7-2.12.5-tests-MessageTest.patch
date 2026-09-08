@@ -1,0 +1,43 @@
+--- ../tests/MessageTest.php	2026-07-14 00:08:27.477285041 +0300
++++ ../tests/MessageTest.php	2026-07-14 00:09:52.121769967 +0300
+@@ -7,6 +7,7 @@
+ use GuzzleHttp\Psr7;
+ use GuzzleHttp\Psr7\FnStream;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class MessageTest extends TestCase
+ {
+@@ -107,9 +108,7 @@
+         self::assertSame('http://foo.com/', (string) $request->getUri());
+     }
+ 
+-    /**
+-     * @dataProvider invalidHostHeaderProvider
+-     */
++    #[DataProvider('invalidHostHeaderProvider')]
+     public function testParseRequestRejectsInvalidHostHeader(string $host): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -136,9 +135,7 @@
+         yield 'unexpected closing bracket' => ['foo]bar'];
+     }
+ 
+-    /**
+-     * @dataProvider validHostHeaderProvider
+-     */
++    #[DataProvider('validHostHeaderProvider')]
+     public function testParseRequestAcceptsValidHostHeader(string $host, string $expectedUri): void
+     {
+         $request = Psr7\Message::parseRequest("GET / HTTP/1.1\r\nHost: {$host}\r\n\r\n");
+@@ -163,9 +160,7 @@
+         self::assertSame('/abc', (string) $request->getUri());
+     }
+ 
+-    /**
+-     * @dataProvider hostlessMultiSlashTargetProvider
+-     */
++    #[DataProvider('hostlessMultiSlashTargetProvider')]
+     public function testParseRequestTreatsHostlessMultiSlashTargetAsPath(string $target, string $expected): void
+     {
+         $request = Psr7\Message::parseRequest("GET {$target} HTTP/1.1\r\nFoo: bar\r\n\r\n");
