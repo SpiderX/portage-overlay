@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="SebastianBergmann/Invoker"
 PHP_MIN_VER="8.3"
 PHP_REQ_USE="pcntl?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Library to invoke PHP callables with a timeout"
 HOMEPAGE="https://github.com/sebastianbergmann/php-invoker"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/php-invoker.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="pcntl"
 REQUIRED_USE="test? ( pcntl )"
 
@@ -29,5 +30,10 @@ src_prepare() {
 	default
 
 	edo phpab -q -o src/autoload.php -t fedora2 src
+}
+
+src_test() {
+	composer_prepare_tests
 	edo phpab -q -o tests/autoload.php -t "${FILESDIR}"/autoload-test.php.tpl tests/_fixture
+	ephpunit
 }
