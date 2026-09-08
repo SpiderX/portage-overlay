@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1611](https://img.shields.io/badge/ebuild-1611-orange.svg)](https://img.shields.io/badge/ebuild-1611-orange.svg)
+[![Number of ebuilds: 1612](https://img.shields.io/badge/ebuild-1612-orange.svg)](https://img.shields.io/badge/ebuild-1612-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -942,6 +942,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[sebastian-code-unit](https://github.com/sebastianbergmann/code-unit) | Collection of PHP code units
 *   dev-php/[sebastian-code-unit-reverse-lookup](https://github.com/sebastianbergmann/code-unit-reverse-lookup) | Looks up which function or method a line of code belongs to
 *   dev-php/[sebastian-comparator](https://github.com/sebastianbergmann/comparator) | Compare PHP values for equality
+*   dev-php/[sebastian-complexity](https://github.com/sebastianbergmann/complexity) | Library for calculating the complexity of PHP code units
 *   dev-php/[sebastian-diff](https://github.com/sebastianbergmann/diff) | PHP Diff implementation
 *   dev-php/[sebastian-exporter](https://github.com/sebastianbergmann/exporter) | Export PHP variables for visualization
 *   dev-php/[sebastian-global-state](https://github.com/sebastianbergmann/global-state) | Snapshotting of global state
