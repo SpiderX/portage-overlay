@@ -1,0 +1,14 @@
+--- ../test/HTML5/Serializer/TraverserTest.php	2026-07-08 02:06:34.758500723 +0300
++++ ../test/HTML5/Serializer/TraverserTest.php	2026-07-08 02:06:46.184935587 +0300
+@@ -23,10 +23,7 @@
+       </body>
+     </html>';
+ 
+-    /**
+-     * @before
+-     */
+-    public function before()
++    protected function setUp(): void
+     {
+         $this->html5 = $this->getInstance();
+     }

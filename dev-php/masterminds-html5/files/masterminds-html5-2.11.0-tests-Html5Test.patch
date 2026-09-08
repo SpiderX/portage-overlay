@@ -1,0 +1,11 @@
+--- ../test/HTML5/Html5Test.php	2026-09-05 13:03:26.518762439 +0300
++++ ../test/HTML5/Html5Test.php	2026-09-05 13:06:18.972776810 +0300
+@@ -14,7 +14,7 @@
+     /**
+      * @before
+      */
+-    public function before()
++    protected function setUp(): void
+     {
+         $this->html5 = $this->getInstance();
+     }

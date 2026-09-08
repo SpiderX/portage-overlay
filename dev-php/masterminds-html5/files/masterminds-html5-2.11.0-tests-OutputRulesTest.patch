@@ -1,0 +1,73 @@
+--- ../test/HTML5/Serializer/OutputRulesTest.php	2026-09-05 13:09:56.194930094 +0300
++++ ../test/HTML5/Serializer/OutputRulesTest.php	2026-09-05 13:13:38.543533720 +0300
+@@ -5,6 +5,7 @@
+ use Masterminds\HTML5;
+ use Masterminds\HTML5\Serializer\OutputRules;
+ use Masterminds\HTML5\Serializer\Traverser;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class OutputRulesTest extends \Masterminds\HTML5\Tests\TestCase
+ {
+@@ -24,10 +25,7 @@
+      */
+     protected $html5;
+ 
+-    /**
+-     * @before
+-     */
+-    public function before()
++    protected function setUp(): void
+     {
+         $this->html5 = $this->getInstance();
+     }
+@@ -394,7 +392,7 @@
+         $this->assertTrue(false !== strpos($result, 'xmlns:w=""'));
+     }
+ 
+-    public function getEncData()
++    public static function getEncData()
+     {
+         return array(
+             array(
+@@ -445,9 +443,8 @@
+ 
+     /**
+      * Test basic encoding of text.
+-     *
+-     * @dataProvider getEncData
+      */
++    #[DataProvider('getEncData')]
+     public function testEnc($isAttribute, $test, $expected, $expectedEncoded)
+     {
+         list($o, $s) = $this->getOutputRules();
+@@ -464,9 +461,8 @@
+ 
+     /**
+      * Test basic encoding of text.
+-     *
+-     * @dataProvider getEncData
+      */
++    #[DataProvider('getEncData')]
+     public function testEscape($isAttribute, $test, $expected, $expectedEncoded)
+     {
+         list($o, $s) = $this->getOutputRules();
+@@ -475,7 +471,7 @@
+         $this->assertEquals($expected, $m->invoke($o, $test, $isAttribute));
+     }
+ 
+-    public function booleanAttributes()
++    public static function booleanAttributes()
+     {
+         return array(
+             array('<img alt="" ismap>'),
+@@ -491,9 +487,7 @@
+         );
+     }
+ 
+-    /**
+-     * @dataProvider booleanAttributes
+-     */
++    #[DataProvider('booleanAttributes')]
+     public function testBooleanAttrs($html)
+     {
+         $dom = $this->html5->loadHTML('<!doctype html><html lang="en"><body>' . $html . '</body></html>');
