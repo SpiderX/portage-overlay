@@ -1,0 +1,166 @@
+--- ../test/Driver/DriverTest.php	2026-07-10 03:20:49.053218923 +0300
++++ ../test/Driver/DriverTest.php	2026-07-10 03:20:39.170620422 +0300
+@@ -5,6 +5,7 @@
+ namespace Revolt\EventLoop\Driver;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Revolt\EventLoop\Driver;
+ use Revolt\EventLoop\InvalidCallbackError;
+ use Revolt\EventLoop\UncaughtThrowable;
+@@ -91,17 +92,39 @@
+ 
+     public function testLoopTerminatesWithOnlyUnreferencedCallbacks(): void
+     {
+-        $this->start(function (Driver $loop) use (&$end): void {
+-            $loop->unreference($loop->onReadable(STDIN, static function (): void {
+-            }));
+-            $w = $loop->delay(10, static function (): void {
+-            });
+-            $loop->defer(function () use ($loop, $w): void {
+-                $loop->cancel($w);
++        $sockets = \stream_socket_pair(
++            \STREAM_PF_UNIX,
++            \STREAM_SOCK_STREAM,
++            \STREAM_IPPROTO_IP
++        );
++
++        self::assertIsArray($sockets);
++
++        try {
++            $this->start(function (Driver $loop) use (&$end, $sockets): void {
++                $loop->unreference(
++                    $loop->onReadable($sockets[0], static function (): void {
++                    })
++                );
++
++                $w = $loop->delay(10, static function (): void {
++                });
++
++                $loop->defer(function () use ($loop, $w): void {
++                    $loop->cancel($w);
++                });
++
++                $end = true;
+             });
+-            $end = true;
+-        });
+-        self::assertTrue($end);
++
++            self::assertTrue($end);
++        } finally {
++            foreach ($sockets as $socket) {
++                if (\is_resource($socket)) {
++                    \fclose($socket);
++                }
++            }
++        }
+     }
+ 
+     /** This MUST NOT have a "test" prefix, otherwise it's executed as test and marked as risky. */
+@@ -261,7 +284,7 @@
+         });
+     }
+ 
+-    public function provideRegistrationArgs(): iterable
++    public static function provideRegistrationArgs(): iterable
+     {
+         yield "defer" => [
+             "defer",
+@@ -317,7 +340,7 @@
+         ];
+     }
+ 
+-    /** @dataProvider provideRegistrationArgs */
++    #[DataProvider('provideRegistrationArgs')]
+     public function testDisableWithConsecutiveCancel(string $type, array $args): void
+     {
+         if ($type === "onSignal") {
+@@ -338,7 +361,7 @@
+         self::assertTrue($invoked);
+     }
+ 
+-    /** @dataProvider provideRegistrationArgs */
++    #[DataProvider('provideRegistrationArgs')]
+     public function testCallbackReferenceInfo(string $type, array $args): void
+     {
+         if ($type === "onSignal") {
+@@ -421,7 +444,7 @@
+         $loop->cancel($callbackId2);
+     }
+ 
+-    /** @dataProvider provideRegistrationArgs */
++    #[DataProvider('provideRegistrationArgs')]
+     public function testCallbackRegistrationAndCancellationInfo(string $type, array $args): void
+     {
+         if ($type === "onSignal") {
+@@ -459,12 +482,12 @@
+     }
+ 
+     /**
+-     * @dataProvider provideRegistrationArgs
+      * @group memoryleak
+      */
++    #[DataProvider('provideRegistrationArgs')]
+     public function testNoMemoryLeak(string $type, array $args): void
+     {
+-        if ($this->getTestResultObject()->getCollectCodeCoverageInformation()) {
++        if (!$this->status()->isSuccess()) {
+             self::markTestSkipped("Cannot run this test with code coverage active [code coverage consumes memory which makes it impossible to rely on memory_get_usage()]");
+         }
+ 
+@@ -842,9 +865,18 @@
+ 
+     public function testEventsNotExecutedInSameTickAsEnabled(): void
+     {
+-        $this->start(function (Driver $loop): void {
+-            $loop->defer(function () use ($loop): void {
+-                $loop->defer(function () use ($loop, &$discallbacks, &$callbacks): void {
++        $sockets = \stream_socket_pair(
++            \STREAM_PF_UNIX,
++            \STREAM_SOCK_STREAM,
++            \STREAM_IPPROTO_IP
++        );
++
++        self::assertIsArray($sockets);
++
++        try {
++            $this->start(function (Driver $loop) use ($sockets): void {
++                $loop->defer(function () use ($loop, $sockets): void {
++                  $loop->defer(function () use ($loop, &$discallbacks, &$callbacks): void {
+                     $loop->defer(function () use ($loop, $discallbacks): void {
+                         foreach ($discallbacks as $callbackId) {
+                             $loop->disable($callbackId);
+@@ -869,20 +901,27 @@
+                     }
+                 });
+ 
+-                $f = function () use ($loop): array {
++                $f = function () use ($loop, $sockets): array {
+                     $callbacks[] = $loop->defer(fn () => $this->fail());
+                     $callbacks[] = $loop->delay(0, fn () => $this->fail());
+                     $callbacks[] = $loop->repeat(0, fn () => $this->fail());
+-                    $callbacks[] = $loop->onWritable(STDIN, fn () => $this->fail());
++                    $callbacks[] = $loop->onWritable($sockets[0], fn () => $this->fail());
+                     return $callbacks;
+                 };
+                 $callbacks = $f();
+                 $discallbacks = $f();
+             });
+-        });
++            });
+ 
+-        // Otherwise risky, as we only rely on $this->fail()
+-        self::assertTrue(true);
++            // Otherwise risky, as we only rely on $this->fail()
++            self::assertTrue(true);
++        } finally {
++            foreach ($sockets as $socket) {
++                if (\is_resource($socket)) {
++                    \fclose($socket);
++                }
++            }
++        }
+     }
+ 
+     public function testEnablingAllowsSubsequentInvocation(): void

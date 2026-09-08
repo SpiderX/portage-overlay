@@ -1,0 +1,38 @@
+--- ../test/Driver/StreamSelectDriverTest.php	2026-07-10 02:25:58.128581307 +0300
++++ ../test/Driver/StreamSelectDriverTest.php	2026-07-10 02:38:00.269819176 +0300
+@@ -74,7 +74,18 @@
+         $sockets = [];
+ 
+         for ($i = 0; $i < 1001; $i++) {
+-            $sockets[] = \stream_socket_pair(STREAM_PF_UNIX, STREAM_SOCK_STREAM, STREAM_IPPROTO_IP);
++            $pair = @\stream_socket_pair(
++                STREAM_PF_UNIX,
++                STREAM_SOCK_STREAM,
++                STREAM_IPPROTO_IP
++            );
++
++             if ($pair === false) {
++                 self::markTestSkipped(
++                     'Unable to allocate enough socket pairs to exceed stream_select() FD_SETSIZE.'
++                 );
++             }
++             $sockets[] = $pair;
+         }
+ 
+         $this->expectException(\Exception::class);
+@@ -98,8 +109,13 @@
+             });
+         } finally {
+             foreach ($sockets as [$left, $right]) {
+-                \fclose($left);
+-                \fclose($right);
++                if (\is_resource($left)) {
++                    \fclose($left);
++                }
++
++                if (\is_resource($right)) {
++                    \fclose($right);
++                }
+             }
+         }
+     }

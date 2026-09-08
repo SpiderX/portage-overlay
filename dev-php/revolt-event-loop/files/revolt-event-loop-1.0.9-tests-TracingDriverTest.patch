@@ -1,0 +1,22 @@
+--- ../test/Driver/TracingDriverTest.php	2026-07-10 02:17:02.923119799 +0300
++++ ../test/Driver/TracingDriverTest.php	2026-07-10 02:17:41.048695486 +0300
+@@ -4,6 +4,8 @@
+ 
+ namespace Revolt\EventLoop\Driver;
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
++
+ class TracingDriverTest extends DriverTest
+ {
+     public function getFactory(): callable
+@@ -14,9 +16,9 @@
+     }
+ 
+     /**
+-     * @dataProvider provideRegistrationArgs
+      * @group memoryleak
+      */
++    #[DataProvider('provideRegistrationArgs')]
+     public function testNoMemoryLeak(string $type, array $args): void
+     {
+         // Skip, because the driver intentionally leaks

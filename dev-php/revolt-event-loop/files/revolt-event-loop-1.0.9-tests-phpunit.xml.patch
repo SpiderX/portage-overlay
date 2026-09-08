@@ -1,0 +1,10 @@
+--- ../phpunit.xml.dist	2026-07-10 02:06:12.683273365 +0300
++++ ../phpunit.xml.dist	2026-07-10 02:06:20.176006854 +0300
+@@ -14,6 +14,7 @@
+         <testsuite name="Main">
+             <directory>test</directory>
+             <directory suffix=".phpt">test</directory>
++            <exclude>test/Driver/DriverTest.php</exclude>
+         </testsuite>
+     </testsuites>
+ </phpunit>
