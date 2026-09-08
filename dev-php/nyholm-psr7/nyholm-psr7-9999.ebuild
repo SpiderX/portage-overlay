@@ -1,9 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit git-r3
+COMPOSER_INSTALL_PATH="Nyholm/Psr7"
+
+inherit composer git-r3
 
 DESCRIPTION="A super lightweight PSR-7 implementation"
 HOMEPAGE="https://github.com/Nyholm/psr7"
@@ -11,41 +13,24 @@ EGIT_REPO_URI="https://github.com/Nyholm/psr7.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader
-	dev-php/psr-http-factory
+RDEPEND="dev-php/psr-http-factory
 	dev-php/psr-http-message"
 BDEPEND="test? ( dev-php/http-interop-http-factory-tests
 		dev-php/php-http-message-factory
-		dev-php/php-http-psr7-integration-tests
-		dev-php/phpunit )"
+		dev-php/php-http-psr7-integration-tests )"
+
+PATCHES=( "${FILESDIR}/${PN}"-1.8.2-tests-RequestTest.patch
+	"${FILESDIR}/${PN}"-1.8.2-tests-ResponseTest.patch
+	"${FILESDIR}/${PN}"-1.8.2-tests-UploadedFileTest.patch
+	"${FILESDIR}/${PN}"-1.8.2-tests-UriTest.patch )
+
+composer_enable_tests phpunit
 
 src_prepare() {
-	default
+	composer_src_prepare
 
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		src/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-	mkdir -p vendor/http-interop/http-factory-tests || die "mkdir failed"
-	ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
-		vendor/http-interop/http-factory-tests/test \
-		|| die "ln failed"
-	# fix non-static data provider deprecation
-	sed -i '/invalidWithHeaderProvider(/s|function|static function|' \
-		tests/ResponseTest.php \
-		|| die "sed failed for ResponseTest.php"
-}
-
-src_test() {
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/Nyholm/Psr7
-	doins -r src/.
+	edo mkdir -p vendor/http-interop/http-factory-tests
+	edo ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
+		vendor/http-interop/http-factory-tests/test
 }

@@ -1,0 +1,21 @@
+--- ../tests/RequestTest.php	2026-07-09 23:18:52.032013360 +0300
++++ ../tests/RequestTest.php	2026-07-09 23:19:28.406395585 +0300
+@@ -5,6 +5,7 @@
+ use Nyholm\Psr7\Request;
+ use Nyholm\Psr7\Uri;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Psr\Http\Message\StreamInterface;
+ 
+ /**
+@@ -295,9 +296,7 @@
+         $this->assertEquals('nyholm.tech', $request->getHeaderLine('Host'));
+     }
+ 
+-    /**
+-     * @dataProvider provideHeaderValuesContainingNotAllowedChars
+-     */
++    #[DataProvider('provideHeaderValuesContainingNotAllowedChars')]
+     public function testCannotHaveHeaderWithInvalidValue(string $name)
+     {
+         $this->expectException(\InvalidArgumentException::class);

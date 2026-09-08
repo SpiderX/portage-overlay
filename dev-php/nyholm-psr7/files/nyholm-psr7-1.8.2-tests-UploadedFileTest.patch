@@ -1,0 +1,97 @@
+--- ../tests/UploadedFileTest.php	2026-07-09 23:12:54.523282750 +0300
++++ ../tests/UploadedFileTest.php	2026-07-09 23:15:25.467509862 +0300
+@@ -5,6 +5,7 @@
+ use Nyholm\Psr7\Stream;
+ use Nyholm\Psr7\UploadedFile;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Psr\Http\Message\StreamInterface;
+ 
+ /**
+@@ -41,9 +42,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidStreams
+-     */
++    #[DataProvider('invalidStreams')]
+     public function testRaisesExceptionOnInvalidStreamOrFile($streamOrFile)
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -67,9 +66,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidErrorStatuses
+-     */
++    #[DataProvider('invalidErrorStatuses')]
+     public function testRaisesExceptionOnInvalidErrorStatus($status)
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -90,9 +87,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidFilenamesAndMediaTypes
+-     */
++    #[DataProvider('invalidFilenamesAndMediaTypes')]
+     public function testRaisesExceptionOnInvalidClientFilename($filename)
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -101,9 +96,7 @@
+         new UploadedFile(\fopen('php://temp', 'wb+'), 0, \UPLOAD_ERR_OK, $filename);
+     }
+ 
+-    /**
+-     * @dataProvider invalidFilenamesAndMediaTypes
+-     */
++    #[DataProvider('invalidFilenamesAndMediaTypes')]
+     public function testRaisesExceptionOnInvalidClientMediaType($mediaType)
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -166,9 +159,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidMovePaths
+-     */
++    #[DataProvider('invalidMovePaths')]
+     public function testMoveRaisesExceptionForInvalidPath($path)
+     {
+         $stream = (new \Nyholm\Psr7\Factory\Psr17Factory())->createStream('Foo bar!');
+@@ -222,18 +213,14 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider nonOkErrorStatus
+-     */
++    #[DataProvider('nonOkErrorStatus')]
+     public function testConstructorDoesNotRaiseExceptionForInvalidStreamWhenErrorStatusPresent($status)
+     {
+         $uploadedFile = new UploadedFile('not ok', 0, $status);
+         $this->assertSame($status, $uploadedFile->getError());
+     }
+ 
+-    /**
+-     * @dataProvider nonOkErrorStatus
+-     */
++    #[DataProvider('nonOkErrorStatus')]
+     public function testMoveToRaisesExceptionWhenErrorStatusPresent($status)
+     {
+         $uploadedFile = new UploadedFile('not ok', 0, $status);
+@@ -242,9 +229,7 @@
+         $uploadedFile->moveTo(__DIR__ . '/' . \uniqid());
+     }
+ 
+-    /**
+-     * @dataProvider nonOkErrorStatus
+-     */
++    #[DataProvider('nonOkErrorStatus')]
+     public function testGetStreamRaisesExceptionWhenErrorStatusPresent($status)
+     {
+         $uploadedFile = new UploadedFile('not ok', 0, $status);

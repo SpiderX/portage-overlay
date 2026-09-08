@@ -1,0 +1,43 @@
+--- ../tests/UriTest.php	2026-07-09 23:09:25.642365652 +0300
++++ ../tests/UriTest.php	2026-07-09 23:11:04.245907537 +0300
+@@ -4,6 +4,7 @@
+ 
+ use Nyholm\Psr7\Uri;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \Nyholm\Psr7\Uri
+@@ -71,9 +72,7 @@
+         $this->assertSame('https://foo\user%3D%3D:pass%3D%3D@example.com:8080/path/123?q=abc#test', (string) $uri);
+     }
+ 
+-    /**
+-     * @dataProvider getValidUris
+-     */
++    #[DataProvider('getValidUris')]
+     public function testValidUrisStayValid($input)
+     {
+         $uri = new Uri($input);
+@@ -110,9 +109,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider getInvalidUris
+-     */
++    #[DataProvider('getInvalidUris')]
+     public function testInvalidUrisThrowException($invalidUri)
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -412,9 +409,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider uriComponentsEncodingProvider
+-     */
++    #[DataProvider('uriComponentsEncodingProvider')]
+     public function testUriComponentsGetEncodedProperly($input, $path, $query, $fragment, $output)
+     {
+         $uri = new Uri($input);

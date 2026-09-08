@@ -1,60 +1,37 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//nyholm-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="Nyholm/Psr7"
+
+inherit composer
 
 DESCRIPTION="A super lightweight PSR-7 implementation"
 HOMEPAGE="https://github.com/Nyholm/psr7"
-SRC_URI="https://github.com/Nyholm/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/Nyholm/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader
-	dev-php/psr-http-factory
+RDEPEND="dev-php/psr-http-factory
 	dev-php/psr-http-message"
-BDEPEND="test? ( dev-php/composer
-		dev-php/http-interop-http-factory-tests
+BDEPEND="test? ( dev-php/http-interop-http-factory-tests
 		dev-php/php-http-message-factory
-		dev-php/php-http-psr7-integration-tests
-		dev-php/phpunit )"
+		dev-php/php-http-psr7-integration-tests )"
 
-src_prepare() {
-	default
-
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		src/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-}
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-1.8.2-tests-RequestTest.patch
+	"${FILESDIR}/${PN}"-1.8.2-tests-ResponseTest.patch
+	"${FILESDIR}/${PN}"-1.8.2-tests-UploadedFileTest.patch
+	"${FILESDIR}/${PN}"-1.8.2-tests-UriTest.patch )
+composer_enable_tests phpunit
 
 src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
-	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,tests} "${S}" \
-		|| die "cp failed"
-	mkdir -p vendor/http-interop/http-factory-tests || die "mkdir failed"
-	ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
-		vendor/http-interop/http-factory-tests/test \
-		|| die "ln failed"
-	# fix non-static data provider deprecation
-	sed -i '/invalidWithHeaderProvider(/s|function|static function|' \
-		tests/ResponseTest.php \
-		|| die "sed failed for ResponseTest.php"
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/Nyholm/Psr7
-	doins -r src/.
+	composer_prepare_tests
+	edo mkdir -p vendor/http-interop/http-factory-tests
+	edo ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
+		vendor/http-interop/http-factory-tests/test
+	ephpunit
 }
