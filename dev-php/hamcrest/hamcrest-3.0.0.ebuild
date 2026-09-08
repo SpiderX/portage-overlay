@@ -7,19 +7,23 @@ COMPOSER_INSTALL_PATH="Hamcrest"
 COMPOSER_INSTALL_SRC="hamcrest"
 COMPOSER_PKG="${PN}-php"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="PHP Hamcrest implementation"
 HOMEPAGE="https://github.com/hamcrest/hamcrest-php"
-EGIT_REPO_URI="https://github.com/hamcrest/hamcrest-php.git"
+SRC_URI="https://github.com/${PN}/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 BDEPEND="dev-php/theseer-Autoload
 	test? ( dev-php/phpunit-php-file-iterator )"
 
-PATCHES=( "${FILESDIR}/${PN}"-3.0.0-phpunit.xml.patch
+DOCS=( CHANGES.txt README.md )
+
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-3.0.0-phpunit.xml.patch
 	"${FILESDIR}/${PN}"-3.0.0-CombinableMatcherTest.patch
 	"${FILESDIR}/${PN}"-3.0.0-FeatureMatcherTest.patch
 	"${FILESDIR}/${PN}"-3.0.0-HasXPathTest.patch
@@ -33,18 +37,18 @@ PATCHES=( "${FILESDIR}/${PN}"-3.0.0-phpunit.xml.patch
 	"${FILESDIR}/${PN}"-3.0.0-StringDescriptionTest.patch
 	"${FILESDIR}/${PN}"-3.0.0-StringEndsWithTest.patch
 	"${FILESDIR}/${PN}"-3.0.0-StringStartsWithTest.patch )
-
-DOCS=( CHANGES.txt README.md )
-
 composer_enable_tests phpunit
 
 src_prepare() {
 	composer_src_prepare
 
 	edo phpab -q -o hamcrest/autoload.php -t "${FILESDIR}"/autoload.php.tpl hamcrest
-	edo phpab -q -o tests/autoload.php -t fedora2 tests
 }
 
 src_test() {
+	edo composer create-project -q --no-install --prefer-source "${COMPOSER_PN}:${PV}" "${COMPOSER_SRC}"
+	edo cp -r "${COMPOSER_SRC}"/tests "${S}"
+	composer_test_patch
+	edo phpab -q -o tests/autoload.php -t fedora2 tests
 	ephpunit -c tests/phpunit.xml.dist
 }

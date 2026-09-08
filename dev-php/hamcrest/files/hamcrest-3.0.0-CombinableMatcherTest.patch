@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Core/CombinableMatcherTest.php	2026-07-04 23:49:08.634532410 +0300
++++ ../tests/Hamcrest/Core/CombinableMatcherTest.php	2026-07-04 23:49:19.590079808 +0300
+@@ -10,9 +10,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_either_3_or_4 = \Hamcrest\Core\CombinableMatcher::either(equalTo(3))->orElse(equalTo(4));
+         $this->_not_3_and_not_4 = \Hamcrest\Core\CombinableMatcher::both(not(equalTo(3)))->andAlso(not(equalTo(4)));

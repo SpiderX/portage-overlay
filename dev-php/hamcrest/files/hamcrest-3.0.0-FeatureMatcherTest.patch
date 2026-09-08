@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/FeatureMatcherTest.php	2026-07-04 23:48:06.945543131 +0300
++++ ../tests/Hamcrest/FeatureMatcherTest.php	2026-07-04 23:48:28.451275587 +0300
+@@ -37,9 +37,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_resultMatcher = $this->_resultMatcher();
+     }

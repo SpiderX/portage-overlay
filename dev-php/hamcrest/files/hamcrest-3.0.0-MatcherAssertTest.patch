@@ -1,0 +1,11 @@
+--- ../tests/Hamcrest/MatcherAssertTest.php	2026-07-04 23:40:28.319769093 +0300
++++ ../tests/Hamcrest/MatcherAssertTest.php	2026-07-04 23:40:39.315675395 +0300
+@@ -9,7 +9,7 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+         \Hamcrest\MatcherAssert::resetCount();
+     }

@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Xml/HasXPathTest.php	2026-07-04 23:43:47.341843865 +0300
++++ ../tests/Hamcrest/Xml/HasXPathTest.php	2026-07-04 23:47:14.293998740 +0300
+@@ -7,10 +7,7 @@
+     protected static $doc;
+     protected static $html;
+ 
+-    /**
+-     * @beforeClass
+-     */
+-    public static function setUpBeforeClassTest()
++    public static function setUpBeforeClass(): void
+     {
+         self::$xml = <<<XML
+ <?xml version="1.0"?>

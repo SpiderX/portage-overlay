@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Text/StringContainsIgnoringCaseTest.php	2026-07-04 23:39:01.229893982 +0300
++++ ../tests/Hamcrest/Text/StringContainsIgnoringCaseTest.php	2026-07-04 23:39:14.345170976 +0300
+@@ -11,9 +11,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_stringContains = \Hamcrest\Text\StringContainsIgnoringCase::containsStringIgnoringCase(
+             strtolower(self::EXCERPT)

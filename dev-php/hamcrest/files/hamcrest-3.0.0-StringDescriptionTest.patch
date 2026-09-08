@@ -1,0 +1,11 @@
+--- ../tests/Hamcrest/StringDescriptionTest.php	2026-07-04 23:37:27.593652481 +0300
++++ ../tests/Hamcrest/StringDescriptionTest.php	2026-07-04 23:37:40.209691064 +0300
+@@ -26,7 +26,7 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+         $this->_description = new \Hamcrest\StringDescription();
+     }

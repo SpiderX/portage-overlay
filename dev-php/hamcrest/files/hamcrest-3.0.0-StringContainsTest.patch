@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Text/StringContainsTest.php	2026-07-04 23:39:39.243482116 +0300
++++ ../tests/Hamcrest/Text/StringContainsTest.php	2026-07-04 23:39:51.897074717 +0300
+@@ -11,9 +11,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_stringContains = \Hamcrest\Text\StringContains::containsString(self::EXCERPT);
+     }

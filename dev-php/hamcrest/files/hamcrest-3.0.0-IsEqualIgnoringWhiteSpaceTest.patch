@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Text/IsEqualIgnoringWhiteSpaceTest.php	2026-07-04 23:43:10.085875929 +0300
++++ ../tests/Hamcrest/Text/IsEqualIgnoringWhiteSpaceTest.php	2026-07-04 23:43:22.287870695 +0300
+@@ -9,9 +9,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_matcher = \Hamcrest\Text\IsEqualIgnoringWhiteSpace::equalToIgnoringWhiteSpace(
+             "Hello World   how\n are we? "

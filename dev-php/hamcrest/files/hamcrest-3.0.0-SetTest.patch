@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Core/SetTest.php	2026-07-04 23:41:13.401935671 +0300
++++ ../tests/Hamcrest/Core/SetTest.php	2026-07-04 23:41:24.253855183 +0300
+@@ -10,9 +10,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         self::$_classProperty = null;
+         unset($this->_instanceProperty);

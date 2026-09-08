@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Text/StringStartsWithTest.php	2026-07-04 23:28:53.553753979 +0300
++++ ../tests/Hamcrest/Text/StringStartsWithTest.php	2026-07-04 23:29:21.817773694 +0300
+@@ -11,9 +11,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_stringStartsWith = \Hamcrest\Text\StringStartsWith::startsWith(self::EXCERPT);
+     }

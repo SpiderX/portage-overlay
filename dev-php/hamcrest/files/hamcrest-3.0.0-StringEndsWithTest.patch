@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Text/StringEndsWithTest.php	2026-07-04 23:35:17.884764686 +0300
++++ ../tests/Hamcrest/Text/StringEndsWithTest.php	2026-07-04 23:36:08.004143496 +0300
+@@ -11,9 +11,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_stringEndsWith = \Hamcrest\Text\StringEndsWith::endsWith(self::EXCERPT);
+     }

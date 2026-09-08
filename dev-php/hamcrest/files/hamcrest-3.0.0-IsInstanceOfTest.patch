@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Core/IsInstanceOfTest.php	2026-07-04 23:41:55.900815877 +0300
++++ ../tests/Hamcrest/Core/IsInstanceOfTest.php	2026-07-04 23:42:06.970228285 +0300
+@@ -10,9 +10,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_baseClassInstance = new \Hamcrest\Core\SampleBaseClass('good');
+         $this->_subClassInstance = new \Hamcrest\Core\SampleSubClass('good');

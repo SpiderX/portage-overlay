@@ -1,0 +1,14 @@
+--- ../tests/Hamcrest/Text/StringContainsInOrderTest.php	2026-07-04 23:38:11.702697164 +0300
++++ ../tests/Hamcrest/Text/StringContainsInOrderTest.php	2026-07-04 23:38:32.402650708 +0300
+@@ -9,9 +9,9 @@
+     /**
+      * @before
+      */
+-    protected function setUpTest()
++    protected function setUp(): void
+     {
+-        parent::setUpTest();
++        parent::setUp();
+ 
+         $this->_m = \Hamcrest\Text\StringContainsInOrder::stringContainsInOrder(array('a', 'b', 'c'));
+     }
