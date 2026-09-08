@@ -7,18 +7,19 @@ COMPOSER_INSTALL_PATH="SebastianBergmann/Comparator"
 PHP_MIN_VER="8.3"
 PHP_REQ_USE="bcmath?,xml,unicode"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Compare PHP values for equality"
 HOMEPAGE="https://github.com/sebastianbergmann/comparator"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/comparator.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="bcmath"
 REQUIRED_USE="test? ( bcmath )"
 
-RDEPEND=">=dev-php/sebastian-diff-6.0.2
+RDEPEND="dev-php/sebastian-diff
 	dev-php/sebastian-exporter"
 BDEPEND="dev-php/theseer-Autoload"
 
@@ -31,5 +32,10 @@ src_prepare() {
 	composer_src_prepare
 
 	edo phpab -q -o src/autoload.php -t fedora2 src
-	edo phpab -q -o tests/autoload.php -t fedora2 tests/_fixture
+}
+
+src_test() {
+	composer_prepare_tests
+	edo phpab -q -o tests/autoload.php -t fedora2 tests
+	ephpunit
 }
