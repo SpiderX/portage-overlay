@@ -1,46 +1,20 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//daverandom-/}"
-MY_P="${MY_PN^}-${PV}"
+COMPOSER_INSTALL_PATH="DaveRandom/Enum"
+
+inherit composer
 
 DESCRIPTION="A base class for enumerations in PHP"
 HOMEPAGE="https://github.com/DaveRandom/Enum"
-SRC_URI="https://github.com/DaveRandom/${MY_PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/DaveRandom/${COMPOSER_PKG^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${COMPOSER_PKG^}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="test" # fails
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader"
-BDEPEND="test? ( dev-php/composer
-		dev-php/phpunit )"
-
-src_prepare() {
-	default
-
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		src/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-}
-
-src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
-	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml,tests} "${S}" \
-		|| die "cp failed"
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/DaveRandom/Enum
-	doins -r src/.
-}
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-1.0.0-tests.patch )
+composer_enable_tests phpunit

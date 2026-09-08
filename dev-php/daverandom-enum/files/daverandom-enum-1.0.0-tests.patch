@@ -1,0 +1,74 @@
+--- ../tests/EnumTest.php	2026-07-12 00:23:21.508942274 +0300
++++ ../tests/EnumTest.php	2026-07-12 00:25:48.111012362 +0300
+@@ -29,27 +29,24 @@
+         $this->assertSame(TestEnum::parseName('one', true), 1);
+     }
+ 
+-    /**
+-     * @expectedException \InvalidArgumentException
+-     */
+     public function testParseNameWithExistingNameCaseInsensitiveDisabled()
+     {
++        $this->expectException(\InvalidArgumentException::class);
++
+         TestEnum::parseName('one');
+     }
+ 
+-    /**
+-     * @expectedException \InvalidArgumentException
+-     */
+     public function testParseNameWithNonExistentName()
+     {
++        $this->expectException(\InvalidArgumentException::class);
++
+         TestEnum::parseName('FOUR');
+     }
+ 
+-    /**
+-     * @expectedException \InvalidArgumentException
+-     */
+     public function testParseNameWithNonExistentNameCaseInsensitive()
+     {
++        $this->expectException(\InvalidArgumentException::class);
++
+         TestEnum::parseName('four', true);
+     }
+ 
+@@ -88,19 +85,17 @@
+         $this->assertSame(TestEnum::parseValue('1', true), 'ONE');
+     }
+ 
+-    /**
+-     * @expectedException \InvalidArgumentException
+-     */
+     public function testParseValueWithExistingValueLooseDisabled()
+     {
++        $this->expectException(\InvalidArgumentException::class);
++
+         TestEnum::parseValue('1');
+     }
+ 
+-    /**
+-     * @expectedException \InvalidArgumentException
+-     */
+     public function testParseValueWithNonExistentValue()
+     {
++        $this->expectException(\InvalidArgumentException::class);
++
+         TestEnum::parseValue(4);
+     }
+ 
+@@ -124,11 +119,10 @@
+         $this->assertFalse(TestEnum::valueExists(4));
+     }
+ 
+-    /**
+-     * @expectedException \Error
+-     */
+     public function testEnumCannotBeInstantiated()
+     {
++        $this->expectException(\Error::class);
++
+         new TestEnum;
+     }
+ }
