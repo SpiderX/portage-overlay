@@ -1,0 +1,50 @@
+--- ../tests/Unit/ExactVersionConstraintTest.php	2026-06-27 12:42:04.402506157 +0300
++++ ../tests/Unit/ExactVersionConstraintTest.php	2026-06-27 12:43:13.001089675 +0300
+@@ -10,12 +10,13 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Version\ExactVersionConstraint
+  */
+ class ExactVersionConstraintTest extends TestCase {
+-    public function compliantVersionProvider() {
++    public static function compliantVersionProvider() {
+         return [
+             ['1.0.2', new Version('1.0.2')],
+             ['4.8.9', new Version('4.8.9')],
+@@ -25,7 +26,7 @@
+         ];
+     }
+ 
+-    public function nonCompliantVersionProvider() {
++    public static function nonCompliantVersionProvider() {
+         return [
+             ['1.0.2', new Version('1.0.3')],
+             ['4.8.9', new Version('4.7.9')],
+@@ -35,10 +36,9 @@
+     }
+ 
+     /**
+-     * @dataProvider compliantVersionProvider
+-     *
+      * @param string $constraintValue
+      */
++    #[DataProvider('compliantVersionProvider')]
+     public function testReturnsTrueForCompliantVersion($constraintValue, Version $version): void {
+         $constraint = new ExactVersionConstraint($constraintValue);
+ 
+@@ -46,10 +46,9 @@
+     }
+ 
+     /**
+-     * @dataProvider nonCompliantVersionProvider
+-     *
+      * @param string $constraintValue
+      */
++    #[DataProvider('nonCompliantVersionProvider')]
+     public function testReturnsFalseForNonCompliantVersion($constraintValue, Version $version): void {
+         $constraint = new ExactVersionConstraint($constraintValue);
+ 

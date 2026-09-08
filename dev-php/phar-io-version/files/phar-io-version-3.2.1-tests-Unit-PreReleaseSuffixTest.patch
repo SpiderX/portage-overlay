@@ -1,0 +1,46 @@
+--- ../tests/Unit/PreReleaseSuffixTest.php	2026-06-27 12:31:44.350750480 +0300
++++ ../tests/Unit/PreReleaseSuffixTest.php	2026-06-27 12:32:54.480149035 +0300
+@@ -2,14 +2,13 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Version\PreReleaseSuffix
+  */
+ class PreReleaseSuffixTest extends TestCase {
+-    /**
+-     * @dataProvider greaterThanProvider
+-     */
++    #[DataProvider('greaterThanProvider')]
+     public function testGreaterThanReturnsExpectedResult(
+         string $leftSuffixValue,
+         string $rightSuffixValue,
+@@ -21,7 +20,7 @@
+         $this->assertSame($expectedResult, $leftSuffix->isGreaterThan($rightSuffix));
+     }
+ 
+-    public function greaterThanProvider() {
++    public static function greaterThanProvider() {
+         return [
+             ['alpha1', 'alpha2', false],
+             ['alpha2', 'alpha1', true],
+@@ -39,15 +38,13 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider suffixProvider
+-     */
++    #[DataProvider('suffixProvider')]
+     public function testParsedValue(string $suffix): void {
+         $prs = new PreReleaseSuffix($suffix);
+         $this->assertEquals($suffix, $prs->asString());
+     }
+ 
+-    public function suffixProvider() {
++    public static function suffixProvider() {
+         return [
+             ['alpha1'],
+             ['beta1'],

@@ -1,0 +1,44 @@
+--- ../tests/Integration/CompliesTest.php	2026-06-27 11:35:09.082300774 +0300
++++ ../tests/Integration/CompliesTest.php	2026-06-27 11:36:26.460542668 +0300
+@@ -10,28 +10,25 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class CompliesTest extends TestCase {
+ 
+-    /**
+-     * @dataProvider complyingProvider
+-     */
++    #[DataProvider('complyingProvider')]
+     public function testCompliesWhenExcepted(string $constraint, string $version): void {
+         $this->assertTrue(
+             (new VersionConstraintParser())->parse($constraint)->complies(new Version($version))
+         );
+     }
+ 
+-    /**
+-     * @dataProvider notComplyingProvider
+-     */
++    #[DataProvider('notComplyingProvider')]
+     public function testNotCompliesWhenExcepted(string $constraint, string $version): void {
+         $this->assertFalse(
+             (new VersionConstraintParser())->parse($constraint)->complies(new Version($version))
+         );
+     }
+ 
+-    public function complyingProvider(): array {
++    public static function complyingProvider(): array {
+         return [
+             '1.0.0'  => ['1.0.0', '1.0.0'],
+ 
+@@ -52,7 +49,7 @@
+         ];
+     }
+ 
+-    public function notComplyingProvider(): array {
++    public static function notComplyingProvider(): array {
+         return [
+             '1.0.0'  => ['1.0.0', '1.0.1'],
+             '~4.6'   => ['~4.6', '4.5.3'],

@@ -1,0 +1,31 @@
+--- ../tests/Unit/SpecificMajorAndMinorVersionConstraintTest.php	2026-06-27 12:29:04.320780034 +0300
++++ ../tests/Unit/SpecificMajorAndMinorVersionConstraintTest.php	2026-06-27 12:29:47.986406806 +0300
+@@ -10,12 +10,13 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Version\SpecificMajorAndMinorVersionConstraint
+  */
+ class SpecificMajorAndMinorVersionConstraintTest extends TestCase {
+-    public function versionProvider() {
++    public static function versionProvider() {
+         return [
+             // compliant versions
+             [1, 0, new Version('1.0.2'), true],
+@@ -29,12 +30,11 @@
+     }
+ 
+     /**
+-     * @dataProvider versionProvider
+-     *
+      * @param int  $major
+      * @param int  $minor
+      * @param bool $expectedResult
+      */
++    #[DataProvider('versionProvider')]
+     public function testReturnsTrueForCompliantVersions($major, $minor, Version $version, $expectedResult): void {
+         $constraint = new SpecificMajorAndMinorVersionConstraint('foo', $major, $minor);
+ 

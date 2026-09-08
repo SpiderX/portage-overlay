@@ -1,0 +1,104 @@
+--- ../tests/Unit/VersionTest.php	2026-06-27 12:21:20.433373868 +0300
++++ ../tests/Unit/VersionTest.php	2026-06-27 12:24:39.083271787 +0300
+@@ -10,14 +10,13 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Version\Version
+  */
+ class VersionTest extends TestCase {
+     /**
+-     * @dataProvider versionProvider
+-     *
+      * @param string $versionString
+      * @param string $expectedMajor
+      * @param string $expectedMinor
+@@ -26,6 +25,7 @@
+      * @param int    $expectedReleaseCount
+      * @param string $metaData
+      */
++    #[DataProvider('versionProvider')]
+     public function testParsesVersionNumbers(
+         $versionString,
+         $expectedMajor,
+@@ -54,7 +54,7 @@
+         }
+     }
+ 
+-    public function versionProvider() {
++    public static function versionProvider() {
+         return [
+             ['0.0.1', 0, 0, 1],
+             ['0.1.2', 0, 1, 2],
+@@ -68,19 +68,15 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider versionStringProvider
+-     */
+-    public function testOrigionalStringReturnsExceptedVersionString(string $input): void {
++    #[DataProvider('versionStringProvider')]
++    public function testOrigionalStringReturnsExceptedVersionString(string $input, string $_expected): void {
+         $this->assertEquals(
+             (new Version($input))->getOriginalString(),
+             $input
+         );
+     }
+ 
+-    /**
+-     * @dataProvider versionStringProvider
+-     */
++    #[DataProvider('versionStringProvider')]
+     public function testAsStringReturnsExceptedVersionString(string $input, string $excepted): void {
+         $this->assertEquals(
+             (new Version($input))->getVersionString(),
+@@ -89,15 +85,14 @@
+     }
+ 
+     /**
+-     * @dataProvider versionGreaterThanProvider
+-     *
+      * @param bool $expectedResult
+      */
++    #[DataProvider('versionGreaterThanProvider')]
+     public function testIsGreaterThan(Version $versionA, Version $versionB, $expectedResult): void {
+         $this->assertSame($expectedResult, $versionA->isGreaterThan($versionB));
+     }
+ 
+-    public function versionGreaterThanProvider(): array {
++    public static function versionGreaterThanProvider(): array {
+         return [
+             [new Version('1.0.0'), new Version('1.0.1'), false],
+             [new Version('1.0.1'), new Version('1.0.0'), true],
+@@ -115,16 +110,15 @@
+     }
+ 
+     /**
+-     * @dataProvider invalidVersionStringProvider
+-     *
+      * @param string $versionString
+      */
++    #[DataProvider('invalidVersionStringProvider')]
+     public function testThrowsExceptionIfVersionStringDoesNotFollowSemVer($versionString): void {
+         $this->expectException(InvalidVersionException::class);
+         new Version($versionString);
+     }
+ 
+-    public function invalidVersionStringProvider(): array {
++    public static function invalidVersionStringProvider(): array {
+         return [
+             ['foo'],
+             ['1.2.3.4'],
+@@ -132,7 +126,7 @@
+         ];
+     }
+ 
+-    public function versionStringProvider() {
++    public static function versionStringProvider() {
+         return [
+             ['0.0.1', '0.0.1'],
+             ['0.1.0', '0.1.0'],

@@ -1,0 +1,39 @@
+--- ../tests/Unit/OrVersionConstraintGroupTest.php	2026-06-27 12:34:25.036327792 +0300
++++ ../tests/Unit/OrVersionConstraintGroupTest.php	2026-06-27 12:37:32.612410013 +0300
+@@ -21,11 +21,11 @@
+ 
+         $firstConstraint->expects($this->once())
+             ->method('complies')
+-            ->will($this->returnValue(false));
++            ->willReturn(false);
+ 
+         $secondConstraint->expects($this->once())
+             ->method('complies')
+-            ->will($this->returnValue(true));
++            ->willReturn(true);
+ 
+         $group = new OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+ 
+@@ -38,7 +38,7 @@
+ 
+         $firstConstraint->expects($this->once())
+             ->method('complies')
+-            ->will($this->returnValue(true));
++            ->willReturn(true);
+ 
+         $group = new OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+ 
+@@ -51,11 +51,11 @@
+ 
+         $firstConstraint->expects($this->once())
+             ->method('complies')
+-            ->will($this->returnValue(false));
++            ->willReturn(false);
+ 
+         $secondConstraint->expects($this->once())
+             ->method('complies')
+-            ->will($this->returnValue(false));
++            ->willReturn(false);
+ 
+         $group = new OrVersionConstraintGroup('foo', [$firstConstraint, $secondConstraint]);
+ 

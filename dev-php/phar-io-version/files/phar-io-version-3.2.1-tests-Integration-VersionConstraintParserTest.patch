@@ -1,0 +1,51 @@
+--- ../tests/Integration/VersionConstraintParserTest.php	2026-06-27 11:38:41.230374411 +0300
++++ ../tests/Integration/VersionConstraintParserTest.php	2026-06-27 11:43:53.176001857 +0300
+@@ -10,16 +10,16 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Version\VersionConstraintParser
+  */
+ class VersionConstraintParserTest extends TestCase {
+     /**
+-     * @dataProvider versionStringProvider
+-     *
+      * @param string $versionString
+      */
++    #[DataProvider('versionStringProvider')]
+     public function testReturnsExpectedConstraint($versionString, VersionConstraint $expectedConstraint): void {
+         $parser = new VersionConstraintParser;
+ 
+@@ -27,10 +27,9 @@
+     }
+ 
+     /**
+-     * @dataProvider unsupportedVersionStringProvider
+-     *
+      * @param string $versionString
+      */
++    #[DataProvider('unsupportedVersionStringProvider')]
+     public function testThrowsExceptionIfVersionStringIsNotSupported($versionString): void {
+         $parser = new VersionConstraintParser;
+ 
+@@ -39,7 +38,7 @@
+         $parser->parse($versionString);
+     }
+ 
+-    public function versionStringProvider(): array {
++    public static function versionStringProvider(): array {
+         return [
+             ['1.0.2', new ExactVersionConstraint('1.0.2')],
+             [
+@@ -160,7 +159,7 @@
+         ];
+     }
+ 
+-    public function unsupportedVersionStringProvider() {
++    public static function unsupportedVersionStringProvider() {
+         return [
+             ['foo'],
+             ['+1.0.2'],

@@ -1,0 +1,16 @@
+--- ../tests/Unit/AbstractVersionConstraintTest.php	2026-06-27 12:51:47.129281041 +0300
++++ ../tests/Unit/AbstractVersionConstraintTest.php	2026-06-27 12:56:03.012692812 +0300
+@@ -16,8 +16,11 @@
+  */
+ class AbstractVersionConstraintTest extends TestCase {
+     public function testAsString(): void {
+-        /** @var AbstractVersionConstraint|\PHPUnit_Framework_MockObject_MockObject $constraint */
+-        $constraint = $this->getMockForAbstractClass(AbstractVersionConstraint::class, ['foo']);
++    $constraint = new class('foo') extends AbstractVersionConstraint {
++        public function complies(Version $version): bool {
++            return false;
++        }
++    };
+ 
+         $this->assertSame('foo', $constraint->asString());
+     }

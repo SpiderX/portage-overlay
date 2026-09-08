@@ -1,0 +1,29 @@
+--- ../tests/Unit/GreaterThanOrEqualToVersionConstraintTest.php	2026-06-27 12:39:52.205796067 +0300
++++ ../tests/Unit/GreaterThanOrEqualToVersionConstraintTest.php	2026-06-27 12:40:42.723423563 +0300
+@@ -10,12 +10,13 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Version\GreaterThanOrEqualToVersionConstraint
+  */
+ class GreaterThanOrEqualToVersionConstraintTest extends TestCase {
+-    public function versionProvider() {
++    public static function versionProvider() {
+         return [
+             // compliant versions
+             [new Version('1.0.2'), new Version('1.0.2'), true],
+@@ -32,10 +33,9 @@
+     }
+ 
+     /**
+-     * @dataProvider versionProvider
+-     *
+      * @param bool $expectedResult
+      */
++    #[DataProvider('versionProvider')]
+     public function testReturnsTrueForCompliantVersions(Version $constraintVersion, Version $version, $expectedResult): void {
+         $constraint = new GreaterThanOrEqualToVersionConstraint('foo', $constraintVersion);
+ 

@@ -1,0 +1,28 @@
+--- ../tests/Unit/AnyVersionConstraintTest.php	2026-06-27 12:45:53.896335510 +0300
++++ ../tests/Unit/AnyVersionConstraintTest.php	2026-06-27 12:46:18.637000157 +0300
+@@ -10,12 +10,13 @@
+ namespace PharIo\Version;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @covers \PharIo\Version\AnyVersionConstraint
+  */
+ class AnyVersionConstraintTest extends TestCase {
+-    public function versionProvider() {
++    public static function versionProvider() {
+         return [
+             [new Version('1.0.2')],
+             [new Version('4.8')],
+@@ -23,9 +24,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider versionProvider
+-     */
++    #[DataProvider('versionProvider')]
+     public function testReturnsTrue(Version $version): void {
+         $constraint = new AnyVersionConstraint;
+ 
