@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,12 +24,10 @@ DEPEND="dev-libs/libuv:0="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	! use ipv6 && eapply "${FILESDIR}/${PN}"-0.3.0-tests.patch
-	rm tests/005-uv_listen_cb-not-destroyed.phpt || die "rm failed"
+	use ipv6 || eapply "${FILESDIR}/${PN}"-0.3.0-tests.patch
 	php-ext-source-r3_src_prepare
 }
 
 src_test() {
-	# skipped 5
 	SKIP_ONLINE_TESTS=1 php-ext-source-r3_src_test
 }

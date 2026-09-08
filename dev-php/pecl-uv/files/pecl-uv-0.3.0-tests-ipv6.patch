@@ -1,0 +1,20 @@
+--- ../tests/400-tcp_bind6.phpt	2024-08-10 10:39:30.759717080 +0300
++++ ../tests/400-tcp_bind6.phpt	2024-08-10 10:40:01.757314068 +0300
+@@ -1,5 +1,7 @@
+ --TEST--
+ Check for tcp bind
++--SKIPIF--
++<?php if (!defined('AF_INET6')) print "skip"; ?>
+ --FILE--
+ <?php
+ $tcp = uv_tcp_init();
+--- ../tests/500-udp_bind6.phpt	2024-08-10 10:42:27.777649452 +0300
++++ ../tests/500-udp_bind6.phpt	2024-08-10 10:42:56.493037913 +0300
+@@ -1,5 +1,7 @@
+ --TEST--
+ Check for udp bind
++--SKIPIF--
++<?php if (!defined('AF_INET6')) print "skip"; ?>
+ --FILE--
+ <?php
+ $udp = uv_udp_init();
