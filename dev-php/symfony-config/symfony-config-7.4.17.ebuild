@@ -6,31 +6,29 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Config"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Config Component"
 HOMEPAGE="https://github.com/symfony/config"
-EGIT_REPO_URI="https://github.com/symfony/config.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
 	>=dev-php/symfony-filesystem-7
 	dev-php/symfony-polyfill-ctype"
-# test needs class from composer
-BDEPEND="test? ( dev-php/composer
-		dev-php/symfony-event-dispatcher
+BDEPEND="test? ( dev-php/symfony-event-dispatcher
 		>=dev-php/symfony-finder-7
 		dev-php/symfony-messenger
 		dev-php/symfony-phpunit-bridge
 		dev-php/symfony-service-contracts
 		dev-php/symfony-yaml )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
 # vendor discovery relies on ComposerAutoloaderInit, unavailable with fedora autoloader
 EPHPUNIT_EXCLUDE_FILTER='testGetVendor'
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
 composer_enable_tests phpunit
