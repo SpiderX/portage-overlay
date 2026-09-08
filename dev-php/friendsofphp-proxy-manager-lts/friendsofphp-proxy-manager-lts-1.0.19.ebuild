@@ -6,26 +6,19 @@ EAPI=9
 COMPOSER_INSTALL_AUTOLOAD="src/ProxyManager"
 COMPOSER_INSTALL_PATH=""
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Proxy Manager LTS"
 HOMEPAGE="https://github.com/FriendsOfPHP/proxy-manager-lts"
-EGIT_REPO_URI="https://github.com/FriendsOfPHP/proxy-manager-lts.git"
-SRC_URI="https://github.com/SpiderX/portage-overlay/releases/download/${PN}-1.0.19/${PN}-1.0.19-patches.tar.xz"
+SRC_URI="https://github.com/FriendsOfPHP/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-patches.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/laminas-code
 	>=dev-php/symfony-filesystem-6.4.9"
-# test needs class from composer
-BDEPEND="test? ( dev-php/composer )"
 
-PATCHES=( "${WORKDIR}/${PN}-1.0.19-patches/tests" )
-
+COMPOSER_TEST_PATCHES=( "${WORKDIR}/${P}-patches/tests" )
 composer_enable_tests phpunit
-
-src_unpack() {
-	git-r3_src_unpack
-	unpack ${A}
-}
