@@ -1,0 +1,29 @@
+--- ../test/ReadableIterableStreamTest.php	2026-07-26 01:10:30.011051411 +0300
++++ ../test/ReadableIterableStreamTest.php	2026-07-26 01:10:58.768061400 +0300
+@@ -6,6 +6,7 @@
+ use Amp\PHPUnit\TestException;
+ use Amp\Pipeline\Queue;
+ use function Amp\async;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class ReadableIterableStreamTest extends AsyncTestCase
+ {
+@@ -86,16 +87,14 @@
+         }
+     }
+ 
+-    public function provideEngineIterables(): iterable
++    public static function provideEngineIterables(): iterable
+     {
+         yield 'array' => [['abc']];
+         yield 'iterator' => [new \ArrayIterator(['abc'])];
+         yield 'generator' => [(static fn () => yield 'abc')()];
+     }
+ 
+-    /**
+-     * @dataProvider provideEngineIterables
+-     */
++    #[DataProvider('provideEngineIterables')]
+     public function testPhpEngineIterables(iterable $iterable): void
+     {
+         $stream = new ReadableIterableStream($iterable);
