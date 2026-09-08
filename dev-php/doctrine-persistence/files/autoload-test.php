@@ -2,9 +2,9 @@
 
 require_once 'Fedora/Autoloader/autoload.php';
 
-Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Tests\\', 'tests');
-Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Tests_PHP74\\', 'tests_php74');
-Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Tests_PHP81\\', 'tests_php81');
+Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Tests\\Persistence\\', 'tests');
+Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Tests_PHP74\\Persistence\\', 'tests_php74');
+Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Tests_PHP81\\Persistence\\', 'tests_php81');
 
 \Fedora\Autoloader\Dependencies::required([
 	'src/Persistence/autoload.php',

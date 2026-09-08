@@ -1,0 +1,134 @@
+--- ../tests/Mapping/AbstractClassMetadataFactoryTest.php	2026-07-19 11:07:54.238911982 +0300
++++ ../tests/Mapping/AbstractClassMetadataFactoryTest.php	2026-07-19 11:38:55.664411306 +0300
+@@ -9,39 +9,81 @@
+ use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+ use Doctrine\Persistence\Mapping\MappingException;
+ use PHPUnit\Framework\TestCase;
++use ReflectionClass;
++use ReflectionMethod;
+ 
++use function array_map;
+ use function get_class;
+ 
+ final class AbstractClassMetadataFactoryTest extends TestCase
+ {
++    private function createMetadataFactoryMock(): AbstractClassMetadataFactory
++    {
++        $reflection = new ReflectionClass(AbstractClassMetadataFactory::class);
++
++        $abstractMethods = array_map(
++             static fn (ReflectionMethod $method): string => $method->getName(),
++             $reflection->getMethods(ReflectionMethod::IS_ABSTRACT)
++        );
++
++        return $this->getMockBuilder(AbstractClassMetadataFactory::class)
++            ->onlyMethods($abstractMethods)
++            ->getMock();
++    }
++
+     public function testItSkipsTransientClasses(): void
+     {
+-        $cmf = $this->getMockForAbstractClass(AbstractClassMetadataFactory::class);
++        $cmf = $this->createMetadataFactoryMock();
++
++        $grandParentMetadata = $this->createMock(ClassMetadata::class);
++        $entityMetadata = $this->createMock(ClassMetadata::class);
++
+         $cmf
++            ->expects(self::exactly(2))
+             ->method('newClassMetadataInstance')
+-            ->withConsecutive([SomeGrandParentEntity::class], [SomeEntity::class])
+-            ->willReturnOnConsecutiveCalls(
+-                $this->createMock(ClassMetadata::class),
+-                $this->createMock(ClassMetadata::class)
+-            );
++            ->willReturnMap([
++               [SomeGrandParentEntity::class, $grandParentMetadata],
++               [SomeEntity::class, $entityMetadata],
++            ]);
++
+         $driver = $this->createMock(MappingDriver::class);
+-        $cmf->method('getDriver')
++
++        $cmf
++            ->method('getDriver')
+             ->willReturn($driver);
+ 
+-        $driver->expects(self::exactly(2))
++        $transientInvocation = 0;
++
++        $driver
++            ->expects(self::exactly(2))
+             ->method('isTransient')
+-            ->withConsecutive(
+-                [SomeGrandParentEntity::class],
+-                [SomeParentEntity::class]
+-            )
+-            ->willReturnOnConsecutiveCalls(false, true);
++            ->willReturnCallback(
++                static function (string $className) use (&$transientInvocation): bool {
++                    $expectedClassNames = [
++                        SomeGrandParentEntity::class,
++                        SomeParentEntity::class,
++                    ];
++
++                    $returnValues = [
++                        false,
++                        true,
++                    ];
++
++                    self::assertSame(
++                        $expectedClassNames[$transientInvocation],
++                        $className
++                    );
++
++                    return $returnValues[$transientInvocation++];
++                }
++            );
+ 
+         $cmf->getMetadataFor(SomeEntity::class);
+     }
+ 
+     public function testItThrowsWhenAttemptingToGetMetadataForAnonymousClass(): void
+     {
+-        $cmf = $this->getMockForAbstractClass(AbstractClassMetadataFactory::class);
++        $cmf = $this->createMetadataFactoryMock();
+         $this->expectException(MappingException::class);
+         $cmf->getMetadataFor(get_class(new class {
+         }));
+@@ -49,7 +91,7 @@
+ 
+     public function testAnonymousClassIsNotMistakenForShortAlias(): void
+     {
+-        $cmf = $this->getMockForAbstractClass(AbstractClassMetadataFactory::class);
++        $cmf = $this->createMetadataFactoryMock();
+ 
+         self::assertFalse($cmf->isTransient(get_class(new class () {
+         })));
+@@ -57,7 +99,7 @@
+ 
+     public function testItThrowsWhenAttemptingToGetMetadataForShortAlias(): void
+     {
+-        $cmf = $this->getMockForAbstractClass(AbstractClassMetadataFactory::class);
++        $cmf = $this->createMetadataFactoryMock();
+         $this->expectException(MappingException::class);
+         // @phpstan-ignore-next-line
+         $cmf->getMetadataFor('App:Test');
+@@ -65,7 +107,7 @@
+ 
+     public function testItThrowsWhenAttemptingToCheckTransientForShortAlias(): void
+     {
+-        $cmf = $this->getMockForAbstractClass(AbstractClassMetadataFactory::class);
++        $cmf = $this->createMetadataFactoryMock();
+         $this->expectException(MappingException::class);
+         // @phpstan-ignore-next-line
+         $cmf->isTransient('App:Test');
+@@ -73,7 +115,7 @@
+ 
+     public function testItGetsTheSameMetadataForBackslashedClassName(): void
+     {
+-        $cmf = $this->getMockForAbstractClass(AbstractClassMetadataFactory::class);
++        $cmf = $this->createMetadataFactoryMock();
+         $cmf
+             ->method('newClassMetadataInstance')
+             ->with(SomeOtherEntity::class)

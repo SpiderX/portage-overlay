@@ -1,0 +1,29 @@
+--- ../tests/ManagerRegistryTest.php	2026-07-19 11:54:07.084094318 +0300
++++ ../tests/ManagerRegistryTest.php	2026-07-19 11:54:38.487642310 +0300
+@@ -87,7 +87,7 @@
+             ->expects(self::once())
+             ->method('getRepository')
+             ->with(self::equalTo(TestObject::class))
+-            ->will(self::returnValue($repository));
++            ->willReturn($repository);
+ 
+         self::assertSame($repository, $this->mr->getRepository(TestObject::class));
+     }
+@@ -118,7 +118,7 @@
+             ->expects(self::once())
+             ->method('getRepository')
+             ->with(self::equalTo(TestObject::class))
+-            ->will(self::returnValue($repository));
++            ->willReturn($repository);
+ 
+         self::assertSame($repository, $this->mr->getRepository(TestObject::class, 'other'));
+     }
+@@ -149,7 +149,7 @@
+             ->expects(self::once())
+             ->method('getRepository')
+             ->with(self::equalTo(OtherTestObject::class))
+-            ->will(self::returnValue($repository));
++            ->willReturn($repository);
+ 
+         self::assertSame($repository, $this->mr->getRepository(OtherTestObject::class));
+     }

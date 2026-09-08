@@ -1,0 +1,51 @@
+--- ../tests/RuntimeReflectionPropertyTest.php	2026-07-19 10:50:04.079564820 +0300
++++ ../tests/RuntimeReflectionPropertyTest.php	2026-07-19 10:57:13.207941005 +0300
+@@ -10,6 +10,7 @@
+ use Doctrine\Persistence\Reflection\RuntimeReflectionProperty;
+ use LogicException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\TestWith;
+ 
+ use const PHP_VERSION_ID;
+ 
+@@ -26,10 +27,8 @@
+ 
+ class RuntimeReflectionPropertyTest extends TestCase
+ {
+-    /**
+-     * @testWith ["test", "testValue"]
+-     *           ["privateTest", "privateTestValue"]
+-     */
++    #[TestWith(['test', 'testValue'])]
++    #[TestWith(['privateTest', 'privateTestValue'])]
+     public function testGetSetValue(string $name, string $value): void
+     {
+         $object = new RuntimeReflectionPropertyTestClass();
+@@ -49,11 +48,10 @@
+ 
+     /**
+      * @param class-string<RuntimeReflectionPropertyTestProxyMock> $proxyClass
+-     *
+-     * @testWith ["Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestProxyMock"]
+-     *           ["Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestCommonProxyMock"]
+-     *           ["\\Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestProxyMock"]
+      */
++    #[TestWith(['Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestProxyMock'])]
++    #[TestWith(['Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestCommonProxyMock'])]
++    #[TestWith(['\\Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestProxyMock'])]
+     public function testGetValueOnProxyProperty(string $proxyClass): void
+     {
+         $getCheckMock = $this->createMock(DummyMock::class);
+@@ -73,10 +71,9 @@
+ 
+     /**
+      * @param class-string<RuntimeReflectionPropertyTestProxyMock> $proxyClass
+-     *
+-     * @testWith ["Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestProxyMock"]
+-     *           ["Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestCommonProxyMock"]
+      */
++    #[TestWith(['Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestProxyMock'])]
++    #[TestWith(['Doctrine\\Tests\\Persistence\\RuntimeReflectionPropertyTestCommonProxyMock'])]
+     public function testSetValueOnProxyProperty(string $proxyClass): void
+     {
+         $setCheckMock = $this->createMock(DummyMock::class);

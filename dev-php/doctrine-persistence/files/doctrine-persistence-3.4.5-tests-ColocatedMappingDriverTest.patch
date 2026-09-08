@@ -1,0 +1,19 @@
+--- ../tests/Mapping/ColocatedMappingDriverTest.php	2026-07-19 11:47:02.437041157 +0300
++++ ../tests/Mapping/ColocatedMappingDriverTest.php	2026-07-19 11:47:46.278668299 +0300
+@@ -10,6 +10,7 @@
+ use Doctrine\TestClass;
+ use Generator;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ use function array_values;
+ 
+@@ -54,7 +55,7 @@
+         self::assertSame('.php1', $driver->getFileExtension());
+     }
+ 
+-    /** @dataProvider pathProvider */
++    #[DataProvider('pathProvider')]
+     public function testGetAllClassNames(string $path): void
+     {
+         $driver = $this->createDriver($path);
