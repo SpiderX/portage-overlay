@@ -1,28 +1,20 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//amphp-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="Amp/WindowsRegistry"
+
+inherit composer
 
 DESCRIPTION="Windows Registry Reader"
 HOMEPAGE="https://github.com/amphp/windows-registry"
-SRC_URI="https://github.com/amphp/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/amphp/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="test" # no tests
 
-RDEPEND="dev-lang/php:*
-	dev-php/amphp-byte-stream
-	dev-php/amphp-process
-	dev-php/fedora-autoloader"
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/Amp/WindowsRegistry
-	doins -r "${FILESDIR}"/autoload.php src/.
-}
+RDEPEND="dev-php/amphp-byte-stream
+	dev-php/amphp-process"
