@@ -1,0 +1,11 @@
+--- ../tests/Php71/BasePhp71Test.php	2026-07-12 00:02:36.282905802 +0300
++++ ../tests/Php71/BasePhp71Test.php	2026-07-12 00:02:49.301234223 +0300
+@@ -6,7 +6,7 @@
+ 
+ abstract class BasePhp71Test extends TestCase
+ {
+-    public function setUp()
++    protected function setUp(): void
+     {
+         if (PHP_VERSION_ID < 70100) {
+             $this->markTestSkipped('PHP >= 7.1.0');

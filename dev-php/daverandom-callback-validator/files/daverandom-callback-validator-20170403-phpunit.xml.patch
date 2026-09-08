@@ -1,0 +1,10 @@
+--- ../phpunit.xml	2026-07-12 00:03:18.577360438 +0300
++++ ../phpunit.xml	2026-07-12 00:03:35.308804212 +0300
+@@ -7,6 +7,7 @@
+     <testsuites>
+         <testsuite name="CallbackValidator Test Suite">
+             <directory>./tests</directory>
++            <exclude>tests/Php71/BasePhp71Test.php</exclude>
+         </testsuite>
+     </testsuites>
+     <filter>
