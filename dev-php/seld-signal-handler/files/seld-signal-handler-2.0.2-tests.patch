@@ -1,16 +1,5 @@
-From 606a192bf4783dd811b906e4a64b0866d16e61a9 Mon Sep 17 00:00:00 2001
-From: Jordi Boggiano <j.boggiano@seld.be>
-Date: Fri, 23 Aug 2024 10:24:29 +0200
-Subject: [PATCH] Fix deprecated usages
-
----
- tests/SignalHandlerTest.php | 69 ++++++++++++++++---------------------
- 1 file changed, 30 insertions(+), 39 deletions(-)
-
-diff --git a/tests/SignalHandlerTest.php b/tests/SignalHandlerTest.php
-index 6bd772e..859cfc8 100644
---- a/tests/SignalHandlerTest.php
-+++ b/tests/SignalHandlerTest.php
+--- ../tests/SignalHandlerTest.php	2026-06-27 00:10:45.851005562 +0300
++++ ../tests/SignalHandlerTest.php	2026-06-27 00:11:19.906332332 +0300
 @@ -7,25 +7,38 @@
  
  class SignalHandlerTest extends TestCase
@@ -25,9 +14,9 @@ index 6bd772e..859cfc8 100644
 +        $logger = $this->getMockBuilder(LoggerInterface::class)->getMock();
 +        $logger->expects(self::exactly($expectedCalls))
 +            ->method('info')
-+            ->will(self::returnCallback(function ($msg) {
++            ->willReturnCallback(function ($msg) {
 +                $this->logs[] = $msg;
-+            }));
++            });
 +
 +        return $logger;
 +    }
@@ -57,7 +46,7 @@ index 6bd772e..859cfc8 100644
      }
  
      /**
-@@ -35,21 +48,17 @@ public function testLoggingAndDefault(): void
+@@ -35,21 +48,17 @@
       */
      public function testNoAutoGCOnPHP7(): void
      {
@@ -82,7 +71,7 @@ index 6bd772e..859cfc8 100644
      }
  
      /**
-@@ -59,27 +68,18 @@ public function testNoAutoGCOnPHP7(): void
+@@ -59,27 +68,18 @@
       */
      public function testAutoGCOnPHP8(): void
      {
@@ -113,7 +102,7 @@ index 6bd772e..859cfc8 100644
      }
  
      /**
-@@ -133,22 +133,11 @@ public function testTriggerResetCycle(): void
+@@ -133,22 +133,11 @@
       */
      public function testNestingWorks(): void
      {
@@ -138,7 +127,7 @@ index 6bd772e..859cfc8 100644
  
          posix_kill(posix_getpid(), SIGINT);
          posix_kill(posix_getpid(), SIGHUP);
-@@ -163,6 +152,8 @@ public function testNestingWorks(): void
+@@ -163,6 +152,8 @@
          unset($signal1);
          self::assertSame(SIG_DFL, pcntl_signal_get_handler(SIGINT));
          self::assertSame(SIG_DFL, pcntl_signal_get_handler(SIGHUP));
@@ -147,3 +136,16 @@ index 6bd772e..859cfc8 100644
      }
  
      /**
+@@ -173,6 +164,12 @@
+     {
+         $log = $this->getMockBuilder(LoggerInterface::class)->getMock();
+ 
++        // The Windows CTRL handler runs in a separate thread where class autoloading
++        // is unreliable; invoke a throwaway mock here so PHPUnit's mock-invocation
++        // classes (e.g. PHPUnit\Framework\MockObject\Invocation) are loaded in the
++        // main thread first, avoiding a "Class not found" error during dispatch.
++        $this->getMockBuilder(LoggerInterface::class)->getMock()->info('warmup');
++
+         $signal = SignalHandler::create([SignalHandler::SIGINT, SignalHandler::SIGBREAK], $log);
+         $log->expects(self::atLeastOnce())
+             ->method('info')

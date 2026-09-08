@@ -2,9 +2,8 @@
 
 require_once 'Fedora/Autoloader/autoload.php';
 
-Fedora\Autoloader\Autoload::addPsr4('Seld\\Signal\\', 'tests/');
+Fedora\Autoloader\Autoload::addPsr4('Seld\\Signal\\', __DIR__);
 
 \Fedora\Autoloader\Dependencies::required([
-	'src/autoload.php',
-	'/usr/share/php/Psr/Log/autoload.php'
+	__DIR__ . '/../src/autoload.php',
 ]);

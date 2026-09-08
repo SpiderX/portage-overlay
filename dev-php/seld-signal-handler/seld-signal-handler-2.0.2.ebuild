@@ -1,51 +1,27 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//seld-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="Seld/SignalHandler"
+PHP_REQ_USE="pcntl?"
+
+inherit composer
 
 DESCRIPTION="Simple unix signal handler"
 HOMEPAGE="https://github.com/Seldaek/signal-handler"
-SRC_URI="https://github.com/Seldaek/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/Seldaek/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="pcntl test"
+IUSE="pcntl"
 REQUIRED_USE="test? ( pcntl )"
-RESTRICT="test"
-PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*[pcntl?]
-	dev-php/fedora-autoloader"
-BDEPEND="test? ( dev-php/composer
-		dev-php/phpunit
-		dev-php/psr-log )"
+RDEPEND="dev-php/psr-log"
 
-src_prepare() {
-	default
-
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		src/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-}
-
-src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
-	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml.dist,tests} "${S}" \
-		|| die "cp failed"
-	eapply "${FILESDIR}/${PN}"-2.0.2-tests.patch
-	# skipped 5
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/Seld/SignalHandler
-	doins -r src/.
-}
+EPHPUNIT_BOOTSTRAP='vendor/autoload.php'
+# exclude tests needs PHP < 8 or Windows
+EPHPUNIT_EXCLUDE_FILTER='(NoAutoGCOnPHP7|OnWindows)'
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-2.0.2-tests.patch )
+composer_enable_tests phpunit
