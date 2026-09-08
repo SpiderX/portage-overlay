@@ -6,25 +6,23 @@ EAPI=9
 COMPOSER_INSTALL_PATH="SebastianBergmann/ObjectReflector"
 PHP_MIN_VER="8.3"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Allows reflection of object attributes"
 HOMEPAGE="https://github.com/sebastianbergmann/object-reflector"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/object-reflector.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
+RESTRICT="test" # no phpunit.xml
 
 BDEPEND="dev-php/theseer-Autoload"
 
 DOCS=( {ChangeLog,README}.md )
 
-EPHPUNIT_BOOTSTRAP='tests/autoload.php'
-composer_enable_tests phpunit
-
 src_prepare() {
 	default
 
 	edo phpab -q -o src/autoload.php -t "${FILESDIR}"/autoload.php.tpl src
-	edo phpab -q -o tests/autoload.php -t "${FILESDIR}"/autoload-test.php.tpl tests/_fixture
 }
