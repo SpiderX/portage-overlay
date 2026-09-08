@@ -6,20 +6,20 @@ EAPI=9
 COMPOSER_INSTALL_PATH="SebastianBergmann/RecursionContext"
 PHP_MIN_VER="8.3"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Recursively process PHP variables"
 HOMEPAGE="https://github.com/sebastianbergmann/recursion-context"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/recursion-context.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
+RESTRICT="test" # no phpunit.xml
 
 BDEPEND="dev-php/theseer-Autoload"
 
 DOCS=( {ChangeLog,README}.md )
-
-composer_enable_tests phpunit
 
 src_prepare() {
 	default
