@@ -1,0 +1,47 @@
+--- ../test/IntegrationTest.php	2026-07-26 01:25:11.522455534 +0300
++++ ../test/IntegrationTest.php	2026-07-26 01:33:29.216404197 +0300
+@@ -12,13 +12,14 @@
+ use Amp\PHPUnit\AsyncTestCase;
+ use PHPUnit\Framework\MockObject\MockObject;
+ use function Amp\async;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class IntegrationTest extends AsyncTestCase
+ {
+     /**
+      * @group internet
+-     * @dataProvider provideHostnames
+      */
++    #[DataProvider('provideHostnames')]
+     public function testResolve(string $hostname): void
+     {
+         $result = Dns\resolve($hostname);
+@@ -137,6 +138,10 @@
+ 
+     public function testResolveWithRotateList(): void
+     {
++        $this->markTestSkipped(
++            'External DNS servers are not guaranteed to return different records'
++        );
++
+         $config = new Dns\DnsConfig([
+             '208.67.222.220:53', // Opendns, US
+             '195.243.214.4:53', // Deutsche Telecom AG, DE
+@@ -214,7 +219,7 @@
+         self::assertSame($promise1->await(), $promise2->await());
+     }
+ 
+-    public function provideHostnames(): array
++    public static function provideHostnames(): array
+     {
+         return [
+             ["google.com"],
+@@ -228,7 +233,7 @@
+         ];
+     }
+ 
+-    public function provideServers(): array
++    public static function provideServers(): array
+     {
+         return [
+             ["8.8.8.8"],

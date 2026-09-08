@@ -1,9 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit git-r3
+COMPOSER_INSTALL_PATH="Amp/Dns"
+PHP_REQ_USE="filter,ipv6?"
+
+inherit composer git-r3
 
 DESCRIPTION="Async DNS resolution for PHP"
 HOMEPAGE="https://github.com/amphp/dns"
@@ -11,45 +14,26 @@ EGIT_REPO_URI="https://github.com/amphp/dns.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="ipv6 test"
-RESTRICT="test" # not ready for phpunit 11
+IUSE="ipv6"
 
-RDEPEND="dev-lang/php:*[filter,ipv6?]
-	dev-php/amphp-amp
+RDEPEND="dev-php/amphp-amp
 	dev-php/amphp-byte-stream
 	dev-php/amphp-cache
 	dev-php/amphp-parser
 	dev-php/amphp-windows-registry
 	dev-php/daverandom-libdns
-	dev-php/fedora-autoloader
 	dev-php/revolt-event-loop"
-BDEPEND="test? ( dev-php/phpunit )"
+
+PATCHES=( "${FILESDIR}/${PN}"-2.4.0-tests-DnsCacheTrainer.patch
+	"${FILESDIR}/${PN}"-2.4.0-tests-DnsConfigTest.patch
+	"${FILESDIR}/${PN}"-2.4.0-tests-IntegrationTest.patch
+	"${FILESDIR}/${PN}"-2.4.0-tests-Rfc1035StubResolverTest.patch
+	"${FILESDIR}/${PN}"-2.4.0-tests-phpunit.xml.patch )
+
+composer_enable_tests phpunit
 
 src_prepare() {
-	default
+	composer_src_prepare
 
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		src/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-	# replace non-existed method
-	sed -i 's/expectErrorMessage/expectExceptionMessage/' \
-		test/UdpSocketTest.php || die "sed failed for UdpSocketTest.php"
-	# fix abstract class with Test suffix
-	mv test/SocketTest{,Abstract}.php || die "mv failed"
-	sed -i '/class /s|SocketTest|SocketTestAbstract|' \
-		test/SocketTestAbstract.php || die "sed failed SocketTestAbstract.php"
-	sed -i '/class /s|$|Abstract|' test/{Tcp,Udp}SocketTest.php \
-		|| die "sed failed"
-	! use ipv6 && eapply "${FILESDIR}/${PN}"-2.2.0-test-no-ipv6.patch
-}
-
-src_test() {
-	phpunit --group default --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/Amp/Dns
-	doins -r src/.
+	use ipv6 || eapply "${FILESDIR}/${PN}"-2.4.0-tests-no-ipv6.patch
 }

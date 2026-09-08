@@ -1,0 +1,21 @@
+--- ../test/Rfc1035StubResolverTest.php	2026-07-26 01:42:47.972031139 +0300
++++ ../test/Rfc1035StubResolverTest.php	2026-07-26 01:44:18.204012456 +0300
+@@ -2,6 +2,7 @@
+ 
+ namespace Amp\Dns\Test;
+ 
++use Amp\Cache\Cache;
+ use Amp\Cancellation;
+ use Amp\Dns\DnsConfig;
+ use Amp\Dns\DnsException;
+@@ -21,7 +22,9 @@
+     {
+         parent::setUp();
+ 
+-        $this->cacheTrainer = new DnsCacheTrainer($this);
++        $this->cacheTrainer = new DnsCacheTrainer(
++            $this->createMock(Cache::class),
++        );
+     }
+ 
+     public function testResolveSecondParameterAcceptedValues(): void

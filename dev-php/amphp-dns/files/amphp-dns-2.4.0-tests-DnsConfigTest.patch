@@ -1,0 +1,45 @@
+--- ../test/DnsConfigTest.php	2026-07-26 01:22:09.377389734 +0300
++++ ../test/DnsConfigTest.php	2026-07-26 01:23:21.081333992 +0300
+@@ -5,20 +5,20 @@
+ use Amp\Dns\DnsConfig;
+ use Amp\Dns\DnsConfigException;
+ use Amp\PHPUnit\AsyncTestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class DnsConfigTest extends AsyncTestCase
+ {
+     /**
+      * @param string[] $nameservers Valid server array.
+-     *
+-     * @dataProvider provideValidServers
+      */
++    #[DataProvider('provideValidServers')]
+     public function testAcceptsValidServers(array $nameservers): void
+     {
+         self::assertInstanceOf(DnsConfig::class, new DnsConfig($nameservers));
+     }
+ 
+-    public function provideValidServers(): array
++    public static function provideValidServers(): array
+     {
+         return [
+             [["127.1.1.1"]],
+@@ -30,16 +30,15 @@
+ 
+     /**
+      * @param string[] $nameservers Invalid server array.
+-     *
+-     * @dataProvider provideInvalidServers
+      */
++    #[DataProvider('provideInvalidServers')]
+     public function testRejectsInvalidServers(array $nameservers): void
+     {
+         $this->expectException(DnsConfigException::class);
+         new DnsConfig($nameservers);
+     }
+ 
+-    public function provideInvalidServers(): array
++    public static function provideInvalidServers(): array
+     {
+         return [
+             [[]],
