@@ -7,14 +7,16 @@ COMPOSER_INSTALL_PATH="PHPUnit"
 PHP_MIN_VER="8.3"
 PHP_REQ_USE="xml,xmlwriter,unicode"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="The PHP Unit Testing framework"
 HOMEPAGE="https://github.com/sebastianbergmann/phpunit"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/${PN}.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
+RESTRICT="test" # no tests
 
 RDEPEND="dev-php/myclabs-deep-copy
 	>=dev-php/phar-io-manifest-2.0.4
@@ -34,37 +36,17 @@ RDEPEND="dev-php/myclabs-deep-copy
 	dev-php/sebastian-recursion-context
 	>=dev-php/sebastian-type-6
 	>=dev-php/sebastian-version-6
-	dev-php/staabm-side-effects-detector:0"
-BDEPEND=">=dev-php/theseer-Autoload-1.29.1
-	test? ( dev-php/composer )"
+	dev-php/staabm-side-effects-detector"
+BDEPEND=">=dev-php/theseer-Autoload-1.29.1"
 
-PATCHES=( "${FILESDIR}/${PN}"-10.5.27-autoload-resources.patch
-	"${FILESDIR}/${PN}"-10.5.27-tests.patch )
+PATCHES=( "${FILESDIR}/${PN}"-10.5.27-autoload-resources.patch )
 
 DOCS=( {ChangeLog-12.5,DEPRECATIONS,README}.md )
 
-composer_enable_tests phpunit
-
 src_prepare() {
-	composer_src_prepare
+	default
 
 	edo phpab -q -o src/autoload.php -t "${FILESDIR}"/autoload.php.tpl src
-	edo phpab -q -o tests/unit/autoload.php -t fedora2 tests/unit/
-	edo phpab -q -o tests/_files/autoload.php -t fedora2 tests/_files/
-	edo phpab -o tests/end-to-end/execution-order/_files/autoload.php \
-		-t fedora2 tests/end-to-end/execution-order/_files/
-	edo phpab -o tests/end-to-end/event/autoload.php -t fedora2 \
-		tests/end-to-end/event
-	edo phpab -o tests/end-to-end/regression/autoload.php -t fedora2 \
-		-e tests/end-to-end/regression/4376/tests/Test.php \
-		tests/end-to-end/regression
-	edo phpab -o tests/end-to-end/testdox/autoload.php -t fedora2 \
-		tests/end-to-end/testdox
-}
-
-src_test() {
-	# paths need to be fixed to run end-to-end, skipped 6
-	ephpunit --testsuite unit
 }
 
 src_install() {
