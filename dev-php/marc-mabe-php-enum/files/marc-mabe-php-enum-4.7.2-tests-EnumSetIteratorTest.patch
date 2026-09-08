@@ -1,0 +1,29 @@
+--- ../tests/MabeEnumTest/EnumSetIteratorTest.php	2026-08-01 14:13:23.787115492 +0300
++++ ../tests/MabeEnumTest/EnumSetIteratorTest.php	2026-08-01 14:14:08.767502840 +0300
+@@ -15,6 +15,7 @@
+ use MabeEnumTest\TestAsset\Enum66;
+ use OutOfBoundsException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * Unit tests for the class MabeEnum\EnumSet
+@@ -82,8 +83,8 @@
+ 
+     /**
+      * @param class-string<Enum> $enumeration
+-     * @dataProvider getIntegerEnumerations
+      */
++    #[DataProvider('getIntegerEnumerations')]
+     public function testNextCurrentOutOfRange(string $enumeration): void
+     {
+         $set   = new EnumSet($enumeration);
+@@ -107,7 +108,7 @@
+      * Data provider for all available integer enumerators
+      * @return array<int, array<int, class-string<Enum>>>
+      */
+-    public function getIntegerEnumerations(): array
++    public static function getIntegerEnumerations(): array
+     {
+         return [
+             [Enum31::class],

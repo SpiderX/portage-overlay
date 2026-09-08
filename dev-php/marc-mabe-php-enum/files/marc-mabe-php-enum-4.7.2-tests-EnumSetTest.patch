@@ -1,0 +1,69 @@
+--- ../tests/MabeEnumTest/EnumSetTest.php	2026-08-01 14:16:49.941628990 +0300
++++ ../tests/MabeEnumTest/EnumSetTest.php	2026-08-01 14:18:51.737753790 +0300
+@@ -15,6 +15,7 @@
+ use MabeEnumTest\TestAsset\Enum66;
+ use MabeEnumTest\TestAsset\EnumSetExt;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * Unit tests for the class MabeEnum\EnumSet
+@@ -170,8 +171,8 @@
+ 
+     /**
+      * @param class-string<Enum> $enumeration
+-     * @dataProvider getIntegerEnumerations
+      */
++    #[DataProvider('getIntegerEnumerations')]
+     public function testAddRemove(string $enumeration): void
+     {
+         $set = new EnumSet($enumeration);
+@@ -198,8 +199,8 @@
+ 
+     /**
+      * @param class-string<Enum> $enumeration
+-     * @dataProvider getIntegerEnumerations
+      */
++    #[DataProvider('getIntegerEnumerations')]
+     public function testAddRemoveIterable(string $enumeration): void
+     {
+         $set = new EnumSet($enumeration);
+@@ -215,8 +216,8 @@
+ 
+     /**
+      * @param class-string<Enum> $enumeration
+-     * @dataProvider getIntegerEnumerations
+      */
++    #[DataProvider('getIntegerEnumerations')]
+     public function testWithWithout(string $enumeration): void
+     {
+         $set = new EnumSet($enumeration);
+@@ -242,8 +243,8 @@
+ 
+     /**
+      * @param class-string<Enum> $enumeration
+-     * @dataProvider getIntegerEnumerations
+      */
++    #[DataProvider('getIntegerEnumerations')]
+     public function testWithWithoutIterable(string $enumeration): void
+     {
+         $set = new EnumSet($enumeration);
+@@ -261,7 +262,7 @@
+      * Data provider for all available integer enumerators
+      * @return array<int, array<int, class-string<Enum>>>
+      */
+-    public function getIntegerEnumerations(): array
++    public static function getIntegerEnumerations(): array
+     {
+         return [
+             [Enum31::class],
+@@ -764,8 +765,8 @@
+ 
+     /**
+      * @param class-string<Enum> $enumeration
+-     * @dataProvider getIntegerEnumerations
+      */
++    #[DataProvider('getIntegerEnumerations')]
+     public function testIsEmpty(string $enumeration): void
+     {
+         $set1 = new EnumSet($enumeration, []);
