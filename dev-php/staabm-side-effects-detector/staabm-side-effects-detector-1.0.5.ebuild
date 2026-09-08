@@ -1,47 +1,36 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//staabm-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="staabm/SideEffectsDetector"
+COMPOSER_INSTALL_SRC="lib"
+PHP_REQ_USE="tokenizer"
+
+inherit composer
 
 DESCRIPTION="Analyzes php-code for side-effects"
 HOMEPAGE="https://github.com/staabm/side-effects-detector"
-SRC_URI="https://github.com/staabm/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/staabm/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*[tokenizer]
-	dev-php/fedora-autoloader"
-BDEPEND="test? ( dev-php/composer
-		dev-php/phpunit )"
+BDEPEND="dev-php/theseer-Autoload"
+
+EPHPUNIT_BOOTSTRAP='tests/autoload.php'
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-1.0.5-tests.patch )
+composer_enable_tests phpunit
 
 src_prepare() {
 	default
 
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		lib/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
+	edo phpab -q -o lib/autoload.php -t "${FILESDIR}"/autoload.php.tpl lib
 }
 
 src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
-	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml,tests} "${S}" \
-		|| die "cp failed"
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/staabm/SideEffectsDetector
-	doins -r lib/.
+	composer_prepare_tests
+	edo phpab -q -o tests/autoload.php -t "${FILESDIR}"/autoload-test.php.tpl tests
+	ephpunit
 }

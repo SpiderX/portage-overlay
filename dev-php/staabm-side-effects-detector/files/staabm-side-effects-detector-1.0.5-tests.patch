@@ -1,0 +1,19 @@
+--- ../tests/SideEffectsDetectorTest.php	2026-06-27 00:47:26.694101004 +0300
++++ ../tests/SideEffectsDetectorTest.php	2026-06-27 00:50:20.737040287 +0300
+@@ -3,14 +3,13 @@
+ namespace staabm\SideEffectsDetector\Tests;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use staabm\SideEffectsDetector\SideEffect;
+ use staabm\SideEffectsDetector\SideEffectsDetector;
+ 
+ class SideEffectsDetectorTest extends TestCase {
+ 
+-    /**
+-     * @dataProvider dataHasSideEffects
+-     */
++    #[DataProvider('dataHasSideEffects')]
+     public function testHasSideEffects(string $code, array $expected): void {
+         $detector = new SideEffectsDetector();
+         self::assertSame($expected, $detector->getSideEffects($code));
