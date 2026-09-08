@@ -1,0 +1,30 @@
+--- ../test/Middleware/ForwardedMiddlewareTest.php	2026-07-27 20:43:37.281598795 +0300
++++ ../test/Middleware/ForwardedMiddlewareTest.php	2026-07-27 20:44:29.697739409 +0300
+@@ -12,6 +12,7 @@
+ use Amp\PHPUnit\AsyncTestCase;
+ use Amp\Socket\InternetAddress;
+ use PHPUnit\Framework\MockObject\MockObject;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Psr\Http\Message\UriInterface as PsrUri;
+ 
+ class ForwardedMiddlewareTest extends AsyncTestCase
+@@ -43,7 +44,7 @@
+         };
+     }
+ 
+-    public function provideForwardedHeaders(): iterable
++    public static function provideForwardedHeaders(): iterable
+     {
+         yield [
+             ForwardedHeaderType::Forwarded,
+@@ -111,9 +112,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideForwardedHeaders
+-     */
++    #[DataProvider('provideForwardedHeaders')]
+     public function testForwarded(
+         ForwardedHeaderType $type,
+         string $headerValue,

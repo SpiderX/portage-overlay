@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Amp/Http/Server"
 PHP_REQ_USE="ipv6?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="An advanced async HTTP server library for PHP"
 HOMEPAGE="https://github.com/amphp/http-server"
-EGIT_REPO_URI="https://github.com/amphp/http-server.git"
+SRC_URI="https://github.com/amphp/${COMPOSER_PKGN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="ipv6"
 
 RDEPEND="dev-php/amphp-amp
@@ -31,15 +32,15 @@ RDEPEND="dev-php/amphp-amp
 	dev-php/revolt-event-loop"
 BDEPEND="test? ( dev-php/amphp-http-client )"
 
-PATCHES=( "${FILESDIR}/${PN}"-3.4.6-tests-ForwardedMiddlewareTest.patch
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-3.4.6-tests-ForwardedMiddlewareTest.patch
 	"${FILESDIR}/${PN}"-3.4.6-tests-Http1DriverTest.patch
 	"${FILESDIR}/${PN}"-3.4.6-tests-Http2DriverTest.patch
 	"${FILESDIR}/${PN}"-3.4.6-tests-phpunit.xml.patch )
-
 composer_enable_tests phpunit
 
-src_prepare() {
-	composer_src_prepare
-
-	use ipv6 || eapply "${FILESDIR}/${PN}"-3.4.6-tests-no-ipv6.patch
+src_test() {
+	use ipv6 || COMPOSER_TEST_PATCHES+=( "${FILESDIR}/${PN}"-3.4.6-tests-no-ipv6.patch )
+	composer_prepare_tests
+	ephpunit
 }

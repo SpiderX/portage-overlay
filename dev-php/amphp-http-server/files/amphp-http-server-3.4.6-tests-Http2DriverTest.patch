@@ -1,0 +1,50 @@
+--- ../test/Driver/Http2DriverTest.php	2026-07-27 20:36:51.464095755 +0300
++++ ../test/Driver/Http2DriverTest.php	2026-07-27 20:38:03.394686128 +0300
+@@ -34,6 +34,7 @@
+ use function Amp\delay;
+ use function Amp\Http\formatDateHeader;
+ use function Amp\Http\Server\streamChunks;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class Http2DriverTest extends HttpDriverTest
+ {
+@@ -163,9 +164,7 @@
+         );
+     }
+ 
+-    /**
+-     * @dataProvider provideSimpleCases
+-     */
++    #[DataProvider('provideSimpleCases')]
+     public function testSimpleCases(ReadableStream $input, array $expectations): void
+     {
+         $this->givenInput($input);
+@@ -193,7 +192,7 @@
+         self::assertSame($expectations["trailers"] ?? [], $trailers ? $trailers->getHeaders() : []);
+     }
+ 
+-    public function provideSimpleCases(): iterable
++    public static function provideSimpleCases(): iterable
+     {
+         // 0 --- basic request -------------------------------------------------------------------->
+         $headers = [
+@@ -941,7 +940,7 @@
+         $input->complete();
+     }
+ 
+-    public function provideResetStreamFrames(): iterable
++    public static function provideResetStreamFrames(): iterable
+     {
+         yield 'rapid-reset' => [
+             'data' => \pack("N", Http2Parser::INTERNAL_ERROR),
+@@ -954,9 +953,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideResetStreamFrames
+-     */
++    #[DataProvider('provideResetStreamFrames')]
+     public function testResetStreamBehavior(string $data, int $type, int $flags = Http2Parser::NO_FLAG): void
+     {
+         $requestHandler = new ClosureRequestHandler(function (): Response {

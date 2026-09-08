@@ -1,6 +1,6 @@
---- ../test/Middleware/ForwardedMiddlewareTest.php	2024-08-10 15:10:42.149821027 +0300
-+++ ../test/Middleware/ForwardedMiddlewareTest.php	2024-08-10 15:11:37.501467971 +0300
-@@ -47,27 +47,6 @@
+--- ../test/Middleware/ForwardedMiddlewareTest.php	2026-07-27 20:52:19.247407978 +0300
++++ ../test/Middleware/ForwardedMiddlewareTest.php	2026-07-27 20:52:55.592111735 +0300
+@@ -48,27 +48,6 @@
      {
          yield [
              ForwardedHeaderType::Forwarded,
@@ -28,7 +28,7 @@
              'for=192.0.2.60;proto=http;by=203.0.113.43',
              new InternetAddress('192.0.2.60', 0),
              [
-@@ -85,30 +64,6 @@
+@@ -86,30 +65,6 @@
                  'for' => '198.51.100.17',
              ],
          ];
@@ -58,4 +58,4 @@
 -        ];
      }
  
-     /**
+     #[DataProvider('provideForwardedHeaders')]

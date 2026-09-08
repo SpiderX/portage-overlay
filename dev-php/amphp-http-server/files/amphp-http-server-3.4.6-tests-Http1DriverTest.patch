@@ -1,0 +1,125 @@
+--- ../test/Driver/Http1DriverTest.php	2026-07-27 20:39:26.391666666 +0300
++++ ../test/Driver/Http1DriverTest.php	2026-07-27 20:42:42.312328891 +0300
+@@ -31,12 +31,11 @@
+ use function Amp\async;
+ use function Amp\delay;
+ use function Amp\Http\Client\events;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class Http1DriverTest extends HttpDriverTest
+ {
+-    /**
+-     * @dataProvider provideUnparsableRequests
+-     */
++    #[DataProvider('provideUnparsableRequests')]
+     public function testBadRequestBufferedParse(
+         string $unparsable,
+         int $errCode,
+@@ -57,9 +56,7 @@
+         self::assertStringStartsWith(\sprintf("HTTP/1.0 %d %s", $errCode, $errMsg), $output->buffer());
+     }
+ 
+-    /**
+-     * @dataProvider provideUnparsableRequests
+-     */
++    #[DataProvider('provideUnparsableRequests')]
+     public function testBadRequestIncrementalParse(
+         string $unparsable,
+         int $errCode,
+@@ -85,9 +82,7 @@
+         self::assertStringStartsWith(\sprintf("HTTP/1.0 %d %s", $errCode, $errMsg), $output->buffer());
+     }
+ 
+-    /**
+-     * @dataProvider provideParsableRequests
+-     */
++    #[DataProvider('provideParsableRequests')]
+     public function testBufferedRequestParse(string $msg, array $expectations): void
+     {
+         $requestHandler = new ClosureRequestHandler(function (Request $req) use (&$request) {
+@@ -123,9 +118,7 @@
+         self::assertSame($expectations["body"], $body, "body mismatch");
+     }
+ 
+-    /**
+-     * @dataProvider provideParsableRequests
+-     */
++    #[DataProvider('provideParsableRequests')]
+     public function testIncrementalRequestParse(string $msg, array $expectations): void
+     {
+         $requestHandler = new ClosureRequestHandler(function (Request $req) use (&$request) {
+@@ -239,16 +232,14 @@
+     /**
+      * provide multiple chunk-sizes to test with.
+      */
+-    public function chunkSizeProvider(): \Generator
++    public static function chunkSizeProvider(): \Generator
+     {
+         for ($i = 1; $i < 11; $i++) {
+             yield [$i];
+         }
+     }
+ 
+-    /**
+-     * @dataProvider chunkSizeProvider
+-     */
++    #[DataProvider('chunkSizeProvider')]
+     public function testChunkedBodyParseEmit(int $chunkSize): void
+     {
+         $msg =
+@@ -299,7 +290,7 @@
+         self::assertSame($expectedBody, $body);
+     }
+ 
+-    public function provideParsableRequests(): array
++    public static function provideParsableRequests(): array
+     {
+         $return = [];
+ 
+@@ -509,7 +500,7 @@
+         return $return;
+     }
+ 
+-    public function provideUnparsableRequests(): array
++    public static function provideUnparsableRequests(): array
+     {
+         $return = [];
+ 
+@@ -641,9 +632,7 @@
+         return $return;
+     }
+ 
+-    /**
+-     * @dataProvider provideUpgradeBodySizeData
+-     */
++    #[DataProvider('provideUpgradeBodySizeData')]
+     public function testUpgradeBodySizeContentLength(string $data, string $payload): void
+     {
+         $requestHandler = new ClosureRequestHandler(function (Request $req) use (&$request, &$body, $payload) {
+@@ -674,7 +663,7 @@
+         self::assertSame($payload, $body);
+     }
+ 
+-    public function provideUpgradeBodySizeData()
++    public static function provideUpgradeBodySizeData()
+     {
+         $body = "abcdefghijklmnopqrstuvwxyz";
+ 
+@@ -867,7 +856,7 @@
+         ], "foobar");
+     }
+ 
+-    /** @dataProvider provideWriteResponses */
++    #[DataProvider('provideWriteResponses')]
+     public function testResponseWrite(
+         string $statusLine,
+         Response $response,
+@@ -902,7 +891,7 @@
+         self::assertMatchesRegularExpression('#' . $expectedRegexp . '#i', $output->buffer());
+     }
+ 
+-    public function provideWriteResponses(): array
++    public static function provideWriteResponses(): array
+     {
+         $data = [
+             [

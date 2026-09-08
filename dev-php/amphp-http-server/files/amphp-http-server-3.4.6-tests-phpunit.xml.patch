@@ -1,0 +1,10 @@
+--- ../phpunit.xml.dist	2026-07-27 20:35:25.511153534 +0300
++++ ../phpunit.xml.dist	2026-07-27 20:35:44.301372466 +0300
+@@ -24,6 +24,7 @@
+   <testsuites>
+     <testsuite name="Amp HTTP Server Test">
+       <directory>test</directory>
++      <exclude>test/Driver/HttpDriverTest.php</exclude>
+     </testsuite>
+   </testsuites>
+ </phpunit>
