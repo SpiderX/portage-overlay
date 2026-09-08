@@ -1,0 +1,30 @@
+--- ../tests/DeepCopyTest/TypeMatcher/TypeMatcherTest.php	2026-08-06 19:15:17.287155348 +0300
++++ ../tests/DeepCopyTest/TypeMatcher/TypeMatcherTest.php	2026-08-06 19:15:49.489694631 +0300
+@@ -4,6 +4,7 @@
+ 
+ use DeepCopy\TypeMatcher\TypeMatcher;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use stdClass;
+ 
+ /**
+@@ -11,9 +12,7 @@
+  */
+ class TypeMatcherTest extends TestCase
+ {
+-    /**
+-     * @dataProvider provideElements
+-     */
++    #[DataProvider('provideElements')]
+     public function test_it_retrieves_the_object_properties($type, $element, $expected)
+     {
+         $matcher = new TypeMatcher($type);
+@@ -23,7 +22,7 @@
+         $this->assertSame($expected, $actual);
+     }
+ 
+-    public function provideElements()
++    public static function provideElements()
+     {
+         return [
+             '[class] same class as type' => ['stdClass', new stdClass(), true],

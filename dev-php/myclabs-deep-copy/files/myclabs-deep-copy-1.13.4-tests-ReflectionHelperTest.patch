@@ -1,0 +1,30 @@
+--- ../tests/DeepCopyTest/Reflection/ReflectionHelperTest.php	2026-08-09 10:22:02.385667597 +0300
++++ ../tests/DeepCopyTest/Reflection/ReflectionHelperTest.php	2026-08-09 10:22:41.186344316 +0300
+@@ -5,6 +5,7 @@
+ use DeepCopy\Exception\PropertyException;
+ use DeepCopy\Reflection\ReflectionHelper;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use ReflectionClass;
+ use ReflectionProperty;
+ 
+@@ -38,9 +39,7 @@
+         $this->assertSame($expectedProps, array_keys($actualProps));
+     }
+ 
+-    /**
+-     * @dataProvider provideProperties
+-     */
++    #[DataProvider('provideProperties')]
+     public function test_it_can_retrieve_an_object_property($name)
+     {
+         $object = new ReflectionHelperTestChild();
+@@ -52,7 +51,7 @@
+         $this->assertSame($name, $property->getName());
+     }
+ 
+-    public function provideProperties()
++    public static function provideProperties()
+     {
+         return [
+             'public property' => ['a10'],

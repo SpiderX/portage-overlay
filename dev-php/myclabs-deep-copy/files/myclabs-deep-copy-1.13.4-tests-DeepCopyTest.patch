@@ -1,0 +1,59 @@
+--- ../tests/DeepCopyTest/DeepCopyTest.php	2026-08-09 14:23:23.064635397 +0300
++++ ../tests/DeepCopyTest/DeepCopyTest.php	2026-08-09 14:23:43.348931308 +0300
+@@ -34,6 +34,7 @@
+ use DeepCopy\TypeFilter\ShallowCopyFilter;
+ use DeepCopy\TypeMatcher\TypeMatcher;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use RecursiveArrayIterator;
+ use SplDoublyLinkedList;
+ use stdClass;
+@@ -44,9 +45,7 @@
+  */
+ class DeepCopyTest extends TestCase
+ {
+-    /**
+-     * @dataProvider provideScalarValues
+-     */
++    #[DataProvider('provideScalarValues')]
+     public function test_it_can_copy_scalar_values($value)
+     {
+         $copy = deep_copy($value);
+@@ -54,7 +53,7 @@
+         $this->assertSame($value, $copy);
+     }
+ 
+-    public function provideScalarValues()
++    public static function provideScalarValues()
+     {
+         return [
+             [true],
+@@ -92,9 +91,7 @@
+         $this->assertEqualButNotSame($object[0], $copy[0]);
+     }
+ 
+-    /**
+-     * @dataProvider provideObjectWithScalarValues
+-     */
++    #[DataProvider('provideObjectWithScalarValues')]
+     public function test_it_can_copy_an_object_with_scalar_properties($object, $expectedVal)
+     {
+         $copy = deep_copy($object);
+@@ -103,7 +100,7 @@
+         $this->assertSame($expectedVal, $copy->prop);
+     }
+ 
+-    public function provideObjectWithScalarValues()
++    public static function provideObjectWithScalarValues()
+     {
+         $createObject = function ($val) {
+             $object = new stdClass();
+@@ -117,7 +114,7 @@
+             function (array $vals) use ($createObject) {
+                 return [$createObject($vals[0]), $vals[0]];
+             },
+-            $this->provideScalarValues()
++            self::provideScalarValues()
+         );
+     }
+ 

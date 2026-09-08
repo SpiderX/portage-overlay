@@ -1,0 +1,19 @@
+--- ../tests/DeepCopyTest/TypeFilter/Spl/ArrayObjectFilterTest.php	2026-08-09 13:50:56.408768033 +0300
++++ ../tests/DeepCopyTest/TypeFilter/Spl/ArrayObjectFilterTest.php	2026-08-09 13:51:45.878005198 +0300
+@@ -6,6 +6,7 @@
+ use DeepCopy\DeepCopy;
+ use DeepCopy\TypeFilter\Spl\ArrayObjectFilter;
+ use PHPUnit\Framework\TestCase;
++use Prophecy\PhpUnit\ProphecyTrait;
+ use Prophecy\Prophecy\ObjectProphecy;
+ use RecursiveArrayIterator;
+ 
+@@ -16,6 +17,8 @@
+  */
+ final class ArrayObjectFilterTest extends TestCase
+ {
++    use ProphecyTrait;
++
+     /**
+      * @var ArrayObjectFilter
+      */

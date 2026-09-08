@@ -1,0 +1,30 @@
+--- ../tests/DeepCopyTest/Matcher/PropertyNameMatcherTest.php	2026-08-09 10:42:30.258056698 +0300
++++ ../tests/DeepCopyTest/Matcher/PropertyNameMatcherTest.php	2026-08-09 10:43:04.773623108 +0300
+@@ -4,6 +4,7 @@
+ 
+ use DeepCopy\Matcher\PropertyNameMatcher;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use stdClass;
+ 
+ /**
+@@ -11,9 +12,7 @@
+  */
+ class PropertyNameMatcherTest extends TestCase
+ {
+-    /**
+-     * @dataProvider providePairs
+-     */
++    #[DataProvider('providePairs')]
+     public function test_it_matches_the_given_property($object, $prop, $expected)
+     {
+         $matcher = new PropertyNameMatcher('foo');
+@@ -23,7 +22,7 @@
+         $this->assertEquals($expected, $actual);
+     }
+ 
+-    public function providePairs()
++    public static function providePairs()
+     {
+         return [
+             [new stdClass(), 'foo', true],

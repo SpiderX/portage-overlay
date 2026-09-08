@@ -1,0 +1,30 @@
+--- ../tests/DeepCopyTest/Matcher/Doctrine/DoctrineProxyMatcherTest.php	2026-08-09 10:46:52.417027242 +0300
++++ ../tests/DeepCopyTest/Matcher/Doctrine/DoctrineProxyMatcherTest.php	2026-08-09 10:47:33.583372255 +0300
+@@ -6,6 +6,7 @@
+ use DeepCopy\Matcher\Doctrine\DoctrineProxyMatcher;
+ use Doctrine\Persistence\Proxy;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use stdClass;
+ 
+ /**
+@@ -13,9 +14,7 @@
+  */
+ class DoctrineProxyMatcherTest extends TestCase
+ {
+-    /**
+-     * @dataProvider providePairs
+-     */
++    #[DataProvider('providePairs')]
+     public function test_it_matches_the_given_objects($object, $expected)
+     {
+         $matcher = new DoctrineProxyMatcher();
+@@ -25,7 +24,7 @@
+         $this->assertEquals($expected, $actual);
+     }
+ 
+-    public function providePairs()
++    public static function providePairs()
+     {
+         return [
+             [new FooProxy(), true],

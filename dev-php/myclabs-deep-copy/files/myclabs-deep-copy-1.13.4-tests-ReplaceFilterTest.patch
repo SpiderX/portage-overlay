@@ -1,0 +1,30 @@
+--- ../tests/DeepCopyTest/Filter/ReplaceFilterTest.php	2026-08-06 19:17:26.977971507 +0300
++++ ../tests/DeepCopyTest/Filter/ReplaceFilterTest.php	2026-08-09 10:20:44.481600583 +0300
+@@ -4,6 +4,7 @@
+ 
+ use DeepCopy\Filter\ReplaceFilter;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use stdClass;
+ 
+ /**
+@@ -11,9 +12,7 @@
+  */
+ class ReplaceFilterTest extends TestCase
+ {
+-    /**
+-     * @dataProvider provideCallbacks
+-     */
++    #[DataProvider('provideCallbacks')]
+     public function test_it_applies_the_callback_to_the_specified_property(callable $callback, array $expected)
+     {
+         $object = new stdClass();
+@@ -35,7 +34,7 @@
+         $this->assertEquals($expected, $object->data);
+     }
+ 
+-    public function provideCallbacks()
++    public static function provideCallbacks()
+     {
+         return [
+             [
