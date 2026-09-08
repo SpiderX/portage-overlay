@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="Http/Psr7Test"
 COMPOSER_VENDOR="php-http"
 COMPOSER_PKG="${PN#${COMPOSER_VENDOR}-}"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="A PSR-7 implementation tests"
 HOMEPAGE="https://github.com/php-http/psr7-integration-tests"
-EGIT_REPO_URI="https://github.com/php-http/psr7-integration-tests.git"
+SRC_URI="https://github.com/php-http/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 RESTRICT="test" # needs tests from other packages
 
 RDEPEND="dev-php/phpunit
