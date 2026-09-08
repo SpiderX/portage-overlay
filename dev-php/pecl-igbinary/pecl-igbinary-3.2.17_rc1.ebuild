@@ -3,12 +3,15 @@
 
 EAPI=8
 
-PHP_EXT_NAME="igbinary"
-USE_PHP="php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
+MY_P="${PN/pecl-/}-${PV/_rc/RC}"
+PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
+PHP_EXT_S="${WORKDIR}/${MY_P}"
 
 inherit php-ext-pecl-r3
 
 DESCRIPTION="Drop in replacement for the standard PHP serializer"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
