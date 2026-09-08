@@ -1,50 +1,35 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//sebastian-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="SebastianBergmann/CodeUnit"
+
+inherit composer
 
 DESCRIPTION="Collection of PHP code units"
 HOMEPAGE="https://github.com/sebastianbergmann/code-unit"
-SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload
-	test? ( dev-php/composer
-		dev-php/phpunit )"
+BDEPEND="dev-php/theseer-Autoload"
 
 DOCS=( {ChangeLog,README}.md )
 
-src_prepare() {
-	default
+EPHPUNIT_BOOTSTRAP='vendor/autoload.php'
+composer_enable_tests phpunit
 
-	phpab -q -o src/autoload.php -t fedora2 src || die "phpab failed"
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		vendor/autoload.php || die "install failed"
+src_prepare() {
+	composer_src_prepare
+
+	edo phpab -q -o src/autoload.php -t fedora2 src
 }
 
 src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
-	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml,tests} "${S}" \
-		|| die "cp failed"
-	phpab -q -o tests/autoload.php -t fedora2 tests || die "phpab test failed"
-	phpunit --bootstrap vendor/autoload.php --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/SebastianBergmann/CodeUnit
-	doins -r src/.
+	composer_prepare_tests
+	edo phpab -q -o tests/autoload.php -t fedora2 tests
+	ephpunit
 }
