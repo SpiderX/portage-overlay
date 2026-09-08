@@ -1,0 +1,200 @@
+--- ../tests/end-to-end/execute/invalid-script-argument.phpt	2026-07-22 00:33:47.366156857 +0300
++++ ../tests/end-to-end/execute/invalid-script-argument.phpt	2026-07-22 00:33:53.113012206 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov execute does-not-exist.php
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/execute/no-script-argument.phpt	2026-07-22 00:34:00.177056371 +0300
++++ ../tests/end-to-end/execute/no-script-argument.phpt	2026-07-22 00:34:04.032622941 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov execute
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/execute/valid-script-argument-with-cli-include-with-text-report.phpt	2026-07-22 00:34:22.793467921 +0300
++++ ../tests/end-to-end/execute/valid-script-argument-with-cli-include-with-text-report.phpt	2026-07-22 00:34:27.775488039 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov execute --include ../../fixture/test.php --text /tmp/file ../../fixture/test.php
+---INI--
+-xdebug.overload_var_dump=0
+ --SKIPIF--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/execute/valid-script-argument-with-cli-include-without-report.phpt	2026-07-22 00:34:53.363636611 +0300
++++ ../tests/end-to-end/execute/valid-script-argument-with-cli-include-without-report.phpt	2026-07-22 00:34:57.798797515 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov execute --include ../../fixture/test.php ../../fixture/test.php
+---INI--
+-xdebug.overload_var_dump=0
+ --SKIPIF--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/execute/valid-script-argument-without-include.phpt	2026-07-22 00:35:10.264120875 +0300
++++ ../tests/end-to-end/execute/valid-script-argument-without-include.phpt	2026-07-22 00:35:13.501671603 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov execute --text /tmp/file ../../fixture/test.php
+---INI--
+-xdebug.overload_var_dump=0
+ --SKIPIF--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/help/help.phpt	2026-07-22 00:35:41.525412294 +0300
++++ ../tests/end-to-end/help/help.phpt	2026-07-22 00:35:46.129799199 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/help/help2.phpt	2026-07-22 00:35:52.434564086 +0300
++++ ../tests/end-to-end/help/help2.phpt	2026-07-22 00:35:57.017379485 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/merge/directory-without-cov-files.phpt	2026-07-22 00:36:14.220707750 +0300
++++ ../tests/end-to-end/merge/directory-without-cov-files.phpt	2026-07-22 00:36:18.122072262 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov merge --text coverage.txt ../../fixture/empty-directory
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/merge/invalid-directory.phpt	2026-07-22 00:36:22.560721913 +0300
++++ ../tests/end-to-end/merge/invalid-directory.phpt	2026-07-22 00:36:26.042466060 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov merge does-not-exist
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/merge/valid-directory-with-text-report-stdout.phpt	2026-07-22 00:36:40.150969155 +0300
++++ ../tests/end-to-end/merge/valid-directory-with-text-report-stdout.phpt	2026-07-22 00:36:43.662323041 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov merge --text php://stdout ../../fixture/example/coverage
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/merge/valid-directory-with-text-report.phpt	2026-07-22 00:37:10.209337542 +0300
++++ ../tests/end-to-end/merge/valid-directory-with-text-report.phpt	2026-07-22 00:37:13.949608663 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov merge --text /tmp/file ../../fixture/example/coverage
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/merge/valid-directory-without-report.phpt	2026-07-22 00:36:52.500678344 +0300
++++ ../tests/end-to-end/merge/valid-directory-without-report.phpt	2026-07-22 00:36:55.945608300 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov merge --text /tmp/file ../../fixture/example/coverage
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/patch-coverage/invalid-first-argument.phpt	2026-07-22 00:37:27.626293039 +0300
++++ ../tests/end-to-end/patch-coverage/invalid-first-argument.phpt	2026-07-22 00:37:31.361496140 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov patch-coverage does-not-exist does-not-exist
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/patch-coverage/invalid-second-argument.phpt	2026-07-22 00:37:39.578855575 +0300
++++ ../tests/end-to-end/patch-coverage/invalid-second-argument.phpt	2026-07-22 00:37:42.439397794 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov patch-coverage ../../fixture/example/coverage/testGreetsWorld.cov does-not-exist
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/patch-coverage/no-arguments.phpt	2026-07-22 00:37:49.439292315 +0300
++++ ../tests/end-to-end/patch-coverage/no-arguments.phpt	2026-07-22 00:37:52.877041798 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov patch-coverage
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/patch-coverage/only-one-argument.phpt	2026-07-22 00:38:01.767834972 +0300
++++ ../tests/end-to-end/patch-coverage/only-one-argument.phpt	2026-07-22 00:38:05.467652197 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov patch-coverage does-not-exist
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/patch-coverage/valid-arguments-with-invalid-path-prefix.phpt	2026-07-22 00:38:18.321780680 +0300
++++ ../tests/end-to-end/patch-coverage/valid-arguments-with-invalid-path-prefix.phpt	2026-07-22 00:38:21.721687236 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov patch-coverage --path-prefix invalid ../../fixture/example/coverage/testGreetsWorld.cov ../../fixture/example/patch
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/patch-coverage/valid-arguments-with-valid-path-prefix.phpt	2026-07-22 00:38:31.490886896 +0300
++++ ../tests/end-to-end/patch-coverage/valid-arguments-with-valid-path-prefix.phpt	2026-07-22 00:38:35.218155453 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov patch-coverage --path-prefix /path/prefix ../../fixture/example/coverage/testGreetsWorld.cov ../../fixture/example/patch
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/patch-coverage/valid-arguments-without-path-prefix.phpt	2026-07-22 00:38:42.510023051 +0300
++++ ../tests/end-to-end/patch-coverage/valid-arguments-without-path-prefix.phpt	2026-07-22 00:38:45.783353060 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov patch-coverage ../../fixture/example/coverage/testGreetsWorld.cov ../../fixture/example/patch
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
+--- ../tests/end-to-end/version/version.phpt	2026-07-22 00:38:52.920338168 +0300
++++ ../tests/end-to-end/version/version.phpt	2026-07-22 00:38:55.820436913 +0300
+@@ -1,7 +1,5 @@
+ --TEST--
+ phpcov
+---INI--
+-xdebug.overload_var_dump=0
+ --FILE--
+ <?php declare(strict_types=1);
+ require __DIR__ . '/../../../vendor/autoload.php';
