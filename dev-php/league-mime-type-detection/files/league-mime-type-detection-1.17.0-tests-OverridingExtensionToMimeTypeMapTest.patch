@@ -1,0 +1,17 @@
+--- ../src/OverridingExtensionToMimeTypeMapTest.php	2026-07-15 11:42:53.054900819 +0300
++++ ../src/OverridingExtensionToMimeTypeMapTest.php	2026-07-15 11:43:13.671568596 +0300
+@@ -3,12 +3,11 @@
+ namespace League\MimeTypeDetection;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class OverridingExtensionToMimeTypeMapTest extends TestCase
+ {
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function overriding_a_mime_type_value(): void
+     {
+         $innerMap = new GeneratedExtensionToMimeTypeMap();

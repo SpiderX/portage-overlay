@@ -1,0 +1,57 @@
+--- ../src/GeneratedExtensionToMimeTypeMapTest.php	2026-07-15 11:23:22.992022598 +0300
++++ ../src/GeneratedExtensionToMimeTypeMapTest.php	2026-07-15 11:36:28.580498073 +0300
+@@ -10,14 +10,13 @@
+ use League\MimeTypeDetection\Generation\FlysystemProvidedMimeTypeProvider;
+ use League\MimeTypeDetection\Generation\JsHttpMimeDBMimeTypeProvider;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class GeneratedExtensionToMimeTypeMapTest extends TestCase
+ {
+-    /**
+-     * @test
+-     *
+-     * @dataProvider expectedLookupResults
+-     */
++    #[DataProvider('expectedLookupResults')]
++    #[Test]
+     public function looking_up_mimetypes(string $extension, ?string $expectedMimeType): void
+     {
+         $map = new GeneratedExtensionToMimeTypeMap();
+@@ -32,9 +31,7 @@
+         yield ['lol', null];
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function the_generated_map_should_be_up_to_date(): void
+     {
+         $dumper = new ExtensionToMimeTypeMapGenerator(
+@@ -52,13 +49,11 @@
+     }
+ 
+     /**
+-     * @test
+-     *
+-     * @dataProvider expectedExtensionResults
+-     *
+      * @param string $mimeType
+      * @param string[] $expectedExtensions
+      */
++    #[DataProvider('expectedExtensionResults')]
++    #[Test]
+     public function looking_up_extensions(string $mimeType, array $expectedExtensions): void
+     {
+         // arrange
+@@ -68,7 +63,7 @@
+         $actual = $map->lookupAllExtensions($mimeType);
+ 
+         // assert
+-        $this->assertEquals($expectedExtensions, $actual);
++        self::assertEqualsCanonicalizing($expectedExtensions, $actual);
+     }
+ 
+     public static function expectedExtensionResults(): Generator

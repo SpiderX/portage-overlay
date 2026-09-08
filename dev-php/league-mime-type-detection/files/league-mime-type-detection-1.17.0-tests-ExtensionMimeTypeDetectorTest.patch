@@ -1,0 +1,32 @@
+--- ../src/ExtensionMimeTypeDetectorTest.php	2026-07-15 11:20:13.461904611 +0300
++++ ../src/ExtensionMimeTypeDetectorTest.php	2026-07-15 11:21:27.496665031 +0300
+@@ -6,14 +6,13 @@
+ 
+ use Generator;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class ExtensionMimeTypeDetectorTest extends TestCase
+ {
+-    /**
+-     * @test
+-     *
+-     * @dataProvider expectedLookupResults
+-     */
++    #[DataProvider('expectedLookupResults')]
++    #[Test]
+     public function looking_up_mimetype(string $path, ?string $expectedMimeType): void
+     {
+         $detector = new ExtensionMimeTypeDetector();
+@@ -22,9 +21,7 @@
+         $this->assertEquals($expectedMimeType, $detector->detectMimeTypeFromPath($path));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function detecting_from_bugger_always_returns_null(): void
+     {
+         $detector = new ExtensionMimeTypeDetector();
