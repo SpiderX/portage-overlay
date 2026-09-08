@@ -1,9 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit git-r3
+COMPOSER_INSTALL_PATH="DaveRandom/Network"
+COMPOSER_PKG="NetworkPrimitives"
+
+inherit composer git-r3
 
 DESCRIPTION="Primitive types for network programming in PHP"
 HOMEPAGE="https://github.com/DaveRandom/NetworkPrimitives"
@@ -13,14 +16,11 @@ LICENSE="MIT"
 SLOT="0"
 RESTRICT="test" # no tests
 
-RDEPEND="dev-lang/php:*
-	dev-php/daverandom-enum
-	dev-php/fedora-autoloader"
+RDEPEND="dev-php/daverandom-enum"
 
 src_install() {
-	einstalldocs
-	insinto /usr/share/php/DaveRandom/Network
-	doins -r "${FILESDIR}"/autoload.php src/.
+	composer_src_install
+
 	insinto /usr/share/php/NetworkInterop
 	doins -r interfaces/.
 	newins "${FILESDIR}"/autoload-interfaces.php autoload.php
