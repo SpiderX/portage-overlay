@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="Symfony/Component/Cache"
 COMPOSER_INSTALL_SRC="."
 PHP_REQ_USE="pdo?,postgres?,sqlite?,zlib?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony PSR-6 implementation for caching"
 HOMEPAGE="https://github.com/symfony/cache"
-EGIT_REPO_URI="https://github.com/symfony/cache.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="pdo postgres sqlite zlib"
 REQUIRED_USE="test? ( pdo postgres sqlite zlib )"
 
@@ -26,7 +27,6 @@ RDEPEND="dev-php/psr-cache
 	dev-php/symfony-var-exporter"
 BDEPEND="test? ( dev-db/redis
 		dev-php/cache-integration-tests
-		dev-php/composer
 		dev-php/doctrine-dbal
 		dev-php/pecl-apcu
 		dev-php/pecl-igbinary
@@ -40,22 +40,22 @@ BDEPEND="test? ( dev-db/redis
 		dev-php/symfony-messenger
 		dev-php/symfony-phpunit-bridge )"
 
-# symfony-cache doesn't support predis-3
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests-PredisAdapterTest.patch
-	"${FILESDIR}/${PN}"-7.4.17-tests-phpunit.xml.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+# symfony-cache doesn't support predis-3
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-7.4.17-tests-PredisAdapterTest.patch
+	"${FILESDIR}/${PN}"-7.4.17-tests-phpunit.xml.patch )
 composer_enable_tests phpunit
 
 src_test() {
+	composer_prepare_tests
 	edo "${EPREFIX}"/usr/sbin/redis-server - <<- EOF
 		daemonize yes
 		pidfile "${T}/redis.pid"
 		port 6379
 		bind 127.0.0.1
 	EOF
-	# needs apc.enable_cli=1
-	REDIS_HOST=127.0.0.1 ephpunit
+	REDIS_HOST=127.0.0.1 php -d zend.assertions=1 /usr/bin/phpunit --testdox
 	edo kill "$(<"${T}/redis.pid")"
 }

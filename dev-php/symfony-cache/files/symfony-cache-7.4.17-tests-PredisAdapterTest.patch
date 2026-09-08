@@ -1,0 +1,20 @@
+--- ../Tests/Adapter/PredisAdapterTest.php	2026-07-20 10:45:04.383325064 +0300
++++ ../Tests/Adapter/PredisAdapterTest.php	2026-07-20 10:46:46.019899668 +0300
+@@ -52,7 +52,7 @@
+             $params['conn_uid'] = $connectionParameters['conn_uid']; // if present, the value cannot be predicted
+         }
+ 
+-        $this->assertSame($params, $connectionParameters);
++        $this->assertSame($params, array_intersect_key($connectionParameters, $params));
+     }
+ 
+     public function testCreateSslConnection()
+@@ -84,7 +84,7 @@
+             $params['conn_uid'] = $connectionParameters['conn_uid']; // if present, the value cannot be predicted
+         }
+ 
+-        $this->assertSame($params, $connectionParameters);
++        $this->assertSame($params, array_intersect_key($connectionParameters, $params));
+     }
+ 
+     public function testAclUserPasswordAuth()
