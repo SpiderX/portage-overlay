@@ -1,0 +1,225 @@
+--- ../test/ServerTlsContextTest.php	2026-07-25 20:16:50.634680361 +0300
++++ ../test/ServerTlsContextTest.php	2026-07-25 20:20:38.734603005 +0300
+@@ -4,10 +4,11 @@
+ 
+ use Amp\Socket;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class ServerTlsContextTest extends TestCase
+ {
+-    public function minimumVersionDataProvider(): array
++    public static function minimumVersionDataProvider(): array
+     {
+         return [
+             [ServerTlsContext::TLSv1_0],
+@@ -17,9 +18,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider minimumVersionDataProvider
+-     */
++    #[DataProvider('minimumVersionDataProvider')]
+     public function testWithMinimumVersion($version): void
+     {
+         $context = new ServerTlsContext;
+@@ -29,16 +28,14 @@
+         self::assertSame($version, $clonedContext->getMinimumVersion());
+     }
+ 
+-    public function minimumVersionInvalidDataProvider(): array
++    public static function minimumVersionInvalidDataProvider(): array
+     {
+         return [
+             [-1],
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider minimumVersionInvalidDataProvider
+-     */
++    #[DataProvider('minimumVersionInvalidDataProvider')]
+     public function testWithMinimumVersionInvalid($version): void
+     {
+         $this->expectException(\Error::class);
+@@ -47,7 +44,7 @@
+         (new ServerTlsContext)->withMinimumVersion($version);
+     }
+ 
+-    public function peerNameDataProvider(): array
++    public static function peerNameDataProvider(): array
+     {
+         return [
+             [null],
+@@ -55,9 +52,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider peerNameDataProvider
+-     */
++    #[DataProvider('peerNameDataProvider')]
+     public function testWithPeerName($peerName): void
+     {
+         $context = new ServerTlsContext;
+@@ -110,7 +105,7 @@
+         self::assertFalse($options['verify_peer_name']);
+     }
+ 
+-    public function verifyDepthDataProvider(): array
++    public static function verifyDepthDataProvider(): array
+     {
+         return [
+             [0],
+@@ -118,9 +113,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider verifyDepthDataProvider
+-     */
++    #[DataProvider('verifyDepthDataProvider')]
+     public function testWithVerificationDepth($verifyDepth): void
+     {
+         $context = new ServerTlsContext;
+@@ -130,7 +123,7 @@
+         self::assertSame($verifyDepth, $clonedContext->getVerificationDepth());
+     }
+ 
+-    public function verifyDepthInvalidDataProvider(): array
++    public static function verifyDepthInvalidDataProvider(): array
+     {
+         return [
+             [-1],
+@@ -138,9 +131,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider verifyDepthInvalidDataProvider
+-     */
++    #[DataProvider('verifyDepthInvalidDataProvider')]
+     public function testWithVerificationDepthInvalid($verifyDepth): void
+     {
+         $this->expectException(\Error::class);
+@@ -149,7 +140,7 @@
+         (new ServerTlsContext)->withVerificationDepth($verifyDepth);
+     }
+ 
+-    public function ciphersDataProvider(): array
++    public static function ciphersDataProvider(): array
+     {
+         return [
+             ['ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256'],
+@@ -157,9 +148,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider ciphersDataProvider
+-     */
++    #[DataProvider('ciphersDataProvider')]
+     public function testWithCiphers($ciphers): void
+     {
+         $context = new ServerTlsContext;
+@@ -169,7 +158,7 @@
+         self::assertSame($ciphers, $clonedContext->getCiphers());
+     }
+ 
+-    public function caFileDataProvider(): array
++    public static function caFileDataProvider(): array
+     {
+         return [
+             [null],
+@@ -177,9 +166,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider caFileDataProvider
+-     */
++    #[DataProvider('caFileDataProvider')]
+     public function testWithCaFile($caFile): void
+     {
+         $context = new ServerTlsContext;
+@@ -189,7 +176,7 @@
+         self::assertSame($caFile, $clonedContext->getCaFile());
+     }
+ 
+-    public function caPathDataProvider(): array
++    public static function caPathDataProvider(): array
+     {
+         return [
+             [null],
+@@ -197,9 +184,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider caPathDataProvider
+-     */
++    #[DataProvider('caPathDataProvider')]
+     public function testWithCaPath($caPath): void
+     {
+         $context = new ServerTlsContext;
+@@ -227,7 +212,7 @@
+         self::assertFalse($clonedContext->hasPeerCapturing());
+     }
+ 
+-    public function defaultCertificateDataProvider(): array
++    public static function defaultCertificateDataProvider(): array
+     {
+         return [
+             [null],
+@@ -235,9 +220,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider defaultCertificateDataProvider
+-     */
++    #[DataProvider('defaultCertificateDataProvider')]
+     public function testWithDefaultCertificate($defaultCertificate): void
+     {
+         $context = new ServerTlsContext;
+@@ -263,7 +246,7 @@
+         (new ServerTlsContext)->withCertificates(["example.com" => "/foo/bar"]);
+     }
+ 
+-    public function invalidSecurityLevelDataProvider(): array
++    public static function invalidSecurityLevelDataProvider(): array
+     {
+         return [
+             [-1],
+@@ -271,9 +254,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidSecurityLevelDataProvider
+-     */
++    #[DataProvider('invalidSecurityLevelDataProvider')]
+     public function testWithSecurityLevelInvalid($level): void
+     {
+         $this->expectException(\Error::class);
+@@ -282,7 +263,7 @@
+         (new ServerTlsContext)->withSecurityLevel($level);
+     }
+ 
+-    public function validSecurityLevelDataProvider(): array
++    public static function validSecurityLevelDataProvider(): array
+     {
+         return [
+             [0],
+@@ -294,9 +275,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider validSecurityLevelDataProvider
+-     */
++    #[DataProvider('validSecurityLevelDataProvider')]
+     public function testWithSecurityLevelValid($level): void
+     {
+         if (\OPENSSL_VERSION_NUMBER >= 0x10100000) {

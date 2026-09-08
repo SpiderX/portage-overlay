@@ -1,0 +1,106 @@
+--- ../test/ConnectContextTest.php	2026-07-25 15:00:06.381639791 +0300
++++ ../test/ConnectContextTest.php	2026-07-25 15:02:52.113076869 +0300
+@@ -5,10 +5,11 @@
+ use Amp\Dns\DnsRecord;
+ use Amp\Socket;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class ConnectContextTest extends TestCase
+ {
+-    public function bindToDataProvider(): array
++    public static function bindToDataProvider(): array
+     {
+         return [
+             [null],
+@@ -16,9 +17,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider bindToDataProvider
+-     */
++    #[DataProvider('bindToDataProvider')]
+     public function testWithBindTo($bindTo): void
+     {
+         $contextA = new ConnectContext();
+@@ -41,7 +40,7 @@
+         self::assertFalse($contextC->hasTcpNoDelay());
+     }
+ 
+-    public function withConnectTimeoutDataProvider(): array
++    public static function withConnectTimeoutDataProvider(): array
+     {
+         return [
+             [1.0],
+@@ -49,9 +48,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider withConnectTimeoutDataProvider
+-     */
++    #[DataProvider('withConnectTimeoutDataProvider')]
+     public function testWithConnectTimeout($timeout): void
+     {
+         $context = new ConnectContext();
+@@ -61,7 +58,7 @@
+         self::assertSame($timeout, $clonedContext->getConnectTimeout());
+     }
+ 
+-    public function withConnectTimeoutInvalidTimeoutDataProvider(): array
++    public static function withConnectTimeoutInvalidTimeoutDataProvider(): array
+     {
+         return [
+             [0],
+@@ -70,9 +67,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider withConnectTimeoutInvalidTimeoutDataProvider
+-     */
++    #[DataProvider('withConnectTimeoutInvalidTimeoutDataProvider')]
+     public function testWithConnectTimeoutInvalidTimeout($timeout): void
+     {
+         $this->expectException(\Error::class);
+@@ -81,7 +76,7 @@
+         $context->withConnectTimeout($timeout);
+     }
+ 
+-    public function withDnsTypeRestrictionDataProvider(): array
++    public static function withDnsTypeRestrictionDataProvider(): array
+     {
+         return [
+             [null],
+@@ -90,9 +85,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider withDnsTypeRestrictionDataProvider
+-     */
++    #[DataProvider('withDnsTypeRestrictionDataProvider')]
+     public function testWithDnsTypeRestriction($type): void
+     {
+         $contextA = new ConnectContext();
+@@ -104,7 +97,7 @@
+         self::assertNull($contextC->getDnsTypeRestriction());
+     }
+ 
+-    public function withDnsTypeRestrictionInvalidTypeDataProvider(): array
++    public static function withDnsTypeRestrictionInvalidTypeDataProvider(): array
+     {
+         return [
+             [DnsRecord::NS],
+@@ -112,9 +105,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider withDnsTypeRestrictionInvalidTypeDataProvider
+-     */
++    #[DataProvider('withDnsTypeRestrictionInvalidTypeDataProvider')]
+     public function testWithDnsTypeRestrictionInvalidType($type): void
+     {
+         $context = new ConnectContext();

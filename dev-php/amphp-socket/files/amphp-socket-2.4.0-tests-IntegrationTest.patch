@@ -1,0 +1,69 @@
+--- ../test/IntegrationTest.php	2026-07-25 20:44:10.704231131 +0300
++++ ../test/IntegrationTest.php	2026-07-25 20:46:48.108699017 +0300
+@@ -6,12 +6,12 @@
+ use Amp\PHPUnit\AsyncTestCase;
+ use Amp\Socket;
+ use Amp\TimeoutCancellation;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Depends;
+ 
+ class IntegrationTest extends AsyncTestCase
+ {
+-    /**
+-     * @dataProvider provideConnectArgs
+-     */
++    #[DataProvider('provideConnectArgs')]
+     public function testConnect($uri): void
+     {
+         Socket\connect($uri);
+@@ -19,7 +19,7 @@
+         $this->expectNotToPerformAssertions();
+     }
+ 
+-    public function provideConnectArgs(): array
++    public static function provideConnectArgs(): array
+     {
+         return [
+             ['stackoverflow.com:80'],
+@@ -41,9 +41,7 @@
+         Socket\connect('non-existent.amphp.org', (new ConnectContext)->withConnectTimeout(1));
+     }
+ 
+-    /**
+-     * @depends testConnectFailure
+-     */
++    #[Depends('testConnectFailure')]
+     public function testConnectCancellation(): void
+     {
+         $this->expectException(CancelledException::class);
+@@ -52,9 +50,7 @@
+         Socket\connect('8.8.8.8:1', (new ConnectContext)->withConnectTimeout(2), $cancellation);
+     }
+ 
+-    /**
+-     * @dataProvider provideConnectTlsArgs
+-     */
++    #[DataProvider('provideConnectTlsArgs')]
+     public function testConnectTls($uri): void
+     {
+         $socket = Socket\connectTls($uri);
+@@ -62,9 +58,7 @@
+         self::assertInstanceOf(TlsInfo::class, $socket->getTlsInfo());
+     }
+ 
+-    /**
+-     * @dataProvider provideConnectTlsArgs
+-     */
++    #[DataProvider('provideConnectTlsArgs')]
+     public function testConnectTlsManually($uri): void
+     {
+         $name = $uri;
+@@ -83,7 +77,7 @@
+         self::assertInstanceOf(TlsInfo::class, $socket->getTlsInfo());
+     }
+ 
+-    public function provideConnectTlsArgs(): array
++    public static function provideConnectTlsArgs(): array
+     {
+         return [
+             ['stackoverflow.com:443'],

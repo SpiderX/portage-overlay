@@ -1,0 +1,162 @@
+--- ../test/Internal/FunctionsTest.php	2026-07-25 20:28:28.875079000 +0300
++++ ../test/Internal/FunctionsTest.php	2026-07-25 20:33:47.469365508 +0300
+@@ -4,10 +4,11 @@
+ 
+ use Amp\Socket\Internal;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class FunctionsTest extends TestCase
+ {
+-    public function parseUriDataProvider(): array
++    public static function parseUriDataProvider(): array
+     {
+         return [
+             [
+@@ -29,24 +30,20 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider parseUriDataProvider
+-     */
++    #[DataProvider('parseUriDataProvider')]
+     public function testParseUri($uri, $expected): void
+     {
+         self::assertEquals($expected, Internal\parseUri($uri));
+     }
+ 
+-    public function parseUriInvalidUriDataProvider(): array
++    public static function parseUriInvalidUriDataProvider(): array
+     {
+         return [
+             ['///////'],
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider parseUriInvalidUriDataProvider
+-     */
++    #[DataProvider('parseUriInvalidUriDataProvider')]
+     public function testParseUriInvalidUri($uri): void
+     {
+         $this->expectException(\Error::class);
+@@ -55,7 +52,7 @@
+         Internal\parseUri($uri);
+     }
+ 
+-    public function parseUriInvalidSchemeDataProvider(): array
++    public static function parseUriInvalidSchemeDataProvider(): array
+     {
+         return [
+             ['http://example.com'],
+@@ -64,9 +61,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider parseUriInvalidSchemeDataProvider
+-     */
++    #[DataProvider('parseUriInvalidSchemeDataProvider')]
+     public function testParseUriInvalidScheme($uri): void
+     {
+         $this->expectException(\Error::class);
+@@ -75,7 +70,7 @@
+         Internal\parseUri($uri);
+     }
+ 
+-    public function normalizeBindToOptionDataProvider(): array
++    public static function normalizeBindToOptionDataProvider(): array
+     {
+         return [
+             [null, null],
+@@ -89,16 +84,14 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider normalizeBindToOptionDataProvider
+-     */
++    #[DataProvider('normalizeBindToOptionDataProvider')]
+     public function testNormalizeBindToOption($bindTo, $expected): void
+     {
+         $actual = Internal\normalizeBindToOption($bindTo);
+         self::assertSame($expected, $actual);
+     }
+ 
+-    public function normalizeBindToOptionInvalidBindToDataProvider(): array
++    public static function normalizeBindToOptionInvalidBindToDataProvider(): array
+     {
+         return [
+             ['-1.-1.-1.-1'],
+@@ -110,9 +103,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider normalizeBindToOptionInvalidBindToDataProvider
+-     */
++    #[DataProvider('normalizeBindToOptionInvalidBindToDataProvider')]
+     public function testNormalizeBindToOptionInvalidBindTo($bindTo): void
+     {
+         $this->expectException(\Error::class);
+@@ -121,7 +112,7 @@
+         Internal\normalizeBindToOption($bindTo);
+     }
+ 
+-    public function normalizeBindToOptionInvalidPortDataProvider(): array
++    public static function normalizeBindToOptionInvalidPortDataProvider(): array
+     {
+         return [
+             ['123.123.123.123:123456'],
+@@ -129,9 +120,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider normalizeBindToOptionInvalidPortDataProvider
+-     */
++    #[DataProvider('normalizeBindToOptionInvalidPortDataProvider')]
+     public function testNormalizeBindToOptionInvalidPort($bindTo): void
+     {
+         $this->expectException(\Error::class);
+@@ -140,7 +129,7 @@
+         Internal\normalizeBindToOption($bindTo);
+     }
+ 
+-    public function normalizeBindToOptionInvalidIpv6DataProvider(): array
++    public static function normalizeBindToOptionInvalidIpv6DataProvider(): array
+     {
+         return [
+             ['[::::]'],
+@@ -148,9 +137,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider normalizeBindToOptionInvalidIpv6DataProvider
+-     */
++    #[DataProvider('normalizeBindToOptionInvalidIpv6DataProvider')]
+     public function testNormalizeBindToOptionInvalidIpv6($bindTo): void
+     {
+         $this->expectException(\Error::class);
+@@ -159,7 +146,7 @@
+         Internal\normalizeBindToOption($bindTo);
+     }
+ 
+-    public function normalizeBindToOptionInvalidIpv4DataProvider(): array
++    public static function normalizeBindToOptionInvalidIpv4DataProvider(): array
+     {
+         return [
+             ['256.256.256.256'],
+@@ -167,9 +154,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider normalizeBindToOptionInvalidIpv4DataProvider
+-     */
++    #[DataProvider('normalizeBindToOptionInvalidIpv4DataProvider')]
+     public function testNormalizeBindToOptionInvalidIpv4($bindTo): void
+     {
+         $this->expectException(\Error::class);

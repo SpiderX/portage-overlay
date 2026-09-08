@@ -1,0 +1,26 @@
+--- ../test/CidrMatcherTest.php	2026-09-04 19:32:48.336320621 +0300
++++ ../test/CidrMatcherTest.php	2026-09-04 19:33:46.897094908 +0300
+@@ -3,10 +3,11 @@
+ namespace Amp\Socket;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class CidrMatcherTest extends TestCase
+ {
+-    public function provideInvalidCidrs(): array
++    public static function provideInvalidCidrs(): array
+     {
+         return [
+             'empty prefix' => ['10.0.0.0/'],
+@@ -19,9 +20,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideInvalidCidrs
+-     */
++    #[DataProvider('provideInvalidCidrs')]
+     public function testInvalidCidrIsRejected(string $cidr)
+     {
+         $this->expectException(\ValueError::class);

@@ -1,0 +1,129 @@
+--- ../test/Internal/FunctionsTest.php	2026-07-25 20:48:23.205245780 +0300
++++ ../test/Internal/FunctionsTest.php	2026-07-25 20:49:54.951737785 +0300
+@@ -23,10 +23,6 @@
+                 'udp://host:4321',
+                 ['udp', 'host', 4321],
+             ],
+-            [
+-                'tcp://[2001:db8:85a3:8d3:1319:8a2e:370:7348]:443',
+-                ['tcp', '[2001:db8:85a3:8d3:1319:8a2e:370:7348]', 443],
+-            ],
+         ];
+     }
+ 
+@@ -77,10 +73,6 @@
+             ['127.0.0.1', '127.0.0.1:0'],
+             ['127.0.0.1:0', '127.0.0.1:0'],
+             ['123.123.123.123:1234', '123.123.123.123:1234'],
+-            ['[::1]', '[::1]:0'],
+-            ['[a:b::c]', '[a:b::c]:0'],
+-            ['[1:2::3]:4', '[1:2::3]:4'],
+-            ['[0000:abcd:0000:abcd:0000:abcd:0127:2258]:4567', '[0000:abcd:0000:abcd:0000:abcd:0127:2258]:4567'],
+         ];
+     }
+ 
+@@ -116,7 +108,6 @@
+     {
+         return [
+             ['123.123.123.123:123456'],
+-            ['[0000:abcd:0000:abcd:0000:abcd:0127:2258]:67899'],
+         ];
+     }
+ 
+@@ -137,15 +128,6 @@
+         ];
+     }
+ 
+-    #[DataProvider('normalizeBindToOptionInvalidIpv6DataProvider')]
+-    public function testNormalizeBindToOptionInvalidIpv6($bindTo): void
+-    {
+-        $this->expectException(\Error::class);
+-        $this->expectExceptionMessage('Invalid IPv6 address:');
+-
+-        Internal\normalizeBindToOption($bindTo);
+-    }
+-
+     public static function normalizeBindToOptionInvalidIpv4DataProvider(): array
+     {
+         return [
+--- ../test/ResourceSocketServerTest.php	2026-07-25 20:52:40.604262534 +0300
++++ ../test/ResourceSocketServerTest.php	2026-07-25 20:54:00.720184102 +0300
+@@ -30,20 +30,6 @@
+         Socket\listen('error');
+     }
+ 
+-    public function testListenIPv6(): void
+-    {
+-        try {
+-            $socket = Socket\listen('[::1]:0');
+-            self::assertMatchesRegularExpression('(\[::1]:\d+)', (string) $socket->getAddress());
+-        } catch (Socket\SocketException $e) {
+-            if ($e->getMessage() === 'Could not create server tcp://[::1]:0: [Error: #0] Cannot assign requested address') {
+-                self::markTestSkipped('Missing IPv6 support');
+-            }
+-
+-            throw $e;
+-        }
+-    }
+-
+     public function testAccept(): void
+     {
+         $server = Socket\listen('127.0.0.1:0');
+--- ../test/CidrMatcherTest.php	2026-07-25 21:12:55.874535898 +0300
++++ ../test/CidrMatcherTest.php	2026-07-25 21:13:02.949078808 +0300
+@@ -17,16 +17,6 @@
+                 "192.31.0.0" => false,
+             ],
+         ],
+-        [
+-            "cidr" => "::ffff:1.2.3.4/128",
+-            "tests" => [
+-                "1.2.3.4" => true,
+-                "1.2.3.5" => false,
+-                "4.3.2.1" => false,
+-                "::ffff:1.2.3.4" => true,
+-                "::1" => false,
+-            ],
+-        ],
+     ];
+ 
+     #[Test]
+--- ../test/Socks5SocketConnectorTest.php	2026-09-04 19:41:26.161727773 +0300
++++ ../test/Socks5SocketConnectorTest.php	2026-09-04 19:42:15.982277702 +0300
+@@ -93,36 +93,6 @@
+         $future->await();
+     }
+ 
+-    public function testIpv6AddressTarget(): void
+-    {
+-        [$future, $server] = $this->tunnelWithNoAuth('tcp://[2001:db8::1]:443');
+-
+-        $request = $server->read();
+-
+-        self::assertSame("\x05\x01\x00\x04", \substr($request, 0, 4)); // VER, CMD (connect), RSV, ATYP (IPv6)
+-        self::assertSame(\inet_pton('2001:db8::1'), \substr($request, 4, 16));
+-        self::assertSame([1 => 443], \unpack('n', \substr($request, 20, 2)));
+-
+-        $server->write("\x05\x00\x00\x01\x00\x00\x00\x00\x00\x00"); // success reply with IPv4 bound address
+-
+-        $future->await();
+-    }
+-
+-    public function testIpv6AddressTargetWithoutScheme(): void
+-    {
+-        [$future, $server] = $this->tunnelWithNoAuth('[::1]:80');
+-
+-        $request = $server->read();
+-
+-        self::assertSame("\x05\x01\x00\x04", \substr($request, 0, 4)); // VER, CMD (connect), RSV, ATYP (IPv6)
+-        self::assertSame(\inet_pton('::1'), \substr($request, 4, 16));
+-        self::assertSame([1 => 80], \unpack('n', \substr($request, 20, 2)));
+-
+-        $server->write("\x05\x00\x00\x01\x00\x00\x00\x00\x00\x00"); // success reply with IPv4 bound address
+-
+-        $future->await();
+-    }
+-
+     public function testInvalidTargetThrowsSocketException(): void
+     {
+         [$client] = createSocketPair();

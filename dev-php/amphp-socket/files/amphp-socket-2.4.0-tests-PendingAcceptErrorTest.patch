@@ -1,0 +1,26 @@
+--- ../test/PendingAcceptErrorTest.php	2026-07-25 20:15:28.000703320 +0300
++++ ../test/PendingAcceptErrorTest.php	2026-07-25 20:16:04.882418116 +0300
+@@ -3,10 +3,11 @@
+ namespace Amp\Socket;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class PendingAcceptErrorTest extends TestCase
+ {
+-    public function constructorParametersProvider(): array
++    public static function constructorParametersProvider(): array
+     {
+         $exception = new \Exception('test');
+         return [
+@@ -29,9 +30,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider constructorParametersProvider
+-     */
++    #[DataProvider('constructorParametersProvider')]
+     public function testConstruct($params, $expectedValues): void
+     {
+         $error = $params ? new PendingAcceptError(...$params) : new PendingAcceptError();

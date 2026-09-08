@@ -1,0 +1,46 @@
+--- ../test/BindContextTest.php	2026-07-25 14:50:06.587989790 +0300
++++ ../test/BindContextTest.php	2026-07-25 14:51:00.723788603 +0300
+@@ -3,10 +3,11 @@
+ namespace Amp\Socket;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class BindContextTest extends TestCase
+ {
+-    public function bindToDataProvider(): array
++    public static function bindToDataProvider(): array
+     {
+         return [
+             [null],
+@@ -14,9 +15,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider bindToDataProvider
+-     */
++    #[DataProvider('bindToDataProvider')]
+     public function testWithBindTo($bindTo): void
+     {
+         $contextA = new BindContext;
+@@ -54,7 +53,7 @@
+         self::assertNull($contextC->getTlsContext());
+     }
+ 
+-    public function backlogDataProvider(): array
++    public static function backlogDataProvider(): array
+     {
+         return [
+             [10],
+@@ -62,9 +61,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider backlogDataProvider
+-     */
++    #[DataProvider('backlogDataProvider')]
+     public function testWithBacklog($backlog): void
+     {
+         $origContext = new BindContext;

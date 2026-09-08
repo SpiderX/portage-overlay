@@ -1,0 +1,30 @@
+--- ../test/InternetAddressTest.php	2026-09-04 19:36:16.157800364 +0300
++++ ../test/InternetAddressTest.php	2026-09-04 19:36:59.536877912 +0300
+@@ -3,6 +3,7 @@
+ namespace Amp\Socket;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @see InternetAddress
+@@ -41,7 +42,7 @@
+         InternetAddress::fromString('1.1.1.1:-1');
+     }
+ 
+-    public function provideInvalidPorts(): array
++    public static function provideInvalidPorts(): array
+     {
+         return [
+             'trailing garbage' => ['1.1.1.1:80abc'],
+@@ -52,9 +53,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideInvalidPorts
+-     */
++    #[DataProvider('provideInvalidPorts')]
+     public function testTryFromStringRejectsInvalidPort(string $address): void
+     {
+         self::assertNull(InternetAddress::tryFromString($address));

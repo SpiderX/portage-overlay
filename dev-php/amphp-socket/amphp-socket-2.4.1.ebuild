@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Amp/Socket"
 PHP_REQ_USE="ipv6?,ssl"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Non-blocking socket and TLS functionality for PHP"
 HOMEPAGE="https://github.com/amphp/socket"
-EGIT_REPO_URI="https://github.com/amphp/socket.git"
+SRC_URI="https://github.com/amphp/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="ipv6"
 
 RDEPEND="dev-php/amphp-amp
@@ -24,7 +25,8 @@ RDEPEND="dev-php/amphp-amp
 	dev-php/league-uri-interfaces
 	dev-php/revolt-event-loop"
 
-PATCHES=( "${FILESDIR}/${PN}"-2.4.0-tests-BindContextTest.patch
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-2.4.0-tests-BindContextTest.patch
 	"${FILESDIR}/${PN}"-2.4.0-tests-CidrMatcherTest.patch
 	"${FILESDIR}/${PN}"-2.4.0-tests-ClientTlsContextTest.patch
 	"${FILESDIR}/${PN}"-2.4.0-tests-ConnectContextTest.patch
@@ -33,14 +35,13 @@ PATCHES=( "${FILESDIR}/${PN}"-2.4.0-tests-BindContextTest.patch
 	"${FILESDIR}/${PN}"-2.4.0-tests-InternetAddressTest.patch
 	"${FILESDIR}/${PN}"-2.4.0-tests-PendingAcceptErrorTest.patch
 	"${FILESDIR}/${PN}"-2.4.0-tests-ServerTlsContextTest.patch )
-
 composer_enable_tests phpunit
 
-src_prepare() {
-	composer_src_prepare
-
+src_test() {
+	use ipv6 || COMPOSER_TEST_PATCHES+=( "${FILESDIR}/${PN}"-2.4.0-tests-no-ipv6.patch )
+	composer_prepare_tests
 	edo pushd test/tls
 	edo ./regenerate.sh
 	edo popd
-	use ipv6 || eapply "${FILESDIR}/${PN}"-2.4.0-tests-no-ipv6.patch
+	ephpunit
 }
