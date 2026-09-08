@@ -1,0 +1,76 @@
+--- ../tests/unit/FqsenTest.php	2026-06-29 01:01:53.190081322 +0300
++++ ../tests/unit/FqsenTest.php	2026-06-29 00:59:41.808911740 +0300
+@@ -15,6 +15,7 @@
+ 
+ use InvalidArgumentException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @coversDefaultClass \phpDocumentor\Reflection\Fqsen
+@@ -23,8 +24,8 @@
+ {
+     /**
+      * @covers ::__construct
+-     * @dataProvider validFqsenProvider
+      */
++    #[DataProvider('validFqsenProvider')]
+     public function testValidFormats(string $fqsen, string $name) : void
+     {
+         $instance = new Fqsen($fqsen);
+@@ -36,7 +37,7 @@
+      *
+      * @return array<array<string>>
+      */
+-    public function validFqsenProvider() : array
++    public static function validFqsenProvider() : array
+     {
+         return [
+             ['\\', ''],
+@@ -56,8 +57,8 @@
+ 
+     /**
+      * @covers ::__construct
+-     * @dataProvider invalidFqsenProvider
+      */
++    #[DataProvider('invalidFqsenProvider')]
+     public function testInValidFormats(string $fqsen) : void
+     {
+         $this->expectException(InvalidArgumentException::class);
+@@ -69,7 +70,7 @@
+      *
+      * @return array<array<string>>
+      */
+-    public function invalidFqsenProvider() : array
++    public static function invalidFqsenProvider() : array
+     {
+         return [
+             ['\My\*'],
+--- ../phpunit.xml.dist	2026-06-29 01:08:46.907628230 +0300
++++ ../phpunit.xml.dist	2026-06-29 01:09:20.005478309 +0300
+@@ -6,21 +6,9 @@
+             <directory>./tests/unit/</directory>
+         </testsuite>
+     </testsuites>
+-    <filter>
+-        <whitelist>
++    <source>
++        <include>
+             <directory suffix=".php">src</directory>
+-        </whitelist>
+-    </filter>
+-    <logging>
+-        <log type="coverage-html"
+-            title="phpDocumentor Reflection Common"
+-            target="build/coverage"
+-            charset="UTF-8"
+-            yui="true"
+-            highlight="false"
+-            lowUpperBound="35"
+-            highLowerBound="70" />
+-        <log type="coverage-clover" target="build/logs/clover.xml"/>
+-        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false" />
+-    </logging>
++        </include>
++    </source>
+ </phpunit>
