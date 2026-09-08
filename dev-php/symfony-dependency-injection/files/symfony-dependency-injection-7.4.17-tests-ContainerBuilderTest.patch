@@ -1,0 +1,20 @@
+--- ../Tests/ContainerBuilderTest.php	2026-07-17 11:23:51.300213218 +0300
++++ ../Tests/ContainerBuilderTest.php	2026-07-17 11:24:35.184437339 +0300
+@@ -1233,10 +1233,14 @@
+ 
+         $resources = $container->getResources();
+ 
+-        $this->assertCount(2, $resources);
++        $this->assertSame(BarMissingClass::class, (string) $resources[1]);
+ 
+-        $this->assertSame('reflection.BarClass', (string) $resources[0]);
+-        $this->assertSame(BarMissingClass::class, (string) end($resources));
++        if (3 === \count($resources)) {
++            // Generic system autoloaders may also claim global class names.
++            $this->assertSame(\BarMissingClass::class, (string) $resources[2]);
++        } else {
++            $this->assertCount(2, $resources);
++        }
+     }
+ 
+     public function testGetReflectionClassOnInternalTypes()
