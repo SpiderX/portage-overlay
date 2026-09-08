@@ -6,14 +6,16 @@ EAPI=8
 COMPOSER_INSTALL_PATH="Doctrine/DBAL"
 PHP_REQ_USE="pdo,mysql?,postgres?,sqlite?"
 
-inherit composer git-r3 optfeature
+inherit composer optfeature
 
 DESCRIPTION="Doctrine Database Abstraction Layer"
 HOMEPAGE="https://github.com/doctrine/dbal"
-EGIT_REPO_URI="https://github.com/doctrine/dbal.git"
+SRC_URI="https://github.com/doctrine/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-patches.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="mysql postgres sqlite"
 REQUIRED_USE="test? ( mysql postgres sqlite )"
 
@@ -24,6 +26,7 @@ BDEPEND="test? ( dev-php/symfony-cache
 		dev-php/symfony-console )"
 
 EPHPUNIT_BOOTSTRAP='vendor/autoload.php'
+COMPOSER_TEST_PATCHES=( "${WORKDIR}/${P}-patches/tests" )
 composer_enable_tests phpunit
 
 pkg_postinst() {
