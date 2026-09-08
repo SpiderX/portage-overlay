@@ -5,19 +5,19 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Composer/ClassMapGenerator"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Utilities to scan PHP code and generate class maps"
 HOMEPAGE="https://github.com/composer/class-map-generator"
-EGIT_REPO_URI="https://github.com/composer/class-map-generator.git"
+SRC_URI="https://github.com/composer/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/composer-pcre
 	>=dev-php/symfony-finder-7"
 BDEPEND="test? ( >=dev-php/symfony-filesystem-7 )"
 
-PATCHES=( "${FILESDIR}/${PN}"-1.7.3-tests.patch )
-
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-1.7.3-tests.patch )
 composer_enable_tests phpunit

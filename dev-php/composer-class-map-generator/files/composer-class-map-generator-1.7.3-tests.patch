@@ -1,0 +1,31 @@
+--- ../tests/ClassMapGeneratorTest.php	2026-06-25 21:22:04.754783180 +0300
++++ ../tests/ClassMapGeneratorTest.php	2026-06-25 21:23:11.932891888 +0300
+@@ -19,6 +19,7 @@
+ namespace Composer\ClassMapGenerator;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use Symfony\Component\Finder\Finder;
+ use Symfony\Component\Filesystem\Filesystem;
+ 
+@@ -43,10 +44,7 @@
+         unset($this->generator);
+     }
+ 
+-    /**
+-     * @dataProvider getTestCreateMapTests
+-     * @param array<string, string> $expected
+-     */
++    #[DataProvider('getTestCreateMapTests')]
+     public function testCreateMap(string $directory, array $expected): void
+     {
+         self::assertEqualsNormalized($expected, ClassMapGenerator::createMap($directory));
+@@ -55,7 +53,7 @@
+     /**
+      * @return array<array<string|array<string>>>
+      */
+-    public function getTestCreateMapTests(): array
++    public static function getTestCreateMapTests(): array
+     {
+         $classmap = [
+             'Foo\\Bar\\A' => realpath(__DIR__) . '/Fixtures/classmap/sameNsMultipleClasses.php',
