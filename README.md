@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1603](https://img.shields.io/badge/ebuild-1603-orange.svg)](https://img.shields.io/badge/ebuild-1603-orange.svg)
+[![Number of ebuilds: 1604](https://img.shields.io/badge/ebuild-1604-orange.svg)](https://img.shields.io/badge/ebuild-1604-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -883,6 +883,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[league-uri](https://github.com/thephpleague/uri) | URI manipulation Library
 *   dev-php/[league-uri-components](https://github.com/thephpleague/uri-components) | League URI Components
 *   dev-php/[league-uri-interfaces](https://github.com/thephpleague/uri-interfaces) | League URI Interfaces
+*   dev-php/[marc-mabe-php-enum](https://github.com/marc-mabe/php-enum) | Simple and fast implementation of enumerations with native PHP
 *   dev-php/[masterminds-html5](https://github.com/Masterminds/html5-php) | An HTML5 parser and serializer for PHP
 *   dev-php/[mikehaertl-php-shellcommand](https://github.com/mikehaertl/php-shellcommand) | Simple object oriented interface to execute shell commands in PHP
 *   dev-php/[mockery](https://github.com/mockery/mockery) | Flexible PHP mock object framework
