@@ -23,4 +23,4 @@ RESTRICT="!test? ( test )"
 
 DEPEND="apcu? ( dev-php/pecl-apcu )"
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( dev-lang/php:*[session?] )" # skipped 9
+BDEPEND="test? ( dev-lang/php:*[session?] )"
