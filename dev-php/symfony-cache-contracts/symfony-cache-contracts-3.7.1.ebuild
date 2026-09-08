@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Contracts/Cache"
 COMPOSER_INSTALL_SRC="."
 
-inherit git-r3
+inherit composer
 
 DESCRIPTION="Symfony Cache Contracts"
 HOMEPAGE="https://github.com/symfony/cache-contracts"
-EGIT_REPO_URI="https://github.com/symfony/cache-contracts.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 RESTRICT="test" # no tests
 
 RDEPEND="dev-php/psr-cache"
