@@ -7,14 +7,15 @@ COMPOSER_INSTALL_AUTOLOAD="Components"
 COMPOSER_INSTALL_PATH="League/Uri"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="League URI Components"
 HOMEPAGE="https://github.com/thephpleague/uri-components"
-EGIT_REPO_URI="https://github.com/thephpleague/uri-components.git"
+SRC_URI="https://github.com/thephpleague/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # no tests
 
 RDEPEND="dev-php/league-uri"
