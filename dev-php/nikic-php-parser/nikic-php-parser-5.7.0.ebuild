@@ -9,29 +9,21 @@ COMPOSER_INSTALL_SRC="lib"
 COMPOSER_PKG="PHP-Parser"
 PHP_REQ_USE="tokenizer"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="A PHP parser written in PHP"
 HOMEPAGE="https://github.com/nikic/PHP-Parser"
-EGIT_REPO_URI="https://github.com/nikic/PHP-Parser.git"
-SRC_URI="https://github.com/SpiderX/portage-overlay/releases/download/${PN}-5.7.0/${PN}-5.7.0-patches.tar.xz"
+SRC_URI="https://github.com/nikic/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-patches.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
-PATCHES=( "${WORKDIR}/${PN}-5.7.0-patches/src"
-	"${WORKDIR}/${PN}-5.7.0-patches/tests" )
+PATCHES=( "${WORKDIR}/${P}-patches/src" )
 
-DOCS=( {CHANGELOG,README}.md )
-
+COMPOSER_TEST_PATCHES=( "${WORKDIR}/${P}-patches/tests")
 composer_enable_tests phpunit
-
-src_unpack() {
-	git-r3_src_unpack
-	unpack ${A}
-}
-
-src_compile() { :; }
 
 src_install() {
 	composer_src_install
