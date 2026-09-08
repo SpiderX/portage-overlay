@@ -1,0 +1,61 @@
+--- ../tests/unit/DocBlock/StandardTagFactoryTest.php	2026-07-05 16:44:42.331371679 +0300
++++ ../tests/unit/DocBlock/StandardTagFactoryTest.php	2026-07-05 16:46:43.627795685 +0300
+@@ -44,6 +44,7 @@
+ use phpDocumentor\Reflection\TypeResolver;
+ use phpDocumentor\Reflection\Types\Context;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @coversDefaultClass \phpDocumentor\Reflection\DocBlock\StandardTagFactory
+@@ -464,9 +465,7 @@
+         $this->assertSame('deprecated', $tag->getName());
+     }
+ 
+-    /**
+-     * @dataProvider validTagProvider
+-     */
++    #[DataProvider('validTagProvider')]
+     public function testValidFormattedTags(string $input, string $tagName, string $render): void
+     {
+         $fqsenResolver = m::mock(FqsenResolver::class);
+@@ -482,7 +481,7 @@
+      * @return string[][]
+      * @phpstan-return array<string, array<int, string>>
+      */
+-    public function validTagProvider(): array
++    public static function validTagProvider(): array
+     {
+         //rendered result is adding a space, because the tags are not rendered properly.
+         return [
+@@ -534,9 +533,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider invalidTagProvider
+-     */
++    #[DataProvider('invalidTagProvider')]
+     public function testInValidFormattedTags(string $input): void
+     {
+         $this->expectException(InvalidArgumentException::class);
+@@ -550,7 +547,7 @@
+      * @return string[][]
+      * @phpstan-return list<array<int, string>>
+      */
+-    public function invalidTagProvider(): array
++    public static function invalidTagProvider(): array
+     {
+         return [
+             ['@tag[invalid]'],
+@@ -560,9 +557,8 @@
+ 
+     /**
+      * @param class-string $expectedClass
+-     *
+-     * @dataProvider provideCreateWithTagWithTypesData
+      */
++    #[DataProvider('provideCreateWithTagWithTypesData')]
+     public function testCreateWithTagWithTypes(string $input, string $expectedClass): void
+     {
+         $tagFactory = StandardTagFactory::createInstance(new FqsenResolver());

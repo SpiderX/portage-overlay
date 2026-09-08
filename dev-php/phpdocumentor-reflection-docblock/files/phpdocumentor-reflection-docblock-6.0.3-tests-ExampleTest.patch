@@ -1,0 +1,55 @@
+--- ../tests/unit/DocBlock/Tags/ExampleTest.php	2026-07-05 16:52:38.075205912 +0300
++++ ../tests/unit/DocBlock/Tags/ExampleTest.php	2026-07-05 16:53:58.785032087 +0300
+@@ -6,6 +6,7 @@
+ 
+ use InvalidArgumentException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @coversDefaultClass \phpDocumentor\Reflection\DocBlock\Tags\Example
+@@ -146,7 +147,6 @@
+     /**
+      * @uses \phpDocumentor\Reflection\DocBlock\Tags\BaseTag
+      *
+-     * @dataProvider tagContentProvider
+      * @covers ::create
+      * @covers ::__construct
+      * @covers ::getFilePath
+@@ -155,6 +155,7 @@
+      * @covers ::getDescription
+      * @covers ::getContent
+      */
++    #[DataProvider('tagContentProvider')]
+     public function testFactoryMethod(
+         string $input,
+         string $filePath,
+@@ -173,7 +174,7 @@
+     }
+ 
+     /** @return mixed[][] */
+-    public function tagContentProvider(): array
++    public static function tagContentProvider(): array
+     {
+         return [
+             [
+@@ -228,9 +229,9 @@
+     }
+ 
+     /**
+-     * @dataProvider invalidExampleProvider
+      * @covers ::__construct
+      */
++    #[DataProvider('invalidExampleProvider')]
+     public function testValidatesArguments(
+         string $filePath,
+         bool $isUrl,
+@@ -250,7 +251,7 @@
+     }
+ 
+     /** @return mixed[][] */
+-    public function invalidExampleProvider(): array
++    public static function invalidExampleProvider(): array
+     {
+         return [
+             'invalid start' => [

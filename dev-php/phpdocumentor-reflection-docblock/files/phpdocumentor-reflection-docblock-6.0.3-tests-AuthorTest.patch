@@ -1,0 +1,29 @@
+--- ../tests/unit/DocBlock/Tags/AuthorTest.php	2026-07-05 16:57:55.129358956 +0300
++++ ../tests/unit/DocBlock/Tags/AuthorTest.php	2026-07-05 16:58:33.892628053 +0300
+@@ -15,6 +15,7 @@
+ 
+ use Mockery as m;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @coversDefaultClass \phpDocumentor\Reflection\DocBlock\Tags\Author
+@@ -152,8 +153,8 @@
+      * @uses \phpDocumentor\Reflection\DocBlock\Tags\Author::<public>
+      *
+      * @covers ::create
+-     * @dataProvider authorTagProvider
+      */
++    #[DataProvider('authorTagProvider')]
+     public function testFactoryMethod(string $input, string $output, string $name, string $email): void
+     {
+         $fixture = Author::create($input);
+@@ -165,7 +166,7 @@
+     }
+ 
+     /** @return mixed[][] */
+-    public function authorTagProvider(): array
++    public static function authorTagProvider(): array
+     {
+         return [
+             [

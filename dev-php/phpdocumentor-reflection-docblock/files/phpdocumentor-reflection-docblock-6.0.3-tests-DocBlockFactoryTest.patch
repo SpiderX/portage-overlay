@@ -1,0 +1,30 @@
+--- ../tests/unit/DocBlockFactoryTest.php	2026-07-05 16:54:22.227249990 +0300
++++ ../tests/unit/DocBlockFactoryTest.php	2026-07-05 16:55:46.131135135 +0300
+@@ -21,6 +21,7 @@
+ use phpDocumentor\Reflection\DocBlock\Tags\Param;
+ use phpDocumentor\Reflection\Types\Context;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use ReflectionClass;
+ 
+ use function str_replace;
+@@ -127,9 +128,8 @@
+      *
+      * @covers ::__construct
+      * @covers ::create
+-     *
+-     * @dataProvider provideSummaryAndDescriptions
+      */
++    #[DataProvider('provideSummaryAndDescriptions')]
+     public function testSummaryAndDescriptionAreSeparated(string $given, string $summary, string $description): void
+     {
+         $tagFactory = m::mock(TagFactory::class);
+@@ -202,7 +202,7 @@
+     /**
+      * @return array<int, array<int, string>>
+      */
+-    public function provideSummaryAndDescriptions(): array
++    public static function provideSummaryAndDescriptions(): array
+     {
+         return [
+             ['This is a DocBlock', 'This is a DocBlock', ''],

@@ -1,0 +1,29 @@
+--- ../tests/unit/DocBlock/Tags/Factory/TemplateCovariantFactoryTest.php	2026-07-05 16:41:54.800008826 +0300
++++ ../tests/unit/DocBlock/Tags/Factory/TemplateCovariantFactoryTest.php	2026-07-05 16:42:32.837005123 +0300
+@@ -20,6 +20,7 @@
+ use phpDocumentor\Reflection\Types\Context;
+ use phpDocumentor\Reflection\Types\Object_;
+ use phpDocumentor\Reflection\Types\String_;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class TemplateCovariantFactoryTest extends TagFactoryTestCase
+ {
+@@ -27,8 +28,8 @@
+      * @covers \phpDocumentor\Reflection\DocBlock\Tags\Factory\TemplateCovariantFactory::__construct
+      * @covers \phpDocumentor\Reflection\DocBlock\Tags\Factory\TemplateCovariantFactory::create
+      * @covers \phpDocumentor\Reflection\DocBlock\Tags\Factory\TemplateCovariantFactory::supports
+-     * @dataProvider templateCovariantInputProvider
+      */
++    #[DataProvider('templateCovariantInputProvider')]
+     public function testTemplateCovariantIsCreated(string $input, Tag $expected): void
+     {
+         $ast = $this->parseTag($input);
+@@ -45,7 +46,7 @@
+     /**
+      * @return array<int, array<int, string|TemplateCovariant>>
+      */
+-    public function templateCovariantInputProvider(): array
++    public static function templateCovariantInputProvider(): array
+     {
+         return [
+             [

@@ -1,0 +1,54 @@
+--- ../tests/integration/TypedTagsTest.php	2026-07-05 16:38:06.703945796 +0300
++++ ../tests/integration/TypedTagsTest.php	2026-07-05 16:39:52.564657679 +0300
+@@ -23,13 +23,14 @@
+ use phpDocumentor\Reflection\Types\String_;
+ use phpDocumentor\Reflection\Types\Void_;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @coversNothing
+  */
+ final class TypedTagsTest extends TestCase
+ {
+-    /** @dataProvider typeProvider */
++    #[DataProvider('typeProvider')]
+     public function testParamFormats(string $type, Type $expectedType): void
+     {
+         $docblock = <<<DOCBLOCK
+@@ -45,7 +46,7 @@
+         $this->assertEquals($expectedType, $phpdoc->getTags()[0]->getType());
+     }
+ 
+-    /** @dataProvider typeProvider */
++    #[DataProvider('typeProvider')]
+     public function testVarFormats(string $type, Type $expectedType): void
+     {
+         $docblock = <<<DOCBLOCK
+@@ -61,7 +62,7 @@
+         $this->assertEquals($expectedType, $phpdoc->getTags()[0]->getType());
+     }
+ 
+-    /** @dataProvider typeProvider */
++    #[DataProvider('typeProvider')]
+     public function testMethodFormats(string $type, Type $expectedType): void
+     {
+         $docblock = <<<DOCBLOCK
+@@ -78,7 +79,7 @@
+         $this->assertEquals($expectedType, current($phpdoc->getTags()[0]->getParameters())->getType());
+     }
+ 
+-    /** @dataProvider invalidFormatsProvider */
++    #[DataProvider('invalidFormatsProvider')]
+     public function testInvalidParam(string $type): void
+     {
+         $docblock = <<<DOCBLOCK
+@@ -95,7 +96,7 @@
+ 
+     }
+ 
+-    /** @dataProvider invalidFormatsProvider */
++    #[DataProvider('invalidFormatsProvider')]
+     public function testInvalidMethod(string $type): void
+     {
+         $docblock = <<<DOCBLOCK

@@ -1,0 +1,29 @@
+--- ../tests/unit/Exception/PcreExceptionTest.php	2026-07-05 16:47:07.189671107 +0300
++++ ../tests/unit/Exception/PcreExceptionTest.php	2026-07-05 16:48:31.583942465 +0300
+@@ -5,6 +5,7 @@
+ namespace phpDocumentor\Reflection\Exception;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ use const PREG_BACKTRACK_LIMIT_ERROR;
+ use const PREG_BAD_UTF8_ERROR;
+@@ -21,8 +22,8 @@
+ {
+     /**
+      * @covers ::createFromPhpError
+-     * @dataProvider errorCodeProvider
+      */
++    #[DataProvider('errorCodeProvider')]
+     public function testErrorConversion(int $errorCode, string $message): void
+     {
+         $this->assertSame($message, PcreException::createFromPhpError($errorCode)->getMessage());
+@@ -31,7 +32,7 @@
+     /**
+      * @return array<int, (string|int)[]>
+      */
+-    public function errorCodeProvider(): array
++    public static function errorCodeProvider(): array
+     {
+         return [
+             [

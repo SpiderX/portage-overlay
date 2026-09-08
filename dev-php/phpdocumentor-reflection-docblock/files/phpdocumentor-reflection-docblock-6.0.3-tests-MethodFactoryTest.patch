@@ -1,0 +1,29 @@
+--- ../tests/unit/DocBlock/Tags/Factory/MethodFactoryTest.php	2026-07-05 16:51:41.248833308 +0300
++++ ../tests/unit/DocBlock/Tags/Factory/MethodFactoryTest.php	2026-07-05 16:52:13.687468535 +0300
+@@ -21,6 +21,7 @@
+ use phpDocumentor\Reflection\Types\Mixed_;
+ use phpDocumentor\Reflection\Types\String_;
+ use phpDocumentor\Reflection\Types\Void_;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class MethodFactoryTest extends TagFactoryTestCase
+ {
+@@ -28,8 +29,8 @@
+      * @covers \phpDocumentor\Reflection\DocBlock\Tags\Factory\MethodFactory::__construct
+      * @covers \phpDocumentor\Reflection\DocBlock\Tags\Factory\MethodFactory::create
+      * @covers \phpDocumentor\Reflection\DocBlock\Tags\Factory\MethodFactory::supports
+-     * @dataProvider tagProvider
+      */
++    #[DataProvider('tagProvider')]
+     public function testIsCreated(string $tagLine, Method $tag): void
+     {
+         $ast = $this->parseTag($tagLine);
+@@ -44,7 +45,7 @@
+     }
+ 
+     /** @return array<array<string|Method>> */
+-    public function tagProvider(): array
++    public static function tagProvider(): array
+     {
+         return [
+             [
