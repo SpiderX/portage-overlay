@@ -1,0 +1,88 @@
+--- ../test/NativeSerializerTest.php	2026-07-10 20:43:48.103650615 +0300
++++ ../test/NativeSerializerTest.php	2026-07-10 20:45:42.202680481 +0300
+@@ -6,6 +6,7 @@
+ use Amp\Serialization\SerializationException;
+ use Amp\Serialization\Serializer;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class NativeSerializerTest extends TestCase
+ {
+@@ -14,7 +15,7 @@
+         return new NativeSerializer;
+     }
+ 
+-    public function provideSerializeData(): iterable
++    public static function provideSerializeData(): iterable
+     {
+         return [
+             ['test'],
+@@ -24,9 +25,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideSerializeData
+-     */
++    #[DataProvider('provideSerializeData')]
+     public function testUnserializeSerializedData($data): void
+     {
+         $serializer = $this->createSerializer();
+@@ -36,7 +35,7 @@
+         $this->assertEquals($data, $serializer->unserialize($serialized));
+     }
+ 
+-    public function provideLargeSerializeData(): iterable
++    public static function provideLargeSerializeData(): iterable
+     {
+         return [
+             [\str_repeat('a', 1 << 20)],
+@@ -46,8 +45,8 @@
+ 
+     /**
+      * @depends      testUnserializeSerializedData
+-     * @dataProvider provideLargeSerializeData
+      */
++    #[DataProvider('provideLargeSerializeData')]
+     public function testUnserializeSerializedLargeData($data): void
+     {
+         $data = [
+@@ -63,7 +62,7 @@
+         $this->assertEquals($data, $serializer->unserialize($serialized));
+     }
+ 
+-    public function provideUnserializableData(): iterable
++    public static function provideUnserializableData(): iterable
+     {
+         return [
+             [function () {
+@@ -75,9 +74,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideUnserializableData
+-     */
++    #[DataProvider('provideUnserializableData')]
+     public function testUnserializableData($data): void
+     {
+         $this->expectException(SerializationException::class);
+@@ -85,16 +82,14 @@
+         $this->createSerializer()->serialize($data);
+     }
+ 
+-    public function provideInvalidData(): iterable
++    public static function provideInvalidData(): iterable
+     {
+         return [
+             ['invalid data'],
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideInvalidData
+-     */
++    #[DataProvider('provideInvalidData')]
+     public function testUnserializeInvalidData($data): void
+     {
+         $this->expectException(SerializationException::class);
