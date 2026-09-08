@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="SebastianBergmann/Timer"
 PHP_MIN_VER="8.3"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Utility class for timing"
 HOMEPAGE="https://github.com/sebastianbergmann/php-timer"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/php-timer.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 BDEPEND="dev-php/theseer-Autoload"
 
