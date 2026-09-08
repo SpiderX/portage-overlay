@@ -1,0 +1,28 @@
+--- ../phpunit.xml.dist	2026-07-26 14:54:18.228924191 +0300
++++ ../phpunit.xml.dist	2026-07-26 14:56:02.083850915 +0300
+@@ -6,21 +6,17 @@
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+-        convertErrorsToExceptions="true"
+-        convertNoticesToExceptions="true"
+-        convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+ >
+     <testsuites>
+         <testsuite name="Amp Filesystem">
+             <directory>test</directory>
++            <exclude>test/AsyncFileTest.php</exclude>
++            <exclude>test/FileTest.php</exclude>
++            <exclude>test/FilesystemDriverTest.php</exclude>
++            <exclude>test/FilesystemTest.php</exclude>
+             <directory suffix=".phpt">test</directory>
+         </testsuite>
+     </testsuites>
+-    <coverage>
+-        <include>
+-            <directory suffix=".php">src</directory>
+-        </include>
+-    </coverage>
+ </phpunit>

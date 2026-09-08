@@ -1,0 +1,88 @@
+--- ../test/FilesystemDriverTest.php	2026-07-26 14:58:06.200128842 +0300
++++ ../test/FilesystemDriverTest.php	2026-07-26 15:00:09.160402247 +0300
+@@ -5,6 +5,7 @@
+ use Amp\File;
+ use Amp\File\FilesystemException;
+ use const Amp\Process\IS_WINDOWS;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ abstract class FilesystemDriverTest extends FilesystemTest
+ {
+@@ -87,7 +88,7 @@
+         $this->assertSame(\str_replace('/', \DIRECTORY_SEPARATOR, $original), $this->driver->resolveSymlink($link));
+     }
+ 
+-    public function symlinkPathProvider(): array
++    public static function symlinkPathProvider(): array
+     {
+         return [
+             'nonExistingPath' => [
+@@ -103,10 +104,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider symlinkPathProvider
+-     *
+-     */
++    #[DataProvider('symlinkPathProvider')]
+     public function testResolveSymlinkError(\Closure $linkResolver): void
+     {
+         $link = $linkResolver();
+@@ -201,6 +199,7 @@
+     /**
+      * @dataProvider dataForDirectoryCheck
+      */
++    #[DataProvider('dataForDirectoryCheck')]
+     public function testIsDirectory(bool $expectedResult, string $name): void
+     {
+         $fixtureDir = Fixture::path();
+@@ -208,7 +207,7 @@
+         $this->assertSame($expectedResult, $this->driver->isDirectory($path));
+     }
+ 
+-    public function dataForDirectoryCheck(): \Generator
++    public static function dataForDirectoryCheck(): \Generator
+     {
+         yield 'file' => [false, 'file'];
+         yield 'filelink' => [false, 'filelink'];
+@@ -224,9 +223,7 @@
+         yield 'nonexistent' => [false, 'nonexistent'];
+     }
+ 
+-    /**
+-     * @dataProvider dataForFileCheck
+-     */
++    #[DataProvider('dataForFileCheck')]
+     public function testIsFile(bool $expectedResult, string $name): void
+     {
+         $fixtureDir = Fixture::path();
+@@ -234,7 +231,7 @@
+         $this->assertSame($expectedResult, $this->driver->isFile($path));
+     }
+ 
+-    public function dataForFileCheck(): \Generator
++    public static function dataForFileCheck(): \Generator
+     {
+         yield 'file' => [true, 'file'];
+         yield 'filelink' => [true, 'filelink'];
+@@ -250,9 +247,7 @@
+         yield 'nonexistent' => [false, 'nonexistent'];
+     }
+ 
+-    /**
+-     * @dataProvider dataForSymlinkCheck
+-     */
++    #[DataProvider('dataForSymlinkCheck')]
+     public function testIsSymlink(bool $expectedResult, string $name): void
+     {
+         $fixtureDir = Fixture::path();
+@@ -260,7 +255,7 @@
+         $this->assertSame($expectedResult, $this->driver->isSymlink($path));
+     }
+ 
+-    public function dataForSymlinkCheck(): \Generator
++    public static function dataForSymlinkCheck(): \Generator
+     {
+         yield 'file' => [false, 'file'];
+         yield 'filelink' => [true, 'filelink'];

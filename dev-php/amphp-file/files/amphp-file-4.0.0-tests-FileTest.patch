@@ -1,0 +1,32 @@
+--- ../test/FileTest.php	2026-07-26 15:09:54.729561188 +0300
++++ ../test/FileTest.php	2026-07-26 17:18:00.417181351 +0300
+@@ -6,6 +6,7 @@
+ use Amp\File;
+ use Amp\File\LockType;
+ use Amp\File\Whence;
++use PHPUnit\Framework\Attributes\Depends;
+ 
+ use function Amp\async;
+ 
+@@ -254,9 +255,7 @@
+         $this->assertSame($data, $this->driver->read($path));
+     }
+ 
+-    /**
+-     * @depends testWrite
+-     */
++    #[Depends('testWrite')]
+     public function testTruncateToSmallerSize(): void
+     {
+         $path = Fixture::path() . "/write";
+@@ -279,9 +278,7 @@
+         $handle->close();
+     }
+ 
+-    /**
+-     * @depends testWrite
+-     */
++    #[Depends('testWrite')]
+     public function testTruncateToLargerSize(): void
+     {
+         $path = Fixture::path() . "/write";

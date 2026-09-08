@@ -1,0 +1,18 @@
+--- ../test/Driver/UvFilesystemDriverTest.php	2026-08-30 00:17:19.721937488 +0300
++++ ../test/Driver/UvFilesystemDriverTest.php	2026-08-30 00:17:57.611657256 +0300
+@@ -7,13 +7,11 @@
+ use Amp\File\Test\FilesystemDriverTest;
+ use Revolt\EventLoop;
+ use Revolt\EventLoop\Driver\UvDriver as UvLoopDriver;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class UvFilesystemDriverTest extends FilesystemDriverTest
+ {
+-    /**
+-     * @dataProvider symlinkPathProvider
+-     *
+-     */
++    #[DataProvider('symlinkPathProvider')]
+     public function testResolveSymlinkError(\Closure $linkResolver): void
+     {
+         if (\version_compare(\phpversion('uv'), '0.3.0', '<')) {

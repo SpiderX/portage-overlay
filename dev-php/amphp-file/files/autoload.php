@@ -6,6 +6,7 @@ Fedora\Autoloader\Autoload::addPsr4('Amp\\File\\', __DIR__);
 
 \Fedora\Autoloader\Dependencies::required([
 	__DIR__ . '/functions.php',
+	__DIR__ . '/Internal/functions.php',
 	'/usr/share/php/Amp/autoload.php',
 	'/usr/share/php/Amp/ByteStream/autoload.php',
 	'/usr/share/php/Amp/Cache/autoload.php',

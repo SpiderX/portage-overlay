@@ -1,0 +1,21 @@
+--- ../test/Driver/ParallelFilesystemDriverTest.php	2026-07-27 19:20:38.956672337 +0300
++++ ../test/Driver/ParallelFilesystemDriverTest.php	2026-07-27 19:24:23.586369164 +0300
+@@ -5,6 +5,7 @@
+ use Amp\File;
+ use Amp\File\Driver\ParallelFilesystemDriver;
+ use Amp\File\Test\FilesystemDriverTest;
++use Amp\Parallel\Worker\ContextWorkerFactory;
+ use Amp\Parallel\Worker\ContextWorkerPool;
+ use Amp\Parallel\Worker\WorkerPool;
+ 
+@@ -14,7 +15,9 @@
+ 
+     protected function createDriver(): File\FilesystemDriver
+     {
+-        $this->pool = new ContextWorkerPool();
++        $this->pool = new ContextWorkerPool(
++            factory: new ContextWorkerFactory(\dirname(__DIR__, 2) . '/worker-bootstrap.php'),
++        );
+ 
+         return new ParallelFilesystemDriver($this->pool);
+     }
