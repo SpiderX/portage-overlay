@@ -1,9 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit git-r3
+COMPOSER_INSTALL_PATH="SebastianBergmann/CodeUnitReverseLookup"
+
+inherit composer git-r3
 
 DESCRIPTION="Looks up which function or method a line of code belongs to"
 HOMEPAGE="https://github.com/sebastianbergmann/code-unit-reverse-lookup"
@@ -11,30 +13,15 @@ EGIT_REPO_URI="https://github.com/sebastianbergmann/code-unit-reverse-lookup.git
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload
-	test? ( dev-php/phpunit )"
+BDEPEND="dev-php/theseer-Autoload"
 
 DOCS=( {ChangeLog,README}.md )
 
+composer_enable_tests phpunit
+
 src_prepare() {
-	default
+	composer_src_prepare
 
-	phpab -q -o src/autoload.php -t fedora2 src || die "phpab failed"
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		vendor/autoload.php || die "install failed"
-}
-
-src_test() {
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/SebastianBergmann/CodeUnitReverseLookup
-	doins -r src/.
+	edo phpab -q -o src/autoload.php -t fedora2 src
 }

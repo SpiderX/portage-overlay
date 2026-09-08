@@ -1,49 +1,28 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-MY_PN="${PN//sebastian-/}"
-MY_P="${MY_PN}-${PV}"
+COMPOSER_INSTALL_PATH="SebastianBergmann/CodeUnitReverseLookup"
+
+inherit composer
 
 DESCRIPTION="Looks up which function or method a line of code belongs to"
 HOMEPAGE="https://github.com/sebastianbergmann/code-unit-reverse-lookup"
-SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="test"
-PROPERTIES="test_network"
 
-RDEPEND="dev-lang/php:*
-	dev-php/fedora-autoloader"
-BDEPEND="dev-php/theseer-Autoload
-	test? ( dev-php/composer
-		dev-php/phpunit )"
+BDEPEND="dev-php/theseer-Autoload"
 
 DOCS=( {ChangeLog,README}.md )
 
+composer_enable_tests phpunit
+
 src_prepare() {
-	default
+	composer_src_prepare
 
-	phpab -q -o src/autoload.php -t fedora2 src || die "phpab failed"
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		vendor/autoload.php || die "install failed"
-}
-
-src_test() {
-	composer require -d "${T}" --prefer-source \
-		--dev "${PN/-/\/}:${PV}" || die "composer failed"
-	cp -r "${T}"/vendor/"${PN/-/\/}"/{phpunit.xml,tests} "${S}" \
-		|| die "cp failed"
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php/SebastianBergmann/CodeUnitReverseLookup
-	doins -r src/.
+	edo phpab -q -o src/autoload.php -t fedora2 src
 }
