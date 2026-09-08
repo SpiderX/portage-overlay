@@ -1,0 +1,41 @@
+--- ../test/AtomicCacheTest.php	2026-07-26 00:57:30.932512303 +0300
++++ ../test/AtomicCacheTest.php	2026-07-26 00:58:43.667775965 +0300
+@@ -10,6 +10,7 @@
+ use Amp\Sync\LocalKeyedMutex;
+ use function Amp\async;
+ use function Amp\delay;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class AtomicCacheTest extends AsyncTestCase
+ {
+@@ -199,7 +200,7 @@
+         $cache->set('key', null);
+     }
+ 
+-    public function provideSerializableValues(): array
++    public static function provideSerializableValues(): array
+     {
+         return [
+             [new \stdClass],
+@@ -209,9 +210,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideSerializableValues
+-     */
++    #[DataProvider('provideSerializableValues')]
+     public function testComputeCallbackReturningSerializableValue($value): void
+     {
+         $cache = new AtomicCache(new LocalCache, new LocalKeyedMutex);
+@@ -224,9 +223,7 @@
+         self::assertEquals($value, $cache->get('key'));
+     }
+ 
+-    /**
+-     * @dataProvider provideSerializableValues
+-     */
++    #[DataProvider('provideSerializableValues')]
+     public function testComputeCallbackReturningNonString($value): void
+     {
+         $cache = new AtomicCache(new LocalCache, new LocalKeyedMutex);

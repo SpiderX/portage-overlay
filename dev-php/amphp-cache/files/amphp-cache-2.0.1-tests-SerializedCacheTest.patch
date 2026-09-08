@@ -1,0 +1,26 @@
+--- ../test/SerializedCacheTest.php	2026-07-26 00:55:14.852430266 +0300
++++ ../test/SerializedCacheTest.php	2026-07-26 00:56:01.379441445 +0300
+@@ -9,10 +9,11 @@
+ use Amp\Serialization\NativeSerializer;
+ use Amp\Serialization\SerializationException;
+ use Amp\Serialization\Serializer;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class SerializedCacheTest extends AsyncTestCase
+ {
+-    public function provideSerializableValues(): iterable
++    public static function provideSerializableValues(): iterable
+     {
+         return [
+             [new \stdClass],
+@@ -22,9 +23,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideSerializableValues
+-     */
++    #[DataProvider('provideSerializableValues')]
+     public function testSerializableValue($value)
+     {
+         $key = 'key';
