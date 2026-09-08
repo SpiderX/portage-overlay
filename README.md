@@ -836,7 +836,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[amphp-socket](https://github.com/amphp/socket) | Non-blocking socket and TLS functionality for PHP
 *   dev-php/[amphp-sync](https://github.com/amphp/sync) | Non-blocking synchronization primitives for PHP
 *   dev-php/[amphp-windows-registry](https://github.com/amphp/windows-registry) | Windows Registry Reader
-*   dev-php/[cache](https://github.com/php-cache/cache) | PHP Cache adapters
 *   dev-php/[cache-integration-tests](https://github.com/php-cache/integration-tests) | Integration tests for PSR-6 cache
 *   dev-php/[cache-tag-interop](https://github.com/php-cache/tag-interop) | Shared interfaces for tags. These are soon-to-be-PSR
 *   dev-php/[composer](https://github.com/composer/composer) | Dependency Manager for PHP
