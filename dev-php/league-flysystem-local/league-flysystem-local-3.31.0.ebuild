@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="League/Flysystem/Local"
 COMPOSER_INSTALL_SRC="."
 PHP_REQ_USE="fileinfo"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Sub-split of Flysystem for local file storage"
 HOMEPAGE="https://github.com/thephpleague/flysystem-local"
-EGIT_REPO_URI="https://github.com/thephpleague/flysystem-local.git"
+SRC_URI="https://github.com/thephpleague/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 RESTRICT="test" # no phpunit.xml
 
 PDEPEND="dev-php/league-flysystem" # circular with dev-php/flysystem
