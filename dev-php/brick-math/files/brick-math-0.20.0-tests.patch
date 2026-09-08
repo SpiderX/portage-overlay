@@ -1,0 +1,22 @@
+--- ../tests/BigIntegerTest.php	2026-07-15 19:30:10.875249667 +0300
++++ ../tests/BigIntegerTest.php	2026-07-15 19:31:01.602549293 +0300
+@@ -1240,7 +1240,7 @@
+      * @param string $quotient The expected quotient.
+      */
+     #[DataProvider('providerQuotientAndRemainder')]
+-    public function testQuotient(string $dividend, string $divisor, string $quotient): void
++    public function testQuotient(string $dividend, string $divisor, string $quotient, string $_remainder): void
+     {
+         self::assertBigIntegerEquals($quotient, BigInteger::of($dividend)->quotient($divisor));
+     }
+--- ../tests/RoundingModeTest.php	2026-09-04 19:53:38.598216502 +0300
++++ ../tests/RoundingModeTest.php	2026-09-04 19:53:43.173267678 +0300
+@@ -13,7 +13,7 @@
+  */
+ class RoundingModeTest extends TestCase
+ {
+-    #[RequiresPhp('>= 8.4')]
++    #[RequiresPhp('>= 8.4.0')]
+     public function testFromNativeRoundingMode(): void
+     {
+         foreach (\RoundingMode::cases() as $nativeRoundingMode) {
