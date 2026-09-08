@@ -1,0 +1,40 @@
+--- ../tests/CoroutineTest.php	2026-07-09 18:28:52.834092752 +0300
++++ ../tests/CoroutineTest.php	2026-07-09 18:59:49.819640010 +0300
+@@ -11,6 +11,7 @@
+ use GuzzleHttp\Promise\RejectedPromise;
+ use GuzzleHttp\Promise\Utils;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use ReflectionClass;
+ 
+ class CoroutineTest extends TestCase
+@@ -22,15 +23,15 @@
+     }
+ 
+     /**
+-     * @dataProvider promiseInterfaceMethodProvider
+-     *
+      * @param string $method
+      * @param array  $args
+      */
++    #[DataProvider('promiseInterfaceMethodProvider')]
+     public function testShouldProxyPromiseMethodsToResultPromise($method, $args = []): void
+     {
+         $coroutine = new Coroutine(function () { yield 0; });
+-        $mockPromise = $this->getMockForAbstractClass(PromiseInterface::class);
++
++        $mockPromise = $this->createMock(PromiseInterface::class);
+         $mockPromise->expects($this->once())->method($method)->with(...$args);
+ 
+         $resultPromiseProp = (new ReflectionClass(Coroutine::class))->getProperty('result');
+@@ -61,8 +62,8 @@
+         $coroutine = new Coroutine(function () { yield 0; });
+ 
+         $mockPromises = [
+-            'result' => $this->getMockForAbstractClass(PromiseInterface::class),
+-            'currentPromise' => $this->getMockForAbstractClass(PromiseInterface::class),
++            'result' => $this->createMock(PromiseInterface::class),
++            'currentPromise' => $this->createMock(PromiseInterface::class),
+         ];
+         foreach ($mockPromises as $propName => $mockPromise) {
+             /**
