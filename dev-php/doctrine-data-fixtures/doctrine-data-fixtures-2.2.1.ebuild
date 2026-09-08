@@ -6,14 +6,15 @@ EAPI=8
 COMPOSER_INSTALL_PATH="Doctrine/Common/DataFixtures"
 PHP_REQ_USE="pdo,sqlite?"
 
-inherit composer git-r3 optfeature
+inherit composer optfeature
 
 DESCRIPTION="Doctrine Data Fixtures Extension"
 HOMEPAGE="https://github.com/doctrine/data-fixtures"
-EGIT_REPO_URI="https://github.com/doctrine/data-fixtures.git"
+SRC_URI="https://github.com/doctrine/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="sqlite"
 REQUIRED_USE="test? ( sqlite )"
 

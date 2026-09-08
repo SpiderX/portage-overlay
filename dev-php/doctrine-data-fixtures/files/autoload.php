@@ -7,4 +7,5 @@ Fedora\Autoloader\Autoload::addPsr4('Doctrine\\Common\\DataFixtures\\', __DIR__)
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/Doctrine/Persistence/autoload.php',
+	'/usr/share/php/Psr/Log/autoload.php',
 ]);
