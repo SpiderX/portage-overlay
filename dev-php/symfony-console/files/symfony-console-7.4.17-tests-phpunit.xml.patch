@@ -1,0 +1,11 @@
+--- ../phpunit.xml.dist	2026-08-29 13:17:51.846418861 +0300
++++ ../phpunit.xml.dist	2026-08-29 13:17:58.948812149 +0300
+@@ -20,7 +20,7 @@
+     </testsuites>
+ 
+     <source ignoreSuppressionOfDeprecations="true">
+-        <deprecationTrigger ignoreUndefinedTriggers="true">
++        <deprecationTrigger>
+             <function>trigger_deprecation</function>
+             <method>Doctrine\Deprecations\Deprecation::trigger</method>
+             <method>Doctrine\Deprecations\Deprecation::triggerIfCalledFromOutside</method>

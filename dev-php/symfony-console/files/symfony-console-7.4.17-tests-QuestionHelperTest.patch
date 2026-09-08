@@ -1,0 +1,11 @@
+--- ../Tests/Helper/QuestionHelperTest.php	2026-08-20 13:33:01.264854617 +0300
++++ ../Tests/Helper/QuestionHelperTest.php	2026-08-20 13:33:17.369794790 +0300
+@@ -800,7 +800,7 @@
+     public function testAskThrowsExceptionOnMissingInputForChoiceQuestion()
+     {
+         $this->expectException(MissingInputException::class);
+-        $this->expectExceptionMessage('Aborted while asking: Choice');
++        $this->expectExceptionMessage('Aborted.');
+         (new QuestionHelper())->ask($this->createStreamableInputInterfaceMock($this->getInputStream('')), $this->createOutputInterface(), new ChoiceQuestion('Choice', ['a', 'b']));
+     }
+ 

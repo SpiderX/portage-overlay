@@ -6,20 +6,22 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Console"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Eases the creation of beautiful and testable command line interfaces"
 HOMEPAGE="https://github.com/symfony/console"
-EGIT_REPO_URI="https://github.com/symfony/console.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
 	dev-php/symfony-polyfill-mbstring
 	dev-php/symfony-service-contracts
 	dev-php/symfony-string"
-BDEPEND="test? ( dev-php/psr-log
+BDEPEND="test? ( dev-php/doctrine-deprecations
+		dev-php/psr-log
 		dev-php/symfony-config
 		dev-php/symfony-dependency-injection
 		dev-php/symfony-event-dispatcher
@@ -32,11 +34,11 @@ BDEPEND="test? ( dev-php/psr-log
 		dev-php/symfony-stopwatch
 		dev-php/symfony-var-dumper )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests-QuestionHelperTest.patch
-	"${FILESDIR}/${PN}"-7.4.17-tests-phpunit.xml.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
 # exclude test requires an interactive STDIN
 EPHPUNIT_EXCLUDE_FILTER='testAskTimeout'
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-7.4.17-tests-QuestionHelperTest.patch
+	"${FILESDIR}/${PN}"-7.4.17-tests-phpunit.xml.patch )
 composer_enable_tests phpunit
