@@ -1,0 +1,65 @@
+--- ../src/AsyncTestCase.php	2026-07-25 11:43:06.911968603 +0300
++++ ../src/AsyncTestCase.php	2026-07-25 12:13:24.303992633 +0300
+@@ -22,20 +22,8 @@
+     /** @var float Minimum runtime in seconds. */
+     private float $minimumRuntime = 0;
+ 
+-    /** @var string Temporary storage for actual test name. */
+-    private string $realTestName;
+-
+     private bool $setUpInvoked = false;
+ 
+-    /**
+-     * @codeCoverageIgnore Invoked before code coverage data is being collected.
+-     */
+-    final public function setName(string $name): void
+-    {
+-        parent::setName($name);
+-        $this->realTestName = $name;
+-    }
+-
+     protected function setUp(): void
+     {
+         $this->setUpInvoked = true;
+@@ -50,8 +38,7 @@
+         });
+     }
+ 
+-    /** @internal */
+-    final protected function runAsyncTest(mixed ...$args): mixed
++    private function runAsyncTest(string $methodName, array $args): mixed
+     {
+         if (!$this->setUpInvoked) {
+             self::fail(\sprintf(
+@@ -61,16 +48,14 @@
+             ));
+         }
+ 
+-        parent::setName($this->realTestName);
+-
+         $start = now();
+ 
+         try {
+             [, $returnValue] = Future\await([
+                 $this->deferredFuture->getFuture(),
+-                async(function () use ($args): mixed {
++                async(function () use ($methodName, $args): mixed {
+                     try {
+-                        $result = ([$this, $this->realTestName])(...$args);
++                        $result = $this->{$methodName}(...$args);
+                         if ($result instanceof Future) {
+                             $result = $result->await();
+                         }
+@@ -112,10 +97,9 @@
+         return $returnValue;
+     }
+ 
+-    final protected function runTest(): mixed
++    protected function invokeTestMethod(string $methodName,array $testArguments,): mixed
+     {
+-        parent::setName('runAsyncTest');
+-        return parent::runTest();
++        return $this->runAsyncTest($methodName, $testArguments);
+     }
+ 
+     /**
