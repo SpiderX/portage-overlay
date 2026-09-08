@@ -1,0 +1,510 @@
+--- ../src/FilesystemTest.php	2026-07-15 13:26:37.961123245 +0300
++++ ../src/FilesystemTest.php	2026-07-15 13:37:11.258873981 +0300
+@@ -16,6 +16,10 @@
+ use League\Flysystem\UrlGeneration\TemporaryUrlGenerator;
+ use LogicException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\After;
++use PHPUnit\Framework\Attributes\Before;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ use function iterator_to_array;
+ 
+@@ -31,9 +35,7 @@
+      */
+     private $filesystem;
+ 
+-    /**
+-     * @before
+-     */
++    #[Before]
+     public function setupFilesystem(): void
+     {
+         $adapter = new LocalFilesystemAdapter(self::ROOT);
+@@ -41,17 +43,13 @@
+         $this->filesystem = $filesystem;
+     }
+ 
+-    /**
+-     * @after
+-     */
++    #[After]
+     public function removeFiles(): void
+     {
+         delete_directory(static::ROOT);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function writing_and_reading_files(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -61,12 +59,10 @@
+     }
+ 
+     /**
+-     * @test
+-     *
+-     * @dataProvider invalidStreamInput
+-     *
+      * @param mixed $input
+      */
++    #[DataProvider('invalidStreamInput')]
++    #[Test]
+     public function trying_to_write_with_an_invalid_stream_arguments($input): void
+     {
+         $this->expectException(InvalidStreamProvided::class);
+@@ -82,9 +78,7 @@
+         yield "something that is not a resource" => [false];
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function writing_and_reading_a_stream(): void
+     {
+         $writeStream = stream_with_contents('contents');
+@@ -100,9 +94,7 @@
+         fclose($readStream);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function writing_using_a_stream_wrapper(): void
+     {
+         $contents = 'contents of the file';
+@@ -115,9 +107,7 @@
+         $this->assertEquals($contents, $this->filesystem->read('from-stream-wrapper.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_if_files_exist(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -129,9 +119,7 @@
+         $this->assertFalse($otherFileExists);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_if_directories_exist(): void
+     {
+         $this->filesystem->createDirectory('existing-directory');
+@@ -143,9 +131,7 @@
+         $this->assertFalse($notExistingDirectory);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function deleting_a_file(): void
+     {
+         $this->filesystem->write('path.txt', 'content');
+@@ -154,9 +140,7 @@
+         $this->assertFalse($this->filesystem->fileExists('path.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function creating_a_directory(): void
+     {
+         $this->filesystem->createDirectory('here');
+@@ -166,9 +150,7 @@
+         $this->assertEquals('here', $directoryAttrs->path());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function deleting_a_directory(): void
+     {
+         $this->filesystem->write('dirname/a.txt', 'contents');
+@@ -186,9 +168,7 @@
+         $this->assertFalse($this->filesystem->fileExists('dirname/c.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function listing_directory_contents(): void
+     {
+         $this->filesystem->write('dirname/a.txt', 'contents');
+@@ -205,9 +185,7 @@
+         $this->assertCount(1, $attributeListing);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function listing_directory_contents_recursive(): void
+     {
+         $this->filesystem->write('dirname/a.txt', 'contents');
+@@ -221,9 +199,7 @@
+         $this->assertCount(4, $attributeListing);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function copying_files(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -234,9 +210,7 @@
+         $this->assertTrue($this->filesystem->fileExists('new-path.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function moving_files(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -247,9 +221,7 @@
+         $this->assertTrue($this->filesystem->fileExists('new-path.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function fetching_last_modified(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -261,9 +233,7 @@
+         $this->assertTrue($lastModified < time() + 30);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function fetching_mime_type(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -272,10 +242,8 @@
+ 
+         $this->assertEquals('text/plain', $mimeType);
+     }
+-    
+-    /**
+-     * @test
+-     */
++
++    #[Test]
+     public function test_mime_type_throws_when_null_is_returned(): void
+     {
+         $adapter = $this->createMock(FilesystemAdapter::class);
+@@ -290,9 +258,7 @@
+         $filesystem->mimeType('foo.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function fetching_file_size(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -302,9 +268,7 @@
+         $this->assertEquals(8, $fileSize);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function ensuring_streams_are_rewound_when_writing(): void
+     {
+         $writeStream = stream_with_contents('contents');
+@@ -316,9 +280,7 @@
+         $this->assertEquals('contents', $contents);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function setting_visibility(): void
+     {
+         $this->filesystem->write('path.txt', 'contents');
+@@ -333,11 +295,8 @@
+         $this->assertEquals(Visibility::PRIVATE, $privateVisibility);
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider scenariosCausingPathTraversal
+-     */
++    #[DataProvider('scenariosCausingPathTraversal')]
++    #[Test]
+     public function protecting_against_path_traversals(callable $scenario): void
+     {
+         $this->expectException(PathTraversalDetected::class);
+@@ -407,9 +366,7 @@
+         }];
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function listing_exceptions_are_uniformely_represented(): void
+     {
+         $filesystem = new Filesystem(
+@@ -428,9 +385,7 @@
+         iterator_to_array($items); // force the yields
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function failing_to_create_a_public_url(): void
+     {
+         $filesystem = new Filesystem(
+@@ -447,9 +402,7 @@
+         $filesystem->publicUrl('path.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function not_configuring_a_public_url(): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter());
+@@ -459,9 +412,7 @@
+         $filesystem->publicUrl('path.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function creating_a_public_url(): void
+     {
+         $filesystem = new Filesystem(
+@@ -474,9 +425,7 @@
+         self::assertEquals('https://example.org/public/path.txt', $url);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function public_url_array_uses_multi_prefixer(): void
+     {
+         $filesystem = new Filesystem(
+@@ -497,9 +446,7 @@
+         self::assertEquals('https://cdn2/some/path-here.txt', $url5);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function custom_public_url_generator(): void
+     {
+         $filesystem = new Filesystem(
+@@ -516,9 +463,7 @@
+         self::assertSame('custom/file.txt', $filesystem->publicUrl('file.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function copying_from_and_to_the_same_location_fails(): void
+     {
+         $this->expectExceptionObject(UnableToCopyFile::sourceAndDestinationAreTheSame('from.txt', 'from.txt'));
+@@ -527,9 +472,7 @@
+         $this->filesystem->copy('from.txt', 'from.txt', $config);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function moving_from_and_to_the_same_location_fails(): void
+     {
+         $this->expectExceptionObject(UnableToMoveFile::fromLocationTo('from.txt', 'from.txt'));
+@@ -538,9 +481,7 @@
+         $this->filesystem->move('from.txt', 'from.txt', $config);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function get_checksum_for_adapter_that_supports(): void
+     {
+         $this->filesystem->write('path.txt', 'foobar');
+@@ -548,9 +489,7 @@
+         $this->assertSame('3858f62230ac3c915f300c664312c63f', $this->filesystem->checksum('path.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function get_checksum_for_adapter_that_does_not_support(): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter());
+@@ -560,9 +499,7 @@
+         $this->assertSame('3858f62230ac3c915f300c664312c63f', $filesystem->checksum('path.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function get_checksum_for_adapter_that_does_not_support_specific_algo(): void
+     {
+         $adapter = new class() extends InMemoryFilesystemAdapter implements ChecksumProvider {
+@@ -578,9 +515,7 @@
+         $this->assertSame('3858f62230ac3c915f300c664312c63f', $filesystem->checksum('path.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function get_sha256_checksum_for_adapter_that_does_not_support(): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter(), ['checksum_algo' => 'sha256']);
+@@ -590,9 +525,7 @@
+         $this->assertSame('c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2', $filesystem->checksum('path.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function get_sha256_checksum_for_adapter_that_does_not_support_while_crc32c_is_the_default(): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter(), ['checksum_algo' => 'crc32c']);
+@@ -603,9 +536,7 @@
+         $this->assertSame('c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2', $checksum);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function unable_to_get_checksum_for_for_file_that_does_not_exist(): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter());
+@@ -615,9 +546,7 @@
+         $filesystem->checksum('path.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function generating_temporary_urls(): void
+     {
+         $filesystem = new Filesystem(
+@@ -637,9 +566,7 @@
+         self::assertEquals($expectedUrl, $temporaryUrl);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function not_being_able_to_generate_temporary_urls(): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter());
+@@ -649,9 +576,7 @@
+         $filesystem->temporaryUrl('some/file.txt', new DateTimeImmutable());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function ignoring_same_paths_for_move_and_copy(): void
+     {
+         $this->expectNotToPerformAssertions();
+@@ -668,9 +593,7 @@
+         $filesystem->copy('from.txt', 'from.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function failing_same_paths_for_move(): void
+     {
+         $filesystem = new Filesystem(
+@@ -684,9 +607,7 @@
+         $filesystem->move('from.txt', 'from.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function failing_same_paths_for_copy(): void
+     {
+         $filesystem = new Filesystem(
+@@ -700,9 +621,7 @@
+         $filesystem->copy('from.txt', 'from.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function unable_to_get_checksum_directory(): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter());
+@@ -713,11 +632,8 @@
+         $filesystem->checksum('foo');
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider fileMoveOrCopyScenarios
+-     */
++    #[DataProvider('fileMoveOrCopyScenarios')]
++    #[Test]
+     public function moving_a_file_with_visibility_scenario(
+         array $mainConfig,
+         array $moveConfig,
+@@ -739,11 +655,8 @@
+         $this->assertEquals($expectedVisibility, $filesystem->visibility('to.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider fileMoveOrCopyScenarios
+-     */
++    #[DataProvider('fileMoveOrCopyScenarios')]
++    #[Test]
+     public function copying_a_file_with_visibility_scenario(
+         array $mainConfig,
+         array $copyConfig,

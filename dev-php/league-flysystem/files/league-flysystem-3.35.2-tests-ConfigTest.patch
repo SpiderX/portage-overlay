@@ -1,0 +1,60 @@
+--- ../src/ConfigTest.php	2026-07-15 13:19:16.610491765 +0300
++++ ../src/ConfigTest.php	2026-07-15 13:20:07.678122785 +0300
+@@ -5,21 +5,18 @@
+ namespace League\Flysystem;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class ConfigTest extends TestCase
+ {
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function a_config_object_exposes_passed_options(): void
+     {
+         $config = new Config(['option' => 'value']);
+         $this->assertEquals('value', $config->get('option'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function a_config_object_returns_a_default_value(): void
+     {
+         $config = new Config();
+@@ -28,9 +25,7 @@
+         $this->assertEquals('default', $config->get('option', 'default'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function extending_a_config_with_options(): void
+     {
+         $config = new Config(['option' => 'value', 'first' => 1]);
+@@ -41,9 +36,7 @@
+         $this->assertEquals(2, $extended->get('second'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function extending_with_defaults(): void
+     {
+         $config = new Config(['option' => 'set']);
+@@ -54,9 +47,7 @@
+         $this->assertEquals('default', $withDefaults->get('other'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function extending_without_settings(): void
+     {
+         // arrange

@@ -1,0 +1,98 @@
+--- ../src/WhitespacePathNormalizerTest.php	2026-07-15 13:57:07.648114130 +0300
++++ ../src/WhitespacePathNormalizerTest.php	2026-07-15 14:02:35.024574318 +0300
+@@ -6,6 +6,8 @@
+ 
+ use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class WhitespacePathNormalizerTest extends TestCase
+ {
+@@ -19,11 +21,8 @@
+         $this->normalizer = new WhitespacePathNormalizer();
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider  pathProvider
+-     */
++    #[DataProvider('pathProvider')]
++    #[Test]
+     public function path_normalizing(string $input, string $expected): void
+     {
+         $result = $this->normalizer->normalizePath($input);
+@@ -32,11 +31,8 @@
+         $this->assertEquals($expected, $double);
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider  relativePathProvider
+-     */
++    #[DataProvider('relativePathProvider')]
++    #[Test]
+     public function relative_path_normalizing(string $input, string $expected): void
+     {
+         $result = $this->normalizer->normalizePath($input);
+@@ -45,12 +41,9 @@
+         $this->assertEquals($expected, $double);
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider  relativePathProvider
+-     */
+-    public function not_allowing_relative_path_traversal_through_configuration(string $input): void
++    #[DataProvider('relativePathProvider')]
++    #[Test]
++    public function not_allowing_relative_path_traversal_through_configuration(string $input, string $_expected): void
+     {
+         $filesystem = new Filesystem(new InMemoryFilesystemAdapter(), ['allow_relative_path_traversal' => false]);
+ 
+@@ -59,12 +52,9 @@
+         $filesystem->write($input, 'foobar');
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider  relativePathProvider
+-     */
+-    public function rejecting_relative_paths(string $input): void
++    #[DataProvider('relativePathProvider')]
++    #[Test]
++    public function rejecting_relative_paths(string $input, string $_expected): void
+     {
+         $this->normalizer = new WhitespacePathNormalizer(false);
+ 
+@@ -110,22 +100,16 @@
+         ];
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider invalidPathProvider
+-     */
++    #[DataProvider('invalidPathProvider')]
++    #[Test]
+     public function guarding_against_path_traversal(string $input): void
+     {
+         $this->expectException(PathTraversalDetected::class);
+         $this->normalizer->normalizePath($input);
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider dpFunkyWhitespacePaths
+-     */
++    #[DataProvider('dpFunkyWhitespacePaths')]
++    #[Test]
+     public function rejecting_funky_whitespace(string $path): void
+     {
+         self::expectException(CorruptedPathDetected::class);

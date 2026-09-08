@@ -1,0 +1,79 @@
+--- ../src/DirectoryListingTest.php	2026-07-15 13:21:43.191259097 +0300
++++ ../src/DirectoryListingTest.php	2026-07-15 13:22:45.495068992 +0300
+@@ -6,6 +6,7 @@
+ 
+ use Generator;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ use function iterator_to_array;
+ 
+@@ -14,9 +15,7 @@
+  */
+ class DirectoryListingTest extends TestCase
+ {
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function mapping_a_listing(): void
+     {
+         $numbers = $this->generateIntegers(1, 10);
+@@ -31,9 +30,7 @@
+         $this->assertEquals($expectedNumbers, $mappedNumbers);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function mapping_a_listing_twice(): void
+     {
+         $numbers = $this->generateIntegers(1, 10);
+@@ -51,9 +48,7 @@
+         $this->assertEquals($expectedNumbers, $mappedNumbers);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function filter_a_listing(): void
+     {
+         $numbers = $this->generateIntegers(1, 20);
+@@ -68,9 +63,7 @@
+         $this->assertEquals($expectedNumbers, $mappedNumbers);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function filter_a_listing_twice(): void
+     {
+         $numbers = $this->generateIntegers(1, 20);
+@@ -88,9 +81,7 @@
+         $this->assertEquals($expectedNumbers, $mappedNumbers);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function sorting_a_directory_listing(): void
+     {
+         $expected = ['a/a/a.txt', 'b/c/a.txt', 'c/b/a.txt', 'c/c/a.txt'];
+@@ -111,12 +102,11 @@
+     }
+ 
+     /**
+-     * @test
+-     *
+      * @description this ensures that the output of a sorted listing is iterable
+      *
+      * @see https://github.com/thephpleague/flysystem/issues/1342
+      */
++    #[Test]
+     public function iterating_over_storted_output(): void
+     {
+         $listing = new DirectoryListing([

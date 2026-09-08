@@ -1,0 +1,98 @@
+--- ../src/PathPrefixerTest.php	2026-07-15 13:54:54.522280538 +0300
++++ ../src/PathPrefixerTest.php	2026-07-15 13:56:33.105645615 +0300
+@@ -5,12 +5,12 @@
+ namespace League\Flysystem;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class PathPrefixerTest extends TestCase
+ {
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function path_prefixing_with_a_prefix(): void
+     {
+         $prefixer = new PathPrefixer('prefix');
+@@ -18,9 +18,7 @@
+         $this->assertEquals('prefix/some/path.txt', $prefixedPath);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function path_stripping_with_a_prefix(): void
+     {
+         $prefixer = new PathPrefixer('prefix');
+@@ -28,11 +26,8 @@
+         $this->assertEquals('some/path.txt', $strippedPath);
+     }
+ 
+-    /**
+-     * @test
+-     *
+-     * @dataProvider dpRootPaths
+-     */
++    #[DataProvider('dpRootPaths')]
++    #[Test]
+     public function an_absolute_root_path_is_supported(string $rootPath, string $separator, string $path, string $expectedPath): void
+     {
+         $prefixer = new PathPrefixer($rootPath, $separator);
+@@ -46,9 +41,7 @@
+         yield "windows-style root path" => ['\\', '\\', 'path.txt', '\\path.txt'];
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function path_stripping_is_reversable(): void
+     {
+         $prefixer = new PathPrefixer('prefix');
+@@ -58,9 +51,7 @@
+         $this->assertEquals('some/path.txt', $prefixer->stripPrefix($prefixedPath));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function prefixing_without_a_prefix(): void
+     {
+         $prefixer = new PathPrefixer('');
+@@ -72,9 +63,7 @@
+         $this->assertEquals('path/to/prefix.txt', $path);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function prefixing_for_a_directory(): void
+     {
+         $prefixer = new PathPrefixer('/prefix');
+@@ -85,9 +74,7 @@
+         $this->assertEquals('/prefix/', $path);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function prefixing_for_a_directory_without_a_prefix(): void
+     {
+         $prefixer = new PathPrefixer('');
+@@ -98,9 +85,7 @@
+         $this->assertEquals('', $path);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function stripping_a_directory_prefix(): void
+     {
+         $prefixer = new PathPrefixer('/something/');

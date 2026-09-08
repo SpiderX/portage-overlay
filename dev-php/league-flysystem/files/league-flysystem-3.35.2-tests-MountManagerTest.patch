@@ -1,0 +1,476 @@
+--- ../src/MountManagerTest.php	2026-07-15 13:38:18.268019127 +0300
++++ ../src/MountManagerTest.php	2026-07-15 13:47:38.693675386 +0300
+@@ -5,6 +5,8 @@
+ use League\Flysystem\AdapterTestUtilities\ExceptionThrowingFilesystemAdapter;
+ use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ use function fclose;
+ use function is_resource;
+@@ -54,9 +56,7 @@
+        ]);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function copying_without_retaining_visibility(): void
+     {
+         // arrange
+@@ -76,9 +76,7 @@
+         self::assertEquals('private', $visibility);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function extending_without_new_mounts_is_equal_but_not_the_same(): void
+     {
+         $mountManager = $this->mountManager->extend([]);
+@@ -87,9 +85,7 @@
+         $this->assertEquals($this->mountManager, $mountManager);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function extending_with_new_mounts_is_not_equal(): void
+     {
+         $mountManager = $this->mountManager->extend([
+@@ -99,9 +95,7 @@
+         $this->assertNotEquals($this->mountManager, $mountManager);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function extending_exposes_a_usable_mount_on_the_extension(): void
+     {
+         $mountManager = $this->mountManager->extend([
+@@ -114,9 +108,7 @@
+         $this->assertEquals('this', $contents);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function extending_does_not_mount_on_the_original_mount_manager(): void
+     {
+         $this->mountManager->extend([
+@@ -128,9 +120,7 @@
+         $this->mountManager->write('third://path.txt', 'this');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function copying_while_retaining_visibility(): void
+     {
+         // arrange
+@@ -150,9 +140,7 @@
+         self::assertEquals('public', $visibility);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function writing_a_file(): void
+     {
+         $this->mountManager->write('first://file.txt', 'content');
+@@ -165,9 +153,7 @@
+         $this->assertTrue($this->secondFilesystem->fileExists('another-file.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function writing_a_file_with_a_stream(): void
+     {
+         $stream = stream_with_contents('contents');
+@@ -177,9 +163,7 @@
+         $this->assertEquals('contents', $this->firstFilesystem->read('location.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function not_being_able_to_write_a_file(): void
+     {
+         $this->firstStubAdapter->stageException('write', 'file.txt', UnableToWriteFile::atLocation('file.txt'));
+@@ -189,9 +173,7 @@
+         $this->mountManager->write('first://file.txt', 'content');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function not_being_able_to_stream_write_a_file(): void
+     {
+         $handle = tmpfile();
+@@ -208,11 +190,9 @@
+ 
+     /**
+      * @description This test method is so ugly, but I don't have the energy to create a nice test for every single one of these method.
+-     *
+-     * @test
+-     *
+-     * @dataProvider dpMetadataRetrieverMethods
+      */
++    #[DataProvider('dpMetadataRetrieverMethods')]
++    #[Test]
+     public function failing_a_one_param_method(string $method, FilesystemOperationFailed $exception): void
+     {
+         $this->firstStubAdapter->stageException($method, 'location.txt', $exception);
+@@ -236,9 +216,7 @@
+         yield 'fileExists' => ['fileExists', UnableToCheckFileExistence::forLocation('location.txt')];
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function reading_a_file(): void
+     {
+         $this->secondFilesystem->write('location.txt', 'contents');
+@@ -248,9 +226,7 @@
+         $this->assertEquals('contents', $contents);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function reading_a_file_as_a_stream(): void
+     {
+         $this->secondFilesystem->write('location.txt', 'contents');
+@@ -262,9 +238,7 @@
+         $this->assertEquals('contents', $contents);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_existing_file(): void
+     {
+         $this->secondFilesystem->write('location.txt', 'contents');
+@@ -274,9 +248,7 @@
+         $this->assertTrue($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_non_existing_file(): void
+     {
+         $existence = $this->mountManager->fileExists('second://location.txt');
+@@ -284,9 +256,7 @@
+         $this->assertFalse($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_non_existing_directory(): void
+     {
+         $existence = $this->mountManager->directoryExists('second://some-directory');
+@@ -294,9 +264,7 @@
+         $this->assertFalse($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_existing_directory(): void
+     {
+         $this->secondFilesystem->write('nested/location.txt', 'contents');
+@@ -306,9 +274,7 @@
+         $this->assertTrue($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_existing_file_using_has(): void
+     {
+         $this->secondFilesystem->write('location.txt', 'contents');
+@@ -318,9 +284,7 @@
+         $this->assertTrue($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_non_existing_file_using_has(): void
+     {
+         $existence = $this->mountManager->has('second://location.txt');
+@@ -328,9 +292,7 @@
+         $this->assertFalse($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_non_existing_directory_using_has(): void
+     {
+         $existence = $this->mountManager->has('second://some-directory');
+@@ -338,9 +300,7 @@
+         $this->assertFalse($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function checking_existence_for_an_existing_directory_using_has(): void
+     {
+         $this->secondFilesystem->write('nested/location.txt', 'contents');
+@@ -350,9 +310,7 @@
+         $this->assertTrue($existence);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function deleting_a_file(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -362,9 +320,7 @@
+         $this->assertFalse($this->firstFilesystem->fileExists('location.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function deleting_a_directory(): void
+     {
+         $this->firstFilesystem->write('dirname/location.txt', 'contents');
+@@ -374,9 +330,7 @@
+         $this->assertFalse($this->firstFilesystem->fileExists('dirname/location.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function setting_visibility(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -387,9 +341,7 @@
+         $this->assertEquals(Visibility::PUBLIC, $this->firstFilesystem->visibility('location.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function retrieving_metadata(): void
+     {
+         $now = time();
+@@ -404,9 +356,7 @@
+         $this->assertEquals('text/plain', $mimeType);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function creating_a_directory(): void
+     {
+         $this->mountManager->createDirectory('first://directory');
+@@ -421,9 +371,7 @@
+         $this->assertEquals('directory', $directory->path());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function list_directory(): void
+     {
+         $this->mountManager->createDirectory('first://directory');
+@@ -444,9 +392,7 @@
+         $this->assertEquals('first://directory/file', $file->path());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function copying_in_the_same_filesystem(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -458,9 +404,7 @@
+         $this->assertTrue($this->firstFilesystem->fileExists('new-location.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function failing_to_copy_in_the_same_filesystem(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -471,9 +415,7 @@
+         $this->mountManager->copy('first://location.txt', 'first://new-location.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function failing_to_move_in_the_same_filesystem(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -484,9 +426,7 @@
+         $this->mountManager->move('first://location.txt', 'first://new-location.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function moving_in_the_same_filesystem(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -498,9 +438,7 @@
+         $this->assertTrue($this->firstFilesystem->fileExists('new-location.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function moving_across_filesystem(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -512,9 +450,7 @@
+         $this->assertTrue($this->secondFilesystem->fileExists('new-location.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function failing_to_move_across_filesystem(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -526,9 +462,7 @@
+         $this->mountManager->move('first://location.txt', 'second://new-location.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function failing_to_copy_across_filesystem(): void
+     {
+         $this->firstFilesystem->write('location.txt', 'contents');
+@@ -540,9 +474,7 @@
+         $this->mountManager->copy('first://location.txt', 'second://new-location.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function listing_contents(): void
+     {
+         $this->firstFilesystem->write('contents.txt', 'file contents');
+@@ -554,9 +486,7 @@
+         $this->assertCount(3, $contents);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function dangerously_mounting_additional_filesystems(): void
+     {
+         $this->firstFilesystem->write('contents.txt', 'file contents');
+@@ -566,9 +496,7 @@
+         $this->assertTrue($this->mountManager->fileExists('unknown://contents.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function guarding_against_valid_mount_identifiers(): void
+     {
+         $this->expectException(UnableToMountFilesystem::class);
+@@ -577,9 +505,7 @@
+         new MountManager([1 => new Filesystem(new InMemoryFilesystemAdapter())]);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function guarding_against_mounting_invalid_filesystems(): void
+     {
+         $this->expectException(UnableToMountFilesystem::class);
+@@ -588,9 +514,7 @@
+         new MountManager(['valid' => 'something else']);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function guarding_against_using_paths_without_mount_prefix(): void
+     {
+         $this->expectException(UnableToResolveFilesystemMount::class);
+@@ -598,9 +522,7 @@
+         $this->mountManager->read('path-without-mount-prefix.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function guard_against_using_unknown_mount(): void
+     {
+         $this->expectException(UnableToResolveFilesystemMount::class);
+@@ -608,9 +530,7 @@
+         $this->mountManager->read('unknown://location.txt');
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function generate_public_url(): void
+     {
+         $mountManager = new MountManager([
+@@ -625,9 +545,7 @@
+         $this->assertSame('second.example.com/file2.txt', $mountManager->publicUrl('second://file2.txt'));
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function provide_checksum(): void
+     {
+         $this->mountManager->write('first://file.txt', 'content');

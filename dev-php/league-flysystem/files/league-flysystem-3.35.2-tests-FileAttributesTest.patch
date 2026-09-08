@@ -1,0 +1,80 @@
+--- ../src/FileAttributesTest.php	2026-07-15 13:23:13.237869095 +0300
++++ ../src/FileAttributesTest.php	2026-07-15 13:25:49.428798929 +0300
+@@ -6,6 +6,8 @@
+ 
+ use Generator;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ use RuntimeException;
+ 
+@@ -16,9 +18,7 @@
+  */
+ class FileAttributesTest extends TestCase
+ {
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function exposing_some_values(): void
+     {
+         $attrs = new FileAttributes('path.txt');
+@@ -32,9 +32,7 @@
+         $this->assertNull($attrs->lastModified());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function exposing_all_values(): void
+     {
+         $attrs = new FileAttributes('path.txt', 1234, Visibility::PRIVATE, $now = time(), 'plain/text', ['key' => 'value']);
+@@ -47,9 +45,7 @@
+         $this->assertEquals(['key' => 'value'], $attrs->extraMetadata());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function implements_array_access(): void
+     {
+         $attrs = new FileAttributes('path.txt', 1234, Visibility::PRIVATE, $now = time(), 'plain/text', ['key' => 'value']);
+@@ -63,9 +59,7 @@
+         $this->assertEquals(['key' => 'value'], $attrs['extra_metadata']);
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function properties_can_not_be_set(): void
+     {
+         $this->expectException(RuntimeException::class);
+@@ -73,9 +67,7 @@
+         $attrs['visibility'] = Visibility::PUBLIC;
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function properties_can_not_be_unset(): void
+     {
+         $this->expectException(RuntimeException::class);
+@@ -83,11 +75,8 @@
+         unset($attrs['visibility']);
+     }
+ 
+-    /**
+-     * @dataProvider data_provider_for_json_transformation
+-     *
+-     * @test
+-     */
++    #[DataProvider('data_provider_for_json_transformation')]
++    #[Test]
+     public function json_transformations(FileAttributes $attributes): void
+     {
+         $payload = $attributes->jsonSerialize();

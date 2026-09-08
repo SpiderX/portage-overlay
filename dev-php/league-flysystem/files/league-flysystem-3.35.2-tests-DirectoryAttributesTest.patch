@@ -1,0 +1,61 @@
+--- ../src/DirectoryAttributesTest.php	2026-07-15 13:20:36.927715359 +0300
++++ ../src/DirectoryAttributesTest.php	2026-07-15 13:21:26.589826769 +0300
+@@ -5,15 +5,14 @@
+ namespace League\Flysystem;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ /**
+  * @group core
+  */
+ class DirectoryAttributesTest extends TestCase
+ {
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function exposing_some_values(): void
+     {
+         $attrs = new DirectoryAttributes('some/path');
+@@ -24,36 +23,28 @@
+         $this->assertNull($attrs->visibility());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function exposing_visibility(): void
+     {
+         $attrs = new DirectoryAttributes('some/path', Visibility::PRIVATE);
+         $this->assertEquals(Visibility::PRIVATE, $attrs->visibility());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function exposing_last_modified(): void
+     {
+         $attrs = new DirectoryAttributes('some/path', null, $timestamp = time());
+         $this->assertEquals($timestamp, $attrs->lastModified());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function exposing_extra_meta_data(): void
+     {
+         $attrs = new DirectoryAttributes('some/path', null, null, ['key' => 'value']);
+         $this->assertEquals(['key' => 'value'], $attrs->extraMetadata());
+     }
+ 
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function serialization_capabilities(): void
+     {
+         $attrs = new DirectoryAttributes('some/path');
