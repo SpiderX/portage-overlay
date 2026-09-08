@@ -1,0 +1,11 @@
+--- ../tests/IncludePath/IncludePathTest.php	2026-07-11 00:15:00.444138001 +0300
++++ ../tests/IncludePath/IncludePathTest.php	2026-07-11 00:15:08.888875501 +0300
+@@ -10,7 +10,7 @@
+ use Nikic\IncludeInterceptor\FileFilter;
+ use Nikic\IncludeInterceptor\Interceptor;
+ 
+-class IncludePathTests extends TestCase {
++class IncludePathTest extends TestCase {
+ 
+     public function testInterceptFromOtherFolder() {
+         $filter = FileFilter::createAllBlacklisted();

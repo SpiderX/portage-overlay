@@ -1,0 +1,44 @@
+--- ../tests/InterceptorTests.php	2026-07-11 00:18:06.848759320 +0300
++++ ../tests/InterceptorTests.php	2026-07-11 00:25:59.449600087 +0300
+@@ -9,7 +9,6 @@
+ 
+ use Nikic\IncludeInterceptor\FileFilter;
+ use Nikic\IncludeInterceptor\Interceptor;
+-use PHPUnit\Framework\Error\Warning;
+ 
+ class InterceptorTests extends TestCase {
+     public function testInterceptNoopHook() {
+@@ -83,12 +82,32 @@
+         });
+         $instance->setUp();
+ 
++        $warnings = [];
++
++        set_error_handler(
++            static function (int $severity, string $message) use (&$warnings): bool {
++                if ($severity !== E_WARNING) {
++                    return false;
++                }
++
++                $warnings[] = $message;
++
++                return true;
++            }
++        );
++
+         try {
+-            $this->expectException(Warning::class);
+             include __DIR__ . '/data/doesntExist.php';
+         } finally {
++            restore_error_handler();
+             $instance->tearDown();
+         }
++
++        $this->assertNotNull($warnings);
++        $this->assertStringContainsString(
++            'Failed to open stream',
++            implode("\n", $warnings)
++        );
+     }
+ 
+     public function testDoubleSetup() {

@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1604](https://img.shields.io/badge/ebuild-1604-orange.svg)](https://img.shields.io/badge/ebuild-1604-orange.svg)
+[![Number of ebuilds: 1606](https://img.shields.io/badge/ebuild-1606-orange.svg)](https://img.shields.io/badge/ebuild-1606-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -888,6 +888,8 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[mikehaertl-php-shellcommand](https://github.com/mikehaertl/php-shellcommand) | Simple object oriented interface to execute shell commands in PHP
 *   dev-php/[mockery](https://github.com/mockery/mockery) | Flexible PHP mock object framework
 *   dev-php/[mongodb](https://github.com/mongodb/mongo-php-library) | The Official MongoDB PHP library
+*   dev-php/[myclabs-deep-copy](https://github.com/myclabs/deepcopy) | Create deep copies (clones) of your objects
+*   dev-php/[nikic-include-interceptor](https://github.com/nikic/include-interceptor) | A library to intercept PHP includes
 *   dev-php/[nikic-php-parser](https://github.com/nikic/PHP-Parser) | A PHP parser written in PHP
 *   dev-php/[nyholm-psr7](https://github.com/Nyholm/psr7) | A super lightweight PSR-7 implementation
 *   dev-php/[pecl-ds]() | Native Data Structures for PHP
@@ -1681,3 +1683,4 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   x11-themes/[WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme) | comes in both light and dark variants
 
 </details>
+

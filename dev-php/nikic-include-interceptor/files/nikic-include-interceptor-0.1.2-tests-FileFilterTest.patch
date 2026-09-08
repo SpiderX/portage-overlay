@@ -1,0 +1,25 @@
+--- ../tests/FileFilterTest.php	2026-07-11 00:12:31.833576695 +0300
++++ ../tests/FileFilterTest.php	2026-07-11 00:13:10.699334922 +0300
+@@ -9,8 +9,10 @@
+ 
+ use Nikic\IncludeInterceptor\FileFilter;
+ 
+-class FileFilterTests extends TestCase {
+-    public function filterProvider() {
++use PHPUnit\Framework\Attributes\DataProvider;
++
++class FileFilterTest extends TestCase {
++    public static function filterProvider() {
+         return [
+             ['/foo.txt', [], [], [], false],
+             ['/foo.txt', [], [], ['txt'], false],
+@@ -34,8 +36,8 @@
+      * @param string[] $blackList
+      * @param string[] $extensions
+      * @param bool $expected
+-     * @dataProvider filterProvider
+      */
++    #[DataProvider('filterProvider')]
+     public function testFilter($path, $whiteList, $blackList, $extensions, $expected) {
+         $instance = new FileFilter();
+         foreach ($whiteList as $dir) {

@@ -1,0 +1,11 @@
+--- ../phpunit.xml.dist	2026-07-11 00:13:23.023686069 +0300
++++ ../phpunit.xml.dist	2026-07-11 00:14:27.779609022 +0300
+@@ -2,6 +2,8 @@
+ <phpunit bootstrap="vendor/autoload.php">
+ 	<testsuite name='Interceptor'>
+ 		<directory suffix='.php'>tests/</directory>
++		<exclude>tests/TestCase.php</exclude>
++		<exclude>tests/data/addOne.php</exclude>
+ 	</testsuite>
+ 	<!-- filters for code coverage -->
+ 	<filter>
