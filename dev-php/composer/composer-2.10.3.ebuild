@@ -6,15 +6,16 @@ EAPI=8
 COMPOSER_INSTALL_AUTOLOAD="src/Composer"
 PHP_REQ_USE="curl?,intl?,ssl,zlib,zip?"
 
-inherit composer edo git-r3 optfeature shell-completion
+inherit composer edo optfeature shell-completion
 
 DESCRIPTION="Dependency Manager for PHP"
 HOMEPAGE="https://github.com/composer/composer"
-EGIT_REPO_URI="https://github.com/composer/${PN}.git"
-SRC_URI="https://github.com/SpiderX/portage-overlay/releases/download/${PN}-2.10.3-1/${PN}-2.10.3-patches-1.tar.xz"
+SRC_URI="https://github.com/composer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}-1/${P}-patches-1.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="curl intl ipv6 zip"
 REQUIRED_USE="test? ( curl intl zip )"
 
@@ -39,17 +40,14 @@ RDEPEND="dev-php/composer-ca-bundle
 	>=dev-php/symfony-process-7
 	dev-php/xdebug-handler"
 BDEPEND="dev-php/theseer-Autoload
-	test? ( dev-php/sebastian-object-reflector )"
+	test? ( dev-vcs/git
+		dev-php/sebastian-object-reflector )"
 
-PATCHES=( "${WORKDIR}/${PN}"-2.10.3-patches/src
-	"${WORKDIR}/${PN}"-2.10.3-patches/tests )
+PATCHES=( "${WORKDIR}/${P}"-patches/src )
 
+COMPOSER_TEST_FILES=( doc )
+COMPOSER_TEST_PATCHES=( "${WORKDIR}/${P}"-patches/tests )
 composer_enable_tests phpunit
-
-src_unpack() {
-	git-r3_src_unpack
-	unpack ${A}
-}
 
 src_prepare() {
 	composer_src_prepare
@@ -71,8 +69,8 @@ src_compile() {
 }
 
 src_test() {
-	use ipv6 || COMPOSER_TEST_PATCHES+=( "${WORKDIR}/${PN}"-2.10.3-patches/composer-2.10.3-tests-no-ipv6.patch )
-	composer_test_patch
+	use ipv6 || COMPOSER_TEST_PATCHES+=( "${WORKDIR}/${P}"-patches/composer-2.10.3-tests-no-ipv6.patch )
+	composer_prepare_tests
 	# recreate the minimal installed Composer tree expected by the test suite.
 	# tests reference /usr/share/composer/{res,LICENSE}
 	edo mkdir composer vendor
