@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Messenger/Bridge/Amqp"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony AMQP Messenger"
 HOMEPAGE="https://github.com/symfony/amqp-messenger"
-EGIT_REPO_URI="https://github.com/symfony/amqp-messenger.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/pecl-amqp
 	dev-php/symfony-messenger"
@@ -28,6 +29,7 @@ DOCS=( {CHANGELOG,README}.md )
 composer_enable_tests phpunit
 
 src_test() {
+	composer_prepare_tests
 	local -x RABBITMQ_LOG_BASE="${T}/rabbitmq/log"
 	local -x RABBITMQ_MNESIA_BASE="${T}/rabbitmq/mnesia"
 	local -x RABBITMQ_LOGS="${T}/rabbitmq.log"
