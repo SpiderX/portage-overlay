@@ -1,0 +1,11 @@
+--- ../src/Stream.php	2026-07-10 20:17:17.514433602 +0300
++++ ../src/Stream.php	2026-07-10 20:17:31.324903640 +0300
+@@ -346,7 +346,7 @@
+ 
+         if (is_string($stream)) {
+             try {
+-                $resource = fopen($stream, $mode);
++                $resource = @fopen($stream, $mode);
+             } catch (Throwable $error) {
+             }
+ 

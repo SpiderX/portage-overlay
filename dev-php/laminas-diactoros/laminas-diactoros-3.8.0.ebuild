@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="Laminas/Diactoros"
 COMPOSER_PKG="${PN}"
 PHP_REQ_USE="curl?,gd?,ipv6?,xml?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="PSR HTTP Message implementations"
 HOMEPAGE="https://github.com/laminas/laminas-diactoros"
-EGIT_REPO_URI="https://github.com/laminas/laminas-diactoros.git"
+SRC_URI="https://github.com/laminas/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="curl gd ipv6 xml"
 REQUIRED_USE="test? ( curl gd xml )"
 
@@ -27,11 +28,11 @@ PATCHES=( "${FILESDIR}/${PN}"-3.8.0-src-Stream.patch )
 
 composer_enable_tests phpunit
 
-src_prepare() {
-	composer_src_prepare
-
+src_test() {
+	use ipv6 || COMPOSER_TEST_PATCHES+=( "${FILESDIR}/${PN}"-3.8.0-tests-no-ipv6.patch )
+	composer_prepare_tests
 	edo mkdir -p vendor/http-interop/http-factory-tests
 	edo ln -s ../../../../../../../../../../usr/share/php/Interop/Http/Factory/ \
 		vendor/http-interop/http-factory-tests/test
-	use ipv6 || eapply "${FILESDIR}/${PN}"-3.8.0-tests-no-ipv6.patch
+	ephpunit
 }
