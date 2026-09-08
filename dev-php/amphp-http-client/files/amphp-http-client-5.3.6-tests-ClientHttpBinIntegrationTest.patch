@@ -1,0 +1,31 @@
+--- ../test/ClientHttpBinIntegrationTest.php	2026-07-27 20:22:16.987891318 +0300
++++ ../test/ClientHttpBinIntegrationTest.php	2026-07-27 20:23:17.777496474 +0300
+@@ -30,6 +30,7 @@
+ use function Amp\delay;
+ use function Amp\Socket\connect;
+ use function Amp\Socket\listen;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class ClientHttpBinIntegrationTest extends AsyncTestCase
+ {
+@@ -321,10 +322,9 @@
+     }
+ 
+     /**
+-     * @dataProvider provideStatusCodes
+-     *
+      * @throws \Throwable
+      */
++    #[DataProvider('provideStatusCodes')]
+     public function testStatusCodeResponses($statusCode): void
+     {
+         $response = $this->executeRequest(new Request("http://httpbin.org/status/{$statusCode}"));
+@@ -333,7 +333,7 @@
+         self::assertEquals($statusCode, $response->getStatus());
+     }
+ 
+-    public function provideStatusCodes(): array
++    public static function provideStatusCodes(): array
+     {
+         return [
+             [200],

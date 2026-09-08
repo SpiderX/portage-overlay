@@ -1,0 +1,29 @@
+--- ../test/Connection/Http1ConnectionTest.php	2026-07-27 20:18:26.421797037 +0300
++++ ../test/Connection/Http1ConnectionTest.php	2026-07-27 20:19:26.239745565 +0300
+@@ -20,6 +20,7 @@
+ use function Amp\async;
+ use function Amp\delay;
+ use function Amp\Http\Client\events;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class Http1ConnectionTest extends AsyncTestCase
+ {
+@@ -257,8 +258,8 @@
+ 
+     /**
+      * @throws Socket\SocketException
+-     * @dataProvider providerValidUriPaths
+      */
++    #[DataProvider('providerValidUriPaths')]
+     public function testWritingRequestWithValidUriPathProceedsWithMatchingUriPath(
+         string $requestPath,
+         string $expectedPath
+@@ -284,7 +285,7 @@
+         }
+     }
+ 
+-    public function providerValidUriPaths(): array
++    public static function providerValidUriPaths(): array
+     {
+         return [
+             'Empty path is replaced with slash' => ['', '/'],

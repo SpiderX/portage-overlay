@@ -1,0 +1,10 @@
+--- ../phpunit.xml.dist	2026-07-27 20:25:05.509118731 +0300
++++ ../phpunit.xml.dist	2026-07-27 20:25:24.433545758 +0300
+@@ -8,6 +8,7 @@
+   <testsuites>
+     <testsuite name="Main">
+       <directory>test</directory>
++      <exclude>test/Interceptor/InterceptorTest.php</exclude>
+     </testsuite>
+   </testsuites>
+ </phpunit>

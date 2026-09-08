@@ -1,0 +1,26 @@
+--- ../test/FollowRedirectsTest.php	2026-07-27 20:20:23.786617904 +0300
++++ ../test/FollowRedirectsTest.php	2026-07-27 20:21:23.762010991 +0300
+@@ -10,12 +10,11 @@
+ use Amp\Http\HttpStatus;
+ use Amp\NullCancellation;
+ use Amp\PHPUnit\AsyncTestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class FollowRedirectsTest extends AsyncTestCase
+ {
+-    /**
+-     * @dataProvider provideUris
+-     */
++    #[DataProvider('provideUris')]
+     public function testResolve(string $baseUri, string $toResolve, string $expectedResult): void
+     {
+         $redirect = new FollowRedirects(10);
+@@ -55,7 +54,7 @@
+         $redirect->request($request, new NullCancellation, $client);
+     }
+ 
+-    public function provideUris(): array
++    public static function provideUris(): array
+     {
+         return [
+             ['http://localhost/1/2/a.php', 'http://google.com/', 'http://google.com/'],

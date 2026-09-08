@@ -5,14 +5,15 @@ EAPI=8
 
 COMPOSER_INSTALL_PATH="Amp/Http/Client"
 
-inherit composer git-r3 optfeature
+inherit composer optfeature
 
 DESCRIPTION="Advanced async HTTP client library for PHP"
 HOMEPAGE="https://github.com/amphp/http-client"
-EGIT_REPO_URI="https://github.com/amphp/http-client.git"
+SRC_URI="https://github.com/amphp/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/amphp-amp
 	dev-php/amphp-byte-stream
@@ -30,7 +31,8 @@ BDEPEND="test? ( dev-php/amphp-file
 		dev-php/amphp-http-server
 		dev-php/laminas-diactoros )"
 
-PATCHES=( "${FILESDIR}/${PN}"-5.3.6-tests-ClientHttpBinIntegrationTest.patch
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-5.3.6-tests-ClientHttpBinIntegrationTest.patch
 	"${FILESDIR}/${PN}"-5.3.6-tests-FollowRedirectsTest.patch
 	"${FILESDIR}/${PN}"-5.3.6-tests-Http1ConnectionTest.patch
 	"${FILESDIR}/${PN}"-5.3.6-tests-Http2ConnectionTest.patch

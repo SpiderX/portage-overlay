@@ -1,0 +1,26 @@
+--- ../test/RequestTest.php	2026-07-27 20:13:49.329297122 +0300
++++ ../test/RequestTest.php	2026-07-27 20:14:26.876685659 +0300
+@@ -6,10 +6,11 @@
+ use Amp\Future;
+ use Amp\PHPUnit\AsyncTestCase;
+ use function Amp\ByteStream\buffer;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class RequestTest extends AsyncTestCase
+ {
+-    public function provideInvalidProtocolVersions(): array
++    public static function provideInvalidProtocolVersions(): array
+     {
+         return [
+             ["HTTP/1.0"],
+@@ -20,9 +21,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideInvalidProtocolVersions
+-     */
++    #[DataProvider('provideInvalidProtocolVersions')]
+     public function testProtocolVersionsAcceptsNoInvalidValues($invalidVersion): void
+     {
+         $this->expectException(\Error::class);
