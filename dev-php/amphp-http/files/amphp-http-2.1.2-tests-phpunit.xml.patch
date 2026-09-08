@@ -1,0 +1,10 @@
+--- ../phpunit.xml.dist	2026-07-11 10:43:08.162099920 +0300
++++ ../phpunit.xml.dist	2026-07-11 10:43:26.284565511 +0300
+@@ -8,6 +8,7 @@
+   <testsuites>
+     <testsuite name="Main">
+       <directory suffix="Test.php">test</directory>
++      <exclude>test/HeaderParsingTest.php</exclude>
+     </testsuite>
+   </testsuites>
+ </phpunit>

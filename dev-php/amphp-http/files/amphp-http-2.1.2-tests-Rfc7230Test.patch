@@ -1,0 +1,67 @@
+--- ../test/Http1/Rfc7230Test.php	2026-07-11 10:44:40.301418984 +0300
++++ ../test/Http1/Rfc7230Test.php	2026-07-11 10:46:20.319912416 +0300
+@@ -4,18 +4,19 @@
+ 
+ use Amp\Http\InvalidHeaderException;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use function Amp\Http\mapHeaderPairs;
+ 
+ class Rfc7230Test extends TestCase
+ {
+-    /** @dataProvider provideValidHeaders */
++    #[DataProvider('provideValidHeaders')]
+     public function testValidHeaderPairParsing(string $rawHeaders, array $expectedResult): void
+     {
+         $result = Rfc7230::parseHeaderPairs($rawHeaders);
+         $this->assertSame($result, $expectedResult);
+     }
+ 
+-    /** @dataProvider provideValidHeaders */
++    #[DataProvider('provideValidHeaders')]
+     public function testValidHeaderParsing(string $rawHeaders, array $expectedResult): void
+     {
+         $result = Rfc7230::parseHeaders($rawHeaders);
+@@ -23,14 +24,14 @@
+         $this->assertSame($result, $headers);
+     }
+ 
+-    /** @dataProvider provideValidHeaders */
++    #[DataProvider('provideValidHeaders')]
+     public function testValidHeaderPairFormatting(string $rawHeaders /* ignored for this case */, array $expectedResult): void
+     {
+         $result = Rfc7230::parseHeaderPairs(Rfc7230::formatHeaderPairs($expectedResult));
+         $this->assertSame($result, $expectedResult);
+     }
+ 
+-    /** @dataProvider provideValidHeaders */
++    #[DataProvider('provideValidHeaders')]
+     public function testValidHeaderFormattingDifferentCasing(string $rawHeaders /* ignored for this case */, array $expectedResult): void
+     {
+         $headers = [];
+@@ -44,7 +45,7 @@
+         $this->assertSame($result, $expectedResult);
+     }
+ 
+-    public function provideValidHeaders(): array
++    public static function provideValidHeaders(): array
+     {
+         return [
+             ["x:y\r\n", [["x", "y"]]],
+@@ -57,14 +58,14 @@
+         ];
+     }
+ 
+-    /** @dataProvider provideInvalidHeaders */
++    #[DataProvider('provideInvalidHeaders')]
+     public function testInvalidHeaderParsing(string $rawHeaders): void
+     {
+         $this->expectException(InvalidHeaderException::class);
+         Rfc7230::parseHeaders($rawHeaders);
+     }
+ 
+-    public function provideInvalidHeaders(): array
++    public static function provideInvalidHeaders(): array
+     {
+         return [
+             [" x:y\r\n"],

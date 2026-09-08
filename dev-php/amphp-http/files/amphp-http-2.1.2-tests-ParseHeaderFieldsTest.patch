@@ -1,0 +1,46 @@
+--- ../test/ParseHeaderFieldsTest.php	2026-07-11 10:46:37.307135958 +0300
++++ ../test/ParseHeaderFieldsTest.php	2026-07-11 10:47:36.237341551 +0300
+@@ -2,9 +2,11 @@
+ 
+ namespace Amp\Http;
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
++
+ class ParseHeaderFieldsTest extends HeaderParsingTest
+ {
+-    public function provideMultipleHeaderCases(): iterable
++    public static function provideMultipleHeaderCases(): iterable
+     {
+         yield [
+             'no-cache, no-store, must-revalidate',
+@@ -92,7 +94,7 @@
+         ];
+     }
+ 
+-    public function provideTokenCases(): iterable
++    public static function provideTokenCases(): iterable
+     {
+         yield [
+             'no-cache, no-store, must-revalidate',
+@@ -110,9 +112,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideMultipleHeaderCases
+-     */
++    #[DataProvider('provideMultipleHeaderCases')]
+     public function test(string $header, ?array $expected): void
+     {
+         $headerName = 'test-header';
+@@ -120,9 +120,7 @@
+         self::assertSame($expected, parseMultipleHeaderFields($message, $headerName));
+     }
+ 
+-    /**
+-     * @dataProvider provideTokenCases
+-     */
++    #[DataProvider('provideTokenCases')]
+     public function testParseHeaderTokens(string $header, ?array $expected): void
+     {
+         $headerName = 'test-header';

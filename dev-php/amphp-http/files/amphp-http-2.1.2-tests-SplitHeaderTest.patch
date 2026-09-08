@@ -1,0 +1,26 @@
+--- ../test/SplitHeaderTest.php	2026-07-11 10:43:43.721896337 +0300
++++ ../test/SplitHeaderTest.php	2026-07-11 10:44:21.730357340 +0300
+@@ -2,9 +2,11 @@
+ 
+ namespace Amp\Http;
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
++
+ class SplitHeaderTest extends HeaderParsingTest
+ {
+-    public function provideCases(): iterable
++    public static function provideCases(): iterable
+     {
+         yield [
+             ['text/html, application/xhtml+xml, application/xml;q=0.9, image/webp, */*;q=0.8'],
+@@ -27,9 +29,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider provideCases
+-     */
++    #[DataProvider('provideCases')]
+     public function test(array $headers, array $expected): void
+     {
+         $headerName = 'test-header';
