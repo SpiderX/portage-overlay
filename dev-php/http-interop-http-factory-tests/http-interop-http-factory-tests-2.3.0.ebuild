@@ -8,14 +8,15 @@ COMPOSER_INSTALL_SRC="test"
 COMPOSER_VENDOR="http-interop"
 COMPOSER_PKG="${PN#${COMPOSER_VENDOR}-}"
 
-inherit git-r3
+inherit composer
 
 DESCRIPTION="Unit tests for HTTP Factory implementations"
 HOMEPAGE="https://github.com/http-interop/http-factory-tests"
-EGIT_REPO_URI="https://github.com/http-interop/http-factory-tests.git"
+SRC_URI="https://github.com/http-interop/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 RESTRICT="test" # no tests
 
 RDEPEND="dev-php/phpunit
