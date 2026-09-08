@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="SebastianBergmann/Template"
 PHP_MIN_VER="8.3"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="A simple template engine"
 HOMEPAGE="https://github.com/sebastianbergmann/php-text-template"
-EGIT_REPO_URI="https://github.com/sebastianbergmann/php-text-template.git"
+SRC_URI="https://github.com/sebastianbergmann/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 
 BDEPEND="dev-php/theseer-Autoload"
 
