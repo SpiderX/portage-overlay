@@ -1,0 +1,25 @@
+--- ../Tests/Field/TextareaFormFieldTest.php	2026-08-29 12:58:10.354003763 +0300
++++ ../Tests/Field/TextareaFormFieldTest.php	2026-08-29 12:59:05.480049253 +0300
+@@ -59,10 +59,18 @@
+         yield 'empty' => ['', ''];
+         yield 'entity' => ['a&amp;b', 'a&b'];
+         yield 'escaped markup' => ['foo bar &lt;h1&gt;Baz&lt;/h1&gt;', 'foo bar <h1>Baz</h1>'];
+-        yield 'comment' => ['a<!--c-->b', 'ab'];
+-        yield 'element' => ['foo bar <h1>Baz</h1>', 'foo bar Baz'];
+-        yield 'inline element' => ['a<b>c</b>', 'ac'];
+-        yield 'nested elements' => ['a<div><p>b</p></div>c', 'abc'];
++
++        if (\LIBXML_VERSION >= 21500) {
++            yield 'comment' => ['a<!--c-->b', 'a<!--c-->b'];
++            yield 'element' => ['foo bar <h1>Baz</h1>', 'foo bar <h1>Baz</h1>'];
++            yield 'inline element' => ['a<b>c</b>', 'a<b>c</b>'];
++            yield 'nested elements' => ['a<div><p>b</p></div>c', 'a<div><p>b</p></div>c'];
++        } else {
++            yield 'comment' => ['a<!--c-->b', 'ab'];
++            yield 'element' => ['foo bar <h1>Baz</h1>', 'foo bar Baz'];
++            yield 'inline element' => ['a<b>c</b>', 'ac'];
++            yield 'nested elements' => ['a<div><p>b</p></div>c', 'abc'];
++        }
+     }
+ 
+     public function testInitializeDoesNotRepeatAdjacentTextNodes()

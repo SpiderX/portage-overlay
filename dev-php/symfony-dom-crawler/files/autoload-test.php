@@ -4,5 +4,8 @@ require_once 'Fedora/Autoloader/autoload.php';
 
 \Fedora\Autoloader\Dependencies::required([
 	'autoload.php',
+	'/usr/share/php/Doctrine/Common/Collections/autoload.php',
+	'/usr/share/php/Symfony/Bridge/PhpUnit/autoload.php',
+	'/usr/share/php/Symfony/Contracts/Deprecation/autoload.php',
 	'/usr/share/php/Symfony/Component/CssSelector/autoload.php',
 ]);

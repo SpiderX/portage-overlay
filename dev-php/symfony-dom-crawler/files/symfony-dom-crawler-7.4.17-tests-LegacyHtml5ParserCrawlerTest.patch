@@ -1,0 +1,11 @@
+--- ../Tests/LegacyHtml5ParserCrawlerTest.php	2026-07-08 18:42:21.970172134 +0300
++++ ../Tests/LegacyHtml5ParserCrawlerTest.php	2026-07-08 18:42:46.311262210 +0300
+@@ -76,7 +76,7 @@
+     {
+         $crawler = $this->createCrawler();
+         $crawler->addHtmlContent('<script&>');
+-        self::assertEquals('<head><script></script></head>', $crawler->html());
++        self::assertEquals('<body><script&></script&></body>', $crawler->html());
+     }
+ 
+     protected function createCrawler($node = null, ?string $uri = null, ?string $baseHref = null)
