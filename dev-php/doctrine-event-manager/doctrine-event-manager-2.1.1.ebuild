@@ -5,14 +5,15 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Doctrine/Common"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Doctrine Event Manager"
 HOMEPAGE="https://github.com/doctrine/event-manager"
-EGIT_REPO_URI="https://github.com/doctrine/event-manager.git"
+SRC_URI="https://github.com/doctrine/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 composer_enable_tests phpunit
 
