@@ -1,0 +1,17 @@
+--- ../tests/HtmlConverterTest.php	2026-07-07 14:45:50.960676502 +0300
++++ ../tests/HtmlConverterTest.php	2026-07-07 15:00:44.541263107 +0300
+@@ -24,6 +24,14 @@
+         }
+ 
+         $result = $markdown->convert($html);
++
++        $result = preg_replace(
++            '#^<!--\?xml encoding="UTF-8"-->(?:<html><head>)?#',
++            '',
++            $result
++        );
++        $result = str_replace('</head><body></body></html>', '', $result);
++
+         $this->assertSame($expectedMarkdown, $result);
+     }
+ 

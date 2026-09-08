@@ -1,9 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit git-r3
+COMPOSER_INSTALL_PATH="League/HTMLToMarkdown"
+PHP_REQ_USE="xml"
+
+inherit composer git-r3
 
 DESCRIPTION="HTML To Markdown for PHP"
 HOMEPAGE="https://github.com/thephpleague/html-to-markdown"
@@ -11,45 +14,18 @@ EGIT_REPO_URI="https://github.com/thephpleague/html-to-markdown.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*[xml]
-	dev-php/fedora-autoloader"
-BDEPEND="test? ( dev-php/composer
-		dev-php/mikehaertl-php-shellcommand
-		dev-php/phpunit )"
+BDEPEND="test? ( dev-php/mikehaertl-php-shellcommand )"
 
-src_prepare() {
-	default
-
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		src/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-	sed -i  -e '/backupStaticAttributes/d' -e '/verbose/d' \
-		-e '/convertErrorsToExceptions/d' -e '/convertNoticesToExceptions/d' \
-		-e '/convertWarningsToExceptions/d' -e '/<filter/,+4d' -e '/logging/,+6d' \
-		phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
-	# fix non-static data provider deprecation
-	sed -i  -e '/provideStringTestCases(/s|function|static function|' \
-		-e '/provideInvalidStringTestCases(/s|function|static function|' \
-		-e '/yield \[\$this/d' \
-		tests/CoerceTest.php \
-		|| die "sed failed for CompliesTest.php"
-}
-
-src_test() {
-	phpunit --testdox || die "phpunit failed"
-}
+composer_enable_tests phpunit
 
 src_install() {
-	einstalldocs
-	insinto /usr/share/php/League/HTMLToMarkdown
-	doins -r bin src/.
+	composer_src_install
+	# install files into COMPOSER_INSTALL_PATH
+	doins -r bin
 
-	exeinto /usr/share/php/League/HTMLToMarkdown
+	exeinto /usr/share/php/"${COMPOSER_INSTALL_PATH}"
 	doexe bin/html-to-markdown
-	dosym ../share/php/League/HTMLToMarkdown/html-to-markdown \
+	dosym ../share/php/"${COMPOSER_INSTALL_PATH}"/html-to-markdown \
 		/usr/bin/html-to-markdown
 }

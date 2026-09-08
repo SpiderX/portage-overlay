@@ -1,0 +1,60 @@
+--- ../tests/CoerceTest.php	2026-07-07 14:42:25.360354059 +0300
++++ ../tests/CoerceTest.php	2026-07-07 15:09:25.038671020 +0300
+@@ -6,20 +6,20 @@
+ 
+ use League\HTMLToMarkdown\Coerce;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ final class CoerceTest extends TestCase
+ {
+     /**
+-     * @dataProvider provideStringTestCases
+-     *
+      * @param mixed $val
+      */
++    #[DataProvider('provideStringTestCases')]
+     public function testToString($val, string $expected): void
+     {
+         $this->assertSame($expected, Coerce::toString($val));
+     }
+ 
+-    public function provideStringTestCases(): \Generator
++    public static function provideStringTestCases(): \Generator
+     {
+         yield ['foo', 'foo'];
+         yield [1, '1'];
+@@ -27,14 +27,13 @@
+         yield [true, '1'];
+         yield [false, ''];
+         yield [null, ''];
+-        yield [$this, $this->__toString()];
++         yield [new StringableFixture(), 'some object'];
+     }
+ 
+     /**
+-     * @dataProvider provideInvalidStringTestCases
+-     *
+      * @param mixed $val
+      */
++    #[DataProvider('provideInvalidStringTestCases')]
+     public function testToStringThrowsOnUncoercableValue($val): void
+     {
+         $this->expectException(\InvalidArgumentException::class);
+@@ -43,12 +42,15 @@
+         Coerce::toString($val);
+     }
+ 
+-    public function provideInvalidStringTestCases(): \Generator
++    public static function provideInvalidStringTestCases(): \Generator
+     {
+         yield [new \stdClass()];
+         yield [STDOUT];
+     }
++}
+ 
++final class StringableFixture
++{
+     public function __toString(): string
+     {
+         return 'some object';
