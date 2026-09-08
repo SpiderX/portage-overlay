@@ -6,16 +6,22 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Cache/TagInterop"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Shared interfaces for tags. These are soon-to-be-PSR"
 HOMEPAGE="https://github.com/php-cache/tag-interop"
-EGIT_REPO_URI="https://github.com/php-cache/tag-interop.git"
+SRC_URI="https://github.com/php-cache/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # no tests
 
 RDEPEND="dev-php/psr-cache"
 
 DOCS=( {Changelog,README}.md )
+
+src_prepare() {
+	composer_src_prepare
+	edo rm -rf .github
+}
