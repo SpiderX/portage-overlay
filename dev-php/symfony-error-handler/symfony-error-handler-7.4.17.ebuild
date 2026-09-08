@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/ErrorHandler"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Tools to manage errors and ease debugging PHP code"
 HOMEPAGE="https://github.com/symfony/error-handler"
-EGIT_REPO_URI="https://github.com/symfony/error-handler.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/psr-log
 	dev-php/symfony-polyfill-php85
@@ -25,10 +26,9 @@ BDEPEND="test? ( dev-php/doctrine-deprecations
 		dev-php/symfony-phpunit-bridge
 		dev-php/symfony-serializer )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
 composer_enable_tests phpunit
 
 src_install() {

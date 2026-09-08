@@ -8,4 +8,5 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\ErrorHandler\\', __DIR_
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/Psr/Log/autoload.php',
 	'/usr/share/php/Symfony/Component/VarDumper/autoload.php',
+	'/usr/share/php/Symfony/Polyfill/Php85/autoload.php',
 ]);
