@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Messenger/Bridge/Doctrine"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Doctrine Messenger"
 HOMEPAGE="https://github.com/symfony/doctrine-messenger"
-EGIT_REPO_URI="https://github.com/symfony/doctrine-messenger.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/doctrine-dbal
 	dev-php/symfony-messenger
