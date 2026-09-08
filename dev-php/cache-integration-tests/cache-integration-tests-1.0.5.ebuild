@@ -5,17 +5,24 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Cache/IntegrationTests"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Integration tests for PSR-6 cache"
 HOMEPAGE="https://github.com/php-cache/integration-tests"
-EGIT_REPO_URI="https://github.com/php-cache/integration-tests.git"
+SRC_URI="https://github.com/php-cache/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-php/cache-tag-interop
-	dev-php/psr-cache"
-BDEPEND="test? ( dev-php/symfony-cache )"
+	dev-php/psr-cache
+	dev-php/psr-simple-cache"
+BDEPEND="test? ( dev-php/phpunit
+		dev-php/symfony-cache )"
 
-composer_enable_tests phpunit
+src_test() {
+	ephpunit
+}
