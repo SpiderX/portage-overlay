@@ -1,0 +1,26 @@
+--- ../tests/GetAllHeadersTest.php	2026-07-13 21:34:55.389621247 +0300
++++ ../tests/GetAllHeadersTest.php	2026-07-13 21:35:27.246612176 +0300
+@@ -3,12 +3,11 @@
+ namespace getallheaders\Tests;
+ 
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class GetAllHeadersTest extends TestCase
+ {
+-    /**
+-     * @dataProvider dataWorks
+-     */
++    #[DataProvider('dataWorks')]
+     public function testWorks($test_type, $expected, $server)
+     {
+         foreach ($server as $key => $val) {
+@@ -22,7 +21,7 @@
+         }
+     }
+ 
+-    public function dataWorks()
++    public static function dataWorks()
+     {
+         return [
+             [
