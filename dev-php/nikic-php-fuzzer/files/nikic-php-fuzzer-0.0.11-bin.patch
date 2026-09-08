@@ -1,0 +1,23 @@
+--- ../bin/php-fuzzer	2026-07-11 10:06:08.884710300 +0300
++++ ../bin/php-fuzzer	2026-07-11 10:12:54.075893224 +0300
+@@ -5,19 +5,7 @@
+ 
+ error_reporting(E_ALL);
+ 
+-$foundAutoload = false;
+-foreach ([__DIR__ . '/../vendor/autoload.php', __DIR__ . '/../../../autoload.php'] as $file) {
+-    if (file_exists($file)) {
+-        require $file;
+-        $foundAutoload = true;
+-        break;
+-    }
+-}
+-
+-if (!$foundAutoload) {
+-    echo "Broken installation: Failed to find autoload.php.\n";
+-    exit(1);
+-}
++require_once '/usr/share/php/nikic/PHPFuzzer/autoload.php';
+ 
+ $fuzzer = new Fuzzer();
+ exit($fuzzer->handleCliArgs());
