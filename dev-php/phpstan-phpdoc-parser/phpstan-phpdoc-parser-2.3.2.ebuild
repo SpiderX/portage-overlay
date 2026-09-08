@@ -5,20 +5,22 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="PHPStan/PhpDocParser"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="PHPDoc Parser for PHPStan"
 HOMEPAGE="https://github.com/phpstan/phpdoc-parser"
-EGIT_REPO_URI="https://github.com/phpstan/phpdoc-parser.git"
+SRC_URI="https://github.com/phpstan/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-patches.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 BDEPEND="test? ( dev-php/doctrine-annotations
 		>=dev-php/symfony-process-7
 		dev-util/abnfgen )"
 
 EPHPUNIT_BOOTSTRAP='vendor/autoload.php'
+COMPOSER_TEST_FILES=( doc )
+COMPOSER_TEST_PATCHES=( "${WORKDIR}/${P}-patches/tests" )
 composer_enable_tests phpunit
-
-src_compile() { :; }
