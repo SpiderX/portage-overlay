@@ -1,0 +1,49 @@
+--- ../test/HPackTest.php	2026-07-11 02:15:33.680583323 +0300
++++ ../test/HPackTest.php	2026-07-11 02:16:44.983847632 +0300
+@@ -5,16 +5,14 @@
+ use Amp\Http\Internal\HPackNative;
+ use Amp\Http\Internal\HPackNghttp2;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /** @group hpack */
+ abstract class HPackTest extends TestCase
+ {
+     private const MAX_LENGTH = 8192;
+ 
+-    /**
+-     * @dataProvider provideDecodeCases
+-     *
+-     */
++    #[DataProvider('provideDecodeCases')]
+     public function testDecode(iterable $cases): void
+     {
+         $hpack = $this->createInstance();
+@@ -25,7 +23,7 @@
+         }
+     }
+ 
+-    public function provideDecodeCases(): \Generator
++    public static function provideDecodeCases(): \Generator
+     {
+         $root = __DIR__ . "/../vendor/http2jp/hpack-test-case";
+         $paths = \glob("$root/*/*.json");
+@@ -53,8 +51,8 @@
+ 
+     /**
+      * @depends      testDecode
+-     * @dataProvider provideEncodeCases
+      */
++    #[DataProvider('provideEncodeCases')]
+     public function testEncode($cases): void
+     {
+         foreach ($cases as $i => [$input, $output]) {
+@@ -84,7 +82,7 @@
+         }
+     }
+ 
+-    public function provideEncodeCases(): \Generator
++    public static function provideEncodeCases(): \Generator
+     {
+         $root = __DIR__ . "/../vendor/http2jp/hpack-test-case";
+         $paths = \glob("$root/raw-data/*.json");

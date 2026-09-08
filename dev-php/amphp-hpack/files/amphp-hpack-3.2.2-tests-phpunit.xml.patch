@@ -1,0 +1,10 @@
+--- ../phpunit.xml.dist	2026-07-11 02:15:07.814987023 +0300
++++ ../phpunit.xml.dist	2026-07-11 02:15:24.038678953 +0300
+@@ -21,6 +21,7 @@
+   <testsuites>
+     <testsuite name="Amp HPack Test">
+       <directory>test</directory>
++      <exclude>test/HPackTest.php</exclude>
+     </testsuite>
+   </testsuites>
+   <logging/>
