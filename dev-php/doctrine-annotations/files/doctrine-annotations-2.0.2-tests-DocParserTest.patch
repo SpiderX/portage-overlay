@@ -1,0 +1,270 @@
+--- ../tests/Doctrine/Tests/Common/Annotations/DocParserTest.php	2026-07-03 09:07:02.912685771 +0300
++++ ../tests/Doctrine/Tests/Common/Annotations/DocParserTest.php	2026-07-03 18:57:46.999834818 +0300
+@@ -12,8 +12,8 @@
+ use Doctrine\Tests\Common\Annotations\Fixtures\ClassWithConstants;
+ use Doctrine\Tests\Common\Annotations\Fixtures\InterfaceWithConstants;
+ use InvalidArgumentException;
+-use PHPUnit\Framework\Constraint\ExceptionMessage;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
+ use ReflectionClass;
+ use TypeError;
+ 
+@@ -406,7 +406,7 @@
+     /**
+      * @phpstan-return list<array{string, string}>
+      */
+-    public function getAnnotationVarTypeProviderValid()
++    public static function getAnnotationVarTypeProviderValid()
+     {
+         //({attribute name}, {attribute value})
+          return [
+@@ -468,7 +468,7 @@
+     /**
+      * @phpstan-return list<array{string, string, string, string}>
+      */
+-    public function getAnnotationVarTypeProviderInvalid(): array
++    public static function getAnnotationVarTypeProviderInvalid(): array
+     {
+          //({attribute name}, {type declared type}, {attribute value} , {given type or class})
+          return [
+@@ -529,7 +529,7 @@
+     /**
+      * @phpstan-return list<array{string, string, string, string}>
+      */
+-    public function getAnnotationVarTypeArrayProviderInvalid()
++    public static function getAnnotationVarTypeArrayProviderInvalid()
+     {
+          //({attribute name}, {type declared type}, {attribute value} , {given type or class})
+          return [
+@@ -580,9 +580,7 @@
+          ];
+     }
+ 
+-    /**
+-     * @dataProvider getAnnotationVarTypeProviderValid
+-     */
++    #[DataProvider('getAnnotationVarTypeProviderValid')]
+     public function testAnnotationWithVarType(string $attribute, string $value): void
+     {
+         $parser   = $this->createTestParser();
+@@ -601,9 +599,7 @@
+         self::assertNotNull($result[0]->$attribute);
+     }
+ 
+-    /**
+-     * @dataProvider getAnnotationVarTypeProviderInvalid
+-     */
++    #[DataProvider('getAnnotationVarTypeProviderInvalid')]
+     public function testAnnotationWithVarTypeError(
+         string $attribute,
+         string $type,
+@@ -633,9 +629,7 @@
+         }
+     }
+ 
+-    /**
+-     * @dataProvider getAnnotationVarTypeArrayProviderInvalid
+-     */
++    #[DataProvider('getAnnotationVarTypeArrayProviderInvalid')]
+     public function testAnnotationWithVarTypeArrayError(
+         string $attribute,
+         string $type,
+@@ -665,9 +659,7 @@
+         }
+     }
+ 
+-    /**
+-     * @dataProvider getAnnotationVarTypeProviderValid
+-     */
++    #[DataProvider('getAnnotationVarTypeProviderValid')]
+     public function testAnnotationWithAttributes(string $attribute, string $value): void
+     {
+         $parser   = $this->createTestParser();
+@@ -687,9 +679,7 @@
+         self::assertNotNull($result[0]->$getter());
+     }
+ 
+-   /**
+-    * @dataProvider getAnnotationVarTypeProviderInvalid
+-    */
++    #[DataProvider('getAnnotationVarTypeProviderInvalid')]
+     public function testAnnotationWithAttributesError(
+         string $attribute,
+         string $type,
+@@ -719,9 +709,7 @@
+         }
+     }
+ 
+-   /**
+-    * @dataProvider getAnnotationVarTypeArrayProviderInvalid
+-    */
++    #[DataProvider('getAnnotationVarTypeArrayProviderInvalid')]
+     public function testAnnotationWithAttributesWithVarTypeArrayError(
+         string $attribute,
+         string $type,
+@@ -894,8 +882,10 @@
+         } catch (AnnotationException $exc) {
+             $previous = $exc->getPrevious();
+             $this->assertInstanceOf(InvalidArgumentException::class, $previous);
+-            $this->assertThat($previous, new ExceptionMessage('@Enum supports only scalar values "array" given.'));
+-
++            $this->assertSame(
++                '@Enum supports only scalar values "array" given.',
++                $previous->getMessage()
++            );
+             throw $exc;
+         }
+     }
+@@ -912,9 +902,9 @@
+         } catch (AnnotationException $exc) {
+             $previous = $exc->getPrevious();
+             $this->assertInstanceOf(InvalidArgumentException::class, $previous);
+-            $this->assertThat(
+-                $previous,
+-                new ExceptionMessage('Undefined enumerator value "3" for literal "AnnotationEnumLiteral::THREE".')
++            $this->assertSame(
++                'Undefined enumerator value "3" for literal "AnnotationEnumLiteral::THREE".',
++                $previous->getMessage()
+             );
+ 
+             throw $exc;
+@@ -924,7 +914,7 @@
+     /**
+      * @phpstan-return array<string, array{string, mixed}>
+      */
+-    public function getConstantsProvider(): array
++    public static function getConstantsProvider(): array
+     {
+         $provider   = [];
+         $provider[] = [
+@@ -1036,9 +1026,8 @@
+ 
+     /**
+      * @param mixed $expected
+-     *
+-     * @dataProvider getConstantsProvider
+      */
++    #[DataProvider('getConstantsProvider')]
+     public function testSupportClassConstants(string $docblock, $expected): void
+     {
+         $parser = $this->createTestParser();
+@@ -1125,11 +1114,9 @@
+         } catch (AnnotationException $exc) {
+             $previous = $exc->getPrevious();
+             $this->assertInstanceOf(InvalidArgumentException::class, $previous);
+-            $this->assertThat(
+-                $previous,
+-                new ExceptionMessage(
+-                    'Invalid Target "Foo". Available targets: [ALL, CLASS, METHOD, PROPERTY, FUNCTION, ANNOTATION]'
+-                )
++            $this->assertSame(
++                'Invalid Target "Foo". Available targets: [ALL, CLASS, METHOD, PROPERTY, FUNCTION, ANNOTATION]',
++                $previous->getMessage()
+             );
+ 
+             throw $exc;
+@@ -1153,9 +1140,9 @@
+         } catch (AnnotationException $exc) {
+             $previous = $exc->getPrevious();
+             $this->assertInstanceOf(InvalidArgumentException::class, $previous);
+-            $this->assertThat(
+-                $previous,
+-                new ExceptionMessage('@Target expects either a string value, or an array of strings, "NULL" given.')
++            $this->assertSame(
++                '@Target expects either a string value, or an array of strings, "NULL" given.',
++                $previous->getMessage()
+             );
+ 
+             throw $exc;
+@@ -1213,9 +1200,9 @@
+      * @param string $ignoreAnnotationName annotation/namespace to ignore
+      * @param string $input                annotation/namespace from the docblock
+      *
+-     * @dataProvider provideTestIgnoreWholeNamespaces
+      * @group 45
+      */
++    #[DataProvider('provideTestIgnoreWholeNamespaces')]
+     public function testIgnoreWholeNamespaces($ignoreAnnotationName, $input): void
+     {
+         $parser = new DocParser();
+@@ -1228,7 +1215,7 @@
+     /**
+      * @phpstan-return list<array{string, string}>
+      */
+-    public function provideTestIgnoreWholeNamespaces(): array
++    public static function provideTestIgnoreWholeNamespaces(): array
+     {
+         return [
+             ['Namespace', '@Namespace'],
+@@ -1654,7 +1641,7 @@
+         $docParser = $this->createTestParser();
+ 
+         $this->expectException(AnnotationException::class);
+-        $this->expectExceptionMessageMatches(
++        $this->expectExceptionMessageMatchesCompat(
+             '/does not have a property named "invalid"\s.*\sAvailable named arguments: foo, bar/'
+         );
+ 
+@@ -1700,7 +1687,7 @@
+         $docblock = '@NamedAnnotationWithArray(foo = "no array!")';
+         $parser   = $this->createTestParser();
+         $this->expectException(AnnotationException::class);
+-        $this->expectExceptionMessageMatches(
++        $this->expectExceptionMessageMatchesCompat(
+             '/\[Creation Error\] An error occurred while instantiating the annotation '
+             . '@NamedAnnotationWithArray declared on property SomeClassName::invalidProperty\.: ".*"\.$/'
+         );
+@@ -1723,7 +1710,7 @@
+ DOCBLOCK;
+ 
+         $this->expectException(AnnotationException::class);
+-        $this->expectExceptionMessageMatches(
++        $this->expectExceptionMessageMatchesCompat(
+             '/does not have a property named "foo"\s.*\sAvailable named arguments: name/'
+         );
+ 
+@@ -1740,7 +1727,7 @@
+ DOCBLOCK;
+ 
+         $this->expectException(AnnotationException::class);
+-        $this->expectExceptionMessageMatches(
++        $this->expectExceptionMessageMatchesCompat(
+             '/does not have a property named "foo"\s.*\sAvailable named arguments: name/'
+         );
+ 
+@@ -1757,7 +1744,7 @@
+ DOCBLOCK;
+ 
+         $this->expectException(AnnotationException::class);
+-        $this->expectExceptionMessageMatches(
++        $this->expectExceptionMessageMatchesCompat(
+             '/does not have a property named "bar"\s.*\sAvailable named arguments: name/'
+         );
+ 
+@@ -1774,7 +1761,7 @@
+ DOCBLOCK;
+ 
+         $this->expectException(AnnotationException::class);
+-        $this->expectExceptionMessageMatches(
++        $this->expectExceptionMessageMatchesCompat(
+             '/does not have a property named "data"\s.*\sAvailable named arguments: name/'
+         );
+ 
+@@ -1825,12 +1812,12 @@
+     /**
+      * Override for BC with PHPUnit <8
+      */
+-    public function expectExceptionMessageMatches(string $regularExpression): void
++    public function expectExceptionMessageMatchesCompat(string $regularExpression): void
+     {
+-        if (method_exists(get_parent_class($this), 'expectExceptionMessageMatches')) {
++        if (method_exists(TestCase::class, 'expectExceptionMessageMatches')) {
+             parent::expectExceptionMessageMatches($regularExpression);
+-        } else {
+-            parent::expectExceptionMessageRegExp($regularExpression);
++
++            return;
+         }
+     }
+ }

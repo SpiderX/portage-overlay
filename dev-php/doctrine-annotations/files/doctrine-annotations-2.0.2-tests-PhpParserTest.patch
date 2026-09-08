@@ -1,0 +1,11 @@
+--- ../tests/Doctrine/Tests/Common/Annotations/PhpParserTest.php	2026-07-03 19:26:32.582346330 +0300
++++ ../tests/Doctrine/Tests/Common/Annotations/PhpParserTest.php	2026-07-03 19:27:05.394527594 +0300
+@@ -61,7 +61,7 @@
+         $class = $this->createMock(ReflectionClass::class);
+         $class->expects($this->once())
+              ->method('getFilename')
+-             ->will($this->returnValue('/valid/class/Fake.php(35) : eval()d code'));
++             ->willReturn('/valid/class/Fake.php(35) : eval()d code');
+ 
+         $parser = new PhpParser();
+         self::assertEquals([], $parser->parseUseStatements($class));

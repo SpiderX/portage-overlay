@@ -1,9 +1,14 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit git-r3
+COMPOSER_INSTALL_AUTOLOAD="lib/Doctrine/Common/Annotations"
+COMPOSER_INSTALL_PATH=""
+COMPOSER_INSTALL_SRC="lib"
+PHP_REQ_USE="tokenizer"
+
+inherit composer git-r3
 
 DESCRIPTION="Doctrine Annotations"
 HOMEPAGE="https://github.com/doctrine/annotations"
@@ -11,62 +16,16 @@ EGIT_REPO_URI="https://github.com/doctrine/annotations.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*[tokenizer]
-	dev-php/doctrine-lexer
-	dev-php/fedora-autoloader
+RDEPEND="dev-php/doctrine-lexer
 	dev-php/psr-cache"
 BDEPEND="test? ( dev-php/doctrine-common
-		dev-php/phpunit
 		dev-php/symfony-cache )"
 
-src_prepare() {
-	default
+PATCHES=( "${FILESDIR}/${PN}"-2.0.2-tests-AnnotationReaderTest.patch
+	"${FILESDIR}/${PN}"-2.0.2-tests-DocParserTest.patch
+	"${FILESDIR}/${PN}"-2.0.2-tests-PhpParserTest.patch
+	"${FILESDIR}/${PN}"-2.0.2-tests-PsrCachedReaderTest.patch
+	"${FILESDIR}/${PN}"-2.0.2-tests-phpunit.xml.patch )
 
-	install -D -m 644 "${FILESDIR}"/autoload.php \
-		lib/Doctrine/Common/Annotations/autoload.php || die "install failed"
-	install -D -m 644 "${FILESDIR}"/autoload-test.php \
-		vendor/autoload.php || die "install test failed"
-	# remove test uses deprecated method withConsecutive
-	rm tests/Doctrine/Tests/Common/Annotations/PsrCachedReaderTest.php \
-		|| die "rm failed for PsrCachedReaderTest.php"
-	# exception annotation deprecated, remove override
-	sed -i  -e '/testAnnotationEnumInvalidTypeDeclarationException/,+17d' \
-		-e '/testAnnotationEnumInvalidLiteralDeclarationException/,+20d' \
-		-e '/testAnnotationWithInvalidTargetDeclarationError/,+27d' \
-		-e '/testAnnotationWithTargetEmptyError/,+25d' \
-		-e '/function expectExceptionMessageMatches/,+7d' \
-		tests/Doctrine/Tests/Common/Annotations/DocParserTest.php
-	# fix abstract class with Test suffix
-	mv tests/Doctrine/Tests/Common/Annotations/AbstractReaderTest{,X}.php \
-		|| die "mv failed for AbstractReaderTest.php"
-	sed -i '/abstract class/s|AbstractReaderTest|AbstractReaderTestX|' \
-		tests/Doctrine/Tests/Common/Annotations/AbstractReaderTestX.php \
-		|| die "sed failed for AbstractReaderTestX.php"
-	sed -i '/extends/s|$|X|' tests/Doctrine/Tests/Common/Annotations/AnnotationReaderTest.php \
-		|| die "sed failed for AnnotationReaderTest.php"
-	# fix non-static data provider deprecation
-	sed -i '/provideEnumProperties(/s|function|static function|' \
-		tests/Doctrine/Tests/Common/Annotations/AnnotationReaderTest.php \
-		|| die "sed failed for AnnotationReaderTest.php"
-	sed -i  -e '/getAnnotationVarTypeProviderValid(/s|function|static function|g' \
-		-e '/getAnnotationVarTypeProviderInvalid(/s|function|static function|g' \
-		-e '/getAnnotationVarTypeArrayProviderInvalid(/s|function|static function|g' \
-		-e '/getConstantsProvider(/s|function|static function|g' \
-		-e '/provideTestIgnoreWholeNamespaces(/s|function|static function|g' \
-		tests/Doctrine/Tests/Common/Annotations/DocParserTest.php \
-		|| die "sed failed for DocParserTest.php"
-}
-
-src_test() {
-	# skipped — testMultiByteAnnotation
-	phpunit --testdox || die "phpunit failed"
-}
-
-src_install() {
-	einstalldocs
-	insinto /usr/share/php
-	doins -r lib/.
-}
+composer_enable_tests phpunit

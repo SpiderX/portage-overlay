@@ -1,0 +1,21 @@
+--- ../tests/Doctrine/Tests/Common/Annotations/PsrCachedReaderTest.php	2026-07-03 19:18:51.380115760 +0300
++++ ../tests/Doctrine/Tests/Common/Annotations/PsrCachedReaderTest.php	2026-07-03 19:23:48.934158638 +0300
+@@ -259,10 +259,17 @@
+                 [$cacheKey, $cacheItem],
+                 ['[C]' . $cacheKey, $timeCacheItem],
+             ]);
++
++        $expectedItems = [$timeCacheItem, $cacheItem];
++
+         $cache
+             ->expects($this->exactly(2))
+             ->method('save')
+-            ->withConsecutive([$timeCacheItem], [$cacheItem]);
++            ->with($this->callback(static function ($item) use (&$expectedItems): bool {
++                self::assertSame(array_shift($expectedItems), $item);
++
++                return true;
++        }));
+ 
+         $reader = new PsrCachedReader(new AnnotationReader(), $cache, true);
+ 

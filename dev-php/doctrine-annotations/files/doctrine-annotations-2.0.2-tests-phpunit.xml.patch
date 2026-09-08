@@ -1,0 +1,10 @@
+--- ../phpunit.xml.dist	2026-07-03 19:36:17.269805976 +0300
++++ ../phpunit.xml.dist	2026-07-03 19:36:30.950170011 +0300
+@@ -15,6 +15,7 @@
+     <testsuites>
+         <testsuite name="Doctrine Annotations Test Suite">
+             <directory>./tests/Doctrine/</directory>
++            <exclude>tests/Doctrine/Tests/Common/Annotations/AbstractReaderTest.php</exclude>
+         </testsuite>
+     </testsuites>
+ 
