@@ -5,14 +5,17 @@ EAPI=9
 
 COMPOSER_INSTALL_PATH="Twig"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="PHP templating engine with syntax similar to Django"
 HOMEPAGE="https://github.com/twigphp/Twig"
-EGIT_REPO_URI="https://github.com/twigphp/Twig.git"
+SRC_URI="https://github.com/twigphp/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-patches.tar.xz"
+S="${WORKDIR}/${COMPOSER_PKG^}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
 	dev-php/symfony-polyfill-ctype
@@ -22,4 +25,5 @@ BDEPEND="test? ( dev-php/psr-container
 
 DOCS=( CHANGELOG README.rst )
 
+COMPOSER_TEST_PATCHES=( "${WORKDIR}/${P}-patches/tests" )
 composer_enable_tests phpunit
