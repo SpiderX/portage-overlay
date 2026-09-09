@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/OptionsResolver"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony OptionsResolver Component"
 HOMEPAGE="https://github.com/symfony/options-resolver"
-EGIT_REPO_URI="https://github.com/symfony/options-resolver.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-deprecation-contracts"
 BDEPEND="test? ( dev-php/doctrine-deprecations
