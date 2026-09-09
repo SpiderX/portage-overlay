@@ -1,0 +1,85 @@
+--- ../test/Options/ValueTest.php	2026-07-11 01:28:26.835194046 +0300
++++ ../test/Options/ValueTest.php	2026-07-11 01:30:45.071742773 +0300
+@@ -5,26 +5,28 @@
+ use GetOpt\GetOpt;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class ValueTest extends TestCase
+ {
+-    /** @dataProvider dataOptionsWithoutDefault
+-     * @param Option $option
+-     * @param mixed  $expected
+-     * @test */
+-    public function valueWithoutDefault(Option $option, $expected): void
++    /** @param Option $option
++     * @param mixed  $expected */
++    #[Test]
++    #[DataProvider('dataOptionsWithoutDefault')]
++    public function valueWithoutDefault(Option $option, $expected, $_value, $_expected): void
+     {
+         $result = $option->getValue();
+ 
+         self::assertSame($expected, $result);
+     }
+ 
+-    /** @dataProvider dataOptionsWithoutDefault
+-     * @param Option $option
++    /** @param Option $option
+      * @param mixed  $dummy
+      * @param mixed  $value
+-     * @param mixed  $expected
+-     * @test */
++     * @param mixed  $expected */
++    #[Test]
++    #[DataProvider('dataOptionsWithoutDefault')]
+     public function valueWithoutDefaultButSetValue(Option $option, $dummy, $value, $expected): void
+     {
+         $option->setValue($value);
+@@ -34,7 +36,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    public function dataOptionsWithoutDefault()
++    public static function dataOptionsWithoutDefault()
+     {
+         return [
+             [ Option::create('a', null, GetOpt::NO_ARGUMENT), null, null, 1],
+@@ -45,7 +47,7 @@
+         ];
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function toStringWithoutArgument(): void
+     {
+         $option = new Option('a', null);
+@@ -55,7 +57,7 @@
+         self::assertSame('2', (string)$option);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function toStringWithArgument(): void
+     {
+         $option = new Option('a', null, GetOpt::REQUIRED_ARGUMENT);
+@@ -64,7 +66,7 @@
+         self::assertSame('valueA', (string)$option);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function toStringWithMultipleArguments(): void
+     {
+         $option = new Option('a', null, GetOpt::MULTIPLE_ARGUMENT);
+@@ -74,7 +76,7 @@
+         self::assertSame('valueA,valueB', (string)$option);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function defaultValueNotUsedForCounting(): void
+     {
+         $option = new Option('a', null, GetOpt::OPTIONAL_ARGUMENT);

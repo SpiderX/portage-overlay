@@ -1,0 +1,33 @@
+--- ../test/Help/TemplateTest.php	2026-07-11 01:33:16.278943887 +0300
++++ ../test/Help?TemplateTest.php	2026-07-11 01:33:24.563506907 +0300
+@@ -7,10 +7,11 @@
+ use GetOpt\Help;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class TemplateTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function rendersUsageTemplate(): void
+     {
+         $getOpt = new GetOpt();
+@@ -24,7 +25,7 @@
+         self::assertSame($scriptName . ' [operands]' . PHP_EOL, $getOpt->getHelpText());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function rendersOptionsTemplate(): void
+     {
+         $getOpt = new GetOpt([
+@@ -46,7 +47,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function rendersCommandsTemplate(): void
+     {
+         $getOpt = new GetOpt();

@@ -1,0 +1,91 @@
+--- ../test/Argument/ValidationTest.php	2026-07-11 01:33:38.322778489 +0300
++++ ../test/Argument/ValidationTest.php	2026-07-11 01:33:47.754223590 +0300
+@@ -9,6 +9,7 @@
+ use GetOpt\Operand;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class ValidationTest extends TestCase
+ {
+@@ -18,7 +19,7 @@
+         parent::tearDown();
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function defaultMessageForOption(): void
+     {
+         $option = Option::create('a', 'alpha', GetOpt::REQUIRED_ARGUMENT)
+@@ -30,7 +31,7 @@
+         $option->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function defaultMessageForOperand(): void
+     {
+         $operand = Operand::create('alpha')
+@@ -42,7 +43,7 @@
+         $operand->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function defaultMessageForArgument(): void
+     {
+         $argument = new Argument(null, 'is_numeric', 'alpha');
+@@ -53,7 +54,7 @@
+         $argument->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function usesCustomMessage(): void
+     {
+         $option = Option::create('a', 'alpha', GetOpt::REQUIRED_ARGUMENT)
+@@ -65,7 +66,7 @@
+         $option->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function usesTranslatedDescriptions(): void
+     {
+         GetOpt::setLang('de');
+@@ -78,7 +79,7 @@
+         $operand->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function providesValueAsSecondReplacement(): void
+     {
+         $option = Option::create('a', 'alpha', GetOpt::REQUIRED_ARGUMENT)
+@@ -90,7 +91,7 @@
+         $option->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function usesCallbackToGetMessage(): void
+     {
+         $option = Option::create('a', 'alpha', GetOpt::REQUIRED_ARGUMENT)
+@@ -104,7 +105,7 @@
+         $option->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function providesOptionAndValue(): void
+     {
+         $option = Option::create('a', 'alpha', GetOpt::REQUIRED_ARGUMENT);
+@@ -120,7 +121,7 @@
+         $option->setValue('foo');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function providesOperandAndValue(): void
+     {
+         $operand = Operand::create('alpha');

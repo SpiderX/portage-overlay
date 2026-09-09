@@ -1,0 +1,85 @@
+--- ../test/Options/CommonTest.php	2026-07-11 01:26:18.852045903 +0300
++++ ../test/Options/CommonTest.php	2026-07-11 01:27:15.460597802 +0300
+@@ -6,10 +6,12 @@
+ use GetOpt\GetOpt;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class CommonTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function construct(): void
+     {
+         $option = new Option('a', 'az-AZ09_', GetOpt::OPTIONAL_ARGUMENT);
+@@ -18,7 +20,7 @@
+         self::assertSame(GetOpt::OPTIONAL_ARGUMENT, $option->getMode());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function create(): void
+     {
+         $option = Option::create('a', 'az-AZ09_', GetOpt::OPTIONAL_ARGUMENT);
+@@ -27,18 +29,18 @@
+         self::assertSame(GetOpt::OPTIONAL_ARGUMENT, $option->getMode());
+     }
+ 
+-    /** @dataProvider dataConstructFails
+-     * @param string $short
++    /** @param string $short
+      * @param string $long
+-     * @param int    $mode
+-     * @test */
++     * @param int    $mode */
++    #[Test]
++    #[DataProvider('dataConstructFails')]
+     public function constructFails($short, $long, $mode): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+         new Option($short, $long, $mode);
+     }
+ 
+-    public function dataConstructFails()
++    public static function dataConstructFails()
+     {
+         return [
+             [ null, null, GetOpt::NO_ARGUMENT ],      // long and short are both empty
+@@ -49,7 +51,7 @@
+         ];
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function setArgument(): void
+     {
+         $option = new Option('a', null, GetOpt::OPTIONAL_ARGUMENT);
+@@ -57,7 +59,7 @@
+         self::assertInstanceof(Argument::CLASSNAME, $option->getArgument());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function setArgumentWrongMode(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -65,7 +67,7 @@
+         $option->setArgument(new Argument());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function setDefaultValue(): void
+     {
+         $option = new Option('a', null, GetOpt::OPTIONAL_ARGUMENT);
+@@ -73,7 +75,7 @@
+         self::assertSame(10, $option->getArgument()->getDefaultValue());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function setValidation(): void
+     {
+         $option = new Option('a', null, GetOpt::OPTIONAL_ARGUMENT);

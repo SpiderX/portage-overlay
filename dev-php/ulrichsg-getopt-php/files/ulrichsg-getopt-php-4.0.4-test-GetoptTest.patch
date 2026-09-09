@@ -1,0 +1,249 @@
+--- ../test/GetoptTest.php	2026-07-11 01:19:37.614068896 +0300
++++ ../test/GetoptTest.php	2026-07-11 01:20:48.000557464 +0300
+@@ -8,6 +8,8 @@
+ use GetOpt\Help;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class GetoptTest extends TestCase
+ {
+@@ -17,7 +19,7 @@
+         parent::tearDown();
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function addOptions(): void
+     {
+         $getopt = new GetOpt();
+@@ -35,7 +37,7 @@
+         self::assertSame('sparam', $getopt->getOption('s'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function addOptionsChooseShortOrLongAutomatically(): void
+     {
+         $getopt = new GetOpt();
+@@ -49,7 +51,7 @@
+         self::assertSame(1, $getopt->getOption('s'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function addOptionsUseDefaultArgumentType(): void
+     {
+         $getopt = new GetOpt(null, [
+@@ -64,7 +66,7 @@
+         $getopt->process('--long');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function addOptionsFailsOnInvalidArgument(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -72,7 +74,7 @@
+         $getopt->addOptions(new Option('a', 'alpha'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function changeModeAfterwards(): void
+     {
+         $getopt = new GetOpt([
+@@ -88,7 +90,7 @@
+ 
+ 
+     /** @return array */
+-    public function provideConflictOptions()
++    public static function provideConflictOptions()
+     {
+         return [
+             [[
+@@ -103,10 +105,10 @@
+     }
+ 
+     /**
+-     * @dataProvider provideConflictOptions
+-     * @test
+      * @param array $options
+      */
++    #[Test]
++    #[DataProvider('provideConflictOptions')]
+     public function addOptionsFailsOnConflict($options): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -114,7 +116,7 @@
+         $getopt->addOptions($options);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseUsesGlobalArgvWhenNoneGiven(): void
+     {
+         $_SERVER['argv'] = [ 'foo.php', '-a' ];
+@@ -124,7 +126,7 @@
+         self::assertSame(1, $getopt->getOption('a'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function accessMethods(): void
+     {
+         $getopt = new GetOpt('a');
+@@ -141,7 +143,7 @@
+         self::assertSame('foo', $getopt->getOperand(0));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function countable(): void
+     {
+         $getopt = new GetOpt([
+@@ -153,7 +155,7 @@
+         self::assertSame(3, count($getopt));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function arrayAccess(): void
+     {
+         $getopt = new GetOpt('q');
+@@ -161,7 +163,7 @@
+         self::assertSame(1, $getopt['q']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function iterable(): void
+     {
+         $getopt = new GetOpt([
+@@ -176,7 +178,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function iteratesOverEmptyStrings(): void
+     {
+         $getopt = new GetOpt([
+@@ -190,7 +192,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpTextWithCustomScriptName(): void
+     {
+         $getopt = new GetOpt();
+@@ -201,7 +203,7 @@
+         self::assertSame('Usage: test [operands]' . PHP_EOL . PHP_EOL, $helpText);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpTextWithDescription(): void
+     {
+         $getopt = new GetOpt();
+@@ -218,7 +220,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function throwsWithInvalidParameter(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -227,7 +229,7 @@
+         $getopt->process(42);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function addOptionByString(): void
+     {
+         $getopt = new GetOpt();
+@@ -236,7 +238,7 @@
+         self::assertSame((string)new Option('c', null), (string)$getopt->getOption('c', true));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function throwsForUnparsableString(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -245,7 +247,7 @@
+         $getopt->addOption('');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function throwsForInvalidParameter(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -254,7 +256,7 @@
+         $getopt->addOption(42);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function issetArrayAccess(): void
+     {
+         $getopt = new GetOpt();
+@@ -266,7 +268,7 @@
+         self::assertTrue($result);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function restirctsArraySet(): void
+     {
+         self::expectException(\LogicException::class);
+@@ -275,7 +277,7 @@
+         $getopt['a'] = 'test';
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function restrictsArrayUnset(): void
+     {
+         self::expectException(\LogicException::class);
+@@ -286,7 +288,7 @@
+         unset($getopt['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function addCommandWithConflictingOptions(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -300,7 +302,7 @@
+         ]));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function getCommandByName(): void
+     {
+         $cmd1 = new Command('help', 'var_dump');
+@@ -314,7 +316,7 @@
+         self::assertNull($getopt->getCommand());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function setHelpLangToDe(): void
+     {
+         $getopt = new GetOpt();
+@@ -332,7 +334,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function returnsFalseWhenFileDoesNotExist(): void
+     {
+         $getopt = new GetOpt();

@@ -1,0 +1,152 @@
+--- ../test/CommandTest.php	2026-07-11 01:17:19.164647626 +0300
++++ ../test/CommandTest.php	2026-07-11 01:19:22.803380464 +0300
+@@ -6,6 +6,8 @@
+ use GetOpt\GetOpt;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class CommandTest extends TestCase
+ {
+@@ -28,22 +30,22 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function constructorSavesName(): void
+     {
+         self::assertSame('the-name', $this->command->getName());
+     }
+ 
+-    /** @dataProvider dataNamesNotAllowed
+-     * @param string $name
+-     * @test */
++    /** @param string $name */
++    #[Test]
++    #[DataProvider('dataNamesNotAllowed')]
+     public function namesNotAllowed($name): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+         new Command($name, '', null);
+     }
+ 
+-    public function dataNamesNotAllowed()
++    public static function dataNamesNotAllowed()
+     {
+         return [
+             [ '-abc' ],  // starts with dash
+@@ -52,19 +54,19 @@
+         ];
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function constructorSavesHandler(): void
+     {
+         self::assertSame([ '\PDO', 'getAvailableDrivers' ], $this->command->getHandler());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function constructorSavesOptions(): void
+     {
+         self::assertSame($this->options, $this->command->getOptions());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function addOptionsAppendsOptions(): void
+     {
+         $optionC = new Option('c', 'optc');
+@@ -73,7 +75,7 @@
+         self::assertSame([ $this->options[0], $this->options[1], $optionC ], $this->command->getOptions());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function commandWithConflictingOptionsFailsToAdd(): void
+     {
+         $getOpt = new GetOpt([Option::create('v', 'verbose')]);
+@@ -86,7 +88,7 @@
+         $getOpt->addCommand($command);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function operandsHaveToFollowCommands(): void
+     {
+         $getOpt = new GetOpt([Option::create(null, 'version')]);
+@@ -99,7 +101,7 @@
+         self::assertSame(['foo', 'bar'], $getOpt->getOperands());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function shortDescriptionUsedForDescription(): void
+     {
+         $command = new Command('test', 'var_dump');
+@@ -109,7 +111,7 @@
+         self::assertSame('short description', $command->getDescription());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function descriptionUsedForShortDescription(): void
+     {
+         $command = new Command('test', 'var_dump');
+@@ -119,7 +121,7 @@
+         self::assertSame('long description', $command->getShortDescription());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function getHelpForExecutedCommand(): void
+     {
+         $longDescription = 'This is a very long description.' . PHP_EOL . 'It also may have line breaks.';
+@@ -145,7 +147,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function getHelpForCommands(): void
+     {
+         $cmd1 = Command::create('help', 'var_dump')->setDescription('Shows help for a command');
+@@ -169,7 +171,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function tooLongShortDescription(): void
+     {
+         defined('COLUMNS') || define('COLUMNS', 90);
+@@ -198,7 +200,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function commandsWithSpaces(): void
+     {
+         $getOpt = new GetOpt();
+@@ -210,7 +212,7 @@
+         self::assertSame($command, $getOpt->getCommand());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function singleWordCommandHavePrecedence(): void
+     {
+         $getOpt = new GetOpt();
+@@ -224,7 +226,7 @@
+         self::assertSame(['reviews'], $getOpt->getOperands());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function commandCannotBeDividedByOptions(): void
+     {
+         $getOpt = new GetOpt([Option::create(null, 'version')]);

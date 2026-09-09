@@ -1,0 +1,42 @@
+--- ../test/ArgumentTest.php	2026-07-11 01:10:27.954197251 +0300
++++ ../test/ArgumentTest.php	2026-07-11 01:11:22.586067084 +0300
+@@ -4,10 +4,11 @@
+ 
+ use GetOpt\Argument;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class ArgumentTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function constructor(): void
+     {
+         $argument1 = new Argument();
+@@ -16,7 +17,7 @@
+         self::assertSame(10, $argument2->getDefaultValue());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function setDefaultValueNotScalar(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -24,7 +25,7 @@
+         $argument->setDefaultValue([]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function validates(): void
+     {
+         $test     = $this;
+@@ -39,7 +40,7 @@
+         self::assertTrue($argument->validates('test'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function falsyDefaultValue(): void
+     {
+         $argument = new Argument('');

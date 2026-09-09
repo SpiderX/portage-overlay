@@ -1,0 +1,33 @@
+--- ../test/Translator/CommonTest.php	2026-07-11 01:25:53.666003887 +0300
++++ ../test/Translator/CommonTest.php	2026-07-11 01:26:06.632665873 +0300
+@@ -4,10 +4,11 @@
+ 
+ use GetOpt\Translator;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class CommonTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function throwsWhenLanguageNotAvailable(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+@@ -15,7 +16,7 @@
+         new Translator('unknown');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function usesTranslationFile(): void
+     {
+         $translator = new Translator(__DIR__ . '/incomplete-translation.php');
+@@ -25,7 +26,7 @@
+         self::assertSame('Verwendung: ', $result);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function usesFallBackTranslation(): void
+     {
+         $translator = new Translator(__DIR__ . '/incomplete-translation.php');

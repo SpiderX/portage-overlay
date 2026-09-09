@@ -1,0 +1,107 @@
+--- ../test/MagicGettersTest.php	2026-07-11 01:21:25.234920825 +0300
++++ ../test/MagicGettersTest.php	2026-07-11 01:23:56.126328222 +0300
+@@ -9,11 +9,13 @@
+ use GetOpt\Operand;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class MagicGettersTest extends TestCase
+ {
+-    /** @dataProvider provideGetOptAttributes
+-     * @test */
++    #[Test]
++    #[DataProvider('provideGetOptAttributes')]
+     public function getOptUsesMagicGetters($getOpt, $attribute, $expected): void
+     {
+         $result = $getOpt->{$attribute};
+@@ -21,7 +23,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    public function provideGetOptAttributes()
++    public static function provideGetOptAttributes()
+     {
+         $getOpt = new GetOpt();
+         $getOpt->addOption(Option::create('a', 'alpha'));
+@@ -47,8 +49,8 @@
+         ];
+     }
+ 
+-    /** @dataProvider provideCommandAttributes
+-     * @test */
++    #[Test]
++    #[DataProvider('provideCommandAttributes')]
+     public function commandUsesMagicGetters($command, $attribute, $expected): void
+     {
+         $result = $command->{$attribute};
+@@ -56,7 +58,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    public function provideCommandAttributes()
++    public static function provideCommandAttributes()
+     {
+         $command = new Command('test', 'Foo@Bar');
+         $command->setDescription('This is the long description');
+@@ -72,8 +74,8 @@
+         ];
+     }
+ 
+-    /** @dataProvider provideArgumentAttributes
+-     * @test */
++    #[Test]
++    #[DataProvider('provideArgumentAttributes')]
+     public function argumentUsesMagicGetters($argument, $attribute, $expected): void
+     {
+         $result = $argument->{$attribute};
+@@ -81,7 +83,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    public function provideArgumentAttributes()
++    public static function provideArgumentAttributes()
+     {
+         $argument = new Argument('default', 'strlen', 'gamma');
+ 
+@@ -91,8 +93,8 @@
+         ];
+     }
+ 
+-    /** @dataProvider provideOperandAttributes
+-     * @test */
++    #[Test]
++    #[DataProvider('provideOperandAttributes')]
+     public function operandUsesMagicGetters($operand, $attribute, $expected): void
+     {
+         $result = $operand->{$attribute};
+@@ -100,7 +102,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    public function provideOperandAttributes()
++    public static function provideOperandAttributes()
+     {
+         $operand = new Operand('gamma');
+         $operand->setValue('42');
+@@ -111,8 +113,8 @@
+         ];
+     }
+ 
+-    /** @dataProvider provideOptionAttributes
+-     * @test */
++    #[Test]
++    #[DataProvider('provideOptionAttributes')]
+     public function optionUsesMagicGetters($option, $attribute, $expected): void
+     {
+         $result = $option->{$attribute};
+@@ -120,7 +122,7 @@
+         self::assertSame($expected, $result);
+     }
+ 
+-    public function provideOptionAttributes()
++    public static function provideOptionAttributes()
+     {
+         $option = new Option('a', 'alpha', GetOpt::OPTIONAL_ARGUMENT);
+         $option->setDescription('This is the description');

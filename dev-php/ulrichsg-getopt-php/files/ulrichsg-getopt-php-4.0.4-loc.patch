@@ -1,0 +1,11 @@
+--- ../src/Translator.php	2026-07-11 10:26:52.254318903 +0300
++++ ../src/Translator.php	2026-07-11 10:27:17.318818995 +0300
+@@ -4,7 +4,7 @@
+ 
+ class Translator
+ {
+-    const PATH_TEMPLATE = '%s/../resources/localization/%s.php';
++    const PATH_TEMPLATE = '%s/localization/%s.php';
+ 
+     /** @var string */
+     protected $languageFile;

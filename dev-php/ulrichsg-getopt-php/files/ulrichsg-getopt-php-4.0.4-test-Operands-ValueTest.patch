@@ -1,0 +1,42 @@
+--- ../test/Operands/ValueTest.php	2026-07-11 01:32:51.825578806 +0300
++++ ../test/Operands/ValueTest.php	2026-07-11 01:33:01.902925446 +0300
+@@ -4,10 +4,11 @@
+ 
+ use GetOpt\Operand;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class ValueTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function toStringWithoutValue(): void
+     {
+         $operand = Operand::create('file');
+@@ -15,7 +16,7 @@
+         self::assertSame('', (string)$operand);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function toStringWithDefaultValue(): void
+     {
+         $operand = Operand::create('file')
+@@ -24,7 +25,7 @@
+         self::assertSame('/dev/random', (string)$operand);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function toStringWithValue(): void
+     {
+         $operand = Operand::create('file');
+@@ -34,7 +35,7 @@
+         self::assertSame('/dev/null', (string)$operand);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function toStringWithMultipleValue(): void
+     {
+         $operand = Operand::create('files', Operand::MULTIPLE);

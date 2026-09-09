@@ -1,0 +1,416 @@
+--- ../test/ArgumentsTest.php	2026-07-11 01:11:38.667682178 +0300
++++ ../test/ArgumentsTest.php	2026-07-11 01:16:58.488754997 +0300
+@@ -11,6 +11,7 @@
+ use GetOpt\GetOpt;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class ArgumentsTest extends TestCase
+ {
+@@ -22,7 +23,7 @@
+         $this->getopt = new GetOpt();
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseNoOptions(): void
+     {
+         $this->getopt->process(Arguments::fromString('something'));
+@@ -33,7 +34,7 @@
+         self::assertSame('something', $operands[0]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseUnknownOption(): void
+     {
+         self::expectException(Unexpected::class);
+@@ -42,7 +43,7 @@
+         $this->getopt->process('-b');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function unknownLongOption(): void
+     {
+         self::expectException(Unexpected::class);
+@@ -51,7 +52,7 @@
+         $this->getopt->process('--beta');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseRequiredArgumentMissing(): void
+     {
+         self::expectException(Missing::class);
+@@ -60,7 +61,7 @@
+         $this->getopt->process('-a');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseMultipleOptionsWithOneHyphen(): void
+     {
+         $this->getopt->addOptions([
+@@ -75,7 +76,7 @@
+         self::assertSame(1, $options['b']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseCumulativeOption(): void
+     {
+         $this->getopt->addOptions([
+@@ -90,7 +91,7 @@
+         self::assertSame(1, $options['b']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseCumulativeOptionShort(): void
+     {
+         $this->getopt->addOptions([
+@@ -105,7 +106,7 @@
+         self::assertSame(1, $options['b']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseShortOptionWithArgument(): void
+     {
+         $this->getopt->addOptions([
+@@ -118,7 +119,7 @@
+         self::assertSame('value', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseZeroArgument(): void
+     {
+         $this->getopt->addOptions([
+@@ -131,7 +132,7 @@
+         self::assertSame('0', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseNumericOption(): void
+     {
+         $this->getopt->addOptions([
+@@ -146,7 +147,7 @@
+         self::assertSame(1, $options['2']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseCollapsedShortOptionsRequiredArgumentMissing(): void
+     {
+         self::expectException(Missing::class);
+@@ -157,7 +158,7 @@
+         $this->getopt->process('-ab');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseCollapsedShortOptionsWithArgument(): void
+     {
+         $this->getopt->addOptions([
+@@ -171,7 +172,7 @@
+         self::assertSame('value', $options['b']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseNoArgumentOptionAndOperand(): void
+     {
+         $this->getopt->addOptions([
+@@ -186,7 +187,7 @@
+         self::assertSame('b', $operands[0]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parsedRequiredArgumentWithNoSpace(): void
+     {
+         $this->getopt->addOptions([
+@@ -196,7 +197,8 @@
+         $options = $this->getopt->getOptions();
+         self::assertSame('password', $options['p']);
+     }
+-    /** @test */
++
++    #[Test]
+     public function parseCollapsedRequiredArgumentWithNoSpace(): void
+     {
+         $this->getopt->addOptions([
+@@ -209,7 +211,7 @@
+         self::assertSame(3, $options['v']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseOperandsOnly(): void
+     {
+         $this->getopt->addOptions([
+@@ -225,7 +227,7 @@
+         self::assertSame('-b', $operands[1]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseLongOptionWithoutArgument(): void
+     {
+         $this->getopt->addOptions([
+@@ -237,7 +239,7 @@
+         self::assertSame(1, $options['option']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseLongOptionWithoutArgumentAndOperand(): void
+     {
+         $this->getopt->addOptions([
+@@ -252,7 +254,7 @@
+         self::assertSame('something', $operands[0]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseLongOptionWithArgument(): void
+     {
+         $this->getopt->addOptions([
+@@ -265,7 +267,7 @@
+         self::assertSame('value', $options['o']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseLongOptionWithEqualsSignAndArgument(): void
+     {
+         $this->getopt->addOptions([
+@@ -280,7 +282,7 @@
+         self::assertSame('something', $operands[0]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseLongOptionWithValueStartingWithHyphen(): void
+     {
+         $this->getopt->addOptions([
+@@ -292,7 +294,7 @@
+         self::assertSame('-value', $options['option']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseValueStartingWithHypenRequired(): void
+     {
+         $this->getopt->addOptions([
+@@ -304,7 +306,7 @@
+         self::assertSame('-b', $this->getopt->getOption('a'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseNoValueStartingWithHyphenOptional(): void
+     {
+         $this->getopt->addOptions([
+@@ -318,7 +320,7 @@
+         self::assertSame(1, $options['b']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseOptionWithDefaultValue(): void
+     {
+         $optionA = new Option('a', null, GetOpt::REQUIRED_ARGUMENT);
+@@ -334,7 +336,7 @@
+         self::assertSame(20, $options['beta']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function multipleArgumentOptions(): void
+     {
+         $this->getopt->addOption(new Option('a', null, GetOpt::MULTIPLE_ARGUMENT));
+@@ -344,7 +346,7 @@
+         self::assertSame(['value1', 'value2'], $this->getopt->getOption('a'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function doubleHyphenNotInOperands(): void
+     {
+         $this->getopt->addOptions([
+@@ -361,7 +363,7 @@
+         self::assertSame('baz', $operands[2]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function singleHyphenValue(): void
+     {
+         $this->getopt->addOptions([
+@@ -383,7 +385,7 @@
+         self::assertCount(0, $operands);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function singleHyphenOperand(): void
+     {
+         $this->getopt->addOptions([
+@@ -398,7 +400,7 @@
+         self::assertSame('-', $operands[0]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function optionsAfterOperands(): void
+     {
+         $this->getopt->addOptions([
+@@ -415,7 +417,7 @@
+         self::assertSame(['operand'], $this->getopt->getOperands());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function emptyOperandsAndOptionsWithString(): void
+     {
+         $this->getopt->addOptions([
+@@ -428,7 +430,7 @@
+         self::assertSame([''], $this->getopt->getOperands());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function emptyOperandsAndOptionsWithArray(): void
+     {
+         $this->getopt->addOptions([
+@@ -446,7 +448,7 @@
+         self::assertSame([''], $this->getopt->getOperands());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function spaceOperand(): void
+     {
+         $this->getopt->addOptions([]);
+@@ -456,7 +458,7 @@
+         self::assertSame([' '], $this->getopt->getOperands());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseWithArgumentValidation(): void
+     {
+         $validation = 'is_numeric';
+@@ -475,7 +477,7 @@
+         self::assertSame(1, $options['c']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseInvalidArgument(): void
+     {
+         self::expectException(Invalid::class);
+@@ -486,7 +488,7 @@
+         $this->getopt->process('-a nonnumeric');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function stringWithSingleQuotes(): void
+     {
+         $this->getopt->addOptions([
+@@ -499,7 +501,7 @@
+         self::assertSame('the value', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function stringWithDoubleQuotes(): void
+     {
+         $this->getopt->addOptions([
+@@ -512,7 +514,7 @@
+         self::assertSame('the value', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function singleQuotesInString(): void
+     {
+         $this->getopt->addOptions([
+@@ -525,7 +527,7 @@
+         self::assertSame('the \'', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function doubleQuotesInString(): void
+     {
+         $this->getopt->addOptions([
+@@ -538,7 +540,7 @@
+         self::assertSame('the "', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function quoteConcatenation(): void
+     {
+         $this->getopt->addOptions([
+@@ -553,7 +555,7 @@
+         self::assertSame('" inside double quote', $options['b']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function quoteEscapingDoubleQuote(): void
+     {
+         $this->getopt->process('-- "this \\" is a double quote"');
+@@ -561,7 +563,7 @@
+         self::assertSame('this " is a double quote', $this->getopt->getOperand(0));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function quoteEscapingSingleQuote(): void
+     {
+         $this->getopt->process("-- 'this \\' is a single quote'");
+@@ -569,7 +571,7 @@
+         self::assertSame("this ' is a single quote", $this->getopt->getOperand(0));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function linefeedAsSeparator(): void
+     {
+         $this->getopt->addOptions([
+@@ -582,7 +584,7 @@
+         self::assertSame('value', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function tabAsSeparator(): void
+     {
+         $this->getopt->addOptions([
+@@ -595,7 +597,7 @@
+         self::assertSame('value', $options['a']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function explictArguments(): void
+     {
+         $getopt = $this->getopt;
+@@ -610,7 +612,7 @@
+         $this->getopt->process('-a -b');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function usingCommand(): void
+     {
+         $cmd = new Command('test', 'var_dump', [

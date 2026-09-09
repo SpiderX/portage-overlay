@@ -1,0 +1,91 @@
+--- ../test/OptionParserTest.php	2026-07-11 01:24:20.284186648 +0300
++++ ../test/OptionParserTest.php	2026-07-11 01:25:36.865232168 +0300
+@@ -6,6 +6,8 @@
+ use GetOpt\Option;
+ use GetOpt\OptionParser;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\DataProvider;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class OptionParserTest extends TestCase
+ {
+@@ -17,7 +19,7 @@
+         $this->parser = new OptionParser(GetOpt::REQUIRED_ARGUMENT);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseString(): void
+     {
+         $options = $this->parser->parseString('ab:c::3');
+@@ -43,35 +45,35 @@
+         }
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseStringEmpty(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+         $this->parser->parseString('');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseStringInvalidCharacter(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+         $this->parser->parseString('ab:c::dä');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseStringStartsWithColon(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+         $this->parser->parseString(':ab:c::d');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseStringTripleColon(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+         $this->parser->parseString('ab:c:::d');
+     }
+ 
+-    public function provideOptionArrays()
++    public static function provideOptionArrays()
+     {
+         return [
+             [ [ 'a', 'alpha', GetOpt::OPTIONAL_ARGUMENT, 'Description', 42 ] ],
+@@ -80,9 +82,9 @@
+         ];
+     }
+ 
+-    /** @dataProvider provideOptionArrays
+-     * @param array $array
+-     * @test */
++    /** @param array $array */
++    #[Test]
++    #[DataProvider('provideOptionArrays')]
+     public function parseArray($array): void
+     {
+         $option = $this->parser->parseArray($array);
+@@ -111,14 +113,14 @@
+         }
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseArrayEmpty(): void
+     {
+         self::expectException(\InvalidArgumentException::class);
+         $this->parser->parseArray([]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function parseArrayInvalid(): void
+     {
+         self::expectException(\InvalidArgumentException::class);

@@ -1,0 +1,60 @@
+--- ../test/Operands/HelpTest.php	2026-07-11 01:31:44.039168425 +0300
++++ ../test/Operands/HelpTest.php	2026-07-11 01:32:01.419418263 +0300
+@@ -8,10 +8,11 @@
+ use GetOpt\Help;
+ use GetOpt\Operand;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class HelpTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function helpContainsOperandNames(): void
+     {
+         $operand1 = new Operand('op1', true);
+@@ -27,7 +28,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpCommandDefinesOperands(): void
+     {
+         $operand1 = new Operand('op1', true);
+@@ -51,7 +52,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpTextForMultiple(): void
+     {
+         $operand = new Operand('op1', Operand::MULTIPLE);
+@@ -66,7 +67,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpTextForRequiredMultiple(): void
+     {
+         $operand = new Operand('op1', Operand::MULTIPLE + Operand::REQUIRED);
+@@ -81,7 +82,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function showsDescriptionsBeforeOptions(): void
+     {
+         $script = $_SERVER['PHP_SELF'];
+@@ -104,7 +105,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function hidesDescriptionsIfRequested(): void
+     {
+         $script = $_SERVER['PHP_SELF'];

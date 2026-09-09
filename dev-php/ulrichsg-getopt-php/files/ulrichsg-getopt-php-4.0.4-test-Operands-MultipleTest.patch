@@ -1,0 +1,60 @@
+--- ../test/Operands/MultipleTest.php	2026-07-11 01:32:11.116408304 +0300
++++ ../test/Operands/MultipleTest.php	2026-07-11 01:32:21.392616751 +0300
+@@ -7,10 +7,11 @@
+ use GetOpt\GetOpt;
+ use GetOpt\Operand;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class MultipleTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function valueForMultiple(): void
+     {
+         $operand1 = new Operand('op1', Operand::OPTIONAL);
+@@ -25,7 +26,7 @@
+         self::assertSame(['a', 'b', 'c'], $getopt->getOperands());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function defaultValueForMultiple(): void
+     {
+         $operand = Operand::create('op1', Operand::MULTIPLE)
+@@ -38,7 +39,7 @@
+         self::assertSame([42], $getopt->getOperand('op1'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function requiredMultiple(): void
+     {
+         $operand = new Operand('op1', true, null, null, true);
+@@ -50,7 +51,7 @@
+         $getopt->process('');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function requiredMultipleNotToThrow(): void
+     {
+         $operand = new Operand('op1', Operand::REQUIRED + Operand::MULTIPLE);
+@@ -62,7 +63,7 @@
+         self::assertSame(['42'], $getopt->getOperand('op1'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function validationOfMultiple(): void
+     {
+         $operand1 = Operand::create('op1', Operand::MULTIPLE)
+@@ -77,7 +78,7 @@
+         $getopt->process('42 43');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function restrictsAddingAfterMultiple(): void
+     {
+         $operand1 = new Operand('op1', Operand::MULTIPLE);

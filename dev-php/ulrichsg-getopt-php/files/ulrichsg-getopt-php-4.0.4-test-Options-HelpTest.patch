@@ -1,0 +1,60 @@
+--- ../test/Options/HelpTest.php	2026-07-11 01:27:28.868381986 +0300
++++ ../test/Options/HelpTest.php	2026-07-11 01:27:45.319388505 +0300
+@@ -6,10 +6,11 @@
+ use GetOpt\Help;
+ use GetOpt\Option;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class HelpTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function helpText(): void
+     {
+         $getopt = new GetOpt([
+@@ -31,7 +32,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpTextWithoutDescriptions(): void
+     {
+         $getopt = new GetOpt([
+@@ -52,7 +53,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpTextWithLongDescriptions(): void
+     {
+         defined('COLUMNS') || define('COLUMNS', 90);
+@@ -78,7 +79,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function longWordsInDescription(): void
+     {
+         defined('COLUMNS') || define('COLUMNS', 90);
+@@ -104,7 +105,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpTextWithArgumentName(): void
+     {
+         $getopt = new GetOpt([
+@@ -121,7 +122,7 @@
+         );
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function textsGetUsed(): void
+     {
+         $getopt = new GetOpt([Option::create('a', 'alpha')]);

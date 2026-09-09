@@ -1,0 +1,33 @@
+--- ../test/Operands/StrictTest.php	2026-07-11 01:32:31.577943814 +0300
++++ ../test/Operands/StrictTest.php	2026-07-11 01:32:40.460341435 +0300
+@@ -6,10 +6,11 @@
+ use GetOpt\GetOpt;
+ use GetOpt\Operand;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class StrictTest extends TestCase
+ {
+-    /** @test */
++    #[Test]
+     public function noOperandsAllowed(): void
+     {
+         $getopt = new GetOpt();
+@@ -19,7 +20,7 @@
+         $getopt->process('"some operand"');
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function specifiedOperandsAllowed(): void
+     {
+         $getopt = new GetOpt();
+@@ -31,7 +32,7 @@
+         self::assertSame('some operand', $getopt->getOperand('op1'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function helpDoesNotShowAdditionalOperands(): void
+     {
+         $getopt = new GetOpt();

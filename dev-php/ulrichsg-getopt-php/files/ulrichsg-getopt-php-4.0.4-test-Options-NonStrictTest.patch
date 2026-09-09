@@ -1,0 +1,82 @@
+--- ../test/Options/NonStrictTest.php	2026-07-11 01:27:59.048220544 +0300
++++ ../test/Options/NonStrictTest.php	2026-07-11 01:28:14.732707204 +0300
+@@ -4,6 +4,7 @@
+ 
+ use GetOpt\GetOpt;
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+ 
+ class NonStrictTest extends TestCase
+ {
+@@ -17,7 +18,7 @@
+         ]);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function additionalOptionsDoNotThrow(): void
+     {
+         $this->getopt->process('-a --beta');
+@@ -25,7 +26,7 @@
+         $this->addToAssertionCount(1); // it did not throw - that is positive
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function storesTheArgument(): void
+     {
+         $this->getopt->process('-a aValue --beta betaValue -ccValue');
+@@ -38,7 +39,7 @@
+         self::assertSame('aValue', $this->getopt->getOption('a'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function additionalOptionsAreResetted(): void
+     {
+         $this->getopt->process('-a aValue --beta betaValue -ccValue');
+@@ -48,7 +49,7 @@
+         self::assertSame([], $this->getopt->getOptions());
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function iteratesOverAdditionalOptions(): void
+     {
+         $this->getopt->process('-a aValue --beta betaValue');
+@@ -59,7 +60,7 @@
+         ], iterator_to_array($this->getopt->getIterator()));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function offsetExists(): void
+     {
+         $this->getopt->process('--alpha alphaValue');
+@@ -67,7 +68,7 @@
+         self::assertTrue($this->getopt->offsetExists('alpha'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function offsetGet(): void
+     {
+         $this->getopt->process('--alpha alphaValue');
+@@ -75,7 +76,7 @@
+         self::assertSame('alphaValue', $this->getopt['alpha']);
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function storesTheCountWithoutValue(): void
+     {
+         $this->getopt->process('-a -a -a');
+@@ -83,7 +84,7 @@
+         self::assertSame(3, $this->getopt->getOption('a'));
+     }
+ 
+-    /** @test */
++    #[Test]
+     public function showsOptionsInUsage(): void
+     {
+         $script = $_SERVER['PHP_SELF'];
