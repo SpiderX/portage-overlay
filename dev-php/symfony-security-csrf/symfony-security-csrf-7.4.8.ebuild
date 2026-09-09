@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Security/Csrf"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Security CSRF Component"
 HOMEPAGE="https://github.com/symfony/security-csrf"
-EGIT_REPO_URI="https://github.com/symfony/security-csrf.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-security-core"
 BDEPEND="test? ( dev-php/doctrine-deprecations
