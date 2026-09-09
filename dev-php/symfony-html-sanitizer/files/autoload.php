@@ -8,4 +8,5 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\HtmlSanitizer\\', __DIR
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/League/Uri/autoload.php',
 	'/usr/share/php/Masterminds/autoload.php',
+	'/usr/share/php/Symfony/Contracts/Deprecation/autoload.php',
 ]);
