@@ -8,18 +8,22 @@ COMPOSER_VENDOR="${PN%%-*}"
 COMPOSER_PKG="Autoload"
 PHP_REQ_USE="cli,fileinfo(-),ssl,tokenizer(-)"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="PHP Autoload Builder"
 HOMEPAGE="https://github.com/theseer/Autoload"
-EGIT_REPO_URI="https://github.com/theseer/Autoload.git"
+SRC_URI="https://github.com/theseer/${COMPOSER_PKG}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-php/theseer-DirectoryScanner
 	dev-php/zetacomponents-Base
 	dev-php/zetacomponents-ConsoleTools"
+BDEPEND="test? ( dev-php/phpunit )"
 
 PATCHES=( "${FILESDIR}/${PN}"-1.26.0-autoload.php.patch
 	"${FILESDIR}/${PN}"-1.29.4-tests.patch )
@@ -43,6 +47,10 @@ src_prepare() {
 	edo ln -s ../../../../../../../../../../usr/share/php/ezc/ConsoleTools \
 		vendor/zetacomponents/console-tools/src
 	edo ./phpab.php -q -o src/autoload.php -t "${FILESDIR}"/autoload.php.tpl src
+}
+
+src_test() {
+	ephpunit
 }
 
 src_install() {

@@ -1,0 +1,24 @@
+--- ../tests/PathComparatorTest.php	2026-06-27 23:03:18.240575999 +0300
++++ ../tests/PathComparatorTest.php	2026-06-27 23:06:02.567977592 +0300
+@@ -3,18 +3,17 @@
+ namespace TheSeer\Autoload\Tests {
+ 
+     use TheSeer\Autoload\PathComparator;
++    use PHPUnit\Framework\Attributes\DataProvider;
+ 
+     class PathComparatorTest extends \PHPUnit\Framework\TestCase {
+ 
+-        /**
+-         * @dataProvider directoriesProvider
+-         */
++        #[DataProvider('directoriesProvider')]
+         public function testComparatorYieldsCorrectCommonBase(array $directories, $common) {
+             $comparator = new PathComparator($directories);
+             $this->assertEquals($common, $comparator->getCommonBase());
+         }
+ 
+-        public function directoriesProvider() {
++        public static function directoriesProvider() {
+             return array(
+                 'empty' => array(
+                     array(), '/'
