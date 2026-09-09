@@ -6,14 +6,15 @@ EAPI=8
 COMPOSER_INSTALL_PATH="Symfony/Polyfill/Intl/Idn"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3 optfeature
+inherit composer optfeature
 
 DESCRIPTION="Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions"
 HOMEPAGE="https://github.com/symfony/polyfill-intl-idn"
-EGIT_REPO_URI="https://github.com/symfony/polyfill-intl-idn.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # no tests
 
 RDEPEND="dev-php/symfony-polyfill-intl-normalizer"
