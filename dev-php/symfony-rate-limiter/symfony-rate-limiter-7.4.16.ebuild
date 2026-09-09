@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/RateLimiter"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Rate Limiter Component"
 HOMEPAGE="https://github.com/symfony/rate-limiter"
-EGIT_REPO_URI="https://github.com/symfony/rate-limiter.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-options-resolver"
 BDEPEND="test? ( dev-php/doctrine-deprecations
@@ -21,8 +22,7 @@ BDEPEND="test? ( dev-php/doctrine-deprecations
 		dev-php/symfony-lock
 		dev-php/symfony-phpunit-bridge )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.16-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.16-tests.patch )
 composer_enable_tests phpunit
