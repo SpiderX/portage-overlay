@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	This package provides a Symfony polyfill backporting some
-	PHP 8.3+ features to lower PHP versions.
+	PHP 8.4+ features to lower PHP versions.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">symfony/polyfill-php84</remote-id>
