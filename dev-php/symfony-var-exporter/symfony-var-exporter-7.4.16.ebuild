@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/VarExporter"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony VarExporter Component"
 HOMEPAGE="https://github.com/symfony/var-exporter"
-EGIT_REPO_URI="https://github.com/symfony/var-exporter.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-deprecation-contracts"
 BDEPEND="test? ( dev-php/doctrine-deprecations
@@ -22,8 +23,7 @@ BDEPEND="test? ( dev-php/doctrine-deprecations
 		dev-php/symfony-serializer
 		dev-php/symfony-var-dumper )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.16-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.16-tests.patch )
 composer_enable_tests phpunit
