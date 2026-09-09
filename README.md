@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1616](https://img.shields.io/badge/ebuild-1616-orange.svg)](https://img.shields.io/badge/ebuild-1616-orange.svg)
+[![Number of ebuilds: 1617](https://img.shields.io/badge/ebuild-1617-orange.svg)](https://img.shields.io/badge/ebuild-1617-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1024,6 +1024,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-var-exporter](https://github.com/symfony/var-exporter) | Symfony VarExporter Component
 *   dev-php/[symfony-yaml](https://github.com/symfony/yaml) | Symfony Yaml Component
 *   dev-php/[theseer-Autoload](https://github.com/theseer/Autoload) | PHP Autoload Builder
+*   dev-php/[theseer-tokenizer](https://github.com/theseer/tokenizer) | Convert tokenized PHP source code into XML and other formats
 *   dev-php/[twig](https://github.com/twigphp/Twig) | PHP templating engine with syntax similar to Django
 *   dev-php/[webmozart-assert](https://github.com/webmozarts/assert) | Webmozart Assert
 *   dev-php/[zetacomponents-UnitTest](https://github.com/zetacomponents/UnitTest) | Unit tests for any Zeta component
