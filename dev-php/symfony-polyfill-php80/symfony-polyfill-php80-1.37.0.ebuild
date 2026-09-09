@@ -6,12 +6,13 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Polyfill/Php80"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Backport of some PHP 8.0+ features to lower PHP versions"
 HOMEPAGE="https://github.com/symfony/polyfill-php80"
-EGIT_REPO_URI="https://github.com/symfony/polyfill-php80.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # no tests
