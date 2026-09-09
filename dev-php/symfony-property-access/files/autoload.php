@@ -6,6 +6,5 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\PropertyAccess\\', __DI
 
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
-	'/usr/share/php/Symfony/Contracts/Deprecation/autoload.php',
 	'/usr/share/php/Symfony/Component/PropertyInfo/autoload.php',
 ]);
