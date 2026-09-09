@@ -1,0 +1,70 @@
+--- ../tests/GridFS/BucketFunctionalTest.php	2026-09-07 19:58:46.462095376 +0300
++++ ../tests/GridFS/BucketFunctionalTest.php	2026-09-07 20:01:32.801745400 +0300
+@@ -226,7 +226,7 @@
+     }
+ 
+     #[DataProvider('provideInputDataAndExpectedChunks')]
+-    public function testDownloadToStream($input): void
++    public function testDownloadToStream($input, $expectedChunks): void
+     {
+         $id = $this->bucket->uploadFromStream('filename', self::createStream($input));
+         $destination = self::createStream();
+@@ -624,7 +624,7 @@
+     }
+ 
+     #[DataProvider('provideInputDataAndExpectedChunks')]
+-    public function testOpenDownloadStream($input): void
++    public function testOpenDownloadStream($input, $expectedChunks): void
+     {
+         $id = $this->bucket->uploadFromStream('filename', self::createStream($input));
+ 
+@@ -632,7 +632,7 @@
+     }
+ 
+     #[DataProvider('provideInputDataAndExpectedChunks')]
+-    public function testOpenDownloadStreamAndMultipleReadOperations($input): void
++    public function testOpenDownloadStreamAndMultipleReadOperations($input, $expectedChunks): void
+     {
+         $id = $this->bucket->uploadFromStream('filename', self::createStream($input));
+         $stream = $this->bucket->openDownloadStream($id);
+@@ -698,7 +698,7 @@
+     }
+ 
+     #[DataProvider('provideInputDataAndExpectedChunks')]
+-    public function testOpenUploadStreamAndMultipleWriteOperations($input): void
++    public function testOpenUploadStreamAndMultipleWriteOperations($input, $expectedChunks): void
+     {
+         $stream = $this->bucket->openUploadStream('filename');
+         $offset = 0;
+@@ -888,6 +888,7 @@
+ 
+         $code = <<<'PHP'
+             require '%s';
++            require '%s';
+             // Don't report deprecations - if the issue exists this code will
+             // result in a fatal error
+             error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+@@ -905,6 +906,7 @@
+                 escapeshellarg(
+                     sprintf(
+                         $code,
++                        '/usr/share/php/PHPUnit/autoload.php',
+                         __DIR__ . '/../../vendor/autoload.php',
+                     ),
+                 ),
+@@ -931,6 +933,7 @@
+ 
+         $code = <<<'PHP'
+             require '%s';
++            require '%s';
+             // Don't report deprecations - if the issue exists this code will
+             // result in a fatal error
+             error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+@@ -948,6 +951,7 @@
+                 escapeshellarg(
+                     sprintf(
+                         $code,
++                        '/usr/share/php/PHPUnit/autoload.php',
+                         __DIR__ . '/../../vendor/autoload.php',
+                     ),
+                 ),

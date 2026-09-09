@@ -1,0 +1,20 @@
+--- ../tests/SpecTests/DocumentsMatchConstraintTest.php	2026-09-07 19:06:40.263992280 +0300
++++ ../tests/SpecTests/DocumentsMatchConstraintTest.php	2026-09-07 19:08:11.045028319 +0300
+@@ -149,7 +149,7 @@
+     {
+         return [
+             'Root type mismatch' => [
+-                'MongoDB\Model\BSONArray Object (...) is not instance of expected class "MongoDB\Model\BSONDocument"',
++                'MongoDB\Model\BSONArray Object () is not instance of expected class "MongoDB\Model\BSONDocument"',
+                 new DocumentsMatchConstraint(['foo' => 'bar']),
+                 new BSONArray(['foo' => 'bar']),
+             ],
+@@ -174,7 +174,7 @@
+                 ['foo' => '42'],
+             ],
+             'Type mismatch' => [
+-                'Field path "foo": MongoDB\Model\BSONDocument Object (...) is not instance of expected type "MongoDB\Model\BSONArray".',
++                'Field path "foo": MongoDB\Model\BSONDocument Object () is not instance of expected type "MongoDB\Model\BSONArray".',
+                 new DocumentsMatchConstraint(['foo' => ['bar']]),
+                 ['foo' => (object) ['bar']],
+             ],

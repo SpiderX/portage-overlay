@@ -1,0 +1,29 @@
+--- ../tests/Collection/CollectionFunctionalTest.php	2026-09-07 19:44:31.992270901 +0300
++++ ../tests/Collection/CollectionFunctionalTest.php	2026-09-07 19:48:01.992899951 +0300
+@@ -716,7 +716,7 @@
+     }
+ 
+     #[DataProvider('collectionMethodClosures')]
+-    public function testMethodDoesNotInheritReadWriteConcernInTransaction(Closure $method): void
++    public function testMethodDoesNotInheritReadWriteConcernInTransaction(Closure $method, string $_rw): void
+     {
+         $this->skipIfTransactionsAreNotSupported();
+ 
+@@ -742,7 +742,7 @@
+     }
+ 
+     #[DataProvider('collectionWriteMethodClosures')]
+-    public function testMethodInTransactionWithWriteConcernOption($method): void
++    public function testMethodInTransactionWithWriteConcernOption($method, string $_rw): void
+     {
+         $this->skipIfTransactionsAreNotSupported();
+ 
+@@ -762,7 +762,7 @@
+     }
+ 
+     #[DataProvider('collectionReadMethodClosures')]
+-    public function testMethodInTransactionWithReadConcernOption($method): void
++    public function testMethodInTransactionWithReadConcernOption($method, string $_rw): void
+     {
+         $this->skipIfTransactionsAreNotSupported();
+ 

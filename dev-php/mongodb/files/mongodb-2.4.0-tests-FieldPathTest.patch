@@ -1,0 +1,11 @@
+--- ../tests/Builder/FieldPathTest.php	2026-09-07 19:42:15.077154361 +0300
++++ ../tests/Builder/FieldPathTest.php	2026-09-07 19:43:15.090367065 +0300
+@@ -29,7 +29,7 @@
+     }
+ 
+     #[DataProvider('provideFieldPath')]
+-    public function testRejectDollarPrefix(string $fieldPathClass): void
++    public function testRejectDollarPrefix(string $fieldPathClass, string $_resolveClass): void
+     {
+         $this->expectException(InvalidArgumentException::class);
+ 

@@ -1,0 +1,11 @@
+--- ../tests/Functions/GetEncryptedFieldsFromServerFunctionalTest.php	2026-09-07 19:13:27.300032221 +0300
++++ ../tests/Functions/GetEncryptedFieldsFromServerFunctionalTest.php	2026-09-07 19:13:58.291270621 +0300
+@@ -16,7 +16,7 @@
+ class GetEncryptedFieldsFromServerFunctionalTest extends FunctionalTestCase
+ {
+     private ClientEncryption $clientEncryption;
+-    private Collection $keyVaultCollection;
++    private ?Collection $keyVaultCollection = null;
+     private Database $database;
+ 
+     public function setUp(): void
