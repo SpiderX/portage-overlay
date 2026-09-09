@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="Symfony/Component/PasswordHasher"
 COMPOSER_INSTALL_SRC="."
 PHP_REQ_USE="argon2?,sodium?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony PasswordHasher Component"
 HOMEPAGE="https://github.com/symfony/password-hasher"
-EGIT_REPO_URI="https://github.com/symfony/password-hasher.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="argon2 sodium"
 REQUIRED_USE="test? ( argon2 sodium )"
 
@@ -23,4 +24,7 @@ BDEPEND="test? ( dev-php/symfony-console
 
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-7.4.8-tests-NativePasswordHasherTest.patch
+	"${FILESDIR}/${PN}"-7.4.8-tests-SodiumPasswordHasherTest.patch )
 composer_enable_tests phpunit
