@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/HttpFoundation"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Defines an object-oriented layer for the HTTP specification"
 HOMEPAGE="https://github.com/symfony/http-foundation"
-EGIT_REPO_URI="https://github.com/symfony/http-foundation.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="ipv6"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
@@ -32,19 +33,15 @@ BDEPEND="test? ( dev-db/redis
 		dev-php/symfony-rate-limiter
 		net-misc/curl )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.14-tests-common.inc.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.14-tests-common.inc.patch )
 composer_enable_tests phpunit
 
-src_prepare() {
-	composer_src_prepare
-
-	use ipv6 || edo rm Tests/{IpUtilsTest,RequestTest}.php
-}
-
 src_test() {
+	composer_prepare_tests
+	sed -i 's/ ignoreUndefinedTriggers="true"//' phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
+	use ipv6 || edo rm Tests/{IpUtilsTest,RequestTest}.php
 	edo "${EPREFIX}"/usr/sbin/redis-server - <<- EOF
 		daemonize yes
 		pidfile "${T}/redis.pid"

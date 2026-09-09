@@ -1,0 +1,10 @@
+--- ../Tests/Fixtures/response-functional/common.inc	2026-07-08 22:10:34.443731231 +0300
++++ ../Tests/Fixtures/response-functional/common.inc	2026-07-08 22:10:56.029646357 +0300
+@@ -1,5 +1,7 @@
+ <?php
+ 
++require_once __DIR__ . '/../../../autoload.php';
++
+ use Symfony\Component\HttpFoundation\Response;
+ 
+ $parent = __DIR__;

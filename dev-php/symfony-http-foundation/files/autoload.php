@@ -8,5 +8,4 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\HttpFoundation\\', __DI
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/Symfony/Contracts/Deprecation/autoload.php',
 	'/usr/share/php/Symfony/Polyfill/Mbstring/autoload.php',
-	'/usr/share/php/Symfony/Polyfill/Php83/autoload.php',
 ]);
