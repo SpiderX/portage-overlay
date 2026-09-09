@@ -6,6 +6,7 @@ require_once 'Fedora/Autoloader/autoload.php';
 	'autoload.php',
 	'/usr/share/php/Doctrine/Common/Collections/autoload.php',
 	'/usr/share/php/Symfony/Bridge/PhpUnit/autoload.php',
+	'/usr/share/php/Symfony/Component/Clock/autoload.php',
 	'/usr/share/php/Symfony/Component/Console/autoload.php',
 	'/usr/share/php/Symfony/Component/DependencyInjection/autoload.php',
 	'/usr/share/php/Symfony/Component/ExpressionLanguage/autoload.php',

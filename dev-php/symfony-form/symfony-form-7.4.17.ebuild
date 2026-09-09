@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Form"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Form Component"
 HOMEPAGE="https://github.com/symfony/form"
-EGIT_REPO_URI="https://github.com/symfony/form.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
 	dev-php/symfony-event-dispatcher
@@ -45,9 +46,10 @@ DOCS=( {CHANGELOG,README}.md )
 EPHPUNIT_EXCLUDE_FILTER='test(TypeExtensionClassIsTrackedAsResource|ArabicLocaleNonHtml5)'
 composer_enable_tests phpunit
 
-src_prepare() {
-	composer_src_prepare
-
+src_test() {
+	composer_prepare_tests
+	sed -i 's/ ignoreUndefinedTriggers="true"//' phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
 	# remove tests with class from validator tests
 	edo rm Tests/Extension/Validator/Validator{Extension,TypeGuesser}Test.php
+	ephpunit
 }
