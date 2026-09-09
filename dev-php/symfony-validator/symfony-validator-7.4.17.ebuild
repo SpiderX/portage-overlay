@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Validator"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Validator Component"
 HOMEPAGE="https://github.com/symfony/validator"
-EGIT_REPO_URI="https://github.com/symfony/validator.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
 	dev-php/symfony-polyfill-ctype
@@ -25,18 +26,18 @@ BDEPEND="test? ( dev-php/egulias-email-validator
 		dev-php/symfony-console
 		dev-php/symfony-dependency-injection
 		dev-php/symfony-expression-language
-		>=dev-php/symfony-finder-6
+		>=dev-php/symfony-finder-7
 		dev-php/symfony-http-client
 		dev-php/symfony-http-kernel
 		dev-php/symfony-intl
 		dev-php/symfony-mime
 		dev-php/symfony-phpunit-bridge
+		>=dev-php/symfony-process-7
 		dev-php/symfony-property-access
 		dev-php/symfony-translation
 		dev-php/symfony-yaml )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
 composer_enable_tests phpunit
