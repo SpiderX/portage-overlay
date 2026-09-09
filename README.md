@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1615](https://img.shields.io/badge/ebuild-1615-orange.svg)](https://img.shields.io/badge/ebuild-1615-orange.svg)
+[![Number of ebuilds: 1616](https://img.shields.io/badge/ebuild-1616-orange.svg)](https://img.shields.io/badge/ebuild-1616-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1001,6 +1001,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[symfony-polyfill-php81](https://github.com/symfony/polyfill-php81) | Backport of some PHP 8.1+ features to lower PHP versions
 *   dev-php/[symfony-polyfill-php83](https://github.com/symfony/polyfill-php83) | Backport of some PHP 8.3+ features to lower PHP versions
 *   dev-php/[symfony-polyfill-php84](https://github.com/symfony/polyfill-php84) | Backport of some PHP 8.4+ features to lower PHP versions
+*   dev-php/[symfony-polyfill-php85](https://github.com/symfony/polyfill-php85) | Backport of some PHP 8.5+ features to lower PHP versions
 *   dev-php/[symfony-polyfill-uuid](https://github.com/symfony/polyfill-uuid) | Symfony polyfill for uuid functions
 *   dev-php/[symfony-process](https://github.com/symfony/process) | Executes commands in sub-processes
 *   dev-php/[symfony-property-access](https://github.com/symfony/property-access) | Symfony PropertyAccess Component
