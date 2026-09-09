@@ -6,14 +6,15 @@ EAPI=9
 COMPOSER_INSTALL_PATH="Symfony/Component/Security/Http"
 COMPOSER_INSTALL_SRC="."
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Security HTTP Component"
 HOMEPAGE="https://github.com/symfony/security-http"
-EGIT_REPO_URI="https://github.com/symfony/security-http.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
 	dev-php/symfony-event-dispatcher
@@ -37,8 +38,7 @@ BDEPEND="test? ( dev-php/doctrine-deprecations
 		dev-php/symfony-translation
 		dev-php/web-token-jwt-library )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
 composer_enable_tests phpunit

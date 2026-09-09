@@ -8,6 +8,7 @@ Fedora\Autoloader\Autoload::addPsr4('Symfony\\Component\\Security\\Http\\', __DI
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/Symfony/Contracts/Deprecation/autoload.php',
 	'/usr/share/php/Symfony/Contracts/Service/autoload.php',
+	'/usr/share/php/Symfony/Component/EventDispatcher/autoload.php',
 	'/usr/share/php/Symfony/Component/HttpFoundation/autoload.php',
 	'/usr/share/php/Symfony/Component/HttpKernel/autoload.php',
 	'/usr/share/php/Symfony/Component/PropertyAccess/autoload.php',

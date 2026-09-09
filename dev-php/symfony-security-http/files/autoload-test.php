@@ -4,8 +4,13 @@ require_once 'Fedora/Autoloader/autoload.php';
 
 \Fedora\Autoloader\Dependencies::required([
 	'autoload.php',
+	'/usr/share/php/Doctrine/Deprecations/autoload.php',
+	'/usr/share/php/Jose/Component/autoload.php',
+	'/usr/share/php/Psr/Log/autoload.php',
 	'/usr/share/php/Symfony/Bridge/PhpUnit/autoload.php',
 	'/usr/share/php/Symfony/Contracts/HttpClient/autoload.php',
+	'/usr/share/php/Symfony/Component/Cache/autoload.php',
+	'/usr/share/php/Symfony/Component/Clock/autoload.php',
 	'/usr/share/php/Symfony/Component/ExpressionLanguage/autoload.php',
 	'/usr/share/php/Symfony/Component/HttpClient/autoload.php',
 	'/usr/share/php/Symfony/Component/RateLimiter/autoload.php',
