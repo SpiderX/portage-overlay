@@ -7,22 +7,22 @@ COMPOSER_INSTALL_PATH="Symfony/Component/Serializer"
 COMPOSER_INSTALL_SRC="."
 PHP_REQ_USE="bcmath?,gmp?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Serializer Component"
 HOMEPAGE="https://github.com/symfony/serializer"
-EGIT_REPO_URI="https://github.com/symfony/serializer.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="bcmath gmp"
 REQUIRED_USE="test? ( bcmath gmp )"
 
 RDEPEND="dev-php/symfony-deprecation-contracts
 	dev-php/symfony-polyfill-ctype
 	dev-php/symfony-polyfill-php84"
-BDEPEND="test? ( dev-php/doctrine-annotations
-		dev-php/jsonlint
+BDEPEND="test? ( dev-php/jsonlint
 		dev-php/phpdocumentor-reflection-docblock
 		dev-php/phpstan-phpdoc-parser
 		dev-php/symfony-cache
@@ -47,10 +47,9 @@ BDEPEND="test? ( dev-php/doctrine-annotations
 		dev-php/symfony-var-exporter
 		dev-php/symfony-yaml )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
 # skip test depends on PHP/libxml behavior
 EPHPUNIT_EXCLUDE_FILTER='testEncodeException'
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.17-tests.patch )
 composer_enable_tests phpunit
