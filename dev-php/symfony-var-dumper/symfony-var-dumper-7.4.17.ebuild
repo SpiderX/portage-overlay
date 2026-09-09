@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="Symfony/Component/VarDumper"
 COMPOSER_INSTALL_SRC="."
 PHP_REQ_USE="ffi?,mysqli?,xmlreader?"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Mechanisms for walking through any arbitrary PHP variable"
 HOMEPAGE="https://github.com/symfony/var-dumper"
-EGIT_REPO_URI="https://github.com/symfony/var-dumper.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="ipv6 ffi mysqli xmlreader"
 REQUIRED_USE="test? ( ffi mysqli xmlreader )"
 
@@ -27,7 +28,7 @@ BDEPEND="test? ( dev-db/redis
 		dev-php/symfony-deprecation-contracts
 		dev-php/symfony-http-kernel
 		dev-php/symfony-phpunit-bridge
-		>=dev-php/symfony-process-6
+		>=dev-php/symfony-process-7
 		dev-php/symfony-uid
 		>=dev-php/twig-3.10.3 )"
 # needs brokers for dev-php/pecl-rdkafka
@@ -41,6 +42,9 @@ EPHPUNIT_EXCLUDE_FILTER='test(GEt|HtmlDump)'
 composer_enable_tests phpunit
 
 src_test() {
+	use ipv6 || COMPOSER_TEST_PATCHES+=( "${FILESDIR}/${PN}"-7.4.17-tests-no-ipv6.patch )
+	composer_prepare_tests
+	sed -i 's/ ignoreUndefinedTriggers="true"//' phpunit.xml.dist || die "sed failed for phpunit.xml.dist"
 	edo "${EPREFIX}"/usr/sbin/redis-server - <<- EOF || die "redis-server failed"
 		daemonize yes
 		pidfile "${T}/redis.pid"

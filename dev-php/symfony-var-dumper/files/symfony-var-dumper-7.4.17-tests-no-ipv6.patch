@@ -1,0 +1,46 @@
+--- ../Tests/Caster/SocketCasterTest.php	2026-06-28 17:01:21.967427288 +0300
++++ ../Tests/Caster/SocketCasterTest.php	2026-06-28 17:01:38.120379400 +0300
+@@ -57,43 +57,6 @@
+     }
+ 
+     #[RequiresPhp('>=8.3.0')]
+-    public function testCastSocketIpV6()
+-    {
+-        $socket = socket_create(\AF_INET6, \SOCK_STREAM, \SOL_TCP);
+-        @socket_connect($socket, '::1', 80);
+-
+-        $this->assertDumpMatchesFormat(
+-            <<<'EODUMP'
+-                Socket {
+-                  uri: "tcp://[%A]:%d"
+-                  timed_out: false
+-                  blocked: true
+-                  last_error: SOCKET_ECONNREFUSED
+-                }
+-                EODUMP,
+-            $socket
+-        );
+-    }
+-
+-    #[RequiresPhp('<8.3.0')]
+-    public function testCastSocketIpV6PriorToPhp83()
+-    {
+-        $socket = socket_create(\AF_INET6, \SOCK_STREAM, \SOL_TCP);
+-        @socket_connect($socket, '::1', 80);
+-
+-        $this->assertDumpMatchesFormat(
+-            <<<'EODUMP'
+-                Socket {
+-                  timed_out: false
+-                  blocked: true
+-                  last_error: SOCKET_ECONNREFUSED
+-                }
+-                EODUMP,
+-            $socket
+-        );
+-    }
+-
+-    #[RequiresPhp('>=8.3.0')]
+     public function testCastUnixSocket()
+     {
+         $socket = socket_create(\AF_UNIX, \SOCK_STREAM, 0);

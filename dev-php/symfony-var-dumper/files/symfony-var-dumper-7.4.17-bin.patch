@@ -1,0 +1,10 @@
+--- ../Resources/bin/var-dump-server	2026-06-27 22:38:23.671504801 +0300
++++ ../Resources/bin/var-dump-server	2026-06-27 22:39:08.999621569 +0300
+@@ -35,6 +35,7 @@
+ }
+ 
+ if (
++    !includeIfExists('/usr/share/php/Symfony/Component/VarDumper/autoload.php') &&
+     !includeIfExists(__DIR__ . '/../../../../autoload.php') &&
+     !includeIfExists(__DIR__ . '/../../vendor/autoload.php') &&
+     !includeIfExists(__DIR__ . '/../../../../../../vendor/autoload.php')
