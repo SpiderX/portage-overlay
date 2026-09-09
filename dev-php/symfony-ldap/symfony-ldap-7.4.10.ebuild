@@ -7,14 +7,15 @@ COMPOSER_INSTALL_PATH="Symfony/Component/Ldap"
 COMPOSER_INSTALL_SRC="."
 PHP_REQ_USE="ldap"
 
-inherit composer git-r3
+inherit composer
 
 DESCRIPTION="Symfony Ldap Component"
 HOMEPAGE="https://github.com/symfony/ldap"
-EGIT_REPO_URI="https://github.com/symfony/options-resolver.git"
+SRC_URI="https://github.com/symfony/${COMPOSER_PKG}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-php/symfony-options-resolver"
 BDEPEND="test? ( dev-php/doctrine-deprecations
@@ -22,8 +23,7 @@ BDEPEND="test? ( dev-php/doctrine-deprecations
 		dev-php/symfony-security-core
 		dev-php/symfony-security-http )"
 
-PATCHES=( "${FILESDIR}/${PN}"-7.4.10-tests.patch )
-
 DOCS=( {CHANGELOG,README}.md )
 
+COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-7.4.10-tests.patch )
 composer_enable_tests phpunit
