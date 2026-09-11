@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1617](https://img.shields.io/badge/ebuild-1617-orange.svg)](https://img.shields.io/badge/ebuild-1617-orange.svg)
+[![Number of ebuilds: 1616](https://img.shields.io/badge/ebuild-1616-orange.svg)](https://img.shields.io/badge/ebuild-1616-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -282,7 +282,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[fuzzyset](https://github.com/laserpants/fuzzyset-haskell) | A fuzzy string set implementation in Haskell
 *   dev-haskell/[generic-monoid](https://hackage.haskell.org/package/generic-monoid) | Derive monoid instances for product types
 *   dev-haskell/[gitrev](https://github.com/acfoltzer/gitrev) | Compile git revision info into Haskell projects
-*   dev-haskell/[groups](https://github.com/Taneb/groups) | Group and Abelian group typeclasses
 *   dev-haskell/[haskell-src](https://github.com/haskell-pkg-janitors/haskell-src) | Support for manipulating Haskell source code
 *   dev-haskell/[haskell-src-meta](https://github.com/haskell-party/haskell-src-meta) | Parse source to template-haskell abstract syntax
 *   dev-haskell/[hasql](https://github.com/nikita-volkov/hasql) | An efficient PostgreSQL driver with a flexible mapping API
