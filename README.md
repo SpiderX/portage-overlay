@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1618](https://img.shields.io/badge/ebuild-1618-orange.svg)](https://img.shields.io/badge/ebuild-1618-orange.svg)
+[![Number of ebuilds: 1617](https://img.shields.io/badge/ebuild-1617-orange.svg)](https://img.shields.io/badge/ebuild-1617-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -254,7 +254,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[cipher-aes128](https://github.com/TomMD/cipher-aes128) | AES and common modes using AES-NI when available
 *   dev-haskell/[colourista](https://github.com/kowainik/colourista) | Convenient interface for printing colourful messages
 *   dev-haskell/[concise](https://github.com/frasertweedale/hs-concise) | Utilities for Control.Lens.Cons
-*   dev-haskell/[concurrent-output](https://hackage.haskell.org/package/concurrent-output) | Ungarble output from several threads or commands
 *   dev-haskell/[configurator-pg](https://github.com/robx/configurator-pg) | Reduced parser for configurator-ng config files
 *   dev-haskell/[contravariant-extras](https://github.com/nikita-volkov/contravariant-extras) | Extras for the contravariant package
 *   dev-haskell/[conversion](https://github.com/nikita-volkov/conversion) | Universal converter between values of different types
