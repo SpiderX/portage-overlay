@@ -18,14 +18,15 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/hasql:=[profile?]
 	dev-haskell/hasql-implicits:=[profile?]
-	dev-haskell/ptr:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/ptr:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( ${POSTGRES_DEP}
 		dev-haskell/rerebase
 		dev-haskell/tasty
 		dev-haskell/tasty-hunit )"
+
+PATCHES=( "${FILESDIR}/${PN}"-0.3.1.8-tests.patch )
 
 pkg_setup() {
 	haskell-cabal_pkg_setup
@@ -34,19 +35,15 @@ pkg_setup() {
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	sed -i '/license-file/d' hasql-dynamic-statements.cabal \
-		|| die "sed failed"
+	sed -i '/license-file/d' hasql-dynamic-statements.cabal || die "sed failed"
 }
 
 src_test() {
 	local db="${T}/pgsql"
-	local POSTGRES_DB="postgres" POSTGRES_USER="postgres" \
-		POSTGRES_PASSWORD="postgres"
+	local POSTGRES_DB="postgres" POSTGRES_USER="postgres" POSTGRES_PASSWORD="postgres"
 
 	edo initdb -U postgres -D "${db}"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
-
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }

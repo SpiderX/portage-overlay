@@ -1,0 +1,32 @@
+hasql-1.9 removed Connection.settings and changed Connection.acquire to
+accept a list of Setting values.
+Update the test connection setup to use Setting.connection with a libpq
+connection string.
+--- ../test/Main.hs	2026-09-12 02:39:00.855081556 +0300
++++ ../test/Main.hs	2026-09-12 02:39:48.532689350 +0300
+@@ -3,6 +3,8 @@
+ import Data.ByteString qualified as ByteString
+ import Data.ByteString.Char8 qualified as ByteStringChar8
+ import Hasql.Connection qualified as Connection
++import Hasql.Connection.Setting qualified as Setting
++import Hasql.Connection.Setting.Connection qualified as ConnectionSetting
+ import Hasql.Decoders qualified as Decoders
+ import Hasql.DynamicStatements.Session qualified as Session
+ import Hasql.DynamicStatements.Snippet qualified as Snippet
+@@ -62,13 +64,9 @@
+       ExceptT $ Connection.acquire settings
+       where
+         settings =
+-          Connection.settings host port user password database
+-          where
+-            host = "localhost"
+-            port = 5432
+-            user = "postgres"
+-            password = "postgres"
+-            database = "postgres"
++          [ Setting.connection
++              (ConnectionSetting.string "host=localhost port=5432 user=postgres password=postgres dbname=postgres")
++          ]
+     use connection =
+       lift $ handler connection
+     release connection =
