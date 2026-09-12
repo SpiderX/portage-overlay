@@ -14,11 +14,10 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/syb:=[profile?]
-	dev-lang/ghc:="
+RDEPEND="dev-haskell/syb:=[profile?]"
 DEPEND="${RDEPEND}
 	dev-haskell/happy"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
