@@ -15,10 +15,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/contravariant:=[profile?]
-	dev-haskell/template-haskell-compat-v0208:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/template-haskell-compat-v0208:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
