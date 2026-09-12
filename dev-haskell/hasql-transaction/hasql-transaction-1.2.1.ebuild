@@ -18,12 +18,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/bytestring-tree-builder:=[profile?]
 	dev-haskell/contravariant:=[profile?]
-	dev-haskell/contravariant-extras:=[profile?]
-	dev-haskell/hasql:=[profile?]
-	dev-haskell/mtl:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/hasql:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( ${POSTGRES_DEP}
 		dev-haskell/async
 		dev-haskell/rerebase )"
@@ -44,8 +41,6 @@ src_test() {
 
 	edo initdb --username=postgres -D "${db}"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
-
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }
