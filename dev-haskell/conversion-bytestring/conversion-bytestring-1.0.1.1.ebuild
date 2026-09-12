@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,16 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/base-prelude:=[profile?]
-	dev-haskell/conversion:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/conversion:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
+
+CABAL_CHDEPS=(
+	'bytestring >= 0.10.2 && < 0.12' 'bytestring >= 0.10.2'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/license-file/,+1d' conversion-bytestring.cabal \
 		|| die "sed failed"
 }
