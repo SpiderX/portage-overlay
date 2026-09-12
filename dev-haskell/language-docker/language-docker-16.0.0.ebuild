@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,15 +19,17 @@ RDEPEND="dev-haskell/data-default:=[profile?]
 	dev-haskell/megaparsec:=[profile?]
 	dev-haskell/prettyprinter:=[profile?]
 	dev-haskell/split:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hunit:=[profile?]
-		dev-haskell/hspec:=[profile?]
-		dev-haskell/hspec-discover:=[profile?]
-		dev-haskell/hspec-megaparsec:=[profile?]
-		dev-haskell/quickcheck:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hunit
+		dev-haskell/hspec
+		dev-haskell/hspec-megaparsec
+		dev-haskell/quickcheck )"
+
+CABAL_CHDEPS=(
+	'megaparsec          >=9.7.0  && <9.9' 'megaparsec          >=9.5.0'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
