@@ -1,0 +1,18 @@
+ProjectsSpec invokes `cabal run`, but Gentoo's test environment requires
+GHC_PACKAGE_PATH so nested GHCi processes can see Cabal's in-place package
+database.
+
+cabal-install refuses to run when GHC_PACKAGE_PATH is set, while the
+remaining doctest and spectest cases require that environment.
+
+Skip the cabal-install integration test.
+--- ../test/ProjectsSpec.hs	2026-09-12 19:10:10.119806382 +0300
++++ ../test/ProjectsSpec.hs	2026-09-12 19:10:30.311602078 +0300
+@@ -24,6 +24,6 @@
+         | otherwise -> describe
+ 
+   cDescribe "T85-default-language" $ do
+-    it "cabal run doctests" $ do
++    xit "cabal run doctests" $ do
+       _ <- readCreateProcess (proc "cabal" ["run", "-v0", "--", "doctests", "--quiet"]) ""
+       pure ()

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This package provides a doctest program, that checks examples in
+	source code comments. It is modeled after doctest for Python.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">doctest-parallel</remote-id>
+		<remote-id type="github">martijnbastiaan/doctest-parallel</remote-id>
+	</upstream>
+</pkgmetadata>
