@@ -1,9 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
-
-inherit edo
+EAPI=9
 
 MY_PN="${PN%-bin}"
 MY_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/v${PV}/${MY_PN}"
