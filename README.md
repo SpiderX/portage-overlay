@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1608](https://img.shields.io/badge/ebuild-1608-orange.svg)](https://img.shields.io/badge/ebuild-1608-orange.svg)
+[![Number of ebuilds: 1607](https://img.shields.io/badge/ebuild-1607-orange.svg)](https://img.shields.io/badge/ebuild-1607-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -302,7 +302,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[hxt-unicode](https://github.com/UweSchmidt/hxt) | Unicode en-/decoding functions for utf8, iso-latin-* and other encodings
 *   dev-haskell/[ilist](https://github.com/brandonhamilton/ilist) | Index-related functions for lists
 *   dev-haskell/[indexed-profunctors](https://github.com/well-typed/optics) | Utilities for indexed profunctors
-*   dev-haskell/[ini](https://github.com/andreasabel/ini) | Configuration files in the INI format
 *   dev-haskell/[insert-ordered-containers](https://github.com/phadej/insert-ordered-containers) | Associative containers retating insertion order for traversals
 *   dev-haskell/[interpolatedstring-perl6](https://github.com/audreyt/interpolatedstring-perl6) | QuasiQuoter for Perl6 style multi-line interpolated
 *   dev-haskell/[inspection-testing](https://github.com/nomeata/inspection-testing) | GHC plugin to do inspection testing
