@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CABAL_HACKAGE_REVISION=1
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
@@ -21,10 +20,9 @@ RDEPEND="dev-haskell/atomic-primops:=[profile?]
 	dev-haskell/primitive:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/transformers-compat:=[profile?]
-	dev-haskell/utf8-string:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/utf8-string:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/doctest
 		dev-haskell/hspec
 		dev-haskell/quickcheck
