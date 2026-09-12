@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1604](https://img.shields.io/badge/ebuild-1604-orange.svg)](https://img.shields.io/badge/ebuild-1604-orange.svg)
+[![Number of ebuilds: 1605](https://img.shields.io/badge/ebuild-1605-orange.svg)](https://img.shields.io/badge/ebuild-1605-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -372,6 +372,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[tasty-hspec](https://github.com/mitchellwrosen/tasty-hspec) | Hspec support for the Tasty test framework
 *   dev-haskell/[template-haskell-compat-v0208](https://github.com/nikita-volkov/template-haskell-compat-v0208) | Backward-compatibility layer for Template Haskell newer than 2.8
 *   dev-haskell/[text-builder](https://github.com/nikita-volkov/text-builder) | Efficient strict text builder
+*   dev-haskell/[text-builder-core](https://github.com/nikita-volkov/text-builder-core) | Internals of text-builder
 *   dev-haskell/[text-builder-dev](https://github.com/nikita-volkov/text-builder-dev) | Edge of developments for text-builder
 *   dev-haskell/[text-latin1](https://github.com/mvv/text-latin1) | Latin-1 (including ASCII) utility functions for Haskell
 *   dev-haskell/[text-metrics](https://github.com/mrkkrp/text-metrics) | Calculate various string metrics efficiently in Haskell
