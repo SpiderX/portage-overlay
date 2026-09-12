@@ -14,13 +14,11 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/testcontainers:=[profile?]
-	dev-lang/ghc:="
+RDEPEND="dev-haskell/testcontainers:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	sed -i '/license-file/d' testcontainers-postgresql.cabal \
-		|| die "sed failed"
+	sed -i '/license-file/d' testcontainers-postgresql.cabal || die "sed failed"
 }
