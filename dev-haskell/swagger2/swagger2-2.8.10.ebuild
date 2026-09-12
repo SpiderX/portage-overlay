@@ -31,11 +31,10 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
 	dev-haskell/uuid-types:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	dev-haskell/cabal-doctest:=
+BDEPEND="dev-haskell/cabal
+	dev-haskell/cabal-doctest
 	test? ( dev-haskell/doctest
 		dev-haskell/glob
 		dev-haskell/hspec
