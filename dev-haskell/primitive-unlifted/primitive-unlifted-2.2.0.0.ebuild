@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CABAL_HACKAGE_REVISION=1
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
@@ -16,10 +15,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/primitive:=[profile?]
-	dev-haskell/text-short:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text-short:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck
 		dev-haskell/quickcheck-classes-base
 		dev-haskell/tasty
