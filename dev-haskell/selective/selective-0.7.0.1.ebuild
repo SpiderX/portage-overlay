@@ -14,10 +14,13 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-lang/ghc:="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck )"
+
+CABAL_CHDEPS=(
+	'QuickCheck             >= 2.8     && < 2.15' 'QuickCheck             >= 2.8'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
