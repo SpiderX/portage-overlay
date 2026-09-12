@@ -22,10 +22,9 @@ RDEPEND="dev-haskell/conduit:=[profile?]
 	dev-haskell/regex-tdfa:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/xml-conduit:=[profile?]
-	dev-haskell/xml-types:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/xml-types:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hspec
 		dev-haskell/hspec-golden
 		dev-haskell/markdown-unlit
