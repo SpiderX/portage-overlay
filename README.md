@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1609](https://img.shields.io/badge/ebuild-1609-orange.svg)](https://img.shields.io/badge/ebuild-1609-orange.svg)
+[![Number of ebuilds: 1608](https://img.shields.io/badge/ebuild-1608-orange.svg)](https://img.shields.io/badge/ebuild-1608-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -296,7 +296,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[hspec-junit-formatter](https://github.com/freckle/hspec-junit-formatter) | A JUnit XML runner/formatter for hspec
 *   dev-haskell/[hspec-wai-json](https://github.com/hspec/hspec-wai) | Testing JSON APIs with hspec-wai
 *   dev-haskell/[htf](https://github.com/skogsbaer/HTF) | The Haskell Test Framework
-*   dev-haskell/[http2](https://github.com/kazu-yamamoto/http2) | HTTP/2 library
 *   dev-haskell/[hxt](https://github.com/UweSchmidt/hxt) | A collection of tools for processing XML with Haskell
 *   dev-haskell/[hxt-charproperties](https://github.com/UweSchmidt/hxt) | Character properties and classes for XML and Unicode
 *   dev-haskell/[hxt-regex-xmlschema](https://github.com/UweSchmidt/hxt) | A regular expression library for W3C XML Schema regular expressions
