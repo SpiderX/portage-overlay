@@ -17,13 +17,12 @@ IUSE="+executable"
 
 RDEPEND="dev-haskell/ansi-terminal:=[profile?]
 	dev-haskell/glob:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/tasty:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hedgehog
 	dev-haskell/hspec
 	dev-haskell/hspec-core
-	dev-haskell/tasty
 	dev-haskell/tasty-expected-failure
 	dev-haskell/tasty-golden
 	dev-haskell/tasty-hedgehog
@@ -32,6 +31,10 @@ BDEPEND="dev-haskell/cabal:=
 	dev-haskell/tasty-quickcheck
 	dev-haskell/tasty-smallcheck
 	dev-haskell/temporary )"
+
+CABAL_CHDEPS=(
+	'tasty-quickcheck           >= 0.10     && < 0.11' 'tasty-quickcheck           >= 0.10'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
