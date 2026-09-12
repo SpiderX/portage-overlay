@@ -1,0 +1,28 @@
+Use the local PostgreSQL instance listening on 127.0.0.1:5432 instead of testcontainers-postgresql.
+--- ../src/integration-tests/Helpers/Hooks.hs	2026-09-12 10:10:10.691681808 +0300
++++ ../src/integration-tests/Helpers/Hooks.hs	2026-09-12 10:10:50.675228054 +0300
+@@ -1,19 +1,14 @@
+ -- | Hooks for Hspec.
+ module Helpers.Hooks where
+ 
+-import Data.Bool
+-import TestcontainersPostgresql qualified
+-import Prelude hiding (Handler)
++import Data.Text (Text)
++import Data.Text qualified as Text
++import Data.Word (Word16)
++import Prelude (IO)
+ 
+ -- | Testing action in the scope of the host name and port of a running fresh isolated postgres server.
+ type Handler = (Text, Word16) -> IO ()
+ 
+ postgres17 :: Handler -> IO ()
+ postgres17 handler =
+-  TestcontainersPostgresql.run
+-    TestcontainersPostgresql.Config
+-      { forwardLogs = False,
+-        distro = TestcontainersPostgresql.Distro17,
+-        auth = TestcontainersPostgresql.TrustAuth
+-      }
+-    (\(host, portInt) -> handler (host, fromIntegral portInt))
++  handler (Text.pack "127.0.0.1", 5432)

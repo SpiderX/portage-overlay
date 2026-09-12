@@ -18,15 +18,23 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/hasql:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/uuid:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/uuid:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( ${POSTGRES_DEP}
 		dev-haskell/async
 		dev-haskell/hspec
 		dev-haskell/random
-		dev-haskell/rerebase )"
+		dev-haskell/rerebase
+		dev-haskell/testcontainers-postgresql
+		dev-haskell/text-builder
+		dev-haskell/tuple )"
+
+PATCHES=( "${FILESDIR}/${PN}"-1.3.0.4-tests.patch )
+
+CABAL_CHDEPS=(
+	'testcontainers-postgresql >=0.0.2 && <0.1' 'testcontainers-postgresql >=0.0.2'
+)
 
 pkg_setup() {
 	haskell-cabal_pkg_setup
@@ -44,8 +52,6 @@ src_test() {
 
 	edo initdb -U postgres -D "${db}"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
-
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }
