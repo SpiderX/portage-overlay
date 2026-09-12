@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,14 +17,13 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/commutative-semigroups:=[profile?]
 	dev-haskell/primes:=[profile?]
 	dev-haskell/vector:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck:=[profile?]
-		dev-haskell/quickcheck-instances:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/quickcheck
+		dev-haskell/quickcheck-instances
+		dev-haskell/tasty
+		dev-haskell/tasty-quickcheck )"
 
 DOCS=( {CHANGELOG,README}.md )
 
