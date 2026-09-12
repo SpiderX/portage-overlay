@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CABAL_HACKAGE_REVISION=1
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
@@ -18,12 +17,15 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/aeson-qq:=[profile?]
 	dev-haskell/case-insensitive:=[profile?]
-	dev-haskell/hspec-wai:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/hspec-wai:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hspec
 		dev-haskell/hspec-wai )"
+
+CABAL_CHDEPS=(
+	'hspec-wai ==0.12.1' 'hspec-wai'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
