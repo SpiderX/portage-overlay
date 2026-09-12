@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1600](https://img.shields.io/badge/ebuild-1600-orange.svg)](https://img.shields.io/badge/ebuild-1600-orange.svg)
+[![Number of ebuilds: 1599](https://img.shields.io/badge/ebuild-1599-orange.svg)](https://img.shields.io/badge/ebuild-1599-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -382,7 +382,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[uri-bytestring](https://github.com/Soostone/uri-bytestring) | Haskell URI parsing as ByteStrings
 *   dev-haskell/[vector-instances](https://github.com/ekmett/vector-instances) | Additional Instances for Data.Vector
 *   dev-haskell/[wai-middleware-static](https://github.com/scotty-web/wai-middleware-static) | WAI middleware that serves requests to static files
-*   dev-haskell/[warp](https://github.com/yesodweb/wai) | A fast, light-weight web server for WAI applications
 *   dev-haskell/[xmlgen](https://github.com/skogsbaer/xmlgen) | Fast XML generation library
 *   dev-java/[classgraph](https://github.com/classgraph/classgraph) | An uber-fast parallelized Java classpath scanner and module scanner
 *   dev-java/[jetty-http](https://github.com/jetty/jetty.project) | HTTP implementation library for Eclipse Jetty
