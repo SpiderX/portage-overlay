@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1599](https://img.shields.io/badge/ebuild-1599-orange.svg)](https://img.shields.io/badge/ebuild-1599-orange.svg)
+[![Number of ebuilds: 1598](https://img.shields.io/badge/ebuild-1598-orange.svg)](https://img.shields.io/badge/ebuild-1598-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -324,7 +324,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[mtl-prelude](https://github.com/nikita-volkov/mtl-prelude) | Reexports of most definitions from mtl and transformers
 *   dev-haskell/[neat-interpolation](https://github.com/nikita-volkov/neat-interpolation) | Quasiquoter for neat and simple multiline text interpolation
 *   dev-haskell/[network-byte-order](https://github.com/kazu-yamamoto/network-byte-order) | Network byte order utilities
-*   dev-haskell/[network-control](https://github.com/kazu-yamamoto/network-control) | Library to control network protocols
 *   dev-haskell/[network-ip](https://github.com/mvv/network-ip) | Internet Protocol data structures
 *   dev-haskell/[optics-core](https://github.com/well-typed/optics) | Optics as an abstract interface
 *   dev-haskell/[optics-extra](https://github.com/well-typed/optics) | Extra utilities and instances for optics-core
