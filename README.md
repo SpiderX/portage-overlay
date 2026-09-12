@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1605](https://img.shields.io/badge/ebuild-1605-orange.svg)](https://img.shields.io/badge/ebuild-1605-orange.svg)
+[![Number of ebuilds: 1604](https://img.shields.io/badge/ebuild-1604-orange.svg)](https://img.shields.io/badge/ebuild-1604-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -372,7 +372,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[text-printer](https://github.com/mvv/text-printer) | Abstract interace for Haskell text builders/printers
 *   dev-haskell/[testcontainers](https://github.com/testcontainers/testcontainers-hs) | Docker containers for your integration tests
 *   dev-haskell/[testcontainers-postgresql](https://github.com/nikita-volkov/testcontainers-postgresql) | Testcontainers integration for PostgreSQL
-*   dev-haskell/[th-orphans](https://github.com/mgsloan/th-orphans) | Orphan instances for TH datatypes
 *   dev-haskell/[th-reify-many](https://github.com/mgsloan/th-reify-many) | Recurseively reify template haskell datatype info
 *   dev-haskell/[timerep](https://github.com/HugoDaniel/timerep) | Parse and display time according to some RFCs
 *   dev-haskell/[time-manager](https://github.com/yesodweb/wai) | Scalable timer
