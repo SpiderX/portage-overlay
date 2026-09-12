@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+comonad +kan-extensions +semigroupoids +stm +tagged +transformers +unordered-containers"
 
 RDEPEND="dev-haskell/data-default-class:=[profile?]
-	dev-lang/ghc:=
 	comonad? ( dev-haskell/comonad:=[profile?] )
 	kan-extensions? ( dev-haskell/kan-extensions:=[profile?] )
 	semigroupoids? ( dev-haskell/semigroupoids:=[profile?] )
@@ -25,7 +24,7 @@ RDEPEND="dev-haskell/data-default-class:=[profile?]
 	unordered-containers? ( dev-haskell/hashable:=[profile?]
 				dev-haskell/unordered-containers:=[profile?] )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
