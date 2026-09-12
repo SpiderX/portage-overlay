@@ -19,10 +19,9 @@ RDEPEND="dev-haskell/deferred-folds:=[profile?]
 	dev-haskell/hashable:=[profile?]
 	dev-haskell/list-t:=[profile?]
 	dev-haskell/primitive:=[profile?]
-	dev-haskell/primitive-extras:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/primitive-extras:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck
 		dev-haskell/rerebase
 		dev-haskell/tasty
