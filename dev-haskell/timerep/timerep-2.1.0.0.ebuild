@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,13 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/attoparsec:=[profile?]
-	dev-haskell/monoid-subclasses:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/monoid-subclasses:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-hunit:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/quickcheck
+		dev-haskell/tasty
+		dev-haskell/tasty-hunit
+		dev-haskell/tasty-quickcheck )"
 
 DOCS=( {CHANGES,README}.md )
 
