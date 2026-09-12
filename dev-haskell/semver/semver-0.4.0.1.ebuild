@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,12 +18,11 @@ RESTRICT="test" # no tests
 
 RDEPEND="dev-haskell/attoparsec:=[profile?]
 	dev-haskell/hashable:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-hunit:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/tasty
+		dev-haskell/tasty-hunit )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
