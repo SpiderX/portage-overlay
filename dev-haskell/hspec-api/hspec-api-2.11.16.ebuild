@@ -14,10 +14,9 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="~dev-haskell/hspec-core-2.11.17:=[profile?]
-	dev-lang/ghc:="
+RDEPEND="~dev-haskell/hspec-core-2.11.16:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hspec )"
 
 src_prepare() {
