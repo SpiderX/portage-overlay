@@ -14,27 +14,17 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/deferred-folds:=[profile?]
-	dev-haskell/isomorphism-class:=[profile?]
-	dev-haskell/lawful-conversions:=[profile?]
-	dev-haskell/quickcheck:=[profile?]
-	dev-haskell/quickcheck-instances:=[profile?]
-	dev-haskell/split:=[profile?]
+RDEPEND="dev-haskell/split:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text-builder:=[profile?]
+	dev-haskell/text-builder-core:=[profile?]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/base-compat
+	test? ( dev-haskell/quickcheck
 		dev-haskell/quickcheck-classes
-		dev-haskell/rerebase
+		dev-haskell/quickcheck-instances
 		dev-haskell/tasty
-		dev-haskell/tasty-hunit
 		dev-haskell/tasty-quickcheck )"
-
-CABAL_CHDEPS=(
-	'lawful-conversions >=0.1.4 && <0.2' 'lawful-conversions >=0.1.4 && <0.5'
-	'time >=1.12 && <2' 'time >=1.11 && <2'
-)
 
 src_prepare() {
 	haskell-cabal_src_prepare
