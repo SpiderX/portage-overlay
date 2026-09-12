@@ -15,18 +15,16 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/data-sketches-core:=[profile?]
-	dev-haskell/mwc-random:=[profile?]
 	dev-haskell/primitive:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-haskell/vector-algorithms:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hspec
-		dev-haskell/hspec-discover
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hedgehog
+		dev-haskell/hspec
 		dev-haskell/pretty-show
 		dev-haskell/quickcheck
-		dev-haskell/statistics )"
+		dev-haskell/statistics
+		dev-haskell/temporary )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
