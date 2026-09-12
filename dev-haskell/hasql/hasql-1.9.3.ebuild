@@ -23,22 +23,21 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/dlist:=[profile?]
 	dev-haskell/hashable:=[profile?]
 	dev-haskell/hashtables:=[profile?]
-	dev-haskell/mtl:=[profile?]
-	dev-haskell/network-ip:=[profile?]
+	dev-haskell/iproute:=[profile?]
 	dev-haskell/postgresql-binary:=[profile?]
 	dev-haskell/postgresql-libpq:=[profile?]
 	dev-haskell/profunctors:=[profile?]
-	dev-haskell/rerebase:=[profile?]
 	dev-haskell/scientific:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/text-builder:=[profile?]
 	dev-haskell/uuid:=[profile?]
 	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/witherable:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( ${POSTGRES_DEP}
 		dev-haskell/contravariant-extras
+		dev-haskell/hspec
 		dev-haskell/quickcheck-instances
 		dev-haskell/rerebase
 		dev-haskell/tasty
@@ -57,13 +56,10 @@ src_prepare() {
 
 src_test() {
 	local db="${T}/pgsql"
-	local POSTGRES_DB="postgres" POSTGRES_USER="postgres" \
-		POSTGRES_PASSWORD="postgres"
+	local POSTGRES_DB="postgres" POSTGRES_USER="postgres" POSTGRES_PASSWORD="postgres"
 
 	edo initdb -U postgres -D "${db}"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
-
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }
