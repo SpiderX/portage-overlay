@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,9 +15,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-lang/ghc:="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/async:=[profile?] )"
 
 src_prepare() {
