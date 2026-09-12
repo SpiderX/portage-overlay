@@ -15,15 +15,13 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/text:=[profile?]
-	dev-haskell/text-builder-dev:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text-builder-core:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck
+		dev-haskell/quickcheck-classes
 		dev-haskell/quickcheck-instances
-		dev-haskell/rerebase
 		dev-haskell/tasty
-		dev-haskell/tasty-hunit
 		dev-haskell/tasty-quickcheck )"
 
 src_prepare() {
