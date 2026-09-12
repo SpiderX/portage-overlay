@@ -16,10 +16,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/semigroups:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/text-latin1:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text-latin1:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck
 		dev-haskell/test-framework
 		dev-haskell/test-framework-quickcheck2 )"
