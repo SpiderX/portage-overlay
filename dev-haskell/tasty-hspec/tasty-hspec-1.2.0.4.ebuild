@@ -21,10 +21,9 @@ RDEPEND=">=dev-haskell/hspec-2.11.0:=[profile?]
 	dev-haskell/quickcheck:=[profile?]
 	dev-haskell/tasty:=[profile?]
 	dev-haskell/tasty-quickcheck:=[profile?]
-	dev-haskell/tasty-smallcheck:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/tasty-smallcheck:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
