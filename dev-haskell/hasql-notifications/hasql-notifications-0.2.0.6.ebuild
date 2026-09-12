@@ -19,16 +19,19 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/hasql:=[profile?]
 	dev-haskell/hasql-pool:=[profile?]
 	dev-haskell/postgresql-libpq:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( ${POSTGRES_DEP}
 		dev-haskell/hspec
 		dev-haskell/quickcheck )"
 
+PATCHES=( "${FILESDIR}/${PN}"-0.2.0.6-src-Notifications.patch
+	"${FILESDIR}/${PN}"-0.2.0.6-src-Main.patch
+	"${FILESDIR}/${PN}"-0.2.0.6-tests.patch )
+
 CABAL_CHDEPS=(
-	'hasql-pool >= 0.4 && < 0.11' 'hasql-pool >= 0.4 && < 1.2'
+	'hasql-pool >= 0.4 && < 0.11' 'hasql-pool >= 0.4'
 )
 
 pkg_setup() {
@@ -48,8 +51,6 @@ src_test() {
 	edo initdb -U postgres -D "${db}"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
 	edo createdb -h "${T}" -U postgres hasql_notifications_test
-
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }

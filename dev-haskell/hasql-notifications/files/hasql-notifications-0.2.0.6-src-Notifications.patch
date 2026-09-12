@@ -1,0 +1,15 @@
+hasql-1.9 no longer exports QueryError as a standalone type.
+QueryError is now a constructor of SessionError, and Hasql.Session.run
+returns Either SessionError.
+Update the notify function signature accordingly.
+--- ../src/Hasql/Notifications.hs	2026-09-12 10:21:54.745549215 +0300
++++ ../src/Hasql/Notifications.hs	2026-09-12 10:22:17.158815555 +0300
+@@ -74,7 +74,7 @@
+ notify :: Connection -- ^ Connection to be used to send the NOTIFY command
+        -> PgIdentifier -- ^ Channel where to send the notification
+        -> Text -- ^ Payload to be sent with the notification
+-       -> IO (Either S.QueryError ())
++       -> IO (Either S.SessionError ())
+ notify con channel mesg =
+    run (sql $ T.encodeUtf8 ("NOTIFY " <> fromPgIdentifier channel <> ", '" <> mesg <> "'")) con
+ 

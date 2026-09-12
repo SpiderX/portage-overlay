@@ -1,0 +1,34 @@
+hasql-1.9 changed Hasql.Connection.acquire to accept a list of
+connection settings instead of a connection string directly.
+Adapt the test suite to the new connection settings API.
+--- ../test/Hasql?NotificationsSpec.hs	2026-09-12 10:51:44.365311901 +0300
++++ ../test/Hasql/NotificationsSpec.hs	2026-09-12 10:52:22.751724713 +0300
+@@ -1,3 +1,5 @@
++{-# LANGUAGE OverloadedStrings #-}
++
+ module Hasql.NotificationsSpec (main, spec) where
+ 
+ import Test.Hspec
+@@ -10,6 +12,8 @@
+ import Data.ByteString
+ 
+ import Hasql.Connection
++import qualified Hasql.Connection.Setting as Setting
++import qualified Hasql.Connection.Setting.Connection as ConnectionSetting
+ import Hasql.Notifications
+ 
+ -- `main` is here so that this module can be run from GHCi on its own.  It is
+@@ -22,7 +26,12 @@
+   describe "send and receive notification" $
+     describe "when I send a notification to channel my handler is listening to" $
+       it "should call our notification handler" $ do
+-        dbOrError <- acquire "postgres://postgres:roottoor@localhost/hasql_notifications_test"
++        dbOrError <-
++          acquire
++            [ Setting.connection
++                (ConnectionSetting.string
++                  "postgres://postgres:roottoor@localhost/hasql_notifications_test")
++            ]
+         case dbOrError of
+             Right db -> do
+                 let channelToListen = toPgIdentifier "test-channel"

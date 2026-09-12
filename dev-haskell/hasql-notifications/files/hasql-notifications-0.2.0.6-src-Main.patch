@@ -1,0 +1,32 @@
+hasql-1.9 changed Hasql.Connection.acquire to accept a list of
+connection settings instead of a connection string directly.
+Adapt the example executable to the new connection settings API.
+--- ../app/Main.hs	2026-09-12 10:47:07.539871837 +0300
++++ ../app/Main.hs	2026-09-12 10:48:56.335184458 +0300
+@@ -1,9 +1,13 @@
++{-# LANGUAGE OverloadedStrings #-}
++
+ module Main where
+ 
+ import System.IO
+ import System.Exit (die)
+ 
+ import Hasql.Connection
++import qualified Hasql.Connection.Setting as Setting
++import qualified Hasql.Connection.Setting.Connection as ConnectionSetting
+ import Hasql.Notifications
+ 
+ main :: IO ()
+@@ -11,7 +15,11 @@
+     hSetBuffering stdout NoBuffering
+     hSetBuffering stderr NoBuffering
+ 
+-    dbOrError <- acquire "postgres://localhost/db_name"
++    dbOrError <-
++      acquire
++        [ Setting.connection
++            (ConnectionSetting.string "postgres://localhost/db_name")
++        ]
+     case dbOrError of
+         Right db -> do
+             let channelToListen = toPgIdentifier "sample-channel"
