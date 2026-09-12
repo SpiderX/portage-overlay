@@ -17,10 +17,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/bifunctors:=[profile?]
 	dev-haskell/profunctors:=[profile?]
-	dev-haskell/semigroupoids:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/semigroupoids:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/tasty
 		dev-haskell/tasty-quickcheck
 		dev-haskell/quickcheck )"
