@@ -20,10 +20,9 @@ RDEPEND="dev-haskell/comonad:=[profile?]
 	dev-haskell/pointed:=[profile?]
 	dev-haskell/semigroupoids:=[profile?]
 	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:=
 	hashable? ( dev-haskell/hashable:=[profile?] )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
