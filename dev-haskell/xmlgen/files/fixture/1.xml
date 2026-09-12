@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<__foo:foo xmlns:__foo="urn:__foo" xmlns:_foo="urn:_foo" _foo:key="value" _foo:key2="value">
+  <foo:bar xmlns:foo="urn:foo" _foo:key="value">BAR</foo:bar>
+  <foo:bar xmlns:foo="urn:foo">
+    <___foo:spam xmlns:___foo="urn:bar"><egg/>this is spam!</___foo:spam>
+  </foo:bar>
+</__foo:foo>

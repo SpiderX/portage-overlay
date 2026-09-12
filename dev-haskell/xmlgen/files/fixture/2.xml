@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<foo key="value" key2="value2">
+  <bar/>
+  <spam key="value"/>
+  <egg>ham</egg>
+  <foo:bar xmlns:foo="http://www.example.com"/>
+  <foo:spam xmlns:foo="http://www.example.com" foo:key="value"/>
+  <foo:egg xmlns:foo="http://www.example.com">
+    <ham/>
+  </foo:egg>
+</foo>

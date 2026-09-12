@@ -1,0 +1,14 @@
+Newer QuickCheck versions added fields to the Success result
+constructor. Avoid depending on its constructor arity and match the
+constructor using record syntax instead.
+--- ../test/GeneratorTest.hs	2026-09-12 11:55:28.670202287 +0300
++++ ../test/GeneratorTest.hs	2026-09-12 11:55:57.953046762 +0300
+@@ -193,7 +193,7 @@
+       checkProp =
+           do res <- Q.quickCheckResult prop
+              case res of
+-               Q.Success _ _ _ -> return ()
++               Q.Success {} -> return ()
+                _ -> H.assertFailure ("QC property " ++ name ++ " failed: "
+                                      ++ show res)
+ 

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<x xmlns="http://URI" xmlns:_="http://URI" _:a="in URI" b="in no ns" c="in default ns">
+  <y xmlns="" _:a="in URI" b="in no ns" c="in default ns">
+    <_:z _:a="in URI" b="in no ns" c="in default ns"/>
+  </y>
+</x>
