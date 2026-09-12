@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1602](https://img.shields.io/badge/ebuild-1602-orange.svg)](https://img.shields.io/badge/ebuild-1602-orange.svg)
+[![Number of ebuilds: 1603](https://img.shields.io/badge/ebuild-1603-orange.svg)](https://img.shields.io/badge/ebuild-1603-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -352,6 +352,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[prometheus-metrics-ghc](https://github.com/fimad/prometheus-haskell) | Haskell client library for exposing prometheus.io metrics
 *   dev-haskell/[protolude](https://github.com/sdiehl/protolude) | A sensible starting Prelude template
 *   dev-haskell/[ptr](https://github.com/nikita-volkov/ptr) | Abstractions for operations on pointers
+*   dev-haskell/[puresat](https://github.com/phadej/puresat) | Pure Haskell SAT-solver
 *   dev-haskell/[random-shuffle](https://hackage.haskell.org/package/random-shuffle) | Random shuffle implementation
 *   dev-haskell/[ranged-sets](https://github.com/PaulJohnson/Ranged-sets) | Ranged sets for Haskell
 *   dev-haskell/[rebase](https://github.com/nikita-volkov/rebase) | A more progressive alternative to the 'base' package
