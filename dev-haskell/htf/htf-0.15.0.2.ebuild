@@ -14,7 +14,6 @@ HOMEPAGE="https://github.com/skogsbaer/HTF"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # https://github.com/skogsbaer/HTF/issues/133
 
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/base64-bytestring:=[profile?]
@@ -30,14 +29,13 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/regex-compat:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/vector:=[profile?]
-	dev-haskell/xmlgen:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/xmlgen:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	dev-haskell/cpphs:=
-	test? ( dev-haskell/aeson-pretty:=[profile?]
-		dev-haskell/temporary:=[profile?]
-		dev-haskell/unordered-containers:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	dev-haskell/cpphs
+	test? ( dev-haskell/aeson-pretty
+		dev-haskell/temporary
+		dev-haskell/unordered-containers )"
 
 CABAL_TEST_REQUIRED_BINS=(
 	htfpp
@@ -46,7 +44,7 @@ CABAL_TEST_REQUIRED_BINS=(
 src_prepare() {
 	haskell-cabal_src_prepare
 	sed -i '/license-file/d' HTF.cabal || die "sed failed"
-	edo chmod +x scripts/local-htfpp
+	edo chmod +x scripts/local-htfpp tests/run-bbt.sh
 }
 
 src_compile() {
