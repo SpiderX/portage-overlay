@@ -15,7 +15,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-lang/ghc:="
+DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
