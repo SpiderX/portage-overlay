@@ -22,10 +22,9 @@ RDEPEND="dev-haskell/data-default-class:=[profile?]
 	dev-haskell/hashable:=[profile?]
 	dev-haskell/parsers:=[profile?]
 	dev-haskell/text-printer:=[profile?]
-	dev-haskell/type-hint:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/type-hint:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/tasty
 		dev-haskell/tasty-quickcheck )"
 
