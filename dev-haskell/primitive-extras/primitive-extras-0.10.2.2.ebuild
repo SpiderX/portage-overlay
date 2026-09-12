@@ -22,10 +22,9 @@ RDEPEND="dev-haskell/cereal:=[profile?]
 	dev-haskell/primitive:=[profile?]
 	dev-haskell/profunctors:=[profile?]
 	dev-haskell/vector:=[profile?]
-	dev-haskell/primitive-unlifted:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/primitive-unlifted:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck
 		dev-haskell/rerebase
 		dev-haskell/tasty
