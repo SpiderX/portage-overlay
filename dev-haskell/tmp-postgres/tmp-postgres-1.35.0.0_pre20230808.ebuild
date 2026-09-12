@@ -20,7 +20,6 @@ CABAL_FILE="${S}/${PN}".cabal
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # https://github.com/jfischoff/tmp-postgres/issues/283
 
 RDEPEND="${POSTGRES_DEP}
 	dev-haskell/async:=[profile?]
@@ -31,14 +30,21 @@ RDEPEND="${POSTGRES_DEP}
 	dev-haskell/postgres-options:=[profile?]
 	dev-haskell/postgresql-simple:=[profile?]
 	dev-haskell/prettyprinter:=[profile?]
-	dev-haskell/temporary:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/temporary:=[profile?]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hspec
 		dev-haskell/network )"
 
+PATCHES=( "${FILESDIR}/${PN}"-1.35.0.0_pre20230808-tests.patch )
+
 src_prepare() {
 	haskell-cabal_src_prepare
 	sed -i '/license-file/d' tmp-postgres.cabal || die "sed failed"
+}
+
+src_test() {
+	# tmp-postgres prefers TMP over TMPDIR. Portage's TMP is too long
+	# for PostgreSQL's 107-byte Unix-domain socket path limit.
+	TMP=/tmp haskell-cabal_src_test
 }

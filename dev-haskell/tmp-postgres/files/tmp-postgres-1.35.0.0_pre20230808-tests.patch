@@ -1,0 +1,39 @@
+The initdb PATH test assumes that /bin does not contain PostgreSQL
+utilities. This is no longer reliable on merged-/usr systems, where /bin
+may expose /usr/bin. Use an empty temporary directory as PATH instead.
+
+PostgreSQL 12 removed recovery.conf. Configure PITR through
+postgresql.conf and create recovery.signal as required by current
+PostgreSQL releases.
+--- ../test/Main.hs	2026-09-12 14:31:49.456907039 +0300
++++ ../test/Main.hs	2026-09-12 14:33:42.604459723 +0300
+@@ -516,9 +516,10 @@
+   it "throws if initdb is not on the path" $ do
+     path <-  getEnv "PATH"
+ 
+-    bracket (setEnv "PATH" "/bin") (const $ setEnv "PATH" path) $ \_ ->
+-      withConfig defaultConfig (const $ pure ())
+-        `shouldThrow` isDoesNotExistError
++    withTempDirectory "/tmp" "initdb-not-on-path-test" $ \dir ->
++      bracket (setEnv "PATH" dir) (const $ setEnv "PATH" path) $ \_ ->
++        withConfig defaultConfig (const $ pure ())
++          `shouldThrow` isDoesNotExistError
+ 
+   it "throws if createdb is not on the path" $
+     withTempDirectory "/tmp" "createdb-not-on-path-test" $ \dir -> do
+@@ -798,8 +799,13 @@
+ 
+       system ("chmod -R 700 " ++ dataDir) `shouldReturn` ExitSuccess
+ 
+-      writeFile (dataDir ++ "/recovery.conf") $ "recovery_target_name='pitr'\nrecovery_target_action='promote'\nrecovery_target_inclusive=true\nrestore_command='"
+-         ++ "cp " ++ walArchiveDir ++ "/%f %p'"
++      appendFile (dataDir ++ "/postgresql.conf") $
++        "recovery_target_name='pitr'\n\
++        \recovery_target_action='promote'\n\
++        \recovery_target_inclusive=true\n\
++        \restore_command='cp " ++ walArchiveDir ++ "/%f %p'\n"
++
++      writeFile (dataDir ++ "/recovery.signal") ""
+ 
+       either throwIO pure <=< withRestart db $ \newDb -> do
+         bracket (PG.connectPostgreSQL $ toConnectionString newDb) PG.close $ \conn -> do
