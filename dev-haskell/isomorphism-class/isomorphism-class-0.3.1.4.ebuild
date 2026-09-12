@@ -20,18 +20,17 @@ RDEPEND="dev-haskell/hashable:=[profile?]
 	dev-haskell/quickcheck:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck-instances
 		dev-haskell/rebase
 		dev-haskell/tasty
 		dev-haskell/tasty-quickcheck )"
 
-CABAL_CHDEPS=(
-	'quickcheck-instances >=0.3.32 && <0.5' 'quickcheck-instances >=0.3.29.1 && <0.5'
-)
+#CABAL_CHDEPS=(
+#	'quickcheck-instances >=0.3.32 && <0.5' 'quickcheck-instances >=0.3.29.1 && <0.5'
+#)
 
 src_prepare() {
 	haskell-cabal_src_prepare
