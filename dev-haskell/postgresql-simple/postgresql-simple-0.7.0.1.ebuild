@@ -26,8 +26,7 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/time-compat:=[profile?]
 	dev-haskell/uuid-types:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}
 	${POSTGRES_DEP}"
 BDEPEND="dev-haskell/cabal
