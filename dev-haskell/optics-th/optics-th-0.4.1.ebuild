@@ -16,10 +16,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/optics-core:=[profile?]
-	dev-haskell/th-abstraction:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/th-abstraction:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/tagged )"
 
 src_prepare() {
