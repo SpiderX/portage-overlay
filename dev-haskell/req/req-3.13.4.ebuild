@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CABAL_HACKAGE_REVISION=1
+CABAL_HACKAGE_REVISION=10
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 
 inherit haskell-cabal
@@ -21,6 +21,7 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/blaze-builder:=[profile?]
 	dev-haskell/case-insensitive:=[profile?]
 	dev-haskell/crypton-connection:=[profile?]
+	dev-haskell/data-default-class:=[profile?]
 	dev-haskell/http-api-data:=[profile?]
 	dev-haskell/http-client:=[profile?]
 	dev-haskell/http-client-tls:=[profile?]
@@ -30,17 +31,16 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/retry:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/transformers-base:=[profile?]
-	dev-haskell/unliftio-core:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/unliftio-core:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
-	test? ( dev-haskell/hspec:=
-		dev-haskell/hspec-core:=
-		dev-haskell/quickcheck:= )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hspec
+		dev-haskell/hspec-core
+		dev-haskell/quickcheck )"
 
-PATCHES=( "${FILESDIR}/${PN}"-3.13.1-tests.patch
-	"${FILESDIR}/${PN}"-3.13.1-test.patch
-	"${FILESDIR}/${PN}"-3.13.1-test-httpbin.patch )
+#PATCHES=( "${FILESDIR}/${PN}"-3.13.1-tests.patch
+#	"${FILESDIR}/${PN}"-3.13.1-test.patch
+#	"${FILESDIR}/${PN}"-3.13.1-test-httpbin.patch )
 
 src_prepare() {
 	haskell-cabal_src_prepare
