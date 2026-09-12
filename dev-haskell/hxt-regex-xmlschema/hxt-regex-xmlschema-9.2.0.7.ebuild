@@ -17,10 +17,9 @@ IUSE="profile"
 
 RDEPEND="dev-haskell/hxt-charproperties:=[profile?]
 	dev-haskell/parsec:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hunit )"
 
 src_prepare() {
