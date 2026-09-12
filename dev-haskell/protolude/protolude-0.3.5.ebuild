@@ -17,12 +17,10 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/async:=[profile?]
 	dev-haskell/hashable:=[profile?]
 	dev-haskell/mtl-compat:=[profile?]
-	dev-haskell/stm:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/transformers-compat:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/transformers-compat:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
