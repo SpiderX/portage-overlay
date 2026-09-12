@@ -16,8 +16,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/hashable:=[profile?]
-	dev-haskell/unordered-containers:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/unordered-containers:=[profile?]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal"
 
