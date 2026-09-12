@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,10 +24,9 @@ RDEPEND="dev-haskell/base64-bytestring:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/rsa:=[profile?]
 	dev-haskell/sha:=[profile?]
-	dev-haskell/transformers-compat:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/transformers-compat:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
