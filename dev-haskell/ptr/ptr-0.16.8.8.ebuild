@@ -18,10 +18,9 @@ RDEPEND="dev-haskell/contravariant:=[profile?]
 	dev-haskell/profunctors:=[profile?]
 	dev-haskell/strict-list:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/cereal
 		dev-haskell/quickcheck
 		dev-haskell/quickcheck-instances
