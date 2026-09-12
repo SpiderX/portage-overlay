@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,16 +17,14 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/cereal:=[profile?]
 	dev-haskell/data-default:=[profile?]
 	dev-haskell/network:=[profile?]
-	dev-haskell/pipes:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/pipes:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hunit:=[profile?]
-		dev-haskell/test-framework:=[profile?]
-		dev-haskell/test-framework-hunit:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hunit
+		dev-haskell/test-framework
+		dev-haskell/test-framework-hunit )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/License-file/d' daemons.cabal || die "sed failed"
 }
