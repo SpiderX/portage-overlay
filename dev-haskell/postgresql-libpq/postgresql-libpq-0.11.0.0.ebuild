@@ -17,19 +17,13 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="${POSTGRES_DEP}
 	dev-haskell/postgresql-libpq-configure
-	dev-haskell/postgresql-libpq-pkgconfig
-	dev-lang/ghc:="
+	dev-haskell/postgresql-libpq-pkgconfig"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
+BDEPEND="dev-haskell/cabal
 	virtual/pkgconfig
 	test? ( <dev-db/postgresql-9999[server]
 		dev-haskell/tasty
 		dev-haskell/tasty-hunit )"
-
-CABAL_CHDEPS=(
-	'tasty             ^>=1.5' 'tasty             ^>=1.4'
-	'tasty-hunit       ^>=0.10.1' 'tasty-hunit       ^>=0.10.0'
-)
 
 pkg_setup() {
 	haskell-cabal_pkg_setup
