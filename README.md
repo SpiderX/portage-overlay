@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1600](https://img.shields.io/badge/ebuild-1600-orange.svg)](https://img.shields.io/badge/ebuild-1600-orange.svg)
+[![Number of ebuilds: 1601](https://img.shields.io/badge/ebuild-1601-orange.svg)](https://img.shields.io/badge/ebuild-1601-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -331,6 +331,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[optics-core](https://github.com/well-typed/optics) | Optics as an abstract interface
 *   dev-haskell/[optics-extra](https://github.com/well-typed/optics) | Extra utilities and instances for optics-core
 *   dev-haskell/[optics-th](https://github.com/well-typed/optics) | Optics as an abstract interface
+*   dev-haskell/[optional-args](https://hackage.haskell.org/package/optional-args) | Optional function arguments
 *   dev-haskell/[pipes](https://github.com/Gabriella439/pipes) | Compositional pipelines
 *   dev-haskell/[placeholders](https://github.com/ahammar/placeholders) | Placeholders for use while developing Haskell code
 *   dev-haskell/[pointed](https://github.com/ekmett/pointed) | Pointed and copointed data
