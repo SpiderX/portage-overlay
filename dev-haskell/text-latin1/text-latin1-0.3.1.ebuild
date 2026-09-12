@@ -18,8 +18,7 @@ RDEPEND="dev-haskell/case-insensitive:=[profile?]
 	dev-haskell/data-checked:=[profile?]
 	dev-haskell/hashable:=[profile?]
 	dev-haskell/semigroups:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:="
 
