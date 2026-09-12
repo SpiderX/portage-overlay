@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,22 +12,16 @@ HOMEPAGE="https://github.com/phadej/spdx"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
-CDEPEND="dev-haskell/cabal:="
-RDEPEND="${CDEPEND}
-	dev-lang/ghc:="
+RDEPEND="dev-haskell/puresat:=[profile?]
+	dev-haskell/cabal-syntax:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="${CDEPEND}
-	test? ( dev-haskell/base-compat:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/tasty
+		dev-haskell/tasty-quickcheck )"
 
 DOCS=( {CHANGELOG,README}.md )
-
-CABAL_CHDEPS=(
-	'base-compat       ^>=0.10.5 || ^>=0.11.1 || ^>=0.12.1' 'base-compat >=0.12.1'
-)
 
 src_prepare() {
 	haskell-cabal_src_prepare
