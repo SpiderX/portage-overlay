@@ -17,8 +17,7 @@ IUSE="test"
 
 RDEPEND="dev-haskell/attoparsec:=[profile?]
 	dev-haskell/blaze-builder:=[profile?]
-	dev-haskell/th-lift-instances:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/th-lift-instances:=[profile?]"
 BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/base-compat
 		dev-haskell/hedgehog
