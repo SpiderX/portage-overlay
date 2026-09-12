@@ -20,11 +20,9 @@ RDEPEND="dev-haskell/comonad:=[profile?]
 	dev-haskell/semigroupoids:=[profile?]
 	dev-haskell/semigroups:=[profile?]
 	dev-haskell/tagged:=[profile?]
-	dev-haskell/transformers-compat:=[profile?]
-	dev-haskell/unordered-containers:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/unordered-containers:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
