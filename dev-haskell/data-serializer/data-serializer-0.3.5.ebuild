@@ -18,10 +18,9 @@ RDEPEND="dev-haskell/cereal:=[profile?]
 	dev-haskell/data-endian:=[profile?]
 	dev-haskell/parsers:=[profile?]
 	dev-haskell/semigroups:=[profile?]
-	dev-haskell/split:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/split:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/tasty
 		dev-haskell/tasty-quickcheck )"
 
