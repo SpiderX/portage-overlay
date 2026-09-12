@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,11 +17,10 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/clock:=[profile?]
 	dev-haskell/hashable:=[profile?]
-	dev-haskell/unordered-containers:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/unordered-containers:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hspec:= )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hspec )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
