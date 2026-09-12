@@ -20,15 +20,14 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/http-client:=[profile?]
 	dev-haskell/http-types:=[profile?]
 	dev-haskell/network:=[profile?]
-	dev-haskell/optics-core:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/resourcet:=[profile?]
 	dev-haskell/tasty:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unliftio-core:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( app-containers/docker
 		app-containers/docker-cli
 		dev-haskell/hspec
