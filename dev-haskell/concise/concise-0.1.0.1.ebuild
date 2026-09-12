@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,13 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/lens:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck:=[profile?]
-		dev-haskell/quickcheck-instances:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-quickcheck:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/quickcheck
+		dev-haskell/quickcheck-instances
+		dev-haskell/tasty
+		dev-haskell/tasty-quickcheck )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
