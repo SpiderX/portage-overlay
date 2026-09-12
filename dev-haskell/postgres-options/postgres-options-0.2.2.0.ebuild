@@ -17,8 +17,7 @@ IUSE="test"
 
 RDEPEND="dev-haskell/generic-monoid:=[profile?]
 	dev-haskell/split:=[profile?]
-	dev-haskell/uri-bytestring:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/uri-bytestring:=[profile?]"
 BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hspec )"
 
