@@ -15,9 +15,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="profile"
 
-RDEPEND="dev-lang/ghc:="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
