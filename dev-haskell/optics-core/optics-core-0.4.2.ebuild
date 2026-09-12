@@ -16,10 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="explicit-generic-labels"
 
 RDEPEND="dev-haskell/indexed-profunctors:=[profile?]
-	dev-haskell/indexed-traversable:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/indexed-traversable:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
