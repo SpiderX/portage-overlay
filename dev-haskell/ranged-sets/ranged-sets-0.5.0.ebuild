@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CABAL_HACKAGE_REVISION=2
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 CABAL_PN="${PN^}"
 
@@ -17,10 +16,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/hunit:=[profile?]
-	dev-haskell/quickcheck:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/quickcheck:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
