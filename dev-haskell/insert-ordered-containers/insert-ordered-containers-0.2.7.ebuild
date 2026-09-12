@@ -21,10 +21,10 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/optics-core:=[profile?]
 	dev-haskell/optics-extra:=[profile?]
 	dev-haskell/semigroupoids:=[profile?]
-	dev-haskell/unordered-containers:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]
+	dev-haskell/unordered-containers:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/base-compat
 		dev-haskell/quickcheck
 		dev-haskell/tasty
@@ -33,6 +33,5 @@ BDEPEND="dev-haskell/cabal:=
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	sed -i '/license-file/d' insert-ordered-containers.cabal \
-		|| die "sed failed"
+	sed -i '/license-file/d' insert-ordered-containers.cabal || die "sed failed"
 }
