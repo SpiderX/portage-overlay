@@ -19,15 +19,14 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/binary-parser:=[profile?]
 	dev-haskell/bytestring-strict-builder:=[profile?]
-	dev-haskell/network-ip:=[profile?]
+	dev-haskell/iproute:=[profile?]
 	dev-haskell/scientific:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
 	dev-haskell/uuid:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( ${POSTGRES_DEP}
 		dev-haskell/postgresql-libpq
 		dev-haskell/quickcheck
@@ -53,8 +52,6 @@ src_test() {
 
 	edo initdb -U postgres -D "${db}"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
-
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }
