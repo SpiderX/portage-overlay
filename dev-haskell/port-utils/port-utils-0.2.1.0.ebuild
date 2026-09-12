@@ -15,8 +15,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-haskell/network:=[profile?]
-	dev-lang/ghc:="
+RDEPEND="dev-haskell/network:=[profile?]"
 BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/async
 		dev-haskell/hspec
