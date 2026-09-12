@@ -19,10 +19,9 @@ RDEPEND="dev-haskell/hxt-charproperties:=[profile?]
 	dev-haskell/hxt-regex-xmlschema:=[profile?]
 	dev-haskell/hxt-unicode:=[profile?]
 	dev-haskell/network-uri:=[profile?]
-	dev-haskell/parsec:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/parsec:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
