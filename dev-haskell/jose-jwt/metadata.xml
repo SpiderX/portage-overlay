@@ -13,6 +13,9 @@
 	An implementation of the JOSE suite of IETF standards and the closely
 	related JWT (JSON web token) spec
 	</longdescription>
+	<use>
+		<flag name="doctest">Build doc tests</flag>
+	</use>
 	<upstream>
 		<remote-id type="hackage">jose-jwt</remote-id>
 		<remote-id type="github">tekul/jose-jwt</remote-id>
