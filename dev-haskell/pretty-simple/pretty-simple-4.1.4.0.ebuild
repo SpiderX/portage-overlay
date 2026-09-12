@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,11 +18,10 @@ IUSE="buildexample +buildexe"
 RDEPEND="dev-haskell/prettyprinter:=[profile?]
 	dev-haskell/prettyprinter-ansi-terminal:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-lang/ghc:=
 	buildexample? ( dev-haskell/aeson:=[profile?] )
 	buildexe? ( dev-haskell/optparse-applicative:=[profile?] )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
