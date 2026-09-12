@@ -1,0 +1,10 @@
+--- ../Crypto/Random/DRBG.hs	2026-09-11 18:01:17.799969756 +0300
++++ ../Crypto/Random/DRBG.hs	2026-09-11 18:01:42.425895436 +0300
+@@ -95,7 +95,6 @@
+ import qualified Data.ByteString as B
+ import Data.Tagged
+ import Control.Parallel
+-import Control.Monad.Error () -- Either instance
+ import Data.Word
+ 
+ instance H.SeedLength SHA512 where

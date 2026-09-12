@@ -1,0 +1,52 @@
+--- ../Crypto/Random/DRBG/CTR.hs	2026-09-11 18:31:15.967607942 +0300
++++ ../Crypto/Random/DRBGCTR.hs	2026-09-11 18:32:27.244307281 +0300
+@@ -34,12 +34,39 @@
+ getCounter :: State a -> Word64
+ getCounter = counter
+ 
++-- | Generate bytes using the counter semantics required by CTR_DRBG.
++--
++-- SP800-90 CTR_DRBG increments V before encrypting each block, whereas the
++-- generic BlockCipher 'ctr' operation encrypts the supplied IV first and
++-- increments it afterwards.
++drbgCtr :: BlockCipher a => a -> IV a -> Int -> (ByteString, IV a)
++drbgCtr k v len = go v len []
++  where
++    blkLen = blockSizeBytes `for` k
++
++    go iv n acc
++      | n <= 0 = (B.concat (reverse acc), iv)
++      | otherwise =
++          let iv'@(IV ctrBytes) = incrementIV iv
++              out = encryptBlock k ctrBytes
++              takeLen = min n blkLen
++          in go iv' (n - takeLen) (B.take takeLen out : acc)
++
++incrementIV :: IV a -> IV a
++incrementIV (IV bs) =
++    IV . B.reverse . B.pack . increment . B.unpack . B.reverse $ bs
++  where
++    increment [] = []
++    increment (x:xs)
++      | x == 0xff = 0 : increment xs
++      | otherwise = (x + 1) : xs
++
+ -- |Update the RNG
+ update :: BlockCipher a => ByteString -> State a -> Maybe (State a)
+ update provided_data st
+     | B.length provided_data < seedLen = Nothing
+     | otherwise =
+-        let (temp,_) = ctr (key st) (value st) (B.replicate seedLen 0)
++        let (temp,_) = drbgCtr (key st) (value st) seedLen
+             (keyBytes,valBytes) = B.splitAt keyLen (zwp' temp provided_data)
+             newValue = IV valBytes
+             newKey   = buildKey keyBytes
+@@ -101,7 +128,7 @@
+   --                     -> AdditionalInput
+   --                     -> Maybe (RandomBits, State a)
+   go st ai =
+-      let (temp,v2) = ctr (key st) (value st) (B.replicate len 0)
++      let (temp,v2) = drbgCtr (key st) (value st) len
+           st1       = update ai (st { value = v2
+                                     , counter = counter st + 1 })
+       in fmap (temp,) st1
