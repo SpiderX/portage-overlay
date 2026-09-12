@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,16 +15,13 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/exceptions:=[profile?]
-	dev-haskell/mmorph:=[profile?]
-	dev-haskell/mtl:=[profile?]
-	dev-haskell/void:=[profile?]
-	dev-lang/ghc:="
+RDEPEND="dev-haskell/mmorph:=[profile?]
+	dev-haskell/void:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
-	test? ( dev-haskell/quickcheck:=[profile?]
-		dev-haskell/test-framework:=[profile?]
-		dev-haskell/test-framework-quickcheck2:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/quickcheck
+		dev-haskell/test-framework
+		dev-haskell/test-framework-quickcheck2 )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
