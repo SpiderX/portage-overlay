@@ -29,11 +29,10 @@ RDEPEND="dev-haskell/bifunctors:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/time-compat:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	dev-haskell/uuid-types:=[profile?]
+	dev-haskell/uuid:=[profile?]
 	dev-haskell/vector:=[profile?]
 	dev-haskell/vector-instances:=[profile?]
-	dev-haskell/void:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/void:=[profile?]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-haskell/cabal:="
 
@@ -43,6 +42,5 @@ CABAL_CHDEPS=(
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	cabal-mksetup
 	sed -i '/license-file/d' rebase.cabal || die "sed failed"
 }
