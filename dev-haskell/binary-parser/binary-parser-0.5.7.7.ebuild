@@ -14,10 +14,9 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+RDEPEND="dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/base-prelude
 		dev-haskell/tasty
 		dev-haskell/tasty-hunit
