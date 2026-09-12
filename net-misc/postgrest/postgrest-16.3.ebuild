@@ -15,12 +15,12 @@ SRC_URI="https://github.com/PostgREST/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="acct-group/postgrest
 	acct-user/postgrest
 	dev-haskell/aeson:=[profile?]
-	dev-haskell/auto-update:=[profile?]
+	dev-haskell/aeson-jsonpath:=[profile?]
 	dev-haskell/base64-bytestring:=[profile?]
 	dev-haskell/case-insensitive:=[profile?]
 	dev-haskell/cassava:=[profile?]
@@ -28,6 +28,7 @@ RDEPEND="acct-group/postgrest
 	dev-haskell/cookie:=[profile?]
 	dev-haskell/either:=[profile?]
 	dev-haskell/extra:=[profile?]
+	dev-haskell/fast-logger:=[profile?]
 	dev-haskell/focus:=[profile?]
 	dev-haskell/fuzzyset:=[profile?]
 	dev-haskell/hasql:=[profile?]
@@ -49,6 +50,7 @@ RDEPEND="acct-group/postgrest
 	dev-haskell/parsec:=[profile?]
 	dev-haskell/postgresql-libpq:=[profile?]
 	dev-haskell/prometheus-client:=[profile?]
+	dev-haskell/prometheus-metrics-ghc:=[profile?]
 	dev-haskell/protolude:=[profile?]
 	dev-haskell/ranged-sets:=[profile?]
 	dev-haskell/regex-tdfa:=[profile?]
@@ -61,40 +63,39 @@ RDEPEND="acct-group/postgrest
 	dev-haskell/text:=[profile?]
 	>=dev-haskell/unix-compat-0.7:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	dev-haskell/vault:=[profile?]
+	dev-haskell/uuid:=[profile?]
 	dev-haskell/vector:=[profile?]
 	dev-haskell/wai:=[profile?]
 	dev-haskell/wai-cors:=[profile?]
 	>=dev-haskell/wai-extra-3.1.13.0:=[profile?]
 	>=dev-haskell/wai-logger-2.4.0:=[profile?]
-	dev-haskell/warp:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/warp:=[profile?]"
 DEPEND="${RDEPEND}"
-
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( ${POSTGRES_DEP}
 		dev-db/pg-safeupdate
 		dev-db/postgis
-		dev-haskell/aeson-qq:=[profile?]
-		dev-haskell/async:=[profile?]
-		dev-haskell/doctest:=[profile?]
-		dev-haskell/heredoc:=[profile?]
-		dev-haskell/hspec:=[profile?]
-		dev-haskell/hspec-expectations:=[profile?]
-		dev-haskell/hspec-wai:=[profile?]
-		dev-haskell/hspec-wai-json:=[profile?]
-		dev-haskell/http-types:=[profile?]
-		dev-haskell/monad-control:=[profile?]
-		dev-haskell/pretty-simple:=[profile?]
-		dev-haskell/transformers-base:=[profile?] )"
+		dev-haskell/aeson-qq
+		dev-haskell/async
+		dev-haskell/doctest-parallel
+		dev-haskell/heredoc
+		dev-haskell/hspec
+		dev-haskell/hspec-expectations
+		dev-haskell/hspec-wai
+		dev-haskell/hspec-wai-json
+		dev-haskell/http-types
+		dev-haskell/monad-control
+		dev-haskell/pretty-simple
+		dev-haskell/transformers-base )"
 
 DOC_CONTENTS="Sample configuration: /etc/postgrest/postgrest.conf.sample.
 Copy it to /etc/postgrest/postgrest.conf to run PostgREST."
 
 CABAL_CHDEPS=(
-	'hasql-notifications       >= 0.2.2.2 && < 0.2.3' 'hasql-notifications       >= 0.2.0.6 && < 0.2.3'
-	'http-client               >= 0.7.19 && < 0.8' 'http-client               >= 0.7.14 && < 0.8'
-	'streaming-commons         >= 0.2.3.1 && < 0.3' 'streaming-commons         >= 0.2.2.5 && < 0.3'
+	'hasql-notifications       >= 0.2.4.0 && < 0.3' 'hasql-notifications       >= 0.2'
+	'hspec-wai-json    >= 0.10 && < 0.12' 'hspec-wai-json    >= 0.10'
+	'streaming-commons         >= 0.2.3.1 && < 0.3' 'streaming-commons         >= 0.2.3.0'
+	'warp                      >= 3.4.14 && < 3.5' 'warp                      >= 3.4.13'
 )
 
 pkg_setup() {
@@ -117,16 +118,15 @@ src_test() {
 	export PGHOST="${T}" PGUSER="postgres" PGDATABASE="postgres"
 
 	edo initdb -U postgres -D "${db}"
-	# test expects UTC timezone
-	sed -i '/timezone/s|Europe/Kiev|UTC|' "${db}"/postgresql.conf \
-		|| die "sed for postgresql.conf failed"
+	# tests expect UTC timezone and query identifiers
+	sed -i  -e '/timezone/s|Europe/Kiev|UTC|' \
+		-e 's/^#compute_query_id = auto/compute_query_id = on/' \
+		"${db}/postgresql.conf" || die "sed for postgresql.conf failed"
 	edo pg_ctl -w -D "${db}" start -o "-h '127.0.0.1' -p 5432 -k '${T}'"
-	# load fixtures into database
-	edo psql --set=PGUSER="postgres" -v ON_ERROR_STOP=1 \
-		-f test/spec/fixtures/load.sql
-
+	# load fixtures and collect planner statistics required by count=planned/count=estimated tests.
+	edo psql --set=PGUSER="postgres" -v ON_ERROR_STOP=1 -f test/spec/fixtures/load.sql
+	edo psql -v ON_ERROR_STOP=1 -c 'ANALYZE;'
 	haskell-cabal_src_test
-
 	edo pg_ctl -w -D "${db}" stop
 }
 
