@@ -15,7 +15,6 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-lang/ghc:="
 DEPEND="${RDEPEND}
 	${POSTGRES_DEP}"
 BDEPEND="dev-haskell/cabal
@@ -28,6 +27,5 @@ pkg_setup() {
 
 src_prepare() {
 	haskell-cabal_src_prepare
-	sed -i '/license-file/d' postgresql-libpq-pkgconfig.cabal \
-		|| die "sed failed"
+	sed -i '/license-file/d' postgresql-libpq-pkgconfig.cabal || die "sed failed"
 }
