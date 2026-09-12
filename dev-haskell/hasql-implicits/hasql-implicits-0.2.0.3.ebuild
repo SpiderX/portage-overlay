@@ -16,14 +16,13 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/hasql:=[profile?]
-	dev-haskell/network-ip:=[profile?]
+	dev-haskell/iproute:=[profile?]
 	dev-haskell/scientific:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/uuid:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
