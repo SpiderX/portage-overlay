@@ -17,10 +17,9 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/megaparsec:=[profile?]
 	dev-haskell/protolude:=[profile?]
 	dev-haskell/scientific:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hunit
 		dev-haskell/test-framework
 		dev-haskell/test-framework-hunit )"
