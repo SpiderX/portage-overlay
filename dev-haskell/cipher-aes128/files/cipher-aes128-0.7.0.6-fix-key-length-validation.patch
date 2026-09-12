@@ -1,0 +1,39 @@
+The BlockCipher instances accepted any key material of at least 16 bytes.
+As a result, AESKey128 also accepted 192-bit and 256-bit keys and silently
+used only their first 128 bits.
+
+Besides accepting invalid input, this breaks crypto-api-tests. Its AES KAT
+runner intentionally passes vectors for all AES key sizes to each
+BlockCipher instance and relies on buildKey returning Nothing for keys of
+the wrong length.
+
+Require the exact key size for each AES variant.
+--- ../Crypto/Cipher/AES128.hs	2026-09-11 19:10:44.195790527 +0300
++++ ../Crypto/Cipher/AES128.hs	2026-09-11 19:12:14.676734984 +0300
+@@ -69,7 +69,7 @@
+     blockSize = Tagged 128
+     keyLength = Tagged 128
+     buildKey bs
+-      | B.length bs >= 16 = unsafePerformIO $
++      | B.length bs == 16 = unsafePerformIO $
+           B.unsafeUseAsCString bs (\p -> generateKey128 (castPtr p))
+       | otherwise = Nothing
+     encryptBlock k b = unsafePerformIO $ do
+@@ -102,7 +102,7 @@
+     blockSize = Tagged 128
+     keyLength = Tagged 192
+     buildKey bs
+-      | B.length bs >= 16 = unsafePerformIO $
++      | B.length bs == 24 = unsafePerformIO $
+           B.unsafeUseAsCString bs (\p -> generateKey192 (castPtr p))
+       | otherwise = Nothing
+     encryptBlock k b = unsafePerformIO $ do
+@@ -132,7 +132,7 @@
+     blockSize = Tagged 128
+     keyLength = Tagged 256
+     buildKey bs
+-      | B.length bs >= 16 = unsafePerformIO $
++      | B.length bs == 32 = unsafePerformIO $
+           B.unsafeUseAsCString bs (\p -> generateKey256 (castPtr p))
+       | otherwise = Nothing
+     encryptBlock k b = unsafePerformIO $ do

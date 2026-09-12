@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 
-inherit haskell-cabal
+inherit edo haskell-cabal
 
 DESCRIPTION="AES and common modes using AES-NI when available"
 HOMEPAGE="https://github.com/TomMD/cipher-aes128"
@@ -16,18 +16,18 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test" # fails
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-haskell/cereal:=[profile?]
 	dev-haskell/crypto-api:=[profile?]
-	dev-haskell/tagged:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/tagged:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/crypto-api-tests:=[profile?]
-		dev-haskell/test-framework:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/crypto-api-tests
+		dev-haskell/test-framework )"
 
-PATCHES=( "${DISTDIR}/${P}"-ghc-9.2.patch )
+PATCHES=( "${DISTDIR}/${P}"-ghc-9.2.patch
+	"${FILESDIR}/${PN}"-0.7.0.6-fix-key-length-validation.patch )
 
 src_prepare() {
 	haskell-cabal_src_prepare
@@ -40,5 +40,5 @@ src_configure() {
 
 src_test() {
 	haskell-cabal_src_test
-	./dist/build/aes128_test/aes128_test || die "tests failed"
+	edo ./dist/build/aes128_test/aes128_test
 }
