@@ -15,10 +15,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/data-bword:=[profile?]
-	dev-haskell/hashable:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/hashable:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/tasty
 		dev-haskell/tasty-quickcheck )"
 
