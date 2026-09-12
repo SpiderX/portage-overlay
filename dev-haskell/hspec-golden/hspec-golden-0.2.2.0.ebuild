@@ -16,10 +16,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/ansi-terminal:=[profile?]
 	dev-haskell/hspec-core:=[profile?]
-	dev-haskell/optparse-applicative:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/optparse-applicative:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/hspec
 		dev-haskell/silently )"
 
