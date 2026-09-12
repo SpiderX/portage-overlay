@@ -18,10 +18,9 @@ RDEPEND="dev-haskell/foldl:=[profile?]
 	dev-haskell/logict:=[profile?]
 	dev-haskell/mmorph:=[profile?]
 	dev-haskell/monad-control:=[profile?]
-	dev-haskell/transformers-base:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/transformers-base:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/base-prelude
 		dev-haskell/htf
 		dev-haskell/mtl-prelude )"
