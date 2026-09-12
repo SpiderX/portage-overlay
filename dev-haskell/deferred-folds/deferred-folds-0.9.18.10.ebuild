@@ -19,10 +19,9 @@ RDEPEND="dev-haskell/foldl:=[profile?]
 	dev-haskell/primitive:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
+BDEPEND="dev-haskell/cabal
 	test? ( dev-haskell/quickcheck-instances
 		dev-haskell/rerebase
 		dev-haskell/tasty
