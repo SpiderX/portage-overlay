@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,19 +19,17 @@ RDEPEND="dev-haskell/base16-bytestring:=[profile?]
 	dev-haskell/expiring-cache-map:=[profile?]
 	dev-haskell/http-types:=[profile?]
 	dev-haskell/mime-types:=[profile?]
-	dev-haskell/old-locale:=[profile?]
 	dev-haskell/semigroups:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/wai:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/wai:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hspec:=[profile?]
-		dev-haskell/hspec-expectations-lifted:=[profile?]
-		dev-haskell/hspec-wai:=[profile?]
-		dev-haskell/mockery:=[profile?]
-		dev-haskell/scotty:=[profile?]
-		dev-haskell/wai-extra:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hspec
+		dev-haskell/hspec-expectations-lifted
+		dev-haskell/hspec-wai
+		dev-haskell/mockery
+		dev-haskell/scotty
+		dev-haskell/wai-extra )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
