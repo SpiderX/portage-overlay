@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1599](https://img.shields.io/badge/ebuild-1599-orange.svg)](https://img.shields.io/badge/ebuild-1599-orange.svg)
+[![Number of ebuilds: 1600](https://img.shields.io/badge/ebuild-1600-orange.svg)](https://img.shields.io/badge/ebuild-1600-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -321,6 +321,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-haskell/[loch-th](https://github.com/liskin/loch-th) | Support for precise error locations in source files
 *   dev-haskell/[managed](https://hackage.haskell.org/package/managed) | A monad for managed values
 *   dev-haskell/[mime-mail](https://github.com/snoyberg/mime-mail) | Compose MIME email messages
+*   dev-haskell/[minisat](https://hackage.haskell.org/package/minisat) | A Haskell bundle of the Minisat SAT solver
 *   dev-haskell/[modern-uri](https://github.com/mrkkrp/modern-uri) | Modern library for working with URIs
 *   dev-haskell/[monad-time](https://github.com/scrive/monad-time) | Type class for monads which carry the notion of the current time
 *   dev-haskell/[monoid-subclasses](https://github.com/blamario/monoid-subclasses) | Subclasses of Monoid
