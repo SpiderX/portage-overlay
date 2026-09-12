@@ -18,12 +18,17 @@ RDEPEND="dev-haskell/data-default:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/text-metrics:=[profile?]
 	dev-haskell/unordered-containers:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hspec:=
-		dev-haskell/ieee754:= )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hspec
+		dev-haskell/ieee754 )"
+
+CABAL_CHDEPS=(
+	'data-default >=0.7.1.1 && <0.8' 'data-default >=0.7.1.1'
+	'hspec >=2.7.1 && <2.11' 'hspec >=2.7.1'
+	'text >=1.2.3.1 && <2.1' 'text >=1.2.3.1'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
