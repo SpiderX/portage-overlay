@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,16 +23,15 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/monad-time:=[profile?]
 	dev-haskell/network-uri:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/x509:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/x509:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/hedgehog:=[profile?]
-		dev-haskell/hspec:=[profile?]
-		dev-haskell/pem:=[profile?]
-		dev-haskell/tasty:=[profile?]
-		dev-haskell/tasty-hedgehog:=[profile?]
-		dev-haskell/tasty-hspec:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hedgehog
+		dev-haskell/hspec
+		dev-haskell/pem
+		dev-haskell/tasty
+		dev-haskell/tasty-hedgehog
+		dev-haskell/tasty-hspec )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
