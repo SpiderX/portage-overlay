@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,11 +17,15 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-haskell/base64-bytestring:=[profile?]
 	dev-haskell/blaze-builder:=[profile?]
 	dev-haskell/random:=[profile?]
-	dev-haskell/text:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/text:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
-	test? ( dev-haskell/hspec:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/hspec )"
+
+CABAL_CHDEPS=(
+	'filepath            ^>= 1.5' 'filepath            >= 1.4'
+	'random              ^>= 1.3' 'random              >= 1.2'
+)
 
 src_prepare() {
 	haskell-cabal_src_prepare
