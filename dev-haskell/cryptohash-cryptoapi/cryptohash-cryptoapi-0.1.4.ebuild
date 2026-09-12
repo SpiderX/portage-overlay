@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,10 +18,9 @@ RDEPEND="dev-haskell/cereal:=[profile?]
 	dev-haskell/crypto-api:=[profile?]
 	dev-haskell/cryptonite:=[profile?]
 	dev-haskell/memory:=[profile?]
-	dev-haskell/tagged:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/tagged:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:="
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
