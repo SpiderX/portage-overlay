@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,15 +18,14 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-haskell/crypto-api:=[profile?]
 	dev-haskell/crypto-pubkey-types:=[profile?]
-	dev-haskell/sha:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/sha:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/crypto-pubkey-types:=[profile?]
-		dev-haskell/quickcheck:=[profile?]
-		dev-haskell/tagged:=[profile?]
-		dev-haskell/test-framework:=[profile?]
-		dev-haskell/test-framework-quickcheck2:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/crypto-pubkey-types
+		dev-haskell/quickcheck
+		dev-haskell/tagged
+		dev-haskell/test-framework
+		dev-haskell/test-framework-quickcheck2 )"
 
 src_prepare() {
 	haskell-cabal_src_prepare
