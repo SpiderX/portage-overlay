@@ -14,14 +14,10 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-haskell/mwc-random:=[profile?]
-	dev-haskell/primitive:=[profile?]
-	dev-haskell/vector:=[profile?]
-	dev-haskell/vector-algorithms:=[profile?]
-	dev-lang/ghc:="
+RDEPEND="dev-haskell/primitive:=[profile?]
+	dev-haskell/vector:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=
-	test? ( dev-haskell/quickcheck )"
+BDEPEND="dev-haskell/cabal"
 
 src_prepare() {
 	haskell-cabal_src_prepare
