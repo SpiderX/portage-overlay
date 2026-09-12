@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,31 +20,29 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/blaze-builder:=[profile?]
 	dev-haskell/case-insensitive:=[profile?]
 	dev-haskell/data-default-class:=[profile?]
-	dev-haskell/exceptions:=[profile?]
-	dev-haskell/fail:=[profile?]
 	dev-haskell/http-types:=[profile?]
 	dev-haskell/monad-control:=[profile?]
-	dev-haskell/mtl:=[profile?]
-	dev-haskell/nats:=[profile?]
 	dev-haskell/network:=[profile?]
 	dev-haskell/regex-compat:=[profile?]
 	dev-haskell/text:=[profile?]
-	dev-haskell/transformers:=[profile?]
 	dev-haskell/transformers-base:=[profile?]
 	dev-haskell/transformers-compat:=[profile?]
 	dev-haskell/wai:=[profile?]
 	dev-haskell/wai-extra:=[profile?]
-	dev-haskell/warp:=[profile?]
-	dev-lang/ghc:="
+	dev-haskell/warp:=[profile?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-haskell/cabal:=[profile?]
-	test? ( dev-haskell/async:=[profile?]
-		>=dev-haskell/hspec-2:=[profile?]
-		dev-haskell/hspec-wai:=[profile?]
-		dev-haskell/lifted-base:=[profile?] )"
+BDEPEND="dev-haskell/cabal
+	test? ( dev-haskell/async
+		dev-haskell/hspec
+		dev-haskell/hspec-wai
+		dev-haskell/lifted-base )"
 
 CABAL_CHDEPS=(
 	'warp                  >= 3.0.13   && < 3.4' 'warp                  >= 3.0.13'
+	'bytestring            >= 0.10.0.2 && < 0.12' 'bytestring >=0.10.0.2'
+	'data-default-class    >= 0.0.1    && < 0.2' 'data-default-class    >= 0.0.1'
+	'network               >= 2.6.0.2  && < 3.2' 'network               >= 2.6.0.2'
+	'text                  >= 0.11.3.1 && < 2.1' 'text                  >= 0.11.3.1'
 )
 
 src_prepare() {
