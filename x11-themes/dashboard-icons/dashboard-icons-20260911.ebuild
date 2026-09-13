@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT="00c43aa6857e2905b1d59bfceddfca7bc145f44a"
+COMMIT="ce550a844bad92ea19b5926cb887285c46bac01a"
 
 DESCRIPTION="SVG icons for popular brands"
 HOMEPAGE="https://github.com/homarr-labs/dashboard-icons"
