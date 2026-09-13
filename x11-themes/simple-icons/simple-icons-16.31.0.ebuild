@@ -3,9 +3,6 @@
 
 EAPI=8
 
-MY_PV="${PV//./-}"
-MY_P="${PN}-${MY_PV}"
-
 DESCRIPTION="SVG icons for popular brands"
 HOMEPAGE="https://github.com/simple-icons/simple-icons"
 SRC_URI="https://github.com/simple-icons/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
