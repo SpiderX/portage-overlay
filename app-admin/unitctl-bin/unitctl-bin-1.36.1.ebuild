@@ -5,8 +5,8 @@ EAPI=8
 
 DESCRIPTION="FreeUnit CLI"
 HOMEPAGE="https://github.com/freeunitorg/freeunit"
-SRC_URI="amd64? ( https://github.com/freeunitorg/freeunit/releases/download/${PV}/${P/-bin/}-x86_64-unknown-linux-gnu )
-	arm64? ( https://github.com/freeunitorg/freeunit/releases/download/${PV}/${P/-bin/}-aarch64-unknown-linux-gnu )"
+SRC_URI="amd64? ( https://github.com/freeunitorg/freeunit/releases/download/${PN/-bin/}%2F${PV}/${P/-bin/}-x86_64-unknown-linux-gnu )
+	arm64? ( https://github.com/freeunitorg/freeunit/releases/download/${PN/-bin/}%2F${PV}/${P/-bin/}-aarch64-unknown-linux-gnu )"
 S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD-2 BSD CDLA-Permissive-2.0 EPL-2.0 ISC MIT openssl Unicode-3.0"
