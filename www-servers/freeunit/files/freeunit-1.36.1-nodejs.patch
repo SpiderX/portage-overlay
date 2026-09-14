@@ -1,0 +1,13 @@
+npm versions reject --unsafe-perm and ignore it
+Use system Node.js headers instead of letting node-gyp download them
+--- ../auto/modules/nodejs	2026-09-14 20:45:42.332443147 +0300
++++ ../auto/modules/nodejs	2026-09-14 20:48:13.303383125 +0300
+@@ -186,7 +186,7 @@
+ install: ${NXT_NODE}-$NXT_NODE_INSTALL
+ 
+ ${NXT_NODE}-install: ${NXT_NODE_TARBALL_G} libunit-install
+-	${NXT_NPM} install -g --unsafe-perm ${PWD}/${NXT_NODE_TARBALL_G}
++	npm_package_config_node_gyp_nodedir=/usr ${NXT_NPM} install -g ${PWD}/${NXT_NODE_TARBALL_G}
+ 
+ ${NXT_NODE}-uninstall:
+ 	${NXT_NPM} uninstall -g unit-http

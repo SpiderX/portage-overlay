@@ -1,0 +1,13 @@
+--- ../test/test_proxy_chunked.py	2026-09-14 20:59:37.551679293 +0300
++++ ../test/test_proxy_chunked.py	2026-09-14 20:59:58.286308772 +0300
+@@ -351,7 +351,9 @@
+ # fake_upstream — live Rust HTTP mock (test/fake_upstream/)
+ # ---------------------------------------------------------------------------
+ 
+-FAKE_UPSTREAM_BIN = '/usr/local/bin/fake_upstream'
++FAKE_UPSTREAM_BIN = os.path.join(
++    os.path.dirname(__file__), 'fake_upstream/target/debug/fake_upstream'
++)
+ 
+ # Graceful skip when the Rust mock binary is not built (e.g. local runs
+ # without a Rust toolchain).  CI installs it via the "Build fake_upstream"
