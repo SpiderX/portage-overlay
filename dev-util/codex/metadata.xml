@@ -13,9 +13,6 @@
 	Codex CLI is a coding agent from OpenAI that runs locally on
 	your computer and helps to write and review code.
 	</longdescription>
-	<use>
-		<flag name="tui">Enable build of codex terminal user interface</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">openai/codex</remote-id>
 	</upstream>
