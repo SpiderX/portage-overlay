@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1606](https://img.shields.io/badge/ebuild-1606-orange.svg)](https://img.shields.io/badge/ebuild-1606-orange.svg)
+[![Number of ebuilds: 1607](https://img.shields.io/badge/ebuild-1607-orange.svg)](https://img.shields.io/badge/ebuild-1607-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -140,6 +140,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[ag](https://github.com/ggreer/the_silver_searcher) | A code-searching tool with a focus on speed
 *   app-misc/[amazon-ec2-instance-selector](https://github.com/aws/amazon-ec2-instance-selector) | Amazon EC2 Instance Selector
 *   app-misc/[ccut](https://github.com/ColumPaget/ColumsCut) | A unix cut command with a couple of extra features
+*   app-misc/[chatgpt-desktop](https://chatgpt.com) | Desktop application for ChatGPT and Codex
 *   app-misc/[cheat](https://github.com/cheat/cheat) | Interactive cheatsheets on the command-line
 *   app-misc/[cointop](https://github.com/cointop-sh/cointop) | Interactive cryptocurrency monitor
 *   app-misc/[deco](https://sourceforge.net/projects/deco/) | Demos Commander, a free Norton Commander clone
