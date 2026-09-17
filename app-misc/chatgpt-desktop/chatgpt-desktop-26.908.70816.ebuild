@@ -18,7 +18,7 @@ S="${WORKDIR}"
 LICENSE="OpenAI"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+abi_x86_64 apparmor qt6 wayland"
+IUSE="+abi_x86_64 apparmor qt6"
 RESTRICT="bindist mirror splitdebug"
 
 RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
@@ -81,19 +81,14 @@ src_prepare() {
 		usr/lib/chatgpt/codex-launcher
 	use qt6 || edo rm usr/lib/chatgpt/libqt6_shim.so
 
-	if use wayland ; then
-		sed -i  -e '/Exec/s/%U/%U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland/' \
-			usr/share/applications/chatgpt.desktop || die "sed failed for wayland"
-	fi
 	if use apparmor ; then
-		sed -i "s|/usr/lib/chatgpt/ChatGPT|/opt/${PN}/ChatGPT|" \
-			etc/apparmor.d/chatgpt || die "sed failed for apparmor"
+		sed -i "s|usr/lib|opt/chatgpt|" etc/apparmor.d/chatgpt || die "sed failed for apparmor"
 	fi
 }
 
 src_install() {
 	doicon usr/share/pixmaps/chatgpt.png
-	doicon -s 512 usr/share/pixmaps/chatgpt.png
+	doicon -s 1024 usr/share/pixmaps/chatgpt.png
 	domenu usr/share/applications/chatgpt.desktop
 
 	insinto /usr/share/metainfo
@@ -106,7 +101,7 @@ src_install() {
 	pax-mark -m "${ED}"/opt/chatgpt/ChatGPT
 
 	# remove unsupported ARM/Android and musl prebuilt binaries
-	edo find "${ED}" -type f -path '*prebuilds/*' \( -path '*arm*' -o -path '*musl*' \) -delete
+	find "${ED}" -type f -path '*prebuilds/*' \( -path '*arm*' -o -path '*musl*' \) -delete || die
 
 	if use apparmor ; then
 		insinto /etc/apparmor.d
