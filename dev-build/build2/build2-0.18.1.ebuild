@@ -21,7 +21,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+libpkgconf test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-db/sqlite:3"
+RDEPEND="dev-db/sqlite:3
+	libpkgconf? ( dev-util/pkgconf:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	test? ( dev-vcs/git )"
@@ -29,9 +30,15 @@ BDEPEND="virtual/pkgconfig
 src_prepare() {
 	default
 
-	# fix handling of empty library lists returned by the libpkgconf import backend.
-	# without it configure can fail with "library expected in ''" while importing pkg-config dependencies.
-	use libpkgconf && eapply "${FILESDIR}/${PN}"-0.18.1-pkgconf.patch
+	if use libpkgconf ; then
+		# fix handling of empty library lists returned by the libpkgconf import backend.
+		# without it configure can fail with "library expected in ''" while importing pkg-config dependencies.
+		eapply "${FILESDIR}/${PN}"-0.18.1-pkgconf.patch
+
+		# support the newer five-argument pkgconf_client_new() API while
+		# retaining compatibility with older libpkgconf versions.
+		eapply "${FILESDIR}/${PN}"-0.18.1-libpkgconf-client-api.patch
+	fi
 
 	# phase 1: build the minimal build2 executable with the upstream GNU make bootstrap.
 	# This gives us a local b-boot that can understand the build2 project files.

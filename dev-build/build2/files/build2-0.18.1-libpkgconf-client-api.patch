@@ -1,0 +1,23 @@
+--- ../build2/libbuild2/cc/pkgconfig-libpkgconf.cxx	2026-09-17 12:45:15.302989863 +0300
++++ ../build2/libbuild2/cc/pkgconfig-libpkgconf.cxx	2026-09-17 12:46:55.387180773 +0300
+@@ -40,6 +40,20 @@
+             ::pkgconf_cross_personality_default ());
+ }
+ 
++template <typename H, typename P, typename E>
++static inline pkgconf_client_t*
++call_pkgconf_client_new (
++  pkgconf_client_t* (*f) (H, void*, P, void*, E),
++  H error_handler,
++  void* error_handler_data)
++{
++  return f (error_handler,
++            error_handler_data,
++            ::pkgconf_cross_personality_default (),
++            nullptr, /* client_data */
++            nullptr  /* environ_lookup_handler */);
++}
++
+ namespace build2
+ {
+   namespace cc
