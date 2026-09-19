@@ -38,7 +38,7 @@ DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
 	acct-group/openvpn
 	acct-user/openvpn
-	net-dns/bind-tools
+	net-dns/bind
 	selinux? ( sec-policy/selinux-openvpn )"
 BDEPEND="virtual/pkgconfig
 	dev-lang/go:0=
