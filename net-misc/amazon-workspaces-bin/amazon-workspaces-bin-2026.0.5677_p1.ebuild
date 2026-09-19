@@ -3,17 +3,17 @@
 
 EAPI=8
 
-PLOCALES="de en id pt tr zh"
+PLOCALES="de en es fr id ja ko pt pt_BR tr zh zh_CN"
 PLOCALE_BACKUP="en"
 
 inherit edo gnome2-utils pax-utils plocale unpacker xdg
 
 MY_PN="${PN/-bin/}"
+MY_PV="${PV/_p/-}"
 
 DESCRIPTION="Amazon Workspace Client"
 HOMEPAGE="https://clients.amazonworkspaces.com"
-SRC_URI="https://d3nt0h4h6pmmc4.cloudfront.net/new_workspacesclient_jammy_amd64.deb
-	-> workspacesclient-${PV}_amd64.deb"
+SRC_URI="https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/noble/main/binary-amd64/workspacesclient_${MY_PV}_amd64.ubuntu2404.deb"
 S="${WORKDIR}"
 
 LICENSE="all-rights-reserved Apache-2.0 GPL-2 MIT no-source-code"
@@ -97,6 +97,7 @@ QA_PREBUILT="usr/share/workspacesclient/cef/libEGL.so
 	usr/share/workspacesclient/cef/libGLESv2.so
 	usr/share/workspacesclient/cef/libvulkan.so.1
 	usr/lib/x86_64-linux-gnu/workspacesclient/libepoxy.so.0
+	usr/lib/x86_64-linux-gnu/workspacesclient/libavutil.so.60
 	usr/lib/x86_64-linux-gnu/workspacesclient/libsoup-3.0.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/libdav1d.so.7
 	usr/lib/x86_64-linux-gnu/workspacesclient/liblmdb.so
@@ -109,6 +110,7 @@ QA_PREBUILT="usr/share/workspacesclient/cef/libEGL.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/libgmodule-2.0.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/libjson-glib-1.0.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/libvpx.so.11
+	usr/lib/x86_64-linux-gnu/workspacesclient/libavcodec.so.62
 	usr/lib/x86_64-linux-gnu/workspacesclient/sasl2/libotp.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/sasl2/libgs2.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/sasl2/libgssapiv2.so
@@ -170,11 +172,8 @@ QA_PREBUILT="usr/share/workspacesclient/cef/libEGL.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/libpangocairo-1.0.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/libfribidi.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/libfido2.so.1
-	usr/lib/x86_64-linux-gnu/workspacesclient/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 	usr/lib/x86_64-linux-gnu/workspacesclient/dcvextensionswatchdog
-	usr/lib/x86_64-linux-gnu/workspacesclient/libavcodec.so.61
 	usr/lib/x86_64-linux-gnu/workspacesclient/libgthread-2.0.so.0
-	usr/lib/x86_64-linux-gnu/workspacesclient/libavutil.so.59
 	usr/lib/x86_64-linux-gnu/workspacesclient/liborc-0.4.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/libgstreamer-1.0.so.0
 	usr/lib/x86_64-linux-gnu/workspacesclient/libnghttp2.so.14
@@ -203,7 +202,7 @@ src_prepare() {
 	plocale_for_each_disabled_locale my_rm_loc
 
 	edo rm -rf usr/share/doc
-	edo patchelf --replace-needed libicuuc.so.70 libicuuc.so.78 \
+	edo patchelf --replace-needed libicuuc.so.74 libicuuc.so.78 \
 		usr/lib/x86_64-linux-gnu/workspacesclient/libharfbuzz-icu.so.0
 	# x11-libs/pango disables libthai
 	edo patchelf --remove-needed libthai.so.0 usr/lib/x86_64-linux-gnu/workspacesclient/libpango-1.0.so.0
