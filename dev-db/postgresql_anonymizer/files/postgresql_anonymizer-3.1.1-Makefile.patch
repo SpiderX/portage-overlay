@@ -1,0 +1,13 @@
+--- ../Makefile	2026-09-20 16:15:52.482959120 +0300
++++ ../Makefile	2026-09-20 16:16:34.949755379 +0300
+@@ -168,7 +168,9 @@
+ # With PGRX: the postgres instance is created previously by `cargo run`. This
+ # means we have some extra tasks to prepare the instance
+ 
+-installcheck: stop start
++INSTALLCHECK_DEPS ?= stop start
++
++installcheck: $(INSTALLCHECK_DEPS)
+ 	dropdb $(PSQL_OPT) --if-exists $(PGDATABASE)
+ 	dropdb $(PSQL_OPT) --if-exists $(PGDATABASE)_source
+ 	createdb $(PSQL_OPT) $(PGDATABASE)

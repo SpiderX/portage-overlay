@@ -9,14 +9,16 @@ LLVM_COMPAT=( {16..22} )
 POSTGRES_COMPAT=( {14..18} )
 POSTGRES_USEDEP="server"
 
-inherit cargo edo git-r3 llvm-r2 postgres-multi
+inherit cargo edo llvm-r2 postgres-multi
 
 DESCRIPTION="Anonymization & Data Masking for PostgreSQL"
 HOMEPAGE="https://gitlab.com/dalibo/postgresql_anonymizer"
-EGIT_REPO_URI="https://gitlab.com/dalibo/${PN}.git"
+SRC_URI="https://gitlab.com/dalibo/${PN}/-/archive/${PV}/${P}.tar.bz2
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-crates.tar.xz"
 
 LICENSE="Apache-2.0 BSD ISC MIT POSTGRESQL Unicode-DFS-2016"
 SLOT="0"
+KEYWORDS="~amd64"
 REQUIRED_USE="${POSTGRES_REQ_USE} ${LLVM_REQUIRED_USE}"
 
 RDEPEND="${POSTGRES_DEP}"
@@ -34,14 +36,9 @@ pkg_setup() {
 	rust_pkg_setup
 }
 
-src_unpack() {
-	git-r3_src_unpack
-	cargo_live_src_unpack
-}
-
 src_prepare() {
 	# apply patches before postgres-multi_src_prepare copies src for each PostgreSQL version
-	# eapply "${FILESDIR}/${PN}"-3.1.1-Makefile.patch
+	eapply "${FILESDIR}/${PN}"-3.1.1-Makefile.patch
 	eapply "${FILESDIR}/${PN}"-3.1.1-tests.patch
 	postgres-multi_src_prepare
 }

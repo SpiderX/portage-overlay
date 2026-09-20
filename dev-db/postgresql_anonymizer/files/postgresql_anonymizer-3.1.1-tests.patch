@@ -1,0 +1,22 @@
+--- ../tests/expected/test_replica_masking.out	2026-09-20 16:52:30.876683452 +0300
++++ ../tests/expected/test_replica_masking.out	2026-09-20 16:52:58.657186906 +0300
+@@ -99,7 +99,7 @@
+ 
+ -- Replication starts now
+ CREATE SUBSCRIPTION contrib_sub
+-CONNECTION 'host=localhost user=contrib_repli password=x dbname=contrib_regression_source'
++CONNECTION 'host=localhost port=@PGPORT@ user=contrib_repli password=x dbname=contrib_regression_source'
+ PUBLICATION contrib_pub
+ WITH (slot_name='contrib_slot', create_slot=false);
+ -- Synchronisation may a take a few milliseconds
+--- ../tests/sql/test_replica_masking.sql	2026-09-20 16:54:06.575941135 +0300
++++ ../tests/sql/test_replica_masking.sql	2026-09-20 16:54:25.827346134 +0300
+@@ -91,7 +91,7 @@
+ 
+ -- Replication starts now
+ CREATE SUBSCRIPTION contrib_sub
+-CONNECTION 'host=localhost user=contrib_repli password=x dbname=contrib_regression_source'
++CONNECTION 'host=localhost port=@PGPORT@ user=contrib_repli password=x dbname=contrib_regression_source'
+ PUBLICATION contrib_pub
+ WITH (slot_name='contrib_slot', create_slot=false);
+ 
