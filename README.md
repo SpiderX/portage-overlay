@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1612](https://img.shields.io/badge/ebuild-1612-orange.svg)](https://img.shields.io/badge/ebuild-1612-orange.svg)
+[![Number of ebuilds: 1613](https://img.shields.io/badge/ebuild-1613-orange.svg)](https://img.shields.io/badge/ebuild-1613-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1423,6 +1423,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[asio_wrapper](https://github.com/compwizk/asio_wrapper) | ASIO standalone CMake installer
 *   dev-util/[aws-config-rdk](https://github.com/awslabs/aws-config-rdk) | AWS Config Rules Development Kit
 *   dev-util/[aws-config-rdklib](https://github.com/awslabs/aws-config-rdklib) | Rule Development Kit Library for AWS Config
+*   dev-util/[bats-assert](https://github.com/bats-core/bats-assert) | Common assertions for Bats
 *   dev-util/[bats-detik](https://github.com/bats-core/bats-detik) | A library to ease e2e tests of applications in K8s environments
 *   dev-util/[bats-file](https://github.com/bats-core/bats-file) | Common filesystem assertions for Bats
 *   dev-util/[bats-support](https://github.com/bats-core/bats-support) | Supporting library for Bats test helpers
