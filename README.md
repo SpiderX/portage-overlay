@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1609](https://img.shields.io/badge/ebuild-1609-orange.svg)](https://img.shields.io/badge/ebuild-1609-orange.svg)
+[![Number of ebuilds: 1610](https://img.shields.io/badge/ebuild-1610-orange.svg)](https://img.shields.io/badge/ebuild-1610-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1423,6 +1423,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[asio_wrapper](https://github.com/compwizk/asio_wrapper) | ASIO standalone CMake installer
 *   dev-util/[aws-config-rdk](https://github.com/awslabs/aws-config-rdk) | AWS Config Rules Development Kit
 *   dev-util/[aws-config-rdklib](https://github.com/awslabs/aws-config-rdklib) | Rule Development Kit Library for AWS Config
+*   dev-util/[bats-support](https://github.com/bats-core/bats-support) | Supporting library for Bats test helpers
 *   dev-util/[bcunit](https://gitlab.linphone.org/BC/public/bcunit) | BC Unit Test Framework
 *   dev-util/[beekeeper-studio-bin](https://www.beekeeperstudio.io) | SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 *   dev-util/[binaryen](https://github.com/WebAssembly/binaryen) | Optimizer and compiler/toolchain library for WebAssembly
