@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1608](https://img.shields.io/badge/ebuild-1608-orange.svg)](https://img.shields.io/badge/ebuild-1608-orange.svg)
+[![Number of ebuilds: 1609](https://img.shields.io/badge/ebuild-1609-orange.svg)](https://img.shields.io/badge/ebuild-1609-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -201,6 +201,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/peco.svg?header=)](https://repology.org/project/peco/versions) app-shells/[peco](https://github.com/peco/peco) | Simplistic interactive filtering tool
 *   app-shells/[tlog](https://github.com/Scribery/tlog) | Terminal I/O logger
 *   app-text/[confget](https://devel.ringlet.net/textproc/confget/) | Read variables from INI-style configuration files
+*   app-text/[csvlens](https://github.com/YS-L/csvlens) | Command line csv viewer
 *   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
 *   dev-build/[build2](https://build2.org) | Cross-platform toolchain for building and packaging C++ code
 *   dev-build/[qtilitools](https://github.com/qtilities/qtilitools) | Scripts/commands used in the Qtilities organization
