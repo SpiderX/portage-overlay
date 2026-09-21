@@ -1,0 +1,22 @@
+--- ../lib/utils.bash	2026-09-21 19:17:11.076913226 +0300
++++ ../lib/utils.bash	2026-09-21 19:18:20.948960700 +0300
+@@ -50,8 +50,8 @@
+ # @return 0
+ debug() {
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	mkdir -p /tmp/detik
+-	echo -e "$1" >> "/tmp/detik/$debug_filename.debug"
++	mkdir -p "${TMPDIR:-/tmp}/detik"
++	echo -e "$1" >> "${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ }
+ 
+ 
+@@ -59,7 +59,7 @@
+ # @return 0
+ reset_debug() {
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	rm -f "/tmp/detik/$debug_filename.debug"
++	rm -f "${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ }
+ 
+ 

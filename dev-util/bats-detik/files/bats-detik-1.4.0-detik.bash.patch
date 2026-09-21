@@ -1,0 +1,12 @@
+Remove leftover upstream debugging that writes to a global temporary file.
+--- ../lib/detik.bash	2026-09-21 19:12:39.640681914 +0300
++++ ../lib/detik.bash	2026-09-21 19:13:02.002543913 +0300
+@@ -284,8 +284,6 @@
+ 
+ 		# Now, deal with every line
+ 		for line in "${resultAsArray[@]}"; do
+-			echo "$line" >> /tmp/toto3
+-
+ 			# Keep the second column (property to verify)
+ 			# This column may contain spaces.
+ 			value=$(cut -d ' ' -f 2- <<< "$line" | xargs)

@@ -1,0 +1,185 @@
+--- ../tests/test.utils.debug.bats	2026-09-21 19:20:06.917172927 +0300
++++ ../tests/test.utils.debug.bats	2026-09-21 19:20:24.975605460 +0300
+@@ -3,7 +3,7 @@
+ load "../lib/utils"
+ 
+ debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-target="/tmp/detik/$debug_filename.debug"
++target="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 
+ @test "testing debug" {
+ 
+--- ../tests/test.detik.try.to.verify.matches.bats	2026-09-21 19:22:57.458542970 +0300
++++ ../tests/test.detik.try.to.verify.matches.bats	2026-09-21 19:23:17.413463782 +0300
+@@ -232,7 +232,7 @@
+ @test "trying to verify the status of a POD with the lower-case syntax (debug matching)" {
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[[ -f "$path" ]] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+--- ../tests/test.detik.verify.bats	2026-09-21 19:23:45.147519451 +0300
++++ ../tests/test.detik.verify.bats	2026-09-21 19:25:11.335774389 +0300
+@@ -194,7 +194,7 @@
+ @test "verifying the number of PODs with the lower-case syntax (debug)" {
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -244,7 +244,7 @@
+ 	DETIK_CLIENT_NAMESPACE="test_ns"
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -400,7 +400,7 @@
+ @test "verifying the status of a POD with the lower-case syntax (debug)" {
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -599,7 +599,7 @@
+ @test "verifying the status of a POD with the lower-case syntax (debug matching)" {
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+--- ../tests/test.detik.try.to.verify.is.bats	2026-09-21 19:25:33.904749578 +0300
++++ ../tests/test.detik.try.to.verify.is.bats	2026-09-21 19:25:52.463204711 +0300
+@@ -203,7 +203,7 @@
+ @test "trying to verify the status of a POD with the lower-case syntax (debug)" {
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[[ -f "$path" ]] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+--- ../tests/test.detik.try.to.find.matching.bats	2026-09-21 19:26:09.938530851 +0300
++++ ../tests/test.detik.try.to.find.matching.bats	2026-09-21 19:28:15.884079631 +0300
+@@ -302,7 +302,7 @@
+ @test "trying to find a POD with the lower-case syntax (debug matching)" {
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -356,7 +356,7 @@
+ 	DETIK_CLIENT_NAMESPACE="test_ns"
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -408,8 +408,8 @@
+ my_consul_test() {
+ 
+ 	consul_cpt=0
+-	if [[ -f /tmp/my-consul-test.txt ]]; then
+-		consul_cpt=$(cat /tmp/my-consul-test.txt)
++	if [[ -f ${TMPDIR:-/tmp}/my-consul-test.txt ]]; then
++		consul_cpt=$(cat "${TMPDIR:-/tmp}/my-consul-test.txt")
+ 	fi
+ 
+ 	if [[ "$consul_cpt" == "2" ]]; then
+@@ -417,14 +417,14 @@
+ 	fi
+ 
+ 	consul_cpt=$((consul_cpt + 1))
+-	echo "$consul_cpt" > /tmp/my-consul-test.txt
++	echo "$consul_cpt" > "${TMPDIR:-/tmp}/my-consul-test.txt"
+ }
+ 
+ 
+ @test "trying to find Consul PODs with a match" {
+ 
+ 	DETIK_CLIENT_NAME="my_consul_test"
+-	rm -rf /tmp/my-consul-test.txt
++	rm -rf "${TMPDIR:-/tmp}/my-consul-test.txt"
+ 
+ 	run try "at most 5 times every 1s to find 3 pods named 'consul-for-vault' with 'status' matching 'R.nn.ng'"
+ 	[ "$status" -eq 0 ]
+--- ../tests/test.detik.try.to.find.being.bats	2026-09-21 19:28:37.776461988 +0300
++++ ../tests/test.detik.try.to.find.being.bats	2026-09-21 19:30:41.149540769 +0300
+@@ -276,7 +276,7 @@
+ @test "trying to find a POD with the lower-case syntax (debug)" {
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -330,7 +330,7 @@
+ 	DETIK_CLIENT_NAMESPACE="test_ns"
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -384,7 +384,7 @@
+ 	DETIK_CLIENT_NAMESPACE_ALL="true"
+ 
+ 	debug_filename=$(basename -- "$BATS_TEST_FILENAME")
+-	path="/tmp/detik/$debug_filename.debug"
++	path="${TMPDIR:-/tmp}/detik/$debug_filename.debug"
+ 	[ -f "$path" ] && mv "$path" "$path.backup"
+ 	[ ! -f "$path" ]
+ 
+@@ -397,7 +397,7 @@
+ 
+ 	# Verify basic assertions
+ 	[ "$status" -eq 0 ]
+-	echo "${lines[1]}" > /tmp/titi
++	echo "${lines[1]}" > "${TMPDIR:-/tmp}/titi"
+ 	[ "${lines[0]}" = "Valid expression. Verification in progress..." ]
+ 	[ "${lines[1]}" = "Current value for nginx-deployment-75675f5897-6dg9r is running..." ]
+ 	[ "${lines[2]}" = "Current value for nginx-deployment-75675f5897-gstkw is running..." ]
+@@ -436,8 +436,8 @@
+ my_consul_test() {
+ 
+ 	consul_cpt=0
+-	if [[ -f /tmp/my-consul-test.txt ]]; then
+-		consul_cpt=$(cat /tmp/my-consul-test.txt)
++	if [[ -f ${TMPDIR:-/tmp}/my-consul-test.txt ]]; then
++		consul_cpt=$(cat "${TMPDIR:-/tmp}/my-consul-test.txt")
+ 	fi
+ 
+ 	if [[ "$consul_cpt" == "2" ]]; then
+@@ -445,14 +445,14 @@
+ 	fi
+ 
+ 	consul_cpt=$((consul_cpt + 1))
+-	echo "$consul_cpt" > /tmp/my-consul-test.txt
++	echo "$consul_cpt" > "${TMPDIR:-/tmp}/my-consul-test.txt"
+ }
+ 
+ 
+ @test "trying to find Consul PODs" {
+ 
+ 	DETIK_CLIENT_NAME="my_consul_test"
+-	rm -rf /tmp/my-consul-test.txt
++	rm -rf "${TMPDIR:-/tmp}/my-consul-test.txt"
+ 
+ 	run try "at most 5 times every 1s to find 3 pods named 'consul-for-vault' with 'status' being 'running'"
+ 	[ "$status" -eq 0 ]
