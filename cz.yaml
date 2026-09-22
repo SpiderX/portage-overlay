@@ -24,7 +24,7 @@ commitizen:
       lisp|ml|perl|php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
       net-(analyzer|dns|firewall|ftp|im|libs|mail|misc|p2p|voip|vpn)|\
       sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|misc|plugins|\
-      servers)|x11-misc)\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
+      servers)|x11-(libs|misc|terms|themes))\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
     info: |
           ### The commit contains the following structural elements:
           * feat: a commit of this type introduces a new ebuild, a new type
@@ -134,6 +134,8 @@ commitizen:
           www-servers: "web server packages"
           x11-libs: "various X11-related libraries"
           x11-misc: "miscellaneous X11 applications"
+          x11-terms: "terminal emulators for X11 environments"
+          x11-themes: "various theme and style packages for X11 applications"
         choices:
           - acct-group
           - acct-user
@@ -195,6 +197,7 @@ commitizen:
           - www-servers
           - x11-libs
           - x11-misc
+          - x11-terms
           - x11-themes
       - type: text
         name: package
