@@ -23,7 +23,7 @@ commitizen:
       forensics|metrics|misc|office|shells|text)|dev-(build|cpp|db|haskell|java|libs|\
       lisp|ml|perl|php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
       net-(analyzer|dns|firewall|ftp|im|libs|mail|misc|p2p|voip|vpn)|\
-      sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|plugins|\
+      sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|misc|plugins|\
       servers)|x11-misc)\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
     info: |
           ### The commit contains the following structural elements:
@@ -129,6 +129,7 @@ commitizen:
           sys-power: "software which handles power management and CPU frequency"
           sys-process: "packages which query or manipulate processes"
           www-apps: "various world wide web applications"
+          www-misc: "various miscellaneous world wide web"
           www-plugins: "plug-ins for Web browsers"
           www-servers: "web server packages"
           x11-libs: "various X11-related libraries"
@@ -189,6 +190,7 @@ commitizen:
           - sys-power
           - sys-process
           - www-apps
+          - www-misc
           - www-plugins
           - www-servers
           - x11-libs
