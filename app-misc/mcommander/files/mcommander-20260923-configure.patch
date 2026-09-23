@@ -1,0 +1,12 @@
+--- ../configure.ac	2026-09-23 22:02:22.378205235 +0300
++++ ../configure.ac	2026-09-23 22:03:12.642581629 +0300
+@@ -627,7 +627,8 @@
+     mc_saved_LIBS="$LIBS"
+     LIBS="$LIBS -lz"
+     AC_MSG_CHECKING([for inflateInit_ in -lz])
+-    AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <zlib.h>]],
++    AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <string.h>
++#include <zlib.h>]],
+                                     [[z_stream z; memset (&z, 0, sizeof (z));
+                                       inflateInit (&z); inflateEnd (&z);]])],
+         [AC_MSG_RESULT([yes])

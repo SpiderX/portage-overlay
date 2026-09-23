@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	M-Commander is a text-mode, full-screen file manager: two panels,
+	a built-in editor and viewer, and an embedded terminal. The viewer has
+	a structured tree mode, and mcstruct is a structured binary viewer and
+	editor. The core is small: everything beyond it is optional and comes as
+	a plugin loaded at run time, from archives and git to docker, Kubernetes,
+	S3, FTP, SFTP and Samba. It runs in any terminal, from the Linux console
+	to tmux and a remote session over ssh.
+	</longdescription>
+	<use>
+		<flag name="edit">Compile and install the mcedit application</flag>
+		<flag name="mongodb">Add mongodb support</flag>
+		<flag name="s3">Enable support for Amazon S3</flag>
+		<flag name="sftp">Enables SFTP support with <pkg>net-libs/libssh</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">blue-panels/mcommander</remote-id>
+	</upstream>
+</pkgmetadata>
