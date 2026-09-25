@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1618](https://img.shields.io/badge/ebuild-1618-orange.svg)](https://img.shields.io/badge/ebuild-1618-orange.svg)
+[![Number of ebuilds: 1619](https://img.shields.io/badge/ebuild-1619-orange.svg)](https://img.shields.io/badge/ebuild-1619-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -205,6 +205,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-text/[csvlens](https://github.com/YS-L/csvlens) | Command line csv viewer
 *   app-text/[keening](https://github.com/SpiderX/keening) | A simple command line pastebin designed to be used together with ssh
 *   dev-build/[build2](https://build2.org) | Cross-platform toolchain for building and packaging C++ code
+*   dev-build/[lito](https://github.com/litocpp/lito) | Module-first C++ build tool with manifest
 *   dev-build/[qtilitools](https://github.com/qtilities/qtilitools) | Scripts/commands used in the Qtilities organization
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[commoncpp2](http://www.gnu.org/software/commoncpp/) | GNU Common C++ 2

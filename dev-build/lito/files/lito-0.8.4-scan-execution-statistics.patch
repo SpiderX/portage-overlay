@@ -1,0 +1,62 @@
+--- ../driver/src/build/profiling.cppm	2026-09-25 17:51:12.930497062 +0300
++++ ../driver/src/build/profiling.cppm	2026-09-25 17:52:30.163215314 +0300
+@@ -394,6 +394,18 @@
+     rstd::time::Duration ready_wait;
+     rstd::time::Duration completion_wait;
+     rstd::time::Duration task_work;
++
++    auto add(const ScanExecutionStatistics& statistics) noexcept -> void {
++        if (statistics.jobs > jobs) jobs = statistics.jobs;
++        if (statistics.max_in_flight > max_in_flight) {
++            max_in_flight = statistics.max_in_flight;
++        }
++        tasks += statistics.tasks;
++        if (statistics.max_active > max_active) max_active = statistics.max_active;
++        ready_wait = ready_wait.saturating_add(statistics.ready_wait);
++        completion_wait = completion_wait.saturating_add(statistics.completion_wait);
++        task_work = task_work.saturating_add(statistics.task_work);
++    }
+ };
+ 
+ struct ScanTaskProfile {
+@@ -704,7 +716,7 @@
+     }
+ 
+     auto record_execution(ScanExecutionStatistics statistics) noexcept -> void {
+-        execution_ = statistics;
++        execution_.add(statistics);
+     }
+ 
+     auto span(ScanProbe value) noexcept -> ScanSpanGuard {
+--- ../driver/src/build/frontend/scan.cppm	2026-09-25 17:53:27.937300867 +0300
++++ ../driver/src/build/frontend/scan.cppm	2026-09-25 17:54:13.933044086 +0300
+@@ -165,18 +165,7 @@
+         : requested_jobs_(jobs), requested_max_in_flight_(max_in_flight) {}
+ 
+     auto merge(ScanExecutionStatistics statistics) noexcept -> void {
+-        if (statistics.jobs > statistics_.jobs) statistics_.jobs = statistics.jobs;
+-        if (statistics.max_in_flight > statistics_.max_in_flight) {
+-            statistics_.max_in_flight = statistics.max_in_flight;
+-        }
+-        statistics_.tasks += statistics.tasks;
+-        if (statistics.max_active > statistics_.max_active) {
+-            statistics_.max_active = statistics.max_active;
+-        }
+-        statistics_.ready_wait = statistics_.ready_wait.saturating_add(statistics.ready_wait);
+-        statistics_.completion_wait =
+-            statistics_.completion_wait.saturating_add(statistics.completion_wait);
+-        statistics_.task_work = statistics_.task_work.saturating_add(statistics.task_work);
++        statistics_.add(statistics);
+     }
+ 
+     auto finish_executor() -> void {
+--- ../driver/src/build/mod.cpp	2026-09-25 17:57:07.493911088 +0300
++++ ../driver/src/build/mod.cpp	2026-09-25 17:57:24.644027958 +0300
+@@ -1289,6 +1289,7 @@
+         }
+         authoritative_analysis.record_source_release(rstd::move(authoritative_release).unwrap());
+         frontend_statistics.add(authoritative_analysis.statistics());
++        authoritative_profiler.record_execution(scan_profile.execution());
+         auto authoritative_profile = authoritative_profiler.finish();
+         if (authoritative_profile.is_err()) {
+             return Err(

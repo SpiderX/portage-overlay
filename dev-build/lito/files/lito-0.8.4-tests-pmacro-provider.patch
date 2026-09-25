@@ -1,0 +1,65 @@
+--- ../tests/src/workspace/convention.cpp	2026-09-25 14:56:49.048513990 +0300
++++ ../tests/src/workspace/convention.cpp	2026-09-25 15:03:18.117427186 +0300
+@@ -15,6 +15,16 @@
+ using namespace lito_test;
+ using PathBuf = rstd::path::PathBuf;
+ 
++auto workspace_pmacro_source_options(ref<rstd::path::Path> support)
++    -> lito::source::SourceResolutionOptions {
++    auto options = lito::source::SourceResolutionOptions {};
++    options.sources.builtin_packages.push(lito::source::BuiltinPackageSourceEntry {
++        .id     = "pmacro"_Str,
++        .source = lito::source::BuiltinPackageSource::Path(PathBuf::from(support)),
++    });
++    return options;
++}
++
+ auto associated_workspace_tree() -> lito::source::SourceTreeResult<lito::source::SourceTree> {
+     constexpr ProjectFile files[] = {
+         { "lito.toml"_str, R"([workspace]
+@@ -445,8 +455,24 @@
+     ASSERT_TRUE(tree.is_ok());
+     auto project = materialize("associated-test-workspace"_str, *tree);
+     ASSERT_TRUE(project.is_ok());
++
++    constexpr ProjectFile support_files[] = {
++        { "lito.toml"_str, R"([package]
++name = "pmacro"
++version = "0.1.0"
++
++[plugin]
++module = "pmacro"
++sources = ["lib.cppm"]
++)"_str },
++        { "lib.cppm"_str, "export module pmacro;\n"_str },
++    };
++    auto support = materialize("associated-test-workspace-pmacro"_str, support_files);
++    ASSERT_TRUE(support.is_ok());
++
+     auto directory = project->root.clone();
+-    auto graph     = lito::package::resolve_package_graph(directory.as_path());
++    auto graph = lito::package::resolve_package_graph(
++        directory.as_path(), workspace_pmacro_source_options(support->root.as_path()));
+     ASSERT_TRUE(graph.is_ok());
+     ASSERT_EQ(graph->roots.len(), usize(4));
+     auto library = project_root_role(*graph, "fixture-conventional-workspace-library"_str);
+@@ -464,7 +490,8 @@
+ 
+     auto production = lito::package::resolve_package_selection(
+         lito::package::PackageSelection { .root = directory.clone() },
+-        lito::package::PackageSelectionPurpose::Production);
++        lito::package::PackageSelectionPurpose::Production,
++        workspace_pmacro_source_options(support->root.as_path()));
+     ASSERT_TRUE(production.is_ok());
+     ASSERT_EQ(production->selected_root_names.len(), usize(1));
+     EXPECT_EQ(production->selected_root_names[usize {}].as_str(),
+@@ -472,7 +499,8 @@
+ 
+     auto tests = lito::package::resolve_package_selection(
+         lito::package::PackageSelection { .root = directory.clone() },
+-        lito::package::PackageSelectionPurpose::Test);
++        lito::package::PackageSelectionPurpose::Test,
++        workspace_pmacro_source_options(support->root.as_path()));
+     ASSERT_TRUE(tests.is_ok());
+     EXPECT_EQ(tests->selected_root_names.len(), usize(2));
+     EXPECT_TRUE(

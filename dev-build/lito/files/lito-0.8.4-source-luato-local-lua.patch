@@ -1,0 +1,13 @@
+Use the Portage-fetched Lua source for offline tests
+--- ../src/lua/lito.toml	2026-09-25 19:32:00.805119122 +0300
++++ ../src/lua/lito.toml	2026-09-25 19:32:05.985438558 +0300
+@@ -4,8 +4,7 @@
+ standard = "c99"
+ 
+ [external-sources.lua]
+-archive = "https://www.lua.org/ftp/lua-5.5.1.tar.gz"
+-sha256 = "1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce"
++path = "../../../lua-5.5.1"
+ 
+ [source-groups.lua-runtime]
+ external-source = "lua"

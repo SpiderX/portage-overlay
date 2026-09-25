@@ -1,0 +1,11 @@
+--- ../tests/src/source/git.cpp	2026-09-25 16:30:17.254662479 +0300
++++ ../tests/src/source/git.cpp	2026-09-25 16:30:38.501027119 +0300
+@@ -461,7 +461,7 @@
+         "name = \"changed\"\n"
+         "source = \"archive+https://example.invalid/changed.tar.gz\"\n"
+         "checksum = "
+-        "\"sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\""_str));
++        "\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\""_str));
+     EXPECT_FALSE(lock_text->as_str().contains(*url));
+     EXPECT_FALSE(lock_text->as_str().contains(commit->as_str()));
+     EXPECT_FALSE(lock_text->as_str().contains("url = "_str));

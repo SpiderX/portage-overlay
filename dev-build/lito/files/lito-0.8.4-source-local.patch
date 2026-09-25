@@ -1,0 +1,35 @@
+Redirect Lito's Git dependencies to local sources
+Redirect Registry dependencies to local sources
+--- ../lito.toml	2026-09-25 19:55:48.861656150 +0300
++++ ../lito.toml	2026-09-25 19:56:22.865728308 +0300
+@@ -26,11 +26,10 @@
+ rstd-argparse = "0.1.4"
+ rstd-parse = "0.1.4"
+ rstd-test = "0.1.4"
+-luato = { git = "https://github.com/litocpp/luato.git" }
++luato = { path = ".luato" }
+ 
+ [workspace.external-sources.zstd]
+-git = "https://github.com/facebook/zstd.git"
+-rev = "f8745da6ff1ad1e7bab384bd1f9d742439278e99"
++path = ".zstd"
+ 
+ [profile.base]
+ exceptions = false
+--- /dev/null	2026-09-24 12:07:11.484709436 +0300
++++ ../.lito/config.toml	2026-09-25 20:03:40.545421951 +0300
+@@ -0,0 +1,14 @@
++[toolchain]
++stdlib = "libc++"
++
++[patch.litocpp]
++licrypto = { path = ".licrypto" }
++rstd-std = { path = ".rstd" }
++rstd-nostd = { path = ".rstd" }
++rstd-json = { path = ".rstd" }
++rstd-serde = { path = ".rstd" }
++rstd-bench = { path = ".rstd" }
++rstd-toml = { path = ".rstd" }
++rstd-argparse = { path = ".rstd" }
++rstd-parse = { path = ".rstd" }
++rstd-test = { path = ".rstd" }

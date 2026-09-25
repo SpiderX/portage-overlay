@@ -1,0 +1,17 @@
+--- ../third-party/zstd/CMakeLists.txt	2026-09-24 18:05:35.012905077 +0300
++++ ../third-party/zstd/CMakeLists.txt	2026-09-24 18:06:26.317164036 +0300
+@@ -1,11 +1,9 @@
+ if(LITO_USE_SYSTEM_ZSTD)
+-  find_package(zstd CONFIG REQUIRED)
+-  if(NOT TARGET zstd::libzstd)
+-    message(FATAL_ERROR "The system zstd package does not provide zstd::libzstd")
+-  endif()
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)
+ 
+   add_library(lito.zstd INTERFACE)
+-  target_link_libraries(lito.zstd INTERFACE zstd::libzstd)
++  target_link_libraries(lito.zstd INTERFACE PkgConfig::zstd)
+   return()
+ endif()
+ 
