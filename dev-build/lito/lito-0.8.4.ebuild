@@ -36,6 +36,7 @@ RDEPEND="${DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}"-0.8.4-bundle-export-locked.patch
+	"${FILESDIR}/${PN}"-0.8.4-portable-git-source-bundle.patch
 	"${FILESDIR}/${PN}"-0.8.4-scan-execution-statistics.patch
 	"${FILESDIR}/${PN}"-0.8.4-source-local.patch
 	"${FILESDIR}/${PN}"-0.8.4-system-zstd-pkgconfig.patch
