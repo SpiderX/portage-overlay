@@ -1,0 +1,72 @@
+Fix source bundle export with locked Registry dependencies
+
+Locked resolution does not necessarily populate the Registry index cache.
+Source bundle generation requires these indexes but unconditionally uses
+offline Registry access, causing `lito fetch --locked --output` to fail
+from a clean cache.
+
+Allow source bundle generation to fetch missing Registry indexes when the
+fetch command is online, while retaining offline behavior for offline
+fetches.
+--- ../driver/src/command/fetch.cpp	2026-09-26 13:13:57.701710134 +0300
++++ ../driver/src/command/fetch.cpp	2026-09-26 13:16:57.862695687 +0300
+@@ -338,6 +338,7 @@
+                          const Vec<lito::tools::acquisition::VerifiedFile>&  archive_files,
+                          const CargoFetchOutcome&                            cargo,
+                          bool                                                cargo_offline,
++                         bool                                                registry_offline,
+                          const Option<config::LitoBootstrapConfig>&          registries,
+                          lito::tools::ToolResolver&                          resolver,
+                          const ResolvedProcessEnvironment&                   environment,
+@@ -461,6 +462,22 @@
+     auto registry_packages = rstd::collections::BTreeMap<String, empty>::make();
+     auto registry_indices  = rstd::collections::BTreeMap<String, empty>::make();
+     auto registry_cache    = Option<PathBuf> {};
++    auto registry_http =
++        Option<Box<lito::registry::CurlRegistryHttpTransport>> {};
++    if (! registry_offline) {
++        auto curl = resolver.require(
++            lito::tools::Tool::Curl,
++            lito::tools::command_tool_requirement(
++                lito::tools::HostToolCapability::HttpDownload,
++                "Registry source bundle export"_str));
++        if (curl.is_err()) {
++            cleanup();
++            return Err(rstd::into<CommandError>(rstd::move(curl).unwrap_err()));
++        }
++        registry_http =
++            Some(Box<lito::registry::CurlRegistryHttpTransport>::make(
++                curl->executable.clone(), environment));
++    }
+     for (const auto& source : graph.sources) {
+         if (source.kind != lito::source::PackageSourceKind::Registry) continue;
+         if (builtin_package_source(graph, source)) continue;
+@@ -487,12 +504,17 @@
+         auto index_destination = layout.registry_index(pin.release.package);
+         auto index_key         = index_destination.as_path().to_string_lossy();
+         if (! registry_indices.contains_key(index_key.as_str())) {
++            auto http = registry_http.is_some()
++                            ? (**registry_http).transport()
++                            : lito::registry::RegistryHttpTransport {};
+             auto indices = lito::registry::RegistryIndexClient(
+                 registry_cache->clone(),
+                 **configured,
+-                lito::registry::RegistryNetworkPolicy::Offline,
++                registry_offline
++                    ? lito::registry::RegistryNetworkPolicy::Offline
++                    : lito::registry::RegistryNetworkPolicy::Online,
+                 lito::registry::RegistryIndexUpdatePolicy::Reuse,
+-                {});
++                http);
+             auto record = indices.source_bundle_record(pin);
+             if (record.is_err()) {
+                 cleanup();
+@@ -645,6 +667,8 @@
+                                                archive_files,
+                                                cargo,
+                                                request.cargo.offline,
++                                               request.sources.network ==
++                                                   lito::source::NetworkPolicy::Offline,
+                                                request.registries,
+                                                resolver,
+                                                *environment,

@@ -34,7 +34,8 @@ RDEPEND="${DEPEND}
 		llvm-runtimes/libcxx')"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}"-0.8.4-scan-execution-statistics.patch
+PATCHES=( "${FILESDIR}/${PN}"-0.8.4-bundle-export-locked.patch
+	"${FILESDIR}/${PN}"-0.8.4-scan-execution-statistics.patch
 	"${FILESDIR}/${PN}"-0.8.4-source-local.patch
 	"${FILESDIR}/${PN}"-0.8.4-system-zstd-pkgconfig.patch
 	"${FILESDIR}/${PN}"-0.8.4-tests-git-lock-checksum.patch
