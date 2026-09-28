@@ -15,6 +15,9 @@
 	and build policy. It also discovers named module sources and drives
 	Clang, LLD, and LLVM tools.
 	</longdescription>
+	<use>
+		<flag name="experimental">Enable experimental fixes for Lito source bundle generation</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">litocpp/lito</remote-id>
 	</upstream>

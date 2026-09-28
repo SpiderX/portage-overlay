@@ -24,6 +24,7 @@ SRC_URI="https://github.com/litocpp/licrypto/archive/v${LICRYPTO_PV}.tar.gz -> l
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
+IUSE="experimental"
 
 # needs dev-lang/lua:5.5, wrt #968456
 DEPEND="app-arch/zstd:0="
@@ -34,9 +35,7 @@ RDEPEND="${DEPEND}
 		llvm-runtimes/libcxx')"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}"-0.8.4-bundle-export-locked.patch
-	"${FILESDIR}/${PN}"-0.8.4-portable-git-source-bundle.patch
-	"${FILESDIR}/${PN}"-0.8.4-scan-execution-statistics.patch
+PATCHES=( "${FILESDIR}/${PN}"-0.8.4-scan-execution-statistics.patch
 	"${FILESDIR}/${PN}"-0.8.4-source-local.patch
 	"${FILESDIR}/${PN}"-0.8.4-system-zstd-pkgconfig.patch
 	"${FILESDIR}/${PN}"-0.8.4-tests-git-lock-checksum.patch
@@ -61,6 +60,12 @@ src_prepare() {
 		tests/src/command/build.cpp || die
 
 	cmake_src_prepare
+
+	if use experimental ; then
+		eapply "${FILESDIR}/${PN}"-0.8.4-bundle-export-locked.patch \
+			"${FILESDIR}/${PN}"-0.8.4-cargo-source-bundle-vendor-path.patch \
+			"${FILESDIR}/${PN}"-0.8.4-portable-git-source-bundle.patch
+	fi
 
 	eapply --directory="${WORKDIR}/luato-${LUATO_COMMIT}" \
 		"${FILESDIR}/${PN}"-0.8.4-source-luato-local-lua.patch

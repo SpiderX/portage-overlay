@@ -1,0 +1,34 @@
+Fix Cargo vendor path when consuming source bundles
+
+Cargo resolves relative directory paths from configuration supplied with --config PATH
+relative to its configuration context rather than relative to PATH itself.
+
+Lito source bundles store Cargo configuration and vendored sources as
+'<bundle>/config.toml' and '<bundle>/vendor', with the configuration using
+directory = "vendor".  As a result, consuming a portable source bundle can
+make Cargo look for vendor in the wrong directory.
+
+Override the vendored source directory with the absolute path derived from
+the validated source bundle configuration.
+--- ../tools/src/cargo/executor.cppm	2026-09-28 11:09:47.695364715 +0300
++++ ../tools/src/cargo/executor.cppm	2026-09-28 11:10:20.365319291 +0300
+@@ -137,6 +137,19 @@
+     if (source_config.is_none()) return Ok(empty {});
+     arguments.push("--config"_Str);
+     arguments.push(rstd_try(cargo_path_text(source_config->as_path(), "Cargo source config"_str)));
++
++    auto parent = source_config->as_path().parent();
++    if (parent.is_none()) {
++        return Err(lito::tools::ToolError::Message(
++            "Cargo source config has no parent directory"_Str));
++    }
++    auto vendor =
++        PathBuf::from(*parent).join(PathBuf::from("vendor"_str).as_path());
++    arguments.push("--config"_Str);
++    arguments.push(rstd::format(
++        "source.vendored-sources.directory='{}'",
++        rstd_try(cargo_path_text(vendor.as_path(), "Cargo vendor directory"_str)).as_str()));
++
+     return Ok(empty {});
+ }
+ 
