@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1619](https://img.shields.io/badge/ebuild-1619-orange.svg)](https://img.shields.io/badge/ebuild-1619-orange.svg)
+[![Number of ebuilds: 1620](https://img.shields.io/badge/ebuild-1620-orange.svg)](https://img.shields.io/badge/ebuild-1620-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -809,6 +809,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[yaml](https://github.com/avsm/ocaml-yaml) | OCaml interface to the YAML 1.1 spec
 *   dev-ml/[yamlx](https://github.com/mjambon/yamlx) | Pure-OCaml YAML 1.2 & 1.1 Library
 *   dev-ml/[zarith_stubs_js](https://github.com/janestreet/zarith_stubs_js) | Javascripts stubs for the Zarith library
+*   dev-qt/[qtgrpc]() | Protobuf and gRPC support for Qt
 *   dev-perl/[Protocol-WebSocket]() | WebSocket protocol
 *   dev-perl/[SCGI]() | SCGI interface module
 *   dev-php/[amphp-amp](https://github.com/amphp/amp) | A non-blocking concurrency framework for PHP applications

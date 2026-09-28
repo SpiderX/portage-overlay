@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Qt GRPC provides Qt APIs and tools for Protocol Buffers and gRPC,
+	including code generation, serialization, and client-side gRPC communication.
+	</longdescription>
+	<use>
+		<flag name="qml">Build QML bindings</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
+		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qtgrpc</remote-id>
+	</upstream>
+</pkgmetadata>
