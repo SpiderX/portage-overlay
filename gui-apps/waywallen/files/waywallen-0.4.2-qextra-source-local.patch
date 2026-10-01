@@ -1,0 +1,11 @@
+--- ../lito.toml	2026-09-28 23:51:57.077006599 +0300
++++ ../lito.toml	2026-09-28 23:52:27.068204527 +0300
+@@ -51,7 +51,7 @@
+ pub = true
+ 
+ [dependencies.ncrequest]
+-git = "https://github.com/hypengw/ncrequest.git"
++path = ".ncrequest"
+ pub = true
+ 
+ [external-dependencies.cmake.qt6]

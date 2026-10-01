@@ -1,0 +1,13 @@
+Redirect luato's Lua dependency to the Portage-provided source
+--- ../src/lua/lito.toml	2026-09-29 00:21:04.216843932 +0300
++++ ../src/lua/lito.toml	2026-09-29 00:21:19.164869513 +0300
+@@ -4,8 +4,7 @@
+ standard = "c99"
+ 
+ [external-sources.lua]
+-archive = "https://www.lua.org/ftp/lua-5.5.1.tar.gz"
+-sha256 = "1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce"
++path = "../../../.lua"
+ 
+ [source-groups.lua-runtime]
+ external-source = "lua"

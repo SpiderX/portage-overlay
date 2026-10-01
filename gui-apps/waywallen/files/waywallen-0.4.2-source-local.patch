@@ -1,0 +1,50 @@
+--- /dev/null	2026-09-24 12:07:11.484709436 +0300
++++ ../.lito/config.toml	2026-09-29 00:45:41.938606718 +0300
+@@ -0,0 +1,15 @@
++[patch.litocpp]
++rstd-alloc = { path = ".rstd" }
++rstd-argparse = { path = ".rstd" }
++rstd-basic = { path = ".rstd" }
++rstd-core = { path = ".rstd" }
++rstd-cppstd = { path = ".rstd" }
++rstd-dlopn = { path = ".rstd" }
++rstd-json = { path = ".rstd" }
++rstd-log = { path = ".rstd" }
++rstd-parse = { path = ".rstd" }
++rstd-runtime = { path = ".rstd" }
++rstd-serde = { path = ".rstd" }
++rstd-std = { path = ".rstd" }
++rstd-toml = { path = ".rstd" }
++vvk = { path = ".vvk" }
+--- ../lito.toml	2026-09-29 19:18:09.608011699 +0300
++++ ../lito.toml	2026-09-29 19:20:00.141400069 +0300
+@@ -31,10 +31,10 @@
+ rstd-log = { version = "0.1.5" }
+ rstd-toml = { version = "0.1.5" }
+ vvk = { version = "0.1.0" }
+-luato = { git = "https://github.com/litocpp/luato.git" }
+-wavsen = { git = "https://github.com/hypengw/wavsen.git" }
+-ncrequest = { git = "https://github.com/hypengw/ncrequest.git" }
+-qextra = { git = "https://github.com/hypengw/QExtra.git" }
++luato = { path = ".luato" }
++wavsen = { path = ".wavsen" }
++ncrequest = { path = ".ncrequest" }
++qextra = { path = ".qextra" }
+ lito-qt = { builtin = "qt" }
+ 
+ [workspace.external-dependencies.pkg-config.gbm]
+@@ -66,14 +66,9 @@
+ source = "waywallen-rust"
+ package = "waywallen"
+ 
+-[workspace.external-sources.qml-material]
+-git = "https://github.com/hypengw/QmlMaterial.git"
+-
+ [workspace.external-dependencies.cmake.qml-material]
+ package = "qml_material"
+-source = "qml-material"
+ adapter = "ui/cmake/QmlMaterial.cmake"
+-cache = { QML_MATERIAL_BUILD_TYPE = "STATIC", QM_BUILD_EXAMPLE = false, QM_BUILD_TESTS = false }
+ 
+ [workspace.external-dependencies.cmake.qt6]
+ package = "Qt6"

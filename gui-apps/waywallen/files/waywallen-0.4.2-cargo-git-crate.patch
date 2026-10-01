@@ -1,0 +1,15 @@
+Use the cargo.eclass-provided local source for mlua-extra
+
+cargo.eclass overrides the Git dependency with a local path via
+[patch], so Cargo expects the package to have no Git source in Cargo.lock.
+This keeps --locked builds compatible with the Portage-managed source.
+--- ../Cargo.lock	2026-09-28 14:49:48.263838241 +0300
++++ ../Cargo.lock	2026-09-28 14:50:00.406453380 +0300
+@@ -1738,7 +1738,6 @@
+ [[package]]
+ name = "mlua-extra"
+ version = "0.1.0"
+-source = "git+https://github.com/hypengw/mlua-extra?rev=df1d282170dd1718b8aeff405638c18cedd435ca#df1d282170dd1718b8aeff405638c18cedd435ca"
+ dependencies = [
+  "base64",
+  "cookie_store",
