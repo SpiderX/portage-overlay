@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {16..22} )
+LLVM_COMPAT=( {17..23} )
 
 inherit cmake edo flag-o-matic llvm-r2
 
@@ -45,8 +45,7 @@ PATCHES=( "${FILESDIR}/${PN}"-0.8.4-scan-execution-statistics.patch
 pkg_setup() {
 	llvm-r2_pkg_setup
 
-	export CC=clang
-	export CXX=clang++
+	export CC=clang CXX=clang++
 }
 
 src_prepare() {
