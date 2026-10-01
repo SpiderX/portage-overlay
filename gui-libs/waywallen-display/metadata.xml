@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Desktop integration for the waywallen wallpaper daemon, which lets
+	KDE Plasma, GNOME Shell, and other Linux desktop shells display waywallen
+	wallpaper output as a regular surface, with zero-copy GPU sharing via DMA-BUF
+	</longdescription>
+	<use>
+		<flag name="layershell">Build the Wayland layer-shell renderer</flag>
+		<flag name="qml">Build the Qt QML display plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">waywallen/waywallen-desktop</remote-id>
+	</upstream>
+</pkgmetadata>
