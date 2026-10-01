@@ -21,7 +21,7 @@ commitizen:
     schema_pattern: "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>\
       acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|\
       forensics|metrics|misc|office|shells|text)|dev-(build|cpp|db|haskell|java|libs|\
-      lisp|ml|qt|perl|php|python|util|vcs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
+      lisp|ml|qt|perl|php|python|util|vcs)|gui-(apps|libs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
       net-(analyzer|dns|firewall|ftp|im|libs|mail|misc|p2p|voip|vpn)|\
       sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|misc|plugins|\
       servers)|x11-(libs|misc|terms|themes))\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
@@ -102,6 +102,8 @@ commitizen:
           dev-python: "python modules, extensions and bindings"
           dev-util: "various miscellaneous development utilities"
           dev-vcs: "utilities focused on version control"
+          gui-apps: "applications run across various window managers and gui backends"
+          gui-libs: "libraries that support various window managers"
           kde-misc: "various miscellaneous KDE packages"
           media-gfx: "graphics-related packages"
           media-libs: "media-related libraries"
@@ -166,6 +168,8 @@ commitizen:
           - dev-python
           - dev-util
           - dev-vcs
+          - gui-apps
+          - gui-libs
           - kde-misc
           - media-gfx
           - media-libs
