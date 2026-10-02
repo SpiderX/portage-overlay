@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1623](https://img.shields.io/badge/ebuild-1623-orange.svg)](https://img.shields.io/badge/ebuild-1623-orange.svg)
+[![Number of ebuilds: 1624](https://img.shields.io/badge/ebuild-1624-orange.svg)](https://img.shields.io/badge/ebuild-1624-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -437,6 +437,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[mongo-c-driver](https://github.com/mongodb/mongo-c-driver) | Client library written in C for MongoDB
 *   dev-libs/[qmltermwidget](https://github.com/Swordfish90/qmltermwidget) | QML port of qtermwidget
 *   dev-libs/[rustc-demangle](https://github.com/rust-lang/rustc-demangle) | Library for Rust symbol demangling
+*   dev-libs/[spirv-reflect](https://github.com/KhronosGroup/SPIRV-Reflect) | Provides a C/C++ reflection API for SPIR-V shader bytecode
 *   dev-libs/[xml-security-c](https://santuario.apache.org) | Apache C++ XML security libraries
 *   dev-libs/[zrtpcpp](https://github.com/wernerd/ZRTPCPP) | VCard standard format manipulation library
 *   dev-lisp/[3bmd](https://github.com/3b/3bmd) | Markdown processor in Common Lisp using Esrap parser

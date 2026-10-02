@@ -1,0 +1,18 @@
+Do not change the working directory while setting up the parameterized
+tests.  Test fixtures consistently use paths relative to the test
+working directory, so changing it causes those paths to become invalid.
+--- ../tests/test-spirv-reflect.cpp	2026-10-02 13:50:44.022764243 +0300
++++ ../tests/test-spirv-reflect.cpp	2026-10-02 13:51:38.809408446 +0300
+@@ -79,11 +79,7 @@
+   // case. Note that for parameterized tests, the specific parameter value is a
+   // non-static member data
+   static void SetUpTestCase() {
+-    FILE* f = fopen("tests/glsl/built_in_format.spv", "r");
+-    if (!f) {
+-      posix_chdir("..");
+-      f = fopen("tests/glsl/built_in_format.spv", "r");
+-    }
++    FILE* f = fopen("../tests/glsl/built_in_format.spv", "r");
+     EXPECT_NE(f, nullptr) << "Couldn't find test shaders!";
+     if (f) {
+       fclose(f);
