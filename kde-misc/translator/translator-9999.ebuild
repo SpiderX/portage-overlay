@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit git-r3 optfeature
+inherit git-r3 optfeature qt-utils virtualx
 
 DESCRIPTION="Translator - KDE Plasma 6 Widget"
 HOMEPAGE="https://github.com/rcspam/org.kde.plasma.translator"
@@ -19,6 +19,10 @@ RDEPEND="dev-qt/qt5compat:6
 	kde-plasma/libplasma:6
 	kde-plasma/plasma5support:6
 	|| ( gui-apps/wl-clipboard x11-misc/xsel )"
+
+src_test() {
+	virtx "$(qt_get_broot_binary 6 qmltestrunner)" -input tests
+}
 
 src_install() {
 	default
