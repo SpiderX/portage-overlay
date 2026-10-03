@@ -1,0 +1,9 @@
+prefix=/usr
+includedir=${prefix}/include
+libdir=/usr/@LIBDIR@
+
+Name: SPIRV-Reflect
+Description: C/C++ reflection API for SPIR-V shader bytecode
+Version: @VERSION@
+Libs: -L${libdir} -lspirv-reflect
+Cflags: -I${includedir} -DSPIRV_REFLECT_USE_SYSTEM_SPIRV_H

@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
+DEPEND="~dev-util/spirv-headers-${PV}"
 BDEPEND="test? ( dev-cpp/gtest )"
 
 PATCHES=( "${FILESDIR}/${PN}"-1.4.350.0-CMakeLists.patch
@@ -32,4 +33,14 @@ multilib_src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+multilib_src_install() {
+	cmake_src_install
+
+	sed -e "s|@VERSION@|${PV}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
+		"${FILESDIR}"/spirv-reflect.pc > "${T}"/spirv-reflect-"${ABI}".pc || die
+
+	insinto /usr/"$(get_libdir)"/pkgconfig
+	newins "${T}"/spirv-reflect-"${ABI}".pc spirv-reflect.pc
 }
