@@ -31,6 +31,5 @@ src_install() {
 	default
 
 	insinto /usr/share/plasma/plasmoids/com.github.k-donn.plasmoid-wunderground
-	doins plasmoid/metadata.json
-	doins -r plasmoid/contents
+	doins -r plasmoid/{contents,metadata.json}
 }
