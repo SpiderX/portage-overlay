@@ -128,4 +128,5 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "additional Wayland display integration" gui-libs/waywallen-display
+	optfeature "Wallpaper Engine wallpaper support" media-gfx/open-wallpaper-engine
 }
