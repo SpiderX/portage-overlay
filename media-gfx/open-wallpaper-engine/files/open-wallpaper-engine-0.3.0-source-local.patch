@@ -1,0 +1,23 @@
+Redirect Lito's Git dependencies to local sources
+Redirect Registry dependencies to local sources
+--- /dev/null	2026-09-24 12:07:11.484709436 +0300
++++ ../.lito/config.toml	2026-09-29 00:45:41.938606718 +0300
+@@ -0,0 +1,18 @@
++[patch.litocpp]
++licrypto = { path = ".licrypto" }
++rstd-alloc = { path = ".rstd" }
++rstd-argparse = { path = ".rstd" }
++rstd-basic = { path = ".rstd" }
++rstd-bench = { path = ".rstd" }
++rstd-core = { path = ".rstd" }
++rstd-cppstd = { path = ".rstd" }
++rstd-dlopn = { path = ".rstd" }
++rstd-json = { path = ".rstd" }
++rstd-log = { path = ".rstd" }
++rstd-parse = { path = ".rstd" }
++rstd-runtime = { path = ".rstd" }
++rstd-serde = { path = ".rstd" }
++rstd-std = { path = ".rstd" }
++rstd-test = { path = ".rstd" }
++rstd-toml = { path = ".rstd" }
++vvk = { path = ".vvk" }

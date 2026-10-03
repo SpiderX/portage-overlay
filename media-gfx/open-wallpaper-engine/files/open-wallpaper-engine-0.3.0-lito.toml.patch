@@ -1,0 +1,98 @@
+Uuse system dependencies and Portage-fetched sources instead of
+Lito-managed external sources.
+--- ../lito.toml	2026-10-02 20:17:41.943875386 +0300
++++ ../lito.toml	2026-10-02 20:19:43.333919011 +0300
+@@ -44,9 +44,8 @@
+ rstd-test = { version = "0.1.5" }
+ licrypto = { version = "0.1.1" }
+ vvk = { version = "0.1.0" }
+-wavsen = { git = "https://github.com/hypengw/wavsen.git" }
+-spirv-reflect = { git = "https://github.com/hypengw/SPIRV-Reflect.git", branch = "toml" }
+-vrento = { git = "https://github.com/vecren/vrento.git" }
++wavsen = { path = ".wavsen" }
++vrento = { path = ".vrento" }
+ 
+ [workspace.external-dependencies.pkg-config.glfw]
+ module = "glfw3"
+@@ -75,42 +74,14 @@
+ [workspace.external-dependencies.pkg-config.waywallen-bridge]
+ module = "waywallen-bridge"
+ 
+-[workspace.external-sources.eigen]
+-git = "https://gitlab.com/libeigen/eigen.git"
+-rev = "bc3b39870ecb690a623a3f49149a358b95c5781d"
+-
+ [workspace.external-dependencies.cmake.eigen]
+ package = "Eigen3"
+-source = "eigen"
+-cache = { BUILD_TESTING = false, EIGEN_BUILD_TESTING = false, EIGEN_BUILD_BLAS = false, EIGEN_BUILD_LAPACK = false, EIGEN_BUILD_DOC = false, EIGEN_BUILD_DEMOS = false, EIGEN_BUILD_PKGCONFIG = false, EIGEN_BUILD_CMAKE_PACKAGE = true }
+-
+-[workspace.external-sources.glslang]
+-git = "https://github.com/KhronosGroup/glslang.git"
+-rev = "275822a6261ee689aadb1da5f09a0ec2f058685c"
+ 
+ [workspace.external-dependencies.cmake.glslang]
+ package = "glslang"
+-source = "glslang"
+-cache = { ENABLE_GLSLANG_BINARIES = false, ENABLE_HLSL = true, ENABLE_OPT = false, ENABLE_CTEST = false, BUILD_EXTERNAL = false, GLSLANG_TESTS = false, BUILD_TESTING = false }
+-
+-[workspace.external-sources.quickjs]
+-git = "https://github.com/quickjs-ng/quickjs.git"
+-rev = "3c051980ab7e783dfbfb1c70c014ce5e05ecf24c"
+-
+-[workspace.external-dependencies.cmake.quickjs]
+-package = "qjs"
+-source = "quickjs"
+-config-directory = "lib/cmake/quickjs"
+-cache = { BUILD_SHARED_LIBS = false, QJS_BUILD_EXAMPLES = false, QJS_BUILD_CLI_STATIC = false, QJS_BUILD_CLI_WITH_MIMALLOC = false, QJS_BUILD_CLI_WITH_STATIC_MIMALLOC = false, QJS_ENABLE_INSTALL = true }
+ 
+ [workspace.external-sources.cef]
+-[workspace.external-sources.cef.archives.x86_64]
+-archive = "https://cef-builds.spotifycdn.com/cef_binary_149.0.4%2Bg2f1bfd8%2Bchromium-149.0.7827.156_linux64_minimal.tar.bz2"
+-sha256 = "6d43607675e47ed6bfa40d1cfce136d04e7720529f8f1c4435d4ba1dcd1839b2"
+-
+-[workspace.external-sources.cef.archives.aarch64]
+-archive = "https://cef-builds.spotifycdn.com/cef_binary_149.0.4%2Bg2f1bfd8%2Bchromium-149.0.7827.156_linuxarm64_minimal.tar.bz2"
+-sha256 = "8909a79689eec7b23ed80084b69766952d44e00f9a345832951b32903f8a80a0"
++path = "build/plain/.cef"
+ 
+ [workspace.external-sources.cef-macos.archives.x86_64]
+ archive = "https://cef-builds.spotifycdn.com/cef_binary_149.0.4%2Bg2f1bfd8%2Bchromium-149.0.7827.156_macosx64_minimal.tar.bz2"
+--- ../src/Scene/lito.toml	2026-10-02 20:20:10.217038437 +0300
++++ ../src/Scene/lito.toml	2026-10-02 20:20:40.105029924 +0300
+@@ -207,9 +207,9 @@
+ workspace = true
+ pub = true
+ 
+-[external-dependencies.cmake.quickjs]
+-workspace = true
+-targets = [{ name = "qjs", pub = true }]
++[external-dependencies.pkg-config.quickjs]
++module = "quickjs-ng"
++pub = true
+ 
+ [external-dependencies.pkg-config.lz4]
+ workspace = true
+--- ../src/Vulkan/lito.toml	2026-10-02 20:21:14.567194361 +0300
++++ ../src/Vulkan/lito.toml	2026-10-02 20:21:35.572772144 +0300
+@@ -54,8 +54,8 @@
+ workspace = true
+ pub = true
+ 
+-[dependencies.spirv-reflect]
+-workspace = true
++[external-dependencies.pkg-config.spirv-reflect]
++module = "spirv-reflect"
+ 
+ [external-dependencies.cmake.glslang]
+ workspace = true
+--- ../tests/lito.toml	2026-10-02 20:22:00.117333087 +0300
++++ ../tests/lito.toml	2026-10-02 20:22:21.011693292 +0300
+@@ -182,5 +182,5 @@
+ [dependencies.vvk]
+ workspace = true
+ 
+-[dependencies.spirv-reflect]
+-workspace = true
++[external-dependencies.pkg-config.spirv-reflect]
++module = "spirv-reflect"

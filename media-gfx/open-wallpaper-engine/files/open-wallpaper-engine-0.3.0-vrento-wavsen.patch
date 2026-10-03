@@ -1,0 +1,10 @@
+vrento declares wavsen independently of the OWE workspace; point it
+at the Portage-fetched source to avoid network access during the build.
+--- ../lito.toml	2026-10-02 20:46:00.983696046 +0300
++++ ../lito.toml	2026-10-02 20:46:09.503507778 +0300
+@@ -133,4 +133,4 @@
+ rstd-cppstd = { version = "0.1.0", pub = true }
+ rstd-log = { version = "0.1.0", pub = true }
+ vvk = { version = "0.1.0", pub = true }
+-wavsen = { git = "https://github.com/hypengw/wavsen.git" }
++wavsen = { path = ".wavsen" }

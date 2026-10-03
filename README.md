@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1624](https://img.shields.io/badge/ebuild-1624-orange.svg)](https://img.shields.io/badge/ebuild-1624-orange.svg)
+[![Number of ebuilds: 1625](https://img.shields.io/badge/ebuild-1625-orange.svg)](https://img.shields.io/badge/ebuild-1625-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1535,6 +1535,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   media-gfx/[guetzli](https://github.com/google/guetzli) | Perceptual JPEG encoder
 *   media-gfx/[lsix](https://github.com/hackerb9/lsix) | Image viewer for terminal that use sixel graphics
 *   media-gfx/[qview](https://interversehq.com/qview/) | Practical and minimal image viewer
+*   media-gfx/[open-wallpaper-engine](https://github.com/waywallen/open-wallpaper-engine) | Open source implementation of Wallpaper Engine for Linux
 *   media-gfx/[pineapple-pictures](https://github.com/BLumia/pineapple-pictures) | A homebrew lightweight image viewer
 *   media-gfx/[pingo-bin](https://css-ig.net/pingo) | Fast web image optimizer
 *   media-gfx/[screencloud](https://screencloud.net) | Screenshot capturing and sharing tool over various services
