@@ -21,6 +21,7 @@ RDEPEND="dev-qt/qtdeclarative:6
 	kde-frameworks/kirigami:6
 	kde-frameworks/kitemmodels:6
 	kde-plasma/libksysguard:6
+	kde-plasma/ksystemstats:6
 	kde-plasma/libplasma:6
 	kde-plasma/plasma5support:6"
 
