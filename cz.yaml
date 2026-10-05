@@ -21,7 +21,7 @@ commitizen:
     schema_pattern: "^(?P<change_type>feat|fix|style|docs|ci)(\\((?P<category>\
       acct-(group|user)|app-(admin|backup|containers|crypt|editors|emulation|\
       forensics|metrics|misc|office|shells|text)|dev-(build|cpp|db|haskell|java|libs|\
-      lisp|ml|qt|perl|php|python|util|vcs)|gui-(apps|libs)|kde-misc|media-(gfx|libs|radio|sound|video)|\
+      lisp|ml|qt|perl|php|python|util|vcs)|gui-(apps|libs)|kde-misc|media-(gfx|libs|plugins|radio|sound|video)|\
       net-(analyzer|dns|firewall|ftp|im|libs|mail|misc|p2p|voip|vpn)|\
       sci-visualization|sys-(apps|cluster|fs|power|process)|www-(apps|misc|plugins|\
       servers)|x11-(libs|misc|terms|themes))\/(?P<package>.*)\\))?:\\s(?P<description>.*)?"
@@ -107,6 +107,7 @@ commitizen:
           kde-misc: "various miscellaneous KDE packages"
           media-gfx: "graphics-related packages"
           media-libs: "media-related libraries"
+          media-plugins: "plugin packages for various media applications"
           media-radio: "radio-related media applications"
           media-sound: "sound, music and audio applications"
           media-video: "video-related applications"
@@ -173,6 +174,7 @@ commitizen:
           - kde-misc
           - media-gfx
           - media-libs
+          - media-plugins
           - media-radio
           - media-sound
           - media-video
