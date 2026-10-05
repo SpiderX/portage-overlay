@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1628](https://img.shields.io/badge/ebuild-1628-orange.svg)](https://img.shields.io/badge/ebuild-1628-orange.svg)
+[![Number of ebuilds: 1629](https://img.shields.io/badge/ebuild-1629-orange.svg)](https://img.shields.io/badge/ebuild-1629-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1500,6 +1500,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   gui-apps/[waywallen](https://github.com/waywallen/waywallen) | Dynamic wallpaper manager for Linux
 *   gui-libs/[waywallen-display](https://github.com/waywallen/waywallen-display) | Desktop integration for waywallen
 *   kde-misc/[KDE-Rounded-Corners](https://github.com/matinlotfali/KDE-Rounded-Corners) | Rounds the corners of your windows in KDE Plasma 5 and 6
+*   kde-misc/[SensWidget](https://github.com/Brov3r/SensWidget) | Compact system sensors monitor for the panel
 *   kde-misc/[appfolder](https://github.com/IsseyShiitake/App-Folder) | App folder widgets for KDE Plasma panels
 *   kde-misc/[applet-latte-separator](https://github.com/doncsugar/applet-latte-separator) | Plasma applet that acts as a separator between applets
 *   kde-misc/[applet-window-buttons6](https://github.com/moodyhunter/applet-window-buttons6) | Plasma 6 applet in order to show window buttons in your panels
