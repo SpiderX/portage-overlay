@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake edo readme.gentoo-r1 udev
 
-COMMIT="4707a9eab86a686e0c793d0d9510d5d1ac8cb5e1"
+COMMIT="71bd14ca409d0ad74376e4466c8fb5100765ef3f"
 
 DESCRIPTION="Mouse and touchpad gestures for Plasma 6 Wayland"
 HOMEPAGE="https://github.com/InputActions/kwin"
