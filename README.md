@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1627](https://img.shields.io/badge/ebuild-1627-orange.svg)](https://img.shields.io/badge/ebuild-1627-orange.svg)
+[![Number of ebuilds: 1628](https://img.shields.io/badge/ebuild-1628-orange.svg)](https://img.shields.io/badge/ebuild-1628-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1518,6 +1518,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[kde-mymemory-translator](https://github.com/zayronxio/Kde.mymemory.translator) | Plasmoid for translation using the mymemory translated api
 *   kde-misc/[kvitals](https://github.com/yassine20011/kvitals) | Plasma 6 panel widget displays live system vitals
 *   kde-misc/[kwin-sliding-notifications](https://github.com/RussH/kwin-sliding-notifications) | Plasma 6 Sliding animation for notification windows
+*   kde-misc/[kwin-snow](https://github.com/joepadmiraal/kwin-snow) | KDE snow effect
 *   kde-misc/[paneltransparencybutton](https://github.com/TheEssem/paneltransparencybutton) | Enable/disable transparency for specific plasma panels
 *   kde-misc/[plasma-6-power-usage-widget](https://github.com/magillos/Plasma-6-power-usage-widget) | Plasma 6 compatibile widget showing power usage
 *   kde-misc/[plasma-applet-ambientnoise](https://github.com/m-pilia/plasma-applet-ambientnoise) | Plasma widget for play ambient noise
