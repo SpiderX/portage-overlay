@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This is a plugin for <pkg>media-video/mpv</pkg> which allows control
+	of the player using standard media keys. This plugin implements the
+	MPRIS D-Bus interface and can be controlled using tools or through
+	many open source desktop environments, such as GNOME and KDE.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">hoyon/mpv-mpris</remote-id>
+	</upstream>
+</pkgmetadata>
