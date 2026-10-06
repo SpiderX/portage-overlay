@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1635](https://img.shields.io/badge/ebuild-1635-orange.svg)](https://img.shields.io/badge/ebuild-1635-orange.svg)
+[![Number of ebuilds: 1636](https://img.shields.io/badge/ebuild-1636-orange.svg)](https://img.shields.io/badge/ebuild-1636-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1519,6 +1519,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[lyrics-on-panel](https://github.com/KangweiZhu/lyrics-on-panel) | Lyrics for currently playing song in Plasma 6
 *   kde-misc/[kde-gitpulse](https://github.com/Muddyblack/kde-gitpulse) | Plasma 6 System Tray widget for GitHub
 *   kde-misc/[kde-mymemory-translator](https://github.com/zayronxio/Kde.mymemory.translator) | Plasmoid for translation using the mymemory translated api
+*   kde-misc/[keep-above-outline](https://github.com/Powermayer/keep-above-outline) | Colored outline around any window that has the Keep Above property
 *   kde-misc/[kvitals](https://github.com/yassine20011/kvitals) | Plasma 6 panel widget displays live system vitals
 *   kde-misc/[kwin-effects-ba-click-fx](https://github.com/floating142/kwin-effects-ba-click-fx) | Blue Archive Unity click effect and cursor trail for KDE Plasma
 *   kde-misc/[kwin-sliding-notifications](https://github.com/RussH/kwin-sliding-notifications) | Plasma 6 Sliding animation for notification windows
