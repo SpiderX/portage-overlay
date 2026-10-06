@@ -1,0 +1,15 @@
+mpv-mpris may expose a custom MPRIS Identity, such as "RadioGlobe".
+The D-Bus peer PID already uniquely identifies the mpv instance started
+by RadioGlobe, so requiring Identity == "mpv" prevents a valid player
+from being attached.
+--- ../contents/ui/Player.qml	2026-10-06 13:20:16.966153582 +0300
++++ ../contents/ui/Player.qml	2026-10-06 13:20:49.112746928 +0300
+@@ -245,7 +245,7 @@
+             const count = root.mpris.rowCount();
+             for (let row = 0; row < count; row++) {
+                 const container = root.mpris.data(root.mpris.index(row, 0), 257);
+-                if (container && Number(container.instancePid) === pid && String(container.identity) === "mpv") {
++                if (container && Number(container.instancePid) === pid) {
+                     found = container;
+                     break;
+                 }
