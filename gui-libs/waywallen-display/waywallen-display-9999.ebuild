@@ -4,8 +4,9 @@
 EAPI=8
 
 CARGO_OPTIONAL=1
+PLOCALES="ru"
 
-inherit cargo cmake edo git-r3 gnome2-utils
+inherit cargo cmake gnome2-utils plocale
 
 DESCRIPTION="Desktop integration for waywallen"
 HOMEPAGE="https://github.com/waywallen/waywallen-display"
@@ -13,13 +14,21 @@ EGIT_REPO_URI="https://github.com/waywallen/${PN}.git"
 
 LICENSE="Apache-2.0 GPL-3+ ISC MIT Unicode-3.0"
 SLOT="0"
-IUSE="egl gnome layershell qml test vulkan"
-REQUIRED_USE="layershell? ( || ( egl vulkan ) )"
+IUSE="+egl gnome layershell plasma qml test vulkan"
+REQUIRED_USE="gnome? ( vulkan )
+	layershell? ( || ( egl vulkan ) )
+	plasma? ( egl qml )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="egl? ( media-libs/libglvnd )
 	gnome? ( dev-libs/glib:2
-		gui-libs/gtk:4 )
+		gnome-base/gnome-shell
+		gui-libs/gtk:4
+		gui-libs/libadwaita:1 )
+	plasma? ( kde-frameworks/kirigami:6
+		kde-frameworks/kwindowsystem:6
+		kde-plasma/libplasma:6
+		kde-plasma/plasma-workspace:6 )
 	qml? ( dev-qt/qtbase:6[dbus,gui]
 		dev-qt/qtdeclarative:6 )
 	vulkan? ( media-libs/vulkan-loader )"
@@ -35,6 +44,16 @@ src_unpack() {
 	default
 	git-r3_src_unpack
 	use layershell && cargo_live_src_unpack
+}
+
+src_prepare() {
+	my_rm_loc() {
+		rm -f po/layer-shell/"${1}".po extensions/gnome/po/"${1}".po \
+			extensions/kde/po/"${1}".po || die "rm failed for ${1}"
+	}
+	plocale_for_each_disabled_locale my_rm_loc
+
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -60,10 +79,23 @@ src_compile() {
 	use layershell && cargo_src_compile
 }
 
+src_test() {
+	cmake_src_test
+	use layershell && cargo_src_test
+}
+
 src_install() {
 	cmake_src_install
 	use layershell && cargo_src_install --bin waywallen-layer-shell
-	edo rm "${ED}"/usr/"$(get_libdir)"/libwaywallen_display.a
+
+	if use plasma ; then
+		DESTDIR="${T}/kde-extension" \
+			cmake --install "${BUILD_DIR}" --component kde_extension || die
+		insinto /usr/share/plasma/wallpapers
+		doins -r "${T}"/kde-extension/usr/org.waywallen.kde
+	fi
+
+	rm "${ED}"/usr/"$(get_libdir)"/libwaywallen_display.a || die
 }
 
 pkg_postinst() {
