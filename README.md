@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1634](https://img.shields.io/badge/ebuild-1634-orange.svg)](https://img.shields.io/badge/ebuild-1634-orange.svg)
+[![Number of ebuilds: 1635](https://img.shields.io/badge/ebuild-1635-orange.svg)](https://img.shields.io/badge/ebuild-1635-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1536,6 +1536,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[pminhibition](https://github.com/popov895/pminhibition) | Plasma applet shows information about power management inhibition
 *   kde-misc/[radioglobe](https://github.com/rcspam/radioglobe) | Explore live radio stations on a rotatable globe
 *   kde-misc/[translator](https://github.com/rcspam/org.kde.plasma.translator) | Translator - KDE Plasma 6 Widget
+*   kde-misc/[windtrail](https://github.com/wesleyyach/windtrail) | A smooth, customizable animated mouse cursor trail effect
 *   media-gfx/[butteraugli](https://github.com/google/butteraugli) | A tool for measuring perceived differences between images
 *   media-gfx/[colorpick](https://github.com/qtilities/colorpick) | Color picker and contrast checker
 *   media-gfx/[depix](https://github.com/beurtschipper/Depix) | A tool for recovering passwords from pixelized screenshots
