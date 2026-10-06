@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1631](https://img.shields.io/badge/ebuild-1631-orange.svg)](https://img.shields.io/badge/ebuild-1631-orange.svg)
+[![Number of ebuilds: 1632](https://img.shields.io/badge/ebuild-1632-orange.svg)](https://img.shields.io/badge/ebuild-1632-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1517,6 +1517,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   kde-misc/[lightly](https://github.com/Luwx/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[lightly](https://github.com/xuzhao9/Lightly) | KDE theme style with aim to be visually modern and minimalistic
 *   kde-misc/[lyrics-on-panel](https://github.com/KangweiZhu/lyrics-on-panel) | Lyrics for currently playing song in Plasma 6
+*   kde-misc/[kde-gitpulse](https://github.com/Muddyblack/kde-gitpulse) | Plasma 6 System Tray widget for GitHub
 *   kde-misc/[kde-mymemory-translator](https://github.com/zayronxio/Kde.mymemory.translator) | Plasmoid for translation using the mymemory translated api
 *   kde-misc/[kvitals](https://github.com/yassine20011/kvitals) | Plasma 6 panel widget displays live system vitals
 *   kde-misc/[kwin-sliding-notifications](https://github.com/RussH/kwin-sliding-notifications) | Plasma 6 Sliding animation for notification windows
