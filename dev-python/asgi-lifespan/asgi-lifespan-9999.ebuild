@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 git-r3
 
@@ -17,15 +17,15 @@ SLOT="0"
 
 RDEPEND="dev-python/sniffio[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/httpx[${PYTHON_USEDEP}]
-		dev-python/starlette[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-trio[${PYTHON_USEDEP}] )"
+		dev-python/starlette[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}/${PN}"-2.1.0-test-asgi.patch
-	"${FILESDIR}/${PN}"-2.1.0-tests-trio.patch
+PATCHES=( "${FILESDIR}/${PN}"-2.1.0-test-trio.patch
+	"${FILESDIR}/${PN}"-2.1.0-tests-asgi.patch
 	"${FILESDIR}/${PN}"-2.1.0-tests-eg.patch
-	"${FILESDIR}/${PN}"-2.1.0-test-trio.patch )
+	"${FILESDIR}/${PN}"-2.1.0-tests-starlette.patch
+	"${FILESDIR}/${PN}"-2.1.0-tests-trio.patch )
 
+EPYTEST_PLUGINS=( pytest-{asyncio,trio} )
 distutils_enable_tests pytest
 
 src_prepare() {
