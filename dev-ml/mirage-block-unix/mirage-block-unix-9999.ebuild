@@ -15,7 +15,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 DEPEND="sys-kernel/linux-headers"
-RDEPEND="dev-ml/cstruct:0=[ocamlopt?]
+RDEPEND=">=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/logs:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
 	dev-ml/mirage-block:0=[ocamlopt?]
