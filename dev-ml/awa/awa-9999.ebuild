@@ -17,7 +17,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-ml/cmdliner:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/duration:0=[ocamlopt?]
 	dev-ml/eqaf:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
@@ -29,6 +29,7 @@ RDEPEND="dev-ml/cmdliner:0=[ocamlopt?]
 	dev-ml/mirage-sleep:0=[ocamlopt?]
 	dev-ml/mtime:0=
 	dev-ml/ocaml-base64:0=[ocamlopt?]
+	dev-ml/ohex:0=[ocamlopt?]
 	dev-ml/x509:0=[ocamlopt?]
 	dev-ml/zarith:0=[ocamlopt?]"
 BDEPEND="test? ( dev-ml/alcotest )"
