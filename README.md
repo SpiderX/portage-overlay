@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1637](https://img.shields.io/badge/ebuild-1637-orange.svg)](https://img.shields.io/badge/ebuild-1637-orange.svg)
+[![Number of ebuilds: 1636](https://img.shields.io/badge/ebuild-1636-orange.svg)](https://img.shields.io/badge/ebuild-1636-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1475,8 +1475,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-util/[postman](https://www.postman.com) | Build, test, and document your APIs faster
 *   dev-util/[revdiff](https://github.com/umputun/revdiff) | TUI for reviewing diffs, files, and documents with inline annotations
 *   dev-util/[rpmlint](https://github.com/rpm-software-management/rpmlint) | Tool for checking common errors in RPM packages
-*   dev-util/[semgrep](https://github.com/semgrep/semgrep) | Lightweight static analysis for many languages
-*   dev-util/[semgrep-core](https://github.com/semgrep/semgrep) | Code scanning at ludicrous speed
+*   dev-util/[semgrep](https://github.com/semgrep/semgrep) | Code scanning at ludicrous speed
 *   dev-util/[shfmt](https://github.com/mvdan/sh) | A shell parser, formatter, and interpreter with bash support
 *   dev-util/[sqlfluff](https://github.com/sqlfluff/sqlfluff) | A SQL linter and auto-formatter
 *   dev-util/[swapusage](https://codeberg.org/hhoffstaette/swapusage) | Amount of swapped memory for running processes
