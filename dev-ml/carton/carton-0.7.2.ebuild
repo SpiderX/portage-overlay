@@ -23,7 +23,7 @@ RDEPEND="dev-ml/astring:0=
 	dev-ml/bos:0=
 	dev-ml/checkseum:0=[ocamlopt?]
 	dev-ml/cmdliner:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/decompress:0=[ocamlopt?]
 	dev-ml/digestif:0=[ocamlopt?]
 	dev-ml/duff:0=[ocamlopt?]
