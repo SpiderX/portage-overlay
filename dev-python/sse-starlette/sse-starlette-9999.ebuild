@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 git-r3
 
@@ -18,7 +18,7 @@ SLOT="0"
 RDEPEND="dev-python/anyio[${PYTHON_USEDEP}]
 	dev-python/starlette[${PYTHON_USEDEP}]
 	dev-python/uvicorn[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/httpx[${PYTHON_USEDEP}]
+BDEPEND="test? ( dev-python/httpx2[${PYTHON_USEDEP}]
 		dev-python/asgi-lifespan[${PYTHON_USEDEP}]
 		dev-python/async-timeout[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
