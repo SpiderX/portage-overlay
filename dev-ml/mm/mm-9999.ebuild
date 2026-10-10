@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,3 +22,9 @@ RDEPEND="alsa? ( dev-ml/alsa:0=[ocamlopt?] )
 	sdl? ( dev-ml/ocamlsdl:0=[ocamlopt?] )
 	theora? ( dev-ml/theora:0=[ocamlopt?] )"
 BDEPEND="dev-ml/dune-configurator"
+
+src_prepare() {
+	default
+
+	sed -i '/lang/s|3.23|3.20|' dune-project || die "sed failed for dune-project"
+}
