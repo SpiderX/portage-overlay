@@ -4,7 +4,7 @@
 EAPI=8
 
 DUNE_PKG_NAME="pyro-caml pyro-caml-instruments pyro-caml-ppx"
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.87.0"
 
 inherit cargo dune git-r3
 
@@ -18,12 +18,19 @@ IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/logs:0=[ocamlopt?]
 	dev-ml/ppx_deriving:0=[ocamlopt?]
-	~dev-ml/ppxlib-0.35.0:0=[ocamlopt?]
+	>=dev-ml/ppxlib-0.36.0:0=[ocamlopt?]
 	|| ( dev-lang/rust dev-lang/rust-bin )"
 
 src_unpack() {
 	git-r3_src_unpack
 	cargo_live_src_unpack
+}
+
+src_prepare() {
+	default
+
+	sed -i "/pyroscope = {/s|git = .*|path = \"${WORKDIR}/pyroscope-rs-0235912a5eb5fd87d47d9c0d386c47b03c29e7ff\" }|" \
+		Cargo.toml || die "sed failed for Cargo.toml"
 }
 
 src_compile() {
