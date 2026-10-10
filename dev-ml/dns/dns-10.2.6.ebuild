@@ -22,7 +22,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-ml/ca-certs-nss:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/digestif:0=[ocamlopt?]
 	dev-ml/domain-name:0=[ocamlopt?]
 	dev-ml/duration:0=[ocamlopt?]
