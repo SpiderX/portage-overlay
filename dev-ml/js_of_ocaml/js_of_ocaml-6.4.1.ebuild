@@ -32,7 +32,7 @@ RDEPEND="app-arch/zstd:0=
 	dev-ml/react:0=
 	dev-ml/reactiveData:0=[ocamlopt?]
 	dev-ml/sedlex:0=[ocamlopt?]
-	=dev-ml/tyxml-4.6.0-r1[ocamlopt?]
+	>=dev-ml/tyxml-5[ocamlopt?]
 	dev-ml/yojson:0=[ocamlopt?]"
 BDEPEND="dev-ml/findlib
 	dev-util/binaryen
