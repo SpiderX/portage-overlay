@@ -5,14 +5,14 @@ EAPI=8
 
 inherit dune
 
-COMMIT="060ebb528e88b27124b33b5cfaf8ed04b7da6e41"
+COMMIT="6efca08b2a98317b1d705c1e88b8342ec558205c"
 
 DESCRIPTION="OCaml bindings to backward-cpp"
 HOMEPAGE="https://github.com/semgrep/obackward"
 SRC_URI="https://github.com/semgrep/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt"
