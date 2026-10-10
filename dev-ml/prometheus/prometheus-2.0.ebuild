@@ -3,7 +3,8 @@
 
 EAPI=8
 
-DUNE_PKG_NAME="prometheus prometheus-app"
+DUNE_PKG_NAME="prometheus prometheus-app prometheus-eio prometheus-lwt
+	prometheus-reporter"
 
 inherit dune
 
