@@ -18,7 +18,7 @@ IUSE="ipv6 +ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-ml/bigstringaf:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/faraday:0=[ocamlopt?]
 	dev-ml/h1:0=[ocamlopt?]
 	dev-ml/h2:0=[ocamlopt?]
