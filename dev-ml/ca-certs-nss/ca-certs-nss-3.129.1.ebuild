@@ -5,9 +5,12 @@ EAPI=8
 
 inherit dune
 
+MY_PV="$(ver_rs 2 -)"
+
 DESCRIPTION="X.509 trust anchors extracted from Mozilla's NSS"
 HOMEPAGE="https://github.com/mirage/ca-certs-nss"
-SRC_URI="https://github.com/mirage/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mirage/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
