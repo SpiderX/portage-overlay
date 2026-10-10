@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/bheap:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/duration:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
 	dev-ml/io-page:0=[ocamlopt?]
