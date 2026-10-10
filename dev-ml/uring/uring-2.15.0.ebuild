@@ -15,9 +15,11 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/bechamel:0=[ocamlopt?]
+DEPEND=">=sys-libs/liburing-2.15"
+RDEPEND="${RDEPEND}
+	dev-ml/bechamel:0=[ocamlopt?]
 	dev-ml/cmdliner:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
 	dev-ml/logs:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
@@ -25,3 +27,5 @@ RDEPEND="dev-ml/bechamel:0=[ocamlopt?]
 	dev-ml/optint:0=[ocamlopt?]"
 BDEPEND="dev-ml/dune-configurator
 	test? ( dev-ml/alcotest )"
+
+PATCHES=( "${FILESDIR}/${PN}"-2.15.0-system-libs.patch )
