@@ -13,16 +13,20 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt test"
-RESTRICT="test" # need proper setup
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="dev-ml/opam:0=[ocamlopt?]"
 BDEPEND="virtual/pkgconfig
 	test? ( dev-vcs/git )"
 
 src_test() {
-	edo git init > /dev/null
-	edo git config user.email "you@example.com"
-	edo git config user.name "Your Name"
-	edo opam init -n --no-opamrc --disable-sandboxing
+	# tests invoke opam-monorepo, which requires an initialized OPAM root
+	# and a named current switch (path switch is not recognized)
+	export OPAMROOT="${T}/opam"
+	edo git config --global user.email "you@example.com"
+	edo git config --global user.name "Your Name"
+	edo opam init --bare -n --no-opamrc --disable-sandboxing
+	edo opam switch create "portage" ocaml-system --yes
 	dune_src_test
 }
