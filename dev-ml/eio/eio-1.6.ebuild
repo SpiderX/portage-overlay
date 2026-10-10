@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-lang/ocaml-5.2.0:0=
 	dev-ml/bigstringaf[ocamlopt?]
 	dev-ml/crowbar:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/domain-local-await:0=[ocamlopt?]
 	>=dev-ml/dune-3.19:0=
 	dev-ml/fmt:0=[ocamlopt?]
