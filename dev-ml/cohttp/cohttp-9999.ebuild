@@ -29,7 +29,7 @@ RDEPEND="dev-ml/astring:0=
 	dev-ml/core_bench:0=[ocamlopt?]
 	dev-ml/core_unix:0=[ocamlopt?]
 	dev-ml/crowbar:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/ocurl:0=[ocamlopt?]
 	dev-ml/eio:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]

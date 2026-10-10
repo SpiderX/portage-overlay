@@ -30,7 +30,7 @@ RDEPEND="dev-ml/astring:0=
 	dev-ml/core_bench:0=[ocamlopt?]
 	dev-ml/core_unix:0=[ocamlopt?]
 	dev-ml/crowbar:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/ocurl:0=[ocamlopt?]
 	dev-ml/eio:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
@@ -49,7 +49,7 @@ RDEPEND="dev-ml/astring:0=
 	dev-ml/re:0=[ocamlopt?]
 	dev-ml/sexplib0:0=[ocamlopt?]
 	dev-ml/stringext[ocamlopt?]
-	dev-ml/uri[ocamlopt?]"
+	~dev-ml/uri-4.4.0-r2[ocamlopt?]"
 BDEPEND="test? ( dev-ml/alcotest
 		dev-ml/base_quickcheck
 		dev-ml/ca-certs
