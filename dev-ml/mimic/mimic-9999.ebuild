@@ -24,5 +24,5 @@ RDEPEND="dev-ml/dns-client:0=[ocamlopt?]
 BDEPEND="test? ( dev-ml/alcotest
 		dev-ml/alcotest-lwt
 		dev-ml/bigstringaf
-		dev-ml/cstruct
+		>=dev-ml/cstruct-6.3.0
 		dev-ml/ke )"
