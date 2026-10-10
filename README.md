@@ -799,7 +799,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[vchan](https://github.com/mirage/ocaml-vchan) | Xen Vchan implementation
 *   dev-ml/[visitors](https://gitlab.inria.fr/fpottier/visitors) | An OCaml syntax extension for generating visitor classes
 *   dev-ml/[vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
-*   dev-ml/[windtrap](https://github.com/robur-coop/ohex) | Hexadecimal encoding and decoding
+*   dev-ml/[windtrap](https://github.com/invariant-hq/windtrap) | One library for all your OCaml tests
 *   dev-ml/[x509](https://github.com/mirleft/ocaml-x509) | X509 handling in OCaml
 *   dev-ml/[xdg](https://github.com/ocaml/dune) | XDG Base Directory Specification
 *   dev-ml/[xenstore](https://github.com/mirage/ocaml-xenstore) | Xenstore protocol in pure OCaml
