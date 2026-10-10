@@ -19,8 +19,7 @@ RDEPEND="dev-ml/atd:0=[ocamlopt?]
 	dev-ml/ppx_deriving:0=[ocamlopt?]
 	dev-ml/re:0=[ocamlopt?]
 	dev-ml/timedesc:0=[ocamlopt?]
-	dev-ml/uri:0=[ocamlopt?]
-	<dev-ml/yojson-3:0=[ocamlopt?]"
+	dev-ml/uri:0=[ocamlopt?]"
 BDEPEND="test? ( dev-ml/alcotest
 		dev-ml/ppx_expect )"
 
