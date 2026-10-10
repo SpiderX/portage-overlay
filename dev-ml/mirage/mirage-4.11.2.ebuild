@@ -34,7 +34,7 @@ BDEPEND="dev-ml/dune-configurator
 	test? ( dev-ml/alcotest )"
 
 src_test() {
-	edo opam init -n --no-opamrc --disable-sandboxing
+	edo opam init --bare -n --no-opamrc --disable-sandboxing
 	# remove integration tests
 	edo rm -rf test/{functoria/e2e,mirage/random}
 	dune_src_test
