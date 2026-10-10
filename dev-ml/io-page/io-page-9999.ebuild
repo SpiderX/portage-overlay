@@ -14,6 +14,6 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt test"
 RESTRICT="test" # dev-ml/ounit2 doesn't have ounit
 
-RDEPEND="dev-ml/cstruct:0=[ocamlopt?]"
+RDEPEND=">=dev-ml/cstruct-6.3.0:0=[ocamlopt?]"
 BDEPEND="virtual/pkgconfig
 	test? ( dev-ml/ounit2 )"
