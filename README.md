@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1633](https://img.shields.io/badge/ebuild-1633-orange.svg)](https://img.shields.io/badge/ebuild-1633-orange.svg)
+[![Number of ebuilds: 1632](https://img.shields.io/badge/ebuild-1632-orange.svg)](https://img.shields.io/badge/ebuild-1632-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -797,7 +797,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-ml/[uri](https://github.com/mirage/ocaml-uri) | An RFC3986 URI/URL parsing library
 *   dev-ml/[uring](https://github.com/ocaml-multicore/ocaml-uring) | Bindings to io_uring for OCaml
 *   dev-ml/[vchan](https://github.com/mirage/ocaml-vchan) | Xen Vchan implementation
-*   dev-ml/[visitors-cleanroom](https://github.com/semgrep/semgrep-ocaml-visitors) | A implementation of OCaml's visitors
+*   dev-ml/[visitors](https://gitlab.inria.fr/fpottier/visitors) | An OCaml syntax extension for generating visitor classes
 *   dev-ml/[vorbis](https://github.com/savonet/ocaml-vorbis) | OCaml bindings to libvorbis
 *   dev-ml/[windtrap](https://github.com/robur-coop/ohex) | Hexadecimal encoding and decoding
 *   dev-ml/[x509](https://github.com/mirleft/ocaml-x509) | X509 handling in OCaml
