@@ -1,10 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DUNE_PKG_NAME="posix-base posix-bindings posix-getopt posix-math2 posix-signal
-	posix-socket-unix posix-time2 posix-types posix-uname"
+DUNE_PKG_NAME="posix-base posix-bindings posix-errno posix-getopt posix-math2
+	posix-resource posix-signal posix-socket-unix posix-stat posix-time2
+	posix-types posix-uname posix-unistd"
 
 inherit dune
 
