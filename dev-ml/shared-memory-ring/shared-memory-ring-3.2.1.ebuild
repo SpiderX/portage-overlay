@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="test" # dev-ml/ounit2 doesn't have ounit
 
-RDEPEND="dev-ml/cstruct:0=[ocamlopt?]
+RDEPEND=">=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
 	dev-ml/lwt-dllist:0=[ocamlopt?]"
 BDEPEND="test? ( dev-ml/ounit2 )"
