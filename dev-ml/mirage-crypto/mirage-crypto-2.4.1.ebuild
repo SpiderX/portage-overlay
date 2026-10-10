@@ -5,7 +5,7 @@ EAPI=8
 
 # mirage-crypto-rng-mkernel needs mkernel
 DUNE_PKG_NAME="mirage-crypto mirage-crypto-ec mirage-crypto-pk
-	mirage-crypto-rng mirage-crypto-rng-mirage mirage-crypto-rng-miou-unix"
+	mirage-crypto-rng mirage-crypto-rng-mirage"
 
 inherit dune
 
