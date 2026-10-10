@@ -10,7 +10,7 @@ EAPI=8
 DUNE_PKG_NAME="atd atdcpp atd-jsonlike atdpy atdgen atdgen-codec-runtime
 	atdgen-runtime atdml atdts atd-yamlx"
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit dune java-pkg-opt-2 python-any-r1
 
