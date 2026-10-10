@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# cstruct-async fails
+# cstruct-async https://github.com/mirage/ocaml-cstruct/pull/325
 DUNE_PKG_NAME="cstruct cstruct-lwt cstruct-sexp cstruct-unix ppx_cstruct"
 
 inherit dune
@@ -16,7 +16,8 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
-RESTRICT="test" # ocaml-migrate-parsetree doesn't support fresh OCaml
+RESTRICT="test" # ocaml-migrate-parsetree https://github.com/mirage/ocaml-cstruct/pull/325
+https://github.com/mirage/ocaml-cstruct/pull/323
 
 RDEPEND="dev-ml/fmt:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
