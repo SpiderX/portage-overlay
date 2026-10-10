@@ -17,7 +17,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/ocaml-5:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/decompress:0=[ocamlopt?]
 	dev-ml/eio:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
