@@ -1,0 +1,14 @@
+Allow the asynchronous file watcher to initialize before modifying the file
+--- ../tests/language/file.watch.liq	2026-10-10 14:16:38.494828788 +0300
++++ ../tests/language/file.watch.liq	2026-10-10 14:17:41.220273300 +0300
+@@ -11,8 +11,9 @@
+   fname = "/tmp/fw"
+   file.write(data="abc", fname)
+   file.watch(fname, {success := true})
+-  file.write(data="xxx", fname)
+   thread.delay(1.)
++  file.write(data="xxx", fname)
++  thread.delay(2.)
+   if success() then test.pass() else test.fail() end
+ end
+ 

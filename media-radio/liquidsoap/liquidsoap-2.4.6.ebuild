@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,18 +6,30 @@ EAPI=8
 DUNE_PKG_NAME="liquidsoap liquidsoap-lang liquidsoap-js liquidsoap-mode
 	prometheus-liquidsoap sdl-liquidsoap tls-liquidsoap"
 
-inherit bash-completion-r1 dune systemd tmpfiles
+inherit dune edo systemd shell-completion tmpfiles
+
+JSON_COMMIT="1ef36fa01286573e846ac449e8683f8833c5b26a"
+JSON5_COMMIT="ceb24d4080137d70833f86c25659c1331b80a387"
+BLNS_COMMIT="db33ec7b1d5d9616a88c76394b7d0897bd0b97eb"
 
 DESCRIPTION="A swiss-army knife for multimedia streaming, used for netradios"
 HOMEPAGE="https://github.com/savonet/liquidsoap"
-SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/savonet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	test? ( https://download.thimeo.com/Stereo_Tool_Generic_plugin.zip -> ${P}-stereo-tool-plugin.zip
+		https://github.com/nst/JSONTestSuite/archive/${JSON_COMMIT}.tar.gz -> JSONTestSuite-${JSON_COMMIT}.tar.gz
+		https://github.com/json5/json5-tests/archive/${JSON5_COMMIT}.tar.gz -> json5-tests-${JSON5_COMMIT}.tar.gz
+		https://github.com/minimaxir/big-list-of-naughty-strings/archive/${BLNS_COMMIT}.tar.gz
+			-> big-list-of-naughty-strings-${BLNS_COMMIT}.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="alsa ao camlimages ctypes dssi faad fdk ffmpeg frei0r gd graphics inotify
 	irc jack jemalloc ladspa lame libsamplerate lilv lo mad memtrace +ocamlopt
-	osc portaudio posix pulseaudio shine soundtouch sqlite srt ssl yaml"
+	osc portaudio posix pulseaudio shine soundtouch sqlite srt ssl test yaml"
+REQUIRED_USE="test? ( fdk lame shine soundtouch srt )"
+RESTRICT="mirror test"
+PROPERTIES="test_network"
 
 RDEPEND="acct-group/liquidsoap
 	acct-user/liquidsoap
@@ -82,7 +94,50 @@ RDEPEND="acct-group/liquidsoap
 BDEPEND="dev-ml/dune-build-info
 	dev-ml/dune-site
 	dev-ml/ppx_hash
-	dev-ml/ppx_string"
+	dev-ml/ppx_string
+	test? ( app-arch/unzip
+		media-video/ffmpeg[lame,opus,x264,vorbis] )"
+
+PATCHES=( "${FILESDIR}/${PN}"-2.4.6-fix-extinf-parsing.patch
+	"${FILESDIR}/${PN}"-2.4.6-tests-file-watch-timing.patch
+	"${FILESDIR}/${PN}"-2.4.6-tests-offline-json.patch
+	"${FILESDIR}/${PN}"-2.4.6-tests-regression-dune.patch )
+
+src_unpack() {
+	unpack "${P}.tar.gz"
+	use test && unpack "JSONTestSuite-${JSON_COMMIT}.tar.gz" \
+		"json5-tests-${JSON5_COMMIT}.tar.gz" \
+		"big-list-of-naughty-strings-${BLNS_COMMIT}.tar.gz"
+}
+
+src_prepare() {
+	default
+
+	if use test ; then
+		edo cp "${DISTDIR}/${P}-stereo-tool-plugin.zip" \
+			tests/regression/Stereo_Tool_Generic_plugin.dist
+		edo mkdir -p tests/core/{json,json5,big-list-of-naughty-strings}
+		edo cp "${WORKDIR}/JSONTestSuite-${JSON_COMMIT}"/test_parsing/*.json \
+			tests/core/json/
+		edo find "${WORKDIR}/json5-tests-${JSON5_COMMIT}" \
+			-type f \( -name '*.json' -o -name '*.js' -o -name '*.txt' \) \
+			-exec cp -t tests/core/json5/ {} +
+		edo cp -a "${WORKDIR}/big-list-of-naughty-strings-${BLNS_COMMIT}/." \
+			tests/core/big-list-of-naughty-strings/
+	fi
+}
+
+src_compile() {
+	dune-compile ${DUNE_PKG_NAME}
+}
+
+src_test() {
+	# exclude performance tests
+	edo dune build @tests/core/citest @tests/language/citest \
+		@tests/regression/citest @tests/streams/citest \
+		@tests/harbor/citest @tests/media/mediatest \
+		--profile release
+}
 
 src_install() {
 	dune_src_install

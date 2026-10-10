@@ -1,0 +1,19 @@
+Re.Pcre.split drops leading empty fields, causing playlist entries
+such as "#EXTINF:,- songname" to retain the leading dash.
+Handle the leading separator explicitly to preserve the expected song metadata.
+--- ../src/core/builtins/playlist_basic.ml	2026-10-10 18:05:28.460055350 +0300
++++ ../src/core/builtins/playlist_basic.ml	2026-10-10 18:06:11.580004976 +0300
+@@ -61,7 +61,12 @@
+         | "" -> meta
+         | duration -> ("extinf_duration", duration) :: meta
+     in
+-    let lines = Re.Pcre.split ~rex:(Re.Pcre.regexp "\\s*-\\s*") song in
++    let lines =
++      let song = String.trim song in
++      if String.length song > 0 && song.[0] = '-' then
++        [""; String.sub song 1 (String.length song - 1)]
++      else Re.Pcre.split ~rex:(Re.Pcre.regexp "\\s*-\\s*") song
++    in
+     meta
+     @
+       match lines with

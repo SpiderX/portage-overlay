@@ -1,0 +1,67 @@
+--- ../tests/core/dune	2026-10-10 15:49:32.548214571 +0300
++++ ../tests/core/dune	2026-10-10 15:50:19.666756228 +0300
+@@ -41,38 +41,3 @@
+  (target test.mp3)
+  (action
+   (run ffmpeg -f lavfi -i "sine=frequency=440:duration=5" -ac 2 %{target})))
+-
+-(rule
+- (alias citest)
+- (target json)
+- (action
+-  (progn
+-   (run rm -rf json)
+-   (run git clone --depth 1 https://github.com/nst/JSONTestSuite json)
+-   (system "cd json && mv test_parsing/*.json .")
+-   (system
+-    "cd json && find . -maxdepth 1 -type d | grep -v '^\\.$' | xargs rm -rf"))))
+-
+-(rule
+- (alias citest)
+- (target json5)
+- (action
+-  (progn
+-   (run rm -rf json5)
+-   (run git clone --depth 1 https://github.com/json5/json5-tests.git json5)
+-   (system
+-    "cd json5 && find . -type f | egrep '\\.json|\\.js|\\.txt' | xargs -I % mv % .")
+-   (system "cd json5 && find . -type d | grep -v '^\\.$' | xargs rm -rf"))))
+-
+-(rule
+- (alias citest)
+- (target big-list-of-naughty-strings)
+- (action
+-  (progn
+-   (run rm -rf big-list-of-naughty-strings)
+-   (run
+-    git
+-    clone
+-    --depth
+-    1
+-    https://github.com/minimaxir/big-list-of-naughty-strings.git))))
+--- ../tests/core/dune.inc	2026-10-10 15:51:21.246595606 +0300
++++ ../tests/core/dune.inc	2026-10-10 15:52:02.571550043 +0300
+@@ -162,7 +162,9 @@
+  (alias json_test)
+  (package liquidsoap)
+  (deps
+-  (:json ./json) (:json5 ./json5) (:big-list-of-naughty-strings ./big-list-of-naughty-strings)
++ (:json (source_tree json))
++ (:json5 (source_tree json5))
++ (:big-list-of-naughty-strings (source_tree big-list-of-naughty-strings))
+   (:json_test json_test.exe))
+  (action (run %{json_test} )))
+ 
+--- ../tests/core/gen_dune.ml	2026-10-10 15:50:43.415547700 +0300
++++ ../tests/core/gen_dune.ml	2026-10-10 15:52:41.370491311 +0300
+@@ -2,8 +2,8 @@
+ let test_params =
+   [
+     ( "json_test",
+-      ( "(:json ./json) (:json5 ./json5) (:big-list-of-naughty-strings \
+-         ./big-list-of-naughty-strings)",
++      ( "(:json (source_tree json)) (:json5 (source_tree json5)) \
++         (:big-list-of-naughty-strings (source_tree big-list-of-naughty-strings))",
+         [""] ) );
+     ( "stream_decoder_test",
+       ( "(:test_wav ./test.wav) (:test_mp3 ./test.mp3)",

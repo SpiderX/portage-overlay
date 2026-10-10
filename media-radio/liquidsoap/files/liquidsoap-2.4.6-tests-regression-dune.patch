@@ -1,0 +1,18 @@
+--- ../tests/regression/dune	2026-10-10 17:41:53.860649403 +0300
++++ ../tests/regression/dune	2026-10-10 17:42:17.628034133 +0300
+@@ -70,13 +70,9 @@
+ 
+ (rule
+  (target Stereo_Tool_Generic_plugin.zip)
++ (deps Stereo_Tool_Generic_plugin.dist)
+  (action
+-  (run
+-   curl
+-   -L
+-   -o
+-   %{target}
+-   https://download.thimeo.com/Stereo_Tool_Generic_plugin.zip)))
++  (copy %{dep:Stereo_Tool_Generic_plugin.dist} %{target})))
+ 
+ (rule
+  (target libStereoTool_64.dylib)
