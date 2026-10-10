@@ -13,4 +13,4 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
-RDEPEND="dev-ml/cstruct:0=[ocamlopt?]"
+RDEPEND=">=dev-ml/cstruct-6.3.0:0=[ocamlopt?]"
