@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-ml/angstrom:0=[ocamlopt?]
 	dev-ml/async:0=[ocamlopt?]
 	dev-ml/bigstringaf:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/faraday:0=[ocamlopt?]
 	dev-ml/gluten:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
