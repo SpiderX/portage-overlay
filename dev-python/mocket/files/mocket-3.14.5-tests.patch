@@ -1,0 +1,46 @@
+Fix tests with recent redis-py and AnyIO versions
+Explicitly select RESP2 for Redis tests because redis-py 8 defaults
+to RESP3, which is not supported by Mocket's Redis response mocks.
+Defer importing sure until HTTPretty test execution. Importing sure
+during pytest collection modifies global attribute lookup, causing
+AnyIO's TypedAttributeSet validation to fail with:
+"Attribute 'do' is missing its type annotation".
+--- ../tests/test_redis.py	2026-10-10 23:22:00.665699939 +0300
++++ ../tests/test_redis.py	2026-10-10 23:22:16.183092566 +0300
+@@ -92,7 +92,7 @@
+ class TrueRedisTestCase(TestCase):
+     @mocketize
+     def setUp(self):
+-        self.rclient = redis.StrictRedis()
++        self.rclient = redis.StrictRedis(protocol=2)
+         self.rclient.flushdb()
+ 
+     def mocketize_teardown(self):
+@@ -155,7 +155,7 @@
+ 
+ class RedisTestCase(TestCase):
+     def setUp(self):
+-        self.rclient = redis.StrictRedis()
++        self.rclient = redis.StrictRedis(protocol=2)
+ 
+     def mocketize_setup(self):
+         Entry.register_response("CLIENT SETINFO LIB-NAME redis-py", OK)
+--- ../tests/test_httpretty.py	2026-10-10 23:49:13.852223444 +0300
++++ ../tests/test_httpretty.py	2026-10-10 23:49:38.707061848 +0300
+@@ -24,10 +24,15 @@
+ 
+ 
+ import requests
+-from sure import expect
++import pytest
+ 
+ from mocket.plugins.httpretty import HTTPretty, httprettified, httpretty
+ 
++@pytest.fixture(autouse=True)
++def _sure_expect(monkeypatch):
++    from sure import expect
++
++    monkeypatch.setitem(globals(), "expect", expect)
+ 
+ @httprettified
+ def test_httpretty_should_mock_a_simple_get_with_requests_read():

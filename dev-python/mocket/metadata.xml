@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Mocket is a monkey-patching on steroids for the socket and ssl modules.
+	It’s designed to serve two main purposes: as a low-level framework — for example,
+	if you’re building a client for a new database or protocol, s a ready-to-use mock —
+	perfect for testing HTTP or HTTPS calls from any client library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mindflayer/python-mocket</remote-id>
+		<remote-id type="pypi">mocket</remote-id>
+	</upstream>
+</pkgmetadata>
