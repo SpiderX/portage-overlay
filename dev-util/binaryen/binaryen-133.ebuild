@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cmake edo python-any-r1
 
@@ -25,7 +25,7 @@ BDEPEND="test? ( dev-cpp/gtest
 		$(python_gen_any_dep 'dev-python/filecheck[${PYTHON_USEDEP}]
 			dev-python/lit[${PYTHON_USEDEP}]') )"
 
-PATCHES=( "${FILESDIR}/${PN}"-125-test-CMakeLists.patch )
+PATCHES=( "${FILESDIR}/${PN}"-133-test-CMakeLists.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
