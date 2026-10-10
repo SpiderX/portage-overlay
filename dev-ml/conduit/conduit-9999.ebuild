@@ -22,7 +22,7 @@ RDEPEND="dev-ml/astring:0=
 	dev-ml/ca-certs:0=[ocamlopt?]
 	dev-ml/ca-certs-nss:0=[ocamlopt?]
 	dev-ml/core:0=[ocamlopt?]
-	dev-ml/cstruct:0=[ocamlopt?]
+	>=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/dns-client:0=[ocamlopt?]
 	dev-ml/ipaddr:0=[ocamlopt?]
 	dev-ml/logs:0=[ocamlopt?]
