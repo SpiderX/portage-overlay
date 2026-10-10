@@ -1,5 +1,6 @@
---- ../tests/default/unit/test_metric_manager.py	2026-05-18 15:47:44.964622424 +0300
-+++ ../tests/default/unit/test_metric_manager.py	2026-05-18 15:48:46.866504461 +0300
+Replace pytest-freezegun markers with freezegun decorators.
+--- ../cli/tests/default/unit/test_metric_manager.py	2026-05-18 15:47:44.964622424 +0300
++++ ../cli/tests/default/unit/test_metric_manager.py	2026-05-18 15:48:46.866504461 +0300
 @@ -16,6 +16,8 @@
  
  import pytest

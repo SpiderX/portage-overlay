@@ -4,18 +4,30 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-EGIT_SUBMODULES=()
-PYTHON_COMPAT=( python3_{12..14} )
+DUNE_PKG_NAME="aliengrep ast_generic collections commons2 commons fast_json
+	gitignore git_wrapper glob language_server lib_parsing
+	lib_parsing_tree_sitter lwt_platform murmur3 networking
+	ograph ojsonnet parallelism parser_bash parser_cairo parser_circom
+	parser_cpp parser_csharp parser_dart parser_dockerfile parser_fga
+	parser_go parser_hack parser_html parser_java parser_javascript
+	parser_jsonnet parser_json parser_julia parser_kotlin parser_lisp
+	parser_lua parser_move_on_aptos parser_move_on_sui parser_ocaml
+	parser_php parser_promql parser_protobuf parser_python parser_ql
+	parser_regexp parser_r parser_ruby parser_rust parser_scala
+	parser_solidity parser_swift parser_terraform parser_typescript
+	parser_yaml paths pfff-lang_GENERIC-analyze pfff-lang_GENERIC-naming
+	process_limits semgrep spacegrep telemetry tree-sitter-lang"
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1 edo git-r3
+inherit distutils-r1 dune edo git-r3
 
-DESCRIPTION="Lightweight static analysis for many languages"
+DESCRIPTION="Code scanning at ludicrous speed"
 HOMEPAGE="https://github.com/semgrep/semgrep"
-EGIT_REPO_URI="https://github.com/semgrep/${PN}.git"
-S="${WORKDIR}/${P}/cli"
+EGIT_REPO_URI="https://github.com/semgrep/semgrep.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+IUSE="ocamlopt test"
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -45,21 +57,94 @@ RDEPEND="dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/wcmatch[${PYTHON_USEDEP}]
-	dev-util/semgrep-core"
-BDEPEND="test? ( dev-python/appdirs[${PYTHON_USEDEP}] )"
+	>=dev-lang/ocaml-5.3.0:0=[flambda,ocamlopt?]
+	dev-libs/libev:=
+	dev-libs/libpcre2:=
+	dev-ml/ANSITerminal:=[ocamlopt?]
+	>=dev-ml/alcotest-1.9.0:0=[ocamlopt?]
+	dev-ml/alcotest-lwt:0=[ocamlopt?]
+	>=dev-ml/ambient-context-0.2:0=[ocamlopt?]
+	>=dev-ml/atd-4.2.0:0=[ocamlopt?]
+	>=dev-ml/base-0.17.3:0=[ocamlopt?]
+	dev-ml/bos:0=
+	>=dev-ml/calendar-3.0.0:0=[ocamlopt?]
+	>=dev-ml/cmdliner-2:0=[ocamlopt?]
+	dev-ml/cohttp:0=[ocamlopt?]
+	dev-ml/digestif:0=[ocamlopt?]
+	dev-ml/eio:0=[ocamlopt?]
+	dev-ml/emile:0=[ocamlopt?]
+	dev-ml/fmt:0=[ocamlopt?]
+	dev-ml/fpath:0=
+	dev-ml/git:0=[ocamlopt?]
+	dev-ml/jsonrpc:0=[ocamlopt?]
+	dev-ml/logs:0=[ocamlopt?]
+	>=dev-ml/lwt-5.9.2:0=[ocamlopt?]
+	dev-ml/lsp:0=[ocamlopt?]
+	dev-ml/menhir:=[ocamlopt?]
+	dev-ml/memtrace:=
+	dev-ml/obackward:0=[ocamlopt?]
+	dev-ml/ocaml-fileutils:=[ocamlopt?]
+	dev-ml/ocamlgraph:0=[ocamlopt?]
+	dev-ml/ocolor:0=[ocamlopt?]
+	dev-ml/ocurl:0=[ocamlopt?]
+	dev-ml/opentelemetry:0=[ocamlopt?]
+	dev-ml/parmap:0=[ocamlopt?]
+	dev-ml/pcre-ocaml:0=[ocamlopt?]
+	dev-ml/pcre2-ocaml:0=[ocamlopt?]
+	>=dev-ml/ppxlib-0.37.0:0=[ocamlopt?]
+	dev-ml/ppx_blob:=[ocamlopt?]
+	>=dev-ml/ppx_deriving-6.0.3:0=[ocamlopt?]
+	>=dev-ml/ppx_deriving_yojson-3.9.1:0=[ocamlopt?]
+	>=dev-ml/ppx_hash-0.17.0:0=[ocamlopt?]
+	>=dev-ml/ppx_inline_test-0.17.1:0=[ocamlopt?]
+	>=dev-ml/ppx_sexp_conv-0.17.1:0=[ocamlopt?]
+	dev-ml/pyro-caml:0=[ocamlopt?]
+	dev-ml/python-str-repr:0=[ocamlopt?]
+	>=dev-ml/re-1.14.0:0=[ocamlopt?]
+	dev-ml/sarif:0=[ocamlopt?]
+	dev-ml/semver:0=[ocamlopt?]
+	dev-ml/terminal_size:0=[ocamlopt?]
+	dev-ml/testo:0=[ocamlopt?]
+	dev-ml/timedesc:0=[ocamlopt?]
+	dev-ml/tls:0=[ocamlopt?]
+	dev-ml/tree-sitter:0=[ocamlopt?]
+	=dev-ml/uri-4.4.0-r2:0=[ocamlopt?]
+	dev-ml/uring:0=[ocamlopt?]
+	>=dev-ml/uuidm-0.9.10:0=[ocamlopt?]
+	>=dev-ml/uucp-17.0.0:0=
+	dev-ml/uutf:0=[ocamlopt?]
+	dev-ml/visitors:0=[ocamlopt?]
+	dev-ml/xmlm:0=
+	dev-ml/yaml:0=[ocamlopt?]
+	>=dev-ml/yojson-3.0.0:0=[ocamlopt?]
+	net-misc/curl"
+BDEPEND="test? ( dev-python/appdirs[${PYTHON_USEDEP}]
+		>=dev-ml/qcheck-0.91
+		dev-ml/py )"
 
-PATCHES=( "${FILESDIR}/${PN}"-1.163.0-tests.patch )
+PATCHES=( "${FILESDIR}/${PN}"-1.172.0-ambient-context-0.2.patch
+	"${FILESDIR}/${PN}"-1.172.0-tests.patch )
 
 EPYTEST_XDIST=1
 EPYTEST_PLUGINS=( freezegun pytest-{asyncio,mock,snapshot} requests-mock )
 distutils_enable_tests pytest
 
-EPYTEST_IGNORE=( tests/default/e2e
-		tests/default/e2e-other
-		tests/default/e2e-pysemgrep )
+EPYTEST_IGNORE=( tests/default/e2e tests/default/e2e-other tests/default/e2e-pysemgrep )
 
 src_prepare() {
 	default
+
+	# don't look for linker flags from opam
+	sed -i 's/opam/echo/g' src/main/flags.sh || die "sed failed for flags.sh"
+	# allow empty package
+	sed -i '/(name language_server)/a\ (allow_empty)' dune-project \
+		|| die "sed failed for dune-project"
+	# remove non-existed library
+	sed -i '/opentelemetry.ambient-context.eio/d' libs/telemetry/dune \
+		|| die "sed failed for dune"
+	# change expected OCaml version
+	sed -i '/let expected_prefix/s|+semgrep-fork||' src/core/Test_compiler_version.ml \
+		|| die "sed failed for Test_compiler_version.ml"
 
 	if use test ; then
 		edo git init > /dev/null
@@ -67,4 +152,43 @@ src_prepare() {
 		edo git config user.name "Your Name"
 		edo git remote add origin https://github.com/semgrep/semgrep
 	fi
+}
+
+python_compile() {
+	pushd cli >/dev/null || die
+	distutils-r1_python_compile
+	popd >/dev/null || die
+}
+
+src_compile() {
+	dune-compile profiling ${DUNE_PKG_NAME}
+
+	if use test ; then
+		edo scripts/make-symlinks
+		emake build-core-test
+	fi
+
+	distutils-r1_src_compile
+}
+
+python_test() {
+	pushd cli >/dev/null || die
+	distutils-r1_python_test
+	popd >/dev/null || die
+}
+
+src_test() {
+	edo scripts/run-core-test
+	distutils-r1_src_test
+}
+
+python_install() {
+	pushd cli >/dev/null || die
+	distutils-r1_python_install
+	popd >/dev/null || die
+}
+
+src_install() {
+	dune_src_install
+	distutils-r1_src_install
 }
