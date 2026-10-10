@@ -14,7 +14,7 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/cstruct:0=[ocamlopt?]
+RDEPEND=">=dev-ml/cstruct-6.3.0:0=[ocamlopt?]
 	dev-ml/duration:0=[ocamlopt?]
 	dev-ml/ethernet:0=[ocamlopt?]
 	dev-ml/fmt:0=[ocamlopt?]
