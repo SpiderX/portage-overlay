@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_USE_PEP517=flit
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 git-r3
 
@@ -19,11 +19,6 @@ RDEPEND="dev-python/boltons[${PYTHON_USEDEP}]"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-EPYTEST_DESELECT=(
-	# AssertionError: assert 'python3.12 -m search_pkg' == 'python -m search_pkg'
-	face/test/test_search_cmd.py::test_module_shortcut
-)
 
 python_install_all() {
 	distutils-r1_python_install_all
