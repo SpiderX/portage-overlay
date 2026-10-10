@@ -9,7 +9,7 @@ inherit dune
 
 DESCRIPTION="One library for all your OCaml tests"
 HOMEPAGE="https://github.com/invariant-hq/windtrap"
-SRC_URI="https://github.com/invariant-hq/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/invariant-hq/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
@@ -20,12 +20,10 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-lang/ocaml-5:0=[ocamlopt?]
 	dev-ml/ppxlib:0=[ocamlopt?]"
 
-PATCHES=( "${FILESDIR}/${PN}"-0.1.0-ppxlib-0.35.patch )
-
 src_prepare() {
 	default
 
-	# relax requirements
-	sed -i '/lang dune/s|3.21|3.16|' dune-project \
-		|| die "sed failed"
+	sed -i '/lang/s|3.21|3.20|' {examples/x-blueprint/,}dune-project \
+		|| die "sed failed for dune-project"
+	sed -i '/"dune"/s|3.21|3.20|' {ppx_,}windtrap.opam || die "sed failed for opam"
 }
