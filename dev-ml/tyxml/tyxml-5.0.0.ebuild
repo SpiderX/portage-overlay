@@ -24,10 +24,3 @@ RDEPEND="dev-ml/markup:0=[ocamlopt?]
 	dev-ml/uutf:0=[ocamlopt?]"
 BDEPEND="test? ( dev-ml/alcotest
 		dev-ml/reason )"
-
-src_prepare() {
-	default
-
-	has_version "=dev-ml/ppxlib-0.36*" && \
-		eapply "${FILESDIR}/${PN}"-4.6.0-ocaml5.2.patch
-}
