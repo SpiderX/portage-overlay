@@ -42,7 +42,7 @@ RDEPEND="app-accessibility/at-spi2-core:2
 	dev-libs/quickjs-ng:=
 	dev-libs/spirv-reflect
 	dev-libs/wayland
-	dev-util/glslang:0/16.3
+	dev-util/glslang:0=
 	media-libs/alsa-lib
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
