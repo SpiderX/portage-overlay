@@ -53,22 +53,33 @@ QA_PREBUILT="opt/chatgpt/ChatGPT
 	opt/chatgpt/browser_crashpad_handler
 	opt/chatgpt/libEGL.so
 	opt/chatgpt/libGLESv2.so
-	opt/chatgpt/libqt6_shim.so
 	opt/chatgpt/libvk_swiftshader.so
 	opt/chatgpt/libvulkan.so.1
-	opt/chatgpt/resources/rg
+	opt/chatgpt/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-x64-glibc/watcher.node
+	opt/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/dist/native/linux/x64/serial_control.node
+	opt/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID-linux-x64/node-napi-v4.node
+	opt/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID_hidraw-linux-x64/node-napi-v4.node
+	opt/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/linux-x64/node.napi.glibc.node
+	opt/chatgpt/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node
+	opt/chatgpt/resources/app.asar.unpacked/node_modules/node-pty/build/Release/pty.node
 	opt/chatgpt/resources/codex
 	opt/chatgpt/resources/codex-code-mode-host
-	opt/chatgpt/resources/plugins/openai-bundled/plugins/chrome/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
-	opt/chatgpt/resources/plugins/openai-bundled/plugins/browser/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
-	opt/chatgpt/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-x64-glibc/watcher.node
-	opt/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/linux-x64/node.napi.glibc.node
-	opt/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID_hidraw-linux-x64/node-napi-v4.node
-	opt/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID-linux-x64/node-napi-v4.node
-	opt/chatgpt/resources/cua_node/lib/node_modules/@oai/cua/dist/lib/js/oai_js_browser/dist/skill/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
-	opt/chatgpt/resources/cua_node/lib/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
+	opt/chatgpt/resources/cua_node/bin/node
+	opt/chatgpt/resources/cua_node/bin/node_repl
+	opt/chatgpt/resources/cua_node/lib/node_modules/.bin/sky_linux_x64
+	opt/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.6
 	opt/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64-0.35.4.node
-	opt/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.6"
+	opt/chatgpt/resources/cua_node/lib/node_modules/@oai/cua/bin/linux/sky_linux_x64
+	opt/chatgpt/resources/cua_node/lib/node_modules/@oai/cua/dist/lib/js/oai_js_browser/dist/skill/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
+	opt/chatgpt/resources/cua_node/lib/node_modules/@oai/sky/bin/linux/sky_linux_x64
+	opt/chatgpt/resources/cua_node/lib/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
+	opt/chatgpt/resources/native/hid-topology-watcher.node
+	opt/chatgpt/resources/native/remote-control-device-key.node
+	opt/chatgpt/resources/plugins/openai-bundled/plugins/browser/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
+	opt/chatgpt/resources/plugins/openai-bundled/plugins/chrome/extension-host/linux/x64/extension-host
+	opt/chatgpt/resources/plugins/openai-bundled/plugins/chrome/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
+	opt/chatgpt/resources/rg
+	opt/chatgpt/resources/tectonic/tectonic"
 
 src_prepare() {
 	default
