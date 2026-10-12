@@ -1,17 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-EGIT_REPO_URI="https://github.com/deviceinsight/${PN}.git"
 
 inherit edo git-r3 go-module shell-completion
 
 DESCRIPTION="A command-line interface for interaction with Apache Kafka"
 HOMEPAGE="https://github.com/deviceinsight/kafkactl"
+EGIT_REPO_URI="https://github.com/deviceinsight/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+
+BDEPEND=">=dev-lang/go-1.27.1"
 
 DOCS=( CHANGELOG.md README.adoc )
 
