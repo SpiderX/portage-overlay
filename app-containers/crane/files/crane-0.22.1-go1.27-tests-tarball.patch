@@ -1,0 +1,117 @@
+Go 1.27 changes the gzip output produced at BestSpeed compression
+level, resulting in different compressed layer digests and sizes.
+
+TestBundleMultiple uses a prebuilt image fixture whose manifest
+contains descriptors generated with an older Go version. Recompressing
+its layers with Go 1.27 produces different digests and sizes, causing
+validate.Image to fail despite the image contents being unchanged.
+
+Avoid validating the prebuilt fixture against compression-dependent
+descriptors while retaining the remaining test coverage.
+--- ../pkg/v1/tarball/image_test.go	2026-10-15 20:03:41.634957464 +0300
++++ ../pkg/v1/tarball/image_test.go	2026-10-15 20:13:06.300120558 +0300
+@@ -19,11 +19,13 @@
+ 	"bytes"
+ 	"compress/gzip"
+ 	"io"
++	"reflect"
+ 	"strings"
+ 	"testing"
+ 
+ 	"github.com/google/go-containerregistry/pkg/name"
+ 	v1 "github.com/google/go-containerregistry/pkg/v1"
++	"github.com/google/go-containerregistry/pkg/v1/partial"
+ 	"github.com/google/go-containerregistry/pkg/v1/validate"
+ )
+ 
+@@ -105,8 +107,88 @@
+ 				t.Fatalf("Unexpected error loading manifest: %v", err)
+ 			}
+ 
+-			if err := validate.Image(img); err != nil {
+-				t.Errorf("Validate() = %v", err)
++			if imgName == "test_image_2" || imgName == "test_image_2:latest" {
++				manifest, err := img.Manifest()
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				layers, err := img.Layers()
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				if len(layers) != 1 || len(manifest.Layers) != 1 {
++					t.Fatalf("expected one layer, got %d layers and %d descriptors",
++						len(layers), len(manifest.Layers))
++				}
++
++				descriptor, err := partial.Descriptor(layers[0])
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				if !reflect.DeepEqual(*descriptor, manifest.Layers[0]) {
++					t.Fatalf("foreign layer descriptor differs from manifest: got %+v, want %+v",
++						*descriptor, manifest.Layers[0])
++				}
++
++				diffID, err := layers[0].DiffID()
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				uncompressed, err := layers[0].Uncompressed()
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				actualDiffID, _, hashErr := v1.SHA256(uncompressed)
++				closeErr := uncompressed.Close()
++				if hashErr != nil {
++					t.Fatal(hashErr)
++				}
++				if closeErr != nil {
++					t.Fatal(closeErr)
++				}
++
++				if actualDiffID != diffID {
++					t.Fatalf("uncompressed digest mismatch: got %s, want %s",
++						actualDiffID, diffID)
++				}
++
++				compressed, err := layers[0].Compressed()
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				actualDigest, actualSize, hashErr := v1.SHA256(compressed)
++				closeErr = compressed.Close()
++				if hashErr != nil {
++					t.Fatal(hashErr)
++				}
++				if closeErr != nil {
++					t.Fatal(closeErr)
++				}
++
++				expectedDigest, err := layers[0].Digest()
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				expectedSize, err := layers[0].Size()
++				if err != nil {
++					t.Fatal(err)
++				}
++
++				if actualDigest != expectedDigest || actualSize != expectedSize {
++					t.Fatalf("compressed layer mismatch: got %s (%d bytes), want %s (%d bytes)",
++						actualDigest, actualSize, expectedDigest, expectedSize)
++				}
++			} else {
++				if err := validate.Image(img); err != nil {
++					t.Errorf("Validate() = %v", err)
++				}
+ 			}
+ 		})
+ 	}
