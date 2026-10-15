@@ -34,6 +34,6 @@ src_install() {
 	einstalldocs
 	dobin charts-syncer
 	newbashcomp charts-syncer.bash charts-syncer
-	dofishcomp charts-syncer.fish charts-syncer
+	newfishcomp charts-syncer.fish charts-syncer
 	newzshcomp charts-syncer.zsh _charts-syncer
 }
