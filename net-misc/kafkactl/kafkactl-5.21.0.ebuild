@@ -42,6 +42,6 @@ src_install() {
 	einstalldocs
 	dobin kafkactl
 	newbashcomp kafkactl.bash kafkactl
-	dofishcomp kafkactl.fish kafkactl
+	newfishcomp kafkactl.fish kafkactl
 	newzshcomp kafkactl.zsh _kafkactl
 }
