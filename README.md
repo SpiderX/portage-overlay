@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1632](https://img.shields.io/badge/ebuild-1632-orange.svg)](https://img.shields.io/badge/ebuild-1632-orange.svg)
+[![Number of ebuilds: 1633](https://img.shields.io/badge/ebuild-1633-orange.svg)](https://img.shields.io/badge/ebuild-1633-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -50,6 +50,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[awstaghelper](https://github.com/mpostument/awstaghelper) | AWS bulk tagging tool
 *   app-admin/[aws-vault](https://github.com/ByteNess/aws-vault) | A vault for securely storing and accessing AWS credentials
 *   app-admin/[azcopy](https://github.com/Azure/azure-storage-azcopy) | A command-line utility to manage Azure Storage accounts
+*   app-admin/[charts-syncer](https://github.com/bitnami/charts-syncer) | Tool for synchronizing Helm Chart repositories
 *   app-admin/[cfn-policy-validator](https://github.com/awslabs/aws-cloudformation-iam-policy-validator) | IAM Policy Validator for AWS CloudFormation
 *   app-admin/[cli53](https://github.com/barnybug/cli53) | Command line tool for Amazon Route 53
 *   app-admin/[container-service-extension](https://github.com/vmware/container-service-extension) | Container Service Extension for vCloud Director
