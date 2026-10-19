@@ -1,0 +1,26 @@
+Fix S3 file URI unit tests for Python 3.14.
+Avoid urllib.request.pathname2url() when constructing local file URIs
+in tests. Its behavior on Python 3.14 introduces additional leading
+slashes, causing URI path assertions to fail.
+Use the original temporary directory path directly to match the
+behavior of boto.storage_uri().
+--- ../tests/unit/s3/test_uri.py	2026-10-18 01:29:06.156046943 +0300
++++ ../tests/unit/s3/test_uri.py	2026-10-18 01:29:31.851511688 +0300
+@@ -184,7 +184,7 @@
+ 
+     def test_explicit_file_uri(self):
+         tmp_dir = tempfile.tempdir or ''
+-        uri_str = 'file://%s' % urllib.request.pathname2url(tmp_dir)
++        uri_str = 'file://%s' % tmp_dir
+         uri = boto.storage_uri(uri_str, validate=False,
+             suppress_consec_slashes=False)
+         self.assertEqual('file', uri.scheme)
+@@ -205,7 +205,7 @@
+ 
+     def test_implicit_file_uri(self):
+         tmp_dir = tempfile.tempdir or ''
+-        uri_str = '%s' % urllib.request.pathname2url(tmp_dir)
++        uri_str = tmp_dir
+         uri = boto.storage_uri(uri_str, validate=False,
+             suppress_consec_slashes=False)
+         self.assertEqual('file', uri.scheme)

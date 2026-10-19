@@ -1,0 +1,28 @@
+Fix CloudFront signed URL generation with Python 3.
+RSA signing requires bytes rather than strings. Encode policy messages
+as UTF-8 before signing, and decode Base64 output to ASCII before
+applying CloudFront's URL-safe character substitutions.
+--- ../boto/cloudfront/distribution.py	2026-10-18 01:37:36.278516873 +0300
++++ ../boto/cloudfront/distribution.py	2026-10-18 01:38:41.676860000 +0300
+@@ -674,7 +674,9 @@
+ 
+         # Sign it!
+         private_key = rsa.PrivateKey.load_pkcs1(private_key_string)
+-        signature = rsa.sign(str(message), private_key, 'SHA-1')
++        if isinstance(message, str):
++            message = message.encode('utf-8')
++        signature = rsa.sign(message, private_key, 'SHA-1')
+         return signature
+ 
+     @staticmethod
+@@ -683,7 +685,9 @@
+         Base64 encodes a string using the URL-safe characters specified by
+         Amazon.
+         """
+-        msg_base64 = base64.b64encode(msg)
++        if isinstance(msg, str):
++            msg = msg.encode('utf-8')
++        msg_base64 = base64.b64encode(msg).decode('ascii')
+         msg_base64 = msg_base64.replace('+', '-')
+         msg_base64 = msg_base64.replace('=', '_')
+         msg_base64 = msg_base64.replace('/', '~')

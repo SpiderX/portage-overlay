@@ -1,0 +1,15 @@
+Fix EC2 volume unit test compatibility with newer mock versions.
+Use the return value of the patched ResultSet constructor directly
+instead of passing a mock instance as the spec for another Mock.
+This avoids InvalidSpecError when creating a Mock from an existing Mock.
+--- ../tests/unit/ec2/test_volume.py	2026-10-18 01:26:08.136716224 +0300
++++ ../tests/unit/ec2/test_volume.py	2026-10-18 01:26:23.793823363 +0300
+@@ -55,7 +55,7 @@
+     @mock.patch("boto.resultset.ResultSet")
+     def test_startElement_with_name_tagSet_calls_ResultSet(self, ResultSet, startElement):
+         startElement.return_value = None
+-        result_set = mock.Mock(ResultSet([("item", Tag)]))
++        result_set = ResultSet.return_value
+         volume = Volume()
+         volume.tags = result_set
+         retval = volume.startElement("tagSet", None, None)

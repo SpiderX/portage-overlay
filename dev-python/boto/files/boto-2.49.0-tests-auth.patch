@@ -1,0 +1,23 @@
+Remove the nose dependency from AWS Signature V4 unit tests.
+Replace nose.tools.assert_equal() with unittest.TestCase.assertEqual()
+to use the standard library assertion method and avoid requiring nose
+for running the test suite.
+--- ../tests/unit/auth/test_sigv4.py	2026-10-18 00:56:35.713125544 +0300
++++ ../tests/unit/auth/test_sigv4.py	2026-10-18 00:57:02.002402601 +0300
+@@ -24,7 +24,6 @@
+ import os
+ from tests.compat import unittest, mock
+ from tests.unit import MockServiceWithConfigTestCase
+-from nose.tools import assert_equal
+ 
+ from boto.auth import HmacAuthV4Handler
+ from boto.auth import S3HmacAuthV4Handler
+@@ -640,7 +639,7 @@
+                 self.expected_signature_version, self.host, auth
+             )
+         )
+-        assert_equal(auth, [self.expected_signature_version], message)
++        self.assertEqual(auth, [self.expected_signature_version], message)
+ 
+ 
+ class TestS3SigV4OptIn(MockServiceWithConfigTestCase):

@@ -1,0 +1,100 @@
+Remove the nose dependency from Route53 unit tests.
+Remove nose.plugins.attrib.attr imports and @attr(route53=True)
+decorators, which are not supported by the standard library unittest
+test runner. This allows the tests to run without nose.
+--- ../tests/unit/route53/test_connection.py	2026-10-18 00:49:52.549932823 +0300
++++ ../tests/unit/route53/test_connection.py	2026-10-18 00:50:02.390181109 +0300
+@@ -30,13 +30,11 @@
+ from boto.route53.record import ResourceRecordSets, Record
+ from boto.route53.zone import Zone
+ 
+-from nose.plugins.attrib import attr
+ from tests.unit import AWSMockServiceTestCase
+ from boto.compat import six
+ urllib = six.moves.urllib
+ 
+ 
+-@attr(route53=True)
+ class TestRoute53Connection(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -112,7 +110,6 @@
+         self.assertTrue('It failed.' in str(err.exception))
+ 
+ 
+-@attr(route53=True)
+ class TestCreateZoneRoute53(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -174,7 +171,6 @@
+                          u'false')
+ 
+ 
+-@attr(route53=True)
+ class TestCreatePrivateZoneRoute53(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -230,7 +226,6 @@
+                           ['VPC']['VPCRegion'], u'us-east-1')
+ 
+ 
+-@attr(route53=True)
+ class TestGetZoneRoute53(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -288,7 +283,6 @@
+         self.assertEqual(response.name, "example.com.")
+ 
+ 
+-@attr(route53=True)
+ class TestGetHostedZoneRoute53(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -332,7 +326,6 @@
+                           'ns-900.awsdns-50.net', 'ns-1000.awsdns-00.co.uk'])
+ 
+ 
+-@attr(route53=True)
+ class TestGetAllRRSetsRoute53(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -473,7 +466,6 @@
+         self.assertEqual(healthcheck_record.alias_dns_name, 'example-123456-evaluate-health-healthcheck.us-west-2.elb.amazonaws.com.')
+ 
+ 
+-@attr(route53=True)
+ class TestTruncatedGetAllRRSetsRoute53(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -570,7 +562,6 @@
+                          dict(type=['A'], name=['wrr.example.com.'], identifier=['secondary']))
+ 
+ 
+-@attr(route53=True)
+ class TestCreateHealthCheckRoute53IpAddress(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -614,7 +605,6 @@
+         self.assertEqual(response['CreateHealthCheckResponse']['HealthCheck']['Id'], '34778cf8-e31e-4974-bad0-b108bd1623d3')
+ 
+ 
+-@attr(route53=True)
+ class TestGetCheckerIpRanges(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -644,7 +634,6 @@
+         self.assertIn('176.34.159.192/26', ip_ranges)
+ 
+ 
+-@attr(route53=True)
+ class TestCreateHealthCheckRoute53FQDN(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 
+@@ -686,7 +675,6 @@
+         self.assertEqual(response['CreateHealthCheckResponse']['HealthCheck']['Id'], 'f9abfe10-8d2a-4bbd-8f35-796f0f8572f2')
+ 
+ 
+-@attr(route53=True)
+ class TestChangeResourceRecordSetsRoute53(AWSMockServiceTestCase):
+     connection_class = Route53Connection
+ 

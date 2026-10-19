@@ -1,0 +1,23 @@
+Remove the nose dependency from Glacier unit tests.
+Replace nose.tools.assert_equal() with the standard library
+unittest.TestCase.assertEqual() method to allow running the tests
+without nose.
+--- ../tests/unit/glacier/test_writer.py	2026-10-18 00:57:48.150986215 +0300
++++ ../tests/unit/glacier/test_writer.py	2026-10-18 00:58:13.362248615 +0300
+@@ -29,7 +29,6 @@
+     Mock,
+     sentinel,
+ )
+-from nose.tools import assert_equal
+ 
+ from boto.glacier.layer1 import Layer1
+ from boto.glacier.vault import Vault
+@@ -80,7 +79,7 @@
+                            data_len):
+     vault.layer1.upload_part.assert_has_calls(
+         upload_part_calls, any_order=True)
+-    assert_equal(
++    unittest.TestCase().assertEqual(
+         len(upload_part_calls), vault.layer1.upload_part.call_count)
+ 
+     data_tree_hash = bytes_to_hex(tree_hash(data_tree_hashes))

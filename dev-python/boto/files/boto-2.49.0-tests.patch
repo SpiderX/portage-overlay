@@ -1,0 +1,62 @@
+Remove the nose dependency and fix HMAC tests for Python 3.8 and newer.
+Replace nose.tools.assert_equal() with unittest.TestCase.assertEqual()
+in endpoint tests.
+Specify MD5 explicitly as the HMAC digest algorithm, since hmac.new()
+requires the digestmod argument starting with Python 3.8. Preserve
+the original test behavior by using the historical MD5 default.
+--- ../tests/unit/test_endpoints.py	2026-10-18 00:53:58.944606909 +0300
++++ ../tests/unit/test_endpoints.py	2026-10-18 00:55:25.960537078 +0300
+@@ -14,8 +14,6 @@
+ import os
+ import json
+ 
+-from nose.tools import assert_equal
+-
+ from tests.unit import unittest
+ import boto
+ from boto.endpoints import BotoEndpointResolver
+@@ -294,7 +292,7 @@
+         self.new_endpoints = new_endpoints
+ 
+     def run(self):
+-        assert_equal(self.old_endpoints, self.new_endpoints)
++        self.assertEqual(self.old_endpoints, self.new_endpoints)
+ 
+ 
+ def test_no_lost_endpoints():
+@@ -334,4 +332,4 @@
+             self.service_name, self.region_name, self.new_endpoint,
+             self.old_endpoint
+         )
+-        assert_equal(self.old_endpoint, self.new_endpoint, message)
++        self.assertEqual(self.old_endpoint, self.new_endpoint, message)
+--- ../tests/unit/utils/test_utils.py	2018-07-11 20:35:36.000000000 +0300
++++ ../tests/unit/utils/test_utils.py	2026-10-18 01:34:47.317814339 +0300
+@@ -85,7 +85,7 @@
+         def hmac_hashfunc(cls, msg):
+             if not isinstance(msg, bytes):
+                 msg = msg.encode('utf-8')
+-            return hmac.new(b'mysecretkey', msg)
++            return hmac.new(b'mysecretkey', msg, digestmod='md5')
+ 
+         class HMACPassword(Password):
+             hashfunc = hmac_hashfunc
+@@ -95,15 +95,15 @@
+         password.set('foo')
+ 
+         self.assertEquals(str(password),
+-                          hmac.new(b'mysecretkey', b'foo').hexdigest())
++                          hmac.new(b'mysecretkey', b'foo', digestmod='md5').hexdigest())
+ 
+     def test_constructor(self):
+-        hmac_hashfunc = lambda msg: hmac.new(b'mysecretkey', msg)
++        hmac_hashfunc = lambda msg: hmac.new(b'mysecretkey', msg, digestmod='md5')
+ 
+         password = Password(hashfunc=hmac_hashfunc)
+         password.set('foo')
+         self.assertEquals(password.str,
+-                          hmac.new(b'mysecretkey', b'foo').hexdigest())
++                          hmac.new(b'mysecretkey', b'foo', digestmod='md5').hexdigest())
+ 
+ 
+ class TestPythonizeName(unittest.TestCase):

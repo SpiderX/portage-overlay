@@ -1,0 +1,14 @@
+Fix DynamoDB compatibility with Python 3.10 and newer.
+Import Mapping from collections.abc instead of collections, as the
+deprecated collections.Mapping alias was removed in Python 3.10.
+--- ../boto/dynamodb/types.py	2026-10-18 00:33:10.362470812 +0300
++++ ../boto/dynamodb/types.py	2026-10-18 00:33:28.025607338 +0300
+@@ -27,7 +27,7 @@
+ import base64
+ from decimal import (Decimal, DecimalException, Context,
+                      Clamped, Overflow, Inexact, Underflow, Rounded)
+-from collections import Mapping
++from collections.abc import Mapping
+ from boto.dynamodb.exceptions import DynamoDBNumberError
+ from boto.compat import filter, map, six, long_type
+ 

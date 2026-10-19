@@ -1,0 +1,41 @@
+Fix plugin loading compatibility with Python 3.12 and newer.
+Replace the removed imp module with importlib.util for loading plugins
+from file paths. Register dynamically loaded modules in sys.modules
+and remove them if execution fails.
+--- ../boto/plugin.py	2026-10-18 00:24:16.094462480 +0300
++++ ../boto/plugin.py	2026-10-18 00:25:37.901980912 +0300
+@@ -37,8 +37,9 @@
+ """
+ 
+ import glob
+-import imp
++import importlib.util
+ import os.path
++import sys
+ 
+ 
+ class Plugin(object):
+@@ -70,12 +71,18 @@
+     (path, name) = os.path.split(filename)
+     (name, ext) = os.path.splitext(name)
+ 
+-    (file, filename, data) = imp.find_module(name, [path])
++    spec = importlib.util.spec_from_file_location(name, filename)
++    if spec is None or spec.loader is None:
++        raise ImportError('Unable to load plugin: %s' % filename)
++
++    module = importlib.util.module_from_spec(spec)
++    sys.modules[name] = module
+     try:
+-        return imp.load_module(name, file, filename, data)
+-    finally:
+-        if file:
+-            file.close()
++        spec.loader.exec_module(module)
++    except BaseException:
++        sys.modules.pop(name, None)
++        raise
++    return module
+ 
+ _plugin_loaded = False
+ 

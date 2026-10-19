@@ -1,0 +1,24 @@
+Fix ECS compatibility with Python 3.13 and newer.
+Replace the removed cgi.escape() function with html.escape().
+Use quote=False to preserve the original escaping behavior of
+cgi.escape(), which did not escape quotation marks by default.
+--- ../boto/ecs/item.py	2026-10-18 01:20:55.465415473 +0300
++++ ../boto/ecs/item.py	2026-10-18 01:21:24.450278595 +0300
+@@ -21,7 +21,7 @@
+ 
+ 
+ import xml.sax
+-import cgi
++import html
+ from boto.compat import six, StringIO
+ 
+ class ResponseGroup(xml.sax.ContentHandler):
+@@ -67,7 +67,7 @@
+         return None
+ 
+     def endElement(self, name, value, connection):
+-        self._xml.write("%s</%s>" % (cgi.escape(value).replace("&amp;amp;", "&amp;"), name))
++        self._xml.write("%s</%s>" % (html.escape(value, quote=False).replace("&amp;amp;", "&amp;"), name))
+         if len(self._nodepath) == 0:
+             return
+         obj = None

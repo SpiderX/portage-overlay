@@ -1,0 +1,24 @@
+Fix CloudFront signed URL unit tests for Python 3.
+Encode RSA private key strings as UTF-8 before writing them to binary
+temporary files. Python 3 requires bytes when writing to files opened
+in binary mode.
+--- ../tests/unit/cloudfront/test_signed_urls.py	2026-10-18 01:48:34.296036908 +0300
++++ ../tests/unit/cloudfront/test_signed_urls.py	2026-10-18 01:49:10.415267004 +0300
+@@ -107,7 +107,7 @@
+                     "Nx6FucDB7OVqzcxkxHsGFd8VCG1BkC-Afh9~lOCMIYHIaiOB6~5j"
+                     "t9w2EOwi6sIIqrg_")
+         pk_file = tempfile.TemporaryFile()
+-        pk_file.write(self.pk_str)
++        pk_file.write(self.pk_str.encode('utf-8'))
+         pk_file.seek(0)
+         sig = self.dist._sign_string(self.canned_policy, private_key_file=pk_file)
+         encoded_sig = self.dist._url_base64_encode(sig)
+@@ -123,7 +123,7 @@
+                     "Nx6FucDB7OVqzcxkxHsGFd8VCG1BkC-Afh9~lOCMIYHIaiOB6~5j"
+                     "t9w2EOwi6sIIqrg_")
+         pk_file = tempfile.NamedTemporaryFile()
+-        pk_file.write(self.pk_str)
++        pk_file.write(self.pk_str.encode('utf-8'))
+         pk_file.flush()
+         sig = self.dist._sign_string(self.canned_policy, private_key_file=pk_file.name)
+         encoded_sig = self.dist._url_base64_encode(sig)

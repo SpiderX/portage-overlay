@@ -1,0 +1,14 @@
+Fix PyAMI configuration loading compatibility with Python 3.12 and newer.
+Replace the removed ConfigParser.readfp() method with read_file(),
+which provides equivalent functionality.
+--- ../boto/pyami/config.py	2026-10-18 00:34:46.145591296 +0300
++++ ../boto/pyami/config.py	2026-10-18 00:35:02.127472893 +0300
+@@ -58,7 +58,7 @@
+             if path:
+                 self.load_from_path(path)
+             elif fp:
+-                self.readfp(fp)
++                self.read_file(fp)
+             else:
+                 self.read(BotoConfigLocations)
+             if "AWS_CREDENTIAL_FILE" in os.environ:

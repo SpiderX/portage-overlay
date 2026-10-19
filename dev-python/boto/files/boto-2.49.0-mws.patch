@@ -1,0 +1,23 @@
+Fix Amazon MWS compatibility with Python 3.10 and newer.
+Replace the removed collections.Mapping and collections.Iterable aliases
+with their equivalents from collections.abc.
+--- ../boto/mws/connection.py	2026-10-18 00:45:43.298403551 +0300
++++ ../boto/mws/connection.py	2026-10-18 00:46:18.267234472 +0300
+@@ -109,7 +109,7 @@
+ def destructure_object(value, into, prefix, members=False):
+     if isinstance(value, boto.mws.response.ResponseElement):
+         destructure_object(value.__dict__, into, prefix, members=members)
+-    elif isinstance(value, collections.Mapping):
++    elif isinstance(value, collections.abc.Mapping):
+         for name in value:
+             if name.startswith('_'):
+                 continue
+@@ -117,7 +117,7 @@
+                                members=members)
+     elif isinstance(value, six.string_types):
+         into[prefix] = value
+-    elif isinstance(value, collections.Iterable):
++    elif isinstance(value, collections.abc.Iterable):
+         for index, element in enumerate(value):
+             suffix = (members and '.member.' or '.') + str(index + 1)
+             destructure_object(element, into, prefix + suffix,
