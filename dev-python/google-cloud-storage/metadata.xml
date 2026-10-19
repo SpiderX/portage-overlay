@@ -15,7 +15,7 @@
 	be used to distribute large data objects to users via direct download.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/python-storage</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">google-cloud-storage</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1210,7 +1210,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-cloud-resource-manager](https://github.com/googleapis/google-cloud-python) | Google Cloud Resource Manager API client library
 *   dev-python/[google-cloud-secret-manager](https://github.com/googleapis/google-cloud-python) | Google Cloud Storage API client library
 *   dev-python/[google-cloud-spanner](https://github.com/googleapis/python-spanner) | Google Cloud Spanner API client library
-*   dev-python/[google-cloud-storage](https://github.com/googleapis/python-storage) | Google Cloud Storage API client library
+*   dev-python/[google-cloud-storage](https://github.com/googleapis/google-cloud-python) | Google Cloud Storage API client library
 *   dev-python/[google-cloud-testutils](https://github.com/googleapis/python-test-utils) | Google Cloud Storage API client library
 *   dev-python/[google-resumable-media](https://github.com/googleapis/google-resumable-media-python) | Utilities for Google Media Downloads and Resumable Uploads
 *   dev-python/[graphene](https://github.com/graphql-python/graphene) | GraphQL framework for Python
