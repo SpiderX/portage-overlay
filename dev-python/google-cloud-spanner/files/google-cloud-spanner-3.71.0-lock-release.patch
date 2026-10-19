@@ -1,0 +1,40 @@
+Ensure the transaction lock acquired for inline begin is released
+even when ExecuteBatchDml raises an exception.
+Previously, the lock was released only after a successful RPC and
+response update. If the RPC failed, the lock remained held, causing
+subsequent operations on the same transaction to deadlock.
+Use try/finally to guarantee lock release on both success and
+failure paths.
+This fixes a hang in
+TestDbapiInlineBegin.test_executemany_fails_retry_fails_continues_transaction.
+--- ../google/cloud/spanner_v1/transaction.py	2026-10-20 00:56:11.997135128 +0300
++++ ../google/cloud/spanner_v1/transaction.py	2026-10-20 00:59:41.360539653 +0300
+@@ -613,16 +613,18 @@
+             with error_augmenter:
+                 return execute_batch_dml_method(*args, **kwargs)
+ 
+-        response_pb: ExecuteBatchDmlResponse = self._execute_request(
+-            wrapped_method,
+-            execute_batch_dml_request,
+-            metadata,
+-            "CloudSpanner.DMLTransaction",
+-            trace_attributes,
+-        )
+-        self._update_for_execute_batch_dml_response_pb(response_pb)
+-        if is_inline_begin:
+-            self._lock.release()
++        try:
++            response_pb: ExecuteBatchDmlResponse = self._execute_request(
++                wrapped_method,
++                execute_batch_dml_request,
++                metadata,
++                "CloudSpanner.DMLTransaction",
++                trace_attributes,
++            )
++            self._update_for_execute_batch_dml_response_pb(response_pb)
++        finally:
++            if is_inline_begin:
++                self._lock.release()
+         if (
+             len(response_pb.result_sets) > 0
+             and response_pb.result_sets[0].precommit_token
