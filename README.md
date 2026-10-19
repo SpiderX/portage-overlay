@@ -1213,7 +1213,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-cloud-storage](https://github.com/googleapis/google-cloud-python) | Google Cloud Storage API client library
 *   dev-python/[google-cloud-testutils](https://github.com/googleapis/google-cloud-python) | Google Cloud Storage API client library
 *   dev-python/[google-reauth](https://github.com/Google/google-reauth-python) | Google Reauth Python Library
-*   dev-python/[google-resumable-media](https://github.com/googleapis/google-resumable-media-python) | Utilities for Google Media Downloads and Resumable Uploads
+*   dev-python/[google-resumable-media](https://github.com/googleapis/google-cloud-python) | Utilities for Google Media Downloads and Resumable Uploads
 *   dev-python/[graphene](https://github.com/graphql-python/graphene) | GraphQL framework for Python
 *   dev-python/[graphene-django](https://github.com/graphql-python/graphene-django) | A Django integration for Graphene
 *   dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz

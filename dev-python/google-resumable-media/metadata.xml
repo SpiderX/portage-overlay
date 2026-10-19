@@ -14,7 +14,7 @@
 	Resumable Uploads, with asyncio support at google._async_resumable_media
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/google-resumable-media-python</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">google-resumable-media</remote-id>
 	</upstream>
 </pkgmetadata>

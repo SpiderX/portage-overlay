@@ -4,17 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Utilities for Google Media Downloads and Resumable Uploads"
-HOMEPAGE="https://github.com/googleapis/google-resumable-media-python"
-EGIT_REPO_URI="https://github.com/googleapis/google-resumable-media-python.git"
+HOMEPAGE="https://github.com/googleapis/google-cloud-python"
+EGIT_REPO_URI="https://github.com/googleapis/google-cloud-python.git"
+S="${WORKDIR}/${P}/packages/${PN}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
 
 RDEPEND="dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/google-crc32c[${PYTHON_USEDEP}]
@@ -22,25 +22,5 @@ RDEPEND="dev-python/aiohttp[${PYTHON_USEDEP}]
 BDEPEND="test? ( dev-python/google-cloud-testutils[${PYTHON_USEDEP}] )"
 
 EPYTEST_PLUGINS=()
+EPYTEST_IGNORE=( tests/system )
 distutils_enable_tests pytest
-
-EPYTEST_IGNORE=(
-	#needs GOOGLE_APPLICATION_CREDENTIALS
-	tests/system/requests/test_download.py
-	tests/system/requests/test_upload.py
-)
-
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die "find failed"
-}
-
-src_test() {
-	rm -r google || die "rm failed"
-	distutils-r1_src_test
-}
-
-python_test() {
-	distutils_write_namespace google
-	epytest -v tests || die "tests failed with ${EPYTHON}"
-}
