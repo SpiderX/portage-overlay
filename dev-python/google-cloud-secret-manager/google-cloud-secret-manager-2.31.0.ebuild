@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/googleapis/google-cloud-python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="dev-python/google-auth[${PYTHON_USEDEP}]
 	dev-python/google-api-core[${PYTHON_USEDEP}]
