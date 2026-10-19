@@ -16,7 +16,7 @@
 	using the processing power of Google infrastructure.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/python-bigquery</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">google-cloud-bigquery</remote-id>
 	</upstream>
 </pkgmetadata>

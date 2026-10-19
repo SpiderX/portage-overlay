@@ -1195,7 +1195,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-cloud-appengine-admin](https://github.com/googleapis/google-cloud-python) | Python Client for App Engine Admin
 *   dev-python/[google-cloud-appengine-logging](https://github.com/googleapis/google-cloud-python) | Python Client for AppEngine Logging
 *   dev-python/[google-cloud-audit-log](https://github.com/googleapis/google-cloud-python) | Python Client for Audit Log
-*   dev-python/[google-cloud-bigquery](https://github.com/googleapis/python-bigquery) | Google Cloud BigQuery API client library
+*   dev-python/[google-cloud-bigquery](https://github.com/googleapis/google-cloud-python) | Google Cloud BigQuery API client library
 *   dev-python/[google-cloud-bigquery-storage](https://github.com/googleapis/google-cloud-python) | Google Cloud Bigquery Storage API client library
 *   dev-python/[google-cloud-iam](https://github.com/googleapis/python-iam) | Google Cloud IAM API client library
 *   dev-python/[google-cloud-core](https://github.com/googleapis/google-cloud-python) | Google Cloud API client core library
