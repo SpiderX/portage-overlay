@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 git-r3
 
@@ -20,20 +20,6 @@ RDEPEND="dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 	dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/syrupy[${PYTHON_USEDEP}] )"
 
-EPYTEST_PLUGINS=( pytest-snapshot )
+EPYTEST_PLUGINS=( syrupy )
 distutils_enable_tests pytest
-
-EPYTEST_DESELECT=(
-	# AssertionError
-	tests/test_mapping.py::test_get_monitored_resource
-	tests/test_gcp_resource_detector.py::test_detects_empty_when_not_available
-	tests/test_gcp_resource_detector.py::test_detects_empty_as_fallback
-	tests/test_gcp_resource_detector.py::test_detects_gce
-	tests/test_gcp_resource_detector.py::test_detects_gke
-	tests/test_gcp_resource_detector.py::test_detects_cloud_run
-	tests/test_gcp_resource_detector.py::test_detects_cloud_functions
-	tests/test_gcp_resource_detector.py::test_detects_gae_standard
-	tests/test_gcp_resource_detector.py::test_detects_gae_flex
-)
