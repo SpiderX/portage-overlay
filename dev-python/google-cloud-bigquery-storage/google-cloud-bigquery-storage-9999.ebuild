@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 git-r3 optfeature
 
@@ -23,6 +23,7 @@ RDEPEND="dev-python/google-api-core[grpc,${PYTHON_USEDEP}]
 	dev-python/proto-plus[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/fastavro[${PYTHON_USEDEP}]
 		dev-python/google-cloud-bigquery[${PYTHON_USEDEP}]
+		dev-python/google-cloud-testutils[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP}] )"
 
@@ -35,21 +36,6 @@ EPYTEST_IGNORE=(
 	tests/system/reader/test_reader_dataframe.py
 	tests/system/test_writer.py
 )
-
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
-}
-
-src_test() {
-	rm -r google || die "rm failed"
-	distutils-r1_src_test
-}
-
-python_test() {
-	distutils_write_namespace google
-	epytest -v tests || die "tests failed with ${EPYTHON}"
-}
 
 pkg_postinst() {
 	optfeature "integration with pandas" dev-python/pandas
