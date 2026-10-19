@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	An asynchronous HTTP retry client built on aiohttp, providing
+	automatic retries for failed requests with configurable retry
+	conditions and backoff strategies, including exponential,
+	random, Fibonacci, and jitter-based delays.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">inyutin/aiohttp_retry</remote-id>
+		<remote-id type="pypi">aiohttp-retry</remote-id>
+	</upstream>
+</pkgmetadata>
