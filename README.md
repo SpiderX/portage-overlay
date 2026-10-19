@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1656](https://img.shields.io/badge/ebuild-1656-orange.svg)](https://img.shields.io/badge/ebuild-1656-orange.svg)
+[![Number of ebuilds: 1657](https://img.shields.io/badge/ebuild-1657-orange.svg)](https://img.shields.io/badge/ebuild-1657-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -65,6 +65,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-admin/[eks-node-viewer](https://github.com/awslabs/eks-node-viewer) | EKS Node Viewer
 *   app-admin/[fselect](https://github.com/jhspetersson/fselect) | Find files with SQL-like queries
 *   app-admin/[glaball](https://github.com/flant/glaball) | Gitlab bulk administration tool
+*   app-admin/[google-cloud-cli](https://docs.cloud.google.com/sdk/gcloud) | Google Cloud CLI
 *   app-admin/[grex](https://github.com/pemistahl/grex) | A CLI tool for generating regular expressions
 *   app-admin/[ibmcloud-bin](https://github.com/IBM-Cloud/ibm-cloud-cli-release) | IBM Cloud Developer Tools
 *   [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/qtpass.svg?header=)](https://repology.org/project/qtpass/versions) app-admin/[qtpass](https://qtpass.org) | Multi-platform GUI for pass, the standard unix password manager

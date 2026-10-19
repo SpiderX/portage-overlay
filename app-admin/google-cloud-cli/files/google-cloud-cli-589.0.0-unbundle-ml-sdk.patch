@@ -1,0 +1,23 @@
+Remove PYTHONPATH injection for the bundled ml_sdk package.
+The legacy ml_sdk dependency is no longer bundled with Google Cloud CLI.
+Remove the code that prepends its directory to PYTHONPATH when launching
+local prediction subprocesses.
+Preserve the existing Python environment and executable discovery logic.
+--- ../lib/googlecloudsdk/command_lib/ml_engine/local_utils.py	2026-10-19 14:01:11.947290971 +0300
++++ ../lib/googlecloudsdk/command_lib/ml_engine/local_utils.py	2026-10-19 14:04:39.420649310 +0300
+@@ -69,15 +69,6 @@
+   # We want to use whatever the user's Python was, before the Cloud SDK started
+   # changing the PATH. That's where Tensorflow is installed.
+   python_executables = files.SearchForExecutableOnPath('python')
+-  # Need to ensure that ml_sdk is in PYTHONPATH for the import in
+-  # local_predict to succeed.
+-
+-  orig_py_path = encoding.GetEncodedValue(env, 'PYTHONPATH') or ''
+-  if orig_py_path:
+-    orig_py_path = ':' + orig_py_path
+-  encoding.SetEncodedValue(
+-      env, 'PYTHONPATH',
+-      os.path.join(sdk_root, 'lib', 'third_party', 'ml_sdk') + orig_py_path)
+   if not python_executables:
+     # This doesn't have to be actionable because things are probably beyond help
+     # at this point.

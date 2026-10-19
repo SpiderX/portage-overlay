@@ -1,0 +1,221 @@
+Use system oauth2client instead of the bundled namespaced copy.
+The BigQuery CLI uses a bundled copy of oauth2client 4.x under the
+oauth2client_4_0 namespace for credential loading, storage, wrapping,
+and authentication error handling.
+Replace oauth2client_4_0 imports and references with the standard
+oauth2client namespace provided by dev-python/oauth2client.
+Preserve the existing BigQuery authentication and credential handling
+logic without requiring the bundled oauth2client implementation.
+--- ../platform/bq/credential_loader.py
++++ ../platform/bq/credential_loader.py
+@@ -12,13 +12,13 @@
+ from absl import flags
+ from google_reauth.reauth_creds import Oauth2WithReauthCredentials
+ import httplib2
+-import oauth2client_4_0
+-import oauth2client_4_0.contrib
+-import oauth2client_4_0.contrib.gce
+-import oauth2client_4_0.contrib.multiprocess_file_storage
+-import oauth2client_4_0.file
+-import oauth2client_4_0.service_account
+-import oauth2client_4_0.tools
++import oauth2client
++import oauth2client.contrib
++import oauth2client.contrib.gce
++import oauth2client.contrib.multiprocess_file_storage
++import oauth2client.file
++import oauth2client.service_account
++import oauth2client.tools
+ import requests
+ 
+ import bq_auth_flags
+@@ -36,12 +36,12 @@
+ WrappedCredentialsUnionType = Union[
+     wrapped_credentials.WrappedCredentials,
+     Oauth2WithReauthCredentials,
+-    oauth2client_4_0.client.AccessTokenCredentials,
++    oauth2client.client.AccessTokenCredentials,
+ ]
+ 
+ CredentialsFromFlagsUnionType = Union[
+     WrappedCredentialsUnionType,
+-    oauth2client_4_0.contrib.gce.AppAssertionCredentials,
++    oauth2client.contrib.gce.AppAssertionCredentials,
+ ]
+ 
+ 
+@@ -87,7 +87,7 @@
+     # credentials storage.
+     self._scopes_key = ','.join(sorted(bq_utils.GetClientScopesFromFlags()))
+     try:
+-      self._storage = oauth2client_4_0.contrib.multiprocess_file_storage.MultiprocessFileStorage(
++      self._storage = oauth2client.contrib.multiprocess_file_storage.MultiprocessFileStorage(
+           credential_cache_file, self._scopes_key
+       )
+     except OSError as e:
+@@ -98,7 +98,7 @@
+   @property
+   def storage(
+       self,
+-  ) -> 'oauth2client_4_0.contrib.multiprocess_file_storage.MultiprocessFileStorage':
++  ) -> 'oauth2client.contrib.multiprocess_file_storage.MultiprocessFileStorage':
+     return self._storage
+ 
+   def Load(self) -> WrappedCredentialsUnionType:
+@@ -127,7 +127,7 @@
+       creds = self._storage.get()
+ 
+       if not creds:
+-        legacy_storage = oauth2client_4_0.file.Storage(
++        legacy_storage = oauth2client.file.Storage(
+             self.credential_cache_file
+         )
+         creds = legacy_storage.get()
+@@ -168,7 +168,7 @@
+   """Base class for loading credential from service account."""
+ 
+   def Load(self) -> WrappedCredentialsUnionType:
+-    if not oauth2client_4_0.client.HAS_OPENSSL:
++    if not oauth2client.client.HAS_OPENSSL:
+       raise app.UsageError(
+           'BigQuery requires OpenSSL to be installed in order to use '
+           'service account credentials. Please install OpenSSL '
+@@ -199,13 +199,13 @@
+ 
+   def _Load(self) -> WrappedCredentialsUnionType:
+     try:
+-      return oauth2client_4_0.service_account.ServiceAccountCredentials.from_p12_keyfile(
++      return oauth2client.service_account.ServiceAccountCredentials.from_p12_keyfile(
+           service_account_email=self._service_account,
+           filename=self._file_path,
+           scopes=bq_utils.GetClientScopesFromFlags(),
+           private_key_password=self._password,
+-          token_uri=oauth2client_4_0.GOOGLE_TOKEN_URI,
+-          revoke_uri=oauth2client_4_0.GOOGLE_REVOKE_URI,
++          token_uri=oauth2client.GOOGLE_TOKEN_URI,
++          revoke_uri=oauth2client.GOOGLE_REVOKE_URI,
+       )
+     except IOError as e:
+       raise app.UsageError(
+@@ -238,14 +238,14 @@
+       credentials = json.load(file_obj)
+ 
+     client_scope = bq_utils.GetClientScopesFromFlags()
+-    if credentials['type'] == oauth2client_4_0.client.AUTHORIZED_USER:
++    if credentials['type'] == oauth2client.client.AUTHORIZED_USER:
+       return Oauth2WithReauthCredentials(
+           access_token=None,
+           client_id=credentials['client_id'],
+           client_secret=credentials['client_secret'],
+           refresh_token=credentials['refresh_token'],
+           token_expiry=None,
+-          token_uri=oauth2client_4_0.GOOGLE_TOKEN_URI,
++          token_uri=oauth2client.GOOGLE_TOKEN_URI,
+           user_agent=bq_auth_utils.get_client_user_agent(),
+           scopes=client_scope,
+       )
+@@ -258,8 +258,8 @@
+           self._credential_file
+       )
+     else:  # Service account
+-      credentials['type'] = oauth2client_4_0.client.SERVICE_ACCOUNT
+-      service_account_credentials = oauth2client_4_0.service_account.ServiceAccountCredentials.from_json_keyfile_dict(
++      credentials['type'] = oauth2client.client.SERVICE_ACCOUNT
++      service_account_credentials = oauth2client.service_account.ServiceAccountCredentials.from_json_keyfile_dict(
+           keyfile_dict=credentials, scopes=client_scope
+       )
+       service_account_credentials._user_agent = bq_auth_utils.get_client_user_agent()  # pylint: disable=protected-access
+@@ -281,7 +281,7 @@
+     self._access_token = access_token
+ 
+   def _Load(self) -> WrappedCredentialsUnionType:
+-    return oauth2client_4_0.client.AccessTokenCredentials(
++    return oauth2client.client.AccessTokenCredentials(
+         self._access_token, bq_auth_utils.get_client_user_agent()
+     )
+ 
+@@ -346,21 +346,21 @@
+     logging.info('Loading credentials using use_gce_service_account')
+     # In the case of a GCE service account, we can skip the entire
+     # process of loading from storage.
+-    return oauth2client_4_0.contrib.gce.AppAssertionCredentials()
++    return oauth2client.contrib.gce.AppAssertionCredentials()
+ 
+ 
+   loader = _GetCredentialsLoaderFromFlags()
+   credentials = loader.Load()
+ 
+ 
+-  if type(credentials) == oauth2client_4_0.client.OAuth2Credentials:  # pylint: disable=unidiomatic-typecheck
++  if type(credentials) == oauth2client.client.OAuth2Credentials:  # pylint: disable=unidiomatic-typecheck
+     credentials = _GetReauthCredentials(credentials)
+ 
+   return credentials
+ 
+ 
+ def _GetReauthCredentials(
+-    oauth2_creds: 'oauth2client_4_0.client.OAuth2Credentials',
++    oauth2_creds: 'oauth2client.client.OAuth2Credentials',
+ ) -> 'Oauth2WithReauthCredentials':
+   reauth_creds = Oauth2WithReauthCredentials.from_OAuth2Credentials(
+       oauth2_creds
+--- ../platform/bq/utils/bq_error_utils.py
++++ ../platform/bq/utils/bq_error_utils.py
+@@ -15,7 +15,7 @@
+ from google.auth import exceptions as google_auth_exceptions
+ import googleapiclient
+ import httplib2
+-import oauth2client_4_0.client
++import oauth2client.client
+ 
+ import bq_utils
+ from gcloud_wrapper import bq_to_gcloud_config_classes
+@@ -197,7 +197,7 @@
+           'If this problem persists, you may have encountered a bug in the '
+           'bigquery client.' % (name, message)
+       )
+-    elif isinstance(err, oauth2client_4_0.client.Error):
++    elif isinstance(err, oauth2client.client.Error):
+       message_prefix = (
+           'Authorization error. This may be a network connection problem, '
+           'so please try again. If this problem persists, the credentials '
+--- ../platform/bq/wrapped_credentials.py
++++ ../platform/bq/wrapped_credentials.py
+@@ -18,17 +18,17 @@
+ from google.auth import identity_pool
+ from google.auth import pluggable
+ from google.auth.transport import requests
+-import oauth2client_4_0.client
++import oauth2client.client
+ 
+ import bq_utils
+ from utils import bq_error
+ 
+ 
+-class WrappedCredentials(oauth2client_4_0.client.OAuth2Credentials):
++class WrappedCredentials(oauth2client.client.OAuth2Credentials):
+   """A utility class to use Google Auth credentials in place of oauth2client credentials."""
+ 
+   NON_SERIALIZED_MEMBERS = frozenset(
+-      list(oauth2client_4_0.client.OAuth2Credentials.NON_SERIALIZED_MEMBERS)
++      list(oauth2client.client.OAuth2Credentials.NON_SERIALIZED_MEMBERS)
+       + ['_base']
+   )
+ 
+@@ -155,7 +155,7 @@
+     ):
+       try:
+         data['token_expiry'] = datetime.datetime.strptime(
+-            data['token_expiry'], oauth2client_4_0.client.EXPIRY_FORMAT
++            data['token_expiry'], oauth2client.client.EXPIRY_FORMAT
+         )
+       except ValueError:
+         data['token_expiry'] = None
+@@ -227,6 +227,6 @@
+ 
+ def _parse_expiry(expiry: Any) -> Optional[str]:
+   if expiry and isinstance(expiry, datetime.datetime):
+-    return expiry.strftime(oauth2client_4_0.client.EXPIRY_FORMAT)
++    return expiry.strftime(oauth2client.client.EXPIRY_FORMAT)
+   else:
+     return None

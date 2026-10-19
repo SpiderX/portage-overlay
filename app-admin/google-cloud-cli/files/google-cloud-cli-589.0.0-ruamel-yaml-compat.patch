@@ -1,0 +1,159 @@
+Adapt Google Cloud CLI to the ruamel.yaml 0.18+ API.
+Replace deprecated module-level YAML loading and dumping functions with
+the YAML() instance API. Preserve safe and round-trip processing, YAML
+version selection, formatting options, and custom tag handling.
+Required for compatibility with system-installed dev-python/ruamel-yaml
+when unbundling Google Cloud CLI's vendored Python dependencies.
+--- ../lib/googlecloudsdk/calliope/command_loading.py	2026-10-16 19:33:45.750683070 +0300
++++ ../lib/googlecloudsdk/calliope/command_loading.py	2026-10-16 19:34:08.436778266 +0300
+@@ -210,8 +210,8 @@
+ 
+ @Cache
+ def _SafeLoadYamlFile(path):
+-  return yaml.safe_load(pkg_resources.GetResourceFromFile(path))
+-
++  return yaml.YAML(typ='safe', pure=True).load(
++      pkg_resources.GetResourceFromFile(path))
+ 
+ @Cache
+ def _CustomLoadYamlFile(path):
+--- ../lib/googlecloudsdk/calliope/base.py	2026-10-16 22:25:56.083546610 +0300
++++ ../lib/googlecloudsdk/calliope/base.py	2026-10-16 22:26:34.813923975 +0300
+@@ -630,13 +630,10 @@
+       try:
+         from ruamel import yaml as ruamel_yaml  # pylint: disable=g-import-not-at-top
+ 
+-        class _SidecarSafeLoader(ruamel_yaml.SafeLoader):
+-          pass
+-
+-        _SidecarSafeLoader.add_multi_constructor(
+-            '!', lambda loader, tag, node: None
+-        )
+-        data = ruamel_yaml.load(content, _SidecarSafeLoader)
++        parser = ruamel_yaml.YAML(typ='safe', pure=True)
++        parser.constructor.add_multi_constructor(
++            '!', lambda constructor, tag, node: None)
++        data = parser.load(content)
+       except Exception:  # pylint: disable=broad-except
+         return []
+     except Exception:  # pylint: disable=broad-except
+--- ../lib/googlecloudsdk/core/yaml.py	2026-10-16 22:14:21.267817424 +0300
++++ ../lib/googlecloudsdk/core/yaml.py	2026-10-16 22:25:38.806967004 +0300
+@@ -23,6 +23,7 @@
+ 
+ 
+ import collections
++import io
+ 
+ from googlecloudsdk.core import exceptions
+ from googlecloudsdk.core import yaml_location_value
+@@ -57,6 +58,46 @@
+     Dumper=yaml.dumper.RoundTripDumper)
+ 
+ 
++def _NewYAML(round_trip=False, version=None, preserve_quotes=None):
++  parser = yaml.YAML(typ='rt' if round_trip else 'safe', pure=True)
++  if version is not None:
++    parser.version = tuple(int(part) for part in version.split('.'))
++  if preserve_quotes is not None:
++    parser.preserve_quotes = preserve_quotes
++  parser.default_flow_style = False
++  parser.indent(mapping=2, sequence=2, offset=0)
++  parser.representer.add_representer(
++      collections.OrderedDict, parser.representer.represent_dict)
++  if round_trip:
++    parser.representer.add_representer(
++        type(None),
++        lambda representer, value: representer.represent_scalar(
++            'tag:yaml.org,2002:null', 'null'))
++  return parser
++
++
++def _DumpYAML(data, stream=None, round_trip=False, multiple=False, **kwargs):
++  parser = _NewYAML(round_trip=round_trip, version=VERSION_1_2)
++  options = {
++      'default_flow_style': 'default_flow_style',
++      'explicit_start': 'explicit_start',
++      'explicit_end': 'explicit_end',
++      'allow_unicode': 'allow_unicode',
++      'width': 'width',
++  }
++  for key, attribute in options.items():
++    if key in kwargs:
++      setattr(parser, attribute, kwargs.pop(key))
++  if kwargs:
++    raise TypeError('Unsupported YAML dump options: {}'.format(kwargs))
++
++  output = io.StringIO() if stream is None else stream
++  if multiple:
++    parser.dump_all(data, output)
++  else:
++    parser.dump(data, output)
++  return output.getvalue() if stream is None else None
++
+ # Always output None as "null", instead of just empty.
+ yaml.add_representer(
+     type(None),
+@@ -133,10 +174,11 @@
+   try:
+     if location_value:
+       return yaml_location_value.LocationValueLoad(stream)
+-    loader = yaml.RoundTripLoader if round_trip else yaml.SafeLoader
+-    return yaml.load(
+-        stream, loader, version=version, preserve_quotes=preserve_quotes
+-    )
++    parser = _NewYAML(
++        round_trip=round_trip,
++        version=version,
++        preserve_quotes=preserve_quotes)
++    return parser.load(stream)
+   except yaml.YAMLError as e:
+     raise YAMLParseError(e, f=file_hint)
+ 
+@@ -158,9 +200,9 @@
+   Yields:
+     The parsed YAML data.
+   """
+-  loader = yaml.RoundTripLoader if round_trip else yaml.SafeLoader
+   try:
+-    for x in yaml.load_all(stream, loader, version=version):
++    parser = _NewYAML(round_trip=round_trip, version=version)
++    for x in parser.load_all(stream):
+       yield x
+   except yaml.YAMLError as e:
+     raise YAMLParseError(e, f=file_hint)
+@@ -249,9 +291,8 @@
+   Returns:
+     The string representation of the YAML data if stream is None.
+   """
+-  method = yaml.round_trip_dump if round_trip else yaml.safe_dump
+-  return method(data, stream=stream, default_flow_style=False, indent=2,
+-                **kwargs)
++  return _DumpYAML(
++      data, stream=stream, round_trip=round_trip, **kwargs)
+ 
+ 
+ def dump_all(documents, stream=None, **kwargs):
+@@ -265,8 +306,8 @@
+   Returns:
+     The string representation of the YAML data if stream is None.
+   """
+-  return yaml.safe_dump_all(
+-      documents, stream=stream, default_flow_style=False, indent=2, **kwargs)
++  return _DumpYAML(
++      documents, stream=stream, multiple=True, **kwargs)
+ 
+ 
+ def dump_all_round_trip(documents, stream=None, **kwargs):
+@@ -280,9 +321,8 @@
+   Returns:
+     The string representation of the YAML data if stream is None.
+   """
+-  return yaml.dump_all(
+-      documents, stream=stream, default_flow_style=False, indent=2,
+-      Dumper=yaml.RoundTripDumper, **kwargs)
++  return _DumpYAML(
++      documents, stream=stream, round_trip=True, multiple=True, **kwargs)
+ 
+ 
+ def convert_to_block_text(data):

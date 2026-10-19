@@ -1,0 +1,47 @@
+Adapt the generated App Engine cron lexer and parser to system antlr3.
+The Groc lexer and parser were generated using ANTLR 3.1.1 and rely on
+legacy runtime APIs that are unavailable in antlr3-python-runtime 3.5.3.
+Remove obsolete antlr3.compat imports and replace the generated
+antlr_version attribute with api_version = 1 to satisfy the runtime's
+version compatibility checks.
+--- ../lib/googlecloudsdk/appengine/googlecron/GrocLexer.py	2026-10-19 13:37:49.454328728 +0300
++++ ../lib/googlecloudsdk/appengine/googlecron/GrocLexer.py	2026-10-19 13:38:38.088745100 +0300
+@@ -14,7 +14,6 @@
+ 
+ import sys
+ from antlr3 import *
+-from antlr3.compat import set, frozenset
+ 
+ 
+ # for convenience in actions
+@@ -67,9 +66,9 @@
+ 
+ 
+ class GrocLexer(Lexer):
++    api_version = 1
+ 
+     grammarFileName = "borg/borgcron/py/Groc.g"
+-    antlr_version = version_str_to_tuple("3.1.1")
+     antlr_version_str = "3.1.1"
+ 
+     def __init__(self, input=None, state=None):
+--- ../lib/googlecloudsdk/appengine/googlecron/GrocParser.py	2026-10-19 13:37:55.255388337 +0300
++++ ../lib/googlecloudsdk/appengine/googlecron/GrocParser.py	2026-10-19 13:39:14.412096261 +0300
+@@ -14,7 +14,6 @@
+ 
+ import sys
+ from antlr3 import *
+-from antlr3.compat import set, frozenset
+ 
+ # Copyright 2005-2009 Google, Inc.  All rights reserved.
+ # @author arb@google.com (Anthony Baxter)
+@@ -117,8 +116,8 @@
+ 
+ 
+ class GrocParser(Parser):
++    api_version = 1
+     grammarFileName = "borg/borgcron/py/Groc.g"
+-    antlr_version = version_str_to_tuple("3.1.1")
+     antlr_version_str = "3.1.1"
+     tokenNames = tokenNames
+ 

@@ -1,0 +1,28 @@
+Replace bundled gcloud_crcmod with system crcmod.
+The Google Cloud SDK uses its bundled gcloud_crcmod module as a fallback
+for CRC32C checksum calculations. Replace its imports with the system
+crcmod package to avoid depending on the bundled implementation.
+Preserve the existing google-crc32c fast-path selection and fallback
+behavior.
+--- ../lib/googlecloudsdk/command_lib/kms/crc32c.py	2026-10-19 11:21:01.034395166 +0300
++++ ../lib/googlecloudsdk/command_lib/kms/crc32c.py	2026-10-19 11:21:16.790663180 +0300
+@@ -15,7 +15,7 @@
+ """Helpers for calculating CRC32C checksums."""
+ 
+ 
+-import gcloud_crcmod as crcmod
++import crcmod
+ import six
+ 
+ 
+--- ../lib/googlecloudsdk/command_lib/util/crc32c.py	2026-10-19 11:22:22.916056410 +0300
++++ ../lib/googlecloudsdk/command_lib/util/crc32c.py	2026-10-19 11:22:36.420141576 +0300
+@@ -38,7 +38,7 @@
+ except ImportError:
+   # TODO(b/194124148) Fall back on pure Python google-crc32c.
+   # Cleans up a lot of this file.
+-  import gcloud_crcmod as crcmod
++  import crcmod
+   IS_FAST_GOOGLE_CRC32C_AVAILABLE = False
+ # pylint: enable=g-import-not-at-top
+ 

@@ -1,0 +1,43 @@
+Adapt Terraform HCL parsing to system python-hcl2 8.x.
+The system python-hcl2 package uses different serialization defaults
+than the HCL parser previously bundled with Google Cloud CLI.
+Explicitly configure serialization options to strip string quotes,
+omit comments, and disable explicit block representation, preserving
+the expected output format for Infrastructure Manager and Security
+Command Center Terraform processing.
+--- ../lib/googlecloudsdk/command_lib/infra_manager/tfvars_parser.py	2026-10-19 10:47:06.630485381 +0300
++++ ../lib/googlecloudsdk/command_lib/infra_manager/tfvars_parser.py	2026-10-19 10:47:28.809041134 +0300
+@@ -32,7 +32,14 @@
+   """
+   try:
+     f = files.ReadFileContents(filename)
+-    config = hcl2.loads(f)
++    config = hcl2.loads(
++        f,
++        serialization_options=hcl2.SerializationOptions(
++            strip_string_quotes=True,
++            with_comments=False,
++            explicit_blocks=False,
++        ),
++    )
+ 
+     return config
+   except Exception as e:
+--- ../lib/googlecloudsdk/api_lib/scc/iac_remediation/terraform.py	2026-10-19 10:49:16.793512943 +0300
++++ ../lib/googlecloudsdk/api_lib/scc/iac_remediation/terraform.py	2026-10-19 10:49:44.014125176 +0300
+@@ -167,7 +167,14 @@
+     The json of the TFState files.
+   """
+   file = files.ReadFileContents(file_path)
+-  tfstate_json = hcl2.loads(file)
++  tfstate_json = hcl2.loads(
++      file,
++      serialization_options=hcl2.SerializationOptions(
++          strip_string_quotes=True,
++          with_comments=False,
++          explicit_blocks=False,
++      ),
++  )
+   return tfstate_json
+ 
+ 

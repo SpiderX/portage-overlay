@@ -1,0 +1,28 @@
+Replace bundled Google Cloud protobuf imports with system packages.
+The Cloud Logging tailing implementation imports generated protobuf
+modules to register message descriptors used when decoding log entries.
+Replace the bundled App Engine, BigQuery, and IAM protobuf imports with
+their corresponding system-installed Google Cloud client libraries.
+Preserve the existing imports for protobuf modules that are already
+provided by system packages.
+--- ../lib/googlecloudsdk/api_lib/logging/tailing.py
++++ ../lib/googlecloudsdk/api_lib/logging/tailing.py
+@@ -20,13 +20,12 @@
+ import datetime
+ 
+ # pylint: disable=unused-import, type imports needed for gRPC
+-import google.appengine.logging.v1.request_log_pb2
+-import google.appengine.v1.audit_data_pb2
+-import google.appengine.v1beta.audit_data_pb2
+-import google.cloud.appengine_v1alpha.proto.audit_data_pb2
++# Import protobuf types to register descriptors for decoding log entries.
++from google.cloud.appengine_admin_v1.types import audit_data as appengine_audit_data
++from google.cloud.appengine_logging_v1.types import RequestLog
++from google.cloud.bigquery_logging_v1.types import AuditData
++from google.cloud.iam_admin_v1.types import audit_data
+ import google.cloud.audit.audit_log_pb2
+-import google.cloud.bigquery.logging.v1.audit_data_pb2
+-import google.iam.admin.v1.audit_data_pb2
+ import google.iam.v1.logging.audit_data_pb2
+ import google.type.money_pb2
+ # pylint: enable=unused-import
