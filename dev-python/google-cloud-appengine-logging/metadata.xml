@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Python client library for Google App Engine Logging API, providing
+	access to application request logs and related logging resources.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">googleapis/python-cloud-python</remote-id>
+		<remote-id type="pypi">google-cloud-appengine-logging</remote-id>
+	</upstream>
+</pkgmetadata>
