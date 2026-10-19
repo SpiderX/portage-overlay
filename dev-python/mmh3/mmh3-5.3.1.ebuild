@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/hajimes/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
