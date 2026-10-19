@@ -1,0 +1,17 @@
+--- /dev/null	2026-10-11 18:59:36.659620561 +0300
++++ ../tests/conftest.py	2026-10-18 20:59:01.917072612 +0300
+@@ -0,0 +1,14 @@
++import pytest
++from unittest import mock
++
++
++@pytest.fixture(autouse=True)
++def disable_periodic_metrics_export():
++    from opentelemetry.sdk.metrics.export import InMemoryMetricReader
++
++    with mock.patch(
++        "google.cloud.bigtable.data._metrics.handlers.gcp_exporter."
++        "PeriodicExportingMetricReader",
++        side_effect=lambda *args, **kwargs: InMemoryMetricReader(),
++    ):
++        yield
