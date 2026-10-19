@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1640](https://img.shields.io/badge/ebuild-1640-orange.svg)](https://img.shields.io/badge/ebuild-1640-orange.svg)
+[![Number of ebuilds: 1641](https://img.shields.io/badge/ebuild-1641-orange.svg)](https://img.shields.io/badge/ebuild-1641-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1161,6 +1161,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dom-toml](https://github.com/domdfcoding/dom_toml) | Dom's tools for Tom's Obvious, Minimal Language
 *   dev-python/[domdf-python-tools](https://github.com/domdfcoding/domdf_python_tools) | Helpful functions for Python
 *   dev-python/[dpath](https://github.com/dpath-maintainers/dpath-python) | A python module that will check for package updates
+*   dev-python/[dploot](https://github.com/zblurx/dploot) | DPAPI looting remotely and locally
 *   dev-python/[drf-nested-routers](https://github.com/alanjds/drf-nested-routers) | Nested resources for the Django Rest Framework
 *   dev-python/[drf-spectacular](https://github.com/tfranzel/drf-spectacular) | Sane and flexible OpenAPI 3 schema generation for Django REST framework
 *   dev-python/[drf-spectacular-sidecar](https://github.com/tfranzel/drf-spectacular-sidecar) | Self-contained distribution builds of Swagger UI and Redoc with Django
@@ -1184,9 +1185,10 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[fleep](https://github.com/floyernick/fleep-py) | File format determination library for Python
 *   dev-python/[flup](https://www.saddi.com/software/flup/) | Random assortment of WSGI servers
 *   dev-python/[frozendict](https://github.com/Marco-Sulla/python-frozendict) | A simple immutable dictionary for Python
+*   dev-python/[gcs-oauth2-boto-plugin](https://github.com/GoogleCloudPlatform/gcs-oauth2-boto-plugin) | OAuth 2.0 plugin for Google Cloud Storage credentials in Boto
 *   dev-python/[gensim](https://github.com/piskvorky/gensim) | Topic Modelling for Humans
-*   dev-python/[git-url-parse](https://github.com/coala/git-url-parse) | A simple GIT URL parser
 *   dev-python/[gevent](https://github.com/gevent/gevent) | Coroutine-based concurrency library for Python
+*   dev-python/[git-url-parse](https://github.com/coala/git-url-parse) | A simple GIT URL parser
 *   dev-python/[glom](https://github.com/mahmoud/glom) | A declarative object transformer for conglomerating nested data
 *   dev-python/[google-crc32c](https://github.com/googleapis/python-crc32c) | Hardware-based implementation of the CRC32C hashing algorithm
 *   dev-python/[google-cloud-bigquery](https://github.com/googleapis/python-bigquery) | Google Cloud BigQuery API client library
@@ -1204,7 +1206,6 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-cloud-storage](https://github.com/googleapis/python-storage) | Google Cloud Storage API client library
 *   dev-python/[google-cloud-testutils](https://github.com/googleapis/python-test-utils) | Google Cloud Storage API client library
 *   dev-python/[google-resumable-media](https://github.com/googleapis/google-resumable-media-python) | Utilities for Google Media Downloads and Resumable Uploads
-*   dev-python/[dploot](https://github.com/zblurx/dploot) | DPAPI looting remotely and locally
 *   dev-python/[graphene](https://github.com/graphql-python/graphene) | GraphQL framework for Python
 *   dev-python/[graphene-django](https://github.com/graphql-python/graphene-django) | A Django integration for Graphene
 *   dev-python/[graphviz](https://github.com/xflr6/graphviz) | Simple Python interface for Graphviz

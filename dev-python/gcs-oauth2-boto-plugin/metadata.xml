@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	gcs-oauth2-boto-plugin is a Python application whose purpose is to
+	behave as an auth plugin for the boto auth plugin framework for use
+	with OAuth 2.0 credentials for the Google Cloud Platform.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">GoogleCloudPlatform/gcs-oauth2-boto-plugin</remote-id>
+		<remote-id type="pypi">gcs-oauth2-boto-plugin</remote-id>
+	</upstream>
+</pkgmetadata>
