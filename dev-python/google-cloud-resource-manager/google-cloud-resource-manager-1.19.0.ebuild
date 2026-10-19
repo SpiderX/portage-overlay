@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/googleapis/google-cloud-python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="dev-python/google-api-core[grpc,${PYTHON_USEDEP}]
 	dev-python/google-auth[${PYTHON_USEDEP}]
@@ -23,18 +23,3 @@ RDEPEND="dev-python/google-api-core[grpc,${PYTHON_USEDEP}]
 
 EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
-
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
-}
-
-src_test() {
-	rm -r google || die "rm failed"
-	distutils-r1_src_test
-}
-
-python_test() {
-	distutils_write_namespace google
-	epytest -v tests || die "tests failed with ${EPYTHON}"
-}
