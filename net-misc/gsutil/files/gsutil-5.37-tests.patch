@@ -1,0 +1,157 @@
+Adapt gsutil unit tests for system dependencies and pytest.
+Update imports and compatibility helpers to work with the system boto
+package instead of its bundled version. Prevent gsutil's command-line
+argument parser from processing pytest arguments during test collection.
+Add pytest initialization for gsutil's signal handling, UI controller,
+and multiprocessing infrastructure. Disable integration tests and run
+tests marked with RequiresIsolation in separate subprocesses, matching
+the isolation behavior of gsutil's native test runner.
+--- ../gslib/tests/util.py	2026-10-18 13:12:14.804958420 +0300
++++ ../gslib/tests/util.py	2026-10-18 13:12:58.569798518 +0300
+@@ -43,7 +43,7 @@
+ import gslib
+ from gslib.kms_api import KmsApi
+ from gslib.project_id import PopulateProjectId
+-import mock_storage_service  # From boto/tests/integration/s3
++from gslib.tests import mock_storage_service
+ 
+ from gslib.cloud_api import ResumableDownloadException
+ from gslib.cloud_api import ResumableUploadException
+--- ../gslib/vendored/boto/tests/integration/s3/mock_storage_service.py	2026-10-18 13:44:29.167214812 +0300
++++ ../gslib/vendored/boto/tests/integration/s3/mock_storage_service.py	2026-10-18 13:45:06.007420005 +0300
+@@ -29,6 +29,7 @@
+ import copy
+ import boto
+ import base64
++import io
+ import re
+ import six
+ from hashlib import md5
+@@ -36,9 +37,24 @@
+ from boto.utils import compute_md5
+ from boto.utils import find_matching_headers
+ from boto.utils import merge_headers_by_name
+-from boto.utils import write_to_fd
+ from boto.s3.prefix import Prefix
+-from boto.compat import six
++
++
++def write_to_fd(fd, data):
++    """Write given data to given file descriptor, doing any conversions needed."""
++    if isinstance(data, bytes):
++        if ((hasattr(fd, 'mode') and 'b' in fd.mode) or
++                isinstance(fd, io.BytesIO)):
++            fd.write(data)
++        elif hasattr(fd, 'buffer'):
++            fd.buffer.write(data)
++        else:
++            fd.write(six.ensure_text(data))
++    elif hasattr(fd, 'mode') and 'b' in fd.mode:
++        fd.write(six.ensure_binary(data))
++    else:
++        fd.write(data)
++
+ 
+ NOT_IMPL = None
+ 
+--- ../gslib/tests/testcase/unit_testcase.py	2026-10-18 13:55:28.211802315 +0300
++++ ../gslib/tests/testcase/unit_testcase.py	2026-10-18 13:56:23.086982608 +0300
+@@ -27,7 +27,6 @@
+ import six
+ 
+ import boto
+-from boto.utils import get_utf8able_str
+ from gslib import project_id
+ from gslib import wildcard_iterator
+ from gslib.boto_translation import BotoTranslation
+@@ -157,8 +156,8 @@
+         stderr = sys.stderr.buffer.read()
+     [six.ensure_text(string) for string in self.accumulated_stderr]
+     [six.ensure_text(string) for string in self.accumulated_stdout]
+-    stdout = six.ensure_text(get_utf8able_str(stdout))
+-    stderr = six.ensure_text(get_utf8able_str(stderr))
++    stdout = six.ensure_text(stdout)
++    stderr = six.ensure_text(stderr)
+     stdout += ''.join(self.accumulated_stdout)
+     stderr += ''.join(self.accumulated_stderr)
+     _AttemptToCloseSysFd(sys.stdout)
+--- ../gslib/tests/test_gsutil.py	2026-10-18 14:23:48.121076040 +0300
++++ ../gslib/tests/test_gsutil.py	2026-10-18 14:24:40.116182691 +0300
+@@ -33,6 +33,11 @@
+ import gslib
+ import gslib.tests.testcase as testcase
+ 
++# gslib.__main__ parses command-line arguments during import.
++# Prevent it from interpreting pytest's arguments as gsutil options.
++with mock.patch.object(sys, 'argv', ['gsutil']):
++  import gslib.__main__
++
+ try:
+   from gsutil import _fix_google_module  # pylint: disable=g-import-not-at-top
+   FIX_GOOGLE_MODULE_FUNCTION_AVAILABLE = True
+--- /dev/null	2026-10-11 18:59:36.659620561 +0300
++++ ../gslib/tests/conftest.py	2026-10-18 16:28:00.041944316 +0300
+@@ -0,0 +1,63 @@
++import os
++import subprocess
++import sys
++import pytest
++
++from gslib.tests import util
++from gslib import command
++from gslib import boto_translation
++from gslib.sig_handling import InitializeSignalHandling
++from gslib.utils.parallelism_framework_util import (
++    CheckMultiprocessingAvailableAndInit,
++)
++from gslib.ui_controller import UIController
++
++util.RUN_INTEGRATION_TESTS = False
++
++def pytest_sessionstart(session):
++    InitializeSignalHandling()
++    command.ui_controller = UIController()
++
++    if CheckMultiprocessingAvailableAndInit().is_available:
++        command.InitializeMultiprocessingVariables()
++        boto_translation.InitializeMultiprocessingVariables()
++    else:
++        command.InitializeThreadingVariables()
++
++def pytest_collection_modifyitems(items):
++    if os.environ.get("GSUTIL_PYTEST_ISOLATED") == "1":
++        return
++
++    for item in items:
++        if not getattr(getattr(item, "obj", None),
++                       "requires_isolation", False):
++            continue
++
++        nodeid = item.nodeid
++
++        def run_isolated(nodeid=nodeid):
++            env = os.environ.copy()
++            env["GSUTIL_PYTEST_ISOLATED"] = "1"
++
++            result = subprocess.run(
++                [
++                    sys.executable,
++                    "-m", "pytest",
++                    "-q",
++                    "-o", "log_cli=true",
++                    "-o", "log_cli_level=INFO",
++                    nodeid,
++                ],
++                env=env,
++                capture_output=True,
++                text=True,
++                check=False,
++            )
++
++            if result.returncode:
++                pytest.fail(
++                    f"Isolated test failed:\n{result.stdout}\n{result.stderr}",
++                    pytrace=False,
++                )
++
++        item.obj = run_isolated

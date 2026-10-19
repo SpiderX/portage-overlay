@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1655](https://img.shields.io/badge/ebuild-1655-orange.svg)](https://img.shields.io/badge/ebuild-1655-orange.svg)
+[![Number of ebuilds: 1656](https://img.shields.io/badge/ebuild-1656-orange.svg)](https://img.shields.io/badge/ebuild-1656-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1637,6 +1637,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   net-misc/[ec2-instance-connect](https://github.com/aws/aws-ec2-instance-connect-config) | AWS EC2 Instance Connect Configuration
 *   net-misc/[ec2-instance-connect-cli](https://github.com/aws/aws-ec2-instance-connect-cli) | Python client for accessing EC2 instances via EC2 Instance Connect
 *   [![Gentoo Bug](https://img.shields.io/badge/Bug-536148-red.svg)](https://bugs.gentoo.org/show_bug.cgi?id=536148) net-misc/[fiche](https://github.com/solusipse/fiche) | Command line pastebin server
+*   net-misc/[gsutil](https://github.com/GoogleCloudPlatform/gsutil) | A command line tool for interacting with cloud storage services
 *   net-misc/[inverting-proxy](https://github.com/google/inverting-proxy) | Reverse proxy that inverts the direction of traffic
 *   net-misc/[ipinfo](https://github.com/ipinfo/cli) | Look up IP details in bulk or one-by-one
 *   net-misc/[kafkactl](https://github.com/deviceinsight/kafkactl) | A command-line interface for interaction with Apache Kafka
