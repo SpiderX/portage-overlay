@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1652](https://img.shields.io/badge/ebuild-1652-orange.svg)](https://img.shields.io/badge/ebuild-1652-orange.svg)
+[![Number of ebuilds: 1653](https://img.shields.io/badge/ebuild-1653-orange.svg)](https://img.shields.io/badge/ebuild-1653-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1314,6 +1314,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[policyuniverse](https://github.com/Netflix-Skunkworks/policyuniverse) | Parse and Process AWS IAM Policies, Statements, ARNs
 *   dev-python/[polyfactory](https://github.com/litestar-org/polyfactory) | Mock data generation factories
 *   dev-python/[port-for](https://github.com/fizyk/port-for) | An utility and python library for TCP ports management
+*   dev-python/[portpicker](https://github.com/google/python_portpicker) | Library for finding available network ports
 *   dev-python/[prance](https://github.com/RonnyPfannschmidt/prance) | Resolving Swagger/OpenAPI 2.0 and 3.0 Parser
 *   dev-python/[proglog](https://github.com/Edinburgh-Genome-Foundry/Proglog) | Logs and progress bars manager for Python
 *   dev-python/[promise](https://github.com/syrusakbary/promise) | Ultra-performant Promise implementation in Python

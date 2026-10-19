@@ -1,0 +1,16 @@
+Python 3.14 raises RuntimeError when asyncio.get_event_loop() is
+called without an existing event loop.
+Explicitly create and set a new event loop to allow portserver
+to start correctly under Python 3.14.
+--- ../src/portserver.py	2026-10-19 00:49:28.497755522 +0300
++++ ../src/portserver.py	2026-10-19 00:49:48.125503267 +0300
+@@ -367,7 +367,8 @@
+     if sys.platform == 'win32':
+         asyncio.set_event_loop(asyncio.ProactorEventLoop())
+ 
+-    event_loop = asyncio.get_event_loop()
++    event_loop = asyncio.new_event_loop()
++    asyncio.set_event_loop(event_loop)
+ 
+     if sys.platform == 'win32':
+         # On Windows, we need to periodically pause the loop to allow the user

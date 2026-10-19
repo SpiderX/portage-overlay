@@ -1,0 +1,19 @@
+By default, _bind() attempts to retain an IPv6 socket when a
+bind timeout is requested. On systems with IPv6 disabled, the
+IPv4 socket is closed and no IPv6 socket can be created, leaving
+the port-holding daemon without any sockets to retain.
+Default to AF_INET so the daemon can keep an IPv4 socket open
+for the requested timeout on IPv4-only systems.
+This fixes test_command_line_interface_no_portserver_bind_timeout
+when IPv6 is disabled.
+--- ../src/portpicker.py	2026-10-19 01:01:43.827309260 +0300
++++ ../src/portpicker.py	2026-10-19 01:01:59.174394319 +0300
+@@ -117,7 +117,7 @@
+ 
+ 
+ def _bind(port, socket_type, socket_proto, return_socket=None,
+-          return_family=socket.AF_INET6):
++          return_family=socket.AF_INET):
+     """Internal implementation of bind.
+ 
+     Args:
