@@ -1,0 +1,32 @@
+Fix keyring storage tests for Python 3.12 and newer.
+Replace the deprecated and removed unittest.assertEquals() alias
+with assertEqual() to maintain compatibility with modern Python versions.
+--- ../tests/contrib/test_keyring_storage.py	2026-10-16 17:28:15.687401825 +0300
++++ ../tests/contrib/test_keyring_storage.py	2026-10-16 17:28:42.662391469 +0300
+@@ -104,7 +104,7 @@
+                                autospec=True) as get_password:
+             store = keyring_storage.Storage('my_unit_test', 'me')
+             credentials = store.get()
+-            self.assertEquals(None, credentials)
++            self.assertEqual(None, credentials)
+             get_password.assert_called_once_with('my_unit_test', 'me')
+ 
+     def test_get_with_malformed_json_credentials_stored(self):
+@@ -113,7 +113,7 @@
+                                autospec=True) as get_password:
+             store = keyring_storage.Storage('my_unit_test', 'me')
+             credentials = store.get()
+-            self.assertEquals(None, credentials)
++            self.assertEqual(None, credentials)
+             get_password.assert_called_once_with('my_unit_test', 'me')
+ 
+     def test_get_and_set_with_json_credentials_stored(self):
+@@ -139,7 +139,7 @@
+                                    return_value=None,
+                                    autospec=True) as set_password:
+                 store = keyring_storage.Storage('my_unit_test', 'me')
+-                self.assertEquals(None, store.get())
++                self.assertEqual(None, store.get())
+ 
+                 store.put(credentials)
+ 

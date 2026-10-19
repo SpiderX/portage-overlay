@@ -1,0 +1,24 @@
+Fix compatibility with Flask 2.3 and newer.
+Replace the removed _app_ctx_stack internal API with flask.g for
+storing OAuth2 credentials in the current application context.
+--- ../oauth2client/contrib/flask_util.py	2026-10-16 17:19:11.620950317 +0300
++++ ../oauth2client/contrib/flask_util.py	2026-10-16 17:19:46.825607429 +0300
+@@ -170,8 +170,8 @@
+ 
+ try:
+     from flask import Blueprint
+-    from flask import _app_ctx_stack
+     from flask import current_app
++    from flask import g
+     from flask import redirect
+     from flask import request
+     from flask import session
+@@ -434,7 +434,7 @@
+     @property
+     def credentials(self):
+         """The credentials for the current user or None if unavailable."""
+-        ctx = _app_ctx_stack.top
++        ctx = g
+ 
+         if not hasattr(ctx, _CREDENTIALS_KEY):
+             ctx.google_oauth2_credentials = self.storage.get()

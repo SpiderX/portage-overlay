@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1650](https://img.shields.io/badge/ebuild-1650-orange.svg)](https://img.shields.io/badge/ebuild-1650-orange.svg)
+[![Number of ebuilds: 1651](https://img.shields.io/badge/ebuild-1651-orange.svg)](https://img.shields.io/badge/ebuild-1651-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1286,6 +1286,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[nltk](https://github.com/nltk/nltk) | Natural Language Toolkit
 *   dev-python/[nltkdata](https://www.nltk.org/nltk_data/) | Data files for NLTK
 *   dev-python/[nmslib](https://github.com/nmslib/nmslib) | Non-Metric Space Library
+*   dev-python/[oauth2client](https://github.com/googleapis/oauth2client) | Python library for accessing resources protected by OAuth 2.0
 *   dev-python/[oci](https://github.com/oracle/oci-python-sdk) | Oracle Cloud Infrastructure Python SDK
 *   dev-python/[onetimepass](https://github.com/tadeck/onetimepass) | One-time password library for HOTP and TOTP passwords
 *   dev-python/[openai](https://github.com/openai/openai-python) | The official Python library for the OpenAI API

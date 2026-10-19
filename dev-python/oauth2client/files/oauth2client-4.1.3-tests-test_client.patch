@@ -1,0 +1,105 @@
+Fix OAuth2 client tests for Python 3.12 and newer.
+Replace the deprecated and removed unittest.assertRaisesRegexp()
+alias with assertRaisesRegex() to maintain compatibility with
+modern Python versions while preserving exception message checks.
+--- ../tests/test_client.py	2026-10-16 17:26:52.613040988 +0300
++++ ../tests/test_client.py	2026-10-16 17:27:55.542702028 +0300
+@@ -436,7 +436,7 @@
+             'File {0} \(pointed by {1} environment variable\) does not '
+             'exist!'.format(
+                 nonexistent_file, client.GOOGLE_APPLICATION_CREDENTIALS))
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             client._get_environment_variable_file()
+ 
+@@ -541,7 +541,7 @@
+             "'{1}' values\)".format(client.AUTHORIZED_USER,
+                                     client.SERVICE_ACCOUNT))
+ 
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             client._get_application_default_credential_from_file(
+                 credentials_file)
+@@ -552,7 +552,7 @@
+                          'application_default_credentials_malformed_2.json'))
+         expected_err_msg = (
+             'The following field\(s\) must be defined: private_key_id')
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             client._get_application_default_credential_from_file(
+                 credentials_file)
+@@ -569,7 +569,7 @@
+         missing_fields = ['first', 'second', 'third']
+         expected_err_msg = ('The following field\(s\) must be defined: ' +
+                             ', '.join(missing_fields))
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             client._raise_exception_for_missing_fields(missing_fields)
+ 
+@@ -580,7 +580,7 @@
+         expected_err_msg = ('An error was encountered while reading '
+                             'json file: ' + credential_file +
+                             extra_help + ': ' + str(error))
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             client._raise_exception_for_reading_json(
+                 credential_file, extra_help, error)
+@@ -721,7 +721,7 @@
+         credentials_filename = None
+         expected_err_msg = (r'The parameter passed to the from_stream\(\) '
+                             r'method should point to a file.')
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             self.get_a_google_credentials_object().from_stream(
+                 credentials_filename)
+@@ -737,7 +737,7 @@
+             "'type' field should be defined \(and have one of the '" +
+             client.AUTHORIZED_USER + "' or '" + client.SERVICE_ACCOUNT +
+             "' values\)")
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             self.get_a_google_credentials_object().from_stream(
+                 credentials_file)
+@@ -752,7 +752,7 @@
+             ' \(provided as parameter to the from_stream\(\) method\): '
+             'The following field\(s\) must be defined: '
+             'private_key_id')
+-        with self.assertRaisesRegexp(client.ApplicationDefaultCredentialsError,
++        with self.assertRaisesRegex(client.ApplicationDefaultCredentialsError,
+                                      expected_err_msg):
+             self.get_a_google_credentials_object().from_stream(
+                 credentials_file)
+@@ -1872,7 +1872,7 @@
+             data=b'error=invalid_request',
+         )
+ 
+-        with self.assertRaisesRegexp(client.FlowExchangeError,
++        with self.assertRaisesRegex(client.FlowExchangeError,
+                                      'invalid_request'):
+             self.flow.step2_exchange(code='some random code', http=http)
+ 
+@@ -2055,7 +2055,7 @@
+         http = http_mock.HttpMock(data=payload)
+ 
+         code = {'error': 'thou shall not pass'}
+-        with self.assertRaisesRegexp(
++        with self.assertRaisesRegex(
+                 client.FlowExchangeError, 'shall not pass'):
+             self.flow.step2_exchange(code=code, http=http)
+ 
+@@ -2188,7 +2188,7 @@
+ 
+         err_msg = ('This OAuth 2.0 flow is unsupported: '
+                    '{0!r}'.format(client_type))
+-        with self.assertRaisesRegexp(client.UnknownClientSecretsFlowError,
++        with self.assertRaisesRegex(client.UnknownClientSecretsFlowError,
+                                      err_msg):
+             client.flow_from_clientsecrets(filename, None, cache=cache)
+ 

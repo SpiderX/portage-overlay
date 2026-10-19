@@ -1,0 +1,15 @@
+Fix compatibility with Python 3.12 and newer.
+Replace the deprecated and removed unittest.assertEquals() alias
+with assertIsNone() to explicitly verify that the refresh token
+is absent.
+--- ../tests/contrib/test_devshell.py	2026-10-16 17:20:25.971174167 +0300
++++ ../tests/contrib/test_devshell.py	2026-10-16 17:20:46.500469592 +0300
+@@ -205,7 +205,7 @@
+     def test_no_refresh_token(self):
+         with _AuthReferenceServer():
+             creds = devshell.DevshellCredentials()
+-            self.assertEquals(None, creds.refresh_token)
++            self.assertIsNone(creds.refresh_token)
+ 
+     @mock.patch('oauth2client.client._UTCNOW')
+     def test_reads_credentials(self, utcnow):

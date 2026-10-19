@@ -1,0 +1,71 @@
+Fix compatibility with modern pyOpenSSL versions.
+Replace the removed crypto.sign(), crypto.verify(), and
+crypto.load_pkcs12() APIs with their cryptography equivalents.
+Preserve RSA PKCS#1 v1.5 signing and verification with SHA-256,
+and support loading private keys from PKCS#12 containers.
+--- ../oauth2client/_openssl_crypt.py	2026-10-16 17:50:42.100171645 +0300
++++ ../oauth2client/_openssl_crypt.py	2026-10-16 18:03:23.916995119 +0300
+@@ -14,6 +14,10 @@
+ """OpenSSL Crypto-related routines for oauth2client."""
+ 
+ from OpenSSL import crypto
++from cryptography.hazmat.primitives.serialization import pkcs12
++from cryptography.hazmat.primitives import hashes
++from cryptography.hazmat.primitives.asymmetric import padding
++from cryptography.exceptions import InvalidSignature
+ 
+ from oauth2client import _helpers
+ 
+@@ -45,11 +49,17 @@
+         message = _helpers._to_bytes(message, encoding='utf-8')
+         signature = _helpers._to_bytes(signature, encoding='utf-8')
+         try:
+-            crypto.verify(self._pubkey, signature, message, 'sha256')
++            if isinstance(self._pubkey, crypto.X509):
++                public_key = self._pubkey.to_cryptography().public_key()
++            else:
++                public_key = self._pubkey.to_cryptography_key().public_key()
++            public_key.verify(
++                signature, message, padding.PKCS1v15(), hashes.SHA256())
+             return True
+-        except crypto.Error:
++        except InvalidSignature:
+             return False
+ 
++
+     @staticmethod
+     def from_string(key_pem, is_x509_cert):
+         """Construct a Verified instance from a string.
+@@ -94,7 +104,7 @@
+             string, The signature of the message for the given key.
+         """
+         message = _helpers._to_bytes(message, encoding='utf-8')
+-        return crypto.sign(self._key, message, 'sha256')
++        return self._key.to_cryptography_key().sign(message,padding.PKCS1v15(),hashes.SHA256())
+ 
+     @staticmethod
+     def from_string(key, password=b'notasecret'):
+@@ -116,7 +126,9 @@
+             pkey = crypto.load_privatekey(crypto.FILETYPE_PEM, parsed_pem_key)
+         else:
+             password = _helpers._to_bytes(password, encoding='utf-8')
+-            pkey = crypto.load_pkcs12(key, password).get_privatekey()
++            private_key, _, _ = pkcs12.load_key_and_certificates(
++                key, password)
++            pkey = crypto.PKey.from_cryptography_key(private_key)
+         return OpenSSLSigner(pkey)
+ 
+ 
+@@ -131,6 +143,10 @@
+         String. PEM contents of ``private_key_bytes``.
+     """
+     private_key_password = _helpers._to_bytes(private_key_password)
+-    pkcs12 = crypto.load_pkcs12(private_key_bytes, private_key_password)
++    if isinstance(private_key_password, str):
++        private_key_password = private_key_password.encode('utf-8')
++    private_key, _, _ = pkcs12.load_key_and_certificates(
++        private_key_bytes, private_key_password)
++    pkey = crypto.PKey.from_cryptography_key(private_key)
+     return crypto.dump_privatekey(crypto.FILETYPE_PEM,
+-                                  pkcs12.get_privatekey())
++                                  pkey)

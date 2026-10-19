@@ -1,0 +1,21 @@
+Fix Flask integration test compatibility with varying redirect URLs.
+Replace hardcoded URL slicing with urlparse.urlsplit() to extract
+the redirect path and query string. This avoids assumptions about
+the redirect URL's scheme, hostname, and length.
+Verify that the redirected request returns HTTP 302 Found.
+--- ../tests/contrib/test_flask_util.py	2026-10-16 17:30:34.695350221 +0300
++++ ../tests/contrib/test_flask_util.py	2026-10-16 17:30:57.194612939 +0300
+@@ -479,7 +479,12 @@
+ 
+             # Starting the authorization flow should include the
+             # include_granted_scopes parameter as well as the scopes.
+-            response = client.get(response.headers['Location'][17:])
++            redirect_url = response.headers['Location']
++            parsed_url = urlparse.urlsplit(redirect_url)
++            response = client.get(
++                parsed_url.path + ('?' + parsed_url.query
++                                   if parsed_url.query else ''))
++            self.assertEqual(response.status_code, httplib.FOUND)
+             q = urlparse.parse_qs(
+                 response.headers['Location'].split('?', 1)[1])
+             self.assertIn('include_granted_scopes', q)

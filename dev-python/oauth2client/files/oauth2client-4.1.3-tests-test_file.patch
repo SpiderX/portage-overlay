@@ -1,0 +1,51 @@
+Fix file storage tests for Python 3.12 and newer.
+Replace the deprecated and removed unittest.assertEquals() alias
+with assertEqual() to maintain compatibility with modern Python
+versions while preserving credential storage, token refresh,
+and file permission checks.
+--- ../tests/test_file.py	2026-10-16 17:22:37.832404979 +0300
++++ ../tests/test_file.py	2026-10-16 17:25:47.810800479 +0300
+@@ -122,9 +122,9 @@
+         with open(FILENAME) as credentials_file:
+             data = json.load(credentials_file)
+ 
+-        self.assertEquals(data['access_token'], 'foo')
+-        self.assertEquals(data['_class'], 'OAuth2Credentials')
+-        self.assertEquals(data['_module'], client.OAuth2Credentials.__module__)
++        self.assertEqual(data['access_token'], 'foo')
++        self.assertEqual(data['_class'], 'OAuth2Credentials')
++        self.assertEqual(data['_module'], client.OAuth2Credentials.__module__)
+ 
+     def test_token_refresh_store_expired(self):
+         expiration = (datetime.datetime.utcnow() -
+@@ -144,7 +144,7 @@
+         http = http_mock.HttpMock(data=response_content)
+ 
+         credentials._refresh(http)
+-        self.assertEquals(credentials.access_token, access_token)
++        self.assertEqual(credentials.access_token, access_token)
+ 
+         # Verify mocks.
+         self.assertEqual(http.requests, 1)
+@@ -207,7 +207,7 @@
+         storage.put(new_cred)
+ 
+         credentials._refresh(None)
+-        self.assertEquals(credentials.access_token, 'bar')
++        self.assertEqual(credentials.access_token, 'bar')
+ 
+     def test_token_refresh_stream_body(self):
+         expiration = (datetime.datetime.utcnow() +
+@@ -263,10 +263,10 @@
+         credentials = storage.get()
+ 
+         self.assertIsNotNone(credentials)
+-        self.assertEquals('foo', credentials.access_token)
++        self.assertEqual('foo', credentials.access_token)
+ 
+         self.assertTrue(os.path.exists(FILENAME))
+ 
+         if os.name == 'posix':  # pragma: NO COVER
+             mode = os.stat(FILENAME).st_mode
+-            self.assertEquals('0o600', oct(stat.S_IMODE(mode)))
++            self.assertEqual('0o600', oct(stat.S_IMODE(mode)))

@@ -1,0 +1,121 @@
+Fix compatibility with modern Django versions (4.2+).
+Replace removed URL resolver APIs, update authentication checks to use
+the is_authenticated property, and adapt model fields and signals to
+current Django interfaces. Correct the Django application configuration
+path and URL namespace declaration.
+--- ../oauth2client/contrib/django_util/__init__.py	2026-10-16 14:17:40.713062105 +0300
++++ ../oauth2client/contrib/django_util/__init__.py	2026-10-16 17:12:25.860508135 +0300
+@@ -230,7 +230,7 @@
+ 
+ import django.conf
+ from django.core import exceptions
+-from django.core import urlresolvers
++from django import urls as urlresolvers
+ from six.moves.urllib import parse
+ 
+ from oauth2client import clientsecrets
+@@ -417,7 +417,7 @@
+     """Gets the authorized credentials for this flow, if they exist."""
+     # ORM storage requires a logged in user
+     if (oauth2_settings.storage_model is None or
+-            request.user.is_authenticated()):
++            request.user.is_authenticated):
+         return get_storage(request).get()
+     else:
+         return None
+--- ../oauth2client/contrib/django_util/apps.py	2026-10-16 14:24:08.374221146 +0300
++++ ../oauth2client/contrib/django_util/apps.py	2026-10-16 14:24:28.278818442 +0300
+@@ -28,5 +28,5 @@
+ 
+     class GoogleOAuth2HelperConfig(AppConfig):
+         """ App Config for Django Helper"""
+-        name = 'oauth2client.django_util'
++        name = 'oauth2client.contrib.django_util'
+         verbose_name = "Google OAuth2 Django Helper"
+--- ../oauth2client/contrib/django_util/decorators.py	2026-10-16 17:11:00.665918858 +0300
++++ ../oauth2client/contrib/django_util/decorators.py	2026-10-16 17:11:39.645778834 +0300
+@@ -71,7 +71,7 @@
+         @wraps(wrapped_function)
+         def required_wrapper(request, *args, **kwargs):
+             if not (django_util.oauth2_settings.storage_model is None or
+-                    request.user.is_authenticated()):
++                    request.user.is_authenticated):
+                 redirect_str = '{0}?next={1}'.format(
+                     django.conf.settings.LOGIN_URL,
+                     parse.quote(request.path))
+--- ../oauth2client/contrib/django_util/models.py	2026-10-16 14:42:14.104981495 +0300
++++ ../oauth2client/contrib/django_util/models.py	2026-10-16 17:15:13.857225466 +0300
+@@ -35,7 +35,7 @@
+     def get_internal_type(self):
+         return 'BinaryField'
+ 
+-    def from_db_value(self, value, expression, connection, context):
++    def from_db_value(self, value, expression, connection, context=None):
+         """Overrides ``models.Field`` method. This converts the value
+         returned from the database to an instance of this class.
+         """
+@@ -64,7 +64,7 @@
+         if value is None:
+             return None
+         else:
+-            return encoding.smart_text(
++            return encoding.smart_str(
+                 base64.b64encode(jsonpickle.encode(value).encode()))
+ 
+     def value_to_string(self, obj):
+@@ -78,5 +78,5 @@
+         Returns:
+             string, the serialized field value
+         """
+-        value = self._get_val_from_obj(obj)
++        value = self.value_from_object(obj)
+         return self.get_prep_value(value)
+--- ../oauth2client/contrib/django_util/signals.py	2026-10-16 14:30:01.910508346 +0300
++++ ../oauth2client/contrib/django_util/signals.py	2026-10-16 14:30:18.970307524 +0300
+@@ -24,5 +24,4 @@
+ It passes the Django request object and the OAuth2 credentials object to the
+  receiver.
+ """
+-oauth2_authorized = django.dispatch.Signal(
+-    providing_args=["request", "credentials"])
++oauth2_authorized = django.dispatch.Signal()
+--- ../oauth2client/contrib/django_util/site.py	2026-10-16 14:33:13.708379927 +0300
++++ ../oauth2client/contrib/django_util/site.py	2026-10-16 14:39:26.116810193 +0300
+@@ -14,13 +14,13 @@
+ 
+ """Contains Django URL patterns used for OAuth2 flow."""
+ 
+-from django.conf import urls
++from django import urls
+ 
+ from oauth2client.contrib.django_util import views
+ 
+ urlpatterns = [
+-    urls.url(r'oauth2callback/', views.oauth2_callback, name="callback"),
+-    urls.url(r'oauth2authorize/', views.oauth2_authorize, name="authorize")
++    urls.re_path(r'oauth2callback/', views.oauth2_callback, name="callback"),
++    urls.re_path(r'oauth2authorize/', views.oauth2_authorize, name="authorize")
+ ]
+ 
+-urls = (urlpatterns, "google_oauth", "google_oauth")
++urls = (urlpatterns, "google_oauth")
+--- ../oauth2client/contrib/django_util/views.py	2026-10-16 14:18:33.408041805 +0300
++++ ../oauth2client/contrib/django_util/views.py	2026-10-16 17:12:45.976614887 +0300
+@@ -26,7 +26,7 @@
+ from django import http
+ from django import shortcuts
+ from django.conf import settings
+-from django.core import urlresolvers
++from django import urls as urlresolvers
+ from django.shortcuts import redirect
+ from django.utils import html
+ import jsonpickle
+@@ -178,7 +178,7 @@
+     scopes = request.GET.getlist('scopes', django_util.oauth2_settings.scopes)
+     # Model storage (but not session storage) requires a logged in user
+     if django_util.oauth2_settings.storage_model:
+-        if not request.user.is_authenticated():
++        if not request.user.is_authenticated:
+             return redirect('{0}?next={1}'.format(
+                 settings.LOGIN_URL, parse.quote(request.get_full_path())))
+         # This checks for the case where we ended up here because of a logged

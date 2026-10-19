@@ -1,0 +1,16 @@
+Fix multiprocessing tests for Python 3.14 and newer.
+Explicitly use the fork start method, since Python 3.14 changed
+the default POSIX start method to forkserver. This allows tests
+to launch child processes with locally defined target functions
+that cannot be pickled by the forkserver start method.
+--- ../tests/contrib/test_multiprocess_file_storage.py	2026-10-16 17:32:28.582513589 +0300
++++ ../tests/contrib/test_multiprocess_file_storage.py	2026-10-16 17:32:51.217840963 +0300
+@@ -36,7 +36,7 @@
+ def scoped_child_process(target, **kwargs):
+     die_event = multiprocessing.Event()
+     ready_event = multiprocessing.Event()
+-    process = multiprocessing.Process(
++    process = multiprocessing.get_context('fork').Process(
+         target=target, args=(die_event, ready_event), kwargs=kwargs)
+     process.start()
+     try:

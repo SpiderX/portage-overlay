@@ -1,0 +1,16 @@
+Fix compatibility with Python 3.11 and newer.
+Replace the removed inspect.getargspec() function with
+inspect.getfullargspec() to determine the number of positional
+arguments accepted by the decorated function.
+--- ../oauth2client/_helpers.py	2026-10-16 17:39:27.236181663 +0300
++++ ../oauth2client?_helpers.py	2026-10-16 17:39:54.529323938 +0300
+@@ -136,7 +136,8 @@
+     if isinstance(max_positional_args, six.integer_types):
+         return positional_decorator
+     else:
+-        args, _, _, defaults = inspect.getargspec(max_positional_args)
++        spec = inspect.getfullargspec(max_positional_args)
++        args, defaults = spec.args, spec.defaults
+         return positional(len(args) - len(defaults))(max_positional_args)
+ 
+ 

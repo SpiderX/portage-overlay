@@ -1,0 +1,20 @@
+Fix pytest 8.0 and newer compatibility for App Engine tests.
+Update the pytest_ignore_collect() hook to use the collection_path
+argument instead of the deprecated path argument. Skip legacy Google
+App Engine tests when the App Engine SDK is not configured.
+--- ../tests/contrib/appengine/conftest.py	2026-10-16 14:12:08.999765366 +0300
++++ ../tests/contrib/appengine/conftest.py	2026-10-16 19:16:35.793289560 +0300
+@@ -46,8 +46,9 @@
+         set_up_gae_environment(config.getoption('gae_sdk'))
+ 
+ 
+-def pytest_ignore_collect(path, config):
+-    """Skip App Engine tests when --gae-sdk is not specified."""
++def pytest_ignore_collect(collection_path, config):
++    """Skip App Engine tests when the legacy SDK is not configured."""
+     return (
+-        'contrib/appengine' in str(path) and
+-        config.getoption('gae_sdk') is None)
++        config.getoption('gae_sdk') is None
++        and collection_path.name.startswith('test_')
++    )

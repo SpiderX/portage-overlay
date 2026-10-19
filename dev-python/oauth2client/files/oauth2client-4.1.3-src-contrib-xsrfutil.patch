@@ -1,0 +1,25 @@
+Fix HMAC initialization compatibility with Python 3.8 and newer.
+Explicitly specify MD5 as the digest algorithm, since hmac.new()
+no longer accepts an omitted digestmod argument. Preserve the
+original HMAC-MD5 algorithm used for XSRF token generation.
+--- ../oauth2client/contrib/xsrfutil.py	2026-10-16 17:34:35.127390105 +0300
++++ ../oauth2client/contrib/xsrfutil.py	2026-10-16 17:36:13.601131820 +0300
+@@ -17,6 +17,7 @@
+ import base64
+ import binascii
+ import hmac
++import hashlib
+ import time
+ 
+ from oauth2client import _helpers
+@@ -44,7 +45,9 @@
+     Returns:
+         A string XSRF protection token.
+     """
+-    digester = hmac.new(_helpers._to_bytes(key, encoding='utf-8'))
++    digester = hmac.new(
++        _helpers._to_bytes(key, encoding='utf-8'),
++        digestmod=hashlib.md5)
+     digester.update(_helpers._to_bytes(str(user_id), encoding='utf-8'))
+     digester.update(DELIMITER)
+     digester.update(_helpers._to_bytes(action_id, encoding='utf-8'))
