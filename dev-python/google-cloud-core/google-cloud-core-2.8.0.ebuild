@@ -4,39 +4,25 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1 edo optfeature pypi
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Google Cloud API client core library"
 HOMEPAGE="https://github.com/googleapis/google-cloud-python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="dev-python/google-auth[${PYTHON_USEDEP}]
 	dev-python/google-api-core[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/grpcio[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/grpcio[${PYTHON_USEDEP}]
+		dev-python/grpcio-status[${PYTHON_USEDEP}] )"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-python_compile() {
-	distutils-r1_python_compile
-	edo find "${BUILD_DIR}" -name '*.pth' -delete
-}
-
-src_test() {
-	edo rm -r google
-	distutils-r1_src_test
-}
-
-python_test() {
-	distutils_write_namespace google
-	epytest -v tests
-}
-
 pkg_postinst() {
-	optfeature "support grpc" dev-python/grpcio
+	optfeature "support grpc" dev-python/grpcio dev-python/grpcio-status
 }
