@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # no tests
 
-RDEPEND="dev-python/lark[${PYTHON_USEDEP}]"
+RDEPEND="!dev-python/python-hcl2[${PYTHON_USEDEP}]
+	dev-python/lark[${PYTHON_USEDEP}]"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
