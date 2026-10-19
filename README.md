@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1637](https://img.shields.io/badge/ebuild-1637-orange.svg)](https://img.shields.io/badge/ebuild-1637-orange.svg)
+[![Number of ebuilds: 1638](https://img.shields.io/badge/ebuild-1638-orange.svg)](https://img.shields.io/badge/ebuild-1638-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1094,6 +1094,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[coincidence](https://github.com/python-coincidence/coincidence) | Helper functions for pytest
 *   dev-python/[colorpedia](https://github.com/joowani/colorpedia) | Command-line tool for looking up colors and palettes
 *   dev-python/[consolekit](https://github.com/domdfcoding/consolekit) | Additional utilities for click
+*   dev-python/[containerregistry](https://github.com/google/containerregistry) | Python libraries and tools for interacting with Docker registries
 *   dev-python/[commandlines](https://github.com/chrissimpkins/commandlines) | Python command line argument to object parsing library
 *   dev-python/[configparser](https://github.com/jaraco/configparser) | Backport of configparser from Python 3
 *   dev-python/[convertdate](https://github.com/fitnr/convertdate) | Utils for converting between date formats and calculating holidays
