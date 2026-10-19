@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1647](https://img.shields.io/badge/ebuild-1647-orange.svg)](https://img.shields.io/badge/ebuild-1647-orange.svg)
+[![Number of ebuilds: 1648](https://img.shields.io/badge/ebuild-1648-orange.svg)](https://img.shields.io/badge/ebuild-1648-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1206,6 +1206,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-cloud-kms](https://github.com/googleapis/google-cloud-python) | Python Client for Google Cloud Key Management Service
 *   dev-python/[google-cloud-monitoring](https://github.com/googleapis/google-cloud-python) | Google Cloud Monitoring API client library
 *   dev-python/[google-cloud-pubsub](https://github.com/googleapis/google-cloud-python) | Google Cloud Pub/Sub API client library
+*   dev-python/[google-cloud-pubsublite](https://github.com/googleapis/python-pubsublite) | Python client library for Google Cloud Pub/Sub Lite
 *   dev-python/[google-cloud-resource-manager](https://github.com/googleapis/google-cloud-python) | Google Cloud Resource Manager API client library
 *   dev-python/[google-cloud-secret-manager](https://github.com/googleapis/google-cloud-python) | Google Cloud Storage API client library
 *   dev-python/[google-cloud-spanner](https://github.com/googleapis/python-spanner) | Google Cloud Spanner API client library
