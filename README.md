@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1649](https://img.shields.io/badge/ebuild-1649-orange.svg)](https://img.shields.io/badge/ebuild-1649-orange.svg)
+[![Number of ebuilds: 1650](https://img.shields.io/badge/ebuild-1650-orange.svg)](https://img.shields.io/badge/ebuild-1650-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1240,6 +1240,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[jproperties](https://github.com/Tblue/python-jproperties) | Java Property file parser and writer for Python
 *   dev-python/[jsmin](https://github.com/tikitu/jsmin) | JavaScript minifier
 *   dev-python/[jsonfield](https://github.com/rpkilby/jsonfield) | A reusable Django model field for storing ad-hoc JSON data
+*   dev-python/[kubernetes](https://github.com/kubernetes-client/python) | Kubernetes Python Client
 *   dev-python/[langdetect](https://github.com/Mimino666/langdetect) | Language detection library ported from Google
 *   dev-python/[lazy-model](https://github.com/BeanieODM/lazy_model) | Lazy parsing for Pydantic models
 *   dev-python/[ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump) | Active Directory information dumper via LDAP
