@@ -1,0 +1,37 @@
+Replace the removed cgi.parse_header() function with email.message.Message
+to restore compatibility with Python 3.13 and newer.
+--- ../apitools/base/protorpclite/test_util.py	2026-10-17 14:33:13.779712289 +0300
++++ ../apitools/base/protorpclite/test_util.py	2026-10-17 14:33:46.173686647 +0300
+@@ -26,7 +26,6 @@
+ Includes additional test utilities to make sure encoding/decoding libraries
+ conform.
+ """
+-import cgi
+ import datetime
+ import inspect
+ import os
+@@ -34,6 +33,7 @@
+ import socket
+ import types
+ import unittest
++from email.message import Message
+ 
+ import six
+ from six.moves import range  # pylint: disable=redefined-builtin
+@@ -82,8 +82,14 @@
+           header1: Header value string 1.
+           header2: header value string 2.
+         """
+-        value1, params1 = cgi.parse_header(header1)
+-        value2, params2 = cgi.parse_header(header2)
++        def parse_header(header):
++            message = Message()
++            message['content-type'] = header
++            params = message.get_params()
++            return params[0][0], dict(params[1:])
++
++        value1, params1 = parse_header(header1)
++        value2, params2 = parse_header(header2)
+         self.assertEqual(value1, value2)
+         self.assertEqual(params1, params2)
+ 
