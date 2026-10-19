@@ -14,7 +14,7 @@
 	tests of Python client libraries for Google APIs.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/python-test-utils</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">google-cloud-testutils</remote-id>
 	</upstream>
 </pkgmetadata>
