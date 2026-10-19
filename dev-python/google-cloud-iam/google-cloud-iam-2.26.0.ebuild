@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1 edo pypi
+inherit distutils-r1 pypi
 
 DESCRIPTION="Google Cloud IAM API client library"
 HOMEPAGE="https://github.com/googleapis/google-cloud-python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="dev-python/google-api-core[${PYTHON_USEDEP}]
 	dev-python/google-auth[${PYTHON_USEDEP}]
@@ -23,18 +23,3 @@ RDEPEND="dev-python/google-api-core[${PYTHON_USEDEP}]
 
 EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
-
-python_compile() {
-	distutils-r1_python_compile
-	edo find "${BUILD_DIR}" -name '*.pth' -delete
-}
-
-src_test() {
-	edo rm -r google
-	distutils-r1_src_test
-}
-
-python_test() {
-	distutils_write_namespace google
-	epytest -v tests
-}
