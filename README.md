@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1638](https://img.shields.io/badge/ebuild-1638-orange.svg)](https://img.shields.io/badge/ebuild-1638-orange.svg)
+[![Number of ebuilds: 1639](https://img.shields.io/badge/ebuild-1639-orange.svg)](https://img.shields.io/badge/ebuild-1639-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1168,6 +1168,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[dropbox](https://github.com/dropbox/dropbox-sdk-python) | Official Dropbox API Client
 *   dev-python/[dsinternals](https://github.com/p0dalirius/pydsinternals) | Directory Services Internals Library
 *   dev-python/[dunamai](https://github.com/mtkennerly/dunamai) | Dynamic versioning library and CLI
+*   dev-python/[durationpy](https://github.com/icholy/durationpy) | Converting between datetime.timedelta and Go Duration strings
 *   dev-python/[email-validator](https://github.com/JoshData/python-email-validator) | An email syntax and deliverability validation library
 *   dev-python/[face](https://github.com/mahmoud/face) | Straightforward CLI parsing and dispatching microframework
 *   dev-python/[factory-boy](https://github.com/FactoryBoy/factory_boy) | A fixtures replacement tool
