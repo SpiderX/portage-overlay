@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1648](https://img.shields.io/badge/ebuild-1648-orange.svg)](https://img.shields.io/badge/ebuild-1648-orange.svg)
+[![Number of ebuilds: 1649](https://img.shields.io/badge/ebuild-1649-orange.svg)](https://img.shields.io/badge/ebuild-1649-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1212,6 +1212,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[google-cloud-spanner](https://github.com/googleapis/python-spanner) | Google Cloud Spanner API client library
 *   dev-python/[google-cloud-storage](https://github.com/googleapis/google-cloud-python) | Google Cloud Storage API client library
 *   dev-python/[google-cloud-testutils](https://github.com/googleapis/google-cloud-python) | Google Cloud Storage API client library
+*   dev-python/[google-reauth](https://github.com/Google/google-reauth-python) | Google Reauth Python Library
 *   dev-python/[google-resumable-media](https://github.com/googleapis/google-resumable-media-python) | Utilities for Google Media Downloads and Resumable Uploads
 *   dev-python/[graphene](https://github.com/graphql-python/graphene) | GraphQL framework for Python
 *   dev-python/[graphene-django](https://github.com/graphql-python/graphene-django) | A Django integration for Graphene
