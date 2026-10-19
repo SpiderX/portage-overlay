@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -14,21 +14,25 @@ HOMEPAGE="https://github.com/fastavro/fastavro"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 	test? ( dev-python/cramjam[${PYTHON_USEDEP}]
 		dev-python/lz4[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/python-snappy[${PYTHON_USEDEP}]
 		dev-python/zlib-ng[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}] )"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# AttributeError
-	tests/test_fastavro.py::test_cython_python
-)
+python_test() {
+	local -x PYTHONSAFEPATH=1
+
+	epytest --import-mode=importlib "${S}/tests"
+}
 
 pkg_postinst() {
 	optfeature "interation with codecs" dev-python/cramjam dev-python/lz4 dev-python/zstandard
