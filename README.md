@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1654](https://img.shields.io/badge/ebuild-1654-orange.svg)](https://img.shields.io/badge/ebuild-1654-orange.svg)
+[![Number of ebuilds: 1655](https://img.shields.io/badge/ebuild-1655-orange.svg)](https://img.shields.io/badge/ebuild-1655-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1362,6 +1362,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-python/[python-ulid](https://github.com/mdomke/python-ulid) | Universally unique lexicographically sortable identifier
 *   dev-python/[pythonqt](https://mevislab.github.io/pythonqt/) | A dynamic Python binding for the Qt framework
 *   dev-python/[python-crontab](https://gitlab.com/doctormo/python-crontab/) | Crontab module for reading and writing crontab files
+*   dev-python/[python-hcl2](https://github.com/amplify-education/python-hcl2) | Python HCL2
 *   dev-python/[python-libnmap](https://github.com/savon-noir/python-libnmap) | Python NMAP library
 *   dev-python/[python3-openid](https://github.com/python-social-auth/social-core) | OpenID support for modern servers and consumers
 *   dev-python/[python3-saml](https://github.com/SAML-Toolkits/python3-saml) | SAML Python3 Toolkit
