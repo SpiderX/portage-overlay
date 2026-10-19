@@ -15,7 +15,7 @@
 	Platform resources
 	</longdescription>
 	<upstream>
-		<remote-id type="github">googleapis/python-grpc-google-iam-v1</remote-id>
+		<remote-id type="github">googleapis/google-cloud-python</remote-id>
 		<remote-id type="pypi">grpc-google-iam-v1</remote-id>
 	</upstream>
 </pkgmetadata>
