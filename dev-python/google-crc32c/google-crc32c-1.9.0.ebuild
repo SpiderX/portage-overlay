@@ -5,21 +5,16 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{12..14} python3_{13,14}t )
+PYTHON_COMPAT=( python3_{12..15} python3_{13..15}t )
 
-inherit distutils-r1
-
-MY_PN="${PN//google/python}"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Hardware-based implementation of the CRC32C hashing algorithm"
 HOMEPAGE="https://github.com/googleapis/python-crc32c"
-SRC_URI="https://github.com/googleapis/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.gh.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="dev-libs/crc32c"
 
