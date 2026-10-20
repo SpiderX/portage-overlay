@@ -131,6 +131,10 @@ src_prepare() {
 	# remove bundled Python 2 components
 	find . -type d -name python2 -prune -exec rm -r {} + || die
 
+	# enable system Python site-packages for unbundled dependencies
+	sed -i '/^setup_cloudsdk_python$/a export CLOUDSDK_PYTHON_SITEPACKAGES=1' \
+		bin/{gcloud,bq,docker-credential-gcloud,git-credential-gcloud.sh,java_dev_appserver.sh} || die
+
 	# use system dev-python/protobuf instead of bundled protobuf
 	grep -rlZ --include='*.py' 'cloudsdk\.google\.protobuf' lib |
 		xargs -0 -r sed -i 's/cloudsdk\.google\.protobuf/google.protobuf/g' || die
