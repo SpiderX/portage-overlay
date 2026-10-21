@@ -1,0 +1,154 @@
+Backport of upstream commits:
+40ece843 php: set the working directory on every request of a script target
+856d23b9 php: remove the chdir() hook, the per-request chdir makes it unnecessary
+Always set the PHP working directory on each request instead of relying
+on the last script target and the PHP chdir() hook. This prevents stale
+working-directory state from affecting subsequent requests when PHP
+applications change their current directory.
+Remove the obsolete chdir() hook and target-tracking logic.
+diff --git a/src/nxt_php_sapi.c b/src/nxt_php_sapi.c
+index 557cf78d..5ee537a1 100644
+--- a/src/nxt_php_sapi.c
++++ b/src/nxt_php_sapi.c
+@@ -63,8 +63,6 @@ typedef struct {
+     nxt_str_t                script_filename;
+     nxt_str_t                script_dirname;
+     nxt_unit_request_info_t  *req;
+-
+-    uint8_t                  chdir;  /* 1 bit */
+ } nxt_php_run_ctx_t;
+ 
+ 
+@@ -76,10 +74,6 @@ typedef int (*nxt_php_disable_t)(char *p, size_t size);
+ typedef int (*nxt_php_disable_t)(char *p, uint TSRMLS_DC);
+ #endif
+ 
+-#if (PHP_VERSION_ID < 70200)
+-typedef void (*zif_handler)(INTERNAL_FUNCTION_PARAMETERS);
+-#endif
+-
+ 
+ static nxt_int_t nxt_php_setup(nxt_task_t *task, nxt_process_t *process,
+     nxt_common_app_conf_t *conf);
+@@ -169,16 +163,12 @@ ZEND_END_ARG_INFO()
+ 
+ ZEND_FUNCTION(fastcgi_finish_request);
+ 
+-PHP_MINIT_FUNCTION(nxt_php_ext);
+-ZEND_NAMED_FUNCTION(nxt_php_chdir);
+-
+ /* PHP extension functions */
+ static const zend_function_entry  nxt_php_ext_functions[] = {
+     ZEND_FE(fastcgi_finish_request, arginfo_fastcgi_finish_request)
+     ZEND_FE_END
+ };
+ 
+-zif_handler       nxt_php_chdir_handler;
+ zend_auto_global  *nxt_php_server_ag;
+ 
+ 
+@@ -186,7 +176,7 @@ static zend_module_entry  nxt_php_unit_module = {
+     STANDARD_MODULE_HEADER,
+     "unit",
+     nxt_php_ext_functions,       /* function table */
+-    PHP_MINIT(nxt_php_ext),      /* initialization */
++    NULL,                        /* initialization */
+     NULL,                        /* shutdown */
+     NULL,                        /* request initialization */
+     NULL,                        /* request shutdown */
+@@ -196,38 +186,6 @@ static zend_module_entry  nxt_php_unit_module = {
+ };
+ 
+ 
+-PHP_MINIT_FUNCTION(nxt_php_ext)
+-{
+-    zend_function    *func;
+-
+-    static const nxt_str_t  chdir = nxt_string("chdir");
+-
+-    func = nxt_php_hash_str_find_ptr(CG(function_table), &chdir);
+-    if (nxt_slow_path(func == NULL)) {
+-        return FAILURE;
+-    }
+-
+-    nxt_php_chdir_handler = func->internal_function.handler;
+-    func->internal_function.handler = nxt_php_chdir;
+-
+-    return SUCCESS;
+-}
+-
+-
+-ZEND_NAMED_FUNCTION(nxt_php_chdir)
+-{
+-    nxt_php_run_ctx_t  *ctx;
+-
+-    ctx = SG(server_context);
+-
+-    if (nxt_fast_path(ctx != NULL)) {
+-        ctx->chdir = 1;
+-    }
+-
+-    nxt_php_chdir_handler(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+-}
+-
+-
+ PHP_FUNCTION(fastcgi_finish_request)
+ {
+     zend_auto_global   *ag;
+@@ -380,7 +338,6 @@ NXT_EXPORT nxt_app_module_t  nxt_app_module = {
+ 
+ static nxt_php_target_t  *nxt_php_targets;
+ static nxt_uint_t        nxt_php_targets_count;
+-static nxt_int_t         nxt_php_last_target = -1;
+ 
+ static nxt_unit_ctx_t    *nxt_php_unit_ctx;
+ 
+@@ -1145,12 +1102,7 @@ nxt_php_request_handler(nxt_unit_request_info_t *req)
+     ctx.script_dirname = target->script_dirname;
+     ctx.script_name = target->script_name;
+ 
+-    ctx.chdir = (app_target != nxt_php_last_target);
+-
+     nxt_php_execute(&ctx, r);
+-
+-    /* nxt_php_execute() ended the request; r points to released memory. */
+-    nxt_php_last_target = ctx.chdir ? -1 : app_target;
+ }
+ 
+ 
+@@ -1238,8 +1190,6 @@ nxt_php_dynamic_request(nxt_php_run_ctx_t *ctx, nxt_unit_request_t *r)
+ 
+     *p = '\0';
+ 
+-    ctx->chdir = 1;
+-
+     ret = nxt_php_dirname(&ctx->script_filename, &ctx->script_dirname);
+     if (nxt_slow_path(ret != NXT_OK)) {
+         nxt_unit_request_done(ctx->req, NXT_UNIT_ERROR);
+@@ -1252,8 +1202,6 @@ nxt_php_dynamic_request(nxt_php_run_ctx_t *ctx, nxt_unit_request_t *r)
+ 
+     nxt_free(ctx->script_filename.start);
+     nxt_free(ctx->script_dirname.start);
+-
+-    nxt_php_last_target = -1;
+ }
+ 
+ 
+@@ -1353,10 +1301,13 @@ nxt_php_execute(nxt_php_run_ctx_t *ctx, nxt_unit_request_t *r)
+         return;
+     }
+ 
+-    if (ctx->chdir) {
+-        ctx->chdir = 0;
+-        nxt_php_vcwd_chdir(ctx->req, ctx->script_dirname.start);
+-    }
++    /*
++     * The script path of a "script" target was resolved when the
++     * configuration was loaded, and a directory on it can be renamed or
++     * replaced while the process runs.  A script can also call chdir().
++     * So the working directory is set on every request.
++     */
++    nxt_php_vcwd_chdir(ctx->req, ctx->script_dirname.start);
+ 
+     nxt_zend_stream_init_fp(&file_handle, fp, filename);
+ 

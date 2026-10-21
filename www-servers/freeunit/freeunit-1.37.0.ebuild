@@ -92,7 +92,8 @@ BDEPEND="sys-apps/which
 
 PATCHES=( "${FILESDIR}/${PN}"-1.37.0-configure.patch
 	"${FILESDIR}/${PN}"-1.36.1-nodejs.patch
-	"${FILESDIR}/${PN}"-1.36.1-tests.patch )
+	"${FILESDIR}/${PN}"-1.36.1-tests.patch
+	"${FILESDIR}/${PN}"-1.37.0-php-cwd.patch )
 
 DOCS=( CHANGES {EOL,README}.md )
 
