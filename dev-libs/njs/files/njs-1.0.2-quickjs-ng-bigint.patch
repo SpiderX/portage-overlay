@@ -1,0 +1,12 @@
+--- ../src/qjs.c	2026-10-21 21:59:18.291030828 +0300
++++ ../src/qjs.c	2026-10-21 21:59:26.940093200 +0300
+@@ -252,9 +252,6 @@
+     JS_AddIntrinsicMapSet(ctx);
+     JS_AddIntrinsicTypedArrays(ctx);
+     JS_AddIntrinsicPromise(ctx);
+-#ifdef NJS_HAVE_QUICKJS_ADD_INTRINSIC_BIG_INT
+-    JS_AddIntrinsicBigInt(ctx);
+-#endif
+     JS_AddIntrinsicEval(ctx);
+ 
+     for (module = qjs_modules; *module != NULL; module++) {

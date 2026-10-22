@@ -58,11 +58,6 @@ src_compile() {
 	use tools || use test && emake njs
 }
 
-src_test() {
-	# test262 fails in JS_FreeRuntime() assertions of QuickJS build
-	emake lib_test shell_test unit_test
-}
-
 src_install() {
 	einstalldocs
 
