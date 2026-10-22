@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
 CRATES=""
-RUST_MIN_VER="1.93.0"
+RUST_MIN_VER="1.97.0"
 
 inherit cargo cmake edo git-r3 shell-completion
 

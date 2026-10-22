@@ -5,13 +5,13 @@ EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
 CRATES=""
-RUST_MIN_VER="1.93.0"
+RUST_MIN_VER="1.97.0"
 
 inherit cargo cmake edo shell-completion
 
-CM_COMMIT="dd1f6fa66e5e26dd7a1f6449133f825edbd8f614"
-TS_COMMIT="0dc0343c9876267d99a7577ed4fc2289406a7869"
-WT_COMMIT="a7044cced9990dea7613bb8d770f0cda99f2a353"
+CM_COMMIT="5b724da8c634c4f2b2d2b3f6a4e9e13b4eb01596"
+TS_COMMIT="b464a4cd100d98175ae6e3890db89a2e6c8302f7"
+WT_COMMIT="6345da2237c562d9a94e281332c653b5528fdd52"
 
 DESCRIPTION="A lightweight WebAssembly runtime"
 HOMEPAGE="https://github.com/bytecodealliance/wasmtime"
@@ -90,7 +90,7 @@ src_compile() {
 
 	local completion
 	for completion in bash fish zsh ; do
-		edo target/release/wasmtime completion ${completion} > wasmtime.${completion}
+		edo target/release/wasmtime completion "${completion}" > wasmtime."${completion}"
 	done
 }
 
