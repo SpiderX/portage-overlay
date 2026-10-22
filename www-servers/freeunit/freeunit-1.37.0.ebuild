@@ -200,7 +200,7 @@ src_compile() {
 	# use emake explicitly to enable verbose compiler output
 	emake V=1
 	if use test ; then
-		emake tests
+		emake V=1 tests
 		cargo_src_compile --manifest-path test/fake_upstream/Cargo.toml
 	fi
 }
