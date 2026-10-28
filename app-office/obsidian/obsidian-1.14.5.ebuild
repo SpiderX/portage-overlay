@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,12 +51,14 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libayatana-appindicator )"
 
 QA_PREBUILT="opt/Obsidian/chrome_crashpad_handler
+	opt/Obsidian/chrome-sandbox
 	opt/Obsidian/libEGL.so
 	opt/Obsidian/libGLESv2.so
 	opt/Obsidian/libffmpeg.so
 	opt/Obsidian/libvk_swiftshader.so
 	opt/Obsidian/libvulkan.so.1
 	opt/Obsidian/obsidian
+	opt/Obsidian/obsidian-cli
 	opt/Obsidian/resources/app.asar.unpacked/node_modules/btime/binding.node
 	opt/Obsidian/resources/app.asar.unpacked/node_modules/btime/build/Release/binding.node
 	opt/Obsidian/resources/app.asar.unpacked/node_modules/get-fonts/binding.node
@@ -84,22 +86,23 @@ src_prepare() {
 }
 
 src_install() {
+	local size
 	for size in 16 32 48 64 128 256 512 ; do
 		doicon -s "${size}" usr/share/icons/hicolor/"${size}x${size}"/apps/obsidian.png
 	done
 	dosym ../icons/hicolor/512x512/apps/obsidian.png \
 		/usr/share/pixmaps/obsidian.png
 
-	domenu usr/share/applications/obsidian.desktop
+	domenu usr/share/applications/md.obsidian.Obsidian.desktop
+
+	insinto /usr/share/mime/packages
+	doins usr/share/mime/packages/obsidian.xml
 
 	insinto /opt/Obsidian
 	doins -r opt/Obsidian/.
-	fperms +x /opt/Obsidian/chrome_crashpad_handler \
-		/opt/Obsidian/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
-		/opt/Obsidian/libvulkan.so.1 /opt/Obsidian/obsidian \
-		/opt/Obsidian/resources/obsidian.asar \
-		/opt/Obsidian/resources/app.asar.unpacked/node_modules/{btime,get-fonts}/binding.node
-	use suid && fperms u+s,+x /opt/Obsidian/chrome-sandbox
+	fperms +x /opt/Obsidian/chrome_crashpad_handler /opt/Obsidian/obsidian \
+		/opt/Obsidian/obsidian-cli
+	use suid && fperms 4755 /opt/Obsidian/chrome-sandbox
 
 	dosym ../Obsidian/obsidian opt/bin/obsidian
 	use appindicator && dosym ../../usr/"$(get_libdir)"/libayatana-appindicator3.so \
