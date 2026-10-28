@@ -80,7 +80,7 @@ src_prepare() {
 
 	if use wayland ; then
 		sed -i '/Exec/s/%U/%U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland/' \
-			usr/share/applications/obsidian.desktop \
+			usr/share/applications/md.obsidian.Obsidian.desktop \
 			|| die "sed failed for wayland"
 	fi
 }
