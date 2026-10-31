@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1666](https://img.shields.io/badge/ebuild-1666-orange.svg)](https://img.shields.io/badge/ebuild-1666-orange.svg)
+[![Number of ebuilds: 1668](https://img.shields.io/badge/ebuild-1668-orange.svg)](https://img.shields.io/badge/ebuild-1668-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -863,6 +863,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[doctrine-orm](https://github.com/doctrine/orm) | Doctrine Object Relational Mapper
 *   dev-php/[doctrine-persistence](https://github.com/doctrine/persistence) | Doctrine Persistence
 *   dev-php/[egulias-email-validator](https://github.com/egulias/EmailValidator) | PHP Email address validator
+*   dev-php/[fedora-autoloader](https://github.com/php-fedora/autoloader) | Fedora's Static PSR-4, PSR-0, and classmap autoloader
 *   dev-php/[friendsofphp-proxy-manager-lts](https://github.com/FriendsOfPHP/proxy-manager-lts) | Proxy Manager LTS
 *   dev-php/[guzzlehttp-promises](https://github.com/guzzle/promises) | Guzzle Promises library for PHP with synchronous support
 *   dev-php/[guzzlehttp-psr7](https://github.com/guzzle/psr7) | PSR-7 HTTP message library

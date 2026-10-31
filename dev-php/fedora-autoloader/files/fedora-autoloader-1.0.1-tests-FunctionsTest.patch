@@ -1,0 +1,30 @@
+Update tests for PHPUnit 12 compatibility by replacing legacy @dataProvider
+annotations with DataProvider attributes.
+--- ../tests/FunctionsTest.php	2026-10-31 15:25:37.249396396 +0200
++++ ../tests/FunctionsTest.php	2026-10-31 15:26:40.251008634 +0200
+@@ -9,12 +9,13 @@
+  */
+ namespace Fedora\Autoloader\Test;
+ 
++use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\TestCase;
+ use Fedora\Autoloader\Dependencies;
+ 
+ class FunctionsTest extends TestCase
+ {
+-    public function dataPath()
++    public static function dataPath()
+     {
+         if (DIRECTORY_SEPARATOR == '/') {
+             return array(
+@@ -31,9 +32,7 @@
+         }
+     }
+ 
+-    /**
+-     * @dataProvider dataPath
+-     **/
++    #[DataProvider('dataPath')]
+     public function testIsFullPath($full, $path, $msg)
+     {
+         if ($full) {

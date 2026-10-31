@@ -1,0 +1,77 @@
+Replace unsupported exception expectation annotations with explicit
+assertions and migrate test dependencies to PHPUnit attributes.
+--- ../tests/DependenciesTest.php	2026-10-31 15:30:48.574841245 +0200
++++ ../tests/DependenciesTest.php	2026-10-31 15:33:34.701748686 +0200
+@@ -9,6 +9,7 @@
+  */
+ namespace Fedora\Autoloader\Test;
+ 
++use PHPUnit\Framework\Attributes\Depends;
+ use PHPUnit\Framework\TestCase;
+ use Fedora\Autoloader\Dependencies;
+ 
+@@ -28,12 +29,13 @@
+         $this->assertTrue(class_exists('Foo\\Bar\\Baz'));
+     }
+ 
+-    /**
+-     * @expectedException RuntimeException
+-     * @expectedExceptionMessageRegex /Files not found.*DoesNotExist.*AlsoNotExist/
+-     **/
+     public function testRequiredNotExistsLast()
+     {
++        $this->expectException(\RuntimeException::class);
++        $this->expectExceptionMessageMatches(
++            '/Files not found.*DoesNotExist.*AlsoNotExist/'
++        );
++
+         Dependencies::required(array(
+             array(
+                 __DIR__.'/fixtures/DoesNotExist.php',
+@@ -42,12 +44,13 @@
+         ));
+     }
+ 
+-    /**
+-     * @expectedException RuntimeException
+-     * @expectedExceptionMessageRegex /File not found.*DoesNotExist/
+-     **/
+     public function testRequiredNotExists()
+     {
++        $this->expectException(\RuntimeException::class);
++        $this->expectExceptionMessageMatches(
++            '/File not found.*DoesNotExist/'
++        );
++
+         Dependencies::required(array(
+             __DIR__.'/fixtures/DoesNotExist.php',
+         ));
+@@ -154,9 +157,7 @@
+         $this->assertTrue(class_exists('PEAR'));
+     }
+ 
+-    /**
+-     * @depends testIncludePathRequired
+-     **/
++    #[Depends('testIncludePathRequired')]
+     public function testIncludePathOptional()
+     {
+         $this->assertFalse(class_exists('PEAR'));
+@@ -168,12 +169,13 @@
+         $this->assertTrue(class_exists('PEAR'));
+     }
+ 
+-    /**
+-     * @expectedException RuntimeException
+-     * @expectedExceptionMessageRegex /File not found.*DoesNotExist/
+-     **/
+     public function testIncludePathNotFound()
+     {
++        $this->expectException(\RuntimeException::class);
++        $this->expectExceptionMessageMatches(
++            '/File not found.*DoesNotExist/'
++        );
++
+         Dependencies::required(array(
+             'DoesNotExist.php',
+         ));
