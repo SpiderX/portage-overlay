@@ -1,0 +1,11 @@
+Load the abstract console dialog test class explicitly during PHPUnit
+bootstrap, allowing it to be excluded from test discovery without breaking
+the concrete dialog test classes.
+--- ../tests/bootstrap.php	2026-10-30 01:23:14.202513207 +0200
++++ ../tests/bootstrap.php	2026-10-30 01:23:39.909478849 +0200
+@@ -12,3 +12,5 @@
+ EOT
+        );
+ }
++
++require_once __DIR__ . '/ezcConsoleDialogTest.php';

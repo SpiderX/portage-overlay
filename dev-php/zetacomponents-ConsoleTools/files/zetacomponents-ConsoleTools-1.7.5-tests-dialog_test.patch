@@ -1,0 +1,25 @@
+Use PHP_BINARY instead of $_SERVER["_"] to determine the PHP interpreter
+for dialog test subprocesses. The latter may point to the PHPUnit executable,
+causing dialog fixtures to be executed by PHPUnit instead of PHP.
+--- ../tests/dialog_test.php	2026-10-30 00:50:08.555281040 +0200
++++ ../tests/dialog_test.php	2026-10-30 00:59:15.126475886 +0200
+@@ -58,18 +58,7 @@
+ 
+     protected function determinePhpPath()
+     {
+-        if ( isset( $_SERVER["_"] ) )
+-        {
+-            $this->phpPath = $_SERVER["_"];
+-        }
+-        else if ( ezcBaseFeatures::os() === 'Windows' )
+-        {
+-            $this->phpPath = 'php.exe';
+-        }
+-        else
+-        {
+-            $this->phpPath = '/usr/bin/env php';
+-        }
++        $this->phpPath = PHP_BINARY;
+     }
+ 
+     protected function tearDown() : void

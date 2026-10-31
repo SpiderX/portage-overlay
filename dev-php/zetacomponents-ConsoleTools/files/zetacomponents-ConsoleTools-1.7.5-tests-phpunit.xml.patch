@@ -1,0 +1,12 @@
+Exclude the abstract console dialog test class from PHPUnit test discovery
+to prevent warnings about a test class that cannot be instantiated.
+--- ../phpunit.xml.dist	2026-10-30 01:12:41.661655091 +0200
++++ ../phpunit.xml.dist	2026-10-30 01:12:52.869420490 +0200
+@@ -8,6 +8,7 @@
+   <testsuites>
+     <testsuite name="Zeta Components ConsoleTools">
+       <directory suffix="_test.php">./tests</directory>
++      <exclude>tests/ezcConsoleDialogTest.php</exclude>
+     </testsuite>
+   </testsuites>
+ </phpunit>

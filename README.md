@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1657](https://img.shields.io/badge/ebuild-1657-orange.svg)](https://img.shields.io/badge/ebuild-1657-orange.svg)
+[![Number of ebuilds: 1658](https://img.shields.io/badge/ebuild-1658-orange.svg)](https://img.shields.io/badge/ebuild-1658-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -1027,6 +1027,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[ulrichsg-getopt-php](https://github.com/getopt-php/getopt-php) | A PHP library for command-line argument processing
 *   dev-php/[web-token-jwt-library](https://github.com/web-token/jwt-library) | PHP JWT Library
 *   dev-php/[webmozart-assert](https://github.com/webmozarts/assert) | Webmozart Assert
+*   dev-php/[zetacomponents-ConsoleTools](https://github.com/zetacomponents/ConsoleTools) | A set of classes to do different actions with the console
 *   dev-php/[zetacomponents-UnitTest](https://github.com/zetacomponents/UnitTest) | Unit tests for any Zeta component
 *   dev-python/[aardwolf](https://github.com/skelsec/aardwolf) | Asynchronous RDP client for Python
 *   dev-python/[adal](https://github.com/AzureAD/azure-activedirectory-library-for-python) | Library for authentication in Azure Active Directory

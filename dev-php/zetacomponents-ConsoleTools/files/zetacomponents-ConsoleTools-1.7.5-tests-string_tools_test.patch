@@ -1,0 +1,54 @@
+Update string tools tests for PHPUnit 12 compatibility by replacing
+legacy @dataProvider annotations with DataProvider attributes and making
+the corresponding provider methods static.
+--- ../tests/string_tools_test.php	2026-10-30 00:32:27.681506286 +0200
++++ ../tests/string_tools_test.php	2026-10-30 00:34:35.063173271 +0200
+@@ -30,6 +30,8 @@
+  * @package ConsoleTools
+  * @subpackage Tests
+  */
++use PHPUnit\Framework\Attributes\DataProvider;
++
+ class ezcConsoleStringToolsTest extends ezcTestCase
+ {
+     private static $provideTestWordWrap;
+@@ -42,9 +44,8 @@
+      * @param mixed $input
+      * @param mixed $expected
+      * @return void
+-     *
+-     * @dataProvider provideTestWordWrap
+      */
++    #[DataProvider('provideTestWordWrap')]
+     public function testWordWrap( $input, $expected )
+     {
+         $tools = new ezcConsoleStringTool();
+@@ -61,7 +62,7 @@
+         );
+     }
+ 
+-    public function provideTestWordWrap()
++    public static function provideTestWordWrap()
+     {
+         if ( !isset( self::$provideTestWordWrap ) )
+         {
+@@ -76,9 +77,8 @@
+      * @param mixed $input
+      * @param mixed $expected
+      * @return void
+-     *
+-     * @dataProvider provideTestStrPad
+      */
++    #[DataProvider('provideTestStrPad')]
+     public function testStrPad( $input, $expected )
+     {
+         $tools = new ezcConsoleStringTool();
+@@ -95,7 +95,7 @@
+         );
+     }
+ 
+-    public function provideTestStrPad()
++    public static function provideTestStrPad()
+     {
+         if ( !isset( self::$provideTestStrPad ) )
+         {
