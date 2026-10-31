@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	PHP library for minifying and expanding package version metadata
+	used by Composer's 2.x repository metadata protocol. It reduces
+	redundancy by representing package versions as sets of differences.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">composer/metadata-minifier</remote-id>
+	</upstream>
+</pkgmetadata>
