@@ -19,5 +19,7 @@ RDEPEND="dev-php/composer-pcre
 	>=dev-php/symfony-finder-7"
 BDEPEND="test? ( >=dev-php/symfony-filesystem-7 )"
 
-COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-1.7.3-tests.patch )
+COMPOSER_TEST_PATCHES=(
+	"${FILESDIR}/${PN}"-1.8.0-tests-ClassMapGeneratorTest.patch
+	"${FILESDIR}/${PN}"-1.8.0-tests-ClassMapTest.patch )
 composer_enable_tests phpunit
