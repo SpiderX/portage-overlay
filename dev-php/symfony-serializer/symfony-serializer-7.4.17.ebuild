@@ -22,9 +22,9 @@ REQUIRED_USE="test? ( bcmath gmp )"
 RDEPEND="dev-php/symfony-deprecation-contracts
 	dev-php/symfony-polyfill-ctype
 	dev-php/symfony-polyfill-php84"
-BDEPEND="test? ( dev-php/jsonlint
-		dev-php/phpdocumentor-reflection-docblock
+BDEPEND="test? ( dev-php/phpdocumentor-reflection-docblock
 		dev-php/phpstan-phpdoc-parser
+		dev-php/seld-jsonlint
 		dev-php/symfony-cache
 		dev-php/symfony-config
 		dev-php/symfony-console
