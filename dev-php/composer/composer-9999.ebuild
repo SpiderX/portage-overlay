@@ -1,17 +1,17 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 COMPOSER_INSTALL_AUTOLOAD="src/Composer"
 PHP_REQ_USE="curl?,intl?,ssl,zlib,zip?"
 
-inherit composer edo git-r3 optfeature shell-completion
+inherit composer git-r3 optfeature shell-completion
 
 DESCRIPTION="Dependency Manager for PHP"
 HOMEPAGE="https://github.com/composer/composer"
 EGIT_REPO_URI="https://github.com/composer/${PN}.git"
-SRC_URI="https://github.com/SpiderX/portage-overlay/releases/download/${PN}-2.10.3-1/${PN}-2.10.3-patches-1.tar.xz"
+SRC_URI="https://github.com/SpiderX/portage-overlay/releases/download/${PN}-2.11.1/${PN}-2.11.1-patches.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,15 +20,16 @@ REQUIRED_USE="test? ( curl intl zip )"
 
 RDEPEND="dev-php/composer-ca-bundle
 	dev-php/composer-class-map-generator
+	dev-php/composer-metadata-minifier
 	dev-php/composer-pcre
 	dev-php/composer-semver
 	dev-php/composer-spdx-licenses
-	dev-php/jsonlint
+	dev-php/composer-xdebug-handler
 	dev-php/justinrainbow-json-schema
-	dev-php/metadata-minifier
-	dev-php/phar-utils
 	dev-php/psr-log
-	dev-php/reactphp-promise
+	dev-php/react-promise
+	dev-php/seld-jsonlint
+	dev-php/seld-phar-utils
 	dev-php/seld-signal-handler
 	dev-php/symfony-console
 	>=dev-php/symfony-filesystem-7
@@ -36,8 +37,7 @@ RDEPEND="dev-php/composer-ca-bundle
 	dev-php/symfony-polyfill-php80
 	dev-php/symfony-polyfill-php81
 	dev-php/symfony-polyfill-php84
-	>=dev-php/symfony-process-7
-	dev-php/xdebug-handler"
+	>=dev-php/symfony-process-7"
 BDEPEND="dev-php/theseer-Autoload
 	test? ( dev-php/sebastian-object-reflector )"
 
@@ -71,7 +71,7 @@ src_compile() {
 }
 
 src_test() {
-	use ipv6 || COMPOSER_TEST_PATCHES+=( "${WORKDIR}/${PN}"-2.10.3-patches/composer-2.10.3-tests-no-ipv6.patch )
+	use ipv6 || COMPOSER_TEST_PATCHES+=( "${WORKDIR}/${PN}"-2.11.1-patches/composer-2.10.3-tests-no-ipv6.patch )
 	composer_test_patch
 	# recreate the minimal installed Composer tree expected by the test suite.
 	# tests reference /usr/share/composer/{res,LICENSE}
