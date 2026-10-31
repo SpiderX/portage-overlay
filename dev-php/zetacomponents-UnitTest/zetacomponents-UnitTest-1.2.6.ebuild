@@ -15,3 +15,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test" # no tests
+
+src_install() {
+	composer_src_install
+
+	insinto /usr/share/zetacomponents/UnitTest
+	doins -r design
+}
