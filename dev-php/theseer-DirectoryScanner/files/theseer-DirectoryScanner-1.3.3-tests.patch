@@ -1,0 +1,54 @@
+Replace the removed PHPUnit_Framework_TestCase class with the namespaced
+PHPUnit\Framework\TestCase and migrate exception expectation annotations
+to explicit expectException() and expectExceptionCode() calls.
+--- ../tests/directoryscanner.test.php	2026-10-31 00:10:34.637072039 +0200
++++ ../tests/directoryscanner.test.php	2026-10-31 00:11:51.352388470 +0200
+@@ -45,7 +45,7 @@
+      * @author     Arne Blankerts <arne@blankerts.de>
+      * @copyright  Arne Blankerts <arne@blankerts.de>, All rights reserved.
+      */
+-    class DirectoryScannerTest extends \PHPUnit_Framework_TestCase {
++    class DirectoryScannerTest extends \PHPUnit\Framework\TestCase {
+ 
+         /**
+          * Test if enabling following symbolic links works.
+@@ -64,6 +64,9 @@
+          * @expectedExceptionCode \TheSeer\DirectoryScanner\Exception::InvalidFlag
+          */
+         public function testSettingInvalidFlagThrowsException() {
++            $this->expectException(\TheSeer\DirectoryScanner\Exception::class);
++            $this->expectExceptionCode(\TheSeer\DirectoryScanner\Exception::InvalidFlag);
++
+             $tmp = new DirectoryScanner();
+             $tmp->setFlag(-1);
+         }
+@@ -73,6 +76,9 @@
+          * @expectedExceptionCode \TheSeer\DirectoryScanner\Exception::InvalidFlag
+          */
+         public function testUnSettingInvalidFlagThrowsException() {
++            $this->expectException(\TheSeer\DirectoryScanner\Exception::class);
++            $this->expectExceptionCode(\TheSeer\DirectoryScanner\Exception::InvalidFlag);
++
+             $tmp = new DirectoryScanner();
+             $tmp->unsetFlag(-1);
+         }
+@@ -130,6 +136,8 @@
+          * @expectedException \TheSeer\DirectoryScanner\Exception
+          */
+         public function testScanOfNonExistendPath() {
++            $this->expectException(\TheSeer\DirectoryScanner\Exception::class);
++
+             $tmp = new DirectoryScanner();
+             $tmp(__DIR__ . '/_data//not/existing');
+         }
+--- ../tests/phpfilter.test.php	2026-10-31 00:14:50.774872076 +0200
++++ ../tests/phpfilter.test.php	2026-10-31 00:15:09.367426278 +0200
+@@ -43,7 +43,7 @@
+     * @author     Arne Blankerts <arne@blankerts.de>
+     * @copyright  Arne Blankerts <arne@blankerts.de>, All rights reserved.
+     */
+-   class PHPFilterIteratorTest extends \PHPUnit_Framework_TestCase {
++   class PHPFilterIteratorTest extends \PHPUnit\Framework\TestCase {
+ 
+       public function testNonPHPFile() {
+          $list = new \ArrayIterator(
