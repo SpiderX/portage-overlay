@@ -1,0 +1,202 @@
+Port the test suite to PHPUnit 12.
+Replace removed string and object attribute assertions with their
+supported equivalents. Convert legacy data providers to static methods
+and register them using PHPUnit attributes.
+These changes preserve the existing test coverage while making the
+suite compatible with modern PHPUnit versions.
+--- a/tests/JsonParserTest.php
++++ b/tests/JsonParserTest.php
+@@ -12,0 +13 @@
++use PHPUnit\Framework\Attributes\DataProvider;
+@@ -23 +24 @@
+-    protected $json = array(
++    protected static $json = array(
+@@ -49 +49,0 @@
+-     * @dataProvider provideValidStrings
+@@ -51,0 +52 @@
++    #[DataProvider('provideValidStrings')]
+@@ -58 +59 @@
+-    public function provideValidStrings()
++    public static function provideValidStrings()
+@@ -61 +62 @@
+-        foreach ($this->json as $input) {
++        foreach (self::$json as $input) {
+@@ -77 +78 @@
+-            $this->assertContains('It appears you have an extra trailing comma', $e->getMessage());
++            $this->assertStringContainsString('It appears you have an extra trailing comma', $e->getMessage());
+@@ -90 +91 @@
+-            $this->assertContains('Invalid string, it appears you used single quotes instead of double quotes', $e->getMessage());
++            $this->assertStringContainsString('Invalid string, it appears you used single quotes instead of double quotes', $e->getMessage());
+@@ -103 +104 @@
+-            $this->assertContains('Invalid string, it appears you have an unescaped backslash at: \z', $e->getMessage());
++            $this->assertStringContainsString('Invalid string, it appears you have an unescaped backslash at: \z', $e->getMessage());
+@@ -152 +153 @@
+-            $this->assertContains('Invalid string, it appears you forgot to terminate a string, or attempted to write a multiline string which is invalid', $e->getMessage());
++            $this->assertStringContainsString('Invalid string, it appears you forgot to terminate a string, or attempted to write a multiline string which is invalid', $e->getMessage());
+@@ -164 +165 @@
+-            $this->assertContains('Invalid string, it appears you forgot to terminate a string, or attempted to write a multiline string which is invalid', $e->getMessage());
++            $this->assertStringContainsString('Invalid string, it appears you forgot to terminate a string, or attempted to write a multiline string which is invalid', $e->getMessage());
+@@ -177 +178 @@
+-            $this->assertContains("Parse error on line 1:\n\n^", $e->getMessage());
++            $this->assertStringContainsString("Parse error on line 1:\n\n^", $e->getMessage());
+@@ -188 +189 @@
+-            $this->assertContains("Parse error on line 1:\nA...\n^", $e->getMessage());
++            $this->assertStringContainsString("Parse error on line 1:\nA...\n^", $e->getMessage());
+@@ -195 +196 @@
+-        foreach ($this->json as $input) {
++        foreach (self::$json as $input) {
+@@ -208 +209 @@
+-            $this->assertContains('Duplicate key: a', $e->getMessage());
++            $this->assertStringContainsString('Duplicate key: a', $e->getMessage());
+@@ -225 +226 @@
+-            $this->assertContains('Duplicate key: _empty_', $e->getMessage());
++            $this->assertStringContainsString('Duplicate key: _empty_', $e->getMessage());
+@@ -238,8 +239,3 @@
+-        $this->assertThat(
+-            $result,
+-            $this->logicalAnd(
+-                $this->objectHasAttribute('a'),
+-                $this->objectHasAttribute('a.1'),
+-                $this->objectHasAttribute('a.2')
+-            )
+-        );
++        $this->assertObjectHasProperty('a', $result);
++        $this->assertObjectHasProperty('a.1', $result);
++        $this->assertObjectHasProperty('a.2', $result);
+@@ -258,2 +254,2 @@
+-        $this->assertThat($result, $this->objectHasAttribute('a'));
+-        $this->assertThat($result->a, $this->objectHasAttribute('__duplicates__'));
++        $this->assertObjectHasProperty('a', $result);
++        $this->assertObjectHasProperty('__duplicates__', $result->a);
+@@ -274,7 +270,2 @@
+-        $this->assertThat(
+-            $result,
+-            $this->logicalAnd(
+-                $this->objectHasAttribute('_empty_'),
+-                $this->objectHasAttribute('_empty_.1')
+-            )
+-        );
++        $this->assertObjectHasProperty('_empty_', $result);
++        $this->assertObjectHasProperty('_empty_.1', $result);
+@@ -316 +307 @@
+-            $this->assertContains('Non-UTF8 character found', $e->getMessage());
++            $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
+@@ -327 +318 @@
+-            $this->assertContains('BOM detected', $e->getMessage());
++            $this->assertStringContainsString('BOM detected', $e->getMessage());
+@@ -346 +337 @@
+-            $this->assertContains('Invalid string, it appears you forgot to terminate a string', $e->getMessage());
++            $this->assertStringContainsString('Invalid string, it appears you forgot to terminate a string', $e->getMessage());
+@@ -351 +341,0 @@
+-     * @dataProvider provideStringsWithComments
+@@ -354,0 +345 @@
++    #[DataProvider('provideStringsWithComments')]
+@@ -364 +355 @@
+-    public function provideStringsWithComments()
++    public static function provideStringsWithComments()
+--- a/tests/Utf8ValidatorTest.php
++++ b/tests/Utf8ValidatorTest.php
+@@ -38,15 +38,15 @@
+             Utf8Validator::validate('"abcd'.chr(233).'"');
+             $this->fail('ISO 8859-15 "abcdé" should not pass validation.');
+         } catch (InvalidEncodingException $e) {
+-            $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-            $this->assertContains(' which is not a continuation octet.', $e->getMessage());
++            $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++            $this->assertStringContainsString(' which is not a continuation octet.', $e->getMessage());
+         }
+         try {
+             Utf8Validator::validate('"abcd'.chr(233));
+             $this->fail('ISO 8859-15 "abcdé should not pass validation.');
+         } catch (InvalidEncodingException $e) {
+-            $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-            $this->assertContains(
++            $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++            $this->assertStringContainsString(
+                 ', end of string was found instead of a continuation octet.',
+                 $e->getMessage()
+             );
+@@ -62,8 +62,8 @@
+                 Utf8Validator::validate('"abcd'.chr(233).chr($forbiddenOctet).'"');
+                 $this->fail('"abcd\d233\d'.$forbiddenOctet.'" should not pass validation.');
+             } catch (InvalidEncodingException $e) {
+-                $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-                $this->assertContains(
++                $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++                $this->assertStringContainsString(
+                     ' which is one of the four forbidden values (C0, C1, F5, FF).',
+                     $e->getMessage()
+                 );
+@@ -72,8 +72,8 @@
+                 Utf8Validator::validate('"abcd'.chr($forbiddenOctet).'"');
+                 $this->fail('"abcd\d'.$forbiddenOctet.'" should not pass validation.');
+             } catch (InvalidEncodingException $e) {
+-                $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-                $this->assertContains(
++                $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++                $this->assertStringContainsString(
+                     ' which is one of the four forbidden values (C0, C1, F5, FF).',
+                     $e->getMessage()
+                 );
+@@ -83,8 +83,8 @@
+             Utf8Validator::validate('"abcd'.chr(129).'"');
+             $this->fail('"abcd\d129" should not pass validation.');
+         } catch (InvalidEncodingException $e) {
+-            $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-            $this->assertContains(
++            $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++            $this->assertStringContainsString(
+                 ' which is a continuation octet.',
+                 $e->getMessage()
+             );
+@@ -94,8 +94,8 @@
+                 Utf8Validator::validate('"abcd'.chr(237).chr($i).chr(129).'"');
+                 $this->fail('"abcd\d237\d'.$i.'\d129" should not pass validation.');
+             } catch (InvalidEncodingException $e) {
+-                $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-                $this->assertContains(
++                $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++                $this->assertStringContainsString(
+                     ' which is into the forbidden range of surrogate pairs.',
+                     $e->getMessage()
+                 );
+@@ -104,8 +104,8 @@
+                 Utf8Validator::validate('"abcd'.chr(237).chr($i).'"');
+                 $this->fail('"abcd\d237\d'.$i.'" should not pass validation.');
+             } catch (InvalidEncodingException $e) {
+-                $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-                $this->assertContains(
++                $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++                $this->assertStringContainsString(
+                     ' which is into the forbidden range of surrogate pairs.',
+                     $e->getMessage()
+                 );
+@@ -116,22 +116,22 @@
+                 Utf8Validator::validate('"abcd'.chr($i).chr(129).chr(129).chr(129).'"');
+                 $this->fail('"abcd\d'.$i.'\d129\d129\d129" should not pass validation.');
+             } catch (InvalidEncodingException $e) {
+-                $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-                $this->assertContains(' which is invalid.', $e->getMessage());
++                $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++                $this->assertStringContainsString(' which is invalid.', $e->getMessage());
+             }
+             try {
+                 Utf8Validator::validate('"abcd'.chr($i).'"');
+                 $this->fail('"abcd\d'.$i.'" should not pass validation.');
+             } catch (InvalidEncodingException $e) {
+-                $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-                $this->assertContains(' which is invalid.', $e->getMessage());
++                $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++                $this->assertStringContainsString(' which is invalid.', $e->getMessage());
+             }
+             try {
+                 Utf8Validator::validate('"abcd'.chr(195).chr($i).'"');
+                 $this->fail('"abcd\d195\d'.$i.'" should not pass validation.');
+             } catch (InvalidEncodingException $e) {
+-                $this->assertContains('Non-UTF8 character found', $e->getMessage());
+-                $this->assertContains(' which is not a continuation octet.', $e->getMessage());
++                $this->assertStringContainsString('Non-UTF8 character found', $e->getMessage());
++                $this->assertStringContainsString(' which is not a continuation octet.', $e->getMessage());
+             }
+         }
+     }

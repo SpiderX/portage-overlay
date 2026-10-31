@@ -1,0 +1,29 @@
+Fix CLI autoloading when installed system-wide.
+The upstream CLI script expects Composer's vendor directory layout,
+which is not preserved when the executable is installed into /usr/bin.
+Load the system-installed Fedora Autoloader instead, allowing the CLI
+to locate the JSONLint classes through the standard PHP include path.
+--- ../bin/jsonlint	2026-10-29 19:20:20.358086437 +0200
++++ ../bin?jsonlint	2026-10-29 19:21:12.285225957 +0200
+@@ -10,20 +10,7 @@
+  * file that was distributed with this source code.
+  */
+ 
+-function includeIfExists($file)
+-{
+-    if (file_exists($file)) {
+-        return include $file;
+-    }
+-}
+-
+-if (!includeIfExists(__DIR__.'/../vendor/autoload.php') && !includeIfExists(__DIR__.'/../../../autoload.php')) {
+-    $msg = 'You must set up the project dependencies, run the following commands:'.PHP_EOL.
+-           'curl -sS https://getcomposer.org/installer | php'.PHP_EOL.
+-           'php composer.phar install'.PHP_EOL;
+-    fwrite(STDERR, $msg);
+-    exit(1);
+-}
++require_once 'Seld/JsonLint/autoload.php';
+ 
+ use Seld\JsonLint\JsonParser;
+ 
