@@ -1,0 +1,32 @@
+Update tests for PHPUnit 12 compatibility by replacing legacy @dataProvider
+annotations with DataProvider attributes.
+--- ../tests/PhpConfigTest.php	2026-10-30 23:38:05.576982613 +0200
++++ ../tests/PhpConfigTest.php	2026-10-30 23:39:06.160846711 +0200
+@@ -17,6 +17,7 @@
+ use Composer\XdebugHandler\Tests\Helpers\BaseTestCase;
+ use Composer\XdebugHandler\Tests\Helpers\EnvHelper;
+ use Composer\XdebugHandler\Tests\Mocks\CoreMock;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ /**
+  * @phpstan-import-type envTestData from EnvHelper
+@@ -28,8 +29,8 @@
+      *
+      * @param string $method PhpConfig method to call
+      * @param string[] $expected
+-     * @dataProvider commandLineProvider
+      */
++    #[DataProvider('commandLineProvider')]
+     public function testCommandLineOptions(string $method, array $expected): void
+     {
+         $loaded = true;
+@@ -69,8 +70,8 @@
+      * @param string $iniFunc IniHelper method to use
+      * @param false|string $scanDir Initial value for PHP_INI_SCAN_DIR
+      * @param false|string $phprc Initial value for PHPRC
+-     * @dataProvider environmentProvider
+      */
++    #[DataProvider('environmentProvider')]
+     public function testEnvironment(string $iniFunc, $scanDir, $phprc): void
+     {
+         $ini = EnvHelper::setInis($iniFunc, $scanDir, $phprc);

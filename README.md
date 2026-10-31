@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1665](https://img.shields.io/badge/ebuild-1665-orange.svg)](https://img.shields.io/badge/ebuild-1665-orange.svg)
+[![Number of ebuilds: 1666](https://img.shields.io/badge/ebuild-1666-orange.svg)](https://img.shields.io/badge/ebuild-1666-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -844,6 +844,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[composer-pcre](https://github.com/composer/pcre) | PCRE wrapping library that offers type-safe preg_ replacements
 *   dev-php/[composer-semver](https://github.com/composer/semver) | Semantic versioning utilities, constraint parsing, and checking
 *   dev-php/[composer-spdx-licenses](https://github.com/composer/spdx-licenses) | Tools for working with and validating SPDX licenses
+*   dev-php/[composer-xdebug-handler](https://github.com/composer/xdebug-handler) | Restart a CLI process without loading the xdebug extension
 *   dev-php/[daverandom-callback-validator](https://github.com/DaveRandom/CallbackValidator) | Tools for validating callback signatures in PHP
 *   dev-php/[daverandom-enum](https://github.com/DaveRandom/Enum) | A base class for enumerations in PHP
 *   dev-php/[daverandom-libdns](https://github.com/DaveRandom/LibDNS) | DNS implementation in pure PHP

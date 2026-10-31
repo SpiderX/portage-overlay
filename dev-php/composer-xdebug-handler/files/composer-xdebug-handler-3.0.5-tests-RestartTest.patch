@@ -1,0 +1,34 @@
+Update tests for PHPUnit 12 compatibility by replacing legacy @dataProvider
+annotations with DataProvider attributes.
+--- ../tests/RestartTest.php	2026-10-30 23:34:31.063313275 +0200
++++ ../tests/RestartTest.php	2026-10-30 23:35:37.232850614 +0200
+@@ -19,6 +19,7 @@
+ use Composer\XdebugHandler\Tests\Mocks\FailMock;
+ use Composer\XdebugHandler\Tests\Mocks\PartialMock;
+ use Composer\XdebugHandler\Tests\Mocks\RequiredMock;
++use PHPUnit\Framework\Attributes\DataProvider;
+ 
+ class RestartTest extends BaseTestCase
+ {
+@@ -102,9 +103,7 @@
+         $this->checkNoRestart($xdebug);
+     }
+ 
+-    /**
+-     * @dataProvider unreachableScriptProvider
+-     */
++    #[DataProvider('unreachableScriptProvider')]
+     public function testNoRestartWithUnreachableScript(string $script): void
+     {
+         $loaded = true;
+@@ -127,9 +126,7 @@
+         ];
+     }
+ 
+-    /**
+-     * @dataProvider scriptSetterProvider
+-     */
++    #[DataProvider('scriptSetterProvider')]
+     public function testRestartWithScriptSetter(string $script): void
+     {
+         $loaded = true;

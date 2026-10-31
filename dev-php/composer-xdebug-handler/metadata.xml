@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Composer Xdebug Handler is a PHP library that restarts command-line
+	applications without loading the Xdebug extension, reducing execution
+	overhead while preserving PHP configuration settings.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">composer/xdebug-handler</remote-id>
+	</upstream>
+</pkgmetadata>
