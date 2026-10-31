@@ -1,0 +1,17 @@
+Support CA bundle paths in source and installed layouts
+Prefer the bundled CA file in the source tree when available, allowing
+tests to run correctly. Fall back to Gentoo's shared Composer CA bundle
+location when the package is installed.
+--- ../src/CaBundle.php	2026-10-31 19:33:46.869512185 +0200
++++ ../src/CaBundle.php	2026-10-31 19:35:27.858032589 +0200
+@@ -142,6 +142,10 @@
+     {
+         $caBundleFile = __DIR__.'/../res/cacert.pem';
+ 
++        if (!is_file($caBundleFile)) {
++            $caBundleFile = __DIR__.'/../../../composer/res/cacert.pem';
++        }
++
+         // cURL does not understand 'phar://' paths
+         // see https://github.com/composer/ca-bundle/issues/10
+         if (0 === strpos($caBundleFile, 'phar://')) {

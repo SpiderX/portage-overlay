@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="!dev-php/ca-bundle"
 
-PATCHES=( "${FILESDIR}/${PN}"-1.5.1-res-path.patch )
+PATCHES=( "${FILESDIR}/${PN}"-1.6.1-res-path.patch )
 
 COMPOSER_TEST_PATCHES=( "${FILESDIR}/${PN}"-1.5.1-tests.patch )
 composer_enable_tests phpunit
