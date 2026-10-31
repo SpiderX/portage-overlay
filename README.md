@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1661](https://img.shields.io/badge/ebuild-1661-orange.svg)](https://img.shields.io/badge/ebuild-1661-orange.svg)
+[![Number of ebuilds: 1662](https://img.shields.io/badge/ebuild-1662-orange.svg)](https://img.shields.io/badge/ebuild-1662-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -952,6 +952,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-php/[sebastian-type](https://github.com/sebastianbergmann/type) | Library that helps with managing the version number
 *   dev-php/[sebastian-version](https://github.com/sebastianbergmann/version) | Library that helps with managing the version number
 *   dev-php/[seld-jsonlint](https://github.com/Seldaek/jsonlint) | JSON Lint for PHP
+*   dev-php/[seld-phar-utils](https://github.com/Seldaek/phar-utils) | PHAR file format utilities, for when PHP phars you up
 *   dev-php/[seld-signal-handler](https://github.com/Seldaek/signal-handler) | Simple unix signal handler
 *   dev-php/[spomky-labs-pki-framework](https://github.com/spomky-labs/pki-framework) | Public Key Infrastructure
 *   dev-php/[spx](https://github.com/NoiseByNorthwest/php-spx) | A PHP wrapper fo the scrypt hashing algorithm
