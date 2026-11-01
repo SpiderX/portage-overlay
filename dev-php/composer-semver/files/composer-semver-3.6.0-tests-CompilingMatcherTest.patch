@@ -1,0 +1,13 @@
+Replace the removed setMethods() method with onlyMethods() when
+mocking the existing Constraint::compile() method.
+--- ../tests/CompilingMatcherTest.php	2026-11-01 15:11:03.927278855 +0200
++++ ../tests/CompilingMatcherTest.php	2026-11-01 15:13:17.412798392 +0200
+@@ -46,7 +46,7 @@
+         CompilingMatcher::clear();
+         $constraint = $this->getMockBuilder('Composer\\Semver\\Constraint\\Constraint')
+             ->setConstructorArgs(array('>=', '1'))
+-            ->setMethods(array('compile'))
++            ->onlyMethods(array('compile'))
+             ->getMock();
+         $constraint->expects($this->exactly(2))->method('compile')->willReturn('$v === "2"');
+ 

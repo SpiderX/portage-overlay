@@ -1,3 +1,5 @@
+Replace the legacy @before lifecycle hook with the standard protected setUp(): void
+method and migrate @dataProvider annotations to native PHP attributes.
 --- ../tests/Constraint/MultiConstraintTest.php	2026-06-27 17:21:12.507504646 +0300
 +++ ../tests/Constraint/MultiConstraintTest.php	2026-06-27 17:53:41.917380570 +0300
 @@ -13,6 +13,7 @@

@@ -1,5 +1,7 @@
---- ../tests/IntervalsTest.php	2026-06-27 17:43:47.755944823 +0300
-+++ ../tests/IntervalsTest.php	2026-06-27 17:45:29.930039191 +0300
+Update tests for PHPUnit 12 compatibility by replacing legacy @dataProvider
+annotations with DataProvider attributes.
+--- ../tests/IntervalsTest.php	2026-11-01 15:05:55.356757531 +0200
++++ ../tests/IntervalsTest.php	2026-11-01 15:06:56.034866406 +0200
 @@ -12,6 +12,7 @@
  namespace Composer\Semver;
  
@@ -21,7 +23,19 @@
      public function testCompactConstraint($expected, $toCompact, $conjunctive)
      {
          $parser = new VersionParser;
-@@ -193,10 +194,10 @@
+@@ -52,10 +53,10 @@
+     }
+ 
+     /**
+-     * @dataProvider compactDevSafetyProvider
+      * @param array<string> $toCompact
+      * @param bool $conjunctive
+      */
++    #[DataProvider('compactDevSafetyProvider')]
+     public function testCompactConstraintKeepsMatchedSet($toCompact, $conjunctive)
+     {
+         $parser = new VersionParser;
+@@ -245,10 +246,10 @@
      }
  
      /**

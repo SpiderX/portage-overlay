@@ -20,13 +20,14 @@ RDEPEND="!dev-php/semver"
 DOCS=( {CHANGELOG,README}.md )
 
 COMPOSER_TEST_PATCHES=(
-	"${FILESDIR}/${PN}"-3.4.4-tests-Constraint-MatchAllConstraintTest.patch
-	"${FILESDIR}/${PN}"-3.4.4-tests-SemverTest.patch
-	"${FILESDIR}/${PN}"-3.4.4-tests-Constraint-MatchNoneConstraintTest.patch
-	"${FILESDIR}/${PN}"-3.4.4-tests-SubsetsTest.patch
-	"${FILESDIR}/${PN}"-3.4.4-tests-ComparatorTest.patch
-	"${FILESDIR}/${PN}"-3.4.4-tests-Constraint-MultiConstraintTest.patch
-	"${FILESDIR}/${PN}"-3.4.4-tests-VersionParserTest.patch
 	"${FILESDIR}/${PN}"-3.4.4-tests-Constraint-ConstraintTest.patch
-	"${FILESDIR}/${PN}"-3.4.4-tests-IntervalsTest.patch )
+	"${FILESDIR}/${PN}"-3.4.4-tests-Constraint-MatchAllConstraintTest.patch
+	"${FILESDIR}/${PN}"-3.4.4-tests-Constraint-MatchNoneConstraintTest.patch
+	"${FILESDIR}/${PN}"-3.4.4-tests-Constraint-MultiConstraintTest.patch
+	"${FILESDIR}/${PN}"-3.4.4-tests-ComparatorTest.patch
+	"${FILESDIR}/${PN}"-3.4.4-tests-IntervalsTest.patch
+	"${FILESDIR}/${PN}"-3.4.4-tests-SemverTest.patch
+	"${FILESDIR}/${PN}"-3.4.4-tests-SubsetsTest.patch
+	"${FILESDIR}/${PN}"-3.4.4-tests-VersionParserTest.patch
+	"${FILESDIR}/${PN}"-3.6.0-tests-CompilingMatcherTest.patch )
 composer_enable_tests phpunit

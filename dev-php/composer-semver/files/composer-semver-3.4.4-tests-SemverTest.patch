@@ -1,3 +1,5 @@
+Update tests for PHPUnit 12 compatibility by replacing legacy @dataProvider
+annotations with DataProvider attributes.
 --- ../tests/SemverTest.php	2026-06-27 17:18:46.928066621 +0300
 +++ ../tests/SemverTest.php	2026-06-27 17:20:09.436933840 +0300
 @@ -12,6 +12,7 @@

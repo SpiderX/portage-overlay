@@ -1,5 +1,7 @@
---- ../tests/VersionParserTest.php	2026-06-27 17:05:23.109598154 +0300
-+++ ../tests/VersionParserTest.php	2026-06-27 17:15:35.741256141 +0300
+Update tests for PHPUnit 12 compatibility by replacing legacy @dataProvider
+annotations with DataProvider attributes.
+--- ../tests/VersionParserTest.php	2026-11-01 15:02:31.736620073 +0200
++++ ../tests/VersionParserTest.php	2026-11-01 15:04:40.178234436 +0200
 @@ -17,14 +17,15 @@
  use Exception;
  use LogicException;
@@ -21,6 +23,18 @@
      }
  
      /**
+-     * @dataProvider isValidVersions
+      * @param string $input
+      * @param bool $expected
+      */
++    #[DataProvider('isValidVersions')]
+     public function testIsValid($input, $expected)
+     {
+         $parser = new VersionParser();
+@@ -77,10 +78,10 @@
+     }
+ 
+     /**
 -     * @dataProvider successfulNormalizedVersions
       * @param string $input
       * @param string $expected
@@ -29,7 +43,7 @@
      public function testNormalizeSucceeds($input, $expected)
      {
          $parser = new VersionParser();
-@@ -146,10 +147,10 @@
+@@ -173,10 +174,10 @@
      }
  
      /**
@@ -42,7 +56,7 @@
      {
          $this->doExpectException('UnexpectedValueException');
          $parser = new VersionParser();
-@@ -192,9 +193,9 @@
+@@ -219,9 +220,9 @@
      }
  
      /**
@@ -53,7 +67,7 @@
      public function testNormalizeFailsAndReportsAliasIssue($fullInput)
      {
          if (!preg_match('{^([^,\s#]+)(?:#[^ ]+)? +as +([^,\s]+)$}', $fullInput, $match)) {
-@@ -224,9 +225,9 @@
+@@ -251,9 +252,9 @@
      }
  
      /**
@@ -64,7 +78,7 @@
      public function testNormalizeFailsAndReportsAliaseeIssue($fullInput)
      {
          if (!preg_match('{^([^,\s#]+)(?:#[^ ]+)? +as +([^,\s]+)$}', $fullInput, $match)) {
-@@ -256,10 +257,10 @@
+@@ -283,10 +284,10 @@
      }
  
      /**
@@ -76,7 +90,7 @@
      public function testNormalizeBranch($input, $expected)
      {
          $parser = new VersionParser();
-@@ -324,11 +325,10 @@
+@@ -351,11 +352,10 @@
      }
  
      /**
@@ -89,7 +103,7 @@
      public function testParseConstraintsSimple($input, $expected)
      {
          $parser = new VersionParser();
-@@ -377,12 +377,11 @@
+@@ -409,12 +409,11 @@
      }
  
      /**
@@ -103,7 +117,7 @@
      public function testParseConstraintsWildcard($input, $min, $max)
      {
          $parser = new VersionParser();
-@@ -419,12 +418,11 @@
+@@ -451,12 +450,11 @@
      }
  
      /**
@@ -117,7 +131,7 @@
      public function testParseTildeWildcard($input, $min, $max)
      {
          $parser = new VersionParser();
-@@ -466,12 +464,11 @@
+@@ -498,12 +496,11 @@
      }
  
      /**
@@ -131,7 +145,7 @@
      public function testParseCaretWildcard($input, $min, $max)
      {
          $parser = new VersionParser();
-@@ -516,12 +513,11 @@
+@@ -548,12 +545,11 @@
      }
  
      /**
@@ -145,7 +159,7 @@
      public function testParseHyphen($input, $min, $max)
      {
          $parser = new VersionParser();
-@@ -558,10 +554,10 @@
+@@ -590,10 +586,10 @@
      }
  
      /**
@@ -157,7 +171,7 @@
      public function testParseConstraints($constraint, $expected)
      {
          $parser = new VersionParser();
-@@ -608,9 +604,9 @@
+@@ -640,9 +636,9 @@
      }
  
      /**
@@ -168,7 +182,7 @@
      public function testParseConstraintsMulti($constraint)
      {
          $parser = new VersionParser();
-@@ -657,10 +653,9 @@
+@@ -689,10 +685,9 @@
      }
  
      /**
@@ -180,7 +194,7 @@
      public function testParseConstraintsMultiDisjunctiveHasPrioOverConjuctive($constraint)
      {
          $parser = new VersionParser();
-@@ -716,10 +711,9 @@
+@@ -748,10 +743,9 @@
      }
  
      /**
@@ -192,7 +206,7 @@
      public function testParseConstraintsFails($input)
      {
          $this->doExpectException('UnexpectedValueException');
-@@ -776,11 +770,10 @@
+@@ -808,11 +802,10 @@
      }
  
      /**

@@ -1,3 +1,4 @@
+Replace the legacy @before lifecycle hook with the standard protected setUp(): void method.
 --- ../tests/Constraint/MatchAllConstraintTest.php	2026-06-27 17:46:43.775762304 +0300
 +++ ../tests/Constraint/MatchAllConstraintTest.php	2026-06-27 17:47:55.148074793 +0300
 @@ -28,7 +28,7 @@
