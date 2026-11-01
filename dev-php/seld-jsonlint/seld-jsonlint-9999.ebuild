@@ -4,7 +4,6 @@
 EAPI=9
 
 COMPOSER_INSTALL_AUTOLOAD="src/Seld/JsonLint"
-COMPOSER_INSTALL_PATH="Seld/JsonLint"
 
 inherit composer git-r3
 
