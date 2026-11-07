@@ -4,9 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..15} )
 
-inherit distutils-r1 git-r3 optfeature
+inherit distutils-r1 edo git-r3 optfeature
 
 DESCRIPTION="The official command-line client for RIPE Atlas"
 HOMEPAGE="https://github.com/RIPE-NCC/ripe-atlas-tools"
@@ -27,7 +27,8 @@ RDEPEND="dev-python/ipy[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/tzlocal[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}] )"
 
 DOCS=( {CHANGES,README}.rst )
 
@@ -47,7 +48,7 @@ python_prepare_all() {
 
 python_install() {
 	distutils-r1_python_install
-	echo "RIPE Atlas Tools (Magellan) [Gentoo Linux] ${PVR}" > \
+	edo echo "RIPE Atlas Tools (Magellan) [Gentoo Linux] ${PVR}" > \
 		"${D}$(python_get_sitedir)"/ripe/atlas/tools/user-agent
 }
 
