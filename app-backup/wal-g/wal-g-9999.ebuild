@@ -1,25 +1,26 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-EGIT_REPO_URI="https://github.com/wal-g/${PN}.git"
 EGIT_SUBMODULES=()
 
 inherit git-r3 go-module
 
 DESCRIPTION="Archival restoration tool for databases"
 HOMEPAGE="https://github.com/wal-g/wal-g"
+EGIT_REPO_URI="https://github.com/wal-g/${PN}.git"
 
 LICENSE="Apache-2.0 GPL-3+"
 SLOT="0"
-IUSE="brotli etcd fdb gp lzo mongo mysql +postgres redis sqlserver sodium"
-REQUIRED_USE="|| ( etcd fdb mongo mysql postgres redis )"
-RESTRICT="test" # fails
+IUSE="brotli etcd fdb gp lzo mongo mysql +postgres redis sqlserver sodium test"
+REQUIRED_USE="|| ( etcd fdb mongo mysql postgres redis ) test? ( sodium )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="brotli? ( app-arch/brotli:= )
 	lzo? ( dev-libs/lzo:2 )
 	sodium? ( dev-libs/libsodium:= )"
+BDEPEND=">=dev-lang/go-1.27"
 
 src_unpack() {
 	git-r3_src_unpack
