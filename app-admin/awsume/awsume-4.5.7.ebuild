@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 edo optfeature
 
@@ -34,6 +34,6 @@ python_test() {
 
 pkg_postinst() {
 	optfeature "SAML support" dev-python/xmltodict
-	optfeature "fuzzy support" dev-python/python-levenshtein
+	optfeature "fuzzy support" dev-python/levenshtein
 	optfeature "console support" app-admin/awsume-console-plugin
 }
