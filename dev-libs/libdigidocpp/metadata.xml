@@ -14,6 +14,7 @@
 	digitally signed documents, according to XAdES and XML-DSIG standards.
 	</longdescription>
 	<use>
+		<flag name="csharp">build C# bindings for .NET applications</flag>
 		<flag name="utils">install command-line utility</flag>
 	</use>
 	<upstream>

@@ -1,0 +1,44 @@
+--- ../src/CMakeLists.txt	2026-11-07 18:39:42.321341246 +0200
++++ ../src/CMakeLists.txt	2026-11-07 18:48:10.217358210 +0200
+@@ -179,11 +179,15 @@
+     set_property(SOURCE Container.cpp APPEND PROPERTY COMPILE_DEFINITIONS PDF_SUPPORT)
+ endif()
+ 
++option(BUILD_CSHARP "Build C# bindings" OFF)
++option(BUILD_JAVA "Build Java bindings" OFF)
++option(BUILD_PYTHON "Build Python bindings" OFF)
++
+ if(SWIG_FOUND)
+     include(${SWIG_USE_FILE})
+     include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+     set_property(SOURCE ../libdigidocpp.i PROPERTY CPLUSPLUS ON)
+-    if(JAVA_INCLUDE_PATH)
++    if(BUILD_JAVA AND JAVA_INCLUDE_PATH)
+         set(CMAKE_SWIG_FLAGS -package ee.ria.libdigidocpp)
+         set(CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR}/java)
+         swig_add_library(digidoc_java LANGUAGE java SOURCES ../libdigidocpp.i)
+@@ -216,7 +220,7 @@
+             install_jar(digidocpp_jar DESTINATION $<IF:$<PLATFORM_ID:Darwin>,/Library/Java/Extensions,${CMAKE_INSTALL_DATADIR}/digidocpp>)
+         endif()
+     endif()
+-    if(Python3_FOUND)
++    if(BUILD_PYTHON AND Python3_FOUND)
+         set(CMAKE_SWIG_FLAGS -py3)
+         set(CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR})
+         swig_add_library(digidoc_python LANGUAGE python SOURCES ../libdigidocpp.i)
+@@ -246,6 +250,7 @@
+         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/digidoc.py DESTINATION ${Python3_SITELIB})
+     endif()
+ 
++    if(BUILD_CSHARP)
+     set(CMAKE_SWIG_FLAGS -namespace digidoc)
+     set(CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR}/csharp)
+     swig_add_library(digidoc_csharp LANGUAGE csharp SOURCES ../libdigidocpp.i)
+@@ -260,6 +265,7 @@
+     if(WIN32 AND BUILD_SHARED_LIBS)
+         install(FILES $<TARGET_PDB_FILE:digidoc_csharp> DESTINATION ${CMAKE_INSTALL_BINDIR} OPTIONAL)
+     endif()
++    endif()
+ endif()
+ 
+ if(NOT ${BUILD_SHARED_LIBS})
