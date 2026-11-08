@@ -1,0 +1,69 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit edo go-module readme.gentoo-r1 shell-completion systemd tmpfiles
+
+DESCRIPTION="A zero trust swiss army knife for working with X509"
+HOMEPAGE="https://github.com/smallstep/cli"
+SRC_URI="https://github.com/smallstep/cli/releases/download/v${PV}/${P/-cli-/_}.tar.gz
+	https://github.com/SpiderX/portage-overlay/releases/download/${P}/${P}-deps.tar.xz"
+S="${WORKDIR}"
+
+LICENSE="Apache-2.0"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="+client test"
+RESTRICT="test"
+
+RDEPEND="acct-group/step
+	acct-user/step"
+BDEPEND=">=dev-lang/go-1.26.0
+	test? ( dev-go/gotestsum )"
+
+DOCS=( {CHANGELOG,README}.md )
+
+DOC_CONTENTS="Run 'env-update && source /etc/profile' to\\n
+export STEPPATH envvar, after that you can init CA via\\n
+'step-cli ca init' into /etc/step directory.\\n\\n"
+
+src_compile() {
+	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
+	LDFLAGS="-w -X main.Version=${PV} -X \"main.BuildTime=${DATE}\""
+
+	ego build -ldflags "${LDFLAGS}" -o step-cli ./cmd/...
+
+	unset STEPPATH
+	local completion
+	for completion in bash fish zsh ; do
+		edo ./step-cli completion "${completion}" > step-cli."${completion}"
+		edo sed -i "s/step/step-cli/g" step-cli."${completion}"
+	done
+}
+
+src_test() {
+	edo gotestsum ./...
+}
+
+src_install() {
+	einstalldocs
+	! use client && readme.gentoo_create_doc
+
+	dobin step-cli
+	! use client && doenvd "${FILESDIR}"/99step-cli
+	systemd_dounit systemd/{cert-renewer@,ssh-cert-renewer}.service \
+		systemd/cert-renewer.target systemd/{cert-renewer@,ssh-cert-renewer}.timer
+	newinitd "${FILESDIR}"/step-cli.initd step-cli
+	newconfd "${FILESDIR}"/step-cli.confd step-cli
+	newtmpfiles "${FILESDIR}"/step-cli.tmpfile step-cli.conf
+
+	newbashcomp step-cli.bash step-cli
+	newfishcomp step-cli.fish step-cli
+	newzshcomp step-cli.zsh _step-cli
+}
+
+pkg_postinst() {
+	! use client && readme.gentoo_print_elog
+	tmpfiles_process step-cli.conf
+}

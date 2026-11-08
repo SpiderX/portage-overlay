@@ -16,7 +16,8 @@ RESTRICT="test" # 1 test fails
 
 RDEPEND="acct-group/step
 	acct-user/step"
-BDEPEND="test? ( dev-go/gotestsum )"
+BDEPEND=">=dev-lang/go-1.26.0
+	test? ( dev-go/gotestsum )"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -38,8 +39,8 @@ src_compile() {
 	unset STEPPATH
 	local completion
 	for completion in bash fish zsh ; do
-		edo ./step-cli completion ${completion} > step-cli.${completion}
-		edo sed -i "s/step/step-cli/g" step-cli.${completion}
+		edo ./step-cli completion "${completion}" > step-cli."${completion}"
+		edo sed -i "s/step/step-cli/g" step-cli."${completion}"
 	done
 }
 
