@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit edo git-r3 go-module shell-completion
+inherit git-r3 go-module shell-completion
 
 DESCRIPTION="Simple and flexible tool for managing secrets"
 HOMEPAGE="https://github.com/mozilla/sops"
@@ -11,6 +11,8 @@ EGIT_REPO_URI="https://github.com/mozilla/${PN}.git"
 
 LICENSE="MPL-2.0"
 SLOT="0"
+
+BDEPEND=">=dev-lang/go-1.25.8"
 
 DOCS=( {CHANGELOG,README}.rst )
 
@@ -29,7 +31,7 @@ src_compile() {
 }
 
 src_test() {
-	ego test -work
+	ego test
 }
 
 src_install() {
