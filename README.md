@@ -120,7 +120,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-crypt/[sops](https://github.com/mozilla/sops) | Simple and flexible tool for managing secrets
 *   app-crypt/[step-cli](https://github.com/smallstep/cli) | A zero trust swiss army knife for working with X509
 *   app-crypt/[step-ca](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
-*   app-crypt/[step-kms-plugin](https://github.com/smallstep/certificates) | A private certificate authority and ACME server
+*   app-crypt/[step-kms-plugin](https://github.com/smallstep/step-kms-plugin) | Smallstep CA cloud KMS plugin
 *   app-crypt/[totp](https://github.com/arcanericky/totp) | Time-Based One-Time Password Code Generator
 *   app-crypt/[transcrypt](https://github.com/elasticdog/transcrypt) | Transparently encrypt files within a git repository
 *   app-crypt/[web-eid](https://github.com/web-eid/web-eid-app) | Digital signing and authentication operations with electronic ID

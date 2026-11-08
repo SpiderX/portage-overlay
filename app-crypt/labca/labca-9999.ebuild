@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,13 +23,11 @@ src_unpack() {
 
 src_compile() {
 	LDFLAGS="-w -X main.standaloneVersion=${PV}"
-
-	ego build -ldflags "${LDFLAGS}" -tags standalone \
-		-o labca-gui
+	ego build -ldflags "${LDFLAGS}" -tags standalone -o labca-gui
 }
 
 src_test() {
-	ego test -work ./...
+	ego test ./...
 }
 
 src_install() {
