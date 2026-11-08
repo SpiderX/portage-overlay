@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit fcaps git-r3 go-module systemd tmpfiles
+inherit edo fcaps git-r3 go-module systemd tmpfiles
 
 DESCRIPTION="A private certificate authority and ACME server"
 HOMEPAGE="https://github.com/smallstep/certificates"
@@ -11,12 +11,14 @@ EGIT_REPO_URI="https://github.com/smallstep/certificates.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="utils"
 RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="acct-group/step
 	acct-user/step
 	sys-apps/pcsc-lite"
+BDEPEND=">=dev-lang/go-1.25.0"
 
 DOCS=( {CHANGELOG,README}.md )
 
@@ -32,15 +34,22 @@ src_compile() {
 	LDFLAGS="-w -X main.Version=${PV} -X \"main.BuildTime=${DATE}\""
 
 	ego build -ldflags "${LDFLAGS}" ./cmd/...
+
+	if use utils ; then
+		edo pushd scripts/badger-migration
+		ego build -o badger-migration
+		edo popd
+	fi
 }
 
 src_test() {
-	ego test -work ./...
+	ego test ./...
 }
 
 src_install() {
 	einstalldocs
 	dobin step-ca
+	use utils && dobin scripts/badger-migration/badger-migration
 	diropts -o step -g step
 	keepdir /var/log/step-ca
 	newinitd "${FILESDIR}"/step-ca.initd step-ca
