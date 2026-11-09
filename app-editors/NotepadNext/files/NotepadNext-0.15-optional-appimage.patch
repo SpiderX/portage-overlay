@@ -1,0 +1,35 @@
+NotepadNext unconditionally configures AppImage packaging on Linux,
+requiring Qt 6 qmake even when building a native distribution package.
+Only configure AppImage-specific dependencies and targets when
+APP_DISTRIBUTION is set to AppImage, while preserving standard CMake
+installation rules for native Linux packages.
+--- ../cmake/PackagingLinux.cmake	2026-11-10 00:41:42.832269832 +0200
++++ ../cmake/PackagingLinux.cmake	2026-11-10 00:43:15.864499384 +0200
+@@ -1,5 +1,6 @@
+ message(STATUS "Configuring Linux packaging")
+ 
++if(APP_DISTRIBUTION STREQUAL "AppImage")
+ set(APPDIR ${CMAKE_BINARY_DIR}/AppDir)
+ set(APPDIR_USR ${APPDIR}/usr)
+ 
+@@ -45,6 +46,7 @@
+ 
+ message(STATUS "Using qmake for AppImage packaging: ${APPIMAGE_QMAKE}")
+ list(APPEND APPIMAGE_ENV_VARS QMAKE=${APPIMAGE_QMAKE})
++endif()
+ 
+ install(TARGETS NotepadNext
+     RUNTIME DESTINATION bin
+@@ -62,6 +64,7 @@
+     DESTINATION share/icons/hicolor/scalable/mimetypes
+ )
+ 
++if(APP_DISTRIBUTION STREQUAL "AppImage")
+ add_custom_target(appdir
+     COMMAND ${CMAKE_COMMAND}
+         --install .
+@@ -91,3 +94,4 @@
+     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+     DEPENDS appdir download_linuxdeploy
+ )
++endif()
