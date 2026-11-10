@@ -38,6 +38,7 @@ src_prepare() {
 		# support the newer five-argument pkgconf_client_new() API while
 		# retaining compatibility with older libpkgconf versions.
 		eapply "${FILESDIR}/${PN}"-0.18.1-libpkgconf-client-api.patch
+		eapply "${FILESDIR}/${PN}"-0.18.1-libpkgconf-missing-variable.patch
 	fi
 
 	# phase 1: build the minimal build2 executable with the upstream GNU make bootstrap.

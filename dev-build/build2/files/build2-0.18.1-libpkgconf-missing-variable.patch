@@ -1,0 +1,18 @@
+libpkgconf 3.0.7 returns an empty string instead of NULL when pkgconf_tuple_find() is
+called for an undefined variable. Build2 interprets this result as a defined but empty
+variable, causing failures when parsing optional metadata such as build2.metadata from
+third-party pkg-config files.
+--- ../build2/libbuild2/cc/pkgconfig-libpkgconf.cxx	2026-11-10 19:14:09.726813232 +0200
++++ ../build2/libbuild2/cc/pkgconfig-libpkgconf.cxx	2026-11-10 19:15:27.106909082 +0200
+@@ -346,6 +346,11 @@
+       assert (client_ != nullptr); // Must not be empty.
+ 
+       mlock l (pkgconf_mutex);
++
++      if (pkgconf_variable_find (&pkg_->vars, name) == nullptr &&
++          pkgconf_variable_find (&client_->global_vars, name) == nullptr)
++        return nullopt;
++
+       const char* r (pkgconf_tuple_find (client_, &pkg_->vars, name));
+       return r != nullptr ? optional<string> (r) : nullopt;
+     }
