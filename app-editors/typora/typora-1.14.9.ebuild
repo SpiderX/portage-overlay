@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop multilib-build pax-utils unpacker xdg
+inherit chromium-2 desktop edo multilib-build pax-utils unpacker xdg
 
 DESCRIPTION="A minimal markdown editor and reader"
 HOMEPAGE="https://typora.io"
@@ -49,19 +49,29 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
+QA_PREBUILT="opt/Typora/resources/node_modules/cld/build/Release/cld.node
+	opt/Typora/resources/node_modules/fswin/build/Release/fswin.node
+	opt/Typora/resources/node_modules/main.node
+	opt/Typora/resources/node_modules/vscode-ripgrep/bin/rg
+	opt/Typora/libEGL.so
+	opt/Typora/Typora
+	opt/Typora/chrome_crashpad_handler
+	opt/Typora/libvk_swiftshader.so
+	opt/Typora/libGLESv2.so
+	opt/Typora/libffmpeg.so
+	opt/Typora/libvulkan.so.1"
+
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
 }
 
 src_prepare() {
 	default
-	pushd usr/share/typora/locales || die "pushd failed"
+	edo pushd usr/share/typora/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
-	if ! use suid ; then
-		rm usr/share/typora/chrome-sandbox || die "rm failed"
-	fi
+	! use suid && edo rm usr/share/typora/chrome-sandbox
 }
 
 src_install() {
