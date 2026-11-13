@@ -1,8 +1,13 @@
 /var/log/freeunit/*.log {
+	daily
+	rotate 14
 	missingok
+	notifempty
+	compress
 	delaycompress
 	sharedscripts
+	create 0600 freeunit freeunit
 	postrotate
-		test -r /run/freeunit/freeunit.pid && kill -USR1 `cat /run/freeunit/freeunit.pid`
+		test -r /run/freeunit.pid && kill -USR1 "$(cat /run/freeunit.pid)"
 	endscript
 }
