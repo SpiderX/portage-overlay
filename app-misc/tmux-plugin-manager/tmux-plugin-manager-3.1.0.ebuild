@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit edo readme.gentoo-r1
+inherit readme.gentoo-r1
 
 MY_PN="tpm"
 MY_P="${MY_PN}-${PV}"
@@ -19,12 +19,21 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test" # fails
+RESTRICT="test"
 PROPERTIES="test_network"
 
 RDEPEND="app-misc/tmux
 	dev-vcs/git"
 BDEPEND="test? ( dev-tcltk/expect )"
+
+PATCHES=( "${FILESDIR}/${PN}"-3.1.0-tests-clean-plugins.patch
+	"${FILESDIR}/${PN}"-3.1.0-tests-failed-plugins-download.patch
+	"${FILESDIR}/${PN}"-3.1.0-tests-multiple-plugins-download.patch
+	"${FILESDIR}/${PN}"-3.1.0-tests-plugin-download.patch
+	"${FILESDIR}/${PN}"-3.1.0-tests-plugin-installation.patch
+	"${FILESDIR}/${PN}"-3.1.0-tests-plugin-sourcing.patch
+	"${FILESDIR}/${PN}"-3.1.0-tests-update-all-plugins.patch
+	"${FILESDIR}/${PN}"-3.1.0-tests-update-single-plugin.patch )
 
 DOC_CONTENTS="Add the following into .tmux.conf:\\n
 set-environment -g TMUX_PLUGIN_MANAGER_PATH '/usr/share/tmux-plugins'\\n
@@ -33,13 +42,29 @@ to install plugins via portage and manage them via tpm."
 src_prepare() {
 	default
 
-	edo rmdir lib/tmux-test
-	edo ln -s ../../tmux-test-"${COMMIT}" lib/tmux-test
+	if use test ; then
+		edo rmdir lib/tmux-test
+		edo ln -s ../../tmux-test-"${COMMIT}" lib/tmux-test
+	fi
 }
 
 src_test() {
-	lib/tmux-test/setup || die "setup failed"
-	HOME="${T}" ./tests/run_tests_in_isolation || die "test failed"
+	# initialize the tmux-test framework
+	edo lib/tmux-test/setup
+
+	# isolate test configuration and plugin installations from the user's
+	# environment, and use a private directory for tmux server sockets
+	local -x HOME="${T}" TMUX_TMPDIR="${T}/tmux-sockets"
+
+	# tmux requires its socket directory to be accessible only to the owner
+	mkdir -p "${TMUX_TMPDIR}" || die
+	chmod 700 "${TMUX_TMPDIR}" || die
+
+	# prevent tests from connecting to an existing tmux session
+	unset TMUX
+
+	# run the complete test suite, including Expect-based key-binding tests
+	edo tests/run_tests_in_isolation
 }
 
 src_install() {

@@ -1,0 +1,55 @@
+Fix the failed plugin installation test with modern tmux versions.
+Send the explicit prefix + I key sequence and wait for the final
+completion message instead of matching transient tmux output, which
+may not be visible to Expect. Verify that the nonexistent plugin
+directory was not created to confirm the expected failure.
+--- ../tests?expect_failed_plugin_download	2026-11-16 00:07:30.286293231 +0200
++++ ../tests/expect_failed_plugin_download	2026-11-16 00:08:03.332770092 +0200
+@@ -10,27 +10,30 @@
+ sleep 1
+ 
+ # this is tmux prefix + I
+-send "I"
++send "\002I"
+ 
+ # cloning might take a while
+ set timeout 20
+ 
+-expect_after {
+-  timeout { exit 1 }
+-}
+-
+-expect {
+-  "Installing \"non-existing-plugin\""
+-}
+-
+ expect {
+-  "\"non-existing-plugin\" download fail"
+-}
++    -exact "Done, press ENTER to continue." {
++        set plugin_dir "$env(HOME)/.tmux/plugins/non-existing-plugin"
+ 
+-expect {
+-  "Done, press ENTER to continue" {
+-    exit 0
+-  }
++        if {[file exists "$plugin_dir"]} {
++            puts stderr "Nonexistent plugin was unexpectedly installed"
++            exit 1
++        }
++
++        exit 0
++    }
++
++    timeout {
++        puts stderr "Timed out waiting for failed installation"
++        exit 1
++    }
++
++    eof {
++        puts stderr "tmux exited unexpectedly"
++        exit 1
++    }
+ }
+-
+-exit 1

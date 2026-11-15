@@ -1,0 +1,78 @@
+Fix the update-all plugins Expect test with modern tmux versions.
+Send the explicit prefix + U key sequence and wait for the final
+completion message instead of matching transient tmux output, which
+may not be visible to Expect. Verify that the plugin Git repository
+still exists after the update operation.
+--- ../tests/expect_successful_update_of_all_plugins	2026-11-16 00:58:18.283203144 +0200
++++ ../tests/expect_successful_update_of_all_plugins	2026-11-16 01:15:49.741388878 +0200
+@@ -10,50 +10,33 @@
+ sleep 1
+ 
+ # this is tmux prefix + U
+-send "U"
++send "\002U"
+ 
+ set timeout 5
+ 
+-expect_after {
+-  timeout { exit 1 }
+-}
+-
+-expect {
+-  "Installed plugins"
+-}
+-
+-expect {
+-  "tmux-example-plugin"
+-}
+-
+-expect {
+-  "\"all\" - updates all plugins"
+-}
+-
+-expect {
+-  "ENTER - cancels"
+-}
+-
+ # wait for tmux to display prompt before sending characters
+ sleep 1
+ send "all\r"
+ 
+ expect {
+-  "Updating all plugins!"
+-}
++    -exact "Done, press ENTER to continue." {
++        set plugin_dir "$env(HOME)/.tmux/plugins/tmux-example-plugin"
+ 
+-expect {
+-  "Updating \"tmux-example-plugin\""
++        if {![file isdirectory "$plugin_dir/.git"]} {
++            puts stderr "Plugin repository is missing after update"
++            exit 1
++        }
++
++        exit 0
++    }
++
++    timeout {
++        puts stderr "Timed out waiting for update-all completion"
++        exit 1
++    }
++
++    eof {
++        puts stderr "tmux exited unexpectedly"
++        exit 1
++    }
+ }
+-
+-expect {
+-  "\"tmux-example-plugin\" update success"
+-}
+-
+-expect {
+-  "Done, press ENTER to continue." {
+-    exit 0
+-  }
+-}
+-
+-exit 1

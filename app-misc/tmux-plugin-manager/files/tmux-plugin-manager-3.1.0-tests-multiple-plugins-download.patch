@@ -1,0 +1,68 @@
+Fix the multiple plugin installation test with modern tmux versions.
+Send the explicit prefix + I key sequence and wait for the final
+completion message instead of matching transient tmux output, which
+may not be visible to Expect. Verify that both plugin directories
+exist to confirm successful installation.
+--- ../tests/expect_successful_multiple_plugins_download	2026-11-15 21:42:17.911812125 +0200
++++ ../tests/expect_successful_multiple_plugins_download	2026-11-15 23:59:57.153481618 +0200
+@@ -10,35 +10,35 @@
+ sleep 1
+ 
+ # this is tmux prefix + I
+-send "I"
++send "\002I"
+ 
+ # cloning might take a while
+ set timeout 15
+ 
+-expect_after {
+-  timeout { exit 1 }
+-}
+-
+-expect {
+-  "Installing \"tmux-example-plugin\""
+-}
+-
+-expect {
+-  "\"tmux-example-plugin\" download success"
+-}
+-
+ expect {
+-  "Installing \"tmux-copycat\""
+-}
++    -exact "Done, press ENTER to continue." {
++        set plugins_dir "$env(HOME)/.tmux/plugins"
+ 
+-expect {
+-  "\"tmux-copycat\" download success"
++        if {![file isdirectory "$plugins_dir/tmux-example-plugin"]} {
++            puts stderr "tmux-example-plugin was not installed"
++            exit 1
++        }
++
++        if {![file isdirectory "$plugins_dir/tmux-copycat"]} {
++            puts stderr "tmux-copycat was not installed"
++            exit 1
++        }
++
++        exit 0
++    }
++
++    timeout {
++        puts stderr "Timed out waiting for installation"
++        exit 1
++    }
++
++    eof {
++        puts stderr "tmux exited unexpectedly"
++        exit 1
++    }
+ }
+-
+-expect {
+-  "Done, press ENTER to continue." {
+-    exit 0
+-  }
+-}
+-
+-exit 1

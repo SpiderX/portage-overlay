@@ -1,0 +1,50 @@
+Fix the tmux plugin cleanup test with modern tmux versions.
+Send the explicit prefix + Alt+u key sequence and wait for the final
+completion message instead of matching transient tmux output, which
+may not be visible to Expect. Verify that the plugin directory has
+been removed to confirm successful cleanup.
+--- ../tests/expect_successful_clean_plugins	2026-11-15 21:12:01.755561496 +0200
++++ ../tests/expect_successful_clean_plugins	2026-11-15 21:12:28.810674238 +0200
+@@ -10,26 +10,24 @@
+ sleep 1
+ 
+ # this is tmux prefix + alt + u
+-send "u"
++send "\002\033u"
+ 
+-set timeout 5
+-
+-expect_after {
+-  timeout { exit 1 }
+-}
+-
+-expect {
+-  "Removing \"tmux-example-plugin\""
+-}
++set timeout 10
+ 
+ expect {
+-  "\"tmux-example-plugin\" clean success"
+-}
++    -exact "Done, press ENTER to continue." {
++        set plugin_dir "$env(HOME)/.tmux/plugins/tmux-example-plugin"
+ 
+-expect {
+-  "Done, press ENTER to continue." {
+-    exit 0
+-  }
++        if {[file exists $plugin_dir]} {
++            exit 1
++        }
++
++        exit 0
++    }
++    timeout {
++        exit 1
++    }
++    eof {
++        exit 1
++    }
+ }
+-
+-exit 1

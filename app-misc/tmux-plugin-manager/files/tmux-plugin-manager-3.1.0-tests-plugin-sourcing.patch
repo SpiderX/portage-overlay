@@ -1,0 +1,16 @@
+Fix the plugin key-binding lookup for modern tmux versions.
+Query the prefix key table explicitly and use the binding's key name
+for lookup. Match the expected binding as a fixed string to avoid
+regex interpretation and ensure reliable verification of plugin
+key bindings.
+--- ../tests/test_plugin_sourcing.sh	2026-11-15 21:17:30.231626673 +0200
++++ ../tests/test_plugin_sourcing.sh	2026-11-15 21:17:44.213060788 +0200
+@@ -11,7 +11,7 @@
+ 
+ check_binding_defined() {
+ 	local binding="$1"
+-	tmux list-keys | grep -q "$binding"
++	tmux list-keys -T prefix "${binding%% *}" | grep -qF -- "$binding"
+ }
+ 
+ create_test_plugin_helper() {

@@ -1,0 +1,111 @@
+Fix the single plugin installation test with modern tmux versions.
+Send the explicit prefix + I key sequence and wait for the final
+completion message instead of matching transient tmux output, which
+may not be visible to Expect. Support custom plugin installation
+directories and verify that the plugin was installed as a Git
+repository. On the second installation attempt, compare the Git
+directory's device and inode to ensure the existing repository
+was not replaced.
+--- ../tests/expect_successful_plugin_download	2026-11-15 21:54:46.722021532 +0200
++++ ../tests/expect_successful_plugin_download	2026-11-16 00:49:46.338011675 +0200
+@@ -3,48 +3,74 @@
+ # disables script output
+ log_user 0
+ 
++# Determine plugin installation directory
++if {$argc > 0} {
++    set plugin_dir "[lindex $argv 0]/tmux-example-plugin"
++} else {
++    set plugin_dir "$env(HOME)/.tmux/plugins/tmux-example-plugin"
++}
++
+ spawn tmux
+ 
+ # Waiting for tmux to attach. If this is not done, next command, `send` will
+ # not work properly.
+ sleep 1
+ 
+-# this is tmux prefix + I
+-send "I"
+-
+ # cloning might take a while
+ set timeout 15
+ 
+-expect_after {
+-  timeout { exit 1 }
+-}
+-
+-expect {
+-  "Installing \"tmux-example-plugin\""
+-}
++# First installation
++send "\002I"
+ 
+ expect {
+-  "\"tmux-example-plugin\" download success"
++    -exact "Done, press ENTER to continue." {
++        if {![file isdirectory "$plugin_dir/.git"]} {
++            puts stderr "Plugin was not installed"
++            exit 1
++        }
++    }
++    timeout {
++        puts stderr "First installation timed out"
++        exit 1
++    }
++    eof {
++        puts stderr "tmux exited unexpectedly"
++        exit 1
++    }
+ }
+ 
+-expect {
+-  "Done, press ENTER to continue" {
+-    send ""
+-  }
+-}
++# Record the Git directory identity
++file stat "$plugin_dir/.git" before
+ 
++# Dismiss the completion screen
++send "\r"
+ sleep 1
+-# this is tmux prefix + I
+-send "I"
+ 
+-expect {
+-  "Already installed \"tmux-example-plugin\""
+-}
++# Second installation
++send "\002I"
+ 
+ expect {
+-  "Done, press ENTER to continue" {
+-    exit 0
+-  }
++    -exact "Done, press ENTER to continue." {
++        if {![file isdirectory "$plugin_dir/.git"]} {
++            puts stderr "Plugin disappeared after second installation"
++            exit 1
++        }
++
++        file stat "$plugin_dir/.git" after
++
++        if {$before(ino) != $after(ino) || $before(dev) != $after(dev)} {
++            puts stderr "Plugin repository was replaced during second installation"
++            exit 1
++        }
++
++        exit 0
++    }
++    timeout {
++        puts stderr "Second installation timed out"
++        exit 1
++    }
++    eof {
++        puts stderr "tmux exited unexpectedly"
++        exit 1
++    }
+ }
+-
+-exit 1

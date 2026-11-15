@@ -1,0 +1,16 @@
+Pass the custom plugin directory to the installation Expect test.
+The installation test now accepts an optional plugin directory argument.
+Pass TMUX_PLUGIN_MANAGER_PATH through the existing CUSTOM_PLUGINS_DIR
+variable so the Expect test verifies the correct installation location
+instead of assuming the default ~/.tmux/plugins directory.
+--- ../tests/test_plugin_installation.sh	2026-11-16 00:12:09.751176698 +0200
++++ ../tests/test_plugin_installation.sh	2026-11-16 00:12:43.779744533 +0200
+@@ -54,7 +54,7 @@
+ 	run-shell "$TPM_DIR/tpm"
+ 	HERE
+ 
+-	"$CURRENT_DIR/expect_successful_plugin_download" ||
++	"$CURRENT_DIR/expect_successful_plugin_download" "$CUSTOM_PLUGINS_DIR" || \
+ 		fail_helper "[key-binding][custom dir] plugin installation fails"
+ 
+ 	check_dir_exists_helper "$CUSTOM_PLUGINS_DIR/tmux-example-plugin/" ||

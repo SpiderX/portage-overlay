@@ -1,0 +1,85 @@
+Fix the single plugin update Expect test with modern tmux versions.
+Send the explicit prefix + U key sequence and wait for the actual
+tmux command prompt before entering the plugin name. Avoid matching
+transient informational messages, which may not be visible to Expect.
+Wait for the final completion message and verify that the plugin Git
+repository still exists after the update operation.
+--- ../tests/expect_successful_update_of_a_single_plugin	2026-11-16 01:10:15.194318243 +0200
++++ ../tests/expect_successful_update_of_a_single_plugin	2026-11-16 01:20:43.927538403 +0200
+@@ -11,46 +11,47 @@
+ sleep 1
+ 
+ # this is tmux prefix + U
+-send "U"
++send "\002U"
+ 
+ set timeout 15
+ 
+-expect_after {
+-  timeout { exit 1 }
+-}
+-
++# Wait for the actual tmux command prompt
+ expect {
+-  "Installed plugins"
+-}
++    -exact "plugin update:" {
++        send "tmux-example-plugin\r"
++    }
+ 
+-expect {
+-  "tmux-example-plugin"
+-}
++    timeout {
++        puts stderr "Update prompt did not appear"
++        exit 1
++    }
+ 
+-expect {
+-  "\"all\" - updates all plugins"
++    eof {
++        puts stderr "tmux exited unexpectedly"
++        exit 1
++    }
+ }
+ 
++# Wait for update completion
+ expect {
+-  "ENTER - cancels"
+-}
++    -exact "Done, press ENTER to continue." {
++        set plugin_dir "$env(HOME)/.tmux/plugins/tmux-example-plugin"
+ 
+-# wait for tmux to display prompt before sending characters
+-sleep 1
+-send "tmux-example-plugin\r"
++        if {![file isdirectory "$plugin_dir/.git"]} {
++            puts stderr "Plugin repository missing after update"
++            exit 1
++        }
+ 
+-expect {
+-  "Updating \"tmux-example-plugin\""
+-}
++        exit 0
++    }
+ 
+-expect {
+-  "\"tmux-example-plugin\" update success"
+-}
++    timeout {
++        puts stderr "Single-plugin update timed out"
++        exit 1
++    }
+ 
+-expect {
+-  "Done, press ENTER to continue." {
+-    exit 0
+-  }
++    eof {
++        puts stderr "tmux exited unexpectedly"
++        exit 1
++    }
+ }
+-
+-exit 1
