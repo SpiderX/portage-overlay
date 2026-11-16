@@ -190,7 +190,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   app-misc/[tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) | Persists tmux environment across system restarts
 *   app-misc/[tmux-sensible](https://github.com/tmux-plugins/tmux-sensible) | Basic tmux settings everyone can agree on
 *   app-misc/[tmux-sessionist](https://github.com/tmux-plugins/tmux-sessionist) | Lightweight tmux utils for manipulating sessions
-*   app-misc/[tmux-sidebar](https://github.com/tmux-plugins/tmux-sessionist) | A sidebar with the directory tree for tmux
+*   app-misc/[tmux-sidebar](https://github.com/tmux-plugins/tmux-sidebar) | A sidebar with the directory tree for tmux
 *   app-misc/[tmux-suspend](https://github.com/MunifTanjim/tmux-suspend) | Suspend local tmux session
 *   app-misc/[tmux-urlview](https://github.com/tmux-plugins/tmux-urlview) | Quickly open any url in tmux pane
 *   app-misc/[tmux-yank](https://github.com/tmux-plugins/tmux-yank) | Tmux plugin for copying to system clipboard

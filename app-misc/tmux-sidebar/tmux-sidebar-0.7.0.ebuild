@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 DESCRIPTION="A sidebar with the directory tree for tmux"
-HOMEPAGE="https://github.com/tmux-plugins/tmux-sessionist"
+HOMEPAGE="https://github.com/tmux-plugins/tmux-sidebar"
 SRC_URI="https://github.com/tmux-plugins/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
