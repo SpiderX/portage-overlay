@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-COMMIT="84b8e3dd5b7e10db793ac925e1e65fe204a4e47b"
+COMMIT="46d31824990d12b63425de624e4409d1831e70a8"
 
 DESCRIPTION="Zoom pane to separate window, and unzoom it back"
 HOMEPAGE="https://github.com/jaclu/tmux-power-zoom"
