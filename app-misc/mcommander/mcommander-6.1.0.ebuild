@@ -1,16 +1,13 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit autotools edo flag-o-matic optfeature
-
-COMMIT="3c64bfce5adf2d01b20493d3918237a8077b1abd"
+inherit autotools flag-o-matic optfeature
 
 DESCRIPTION="M-Commander, based on GNU Midnight Commander"
 HOMEPAGE="https://github.com/blue-panels/mcommander"
-SRC_URI="https://github.com/blue-panels/mcommander/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
+SRC_URI="https://github.com/blue-panels/mcommander/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
