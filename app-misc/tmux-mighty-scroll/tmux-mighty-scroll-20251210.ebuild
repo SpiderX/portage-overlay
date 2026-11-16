@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit edo toolchain-funcs
+inherit toolchain-funcs
 
-COMMIT="c34808da912a6b4530d1c9dec8338757b6ec505a"
+COMMIT="fa5db0718e9e9f7278520ecf63b96b84b0cc57d6"
 
 DESCRIPTION="Seamless mouse scroll in tmux"
 HOMEPAGE="https://github.com/noscript/tmux-mighty-scroll"

@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-EGIT_REPO_URI="https://github.com/noscript/${PN}.git"
-
-inherit edo git-r3 toolchain-funcs
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Seamless mouse scroll in tmux"
 HOMEPAGE="https://github.com/noscript/tmux-mighty-scroll"
+EGIT_REPO_URI="https://github.com/noscript/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
