@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 MY_P="${P}-x86_64"
 
@@ -22,11 +22,11 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 
-	# Fix link against libtinfo when it separate from libncurses
+	# fix link against libtinfo when it separate from libncurses
 	sed -i '/tgetent/aAC_SEARCH_LIBS([stdscr], [tinfo], ,[AC_MSG_ERROR([Cannot find a library providing stdscr])])' \
 		configure.in || die "sed failed for configure.in"
 
-	# Bug #426262, create directories
+	# bug #426262, create directories
 	mv configure.{in,ac} || die "rename failed"
 	sed -i -e '/configure./s/in/ac/' \
 		-e 's/mkdir/mkdir -p/' \
