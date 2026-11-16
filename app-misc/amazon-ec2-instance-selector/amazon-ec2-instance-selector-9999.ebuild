@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3 go-module
 
@@ -19,7 +19,6 @@ src_unpack() {
 
 src_compile() {
 	LDFLAGS="-w -X main.versionID=${PV}"
-
 	ego build -ldflags "${LDFLAGS}" -tags aeislinux \
 		-o ec2-instance-selector ./cmd/main.go
 }
