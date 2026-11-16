@@ -32,15 +32,6 @@ DOC_CONTENTS="Add the following into .tmux.conf:\\n
 set-environment -g TMUX_PLUGIN_MANAGER_PATH '/usr/share/tmux-plugins'\\n
 to install plugins via portage and manage them via tpm."
 
-src_prepare() {
-	default
-
-	if use test ; then
-		edo rmdir lib/tmux-test
-		edo ln -s ../../tmux-test-"${COMMIT}" lib/tmux-test
-	fi
-}
-
 src_test() {
 	# initialize the tmux-test framework
 	edo lib/tmux-test/setup
