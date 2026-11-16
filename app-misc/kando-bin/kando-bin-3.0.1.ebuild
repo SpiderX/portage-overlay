@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,6 +7,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro
 	ru sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
+RPM_COMPRESS_TYPE="xz"
 
 inherit chromium-2 desktop edo multilib-build pax-utils rpm xdg
 
@@ -53,6 +54,16 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	virtual/zlib:0[${MULTILIB_USEDEP}]"
 
+QA_PREBUILT="opt/kando/chrome_crashpad_handler
+	opt/kando/kando
+	opt/kando/libEGL.so
+	opt/kando/libGLESv2.so
+	opt/kando/libffmpeg.so
+	opt/kando/libvk_swiftshader.so
+	opt/kando/libvulkan.so.1
+	opt/kando/resources/app/.webpack/main/native_modules/NativeWLR.node
+	opt/kando/resources/app/.webpack/main/native_modules/NativeX11.node"
+
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
 }
@@ -71,7 +82,7 @@ src_prepare() {
 src_install() {
 	doicon usr/share/pixmaps/kando.png
 
-	domenu usr/share/applications/kando.desktop
+	domenu usr/share/applications/menu.kando.Kando.desktop
 
 	insinto /opt/kando
 	doins -r usr/lib/kando/.
