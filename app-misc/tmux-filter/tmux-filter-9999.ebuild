@@ -1,14 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
-
-EGIT_REPO_URI="https://github.com/MaximilianGaedig/${PN}.git"
+EAPI=9
 
 inherit git-r3
 
 DESCRIPTION="Filter logs by some text or pattern"
 HOMEPAGE="https://github.com/MaximilianGaedig/tmux-filter"
+EGIT_REPO_URI="https://github.com/MaximilianGaedig/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
