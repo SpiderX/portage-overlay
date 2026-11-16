@@ -1,0 +1,15 @@
+--- ../config_test.go	2026-11-11 20:02:14.487966836 +0200
++++ ../config_test.go	2026-11-11 20:02:58.178401037 +0200
+@@ -23,6 +23,12 @@
+ 		Dir: "testdata",
+ 		Setup: func(env *testscript.Env) error {
+ 			env.Setenv("GITMUX_DIR", wd)
++
++			// Preserve the module cache for nested Go builds.
++			if cache := os.Getenv("GOMODCACHE"); cache != "" {
++				env.Setenv("GOMODCACHE", cache)
++			}
++
+ 			return nil
+ 		},
+ 		UpdateScripts: *updateGolden,

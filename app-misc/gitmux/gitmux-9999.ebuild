@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3 go-module
 
@@ -11,9 +11,10 @@ EGIT_REPO_URI="https://github.com/arl/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
-RESTRICT="test" # fails
 
 RDEPEND="app-misc/tmux"
+
+PATCHES=( "${FILESDIR}/${PN}"-0.11.5-tests.patch )
 
 src_unpack() {
 	git-r3_src_unpack
@@ -22,11 +23,11 @@ src_unpack() {
 
 src_compile() {
 	LDFLAGS="-s -w -X main.version=${PV}"
-	ego build -ldflags "${LDFLAGS}" -trimpath
+	ego build -ldflags "${LDFLAGS}"
 }
 
 src_test() {
-	ego test -work ./...
+	ego test ./...
 }
 
 src_install() {
