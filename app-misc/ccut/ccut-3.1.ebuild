@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit toolchain-funcs
 
@@ -20,9 +20,9 @@ KEYWORDS="~amd64 ~x86"
 src_prepare() {
 	default
 
-	# Redefine compiler call
+	# redefine compiler call
 	sed -i "s/\tcc/\t\${cc}/" Makefile || die "sed failed for Makefile"
-	# Remove test that requires non-existed file
+	# remove test that requires non-existed file
 	sed -i '/tests\/multiline.txt/,+1d' check.sh || die "sed failed for check.sh"
 }
 

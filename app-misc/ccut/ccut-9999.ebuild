@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3 toolchain-funcs
 
@@ -15,7 +15,7 @@ SLOT="0"
 src_prepare() {
 	default
 
-	# Redefine compiler call
+	# redefine compiler call
 	sed -i "s/\tcc/\t\${cc}/" Makefile || die "sed failed for Makefile"
 }
 
