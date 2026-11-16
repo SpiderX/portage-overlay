@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3 go-module
 
@@ -18,13 +18,12 @@ src_unpack() {
 
 src_compile() {
 	GOFLAGS="-v -x -mod=vendor" \
-		go build -ldflags "-X github.com/cointop-sh/cointop/cointop.version=${PV}" \
-		-o bin/cointop main.go || die "build failed"
+		ego build -ldflags "-X github.com/cointop-sh/cointop/cointop.version=${PV}" \
+		-o bin/cointop main.go
 }
 
 src_test() {
-	GOFLAGS="-v -x -mod=vendor" \
-		go test -work ./... || die "test failed"
+	GOFLAGS="-v -x -mod=vendor" ego test ./...
 }
 
 src_install() {
