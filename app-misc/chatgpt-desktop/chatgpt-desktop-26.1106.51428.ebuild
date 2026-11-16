@@ -67,8 +67,8 @@ QA_PREBUILT="opt/chatgpt/ChatGPT
 	opt/chatgpt/resources/cua_node/bin/node
 	opt/chatgpt/resources/cua_node/bin/node_repl
 	opt/chatgpt/resources/cua_node/lib/node_modules/.bin/sky_linux_x64
-	opt/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.6
-	opt/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64-0.35.4.node
+	opt/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.7
+	opt/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64-0.35.5.node
 	opt/chatgpt/resources/cua_node/lib/node_modules/@oai/cua/bin/linux/sky_linux_x64
 	opt/chatgpt/resources/cua_node/lib/node_modules/@oai/cua/dist/lib/js/oai_js_browser/dist/skill/node_modules/classic-level/prebuilds/linux-x64/classic-level.node
 	opt/chatgpt/resources/cua_node/lib/node_modules/@oai/sky/bin/linux/sky_linux_x64
