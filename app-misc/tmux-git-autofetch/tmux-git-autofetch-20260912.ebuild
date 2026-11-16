@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-COMMIT="f1887ed0eb3f95e138394f401dd673144f9aa94c"
+COMMIT="d25b60129369256a6197756ca3127b774135a8eb"
 
 DESCRIPTION="Automatically fetches current opened git repositories"
 HOMEPAGE="https://github.com/thepante/tmux-git-autofetch"
