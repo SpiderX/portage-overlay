@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3 go-module
 
@@ -11,6 +11,8 @@ EGIT_REPO_URI="https://github.com/sibprogrammer/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
+
+BDEPEND=">=dev-lang/go-1.26.1"
 
 src_unpack() {
 	git-r3_src_unpack
@@ -30,8 +32,7 @@ src_compile() {
 	DATE="$(date -u '+%Y-%m-%d-%H%M UTC')"
 	COMMIT="$(git log -n 1 --format='%h')"
 	LDFLAGS="-X main.version=${PV} -X \"main.date=${DATE}\" -X main.commit=${COMMIT}"
-
-	ego build -ldflags "${LDFLAGS}" -trimpath
+	ego build -ldflags "${LDFLAGS}"
 }
 
 src_test() {
