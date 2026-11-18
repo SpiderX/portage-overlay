@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ PROPERTIES="test_network"
 
 RDEPEND="acct-group/automatic
 	acct-user/automatic
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libpcre:3
 	net-misc/curl"
 DEPEND="${RDEPEND}"
@@ -37,9 +37,12 @@ and check log file in /var/log/automatic/\\n"
 src_prepare() {
 	default
 
-	# remove CFLAGS and CXXFLAGS defined by upstream
-	sed -i  -e '/CFLAGS=/s/=".*"/+=""/' \
-		-e '/CXXFLAGS=/s/=".*"/+=""/' \
+	# respect compiler flags without leaving empty shell branches
+	# quote m4_substr expansion to avoid an invalid test when it expands to empty
+	sed -i \
+		-e '/CFLAGS=/c\    :' \
+		-e '/CXXFLAGS=/c\    :' \
+		-e '/m4_substr/s/m4_substr(version_number,3,1)/"m4_substr(version_number,3,1)"/' \
 		configure.ac || die "sed failed for configure.ac"
 
 	# set version
