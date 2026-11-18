@@ -1,9 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit edo go-module shell-completion
+inherit go-module shell-completion
+
+COMMIT="4c7f76f"
 
 DESCRIPTION="A command line tool for DigitalOcean services"
 HOMEPAGE="https://github.com/digitalocean/doctl"
@@ -16,10 +18,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-vcs/git )"
+BDEPEND=">=dev-lang/go-1.26.10
+	test? ( dev-vcs/git )"
 
 src_compile() {
-	LDFLAGS="-X github.com/digitalocean/doctl.Major=$(ver_cut 1)
+	LDFLAGS="-X github.com/digitalocean/doctl.Build=${COMMIT}
+		-X github.com/digitalocean/doctl.Major=$(ver_cut 1)
 		-X github.com/digitalocean/doctl.Minor=$(ver_cut 2)
 		-X github.com/digitalocean/doctl.Patch=$(ver_cut 3-)
 		-X github.com/digitalocean/doctl.Label=release"
@@ -27,8 +31,7 @@ src_compile() {
 
 	local completion
 	for completion in bash zsh fish ; do
-		edo ./doctl completion ${completion} > doctl.${completion} \
-			|| die "completion for ${completion} failed"
+		edo ./doctl completion "${completion}" > doctl."${completion}"
 	done
 }
 
