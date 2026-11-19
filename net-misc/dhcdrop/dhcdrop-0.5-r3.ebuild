@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit autotools
 
@@ -21,9 +21,10 @@ DEPEND="static? ( net-libs/libpcap[static-libs] )
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README )
 
 PATCHES=(
-	# Fix building with -flto, bug #861608
-	"${FILESDIR}/${P}-lto.patch"
-)
+	# fix building with -flto, bug #861608
+	"${FILESDIR}/${P}"-lto.patch
+	# validate packet lengths and prevent out-of-bounds access
+	"${FILESDIR}/${P}"-packet-bounds.patch )
 
 src_prepare() {
 	default

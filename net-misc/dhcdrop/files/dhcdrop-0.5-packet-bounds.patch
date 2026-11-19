@@ -1,0 +1,197 @@
+Fix out-of-bounds packet access and unsafe libpcap capture handling
+Validate captured packet lengths before accessing DHCP and ARP headers
+or copying packet data. Use pcap_pkthdr.caplen to prevent reads beyond
+captured data and reject truncated or oversized packets.
+Copy DHCP payloads into a properly sized structure to avoid out-of-bounds
+access warnings with GCC 16. Validate UDP payload lengths, including
+the minimum DHCP header and magic cookie size.
+Also prevent outgoing packet buffer overflows and ensure capture timers
+are cancelled on both success and error paths.
+--- ../src/dhcdrop.c	2026-11-19 23:52:23.957262132 +0200
++++ ../src/dhcdrop.c	2026-11-19 23:58:14.575979660 +0200
+@@ -1146,7 +1146,8 @@
+ 		if( (ret = get_packet(pcap_socket, ether_packet, one_packet_timeout)) < 0)
+ 			return ERR_GETPACKET;
+ 
+-		if(ret)
++               if(ret > 0 && (size_t)ret >=
++                  sizeof(struct arp_packet_net_header) + sizeof(struct arp_data))
+ 		{
+ 			arp_header = (struct arp_packet_net_header *) ether_packet;
+ 			if(arp_header->arp_head.arp_oper == ARP_OP_RESP)
+@@ -1453,7 +1454,8 @@
+ {
+     uint8_t	ether_packet[DHCP_MTU_MAX];
+     struct dhcp_packet_net_header * dhcp_net_header;
+-	struct	dhcp_packet *dhcp_resp;
++	struct dhcp_packet candidate;
++	struct dhcp_packet *dhcp_resp = &candidate;
+ 	uint8_t dhcp_msg_type;
+ 
+ 	const int max_errors = 10;
+@@ -1472,19 +1474,38 @@
+ 		if(!ret)
+ 			return -1;	/* Timeout - server not respond */
+ 
+-		/* Analysing packet */
+-		dhcp_net_header = (struct dhcp_packet_net_header *) ether_packet;
+-		dhcp_resp = (struct dhcp_packet *) (ether_packet + sizeof(struct dhcp_packet_net_header));
++        /* Validate all lengths before accessing headers or DHCP data. */
++        if ((size_t)ret < sizeof(struct dhcp_packet_net_header))
++        {
++            ++errors;
++            continue;
++        }
+ 
+-		*dhcp_data_len = ntohs(dhcp_net_header->udp_header.len)
+-		- sizeof(struct udphdr);	/* UDP data length equal DHCP-packet length */
++        dhcp_net_header = (struct dhcp_packet_net_header *)ether_packet;
++        size_t udp_len = ntohs(dhcp_net_header->udp_header.len);
++        if (udp_len < sizeof(struct udphdr))
++        {
++            ++errors;
++            continue;
++        }
+ 
+-		if(*dhcp_data_len > DHCP_MAX_LEN)
+-		{
+-			printf("UDP data len too long (%u bytes)! Attempting DoS?\n", *dhcp_data_len);
+-			++errors;
+-			continue;
+-		}
++        size_t payload_len = udp_len - sizeof(struct udphdr);
++        if (payload_len < DHCP_FIXED_NON_UDP + 4 ||
++            payload_len > DHCP_MAX_LEN ||
++            payload_len > sizeof(candidate) ||
++            payload_len > (size_t)ret - sizeof(struct dhcp_packet_net_header))
++        {
++            ++errors;
++            continue;
++        }
++
++        /* Use a full-sized object rather than a struct cast into the
++         * smaller Ethernet capture buffer. */
++        memset(&candidate, 0, sizeof(candidate));
++        memcpy(&candidate,
++               ether_packet + sizeof(struct dhcp_packet_net_header),
++               payload_len);
++        *dhcp_data_len = (int)payload_len;
+ 
+ 		if(
+ 				(dhcp_resp->op != BOOTREPLY) ||
+--- ../src/net_functions.c	2026-11-19 23:45:12.089137701 +0200
++++ ../src/net_functions.c	2026-11-20 00:14:03.843385724 +0200
+@@ -128,6 +128,11 @@
+ 	}
+ 
+ 	/* Copy user data to send buffer */
++    if (data_len < 0 || header_size < 0 ||
++        (size_t)header_size > sizeof(pack_buf) ||
++        (size_t)data_len > sizeof(pack_buf) - (size_t)header_size)
++        return 0;
++
+     memcpy(pack_buf + header_size, snd_data, data_len);
+ 
+     if(pcap_inject(descr, pack_buf, header_size + data_len) == -1)
+@@ -139,51 +144,60 @@
+     return 1;
+ }
+ 
+-void packet_handler(u_char *out_packet, const struct pcap_pkthdr *h,
+-                                   const u_char *packet)
+-{
+-	if(h->len > DHCP_MTU_MAX)
+-	{
+-		printf("Received too long packet: %d. Can't dispatch!\n", h->len);
+-		return;
+-	}
+-
+-    memcpy(out_packet, (u_char*)packet, h->len);
+-    return;
+-}
+-
+-int get_packet(pcap_t * descr, u_char * ether_packet, const int wait_seconds)
+-{
++struct packet_capture {
++    u_char *buffer;
++    int length;
++};
++
++void packet_handler(u_char *user, const struct pcap_pkthdr *h,
++                    const u_char *packet)
++{
++    struct packet_capture *capture = (struct packet_capture *)user;
++
++    /* Never copy more bytes than libpcap actually captured. */
++    if (h->caplen != h->len || h->caplen > DHCP_MTU_MAX || !h->caplen)
++        return;
++
++    memcpy(capture->buffer, packet, h->caplen);
++    capture->length = (int)h->caplen;
++}
++
++int get_packet(pcap_t *descr, u_char *ether_packet, const int wait_seconds)
++{
++    struct packet_capture capture = { ether_packet, 0 };
+     int ret = 0;
+-	uint32_t t;
+-
+-	if(wait_seconds > 0)
+-	{
+-		is_timeout = 0;
+-		t = timer_start(wait_seconds, timeout);
+-	}
+-	else
+-		is_timeout = 1;
+-	while(1)
+-    {
+-		if(wait_seconds)
+-			usleep(CAP_TIMEOUT);		/* Waiting 100 microseconds for avoid CPU overload */
+-
+-        ret = pcap_dispatch(descr, 1, packet_handler, (u_char*)ether_packet);
+-        if(ret < 0)
++    uint32_t t = 0;
++
++    if (wait_seconds > 0)
++    {
++        is_timeout = 0;
++        t = timer_start(wait_seconds, timeout);
++    }
++    else
++        is_timeout = 1;
++
++    while (1)
++    {
++        if (wait_seconds > 0)
++            usleep(CAP_TIMEOUT);
++
++        ret = pcap_dispatch(descr, 1, packet_handler, (u_char *)&capture);
++        if (ret < 0)
+         {
+-            perror("pcap_dispatch");
+-            return -1;
++            pcap_perror(descr, "pcap_dispatch");
++            break;
+         }
+ 
+-        if(is_timeout || ret)
+-		{
+-        	timer_stop(t);
+-            break;
+-		}
+-    }
+-    return ret;
+-}
++        /* A rejected/truncated capture must not be returned as valid. */
++        if (capture.length || is_timeout)
++            break;
++    }
++
++    if (wait_seconds > 0)
++        timer_stop(t);
++
++    return ret < 0 ? -1 : capture.length;
++}
+ 
+ 
+ #ifdef	_WIN32
