@@ -4,7 +4,7 @@
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
-POSTGRES_COMPAT=( {14..18} )
+POSTGRES_COMPAT=( {14..19} )
 
 inherit haskell-cabal postgres
 
