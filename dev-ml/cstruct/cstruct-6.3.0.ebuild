@@ -16,8 +16,7 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
-RESTRICT="test" # ocaml-migrate-parsetree https://github.com/mirage/ocaml-cstruct/pull/325
-https://github.com/mirage/ocaml-cstruct/pull/323
+RESTRICT="test" # ocaml-migrate-parsetree https://github.com/mirage/ocaml-cstruct/pull/323
 
 RDEPEND="dev-ml/fmt:0=[ocamlopt?]
 	dev-ml/lwt:0=[ocamlopt?]
