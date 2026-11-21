@@ -1,11 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit edo go-module shell-completion
+inherit go-module shell-completion
 
-COMMIT="0129cff"
+COMMIT="3e967a2"
 
 DESCRIPTION="Manage your kubeconfig more easily"
 HOMEPAGE="https://github.com/sunny0826/kubecm"
@@ -16,6 +16,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND=">=dev-lang/go-1.25.0"
+
 src_compile() {
 	DATE="$(date -u '+%Y-%m-%d')"
 	LDFLAGS="-w -X github.com/sunny0826/kubecm/version.Version=${PV}
@@ -25,12 +27,12 @@ src_compile() {
 
 	local completion
 	for completion in bash zsh fish ; do
-		edo ./kubecm completion ${completion} > kubecm.${completion}
+		edo ./kubecm completion "${completion}" > kubecm."${completion}"
 	done
 }
 
 src_test() {
-	ego test -work ./cmd/...
+	ego test ./cmd/...
 }
 
 src_install() {
