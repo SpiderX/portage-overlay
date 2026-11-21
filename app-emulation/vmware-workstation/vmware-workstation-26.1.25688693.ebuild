@@ -9,12 +9,12 @@ inherit desktop edo pam python-any-r1 readme.gentoo-r1 systemd xdg
 
 PV_BUILD=$(ver_cut 3)
 MY_PN="VMware-Workstation-Full"
-MY_PV="$(ver_cut 1).0.0"
-MY_P="${MY_PN}-$(ver_cut 1)H$(ver_cut 2)-${PV_BUILD}"
+MY_PV="$(ver_cut 1).0.$(ver_cut 2)"
+MY_P="${MY_PN}-$(ver_cut 1)H$(ver_cut 2)u1-${PV_BUILD}"
 MY_ED="$ED"
 
-VMWARE_FUSION_VER="26.0.0/25388279"
-VMWARE_TOOLS_VER="13.1.0/25218885"
+VMWARE_FUSION_VER="26.0.1/25689522"
+VMWARE_TOOLS_VER="13.1.0/25388281"
 SYSTEMD_UNITS_TAG="gentoo-02"
 UNLOCKER_VERSION="3.1.3"
 
