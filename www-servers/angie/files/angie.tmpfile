@@ -1,0 +1,14 @@
+d /var/cache/angie 0750 angie root
+d /var/cache/angie/acme 0700 angie angie
+d /var/cache/angie/client 0700 angie angie
+d /var/cache/angie/fastcgi 0700 angie angie
+d /var/cache/angie/proxy 0700 angie angie
+d /var/cache/angie/scgi 0700 angie angie
+d /var/cache/angie/uwsgi 0700 angie angie
+
+# clean up the cache only on boot to not break running angie
+e! /var/cache/angie/client - - - 0
+e! /var/cache/angie/fastcgi - - - 0
+e! /var/cache/angie/proxy - - - 0
+e! /var/cache/angie/scgi - - - 0
+e! /var/cache/angie/uwsgi - - - 0

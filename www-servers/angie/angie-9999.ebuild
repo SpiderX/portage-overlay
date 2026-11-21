@@ -5,12 +5,10 @@
 
 EAPI=8
 
-AUTOTOOLS_AUTO_DEPEND="no"
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{11..14} )
-SSL_DEPS_SKIP=1
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit autotools edo git-r3 multiprocessing python-any-r1 ssl-cert toolchain-funcs perl-module systemd
+inherit edo git-r3 multiprocessing python-any-r1 toolchain-funcs perl-functions systemd tmpfiles
 
 ANGIE_MODULES_HTTP_STD="access api auth_basic autoindex browser charset docker empty_gif
 	fastcgi geo grpc gzip limit_req limit_conn map memcached mirror
@@ -30,55 +28,60 @@ HOMEPAGE="https://github.com/webserver-llc/angie"
 EGIT_REPO_URI="https://github.com/webserver-llc/${PN}.git"
 
 LICENSE="BSD-2"
-SLOT="0"
-IUSE="aio debug +http +http2 http3 +http-cache ipv6 libatomic pcre +pcre2 pcre-jit rtmp selinux ssl test threads vim-syntax"
+SLOT="0/${PV}"
+IUSE="aio debug +http +http2 http3 +http-cache ipv6 libatomic mail pcre pcre2 pcre-jit selinux
+	ssl stream test threads vim-syntax"
 
-for mod in $ANGIE_MODULES_HTTP_STD ; do IUSE="${IUSE} +angie_modules_http_${mod}" ; done
-for mod in $ANGIE_MODULES_HTTP_OPT ; do IUSE="${IUSE} angie_modules_http_${mod}" ; done
-for mod in $ANGIE_MODULES_STREAM_STD ; do IUSE="${IUSE} angie_modules_stream_${mod}" ; done
-for mod in $ANGIE_MODULES_STREAM_OPT ; do IUSE="${IUSE} angie_modules_stream_${mod}" ; done
-for mod in $ANGIE_MODULES_MAIL ; do IUSE="${IUSE} angie_modules_mail_${mod}" ; done
+for mod in $ANGIE_MODULES_HTTP_STD ; do IUSE="${IUSE} +angie-modules-http-${mod//_/-}" ; done
+for mod in $ANGIE_MODULES_HTTP_OPT ; do IUSE="${IUSE} angie-modules-http-${mod//_/-}" ; done
+for mod in $ANGIE_MODULES_STREAM_STD ; do IUSE="${IUSE} angie-modules-stream-${mod//_/-}" ; done
+for mod in $ANGIE_MODULES_STREAM_OPT ; do IUSE="${IUSE} angie-modules-stream-${mod//_/-}" ; done
+for mod in $ANGIE_MODULES_MAIL ; do IUSE="${IUSE} angie-modules-mail-${mod}" ; done
 
-REQUIRED_USE="angie_modules_stream_acme? ( angie_modules_http_acme )
-	test? ( angie_modules_http_addition angie_modules_http_auth_basic angie_modules_http_auth_request
-		angie_modules_http_dav angie_modules_http_flv angie_modules_http_geoip angie_modules_http_gunzip
-		angie_modules_http_gzip_static angie_modules_http_image_filter angie_modules_http_mp4
-		angie_modules_http_perl angie_modules_http_random_index angie_modules_http_secure_link
-		angie_modules_http_slice angie_modules_http_stub_status angie_modules_http_sub
-		angie_modules_http_uwsgi angie_modules_http_xslt angie_modules_mail_imap angie_modules_mail_pop3
-		angie_modules_mail_smtp angie_modules_stream_access angie_modules_stream_acme
-		angie_modules_stream_geo angie_modules_stream_geoip angie_modules_stream_limit_conn
-		angie_modules_stream_map angie_modules_stream_mqtt_preread angie_modules_stream_pass
-		angie_modules_stream_rdp_preread angie_modules_stream_realip angie_modules_stream_return
-		angie_modules_stream_set angie_modules_stream_split_clients
-		angie_modules_stream_upstream_hash angie_modules_stream_upstream_least_conn
-		angie_modules_stream_upstream_random angie_modules_stream_upstream_sticky
-		angie_modules_stream_upstream_zone angie_modules_stream_ssl_preread debug http3 )"
-RESTRICT="!test? ( test )"
+REQUIRED_USE="?? ( pcre pcre2 )
+	http? ( angie-modules-http-rewrite? ( || ( pcre pcre2 ) )
+		angie-modules-http-acme? ( ssl ) )
+	http2? ( http )
+	http3? ( http ssl )
+	http-cache? ( http )
+	pcre-jit? ( || ( pcre pcre2 ) )
+	stream? ( angie-modules-stream-acme? ( angie-modules-http-acme http ) )
+	test? ( angie-modules-http-addition angie-modules-http-auth-basic angie-modules-http-auth-request
+		angie-modules-http-dav angie-modules-http-flv angie-modules-http-geoip angie-modules-http-gunzip
+		angie-modules-http-gzip-static angie-modules-http-image-filter angie-modules-http-mp4
+		angie-modules-http-perl angie-modules-http-random-index angie-modules-http-secure-link
+		angie-modules-http-slice angie-modules-http-stub-status angie-modules-http-sub
+		angie-modules-http-uwsgi angie-modules-http-xslt angie-modules-mail-imap angie-modules-mail-pop3
+		angie-modules-mail-smtp angie-modules-stream-access angie-modules-stream-acme
+		angie-modules-stream-geo angie-modules-stream-geoip angie-modules-stream-limit-conn
+		angie-modules-stream-map angie-modules-stream-mqtt-preread angie-modules-stream-pass
+		angie-modules-stream-rdp-preread angie-modules-stream-realip angie-modules-stream-return
+		angie-modules-stream-set angie-modules-stream-split-clients
+		angie-modules-stream-upstream-hash angie-modules-stream-upstream-least-conn
+		angie-modules-stream-upstream-random angie-modules-stream-upstream-sticky
+		angie-modules-stream-upstream-zone angie-modules-stream-ssl-preread debug http http3 mail stream )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 CDEPEND="acct-group/angie
 	acct-user/angie
 	virtual/libcrypt:=
 	pcre? ( dev-libs/libpcre:= )
 	pcre2? ( dev-libs/libpcre2:= )
-	pcre-jit? ( dev-libs/libpcre:=[jit] )
 	ssl? ( dev-libs/openssl:0= )
-	http2? ( >=dev-libs/openssl-1.0.1c:0= )
-	http-cache? ( dev-libs/openssl:0= )
-	angie_modules_http_geoip? ( dev-libs/geoip )
-	angie_modules_http_gunzip? ( virtual/zlib:0= )
-	angie_modules_http_gzip? ( virtual/zlib:0= )
-	angie_modules_http_gzip_static? ( virtual/zlib:0= )
-	angie_modules_http_image_filter? ( media-libs/gd:=[jpeg,png] )
-	angie_modules_http_perl? ( >=dev-lang/perl-5.8:= )
-	angie_modules_http_rewrite? ( dev-libs/libpcre:= )
-	angie_modules_http_secure_link? ( dev-libs/openssl:0= )
-	angie_modules_http_xslt? ( dev-libs/libxml2:= dev-libs/libxslt )
-	angie_modules_stream_geoip? ( dev-libs/geoip )"
+	http? ( angie-modules-http-geoip? ( dev-libs/geoip )
+		angie-modules-http-gunzip? ( virtual/zlib:0= )
+		angie-modules-http-gzip? ( virtual/zlib:0= )
+		angie-modules-http-image-filter? ( media-libs/gd:=[jpeg,png] )
+		angie-modules-http-perl? ( >=dev-lang/perl-5.8:= )
+		angie-modules-http-secure-link? ( dev-libs/openssl:0= )
+		angie-modules-http-xslt? ( dev-libs/libxml2:= dev-libs/libxslt ) )
+	stream? ( angie-modules-stream-geoip? ( dev-libs/geoip ) )"
 RDEPEND="${CDEPEND}
 	>=app-misc/mime-types-2.1.54-r1[angie]
 	selinux? ( sec-policy/selinux-nginx )
 	!www-servers/nginx:mainline"
+IDEPEND="virtual/tmpfiles"
 DEPEND="${CDEPEND}
 	libatomic? ( dev-libs/libatomic_ops )"
 BDEPEND="test? ( dev-lang/perl
@@ -105,8 +108,7 @@ PDEPEND="vim-syntax? ( app-vim/nginx-syntax )"
 
 DOCS=( CHANGES README.rst )
 
-PATCHES=( "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
-	"${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch" )
+PATCHES=( "${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch" )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -127,65 +129,53 @@ src_prepare() {
 	# don't install to /etc/angie/ if not in use
 	local module
 	for module in fastcgi scgi uwsgi ; do
-		if ! use angie_modules_http_${module}; then
+		if ! use angie-modules-http-${module}; then
 			sed -i -e "/${module}/d" auto/install \
 				|| die "sed failed for auto/install"
 		fi
 	done
 
-	# remove failed tests
-	edo rm tests/{stream_ssl_ocsp,userid}.t
+	# decrease path to unix socket api.sock for tests
+	sed -i '/"angie-/s|ngie-test|-|' tests/lib/Test/Nginx.pm || die "sed failed for Nginx.pm"
 	# remove tests require ipv6
 	if ! use ipv6 ; then
-		eapply "${FILESDIR}/${PN}"-1.11.4-tests-no-ipv6.patch
+		eapply "${FILESDIR}/${PN}"-1.12.5-tests-no-ipv6.patch
 		edo rm tests/{http_resolver_aaaa,stream_access}.t
 		edo rm tests/{geo,proxy_protocol,stream_geo,stream_proxy_protocol,upstream_ip_hash}_ipv6.t
 	fi
-	# decrease path to unix socket api.sock
-	sed -i '/"angie-/s|ngie-test|-|' tests/lib/Test/Nginx.pm \
-		|| die "sed failed for Nginx.pm"
-	# specify python plugin version
-	sed -i "/push @uwsgiopts/s|python3|${EPYTHON/./}|" \
-		tests/uwsgi{,_body,_ssl,_ssl_verify}.t || die "sed failed for uwsgi"
+	# specify python plugin version only when test enabled
+	if use test ; then
+		sed -i "/push @uwsgiopts/s|python3|${EPYTHON/./}|" \
+			tests/uwsgi{,_body,_ssl,_ssl_verify}.t || die "sed failed for uwsgi"
+	fi
 }
 
 src_configure() {
-	local myconf=() http_enabled='' mail_enabled='' stream_enabled=''
+	local myconf=()
 
 	use aio       && myconf+=( --with-file-aio )
 	use debug     && myconf+=( --with-debug )
 	use http2     && myconf+=( --with-http_v2_module )
 	use http3     && myconf+=( --with-http_v3_module )
 	use libatomic && myconf+=( --with-libatomic )
-	use pcre      && myconf+=( --with-pcre --without-pcre2 )
+	use pcre      && myconf+=( --without-pcre2 )
 	use pcre-jit  && myconf+=( --with-pcre-jit )
 	use threads   && myconf+=( --with-threads )
 
+	use pcre || use pcre2 || myconf+=( --without-pcre )
+
 	# HTTP modules
 	for mod in $ANGIE_MODULES_HTTP_STD ; do
-		if use angie_modules_http_"${mod}" ; then
-			http_enabled=1
-		else
-			myconf+=( --without-http_"${mod}"_module )
-		fi
+		use "angie-modules-http-${mod//_/-}" \
+			|| myconf+=( --without-http_"${mod}"_module )
 	done
 
 	for mod in $ANGIE_MODULES_HTTP_OPT ; do
-		if use angie_modules_http_"${mod}" ; then
-			http_enabled=1
-			myconf+=( --with-http_"${mod}"_module )
-		fi
+		use http && use "angie-modules-http-${mod//_/-}" \
+			&& myconf+=( --with-http_"${mod}"_module )
 	done
 
-	if use angie_modules_http_fastcgi ; then
-		myconf+=( --with-http_realip_module )
-	fi
-
-	if use http || use http-cache || use http2 || use http3 ; then
-		http_enabled=1
-	fi
-
-	if [ $http_enabled ] ; then
+	if use http ; then
 		use http-cache || myconf+=( --without-http-cache )
 		use ssl && myconf+=( --with-http_ssl_module )
 	else
@@ -194,35 +184,27 @@ src_configure() {
 
 	# Stream modules
 	for mod in $ANGIE_MODULES_STREAM_STD ; do
-		if use angie_modules_stream_"${mod}" ; then
-			stream_enabled=1
-		else
-			myconf+=( --without-stream_"${mod}"_module )
-		fi
+		use "angie-modules-stream-${mod//_/-}" \
+			|| myconf+=( --without-stream_"${mod}"_module )
 	done
 
 	for mod in $ANGIE_MODULES_STREAM_OPT ; do
-		if use angie_modules_stream_"${mod}" ; then
-			stream_enabled=1
-			myconf+=( --with-stream_"${mod}"_module )
-		fi
+		use stream && use "angie-modules-stream-${mod//_/-}" \
+			&& myconf+=( --with-stream_"${mod}"_module )
 	done
 
-	if [ $stream_enabled ] ; then
+	if use stream ; then
 		myconf+=( --with-stream )
 		use ssl && myconf+=( --with-stream_ssl_module )
 	fi
 
 	# MAIL modules
 	for mod in $ANGIE_MODULES_MAIL ; do
-		if use angie_modules_mail_"${mod}" ; then
-			mail_enabled=1
-		else
-			myconf+=( --without-mail_"${mod}"_module )
-		fi
+		use angie-modules-mail-"${mod}" \
+			|| myconf+=( --without-mail_"${mod}"_module )
 	done
 
-	if [ $mail_enabled ] ; then
+	if use mail ; then
 		myconf+=( --with-mail )
 		use ssl && myconf+=( --with-mail_ssl_module )
 	fi
@@ -231,13 +213,13 @@ src_configure() {
 	export LANG=C LC_ALL=C
 	tc-export AR CC
 
-	if ! use prefix; then
+	if ! use prefix ; then
 		myconf+=( --user=angie )
 		myconf+=( --group=angie )
 	fi
 
 	# econf?
-	./configure --with-compat \
+	edo ./configure --with-compat \
 		--prefix="${EPREFIX}"/usr \
 		--conf-path="${EPREFIX}"/etc/angie/angie.conf \
 		--error-log-path="${EPREFIX}"/var/log/angie/error_log \
@@ -246,15 +228,15 @@ src_configure() {
 		--with-cc-opt="-I${ESYSROOT}/usr/include" \
 		--with-ld-opt="-L${ESYSROOT}/usr/$(get_libdir)" \
 		--http-log-path="${EPREFIX}"/var/log/angie/access_log \
-		--http-client-body-temp-path="${EPREFIX}"/var/lib/angie/tmp/client \
-		--http-proxy-temp-path="${EPREFIX}"/var/lib/angie/tmp/proxy \
-		--http-fastcgi-temp-path="${EPREFIX}"/var/lib/angie/tmp/fastcgi \
-		--http-scgi-temp-path="${EPREFIX}"/var/lib/angie/tmp/scgi \
-		--http-uwsgi-temp-path="${EPREFIX}"/var/lib/angie/tmp/uwsgi \
 		--http-acme-client-path="${EPREFIX}"/etc/angie/acme_client \
-		"${myconf[@]}" || die "configure failed"
+		--http-client-body-temp-path="${EPREFIX}"/var/cache/angie/client \
+		--http-proxy-temp-path="${EPREFIX}"/var/cache/angie/proxy \
+		--http-fastcgi-temp-path="${EPREFIX}"/var/cache/angie/fastcgi \
+		--http-scgi-temp-path="${EPREFIX}"/var/cache/angie/scgi \
+		--http-uwsgi-temp-path="${EPREFIX}"/var/cache/angie/uwsgi \
+		"${myconf[@]}"
 
-	# A purely cosmetic change that makes angie -V more readable. This can be
+	# a purely cosmetic change that makes angie -V more readable. This can be
 	# good if people outside the gentoo community would troubleshoot and
 	# question the users setup.
 	sed -i "s|${WORKDIR}|external_module|g" objs/ngx_auto_config.h \
@@ -268,7 +250,8 @@ src_test() {
 src_compile() {
 	# https://bugs.gentoo.org/286772
 	export LANG=C LC_ALL=C
-	emake LINK="${CC} ${LDFLAGS}" OTHERLDFLAGS="${LDFLAGS}"
+	# set the correct installation directories for the Perl-related files
+	PERL_MM_OPT='INSTALLDIRS=vendor' emake LINK="${CC} ${LDFLAGS}" OTHERLDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
@@ -282,49 +265,19 @@ src_install() {
 	doman man/angie.8
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/angie.logrotate angie
+	newtmpfiles "${FILESDIR}"/angie.tmpfile angie.conf
 
-	keepdir /var/log/angie /var/www/localhost /var/lib/angie/tmp/client
-	fperms 0700 /var/lib/angie/tmp/client
-	fowners angie:angie /var/lib/angie/tmp/client
-	fperms 0750 /var/lib/angie/tmp
-	fowners angie:0 /var/lib/angie/tmp
+	keepdir /var/www/localhost /var/log/angie
 	fperms 0710 /var/log/angie
-	fowners 0:angie /var/log/angie
+	fowners root:angie /var/log/angie
 
-	if use angie_modules_http_fastcgi ; then
-		keepdir /var/lib/angie/tmp/fastcgi
-		fperms 0700 /var/lib/angie/tmp/fastcgi
-		fowners angie:angie /var/lib/angie/tmp/fastcgi
-	fi
-
-	if use angie_modules_http_proxy ; then
-		keepdir /var/lib/angie/tmp/proxy
-		fperms 0700 /var/lib/angie/tmp/proxy
-		fowners angie:angie /var/lib/angie/tmp/proxy
-	fi
-
-	if use angie_modules_http_scgi ; then
-		keepdir /var/lib/angie/tmp/scgi
-		fperms 0700 /var/lib/angie/tmp/scgi
-		fowners angie:angie /var/lib/angie/tmp/scgi
-	fi
-
-	if use angie_modules_http_uwsgi ; then
-		keepdir /var/lib/angie/tmp/uwsgi
-		fperms 0700 /var/lib/angie/tmp/uwsgi
-		fowners angie:angie /var/lib/angie/tmp/uwsgi
-	fi
-
-	if use angie_modules_http_acme ; then
-		keepdir /var/lib/angie/tmp/acme
-		fperms 0700 /var/lib/angie/tmp/acme
-		fowners angie:angie /var/lib/angie/tmp/acme
-	fi
-
-	if use angie_modules_http_perl ; then
-		edo pushd objs/src/http/modules/perl
-		emake DESTDIR="${D}" INSTALLDIRS=vendor
+	if use http && use angie-modules-http-perl ; then
+		perl_delete_module_manpages
 		perl_delete_localpod
-		edo popd
+		perl_fix_packlist
 	fi
+}
+
+pkg_postinst() {
+	tmpfiles_process angie.conf
 }
