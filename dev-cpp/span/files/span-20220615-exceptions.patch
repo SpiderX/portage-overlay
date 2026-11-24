@@ -1,0 +1,24 @@
+From 487fe1f4d5abe717896e963a3d48919f9911a591 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kai=20K=C3=B6hne?= <kai.koehne@qt.io>
+Date: Wed, 16 Jun 2021 16:30:16 +0200
+Subject: [PATCH] Fix build without exceptions on MSVC
+
+std::terminate is declared in <exception>, so we need to include
+this header - somewhat ironically - in the non-exception case.
+---
+ include/tcb/span.hpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/tcb/span.hpp b/include/tcb/span.hpp
+index 8efcddb..96aaef5 100644
+--- a/include/tcb/span.hpp
++++ b/include/tcb/span.hpp
+@@ -27,6 +27,8 @@ This is an implementation of C++20's std::span
+ #ifndef TCB_SPAN_NO_EXCEPTIONS
+ #include <cstdio>
+ #include <stdexcept>
++#else
++#include <exception> // for std::terminate
+ #endif
+ 
+ // Various feature test macros
