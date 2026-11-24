@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi
 	sk sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit chromium-2 desktop pax-utils multilib-build optfeature unpacker xdg
+inherit chromium-2 desktop edo pax-utils multilib-build optfeature unpacker xdg
 
 DESCRIPTION="A charting platform for traders and investors"
 HOMEPAGE="https://www.tradingview.com/desktop/"
@@ -46,23 +46,29 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libayatana-indicator:3 )"
 
+QA_PREBUILT="opt/TradingView/chrome_crashpad_handler
+	opt/TradingView/libffmpeg.so
+	opt/TradingView/libvk_swiftshader.so
+	opt/TradingView/libvulkan.so.1
+	opt/TradingView/resources/app.asar.unpacked/build/Release/classic_level.node
+	opt/TradingView/resources/app.asar.unpacked/keytar.node
+	opt/TradingView/resources/app.asar.unpacked/native/tvdbridge.node
+	opt/TradingView/tradingview"
+
 pkg_pretend() {
 	use suid || chromium_suid_sandbox_check_kernel_config
 }
 
 src_prepare() {
 	default
-	pushd opt/TradingView/locales || die "pushd failed"
+	edo pushd opt/TradingView/locales
 	chromium_remove_language_paks
-	popd || die "popd failed"
+	edo popd
 
 	# don't install licenses
-	rm opt/TradingView/LICENSE{S.chromium.html,.electron.txt} \
-		|| die "rm failed for licenses"
+	edo rm opt/TradingView/LICENSE{S.chromium.html,.electron.txt}
 
-	if ! use suid ; then
-		rm opt/TradingView/chrome-sandbox || die "rm failed"
-	fi
+	use suid || edo rm opt/TradingView/chrome-sandbox
 }
 
 src_install() {
@@ -75,7 +81,7 @@ src_install() {
 	insinto /opt
 	doins -r opt/TradingView
 	fperms +x /opt/TradingView/{chrome_crashpad_handler,tradingview} \
-		/opt/TradingView/lib{EGL,ffmpeg,GLESv2,vk_swiftshader}.so \
+		/opt/TradingView/lib{ffmpeg,vk_swiftshader}.so \
 		/opt/TradingView/libvulkan.so.1
 	use suid && fperms u+s,+x /opt/TradingView/chrome-sandbox
 
