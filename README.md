@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1668](https://img.shields.io/badge/ebuild-1668-orange.svg)](https://img.shields.io/badge/ebuild-1668-orange.svg)
+[![Number of ebuilds: 1669](https://img.shields.io/badge/ebuild-1669-orange.svg)](https://img.shields.io/badge/ebuild-1669-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -212,6 +212,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-build/[qtilitools](https://github.com/qtilities/qtilitools) | Scripts/commands used in the Qtilities organization
 *   dev-cpp/[belr](https://gitlab.linphone.org/BC/public/belr) | Language recognition library by Belledonne Communications
 *   dev-cpp/[commoncpp2](http://www.gnu.org/software/commoncpp/) | GNU Common C++ 2
+*   dev-cpp/[frozen](https://github.com/serge-sans-paille/frozen) | A header-only, constexpr alternative to gperf for C++14 users
 *   dev-cpp/[jsoncpp](https://github.com/open-source-parsers/jsoncpp) | CMake files for C++ JSON reader and writer
 *   dev-cpp/[libxsd](https://www.codesynthesis.com/products/xsd/) | A cross-platform W3C XML Schema to C++ data binding compiler library
 *   dev-cpp/[libxsd-frontend](https://www.codesynthesis.com/projects/libxsd-frontend/) | A compiler frontend for the W3C XML Schema definition language
