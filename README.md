@@ -1,6 +1,6 @@
 # nest overlay
 
-[![Number of ebuilds: 1670](https://img.shields.io/badge/ebuild-1670-orange.svg)](https://img.shields.io/badge/ebuild-1670-orange.svg)
+[![Number of ebuilds: 1671](https://img.shields.io/badge/ebuild-1671-orange.svg)](https://img.shields.io/badge/ebuild-1671-orange.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)](https://img.shields.io/github/repo-size/SpiderX/portage-overlay.svg)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/2323/badge)](https://www.bestpractices.dev/en/projects/2323/passing)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
@@ -436,6 +436,7 @@ This overlay consists of an [Gentoo Portage](https://www.gentoo.org/) ebuilds fo
 *   dev-libs/[libopenrazer](https://github.com/z3ntu/libopenrazer) | Qt wrapper around the D-Bus API from OpenRazer
 *   dev-libs/[libstudxml](https://codesynthesis.com/projects/libstudxml/) | Streaming XML pull parser and streaming XML serializer
 *   dev-libs/[libthai](https://github.com/tlwg/libthai) | A a set of Thai language support routines
+*   dev-libs/[lief](https://github.com/lief-project/LIEF) | Library to Instrument Executable Formats (C++, Python, Rust)
 *   dev-libs/[lime](https://gitlab.linphone.org/BC/public/lime) | C++ library implementing Open Whisper System Signal protocol
 *   dev-libs/[njs](https://github.com/nginx/njs) | NGINX JavaScript
 *   dev-libs/[modest](https://github.com/lexborisov/modest) | Fast HTML renderer
