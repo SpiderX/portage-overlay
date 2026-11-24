@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A header-only, constexpr alternative to gperf for C++14 users"
 HOMEPAGE="https://github.com/serge-sans-paille/frozen"
-SRC_URI="https://github.com/serge-sans-paille/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/serge-sans-paille/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
